@@ -9,65 +9,51 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class FileSystemShortcut : IAdditionalDataHolder, IParsable
+    public partial class CohortPersonsResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The created_at property</summary>
-        public DateTimeOffset? CreatedAt { get; private set; }
-        /// <summary>The href property</summary>
+        /// <summary>The next property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Href { get; set; }
+        public string? Next { get; set; }
 #nullable restore
 #else
-        public string Href { get; set; }
+        public string Next { get; set; }
 #endif
-        /// <summary>The id property</summary>
-        public Guid? Id { get; private set; }
-        /// <summary>The order property</summary>
-        public int? Order { get; set; }
-        /// <summary>The path property</summary>
+        /// <summary>The previous property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Path { get; set; }
+        public string? Previous { get; set; }
 #nullable restore
 #else
-        public string Path { get; set; }
+        public string Previous { get; set; }
 #endif
-        /// <summary>The ref property</summary>
+        /// <summary>The results property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Ref { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CohortPersonResult>? Results { get; set; }
 #nullable restore
 #else
-        public string Ref { get; set; }
-#endif
-        /// <summary>The type property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Type { get; set; }
-#nullable restore
-#else
-        public string Type { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CohortPersonResult> Results { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FileSystemShortcut"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CohortPersonsResponse"/> and sets the default values.
         /// </summary>
-        public FileSystemShortcut()
+        public CohortPersonsResponse()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FileSystemShortcut"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CohortPersonsResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.PostHog.OpenApiClient.Models.FileSystemShortcut CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.PostHog.OpenApiClient.Models.CohortPersonsResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.FileSystemShortcut();
+            return new global::Soenneker.PostHog.OpenApiClient.Models.CohortPersonsResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -77,13 +63,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "href", n => { Href = n.GetStringValue(); } },
-                { "id", n => { Id = n.GetGuidValue(); } },
-                { "order", n => { Order = n.GetIntValue(); } },
-                { "path", n => { Path = n.GetStringValue(); } },
-                { "ref", n => { Ref = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetStringValue(); } },
+                { "next", n => { Next = n.GetStringValue(); } },
+                { "previous", n => { Previous = n.GetStringValue(); } },
+                { "results", n => { Results = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CohortPersonResult>(global::Soenneker.PostHog.OpenApiClient.Models.CohortPersonResult.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -93,11 +75,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("href", Href);
-            writer.WriteIntValue("order", Order);
-            writer.WriteStringValue("path", Path);
-            writer.WriteStringValue("ref", Ref);
-            writer.WriteStringValue("type", Type);
+            writer.WriteStringValue("next", Next);
+            writer.WriteStringValue("previous", Previous);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CohortPersonResult>("results", Results);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

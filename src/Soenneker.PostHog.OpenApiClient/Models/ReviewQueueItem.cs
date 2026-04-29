@@ -38,7 +38,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The team property</summary>
         public int? Team { get; private set; }
-        /// <summary>Trace ID currently pending human review.</summary>
+        /// <summary>Trace ID currently pending review.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? TraceId { get; private set; }

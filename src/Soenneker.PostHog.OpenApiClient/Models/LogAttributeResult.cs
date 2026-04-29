@@ -9,14 +9,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class LogAttributeEntry : IAdditionalDataHolder, IParsable
+    public partial class LogAttributeResult : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>How the search query matched this row: &quot;key&quot; if the attribute key matched, &quot;value&quot; if a value matched.* `key` - key* `value` - value</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.MatchedOnEnum? MatchedOn { get; set; }
-        /// <summary>Sample matching value — only set when matchedOn is &quot;value&quot;.</summary>
+        /// <summary>The matchedOn property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.MatchedOn? MatchedOn { get; set; }
+        /// <summary>Sample value that matched the search — only set when matchedOn is &apos;value&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? MatchedValue { get; set; }
@@ -32,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>Property filter type: &quot;log_attribute&quot; or &quot;log_resource_attribute&quot;. Use this as the `type` field when filtering.</summary>
+        /// <summary>Either &apos;log_attribute&apos; or &apos;log_resource_attribute&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? PropertyFilterType { get; set; }
@@ -41,21 +39,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string PropertyFilterType { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogAttributeEntry"/> and sets the default values.
-        /// </summary>
-        public LogAttributeEntry()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
-        /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogAttributeEntry"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogAttributeResult"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.PostHog.OpenApiClient.Models.LogAttributeEntry CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.PostHog.OpenApiClient.Models.LogAttributeResult CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.LogAttributeEntry();
+            return new global::Soenneker.PostHog.OpenApiClient.Models.LogAttributeResult();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -65,7 +56,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "matchedOn", n => { MatchedOn = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MatchedOnEnum>(); } },
+                { "matchedOn", n => { MatchedOn = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MatchedOn>(); } },
                 { "matchedValue", n => { MatchedValue = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "propertyFilterType", n => { PropertyFilterType = n.GetStringValue(); } },
@@ -78,11 +69,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MatchedOnEnum>("matchedOn", MatchedOn);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MatchedOn>("matchedOn", MatchedOn);
             writer.WriteStringValue("matchedValue", MatchedValue);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("propertyFilterType", PropertyFilterType);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

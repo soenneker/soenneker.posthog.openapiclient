@@ -14,17 +14,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Minimum minutes between reports in every_n mode to prevent spam. Min 60, max 1440 (24 hours).</summary>
+        /// <summary>Minimum minutes between count-triggered reports to prevent spam (every_n mode only). Min 60, max 1440 (24 hours). Defaults to 60.</summary>
         public int? CooldownMinutes { get; set; }
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>The created_by property</summary>
         public int? CreatedBy { get; private set; }
-        /// <summary>Max reports generated per day. Defaults to 3.</summary>
+        /// <summary>Maximum count-triggered report runs per calendar day (UTC). Min 1, max 24 (one per cooldown window). Defaults to 10.</summary>
         public int? DailyRunCap { get; set; }
         /// <summary>Set to true to soft-delete this report config.</summary>
         public bool? Deleted { get; set; }
-        /// <summary>List of delivery targets. Each is {type: &apos;email&apos;, value: &apos;...&apos;} or {type: &apos;slack&apos;, integration_id: N, channel: &apos;...&apos;}.</summary>
+        /// <summary>List of delivery targets. Each entry is either {type: &apos;email&apos;, value: &apos;user@example.com&apos;} or {type: &apos;slack&apos;, integration_id: &lt;int&gt;, channel: &apos;&lt;channel&gt;&apos;}. Slack integration_id must belong to this team.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public UntypedNode? DeliveryTargets { get; set; }
@@ -32,21 +32,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public UntypedNode DeliveryTargets { get; set; }
 #endif
-        /// <summary>Whether report delivery is active.</summary>
+        /// <summary>Whether report delivery is active. Disabled configs do not fire.</summary>
         public bool? Enabled { get; set; }
         /// <summary>UUID of the evaluation this report config belongs to.</summary>
         public Guid? Evaluation { get; set; }
-        /// <summary>&apos;every_n&apos; triggers a report after N evaluations run; &apos;scheduled&apos; uses an rrule schedule.* `scheduled` - Scheduled* `every_n` - Every N</summary>
+        /// <summary>How report generation is triggered. &apos;every_n&apos; fires once N new evaluation results have accumulated (subject to cooldown_minutes and daily_run_cap). &apos;scheduled&apos; fires on the cadence defined by rrule + starts_at + timezone_name.* `scheduled` - Scheduled* `every_n` - Every N</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportFrequencyEnum? Frequency { get; set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>The last_delivered_at property</summary>
         public DateTimeOffset? LastDeliveredAt { get; private set; }
-        /// <summary>Max number of evaluation runs included in each report. Defaults to 100.</summary>
+        /// <summary>Maximum number of evaluation runs included in each report. Defaults to 200.</summary>
         public int? MaxSampleSize { get; set; }
         /// <summary>The next_delivery_date property</summary>
         public DateTimeOffset? NextDeliveryDate { get; private set; }
-        /// <summary>Optional custom instructions injected into the AI report prompt to focus analysis.</summary>
+        /// <summary>Optional custom instructions appended to the AI report prompt to steer focus, scope, or section choices without modifying the base prompt.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ReportPromptGuidance { get; set; }
@@ -54,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ReportPromptGuidance { get; set; }
 #endif
-        /// <summary>RFC 5545 recurrence rule string. Required when frequency is &apos;scheduled&apos;.</summary>
+        /// <summary>RFC 5545 recurrence rule string (e.g. &apos;FREQ=WEEKLY;BYDAY=MO&apos;). Must not contain DTSTART — the anchor is set via starts_at. Required when frequency is &apos;scheduled&apos;; ignored otherwise.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Rrule { get; set; }
@@ -62,9 +62,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Rrule { get; set; }
 #endif
-        /// <summary>Schedule start datetime (ISO 8601). Required when frequency is &apos;scheduled&apos;.</summary>
+        /// <summary>Anchor datetime for the rrule (ISO 8601, UTC — must end in &apos;Z&apos;). Local-time interpretation is controlled by timezone_name. Required when frequency is &apos;scheduled&apos;; ignored otherwise.</summary>
         public DateTimeOffset? StartsAt { get; set; }
-        /// <summary>IANA timezone name for scheduled delivery (e.g. &apos;America/New_York&apos;).</summary>
+        /// <summary>IANA timezone name used to expand the rrule in local time so e.g. &apos;9am&apos; stays at 9am across DST transitions (e.g. &apos;America/New_York&apos;). Defaults to &apos;UTC&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? TimezoneName { get; set; }
@@ -72,7 +72,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string TimezoneName { get; set; }
 #endif
-        /// <summary>Number of evaluation runs that trigger a report (every_n mode). Min 10, max 1000.</summary>
+        /// <summary>Number of new evaluation results that triggers a report (every_n mode only). Min 10, max 10000. Defaults to 100. Required when frequency is &apos;every_n&apos;.</summary>
         public int? TriggerThreshold { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReport"/> and sets the default values.

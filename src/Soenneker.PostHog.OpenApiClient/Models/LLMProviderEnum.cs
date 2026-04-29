@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `openai` - Openai* `anthropic` - Anthropic* `gemini` - Gemini* `openrouter` - Openrouter* `fireworks` - Fireworks* `azure_openai` - Azure OpenAI</summary>
+    /// <summary>* `openai` - Openai* `anthropic` - Anthropic* `gemini` - Gemini* `openrouter` - Openrouter* `fireworks` - Fireworks* `azure_openai` - Azure OpenAI* `together_ai` - Together AI</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum LLMProviderEnum
     {
@@ -30,6 +30,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "azure_openai")]
         #pragma warning disable CS1591
         Azure_openai,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "together_ai")]
+        #pragma warning disable CS1591
+        Together_ai,
         #pragma warning restore CS1591
     }
 }

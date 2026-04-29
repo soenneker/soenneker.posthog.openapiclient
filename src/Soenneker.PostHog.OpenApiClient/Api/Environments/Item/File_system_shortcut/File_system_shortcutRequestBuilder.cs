@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.File_system_shortcut.Item;
+using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.File_system_shortcut.Reorder;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -19,6 +20,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.File_system_shor
         public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.File_system_shortcut.EmptyPathSegmentRequestBuilder EmptyPathSegment
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.File_system_shortcut.EmptyPathSegmentRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The reorder property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.File_system_shortcut.Reorder.ReorderRequestBuilder Reorder
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.File_system_shortcut.Reorder.ReorderRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.environments.item.file_system_shortcut.item collection</summary>
         /// <param name="position">A UUID string identifying this file system shortcut.</param>

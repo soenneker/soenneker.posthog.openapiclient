@@ -92,7 +92,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>* `openai` - Openai* `anthropic` - Anthropic* `gemini` - Gemini* `openrouter` - Openrouter* `fireworks` - Fireworks* `azure_openai` - Azure OpenAI</summary>
+        /// <summary>* `openai` - Openai* `anthropic` - Anthropic* `gemini` - Gemini* `openrouter` - Openrouter* `fireworks` - Fireworks* `azure_openai` - Azure OpenAI* `together_ai` - Together AI</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.LLMProviderEnum? Provider { get; set; }
         /// <summary>The set_as_active property</summary>
         public bool? SetAsActive { get; set; }

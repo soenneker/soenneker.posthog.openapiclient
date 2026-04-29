@@ -26,6 +26,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
+        /// <summary>The order property</summary>
+        public int? Order { get; set; }
         /// <summary>The path property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -78,6 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "href", n => { Href = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
+                { "order", n => { Order = n.GetIntValue(); } },
                 { "path", n => { Path = n.GetStringValue(); } },
                 { "ref", n => { Ref = n.GetStringValue(); } },
                 { "type", n => { Type = n.GetStringValue(); } },
@@ -91,6 +94,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("href", Href);
+            writer.WriteIntValue("order", Order);
             writer.WriteStringValue("path", Path);
             writer.WriteStringValue("ref", Ref);
             writer.WriteStringValue("type", Type);

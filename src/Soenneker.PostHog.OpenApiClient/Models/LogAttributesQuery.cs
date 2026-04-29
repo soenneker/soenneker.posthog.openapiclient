@@ -66,6 +66,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Search { get; set; }
 #endif
+        /// <summary>When true, the search query also matches attribute values (not just keys).</summary>
+        public bool? SearchValues { get; set; }
         /// <summary>The serviceNames property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -126,6 +128,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "offset", n => { Offset = n.GetIntValue(); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogAttributesQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.LogAttributesQueryResponse.CreateFromDiscriminatorValue); } },
                 { "search", n => { Search = n.GetStringValue(); } },
+                { "searchValues", n => { SearchValues = n.GetBoolValue(); } },
                 { "serviceNames", n => { ServiceNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "severityLevels", n => { SeverityLevels = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.LogSeverityLevel>()?.AsList(); } },
                 { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
@@ -148,6 +151,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("offset", Offset);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogAttributesQueryResponse>("response", Response);
             writer.WriteStringValue("search", Search);
+            writer.WriteBoolValue("searchValues", SearchValues);
             writer.WriteCollectionOfPrimitiveValues<string>("serviceNames", ServiceNames);
             writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.LogSeverityLevel>("severityLevels", SeverityLevels);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);

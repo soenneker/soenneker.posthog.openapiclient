@@ -14,25 +14,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `number` - number* `sparkline` - sparkline</summary>
+        /// <summary>Visual representation in the UI. One of `number` or `sparkline`.* `number` - number* `sparkline` - sparkline</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.GroupUsageMetricDisplayEnum? Display { get; set; }
-        /// <summary>The filters property</summary>
+        /// <summary>HogQL filter definition used to compute the metric. Same shape as HogFunction filters: a dict containing an `events` list and optional `properties` list.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedGroupUsageMetric_filters? Filters { get; set; }
 #nullable restore
 #else
-        public UntypedNode Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedGroupUsageMetric_filters Filters { get; set; }
 #endif
-        /// <summary>* `numeric` - numeric* `currency` - currency</summary>
+        /// <summary>How the metric value is formatted in the UI. One of `numeric` or `currency`.* `numeric` - numeric* `currency` - currency</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.GroupUsageMetricFormatEnum? Format { get; set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
-        /// <summary>In days</summary>
+        /// <summary>Rolling time window in days used to compute the metric. Defaults to 7.</summary>
         public int? Interval { get; set; }
-        /// <summary>* `count` - count* `sum` - sum</summary>
+        /// <summary>Aggregation function. `count` counts matching events; `sum` sums the value of `math_property` on matching events.* `count` - count* `sum` - sum</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.MathEnum? Math { get; set; }
-        /// <summary>The math_property property</summary>
+        /// <summary>Event property to sum. Required when `math` is `sum` and forbidden when `math` is `count`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? MathProperty { get; set; }
@@ -40,7 +40,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string MathProperty { get; set; }
 #endif
-        /// <summary>The name property</summary>
+        /// <summary>Name of the usage metric. Must be unique per group type within the project.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
@@ -54,6 +54,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public PatchedGroupUsageMetric()
         {
             AdditionalData = new Dictionary<string, object>();
+            Display = global::Soenneker.PostHog.OpenApiClient.Models.GroupUsageMetricDisplayEnum.Number;
+            Format = global::Soenneker.PostHog.OpenApiClient.Models.GroupUsageMetricFormatEnum.Numeric;
+            Math = global::Soenneker.PostHog.OpenApiClient.Models.MathEnum.Count;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -74,7 +77,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "display", n => { Display = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupUsageMetricDisplayEnum>(); } },
-                { "filters", n => { Filters = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedGroupUsageMetric_filters>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedGroupUsageMetric_filters.CreateFromDiscriminatorValue); } },
                 { "format", n => { Format = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupUsageMetricFormatEnum>(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "interval", n => { Interval = n.GetIntValue(); } },
@@ -91,7 +94,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupUsageMetricDisplayEnum>("display", Display);
-            writer.WriteObjectValue<UntypedNode>("filters", Filters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedGroupUsageMetric_filters>("filters", Filters);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupUsageMetricFormatEnum>("format", Format);
             writer.WriteIntValue("interval", Interval);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MathEnum>("math", Math);

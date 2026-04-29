@@ -6564,6 +6564,41 @@ paths:
           description: No response body
       deprecated: true
       x-explicit-tags: []
+  /api/environments/{environment_id}/file_system_shortcut/reorder/:
+    post:
+      operationId: environments_file_system_shortcut_reorder_create
+      description: Set the display order of the current user's shortcuts. `ordered_ids`
+        becomes the new top-to-bottom order; any unknown IDs are rejected.
+      parameters:
+      - in: path
+        name: environment_id
+        required: true
+        schema:
+          type: string
+        description: Deprecated. Use /api/projects/{project_id}/ instead.
+      tags:
+      - file_system_shortcut
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FileSystemShortcutReorder'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FileSystemShortcutReorder'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FileSystemShortcutReorder'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedFileSystemShortcutList'
+          description: ''
+      deprecated: true
+      x-explicit-tags: []
   /api/environments/{environment_id}/groups/:
     get:
       operationId: environments_groups_list
@@ -11073,6 +11108,13 @@ paths:
           minLength: 1
         description: Search filter for attribute names
       - in: query
+        name: search_values
+        schema:
+          type: boolean
+          default: false
+        description: When true, the search query also matches attribute values (not
+          just keys). Each result indicates whether it matched on key or value.
+      - in: query
         name: serviceNames
         schema:
           type: array
@@ -11130,6 +11172,44 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/_LogsCountResponse'
+          description: ''
+      deprecated: true
+      x-explicit-tags:
+      - logs
+  /api/environments/{environment_id}/logs/count-ranges/:
+    post:
+      operationId: environments_logs_count_ranges_create
+      parameters:
+      - in: path
+        name: environment_id
+        required: true
+        schema:
+          type: string
+        description: Deprecated. Use /api/projects/{project_id}/ instead.
+      tags:
+      - logs
+      - logs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/_LogsCountRangesRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/_LogsCountRangesRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/_LogsCountRangesRequest'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - logs:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_LogsCountRangesResponse'
           description: ''
       deprecated: true
       x-explicit-tags:
@@ -23943,6 +24023,9 @@ paths:
             schema:
               $ref: '#/components/schemas/SessionSummaries'
         required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - session_recording:read
       responses:
         '200':
           content:
@@ -23977,6 +24060,9 @@ paths:
             schema:
               $ref: '#/components/schemas/SessionSummaries'
         required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - session_recording:read
       responses:
         '200':
           content:
@@ -29866,6 +29952,16 @@ paths:
           type: integer
         description: A unique integer value identifying this cohort.
         required: true
+      - in: query
+        name: limit
+        schema:
+          type: integer
+        description: Maximum number of persons to return per page (defaults to 100).
+      - in: query
+        name: offset
+        schema:
+          type: integer
+        description: Number of persons to skip before starting to return results.
       - in: path
         name: project_id
         required: true
@@ -29882,7 +29978,14 @@ paths:
         - person:read
       responses:
         '200':
-          description: No response body
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CohortPersonsResponse'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/CohortPersonsResponse'
+          description: ''
       x-explicit-tags:
       - core
   /api/projects/{project_id}/cohorts/{id}/remove_person_from_static_cohort/:
@@ -40241,6 +40344,41 @@ paths:
         '204':
           description: No response body
       x-explicit-tags: []
+  /api/projects/{project_id}/file_system_shortcut/reorder/:
+    post:
+      operationId: file_system_shortcut_reorder_create
+      description: Set the display order of the current user's shortcuts. `ordered_ids`
+        becomes the new top-to-bottom order; any unknown IDs are rejected.
+      parameters:
+      - in: path
+        name: project_id
+        required: true
+        schema:
+          type: string
+        description: Project ID of the project you're trying to access. To find the
+          ID of the project, make a call to /api/projects/.
+      tags:
+      - file_system_shortcut
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FileSystemShortcutReorder'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FileSystemShortcutReorder'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FileSystemShortcutReorder'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedFileSystemShortcutList'
+          description: ''
+      x-explicit-tags: []
   /api/projects/{project_id}/flag_value/values/:
     get:
       operationId: flag_value_values_retrieve
@@ -40688,7 +40826,7 @@ paths:
       - groups_types
       security:
       - PersonalAPIKeyAuth:
-        - group:read
+        - usage_metric:read
       responses:
         '200':
           content:
@@ -40732,7 +40870,7 @@ paths:
         required: true
       security:
       - PersonalAPIKeyAuth:
-        - group:write
+        - usage_metric:write
       responses:
         '201':
           content:
@@ -40772,7 +40910,7 @@ paths:
       - groups_types
       security:
       - PersonalAPIKeyAuth:
-        - group:read
+        - usage_metric:read
       responses:
         '200':
           content:
@@ -40823,7 +40961,7 @@ paths:
         required: true
       security:
       - PersonalAPIKeyAuth:
-        - group:write
+        - usage_metric:write
       responses:
         '200':
           content:
@@ -40873,7 +41011,7 @@ paths:
               $ref: '#/components/schemas/PatchedGroupUsageMetric'
       security:
       - PersonalAPIKeyAuth:
-        - group:write
+        - usage_metric:write
       responses:
         '200':
           content:
@@ -40912,7 +41050,7 @@ paths:
       - groups_types
       security:
       - PersonalAPIKeyAuth:
-        - group:write
+        - usage_metric:write
       responses:
         '204':
           description: No response body
@@ -45688,6 +45826,13 @@ paths:
           minLength: 1
         description: Search filter for attribute names
       - in: query
+        name: search_values
+        schema:
+          type: boolean
+          default: false
+        description: When true, the search query also matches attribute values (not
+          just keys). Each result indicates whether it matched on key or value.
+      - in: query
         name: serviceNames
         schema:
           type: array
@@ -45745,6 +45890,44 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/_LogsCountResponse'
+          description: ''
+      x-explicit-tags:
+      - logs
+  /api/projects/{project_id}/logs/count-ranges/:
+    post:
+      operationId: logs_count_ranges_create
+      parameters:
+      - in: path
+        name: project_id
+        required: true
+        schema:
+          type: string
+        description: Project ID of the project you're trying to access. To find the
+          ID of the project, make a call to /api/projects/.
+      tags:
+      - logs
+      - logs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/_LogsCountRangesRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/_LogsCountRangesRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/_LogsCountRangesRequest'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - logs:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_LogsCountRangesResponse'
           description: ''
       x-explicit-tags:
       - logs
@@ -61930,6 +62113,81 @@ components:
       - properties
       title: CohortFilters
       type: object
+    CohortPersonResult:
+      type: object
+      properties:
+        id:
+          type: string
+        uuid:
+          type: string
+          format: uuid
+        type:
+          $ref: '#/components/schemas/CohortPersonResultTypeEnum'
+        name:
+          type: string
+        distinct_ids:
+          type: array
+          items:
+            type: string
+        properties:
+          type: object
+          additionalProperties: {}
+        created_at:
+          type: string
+          format: date-time
+          nullable: true
+        last_seen_at:
+          type: string
+          format: date-time
+          nullable: true
+        is_identified:
+          type: boolean
+          nullable: true
+        matched_recordings:
+          type: array
+          items:
+            type: object
+            additionalProperties: {}
+        value_at_data_point:
+          type: number
+          format: double
+          nullable: true
+      required:
+      - created_at
+      - distinct_ids
+      - id
+      - is_identified
+      - last_seen_at
+      - matched_recordings
+      - name
+      - properties
+      - type
+      - uuid
+      - value_at_data_point
+    CohortPersonResultTypeEnum:
+      enum:
+      - person
+      type: string
+      description: '* `person` - person'
+    CohortPersonsResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/CohortPersonResult'
+        next:
+          type: string
+          format: uri
+          nullable: true
+        previous:
+          type: string
+          format: uri
+          nullable: true
+      required:
+      - next
+      - previous
+      - results
     CohortPropertyFilter:
       additionalProperties: false
       properties:
@@ -69527,23 +69785,27 @@ components:
           allOf:
           - $ref: '#/components/schemas/EvaluationReportFrequencyEnum'
           description: |-
-            'every_n' triggers a report after N evaluations run; 'scheduled' uses an rrule schedule.
+            How report generation is triggered. 'every_n' fires once N new evaluation results have accumulated (subject to cooldown_minutes and daily_run_cap). 'scheduled' fires on the cadence defined by rrule + starts_at + timezone_name.
 
             * `scheduled` - Scheduled
             * `every_n` - Every N
         rrule:
           type: string
-          description: RFC 5545 recurrence rule string. Required when frequency is
-            'scheduled'.
+          description: RFC 5545 recurrence rule string (e.g. 'FREQ=WEEKLY;BYDAY=MO').
+            Must not contain DTSTART — the anchor is set via starts_at. Required when
+            frequency is 'scheduled'; ignored otherwise.
         starts_at:
           type: string
           format: date-time
           nullable: true
-          description: Schedule start datetime (ISO 8601). Required when frequency
-            is 'scheduled'.
+          description: Anchor datetime for the rrule (ISO 8601, UTC — must end in
+            'Z'). Local-time interpretation is controlled by timezone_name. Required
+            when frequency is 'scheduled'; ignored otherwise.
         timezone_name:
           type: string
-          description: IANA timezone name for scheduled delivery (e.g. 'America/New_York').
+          description: IANA timezone name used to expand the rrule in local time so
+            e.g. '9am' stays at 9am across DST transitions (e.g. 'America/New_York').
+            Defaults to 'UTC'.
           maxLength: 64
         next_delivery_date:
           type: string
@@ -69551,17 +69813,19 @@ components:
           readOnly: true
           nullable: true
         delivery_targets:
-          description: 'List of delivery targets. Each is {type: ''email'', value:
-            ''...''} or {type: ''slack'', integration_id: N, channel: ''...''}.'
+          description: 'List of delivery targets. Each entry is either {type: ''email'',
+            value: ''user@example.com''} or {type: ''slack'', integration_id: <int>,
+            channel: ''<channel>''}. Slack integration_id must belong to this team.'
         max_sample_size:
           type: integer
           maximum: 2147483647
           minimum: -2147483648
-          description: Max number of evaluation runs included in each report. Defaults
-            to 100.
+          description: Maximum number of evaluation runs included in each report.
+            Defaults to 200.
         enabled:
           type: boolean
-          description: Whether report delivery is active.
+          description: Whether report delivery is active. Disabled configs do not
+            fire.
         deleted:
           type: boolean
           description: Set to true to soft-delete this report config.
@@ -69572,26 +69836,28 @@ components:
           nullable: true
         report_prompt_guidance:
           type: string
-          description: Optional custom instructions injected into the AI report prompt
-            to focus analysis.
+          description: Optional custom instructions appended to the AI report prompt
+            to steer focus, scope, or section choices without modifying the base prompt.
         trigger_threshold:
           type: integer
-          maximum: 2147483647
-          minimum: -2147483648
+          maximum: 10000
+          minimum: 10
           nullable: true
-          description: Number of evaluation runs that trigger a report (every_n mode).
-            Min 10, max 1000.
+          description: Number of new evaluation results that triggers a report (every_n
+            mode only). Min 10, max 10000. Defaults to 100. Required when frequency
+            is 'every_n'.
         cooldown_minutes:
           type: integer
-          maximum: 2147483647
-          minimum: -2147483648
-          description: Minimum minutes between reports in every_n mode to prevent
-            spam. Min 60, max 1440 (24 hours).
+          maximum: 1440
+          minimum: 60
+          description: Minimum minutes between count-triggered reports to prevent
+            spam (every_n mode only). Min 60, max 1440 (24 hours). Defaults to 60.
         daily_run_cap:
           type: integer
-          maximum: 2147483647
-          minimum: -2147483648
-          description: Max reports generated per day. Defaults to 3.
+          maximum: 24
+          minimum: 1
+          description: Maximum count-triggered report runs per calendar day (UTC).
+            Min 1, max 24 (one per cooldown window). Defaults to 10.
         created_by:
           type: integer
           readOnly: true
@@ -75006,6 +75272,10 @@ components:
         href:
           type: string
           nullable: true
+        order:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
         created_at:
           type: string
           format: date-time
@@ -75014,6 +75284,18 @@ components:
       - created_at
       - id
       - path
+    FileSystemShortcutReorder:
+      type: object
+      properties:
+        ordered_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          description: IDs of the current user's shortcuts in the desired display
+            order.
+      required:
+      - ordered_ids
     FilterEnum:
       enum:
       - all
@@ -76717,22 +76999,52 @@ components:
           readOnly: true
         name:
           type: string
+          description: Name of the usage metric. Must be unique per group type within
+            the project.
           maxLength: 255
         format:
-          $ref: '#/components/schemas/GroupUsageMetricFormatEnum'
+          allOf:
+          - $ref: '#/components/schemas/GroupUsageMetricFormatEnum'
+          default: numeric
+          description: |-
+            How the metric value is formatted in the UI. One of `numeric` or `currency`.
+
+            * `numeric` - numeric
+            * `currency` - currency
         interval:
           type: integer
-          maximum: 2147483647
-          minimum: -2147483648
-          description: In days
+          default: 7
+          description: Rolling time window in days used to compute the metric. Defaults
+            to 7.
         display:
-          $ref: '#/components/schemas/GroupUsageMetricDisplayEnum'
-        filters: {}
+          allOf:
+          - $ref: '#/components/schemas/GroupUsageMetricDisplayEnum'
+          default: number
+          description: |-
+            Visual representation in the UI. One of `number` or `sparkline`.
+
+            * `number` - number
+            * `sparkline` - sparkline
+        filters:
+          type: object
+          additionalProperties: {}
+          description: 'HogQL filter definition used to compute the metric. Same shape
+            as HogFunction filters: a dict containing an `events` list and optional
+            `properties` list.'
         math:
-          $ref: '#/components/schemas/MathEnum'
+          allOf:
+          - $ref: '#/components/schemas/MathEnum'
+          default: count
+          description: |-
+            Aggregation function. `count` counts matching events; `sum` sums the value of `math_property` on matching events.
+
+            * `count` - count
+            * `sum` - sum
         math_property:
           type: string
           nullable: true
+          description: Event property to sum. Required when `math` is `sum` and forbidden
+            when `math` is `count`.
           maxLength: 255
       required:
       - filters
@@ -80323,6 +80635,7 @@ components:
       - openrouter
       - fireworks
       - azure_openai
+      - together_ai
       type: string
       description: |-
         * `openai` - Openai
@@ -80331,6 +80644,7 @@ components:
         * `openrouter` - Openrouter
         * `fireworks` - Fireworks
         * `azure_openai` - Azure OpenAI
+        * `together_ai` - Together AI
     LLMProviderKey:
       type: object
       properties:
@@ -81569,6 +81883,33 @@ components:
       - cohorts
       - flags
       - group_type_mapping
+    LogAttributeResult:
+      additionalProperties: false
+      properties:
+        matchedOn:
+          $ref: '#/components/schemas/MatchedOn'
+          description: Whether this row matched the search by attribute key or by
+            attribute value.
+        matchedValue:
+          default: null
+          description: Sample value that matched the search — only set when matchedOn
+            is 'value'.
+          title: Matchedvalue
+          type: string
+          nullable: true
+        name:
+          title: Name
+          type: string
+        propertyFilterType:
+          description: Either 'log_attribute' or 'log_resource_attribute'.
+          title: Propertyfiltertype
+          type: string
+      required:
+      - matchedOn
+      - name
+      - propertyFilterType
+      title: LogAttributeResult
+      type: object
     LogAttributesQuery:
       additionalProperties: false
       properties:
@@ -81612,6 +81953,13 @@ components:
           default: null
           title: Search
           type: string
+          nullable: true
+        searchValues:
+          default: null
+          description: When true, the search query also matches attribute values (not
+            just keys).
+          title: Searchvalues
+          type: boolean
           nullable: true
         serviceNames:
           default: null
@@ -81678,8 +82026,7 @@ components:
           nullable: true
         results:
           items:
-            additionalProperties: true
-            type: object
+            $ref: '#/components/schemas/LogAttributeResult'
           title: Results
           type: array
         timings:
@@ -83278,6 +83625,20 @@ components:
       - results
       title: MarketingAnalyticsTableQueryResponse
       type: object
+    MatchedOn:
+      enum:
+      - key
+      - value
+      title: MatchedOn
+      type: string
+    MatchedOnEnum:
+      enum:
+      - key
+      - value
+      type: string
+      description: |-
+        * `key` - key
+        * `value` - value
     MatchedRecording:
       additionalProperties: false
       properties:
@@ -89673,23 +90034,27 @@ components:
           allOf:
           - $ref: '#/components/schemas/EvaluationReportFrequencyEnum'
           description: |-
-            'every_n' triggers a report after N evaluations run; 'scheduled' uses an rrule schedule.
+            How report generation is triggered. 'every_n' fires once N new evaluation results have accumulated (subject to cooldown_minutes and daily_run_cap). 'scheduled' fires on the cadence defined by rrule + starts_at + timezone_name.
 
             * `scheduled` - Scheduled
             * `every_n` - Every N
         rrule:
           type: string
-          description: RFC 5545 recurrence rule string. Required when frequency is
-            'scheduled'.
+          description: RFC 5545 recurrence rule string (e.g. 'FREQ=WEEKLY;BYDAY=MO').
+            Must not contain DTSTART — the anchor is set via starts_at. Required when
+            frequency is 'scheduled'; ignored otherwise.
         starts_at:
           type: string
           format: date-time
           nullable: true
-          description: Schedule start datetime (ISO 8601). Required when frequency
-            is 'scheduled'.
+          description: Anchor datetime for the rrule (ISO 8601, UTC — must end in
+            'Z'). Local-time interpretation is controlled by timezone_name. Required
+            when frequency is 'scheduled'; ignored otherwise.
         timezone_name:
           type: string
-          description: IANA timezone name for scheduled delivery (e.g. 'America/New_York').
+          description: IANA timezone name used to expand the rrule in local time so
+            e.g. '9am' stays at 9am across DST transitions (e.g. 'America/New_York').
+            Defaults to 'UTC'.
           maxLength: 64
         next_delivery_date:
           type: string
@@ -89697,17 +90062,19 @@ components:
           readOnly: true
           nullable: true
         delivery_targets:
-          description: 'List of delivery targets. Each is {type: ''email'', value:
-            ''...''} or {type: ''slack'', integration_id: N, channel: ''...''}.'
+          description: 'List of delivery targets. Each entry is either {type: ''email'',
+            value: ''user@example.com''} or {type: ''slack'', integration_id: <int>,
+            channel: ''<channel>''}. Slack integration_id must belong to this team.'
         max_sample_size:
           type: integer
           maximum: 2147483647
           minimum: -2147483648
-          description: Max number of evaluation runs included in each report. Defaults
-            to 100.
+          description: Maximum number of evaluation runs included in each report.
+            Defaults to 200.
         enabled:
           type: boolean
-          description: Whether report delivery is active.
+          description: Whether report delivery is active. Disabled configs do not
+            fire.
         deleted:
           type: boolean
           description: Set to true to soft-delete this report config.
@@ -89718,26 +90085,28 @@ components:
           nullable: true
         report_prompt_guidance:
           type: string
-          description: Optional custom instructions injected into the AI report prompt
-            to focus analysis.
+          description: Optional custom instructions appended to the AI report prompt
+            to steer focus, scope, or section choices without modifying the base prompt.
         trigger_threshold:
           type: integer
-          maximum: 2147483647
-          minimum: -2147483648
+          maximum: 10000
+          minimum: 10
           nullable: true
-          description: Number of evaluation runs that trigger a report (every_n mode).
-            Min 10, max 1000.
+          description: Number of new evaluation results that triggers a report (every_n
+            mode only). Min 10, max 10000. Defaults to 100. Required when frequency
+            is 'every_n'.
         cooldown_minutes:
           type: integer
-          maximum: 2147483647
-          minimum: -2147483648
-          description: Minimum minutes between reports in every_n mode to prevent
-            spam. Min 60, max 1440 (24 hours).
+          maximum: 1440
+          minimum: 60
+          description: Minimum minutes between count-triggered reports to prevent
+            spam (every_n mode only). Min 60, max 1440 (24 hours). Defaults to 60.
         daily_run_cap:
           type: integer
-          maximum: 2147483647
-          minimum: -2147483648
-          description: Max reports generated per day. Defaults to 3.
+          maximum: 24
+          minimum: 1
+          description: Maximum count-triggered report runs per calendar day (UTC).
+            Min 1, max 24 (one per cooldown window). Defaults to 10.
         created_by:
           type: integer
           readOnly: true
@@ -90293,6 +90662,10 @@ components:
         href:
           type: string
           nullable: true
+        order:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
         created_at:
           type: string
           format: date-time
@@ -90335,22 +90708,52 @@ components:
           readOnly: true
         name:
           type: string
+          description: Name of the usage metric. Must be unique per group type within
+            the project.
           maxLength: 255
         format:
-          $ref: '#/components/schemas/GroupUsageMetricFormatEnum'
+          allOf:
+          - $ref: '#/components/schemas/GroupUsageMetricFormatEnum'
+          default: numeric
+          description: |-
+            How the metric value is formatted in the UI. One of `numeric` or `currency`.
+
+            * `numeric` - numeric
+            * `currency` - currency
         interval:
           type: integer
-          maximum: 2147483647
-          minimum: -2147483648
-          description: In days
+          default: 7
+          description: Rolling time window in days used to compute the metric. Defaults
+            to 7.
         display:
-          $ref: '#/components/schemas/GroupUsageMetricDisplayEnum'
-        filters: {}
+          allOf:
+          - $ref: '#/components/schemas/GroupUsageMetricDisplayEnum'
+          default: number
+          description: |-
+            Visual representation in the UI. One of `number` or `sparkline`.
+
+            * `number` - number
+            * `sparkline` - sparkline
+        filters:
+          type: object
+          additionalProperties: {}
+          description: 'HogQL filter definition used to compute the metric. Same shape
+            as HogFunction filters: a dict containing an `events` list and optional
+            `properties` list.'
         math:
-          $ref: '#/components/schemas/MathEnum'
+          allOf:
+          - $ref: '#/components/schemas/MathEnum'
+          default: count
+          description: |-
+            Aggregation function. `count` counts matching events; `sum` sums the value of `math_property` on matching events.
+
+            * `count` - count
+            * `sum` - sum
         math_property:
           type: string
           nullable: true
+          description: Event property to sum. Required when `math` is `sum` and forbidden
+            when `math` is `count`.
           maxLength: 255
     PatchedHealthIssue:
       type: object
@@ -94152,7 +94555,7 @@ components:
         comment:
           type: string
           nullable: true
-          description: Optional human comment or reasoning for the review.
+          description: Optional comment or reasoning for the review.
         scores:
           type: array
           items:
@@ -101958,8 +102361,7 @@ components:
           nullable: true
         results:
           items:
-            additionalProperties: true
-            type: object
+            $ref: '#/components/schemas/LogAttributeResult'
           title: Results
           type: array
         timings:
@@ -107015,7 +107417,7 @@ components:
         trace_id:
           type: string
           readOnly: true
-          description: Trace ID currently pending human review.
+          description: Trace ID currently pending review.
         created_at:
           type: string
           format: date-time
@@ -116015,7 +116417,7 @@ components:
           type: string
           readOnly: true
           nullable: true
-          description: Optional human comment or reasoning for the review.
+          description: Optional comment or reasoning for the review.
         created_at:
           type: string
           format: date-time
@@ -116064,7 +116466,7 @@ components:
         comment:
           type: string
           nullable: true
-          description: Optional human comment or reasoning for the review.
+          description: Optional comment or reasoning for the review.
         scores:
           type: array
           items:
@@ -120115,7 +120517,20 @@ components:
           type: string
           description: 'Property filter type: "log_attribute" or "log_resource_attribute".
             Use this as the `type` field when filtering.'
+        matchedOn:
+          allOf:
+          - $ref: '#/components/schemas/MatchedOnEnum'
+          description: |-
+            How the search query matched this row: "key" if the attribute key matched, "value" if a value matched.
+
+            * `key` - key
+            * `value` - value
+        matchedValue:
+          type: string
+          nullable: true
+          description: Sample matching value — only set when matchedOn is "value".
       required:
+      - matchedOn
       - name
       - propertyFilterType
     _LogAttributeValue:
@@ -120315,6 +120730,85 @@ components:
           items:
             $ref: '#/components/schemas/_LogPropertyFilter'
           description: Property filters for the query.
+    _LogsCountRangeBucket:
+      type: object
+      properties:
+        date_from:
+          type: string
+          description: Bucket start as ISO 8601 timestamp. Inclusive lower bound.
+            Pass back as `dateRange.date_from` to drill in.
+        date_to:
+          type: string
+          description: Bucket end as ISO 8601 timestamp. Exclusive upper bound. Pass
+            back as `dateRange.date_to` to drill in.
+        count:
+          type: integer
+          description: Log entries matching the filters within this bucket.
+      required:
+      - count
+      - date_from
+      - date_to
+    _LogsCountRangesBody:
+      type: object
+      properties:
+        dateRange:
+          allOf:
+          - $ref: '#/components/schemas/_DateRange'
+          description: Window to bucket. Defaults to last hour. Use a bucket's date_from/date_to
+            from a prior response to recursively narrow into a sub-range.
+        targetBuckets:
+          type: integer
+          maximum: 100
+          minimum: 1
+          default: 10
+          description: Approximate number of buckets to return. The bucket interval
+            is picked adaptively from a fixed list (1/5/10s, 1/2/5/10/15/30/60/120/240/360/720/1440m)
+            to land near this target. Defaults to 10, capped at 100.
+        severityLevels:
+          type: array
+          items:
+            $ref: '#/components/schemas/SeverityLevelsEnum'
+          description: Filter by log severity levels. Applied before bucketing.
+        serviceNames:
+          type: array
+          items:
+            type: string
+          description: Filter by service names. Applied before bucketing.
+        searchTerm:
+          type: string
+          description: Full-text search across log bodies. Applied before bucketing.
+        filterGroup:
+          type: array
+          items:
+            $ref: '#/components/schemas/_LogPropertyFilter'
+          description: Property filters applied before bucketing. Same shape as `query-logs`.
+    _LogsCountRangesRequest:
+      type: object
+      properties:
+        query:
+          allOf:
+          - $ref: '#/components/schemas/_LogsCountRangesBody'
+          description: The bucketed-count query to execute.
+      required:
+      - query
+    _LogsCountRangesResponse:
+      type: object
+      properties:
+        ranges:
+          type: array
+          items:
+            $ref: '#/components/schemas/_LogsCountRangeBucket'
+          description: Buckets ordered by `date_from` ascending. Empty buckets are
+            omitted — infer gaps by comparing each bucket's `date_to` to the next
+            bucket's `date_from`.
+        interval:
+          type: string
+          description: Short-form duration of the chosen bucket width (e.g. "1h",
+            "5m", "30s", "1d"). Informational only — use each bucket's `date_from`/`date_to`
+            for follow-up queries.
+      required:
+      - interval
+      - ranges
     _LogsCountRequest:
       type: object
       properties:
