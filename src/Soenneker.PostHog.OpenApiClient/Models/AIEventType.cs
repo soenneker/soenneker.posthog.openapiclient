@@ -36,6 +36,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         Ai_evaluation,
         #pragma warning restore CS1591
+        [EnumMember(Value = "$ai_tag")]
+        #pragma warning disable CS1591
+        Ai_tag,
+        #pragma warning restore CS1591
         [EnumMember(Value = "$ai_trace_summary")]
         #pragma warning disable CS1591
         Ai_trace_summary,

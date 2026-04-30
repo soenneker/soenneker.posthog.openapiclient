@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/experiments/{?limit*,offset*}", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/experiments/{?archived*,created_by_id*,feature_flag_id*,limit*,offset*,order*,search*,status*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/experiments/{?limit*,offset*}", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/experiments/{?archived*,created_by_id*,feature_flag_id*,limit*,offset*,order*,search*,status*}", rawUrl)
         {
         }
         /// <summary>
@@ -127,12 +127,44 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 
         {
+            /// <summary>Filter by archived state. Defaults to non-archived experiments only.</summary>
+            [QueryParameter("archived")]
+            public bool? Archived { get; set; }
+            /// <summary>Filter to experiments created by the given user ID.</summary>
+            [QueryParameter("created_by_id")]
+            public int? CreatedById { get; set; }
+            /// <summary>Filter to experiments linked to the given feature flag ID.</summary>
+            [QueryParameter("feature_flag_id")]
+            public int? FeatureFlagId { get; set; }
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
             /// <summary>The initial index from which to return the results.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
+            /// <summary>Field to order by. Prefix with &apos;-&apos; for descending. Allowlisted fields include name, created_at, updated_at, start_date, end_date, duration, and status.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("order")]
+            public string? Order { get; set; }
+#nullable restore
+#else
+            [QueryParameter("order")]
+            public string Order { get; set; }
+#endif
+            /// <summary>Free-text search applied to the experiment name (case-insensitive).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("search")]
+            public string? Search { get; set; }
+#nullable restore
+#else
+            [QueryParameter("search")]
+            public string Search { get; set; }
+#endif
+            /// <summary>Filter by experiment status. &quot;running&quot; and &quot;paused&quot; are mutually exclusive: &quot;running&quot; returns launched experiments with an active feature flag, &quot;paused&quot; returns launched experiments whose feature flag is deactivated. &quot;complete&quot; is an alias for &quot;stopped&quot;. &quot;all&quot; disables status filtering.</summary>
+            [QueryParameter("status")]
+            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.GetStatusQueryParameterType? Status { get; set; }
         }
     }
 }

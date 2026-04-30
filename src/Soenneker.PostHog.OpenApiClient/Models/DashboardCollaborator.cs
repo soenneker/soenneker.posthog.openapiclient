@@ -20,7 +20,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? DashboardId { get; private set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
-        /// <summary>The level property</summary>
+        /// <summary>* `21` - Everyone in the project can edit* `37` - Only those invited to this dashboard can edit</summary>
         public int? Level { get; set; }
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }

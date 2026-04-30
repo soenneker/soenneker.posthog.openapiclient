@@ -32,6 +32,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; set; }
+        /// <summary>The current_artifact property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.Artifact? CurrentArtifact { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.Artifact CurrentArtifact { get; set; }
+#endif
+        /// <summary>The diff_percentage property</summary>
+        public double? DiffPercentage { get; set; }
+        /// <summary>The pr_number property</summary>
+        public int? PrNumber { get; set; }
         /// <summary>The result property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -40,8 +52,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Result { get; set; }
 #endif
+        /// <summary>The review_state property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ReviewState { get; set; }
+#nullable restore
+#else
+        public string ReviewState { get; set; }
+#endif
         /// <summary>The run_id property</summary>
         public Guid? RunId { get; set; }
+        /// <summary>The snapshot_id property</summary>
+        public Guid? SnapshotId { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SnapshotHistoryEntry"/> and sets the default values.
         /// </summary>
@@ -70,8 +92,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "branch", n => { Branch = n.GetStringValue(); } },
                 { "commit_sha", n => { CommitSha = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
+                { "current_artifact", n => { CurrentArtifact = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Artifact>(global::Soenneker.PostHog.OpenApiClient.Models.Artifact.CreateFromDiscriminatorValue); } },
+                { "diff_percentage", n => { DiffPercentage = n.GetDoubleValue(); } },
+                { "pr_number", n => { PrNumber = n.GetIntValue(); } },
                 { "result", n => { Result = n.GetStringValue(); } },
+                { "review_state", n => { ReviewState = n.GetStringValue(); } },
                 { "run_id", n => { RunId = n.GetGuidValue(); } },
+                { "snapshot_id", n => { SnapshotId = n.GetGuidValue(); } },
             };
         }
         /// <summary>
@@ -84,8 +111,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("branch", Branch);
             writer.WriteStringValue("commit_sha", CommitSha);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Artifact>("current_artifact", CurrentArtifact);
+            writer.WriteDoubleValue("diff_percentage", DiffPercentage);
+            writer.WriteIntValue("pr_number", PrNumber);
             writer.WriteStringValue("result", Result);
+            writer.WriteStringValue("review_state", ReviewState);
             writer.WriteGuidValue("run_id", RunId);
+            writer.WriteGuidValue("snapshot_id", SnapshotId);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

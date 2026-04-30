@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> Columns { get; set; }
 #endif
-        /// <summary>The context property</summary>
+        /// <summary>Context for the table, used by components like ColumnConfigurator</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeViewPropsContext? Context { get; set; }

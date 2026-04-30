@@ -47,6 +47,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Specific endpoint version to execute. If not provided, the latest version is used.</summary>
         public int? Version { get; set; }
         /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest"/> and sets the default values.
+        /// </summary>
+        public EndpointRunRequest()
+        {
+            Refresh = global::Soenneker.PostHog.OpenApiClient.Models.EndpointRefreshMode.Cache;
+        }
+        /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest"/></returns>

@@ -36,7 +36,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public double? ConfidenceLevel { get; set; }
         /// <summary>The decimalPlaces property</summary>
         public double? DecimalPlaces { get; set; }
-        /// <summary>The detailedResultsAggregationType property</summary>
+        /// <summary>detailed results table</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DetailedResultsAggregationType? DetailedResultsAggregationType { get; set; }
         /// <summary>The display property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayType? Display { get; set; }
@@ -88,7 +88,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public double? MinDecimalPlaces { get; set; }
         /// <summary>The movingAverageIntervals property</summary>
         public double? MovingAverageIntervals { get; set; }
-        /// <summary>The resultCustomizationBy property</summary>
+        /// <summary>Wether result datasets are associated by their values or by their order.</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ResultCustomizationBy? ResultCustomizationBy { get; set; }
         /// <summary>Customizations for the appearance of result datasets.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -120,6 +120,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? SmoothingIntervals { get; set; }
         /// <summary>The yAxisScaleType property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.YAxisScaleType? YAxisScaleType { get; set; }
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TrendsFilter"/> and sets the default values.
+        /// </summary>
+        public TrendsFilter()
+        {
+            AggregationAxisFormat = global::Soenneker.PostHog.OpenApiClient.Models.AggregationAxisFormat.Numeric;
+            Display = global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayType.ActionsLineGraph;
+            ResultCustomizationBy = global::Soenneker.PostHog.OpenApiClient.Models.ResultCustomizationBy.Value;
+            YAxisScaleType = global::Soenneker.PostHog.OpenApiClient.Models.YAxisScaleType.Linear;
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>

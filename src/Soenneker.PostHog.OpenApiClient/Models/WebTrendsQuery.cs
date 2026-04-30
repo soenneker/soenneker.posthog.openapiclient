@@ -46,7 +46,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? FilterTestAccounts { get; set; }
         /// <summary>The includeRevenue property</summary>
         public bool? IncludeRevenue { get; set; }
-        /// <summary>The interval property</summary>
+        /// <summary>Interval for date range calculation (affects date_to rounding for hour vs day ranges)</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.IntervalType? Interval { get; set; }
         /// <summary>The kind property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_kind? Kind { get; set; }
@@ -60,7 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsMetric?> Metrics { get; set; }
 #endif
-        /// <summary>The modifiers property</summary>
+        /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers? Modifiers { get; set; }

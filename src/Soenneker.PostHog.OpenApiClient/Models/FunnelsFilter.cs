@@ -91,6 +91,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The useUdf property</summary>
         public bool? UseUdf { get; set; }
         /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilter"/> and sets the default values.
+        /// </summary>
+        public FunnelsFilter()
+        {
+            BreakdownAttributionType = global::Soenneker.PostHog.OpenApiClient.Models.BreakdownAttributionType.First_touch;
+            FunnelOrderType = global::Soenneker.PostHog.OpenApiClient.Models.StepOrderValue.Ordered;
+            FunnelStepReference = global::Soenneker.PostHog.OpenApiClient.Models.FunnelStepReference.Total;
+            FunnelVizType = global::Soenneker.PostHog.OpenApiClient.Models.FunnelVizType.Steps;
+            FunnelWindowIntervalUnit = global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnit.Day;
+            Layout = global::Soenneker.PostHog.OpenApiClient.Models.FunnelLayout.Vertical;
+        }
+        /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilter"/></returns>

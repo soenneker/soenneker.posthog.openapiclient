@@ -56,13 +56,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? IncludeRevenue { get; set; }
         /// <summary>The includeScrollDepth property</summary>
         public bool? IncludeScrollDepth { get; set; }
-        /// <summary>The interval property</summary>
+        /// <summary>Interval for date range calculation (affects date_to rounding for hour vs day ranges)</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.IntervalType? Interval { get; set; }
         /// <summary>The kind property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_kind? Kind { get; set; }
         /// <summary>The limit property</summary>
         public int? Limit { get; set; }
-        /// <summary>The modifiers property</summary>
+        /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers? Modifiers { get; set; }

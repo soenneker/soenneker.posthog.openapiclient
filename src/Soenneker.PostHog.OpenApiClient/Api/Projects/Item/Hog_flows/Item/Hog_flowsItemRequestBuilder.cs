@@ -3,9 +3,12 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Batch_jobs;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Blocked_runs;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Invocations;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Logs;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Metrics;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Replay_all_blocked_runs;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Replay_blocked_run;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Schedules;
 using System.Collections.Generic;
 using System.IO;
@@ -23,6 +26,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Batch_jobs.Batch_jobsRequestBuilder Batch_jobs
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Batch_jobs.Batch_jobsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The blocked_runs property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Blocked_runs.Blocked_runsRequestBuilder Blocked_runs
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Blocked_runs.Blocked_runsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The EmptyPathSegment property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.EmptyPathSegmentRequestBuilder EmptyPathSegment
@@ -43,6 +51,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Metrics.MetricsRequestBuilder Metrics
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Metrics.MetricsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The replay_all_blocked_runs property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Replay_all_blocked_runs.Replay_all_blocked_runsRequestBuilder Replay_all_blocked_runs
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Replay_all_blocked_runs.Replay_all_blocked_runsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The replay_blocked_run property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Replay_blocked_run.Replay_blocked_runRequestBuilder Replay_blocked_run
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Replay_blocked_run.Replay_blocked_runRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The schedules property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Schedules.SchedulesRequestBuilder Schedules

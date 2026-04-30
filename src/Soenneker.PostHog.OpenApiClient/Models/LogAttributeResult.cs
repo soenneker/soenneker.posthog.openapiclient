@@ -12,7 +12,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class LogAttributeResult : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>The matchedOn property</summary>
+        /// <summary>Whether this row matched the search by attribute key or by attribute value.</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.MatchedOn? MatchedOn { get; set; }
         /// <summary>Sample value that matched the search — only set when matchedOn is &apos;value&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

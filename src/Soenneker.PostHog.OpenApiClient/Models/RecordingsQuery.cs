@@ -90,7 +90,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_kind? Kind { get; set; }
         /// <summary>The limit property</summary>
         public int? Limit { get; set; }
-        /// <summary>The modifiers property</summary>
+        /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers? Modifiers { get; set; }
@@ -104,7 +104,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.FilterLogicalOperator? Operand { get; set; }
         /// <summary>The order property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.RecordingOrder? Order { get; set; }
-        /// <summary>The order_direction property</summary>
+        /// <summary>Replay originally had all ordering as descending by specifying the field name, this runs counter to Django behavior where the field name specifies ascending sorting (e.g. the_field_name) and -the_field_name would indicate descending order to avoid invalidating or migrating all existing filters we keep DESC as the default or allow specification of an explicit order direction here</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.RecordingOrderDirection? OrderDirection { get; set; }
         /// <summary>The person_uuid property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -171,6 +171,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             DateFrom = "-3d";
             Kind = global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_kind.RecordingsQuery;
+            Operand = global::Soenneker.PostHog.OpenApiClient.Models.FilterLogicalOperator.AND;
+            Order = global::Soenneker.PostHog.OpenApiClient.Models.RecordingOrder.Start_time;
+            OrderDirection = global::Soenneker.PostHog.OpenApiClient.Models.RecordingOrderDirection.DESC;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value

@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Groups aggregation</summary>
         public int? AggregationGroupTypeIndex { get; set; }
-        /// <summary>The breakdownFilter property</summary>
+        /// <summary>Breakdown of the events and actions</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter? BreakdownFilter { get; set; }
@@ -24,7 +24,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Colors used in the insight&apos;s visualization</summary>
         public double? DataColorTheme { get; set; }
-        /// <summary>The dateRange property</summary>
+        /// <summary>Date range for the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.DateRange? DateRange { get; set; }
@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Exclude internal and test users by applying the respective filters</summary>
         public bool? FilterTestAccounts { get; set; }
-        /// <summary>The funnelsFilter property</summary>
+        /// <summary>Properties specific to the funnels insight</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilter? FunnelsFilter { get; set; }
@@ -42,11 +42,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilter FunnelsFilter { get; set; }
 #endif
-        /// <summary>The interval property</summary>
+        /// <summary>Granularity of the response. Can be one of `hour`, `day`, `week` or `month`</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.IntervalType? Interval { get; set; }
         /// <summary>The kind property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery_kind? Kind { get; set; }
-        /// <summary>The modifiers property</summary>
+        /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers? Modifiers { get; set; }
@@ -80,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery.FunnelsQuery_series> Series { get; set; }
 #endif
-        /// <summary>The tags property</summary>
+        /// <summary>Tags that will be added to the Query log comment</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags? Tags { get; set; }

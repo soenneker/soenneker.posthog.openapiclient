@@ -12,7 +12,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class EndpointsUsageOverviewQuery : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>The compareFilter property</summary>
+        /// <summary>Compare to previous period</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter? CompareFilter { get; set; }
@@ -38,9 +38,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The kind property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageOverviewQuery_kind? Kind { get; set; }
-        /// <summary>The materializationType property</summary>
+        /// <summary>Filter by materialization type</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.MaterializationType? MaterializationType { get; set; }
-        /// <summary>The modifiers property</summary>
+        /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers? Modifiers { get; set; }

@@ -24,7 +24,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? JoinedAt { get; private set; }
         /// <summary>The last_login property</summary>
         public DateTimeOffset? LastLogin { get; private set; }
-        /// <summary>The level property</summary>
+        /// <summary>* `1` - member* `8` - administrator* `15` - owner</summary>
         public int? Level { get; set; }
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }

@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter FiltersOverride { get; set; }
 #endif
-        /// <summary>The limit_context property</summary>
+        /// <summary>Limit context for the query. Only &apos;posthog_ai&apos; is allowed as a client-provided value.</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.LimitContext? LimitContext { get; set; }
         /// <summary>Name given to a query. It&apos;s used to identify the query in the UI. Up to 128 characters for a name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -48,7 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.QueryRequest.QueryRequest_query Query { get; set; }
 #endif
-        /// <summary>The refresh property</summary>
+        /// <summary>Whether results should be calculated sync or async, and how much to rely on the cache:- `&apos;blocking&apos;` - calculate synchronously (returning only when the query is done), UNLESS there are very fresh results in the cache- `&apos;async&apos;` - kick off background calculation (returning immediately with a query status), UNLESS there are very fresh results in the cache- `&apos;lazy_async&apos;` - kick off background calculation, UNLESS there are somewhat fresh results in the cache- `&apos;force_blocking&apos;` - calculate synchronously, even if fresh results are already cached- `&apos;force_async&apos;` - kick off background calculation, even if fresh results are already cached- `&apos;force_cache&apos;` - return cached data or a cache miss; always completes immediately as it never calculates Background calculation can be tracked using the `query_status` response field.</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.RefreshType? Refresh { get; set; }
         /// <summary>The variables_override property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -58,6 +58,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.QueryRequest_variables_override VariablesOverride { get; set; }
 #endif
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryRequest"/> and sets the default values.
+        /// </summary>
+        public QueryRequest()
+        {
+            Refresh = global::Soenneker.PostHog.OpenApiClient.Models.RefreshType.Blocking;
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>

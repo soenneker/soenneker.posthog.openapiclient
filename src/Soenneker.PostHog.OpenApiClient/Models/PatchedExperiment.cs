@@ -203,14 +203,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public UntypedNode StatsConfig { get; set; }
 #endif
-        /// <summary>The status property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedExperiment.PatchedExperiment_status? Status { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedExperiment.PatchedExperiment_status Status { get; private set; }
-#endif
+        /// <summary>Experiment lifecycle state: &apos;draft&apos; (not yet launched), &apos;running&apos; (launched with active feature flag), &apos;paused&apos; (running with feature flag deactivated — virtual state derived from feature_flag.active, not stored), &apos;stopped&apos; (ended).</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatusEnum? Status { get; private set; }
         /// <summary>Experiment type: web for frontend UI changes, product for backend/API changes.* `web` - web* `product` - product</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -287,7 +281,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "secondary_metrics_ordered_uuids", n => { SecondaryMetricsOrderedUuids = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "start_date", n => { StartDate = n.GetDateTimeOffsetValue(); } },
                 { "stats_config", n => { StatsConfig = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExperiment.PatchedExperiment_status>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExperiment.PatchedExperiment_status.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatusEnum>(); } },
                 { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExperiment.PatchedExperiment_type>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExperiment.PatchedExperiment_type.CreateFromDiscriminatorValue); } },
                 { "update_feature_flag_params", n => { UpdateFeatureFlagParams = n.GetBoolValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
@@ -387,71 +381,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 if(ConclusionEnum != null)
                 {
                     writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ConclusionEnum>(null, ConclusionEnum);
-                }
-                else if(NullEnum != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NullEnum>(null, NullEnum);
-                }
-            }
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatusEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class PatchedExperiment_status : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatusEnum"/></summary>
-            public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatusEnum? ExperimentStatusEnum { get; set; }
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum? NullEnum { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum NullEnum { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedExperiment.PatchedExperiment_status"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedExperiment.PatchedExperiment_status CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.PatchedExperiment.PatchedExperiment_status();
-                if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatusEnum>() is global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatusEnum experimentStatusEnumValue)
-                {
-                    result.ExperimentStatusEnum = experimentStatusEnumValue;
-                }
-                else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.NullEnum = new global::Soenneker.PostHog.OpenApiClient.Models.NullEnum();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(NullEnum != null)
-                {
-                    return NullEnum.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(ExperimentStatusEnum != null)
-                {
-                    writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatusEnum>(null, ExperimentStatusEnum);
                 }
                 else if(NullEnum != null)
                 {

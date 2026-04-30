@@ -121,7 +121,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> QuickFilterIds { get; set; }
 #endif
-        /// <summary>The restriction_level property</summary>
+        /// <summary>* `21` - Everyone in the project can edit* `37` - Only those invited to this dashboard can edit</summary>
         public int? RestrictionLevel { get; set; }
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

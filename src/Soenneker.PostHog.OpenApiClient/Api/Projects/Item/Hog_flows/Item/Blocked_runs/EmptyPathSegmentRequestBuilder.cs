@@ -9,50 +9,50 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Counts
+namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Blocked_runs
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\visual_review\runs\counts\
+    /// Builds and executes requests for operations under \api\projects\{project_id}\hog_flows\{id}\blocked_runs\
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class EmptyPathSegmentRequestBuilder : BaseRequestBuilder
     {
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Counts.EmptyPathSegmentRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Blocked_runs.EmptyPathSegmentRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/visual_review/runs/counts/", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/hog_flows/{id}/blocked_runs/", pathParameters)
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Counts.EmptyPathSegmentRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Blocked_runs.EmptyPathSegmentRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/visual_review/runs/counts/", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/hog_flows/{id}/blocked_runs/", rawUrl)
         {
         }
         /// <summary>
-        /// Review state counts for the runs list.
+        /// List workflow runs that were blocked by the dedup bug.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReviewStateCounts"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogFlow"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ReviewStateCounts?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.HogFlow?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ReviewStateCounts> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.HogFlow> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ReviewStateCounts>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ReviewStateCounts.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.HogFlow>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.HogFlow.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Review state counts for the runs list.
+        /// List workflow runs that were blocked by the dedup bug.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -73,11 +73,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.C
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Counts.EmptyPathSegmentRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Blocked_runs.EmptyPathSegmentRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Counts.EmptyPathSegmentRequestBuilder WithUrl(string rawUrl)
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Blocked_runs.EmptyPathSegmentRequestBuilder WithUrl(string rawUrl)
         {
-            return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Counts.EmptyPathSegmentRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Blocked_runs.EmptyPathSegmentRequestBuilder(rawUrl, RequestAdapter);
         }
     }
 }

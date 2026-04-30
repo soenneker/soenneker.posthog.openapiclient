@@ -2,7 +2,6 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
-using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Counts;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item;
 using System.Collections.Generic;
 using System.IO;
@@ -16,11 +15,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RunsRequestBuilder : BaseRequestBuilder
     {
-        /// <summary>The counts property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Counts.CountsRequestBuilder Counts
-        {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Counts.CountsRequestBuilder(PathParameters, RequestAdapter);
-        }
         /// <summary>The EmptyPathSegment property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.EmptyPathSegmentRequestBuilder EmptyPathSegment
         {

@@ -5,6 +5,7 @@ using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Activity;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.ArchivedResponseUuids;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Duplicate_to_projects;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Generate_translations;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Responses;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Stats;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Summarize_responses;
@@ -40,6 +41,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.EmptyPathSegmentRequestBuilder EmptyPathSegment
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.EmptyPathSegmentRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The generate_translations property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Generate_translations.Generate_translationsRequestBuilder Generate_translations
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Generate_translations.Generate_translationsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The responses property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Responses.ResponsesRequestBuilder Responses

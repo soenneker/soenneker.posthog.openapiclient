@@ -12,11 +12,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class KNNDetectorConfig : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>The method property</summary>
+        /// <summary>Distance method: &apos;largest&apos;, &apos;mean&apos;, &apos;median&apos; (default: &apos;largest&apos;)</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.MethodObject? Method { get; set; }
         /// <summary>Number of neighbors to consider (default: 5)</summary>
         public int? NNeighbors { get; set; }
-        /// <summary>The preprocessing property</summary>
+        /// <summary>Preprocessing transforms applied before detection</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig? Preprocessing { get; set; }

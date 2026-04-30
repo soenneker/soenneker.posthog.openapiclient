@@ -130,7 +130,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks
             /// <summary>Filter by creator user ID</summary>
             [QueryParameter("created_by")]
             public int? CreatedBy { get; set; }
-            /// <summary>Filter by internal flag. Defaults to excluding internal tasks when not specified.</summary>
+            /// <summary>When true, list internal tasks instead of user-facing ones. Honored only in debug environments; ignored in production. Defaults to excluding internal tasks.</summary>
             [QueryParameter("internal")]
             public bool? Internal { get; set; }
             /// <summary>Number of results to return per page.</summary>

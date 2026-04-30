@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Groups aggregation - not used in Web Analytics but required for type compatibility</summary>
         public int? AggregationGroupTypeIndex { get; set; }
-        /// <summary>The compareFilter property</summary>
+        /// <summary>Compare to date range</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter? CompareFilter { get; set; }
@@ -50,13 +50,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQuery.MarketingAnalyticsTableQuery_draftConversionGoal DraftConversionGoal { get; set; }
 #endif
-        /// <summary>The drillDownLevel property</summary>
+        /// <summary>Drill-down hierarchy level: channel, source, or campaign (default)</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsDrillDownLevel? DrillDownLevel { get; set; }
         /// <summary>Filter test accounts</summary>
         public bool? FilterTestAccounts { get; set; }
         /// <summary>The includeRevenue property</summary>
         public bool? IncludeRevenue { get; set; }
-        /// <summary>The integrationFilter property</summary>
+        /// <summary>Filter by integration type</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.IntegrationFilter? IntegrationFilter { get; set; }
@@ -64,13 +64,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.IntegrationFilter IntegrationFilter { get; set; }
 #endif
-        /// <summary>The interval property</summary>
+        /// <summary>Interval for date range calculation (affects date_to rounding for hour vs day ranges)</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.IntervalType? Interval { get; set; }
         /// <summary>The kind property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQuery_kind? Kind { get; set; }
         /// <summary>Number of rows to return</summary>
         public int? Limit { get; set; }
-        /// <summary>The modifiers property</summary>
+        /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers? Modifiers { get; set; }

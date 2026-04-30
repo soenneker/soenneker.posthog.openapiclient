@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Upper bound on training errors fraction (default: 0.1)</summary>
         public double? Nu { get; set; }
-        /// <summary>The preprocessing property</summary>
+        /// <summary>Preprocessing transforms applied before detection</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig? Preprocessing { get; set; }

@@ -7,7 +7,6 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item.
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item.AutoApprove;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item.Complete;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item.Recompute;
-using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item.SnapshotHistory;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item.Snapshots;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item.Tolerate;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item.ToleratedHashes;
@@ -52,11 +51,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.I
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item.Recompute.RecomputeRequestBuilder Recompute
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item.Recompute.RecomputeRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The snapshotHistory property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item.SnapshotHistory.SnapshotHistoryRequestBuilder SnapshotHistory
-        {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item.SnapshotHistory.SnapshotHistoryRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The snapshots property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item.Snapshots.SnapshotsRequestBuilder Snapshots

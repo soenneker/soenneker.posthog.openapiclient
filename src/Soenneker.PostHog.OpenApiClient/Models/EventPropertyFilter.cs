@@ -45,6 +45,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public EventPropertyFilter()
         {
+            Operator = global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperator.Exact;
             Type = global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter_type.Event;
         }
         /// <summary>

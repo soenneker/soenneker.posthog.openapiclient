@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>End position of the editor word</summary>
         public int? EndPosition { get; set; }
-        /// <summary>The filters property</summary>
+        /// <summary>Table to validate the expression against</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.HogQLFilters? Filters { get; set; }
@@ -40,9 +40,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The kind property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.HogQLAutocomplete_kind? Kind { get; set; }
-        /// <summary>The language property</summary>
+        /// <summary>Language to validate</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.HogLanguage? Language { get; set; }
-        /// <summary>The modifiers property</summary>
+        /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers? Modifiers { get; set; }

@@ -20,9 +20,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string AggregationProperty { get; set; }
 #endif
-        /// <summary>The aggregationPropertyType property</summary>
+        /// <summary>The type of property to aggregate on (event or person). Defaults to event.</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.AggregationPropertyType? AggregationPropertyType { get; set; }
-        /// <summary>The aggregationType property</summary>
+        /// <summary>The aggregation type to use for retention</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.AggregationType? AggregationType { get; set; }
         /// <summary>The cumulative property</summary>
         public bool? Cumulative { get; set; }
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? CustomAggregationTarget { get; set; }
         /// <summary>The dashboardDisplay property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.RetentionDashboardDisplayType? DashboardDisplay { get; set; }
-        /// <summary>The display property</summary>
+        /// <summary>controls the display of the retention graph</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayType? Display { get; set; }
         /// <summary>The goalLines property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -54,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<double?> RetentionCustomBrackets { get; set; }
 #endif
-        /// <summary>The retentionReference property</summary>
+        /// <summary>Whether retention is with regard to initial cohort size, or that of the previous period.</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.RetentionReference? RetentionReference { get; set; }
         /// <summary>The retentionType property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.RetentionType? RetentionType { get; set; }
@@ -78,10 +78,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity TargetEntity { get; set; }
 #endif
-        /// <summary>The timeWindowMode property</summary>
+        /// <summary>The time window mode to use for retention calculations</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TimeWindowMode? TimeWindowMode { get; set; }
         /// <summary>The totalIntervals property</summary>
         public int? TotalIntervals { get; set; }
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter"/> and sets the default values.
+        /// </summary>
+        public RetentionFilter()
+        {
+            AggregationPropertyType = global::Soenneker.PostHog.OpenApiClient.Models.AggregationPropertyType.Event;
+            AggregationType = global::Soenneker.PostHog.OpenApiClient.Models.AggregationType.Count;
+            Period = global::Soenneker.PostHog.OpenApiClient.Models.RetentionPeriod.Day;
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>

@@ -42,7 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? IncludeRecordings { get; set; }
         /// <summary>The kind property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_kind? Kind { get; set; }
-        /// <summary>The modifiers property</summary>
+        /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers? Modifiers { get; set; }
@@ -50,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers Modifiers { get; set; }
 #endif
-        /// <summary>The multipleVariantHandling property</summary>
+        /// <summary>How to handle users with multiple variant exposures.</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.MultipleVariantHandling? MultipleVariantHandling { get; set; }
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

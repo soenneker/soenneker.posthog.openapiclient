@@ -42,6 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public CohortPropertyFilter()
         {
             Key = global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilter_key.Id;
+            Operator = global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperator.In;
             Type = global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilter_type.Cohort;
         }
         /// <summary>

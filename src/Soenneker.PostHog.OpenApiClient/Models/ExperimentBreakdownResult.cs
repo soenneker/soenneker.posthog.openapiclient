@@ -12,7 +12,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class ExperimentBreakdownResult : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>The baseline property</summary>
+        /// <summary>Control variant stats for this breakdown</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsBaseValidated? Baseline { get; set; }

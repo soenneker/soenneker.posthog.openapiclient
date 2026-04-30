@@ -43,6 +43,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The breakdown_type property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.BreakdownType? BreakdownType { get; set; }
         /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter"/> and sets the default values.
+        /// </summary>
+        public BreakdownFilter()
+        {
+            BreakdownType = global::Soenneker.PostHog.OpenApiClient.Models.BreakdownType.Event;
+        }
+        /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter"/></returns>

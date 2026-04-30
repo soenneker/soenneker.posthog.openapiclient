@@ -40,7 +40,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The limit property</summary>
         public int? Limit { get; set; }
-        /// <summary>The modifiers property</summary>
+        /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers? Modifiers { get; set; }
@@ -50,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The offset property</summary>
         public int? Offset { get; set; }
-        /// <summary>The query_status property</summary>
+        /// <summary>Query status indicates whether next to the provided data, a query is still running.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus? QueryStatus { get; set; }
@@ -58,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus QueryStatus { get; set; }
 #endif
-        /// <summary>The resolved_date_range property</summary>
+        /// <summary>The date range used for the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse? ResolvedDateRange { get; set; }

@@ -48,7 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string LiveLogsCheckpoint { get; set; }
 #endif
-        /// <summary>The modifiers property</summary>
+        /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers? Modifiers { get; set; }
@@ -100,7 +100,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.LogSeverityLevel?> SeverityLevels { get; set; }
 #endif
-        /// <summary>The sparklineBreakdownBy property</summary>
+        /// <summary>Field to break down sparkline data by (used only by sparkline endpoint)</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.LogsSparklineBreakdownBy? SparklineBreakdownBy { get; set; }
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

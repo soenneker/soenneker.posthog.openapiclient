@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>IQR multiplier for fence calculation (default: 1.5, use 3.0 for far outliers)</summary>
         public double? Multiplier { get; set; }
-        /// <summary>The preprocessing property</summary>
+        /// <summary>Preprocessing transforms applied before detection</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig? Preprocessing { get; set; }

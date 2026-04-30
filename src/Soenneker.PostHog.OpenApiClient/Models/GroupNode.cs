@@ -92,7 +92,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.GroupNode.GroupNode_nodes> Nodes { get; set; }
 #endif
-        /// <summary>The operator property</summary>
+        /// <summary>Group of entities combined with AND/OR operator</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.FilterLogicalOperator? Operator { get; set; }
         /// <summary>The optionalInFunnel property</summary>
         public bool? OptionalInFunnel { get; set; }

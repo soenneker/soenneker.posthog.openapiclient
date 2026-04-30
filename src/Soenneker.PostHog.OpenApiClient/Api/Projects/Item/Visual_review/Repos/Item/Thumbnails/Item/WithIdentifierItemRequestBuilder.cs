@@ -9,7 +9,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.Item.Thumbnails.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\visual_review\repos\{id}\thumbnails\{identifier}
+    /// Builds and executes requests for operations under \api\projects\{project_id}\visual_review\repos\{-id}\thumbnails\{identifier}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WithIdentifierItemRequestBuilder : BaseRequestBuilder
@@ -24,7 +24,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithIdentifierItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/visual_review/repos/{id}/thumbnails/{identifier}", pathParameters)
+        public WithIdentifierItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/visual_review/repos/{%2Did}/thumbnails/{identifier}", pathParameters)
         {
         }
         /// <summary>
@@ -32,7 +32,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithIdentifierItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/visual_review/repos/{id}/thumbnails/{identifier}", rawUrl)
+        public WithIdentifierItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/visual_review/repos/{%2Did}/thumbnails/{identifier}", rawUrl)
         {
         }
     }

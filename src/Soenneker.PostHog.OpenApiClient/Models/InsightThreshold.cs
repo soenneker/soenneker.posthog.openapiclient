@@ -20,7 +20,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.InsightsThresholdBounds Bounds { get; set; }
 #endif
-        /// <summary>The type property</summary>
+        /// <summary>Whether bounds are compared as absolute values or as percentage change from the previous interval.</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.InsightThresholdType? Type { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value

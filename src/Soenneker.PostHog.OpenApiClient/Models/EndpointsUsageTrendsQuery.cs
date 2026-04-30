@@ -12,9 +12,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class EndpointsUsageTrendsQuery : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>The breakdownBy property</summary>
+        /// <summary>Optional breakdown for stacked charts</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageBreakdown? BreakdownBy { get; set; }
-        /// <summary>The compareFilter property</summary>
+        /// <summary>Compare to previous period</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter? CompareFilter { get; set; }
@@ -38,15 +38,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> EndpointNames { get; set; }
 #endif
-        /// <summary>The interval property</summary>
+        /// <summary>Time interval</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.IntervalType? Interval { get; set; }
         /// <summary>The kind property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_kind? Kind { get; set; }
-        /// <summary>The materializationType property</summary>
+        /// <summary>Filter by materialization type</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.MaterializationType? MaterializationType { get; set; }
-        /// <summary>The metric property</summary>
+        /// <summary>Metric to trend</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.Metric? Metric { get; set; }
-        /// <summary>The modifiers property</summary>
+        /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers? Modifiers { get; set; }

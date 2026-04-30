@@ -12,7 +12,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class ExperimentApiMetric : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>The completion_event property</summary>
+        /// <summary>For retention metrics: completion event.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource? CompletionEvent { get; set; }
@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Conversion window duration.</summary>
         public int? ConversionWindow { get; set; }
-        /// <summary>The denominator property</summary>
+        /// <summary>For ratio metrics: denominator source.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource? Denominator { get; set; }
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource Denominator { get; set; }
 #endif
-        /// <summary>The goal property</summary>
+        /// <summary>Whether higher or lower values indicate success.</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricGoal? Goal { get; set; }
         /// <summary>The kind property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_kind? Kind { get; set; }
@@ -44,7 +44,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>The numerator property</summary>
+        /// <summary>For ratio metrics: numerator source.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource? Numerator { get; set; }
@@ -66,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource> Series { get; set; }
 #endif
-        /// <summary>The source property</summary>
+        /// <summary>For mean metrics: event source.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource? Source { get; set; }
@@ -74,7 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource Source { get; set; }
 #endif
-        /// <summary>The start_event property</summary>
+        /// <summary>For retention metrics: start event.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource? StartEvent { get; set; }

@@ -2,7 +2,10 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.Item.Baselines;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.Item.Quarantine;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.Item.Runs;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.Item.Snapshots;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.Item.Thumbnails;
 using System.Collections.Generic;
 using System.IO;
@@ -11,11 +14,16 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\visual_review\repos\{id}
+    /// Builds and executes requests for operations under \api\projects\{project_id}\visual_review\repos\{-id}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class ReposItemRequestBuilder : BaseRequestBuilder
+    public partial class ItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The baselines property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.Item.Baselines.BaselinesRequestBuilder Baselines
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.Item.Baselines.BaselinesRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The EmptyPathSegment property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.Item.EmptyPathSegmentRequestBuilder EmptyPathSegment
         {
@@ -26,25 +34,35 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.Item.Quarantine.QuarantineRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The runs property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.Item.Runs.RunsRequestBuilder Runs
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.Item.Runs.RunsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The snapshots property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.Item.Snapshots.SnapshotsRequestBuilder Snapshots
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.Item.Snapshots.SnapshotsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The thumbnails property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.Item.Thumbnails.ThumbnailsRequestBuilder Thumbnails
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.Item.Thumbnails.ThumbnailsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.Item.ReposItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.Item.ItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ReposItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/visual_review/repos/{id}", pathParameters)
+        public ItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/visual_review/repos/{%2Did}", pathParameters)
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.Item.ReposItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.Item.ItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ReposItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/visual_review/repos/{id}", rawUrl)
+        public ItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/visual_review/repos/{%2Did}", rawUrl)
         {
         }
     }

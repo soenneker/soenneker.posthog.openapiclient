@@ -40,7 +40,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public Guid? Id { get; private set; }
         /// <summary>Check if invite is older than INVITE_DAYS_VALIDITY days.</summary>
         public bool? IsExpired { get; private set; }
-        /// <summary>The level property</summary>
+        /// <summary>* `1` - member* `8` - administrator* `15` - owner</summary>
         public int? Level { get; set; }
         /// <summary>The message property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

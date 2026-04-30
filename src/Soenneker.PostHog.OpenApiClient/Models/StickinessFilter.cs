@@ -24,7 +24,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<int?> HiddenLegendIndexes { get; set; }
 #endif
-        /// <summary>The resultCustomizationBy property</summary>
+        /// <summary>Whether result datasets are associated by their values or by their order.</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ResultCustomizationBy? ResultCustomizationBy { get; set; }
         /// <summary>Customizations for the appearance of result datasets.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -48,6 +48,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.StickinessCriteria StickinessCriteria { get; set; }
 #endif
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilter"/> and sets the default values.
+        /// </summary>
+        public StickinessFilter()
+        {
+            ResultCustomizationBy = global::Soenneker.PostHog.OpenApiClient.Models.ResultCustomizationBy.Value;
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>

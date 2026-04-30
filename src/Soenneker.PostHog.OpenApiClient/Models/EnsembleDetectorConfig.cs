@@ -20,7 +20,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfig.EnsembleDetectorConfig_detectors> Detectors { get; set; }
 #endif
-        /// <summary>The operator property</summary>
+        /// <summary>How to combine sub-detector results</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.EnsembleOperator? Operator { get; set; }
         /// <summary>The type property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfig_type? Type { get; set; }

@@ -54,6 +54,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Session_recordings;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Session_summaries;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Sessions;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Subscriptions;
+using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Taggers;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.User_interviews;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Warehouse_saved_queries;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Warehouse_saved_query_folders;
@@ -331,6 +332,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Subscriptions.SubscriptionsRequestBuilder Subscriptions
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Subscriptions.SubscriptionsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The taggers property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Taggers.TaggersRequestBuilder Taggers
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Taggers.TaggersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The user_interviews property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.User_interviews.User_interviewsRequestBuilder User_interviews

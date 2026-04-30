@@ -16,7 +16,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? AggregationGroupTypeIndex { get; set; }
         /// <summary>Colors used in the insight&apos;s visualization</summary>
         public double? DataColorTheme { get; set; }
-        /// <summary>The dateRange property</summary>
+        /// <summary>Date range for the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.DateRange? DateRange { get; set; }
@@ -26,7 +26,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Exclude internal and test users by applying the respective filters</summary>
         public bool? FilterTestAccounts { get; set; }
-        /// <summary>The funnelPathsFilter property</summary>
+        /// <summary>Used for displaying paths in relation to funnel steps.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.FunnelPathsFilter? FunnelPathsFilter { get; set; }
@@ -36,7 +36,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The kind property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_kind? Kind { get; set; }
-        /// <summary>The modifiers property</summary>
+        /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers? Modifiers { get; set; }
@@ -44,7 +44,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers Modifiers { get; set; }
 #endif
-        /// <summary>The pathsFilter property</summary>
+        /// <summary>Properties specific to the paths insight</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter? PathsFilter { get; set; }
@@ -70,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Sampling rate</summary>
         public double? SamplingFactor { get; set; }
-        /// <summary>The tags property</summary>
+        /// <summary>Tags that will be added to the Query log comment</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags? Tags { get; set; }

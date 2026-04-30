@@ -3,9 +3,10 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `draft` - Draft* `running` - Running* `stopped` - Stopped</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public enum ExperimentStatusEnum
+    #pragma warning restore CS1591
     {
         [EnumMember(Value = "draft")]
         #pragma warning disable CS1591
@@ -14,6 +15,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "running")]
         #pragma warning disable CS1591
         Running,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "paused")]
+        #pragma warning disable CS1591
+        Paused,
         #pragma warning restore CS1591
         [EnumMember(Value = "stopped")]
         #pragma warning disable CS1591

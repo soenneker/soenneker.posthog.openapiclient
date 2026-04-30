@@ -20,7 +20,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAssignee Assignee { get; set; }
 #endif
-        /// <summary>The dateRange property</summary>
+        /// <summary>Date range to filter results.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.DateRange? DateRange { get; set; }
@@ -60,7 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQuery_kind? Kind { get; set; }
         /// <summary>The limit property</summary>
         public int? Limit { get; set; }
-        /// <summary>The modifiers property</summary>
+        /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers? Modifiers { get; set; }
@@ -70,9 +70,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The offset property</summary>
         public int? Offset { get; set; }
-        /// <summary>The orderBy property</summary>
+        /// <summary>Field to sort results by.</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingOrderBy? OrderBy { get; set; }
-        /// <summary>The orderDirection property</summary>
+        /// <summary>Sort direction.</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.OrderDirection2? OrderDirection { get; set; }
         /// <summary>Pending fingerprint issue state updates UNIONed into the fingerprint issue state subquery (V3 only). The backend caps the list at 50 entries; extras are dropped silently.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
