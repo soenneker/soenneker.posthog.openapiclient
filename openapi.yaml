@@ -70279,9 +70279,12 @@ components:
         filters:
           type: object
           additionalProperties: true
-          description: 'HogQL filter definition used to compute the metric. Same shape
-            as HogFunction filters: a dict containing an `events` list and optional
-            `properties` list.'
+          description: |-
+            Filter definition for the metric. Two shapes are accepted, discriminated by an optional `source` key.
+
+            **Events** (default, when `source` is missing or `"events"`): HogFunction filter shape — `events: [...]`, optional `actions: [...]`, `properties: [...]`, `filter_test_accounts: bool`.
+
+            **Data warehouse** (`source: "data_warehouse"`): `table_name` (synced DW table), `timestamp_field` (timestamp column or HogQL expression), `key_field` (column whose value matches the entity key). Currently DW metrics only render on group profiles — person profiles are not yet supported.
         math:
           allOf:
           - $ref: '#/components/schemas/MathEnum'
@@ -70294,8 +70297,10 @@ components:
         math_property:
           type: string
           nullable: true
-          description: Event property to sum. Required when `math` is `sum` and forbidden
-            when `math` is `count`.
+          description: Required when `math` is `sum`; must be empty when `math` is
+            `count`. For events metrics this is an event property name. For data warehouse
+            metrics this is the column name (or HogQL expression) to sum on the DW
+            table.
           maxLength: 255
       required:
       - filters
@@ -73423,6 +73428,7 @@ components:
       type: string
     IntegrationKindEnum:
       enum:
+      - apns
       - azure-blob
       - bing-ads
       - clickup
@@ -73458,6 +73464,7 @@ components:
       - vercel
       type: string
       description: |-
+        * `apns` - Apple Push
         * `azure-blob` - Azure Blob
         * `bing-ads` - Bing Ads
         * `clickup` - Clickup
@@ -84185,9 +84192,12 @@ components:
         filters:
           type: object
           additionalProperties: true
-          description: 'HogQL filter definition used to compute the metric. Same shape
-            as HogFunction filters: a dict containing an `events` list and optional
-            `properties` list.'
+          description: |-
+            Filter definition for the metric. Two shapes are accepted, discriminated by an optional `source` key.
+
+            **Events** (default, when `source` is missing or `"events"`): HogFunction filter shape — `events: [...]`, optional `actions: [...]`, `properties: [...]`, `filter_test_accounts: bool`.
+
+            **Data warehouse** (`source: "data_warehouse"`): `table_name` (synced DW table), `timestamp_field` (timestamp column or HogQL expression), `key_field` (column whose value matches the entity key). Currently DW metrics only render on group profiles — person profiles are not yet supported.
         math:
           allOf:
           - $ref: '#/components/schemas/MathEnum'
@@ -84200,8 +84210,10 @@ components:
         math_property:
           type: string
           nullable: true
-          description: Event property to sum. Required when `math` is `sum` and forbidden
-            when `math` is `count`.
+          description: Required when `math` is `sum`; must be empty when `math` is
+            `count`. For events metrics this is an event property name. For data warehouse
+            metrics this is the column name (or HogQL expression) to sum on the DW
+            table.
           maxLength: 255
     PatchedHealthIssue:
       type: object
