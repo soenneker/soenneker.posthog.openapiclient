@@ -47980,6 +47980,59 @@ paths:
       x-explicit-tags:
       - visual_review
   /api/projects/{project_id}/visual_review/runs/:
+    get:
+      operationId: visual_review_runs_list
+      description: List runs for the team, optionally filtered by review state, PR
+        number, commit SHA, or branch.
+      parameters:
+      - in: query
+        name: branch
+        schema:
+          type: string
+        description: Filter by branch name
+      - in: query
+        name: commit_sha
+        schema:
+          type: string
+        description: Filter by full commit SHA
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - in: query
+        name: pr_number
+        schema:
+          type: integer
+        description: Filter by GitHub PR number
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: review_state
+        schema:
+          type: string
+        description: Filter by review state
+      tags:
+      - visual_review
+      - visual_review
+      security:
+      - PersonalAPIKeyAuth:
+        - visual_review:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedRunList'
+          description: ''
+      x-explicit-tags:
+      - visual_review
     post:
       operationId: visual_review_runs_create
       description: Create a new run from a CI manifest.
@@ -48199,6 +48252,50 @@ paths:
           description: ''
       x-explicit-tags:
       - visual_review
+  /api/projects/{project_id}/visual_review/runs/{id}/snapshot-history/:
+    get:
+      operationId: visual_review_runs_snapshot_history_list
+      description: Recent change history for a snapshot identifier across runs.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: identifier
+        schema:
+          type: string
+        description: Snapshot identifier
+        required: true
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - visual_review
+      - visual_review
+      security:
+      - PersonalAPIKeyAuth:
+        - visual_review:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedSnapshotHistoryEntryList'
+          description: ''
+      x-explicit-tags:
+      - visual_review
   /api/projects/{project_id}/visual_review/runs/{id}/snapshots/:
     get:
       operationId: visual_review_runs_snapshots_list
@@ -48304,12 +48401,36 @@ paths:
       tags:
       - visual_review
       - visual_review
+      security:
+      - PersonalAPIKeyAuth:
+        - visual_review:read
       responses:
         '200':
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedToleratedHashEntryList'
+          description: ''
+      x-explicit-tags:
+      - visual_review
+  /api/projects/{project_id}/visual_review/runs/counts/:
+    get:
+      operationId: visual_review_runs_counts_retrieve
+      description: Review state counts for the runs list.
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - visual_review
+      - visual_review
+      security:
+      - PersonalAPIKeyAuth:
+        - visual_review:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReviewStateCounts'
           description: ''
       x-explicit-tags:
       - visual_review
