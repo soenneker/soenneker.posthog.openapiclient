@@ -16,7 +16,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Visual representation in the UI. One of `number` or `sparkline`.* `number` - number* `sparkline` - sparkline</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.GroupUsageMetricDisplayEnum? Display { get; set; }
-        /// <summary>HogQL filter definition used to compute the metric. Same shape as HogFunction filters: a dict containing an `events` list and optional `properties` list.</summary>
+        /// <summary>Filter definition for the metric. Two shapes are accepted, discriminated by an optional `source` key.**Events** (default, when `source` is missing or `&quot;events&quot;`): HogFunction filter shape — `events: [...]`, optional `actions: [...]`, `properties: [...]`, `filter_test_accounts: bool`.**Data warehouse** (`source: &quot;data_warehouse&quot;`): `table_name` (synced DW table), `timestamp_field` (timestamp column or HogQL expression), `key_field` (column whose value matches the entity key). Currently DW metrics only render on group profiles — person profiles are not yet supported.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedGroupUsageMetric_filters? Filters { get; set; }
@@ -32,7 +32,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? Interval { get; set; }
         /// <summary>Aggregation function. `count` counts matching events; `sum` sums the value of `math_property` on matching events.* `count` - count* `sum` - sum</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.MathEnum? Math { get; set; }
-        /// <summary>Event property to sum. Required when `math` is `sum` and forbidden when `math` is `count`.</summary>
+        /// <summary>Required when `math` is `sum`; must be empty when `math` is `count`. For events metrics this is an event property name. For data warehouse metrics this is the column name (or HogQL expression) to sum on the DW table.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? MathProperty { get; set; }
