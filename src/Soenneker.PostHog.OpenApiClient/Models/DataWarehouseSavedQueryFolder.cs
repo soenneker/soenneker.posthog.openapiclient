@@ -7,10 +7,11 @@ using System.IO;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
+    /// <summary>
+    /// Mixin for serializers to add user access control fields
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class DataWarehouseSavedQueryFolder : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -33,6 +34,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string Name { get; set; }
+#endif
+        /// <summary>The effective access level the user has for this object</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? UserAccessLevel { get; private set; }
+#nullable restore
+#else
+        public string UserAccessLevel { get; private set; }
 #endif
         /// <summary>The view_count property</summary>
         public int? ViewCount { get; private set; }
@@ -65,6 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },
                 { "view_count", n => { ViewCount = n.GetIntValue(); } },
             };
         }

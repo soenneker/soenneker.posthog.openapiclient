@@ -65,7 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Warehouse_saved_
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryFolder>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryFolder.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryFolder"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Mixin for serializers to add user access control fields</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         [Obsolete("")]
@@ -116,7 +116,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Warehouse_saved_
             return requestInfo;
         }
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Mixin for serializers to add user access control fields</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

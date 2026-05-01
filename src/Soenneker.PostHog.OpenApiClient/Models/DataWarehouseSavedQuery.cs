@@ -125,6 +125,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SyncFrequency { get; private set; }
 #endif
+        /// <summary>The effective access level the user has for this object</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? UserAccessLevel { get; private set; }
+#nullable restore
+#else
+        public string UserAccessLevel { get; private set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQuery"/> and sets the default values.
         /// </summary>
@@ -172,6 +180,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "soft_update", n => { SoftUpdate = n.GetBoolValue(); } },
                 { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQuery.DataWarehouseSavedQuery_status>(global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQuery.DataWarehouseSavedQuery_status.CreateFromDiscriminatorValue); } },
                 { "sync_frequency", n => { SyncFrequency = n.GetStringValue(); } },
+                { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },
             };
         }
         /// <summary>

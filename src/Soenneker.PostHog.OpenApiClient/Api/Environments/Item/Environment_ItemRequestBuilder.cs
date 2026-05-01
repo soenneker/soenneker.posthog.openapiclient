@@ -11,6 +11,8 @@ using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Customer_journeys;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Customer_profile_configs;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Dashboards;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Data_color_themes;
+using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Data_modeling_jobs;
+using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Data_warehouse;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Dataset_items;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Datasets;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Desktop_recordings;
@@ -35,10 +37,12 @@ using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Hog_functions;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Insight_variables;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Insights;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Integrations;
+using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Lineage;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Llm_analytics;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Llm_prompts;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Llm_skills;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Logs;
+using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Managed_viewsets;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Max_tools;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Mcp_server_installations;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Mcp_servers;
@@ -59,6 +63,8 @@ using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.User_interviews;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Warehouse_saved_queries;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Warehouse_saved_query_folders;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Warehouse_tables;
+using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Warehouse_view_link;
+using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Warehouse_view_links;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Web_analytics;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Web_vitals;
 using System.Collections.Generic;
@@ -117,6 +123,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Data_color_themes.Data_color_themesRequestBuilder Data_color_themes
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Data_color_themes.Data_color_themesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The data_modeling_jobs property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Data_modeling_jobs.Data_modeling_jobsRequestBuilder Data_modeling_jobs
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Data_modeling_jobs.Data_modeling_jobsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The data_warehouse property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Data_warehouse.Data_warehouseRequestBuilder Data_warehouse
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Data_warehouse.Data_warehouseRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The dataset_items property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Dataset_items.Dataset_itemsRequestBuilder Dataset_items
@@ -238,6 +254,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Integrations.IntegrationsRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The lineage property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Lineage.LineageRequestBuilder Lineage
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Lineage.LineageRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The llm_analytics property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Llm_analytics.Llm_analyticsRequestBuilder Llm_analytics
         {
@@ -257,6 +278,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Logs.LogsRequestBuilder Logs
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Logs.LogsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The managed_viewsets property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Managed_viewsets.Managed_viewsetsRequestBuilder Managed_viewsets
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Managed_viewsets.Managed_viewsetsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The max_tools property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Max_tools.Max_toolsRequestBuilder Max_tools
@@ -357,6 +383,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Warehouse_tables.Warehouse_tablesRequestBuilder Warehouse_tables
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Warehouse_tables.Warehouse_tablesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The warehouse_view_link property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Warehouse_view_link.Warehouse_view_linkRequestBuilder Warehouse_view_link
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Warehouse_view_link.Warehouse_view_linkRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The warehouse_view_links property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Warehouse_view_links.Warehouse_view_linksRequestBuilder Warehouse_view_links
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Warehouse_view_links.Warehouse_view_linksRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The web_analytics property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Web_analytics.Web_analyticsRequestBuilder Web_analytics

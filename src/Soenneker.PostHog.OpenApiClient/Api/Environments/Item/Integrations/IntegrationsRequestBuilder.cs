@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Integrations.Authorize;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Integrations.DomainConnect;
+using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Integrations.Github;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Integrations.Item;
 using System.Collections.Generic;
 using System.IO;
@@ -31,6 +32,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Integrations
         public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Integrations.EmptyPathSegmentRequestBuilder EmptyPathSegment
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Integrations.EmptyPathSegmentRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The github property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Integrations.Github.GithubRequestBuilder Github
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Integrations.Github.GithubRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.environments.item.integrations.item collection</summary>
         /// <param name="position">A unique integer value identifying this integration.</param>

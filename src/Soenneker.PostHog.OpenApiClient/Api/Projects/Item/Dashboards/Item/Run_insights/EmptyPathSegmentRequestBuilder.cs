@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Run_
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/dashboards/{dashboard_%2Did}/run_insights{?format*,output_format*,refresh*}", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/dashboards/{dashboard_%2Did}/run_insights{?filters_override*,format*,output_format*,refresh*,variables_override*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Run_
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/dashboards/{dashboard_%2Did}/run_insights{?format*,output_format*,refresh*}", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/dashboards/{dashboard_%2Did}/run_insights{?filters_override*,format*,output_format*,refresh*,variables_override*}", rawUrl)
         {
         }
         /// <summary>
@@ -85,6 +85,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Run_
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 
         {
+            /// <summary>JSON object to override dashboard filters for this request only (not persisted). Top-level keys replace; nested values are not deep-merged — pass the complete value for any key you override. See the dashboard filters schema for available keys (e.g., `date_from`, `date_to`, `properties`). Ignored when accessed via a dashboard sharing token.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("filters_override")]
+            public string? FiltersOverride { get; set; }
+#nullable restore
+#else
+            [QueryParameter("filters_override")]
+            public string FiltersOverride { get; set; }
+#endif
             [QueryParameter("format")]
             public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Run_insights.GetFormatQueryParameterType? Format { get; set; }
             /// <summary>&apos;optimized&apos; (default) returns LLM-friendly formatted text per insight. &apos;json&apos; returns the raw query result objects.</summary>
@@ -93,6 +103,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Run_
             /// <summary>Cache behavior. &apos;force_cache&apos; (default) serves from cache even if stale. &apos;blocking&apos; uses cache if fresh, otherwise recalculates. &apos;force_blocking&apos; always recalculates.</summary>
             [QueryParameter("refresh")]
             public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Run_insights.GetRefreshQueryParameterType? Refresh { get; set; }
+            /// <summary>JSON object to override dashboard variables for this request only (not persisted). Format: {&quot;&lt;variable_id&gt;&quot;: {&quot;code_name&quot;: &quot;&lt;code_name&gt;&quot;, &quot;variableId&quot;: &quot;&lt;variable_id&gt;&quot;, &quot;value&quot;: &lt;new_value&gt;}}. Each entry must include `code_name` — partial entries are silently dropped. The simplest workflow is to call `dashboard-get` first, copy the matching entry from the response&apos;s `variables` field, and mutate `value`. Top-level keys replace; nested values are not deep-merged. Ignored when accessed via a dashboard sharing token.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("variables_override")]
+            public string? VariablesOverride { get; set; }
+#nullable restore
+#else
+            [QueryParameter("variables_override")]
+            public string VariablesOverride { get; set; }
+#endif
         }
     }
 }

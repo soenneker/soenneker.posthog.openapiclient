@@ -7,10 +7,11 @@ using System.IO;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
+    /// <summary>
+    /// Mixin for serializers to add user access control fields
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class PatchedTable : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -86,6 +87,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string UrlPattern { get; set; }
 #endif
+        /// <summary>The effective access level the user has for this object</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? UserAccessLevel { get; private set; }
+#nullable restore
+#else
+        public string UserAccessLevel { get; private set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedTable"/> and sets the default values.
         /// </summary>
@@ -123,6 +132,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "options", n => { Options = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTable_options>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTable_options.CreateFromDiscriminatorValue); } },
                 { "url_pattern", n => { UrlPattern = n.GetStringValue(); } },
+                { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },
             };
         }
         /// <summary>

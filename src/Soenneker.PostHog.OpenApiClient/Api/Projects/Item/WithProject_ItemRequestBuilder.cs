@@ -14,6 +14,8 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboard_templates;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_color_themes;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_modeling_jobs;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dataset_items;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Datasets;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Early_access_feature;
@@ -71,9 +73,13 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_automations;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Uploaded_media;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_dag;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_model_paths;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_saved_queries;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_saved_query_folders;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_tables;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_view_link;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_view_links;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Web_experiments;
 using System.Collections.Generic;
 using System.IO;
@@ -146,6 +152,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_color_themes.Data_color_themesRequestBuilder Data_color_themes
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_color_themes.Data_color_themesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The data_modeling_jobs property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_modeling_jobs.Data_modeling_jobsRequestBuilder Data_modeling_jobs
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_modeling_jobs.Data_modeling_jobsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The data_warehouse property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.Data_warehouseRequestBuilder Data_warehouse
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.Data_warehouseRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The dataset_items property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dataset_items.Dataset_itemsRequestBuilder Dataset_items
@@ -432,6 +448,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Visual_reviewRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The warehouse_dag property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_dag.Warehouse_dagRequestBuilder Warehouse_dag
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_dag.Warehouse_dagRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The warehouse_model_paths property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_model_paths.Warehouse_model_pathsRequestBuilder Warehouse_model_paths
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_model_paths.Warehouse_model_pathsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The warehouse_saved_queries property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_saved_queries.Warehouse_saved_queriesRequestBuilder Warehouse_saved_queries
         {
@@ -446,6 +472,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_tables.Warehouse_tablesRequestBuilder Warehouse_tables
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_tables.Warehouse_tablesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The warehouse_view_link property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_view_link.Warehouse_view_linkRequestBuilder Warehouse_view_link
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_view_link.Warehouse_view_linkRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The warehouse_view_links property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_view_links.Warehouse_view_linksRequestBuilder Warehouse_view_links
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_view_links.Warehouse_view_linksRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The web_experiments property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Web_experiments.Web_experimentsRequestBuilder Web_experiments
