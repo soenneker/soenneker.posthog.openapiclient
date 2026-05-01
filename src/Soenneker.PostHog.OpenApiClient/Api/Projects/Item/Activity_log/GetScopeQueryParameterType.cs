@@ -228,6 +228,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Activity_log
         #pragma warning disable CS1591
         LogsAlertConfiguration,
         #pragma warning restore CS1591
+        [EnumMember(Value = "LogsExclusionRule")]
+        #pragma warning disable CS1591
+        LogsExclusionRule,
+        #pragma warning restore CS1591
         [EnumMember(Value = "ProductTour")]
         #pragma warning disable CS1591
         ProductTour,

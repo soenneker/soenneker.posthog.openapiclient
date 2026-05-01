@@ -12,6 +12,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class LogsServiceAggregate : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>Enabled sampling rules whose scope includes this service.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceActiveRule>? ActiveRules { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceActiveRule> ActiveRules { get; set; }
+#endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Count of logs at severity &quot;error&quot; or &quot;fatal&quot;.</summary>
@@ -28,6 +36,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ServiceName { get; set; }
 #endif
+        /// <summary>Counts by coarse severity bucket (debug, info, warn, error+fatal).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceSeverityBreakdown? SeverityBreakdown { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceSeverityBreakdown SeverityBreakdown { get; set; }
+#endif
+        /// <summary>Share of total log volume in the window for this service (0–100).</summary>
+        public double? VolumeSharePct { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregate"/> and sets the default values.
         /// </summary>
@@ -53,10 +71,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "active_rules", n => { ActiveRules = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceActiveRule>(global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceActiveRule.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "error_count", n => { ErrorCount = n.GetIntValue(); } },
                 { "error_rate", n => { ErrorRate = n.GetDoubleValue(); } },
                 { "log_count", n => { LogCount = n.GetIntValue(); } },
                 { "service_name", n => { ServiceName = n.GetStringValue(); } },
+                { "severity_breakdown", n => { SeverityBreakdown = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceSeverityBreakdown>(global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceSeverityBreakdown.CreateFromDiscriminatorValue); } },
+                { "volume_share_pct", n => { VolumeSharePct = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -66,10 +87,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceActiveRule>("active_rules", ActiveRules);
             writer.WriteIntValue("error_count", ErrorCount);
             writer.WriteDoubleValue("error_rate", ErrorRate);
             writer.WriteIntValue("log_count", LogCount);
             writer.WriteStringValue("service_name", ServiceName);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceSeverityBreakdown>("severity_breakdown", SeverityBreakdown);
+            writer.WriteDoubleValue("volume_share_pct", VolumeSharePct);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

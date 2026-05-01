@@ -78,10 +78,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The feature_flag property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag? FeatureFlag { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Experiment_feature_flag? FeatureFlag { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag FeatureFlag { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Experiment_feature_flag FeatureFlag { get; private set; }
 #endif
         /// <summary>Unique key for the experiment&apos;s feature flag. Letters, numbers, hyphens, and underscores only. Search existing flags with the feature-flags-get-all tool first — reuse an existing flag when possible.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -262,7 +262,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "end_date", n => { EndDate = n.GetDateTimeOffsetValue(); } },
                 { "exposure_cohort", n => { ExposureCohort = n.GetIntValue(); } },
                 { "exposure_criteria", n => { ExposureCriteria = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiExposureCriteria>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiExposureCriteria.CreateFromDiscriminatorValue); } },
-                { "feature_flag", n => { FeatureFlag = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag>(global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag.CreateFromDiscriminatorValue); } },
+                { "feature_flag", n => { FeatureFlag = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Experiment_feature_flag>(global::Soenneker.PostHog.OpenApiClient.Models.Experiment_feature_flag.CreateFromDiscriminatorValue); } },
                 { "feature_flag_key", n => { FeatureFlagKey = n.GetStringValue(); } },
                 { "filters", n => { Filters = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "holdout", n => { Holdout = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHoldout>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHoldout.CreateFromDiscriminatorValue); } },

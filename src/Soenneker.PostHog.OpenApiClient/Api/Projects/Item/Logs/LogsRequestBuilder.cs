@@ -9,6 +9,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.CountRanges;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Export;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Has_logs;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Query;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Sampling_rules;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Services;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Sparkline;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Values;
@@ -58,6 +59,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Query.QueryRequestBuilder Query
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Query.QueryRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The sampling_rules property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Sampling_rules.Sampling_rulesRequestBuilder Sampling_rules
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Sampling_rules.Sampling_rulesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The services property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Services.ServicesRequestBuilder Services

@@ -10,6 +10,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Logs.ExplainLogWithA
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Logs.Export;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Logs.Has_logs;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Logs.Query;
+using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Logs.Sampling_rules;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Logs.Services;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Logs.Sparkline;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Logs.Values;
@@ -65,6 +66,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Logs
         public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Logs.Query.QueryRequestBuilder Query
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Logs.Query.QueryRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The sampling_rules property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Logs.Sampling_rules.Sampling_rulesRequestBuilder Sampling_rules
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Logs.Sampling_rules.Sampling_rulesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The services property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Logs.Services.ServicesRequestBuilder Services

@@ -10010,6 +10010,270 @@ paths:
       deprecated: true
       x-explicit-tags:
       - logs
+  /api/environments/{environment_id}/logs/sampling_rules/:
+    get:
+      operationId: environments_logs_sampling_rules_list
+      parameters:
+      - $ref: '#/components/parameters/EnvironmentIdPath'
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      tags:
+      - logs
+      - logs
+      security:
+      - PersonalAPIKeyAuth:
+        - logs:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedLogsSamplingRuleList'
+          description: ''
+      deprecated: true
+      x-explicit-tags:
+      - logs
+    post:
+      operationId: environments_logs_sampling_rules_create
+      parameters:
+      - $ref: '#/components/parameters/EnvironmentIdPath'
+      tags:
+      - logs
+      - logs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LogsSamplingRule'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/LogsSamplingRule'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/LogsSamplingRule'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - logs:write
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LogsSamplingRule'
+          description: ''
+      deprecated: true
+      x-explicit-tags:
+      - logs
+  /api/environments/{environment_id}/logs/sampling_rules/{id}/:
+    get:
+      operationId: environments_logs_sampling_rules_retrieve
+      parameters:
+      - $ref: '#/components/parameters/EnvironmentIdPath'
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this logs exclusion rule.
+        required: true
+      tags:
+      - logs
+      - logs
+      security:
+      - PersonalAPIKeyAuth:
+        - logs:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LogsSamplingRule'
+          description: ''
+      deprecated: true
+      x-explicit-tags:
+      - logs
+    put:
+      operationId: environments_logs_sampling_rules_update
+      parameters:
+      - $ref: '#/components/parameters/EnvironmentIdPath'
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this logs exclusion rule.
+        required: true
+      tags:
+      - logs
+      - logs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LogsSamplingRule'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/LogsSamplingRule'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/LogsSamplingRule'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - logs:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LogsSamplingRule'
+          description: ''
+      deprecated: true
+      x-explicit-tags:
+      - logs
+    patch:
+      operationId: environments_logs_sampling_rules_partial_update
+      parameters:
+      - $ref: '#/components/parameters/EnvironmentIdPath'
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this logs exclusion rule.
+        required: true
+      tags:
+      - logs
+      - logs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedLogsSamplingRule'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedLogsSamplingRule'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedLogsSamplingRule'
+      security:
+      - PersonalAPIKeyAuth:
+        - logs:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LogsSamplingRule'
+          description: ''
+      deprecated: true
+      x-explicit-tags:
+      - logs
+    delete:
+      operationId: environments_logs_sampling_rules_destroy
+      parameters:
+      - $ref: '#/components/parameters/EnvironmentIdPath'
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this logs exclusion rule.
+        required: true
+      tags:
+      - logs
+      - logs
+      security:
+      - PersonalAPIKeyAuth:
+        - logs:write
+      responses:
+        '204':
+          description: No response body
+      deprecated: true
+      x-explicit-tags:
+      - logs
+  /api/environments/{environment_id}/logs/sampling_rules/{id}/simulate/:
+    post:
+      operationId: environments_logs_sampling_rules_simulate_create
+      description: Dry-run estimate for how much volume this rule would remove (placeholder
+        response until CH-backed simulation is wired).
+      parameters:
+      - $ref: '#/components/parameters/EnvironmentIdPath'
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this logs exclusion rule.
+        required: true
+      tags:
+      - logs
+      - logs
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LogsSamplingRuleSimulateResponse'
+          description: ''
+      deprecated: true
+      x-explicit-tags:
+      - logs
+  /api/environments/{environment_id}/logs/sampling_rules/reorder/:
+    post:
+      operationId: environments_logs_sampling_rules_reorder_create
+      description: Atomically reassign priorities so the given ID order maps to ascending
+        priorities (0..n-1).
+      parameters:
+      - $ref: '#/components/parameters/EnvironmentIdPath'
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      tags:
+      - logs
+      - logs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LogsSamplingRuleReorder'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/LogsSamplingRuleReorder'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/LogsSamplingRuleReorder'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedLogsSamplingRuleList'
+          description: ''
+      deprecated: true
+      x-explicit-tags:
+      - logs
   /api/environments/{environment_id}/logs/services/:
     post:
       operationId: environments_logs_services_create
@@ -24560,6 +24824,7 @@ paths:
           - CustomerProfileConfig
           - Log
           - LogsAlertConfiguration
+          - LogsExclusionRule
           - ProductTour
           - Ticket
           type: string
@@ -24622,6 +24887,7 @@ paths:
           * `CustomerProfileConfig` - CustomerProfileConfig
           * `Log` - Log
           * `LogsAlertConfiguration` - LogsAlertConfiguration
+          * `LogsExclusionRule` - LogsExclusionRule
           * `ProductTour` - ProductTour
           * `Ticket` - Ticket
       - in: query
@@ -24685,6 +24951,7 @@ paths:
             - CustomerProfileConfig
             - Log
             - LogsAlertConfiguration
+            - LogsExclusionRule
             - ProductTour
             - Ticket
             type: string
@@ -24744,6 +25011,7 @@ paths:
               * `CustomerProfileConfig` - CustomerProfileConfig
               * `Log` - Log
               * `LogsAlertConfiguration` - LogsAlertConfiguration
+              * `LogsExclusionRule` - LogsExclusionRule
               * `ProductTour` - ProductTour
               * `Ticket` - Ticket
         description: Filter by multiple activity scopes, comma-separated. Values must
@@ -40170,6 +40438,262 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/_LogsQueryResponse'
+          description: ''
+      x-explicit-tags:
+      - logs
+  /api/projects/{project_id}/logs/sampling_rules/:
+    get:
+      operationId: logs_sampling_rules_list
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - logs
+      - logs
+      security:
+      - PersonalAPIKeyAuth:
+        - logs:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedLogsSamplingRuleList'
+          description: ''
+      x-explicit-tags:
+      - logs
+    post:
+      operationId: logs_sampling_rules_create
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - logs
+      - logs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LogsSamplingRule'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/LogsSamplingRule'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/LogsSamplingRule'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - logs:write
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LogsSamplingRule'
+          description: ''
+      x-explicit-tags:
+      - logs
+  /api/projects/{project_id}/logs/sampling_rules/{id}/:
+    get:
+      operationId: logs_sampling_rules_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this logs exclusion rule.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - logs
+      - logs
+      security:
+      - PersonalAPIKeyAuth:
+        - logs:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LogsSamplingRule'
+          description: ''
+      x-explicit-tags:
+      - logs
+    put:
+      operationId: logs_sampling_rules_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this logs exclusion rule.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - logs
+      - logs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LogsSamplingRule'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/LogsSamplingRule'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/LogsSamplingRule'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - logs:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LogsSamplingRule'
+          description: ''
+      x-explicit-tags:
+      - logs
+    patch:
+      operationId: logs_sampling_rules_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this logs exclusion rule.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - logs
+      - logs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedLogsSamplingRule'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedLogsSamplingRule'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedLogsSamplingRule'
+      security:
+      - PersonalAPIKeyAuth:
+        - logs:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LogsSamplingRule'
+          description: ''
+      x-explicit-tags:
+      - logs
+    delete:
+      operationId: logs_sampling_rules_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this logs exclusion rule.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - logs
+      - logs
+      security:
+      - PersonalAPIKeyAuth:
+        - logs:write
+      responses:
+        '204':
+          description: No response body
+      x-explicit-tags:
+      - logs
+  /api/projects/{project_id}/logs/sampling_rules/{id}/simulate/:
+    post:
+      operationId: logs_sampling_rules_simulate_create
+      description: Dry-run estimate for how much volume this rule would remove (placeholder
+        response until CH-backed simulation is wired).
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this logs exclusion rule.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - logs
+      - logs
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LogsSamplingRuleSimulateResponse'
+          description: ''
+      x-explicit-tags:
+      - logs
+  /api/projects/{project_id}/logs/sampling_rules/reorder/:
+    post:
+      operationId: logs_sampling_rules_reorder_create
+      description: Atomically reassign priorities so the given ID order maps to ascending
+        priorities (0..n-1).
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - logs
+      - logs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LogsSamplingRuleReorder'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/LogsSamplingRuleReorder'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/LogsSamplingRuleReorder'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedLogsSamplingRuleList'
           description: ''
       x-explicit-tags:
       - logs
@@ -64487,8 +65011,8 @@ components:
             hyphens, and underscores only. Search existing flags with the feature-flags-get-all
             tool first — reuse an existing flag when possible.
         feature_flag:
-          allOf:
-          - $ref: '#/components/schemas/MinimalFeatureFlag'
+          type: object
+          additionalProperties: true
           readOnly: true
         holdout:
           allOf:
@@ -76370,6 +76894,110 @@ components:
       - results
       title: LogsQueryResponse
       type: object
+    LogsSamplingRule:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Unique identifier for this sampling rule.
+        name:
+          type: string
+          description: User-visible label for this rule.
+          maxLength: 255
+        enabled:
+          type: boolean
+          default: false
+          description: When false, the rule is ignored by ingestion and listing UIs
+            that show active rules only.
+        priority:
+          type: integer
+          minimum: 0
+          nullable: true
+          description: Lower numbers are evaluated first; the first matching rule
+            wins. Omit to append after existing rules.
+        rule_type:
+          allOf:
+          - $ref: '#/components/schemas/RuleTypeEnum'
+          description: |-
+            Rule kind: severity_sampling, path_drop, or rate_limit (rate_limit reserved for a future release).
+
+            * `severity_sampling` - Severity-based reduction
+            * `path_drop` - Path exclusion
+            * `rate_limit` - Rate limit
+        scope_service:
+          type: string
+          nullable: true
+          description: If set, the rule applies only to this service name; null means
+            all services.
+          maxLength: 512
+        scope_path_pattern:
+          type: string
+          nullable: true
+          description: Optional regex matched against a path-like log attribute when
+            present.
+          maxLength: 1024
+        scope_attribute_filters:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+          description: Optional list of predicates over string attributes, e.g. [{"key":"http.route","op":"eq","value":"/api"}].
+        config:
+          description: Type-specific JSON (severity actions, path_drop patterns, or
+            future rate_limit settings).
+        version:
+          type: integer
+          readOnly: true
+          description: Incremented on each update for worker cache coherency.
+        created_by:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+      required:
+      - config
+      - created_at
+      - created_by
+      - id
+      - name
+      - rule_type
+      - updated_at
+      - version
+    LogsSamplingRuleReorder:
+      type: object
+      properties:
+        ordered_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          description: Rule IDs in the desired evaluation order (first element is
+            highest priority / lowest order index).
+      required:
+      - ordered_ids
+    LogsSamplingRuleSimulateResponse:
+      type: object
+      properties:
+        estimated_reduction_pct:
+          type: number
+          format: double
+          description: Rough percent of log volume this rule would drop (0–100). Stub
+            until ClickHouse-backed estimate ships.
+        notes:
+          type: string
+          description: Human-readable caveats for the estimate.
+      required:
+      - estimated_reduction_pct
+      - notes
     LogsSparklineBreakdownBy:
       enum:
       - severity
@@ -80455,6 +81083,29 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LogsAlertEvent'
+    PaginatedLogsSamplingRuleList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/LogsSamplingRule'
     PaginatedLogsViewList:
       type: object
       required:
@@ -83745,8 +84396,8 @@ components:
             hyphens, and underscores only. Search existing flags with the feature-flags-get-all
             tool first — reuse an existing flag when possible.
         feature_flag:
-          allOf:
-          - $ref: '#/components/schemas/MinimalFeatureFlag'
+          type: object
+          additionalProperties: true
           readOnly: true
         holdout:
           allOf:
@@ -85175,6 +85826,75 @@ components:
           readOnly: true
           nullable: true
           description: When the alert was last modified.
+    PatchedLogsSamplingRule:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Unique identifier for this sampling rule.
+        name:
+          type: string
+          description: User-visible label for this rule.
+          maxLength: 255
+        enabled:
+          type: boolean
+          default: false
+          description: When false, the rule is ignored by ingestion and listing UIs
+            that show active rules only.
+        priority:
+          type: integer
+          minimum: 0
+          nullable: true
+          description: Lower numbers are evaluated first; the first matching rule
+            wins. Omit to append after existing rules.
+        rule_type:
+          allOf:
+          - $ref: '#/components/schemas/RuleTypeEnum'
+          description: |-
+            Rule kind: severity_sampling, path_drop, or rate_limit (rate_limit reserved for a future release).
+
+            * `severity_sampling` - Severity-based reduction
+            * `path_drop` - Path exclusion
+            * `rate_limit` - Rate limit
+        scope_service:
+          type: string
+          nullable: true
+          description: If set, the rule applies only to this service name; null means
+            all services.
+          maxLength: 512
+        scope_path_pattern:
+          type: string
+          nullable: true
+          description: Optional regex matched against a path-like log attribute when
+            present.
+          maxLength: 1024
+        scope_attribute_filters:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+          description: Optional list of predicates over string attributes, e.g. [{"key":"http.route","op":"eq","value":"/api"}].
+        config:
+          description: Type-specific JSON (severity actions, path_drop patterns, or
+            future rate_limit settings).
+        version:
+          type: integer
+          readOnly: true
+          description: Incremented on each update for worker cache coherency.
+        created_by:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
     PatchedLogsView:
       type: object
       properties:
@@ -101656,6 +102376,16 @@ components:
       - updated_at
       - user
       - user_uuid
+    RuleTypeEnum:
+      enum:
+      - severity_sampling
+      - path_drop
+      - rate_limit
+      type: string
+      description: |-
+        * `severity_sampling` - Severity-based reduction
+        * `path_drop` - Path exclusion
+        * `rate_limit` - Rate limit
     Run:
       type: object
       properties:
@@ -115414,6 +116144,20 @@ components:
       - maxExportableLogs
       - query
       - results
+    _LogsServiceActiveRule:
+      type: object
+      properties:
+        rule_id:
+          type: string
+          format: uuid
+        rule_name:
+          type: string
+        summary_string:
+          type: string
+      required:
+      - rule_id
+      - rule_name
+      - summary_string
     _LogsServiceAggregate:
       type: object
       properties:
@@ -115432,11 +116176,40 @@ components:
           format: double
           description: Pre-computed error_count / log_count, rounded to 4 decimals.
             Useful for ranking noisy services.
+        volume_share_pct:
+          type: number
+          format: double
+          description: Share of total log volume in the window for this service (0–100).
+        severity_breakdown:
+          allOf:
+          - $ref: '#/components/schemas/_LogsServiceSeverityBreakdown'
+          description: Counts by coarse severity bucket (debug, info, warn, error+fatal).
+        active_rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/_LogsServiceActiveRule'
+          description: Enabled sampling rules whose scope includes this service.
       required:
       - error_count
       - error_rate
       - log_count
       - service_name
+    _LogsServiceSeverityBreakdown:
+      type: object
+      properties:
+        debug:
+          type: integer
+        info:
+          type: integer
+        warn:
+          type: integer
+        error:
+          type: integer
+      required:
+      - debug
+      - error
+      - info
+      - warn
     _LogsServicesBody:
       type: object
       properties:
@@ -115486,6 +116259,10 @@ components:
             $ref: '#/components/schemas/_LogsServicesSparklineBucket'
           description: Time-bucketed counts broken down by service, for plotting volume
             over time.
+        summary:
+          allOf:
+          - $ref: '#/components/schemas/_LogsServicesSummary'
+          description: Roll-up stats for the Services tab header.
       required:
       - services
       - sparkline
@@ -115503,6 +116280,20 @@ components:
       - count
       - service_name
       - time
+    _LogsServicesSummary:
+      type: object
+      properties:
+        top_services_count:
+          type: integer
+          description: Number of top services included in the volume_share aggregate
+            (up to 5).
+        top_services_volume_share_pct:
+          type: number
+          format: double
+          description: Combined volume share (percent) of the top services by log_count.
+      required:
+      - top_services_count
+      - top_services_volume_share_pct
     _LogsSparklineBody:
       type: object
       properties:
