@@ -9940,7 +9940,6 @@ paths:
           multipart/form-data:
             schema:
               $ref: '#/components/schemas/LogsAlertConfiguration'
-        required: true
       security:
       - PersonalAPIKeyAuth:
         - logs:write
@@ -10007,7 +10006,6 @@ paths:
           multipart/form-data:
             schema:
               $ref: '#/components/schemas/LogsAlertConfiguration'
-        required: true
       security:
       - PersonalAPIKeyAuth:
         - logs:write
@@ -41346,7 +41344,6 @@ paths:
           multipart/form-data:
             schema:
               $ref: '#/components/schemas/LogsAlertConfiguration'
-        required: true
       security:
       - PersonalAPIKeyAuth:
         - logs:write
@@ -41411,7 +41408,6 @@ paths:
           multipart/form-data:
             schema:
               $ref: '#/components/schemas/LogsAlertConfiguration'
-        required: true
       security:
       - PersonalAPIKeyAuth:
         - logs:write
@@ -52544,6 +52540,67 @@ paths:
           description: Integration removed.
       x-explicit-tags:
       - core
+  /api/users/{uuid}/integrations/github/{installation_id}/branches/:
+    get:
+      operationId: users_integrations_github_branches_retrieve
+      description: List branches for a repository accessible to a personal GitHub
+        installation.
+      summary: List branches for a personal GitHub installation repository
+      parameters:
+      - in: path
+        name: installation_id
+        schema:
+          type: string
+          pattern: ^\d+$
+        required: true
+      - in: query
+        name: limit
+        schema:
+          type: integer
+          maximum: 1000
+          minimum: 1
+          default: 100
+        description: Maximum number of branches to return
+      - in: query
+        name: offset
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+        description: Number of branches to skip
+      - in: query
+        name: repo
+        schema:
+          type: string
+          minLength: 1
+        description: Repository in owner/repo format
+        required: true
+      - in: query
+        name: search
+        schema:
+          type: string
+          default: ''
+        description: Optional case-insensitive branch name search query.
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - core
+      - users
+      security:
+      - PersonalAPIKeyAuth:
+        - user:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GitHubBranchesResponse'
+          description: ''
+      x-explicit-tags:
+      - core
   /api/users/{uuid}/integrations/github/{installation_id}/repos/:
     get:
       operationId: users_integrations_github_repos_retrieve
@@ -52595,6 +52652,38 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GitHubReposResponse'
+          description: ''
+      x-explicit-tags:
+      - core
+  /api/users/{uuid}/integrations/github/{installation_id}/repos/refresh/:
+    post:
+      operationId: users_integrations_github_repos_refresh_create
+      description: Refresh repositories accessible to a specific GitHub installation.
+      summary: Refresh repositories for a personal GitHub installation
+      parameters:
+      - in: path
+        name: installation_id
+        schema:
+          type: string
+          pattern: ^\d+$
+        required: true
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - core
+      - users
+      security:
+      - PersonalAPIKeyAuth:
+        - user:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GitHubReposRefreshResponse'
           description: ''
       x-explicit-tags:
       - core
@@ -57141,8 +57230,10 @@ components:
         github_user_token:
           type: string
           writeOnly: true
-          description: Ephemeral GitHub user token from PostHog Code for user-authored
-            cloud pull requests.
+          description: Optional GitHub user token from PostHog Code for user-authored
+            cloud pull requests. Prefer linking GitHub from Settings → Linked accounts
+            so the server can manage tokens; this field remains supported for callers
+            that still manage their own tokens.
         initial_permission_mode:
           allOf:
           - $ref: '#/components/schemas/ClaudeTaskRunCreateSchemaInitialPermissionModeEnum'
@@ -57372,8 +57463,10 @@ components:
         github_user_token:
           type: string
           writeOnly: true
-          description: Ephemeral GitHub user token from PostHog Code for user-authored
-            cloud pull requests.
+          description: Optional GitHub user token from PostHog Code for user-authored
+            cloud pull requests. Prefer linking GitHub from Settings → Linked accounts
+            so the server can manage tokens; this field remains supported for callers
+            that still manage their own tokens.
         initial_permission_mode:
           allOf:
           - $ref: '#/components/schemas/CodexTaskRunCreateSchemaInitialPermissionModeEnum'
@@ -58902,6 +58995,16 @@ components:
       required:
       - run_id
       - uploads
+    CreatedViaEnum:
+      enum:
+      - web
+      - api
+      - mcp
+      type: string
+      description: |-
+        * `web` - web
+        * `api` - api
+        * `mcp` - mcp
     CreationModeEnum:
       enum:
       - default
@@ -69744,6 +69847,16 @@ components:
 
             * `warehouse` - warehouse
             * `direct` - direct
+        created_via:
+          allOf:
+          - $ref: '#/components/schemas/CreatedViaEnum'
+          default: api
+          description: |-
+            Where the request came from
+
+            * `web` - web
+            * `api` - api
+            * `mcp` - mcp
       required:
       - payload
       - source_type
@@ -69770,6 +69883,15 @@ components:
           type: string
           nullable: true
           readOnly: true
+        created_via:
+          allOf:
+          - $ref: '#/components/schemas/CreatedViaEnum'
+          description: |-
+            How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent/MCP tool calls. Ignored on update.
+
+            * `web` - web
+            * `api` - api
+            * `mcp` - mcp
         status:
           type: string
           readOnly: true
@@ -78373,7 +78495,8 @@ components:
           description: Unique identifier for this alert.
         name:
           type: string
-          description: Human-readable name for this alert.
+          description: Human-readable name for this alert. Defaults to 'Untitled alert'
+            on create when omitted.
           maxLength: 255
         enabled:
           type: boolean
@@ -78384,12 +78507,13 @@ components:
           description: 'Filter criteria — subset of LogsViewerFilters. Must contain
             at least one of: severityLevels (list of severity strings), serviceNames
             (list of service name strings), or filterGroup (property filter group
-            object).'
+            object). May be empty on draft alerts (enabled=false).'
         threshold_count:
           type: integer
           minimum: 1
+          default: 100
           description: Number of matching log entries that constitutes a threshold
-            breach within the evaluation window.
+            breach within the evaluation window. Defaults to 100.
         threshold_operator:
           allOf:
           - $ref: '#/components/schemas/ThresholdOperatorEnum'
@@ -78496,6 +78620,13 @@ components:
           description: Notification destination types configured for this alert —
             e.g. 'slack', 'webhook'. Empty list means no notifications will fire.
             One or more destinations should be added after creating an alert.
+        first_enabled_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          description: When the alert was first enabled. Null means the alert is still
+            in draft state.
         created_at:
           type: string
           format: date-time
@@ -78517,16 +78648,14 @@ components:
       - created_at
       - created_by
       - destination_types
-      - filters
+      - first_enabled_at
       - id
       - last_checked_at
       - last_error_message
       - last_notified_at
-      - name
       - next_check_at
       - state
       - state_timeline
-      - threshold_count
       - updated_at
     LogsAlertConfigurationStateEnum:
       enum:
@@ -86901,6 +87030,15 @@ components:
           type: string
           nullable: true
           readOnly: true
+        created_via:
+          allOf:
+          - $ref: '#/components/schemas/CreatedViaEnum'
+          description: |-
+            How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent/MCP tool calls. Ignored on update.
+
+            * `web` - web
+            * `api` - api
+            * `mcp` - mcp
         status:
           type: string
           readOnly: true
@@ -87848,7 +87986,8 @@ components:
           description: Unique identifier for this alert.
         name:
           type: string
-          description: Human-readable name for this alert.
+          description: Human-readable name for this alert. Defaults to 'Untitled alert'
+            on create when omitted.
           maxLength: 255
         enabled:
           type: boolean
@@ -87859,12 +87998,13 @@ components:
           description: 'Filter criteria — subset of LogsViewerFilters. Must contain
             at least one of: severityLevels (list of severity strings), serviceNames
             (list of service name strings), or filterGroup (property filter group
-            object).'
+            object). May be empty on draft alerts (enabled=false).'
         threshold_count:
           type: integer
           minimum: 1
+          default: 100
           description: Number of matching log entries that constitutes a threshold
-            breach within the evaluation window.
+            breach within the evaluation window. Defaults to 100.
         threshold_operator:
           allOf:
           - $ref: '#/components/schemas/ThresholdOperatorEnum'
@@ -87971,6 +88111,13 @@ components:
           description: Notification destination types configured for this alert —
             e.g. 'slack', 'webhook'. Empty list means no notifications will fire.
             One or more destinations should be added after creating an alert.
+        first_enabled_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          description: When the alert was first enabled. Null means the alert is still
+            in draft state.
         created_at:
           type: string
           format: date-time
@@ -90463,6 +90610,12 @@ components:
           type: integer
           nullable: true
           description: GitHub integration for this task
+        github_user_integration:
+          type: string
+          format: uuid
+          nullable: true
+          description: User-scoped GitHub integration to use for user-authored cloud
+            runs.
         signal_report:
           type: string
           format: uuid
@@ -109966,6 +110119,12 @@ components:
           type: integer
           nullable: true
           description: GitHub integration for this task
+        github_user_integration:
+          type: string
+          format: uuid
+          nullable: true
+          description: User-scoped GitHub integration to use for user-authored cloud
+            runs.
         signal_report:
           type: string
           format: uuid
@@ -110814,8 +110973,10 @@ components:
         github_user_token:
           type: string
           writeOnly: true
-          description: Ephemeral GitHub user token from PostHog Code for user-authored
-            cloud pull requests.
+          description: Optional GitHub user token from PostHog Code for user-authored
+            cloud pull requests. Prefer linking GitHub from Settings → Linked accounts
+            so the server can manage tokens; this field remains supported for callers
+            that still manage their own tokens.
     TaskRunStartRequest:
       type: object
       properties:
@@ -115283,6 +115444,10 @@ components:
     UserGitHubIntegrationItem:
       type: object
       properties:
+        id:
+          type: string
+          format: uuid
+          description: PostHog UserIntegration row id.
         kind:
           type: string
           description: Integration kind; always `github` for this API.
@@ -115308,6 +115473,7 @@ components:
           description: When this integration row was created.
       required:
       - created_at
+      - id
       - installation_id
       - kind
       - uses_shared_installation
@@ -115342,8 +115508,7 @@ components:
             App for this user.
         connect_flow:
           type: string
-          description: oauth_authorize when using user OAuth against an existing team
-            installation; app_install for the GitHub App installation UI.
+          description: OAuth or install flow used for this GitHub connection.
       required:
       - connect_flow
       - install_url

@@ -43,6 +43,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string CreatedBy { get; private set; }
 #endif
+        /// <summary>How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent/MCP tool calls. Ignored on update.* `web` - web* `api` - api* `mcp` - mcp</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.CreatedViaEnum? CreatedVia { get; set; }
         /// <summary>The description property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -159,6 +161,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "client_secret", n => { ClientSecret = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetStringValue(); } },
+                { "created_via", n => { CreatedVia = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CreatedViaEnum>(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "engine", n => { Engine = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers.ExternalDataSourceSerializers_engine>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers.ExternalDataSourceSerializers_engine.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
@@ -183,6 +186,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("account_id", AccountId);
             writer.WriteStringValue("client_secret", ClientSecret);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CreatedViaEnum>("created_via", CreatedVia);
             writer.WriteStringValue("description", Description);
             writer.WriteObjectValue<UntypedNode>("job_inputs", JobInputs);
             writer.WriteStringValue("prefix", Prefix);

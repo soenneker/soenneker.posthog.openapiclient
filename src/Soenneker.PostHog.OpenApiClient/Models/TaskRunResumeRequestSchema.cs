@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Branch { get; set; }
 #endif
-        /// <summary>Ephemeral GitHub user token from PostHog Code for user-authored cloud pull requests.</summary>
+        /// <summary>Optional GitHub user token from PostHog Code for user-authored cloud pull requests. Prefer linking GitHub from Settings → Linked accounts so the server can manage tokens; this field remains supported for callers that still manage their own tokens.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? GithubUserToken { get; set; }

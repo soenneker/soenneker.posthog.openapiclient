@@ -16,6 +16,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.AccessMethodEnum? AccessMethod { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Where the request came from* `web` - web* `api` - api* `mcp` - mcp</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.CreatedViaEnum? CreatedVia { get; set; }
         /// <summary>Human-readable description.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -49,6 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             AdditionalData = new Dictionary<string, object>();
             AccessMethod = global::Soenneker.PostHog.OpenApiClient.Models.AccessMethodEnum.Warehouse;
+            CreatedVia = global::Soenneker.PostHog.OpenApiClient.Models.CreatedViaEnum.Api;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -69,6 +72,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "access_method", n => { AccessMethod = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccessMethodEnum>(); } },
+                { "created_via", n => { CreatedVia = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CreatedViaEnum>(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "payload", n => { Payload = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceCreate_payload>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceCreate_payload.CreateFromDiscriminatorValue); } },
                 { "prefix", n => { Prefix = n.GetStringValue(); } },
@@ -83,6 +87,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccessMethodEnum>("access_method", AccessMethod);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CreatedViaEnum>("created_via", CreatedVia);
             writer.WriteStringValue("description", Description);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceCreate_payload>("payload", Payload);
             writer.WriteStringValue("prefix", Prefix);

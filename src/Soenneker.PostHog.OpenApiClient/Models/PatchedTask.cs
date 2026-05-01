@@ -42,6 +42,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>GitHub integration for this task</summary>
         public int? GithubIntegration { get; set; }
+        /// <summary>User-scoped GitHub integration to use for user-authored cloud runs.</summary>
+        public Guid? GithubUserIntegration { get; set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>If true, this task is for internal use and should not be exposed to end users.</summary>
@@ -128,6 +130,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "github_integration", n => { GithubIntegration = n.GetIntValue(); } },
+                { "github_user_integration", n => { GithubUserIntegration = n.GetGuidValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "internal", n => { Internal = n.GetBoolValue(); } },
                 { "json_schema", n => { JsonSchema = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
@@ -153,6 +156,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("ci_prompt", CiPrompt);
             writer.WriteStringValue("description", Description);
             writer.WriteIntValue("github_integration", GithubIntegration);
+            writer.WriteGuidValue("github_user_integration", GithubUserIntegration);
             writer.WriteBoolValue("internal", Internal);
             writer.WriteObjectValue<UntypedNode>("json_schema", JsonSchema);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OriginProductEnum>("origin_product", OriginProduct);

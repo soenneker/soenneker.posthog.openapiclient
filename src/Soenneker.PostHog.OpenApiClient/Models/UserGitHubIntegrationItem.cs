@@ -24,6 +24,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When this integration row was created.</summary>
         public DateTimeOffset? CreatedAt { get; set; }
+        /// <summary>PostHog UserIntegration row id.</summary>
+        public Guid? Id { get; set; }
         /// <summary>GitHub App installation id.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -77,6 +79,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "account", n => { Account = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubAccount>(global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubAccount.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
+                { "id", n => { Id = n.GetGuidValue(); } },
                 { "installation_id", n => { InstallationId = n.GetStringValue(); } },
                 { "kind", n => { Kind = n.GetStringValue(); } },
                 { "repository_selection", n => { RepositorySelection = n.GetStringValue(); } },
@@ -92,6 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubAccount>("account", Account);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
+            writer.WriteGuidValue("id", Id);
             writer.WriteStringValue("installation_id", InstallationId);
             writer.WriteStringValue("kind", Kind);
             writer.WriteStringValue("repository_selection", RepositorySelection);

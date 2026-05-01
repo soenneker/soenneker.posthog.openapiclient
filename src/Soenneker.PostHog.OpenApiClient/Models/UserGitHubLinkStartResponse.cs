@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>oauth_authorize when using user OAuth against an existing team installation; app_install for the GitHub App installation UI.</summary>
+        /// <summary>OAuth or install flow used for this GitHub connection.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ConnectFlow { get; set; }

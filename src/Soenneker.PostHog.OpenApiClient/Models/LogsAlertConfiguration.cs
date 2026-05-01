@@ -44,7 +44,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? Enabled { get; set; }
         /// <summary>Total number of check periods in the sliding evaluation window for firing (M in N-of-M).</summary>
         public int? EvaluationPeriods { get; set; }
-        /// <summary>Filter criteria — subset of LogsViewerFilters. Must contain at least one of: severityLevels (list of severity strings), serviceNames (list of service name strings), or filterGroup (property filter group object).</summary>
+        /// <summary>Filter criteria — subset of LogsViewerFilters. Must contain at least one of: severityLevels (list of severity strings), serviceNames (list of service name strings), or filterGroup (property filter group object). May be empty on draft alerts (enabled=false).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public UntypedNode? Filters { get; set; }
@@ -52,6 +52,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public UntypedNode Filters { get; set; }
 #endif
+        /// <summary>When the alert was first enabled. Null means the alert is still in draft state.</summary>
+        public DateTimeOffset? FirstEnabledAt { get; private set; }
         /// <summary>Unique identifier for this alert.</summary>
         public Guid? Id { get; private set; }
         /// <summary>When the alert was last evaluated. Server-managed.</summary>
@@ -66,7 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>When the last notification was sent. Server-managed.</summary>
         public DateTimeOffset? LastNotifiedAt { get; private set; }
-        /// <summary>Human-readable name for this alert.</summary>
+        /// <summary>Human-readable name for this alert. Defaults to &apos;Untitled alert&apos; on create when omitted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
@@ -88,7 +90,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateInterval> StateTimeline { get; private set; }
 #endif
-        /// <summary>Number of matching log entries that constitutes a threshold breach within the evaluation window.</summary>
+        /// <summary>Number of matching log entries that constitutes a threshold breach within the evaluation window. Defaults to 100.</summary>
         public int? ThresholdCount { get; set; }
         /// <summary>Whether the alert fires when the count is above or below the threshold.* `above` - Above* `below` - Below</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ThresholdOperatorEnum? ThresholdOperator { get; set; }
@@ -132,6 +134,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "evaluation_periods", n => { EvaluationPeriods = n.GetIntValue(); } },
                 { "filters", n => { Filters = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "first_enabled_at", n => { FirstEnabledAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "last_checked_at", n => { LastCheckedAt = n.GetDateTimeOffsetValue(); } },
                 { "last_error_message", n => { LastErrorMessage = n.GetStringValue(); } },

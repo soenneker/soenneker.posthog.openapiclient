@@ -2,6 +2,7 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github.Item.Repos.Refresh;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -18,6 +19,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github.Ite
         public global::Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github.Item.Repos.EmptyPathSegmentRequestBuilder EmptyPathSegment
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github.Item.Repos.EmptyPathSegmentRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The refresh property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github.Item.Repos.Refresh.RefreshRequestBuilder Refresh
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github.Item.Repos.Refresh.RefreshRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github.Item.Repos.ReposRequestBuilder"/> and sets the default values.
