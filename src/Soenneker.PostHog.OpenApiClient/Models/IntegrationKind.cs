@@ -52,6 +52,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         Snapchat,
         #pragma warning restore CS1591
+        [EnumMember(Value = "stripe")]
+        #pragma warning disable CS1591
+        Stripe,
+        #pragma warning restore CS1591
         [EnumMember(Value = "intercom")]
         #pragma warning disable CS1591
         Intercom,
