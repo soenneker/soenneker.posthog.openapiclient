@@ -122,6 +122,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.User_notification_settings NotificationSettings { get; set; }
 #endif
+        /// <summary>The onboarding_delegated_to_invite property</summary>
+        public Guid? OnboardingDelegatedToInvite { get; private set; }
+        /// <summary>Organization ID of the pending delegation invite, if any. Used by the frontend to scope the &apos;waiting for teammate&apos; UI to the org where delegation was initiated.</summary>
+        public Guid? OnboardingDelegatedToOrganizationId { get; private set; }
+        /// <summary>The onboarding_delegation_accepted_at property</summary>
+        public DateTimeOffset? OnboardingDelegationAcceptedAt { get; private set; }
+        /// <summary>The onboarding_skipped_at property</summary>
+        public DateTimeOffset? OnboardingSkippedAt { get; private set; }
+        /// <summary>The onboarding_skipped_organization_id property</summary>
+        public Guid? OnboardingSkippedOrganizationId { get; private set; }
+        /// <summary>The onboarding_skipped_reason property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.User.User_onboarding_skipped_reason? OnboardingSkippedReason { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.User.User_onboarding_skipped_reason OnboardingSkippedReason { get; private set; }
+#endif
         /// <summary>The organization property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -281,6 +299,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "is_staff", n => { IsStaff = n.GetBoolValue(); } },
                 { "last_name", n => { LastName = n.GetStringValue(); } },
                 { "notification_settings", n => { NotificationSettings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.User_notification_settings>(global::Soenneker.PostHog.OpenApiClient.Models.User_notification_settings.CreateFromDiscriminatorValue); } },
+                { "onboarding_delegated_to_invite", n => { OnboardingDelegatedToInvite = n.GetGuidValue(); } },
+                { "onboarding_delegated_to_organization_id", n => { OnboardingDelegatedToOrganizationId = n.GetGuidValue(); } },
+                { "onboarding_delegation_accepted_at", n => { OnboardingDelegationAcceptedAt = n.GetDateTimeOffsetValue(); } },
+                { "onboarding_skipped_at", n => { OnboardingSkippedAt = n.GetDateTimeOffsetValue(); } },
+                { "onboarding_skipped_organization_id", n => { OnboardingSkippedOrganizationId = n.GetGuidValue(); } },
+                { "onboarding_skipped_reason", n => { OnboardingSkippedReason = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.User.User_onboarding_skipped_reason>(global::Soenneker.PostHog.OpenApiClient.Models.User.User_onboarding_skipped_reason.CreateFromDiscriminatorValue); } },
                 { "organization", n => { Organization = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Organization>(global::Soenneker.PostHog.OpenApiClient.Models.Organization.CreateFromDiscriminatorValue); } },
                 { "organizations", n => { Organizations = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationBasic>(global::Soenneker.PostHog.OpenApiClient.Models.OrganizationBasic.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "passkeys_enabled_for_2fa", n => { PasskeysEnabledFor2fa = n.GetBoolValue(); } },
@@ -327,6 +351,71 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.User.User_theme_mode>("theme_mode", ThemeMode);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.User.User_toolbar_mode>("toolbar_mode", ToolbarMode);
             writer.WriteAdditionalData(AdditionalData);
+        }
+        /// <summary>
+        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OnboardingSkippedReasonEnum"/>
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class User_onboarding_skipped_reason : IComposedTypeWrapper, IParsable
+        {
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum? NullEnum { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum NullEnum { get; set; }
+#endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OnboardingSkippedReasonEnum"/></summary>
+            public global::Soenneker.PostHog.OpenApiClient.Models.OnboardingSkippedReasonEnum? OnboardingSkippedReasonEnum { get; set; }
+            /// <summary>
+            /// Creates a new instance of the appropriate class based on discriminator value
+            /// </summary>
+            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.User.User_onboarding_skipped_reason"/></returns>
+            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
+            public static global::Soenneker.PostHog.OpenApiClient.Models.User.User_onboarding_skipped_reason CreateFromDiscriminatorValue(IParseNode parseNode)
+            {
+                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
+                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
+                var result = new global::Soenneker.PostHog.OpenApiClient.Models.User.User_onboarding_skipped_reason();
+                if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+                {
+                    result.NullEnum = new global::Soenneker.PostHog.OpenApiClient.Models.NullEnum();
+                }
+                else if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OnboardingSkippedReasonEnum>() is global::Soenneker.PostHog.OpenApiClient.Models.OnboardingSkippedReasonEnum onboardingSkippedReasonEnumValue)
+                {
+                    result.OnboardingSkippedReasonEnum = onboardingSkippedReasonEnumValue;
+                }
+                return result;
+            }
+            /// <summary>
+            /// The deserialization information for the current model
+            /// </summary>
+            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
+            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+            {
+                if(NullEnum != null)
+                {
+                    return NullEnum.GetFieldDeserializers();
+                }
+                return new Dictionary<string, Action<IParseNode>>();
+            }
+            /// <summary>
+            /// Serializes information the current object
+            /// </summary>
+            /// <param name="writer">Serialization writer to use to serialize this model</param>
+            public virtual void Serialize(ISerializationWriter writer)
+            {
+                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+                if(NullEnum != null)
+                {
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NullEnum>(null, NullEnum);
+                }
+                else if(OnboardingSkippedReasonEnum != null)
+                {
+                    writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OnboardingSkippedReasonEnum>(null, OnboardingSkippedReasonEnum);
+                }
+            }
         }
         /// <summary>
         /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ShortcutPositionEnum"/>

@@ -5,6 +5,7 @@ using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Users.Item.Github_login;
 using Soenneker.PostHog.OpenApiClient.Api.Users.Item.Hedgehog_config;
 using Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations;
+using Soenneker.PostHog.OpenApiClient.Api.Users.Item.Onboarding;
 using Soenneker.PostHog.OpenApiClient.Api.Users.Item.Scene_personalisation;
 using Soenneker.PostHog.OpenApiClient.Api.Users.Item.Signal_autonomy;
 using Soenneker.PostHog.OpenApiClient.Api.Users.Item.Start_2fa_setup;
@@ -45,6 +46,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Users.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.IntegrationsRequestBuilder Integrations
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.IntegrationsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The onboarding property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Users.Item.Onboarding.OnboardingRequestBuilder Onboarding
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Users.Item.Onboarding.OnboardingRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The scene_personalisation property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Users.Item.Scene_personalisation.Scene_personalisationRequestBuilder Scene_personalisation

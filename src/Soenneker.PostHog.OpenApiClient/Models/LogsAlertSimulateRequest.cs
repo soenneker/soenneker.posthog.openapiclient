@@ -14,6 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>How often the alert is evaluated, in minutes.</summary>
+        public int? CheckIntervalMinutes { get; set; }
         /// <summary>Minutes to wait after firing before sending another notification.</summary>
         public int? CooldownMinutes { get; set; }
         /// <summary>How many periods must breach to fire (N in N-of-M).</summary>
@@ -67,6 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "check_interval_minutes", n => { CheckIntervalMinutes = n.GetIntValue(); } },
                 { "cooldown_minutes", n => { CooldownMinutes = n.GetIntValue(); } },
                 { "datapoints_to_alarm", n => { DatapointsToAlarm = n.GetIntValue(); } },
                 { "date_from", n => { DateFrom = n.GetStringValue(); } },
@@ -84,6 +87,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteIntValue("check_interval_minutes", CheckIntervalMinutes);
             writer.WriteIntValue("cooldown_minutes", CooldownMinutes);
             writer.WriteIntValue("datapoints_to_alarm", DatapointsToAlarm);
             writer.WriteStringValue("date_from", DateFrom);

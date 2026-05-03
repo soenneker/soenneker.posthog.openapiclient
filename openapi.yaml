@@ -23913,6 +23913,41 @@ paths:
           description: No response body
       x-explicit-tags:
       - core
+  /api/organizations/{organization_id}/invites/delegate/:
+    post:
+      operationId: invites_delegate_create
+      description: |-
+        Create an onboarding delegation invite: an admin-level invite flagged as a setup delegation.
+        Sends a single dedicated delegation email and records the inviting user as having delegated.
+      parameters:
+      - $ref: '#/components/parameters/OrganizationIdPath'
+      tags:
+      - core
+      - invites
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationInviteDelegate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/OrganizationInviteDelegate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/OrganizationInviteDelegate'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - organization_member:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationInvite'
+          description: ''
+      x-explicit-tags:
+      - core
   /api/organizations/{organization_id}/legal_documents/:
     get:
       operationId: legal_documents_list
@@ -52744,6 +52779,48 @@ paths:
           description: ''
       x-explicit-tags:
       - core
+  /api/users/{uuid}/onboarding/skip/:
+    post:
+      operationId: users_onboarding_skip_create
+      description: |-
+        Mark the current user as having exited onboarding with a non-delegated reason.
+        Idempotent: the skip timestamp is only set on the first successful call.
+
+        Callers wanting to delegate setup to a teammate must use the dedicated
+        /organizations/{id}/invites/delegate/ endpoint, which atomically creates the
+        invite and sets reason="delegated". This endpoint rejects that reason so state
+        can't be faked without a real invite.
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - core
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OnboardingSkipRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/OnboardingSkipRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/OnboardingSkipRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+      x-explicit-tags:
+      - core
   /api/users/{uuid}/scene_personalisation/:
     post:
       operationId: users_scene_personalisation_create
@@ -78837,6 +78914,12 @@ components:
         window_minutes:
           type: integer
           description: Window size in minutes — determines bucket interval.
+        check_interval_minutes:
+          type: integer
+          maximum: 60
+          minimum: 1
+          default: 5
+          description: How often the alert is evaluated, in minutes.
         evaluation_periods:
           type: integer
           maximum: 10
@@ -81094,6 +81177,40 @@ components:
         * `abort` - abort
         * `complete` - complete
         * `branch` - branch
+    OnboardingSkipRequest:
+      type: object
+      description: |-
+        Request body for POST /api/users/{id}/onboarding/skip/.
+
+        Source of truth for OpenAPI / generated TS / zod / MCP — bind this serializer at
+        runtime so the contract clients believe is enforced (length cap, choice validation,
+        no extra fields) is actually enforced server-side.
+      properties:
+        reason:
+          allOf:
+          - $ref: '#/components/schemas/ReasonEnum'
+          description: |-
+            Why the user is leaving onboarding. 'later' keeps them able to return; 'other' is a catch-all. 'delegated' is rejected here — use the delegate endpoint so the delegation invite is created atomically.
+
+            * `later` - Later
+            * `other` - Other
+        step_at_skip:
+          type: string
+          description: Onboarding step key the user was on when skipping, for analytics
+            only.
+          maxLength: 64
+      required:
+      - reason
+    OnboardingSkippedReasonEnum:
+      enum:
+      - delegated
+      - later
+      - other
+      type: string
+      description: |-
+        * `delegated` - Delegated to teammate
+        * `later` - Skipped for later
+        * `other` - Other
     OrderBy:
       enum:
       - distance
@@ -81480,6 +81597,27 @@ components:
       - is_expired
       - target_email
       - updated_at
+    OrganizationInviteDelegate:
+      type: object
+      properties:
+        target_email:
+          type: string
+          format: email
+          description: Email of the teammate who should complete setup on the inviter's
+            behalf. Receives a PostHog-branded delegation invite granting admin-level
+            membership on accept.
+        message:
+          type: string
+          description: Optional personal message included in the delegation email
+            (up to 1000 characters).
+          maxLength: 1000
+        step_at_delegation:
+          type: string
+          description: Onboarding step key the delegator was on when delegating, for
+            analytics only.
+          maxLength: 64
+      required:
+      - target_email
     OrganizationMember:
       type: object
       properties:
@@ -91397,6 +91535,40 @@ components:
           nullable: true
           description: Whether passkeys are enabled for 2FA authentication. Users
             can disable this to use only TOTP for 2FA while keeping passkeys for login.
+        onboarding_skipped_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+        onboarding_skipped_reason:
+          readOnly: true
+          nullable: true
+          oneOf:
+          - $ref: '#/components/schemas/OnboardingSkippedReasonEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        onboarding_skipped_organization_id:
+          type: string
+          format: uuid
+          readOnly: true
+          nullable: true
+        onboarding_delegated_to_invite:
+          type: string
+          format: uuid
+          readOnly: true
+          nullable: true
+        onboarding_delegated_to_organization_id:
+          type: string
+          format: uuid
+          readOnly: true
+          nullable: true
+          description: Organization ID of the pending delegation invite, if any. Used
+            by the frontend to scope the 'waiting for teammate' UI to the org where
+            delegation was initiated.
+        onboarding_delegation_accepted_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
         is_organization_first_user:
           type: boolean
           nullable: true
@@ -100723,6 +100895,14 @@ components:
           nullable: true
       title: RETENTION
       type: object
+    ReasonEnum:
+      enum:
+      - later
+      - other
+      type: string
+      description: |-
+        * `later` - Later
+        * `other` - Other
     ReasoningEffortEnum:
       enum:
       - low
@@ -115272,6 +115452,40 @@ components:
           nullable: true
           description: Whether passkeys are enabled for 2FA authentication. Users
             can disable this to use only TOTP for 2FA while keeping passkeys for login.
+        onboarding_skipped_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+        onboarding_skipped_reason:
+          readOnly: true
+          nullable: true
+          oneOf:
+          - $ref: '#/components/schemas/OnboardingSkippedReasonEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        onboarding_skipped_organization_id:
+          type: string
+          format: uuid
+          readOnly: true
+          nullable: true
+        onboarding_delegated_to_invite:
+          type: string
+          format: uuid
+          readOnly: true
+          nullable: true
+        onboarding_delegated_to_organization_id:
+          type: string
+          format: uuid
+          readOnly: true
+          nullable: true
+          description: Organization ID of the pending delegation invite, if any. Used
+            by the frontend to scope the 'waiting for teammate' UI to the org where
+            delegation was initiated.
+        onboarding_delegation_accepted_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
         is_organization_first_user:
           type: boolean
           nullable: true
@@ -115295,6 +115509,12 @@ components:
       - is_impersonated_read_only
       - is_impersonated_until
       - is_organization_first_user
+      - onboarding_delegated_to_invite
+      - onboarding_delegated_to_organization_id
+      - onboarding_delegation_accepted_at
+      - onboarding_skipped_at
+      - onboarding_skipped_organization_id
+      - onboarding_skipped_reason
       - organization
       - organizations
       - password

@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Invites.Bulk;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Invites.DelegateNamespace;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Invites.Item;
 using System.Collections.Generic;
 using System.IO;
@@ -20,6 +21,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Invites
         public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Invites.Bulk.BulkRequestBuilder Bulk
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Invites.Bulk.BulkRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The delegate property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Invites.DelegateNamespace.DelegateRequestBuilder Delegate
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Invites.DelegateNamespace.DelegateRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The EmptyPathSegment property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Invites.EmptyPathSegmentRequestBuilder EmptyPathSegment
