@@ -14,6 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The completed property</summary>
+        public bool? Completed { get; private set; }
         /// <summary>The computed_at property</summary>
         public DateTimeOffset? ComputedAt { get; private set; }
         /// <summary>The created_at property</summary>
@@ -25,18 +27,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The meta property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Meta { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingRecommendation_meta? Meta { get; private set; }
 #nullable restore
 #else
-        public UntypedNode Meta { get; private set; }
-#endif
-        /// <summary>The next_refresh_at property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? NextRefreshAt { get; private set; }
-#nullable restore
-#else
-        public string NextRefreshAt { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingRecommendation_meta Meta { get; private set; }
 #endif
         /// <summary>The type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -73,12 +67,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "completed", n => { Completed = n.GetBoolValue(); } },
                 { "computed_at", n => { ComputedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "dismissed_at", n => { DismissedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "meta", n => { Meta = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "next_refresh_at", n => { NextRefreshAt = n.GetStringValue(); } },
+                { "meta", n => { Meta = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingRecommendation_meta>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingRecommendation_meta.CreateFromDiscriminatorValue); } },
                 { "type", n => { Type = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };

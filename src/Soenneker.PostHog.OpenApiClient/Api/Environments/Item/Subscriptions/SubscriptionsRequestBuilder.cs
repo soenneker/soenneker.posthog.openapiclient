@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Subscriptions.Item;
+using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Subscriptions.Summary_quota;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -19,6 +20,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Subscriptions
         public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Subscriptions.EmptyPathSegmentRequestBuilder EmptyPathSegment
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Subscriptions.EmptyPathSegmentRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The summary_quota property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Subscriptions.Summary_quota.Summary_quotaRequestBuilder Summary_quota
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Subscriptions.Summary_quota.Summary_quotaRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.environments.item.subscriptions.item collection</summary>
         /// <param name="position">A unique integer value identifying this subscription.</param>

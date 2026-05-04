@@ -9,35 +9,27 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class BaselineSparklineDay : IAdditionalDataHolder, IParsable
+    public partial class ErrorTrackingRecommendation_meta : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The changed property</summary>
-        public int? Changed { get; set; }
-        /// <summary>The clean property</summary>
-        public int? Clean { get; set; }
-        /// <summary>The quarantined property</summary>
-        public int? Quarantined { get; set; }
-        /// <summary>The tolerated property</summary>
-        public int? Tolerated { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BaselineSparklineDay"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingRecommendation_meta"/> and sets the default values.
         /// </summary>
-        public BaselineSparklineDay()
+        public ErrorTrackingRecommendation_meta()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BaselineSparklineDay"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingRecommendation_meta"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.PostHog.OpenApiClient.Models.BaselineSparklineDay CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingRecommendation_meta CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.BaselineSparklineDay();
+            return new global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingRecommendation_meta();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -47,10 +39,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "changed", n => { Changed = n.GetIntValue(); } },
-                { "clean", n => { Clean = n.GetIntValue(); } },
-                { "quarantined", n => { Quarantined = n.GetIntValue(); } },
-                { "tolerated", n => { Tolerated = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -60,10 +48,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteIntValue("changed", Changed);
-            writer.WriteIntValue("clean", Clean);
-            writer.WriteIntValue("quarantined", Quarantined);
-            writer.WriteIntValue("tolerated", Tolerated);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

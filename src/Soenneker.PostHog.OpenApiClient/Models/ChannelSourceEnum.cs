@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `widget` - Widget* `email` - Email* `slack` - Slack* `teams` - Microsoft Teams</summary>
+    /// <summary>* `widget` - Widget* `email` - Email* `slack` - Slack* `teams` - Microsoft Teams* `github` - GitHub</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ChannelSourceEnum
     {
@@ -22,6 +22,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "teams")]
         #pragma warning disable CS1591
         Teams,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "github")]
+        #pragma warning disable CS1591
+        Github,
         #pragma warning restore CS1591
     }
 }

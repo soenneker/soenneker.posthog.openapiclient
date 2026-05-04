@@ -93,6 +93,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string EscalationReason { get; set; }
 #endif
+        /// <summary>The github_issue_number property</summary>
+        public int? GithubIssueNumber { get; private set; }
+        /// <summary>The github_repo property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? GithubRepo { get; private set; }
+#nullable restore
+#else
+        public string GithubRepo { get; private set; }
+#endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>The last_message_at property</summary>
@@ -222,6 +232,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "email_subject", n => { EmailSubject = n.GetStringValue(); } },
                 { "email_to", n => { EmailTo = n.GetStringValue(); } },
                 { "escalation_reason", n => { EscalationReason = n.GetStringValue(); } },
+                { "github_issue_number", n => { GithubIssueNumber = n.GetIntValue(); } },
+                { "github_repo", n => { GithubRepo = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "last_message_at", n => { LastMessageAt = n.GetDateTimeOffsetValue(); } },
                 { "last_message_text", n => { LastMessageText = n.GetStringValue(); } },

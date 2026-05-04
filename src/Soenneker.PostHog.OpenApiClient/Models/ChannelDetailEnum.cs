@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `slack_channel_message` - Channel message* `slack_bot_mention` - Bot mention* `slack_emoji_reaction` - Emoji reaction* `teams_channel_message` - Teams channel message* `teams_bot_mention` - Teams bot mention* `widget_embedded` - Widget* `widget_api` - API</summary>
+    /// <summary>* `slack_channel_message` - Channel message* `slack_bot_mention` - Bot mention* `slack_emoji_reaction` - Emoji reaction* `teams_channel_message` - Teams channel message* `teams_bot_mention` - Teams bot mention* `widget_embedded` - Widget* `widget_api` - API* `github_issue` - GitHub issue</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ChannelDetailEnum
     {
@@ -34,6 +34,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "widget_api")]
         #pragma warning disable CS1591
         Widget_api,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "github_issue")]
+        #pragma warning disable CS1591
+        Github_issue,
         #pragma warning restore CS1591
     }
 }

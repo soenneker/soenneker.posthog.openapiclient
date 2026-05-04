@@ -6,7 +6,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_definitions.Bulk_u
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_definitions.By_name;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_definitions.Golang;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_definitions.Item;
-using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_definitions.Promoted_properties;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_definitions.Primary_properties;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_definitions.Python;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_definitions.Typescript;
 using System.Collections.Generic;
@@ -41,10 +41,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_definitions
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_definitions.Golang.GolangRequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>The promoted_properties property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_definitions.Promoted_properties.Promoted_propertiesRequestBuilder Promoted_properties
+        /// <summary>The primary_properties property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_definitions.Primary_properties.Primary_propertiesRequestBuilder Primary_properties
         {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_definitions.Promoted_properties.Promoted_propertiesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_definitions.Primary_properties.Primary_propertiesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The python property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_definitions.Python.PythonRequestBuilder Python

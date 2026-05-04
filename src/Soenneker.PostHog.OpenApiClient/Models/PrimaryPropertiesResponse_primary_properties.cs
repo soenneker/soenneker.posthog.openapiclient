@@ -7,37 +7,30 @@ using System.IO;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
+    /// <summary>
+    /// Mapping from event name to the team-configured primary property for that event. Names without a configured primary property are omitted; callers should fall back to the core taxonomy defaults for those.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public partial class PromotedPropertiesResponse : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
+    public partial class PrimaryPropertiesResponse_primary_properties : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Mapping from event name to the team-configured promoted property for that event. Names without a configured promoted property are omitted; callers should fall back to the core taxonomy defaults for those.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PromotedPropertiesResponse_promoted_properties? PromotedProperties { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PromotedPropertiesResponse_promoted_properties PromotedProperties { get; set; }
-#endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PromotedPropertiesResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PrimaryPropertiesResponse_primary_properties"/> and sets the default values.
         /// </summary>
-        public PromotedPropertiesResponse()
+        public PrimaryPropertiesResponse_primary_properties()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PromotedPropertiesResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PrimaryPropertiesResponse_primary_properties"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.PostHog.OpenApiClient.Models.PromotedPropertiesResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.PostHog.OpenApiClient.Models.PrimaryPropertiesResponse_primary_properties CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PromotedPropertiesResponse();
+            return new global::Soenneker.PostHog.OpenApiClient.Models.PrimaryPropertiesResponse_primary_properties();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -47,7 +40,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "promoted_properties", n => { PromotedProperties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PromotedPropertiesResponse_promoted_properties>(global::Soenneker.PostHog.OpenApiClient.Models.PromotedPropertiesResponse_promoted_properties.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -57,7 +49,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PromotedPropertiesResponse_promoted_properties>("promoted_properties", PromotedProperties);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

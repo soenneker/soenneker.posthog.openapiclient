@@ -14,6 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The baseline_change_count property</summary>
+        public int? BaselineChangeCount { get; set; }
         /// <summary>The browser property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -36,8 +38,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? IsQuarantined { get; set; }
         /// <summary>The last_run_at property</summary>
         public DateTimeOffset? LastRunAt { get; set; }
-        /// <summary>The recent_diff_avg property</summary>
-        public double? RecentDiffAvg { get; set; }
+        /// <summary>The recent_drift_avg property</summary>
+        public double? RecentDriftAvg { get; set; }
         /// <summary>The run_type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -45,14 +47,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string RunType { get; set; }
-#endif
-        /// <summary>The sparkline property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.BaselineSparklineDay>? Sparkline { get; set; }
-#nullable restore
-#else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.BaselineSparklineDay> Sparkline { get; set; }
 #endif
         /// <summary>The thumbnail_hash property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -93,14 +87,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "baseline_change_count", n => { BaselineChangeCount = n.GetIntValue(); } },
                 { "browser", n => { Browser = n.GetStringValue(); } },
                 { "height", n => { Height = n.GetIntValue(); } },
                 { "identifier", n => { Identifier = n.GetStringValue(); } },
                 { "is_quarantined", n => { IsQuarantined = n.GetBoolValue(); } },
                 { "last_run_at", n => { LastRunAt = n.GetDateTimeOffsetValue(); } },
-                { "recent_diff_avg", n => { RecentDiffAvg = n.GetDoubleValue(); } },
+                { "recent_drift_avg", n => { RecentDriftAvg = n.GetDoubleValue(); } },
                 { "run_type", n => { RunType = n.GetStringValue(); } },
-                { "sparkline", n => { Sparkline = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.BaselineSparklineDay>(global::Soenneker.PostHog.OpenApiClient.Models.BaselineSparklineDay.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "thumbnail_hash", n => { ThumbnailHash = n.GetStringValue(); } },
                 { "tolerate_count_30d", n => { TolerateCount30d = n.GetIntValue(); } },
                 { "tolerate_count_90d", n => { TolerateCount90d = n.GetIntValue(); } },
@@ -114,14 +108,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteIntValue("baseline_change_count", BaselineChangeCount);
             writer.WriteStringValue("browser", Browser);
             writer.WriteIntValue("height", Height);
             writer.WriteStringValue("identifier", Identifier);
             writer.WriteBoolValue("is_quarantined", IsQuarantined);
             writer.WriteDateTimeOffsetValue("last_run_at", LastRunAt);
-            writer.WriteDoubleValue("recent_diff_avg", RecentDiffAvg);
+            writer.WriteDoubleValue("recent_drift_avg", RecentDriftAvg);
             writer.WriteStringValue("run_type", RunType);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.BaselineSparklineDay>("sparkline", Sparkline);
             writer.WriteStringValue("thumbnail_hash", ThumbnailHash);
             writer.WriteIntValue("tolerate_count_30d", TolerateCount30d);
             writer.WriteIntValue("tolerate_count_90d", TolerateCount90d);

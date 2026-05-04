@@ -12,6 +12,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Ticket
         #pragma warning disable CS1591
         Email,
         #pragma warning restore CS1591
+        [EnumMember(Value = "github")]
+        #pragma warning disable CS1591
+        Github,
+        #pragma warning restore CS1591
         [EnumMember(Value = "slack")]
         #pragma warning disable CS1591
         Slack,

@@ -2,6 +2,7 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Mcp_tools.Docs_search;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Mcp_tools.Item;
 using System.Collections.Generic;
 using System.IO;
@@ -15,6 +16,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Mcp_tools
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Mcp_toolsRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The docs_search property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Mcp_tools.Docs_search.Docs_searchRequestBuilder Docs_search
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Mcp_tools.Docs_search.Docs_searchRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.environments.item.mcp_tools.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Mcp_tools.Item.WithTool_nameItemRequestBuilder"/></returns>

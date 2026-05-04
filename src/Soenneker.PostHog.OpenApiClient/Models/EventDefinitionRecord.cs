@@ -54,10 +54,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Name of a single property on this event that PostHog UIs should display alongside the event (for example `$pathname` on `$pageview`). When set, surfaces like the session replay inspector show the property&apos;s value next to the event name without the user having to open the event.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PromotedProperty { get; set; }
+        public string? PrimaryProperty { get; set; }
 #nullable restore
 #else
-        public string PromotedProperty { get; set; }
+        public string PrimaryProperty { get; set; }
 #endif
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -104,7 +104,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "last_updated_at", n => { LastUpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "post_to_slack", n => { PostToSlack = n.GetBoolValue(); } },
-                { "promoted_property", n => { PromotedProperty = n.GetStringValue(); } },
+                { "primary_property", n => { PrimaryProperty = n.GetStringValue(); } },
                 { "tags", n => { Tags = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
             };
         }
@@ -120,7 +120,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("last_seen_at", LastSeenAt);
             writer.WriteStringValue("name", Name);
             writer.WriteBoolValue("post_to_slack", PostToSlack);
-            writer.WriteStringValue("promoted_property", PromotedProperty);
+            writer.WriteStringValue("primary_property", PrimaryProperty);
             writer.WriteObjectValue<UntypedNode>("tags", Tags);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -8,6 +8,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Ticket
     public enum GetChannel_detailQueryParameterType
     #pragma warning restore CS1591
     {
+        [EnumMember(Value = "github_issue")]
+        #pragma warning disable CS1591
+        Github_issue,
+        #pragma warning restore CS1591
         [EnumMember(Value = "slack_bot_mention")]
         #pragma warning disable CS1591
         Slack_bot_mention,

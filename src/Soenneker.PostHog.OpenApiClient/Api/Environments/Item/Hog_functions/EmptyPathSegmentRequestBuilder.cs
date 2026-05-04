@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Hog_functions
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{environment_%2Did}/hog_functions{?created_at*,created_by*,enabled*,id*,limit*,offset*,search*,type,updated_at*}", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{environment_%2Did}/hog_functions{?created_at*,created_by*,enabled*,id*,limit*,offset*,type,updated_at*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Hog_functions
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{environment_%2Did}/hog_functions{?created_at*,created_by*,enabled*,id*,limit*,offset*,search*,type,updated_at*}", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{environment_%2Did}/hog_functions{?created_at*,created_by*,enabled*,id*,limit*,offset*,type,updated_at*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedHogFunctionMinimalList"/></returns>
@@ -133,16 +133,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Hog_functions
             /// <summary>The initial index from which to return the results.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
-            /// <summary>A search term.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            [QueryParameter("search")]
-            public string? Search { get; set; }
-#nullable restore
-#else
-            [QueryParameter("search")]
-            public string Search { get; set; }
-#endif
             /// <summary>Multiple values may be separated by commas.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
