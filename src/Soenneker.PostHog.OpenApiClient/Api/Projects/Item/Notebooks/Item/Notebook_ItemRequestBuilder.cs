@@ -6,6 +6,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Activity;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Collab;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Hogql;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Kernel;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Sharing;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -13,10 +14,10 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\notebooks\{short_id}
+    /// Builds and executes requests for operations under \api\projects\{project_id}\notebooks\{notebook_-id}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class WithShort_ItemRequestBuilder : BaseRequestBuilder
+    public partial class Notebook_ItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The activity property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Activity.ActivityRequestBuilder Activity
@@ -43,20 +44,25 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Kernel.KernelRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The sharing property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Sharing.SharingRequestBuilder Sharing
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Sharing.SharingRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.WithShort_ItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Notebook_ItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithShort_ItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/notebooks/{short_id}", pathParameters)
+        public Notebook_ItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/notebooks/{notebook_%2Did}", pathParameters)
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.WithShort_ItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Notebook_ItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithShort_ItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/notebooks/{short_id}", rawUrl)
+        public Notebook_ItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/notebooks/{notebook_%2Did}", rawUrl)
         {
         }
     }

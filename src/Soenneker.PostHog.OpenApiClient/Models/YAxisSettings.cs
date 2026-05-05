@@ -12,6 +12,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class YAxisSettings : IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>The label property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Label { get; set; }
+#nullable restore
+#else
+        public string Label { get; set; }
+#endif
         /// <summary>The scale property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.Scale? Scale { get; set; }
         /// <summary>The showGridLines property</summary>
@@ -38,6 +46,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "label", n => { Label = n.GetStringValue(); } },
                 { "scale", n => { Scale = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Scale>(); } },
                 { "showGridLines", n => { ShowGridLines = n.GetBoolValue(); } },
                 { "showTicks", n => { ShowTicks = n.GetBoolValue(); } },
@@ -51,6 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("label", Label);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Scale>("scale", Scale);
             writer.WriteBoolValue("showGridLines", ShowGridLines);
             writer.WriteBoolValue("showTicks", ShowTicks);

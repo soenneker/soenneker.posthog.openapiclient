@@ -5,6 +5,7 @@ using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Repositories;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Repository_readiness;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Summaries;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -31,6 +32,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Repository_readiness.Repository_readinessRequestBuilder Repository_readiness
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Repository_readiness.Repository_readinessRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The summaries property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Summaries.SummariesRequestBuilder Summaries
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Summaries.SummariesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.tasks.item collection</summary>
         /// <param name="position">A UUID string identifying this task.</param>

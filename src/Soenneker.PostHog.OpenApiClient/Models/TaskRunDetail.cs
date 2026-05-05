@@ -35,7 +35,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>Execution environment* `local` - Local* `cloud` - Cloud</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailEnvironmentEnum? Environment { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunEnvironmentEnum? Environment { get; set; }
         /// <summary>Error message if execution failed</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -111,7 +111,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public UntypedNode State { get; set; }
 #endif
         /// <summary>* `not_started` - Not Started* `queued` - Queued* `in_progress` - In Progress* `completed` - Completed* `failed` - Failed* `cancelled` - Cancelled</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailStatusEnum? Status { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunStatusEnum? Status { get; set; }
         /// <summary>The task property</summary>
         public Guid? Task { get; private set; }
         /// <summary>The updated_at property</summary>
@@ -145,7 +145,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "branch", n => { Branch = n.GetStringValue(); } },
                 { "completed_at", n => { CompletedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "environment", n => { Environment = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailEnvironmentEnum>(); } },
+                { "environment", n => { Environment = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunEnvironmentEnum>(); } },
                 { "error_message", n => { ErrorMessage = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "log_url", n => { LogUrl = n.GetStringValue(); } },
@@ -156,7 +156,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "runtime_adapter", n => { RuntimeAdapter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail.TaskRunDetail_runtime_adapter>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail.TaskRunDetail_runtime_adapter.CreateFromDiscriminatorValue); } },
                 { "stage", n => { Stage = n.GetStringValue(); } },
                 { "state", n => { State = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailStatusEnum>(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunStatusEnum>(); } },
                 { "task", n => { Task = n.GetGuidValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
@@ -169,12 +169,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("branch", Branch);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailEnvironmentEnum>("environment", Environment);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunEnvironmentEnum>("environment", Environment);
             writer.WriteStringValue("error_message", ErrorMessage);
             writer.WriteObjectValue<UntypedNode>("output", Output);
             writer.WriteStringValue("stage", Stage);
             writer.WriteObjectValue<UntypedNode>("state", State);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailStatusEnum>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunStatusEnum>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
         /// <summary>

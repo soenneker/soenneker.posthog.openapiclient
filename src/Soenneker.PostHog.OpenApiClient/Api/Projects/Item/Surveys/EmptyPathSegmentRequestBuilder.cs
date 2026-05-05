@@ -122,7 +122,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys
             /// <summary>The initial index from which to return the results.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
-            /// <summary>A search term.</summary>
+            /// <summary>Fuzzy match against survey `name` and `description` using Postgres trigram word similarity. Supports typos and prefix-as-you-type.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("search")]

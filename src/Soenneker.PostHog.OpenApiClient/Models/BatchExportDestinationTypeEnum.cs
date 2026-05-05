@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `S3` - S3* `Snowflake` - Snowflake* `Postgres` - Postgres* `Redshift` - Redshift* `BigQuery` - Bigquery* `Databricks` - Databricks* `AzureBlob` - Azure Blob* `Workflows` - Workflows* `HTTP` - Http* `NoOp` - Noop</summary>
+    /// <summary>* `S3` - S3* `Snowflake` - Snowflake* `Postgres` - Postgres* `Redshift` - Redshift* `BigQuery` - Bigquery* `Databricks` - Databricks* `AzureBlob` - Azure Blob* `Workflows` - Workflows* `HTTP` - Http* `NoOp` - Noop* `FileDownload` - File Download</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum BatchExportDestinationTypeEnum
     {
@@ -46,6 +46,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "NoOp")]
         #pragma warning disable CS1591
         NoOp,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "FileDownload")]
+        #pragma warning disable CS1591
+        FileDownload,
         #pragma warning restore CS1591
     }
 }

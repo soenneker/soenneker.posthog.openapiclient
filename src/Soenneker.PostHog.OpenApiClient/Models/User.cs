@@ -12,6 +12,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class User : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? ActiveRealtimeNotificationTypes { get; private set; }
+#nullable restore
+#else
+        public List<string> ActiveRealtimeNotificationTypes { get; private set; }
+#endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The allow_impersonation property</summary>
@@ -275,6 +283,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "active_realtime_notification_types", n => { ActiveRealtimeNotificationTypes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "allow_impersonation", n => { AllowImpersonation = n.GetBoolValue(); } },
                 { "allow_sidebar_suggestions", n => { AllowSidebarSuggestions = n.GetBoolValue(); } },
                 { "anonymize_data", n => { AnonymizeData = n.GetBoolValue(); } },

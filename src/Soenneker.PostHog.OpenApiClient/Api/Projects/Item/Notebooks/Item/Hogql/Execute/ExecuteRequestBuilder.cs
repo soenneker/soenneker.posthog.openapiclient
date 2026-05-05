@@ -9,7 +9,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Hogql.Execute
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\notebooks\{short_id}\hogql\execute
+    /// Builds and executes requests for operations under \api\projects\{project_id}\notebooks\{notebook_-id}\hogql\execute
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ExecuteRequestBuilder : BaseRequestBuilder
@@ -24,7 +24,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Hogql
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ExecuteRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/notebooks/{short_id}/hogql/execute", pathParameters)
+        public ExecuteRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/notebooks/{notebook_%2Did}/hogql/execute", pathParameters)
         {
         }
         /// <summary>
@@ -32,7 +32,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Hogql
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ExecuteRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/notebooks/{short_id}/hogql/execute", rawUrl)
+        public ExecuteRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/notebooks/{notebook_%2Did}/hogql/execute", rawUrl)
         {
         }
     }

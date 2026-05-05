@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>If true, bypass cache and reclassify.</summary>
         public bool? ForceRefresh { get; set; }
-        /// <summary>Trace IDs or generation IDs to classify, depending on analysis_level.</summary>
+        /// <summary>Trace IDs (analysis_level=trace) or generation event UUIDs (analysis_level=generation).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? Ids { get; set; }

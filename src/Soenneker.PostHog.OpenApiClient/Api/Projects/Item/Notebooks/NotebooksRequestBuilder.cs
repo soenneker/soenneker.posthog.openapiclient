@@ -34,14 +34,14 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks
         }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.notebooks.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.WithShort_ItemRequestBuilder"/></returns>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.WithShort_ItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Notebook_ItemRequestBuilder"/></returns>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Notebook_ItemRequestBuilder this[Guid position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("short_id", position);
-                return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.WithShort_ItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("notebook_%2Did", position);
+                return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Notebook_ItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>

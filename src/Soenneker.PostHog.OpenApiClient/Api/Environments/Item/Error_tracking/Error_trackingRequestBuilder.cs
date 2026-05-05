@@ -9,6 +9,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.Group
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.Issues;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.Recommendations;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.Releases;
+using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.Settings;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.Spike_detection_config;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.Spike_events;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.Stack_frames;
@@ -60,6 +61,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking
         public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.Releases.ReleasesRequestBuilder Releases
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.Releases.ReleasesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The settings property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.Settings.SettingsRequestBuilder Settings
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.Settings.SettingsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The spike_detection_config property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.Spike_detection_config.Spike_detection_configRequestBuilder Spike_detection_config

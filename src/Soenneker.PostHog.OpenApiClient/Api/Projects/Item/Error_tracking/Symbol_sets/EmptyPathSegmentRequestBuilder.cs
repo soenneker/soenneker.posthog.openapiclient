@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Symbo
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/error_tracking/symbol_sets/{?limit*,offset*}", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/error_tracking/symbol_sets/{?limit*,offset*,order_by*,ref*,status*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Symbo
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/error_tracking/symbol_sets/{?limit*,offset*}", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/error_tracking/symbol_sets/{?limit*,offset*,order_by*,ref*,status*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedErrorTrackingSymbolSetList"/></returns>
@@ -120,6 +120,22 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Symbo
             /// <summary>The initial index from which to return the results.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
+            /// <summary>Sort order for symbol sets. Prefix with `-` for descending order.* `created_at` - created_at* `-created_at` - -created_at* `ref` - ref* `-ref` - -ref* `last_used` - last_used* `-last_used` - -last_used</summary>
+            [QueryParameter("order_by")]
+            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Symbol_sets.GetOrder_byQueryParameterType? OrderBy { get; set; }
+            /// <summary>Exact symbol set reference to filter by.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("ref")]
+            public string? Ref { get; set; }
+#nullable restore
+#else
+            [QueryParameter("ref")]
+            public string Ref { get; set; }
+#endif
+            /// <summary>Upload status filter: `valid` has an uploaded file, `invalid` is missing a file, `all` returns both.* `all` - all* `valid` - valid* `invalid` - invalid</summary>
+            [QueryParameter("status")]
+            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Symbol_sets.GetStatusQueryParameterType? Status { get; set; }
         }
     }
 }

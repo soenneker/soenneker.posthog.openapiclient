@@ -2,6 +2,7 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Llm_analytics.Sentiment.Generations;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -18,6 +19,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Llm_analytics.Se
         public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Llm_analytics.Sentiment.EmptyPathSegmentRequestBuilder EmptyPathSegment
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Llm_analytics.Sentiment.EmptyPathSegmentRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The generations property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Llm_analytics.Sentiment.Generations.GenerationsRequestBuilder Generations
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Llm_analytics.Sentiment.Generations.GenerationsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Llm_analytics.Sentiment.SentimentRequestBuilder"/> and sets the default values.

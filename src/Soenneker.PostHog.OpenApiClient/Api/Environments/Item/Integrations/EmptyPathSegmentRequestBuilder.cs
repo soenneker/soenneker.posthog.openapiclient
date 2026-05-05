@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Integrations
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{environment_%2Did}/integrations{?limit*,offset*}", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{environment_%2Did}/integrations{?kind*,limit*,offset*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Integrations
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{environment_%2Did}/integrations{?limit*,offset*}", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{environment_%2Did}/integrations{?kind*,limit*,offset*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedIntegrationConfigList"/></returns>
@@ -119,6 +119,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Integrations
         public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 
         #pragma warning restore CS1591
         {
+            /// <summary>* `apns` - Apple Push* `azure-blob` - Azure Blob* `bing-ads` - Bing Ads* `clickup` - Clickup* `customerio-app` - Customerio App* `customerio-track` - Customerio Track* `customerio-webhook` - Customerio Webhook* `databricks` - Databricks* `email` - Email* `firebase` - Firebase* `github` - Github* `gitlab` - Gitlab* `google-ads` - Google Ads* `google-cloud-service-account` - Google Cloud Service Account* `google-cloud-storage` - Google Cloud Storage* `google-pubsub` - Google Pubsub* `google-sheets` - Google Sheets* `hubspot` - Hubspot* `intercom` - Intercom* `jira` - Jira* `linear` - Linear* `linkedin-ads` - Linkedin Ads* `meta-ads` - Meta Ads* `pinterest-ads` - Pinterest Ads* `postgresql` - Postgresql* `reddit-ads` - Reddit Ads* `salesforce` - Salesforce* `slack` - Slack* `slack-posthog-code` - Slack Posthog Code* `snapchat` - Snapchat* `stripe` - Stripe* `tiktok-ads` - Tiktok Ads* `twilio` - Twilio* `vercel` - Vercel</summary>
+            [QueryParameter("kind")]
+            public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Integrations.GetKindQueryParameterType? Kind { get; set; }
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }

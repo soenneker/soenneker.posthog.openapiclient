@@ -70,6 +70,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? S3TableUseInvalidColumns { get; set; }
         /// <summary>Push a `session_id_v7 IN (SELECT … FROM events WHERE …)` predicate into the raw_sessions subquery to limit aggregation to sessions that participate in the outer events filter.</summary>
         public bool? SessionIdPushdown { get; set; }
+        /// <summary>Pre-filter raw_sessions aggregation by `session_id_v7 IN (cheap pre-aggregation that only materializes the columns referenced by the outer-WHERE session predicate)`. Useful when the breakdown/SELECT pulls in many session columns (e.g. `$channel_type`) but the filter only references one (e.g. `$entry_current_url`).</summary>
+        public bool? SessionPropertyPreAggregation { get; set; }
         /// <summary>The sessionsV2JoinMode property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SessionsV2JoinMode? SessionsV2JoinMode { get; set; }
         /// <summary>The sessionTableVersion property</summary>
@@ -122,6 +124,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "propertyGroupsMode", n => { PropertyGroupsMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupsMode>(); } },
                 { "s3TableUseInvalidColumns", n => { S3TableUseInvalidColumns = n.GetBoolValue(); } },
                 { "sessionIdPushdown", n => { SessionIdPushdown = n.GetBoolValue(); } },
+                { "sessionPropertyPreAggregation", n => { SessionPropertyPreAggregation = n.GetBoolValue(); } },
                 { "sessionTableVersion", n => { SessionTableVersion = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionTableVersion>(); } },
                 { "sessionsV2JoinMode", n => { SessionsV2JoinMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsV2JoinMode>(); } },
                 { "timings", n => { Timings = n.GetBoolValue(); } },
@@ -158,6 +161,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupsMode>("propertyGroupsMode", PropertyGroupsMode);
             writer.WriteBoolValue("s3TableUseInvalidColumns", S3TableUseInvalidColumns);
             writer.WriteBoolValue("sessionIdPushdown", SessionIdPushdown);
+            writer.WriteBoolValue("sessionPropertyPreAggregation", SessionPropertyPreAggregation);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsV2JoinMode>("sessionsV2JoinMode", SessionsV2JoinMode);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionTableVersion>("sessionTableVersion", SessionTableVersion);
             writer.WriteBoolValue("timings", Timings);

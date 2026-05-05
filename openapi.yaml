@@ -3933,6 +3933,49 @@ paths:
         description: The initial index from which to return the results.
         schema:
           type: integer
+      - in: query
+        name: order_by
+        schema:
+          enum:
+          - created_at
+          - -created_at
+          - ref
+          - -ref
+          - last_used
+          - -last_used
+          type: string
+          minLength: 1
+        description: |-
+          Sort order for symbol sets. Prefix with `-` for descending order.
+
+          * `created_at` - created_at
+          * `-created_at` - -created_at
+          * `ref` - ref
+          * `-ref` - -ref
+          * `last_used` - last_used
+          * `-last_used` - -last_used
+      - in: query
+        name: ref
+        schema:
+          type: string
+          minLength: 1
+        description: Exact symbol set reference to filter by.
+      - in: query
+        name: status
+        schema:
+          enum:
+          - all
+          - valid
+          - invalid
+          type: string
+          default: all
+          minLength: 1
+        description: |-
+          Upload status filter: `valid` has an uploaded file, `invalid` is missing a file, `all` returns both.
+
+          * `all` - all
+          * `valid` - valid
+          * `invalid` - invalid
       tags:
       - error_tracking
       - error_tracking
@@ -3964,7 +4007,6 @@ paths:
           '*/*':
             schema:
               $ref: '#/components/schemas/ErrorTrackingSymbolSet'
-        required: true
       security:
       - PersonalAPIKeyAuth:
         - error_tracking:write
@@ -4028,7 +4070,6 @@ paths:
           '*/*':
             schema:
               $ref: '#/components/schemas/ErrorTrackingSymbolSet'
-        required: true
       responses:
         '200':
           content:
@@ -4143,7 +4184,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ErrorTrackingSymbolSet'
+              $ref: '#/components/schemas/ErrorTrackingSymbolSetFinishUpload'
         required: true
       security:
       - PersonalAPIKeyAuth:
@@ -4166,7 +4207,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ErrorTrackingSymbolSet'
+              $ref: '#/components/schemas/ErrorTrackingSymbolSetBulkDelete'
         required: true
       security:
       - PersonalAPIKeyAuth:
@@ -4189,7 +4230,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ErrorTrackingSymbolSet'
+              $ref: '#/components/schemas/ErrorTrackingSymbolSetBulkFinishUpload'
         required: true
       security:
       - PersonalAPIKeyAuth:
@@ -4212,8 +4253,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ErrorTrackingSymbolSet'
-        required: true
+              $ref: '#/components/schemas/ErrorTrackingSymbolSetBulkStartUpload'
       security:
       - PersonalAPIKeyAuth:
         - error_tracking:write
@@ -4239,7 +4279,6 @@ paths:
           '*/*':
             schema:
               $ref: '#/components/schemas/ErrorTrackingSymbolSet'
-        required: true
       security:
       - PersonalAPIKeyAuth:
         - error_tracking:write
@@ -9266,6 +9305,80 @@ paths:
       operationId: environments_integrations_list
       parameters:
       - $ref: '#/components/parameters/EnvironmentIdPath'
+      - in: query
+        name: kind
+        schema:
+          type: string
+          enum:
+          - apns
+          - azure-blob
+          - bing-ads
+          - clickup
+          - customerio-app
+          - customerio-track
+          - customerio-webhook
+          - databricks
+          - email
+          - firebase
+          - github
+          - gitlab
+          - google-ads
+          - google-cloud-service-account
+          - google-cloud-storage
+          - google-pubsub
+          - google-sheets
+          - hubspot
+          - intercom
+          - jira
+          - linear
+          - linkedin-ads
+          - meta-ads
+          - pinterest-ads
+          - postgresql
+          - reddit-ads
+          - salesforce
+          - slack
+          - slack-posthog-code
+          - snapchat
+          - stripe
+          - tiktok-ads
+          - twilio
+          - vercel
+        description: |-
+          * `apns` - Apple Push
+          * `azure-blob` - Azure Blob
+          * `bing-ads` - Bing Ads
+          * `clickup` - Clickup
+          * `customerio-app` - Customerio App
+          * `customerio-track` - Customerio Track
+          * `customerio-webhook` - Customerio Webhook
+          * `databricks` - Databricks
+          * `email` - Email
+          * `firebase` - Firebase
+          * `github` - Github
+          * `gitlab` - Gitlab
+          * `google-ads` - Google Ads
+          * `google-cloud-service-account` - Google Cloud Service Account
+          * `google-cloud-storage` - Google Cloud Storage
+          * `google-pubsub` - Google Pubsub
+          * `google-sheets` - Google Sheets
+          * `hubspot` - Hubspot
+          * `intercom` - Intercom
+          * `jira` - Jira
+          * `linear` - Linear
+          * `linkedin-ads` - Linkedin Ads
+          * `meta-ads` - Meta Ads
+          * `pinterest-ads` - Pinterest Ads
+          * `postgresql` - Postgresql
+          * `reddit-ads` - Reddit Ads
+          * `salesforce` - Salesforce
+          * `slack` - Slack
+          * `slack-posthog-code` - Slack Posthog Code
+          * `snapchat` - Snapchat
+          * `stripe` - Stripe
+          * `tiktok-ads` - Tiktok Ads
+          * `twilio` - Twilio
+          * `vercel` - Vercel
       - name: limit
         required: false
         in: query
@@ -17543,6 +17656,51 @@ paths:
           description: ''
       x-explicit-tags:
       - error_tracking
+  /api/environments/{project_id}/error_tracking/settings/retrieve_settings/:
+    get:
+      operationId: error_tracking_settings_retrieve_settings_retrieve
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - error_tracking
+      - error_tracking
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorTrackingSettings'
+          description: ''
+      x-explicit-tags:
+      - error_tracking
+  /api/environments/{project_id}/error_tracking/settings/update_settings/:
+    patch:
+      operationId: error_tracking_settings_update_settings_partial_update
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - error_tracking
+      - error_tracking
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedErrorTrackingSettings'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedErrorTrackingSettings'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedErrorTrackingSettings'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorTrackingSettings'
+          description: ''
+      x-explicit-tags:
+      - error_tracking
   /api/environments/{project_id}/error_tracking/spike_detection_config/:
     get:
       operationId: error_tracking_spike_detection_config_list
@@ -20068,6 +20226,57 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SentimentBatchResponse'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+          description: ''
+        '500':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+          description: ''
+      x-explicit-tags:
+      - LLM Analytics
+      - llm_analytics
+  /api/environments/{project_id}/llm_analytics/sentiment/generations/:
+    post:
+      operationId: llm_analytics_sentiment_generations_create
+      description: |-
+        Fetch the recent $ai_generation events for the sentiment tab.
+
+        Backed by `_SENTIMENT_GENERATIONS_SQL` reading `posthog.ai_events` through
+        `execute_with_ai_events_fallback`, so heavy `input` values survive the
+        post-cutover strip on `events.properties.$ai_input`. Frontend callers
+        pass the same `HogQLFilters` payload they previously passed to
+        `api.query({kind: HogQLQuery, filters: ...})`.
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - LLM Analytics
+      - llm_analytics
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SentimentGenerationsRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SentimentGenerationsRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SentimentGenerationsRequest'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SentimentGenerationsResponse'
           description: ''
         '400':
           content:
@@ -24192,6 +24401,13 @@ paths:
           - joined_at
         description: Sort order. Defaults to `-joined_at`.
       - $ref: '#/components/parameters/OrganizationIdPath'
+      - in: query
+        name: search
+        schema:
+          type: string
+        description: Fuzzy match against member `first_name`, `last_name`, and `email`
+          using Postgres trigram word similarity. Supports typos and prefix-as-you-type.
+          Capped at 200 characters.
       tags:
       - core
       - platform_features
@@ -32327,7 +32543,50 @@ paths:
         description: The initial index from which to return the results.
         schema:
           type: integer
+      - in: query
+        name: order_by
+        schema:
+          enum:
+          - created_at
+          - -created_at
+          - ref
+          - -ref
+          - last_used
+          - -last_used
+          type: string
+          minLength: 1
+        description: |-
+          Sort order for symbol sets. Prefix with `-` for descending order.
+
+          * `created_at` - created_at
+          * `-created_at` - -created_at
+          * `ref` - ref
+          * `-ref` - -ref
+          * `last_used` - last_used
+          * `-last_used` - -last_used
       - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: ref
+        schema:
+          type: string
+          minLength: 1
+        description: Exact symbol set reference to filter by.
+      - in: query
+        name: status
+        schema:
+          enum:
+          - all
+          - valid
+          - invalid
+          type: string
+          default: all
+          minLength: 1
+        description: |-
+          Upload status filter: `valid` has an uploaded file, `invalid` is missing a file, `all` returns both.
+
+          * `all` - all
+          * `valid` - valid
+          * `invalid` - invalid
       tags:
       - error_tracking
       - error_tracking
@@ -32358,7 +32617,6 @@ paths:
           '*/*':
             schema:
               $ref: '#/components/schemas/ErrorTrackingSymbolSet'
-        required: true
       security:
       - PersonalAPIKeyAuth:
         - error_tracking:write
@@ -32420,7 +32678,6 @@ paths:
           '*/*':
             schema:
               $ref: '#/components/schemas/ErrorTrackingSymbolSet'
-        required: true
       responses:
         '200':
           content:
@@ -32531,7 +32788,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ErrorTrackingSymbolSet'
+              $ref: '#/components/schemas/ErrorTrackingSymbolSetFinishUpload'
         required: true
       security:
       - PersonalAPIKeyAuth:
@@ -32553,7 +32810,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ErrorTrackingSymbolSet'
+              $ref: '#/components/schemas/ErrorTrackingSymbolSetBulkDelete'
         required: true
       security:
       - PersonalAPIKeyAuth:
@@ -32575,7 +32832,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ErrorTrackingSymbolSet'
+              $ref: '#/components/schemas/ErrorTrackingSymbolSetBulkFinishUpload'
         required: true
       security:
       - PersonalAPIKeyAuth:
@@ -32597,8 +32854,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ErrorTrackingSymbolSet'
-        required: true
+              $ref: '#/components/schemas/ErrorTrackingSymbolSetBulkStartUpload'
       security:
       - PersonalAPIKeyAuth:
         - error_tracking:write
@@ -32623,7 +32879,6 @@ paths:
           '*/*':
             schema:
               $ref: '#/components/schemas/ErrorTrackingSymbolSet'
-        required: true
       security:
       - PersonalAPIKeyAuth:
         - error_tracking:write
@@ -40496,6 +40751,80 @@ paths:
     get:
       operationId: integrations_list
       parameters:
+      - in: query
+        name: kind
+        schema:
+          type: string
+          enum:
+          - apns
+          - azure-blob
+          - bing-ads
+          - clickup
+          - customerio-app
+          - customerio-track
+          - customerio-webhook
+          - databricks
+          - email
+          - firebase
+          - github
+          - gitlab
+          - google-ads
+          - google-cloud-service-account
+          - google-cloud-storage
+          - google-pubsub
+          - google-sheets
+          - hubspot
+          - intercom
+          - jira
+          - linear
+          - linkedin-ads
+          - meta-ads
+          - pinterest-ads
+          - postgresql
+          - reddit-ads
+          - salesforce
+          - slack
+          - slack-posthog-code
+          - snapchat
+          - stripe
+          - tiktok-ads
+          - twilio
+          - vercel
+        description: |-
+          * `apns` - Apple Push
+          * `azure-blob` - Azure Blob
+          * `bing-ads` - Bing Ads
+          * `clickup` - Clickup
+          * `customerio-app` - Customerio App
+          * `customerio-track` - Customerio Track
+          * `customerio-webhook` - Customerio Webhook
+          * `databricks` - Databricks
+          * `email` - Email
+          * `firebase` - Firebase
+          * `github` - Github
+          * `gitlab` - Gitlab
+          * `google-ads` - Google Ads
+          * `google-cloud-service-account` - Google Cloud Service Account
+          * `google-cloud-storage` - Google Cloud Storage
+          * `google-pubsub` - Google Pubsub
+          * `google-sheets` - Google Sheets
+          * `hubspot` - Hubspot
+          * `intercom` - Intercom
+          * `jira` - Jira
+          * `linear` - Linear
+          * `linkedin-ads` - Linkedin Ads
+          * `meta-ads` - Meta Ads
+          * `pinterest-ads` - Pinterest Ads
+          * `postgresql` - Postgresql
+          * `reddit-ads` - Reddit Ads
+          * `salesforce` - Salesforce
+          * `slack` - Slack
+          * `slack-posthog-code` - Slack Posthog Code
+          * `snapchat` - Snapchat
+          * `stripe` - Stripe
+          * `tiktok-ads` - Tiktok Ads
+          * `twilio` - Twilio
+          * `vercel` - Vercel
       - name: limit
         required: false
         in: query
@@ -42536,6 +42865,137 @@ paths:
           description: ''
       x-explicit-tags:
       - notebooks
+  /api/projects/{project_id}/notebooks/{notebook_id}/sharing/:
+    get:
+      operationId: notebooks_sharing_list
+      parameters:
+      - in: path
+        name: notebook_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - core
+      - notebooks
+      security:
+      - PersonalAPIKeyAuth:
+        - sharing_configuration:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SharingConfiguration'
+          description: ''
+      x-explicit-tags:
+      - core
+  /api/projects/{project_id}/notebooks/{notebook_id}/sharing/passwords/:
+    post:
+      operationId: notebooks_sharing_passwords_create
+      description: Create a new password for the sharing configuration.
+      parameters:
+      - in: path
+        name: notebook_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - core
+      - notebooks
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SharingConfiguration'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SharingConfiguration'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SharingConfiguration'
+      security:
+      - PersonalAPIKeyAuth:
+        - sharing_configuration:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SharingConfiguration'
+          description: ''
+      x-explicit-tags:
+      - core
+  /api/projects/{project_id}/notebooks/{notebook_id}/sharing/passwords/{password_id}/:
+    delete:
+      operationId: notebooks_sharing_passwords_destroy
+      description: Delete a password from the sharing configuration.
+      parameters:
+      - in: path
+        name: notebook_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      - in: path
+        name: password_id
+        schema:
+          type: string
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - core
+      - notebooks
+      security:
+      - PersonalAPIKeyAuth:
+        - sharing_configuration:write
+      responses:
+        '204':
+          description: No response body
+      x-explicit-tags:
+      - core
+  /api/projects/{project_id}/notebooks/{notebook_id}/sharing/refresh/:
+    post:
+      operationId: notebooks_sharing_refresh_create
+      parameters:
+      - in: path
+        name: notebook_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - core
+      - notebooks
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SharingConfiguration'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SharingConfiguration'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SharingConfiguration'
+      security:
+      - PersonalAPIKeyAuth:
+        - sharing_configuration:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SharingConfiguration'
+          description: ''
+      x-explicit-tags:
+      - core
   /api/projects/{project_id}/notebooks/{short_id}/:
     get:
       operationId: notebooks_retrieve
@@ -47368,12 +47828,12 @@ paths:
         schema:
           type: integer
       - $ref: '#/components/parameters/ProjectIdPath'
-      - name: search
-        required: false
-        in: query
-        description: A search term.
+      - in: query
+        name: search
         schema:
           type: string
+        description: Fuzzy match against survey `name` and `description` using Postgres
+          trigram word similarity. Supports typos and prefix-as-you-type.
       tags:
       - surveys
       - surveys
@@ -48218,8 +48678,8 @@ paths:
         schema:
           type: boolean
         description: When true, list internal tasks instead of user-facing ones. Honored
-          only in debug environments; ignored in production. Defaults to excluding
-          internal tasks.
+          in debug environments or for staff users; ignored for non-staff users in
+          production. Defaults to excluding internal tasks.
       - name: limit
         required: false
         in: query
@@ -49245,9 +49705,9 @@ paths:
       - tasks
       security:
       - PersonalAPIKeyAuth:
-        - task:read
+        - task:write
       - PersonalAPIKeyAuth:
-        - task:read
+        - task:write
       responses:
         '200':
           content:
@@ -49676,6 +50136,53 @@ paths:
               schema:
                 $ref: '#/components/schemas/RepositoryReadinessResponse'
           description: Repository readiness status
+      x-explicit-tags:
+      - tasks
+  /api/projects/{project_id}/tasks/summaries/:
+    post:
+      operationId: tasks_summaries_create
+      description: 'Returns summary for the requested tasks: `id`, `title`, `repository`,
+        `created_at`, `updated_at`, and the latest run''s `status` and `environment`.'
+      summary: Fetch task summaries by ID
+      parameters:
+      - in: query
+        name: limit
+        schema:
+          type: integer
+        description: Page size for the paginated response.
+      - in: query
+        name: offset
+        schema:
+          type: integer
+        description: Offset into the result set for pagination.
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - tasks
+      - tasks
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskSummariesRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TaskSummariesRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TaskSummariesRequest'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - task:read
+      - PersonalAPIKeyAuth:
+        - task:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedTaskSummaryList'
+          description: Summary fields for the requested tasks
       x-explicit-tags:
       - tasks
   /api/projects/{project_id}/uploaded_media/:
@@ -55879,6 +56386,7 @@ components:
             * `Workflows` - Workflows
             * `HTTP` - Http
             * `NoOp` - Noop
+            * `FileDownload` - File Download
         config:
           description: A JSON field to store all configuration parameters required
             to access a BatchExportDestination.
@@ -55903,6 +56411,7 @@ components:
       - Workflows
       - HTTP
       - NoOp
+      - FileDownload
       type: string
       description: |-
         * `S3` - S3
@@ -55915,6 +56424,7 @@ components:
         * `Workflows` - Workflows
         * `HTTP` - Http
         * `NoOp` - Noop
+        * `FileDownload` - File Download
     BatchExportRun:
       type: object
       description: Serializer for a BatchExportRun model.
@@ -57299,6 +57809,11 @@ components:
           default: null
           allOf:
           - $ref: '#/components/schemas/ChartAxis'
+          nullable: true
+        xAxisLabel:
+          default: null
+          title: Xaxislabel
+          type: string
           nullable: true
         yAxis:
           default: null
@@ -65383,6 +65898,33 @@ components:
       - project
       - team_id
       - version
+    ErrorTrackingSettings:
+      type: object
+      properties:
+        project_rate_limit_value:
+          type: integer
+          minimum: 1
+          nullable: true
+          description: Maximum number of exception events ingested per bucket for
+            the entire project. Null removes the limit.
+        project_rate_limit_bucket_size_minutes:
+          type: integer
+          minimum: 1
+          nullable: true
+          description: Bucket window over which the project-wide rate limit applies,
+            in minutes.
+        per_issue_rate_limit_value:
+          type: integer
+          minimum: 1
+          nullable: true
+          description: Maximum number of exception events ingested per bucket for
+            each individual issue. Null removes the limit.
+        per_issue_rate_limit_bucket_size_minutes:
+          type: integer
+          minimum: 1
+          nullable: true
+          description: Bucket window over which the per-issue rate limit applies,
+            in minutes.
     ErrorTrackingSimilarIssuesQuery:
       additionalProperties: false
       properties:
@@ -65676,37 +66218,123 @@ components:
           type: string
           format: uuid
           readOnly: true
+          description: Unique symbol set ID.
         ref:
           type: string
+          readOnly: true
+          description: Reference used to match stack frames to this symbol set.
         team_id:
           type: integer
           readOnly: true
+          description: Project/team ID that owns this symbol set.
         created_at:
           type: string
           format: date-time
           readOnly: true
+          description: When this symbol set row was created.
         last_used:
           type: string
           format: date-time
+          readOnly: true
           nullable: true
-        storage_ptr:
-          type: string
-          nullable: true
+          description: When this symbol set was last used to resolve a stack frame.
         failure_reason:
           type: string
+          readOnly: true
           nullable: true
+          description: Reason symbol lookup failed, if the source map is missing or
+            invalid.
+        has_uploaded_file:
+          type: boolean
+          description: Whether this symbol set has an uploaded source map file available
+            to download.
+          readOnly: true
         release:
           type: object
           additionalProperties: true
           nullable: true
-          description: Release associated with this symbol set
+          description: Release associated with this symbol set, if any.
           readOnly: true
       required:
       - created_at
+      - failure_reason
+      - has_uploaded_file
       - id
+      - last_used
       - ref
       - release
       - team_id
+    ErrorTrackingSymbolSetBulkDelete:
+      type: object
+      properties:
+        ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          description: Symbol set IDs to delete.
+      required:
+      - ids
+    ErrorTrackingSymbolSetBulkFinishUpload:
+      type: object
+      properties:
+        content_hashes:
+          type: object
+          additionalProperties:
+            type: string
+          description: Map of symbol set ID to uploaded content hash.
+      required:
+      - content_hashes
+    ErrorTrackingSymbolSetBulkStartUpload:
+      type: object
+      properties:
+        chunk_ids:
+          type: array
+          items:
+            type: string
+          description: Legacy list of symbol set references to upload, all associated
+            with `release_id`.
+        release_id:
+          type: string
+          nullable: true
+          description: Optional error tracking release ID used with `chunk_ids`.
+        symbol_sets:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorTrackingSymbolSetUpload'
+          description: Symbol sets to upload with per-symbol release IDs and content
+            hashes.
+        force:
+          type: boolean
+          default: false
+          description: Whether to overwrite uploaded symbol sets whose content hash
+            changed.
+    ErrorTrackingSymbolSetFinishUpload:
+      type: object
+      properties:
+        content_hash:
+          type: string
+          description: Hash of the uploaded symbol set content.
+      required:
+      - content_hash
+    ErrorTrackingSymbolSetUpload:
+      type: object
+      properties:
+        chunk_id:
+          type: string
+          description: Symbol set reference to upload.
+        release_id:
+          type: string
+          nullable: true
+          description: Optional error tracking release ID associated with this symbol
+            set.
+        content_hash:
+          type: string
+          nullable: true
+          description: Optional hash of the symbol set content, used to skip unchanged
+            uploads.
+      required:
+      - chunk_id
     Evaluation:
       type: object
       properties:
@@ -75322,6 +75950,16 @@ components:
           title: Sessionidpushdown
           type: boolean
           nullable: true
+        sessionPropertyPreAggregation:
+          default: null
+          description: Pre-filter raw_sessions aggregation by `session_id_v7 IN (cheap
+            pre-aggregation that only materializes the columns referenced by the outer-WHERE
+            session predicate)`. Useful when the breakdown/SELECT pulls in many session
+            columns (e.g. `$channel_type`) but the filter only references one (e.g.
+            `$entry_current_url`).
+          title: Sessionpropertypreaggregation
+          type: boolean
+          nullable: true
         sessionTableVersion:
           default: null
           allOf:
@@ -79394,7 +80032,7 @@ components:
           allOf:
           - $ref: '#/components/schemas/RuleTypeEnum'
           description: |-
-            Rule kind: severity_sampling, path_drop, or rate_limit (rate_limit reserved for a future release).
+            Rule kind: severity_sampling, path_drop, or rate_limit (caps logs/sec for scope_service at ingestion).
 
             * `severity_sampling` - Severity-based reduction
             * `path_drop` - Path exclusion
@@ -79424,7 +80062,10 @@ components:
             path string as ingestion (url.path, http.path, http.route, path). When
             set, each pattern is tested only against that string attribute on the
             log record. For severity_sampling: object with `actions` per severity
-            level and optional `always_keep`. rate_limit is reserved.'
+            level and optional `always_keep`. For rate_limit: object with required
+            `logs_per_second` (integer 1–1000000) and optional `burst_logs` (integer
+            ≥ logs_per_second, max 60000000); rate_limit rules require non-null `scope_service`
+            matching `service.name` on each log line.'
         version:
           type: integer
           readOnly: true
@@ -84709,6 +85350,29 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TaskRunDetail'
+    PaginatedTaskSummaryList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaskSummary'
     PaginatedTeamBasicList:
       type: object
       required:
@@ -86676,6 +87340,33 @@ components:
           type: string
         project:
           type: string
+    PatchedErrorTrackingSettings:
+      type: object
+      properties:
+        project_rate_limit_value:
+          type: integer
+          minimum: 1
+          nullable: true
+          description: Maximum number of exception events ingested per bucket for
+            the entire project. Null removes the limit.
+        project_rate_limit_bucket_size_minutes:
+          type: integer
+          minimum: 1
+          nullable: true
+          description: Bucket window over which the project-wide rate limit applies,
+            in minutes.
+        per_issue_rate_limit_value:
+          type: integer
+          minimum: 1
+          nullable: true
+          description: Maximum number of exception events ingested per bucket for
+            each individual issue. Null removes the limit.
+        per_issue_rate_limit_bucket_size_minutes:
+          type: integer
+          minimum: 1
+          nullable: true
+          description: Bucket window over which the per-issue rate limit applies,
+            in minutes.
     PatchedErrorTrackingSpikeDetectionConfig:
       type: object
       properties:
@@ -86726,30 +87417,42 @@ components:
           type: string
           format: uuid
           readOnly: true
+          description: Unique symbol set ID.
         ref:
           type: string
+          readOnly: true
+          description: Reference used to match stack frames to this symbol set.
         team_id:
           type: integer
           readOnly: true
+          description: Project/team ID that owns this symbol set.
         created_at:
           type: string
           format: date-time
           readOnly: true
+          description: When this symbol set row was created.
         last_used:
           type: string
           format: date-time
+          readOnly: true
           nullable: true
-        storage_ptr:
-          type: string
-          nullable: true
+          description: When this symbol set was last used to resolve a stack frame.
         failure_reason:
           type: string
+          readOnly: true
           nullable: true
+          description: Reason symbol lookup failed, if the source map is missing or
+            invalid.
+        has_uploaded_file:
+          type: boolean
+          description: Whether this symbol set has an uploaded source map file available
+            to download.
+          readOnly: true
         release:
           type: object
           additionalProperties: true
           nullable: true
-          description: Release associated with this symbol set
+          description: Release associated with this symbol set, if any.
           readOnly: true
     PatchedEvaluation:
       type: object
@@ -88480,7 +89183,7 @@ components:
           allOf:
           - $ref: '#/components/schemas/RuleTypeEnum'
           description: |-
-            Rule kind: severity_sampling, path_drop, or rate_limit (rate_limit reserved for a future release).
+            Rule kind: severity_sampling, path_drop, or rate_limit (caps logs/sec for scope_service at ingestion).
 
             * `severity_sampling` - Severity-based reduction
             * `path_drop` - Path exclusion
@@ -88510,7 +89213,10 @@ components:
             path string as ingestion (url.path, http.path, http.route, path). When
             set, each pattern is tested only against that string attribute on the
             log record. For severity_sampling: object with `actions` per severity
-            level and optional `always_keep`. rate_limit is reserved.'
+            level and optional `always_keep`. For rate_limit: object with required
+            `logs_per_second` (integer 1–1000000) and optional `burst_logs` (integer
+            ≥ logs_per_second, max 60000000); rate_limit rules require non-null `scope_service`
+            matching `service.name` on each log line.'
         version:
           type: integer
           readOnly: true
@@ -91760,6 +92466,13 @@ components:
           type: boolean
           nullable: true
           readOnly: true
+        active_realtime_notification_types:
+          type: array
+          items:
+            type: string
+          readOnly: true
+          description: Real-time notification types that currently have a live dispatch
+            site. Drives the in-app notifications settings UI. Read-only.
         pending_invites:
           type: array
           items:
@@ -106162,6 +106875,26 @@ components:
             $ref: '#/components/schemas/SentimentResult'
       required:
       - results
+    SentimentGenerationsRequest:
+      type: object
+      description: |-
+        Filter shape mirrors the previous frontend `api.query({filters: ...})` payload.
+
+        `filters` accepts the same `HogQLFilters` schema that the legacy frontend HogQL
+        path used (dateRange, filterTestAccounts, properties), so the migration is
+        behaviour-preserving for callers that pass a request unchanged.
+      properties:
+        filters: {}
+    SentimentGenerationsResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            type: array
+            items: {}
+      required:
+      - results
     SentimentRequest:
       type: object
       properties:
@@ -106169,7 +106902,8 @@ components:
           type: array
           items:
             type: string
-          description: Trace IDs or generation IDs to classify, depending on analysis_level.
+          description: Trace IDs (analysis_level=trace) or generation event UUIDs
+            (analysis_level=generation).
           maxItems: 5
           minItems: 1
         analysis_level:
@@ -111137,10 +111871,10 @@ components:
           description: Branch name for the run
           maxLength: 255
         status:
-          $ref: '#/components/schemas/TaskRunDetailStatusEnum'
+          $ref: '#/components/schemas/TaskRunStatusEnum'
         environment:
           allOf:
-          - $ref: '#/components/schemas/TaskRunDetailEnvironmentEnum'
+          - $ref: '#/components/schemas/TaskRunEnvironmentEnum'
           description: |-
             Execution environment
 
@@ -111220,7 +111954,12 @@ components:
       - runtime_adapter
       - task
       - updated_at
-    TaskRunDetailEnvironmentEnum:
+    TaskRunDetailProviderEnum:
+      enum:
+      - anthropic
+      - openai
+      type: string
+    TaskRunEnvironmentEnum:
       enum:
       - local
       - cloud
@@ -111228,27 +111967,6 @@ components:
       description: |-
         * `local` - Local
         * `cloud` - Cloud
-    TaskRunDetailProviderEnum:
-      enum:
-      - anthropic
-      - openai
-      type: string
-    TaskRunDetailStatusEnum:
-      enum:
-      - not_started
-      - queued
-      - in_progress
-      - completed
-      - failed
-      - cancelled
-      type: string
-      description: |-
-        * `not_started` - Not Started
-        * `queued` - Queued
-        * `in_progress` - In Progress
-        * `completed` - Completed
-        * `failed` - Failed
-        * `cancelled` - Cancelled
     TaskRunErrorResponse:
       type: object
       properties:
@@ -111360,6 +112078,38 @@ components:
             maxLength: 128
           description: Identifiers for run artifacts that should be attached to the
             next user message delivered to the sandbox.
+    TaskRunStatusEnum:
+      enum:
+      - not_started
+      - queued
+      - in_progress
+      - completed
+      - failed
+      - cancelled
+      type: string
+      description: |-
+        * `not_started` - Not Started
+        * `queued` - Queued
+        * `in_progress` - In Progress
+        * `completed` - Completed
+        * `failed` - Failed
+        * `cancelled` - Cancelled
+    TaskRunSummary:
+      type: object
+      properties:
+        status:
+          nullable: true
+          oneOf:
+          - $ref: '#/components/schemas/TaskRunStatusEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        environment:
+          nullable: true
+          oneOf:
+          - $ref: '#/components/schemas/TaskRunEnvironmentEnum'
+          - $ref: '#/components/schemas/NullEnum'
+      required:
+      - environment
+      - status
     TaskRunUpdateEnvironmentEnum:
       enum:
       - local
@@ -111543,6 +112293,53 @@ components:
           description: Prepared staged uploads for the requested artifacts
       required:
       - artifacts
+    TaskSummariesRequest:
+      type: object
+      properties:
+        ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          description: Task IDs to fetch summaries for (max 5000). Response is paginated;
+            follow the `next` cursor to retrieve all results.
+          maxItems: 5000
+      required:
+      - ids
+    TaskSummary:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        title:
+          type: string
+          readOnly: true
+        repository:
+          type: string
+          readOnly: true
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        latest_run:
+          allOf:
+          - $ref: '#/components/schemas/TaskRunSummary'
+          nullable: true
+          readOnly: true
+      required:
+      - created_at
+      - id
+      - latest_run
+      - repository
+      - title
+      - updated_at
     TaxonomicFilterGroupType:
       enum:
       - metadata
@@ -115687,12 +116484,20 @@ components:
           type: boolean
           nullable: true
           readOnly: true
+        active_realtime_notification_types:
+          type: array
+          items:
+            type: string
+          readOnly: true
+          description: Real-time notification types that currently have a live dispatch
+            site. Drives the in-app notifications settings UI. Read-only.
         pending_invites:
           type: array
           items:
             $ref: '#/components/schemas/PendingInvite'
           readOnly: true
       required:
+      - active_realtime_notification_types
       - date_joined
       - distinct_id
       - email
@@ -118581,6 +119386,11 @@ components:
     YAxisSettings:
       additionalProperties: false
       properties:
+        label:
+          default: null
+          title: Label
+          type: string
+          nullable: true
         scale:
           default: null
           allOf:
@@ -119318,7 +120128,8 @@ components:
         url:
           type: string
           format: uri
-          description: Presigned URL to download the source map file
+          description: Presigned URL to download the source map file. Use immediately;
+            expires after one hour.
       required:
       - url
     _User:

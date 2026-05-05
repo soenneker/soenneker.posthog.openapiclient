@@ -27,7 +27,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? Integration { get; set; }
         /// <summary>The integration_id property</summary>
         public int? IntegrationId { get; set; }
-        /// <summary>A choice of supported BatchExportDestination types.* `S3` - S3* `Snowflake` - Snowflake* `Postgres` - Postgres* `Redshift` - Redshift* `BigQuery` - Bigquery* `Databricks` - Databricks* `AzureBlob` - Azure Blob* `Workflows` - Workflows* `HTTP` - Http* `NoOp` - Noop</summary>
+        /// <summary>A choice of supported BatchExportDestination types.* `S3` - S3* `Snowflake` - Snowflake* `Postgres` - Postgres* `Redshift` - Redshift* `BigQuery` - Bigquery* `Databricks` - Databricks* `AzureBlob` - Azure Blob* `Workflows` - Workflows* `HTTP` - Http* `NoOp` - Noop* `FileDownload` - File Download</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationTypeEnum? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestination"/> and sets the default values.

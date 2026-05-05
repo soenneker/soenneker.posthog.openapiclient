@@ -5,7 +5,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>* `local` - Local* `cloud` - Cloud</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum TaskRunDetailEnvironmentEnum
+    public enum TaskRunEnvironmentEnum
     {
         [EnumMember(Value = "local")]
         #pragma warning disable CS1591

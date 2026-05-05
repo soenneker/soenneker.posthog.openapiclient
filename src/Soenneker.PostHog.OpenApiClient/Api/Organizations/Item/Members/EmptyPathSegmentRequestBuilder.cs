@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Members
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/organizations/{%2Did}/members{?limit*,offset*,order*}", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/organizations/{%2Did}/members{?limit*,offset*,order*,search*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Members
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/organizations/{%2Did}/members{?limit*,offset*,order*}", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/organizations/{%2Did}/members{?limit*,offset*,order*,search*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedOrganizationMemberList"/></returns>
@@ -87,6 +87,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Members
             /// <summary>Sort order. Defaults to `-joined_at`.</summary>
             [QueryParameter("order")]
             public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Members.GetOrderQueryParameterType? Order { get; set; }
+            /// <summary>Fuzzy match against member `first_name`, `last_name`, and `email` using Postgres trigram word similarity. Supports typos and prefix-as-you-type. Capped at 200 characters.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("search")]
+            public string? Search { get; set; }
+#nullable restore
+#else
+            [QueryParameter("search")]
+            public string Search { get; set; }
+#endif
         }
     }
 }

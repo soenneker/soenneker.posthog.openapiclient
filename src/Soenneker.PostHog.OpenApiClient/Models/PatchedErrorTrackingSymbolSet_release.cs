@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Release associated with this symbol set
+    /// Release associated with this symbol set, if any.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedErrorTrackingSymbolSet_release : IAdditionalDataHolder, IParsable

@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Type-specific JSON. For path_drop: object with required `patterns` (list of regex strings) and optional `match_attribute_key` (string). When `match_attribute_key` is omitted or empty, patterns match the same virtual path string as ingestion (url.path, http.path, http.route, path). When set, each pattern is tested only against that string attribute on the log record. For severity_sampling: object with `actions` per severity level and optional `always_keep`. rate_limit is reserved.</summary>
+        /// <summary>Type-specific JSON. For path_drop: object with required `patterns` (list of regex strings) and optional `match_attribute_key` (string). When `match_attribute_key` is omitted or empty, patterns match the same virtual path string as ingestion (url.path, http.path, http.route, path). When set, each pattern is tested only against that string attribute on the log record. For severity_sampling: object with `actions` per severity level and optional `always_keep`. For rate_limit: object with required `logs_per_second` (integer 1–1000000) and optional `burst_logs` (integer ≥ logs_per_second, max 60000000); rate_limit rules require non-null `scope_service` matching `service.name` on each log line.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public UntypedNode? Config { get; set; }
@@ -40,7 +40,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Lower numbers are evaluated first; the first matching rule wins. Omit to append after existing rules.</summary>
         public int? Priority { get; set; }
-        /// <summary>Rule kind: severity_sampling, path_drop, or rate_limit (rate_limit reserved for a future release).* `severity_sampling` - Severity-based reduction* `path_drop` - Path exclusion* `rate_limit` - Rate limit</summary>
+        /// <summary>Rule kind: severity_sampling, path_drop, or rate_limit (caps logs/sec for scope_service at ingestion).* `severity_sampling` - Severity-based reduction* `path_drop` - Path exclusion* `rate_limit` - Rate limit</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.RuleTypeEnum? RuleType { get; set; }
         /// <summary>Optional list of predicates over string attributes, e.g. [{&quot;key&quot;:&quot;http.route&quot;,&quot;op&quot;:&quot;eq&quot;,&quot;value&quot;:&quot;/api&quot;}].</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

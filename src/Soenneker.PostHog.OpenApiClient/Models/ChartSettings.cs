@@ -78,6 +78,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ChartAxis XAxis { get; set; }
 #endif
+        /// <summary>The xAxisLabel property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? XAxisLabel { get; set; }
+#nullable restore
+#else
+        public string XAxisLabel { get; set; }
+#endif
         /// <summary>The yAxis property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -121,6 +129,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "showYAxisBorder", n => { ShowYAxisBorder = n.GetBoolValue(); } },
                 { "stackBars100", n => { StackBars100 = n.GetBoolValue(); } },
                 { "xAxis", n => { XAxis = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartAxis>(global::Soenneker.PostHog.OpenApiClient.Models.ChartAxis.CreateFromDiscriminatorValue); } },
+                { "xAxisLabel", n => { XAxisLabel = n.GetStringValue(); } },
                 { "yAxis", n => { YAxis = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ChartAxis>(global::Soenneker.PostHog.OpenApiClient.Models.ChartAxis.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "yAxisAtZero", n => { YAxisAtZero = n.GetBoolValue(); } },
             };
@@ -147,6 +156,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("showYAxisBorder", ShowYAxisBorder);
             writer.WriteBoolValue("stackBars100", StackBars100);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartAxis>("xAxis", XAxis);
+            writer.WriteStringValue("xAxisLabel", XAxisLabel);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ChartAxis>("yAxis", YAxis);
             writer.WriteBoolValue("yAxisAtZero", YAxisAtZero);
         }

@@ -11,7 +11,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Collab
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\notebooks\{short_id}\collab
+    /// Builds and executes requests for operations under \api\projects\{project_id}\notebooks\{notebook_-id}\collab
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CollabRequestBuilder : BaseRequestBuilder
@@ -31,7 +31,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Colla
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public CollabRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/notebooks/{short_id}/collab", pathParameters)
+        public CollabRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/notebooks/{notebook_%2Did}/collab", pathParameters)
         {
         }
         /// <summary>
@@ -39,7 +39,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Colla
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public CollabRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/notebooks/{short_id}/collab", rawUrl)
+        public CollabRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/notebooks/{notebook_%2Did}/collab", rawUrl)
         {
         }
     }
