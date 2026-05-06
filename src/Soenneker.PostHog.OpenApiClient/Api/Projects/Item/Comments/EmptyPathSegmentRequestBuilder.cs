@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/comments/{?cursor*,item_id*,scope*,search*,source_comment*}", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/comments/{?completed*,cursor*,item_id*,kind*,scope*,search*,source_comment*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/comments/{?cursor*,item_id*,scope*,search*,source_comment*}", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/comments/{?completed*,cursor*,item_id*,kind*,scope*,search*,source_comment*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedCommentList"/></returns>
@@ -114,6 +114,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments
         public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 
         #pragma warning restore CS1591
         {
+            /// <summary>When kind=task, restrict to open (incomplete) or completed tasks. Ignored when kind is not &apos;task&apos;. Defaults to &apos;any&apos; (no filter).* `any` - any* `open` - open* `completed` - completed</summary>
+            [QueryParameter("completed")]
+            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments.GetCompletedQueryParameterType? Completed { get; set; }
             /// <summary>The pagination cursor value.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -134,6 +137,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments
             [QueryParameter("item_id")]
             public string ItemId { get; set; }
 #endif
+            /// <summary>Filter by comment kind. &apos;task&apos; returns only items intentionally created as actionable. &apos;comment&apos; excludes tasks. Defaults to &apos;any&apos; (no filter).* `any` - any* `comment` - comment* `task` - task</summary>
+            [QueryParameter("kind")]
+            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments.GetKindQueryParameterType? Kind { get; set; }
             /// <summary>Filter by resource type (e.g. Dashboard, FeatureFlag, Insight, Replay).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

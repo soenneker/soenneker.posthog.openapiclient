@@ -50,17 +50,17 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Batch_exports
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedBatchExportList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedBatchExportList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExport"/></returns>
-        /// <param name="body">Serializer for a BatchExport model.</param>
+        /// <param name="body">Request body for create/partial_update on BatchExportViewSet.Mirrors the writeable fields of `BatchExportSerializer` but uses a polymorphic`destination` schema so integration_id is marked required on the types that needit. Responses continue to use `BatchExportSerializer`.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.BatchExport?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.BatchExport body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.BatchExport?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.BatchExport> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.BatchExport body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.BatchExport> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -85,16 +85,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Batch_exports
             return requestInfo;
         }
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">Serializer for a BatchExport model.</param>
+        /// <param name="body">Request body for create/partial_update on BatchExportViewSet.Mirrors the writeable fields of `BatchExportSerializer` but uses a polymorphic`destination` schema so integration_id is marked required on the types that needit. Responses continue to use `BatchExportSerializer`.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.BatchExport body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.BatchExport body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));

@@ -20,6 +20,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         Campaign,
         #pragma warning restore CS1591
+        [EnumMember(Value = "ad_group")]
+        #pragma warning disable CS1591
+        Ad_group,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ad")]
+        #pragma warning disable CS1591
+        Ad,
+        #pragma warning restore CS1591
         [EnumMember(Value = "medium")]
         #pragma warning disable CS1591
         Medium,

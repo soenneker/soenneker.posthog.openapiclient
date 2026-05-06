@@ -8,6 +8,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Integrations
     public enum GetKindQueryParameterType
     #pragma warning restore CS1591
     {
+        [EnumMember(Value = "anthropic")]
+        #pragma warning disable CS1591
+        Anthropic,
+        #pragma warning restore CS1591
         [EnumMember(Value = "apns")]
         #pragma warning disable CS1591
         Apns,

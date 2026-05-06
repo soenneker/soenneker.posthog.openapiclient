@@ -14,6 +14,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>ISO timestamp when the task was marked complete. Only meaningful when is_task is true. Read-only — toggled via the /complete and /reopen actions, not via PATCH.</summary>
+        public DateTimeOffset? CompletedAt { get; private set; }
+        /// <summary>The user who marked this task complete. Null for open tasks and non-task comments.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CompletedBy { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CompletedBy { get; private set; }
+#endif
         /// <summary>The content property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -36,6 +46,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? Deleted { get; set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
+        /// <summary>Whether this comment is an actionable task that can be marked complete. Tasks render with a checkbox in the UI and can be filtered as a separate kind. Cannot be set on replies (source_comment) or emoji reactions. Immutable after creation.</summary>
+        public bool? IsTask { get; set; }
         /// <summary>The item_context property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -113,11 +125,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "completed_at", n => { CompletedAt = n.GetDateTimeOffsetValue(); } },
+                { "completed_by", n => { CompletedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
                 { "content", n => { Content = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
+                { "is_task", n => { IsTask = n.GetBoolValue(); } },
                 { "item_context", n => { ItemContext = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "item_id", n => { ItemId = n.GetStringValue(); } },
                 { "mentions", n => { Mentions = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
@@ -137,6 +152,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("content", Content);
             writer.WriteBoolValue("deleted", Deleted);
+            writer.WriteBoolValue("is_task", IsTask);
             writer.WriteObjectValue<UntypedNode>("item_context", ItemContext);
             writer.WriteStringValue("item_id", ItemId);
             writer.WriteCollectionOfPrimitiveValues<int?>("mentions", Mentions);

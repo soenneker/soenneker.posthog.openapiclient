@@ -49,6 +49,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Set to true to soft-delete. Subscriptions cannot be hard-deleted.</summary>
         public bool? Deleted { get; set; }
+        /// <summary>Whether the subscription is active. Set to false to pause delivery without deleting. Auto-set to false when the delivery integration becomes invalid.</summary>
+        public bool? Enabled { get; set; }
         /// <summary>How often to deliver: daily, weekly, monthly, or yearly.* `daily` - Daily* `weekly` - Weekly* `monthly` - Monthly* `yearly` - Yearly</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionFrequencyEnum? Frequency { get; set; }
         /// <summary>The id property</summary>
@@ -158,6 +160,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "dashboard", n => { Dashboard = n.GetIntValue(); } },
                 { "dashboard_export_insights", n => { DashboardExportInsights = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
+                { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "frequency", n => { Frequency = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionFrequencyEnum>(); } },
                 { "id", n => { Id = n.GetIntValue(); } },
                 { "insight", n => { Insight = n.GetIntValue(); } },
@@ -190,6 +193,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("dashboard", Dashboard);
             writer.WriteCollectionOfPrimitiveValues<int?>("dashboard_export_insights", DashboardExportInsights);
             writer.WriteBoolValue("deleted", Deleted);
+            writer.WriteBoolValue("enabled", Enabled);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionFrequencyEnum>("frequency", Frequency);
             writer.WriteIntValue("insight", Insight);
             writer.WriteIntValue("integration_id", IntegrationId);

@@ -2,6 +2,8 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments.Item.Complete;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments.Item.Reopen;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments.Item.ThreadNamespace;
 using System.Collections.Generic;
 using System.IO;
@@ -15,10 +17,20 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments.Item
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CommentsItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The complete property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments.Item.Complete.CompleteRequestBuilder Complete
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments.Item.Complete.CompleteRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The EmptyPathSegment property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments.Item.EmptyPathSegmentRequestBuilder EmptyPathSegment
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments.Item.EmptyPathSegmentRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The reopen property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments.Item.Reopen.ReopenRequestBuilder Reopen
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments.Item.Reopen.ReopenRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The thread property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments.Item.ThreadNamespace.ThreadRequestBuilder Thread

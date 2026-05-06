@@ -20,8 +20,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string AggregationProperty { get; set; }
 #endif
-        /// <summary>The type of property to aggregate on (event or person). Defaults to event.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.AggregationPropertyType? AggregationPropertyType { get; set; }
+        /// <summary>The type of property to aggregate on (event, person or data_warehouse). Defaults to event.</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.AggregationPropertyType1? AggregationPropertyType { get; set; }
         /// <summary>The aggregation type to use for retention</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.AggregationType? AggregationType { get; set; }
         /// <summary>The cumulative property</summary>
@@ -87,7 +87,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public RetentionFilter()
         {
-            AggregationPropertyType = global::Soenneker.PostHog.OpenApiClient.Models.AggregationPropertyType.Event;
+            AggregationPropertyType = global::Soenneker.PostHog.OpenApiClient.Models.AggregationPropertyType1.Event;
             AggregationType = global::Soenneker.PostHog.OpenApiClient.Models.AggregationType.Count;
             Period = global::Soenneker.PostHog.OpenApiClient.Models.RetentionPeriod.Day;
         }
@@ -110,7 +110,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "aggregationProperty", n => { AggregationProperty = n.GetStringValue(); } },
-                { "aggregationPropertyType", n => { AggregationPropertyType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AggregationPropertyType>(); } },
+                { "aggregationPropertyType", n => { AggregationPropertyType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AggregationPropertyType1>(); } },
                 { "aggregationType", n => { AggregationType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AggregationType>(); } },
                 { "cumulative", n => { Cumulative = n.GetBoolValue(); } },
                 { "customAggregationTarget", n => { CustomAggregationTarget = n.GetBoolValue(); } },
@@ -139,7 +139,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("aggregationProperty", AggregationProperty);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AggregationPropertyType>("aggregationPropertyType", AggregationPropertyType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AggregationPropertyType1>("aggregationPropertyType", AggregationPropertyType);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AggregationType>("aggregationType", AggregationType);
             writer.WriteBoolValue("cumulative", Cumulative);
             writer.WriteBoolValue("customAggregationTarget", CustomAggregationTarget);

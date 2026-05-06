@@ -8,24 +8,24 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Serializer for an BatchExportDestination model.
+    /// Serializer for an BatchExportDestination model.The `config` field is polymorphic and typed only for destinations that keepcredentials in the linked Integration (currently Databricks and AzureBlob).Other destination types accept the same JSON shape but without a typedOpenAPI schema. Secret fields are stripped from `config` on read.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class BatchExportDestination : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>A JSON field to store all configuration parameters required to access a BatchExportDestination.</summary>
+        /// <summary>Destination-specific configuration. Fields depend on `type`. Credentials for integration-backed destinations (Databricks, AzureBlob) are NOT stored here — they live in the linked Integration. Secret fields are stripped from responses.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Config { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfig? Config { get; set; }
 #nullable restore
 #else
-        public UntypedNode Config { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfig Config { get; set; }
 #endif
-        /// <summary>The integration property</summary>
+        /// <summary>The integration for this destination.</summary>
         public int? Integration { get; set; }
-        /// <summary>The integration_id property</summary>
+        /// <summary>ID of a team-scoped Integration providing credentials. Required for Databricks and AzureBlob destinations; optional for BigQuery; unused for other types.</summary>
         public int? IntegrationId { get; set; }
         /// <summary>A choice of supported BatchExportDestination types.* `S3` - S3* `Snowflake` - Snowflake* `Postgres` - Postgres* `Redshift` - Redshift* `BigQuery` - Bigquery* `Databricks` - Databricks* `AzureBlob` - Azure Blob* `Workflows` - Workflows* `HTTP` - Http* `NoOp` - Noop* `FileDownload` - File Download</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationTypeEnum? Type { get; set; }
@@ -54,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "config", n => { Config = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfig>(global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfig.CreateFromDiscriminatorValue); } },
                 { "integration", n => { Integration = n.GetIntValue(); } },
                 { "integration_id", n => { IntegrationId = n.GetIntValue(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationTypeEnum>(); } },
@@ -67,7 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<UntypedNode>("config", Config);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfig>("config", Config);
             writer.WriteIntValue("integration", Integration);
             writer.WriteIntValue("integration_id", IntegrationId);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationTypeEnum>("type", Type);

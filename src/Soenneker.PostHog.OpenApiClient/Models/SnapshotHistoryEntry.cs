@@ -22,6 +22,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Branch { get; set; }
 #endif
+        /// <summary>The change_kind property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ChangeKind { get; set; }
+#nullable restore
+#else
+        public string ChangeKind { get; set; }
+#endif
         /// <summary>The commit_sha property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -62,8 +70,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The run_id property</summary>
         public Guid? RunId { get; set; }
+        /// <summary>The size_mismatch property</summary>
+        public bool? SizeMismatch { get; set; }
         /// <summary>The snapshot_id property</summary>
         public Guid? SnapshotId { get; set; }
+        /// <summary>The ssim_score property</summary>
+        public double? SsimScore { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SnapshotHistoryEntry"/> and sets the default values.
         /// </summary>
@@ -90,6 +102,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "branch", n => { Branch = n.GetStringValue(); } },
+                { "change_kind", n => { ChangeKind = n.GetStringValue(); } },
                 { "commit_sha", n => { CommitSha = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "current_artifact", n => { CurrentArtifact = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Artifact>(global::Soenneker.PostHog.OpenApiClient.Models.Artifact.CreateFromDiscriminatorValue); } },
@@ -98,7 +111,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "result", n => { Result = n.GetStringValue(); } },
                 { "review_state", n => { ReviewState = n.GetStringValue(); } },
                 { "run_id", n => { RunId = n.GetGuidValue(); } },
+                { "size_mismatch", n => { SizeMismatch = n.GetBoolValue(); } },
                 { "snapshot_id", n => { SnapshotId = n.GetGuidValue(); } },
+                { "ssim_score", n => { SsimScore = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -109,6 +124,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("branch", Branch);
+            writer.WriteStringValue("change_kind", ChangeKind);
             writer.WriteStringValue("commit_sha", CommitSha);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Artifact>("current_artifact", CurrentArtifact);
@@ -117,7 +133,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("result", Result);
             writer.WriteStringValue("review_state", ReviewState);
             writer.WriteGuidValue("run_id", RunId);
+            writer.WriteBoolValue("size_mismatch", SizeMismatch);
             writer.WriteGuidValue("snapshot_id", SnapshotId);
+            writer.WriteDoubleValue("ssim_score", SsimScore);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

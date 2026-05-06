@@ -2,6 +2,9 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Integrations.Item.Anthropic_managed_agent_environments;
+using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Integrations.Item.Anthropic_managed_agent_vaults;
+using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Integrations.Item.Anthropic_managed_agents;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Integrations.Item.Channels;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Integrations.Item.Clickup_lists;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Integrations.Item.Clickup_spaces;
@@ -28,6 +31,21 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Integrations.Ite
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class IntegrationsItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The anthropic_managed_agent_environments property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Integrations.Item.Anthropic_managed_agent_environments.Anthropic_managed_agent_environmentsRequestBuilder Anthropic_managed_agent_environments
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Integrations.Item.Anthropic_managed_agent_environments.Anthropic_managed_agent_environmentsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The anthropic_managed_agent_vaults property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Integrations.Item.Anthropic_managed_agent_vaults.Anthropic_managed_agent_vaultsRequestBuilder Anthropic_managed_agent_vaults
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Integrations.Item.Anthropic_managed_agent_vaults.Anthropic_managed_agent_vaultsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The anthropic_managed_agents property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Integrations.Item.Anthropic_managed_agents.Anthropic_managed_agentsRequestBuilder Anthropic_managed_agents
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Integrations.Item.Anthropic_managed_agents.Anthropic_managed_agentsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The channels property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Integrations.Item.Channels.ChannelsRequestBuilder Channels
         {
