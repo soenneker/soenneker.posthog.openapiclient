@@ -17,14 +17,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When the person was first created</summary>
         public DateTimeOffset? CreatedAt { get; set; }
-        /// <summary>Debug information (only available when debug=true and DEBUG=True)</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertiesAtTimeDebug? Debug { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertiesAtTimeDebug Debug { get; set; }
-#endif
         /// <summary>All distinct IDs associated with this person</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -89,7 +81,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "debug", n => { Debug = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertiesAtTimeDebug>(global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertiesAtTimeDebug.CreateFromDiscriminatorValue); } },
                 { "distinct_ids", n => { DistinctIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "id", n => { Id = n.GetIntValue(); } },
                 { "last_seen_at", n => { LastSeenAt = n.GetDateTimeOffsetValue(); } },
@@ -107,7 +98,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertiesAtTimeDebug>("debug", Debug);
             writer.WriteCollectionOfPrimitiveValues<string>("distinct_ids", DistinctIds);
             writer.WriteIntValue("id", Id);
             writer.WriteDateTimeOffsetValue("last_seen_at", LastSeenAt);

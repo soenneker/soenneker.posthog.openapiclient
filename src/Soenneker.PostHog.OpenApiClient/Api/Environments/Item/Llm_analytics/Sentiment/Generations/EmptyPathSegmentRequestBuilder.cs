@@ -33,9 +33,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Llm_analytics.Se
         public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{environment_%2Did}/llm_analytics/sentiment/generations", rawUrl)
         {
         }
-        /// <summary>
-        /// Fetch the recent $ai_generation events for the sentiment tab.Backed by `_SENTIMENT_GENERATIONS_SQL` reading `posthog.ai_events` through`execute_with_ai_events_fallback`, so heavy `input` values survive thepost-cutover strip on `events.properties.$ai_input`. Frontend callerspass the same `HogQLFilters` payload they previously passed to`api.query({kind: HogQLQuery, filters: ...})`.
-        /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SentimentGenerationsResponse"/></returns>
         /// <param name="body">Filter shape mirrors the previous frontend `api.query({filters: ...})` payload.`filters` accepts the same `HogQLFilters` schema that the legacy frontend HogQLpath used (dateRange, filterTestAccounts, properties), so the migration isbehaviour-preserving for callers that pass a request unchanged.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -60,9 +57,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Llm_analytics.Se
             };
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SentimentGenerationsResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SentimentGenerationsResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
-        /// <summary>
-        /// Fetch the recent $ai_generation events for the sentiment tab.Backed by `_SENTIMENT_GENERATIONS_SQL` reading `posthog.ai_events` through`execute_with_ai_events_fallback`, so heavy `input` values survive thepost-cutover strip on `events.properties.$ai_input`. Frontend callerspass the same `HogQLFilters` payload they previously passed to`api.query({kind: HogQLQuery, filters: ...})`.
-        /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">Filter shape mirrors the previous frontend `api.query({filters: ...})` payload.`filters` accepts the same `HogQLFilters` schema that the legacy frontend HogQLpath used (dateRange, filterTestAccounts, properties), so the migration isbehaviour-preserving for callers that pass a request unchanged.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

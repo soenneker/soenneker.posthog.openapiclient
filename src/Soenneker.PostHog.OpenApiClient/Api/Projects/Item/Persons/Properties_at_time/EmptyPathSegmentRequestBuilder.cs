@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Properties_a
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/persons/properties_at_time/?timestamp={timestamp}{&debug*,distinct_id*,format*,include_set_once*,person_id*}", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/persons/properties_at_time/?timestamp={timestamp}{&distinct_id*,format*,include_set_once*,person_id*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,11 +30,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Properties_a
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/persons/properties_at_time/?timestamp={timestamp}{&debug*,distinct_id*,format*,include_set_once*,person_id*}", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/persons/properties_at_time/?timestamp={timestamp}{&distinct_id*,format*,include_set_once*,person_id*}", rawUrl)
         {
         }
         /// <summary>
-        /// Get person properties as they existed at a specific point in time.This endpoint reconstructs person properties by querying ClickHouse eventsfor $set and $set_once operations up to the specified timestamp.Query parameters:- distinct_id: The distinct_id of the person- timestamp: ISO datetime string for the point in time (e.g., &quot;2023-06-15T14:30:00Z&quot;)- include_set_once: Whether to handle $set_once operations (default: false)- debug: Whether to include debug information with raw events (default: false)
+        /// Get person properties as they existed at a specific point in time.This endpoint reconstructs person properties by querying ClickHouse eventsfor $set and $set_once operations up to the specified timestamp.Query parameters:- distinct_id: The distinct_id of the person- timestamp: ISO datetime string for the point in time (e.g., &quot;2023-06-15T14:30:00Z&quot;)- include_set_once: Whether to handle $set_once operations (default: false)
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertiesAtTimeResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Properties_a
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertiesAtTimeResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertiesAtTimeResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Get person properties as they existed at a specific point in time.This endpoint reconstructs person properties by querying ClickHouse eventsfor $set and $set_once operations up to the specified timestamp.Query parameters:- distinct_id: The distinct_id of the person- timestamp: ISO datetime string for the point in time (e.g., &quot;2023-06-15T14:30:00Z&quot;)- include_set_once: Whether to handle $set_once operations (default: false)- debug: Whether to include debug information with raw events (default: false)
+        /// Get person properties as they existed at a specific point in time.This endpoint reconstructs person properties by querying ClickHouse eventsfor $set and $set_once operations up to the specified timestamp.Query parameters:- distinct_id: The distinct_id of the person- timestamp: ISO datetime string for the point in time (e.g., &quot;2023-06-15T14:30:00Z&quot;)- include_set_once: Whether to handle $set_once operations (default: false)
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -80,14 +80,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Properties_a
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Properties_at_time.EmptyPathSegmentRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Get person properties as they existed at a specific point in time.This endpoint reconstructs person properties by querying ClickHouse eventsfor $set and $set_once operations up to the specified timestamp.Query parameters:- distinct_id: The distinct_id of the person- timestamp: ISO datetime string for the point in time (e.g., &quot;2023-06-15T14:30:00Z&quot;)- include_set_once: Whether to handle $set_once operations (default: false)- debug: Whether to include debug information with raw events (default: false)
+        /// Get person properties as they existed at a specific point in time.This endpoint reconstructs person properties by querying ClickHouse eventsfor $set and $set_once operations up to the specified timestamp.Query parameters:- distinct_id: The distinct_id of the person- timestamp: ISO datetime string for the point in time (e.g., &quot;2023-06-15T14:30:00Z&quot;)- include_set_once: Whether to handle $set_once operations (default: false)
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 
         {
-            /// <summary>Whether to include debug information with raw events (only works when DEBUG=True, default: false)</summary>
-            [QueryParameter("debug")]
-            public bool? Debug { get; set; }
             /// <summary>The distinct_id of the person (mutually exclusive with person_id)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

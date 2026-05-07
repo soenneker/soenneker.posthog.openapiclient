@@ -60,6 +60,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ShortId { get; set; }
 #endif
+        /// <summary>Render date-time columns (timestamp, created_at, last_seen, last_seen_at, session_start, session_end) as absolute date+time instead of relative (&quot;X ago&quot;). The toggle is exposed in the column header menu only on EventsQuery / ActorsQuery sources.</summary>
+        public bool? ShowAbsoluteTime { get; set; }
         /// <summary>Show the kebab menu at the end of the row</summary>
         public bool? ShowActions { get; set; }
         /// <summary>Show a button to configure the table&apos;s columns if possible</summary>
@@ -173,6 +175,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SavedInsightNode_kind>(); } },
                 { "propertiesViaUrl", n => { PropertiesViaUrl = n.GetBoolValue(); } },
                 { "shortId", n => { ShortId = n.GetStringValue(); } },
+                { "showAbsoluteTime", n => { ShowAbsoluteTime = n.GetBoolValue(); } },
                 { "showActions", n => { ShowActions = n.GetBoolValue(); } },
                 { "showColumnConfigurator", n => { ShowColumnConfigurator = n.GetBoolValue(); } },
                 { "showCorrelationTable", n => { ShowCorrelationTable = n.GetBoolValue(); } },
@@ -226,6 +229,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SavedInsightNode_kind>("kind", Kind);
             writer.WriteBoolValue("propertiesViaUrl", PropertiesViaUrl);
             writer.WriteStringValue("shortId", ShortId);
+            writer.WriteBoolValue("showAbsoluteTime", ShowAbsoluteTime);
             writer.WriteBoolValue("showActions", ShowActions);
             writer.WriteBoolValue("showColumnConfigurator", ShowColumnConfigurator);
             writer.WriteBoolValue("showCorrelationTable", ShowCorrelationTable);

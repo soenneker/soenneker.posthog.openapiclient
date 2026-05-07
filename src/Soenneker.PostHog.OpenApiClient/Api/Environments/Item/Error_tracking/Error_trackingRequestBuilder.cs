@@ -7,6 +7,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.Finge
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.GitProviderFileLinks;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.Grouping_rules;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.Issues;
+using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.Query;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.Recommendations;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.Releases;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.Settings;
@@ -51,6 +52,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking
         public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.Issues.IssuesRequestBuilder Issues
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.Issues.IssuesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The query property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.Query.QueryRequestBuilder Query
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.Query.QueryRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The recommendations property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.Recommendations.RecommendationsRequestBuilder Recommendations

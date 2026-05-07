@@ -80,6 +80,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNode.DataTableNode_response Response { get; set; }
 #endif
+        /// <summary>Render date-time columns (timestamp, created_at, last_seen, last_seen_at, session_start, session_end) as absolute date+time instead of relative (&quot;X ago&quot;). The toggle is exposed in the column header menu only on EventsQuery / ActorsQuery sources.</summary>
+        public bool? ShowAbsoluteTime { get; set; }
         /// <summary>Show the kebab menu at the end of the row</summary>
         public bool? ShowActions { get; set; }
         /// <summary>Show a button to configure the table&apos;s columns if possible</summary>
@@ -186,6 +188,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "pinnedColumns", n => { PinnedColumns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "propertiesViaUrl", n => { PropertiesViaUrl = n.GetBoolValue(); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNode.DataTableNode_response>(global::Soenneker.PostHog.OpenApiClient.Models.DataTableNode.DataTableNode_response.CreateFromDiscriminatorValue); } },
+                { "showAbsoluteTime", n => { ShowAbsoluteTime = n.GetBoolValue(); } },
                 { "showActions", n => { ShowActions = n.GetBoolValue(); } },
                 { "showColumnConfigurator", n => { ShowColumnConfigurator = n.GetBoolValue(); } },
                 { "showCount", n => { ShowCount = n.GetBoolValue(); } },
@@ -233,6 +236,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("pinnedColumns", PinnedColumns);
             writer.WriteBoolValue("propertiesViaUrl", PropertiesViaUrl);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNode.DataTableNode_response>("response", Response);
+            writer.WriteBoolValue("showAbsoluteTime", ShowAbsoluteTime);
             writer.WriteBoolValue("showActions", ShowActions);
             writer.WriteBoolValue("showColumnConfigurator", ShowColumnConfigurator);
             writer.WriteBoolValue("showCount", ShowCount);

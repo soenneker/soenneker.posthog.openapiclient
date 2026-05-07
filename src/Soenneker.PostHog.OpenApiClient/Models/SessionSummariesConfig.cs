@@ -14,6 +14,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Team-defined tags layered on top of the fixed taxonomy, as a {name: description} map. Names must be lowercase snake_case (max 60 chars), descriptions max 200 chars, max 15 entries.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.SessionSummariesConfig_custom_tags? CustomTags { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.SessionSummariesConfig_custom_tags CustomTags { get; set; }
+#endif
         /// <summary>Free-form description of the team&apos;s product, used to tailor AI-generated single-session replay summaries. Injected into the system prompt of every summary generated for this team via the replay page.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -47,6 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "custom_tags", n => { CustomTags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionSummariesConfig_custom_tags>(global::Soenneker.PostHog.OpenApiClient.Models.SessionSummariesConfig_custom_tags.CreateFromDiscriminatorValue); } },
                 { "product_context", n => { ProductContext = n.GetStringValue(); } },
             };
         }
@@ -57,6 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionSummariesConfig_custom_tags>("custom_tags", CustomTags);
             writer.WriteStringValue("product_context", ProductContext);
             writer.WriteAdditionalData(AdditionalData);
         }

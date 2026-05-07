@@ -34,14 +34,14 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item
         {
         }
         /// <summary>
-        /// Forward a JSON-RPC command to the agent server running in the sandbox. Supports user_message, cancel, close, permission_response, and set_config_option commands.
+        /// Queue user_message JSON-RPC commands through the task workflow and forward sandbox control commands to the agent server. Supports user_message, cancel, close, permission_response, and set_config_option commands.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponse"/></returns>
         /// <param name="body">JSON-RPC request to send a command to the agent server in the sandbox.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorResponse">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorResponse">When receiving a 502 status code</exception>
+        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponse">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponse">When receiving a 502 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponse?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -55,13 +55,13 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.PostHog.OpenApiClient.Models.ErrorResponse.CreateFromDiscriminatorValue },
-                { "502", global::Soenneker.PostHog.OpenApiClient.Models.ErrorResponse.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponse.CreateFromDiscriminatorValue },
+                { "502", global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponse.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Forward a JSON-RPC command to the agent server running in the sandbox. Supports user_message, cancel, close, permission_response, and set_config_option commands.
+        /// Queue user_message JSON-RPC commands through the task workflow and forward sandbox control commands to the agent server. Supports user_message, cancel, close, permission_response, and set_config_option commands.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">JSON-RPC request to send a command to the agent server in the sandbox.</param>

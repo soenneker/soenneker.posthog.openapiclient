@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `potential` - Potential* `candidate` - Candidate* `in_progress` - In Progress* `pending_input` - Pending Input* `ready` - Ready* `failed` - Failed* `deleted` - Deleted* `suppressed` - Suppressed</summary>
+    /// <summary>* `potential` - Potential* `candidate` - Candidate* `in_progress` - In Progress* `pending_input` - Pending Input* `ready` - Ready* `resolved` - Resolved* `failed` - Failed* `deleted` - Deleted* `suppressed` - Suppressed</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum SignalReportStatusEnum
     {
@@ -26,6 +26,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "ready")]
         #pragma warning disable CS1591
         Ready,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "resolved")]
+        #pragma warning disable CS1591
+        Resolved,
         #pragma warning restore CS1591
         [EnumMember(Value = "failed")]
         #pragma warning disable CS1591

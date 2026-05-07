@@ -2,6 +2,7 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Proxy_records.Item.Diagnose;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Proxy_records.Item.Retry;
 using System.Collections.Generic;
 using System.IO;
@@ -15,6 +16,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Proxy_records.I
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Proxy_recordsItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The diagnose property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Proxy_records.Item.Diagnose.DiagnoseRequestBuilder Diagnose
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Proxy_records.Item.Diagnose.DiagnoseRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The EmptyPathSegment property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Proxy_records.Item.EmptyPathSegmentRequestBuilder EmptyPathSegment
         {

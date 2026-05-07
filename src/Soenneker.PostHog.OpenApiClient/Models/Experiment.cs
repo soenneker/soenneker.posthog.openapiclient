@@ -15,7 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The allow_unknown_events property</summary>
+        /// <summary>Suppresses the validation that rejects metrics referencing events not yet ingested by this project. REQUIRES explicit user confirmation before being set to true — never flip this silently to retry a failed call. The default validation catches typo&apos;d event names and missing instrumentation. Set this to true only when the user has confirmed the event is intentional (e.g. they are about to instrument it).</summary>
         public bool? AllowUnknownEvents { get; set; }
         /// <summary>Whether the experiment is archived.</summary>
         public bool? Archived { get; set; }

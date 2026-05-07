@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -21,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Activity
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/insights/activity/{?format*}", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/insights/activity/{?format*,limit*,page*}", pathParameters)
         {
         }
         /// <summary>
@@ -29,29 +30,29 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Activity
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/insights/activity/{?format*}", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/insights/activity/{?format*,limit*,page*}", rawUrl)
         {
         }
         /// <summary>
-        /// DRF ViewSet mixin that gates coalesced responses behind permission checks.The QueryCoalescingMiddleware attaches cached response data torequest.META[&quot;_coalesced_response&quot;] for followers. This mixin runs DRF&apos;sinitial() (auth + permissions + throttling) before returning thecached response, ensuring the request is authorized.
+        /// Project-wide audit trail across all insights — who created, edited, deleted, or restored insights, what changed (with before/after diffs), and when. Useful for surfacing what people (or agents) have been working on recently.
         /// </summary>
-        /// <returns>A <see cref="Stream"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActivityLogPaginatedResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Stream?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Activity.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ActivityLogPaginatedResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Activity.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Stream> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Activity.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ActivityLogPaginatedResponse> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Activity.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ActivityLogPaginatedResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ActivityLogPaginatedResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// DRF ViewSet mixin that gates coalesced responses behind permission checks.The QueryCoalescingMiddleware attaches cached response data torequest.META[&quot;_coalesced_response&quot;] for followers. This mixin runs DRF&apos;sinitial() (auth + permissions + throttling) before returning thecached response, ensuring the request is authorized.
+        /// Project-wide audit trail across all insights — who created, edited, deleted, or restored insights, what changed (with before/after diffs), and when. Useful for surfacing what people (or agents) have been working on recently.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -66,6 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Activity
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <summary>
@@ -78,13 +80,19 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Activity
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Activity.EmptyPathSegmentRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// DRF ViewSet mixin that gates coalesced responses behind permission checks.The QueryCoalescingMiddleware attaches cached response data torequest.META[&quot;_coalesced_response&quot;] for followers. This mixin runs DRF&apos;sinitial() (auth + permissions + throttling) before returning thecached response, ensuring the request is authorized.
+        /// Project-wide audit trail across all insights — who created, edited, deleted, or restored insights, what changed (with before/after diffs), and when. Useful for surfacing what people (or agents) have been working on recently.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 
         {
             [QueryParameter("format")]
             public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Activity.GetFormatQueryParameterType? Format { get; set; }
+            /// <summary>Page size. Defaults to 10.</summary>
+            [QueryParameter("limit")]
+            public int? Limit { get; set; }
+            /// <summary>1-indexed page number. Defaults to 1.</summary>
+            [QueryParameter("page")]
+            public int? Page { get; set; }
         }
     }
 }

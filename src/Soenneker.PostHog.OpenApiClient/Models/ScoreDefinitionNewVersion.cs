@@ -14,6 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Version number the caller observed before requesting this bump. If provided and it does not match the scorer&apos;s current version, the request fails with 409. Omit to skip the optimistic-concurrency check.</summary>
+        public int? BaseVersion { get; set; }
         /// <summary>Next immutable scorer configuration.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -47,6 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "base_version", n => { BaseVersion = n.GetIntValue(); } },
                 { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionConfig>(global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionConfig.CreateFromDiscriminatorValue); } },
             };
         }
@@ -57,6 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteIntValue("base_version", BaseVersion);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionConfig>("config", Config);
             writer.WriteAdditionalData(AdditionalData);
         }

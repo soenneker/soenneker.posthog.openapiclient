@@ -36,6 +36,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Current immutable configuration version number.</summary>
         public int? CurrentVersion { get; private set; }
+        /// <summary>UUID of the current version row. Matches `system.score_definitions.current_version_id` in HogQL.</summary>
+        public Guid? CurrentVersionId { get; private set; }
         /// <summary>The description property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -90,6 +92,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
                 { "current_version", n => { CurrentVersion = n.GetIntValue(); } },
+                { "current_version_id", n => { CurrentVersionId = n.GetGuidValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricKindEnum>(); } },

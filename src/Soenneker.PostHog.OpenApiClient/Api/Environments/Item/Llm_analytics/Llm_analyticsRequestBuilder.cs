@@ -8,6 +8,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Llm_analytics.Evalua
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Llm_analytics.Evaluation_reports;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Llm_analytics.Evaluation_summary;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Llm_analytics.ModelsRequests;
+using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Llm_analytics.Offline_evaluations;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Llm_analytics.Provider_key_validations;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Llm_analytics.Provider_keys;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Llm_analytics.Review_queue_items;
@@ -59,6 +60,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Llm_analytics
         public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Llm_analytics.ModelsRequests.ModelsRequestBuilder Models
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Llm_analytics.ModelsRequests.ModelsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The offline_evaluations property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Llm_analytics.Offline_evaluations.Offline_evaluationsRequestBuilder Offline_evaluations
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Llm_analytics.Offline_evaluations.Offline_evaluationsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The provider_key_validations property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Llm_analytics.Provider_key_validations.Provider_key_validationsRequestBuilder Provider_key_validations

@@ -12,7 +12,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class ExperimentVariant : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Variant key, e.g. &apos;control&apos;, &apos;test&apos;, &apos;variant_a&apos;.</summary>
+        /// <summary>Variant key. Exactly one variant in feature_flag_variants must use key &apos;control&apos; (lowercase, exactly) — that is the baseline used for analysis and the special key the experiment runtime expects. Other variants use keys like &apos;test&apos;, &apos;variant_a&apos;, &apos;variant_b&apos;. Map natural-language names (&apos;original&apos;, &apos;A&apos;, &apos;baseline&apos;) to &apos;control&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Key { get; set; }

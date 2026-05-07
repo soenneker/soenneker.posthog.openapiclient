@@ -9,6 +9,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Depen
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Enrich_usage_dashboard;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Remote_config;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Status;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Test_evaluation;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Versions;
 using System.Collections.Generic;
 using System.IO;
@@ -61,6 +62,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Status.StatusRequestBuilder Status
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Status.StatusRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The test_evaluation property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Test_evaluation.Test_evaluationRequestBuilder Test_evaluation
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Test_evaluation.Test_evaluationRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The versions property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Versions.VersionsRequestBuilder Versions

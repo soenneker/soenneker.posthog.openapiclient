@@ -39,7 +39,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorResponse">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponse">When receiving a 400 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail?> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item
             var requestInfo = ToPostRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.PostHog.OpenApiClient.Models.ErrorResponse.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponse.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

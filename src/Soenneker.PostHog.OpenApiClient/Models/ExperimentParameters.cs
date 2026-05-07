@@ -12,7 +12,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class ExperimentParameters : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Experiment variants. If not specified, defaults to a 50/50 control/test split.</summary>
+        /// <summary>Experiment variants. If specified, must include a variant with key &apos;control&apos; (lowercase). Defaults to a 50/50 control/test split when omitted. Minimum 2, maximum 20.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariant>? FeatureFlagVariants { get; set; }
