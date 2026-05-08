@@ -21,13 +21,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Property { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsBreakdown_type? Type { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Type { get; set; }
+#nullable restore
+#else
+        public string Type { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsBreakdown"/> and sets the default values.
         /// </summary>
         public RevenueAnalyticsBreakdown()
         {
-            Type = global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsBreakdown_type.Revenue_analytics;
+            Type = "revenue_analytics";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -48,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "property", n => { Property = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsBreakdown_type>(); } },
+                { "type", n => { Type = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -59,7 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("property", Property);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsBreakdown_type>("type", Type);
+            writer.WriteStringValue("type", Type);
         }
     }
 }

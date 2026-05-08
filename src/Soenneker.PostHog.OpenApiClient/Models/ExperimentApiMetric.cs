@@ -33,7 +33,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Whether higher or lower values indicate success.</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricGoal? Goal { get; set; }
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_kind? Kind { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Kind { get; set; }
+#nullable restore
+#else
+        public string Kind { get; set; }
+#endif
         /// <summary>The metric_type property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricType? MetricType { get; set; }
         /// <summary>Human-readable metric name.</summary>
@@ -97,7 +103,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public ExperimentApiMetric()
         {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_kind.ExperimentMetric;
+            Kind = "ExperimentMetric";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -121,7 +127,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "conversion_window", n => { ConversionWindow = n.GetIntValue(); } },
                 { "denominator", n => { Denominator = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource.CreateFromDiscriminatorValue); } },
                 { "goal", n => { Goal = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricGoal>(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_kind>(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
                 { "metric_type", n => { MetricType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricType>(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "numerator", n => { Numerator = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource.CreateFromDiscriminatorValue); } },
@@ -146,7 +152,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("conversion_window", ConversionWindow);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource>("denominator", Denominator);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricGoal>("goal", Goal);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_kind>("kind", Kind);
+            writer.WriteStringValue("kind", Kind);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricType>("metric_type", MetricType);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource>("numerator", Numerator);

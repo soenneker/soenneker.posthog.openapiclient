@@ -37,7 +37,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter FilterGroup { get; set; }
 #endif
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_kind? Kind { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Kind { get; set; }
+#nullable restore
+#else
+        public string Kind { get; set; }
+#endif
         /// <summary>The limit property</summary>
         public int? Limit { get; set; }
         /// <summary>The liveLogsCheckpoint property</summary>
@@ -117,7 +123,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public LogsQuery()
         {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_kind.LogsQuery;
+            Kind = "LogsQuery";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -140,7 +146,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "after", n => { After = n.GetStringValue(); } },
                 { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>(global::Soenneker.PostHog.OpenApiClient.Models.DateRange.CreateFromDiscriminatorValue); } },
                 { "filterGroup", n => { FilterGroup = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter>(global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter.CreateFromDiscriminatorValue); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_kind>(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
                 { "liveLogsCheckpoint", n => { LiveLogsCheckpoint = n.GetStringValue(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
@@ -166,7 +172,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("after", After);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>("dateRange", DateRange);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter>("filterGroup", FilterGroup);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_kind>("kind", Kind);
+            writer.WriteStringValue("kind", Kind);
             writer.WriteIntValue("limit", Limit);
             writer.WriteStringValue("liveLogsCheckpoint", LiveLogsCheckpoint);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);

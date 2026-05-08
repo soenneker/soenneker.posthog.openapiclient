@@ -35,7 +35,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The id property</summary>
         public int? Id { get; set; }
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNode_kind? Kind { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Kind { get; set; }
+#nullable restore
+#else
+        public string Kind { get; set; }
+#endif
         /// <summary>The math property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -101,10 +107,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNode_response? Response { get; set; }
+        public UntypedNode? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNode_response Response { get; set; }
+        public UntypedNode Response { get; set; }
 #endif
         /// <summary>version of the node, used for schema migrations</summary>
         public double? Version { get; set; }
@@ -113,7 +119,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public FunnelExclusionActionsNode()
         {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNode_kind.ActionsNode;
+            Kind = "ActionsNode";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -138,7 +144,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "funnelFromStep", n => { FunnelFromStep = n.GetIntValue(); } },
                 { "funnelToStep", n => { FunnelToStep = n.GetIntValue(); } },
                 { "id", n => { Id = n.GetIntValue(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNode_kind>(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
                 { "math", n => { Math = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNode.FunnelExclusionActionsNode_math>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNode.FunnelExclusionActionsNode_math.CreateFromDiscriminatorValue); } },
                 { "math_group_type_index", n => { MathGroupTypeIndex = n.GetDoubleValue(); } },
                 { "math_hogql", n => { MathHogql = n.GetStringValue(); } },
@@ -149,7 +155,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "optionalInFunnel", n => { OptionalInFunnel = n.GetBoolValue(); } },
                 { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNode.FunnelExclusionActionsNode_properties>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNode.FunnelExclusionActionsNode_properties.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNode_response>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNode_response.CreateFromDiscriminatorValue); } },
+                { "response", n => { Response = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "version", n => { Version = n.GetDoubleValue(); } },
             };
         }
@@ -165,7 +171,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("funnelFromStep", FunnelFromStep);
             writer.WriteIntValue("funnelToStep", FunnelToStep);
             writer.WriteIntValue("id", Id);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNode_kind>("kind", Kind);
+            writer.WriteStringValue("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNode.FunnelExclusionActionsNode_math>("math", Math);
             writer.WriteDoubleValue("math_group_type_index", MathGroupTypeIndex);
             writer.WriteStringValue("math_hogql", MathHogql);
@@ -176,7 +182,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteBoolValue("optionalInFunnel", OptionalInFunnel);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNode.FunnelExclusionActionsNode_properties>("properties", Properties);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNode_response>("response", Response);
+            writer.WriteObjectValue<UntypedNode>("response", Response);
             writer.WriteDoubleValue("version", Version);
         }
         /// <summary>
@@ -399,7 +405,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             }
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BaseMathType"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapMathType"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CountPerActorMathType"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricMathType"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelMathType"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyMathType"/>, <see cref="string"/>
+        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BaseMathType"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapMathType"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CountPerActorMathType"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricMathType"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNode_mathMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelMathType"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyMathType"/>, <see cref="string"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class FunnelExclusionActionsNode_math : IComposedTypeWrapper, IParsable
@@ -412,6 +418,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             public global::Soenneker.PostHog.OpenApiClient.Models.CountPerActorMathType? CountPerActorMathType { get; set; }
             /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricMathType"/></summary>
             public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricMathType? ExperimentMetricMathType { get; set; }
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNode_mathMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNode_mathMember1? FunnelExclusionActionsNodeMathMember1 { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNode_mathMember1 FunnelExclusionActionsNodeMathMember1 { get; set; }
+#endif
             /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelMathType"/></summary>
             public global::Soenneker.PostHog.OpenApiClient.Models.FunnelMathType? FunnelMathType { get; set; }
             /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyMathType"/></summary>
@@ -461,6 +475,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 {
                     result.PropertyMathType = propertyMathTypeValue;
                 }
+                else {
+                    result.FunnelExclusionActionsNodeMathMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNode_mathMember1();
+                }
                 return result;
             }
             /// <summary>
@@ -469,6 +486,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
+                if(FunnelExclusionActionsNodeMathMember1 != null)
+                {
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(FunnelExclusionActionsNodeMathMember1);
+                }
                 return new Dictionary<string, Action<IParseNode>>();
             }
             /// <summary>
@@ -505,6 +526,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 else if(PropertyMathType != null)
                 {
                     writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyMathType>(null, PropertyMathType);
+                }
+                else {
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNode_mathMember1>(null, FunnelExclusionActionsNodeMathMember1);
                 }
             }
         }

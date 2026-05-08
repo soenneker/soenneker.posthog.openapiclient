@@ -27,7 +27,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Anomaly probability threshold (default: 0.9)</summary>
         public double? Threshold { get; set; }
         /// <summary>The type property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.KNNDetectorConfig_type? Type { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Type { get; set; }
+#nullable restore
+#else
+        public string Type { get; set; }
+#endif
         /// <summary>Rolling window size — how many historical data points to train on (default: based on calculation interval)</summary>
         public int? Window { get; set; }
         /// <summary>
@@ -35,7 +41,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public KNNDetectorConfig()
         {
-            Type = global::Soenneker.PostHog.OpenApiClient.Models.KNNDetectorConfig_type.Knn;
+            Type = "knn";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -59,7 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "n_neighbors", n => { NNeighbors = n.GetIntValue(); } },
                 { "preprocessing", n => { Preprocessing = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig>(global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig.CreateFromDiscriminatorValue); } },
                 { "threshold", n => { Threshold = n.GetDoubleValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.KNNDetectorConfig_type>(); } },
+                { "type", n => { Type = n.GetStringValue(); } },
                 { "window", n => { Window = n.GetIntValue(); } },
             };
         }
@@ -74,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("n_neighbors", NNeighbors);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig>("preprocessing", Preprocessing);
             writer.WriteDoubleValue("threshold", Threshold);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.KNNDetectorConfig_type>("type", Type);
+            writer.WriteStringValue("type", Type);
             writer.WriteIntValue("window", Window);
         }
     }

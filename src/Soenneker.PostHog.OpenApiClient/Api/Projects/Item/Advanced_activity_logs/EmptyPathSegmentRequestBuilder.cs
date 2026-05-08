@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Advanced_activity_lo
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/advanced_activity_logs/{?activities*,clients*,detail_filters*,end_date*,hogql_filter*,is_system*,item_ids*,page*,page_size*,scopes*,search_text*,start_date*,users*,was_impersonated*}", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/advanced_activity_logs/{?activities*,clients*,detail_filters*,end_date*,hogql_filter*,is_system*,item_ids*,page*,page_size*,scopes*,search_text*,start_date*,team_ids*,users*,was_impersonated*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Advanced_activity_lo
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/advanced_activity_logs/{?activities*,clients*,detail_filters*,end_date*,hogql_filter*,is_system*,item_ids*,page*,page_size*,scopes*,search_text*,start_date*,users*,was_impersonated*}", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/advanced_activity_logs/{?activities*,clients*,detail_filters*,end_date*,hogql_filter*,is_system*,item_ids*,page*,page_size*,scopes*,search_text*,start_date*,team_ids*,users*,was_impersonated*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedActivityLogList"/></returns>
@@ -78,6 +78,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Advanced_activity_lo
         public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 
         #pragma warning restore CS1591
         {
+            /// <summary>Filter by activity types (e.g. &quot;created&quot;, &quot;updated&quot;, &quot;deleted&quot;).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("activities")]
@@ -87,6 +88,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Advanced_activity_lo
             [QueryParameter("activities")]
             public string[] Activities { get; set; }
 #endif
+            /// <summary>Filter by API clients that generated the activity (from x-posthog-client header).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("clients")]
@@ -96,6 +98,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Advanced_activity_lo
             [QueryParameter("clients")]
             public string[] Clients { get; set; }
 #endif
+            /// <summary>JSON-encoded map of `detail` field paths to {operation, value} filters. Allowed operations: exact, contains, in.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("detail_filters")]
@@ -105,8 +108,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Advanced_activity_lo
             [QueryParameter("detail_filters")]
             public string DetailFilters { get; set; }
 #endif
+            /// <summary>Upper bound on `created_at` (inclusive), ISO-8601.</summary>
             [QueryParameter("end_date")]
             public DateTimeOffset? EndDate { get; set; }
+            /// <summary>Reserved for future HogQL-based filtering.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("hogql_filter")]
@@ -116,8 +121,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Advanced_activity_lo
             [QueryParameter("hogql_filter")]
             public string HogqlFilter { get; set; }
 #endif
+            /// <summary>When set, filters rows authored by the system (no user).</summary>
             [QueryParameter("is_system")]
             public bool? IsSystem { get; set; }
+            /// <summary>Filter by the `item_id` of the affected resource(s).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("item_ids")]
@@ -133,6 +140,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Advanced_activity_lo
             /// <summary>Number of results per page (default: 100, max: 1000). Only used with page-based pagination.</summary>
             [QueryParameter("page_size")]
             public int? PageSize { get; set; }
+            /// <summary>Filter by activity scopes (e.g. &quot;FeatureFlag&quot;, &quot;Insight&quot;).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("scopes")]
@@ -142,6 +150,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Advanced_activity_lo
             [QueryParameter("scopes")]
             public string[] Scopes { get; set; }
 #endif
+            /// <summary>Free-text search across the `detail` JSON column.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("search_text")]
@@ -151,8 +160,20 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Advanced_activity_lo
             [QueryParameter("search_text")]
             public string SearchText { get; set; }
 #endif
+            /// <summary>Lower bound on `created_at` (inclusive), ISO-8601.</summary>
             [QueryParameter("start_date")]
             public DateTimeOffset? StartDate { get; set; }
+            /// <summary>Filter by project (team) IDs. Only honored on the organization-scoped endpoint; ignored on the project-scoped endpoint.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("team_ids")]
+            public int?[]? TeamIds { get; set; }
+#nullable restore
+#else
+            [QueryParameter("team_ids")]
+            public int?[] TeamIds { get; set; }
+#endif
+            /// <summary>Filter by users who performed the activity (user UUIDs).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("users")]
@@ -162,6 +183,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Advanced_activity_lo
             [QueryParameter("users")]
             public Guid?[] Users { get; set; }
 #endif
+            /// <summary>When set, filters rows where the actor was impersonating another user.</summary>
             [QueryParameter("was_impersonated")]
             public bool? WasImpersonated { get; set; }
         }

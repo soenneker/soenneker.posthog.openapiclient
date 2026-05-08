@@ -17,13 +17,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Zero-based index of the series in the insight&apos;s query to monitor.</summary>
         public int? SeriesIndex { get; set; }
         /// <summary>The type property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.TrendsAlertConfig_type? Type { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Type { get; set; }
+#nullable restore
+#else
+        public string Type { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TrendsAlertConfig"/> and sets the default values.
         /// </summary>
         public TrendsAlertConfig()
         {
-            Type = global::Soenneker.PostHog.OpenApiClient.Models.TrendsAlertConfig_type.TrendsAlertConfig;
+            Type = "TrendsAlertConfig";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -45,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "check_ongoing_interval", n => { CheckOngoingInterval = n.GetBoolValue(); } },
                 { "series_index", n => { SeriesIndex = n.GetIntValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TrendsAlertConfig_type>(); } },
+                { "type", n => { Type = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -57,7 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("check_ongoing_interval", CheckOngoingInterval);
             writer.WriteIntValue("series_index", SeriesIndex);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TrendsAlertConfig_type>("type", Type);
+            writer.WriteStringValue("type", Type);
         }
     }
 }

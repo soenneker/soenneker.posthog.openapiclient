@@ -45,7 +45,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Granularity of the response. Can be one of `hour`, `day`, `week` or `month`</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.IntervalType? Interval { get; set; }
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapQuery_kind? Kind { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Kind { get; set; }
+#nullable restore
+#else
+        public string Kind { get; set; }
+#endif
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -96,7 +102,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public CalendarHeatmapQuery()
         {
             Interval = global::Soenneker.PostHog.OpenApiClient.Models.IntervalType.Day;
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapQuery_kind.CalendarHeatmapQuery;
+            Kind = "CalendarHeatmapQuery";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -123,7 +129,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>(global::Soenneker.PostHog.OpenApiClient.Models.DateRange.CreateFromDiscriminatorValue); } },
                 { "filterTestAccounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
                 { "interval", n => { Interval = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalType>(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapQuery_kind>(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "properties", n => { Properties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapQuery.CalendarHeatmapQuery_properties>(global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapQuery.CalendarHeatmapQuery_properties.CreateFromDiscriminatorValue); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapResponse>(global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapResponse.CreateFromDiscriminatorValue); } },
@@ -147,7 +153,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>("dateRange", DateRange);
             writer.WriteBoolValue("filterTestAccounts", FilterTestAccounts);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalType>("interval", Interval);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapQuery_kind>("kind", Kind);
+            writer.WriteStringValue("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapQuery.CalendarHeatmapQuery_properties>("properties", Properties);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapResponse>("response", Response);
@@ -157,7 +163,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("version", Version);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActionConversionGoal"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CustomEventConversionGoal"/>
+        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActionConversionGoal"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapQuery_conversionGoalMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CustomEventConversionGoal"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class CalendarHeatmapQuery_conversionGoal : IComposedTypeWrapper, IParsable
@@ -169,6 +175,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
             public global::Soenneker.PostHog.OpenApiClient.Models.ActionConversionGoal ActionConversionGoal { get; set; }
+#endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapQuery_conversionGoalMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapQuery_conversionGoalMember1? CalendarHeatmapQueryConversionGoalMember1 { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapQuery_conversionGoalMember1 CalendarHeatmapQueryConversionGoalMember1 { get; set; }
 #endif
             /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CustomEventConversionGoal"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -188,6 +202,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
                 var result = new global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapQuery.CalendarHeatmapQuery_conversionGoal();
                 result.ActionConversionGoal = new global::Soenneker.PostHog.OpenApiClient.Models.ActionConversionGoal();
+                result.CalendarHeatmapQueryConversionGoalMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapQuery_conversionGoalMember1();
                 result.CustomEventConversionGoal = new global::Soenneker.PostHog.OpenApiClient.Models.CustomEventConversionGoal();
                 return result;
             }
@@ -197,9 +212,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
-                if(ActionConversionGoal != null || CustomEventConversionGoal != null)
+                if(ActionConversionGoal != null || CalendarHeatmapQueryConversionGoalMember1 != null || CustomEventConversionGoal != null)
                 {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ActionConversionGoal, CustomEventConversionGoal);
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ActionConversionGoal, CalendarHeatmapQueryConversionGoalMember1, CustomEventConversionGoal);
                 }
                 return new Dictionary<string, Action<IParseNode>>();
             }
@@ -210,15 +225,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             public virtual void Serialize(ISerializationWriter writer)
             {
                 if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActionConversionGoal>(null, ActionConversionGoal, CustomEventConversionGoal);
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActionConversionGoal>(null, ActionConversionGoal, CalendarHeatmapQueryConversionGoalMember1, CustomEventConversionGoal);
             }
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter"/>, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.WorkflowVariablePropertyFilter&gt;
+        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapQuery_propertiesMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter"/>, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.WorkflowVariablePropertyFilter&gt;
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class CalendarHeatmapQuery_properties : IComposedTypeWrapper, IParsable
         {
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapQuery_propertiesMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapQuery_propertiesMember1? CalendarHeatmapQueryPropertiesMember1 { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapQuery_propertiesMember1 CalendarHeatmapQueryPropertiesMember1 { get; set; }
+#endif
             /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -249,6 +272,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                     result.WorkflowVariablePropertyFilter = workflowVariablePropertyFilterValue;
                 }
                 else {
+                    result.CalendarHeatmapQueryPropertiesMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapQuery_propertiesMember1();
                     result.PropertyGroupFilter = new global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter();
                 }
                 return result;
@@ -259,9 +283,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
-                if(PropertyGroupFilter != null)
+                if(CalendarHeatmapQueryPropertiesMember1 != null || PropertyGroupFilter != null)
                 {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(PropertyGroupFilter);
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(CalendarHeatmapQueryPropertiesMember1, PropertyGroupFilter);
                 }
                 return new Dictionary<string, Action<IParseNode>>();
             }
@@ -277,7 +301,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                     writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowVariablePropertyFilter>(null, WorkflowVariablePropertyFilter);
                 }
                 else {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter>(null, PropertyGroupFilter);
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapQuery_propertiesMember1>(null, CalendarHeatmapQueryPropertiesMember1, PropertyGroupFilter);
                 }
             }
         }

@@ -31,7 +31,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery FunnelsQuery { get; set; }
 #endif
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_kind? Kind { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Kind { get; set; }
+#nullable restore
+#else
+        public string Kind { get; set; }
+#endif
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -79,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public ExperimentFunnelsQuery()
         {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_kind.ExperimentFunnelsQuery;
+            Kind = "ExperimentFunnelsQuery";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -102,7 +108,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "experiment_id", n => { ExperimentId = n.GetIntValue(); } },
                 { "fingerprint", n => { Fingerprint = n.GetStringValue(); } },
                 { "funnels_query", n => { FunnelsQuery = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery.CreateFromDiscriminatorValue); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_kind>(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQueryResponse.CreateFromDiscriminatorValue); } },
@@ -121,7 +127,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("experiment_id", ExperimentId);
             writer.WriteStringValue("fingerprint", Fingerprint);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery>("funnels_query", FunnelsQuery);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_kind>("kind", Kind);
+            writer.WriteStringValue("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQueryResponse>("response", Response);

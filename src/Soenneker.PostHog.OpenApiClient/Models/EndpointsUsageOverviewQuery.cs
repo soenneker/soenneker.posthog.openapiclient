@@ -37,7 +37,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public List<string> EndpointNames { get; set; }
 #endif
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageOverviewQuery_kind? Kind { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Kind { get; set; }
+#nullable restore
+#else
+        public string Kind { get; set; }
+#endif
         /// <summary>Filter by materialization type</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.MaterializationType? MaterializationType { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
@@ -71,7 +77,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public EndpointsUsageOverviewQuery()
         {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageOverviewQuery_kind.EndpointsUsageOverviewQuery;
+            Kind = "EndpointsUsageOverviewQuery";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -94,7 +100,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "compareFilter", n => { CompareFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter>(global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter.CreateFromDiscriminatorValue); } },
                 { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>(global::Soenneker.PostHog.OpenApiClient.Models.DateRange.CreateFromDiscriminatorValue); } },
                 { "endpointNames", n => { EndpointNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageOverviewQuery_kind>(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
                 { "materializationType", n => { MaterializationType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MaterializationType>(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageOverviewQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageOverviewQueryResponse.CreateFromDiscriminatorValue); } },
@@ -112,7 +118,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter>("compareFilter", CompareFilter);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>("dateRange", DateRange);
             writer.WriteCollectionOfPrimitiveValues<string>("endpointNames", EndpointNames);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageOverviewQuery_kind>("kind", Kind);
+            writer.WriteStringValue("kind", Kind);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MaterializationType>("materializationType", MaterializationType);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageOverviewQueryResponse>("response", Response);

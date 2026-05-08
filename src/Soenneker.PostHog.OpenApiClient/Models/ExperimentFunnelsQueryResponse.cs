@@ -39,7 +39,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public UntypedNode Insight { get; set; }
 #endif
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQueryResponse_kind? Kind { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Kind { get; set; }
+#nullable restore
+#else
+        public string Kind { get; set; }
+#endif
         /// <summary>The probability property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -67,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public ExperimentFunnelsQueryResponse()
         {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQueryResponse_kind.ExperimentFunnelsQuery;
+            Kind = "ExperimentFunnelsQuery";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -91,7 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "expected_loss", n => { ExpectedLoss = n.GetDoubleValue(); } },
                 { "funnels_query", n => { FunnelsQuery = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery.CreateFromDiscriminatorValue); } },
                 { "insight", n => { Insight = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQueryResponse_kind>(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
                 { "probability", n => { Probability = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQueryResponse_probability>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQueryResponse_probability.CreateFromDiscriminatorValue); } },
                 { "significance_code", n => { SignificanceCode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSignificanceCode>(); } },
                 { "significant", n => { Significant = n.GetBoolValue(); } },
@@ -110,7 +116,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("expected_loss", ExpectedLoss);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery>("funnels_query", FunnelsQuery);
             writer.WriteObjectValue<UntypedNode>("insight", Insight);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQueryResponse_kind>("kind", Kind);
+            writer.WriteStringValue("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQueryResponse_probability>("probability", Probability);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSignificanceCode>("significance_code", SignificanceCode);
             writer.WriteBoolValue("significant", Significant);

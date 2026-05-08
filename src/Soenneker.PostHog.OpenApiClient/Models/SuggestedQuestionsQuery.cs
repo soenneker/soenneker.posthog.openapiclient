@@ -13,7 +13,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning restore CS1591
     {
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SuggestedQuestionsQuery_kind? Kind { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Kind { get; set; }
+#nullable restore
+#else
+        public string Kind { get; set; }
+#endif
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -45,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public SuggestedQuestionsQuery()
         {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.SuggestedQuestionsQuery_kind.SuggestedQuestionsQuery;
+            Kind = "SuggestedQuestionsQuery";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -65,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedQuestionsQuery_kind>(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedQuestionsQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.SuggestedQuestionsQueryResponse.CreateFromDiscriminatorValue); } },
                 { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
@@ -79,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedQuestionsQuery_kind>("kind", Kind);
+            writer.WriteStringValue("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedQuestionsQueryResponse>("response", Response);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);

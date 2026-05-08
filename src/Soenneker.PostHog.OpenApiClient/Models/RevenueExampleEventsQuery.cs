@@ -13,7 +13,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning restore CS1591
     {
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleEventsQuery_kind? Kind { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Kind { get; set; }
+#nullable restore
+#else
+        public string Kind { get; set; }
+#endif
         /// <summary>The limit property</summary>
         public int? Limit { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
@@ -49,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public RevenueExampleEventsQuery()
         {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleEventsQuery_kind.RevenueExampleEventsQuery;
+            Kind = "RevenueExampleEventsQuery";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -69,7 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleEventsQuery_kind>(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "offset", n => { Offset = n.GetIntValue(); } },
@@ -85,7 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleEventsQuery_kind>("kind", Kind);
+            writer.WriteStringValue("kind", Kind);
             writer.WriteIntValue("limit", Limit);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);
             writer.WriteIntValue("offset", Offset);

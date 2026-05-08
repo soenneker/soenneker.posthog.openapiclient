@@ -45,7 +45,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQueryResponse_insight> Insight { get; set; }
 #endif
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQueryResponse_kind? Kind { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Kind { get; set; }
+#nullable restore
+#else
+        public string Kind { get; set; }
+#endif
         /// <summary>The probability property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -75,7 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public ExperimentTrendsQueryResponse()
         {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQueryResponse_kind.ExperimentTrendsQuery;
+            Kind = "ExperimentTrendsQuery";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -99,7 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "credible_intervals", n => { CredibleIntervals = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQueryResponse_credible_intervals>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQueryResponse_credible_intervals.CreateFromDiscriminatorValue); } },
                 { "exposure_query", n => { ExposureQuery = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TrendsQuery>(global::Soenneker.PostHog.OpenApiClient.Models.TrendsQuery.CreateFromDiscriminatorValue); } },
                 { "insight", n => { Insight = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQueryResponse_insight>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQueryResponse_insight.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQueryResponse_kind>(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
                 { "p_value", n => { PValue = n.GetDoubleValue(); } },
                 { "probability", n => { Probability = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQueryResponse_probability>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQueryResponse_probability.CreateFromDiscriminatorValue); } },
                 { "significance_code", n => { SignificanceCode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSignificanceCode>(); } },
@@ -119,7 +125,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQueryResponse_credible_intervals>("credible_intervals", CredibleIntervals);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TrendsQuery>("exposure_query", ExposureQuery);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQueryResponse_insight>("insight", Insight);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQueryResponse_kind>("kind", Kind);
+            writer.WriteStringValue("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQueryResponse_probability>("probability", Probability);
             writer.WriteDoubleValue("p_value", PValue);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSignificanceCode>("significance_code", SignificanceCode);

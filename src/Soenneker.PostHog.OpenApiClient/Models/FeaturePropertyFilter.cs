@@ -31,7 +31,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The operator property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperator? Operator { get; set; }
         /// <summary>Event property with &quot;$feature/&quot; prepended</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeaturePropertyFilter_type? Type { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Type { get; set; }
+#nullable restore
+#else
+        public string Type { get; set; }
+#endif
         /// <summary>The value property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -45,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public FeaturePropertyFilter()
         {
-            Type = global::Soenneker.PostHog.OpenApiClient.Models.FeaturePropertyFilter_type.Feature;
+            Type = "feature";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -68,7 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "key", n => { Key = n.GetStringValue(); } },
                 { "label", n => { Label = n.GetStringValue(); } },
                 { "operator", n => { Operator = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperator>(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeaturePropertyFilter_type>(); } },
+                { "type", n => { Type = n.GetStringValue(); } },
                 { "value", n => { Value = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeaturePropertyFilter.FeaturePropertyFilter_value>(global::Soenneker.PostHog.OpenApiClient.Models.FeaturePropertyFilter.FeaturePropertyFilter_value.CreateFromDiscriminatorValue); } },
             };
         }
@@ -82,11 +88,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("key", Key);
             writer.WriteStringValue("label", Label);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperator>("operator", Operator);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeaturePropertyFilter_type>("type", Type);
+            writer.WriteStringValue("type", Type);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeaturePropertyFilter.FeaturePropertyFilter_value>("value", Value);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="bool"/>, <see cref="double"/>, <see cref="string"/>, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.FeaturePropertyFilter_valueMember1&gt;
+        /// Composed type wrapper for classes <see cref="bool"/>, <see cref="double"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeaturePropertyFilter_valueMember2"/>, <see cref="string"/>, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.FeaturePropertyFilter_valueMember1&gt;
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class FeaturePropertyFilter_value : IComposedTypeWrapper, IParsable
@@ -102,6 +108,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
             public List<global::Soenneker.PostHog.OpenApiClient.Models.FeaturePropertyFilter_valueMember1> FeaturePropertyFilterValueMember1 { get; set; }
+#endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeaturePropertyFilter_valueMember2"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.FeaturePropertyFilter_valueMember2? FeaturePropertyFilterValueMember2 { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.FeaturePropertyFilter_valueMember2 FeaturePropertyFilterValueMember2 { get; set; }
 #endif
             /// <summary>Composed type representation for type <see cref="string"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -136,6 +150,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 {
                     result.FeaturePropertyFilterValueMember1 = featurePropertyFilterValueMember1Value;
                 }
+                else {
+                    result.FeaturePropertyFilterValueMember2 = new global::Soenneker.PostHog.OpenApiClient.Models.FeaturePropertyFilter_valueMember2();
+                }
                 return result;
             }
             /// <summary>
@@ -144,6 +161,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
+                if(FeaturePropertyFilterValueMember2 != null)
+                {
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(FeaturePropertyFilterValueMember2);
+                }
                 return new Dictionary<string, Action<IParseNode>>();
             }
             /// <summary>
@@ -168,6 +189,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 else if(FeaturePropertyFilterValueMember1 != null)
                 {
                     writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FeaturePropertyFilter_valueMember1>(null, FeaturePropertyFilterValueMember1);
+                }
+                else {
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeaturePropertyFilter_valueMember2>(null, FeaturePropertyFilterValueMember2);
                 }
             }
         }

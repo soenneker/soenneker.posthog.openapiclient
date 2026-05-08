@@ -29,7 +29,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string IssueId { get; set; }
 #endif
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSimilarIssuesQuery_kind? Kind { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Kind { get; set; }
+#nullable restore
+#else
+        public string Kind { get; set; }
+#endif
         /// <summary>The limit property</summary>
         public int? Limit { get; set; }
         /// <summary>The maxDistance property</summary>
@@ -77,7 +83,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public ErrorTrackingSimilarIssuesQuery()
         {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSimilarIssuesQuery_kind.ErrorTrackingSimilarIssuesQuery;
+            Kind = "ErrorTrackingSimilarIssuesQuery";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -99,7 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>(global::Soenneker.PostHog.OpenApiClient.Models.DateRange.CreateFromDiscriminatorValue); } },
                 { "issueId", n => { IssueId = n.GetStringValue(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSimilarIssuesQuery_kind>(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
                 { "maxDistance", n => { MaxDistance = n.GetDoubleValue(); } },
                 { "modelName", n => { ModelName = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingModelName>(); } },
@@ -120,7 +126,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>("dateRange", DateRange);
             writer.WriteStringValue("issueId", IssueId);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSimilarIssuesQuery_kind>("kind", Kind);
+            writer.WriteStringValue("kind", Kind);
             writer.WriteIntValue("limit", Limit);
             writer.WriteDoubleValue("maxDistance", MaxDistance);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingModelName>("modelName", ModelName);

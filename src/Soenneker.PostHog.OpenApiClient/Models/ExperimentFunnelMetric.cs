@@ -39,9 +39,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The isSharedMetric property</summary>
         public bool? IsSharedMetric { get; set; }
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetric_kind? Kind { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Kind { get; set; }
+#nullable restore
+#else
+        public string Kind { get; set; }
+#endif
         /// <summary>The metric_type property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetric_metric_type? MetricType { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? MetricType { get; set; }
+#nullable restore
+#else
+        public string MetricType { get; set; }
+#endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -53,10 +65,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetric_response? Response { get; set; }
+        public UntypedNode? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetric_response Response { get; set; }
+        public UntypedNode Response { get; set; }
 #endif
         /// <summary>The series property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -83,8 +95,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public ExperimentFunnelMetric()
         {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetric_kind.ExperimentMetric;
-            MetricType = global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetric_metric_type.Funnel;
+            Kind = "ExperimentMetric";
+            MetricType = "funnel";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -111,10 +123,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "funnel_order_type", n => { FunnelOrderType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.StepOrderValue>(); } },
                 { "goal", n => { Goal = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricGoal>(); } },
                 { "isSharedMetric", n => { IsSharedMetric = n.GetBoolValue(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetric_kind>(); } },
-                { "metric_type", n => { MetricType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetric_metric_type>(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
+                { "metric_type", n => { MetricType = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetric_response>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetric_response.CreateFromDiscriminatorValue); } },
+                { "response", n => { Response = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "series", n => { Series = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetric.ExperimentFunnelMetric_series>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetric.ExperimentFunnelMetric_series.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "sharedMetricId", n => { SharedMetricId = n.GetDoubleValue(); } },
                 { "uuid", n => { Uuid = n.GetStringValue(); } },
@@ -135,10 +147,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.StepOrderValue>("funnel_order_type", FunnelOrderType);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricGoal>("goal", Goal);
             writer.WriteBoolValue("isSharedMetric", IsSharedMetric);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetric_kind>("kind", Kind);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetric_metric_type>("metric_type", MetricType);
+            writer.WriteStringValue("kind", Kind);
+            writer.WriteStringValue("metric_type", MetricType);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetric_response>("response", Response);
+            writer.WriteObjectValue<UntypedNode>("response", Response);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetric.ExperimentFunnelMetric_series>("series", Series);
             writer.WriteDoubleValue("sharedMetricId", SharedMetricId);
             writer.WriteStringValue("uuid", Uuid);

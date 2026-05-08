@@ -41,7 +41,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The includeRecordings property</summary>
         public bool? IncludeRecordings { get; set; }
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_kind? Kind { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Kind { get; set; }
+#nullable restore
+#else
+        public string Kind { get; set; }
+#endif
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -83,7 +89,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public ExperimentActorsQuery()
         {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_kind.ExperimentActorsQuery;
+            Kind = "ExperimentActorsQuery";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -108,7 +114,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "funnelStep", n => { FunnelStep = n.GetIntValue(); } },
                 { "funnelStepBreakdown", n => { FunnelStepBreakdown = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery.ExperimentActorsQuery_funnelStepBreakdown>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery.ExperimentActorsQuery_funnelStepBreakdown.CreateFromDiscriminatorValue); } },
                 { "includeRecordings", n => { IncludeRecordings = n.GetBoolValue(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_kind>(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "multipleVariantHandling", n => { MultipleVariantHandling = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MultipleVariantHandling>(); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryResponse.CreateFromDiscriminatorValue); } },
@@ -129,7 +135,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("funnelStep", FunnelStep);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery.ExperimentActorsQuery_funnelStepBreakdown>("funnelStepBreakdown", FunnelStepBreakdown);
             writer.WriteBoolValue("includeRecordings", IncludeRecordings);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_kind>("kind", Kind);
+            writer.WriteStringValue("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MultipleVariantHandling>("multipleVariantHandling", MultipleVariantHandling);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryResponse>("response", Response);
@@ -138,7 +144,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("version", Version);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActionsNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfig"/>
+        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActionsNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_exposureConfigMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfig"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class ExperimentActorsQuery_exposureConfig : IComposedTypeWrapper, IParsable
@@ -150,6 +156,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
             public global::Soenneker.PostHog.OpenApiClient.Models.ActionsNode ActionsNode { get; set; }
+#endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_exposureConfigMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_exposureConfigMember1? ExperimentActorsQueryExposureConfigMember1 { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_exposureConfigMember1 ExperimentActorsQueryExposureConfigMember1 { get; set; }
 #endif
             /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfig"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -169,6 +183,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
                 var result = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery.ExperimentActorsQuery_exposureConfig();
                 result.ActionsNode = new global::Soenneker.PostHog.OpenApiClient.Models.ActionsNode();
+                result.ExperimentActorsQueryExposureConfigMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_exposureConfigMember1();
                 result.ExperimentEventExposureConfig = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfig();
                 return result;
             }
@@ -178,9 +193,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
-                if(ActionsNode != null || ExperimentEventExposureConfig != null)
+                if(ActionsNode != null || ExperimentActorsQueryExposureConfigMember1 != null || ExperimentEventExposureConfig != null)
                 {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ActionsNode, ExperimentEventExposureConfig);
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ActionsNode, ExperimentActorsQueryExposureConfigMember1, ExperimentEventExposureConfig);
                 }
                 return new Dictionary<string, Action<IParseNode>>();
             }
@@ -191,11 +206,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             public virtual void Serialize(ISerializationWriter writer)
             {
                 if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActionsNode>(null, ActionsNode, ExperimentEventExposureConfig);
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActionsNode>(null, ActionsNode, ExperimentActorsQueryExposureConfigMember1, ExperimentEventExposureConfig);
             }
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="double"/>, <see cref="int"/>, <see cref="string"/>, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_funnelStepBreakdownMember1&gt;
+        /// Composed type wrapper for classes <see cref="double"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_funnelStepBreakdownMember2"/>, <see cref="int"/>, <see cref="string"/>, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_funnelStepBreakdownMember1&gt;
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class ExperimentActorsQuery_funnelStepBreakdown : IComposedTypeWrapper, IParsable
@@ -209,6 +224,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
             public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_funnelStepBreakdownMember1> ExperimentActorsQueryFunnelStepBreakdownMember1 { get; set; }
+#endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_funnelStepBreakdownMember2"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_funnelStepBreakdownMember2? ExperimentActorsQueryFunnelStepBreakdownMember2 { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_funnelStepBreakdownMember2 ExperimentActorsQueryFunnelStepBreakdownMember2 { get; set; }
 #endif
             /// <summary>Composed type representation for type <see cref="int"/></summary>
             public int? Integer { get; set; }
@@ -245,6 +268,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 {
                     result.ExperimentActorsQueryFunnelStepBreakdownMember1 = experimentActorsQueryFunnelStepBreakdownMember1Value;
                 }
+                else {
+                    result.ExperimentActorsQueryFunnelStepBreakdownMember2 = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_funnelStepBreakdownMember2();
+                }
                 return result;
             }
             /// <summary>
@@ -253,6 +279,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
+                if(ExperimentActorsQueryFunnelStepBreakdownMember2 != null)
+                {
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ExperimentActorsQueryFunnelStepBreakdownMember2);
+                }
                 return new Dictionary<string, Action<IParseNode>>();
             }
             /// <summary>
@@ -277,6 +307,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 else if(ExperimentActorsQueryFunnelStepBreakdownMember1 != null)
                 {
                     writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_funnelStepBreakdownMember1>(null, ExperimentActorsQueryFunnelStepBreakdownMember1);
+                }
+                else {
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_funnelStepBreakdownMember2>(null, ExperimentActorsQueryFunnelStepBreakdownMember2);
                 }
             }
         }

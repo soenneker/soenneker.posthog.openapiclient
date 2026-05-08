@@ -37,11 +37,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string ConditionHash { get; set; }
 #endif
         /// <summary>The key property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_key? Key { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Key { get; set; }
+#nullable restore
+#else
+        public string Key { get; set; }
+#endif
         /// <summary>The negation property</summary>
         public bool? Negation { get; set; }
         /// <summary>The type property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_type? Type { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Type { get; set; }
+#nullable restore
+#else
+        public string Type { get; set; }
+#endif
         /// <summary>The value property</summary>
         public int? Value { get; set; }
         /// <summary>
@@ -65,9 +77,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "bytecode", n => { Bytecode = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "bytecode_error", n => { BytecodeError = n.GetStringValue(); } },
                 { "conditionHash", n => { ConditionHash = n.GetStringValue(); } },
-                { "key", n => { Key = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_key>(); } },
+                { "key", n => { Key = n.GetStringValue(); } },
                 { "negation", n => { Negation = n.GetBoolValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_type>(); } },
+                { "type", n => { Type = n.GetStringValue(); } },
                 { "value", n => { Value = n.GetIntValue(); } },
             };
         }
@@ -81,9 +93,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<UntypedNode>("bytecode", Bytecode);
             writer.WriteStringValue("bytecode_error", BytecodeError);
             writer.WriteStringValue("conditionHash", ConditionHash);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_key>("key", Key);
+            writer.WriteStringValue("key", Key);
             writer.WriteBoolValue("negation", Negation);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_type>("type", Type);
+            writer.WriteStringValue("type", Type);
             writer.WriteIntValue("value", Value);
         }
     }

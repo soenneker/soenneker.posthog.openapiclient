@@ -23,7 +23,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig Preprocessing { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ThresholdDetectorConfig_type? Type { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Type { get; set; }
+#nullable restore
+#else
+        public string Type { get; set; }
+#endif
         /// <summary>Upper bound - values above this are anomalies</summary>
         public double? UpperBound { get; set; }
         /// <summary>
@@ -31,7 +37,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public ThresholdDetectorConfig()
         {
-            Type = global::Soenneker.PostHog.OpenApiClient.Models.ThresholdDetectorConfig_type.Threshold;
+            Type = "threshold";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -53,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "lower_bound", n => { LowerBound = n.GetDoubleValue(); } },
                 { "preprocessing", n => { Preprocessing = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig>(global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ThresholdDetectorConfig_type>(); } },
+                { "type", n => { Type = n.GetStringValue(); } },
                 { "upper_bound", n => { UpperBound = n.GetDoubleValue(); } },
             };
         }
@@ -66,7 +72,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("lower_bound", LowerBound);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig>("preprocessing", Preprocessing);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ThresholdDetectorConfig_type>("type", Type);
+            writer.WriteStringValue("type", Type);
             writer.WriteDoubleValue("upper_bound", UpperBound);
         }
     }

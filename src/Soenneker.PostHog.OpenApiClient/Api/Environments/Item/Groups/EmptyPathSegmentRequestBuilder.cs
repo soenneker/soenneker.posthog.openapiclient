@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Groups
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{environment_%2Did}/groups?group_type_index={group_type_index}&search={search}{&cursor*}", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{environment_%2Did}/groups?group_type_index={group_type_index}{&cursor*,group_key*,search*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,27 +30,28 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Groups
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{environment_%2Did}/groups?group_type_index={group_type_index}&search={search}{&cursor*}", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{environment_%2Did}/groups?group_type_index={group_type_index}{&cursor*,group_key*,search*}", rawUrl)
         {
         }
         /// <summary>
-        /// List all groups of a specific group type. You must pass ?group_type_index= in the URL. To get a list of valid group types, call /api/:project_id/groups_types/
+        /// List all groups of a specific group type. You must pass ?group_type_index= in the URL.To get a list of valid group types, call /api/:project_id/groups_types/.Uses forward-only keyset pagination via the `cursor` parameter.The `previous` field in the response envelope is always null.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedGroupList"/></returns>
+        /// <returns>A List&lt;global::Soenneker.PostHog.OpenApiClient.Models.Group&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedGroupList?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Groups.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<List<global::Soenneker.PostHog.OpenApiClient.Models.Group>?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Groups.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedGroupList> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Groups.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<List<global::Soenneker.PostHog.OpenApiClient.Models.Group>> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Groups.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedGroupList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedGroupList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var collectionResult = await RequestAdapter.SendCollectionAsync<global::Soenneker.PostHog.OpenApiClient.Models.Group>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.Group.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return collectionResult?.AsList();
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Group"/></returns>
         /// <param name="body">The request body</param>
@@ -71,7 +72,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Groups
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.Group>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.Group.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// List all groups of a specific group type. You must pass ?group_type_index= in the URL. To get a list of valid group types, call /api/:project_id/groups_types/
+        /// List all groups of a specific group type. You must pass ?group_type_index= in the URL.To get a list of valid group types, call /api/:project_id/groups_types/.Uses forward-only keyset pagination via the `cursor` parameter.The `previous` field in the response envelope is always null.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -121,12 +122,12 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Groups
             return new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Groups.EmptyPathSegmentRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// List all groups of a specific group type. You must pass ?group_type_index= in the URL. To get a list of valid group types, call /api/:project_id/groups_types/
+        /// List all groups of a specific group type. You must pass ?group_type_index= in the URL.To get a list of valid group types, call /api/:project_id/groups_types/.Uses forward-only keyset pagination via the `cursor` parameter.The `previous` field in the response envelope is always null.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 
         {
-            /// <summary>The pagination cursor value.</summary>
+            /// <summary>Pagination cursor returned in the `next` URL of a previous response</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("cursor")]
@@ -135,6 +136,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Groups
 #else
             [QueryParameter("cursor")]
             public string Cursor { get; set; }
+#endif
+            /// <summary>Filter groups whose key contains this string (case-insensitive)</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("group_key")]
+            public string? GroupKey { get; set; }
+#nullable restore
+#else
+            [QueryParameter("group_key")]
+            public string GroupKey { get; set; }
 #endif
             /// <summary>Specify the group type to list</summary>
             [QueryParameter("group_type_index")]

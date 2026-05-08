@@ -49,7 +49,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Interval for date range calculation (affects date_to rounding for hour vs day ranges)</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.IntervalType? Interval { get; set; }
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebExternalClicksTableQuery_kind? Kind { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Kind { get; set; }
+#nullable restore
+#else
+        public string Kind { get; set; }
+#endif
         /// <summary>The limit property</summary>
         public int? Limit { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
@@ -113,7 +119,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public WebExternalClicksTableQuery()
         {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.WebExternalClicksTableQuery_kind.WebExternalClicksTableQuery;
+            Kind = "WebExternalClicksTableQuery";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -142,7 +148,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "filterTestAccounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
                 { "includeRevenue", n => { IncludeRevenue = n.GetBoolValue(); } },
                 { "interval", n => { Interval = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalType>(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WebExternalClicksTableQuery_kind>(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "orderBy", n => { OrderBy = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -172,7 +178,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("filterTestAccounts", FilterTestAccounts);
             writer.WriteBoolValue("includeRevenue", IncludeRevenue);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalType>("interval", Interval);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WebExternalClicksTableQuery_kind>("kind", Kind);
+            writer.WriteStringValue("kind", Kind);
             writer.WriteIntValue("limit", Limit);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);
             writer.WriteCollectionOfPrimitiveValues<string>("orderBy", OrderBy);
@@ -186,7 +192,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("version", Version);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActionConversionGoal"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CustomEventConversionGoal"/>
+        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActionConversionGoal"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CustomEventConversionGoal"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebExternalClicksTableQuery_conversionGoalMember1"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class WebExternalClicksTableQuery_conversionGoal : IComposedTypeWrapper, IParsable
@@ -207,6 +213,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
             public global::Soenneker.PostHog.OpenApiClient.Models.CustomEventConversionGoal CustomEventConversionGoal { get; set; }
 #endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebExternalClicksTableQuery_conversionGoalMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.WebExternalClicksTableQuery_conversionGoalMember1? WebExternalClicksTableQueryConversionGoalMember1 { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.WebExternalClicksTableQuery_conversionGoalMember1 WebExternalClicksTableQueryConversionGoalMember1 { get; set; }
+#endif
             /// <summary>
             /// Creates a new instance of the appropriate class based on discriminator value
             /// </summary>
@@ -218,6 +232,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 var result = new global::Soenneker.PostHog.OpenApiClient.Models.WebExternalClicksTableQuery.WebExternalClicksTableQuery_conversionGoal();
                 result.ActionConversionGoal = new global::Soenneker.PostHog.OpenApiClient.Models.ActionConversionGoal();
                 result.CustomEventConversionGoal = new global::Soenneker.PostHog.OpenApiClient.Models.CustomEventConversionGoal();
+                result.WebExternalClicksTableQueryConversionGoalMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.WebExternalClicksTableQuery_conversionGoalMember1();
                 return result;
             }
             /// <summary>
@@ -226,9 +241,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
-                if(ActionConversionGoal != null || CustomEventConversionGoal != null)
+                if(ActionConversionGoal != null || CustomEventConversionGoal != null || WebExternalClicksTableQueryConversionGoalMember1 != null)
                 {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ActionConversionGoal, CustomEventConversionGoal);
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ActionConversionGoal, CustomEventConversionGoal, WebExternalClicksTableQueryConversionGoalMember1);
                 }
                 return new Dictionary<string, Action<IParseNode>>();
             }
@@ -239,7 +254,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             public virtual void Serialize(ISerializationWriter writer)
             {
                 if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActionConversionGoal>(null, ActionConversionGoal, CustomEventConversionGoal);
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActionConversionGoal>(null, ActionConversionGoal, CustomEventConversionGoal, WebExternalClicksTableQueryConversionGoalMember1);
             }
         }
         /// <summary>

@@ -62,6 +62,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Scope { get; set; }
 #endif
+        /// <summary>The team_id property</summary>
+        public int? TeamId { get; set; }
         /// <summary>is the date of this log item newer than the user&apos;s bookmark</summary>
         public bool? Unread { get; private set; }
         /// <summary>The user property</summary>
@@ -108,6 +110,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "item_id", n => { ItemId = n.GetStringValue(); } },
                 { "organization_id", n => { OrganizationId = n.GetGuidValue(); } },
                 { "scope", n => { Scope = n.GetStringValue(); } },
+                { "team_id", n => { TeamId = n.GetIntValue(); } },
                 { "unread", n => { Unread = n.GetBoolValue(); } },
                 { "user", n => { User = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
                 { "was_impersonated", n => { WasImpersonated = n.GetBoolValue(); } },
@@ -128,6 +131,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("item_id", ItemId);
             writer.WriteGuidValue("organization_id", OrganizationId);
             writer.WriteStringValue("scope", Scope);
+            writer.WriteIntValue("team_id", TeamId);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>("user", User);
             writer.WriteBoolValue("was_impersonated", WasImpersonated);
             writer.WriteAdditionalData(AdditionalData);

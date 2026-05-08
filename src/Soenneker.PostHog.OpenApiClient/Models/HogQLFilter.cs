@@ -21,7 +21,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Key { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLFilter_type? Type { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Type { get; set; }
+#nullable restore
+#else
+        public string Type { get; set; }
+#endif
         /// <summary>The value property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -49,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "key", n => { Key = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLFilter_type>(); } },
+                { "type", n => { Type = n.GetStringValue(); } },
                 { "value", n => { Value = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
             };
         }
@@ -61,7 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("key", Key);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLFilter_type>("type", Type);
+            writer.WriteStringValue("type", Type);
             writer.WriteObjectValue<UntypedNode>("value", Value);
         }
     }

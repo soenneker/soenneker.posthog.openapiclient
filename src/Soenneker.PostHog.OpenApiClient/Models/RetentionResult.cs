@@ -75,13 +75,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RetentionValue>("values", Values);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="double"/>, <see cref="string"/>
+        /// Composed type wrapper for classes <see cref="double"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RetentionResult_breakdown_valueMember1"/>, <see cref="string"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class RetentionResult_breakdown_value : IComposedTypeWrapper, IParsable
         {
             /// <summary>Composed type representation for type <see cref="double"/></summary>
             public double? Double { get; set; }
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RetentionResult_breakdown_valueMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.RetentionResult_breakdown_valueMember1? RetentionResultBreakdownValueMember1 { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.RetentionResult_breakdown_valueMember1 RetentionResultBreakdownValueMember1 { get; set; }
+#endif
             /// <summary>Composed type representation for type <see cref="string"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -107,6 +115,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 {
                     result.String = stringValue;
                 }
+                else {
+                    result.RetentionResultBreakdownValueMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.RetentionResult_breakdown_valueMember1();
+                }
                 return result;
             }
             /// <summary>
@@ -115,6 +126,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
+                if(RetentionResultBreakdownValueMember1 != null)
+                {
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(RetentionResultBreakdownValueMember1);
+                }
                 return new Dictionary<string, Action<IParseNode>>();
             }
             /// <summary>
@@ -131,6 +146,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 else if(String != null)
                 {
                     writer.WriteStringValue(null, String);
+                }
+                else {
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionResult_breakdown_valueMember1>(null, RetentionResultBreakdownValueMember1);
                 }
             }
         }

@@ -15,10 +15,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The group_key_names property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupPropertyFilter_group_key_names? GroupKeyNames { get; set; }
+        public UntypedNode? GroupKeyNames { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupPropertyFilter_group_key_names GroupKeyNames { get; set; }
+        public UntypedNode GroupKeyNames { get; set; }
 #endif
         /// <summary>The group_type_index property</summary>
         public int? GroupTypeIndex { get; set; }
@@ -41,7 +41,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The operator property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperator? Operator { get; set; }
         /// <summary>The type property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupPropertyFilter_type? Type { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Type { get; set; }
+#nullable restore
+#else
+        public string Type { get; set; }
+#endif
         /// <summary>The value property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -55,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public GroupPropertyFilter()
         {
-            Type = global::Soenneker.PostHog.OpenApiClient.Models.GroupPropertyFilter_type.Group;
+            Type = "group";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -75,12 +81,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "group_key_names", n => { GroupKeyNames = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupPropertyFilter_group_key_names>(global::Soenneker.PostHog.OpenApiClient.Models.GroupPropertyFilter_group_key_names.CreateFromDiscriminatorValue); } },
+                { "group_key_names", n => { GroupKeyNames = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "group_type_index", n => { GroupTypeIndex = n.GetIntValue(); } },
                 { "key", n => { Key = n.GetStringValue(); } },
                 { "label", n => { Label = n.GetStringValue(); } },
                 { "operator", n => { Operator = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperator>(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupPropertyFilter_type>(); } },
+                { "type", n => { Type = n.GetStringValue(); } },
                 { "value", n => { Value = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupPropertyFilter.GroupPropertyFilter_value>(global::Soenneker.PostHog.OpenApiClient.Models.GroupPropertyFilter.GroupPropertyFilter_value.CreateFromDiscriminatorValue); } },
             };
         }
@@ -91,16 +97,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupPropertyFilter_group_key_names>("group_key_names", GroupKeyNames);
+            writer.WriteObjectValue<UntypedNode>("group_key_names", GroupKeyNames);
             writer.WriteIntValue("group_type_index", GroupTypeIndex);
             writer.WriteStringValue("key", Key);
             writer.WriteStringValue("label", Label);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperator>("operator", Operator);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupPropertyFilter_type>("type", Type);
+            writer.WriteStringValue("type", Type);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupPropertyFilter.GroupPropertyFilter_value>("value", Value);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="bool"/>, <see cref="double"/>, <see cref="string"/>, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.GroupPropertyFilter_valueMember1&gt;
+        /// Composed type wrapper for classes <see cref="bool"/>, <see cref="double"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.GroupPropertyFilter_valueMember2"/>, <see cref="string"/>, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.GroupPropertyFilter_valueMember1&gt;
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class GroupPropertyFilter_value : IComposedTypeWrapper, IParsable
@@ -116,6 +122,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
             public List<global::Soenneker.PostHog.OpenApiClient.Models.GroupPropertyFilter_valueMember1> GroupPropertyFilterValueMember1 { get; set; }
+#endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.GroupPropertyFilter_valueMember2"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.GroupPropertyFilter_valueMember2? GroupPropertyFilterValueMember2 { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.GroupPropertyFilter_valueMember2 GroupPropertyFilterValueMember2 { get; set; }
 #endif
             /// <summary>Composed type representation for type <see cref="string"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -150,6 +164,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 {
                     result.GroupPropertyFilterValueMember1 = groupPropertyFilterValueMember1Value;
                 }
+                else {
+                    result.GroupPropertyFilterValueMember2 = new global::Soenneker.PostHog.OpenApiClient.Models.GroupPropertyFilter_valueMember2();
+                }
                 return result;
             }
             /// <summary>
@@ -158,6 +175,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
+                if(GroupPropertyFilterValueMember2 != null)
+                {
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(GroupPropertyFilterValueMember2);
+                }
                 return new Dictionary<string, Action<IParseNode>>();
             }
             /// <summary>
@@ -182,6 +203,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 else if(GroupPropertyFilterValueMember1 != null)
                 {
                     writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GroupPropertyFilter_valueMember1>(null, GroupPropertyFilterValueMember1);
+                }
+                else {
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupPropertyFilter_valueMember2>(null, GroupPropertyFilterValueMember2);
                 }
             }
         }

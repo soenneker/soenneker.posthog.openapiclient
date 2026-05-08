@@ -39,7 +39,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Fingerprint { get; set; }
 #endif
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQuery_kind? Kind { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Kind { get; set; }
+#nullable restore
+#else
+        public string Kind { get; set; }
+#endif
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -87,7 +93,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public ExperimentTrendsQuery()
         {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQuery_kind.ExperimentTrendsQuery;
+            Kind = "ExperimentTrendsQuery";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -111,7 +117,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "experiment_id", n => { ExperimentId = n.GetIntValue(); } },
                 { "exposure_query", n => { ExposureQuery = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TrendsQuery>(global::Soenneker.PostHog.OpenApiClient.Models.TrendsQuery.CreateFromDiscriminatorValue); } },
                 { "fingerprint", n => { Fingerprint = n.GetStringValue(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQuery_kind>(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQueryResponse.CreateFromDiscriminatorValue); } },
@@ -131,7 +137,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("experiment_id", ExperimentId);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TrendsQuery>("exposure_query", ExposureQuery);
             writer.WriteStringValue("fingerprint", Fingerprint);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQuery_kind>("kind", Kind);
+            writer.WriteStringValue("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQueryResponse>("response", Response);

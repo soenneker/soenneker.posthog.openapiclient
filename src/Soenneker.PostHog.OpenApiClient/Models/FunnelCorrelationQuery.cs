@@ -55,7 +55,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The funnelCorrelationType property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationResultsType? FunnelCorrelationType { get; set; }
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationQuery_kind? Kind { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Kind { get; set; }
+#nullable restore
+#else
+        public string Kind { get; set; }
+#endif
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -79,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public FunnelCorrelationQuery()
         {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationQuery_kind.FunnelCorrelationQuery;
+            Kind = "FunnelCorrelationQuery";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -105,7 +111,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "funnelCorrelationExcludeNames", n => { FunnelCorrelationExcludeNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "funnelCorrelationNames", n => { FunnelCorrelationNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "funnelCorrelationType", n => { FunnelCorrelationType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationResultsType>(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationQuery_kind>(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationResponse>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationResponse.CreateFromDiscriminatorValue); } },
                 { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery.CreateFromDiscriminatorValue); } },
                 { "version", n => { Version = n.GetDoubleValue(); } },
@@ -124,7 +130,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("funnelCorrelationExcludeNames", FunnelCorrelationExcludeNames);
             writer.WriteCollectionOfPrimitiveValues<string>("funnelCorrelationNames", FunnelCorrelationNames);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationResultsType>("funnelCorrelationType", FunnelCorrelationType);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationQuery_kind>("kind", Kind);
+            writer.WriteStringValue("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationResponse>("response", Response);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery>("source", Source);
             writer.WriteDoubleValue("version", Version);

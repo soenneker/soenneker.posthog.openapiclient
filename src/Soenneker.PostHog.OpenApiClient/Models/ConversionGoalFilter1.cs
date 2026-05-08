@@ -53,7 +53,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1.ConversionGoalFilter1_fixedProperties> FixedProperties { get; set; }
 #endif
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1_kind? Kind { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Kind { get; set; }
+#nullable restore
+#else
+        public string Kind { get; set; }
+#endif
         /// <summary>The limit property</summary>
         public int? Limit { get; set; }
         /// <summary>The math property</summary>
@@ -129,10 +135,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1_response? Response { get; set; }
+        public UntypedNode? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1_response Response { get; set; }
+        public UntypedNode Response { get; set; }
 #endif
         /// <summary>The schema_map property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -149,7 +155,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public ConversionGoalFilter1()
         {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1_kind.EventsNode;
+            Kind = "EventsNode";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -174,7 +180,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "custom_name", n => { CustomName = n.GetStringValue(); } },
                 { "event", n => { Event = n.GetStringValue(); } },
                 { "fixedProperties", n => { FixedProperties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1.ConversionGoalFilter1_fixedProperties>(global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1.ConversionGoalFilter1_fixedProperties.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1_kind>(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
                 { "math", n => { Math = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1.ConversionGoalFilter1_math>(global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1.ConversionGoalFilter1_math.CreateFromDiscriminatorValue); } },
                 { "math_group_type_index", n => { MathGroupTypeIndex = n.GetDoubleValue(); } },
@@ -187,7 +193,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "optionalInFunnel", n => { OptionalInFunnel = n.GetBoolValue(); } },
                 { "orderBy", n => { OrderBy = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1.ConversionGoalFilter1_properties>(global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1.ConversionGoalFilter1_properties.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1_response>(global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1_response.CreateFromDiscriminatorValue); } },
+                { "response", n => { Response = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "schema_map", n => { SchemaMap = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1_schema_map>(global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1_schema_map.CreateFromDiscriminatorValue); } },
                 { "version", n => { Version = n.GetDoubleValue(); } },
             };
@@ -204,7 +210,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("custom_name", CustomName);
             writer.WriteStringValue("event", Event);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1.ConversionGoalFilter1_fixedProperties>("fixedProperties", FixedProperties);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1_kind>("kind", Kind);
+            writer.WriteStringValue("kind", Kind);
             writer.WriteIntValue("limit", Limit);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1.ConversionGoalFilter1_math>("math", Math);
             writer.WriteDoubleValue("math_group_type_index", MathGroupTypeIndex);
@@ -217,7 +223,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("optionalInFunnel", OptionalInFunnel);
             writer.WriteCollectionOfPrimitiveValues<string>("orderBy", OrderBy);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1.ConversionGoalFilter1_properties>("properties", Properties);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1_response>("response", Response);
+            writer.WriteObjectValue<UntypedNode>("response", Response);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1_schema_map>("schema_map", SchemaMap);
             writer.WriteDoubleValue("version", Version);
         }
@@ -441,7 +447,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             }
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BaseMathType"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapMathType"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CountPerActorMathType"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricMathType"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelMathType"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyMathType"/>, <see cref="string"/>
+        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BaseMathType"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapMathType"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1_mathMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CountPerActorMathType"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricMathType"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelMathType"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyMathType"/>, <see cref="string"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class ConversionGoalFilter1_math : IComposedTypeWrapper, IParsable
@@ -450,6 +456,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             public global::Soenneker.PostHog.OpenApiClient.Models.BaseMathType? BaseMathType { get; set; }
             /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapMathType"/></summary>
             public global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapMathType? CalendarHeatmapMathType { get; set; }
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1_mathMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1_mathMember1? ConversionGoalFilter1MathMember1 { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1_mathMember1 ConversionGoalFilter1MathMember1 { get; set; }
+#endif
             /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CountPerActorMathType"/></summary>
             public global::Soenneker.PostHog.OpenApiClient.Models.CountPerActorMathType? CountPerActorMathType { get; set; }
             /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricMathType"/></summary>
@@ -503,6 +517,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 {
                     result.PropertyMathType = propertyMathTypeValue;
                 }
+                else {
+                    result.ConversionGoalFilter1MathMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1_mathMember1();
+                }
                 return result;
             }
             /// <summary>
@@ -511,6 +528,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
+                if(ConversionGoalFilter1MathMember1 != null)
+                {
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ConversionGoalFilter1MathMember1);
+                }
                 return new Dictionary<string, Action<IParseNode>>();
             }
             /// <summary>
@@ -547,6 +568,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 else if(PropertyMathType != null)
                 {
                     writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyMathType>(null, PropertyMathType);
+                }
+                else {
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1_mathMember1>(null, ConversionGoalFilter1MathMember1);
                 }
             }
         }

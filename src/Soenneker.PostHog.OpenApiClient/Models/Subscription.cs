@@ -20,10 +20,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Days of week for weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ByweekdayEnum?>? Byweekday { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.Subscription_byweekday?>? Byweekday { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ByweekdayEnum?> Byweekday { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.Subscription_byweekday?> Byweekday { get; set; }
 #endif
         /// <summary>Total number of deliveries before the subscription stops. Null for unlimited.</summary>
         public int? Count { get; set; }
@@ -153,7 +153,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "bysetpos", n => { Bysetpos = n.GetIntValue(); } },
-                { "byweekday", n => { Byweekday = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.ByweekdayEnum>()?.AsList(); } },
+                { "byweekday", n => { Byweekday = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.Subscription_byweekday>()?.AsList(); } },
                 { "count", n => { Count = n.GetIntValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
@@ -188,7 +188,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("bysetpos", Bysetpos);
-            writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.ByweekdayEnum>("byweekday", Byweekday);
+            writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.Subscription_byweekday>("byweekday", Byweekday);
             writer.WriteIntValue("count", Count);
             writer.WriteIntValue("dashboard", Dashboard);
             writer.WriteCollectionOfPrimitiveValues<int?>("dashboard_export_insights", DashboardExportInsights);

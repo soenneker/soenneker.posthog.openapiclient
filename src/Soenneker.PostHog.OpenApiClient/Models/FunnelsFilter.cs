@@ -79,10 +79,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Customizations for the appearance of result datasets.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilter_resultCustomizations? ResultCustomizations { get; set; }
+        public UntypedNode? ResultCustomizations { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilter_resultCustomizations ResultCustomizations { get; set; }
+        public UntypedNode ResultCustomizations { get; set; }
 #endif
         /// <summary>Display linear regression trend lines on the chart (only for historical trends viz)</summary>
         public bool? ShowTrendLines { get; set; }
@@ -137,7 +137,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "goalLines", n => { GoalLines = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine>(global::Soenneker.PostHog.OpenApiClient.Models.GoalLine.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "hiddenLegendBreakdowns", n => { HiddenLegendBreakdowns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "layout", n => { Layout = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelLayout>(); } },
-                { "resultCustomizations", n => { ResultCustomizations = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilter_resultCustomizations>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilter_resultCustomizations.CreateFromDiscriminatorValue); } },
+                { "resultCustomizations", n => { ResultCustomizations = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "showTrendLines", n => { ShowTrendLines = n.GetBoolValue(); } },
                 { "showValuesOnSeries", n => { ShowValuesOnSeries = n.GetBoolValue(); } },
                 { "useUdf", n => { UseUdf = n.GetBoolValue(); } },
@@ -167,7 +167,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine>("goalLines", GoalLines);
             writer.WriteCollectionOfPrimitiveValues<string>("hiddenLegendBreakdowns", HiddenLegendBreakdowns);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelLayout>("layout", Layout);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilter_resultCustomizations>("resultCustomizations", ResultCustomizations);
+            writer.WriteObjectValue<UntypedNode>("resultCustomizations", ResultCustomizations);
             writer.WriteBoolValue("showTrendLines", ShowTrendLines);
             writer.WriteBoolValue("showValuesOnSeries", ShowValuesOnSeries);
             writer.WriteBoolValue("useUdf", UseUdf);

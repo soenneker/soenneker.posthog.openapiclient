@@ -25,7 +25,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The includeRecordings property</summary>
         public bool? IncludeRecordings { get; set; }
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessActorsQuery_kind? Kind { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Kind { get; set; }
+#nullable restore
+#else
+        public string Kind { get; set; }
+#endif
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -69,7 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public StickinessActorsQuery()
         {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.StickinessActorsQuery_kind.StickinessActorsQuery;
+            Kind = "StickinessActorsQuery";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -92,7 +98,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "compare", n => { Compare = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Compare>(); } },
                 { "day", n => { Day = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessActorsQuery.StickinessActorsQuery_day>(global::Soenneker.PostHog.OpenApiClient.Models.StickinessActorsQuery.StickinessActorsQuery_day.CreateFromDiscriminatorValue); } },
                 { "includeRecordings", n => { IncludeRecordings = n.GetBoolValue(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessActorsQuery_kind>(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "operator", n => { Operator = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessOperator>(); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryResponse.CreateFromDiscriminatorValue); } },
@@ -112,7 +118,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Compare>("compare", Compare);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessActorsQuery.StickinessActorsQuery_day>("day", Day);
             writer.WriteBoolValue("includeRecordings", IncludeRecordings);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessActorsQuery_kind>("kind", Kind);
+            writer.WriteStringValue("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessOperator>("operator", Operator);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryResponse>("response", Response);
@@ -122,13 +128,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("version", Version);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="int"/>, <see cref="string"/>
+        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.StickinessActorsQuery_dayMember1"/>, <see cref="int"/>, <see cref="string"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class StickinessActorsQuery_day : IComposedTypeWrapper, IParsable
         {
             /// <summary>Composed type representation for type <see cref="int"/></summary>
             public int? Integer { get; set; }
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.StickinessActorsQuery_dayMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.StickinessActorsQuery_dayMember1? StickinessActorsQueryDayMember1 { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.StickinessActorsQuery_dayMember1 StickinessActorsQueryDayMember1 { get; set; }
+#endif
             /// <summary>Composed type representation for type <see cref="string"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -154,6 +168,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 {
                     result.String = stringValue;
                 }
+                else {
+                    result.StickinessActorsQueryDayMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.StickinessActorsQuery_dayMember1();
+                }
                 return result;
             }
             /// <summary>
@@ -162,6 +179,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
+                if(StickinessActorsQueryDayMember1 != null)
+                {
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(StickinessActorsQueryDayMember1);
+                }
                 return new Dictionary<string, Action<IParseNode>>();
             }
             /// <summary>
@@ -178,6 +199,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 else if(String != null)
                 {
                     writer.WriteStringValue(null, String);
+                }
+                else {
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessActorsQuery_dayMember1>(null, StickinessActorsQueryDayMember1);
                 }
             }
         }

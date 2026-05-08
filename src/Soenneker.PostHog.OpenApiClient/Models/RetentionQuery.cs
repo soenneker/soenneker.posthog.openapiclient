@@ -35,7 +35,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Exclude internal and test users by applying the respective filters</summary>
         public bool? FilterTestAccounts { get; set; }
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionQuery_kind? Kind { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Kind { get; set; }
+#nullable restore
+#else
+        public string Kind { get; set; }
+#endif
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -85,7 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public RetentionQuery()
         {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.RetentionQuery_kind.RetentionQuery;
+            Kind = "RetentionQuery";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -110,7 +116,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "dataColorTheme", n => { DataColorTheme = n.GetDoubleValue(); } },
                 { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>(global::Soenneker.PostHog.OpenApiClient.Models.DateRange.CreateFromDiscriminatorValue); } },
                 { "filterTestAccounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionQuery_kind>(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "properties", n => { Properties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionQuery.RetentionQuery_properties>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionQuery.RetentionQuery_properties.CreateFromDiscriminatorValue); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionQueryResponse.CreateFromDiscriminatorValue); } },
@@ -132,7 +138,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("dataColorTheme", DataColorTheme);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>("dateRange", DateRange);
             writer.WriteBoolValue("filterTestAccounts", FilterTestAccounts);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionQuery_kind>("kind", Kind);
+            writer.WriteStringValue("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionQuery.RetentionQuery_properties>("properties", Properties);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionQueryResponse>("response", Response);
@@ -142,7 +148,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("version", Version);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter"/>, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.WorkflowVariablePropertyFilter&gt;
+        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RetentionQuery_propertiesMember1"/>, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.WorkflowVariablePropertyFilter&gt;
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class RetentionQuery_properties : IComposedTypeWrapper, IParsable
@@ -154,6 +160,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
             public global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter PropertyGroupFilter { get; set; }
+#endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RetentionQuery_propertiesMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.RetentionQuery_propertiesMember1? RetentionQueryPropertiesMember1 { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.RetentionQuery_propertiesMember1 RetentionQueryPropertiesMember1 { get; set; }
 #endif
             /// <summary>Composed type representation for type List&lt;global::Soenneker.PostHog.OpenApiClient.Models.WorkflowVariablePropertyFilter&gt;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -178,6 +192,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 }
                 else {
                     result.PropertyGroupFilter = new global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter();
+                    result.RetentionQueryPropertiesMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.RetentionQuery_propertiesMember1();
                 }
                 return result;
             }
@@ -187,9 +202,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
-                if(PropertyGroupFilter != null)
+                if(PropertyGroupFilter != null || RetentionQueryPropertiesMember1 != null)
                 {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(PropertyGroupFilter);
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(PropertyGroupFilter, RetentionQueryPropertiesMember1);
                 }
                 return new Dictionary<string, Action<IParseNode>>();
             }
@@ -205,7 +220,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                     writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowVariablePropertyFilter>(null, WorkflowVariablePropertyFilter);
                 }
                 else {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter>(null, PropertyGroupFilter);
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter>(null, PropertyGroupFilter, RetentionQueryPropertiesMember1);
                 }
             }
         }

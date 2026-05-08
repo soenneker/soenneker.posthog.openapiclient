@@ -389,18 +389,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The session_recording_url_blocklist_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<UntypedNode>? SessionRecordingUrlBlocklistConfig { get; set; }
+        public UntypedNode? SessionRecordingUrlBlocklistConfig { get; set; }
 #nullable restore
 #else
-        public List<UntypedNode> SessionRecordingUrlBlocklistConfig { get; set; }
+        public UntypedNode SessionRecordingUrlBlocklistConfig { get; set; }
 #endif
         /// <summary>The session_recording_url_trigger_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<UntypedNode>? SessionRecordingUrlTriggerConfig { get; set; }
+        public UntypedNode? SessionRecordingUrlTriggerConfig { get; set; }
 #nullable restore
 #else
-        public List<UntypedNode> SessionRecordingUrlTriggerConfig { get; set; }
+        public UntypedNode SessionRecordingUrlTriggerConfig { get; set; }
 #endif
         /// <summary>The session_replay_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -552,8 +552,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "session_recording_sample_rate", n => { SessionRecordingSampleRate = n.GetStringValue(); } },
                 { "session_recording_trigger_groups", n => { SessionRecordingTriggerGroups = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "session_recording_trigger_match_type_config", n => { SessionRecordingTriggerMatchTypeConfig = n.GetStringValue(); } },
-                { "session_recording_url_blocklist_config", n => { SessionRecordingUrlBlocklistConfig = n.GetCollectionOfPrimitiveValues<UntypedNode>()?.AsList(); } },
-                { "session_recording_url_trigger_config", n => { SessionRecordingUrlTriggerConfig = n.GetCollectionOfPrimitiveValues<UntypedNode>()?.AsList(); } },
+                { "session_recording_url_blocklist_config", n => { SessionRecordingUrlBlocklistConfig = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "session_recording_url_trigger_config", n => { SessionRecordingUrlTriggerConfig = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "session_replay_config", n => { SessionReplayConfig = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "survey_config", n => { SurveyConfig = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "surveys_opt_in", n => { SurveysOptIn = n.GetBoolValue(); } },
@@ -629,8 +629,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("session_recording_sample_rate", SessionRecordingSampleRate);
             writer.WriteObjectValue<UntypedNode>("session_recording_trigger_groups", SessionRecordingTriggerGroups);
             writer.WriteStringValue("session_recording_trigger_match_type_config", SessionRecordingTriggerMatchTypeConfig);
-            writer.WriteCollectionOfPrimitiveValues<UntypedNode>("session_recording_url_blocklist_config", SessionRecordingUrlBlocklistConfig);
-            writer.WriteCollectionOfPrimitiveValues<UntypedNode>("session_recording_url_trigger_config", SessionRecordingUrlTriggerConfig);
+            writer.WriteObjectValue<UntypedNode>("session_recording_url_blocklist_config", SessionRecordingUrlBlocklistConfig);
+            writer.WriteObjectValue<UntypedNode>("session_recording_url_trigger_config", SessionRecordingUrlTriggerConfig);
             writer.WriteObjectValue<UntypedNode>("session_replay_config", SessionReplayConfig);
             writer.WriteObjectValue<UntypedNode>("survey_config", SurveyConfig);
             writer.WriteBoolValue("surveys_opt_in", SurveysOptIn);

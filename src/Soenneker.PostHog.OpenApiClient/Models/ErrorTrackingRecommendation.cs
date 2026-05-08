@@ -14,17 +14,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The completed property</summary>
+        /// <summary>Whether the recommendation&apos;s recommended action has been satisfied.</summary>
         public bool? Completed { get; private set; }
-        /// <summary>The computed_at property</summary>
+        /// <summary>Timestamp meta was last successfully computed.</summary>
         public DateTimeOffset? ComputedAt { get; private set; }
-        /// <summary>The created_at property</summary>
+        /// <summary>Timestamp the recommendation row was first created.</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
-        /// <summary>The dismissed_at property</summary>
+        /// <summary>Timestamp the user dismissed this recommendation, if any.</summary>
         public DateTimeOffset? DismissedAt { get; private set; }
-        /// <summary>The id property</summary>
+        /// <summary>Recommendation UUID.</summary>
         public Guid? Id { get; private set; }
-        /// <summary>The meta property</summary>
+        /// <summary>Recommendation payload, shape depends on type.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingRecommendation_meta? Meta { get; private set; }
@@ -32,7 +32,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingRecommendation_meta Meta { get; private set; }
 #endif
-        /// <summary>The type property</summary>
+        /// <summary>&apos;ready&apos; if meta is fresh, &apos;computing&apos; if a refresh is in progress.* `ready` - Ready* `computing` - Computing</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingRecommendationStatusEnum? Status { get; private set; }
+        /// <summary>Recommendation type identifier (e.g. &apos;alerts&apos;).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Type { get; private set; }
@@ -40,7 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Type { get; private set; }
 #endif
-        /// <summary>The updated_at property</summary>
+        /// <summary>Timestamp the recommendation row was last updated.</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingRecommendation"/> and sets the default values.
@@ -73,6 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "dismissed_at", n => { DismissedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "meta", n => { Meta = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingRecommendation_meta>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingRecommendation_meta.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingRecommendationStatusEnum>(); } },
                 { "type", n => { Type = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };

@@ -87,7 +87,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public List<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery.RecordingsQuery_having_predicates> HavingPredicates { get; set; }
 #endif
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_kind? Kind { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Kind { get; set; }
+#nullable restore
+#else
+        public string Kind { get; set; }
+#endif
         /// <summary>The limit property</summary>
         public int? Limit { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
@@ -157,10 +163,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The user_modified_filters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_user_modified_filters? UserModifiedFilters { get; set; }
+        public UntypedNode? UserModifiedFilters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_user_modified_filters UserModifiedFilters { get; set; }
+        public UntypedNode UserModifiedFilters { get; set; }
 #endif
         /// <summary>version of the node, used for schema migrations</summary>
         public double? Version { get; set; }
@@ -170,7 +176,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public RecordingsQuery()
         {
             DateFrom = "-3d";
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_kind.RecordingsQuery;
+            Kind = "RecordingsQuery";
             Operand = global::Soenneker.PostHog.OpenApiClient.Models.FilterLogicalOperator.AND;
             Order = global::Soenneker.PostHog.OpenApiClient.Models.RecordingOrder.Start_time;
             OrderDirection = global::Soenneker.PostHog.OpenApiClient.Models.RecordingOrderDirection.DESC;
@@ -203,7 +209,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "events", n => { Events = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_events>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_events.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "filter_test_accounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
                 { "having_predicates", n => { HavingPredicates = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery.RecordingsQuery_having_predicates>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery.RecordingsQuery_having_predicates.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_kind>(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "offset", n => { Offset = n.GetIntValue(); } },
@@ -216,7 +222,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "session_ids", n => { SessionIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "session_recording_id", n => { SessionRecordingId = n.GetStringValue(); } },
                 { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
-                { "user_modified_filters", n => { UserModifiedFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_user_modified_filters>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_user_modified_filters.CreateFromDiscriminatorValue); } },
+                { "user_modified_filters", n => { UserModifiedFilters = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "version", n => { Version = n.GetDoubleValue(); } },
             };
         }
@@ -237,7 +243,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_events>("events", Events);
             writer.WriteBoolValue("filter_test_accounts", FilterTestAccounts);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery.RecordingsQuery_having_predicates>("having_predicates", HavingPredicates);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_kind>("kind", Kind);
+            writer.WriteStringValue("kind", Kind);
             writer.WriteIntValue("limit", Limit);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);
             writer.WriteIntValue("offset", Offset);
@@ -250,7 +256,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("session_ids", SessionIds);
             writer.WriteStringValue("session_recording_id", SessionRecordingId);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_user_modified_filters>("user_modified_filters", UserModifiedFilters);
+            writer.WriteObjectValue<UntypedNode>("user_modified_filters", UserModifiedFilters);
             writer.WriteDoubleValue("version", Version);
         }
         /// <summary>

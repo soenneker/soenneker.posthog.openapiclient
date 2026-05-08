@@ -31,7 +31,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The interval property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SimpleIntervalType? Interval { get; set; }
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsGrossRevenueQuery_kind? Kind { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Kind { get; set; }
+#nullable restore
+#else
+        public string Kind { get; set; }
+#endif
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -71,7 +77,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public RevenueAnalyticsGrossRevenueQuery()
         {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsGrossRevenueQuery_kind.RevenueAnalyticsGrossRevenueQuery;
+            Kind = "RevenueAnalyticsGrossRevenueQuery";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -94,7 +100,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "breakdown", n => { Breakdown = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsBreakdown>(global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsBreakdown.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>(global::Soenneker.PostHog.OpenApiClient.Models.DateRange.CreateFromDiscriminatorValue); } },
                 { "interval", n => { Interval = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SimpleIntervalType>(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsGrossRevenueQuery_kind>(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsPropertyFilter>(global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsPropertyFilter.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsGrossRevenueQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsGrossRevenueQueryResponse.CreateFromDiscriminatorValue); } },
@@ -112,7 +118,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsBreakdown>("breakdown", Breakdown);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>("dateRange", DateRange);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SimpleIntervalType>("interval", Interval);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsGrossRevenueQuery_kind>("kind", Kind);
+            writer.WriteStringValue("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsPropertyFilter>("properties", Properties);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsGrossRevenueQueryResponse>("response", Response);

@@ -23,7 +23,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The is_column property</summary>
         public bool? IsColumn { get; set; }
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery_kind? Kind { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Kind { get; set; }
+#nullable restore
+#else
+        public string Kind { get; set; }
+#endif
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -73,7 +79,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public PropertyValuesQuery()
         {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery_kind.PropertyValuesQuery;
+            Kind = "PropertyValuesQuery";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -95,7 +101,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "event_names", n => { EventNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "is_column", n => { IsColumn = n.GetBoolValue(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery_kind>(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "property_key", n => { PropertyKey = n.GetStringValue(); } },
                 { "property_type", n => { PropertyType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyType>(); } },
@@ -114,7 +120,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("event_names", EventNames);
             writer.WriteBoolValue("is_column", IsColumn);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery_kind>("kind", Kind);
+            writer.WriteStringValue("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);
             writer.WriteStringValue("property_key", PropertyKey);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyType>("property_type", PropertyType);

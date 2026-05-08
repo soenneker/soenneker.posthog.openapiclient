@@ -129,7 +129,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The total_periods property</summary>
         public int? TotalPeriods { get; set; }
         /// <summary>The type property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_type? Type { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Type { get; set; }
+#nullable restore
+#else
+        public string Type { get; set; }
+#endif
         /// <summary>The value property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -175,7 +181,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "time_interval", n => { TimeInterval = n.GetStringValue(); } },
                 { "time_value", n => { TimeValue = n.GetIntValue(); } },
                 { "total_periods", n => { TotalPeriods = n.GetIntValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_type>(); } },
+                { "type", n => { Type = n.GetStringValue(); } },
                 { "value", n => { Value = n.GetStringValue(); } },
             };
         }
@@ -205,7 +211,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("time_interval", TimeInterval);
             writer.WriteIntValue("time_value", TimeValue);
             writer.WriteIntValue("total_periods", TotalPeriods);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_type>("type", Type);
+            writer.WriteStringValue("type", Type);
             writer.WriteStringValue("value", Value);
         }
         /// <summary>
@@ -326,11 +332,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             }
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="int"/>, <see cref="string"/>
+        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_seq_eventMember1"/>, <see cref="int"/>, <see cref="string"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class BehavioralFilter_seq_event : IComposedTypeWrapper, IParsable
         {
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_seq_eventMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_seq_eventMember1? BehavioralFilterSeqEventMember1 { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_seq_eventMember1 BehavioralFilterSeqEventMember1 { get; set; }
+#endif
             /// <summary>Composed type representation for type <see cref="int"/></summary>
             public int? Integer { get; set; }
             /// <summary>Composed type representation for type <see cref="string"/></summary>
@@ -358,6 +372,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 {
                     result.String = stringValue;
                 }
+                else {
+                    result.BehavioralFilterSeqEventMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_seq_eventMember1();
+                }
                 return result;
             }
             /// <summary>
@@ -366,6 +383,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
+                if(BehavioralFilterSeqEventMember1 != null)
+                {
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(BehavioralFilterSeqEventMember1);
+                }
                 return new Dictionary<string, Action<IParseNode>>();
             }
             /// <summary>
@@ -382,6 +403,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 else if(String != null)
                 {
                     writer.WriteStringValue(null, String);
+                }
+                else {
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_seq_eventMember1>(null, BehavioralFilterSeqEventMember1);
                 }
             }
         }

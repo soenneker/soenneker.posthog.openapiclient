@@ -33,7 +33,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The includeRecordings property</summary>
         public bool? IncludeRecordings { get; set; }
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_kind? Kind { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Kind { get; set; }
+#nullable restore
+#else
+        public string Kind { get; set; }
+#endif
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -73,7 +79,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public FunnelCorrelationActorsQuery()
         {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_kind.FunnelCorrelationActorsQuery;
+            Kind = "FunnelCorrelationActorsQuery";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -97,7 +103,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "funnelCorrelationPersonEntity", n => { FunnelCorrelationPersonEntity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery.FunnelCorrelationActorsQuery_funnelCorrelationPersonEntity>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery.FunnelCorrelationActorsQuery_funnelCorrelationPersonEntity.CreateFromDiscriminatorValue); } },
                 { "funnelCorrelationPropertyValues", n => { FunnelCorrelationPropertyValues = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery.FunnelCorrelationActorsQuery_funnelCorrelationPropertyValues>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery.FunnelCorrelationActorsQuery_funnelCorrelationPropertyValues.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "includeRecordings", n => { IncludeRecordings = n.GetBoolValue(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_kind>(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryResponse.CreateFromDiscriminatorValue); } },
                 { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationQuery>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationQuery.CreateFromDiscriminatorValue); } },
@@ -116,7 +122,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery.FunnelCorrelationActorsQuery_funnelCorrelationPersonEntity>("funnelCorrelationPersonEntity", FunnelCorrelationPersonEntity);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery.FunnelCorrelationActorsQuery_funnelCorrelationPropertyValues>("funnelCorrelationPropertyValues", FunnelCorrelationPropertyValues);
             writer.WriteBoolValue("includeRecordings", IncludeRecordings);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_kind>("kind", Kind);
+            writer.WriteStringValue("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryResponse>("response", Response);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationQuery>("source", Source);
@@ -124,7 +130,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("version", Version);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActionsNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EventsNode"/>
+        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActionsNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EventsNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_funnelCorrelationPersonEntityMember1"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class FunnelCorrelationActorsQuery_funnelCorrelationPersonEntity : IComposedTypeWrapper, IParsable
@@ -153,6 +159,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
             public global::Soenneker.PostHog.OpenApiClient.Models.EventsNode EventsNode { get; set; }
 #endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_funnelCorrelationPersonEntityMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_funnelCorrelationPersonEntityMember1? FunnelCorrelationActorsQueryFunnelCorrelationPersonEntityMember1 { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_funnelCorrelationPersonEntityMember1 FunnelCorrelationActorsQueryFunnelCorrelationPersonEntityMember1 { get; set; }
+#endif
             /// <summary>
             /// Creates a new instance of the appropriate class based on discriminator value
             /// </summary>
@@ -165,6 +179,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 result.ActionsNode = new global::Soenneker.PostHog.OpenApiClient.Models.ActionsNode();
                 result.DataWarehouseNode = new global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseNode();
                 result.EventsNode = new global::Soenneker.PostHog.OpenApiClient.Models.EventsNode();
+                result.FunnelCorrelationActorsQueryFunnelCorrelationPersonEntityMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_funnelCorrelationPersonEntityMember1();
                 return result;
             }
             /// <summary>
@@ -173,9 +188,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
-                if(ActionsNode != null || DataWarehouseNode != null || EventsNode != null)
+                if(ActionsNode != null || DataWarehouseNode != null || EventsNode != null || FunnelCorrelationActorsQueryFunnelCorrelationPersonEntityMember1 != null)
                 {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ActionsNode, DataWarehouseNode, EventsNode);
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ActionsNode, DataWarehouseNode, EventsNode, FunnelCorrelationActorsQueryFunnelCorrelationPersonEntityMember1);
                 }
                 return new Dictionary<string, Action<IParseNode>>();
             }
@@ -186,7 +201,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             public virtual void Serialize(ISerializationWriter writer)
             {
                 if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActionsNode>(null, ActionsNode, DataWarehouseNode, EventsNode);
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActionsNode>(null, ActionsNode, DataWarehouseNode, EventsNode, FunnelCorrelationActorsQueryFunnelCorrelationPersonEntityMember1);
             }
         }
         /// <summary>

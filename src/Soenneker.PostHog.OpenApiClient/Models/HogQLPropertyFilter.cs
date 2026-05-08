@@ -29,7 +29,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Label { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLPropertyFilter_type? Type { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Type { get; set; }
+#nullable restore
+#else
+        public string Type { get; set; }
+#endif
         /// <summary>The value property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -43,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public HogQLPropertyFilter()
         {
-            Type = global::Soenneker.PostHog.OpenApiClient.Models.HogQLPropertyFilter_type.Hogql;
+            Type = "hogql";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -65,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "key", n => { Key = n.GetStringValue(); } },
                 { "label", n => { Label = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLPropertyFilter_type>(); } },
+                { "type", n => { Type = n.GetStringValue(); } },
                 { "value", n => { Value = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLPropertyFilter.HogQLPropertyFilter_value>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLPropertyFilter.HogQLPropertyFilter_value.CreateFromDiscriminatorValue); } },
             };
         }
@@ -78,11 +84,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("key", Key);
             writer.WriteStringValue("label", Label);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLPropertyFilter_type>("type", Type);
+            writer.WriteStringValue("type", Type);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLPropertyFilter.HogQLPropertyFilter_value>("value", Value);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="bool"/>, <see cref="double"/>, <see cref="string"/>, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.HogQLPropertyFilter_valueMember1&gt;
+        /// Composed type wrapper for classes <see cref="bool"/>, <see cref="double"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogQLPropertyFilter_valueMember2"/>, <see cref="string"/>, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.HogQLPropertyFilter_valueMember1&gt;
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class HogQLPropertyFilter_value : IComposedTypeWrapper, IParsable
@@ -98,6 +104,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
             public List<global::Soenneker.PostHog.OpenApiClient.Models.HogQLPropertyFilter_valueMember1> HogQLPropertyFilterValueMember1 { get; set; }
+#endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogQLPropertyFilter_valueMember2"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.HogQLPropertyFilter_valueMember2? HogQLPropertyFilterValueMember2 { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.HogQLPropertyFilter_valueMember2 HogQLPropertyFilterValueMember2 { get; set; }
 #endif
             /// <summary>Composed type representation for type <see cref="string"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -132,6 +146,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 {
                     result.HogQLPropertyFilterValueMember1 = hogQLPropertyFilterValueMember1Value;
                 }
+                else {
+                    result.HogQLPropertyFilterValueMember2 = new global::Soenneker.PostHog.OpenApiClient.Models.HogQLPropertyFilter_valueMember2();
+                }
                 return result;
             }
             /// <summary>
@@ -140,6 +157,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
+                if(HogQLPropertyFilterValueMember2 != null)
+                {
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(HogQLPropertyFilterValueMember2);
+                }
                 return new Dictionary<string, Action<IParseNode>>();
             }
             /// <summary>
@@ -164,6 +185,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 else if(HogQLPropertyFilterValueMember1 != null)
                 {
                     writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogQLPropertyFilter_valueMember1>(null, HogQLPropertyFilterValueMember1);
+                }
+                else {
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLPropertyFilter_valueMember2>(null, HogQLPropertyFilterValueMember2);
                 }
             }
         }

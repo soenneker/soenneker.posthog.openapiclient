@@ -21,7 +21,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Event { get; set; }
 #endif
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfig_kind? Kind { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Kind { get; set; }
+#nullable restore
+#else
+        public string Kind { get; set; }
+#endif
         /// <summary>The properties property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -33,10 +39,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfig_response? Response { get; set; }
+        public UntypedNode? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfig_response Response { get; set; }
+        public UntypedNode Response { get; set; }
 #endif
         /// <summary>version of the node, used for schema migrations</summary>
         public double? Version { get; set; }
@@ -45,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public ExperimentEventExposureConfig()
         {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfig_kind.ExperimentEventExposureConfig;
+            Kind = "ExperimentEventExposureConfig";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -66,9 +72,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "event", n => { Event = n.GetStringValue(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfig_kind>(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
                 { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfig.ExperimentEventExposureConfig_properties>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfig.ExperimentEventExposureConfig_properties.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfig_response>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfig_response.CreateFromDiscriminatorValue); } },
+                { "response", n => { Response = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "version", n => { Version = n.GetDoubleValue(); } },
             };
         }
@@ -80,9 +86,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("event", Event);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfig_kind>("kind", Kind);
+            writer.WriteStringValue("kind", Kind);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfig.ExperimentEventExposureConfig_properties>("properties", Properties);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfig_response>("response", Response);
+            writer.WriteObjectValue<UntypedNode>("response", Response);
             writer.WriteDoubleValue("version", Version);
         }
         /// <summary>

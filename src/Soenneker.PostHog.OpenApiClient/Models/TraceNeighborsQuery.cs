@@ -25,7 +25,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The filterTestAccounts property</summary>
         public bool? FilterTestAccounts { get; set; }
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.TraceNeighborsQuery_kind? Kind { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Kind { get; set; }
+#nullable restore
+#else
+        public string Kind { get; set; }
+#endif
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -81,7 +87,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public TraceNeighborsQuery()
         {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.TraceNeighborsQuery_kind.TraceNeighborsQuery;
+            Kind = "TraceNeighborsQuery";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -104,7 +110,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>(global::Soenneker.PostHog.OpenApiClient.Models.DateRange.CreateFromDiscriminatorValue); } },
                 { "filterSupportTraces", n => { FilterSupportTraces = n.GetBoolValue(); } },
                 { "filterTestAccounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceNeighborsQuery_kind>(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TraceNeighborsQuery.TraceNeighborsQuery_properties>(global::Soenneker.PostHog.OpenApiClient.Models.TraceNeighborsQuery.TraceNeighborsQuery_properties.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceNeighborsQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.TraceNeighborsQueryResponse.CreateFromDiscriminatorValue); } },
@@ -124,7 +130,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>("dateRange", DateRange);
             writer.WriteBoolValue("filterSupportTraces", FilterSupportTraces);
             writer.WriteBoolValue("filterTestAccounts", FilterTestAccounts);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceNeighborsQuery_kind>("kind", Kind);
+            writer.WriteStringValue("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TraceNeighborsQuery.TraceNeighborsQuery_properties>("properties", Properties);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceNeighborsQueryResponse>("response", Response);

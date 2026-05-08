@@ -96,7 +96,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownType>("breakdown_type", BreakdownType);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="int"/>, <see cref="string"/>, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter_breakdownMember1&gt;
+        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter_breakdownMember2"/>, <see cref="int"/>, <see cref="string"/>, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter_breakdownMember1&gt;
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class BreakdownFilter_breakdown : IComposedTypeWrapper, IParsable
@@ -108,6 +108,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
             public List<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter_breakdownMember1> BreakdownFilterBreakdownMember1 { get; set; }
+#endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter_breakdownMember2"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter_breakdownMember2? BreakdownFilterBreakdownMember2 { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter_breakdownMember2 BreakdownFilterBreakdownMember2 { get; set; }
 #endif
             /// <summary>Composed type representation for type <see cref="int"/></summary>
             public int? Integer { get; set; }
@@ -140,6 +148,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 {
                     result.BreakdownFilterBreakdownMember1 = breakdownFilterBreakdownMember1Value;
                 }
+                else {
+                    result.BreakdownFilterBreakdownMember2 = new global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter_breakdownMember2();
+                }
                 return result;
             }
             /// <summary>
@@ -148,6 +159,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
+                if(BreakdownFilterBreakdownMember2 != null)
+                {
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(BreakdownFilterBreakdownMember2);
+                }
                 return new Dictionary<string, Action<IParseNode>>();
             }
             /// <summary>
@@ -168,6 +183,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 else if(BreakdownFilterBreakdownMember1 != null)
                 {
                     writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter_breakdownMember1>(null, BreakdownFilterBreakdownMember1);
+                }
+                else {
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter_breakdownMember2>(null, BreakdownFilterBreakdownMember2);
                 }
             }
         }

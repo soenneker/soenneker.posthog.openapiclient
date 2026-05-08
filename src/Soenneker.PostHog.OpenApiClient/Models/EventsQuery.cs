@@ -65,7 +65,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public List<global::Soenneker.PostHog.OpenApiClient.Models.EventsQuery.EventsQuery_fixedProperties> FixedProperties { get; set; }
 #endif
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.EventsQuery_kind? Kind { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Kind { get; set; }
+#nullable restore
+#else
+        public string Kind { get; set; }
+#endif
         /// <summary>Number of rows to return</summary>
         public int? Limit { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
@@ -149,7 +155,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public EventsQuery()
         {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.EventsQuery_kind.EventsQuery;
+            Kind = "EventsQuery";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -177,7 +183,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "events", n => { Events = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "filterTestAccounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
                 { "fixedProperties", n => { FixedProperties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EventsQuery.EventsQuery_fixedProperties>(global::Soenneker.PostHog.OpenApiClient.Models.EventsQuery.EventsQuery_fixedProperties.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EventsQuery_kind>(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "offset", n => { Offset = n.GetIntValue(); } },
@@ -207,7 +213,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("events", Events);
             writer.WriteBoolValue("filterTestAccounts", FilterTestAccounts);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EventsQuery.EventsQuery_fixedProperties>("fixedProperties", FixedProperties);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EventsQuery_kind>("kind", Kind);
+            writer.WriteStringValue("kind", Kind);
             writer.WriteIntValue("limit", Limit);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);
             writer.WriteIntValue("offset", Offset);

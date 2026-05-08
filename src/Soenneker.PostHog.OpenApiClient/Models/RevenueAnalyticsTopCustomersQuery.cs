@@ -23,7 +23,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The groupBy property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsTopCustomersGroupBy? GroupBy { get; set; }
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsTopCustomersQuery_kind? Kind { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Kind { get; set; }
+#nullable restore
+#else
+        public string Kind { get; set; }
+#endif
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -63,7 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public RevenueAnalyticsTopCustomersQuery()
         {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsTopCustomersQuery_kind.RevenueAnalyticsTopCustomersQuery;
+            Kind = "RevenueAnalyticsTopCustomersQuery";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -85,7 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>(global::Soenneker.PostHog.OpenApiClient.Models.DateRange.CreateFromDiscriminatorValue); } },
                 { "groupBy", n => { GroupBy = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsTopCustomersGroupBy>(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsTopCustomersQuery_kind>(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsPropertyFilter>(global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsPropertyFilter.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsTopCustomersQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsTopCustomersQueryResponse.CreateFromDiscriminatorValue); } },
@@ -102,7 +108,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>("dateRange", DateRange);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsTopCustomersGroupBy>("groupBy", GroupBy);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsTopCustomersQuery_kind>("kind", Kind);
+            writer.WriteStringValue("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsPropertyFilter>("properties", Properties);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsTopCustomersQueryResponse>("response", Response);

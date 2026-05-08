@@ -15,7 +15,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The experiment_id property</summary>
         public int? ExperimentId { get; set; }
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery_kind? Kind { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Kind { get; set; }
+#nullable restore
+#else
+        public string Kind { get; set; }
+#endif
         /// <summary>The metric property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -65,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public ExperimentQuery()
         {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery_kind.ExperimentQuery;
+            Kind = "ExperimentQuery";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -86,7 +92,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "experiment_id", n => { ExperimentId = n.GetIntValue(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery_kind>(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
                 { "metric", n => { Metric = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery.ExperimentQuery_metric>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery.ExperimentQuery_metric.CreateFromDiscriminatorValue); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
@@ -104,7 +110,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("experiment_id", ExperimentId);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery_kind>("kind", Kind);
+            writer.WriteStringValue("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery.ExperimentQuery_metric>("metric", Metric);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);
             writer.WriteStringValue("name", Name);

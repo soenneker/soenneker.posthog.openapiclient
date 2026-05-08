@@ -79,7 +79,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogPropertyFilter.LogPropertyFilter_value>("value", Value);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="bool"/>, <see cref="double"/>, <see cref="string"/>, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.LogPropertyFilter_valueMember1&gt;
+        /// Composed type wrapper for classes <see cref="bool"/>, <see cref="double"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogPropertyFilter_valueMember2"/>, <see cref="string"/>, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.LogPropertyFilter_valueMember1&gt;
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class LogPropertyFilter_value : IComposedTypeWrapper, IParsable
@@ -95,6 +95,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
             public List<global::Soenneker.PostHog.OpenApiClient.Models.LogPropertyFilter_valueMember1> LogPropertyFilterValueMember1 { get; set; }
+#endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogPropertyFilter_valueMember2"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.LogPropertyFilter_valueMember2? LogPropertyFilterValueMember2 { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.LogPropertyFilter_valueMember2 LogPropertyFilterValueMember2 { get; set; }
 #endif
             /// <summary>Composed type representation for type <see cref="string"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -129,6 +137,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 {
                     result.LogPropertyFilterValueMember1 = logPropertyFilterValueMember1Value;
                 }
+                else {
+                    result.LogPropertyFilterValueMember2 = new global::Soenneker.PostHog.OpenApiClient.Models.LogPropertyFilter_valueMember2();
+                }
                 return result;
             }
             /// <summary>
@@ -137,6 +148,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
+                if(LogPropertyFilterValueMember2 != null)
+                {
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(LogPropertyFilterValueMember2);
+                }
                 return new Dictionary<string, Action<IParseNode>>();
             }
             /// <summary>
@@ -161,6 +176,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 else if(LogPropertyFilterValueMember1 != null)
                 {
                     writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogPropertyFilter_valueMember1>(null, LogPropertyFilterValueMember1);
+                }
+                else {
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogPropertyFilter_valueMember2>(null, LogPropertyFilterValueMember2);
                 }
             }
         }

@@ -31,7 +31,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The operator property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperator? Operator { get; set; }
         /// <summary>Event properties</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter_type? Type { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Type { get; set; }
+#nullable restore
+#else
+        public string Type { get; set; }
+#endif
         /// <summary>The value property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -46,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public EventPropertyFilter()
         {
             Operator = global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperator.Exact;
-            Type = global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter_type.Event;
+            Type = "event";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -69,7 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "key", n => { Key = n.GetStringValue(); } },
                 { "label", n => { Label = n.GetStringValue(); } },
                 { "operator", n => { Operator = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperator>(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter_type>(); } },
+                { "type", n => { Type = n.GetStringValue(); } },
                 { "value", n => { Value = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter.EventPropertyFilter_value>(global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter.EventPropertyFilter_value.CreateFromDiscriminatorValue); } },
             };
         }
@@ -83,11 +89,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("key", Key);
             writer.WriteStringValue("label", Label);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperator>("operator", Operator);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter_type>("type", Type);
+            writer.WriteStringValue("type", Type);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter.EventPropertyFilter_value>("value", Value);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="bool"/>, <see cref="double"/>, <see cref="string"/>, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter_valueMember1&gt;
+        /// Composed type wrapper for classes <see cref="bool"/>, <see cref="double"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter_valueMember2"/>, <see cref="string"/>, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter_valueMember1&gt;
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EventPropertyFilter_value : IComposedTypeWrapper, IParsable
@@ -103,6 +109,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
             public List<global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter_valueMember1> EventPropertyFilterValueMember1 { get; set; }
+#endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter_valueMember2"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter_valueMember2? EventPropertyFilterValueMember2 { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter_valueMember2 EventPropertyFilterValueMember2 { get; set; }
 #endif
             /// <summary>Composed type representation for type <see cref="string"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -137,6 +151,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 {
                     result.EventPropertyFilterValueMember1 = eventPropertyFilterValueMember1Value;
                 }
+                else {
+                    result.EventPropertyFilterValueMember2 = new global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter_valueMember2();
+                }
                 return result;
             }
             /// <summary>
@@ -145,6 +162,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
+                if(EventPropertyFilterValueMember2 != null)
+                {
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(EventPropertyFilterValueMember2);
+                }
                 return new Dictionary<string, Action<IParseNode>>();
             }
             /// <summary>
@@ -169,6 +190,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 else if(EventPropertyFilterValueMember1 != null)
                 {
                     writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter_valueMember1>(null, EventPropertyFilterValueMember1);
+                }
+                else {
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter_valueMember2>(null, EventPropertyFilterValueMember2);
                 }
             }
         }

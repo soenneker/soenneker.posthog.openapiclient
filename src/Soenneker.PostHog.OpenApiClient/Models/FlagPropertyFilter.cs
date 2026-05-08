@@ -29,9 +29,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Label { get; set; }
 #endif
         /// <summary>Only flag_evaluates_to operator is allowed for flag dependencies</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.FlagPropertyFilter_operator? Operator { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Operator { get; set; }
+#nullable restore
+#else
+        public string Operator { get; set; }
+#endif
         /// <summary>Feature flag dependency</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.FlagPropertyFilter_type? Type { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Type { get; set; }
+#nullable restore
+#else
+        public string Type { get; set; }
+#endif
         /// <summary>The value can be true, false, or a variant name</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -45,8 +57,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public FlagPropertyFilter()
         {
-            Operator = global::Soenneker.PostHog.OpenApiClient.Models.FlagPropertyFilter_operator.Flag_evaluates_to;
-            Type = global::Soenneker.PostHog.OpenApiClient.Models.FlagPropertyFilter_type.Flag;
+            Operator = "flag_evaluates_to";
+            Type = "flag";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -68,8 +80,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "key", n => { Key = n.GetStringValue(); } },
                 { "label", n => { Label = n.GetStringValue(); } },
-                { "operator", n => { Operator = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FlagPropertyFilter_operator>(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FlagPropertyFilter_type>(); } },
+                { "operator", n => { Operator = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetStringValue(); } },
                 { "value", n => { Value = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FlagPropertyFilter.FlagPropertyFilter_value>(global::Soenneker.PostHog.OpenApiClient.Models.FlagPropertyFilter.FlagPropertyFilter_value.CreateFromDiscriminatorValue); } },
             };
         }
@@ -82,8 +94,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("key", Key);
             writer.WriteStringValue("label", Label);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FlagPropertyFilter_operator>("operator", Operator);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FlagPropertyFilter_type>("type", Type);
+            writer.WriteStringValue("operator", Operator);
+            writer.WriteStringValue("type", Type);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FlagPropertyFilter.FlagPropertyFilter_value>("value", Value);
         }
         /// <summary>

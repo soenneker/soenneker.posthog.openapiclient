@@ -6,7 +6,6 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Symbol_se
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Symbol_sets.Bulk_finish_upload;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Symbol_sets.Bulk_start_upload;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Symbol_sets.Item;
-using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Symbol_sets.Start_upload;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -38,11 +37,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Symbo
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Symbol_sets.EmptyPathSegmentRequestBuilder EmptyPathSegment
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Symbol_sets.EmptyPathSegmentRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The start_upload property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Symbol_sets.Start_upload.Start_uploadRequestBuilder Start_upload
-        {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Symbol_sets.Start_upload.Start_uploadRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.error_tracking.symbol_sets.item collection</summary>
         /// <param name="position">A UUID string identifying this error tracking symbol set.</param>

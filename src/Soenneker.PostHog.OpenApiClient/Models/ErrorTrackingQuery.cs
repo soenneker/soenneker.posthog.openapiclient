@@ -57,7 +57,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string IssueId { get; set; }
 #endif
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQuery_kind? Kind { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Kind { get; set; }
+#nullable restore
+#else
+        public string Kind { get; set; }
+#endif
         /// <summary>The limit property</summary>
         public int? Limit { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
@@ -141,7 +147,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public ErrorTrackingQuery()
         {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQuery_kind.ErrorTrackingQuery;
+            Kind = "ErrorTrackingQuery";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -168,7 +174,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "groupKey", n => { GroupKey = n.GetStringValue(); } },
                 { "groupTypeIndex", n => { GroupTypeIndex = n.GetIntValue(); } },
                 { "issueId", n => { IssueId = n.GetStringValue(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQuery_kind>(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "offset", n => { Offset = n.GetIntValue(); } },
@@ -203,7 +209,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("groupKey", GroupKey);
             writer.WriteIntValue("groupTypeIndex", GroupTypeIndex);
             writer.WriteStringValue("issueId", IssueId);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQuery_kind>("kind", Kind);
+            writer.WriteStringValue("kind", Kind);
             writer.WriteIntValue("limit", Limit);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);
             writer.WriteIntValue("offset", Offset);
@@ -224,13 +230,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("withLastEvent", WithLastEvent);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueStatus"/>, <see cref="string"/>
+        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueStatus"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQuery_statusMember1"/>, <see cref="string"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class ErrorTrackingQuery_status : IComposedTypeWrapper, IParsable
         {
             /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueStatus"/></summary>
             public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueStatus? ErrorTrackingIssueStatus { get; set; }
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQuery_statusMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQuery_statusMember1? ErrorTrackingQueryStatusMember1 { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQuery_statusMember1 ErrorTrackingQueryStatusMember1 { get; set; }
+#endif
             /// <summary>Composed type representation for type <see cref="string"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -256,6 +270,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 {
                     result.ErrorTrackingIssueStatus = errorTrackingIssueStatusValue;
                 }
+                else {
+                    result.ErrorTrackingQueryStatusMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQuery_statusMember1();
+                }
                 return result;
             }
             /// <summary>
@@ -264,6 +281,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
+                if(ErrorTrackingQueryStatusMember1 != null)
+                {
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ErrorTrackingQueryStatusMember1);
+                }
                 return new Dictionary<string, Action<IParseNode>>();
             }
             /// <summary>
@@ -280,6 +301,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 else if(ErrorTrackingIssueStatus != null)
                 {
                     writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueStatus>(null, ErrorTrackingIssueStatus);
+                }
+                else {
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQuery_statusMember1>(null, ErrorTrackingQueryStatusMember1);
                 }
             }
         }

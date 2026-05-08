@@ -35,7 +35,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>An interval selected out of available intervals in source query.</summary>
         public int? Interval { get; set; }
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuery_kind? Kind { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Kind { get; set; }
+#nullable restore
+#else
+        public string Kind { get; set; }
+#endif
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -85,7 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public InsightActorsQuery()
         {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuery_kind.InsightActorsQuery;
+            Kind = "InsightActorsQuery";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -110,7 +116,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "day", n => { Day = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuery.InsightActorsQuery_day>(global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuery.InsightActorsQuery_day.CreateFromDiscriminatorValue); } },
                 { "includeRecordings", n => { IncludeRecordings = n.GetBoolValue(); } },
                 { "interval", n => { Interval = n.GetIntValue(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuery_kind>(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryResponse.CreateFromDiscriminatorValue); } },
                 { "series", n => { Series = n.GetIntValue(); } },
@@ -132,7 +138,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuery.InsightActorsQuery_day>("day", Day);
             writer.WriteBoolValue("includeRecordings", IncludeRecordings);
             writer.WriteIntValue("interval", Interval);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuery_kind>("kind", Kind);
+            writer.WriteStringValue("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryResponse>("response", Response);
             writer.WriteIntValue("series", Series);
@@ -142,11 +148,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("version", Version);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="int"/>, <see cref="string"/>, List&lt;string&gt;
+        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuery_breakdownMember1"/>, <see cref="int"/>, <see cref="string"/>, List&lt;string&gt;
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class InsightActorsQuery_breakdown : IComposedTypeWrapper, IParsable
         {
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuery_breakdownMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuery_breakdownMember1? InsightActorsQueryBreakdownMember1 { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuery_breakdownMember1 InsightActorsQueryBreakdownMember1 { get; set; }
+#endif
             /// <summary>Composed type representation for type <see cref="string"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -186,6 +200,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 {
                     result.String = stringValue;
                 }
+                else {
+                    result.InsightActorsQueryBreakdownMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuery_breakdownMember1();
+                }
                 return result;
             }
             /// <summary>
@@ -194,6 +211,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
+                if(InsightActorsQueryBreakdownMember1 != null)
+                {
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(InsightActorsQueryBreakdownMember1);
+                }
                 return new Dictionary<string, Action<IParseNode>>();
             }
             /// <summary>
@@ -215,14 +236,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 {
                     writer.WriteCollectionOfPrimitiveValues<string>(null, String);
                 }
+                else {
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuery_breakdownMember1>(null, InsightActorsQueryBreakdownMember1);
+                }
             }
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="int"/>, <see cref="string"/>
+        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuery_dayMember1"/>, <see cref="int"/>, <see cref="string"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class InsightActorsQuery_day : IComposedTypeWrapper, IParsable
         {
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuery_dayMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuery_dayMember1? InsightActorsQueryDayMember1 { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuery_dayMember1 InsightActorsQueryDayMember1 { get; set; }
+#endif
             /// <summary>Composed type representation for type <see cref="int"/></summary>
             public int? Integer { get; set; }
             /// <summary>Composed type representation for type <see cref="string"/></summary>
@@ -250,6 +282,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 {
                     result.String = stringValue;
                 }
+                else {
+                    result.InsightActorsQueryDayMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuery_dayMember1();
+                }
                 return result;
             }
             /// <summary>
@@ -258,6 +293,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
+                if(InsightActorsQueryDayMember1 != null)
+                {
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(InsightActorsQueryDayMember1);
+                }
                 return new Dictionary<string, Action<IParseNode>>();
             }
             /// <summary>
@@ -274,6 +313,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 else if(String != null)
                 {
                     writer.WriteStringValue(null, String);
+                }
+                else {
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuery_dayMember1>(null, InsightActorsQueryDayMember1);
                 }
             }
         }

@@ -7,10 +7,11 @@ using System.IO;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
+    /// <summary>
+    /// Properties specific to the paths insight
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class PathsFilter : IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>The edgeLimit property</summary>
         public int? EdgeLimit { get; set; }

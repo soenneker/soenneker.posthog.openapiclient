@@ -23,7 +23,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Event { get; set; }
 #endif
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_kind? Kind { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Kind { get; set; }
+#nullable restore
+#else
+        public string Kind { get; set; }
+#endif
         /// <summary>Number of rows to return</summary>
         public int? Limit { get; set; }
         /// <summary>The maxPropertyValues property</summary>
@@ -69,7 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public EventTaxonomyQuery()
         {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_kind.EventTaxonomyQuery;
+            Kind = "EventTaxonomyQuery";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -91,7 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "actionId", n => { ActionId = n.GetIntValue(); } },
                 { "event", n => { Event = n.GetStringValue(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_kind>(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
                 { "maxPropertyValues", n => { MaxPropertyValues = n.GetIntValue(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
@@ -111,7 +117,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("actionId", ActionId);
             writer.WriteStringValue("event", Event);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_kind>("kind", Kind);
+            writer.WriteStringValue("kind", Kind);
             writer.WriteIntValue("limit", Limit);
             writer.WriteIntValue("maxPropertyValues", MaxPropertyValues);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);

@@ -52,8 +52,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag_filters Filters { get; set; }
 #endif
-        /// <summary>The has_encrypted_payloads property</summary>
-        public bool? HasEncryptedPayloads { get; set; }
         /// <summary>The id property</summary>
         public int? Id { get; private set; }
         /// <summary>The key property</summary>
@@ -108,7 +106,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "evaluation_contexts", n => { EvaluationContexts = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "evaluation_runtime", n => { EvaluationRuntime = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag.MinimalFeatureFlag_evaluation_runtime>(global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag.MinimalFeatureFlag_evaluation_runtime.CreateFromDiscriminatorValue); } },
                 { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag_filters>(global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag_filters.CreateFromDiscriminatorValue); } },
-                { "has_encrypted_payloads", n => { HasEncryptedPayloads = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetIntValue(); } },
                 { "key", n => { Key = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
@@ -129,7 +126,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("ensure_experience_continuity", EnsureExperienceContinuity);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag.MinimalFeatureFlag_evaluation_runtime>("evaluation_runtime", EvaluationRuntime);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag_filters>("filters", Filters);
-            writer.WriteBoolValue("has_encrypted_payloads", HasEncryptedPayloads);
             writer.WriteStringValue("key", Key);
             writer.WriteStringValue("name", Name);
             writer.WriteIntValue("version", Version);

@@ -3,10 +3,9 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
+    /// <summary>The kind of this completion item. Based on the kind an icon is chosen by the editor.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public enum AutocompleteCompletionItemKind
-    #pragma warning restore CS1591
     {
         [EnumMember(Value = "Method")]
         #pragma warning disable CS1591

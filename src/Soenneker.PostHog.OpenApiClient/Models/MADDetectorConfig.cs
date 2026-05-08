@@ -23,7 +23,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Anomaly probability threshold [0-1]. Points above this probability are flagged (default: 0.9)</summary>
         public double? Threshold { get; set; }
         /// <summary>The type property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.MADDetectorConfig_type? Type { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Type { get; set; }
+#nullable restore
+#else
+        public string Type { get; set; }
+#endif
         /// <summary>Rolling window size for calculating median/MAD (default: 30)</summary>
         public int? Window { get; set; }
         /// <summary>
@@ -31,7 +37,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public MADDetectorConfig()
         {
-            Type = global::Soenneker.PostHog.OpenApiClient.Models.MADDetectorConfig_type.Mad;
+            Type = "mad";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -53,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "preprocessing", n => { Preprocessing = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig>(global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig.CreateFromDiscriminatorValue); } },
                 { "threshold", n => { Threshold = n.GetDoubleValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MADDetectorConfig_type>(); } },
+                { "type", n => { Type = n.GetStringValue(); } },
                 { "window", n => { Window = n.GetIntValue(); } },
             };
         }
@@ -66,7 +72,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig>("preprocessing", Preprocessing);
             writer.WriteDoubleValue("threshold", Threshold);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MADDetectorConfig_type>("type", Type);
+            writer.WriteStringValue("type", Type);
             writer.WriteIntValue("window", Window);
         }
     }

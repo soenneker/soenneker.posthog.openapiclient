@@ -3,10 +3,9 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
+    /// <summary>Whether this row matched the search by attribute key or by attribute value.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public enum MatchedOn
-    #pragma warning restore CS1591
     {
         [EnumMember(Value = "key")]
         #pragma warning disable CS1591

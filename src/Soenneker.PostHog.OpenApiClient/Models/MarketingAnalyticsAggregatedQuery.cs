@@ -67,7 +67,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Interval for date range calculation (affects date_to rounding for hour vs day ranges)</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.IntervalType? Interval { get; set; }
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAggregatedQuery_kind? Kind { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Kind { get; set; }
+#nullable restore
+#else
+        public string Kind { get; set; }
+#endif
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -127,7 +133,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public MarketingAnalyticsAggregatedQuery()
         {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAggregatedQuery_kind.MarketingAnalyticsAggregatedQuery;
+            Kind = "MarketingAnalyticsAggregatedQuery";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -159,7 +165,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "includeRevenue", n => { IncludeRevenue = n.GetBoolValue(); } },
                 { "integrationFilter", n => { IntegrationFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationFilter>(global::Soenneker.PostHog.OpenApiClient.Models.IntegrationFilter.CreateFromDiscriminatorValue); } },
                 { "interval", n => { Interval = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalType>(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAggregatedQuery_kind>(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAggregatedQuery.MarketingAnalyticsAggregatedQuery_properties>(global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAggregatedQuery.MarketingAnalyticsAggregatedQuery_properties.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAggregatedQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAggregatedQueryResponse.CreateFromDiscriminatorValue); } },
@@ -190,7 +196,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("includeRevenue", IncludeRevenue);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationFilter>("integrationFilter", IntegrationFilter);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalType>("interval", Interval);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAggregatedQuery_kind>("kind", Kind);
+            writer.WriteStringValue("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAggregatedQuery.MarketingAnalyticsAggregatedQuery_properties>("properties", Properties);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAggregatedQueryResponse>("response", Response);
@@ -202,7 +208,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("version", Version);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActionConversionGoal"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CustomEventConversionGoal"/>
+        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActionConversionGoal"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CustomEventConversionGoal"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAggregatedQuery_conversionGoalMember1"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class MarketingAnalyticsAggregatedQuery_conversionGoal : IComposedTypeWrapper, IParsable
@@ -223,6 +229,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
             public global::Soenneker.PostHog.OpenApiClient.Models.CustomEventConversionGoal CustomEventConversionGoal { get; set; }
 #endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAggregatedQuery_conversionGoalMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAggregatedQuery_conversionGoalMember1? MarketingAnalyticsAggregatedQueryConversionGoalMember1 { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAggregatedQuery_conversionGoalMember1 MarketingAnalyticsAggregatedQueryConversionGoalMember1 { get; set; }
+#endif
             /// <summary>
             /// Creates a new instance of the appropriate class based on discriminator value
             /// </summary>
@@ -234,6 +248,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 var result = new global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAggregatedQuery.MarketingAnalyticsAggregatedQuery_conversionGoal();
                 result.ActionConversionGoal = new global::Soenneker.PostHog.OpenApiClient.Models.ActionConversionGoal();
                 result.CustomEventConversionGoal = new global::Soenneker.PostHog.OpenApiClient.Models.CustomEventConversionGoal();
+                result.MarketingAnalyticsAggregatedQueryConversionGoalMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAggregatedQuery_conversionGoalMember1();
                 return result;
             }
             /// <summary>
@@ -242,9 +257,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
-                if(ActionConversionGoal != null || CustomEventConversionGoal != null)
+                if(ActionConversionGoal != null || CustomEventConversionGoal != null || MarketingAnalyticsAggregatedQueryConversionGoalMember1 != null)
                 {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ActionConversionGoal, CustomEventConversionGoal);
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ActionConversionGoal, CustomEventConversionGoal, MarketingAnalyticsAggregatedQueryConversionGoalMember1);
                 }
                 return new Dictionary<string, Action<IParseNode>>();
             }
@@ -255,11 +270,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             public virtual void Serialize(ISerializationWriter writer)
             {
                 if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActionConversionGoal>(null, ActionConversionGoal, CustomEventConversionGoal);
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActionConversionGoal>(null, ActionConversionGoal, CustomEventConversionGoal, MarketingAnalyticsAggregatedQueryConversionGoalMember1);
             }
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter2"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter3"/>
+        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter2"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter3"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAggregatedQuery_draftConversionGoalMember1"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class MarketingAnalyticsAggregatedQuery_draftConversionGoal : IComposedTypeWrapper, IParsable
@@ -288,6 +303,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
             public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter3 ConversionGoalFilter3 { get; set; }
 #endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAggregatedQuery_draftConversionGoalMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAggregatedQuery_draftConversionGoalMember1? MarketingAnalyticsAggregatedQueryDraftConversionGoalMember1 { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAggregatedQuery_draftConversionGoalMember1 MarketingAnalyticsAggregatedQueryDraftConversionGoalMember1 { get; set; }
+#endif
             /// <summary>
             /// Creates a new instance of the appropriate class based on discriminator value
             /// </summary>
@@ -300,6 +323,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 result.ConversionGoalFilter1 = new global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1();
                 result.ConversionGoalFilter2 = new global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter2();
                 result.ConversionGoalFilter3 = new global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter3();
+                result.MarketingAnalyticsAggregatedQueryDraftConversionGoalMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAggregatedQuery_draftConversionGoalMember1();
                 return result;
             }
             /// <summary>
@@ -308,9 +332,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
-                if(ConversionGoalFilter1 != null || ConversionGoalFilter2 != null || ConversionGoalFilter3 != null)
+                if(ConversionGoalFilter1 != null || ConversionGoalFilter2 != null || ConversionGoalFilter3 != null || MarketingAnalyticsAggregatedQueryDraftConversionGoalMember1 != null)
                 {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ConversionGoalFilter1, ConversionGoalFilter2, ConversionGoalFilter3);
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ConversionGoalFilter1, ConversionGoalFilter2, ConversionGoalFilter3, MarketingAnalyticsAggregatedQueryDraftConversionGoalMember1);
                 }
                 return new Dictionary<string, Action<IParseNode>>();
             }
@@ -321,7 +345,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             public virtual void Serialize(ISerializationWriter writer)
             {
                 if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1>(null, ConversionGoalFilter1, ConversionGoalFilter2, ConversionGoalFilter3);
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1>(null, ConversionGoalFilter1, ConversionGoalFilter2, ConversionGoalFilter3, MarketingAnalyticsAggregatedQueryDraftConversionGoalMember1);
             }
         }
         /// <summary>

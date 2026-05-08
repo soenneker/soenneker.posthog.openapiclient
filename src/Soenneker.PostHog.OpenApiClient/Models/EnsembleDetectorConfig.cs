@@ -23,13 +23,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>How to combine sub-detector results</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.EnsembleOperator? Operator { get; set; }
         /// <summary>The type property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfig_type? Type { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Type { get; set; }
+#nullable restore
+#else
+        public string Type { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfig"/> and sets the default values.
         /// </summary>
         public EnsembleDetectorConfig()
         {
-            Type = global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfig_type.Ensemble;
+            Type = "ensemble";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -51,7 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "detectors", n => { Detectors = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfig.EnsembleDetectorConfig_detectors>(global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfig.EnsembleDetectorConfig_detectors.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "operator", n => { Operator = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EnsembleOperator>(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfig_type>(); } },
+                { "type", n => { Type = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -63,7 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfig.EnsembleDetectorConfig_detectors>("detectors", Detectors);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EnsembleOperator>("operator", Operator);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfig_type>("type", Type);
+            writer.WriteStringValue("type", Type);
         }
         /// <summary>
         /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.COPODDetectorConfig"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ECODDetectorConfig"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HBOSDetectorConfig"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.IQRDetectorConfig"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.IsolationForestDetectorConfig"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.KNNDetectorConfig"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LOFDetectorConfig"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MADDetectorConfig"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OCSVMDetectorConfig"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PCADetectorConfig"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ThresholdDetectorConfig"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ZScoreDetectorConfig"/>

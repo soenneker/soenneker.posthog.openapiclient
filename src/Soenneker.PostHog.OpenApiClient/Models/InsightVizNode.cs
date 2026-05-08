@@ -21,7 +21,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The hideTooltipOnScroll property</summary>
         public bool? HideTooltipOnScroll { get; set; }
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_kind? Kind { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Kind { get; set; }
+#nullable restore
+#else
+        public string Kind { get; set; }
+#endif
         /// <summary>The showCorrelationTable property</summary>
         public bool? ShowCorrelationTable { get; set; }
         /// <summary>The showFilters property</summary>
@@ -61,7 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public InsightVizNode()
         {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_kind.InsightVizNode;
+            Kind = "InsightVizNode";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -85,7 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "full", n => { Full = n.GetBoolValue(); } },
                 { "hidePersonsModal", n => { HidePersonsModal = n.GetBoolValue(); } },
                 { "hideTooltipOnScroll", n => { HideTooltipOnScroll = n.GetBoolValue(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_kind>(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
                 { "showCorrelationTable", n => { ShowCorrelationTable = n.GetBoolValue(); } },
                 { "showFilters", n => { ShowFilters = n.GetBoolValue(); } },
                 { "showHeader", n => { ShowHeader = n.GetBoolValue(); } },
@@ -110,7 +116,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("full", Full);
             writer.WriteBoolValue("hidePersonsModal", HidePersonsModal);
             writer.WriteBoolValue("hideTooltipOnScroll", HideTooltipOnScroll);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_kind>("kind", Kind);
+            writer.WriteStringValue("kind", Kind);
             writer.WriteBoolValue("showCorrelationTable", ShowCorrelationTable);
             writer.WriteBoolValue("showFilters", ShowFilters);
             writer.WriteBoolValue("showHeader", ShowHeader);

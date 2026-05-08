@@ -45,7 +45,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Granularity of the response. Can be one of `hour`, `day`, `week` or `month`</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.IntervalType? Interval { get; set; }
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery_kind? Kind { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Kind { get; set; }
+#nullable restore
+#else
+        public string Kind { get; set; }
+#endif
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -95,7 +101,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public FunnelsQuery()
         {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery_kind.FunnelsQuery;
+            Kind = "FunnelsQuery";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -122,7 +128,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "filterTestAccounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
                 { "funnelsFilter", n => { FunnelsFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilter>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilter.CreateFromDiscriminatorValue); } },
                 { "interval", n => { Interval = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalType>(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery_kind>(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "properties", n => { Properties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery.FunnelsQuery_properties>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery.FunnelsQuery_properties.CreateFromDiscriminatorValue); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQueryResponse.CreateFromDiscriminatorValue); } },
@@ -146,7 +152,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("filterTestAccounts", FilterTestAccounts);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilter>("funnelsFilter", FunnelsFilter);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalType>("interval", Interval);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery_kind>("kind", Kind);
+            writer.WriteStringValue("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery.FunnelsQuery_properties>("properties", Properties);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQueryResponse>("response", Response);
@@ -156,11 +162,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("version", Version);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter"/>, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.WorkflowVariablePropertyFilter&gt;
+        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery_propertiesMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter"/>, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.WorkflowVariablePropertyFilter&gt;
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class FunnelsQuery_properties : IComposedTypeWrapper, IParsable
         {
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery_propertiesMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery_propertiesMember1? FunnelsQueryPropertiesMember1 { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery_propertiesMember1 FunnelsQueryPropertiesMember1 { get; set; }
+#endif
             /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -191,6 +205,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                     result.WorkflowVariablePropertyFilter = workflowVariablePropertyFilterValue;
                 }
                 else {
+                    result.FunnelsQueryPropertiesMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery_propertiesMember1();
                     result.PropertyGroupFilter = new global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter();
                 }
                 return result;
@@ -201,9 +216,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
-                if(PropertyGroupFilter != null)
+                if(FunnelsQueryPropertiesMember1 != null || PropertyGroupFilter != null)
                 {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(PropertyGroupFilter);
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(FunnelsQueryPropertiesMember1, PropertyGroupFilter);
                 }
                 return new Dictionary<string, Action<IParseNode>>();
             }
@@ -219,7 +234,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                     writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowVariablePropertyFilter>(null, WorkflowVariablePropertyFilter);
                 }
                 else {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter>(null, PropertyGroupFilter);
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery_propertiesMember1>(null, FunnelsQueryPropertiesMember1, PropertyGroupFilter);
                 }
             }
         }

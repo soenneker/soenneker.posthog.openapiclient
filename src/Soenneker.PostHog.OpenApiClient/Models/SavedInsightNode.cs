@@ -49,7 +49,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The hideTooltipOnScroll property</summary>
         public bool? HideTooltipOnScroll { get; set; }
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SavedInsightNode_kind? Kind { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Kind { get; set; }
+#nullable restore
+#else
+        public string Kind { get; set; }
+#endif
         /// <summary>Link properties via the URL (default: false)</summary>
         public bool? PropertiesViaUrl { get; set; }
         /// <summary>The shortId property</summary>
@@ -143,7 +149,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public SavedInsightNode()
         {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.SavedInsightNode_kind.SavedInsightNode;
+            Kind = "SavedInsightNode";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -172,7 +178,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "full", n => { Full = n.GetBoolValue(); } },
                 { "hidePersonsModal", n => { HidePersonsModal = n.GetBoolValue(); } },
                 { "hideTooltipOnScroll", n => { HideTooltipOnScroll = n.GetBoolValue(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SavedInsightNode_kind>(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
                 { "propertiesViaUrl", n => { PropertiesViaUrl = n.GetBoolValue(); } },
                 { "shortId", n => { ShortId = n.GetStringValue(); } },
                 { "showAbsoluteTime", n => { ShowAbsoluteTime = n.GetBoolValue(); } },
@@ -226,7 +232,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("full", Full);
             writer.WriteBoolValue("hidePersonsModal", HidePersonsModal);
             writer.WriteBoolValue("hideTooltipOnScroll", HideTooltipOnScroll);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SavedInsightNode_kind>("kind", Kind);
+            writer.WriteStringValue("kind", Kind);
             writer.WriteBoolValue("propertiesViaUrl", PropertiesViaUrl);
             writer.WriteStringValue("shortId", ShortId);
             writer.WriteBoolValue("showAbsoluteTime", ShowAbsoluteTime);
@@ -264,13 +270,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.VizSpecificOptions>("vizSpecificOptions", VizSpecificOptions);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="bool"/>, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.TaxonomicFilterGroupType&gt;
+        /// Composed type wrapper for classes <see cref="bool"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SavedInsightNode_showPropertyFilterMember1"/>, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.TaxonomicFilterGroupType&gt;
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class SavedInsightNode_showPropertyFilter : IComposedTypeWrapper, IParsable
         {
             /// <summary>Composed type representation for type <see cref="bool"/></summary>
             public bool? Boolean { get; set; }
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SavedInsightNode_showPropertyFilterMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.SavedInsightNode_showPropertyFilterMember1? SavedInsightNodeShowPropertyFilterMember1 { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.SavedInsightNode_showPropertyFilterMember1 SavedInsightNodeShowPropertyFilterMember1 { get; set; }
+#endif
             /// <summary>Composed type representation for type List&lt;global::Soenneker.PostHog.OpenApiClient.Models.TaxonomicFilterGroupType&gt;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -296,6 +310,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 {
                     result.TaxonomicFilterGroupType = taxonomicFilterGroupTypeValue;
                 }
+                else {
+                    result.SavedInsightNodeShowPropertyFilterMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.SavedInsightNode_showPropertyFilterMember1();
+                }
                 return result;
             }
             /// <summary>
@@ -304,6 +321,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
+                if(SavedInsightNodeShowPropertyFilterMember1 != null)
+                {
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(SavedInsightNodeShowPropertyFilterMember1);
+                }
                 return new Dictionary<string, Action<IParseNode>>();
             }
             /// <summary>
@@ -320,6 +341,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 else if(TaxonomicFilterGroupType != null)
                 {
                     writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TaxonomicFilterGroupType>(null, TaxonomicFilterGroupType);
+                }
+                else {
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SavedInsightNode_showPropertyFilterMember1>(null, SavedInsightNodeShowPropertyFilterMember1);
                 }
             }
         }

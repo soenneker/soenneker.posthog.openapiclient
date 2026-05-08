@@ -61,7 +61,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string IdField { get; set; }
 #endif
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsDataWarehouseNode_kind? Kind { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Kind { get; set; }
+#nullable restore
+#else
+        public string Kind { get; set; }
+#endif
         /// <summary>The math property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -127,10 +133,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsDataWarehouseNode_response? Response { get; set; }
+        public UntypedNode? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsDataWarehouseNode_response Response { get; set; }
+        public UntypedNode Response { get; set; }
 #endif
         /// <summary>The table_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -155,7 +161,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public FunnelsDataWarehouseNode()
         {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.FunnelsDataWarehouseNode_kind.FunnelsDataWarehouseNode;
+            Kind = "FunnelsDataWarehouseNode";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -181,7 +187,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "fixedProperties", n => { FixedProperties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsDataWarehouseNode.FunnelsDataWarehouseNode_fixedProperties>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelsDataWarehouseNode.FunnelsDataWarehouseNode_fixedProperties.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "id_field", n => { IdField = n.GetStringValue(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsDataWarehouseNode_kind>(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
                 { "math", n => { Math = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsDataWarehouseNode.FunnelsDataWarehouseNode_math>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelsDataWarehouseNode.FunnelsDataWarehouseNode_math.CreateFromDiscriminatorValue); } },
                 { "math_group_type_index", n => { MathGroupTypeIndex = n.GetDoubleValue(); } },
                 { "math_hogql", n => { MathHogql = n.GetStringValue(); } },
@@ -192,7 +198,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "optionalInFunnel", n => { OptionalInFunnel = n.GetBoolValue(); } },
                 { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsDataWarehouseNode.FunnelsDataWarehouseNode_properties>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelsDataWarehouseNode.FunnelsDataWarehouseNode_properties.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsDataWarehouseNode_response>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelsDataWarehouseNode_response.CreateFromDiscriminatorValue); } },
+                { "response", n => { Response = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "table_name", n => { TableName = n.GetStringValue(); } },
                 { "timestamp_field", n => { TimestampField = n.GetStringValue(); } },
                 { "version", n => { Version = n.GetDoubleValue(); } },
@@ -211,7 +217,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsDataWarehouseNode.FunnelsDataWarehouseNode_fixedProperties>("fixedProperties", FixedProperties);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("id_field", IdField);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsDataWarehouseNode_kind>("kind", Kind);
+            writer.WriteStringValue("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsDataWarehouseNode.FunnelsDataWarehouseNode_math>("math", Math);
             writer.WriteDoubleValue("math_group_type_index", MathGroupTypeIndex);
             writer.WriteStringValue("math_hogql", MathHogql);
@@ -222,7 +228,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteBoolValue("optionalInFunnel", OptionalInFunnel);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsDataWarehouseNode.FunnelsDataWarehouseNode_properties>("properties", Properties);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsDataWarehouseNode_response>("response", Response);
+            writer.WriteObjectValue<UntypedNode>("response", Response);
             writer.WriteStringValue("table_name", TableName);
             writer.WriteStringValue("timestamp_field", TimestampField);
             writer.WriteDoubleValue("version", Version);
@@ -447,7 +453,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             }
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BaseMathType"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapMathType"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CountPerActorMathType"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricMathType"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelMathType"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyMathType"/>, <see cref="string"/>
+        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BaseMathType"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapMathType"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CountPerActorMathType"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricMathType"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelMathType"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelsDataWarehouseNode_mathMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyMathType"/>, <see cref="string"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class FunnelsDataWarehouseNode_math : IComposedTypeWrapper, IParsable
@@ -462,6 +468,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricMathType? ExperimentMetricMathType { get; set; }
             /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelMathType"/></summary>
             public global::Soenneker.PostHog.OpenApiClient.Models.FunnelMathType? FunnelMathType { get; set; }
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelsDataWarehouseNode_mathMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsDataWarehouseNode_mathMember1? FunnelsDataWarehouseNodeMathMember1 { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsDataWarehouseNode_mathMember1 FunnelsDataWarehouseNodeMathMember1 { get; set; }
+#endif
             /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyMathType"/></summary>
             public global::Soenneker.PostHog.OpenApiClient.Models.PropertyMathType? PropertyMathType { get; set; }
             /// <summary>Composed type representation for type <see cref="string"/></summary>
@@ -509,6 +523,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 {
                     result.PropertyMathType = propertyMathTypeValue;
                 }
+                else {
+                    result.FunnelsDataWarehouseNodeMathMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.FunnelsDataWarehouseNode_mathMember1();
+                }
                 return result;
             }
             /// <summary>
@@ -517,6 +534,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
+                if(FunnelsDataWarehouseNodeMathMember1 != null)
+                {
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(FunnelsDataWarehouseNodeMathMember1);
+                }
                 return new Dictionary<string, Action<IParseNode>>();
             }
             /// <summary>
@@ -553,6 +574,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 else if(PropertyMathType != null)
                 {
                     writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyMathType>(null, PropertyMathType);
+                }
+                else {
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsDataWarehouseNode_mathMember1>(null, FunnelsDataWarehouseNodeMathMember1);
                 }
             }
         }

@@ -45,9 +45,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The isSharedMetric property</summary>
         public bool? IsSharedMetric { get; set; }
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_kind? Kind { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Kind { get; set; }
+#nullable restore
+#else
+        public string Kind { get; set; }
+#endif
         /// <summary>The metric_type property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_metric_type? MetricType { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? MetricType { get; set; }
+#nullable restore
+#else
+        public string MetricType { get; set; }
+#endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -67,10 +79,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_response? Response { get; set; }
+        public UntypedNode? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_response Response { get; set; }
+        public UntypedNode Response { get; set; }
 #endif
         /// <summary>The sharedMetricId property</summary>
         public double? SharedMetricId { get; set; }
@@ -89,8 +101,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public ExperimentRatioMetric()
         {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_kind.ExperimentMetric;
-            MetricType = global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_metric_type.Ratio;
+            Kind = "ExperimentMetric";
+            MetricType = "ratio";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -117,11 +129,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "fingerprint", n => { Fingerprint = n.GetStringValue(); } },
                 { "goal", n => { Goal = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricGoal>(); } },
                 { "isSharedMetric", n => { IsSharedMetric = n.GetBoolValue(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_kind>(); } },
-                { "metric_type", n => { MetricType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_metric_type>(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
+                { "metric_type", n => { MetricType = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "numerator", n => { Numerator = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric.ExperimentRatioMetric_numerator>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric.ExperimentRatioMetric_numerator.CreateFromDiscriminatorValue); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_response>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_response.CreateFromDiscriminatorValue); } },
+                { "response", n => { Response = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "sharedMetricId", n => { SharedMetricId = n.GetDoubleValue(); } },
                 { "uuid", n => { Uuid = n.GetStringValue(); } },
                 { "version", n => { Version = n.GetDoubleValue(); } },
@@ -141,11 +153,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("fingerprint", Fingerprint);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricGoal>("goal", Goal);
             writer.WriteBoolValue("isSharedMetric", IsSharedMetric);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_kind>("kind", Kind);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_metric_type>("metric_type", MetricType);
+            writer.WriteStringValue("kind", Kind);
+            writer.WriteStringValue("metric_type", MetricType);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric.ExperimentRatioMetric_numerator>("numerator", Numerator);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_response>("response", Response);
+            writer.WriteObjectValue<UntypedNode>("response", Response);
             writer.WriteDoubleValue("sharedMetricId", SharedMetricId);
             writer.WriteStringValue("uuid", Uuid);
             writer.WriteDoubleValue("version", Version);

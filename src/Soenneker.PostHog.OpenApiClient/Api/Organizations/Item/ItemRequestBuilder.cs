@@ -2,7 +2,9 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Advanced_activity_logs;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Batch_exports;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Cimd_verification_tokens;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Domains;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Integrations;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Invites;
@@ -26,10 +28,20 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The advanced_activity_logs property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Advanced_activity_logs.Advanced_activity_logsRequestBuilder Advanced_activity_logs
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Advanced_activity_logs.Advanced_activity_logsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The batch_exports property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Batch_exports.Batch_exportsRequestBuilder Batch_exports
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Batch_exports.Batch_exportsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The cimd_verification_tokens property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Cimd_verification_tokens.Cimd_verification_tokensRequestBuilder Cimd_verification_tokens
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Cimd_verification_tokens.Cimd_verification_tokensRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The domains property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Domains.DomainsRequestBuilder Domains

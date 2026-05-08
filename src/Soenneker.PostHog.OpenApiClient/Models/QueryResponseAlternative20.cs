@@ -39,10 +39,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The credible_intervals property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_credible_intervals? CredibleIntervals { get; set; }
+        public UntypedNode? CredibleIntervals { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_credible_intervals CredibleIntervals { get; set; }
+        public UntypedNode CredibleIntervals { get; set; }
 #endif
         /// <summary>The hogql property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -63,7 +63,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Whether exposures were served from the precomputation system</summary>
         public bool? IsPrecomputed { get; set; }
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_kind? Kind { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Kind { get; set; }
+#nullable restore
+#else
+        public string Kind { get; set; }
+#endif
         /// <summary>The metric property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -75,10 +81,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The probability property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_probability? Probability { get; set; }
+        public UntypedNode? Probability { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_probability Probability { get; set; }
+        public UntypedNode Probability { get; set; }
 #endif
         /// <summary>The p_value property</summary>
         public double? PValue { get; set; }
@@ -109,7 +115,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public QueryResponseAlternative20()
         {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_kind.ExperimentQuery;
+            Kind = "ExperimentQuery";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -132,14 +138,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "baseline", n => { Baseline = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsBaseValidated>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsBaseValidated.CreateFromDiscriminatorValue); } },
                 { "breakdown_results", n => { BreakdownResults = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBreakdownResult>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBreakdownResult.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "clickhouse_sql", n => { ClickhouseSql = n.GetStringValue(); } },
-                { "credible_intervals", n => { CredibleIntervals = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_credible_intervals>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_credible_intervals.CreateFromDiscriminatorValue); } },
+                { "credible_intervals", n => { CredibleIntervals = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "hogql", n => { Hogql = n.GetStringValue(); } },
                 { "insight", n => { Insight = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_insight>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_insight.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "is_precomputed", n => { IsPrecomputed = n.GetBoolValue(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_kind>(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
                 { "metric", n => { Metric = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20.QueryResponseAlternative20_metric>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20.QueryResponseAlternative20_metric.CreateFromDiscriminatorValue); } },
                 { "p_value", n => { PValue = n.GetDoubleValue(); } },
-                { "probability", n => { Probability = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_probability>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_probability.CreateFromDiscriminatorValue); } },
+                { "probability", n => { Probability = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "significance_code", n => { SignificanceCode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSignificanceCode>(); } },
                 { "significant", n => { Significant = n.GetBoolValue(); } },
                 { "stats_version", n => { StatsVersion = n.GetIntValue(); } },
@@ -157,13 +163,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsBaseValidated>("baseline", Baseline);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBreakdownResult>("breakdown_results", BreakdownResults);
             writer.WriteStringValue("clickhouse_sql", ClickhouseSql);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_credible_intervals>("credible_intervals", CredibleIntervals);
+            writer.WriteObjectValue<UntypedNode>("credible_intervals", CredibleIntervals);
             writer.WriteStringValue("hogql", Hogql);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_insight>("insight", Insight);
             writer.WriteBoolValue("is_precomputed", IsPrecomputed);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_kind>("kind", Kind);
+            writer.WriteStringValue("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20.QueryResponseAlternative20_metric>("metric", Metric);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_probability>("probability", Probability);
+            writer.WriteObjectValue<UntypedNode>("probability", Probability);
             writer.WriteDoubleValue("p_value", PValue);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSignificanceCode>("significance_code", SignificanceCode);
             writer.WriteBoolValue("significant", Significant);
@@ -172,7 +178,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20.QueryResponseAlternative20_variants>("variants", Variants);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetric"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetric"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetric"/>
+        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetric"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetric"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetric"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_metricMember1"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class QueryResponseAlternative20_metric : IComposedTypeWrapper, IParsable
@@ -209,6 +215,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
             public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetric ExperimentRetentionMetric { get; set; }
 #endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_metricMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_metricMember1? QueryResponseAlternative20MetricMember1 { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_metricMember1 QueryResponseAlternative20MetricMember1 { get; set; }
+#endif
             /// <summary>
             /// Creates a new instance of the appropriate class based on discriminator value
             /// </summary>
@@ -222,6 +236,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 result.ExperimentMeanMetric = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetric();
                 result.ExperimentRatioMetric = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric();
                 result.ExperimentRetentionMetric = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetric();
+                result.QueryResponseAlternative20MetricMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_metricMember1();
                 return result;
             }
             /// <summary>
@@ -230,9 +245,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
-                if(ExperimentFunnelMetric != null || ExperimentMeanMetric != null || ExperimentRatioMetric != null || ExperimentRetentionMetric != null)
+                if(ExperimentFunnelMetric != null || ExperimentMeanMetric != null || ExperimentRatioMetric != null || ExperimentRetentionMetric != null || QueryResponseAlternative20MetricMember1 != null)
                 {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ExperimentFunnelMetric, ExperimentMeanMetric, ExperimentRatioMetric, ExperimentRetentionMetric);
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ExperimentFunnelMetric, ExperimentMeanMetric, ExperimentRatioMetric, ExperimentRetentionMetric, QueryResponseAlternative20MetricMember1);
                 }
                 return new Dictionary<string, Action<IParseNode>>();
             }
@@ -243,11 +258,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             public virtual void Serialize(ISerializationWriter writer)
             {
                 if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetric>(null, ExperimentFunnelMetric, ExperimentMeanMetric, ExperimentRatioMetric, ExperimentRetentionMetric);
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetric>(null, ExperimentFunnelMetric, ExperimentMeanMetric, ExperimentRatioMetric, ExperimentRetentionMetric, QueryResponseAlternative20MetricMember1);
             }
         }
         /// <summary>
-        /// Composed type wrapper for classes List&lt;global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultBayesian&gt;, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist&gt;
+        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_variant_resultsMember1"/>, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultBayesian&gt;, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist&gt;
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class QueryResponseAlternative20_variant_results : IComposedTypeWrapper, IParsable
@@ -268,6 +283,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
             public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist> ExperimentVariantResultFrequentist { get; set; }
 #endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_variant_resultsMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_variant_resultsMember1? QueryResponseAlternative20VariantResultsMember1 { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_variant_resultsMember1 QueryResponseAlternative20VariantResultsMember1 { get; set; }
+#endif
             /// <summary>
             /// Creates a new instance of the appropriate class based on discriminator value
             /// </summary>
@@ -285,6 +308,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 {
                     result.ExperimentVariantResultFrequentist = experimentVariantResultFrequentistValue;
                 }
+                else {
+                    result.QueryResponseAlternative20VariantResultsMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_variant_resultsMember1();
+                }
                 return result;
             }
             /// <summary>
@@ -293,6 +319,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
+                if(QueryResponseAlternative20VariantResultsMember1 != null)
+                {
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(QueryResponseAlternative20VariantResultsMember1);
+                }
                 return new Dictionary<string, Action<IParseNode>>();
             }
             /// <summary>
@@ -310,10 +340,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 {
                     writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist>(null, ExperimentVariantResultFrequentist);
                 }
+                else {
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_variant_resultsMember1>(null, QueryResponseAlternative20VariantResultsMember1);
+                }
             }
         }
         /// <summary>
-        /// Composed type wrapper for classes List&lt;global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantFunnelsBaseStats&gt;, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantTrendsBaseStats&gt;
+        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_variantsMember1"/>, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantFunnelsBaseStats&gt;, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantTrendsBaseStats&gt;
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class QueryResponseAlternative20_variants : IComposedTypeWrapper, IParsable
@@ -334,6 +367,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
             public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantTrendsBaseStats> ExperimentVariantTrendsBaseStats { get; set; }
 #endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_variantsMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_variantsMember1? QueryResponseAlternative20VariantsMember1 { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_variantsMember1 QueryResponseAlternative20VariantsMember1 { get; set; }
+#endif
             /// <summary>
             /// Creates a new instance of the appropriate class based on discriminator value
             /// </summary>
@@ -351,6 +392,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 {
                     result.ExperimentVariantTrendsBaseStats = experimentVariantTrendsBaseStatsValue;
                 }
+                else {
+                    result.QueryResponseAlternative20VariantsMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_variantsMember1();
+                }
                 return result;
             }
             /// <summary>
@@ -359,6 +403,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
+                if(QueryResponseAlternative20VariantsMember1 != null)
+                {
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(QueryResponseAlternative20VariantsMember1);
+                }
                 return new Dictionary<string, Action<IParseNode>>();
             }
             /// <summary>
@@ -375,6 +423,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 else if(ExperimentVariantTrendsBaseStats != null)
                 {
                     writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantTrendsBaseStats>(null, ExperimentVariantTrendsBaseStats);
+                }
+                else {
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_variantsMember1>(null, QueryResponseAlternative20VariantsMember1);
                 }
             }
         }

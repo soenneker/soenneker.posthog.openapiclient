@@ -21,7 +21,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ActorsQuery.ActorsQuery_fixedProperties> FixedProperties { get; set; }
 #endif
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ActorsQuery_kind? Kind { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Kind { get; set; }
+#nullable restore
+#else
+        public string Kind { get; set; }
+#endif
         /// <summary>The limit property</summary>
         public int? Limit { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
@@ -97,7 +103,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public ActorsQuery()
         {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.ActorsQuery_kind.ActorsQuery;
+            Kind = "ActorsQuery";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -118,7 +124,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "fixedProperties", n => { FixedProperties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ActorsQuery.ActorsQuery_fixedProperties>(global::Soenneker.PostHog.OpenApiClient.Models.ActorsQuery.ActorsQuery_fixedProperties.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ActorsQuery_kind>(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "offset", n => { Offset = n.GetIntValue(); } },
@@ -140,7 +146,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ActorsQuery.ActorsQuery_fixedProperties>("fixedProperties", FixedProperties);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ActorsQuery_kind>("kind", Kind);
+            writer.WriteStringValue("kind", Kind);
             writer.WriteIntValue("limit", Limit);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);
             writer.WriteIntValue("offset", Offset);
@@ -229,11 +235,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             }
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilterValue"/>, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.EmptyPropertyFilter&gt;
+        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActorsQuery_propertiesMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilterValue"/>, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.EmptyPropertyFilter&gt;
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class ActorsQuery_properties : IComposedTypeWrapper, IParsable
         {
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActorsQuery_propertiesMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.ActorsQuery_propertiesMember1? ActorsQueryPropertiesMember1 { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.ActorsQuery_propertiesMember1 ActorsQueryPropertiesMember1 { get; set; }
+#endif
             /// <summary>Composed type representation for type List&lt;global::Soenneker.PostHog.OpenApiClient.Models.EmptyPropertyFilter&gt;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -264,6 +278,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                     result.EmptyPropertyFilter = emptyPropertyFilterValue;
                 }
                 else {
+                    result.ActorsQueryPropertiesMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.ActorsQuery_propertiesMember1();
                     result.PropertyGroupFilterValue = new global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilterValue();
                 }
                 return result;
@@ -274,9 +289,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
-                if(PropertyGroupFilterValue != null)
+                if(ActorsQueryPropertiesMember1 != null || PropertyGroupFilterValue != null)
                 {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(PropertyGroupFilterValue);
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ActorsQueryPropertiesMember1, PropertyGroupFilterValue);
                 }
                 return new Dictionary<string, Action<IParseNode>>();
             }
@@ -292,16 +307,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                     writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EmptyPropertyFilter>(null, EmptyPropertyFilter);
                 }
                 else {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilterValue>(null, PropertyGroupFilterValue);
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActorsQuery_propertiesMember1>(null, ActorsQueryPropertiesMember1, PropertyGroupFilterValue);
                 }
             }
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.StickinessActorsQuery"/>
+        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActorsQuery_sourceMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.StickinessActorsQuery"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class ActorsQuery_source : IComposedTypeWrapper, IParsable
         {
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActorsQuery_sourceMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.ActorsQuery_sourceMember1? ActorsQuerySourceMember1 { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.ActorsQuery_sourceMember1 ActorsQuerySourceMember1 { get; set; }
+#endif
             /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -359,6 +382,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
                 var result = new global::Soenneker.PostHog.OpenApiClient.Models.ActorsQuery.ActorsQuery_source();
+                result.ActorsQuerySourceMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.ActorsQuery_sourceMember1();
                 result.ExperimentActorsQuery = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery();
                 result.FunnelCorrelationActorsQuery = new global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery();
                 result.FunnelsActorsQuery = new global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery();
@@ -373,9 +397,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
-                if(ExperimentActorsQuery != null || FunnelCorrelationActorsQuery != null || FunnelsActorsQuery != null || HogQLQuery != null || InsightActorsQuery != null || StickinessActorsQuery != null)
+                if(ActorsQuerySourceMember1 != null || ExperimentActorsQuery != null || FunnelCorrelationActorsQuery != null || FunnelsActorsQuery != null || HogQLQuery != null || InsightActorsQuery != null || StickinessActorsQuery != null)
                 {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ExperimentActorsQuery, FunnelCorrelationActorsQuery, FunnelsActorsQuery, HogQLQuery, InsightActorsQuery, StickinessActorsQuery);
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ActorsQuerySourceMember1, ExperimentActorsQuery, FunnelCorrelationActorsQuery, FunnelsActorsQuery, HogQLQuery, InsightActorsQuery, StickinessActorsQuery);
                 }
                 return new Dictionary<string, Action<IParseNode>>();
             }
@@ -386,7 +410,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             public virtual void Serialize(ISerializationWriter writer)
             {
                 if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery>(null, ExperimentActorsQuery, FunnelCorrelationActorsQuery, FunnelsActorsQuery, HogQLQuery, InsightActorsQuery, StickinessActorsQuery);
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActorsQuery_sourceMember1>(null, ActorsQuerySourceMember1, ExperimentActorsQuery, FunnelCorrelationActorsQuery, FunnelsActorsQuery, HogQLQuery, InsightActorsQuery, StickinessActorsQuery);
             }
         }
     }

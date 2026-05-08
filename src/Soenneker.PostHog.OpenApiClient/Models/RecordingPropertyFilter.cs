@@ -31,7 +31,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The operator property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperator? Operator { get; set; }
         /// <summary>The type property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingPropertyFilter_type? Type { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Type { get; set; }
+#nullable restore
+#else
+        public string Type { get; set; }
+#endif
         /// <summary>The value property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -45,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public RecordingPropertyFilter()
         {
-            Type = global::Soenneker.PostHog.OpenApiClient.Models.RecordingPropertyFilter_type.Recording;
+            Type = "recording";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -68,7 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "key", n => { Key = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingPropertyFilter.RecordingPropertyFilter_key>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingPropertyFilter.RecordingPropertyFilter_key.CreateFromDiscriminatorValue); } },
                 { "label", n => { Label = n.GetStringValue(); } },
                 { "operator", n => { Operator = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperator>(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingPropertyFilter_type>(); } },
+                { "type", n => { Type = n.GetStringValue(); } },
                 { "value", n => { Value = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingPropertyFilter.RecordingPropertyFilter_value>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingPropertyFilter.RecordingPropertyFilter_value.CreateFromDiscriminatorValue); } },
             };
         }
@@ -82,7 +88,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingPropertyFilter.RecordingPropertyFilter_key>("key", Key);
             writer.WriteStringValue("label", Label);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperator>("operator", Operator);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingPropertyFilter_type>("type", Type);
+            writer.WriteStringValue("type", Type);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingPropertyFilter.RecordingPropertyFilter_value>("value", Value);
         }
         /// <summary>
@@ -146,7 +152,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             }
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="bool"/>, <see cref="double"/>, <see cref="string"/>, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.RecordingPropertyFilter_valueMember1&gt;
+        /// Composed type wrapper for classes <see cref="bool"/>, <see cref="double"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RecordingPropertyFilter_valueMember2"/>, <see cref="string"/>, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.RecordingPropertyFilter_valueMember1&gt;
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class RecordingPropertyFilter_value : IComposedTypeWrapper, IParsable
@@ -162,6 +168,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
             public List<global::Soenneker.PostHog.OpenApiClient.Models.RecordingPropertyFilter_valueMember1> RecordingPropertyFilterValueMember1 { get; set; }
+#endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RecordingPropertyFilter_valueMember2"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.RecordingPropertyFilter_valueMember2? RecordingPropertyFilterValueMember2 { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.RecordingPropertyFilter_valueMember2 RecordingPropertyFilterValueMember2 { get; set; }
 #endif
             /// <summary>Composed type representation for type <see cref="string"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -196,6 +210,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 {
                     result.RecordingPropertyFilterValueMember1 = recordingPropertyFilterValueMember1Value;
                 }
+                else {
+                    result.RecordingPropertyFilterValueMember2 = new global::Soenneker.PostHog.OpenApiClient.Models.RecordingPropertyFilter_valueMember2();
+                }
                 return result;
             }
             /// <summary>
@@ -204,6 +221,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
+                if(RecordingPropertyFilterValueMember2 != null)
+                {
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(RecordingPropertyFilterValueMember2);
+                }
                 return new Dictionary<string, Action<IParseNode>>();
             }
             /// <summary>
@@ -228,6 +249,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 else if(RecordingPropertyFilterValueMember1 != null)
                 {
                     writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RecordingPropertyFilter_valueMember1>(null, RecordingPropertyFilterValueMember1);
+                }
+                else {
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingPropertyFilter_valueMember2>(null, RecordingPropertyFilterValueMember2);
                 }
             }
         }
