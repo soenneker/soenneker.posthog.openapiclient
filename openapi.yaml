@@ -22847,13 +22847,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Tagger'
+              $ref: '#/components/schemas/TaggerCreate'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/Tagger'
+              $ref: '#/components/schemas/TaggerCreate'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/Tagger'
+              $ref: '#/components/schemas/TaggerCreate'
         required: true
       security:
       - PersonalAPIKeyAuth:
@@ -22909,13 +22909,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Tagger'
+              $ref: '#/components/schemas/TaggerUpdate'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/Tagger'
+              $ref: '#/components/schemas/TaggerUpdate'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/Tagger'
+              $ref: '#/components/schemas/TaggerUpdate'
         required: true
       security:
       - PersonalAPIKeyAuth:
@@ -22945,13 +22945,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PatchedTagger'
+              $ref: '#/components/schemas/PatchedTaggerUpdate'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/PatchedTagger'
+              $ref: '#/components/schemas/PatchedTaggerUpdate'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/PatchedTagger'
+              $ref: '#/components/schemas/PatchedTaggerUpdate'
       security:
       - PersonalAPIKeyAuth:
         - tagger:write
@@ -22997,20 +22997,23 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Tagger'
+              $ref: '#/components/schemas/TestHogTaggerRequest'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/Tagger'
+              $ref: '#/components/schemas/TestHogTaggerRequest'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/Tagger'
+              $ref: '#/components/schemas/TestHogTaggerRequest'
         required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - tagger:read
       responses:
         '200':
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Tagger'
+                $ref: '#/components/schemas/TestHogTaggerResponse'
           description: ''
       x-explicit-tags:
       - llm_analytics
@@ -23412,6 +23415,352 @@ paths:
           description: No response body
       x-explicit-tags:
       - user_interviews
+  /api/environments/{project_id}/vision/lenses/:
+    get:
+      operationId: vision_lenses_list
+      description: CRUD for Replay Vision lenses.
+      parameters:
+      - in: query
+        name: emits_signals
+        schema:
+          type: boolean
+        description: Filter to lenses that emit Signals.
+      - in: query
+        name: enabled
+        schema:
+          type: boolean
+        description: Filter to enabled vs disabled lenses.
+      - in: query
+        name: lens_type
+        schema:
+          type: string
+          enum:
+          - classifier
+          - indexer
+          - monitor
+          - scorer
+          - summarizer
+        description: |-
+          Filter by lens type (monitor, classifier, scorer, summarizer, indexer).
+
+          * `monitor` - Monitor
+          * `classifier` - Classifier
+          * `scorer` - Scorer
+          * `summarizer` - Summarizer
+          * `indexer` - Indexer
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - in: query
+        name: order_by
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - -created_at
+            - -lens_type
+            - -name
+            - -updated_at
+            - created_at
+            - lens_type
+            - name
+            - updated_at
+        description: |-
+          Sort lenses by name, created_at, updated_at, or lens_type. Prefix with `-` for descending.
+
+          * `name` - Name
+          * `-name` - Name (descending)
+          * `created_at` - Created at
+          * `-created_at` - Created at (descending)
+          * `updated_at` - Updated at
+          * `-updated_at` - Updated at (descending)
+          * `lens_type` - Lens type
+          * `-lens_type` - Lens type (descending)
+        explode: false
+        style: form
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - replay_vision
+      - vision
+      security:
+      - PersonalAPIKeyAuth:
+        - replay_lens:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedReplayLensList'
+          description: ''
+      x-explicit-tags:
+      - replay_vision
+    post:
+      operationId: vision_lenses_create
+      description: CRUD for Replay Vision lenses.
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - replay_vision
+      - vision
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReplayLens'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ReplayLens'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ReplayLens'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - replay_lens:write
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReplayLens'
+          description: ''
+      x-explicit-tags:
+      - replay_vision
+  /api/environments/{project_id}/vision/lenses/{lens_id}/observations/:
+    get:
+      operationId: vision_lenses_observations_list
+      description: Read-only access to observations produced by a lens.
+      parameters:
+      - in: path
+        name: lens_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - in: query
+        name: order_by
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - -completed_at
+            - -created_at
+            - -started_at
+            - -status
+            - completed_at
+            - created_at
+            - started_at
+            - status
+        description: |-
+          Sort observations by created_at, started_at, completed_at, or status. Prefix with `-` for descending.
+
+          * `created_at` - Created at
+          * `-created_at` - Created at (descending)
+          * `started_at` - Started at
+          * `-started_at` - Started at (descending)
+          * `completed_at` - Completed at
+          * `-completed_at` - Completed at (descending)
+          * `status` - Status
+          * `-status` - Status (descending)
+        explode: false
+        style: form
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: session_id
+        schema:
+          type: string
+        description: Filter to observations of a specific session recording.
+      - in: query
+        name: status
+        schema:
+          type: string
+          enum:
+          - failed
+          - pending
+          - running
+          - succeeded
+        description: |-
+          Filter by observation status.
+
+          * `pending` - Pending
+          * `running` - Running
+          * `succeeded` - Succeeded
+          * `failed` - Failed
+      - in: query
+        name: triggered_by
+        schema:
+          type: string
+          enum:
+          - on_demand
+          - schedule
+        description: |-
+          Filter by trigger source (schedule or on_demand).
+
+          * `schedule` - Schedule
+          * `on_demand` - On demand
+      tags:
+      - replay_vision
+      - vision
+      security:
+      - PersonalAPIKeyAuth:
+        - replay_lens:read
+        - session_recording:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedReplayObservationList'
+          description: ''
+      x-explicit-tags:
+      - replay_vision
+  /api/environments/{project_id}/vision/lenses/{lens_id}/observations/{id}/:
+    get:
+      operationId: vision_lenses_observations_retrieve
+      description: Read-only access to observations produced by a lens.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this replay observation.
+        required: true
+      - in: path
+        name: lens_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - replay_vision
+      - vision
+      security:
+      - PersonalAPIKeyAuth:
+        - replay_lens:read
+        - session_recording:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReplayObservation'
+          description: ''
+      x-explicit-tags:
+      - replay_vision
+  /api/environments/{project_id}/vision/lenses/{id}/:
+    get:
+      operationId: vision_lenses_retrieve
+      description: CRUD for Replay Vision lenses.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this replay lens.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - replay_vision
+      - vision
+      security:
+      - PersonalAPIKeyAuth:
+        - replay_lens:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReplayLens'
+          description: ''
+      x-explicit-tags:
+      - replay_vision
+    patch:
+      operationId: vision_lenses_partial_update
+      description: CRUD for Replay Vision lenses.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this replay lens.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - replay_vision
+      - vision
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedReplayLens'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedReplayLens'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedReplayLens'
+      security:
+      - PersonalAPIKeyAuth:
+        - replay_lens:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReplayLens'
+          description: ''
+      x-explicit-tags:
+      - replay_vision
+    delete:
+      operationId: vision_lenses_destroy
+      description: CRUD for Replay Vision lenses.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this replay lens.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - replay_vision
+      - vision
+      security:
+      - PersonalAPIKeyAuth:
+        - replay_lens:write
+      responses:
+        '204':
+          description: No response body
+      x-explicit-tags:
+      - replay_vision
   /api/environments/{project_id}/web_analytics/weekly_digest/:
     get:
       operationId: web_analytics_weekly_digest
@@ -58111,7 +58460,7 @@ components:
         Serializer for an BatchExportDestination model.
 
         The `config` field is polymorphic and typed only for destinations that keep
-        credentials in the linked Integration (currently Databricks and AzureBlob).
+        credentials in the linked Integration (currently Databricks, AzureBlob, BigQuery).
         Other destination types accept the same JSON shape but without a typed
         OpenAPI schema. Secret fields are stripped from `config` on read.
       properties:
@@ -58136,9 +58485,9 @@ components:
           allOf:
           - $ref: '#/components/schemas/BatchExportDestinationConfig'
           description: Destination-specific configuration. Fields depend on `type`.
-            Credentials for integration-backed destinations (Databricks, AzureBlob)
-            are NOT stored here — they live in the linked Integration. Secret fields
-            are stripped from responses.
+            Credentials for integration-backed destinations (Databricks, AzureBlob,
+            BigQuery) are NOT stored here — they live in the linked Integration. Secret
+            fields are stripped from responses.
         integration:
           type:
           - integer
@@ -58150,8 +58499,8 @@ components:
           - 'null'
           writeOnly: true
           description: ID of a team-scoped Integration providing credentials. Required
-            for Databricks and AzureBlob destinations; optional for BigQuery; unused
-            for other types.
+            for Databricks, AzureBlob, and BigQuery destinations; unused for other
+            types.
       required:
       - config
       - type
@@ -58159,20 +58508,24 @@ components:
       oneOf:
       - $ref: '#/components/schemas/DatabricksDestinationConfig'
       - $ref: '#/components/schemas/AzureBlobDestinationConfig'
+      - $ref: '#/components/schemas/BigQueryDestinationConfig'
       discriminator:
         propertyName: type
         mapping:
           Databricks: '#/components/schemas/DatabricksDestinationConfig'
           AzureBlob: '#/components/schemas/AzureBlobDestinationConfig'
+          BigQuery: '#/components/schemas/BigQueryDestinationConfig'
     BatchExportDestinationRequest:
       oneOf:
       - $ref: '#/components/schemas/DatabricksDestinationRequest'
       - $ref: '#/components/schemas/AzureBlobDestinationRequest'
+      - $ref: '#/components/schemas/BigQueryDestinationRequest'
       discriminator:
         propertyName: type
         mapping:
           Databricks: '#/components/schemas/DatabricksDestinationRequest'
           AzureBlob: '#/components/schemas/AzureBlobDestinationRequest'
+          BigQuery: '#/components/schemas/BigQueryDestinationRequest'
     BatchExportDestinationTypeEnum:
       enum:
       - S3
@@ -58545,6 +58898,52 @@ components:
       - multiple_variant_percentage
       title: BiasRisk
       type: object
+    BigQueryDestinationConfig:
+      type: object
+      description: |-
+        Typed configuration for a BigQuery batch-export destination.
+
+        Credentials live in the linked Integration, not in this config. Mirrors the
+        non-credential fields of `BigQueryBatchExportInputs` in
+        `products/batch_exports/backend/service.py`.
+      properties:
+        dataset_id:
+          type: string
+          description: BigQuery dataset ID to write to.
+        table_id:
+          type: string
+          default: events
+          description: BigQuery table ID inside the dataset.
+        use_json_type:
+          type: boolean
+          default: false
+          description: Whether to export 'properties', 'set', and 'set_once' fields
+            as the BigQuery JSON type rather than STRING. Cannot be changed after
+            the export is created.
+      required:
+      - dataset_id
+    BigQueryDestinationRequest:
+      type: object
+      description: Request shape for creating or updating a BigQuery batch-export
+        destination.
+      properties:
+        type:
+          $ref: '#/components/schemas/BigQueryDestinationRequestTypeEnum'
+        integration_id:
+          type: integer
+          description: ID of a google-cloud-service-account-kind Integration. Use
+            the integrations-list MCP tool to find one.
+        config:
+          $ref: '#/components/schemas/BigQueryDestinationConfig'
+      required:
+      - config
+      - integration_id
+      - type
+    BigQueryDestinationRequestTypeEnum:
+      enum:
+      - BigQuery
+      type: string
+      description: '* `BigQuery` - BigQuery'
     BlankEnum:
       enum:
       - ''
@@ -80033,6 +80432,21 @@ components:
       - results
       title: HogQueryResponse
       type: object
+    HogTaggerConfig:
+      type: object
+      properties:
+        source:
+          type: string
+          description: Hog source code to classify a generation into tags.
+          minLength: 1
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/TagDefinition'
+          description: Optional tag whitelist. Leave empty to allow any tag returned
+            by the Hog code.
+      required:
+      - source
     HrefMatching:
       enum:
       - contains
@@ -82168,6 +82582,32 @@ components:
       - id
       - is_latest
       - version
+    LLMTaggerConfig:
+      type: object
+      properties:
+        prompt:
+          type: string
+          description: Prompt instructing the LLM how to tag generations
+          minLength: 1
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/TagDefinition'
+          description: Available tags the LLM can assign
+        min_tags:
+          type: integer
+          minimum: 0
+          default: 0
+          description: Minimum number of tags to apply
+        max_tags:
+          type:
+          - integer
+          - 'null'
+          minimum: 1
+          description: Maximum number of tags to apply (null = no limit)
+      required:
+      - prompt
+      - tags
     LLMTrace:
       additionalProperties: false
       properties:
@@ -82443,6 +82883,33 @@ components:
       - id
       - representative_email
       - status
+    LensModelEnum:
+      enum:
+      - gemini-3-flash
+      - gemini-3-flash-lite
+      type: string
+      description: |-
+        * `gemini-3-flash` - Gemini 3 Flash
+        * `gemini-3-flash-lite` - Gemini 3 Flash Lite
+    LensProviderEnum:
+      enum:
+      - google
+      type: string
+      description: '* `google` - Google'
+    LensTypeEnum:
+      enum:
+      - monitor
+      - classifier
+      - scorer
+      - summarizer
+      - indexer
+      type: string
+      description: |-
+        * `monitor` - Monitor
+        * `classifier` - Classifier
+        * `scorer` - Scorer
+        * `summarizer` - Summarizer
+        * `indexer` - Indexer
     LifecycleDataWarehouseNode:
       additionalProperties: false
       properties:
@@ -86044,6 +86511,26 @@ components:
       - media_type
       - media_url
       - updated_at
+    ObservationStatusEnum:
+      enum:
+      - pending
+      - running
+      - succeeded
+      - failed
+      type: string
+      description: |-
+        * `pending` - Pending
+        * `running` - Running
+        * `succeeded` - Succeeded
+        * `failed` - Failed
+    ObservationTriggerEnum:
+      enum:
+      - schedule
+      - on_demand
+      type: string
+      description: |-
+        * `schedule` - Schedule
+        * `on_demand` - On demand
     OfflineExperimentItemsRequest:
       type: object
       properties:
@@ -89092,6 +89579,56 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/QuarantinedIdentifierEntry'
+    PaginatedReplayLensList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReplayLens'
+    PaginatedReplayObservationList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReplayObservation'
     PaginatedRepoList:
       type: object
       required:
@@ -95309,6 +95846,93 @@ components:
           type: string
           format: uuid
           description: Person UUID to remove from the cohort
+    PatchedReplayLens:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          description: Human-readable lens name. Unique within the team.
+          maxLength: 255
+        description:
+          type: string
+          description: Free-form description shown in the lens management UI.
+        lens_type:
+          allOf:
+          - $ref: '#/components/schemas/LensTypeEnum'
+          description: |-
+            What the lens does: monitor, classifier, scorer, summarizer, or indexer.
+
+            * `monitor` - Monitor
+            * `classifier` - Classifier
+            * `scorer` - Scorer
+            * `summarizer` - Summarizer
+            * `indexer` - Indexer
+        lens_config:
+          description: Type-specific configuration. Always includes `prompt`; classifiers
+            add `tags`, scorers add `scale`, etc.
+        query:
+          description: Persisted `RecordingsQuery` shape used to pick candidate sessions.
+            `date_from`/`date_to` are stripped on save — the schedule controls time,
+            not the user.
+        sampling_rate:
+          type: number
+          format: double
+          maximum: 1.0
+          minimum: 0.0
+          description: 0..1 random downsample applied after the query matches. Defaults
+            to 1.0 (no downsampling).
+        provider:
+          allOf:
+          - $ref: '#/components/schemas/LensProviderEnum'
+          description: |-
+            LLM provider. v1 is Google-only.
+
+            * `google` - Google
+        model:
+          allOf:
+          - $ref: '#/components/schemas/LensModelEnum'
+          description: |-
+            Concrete model to use for this lens.
+
+            * `gemini-3-flash` - Gemini 3 Flash
+            * `gemini-3-flash-lite` - Gemini 3 Flash Lite
+        enabled:
+          type: boolean
+          description: When false, the reconciler removes the lens's Temporal schedule.
+            On-demand triggers still work.
+        emits_signals:
+          type: boolean
+          description: When true, the prompt is augmented with the Signal side mission
+            and the lens emits PostHog Signals.
+        lens_version:
+          type: integer
+          readOnly: true
+          description: Increments on every config-changing save. Observations snapshot
+            this value.
+        last_swept_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Watermark for the lens's last scheduled fire. Mirrors Temporal
+            schedule state for recovery.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        created_by:
+          oneOf:
+          - $ref: '#/components/schemas/UserBasic'
+          - type: 'null'
+          readOnly: true
+          description: User who created the lens.
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
     PatchedReviewQueueItemUpdate:
       type: object
       properties:
@@ -96243,13 +96867,9 @@ components:
           - 'null'
           readOnly: true
           description: The effective access level the user has for this object
-    PatchedTagger:
+    PatchedTaggerUpdate:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
-          readOnly: true
         name:
           type: string
           maxLength: 400
@@ -96262,7 +96882,10 @@ components:
           - $ref: '#/components/schemas/TaggerTypeEnum'
           default: llm
         tagger_config:
-          description: Tagger configuration (varies by tagger_type)
+          allOf:
+          - $ref: '#/components/schemas/TaggerConfig'
+          description: 'Tagger configuration. For tagger_type ''llm'': {prompt, tags,
+            min_tags?, max_tags?}. For tagger_type ''hog'': {source, tags?}.'
         conditions:
           type: array
           items:
@@ -96270,20 +96893,8 @@ components:
           description: Conditions that scope when the tagger runs
         model_configuration:
           oneOf:
-          - $ref: '#/components/schemas/TaggerModelConfiguration'
+          - $ref: '#/components/schemas/TaggerModelConfigurationWrite'
           - type: 'null'
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        updated_at:
-          type: string
-          format: date-time
-          readOnly: true
-        created_by:
-          allOf:
-          - $ref: '#/components/schemas/UserBasic'
-          readOnly: true
         deleted:
           type: boolean
     PatchedTask:
@@ -107409,6 +108020,202 @@ components:
           minItems: 1
       required:
       - tile_order
+    ReplayLens:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          description: Human-readable lens name. Unique within the team.
+          maxLength: 255
+        description:
+          type: string
+          description: Free-form description shown in the lens management UI.
+        lens_type:
+          allOf:
+          - $ref: '#/components/schemas/LensTypeEnum'
+          description: |-
+            What the lens does: monitor, classifier, scorer, summarizer, or indexer.
+
+            * `monitor` - Monitor
+            * `classifier` - Classifier
+            * `scorer` - Scorer
+            * `summarizer` - Summarizer
+            * `indexer` - Indexer
+        lens_config:
+          description: Type-specific configuration. Always includes `prompt`; classifiers
+            add `tags`, scorers add `scale`, etc.
+        query:
+          description: Persisted `RecordingsQuery` shape used to pick candidate sessions.
+            `date_from`/`date_to` are stripped on save — the schedule controls time,
+            not the user.
+        sampling_rate:
+          type: number
+          format: double
+          maximum: 1.0
+          minimum: 0.0
+          description: 0..1 random downsample applied after the query matches. Defaults
+            to 1.0 (no downsampling).
+        provider:
+          allOf:
+          - $ref: '#/components/schemas/LensProviderEnum'
+          description: |-
+            LLM provider. v1 is Google-only.
+
+            * `google` - Google
+        model:
+          allOf:
+          - $ref: '#/components/schemas/LensModelEnum'
+          description: |-
+            Concrete model to use for this lens.
+
+            * `gemini-3-flash` - Gemini 3 Flash
+            * `gemini-3-flash-lite` - Gemini 3 Flash Lite
+        enabled:
+          type: boolean
+          description: When false, the reconciler removes the lens's Temporal schedule.
+            On-demand triggers still work.
+        emits_signals:
+          type: boolean
+          description: When true, the prompt is augmented with the Signal side mission
+            and the lens emits PostHog Signals.
+        lens_version:
+          type: integer
+          readOnly: true
+          description: Increments on every config-changing save. Observations snapshot
+            this value.
+        last_swept_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Watermark for the lens's last scheduled fire. Mirrors Temporal
+            schedule state for recovery.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        created_by:
+          oneOf:
+          - $ref: '#/components/schemas/UserBasic'
+          - type: 'null'
+          readOnly: true
+          description: User who created the lens.
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - created_at
+      - created_by
+      - id
+      - last_swept_at
+      - lens_config
+      - lens_type
+      - lens_version
+      - model
+      - name
+      - updated_at
+    ReplayObservation:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        lens_id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: The lens that produced this observation.
+        session_id:
+          type: string
+          readOnly: true
+          description: Session recording id this lens was applied to.
+        status:
+          allOf:
+          - $ref: '#/components/schemas/ObservationStatusEnum'
+          readOnly: true
+          description: |-
+            Observation status (pending, running, succeeded, failed).
+
+            * `pending` - Pending
+            * `running` - Running
+            * `succeeded` - Succeeded
+            * `failed` - Failed
+        error_reason:
+          type: string
+          readOnly: true
+          description: Populated on failure. Includes the malformed model response
+            when validation fails.
+        workflow_id:
+          type: string
+          readOnly: true
+          description: Temporal workflow id for progress queries and debugging. Empty
+            until the workflow starts.
+        lens_version:
+          type: integer
+          readOnly: true
+          description: The `ReplayLens.lens_version` value at the moment the workflow
+            ran.
+        lens_config_snapshot:
+          readOnly: true
+          description: Snapshot of `ReplayLens.lens_config` at run time. Lens edits
+            do not retroactively mutate observations.
+        model_used:
+          type: string
+          readOnly: true
+          description: Concrete model that ran the observation.
+        provider_used:
+          type: string
+          readOnly: true
+          description: Concrete provider that ran the observation.
+        triggered_by:
+          allOf:
+          - $ref: '#/components/schemas/ObservationTriggerEnum'
+          readOnly: true
+          description: |-
+            Whether this observation came from the schedule or an on-demand request.
+
+            * `schedule` - Schedule
+            * `on_demand` - On demand
+        triggered_by_user:
+          oneOf:
+          - $ref: '#/components/schemas/UserBasic'
+          - type: 'null'
+          readOnly: true
+          description: User who triggered an on-demand observation. Null for scheduled
+            observations.
+        started_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        completed_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - created_at
+      - error_reason
+      - id
+      - lens_config_snapshot
+      - lens_id
+      - lens_version
+      - model_used
+      - provider_used
+      - session_id
+      - status
+      - triggered_by
+      - triggered_by_user
+      - workflow_id
     Repo:
       type: object
       properties:
@@ -116812,6 +117619,20 @@ components:
           title: Transpose
       title: TableSettings
       type: object
+    TagDefinition:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Tag identifier
+          maxLength: 100
+        description:
+          type: string
+          default: ''
+          description: Description to help the LLM classify
+          maxLength: 500
+      required:
+      - name
     Tagger:
       type: object
       properties:
@@ -116831,7 +117652,10 @@ components:
           - $ref: '#/components/schemas/TaggerTypeEnum'
           default: llm
         tagger_config:
-          description: Tagger configuration (varies by tagger_type)
+          allOf:
+          - $ref: '#/components/schemas/TaggerConfig'
+          description: 'Tagger configuration. For tagger_type ''llm'': {prompt, tags,
+            min_tags?, max_tags?}. For tagger_type ''hog'': {source, tags?}.'
         conditions:
           type: array
           items:
@@ -116883,20 +117707,70 @@ components:
           description: Property filters that scope when this condition fires
       required:
       - id
+    TaggerConfig:
+      oneOf:
+      - $ref: '#/components/schemas/LLMTaggerConfig'
+      - $ref: '#/components/schemas/HogTaggerConfig'
+    TaggerCreate:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 400
+        description:
+          type: string
+        enabled:
+          type: boolean
+        tagger_type:
+          allOf:
+          - $ref: '#/components/schemas/TaggerTypeEnum'
+          default: llm
+        tagger_config:
+          allOf:
+          - $ref: '#/components/schemas/TaggerConfig'
+          description: 'Tagger configuration. For tagger_type ''llm'': {prompt, tags,
+            min_tags?, max_tags?}. For tagger_type ''hog'': {source, tags?}.'
+        conditions:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaggerCondition'
+          description: Conditions that scope when the tagger runs
+        model_configuration:
+          oneOf:
+          - $ref: '#/components/schemas/TaggerModelConfigurationWrite'
+          - type: 'null'
+      required:
+      - name
+      - tagger_config
     TaggerModelConfiguration:
       type: object
       description: Nested serializer for model configuration.
       properties:
         provider:
-          $ref: '#/components/schemas/LLMProviderEnum'
+          allOf:
+          - $ref: '#/components/schemas/LLMProviderEnum'
+          description: |-
+            LLM provider to use for this tagger.
+
+            * `openai` - Openai
+            * `anthropic` - Anthropic
+            * `gemini` - Gemini
+            * `openrouter` - Openrouter
+            * `fireworks` - Fireworks
+            * `azure_openai` - Azure OpenAI
+            * `together_ai` - Together AI
         model:
           type: string
+          description: Provider model identifier to use for this tagger.
           maxLength: 100
         provider_key_id:
           type:
           - string
           - 'null'
           format: uuid
+          description: Existing LLM provider key UUID for the current project. Do
+            not invent this value; use a real provider key ID returned by PostHog,
+            or omit/null when no provider key should be pinned.
         provider_key_name:
           type:
           - string
@@ -116906,6 +117780,37 @@ components:
       - model
       - provider
       - provider_key_name
+    TaggerModelConfigurationWrite:
+      type: object
+      properties:
+        provider:
+          allOf:
+          - $ref: '#/components/schemas/LLMProviderEnum'
+          description: |-
+            LLM provider to use for this tagger.
+
+            * `openai` - Openai
+            * `anthropic` - Anthropic
+            * `gemini` - Gemini
+            * `openrouter` - Openrouter
+            * `fireworks` - Fireworks
+            * `azure_openai` - Azure OpenAI
+            * `together_ai` - Together AI
+        model:
+          type: string
+          description: Provider model identifier to use for this tagger.
+          maxLength: 100
+        provider_key_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          description: Existing LLM provider key UUID for the current project. Do
+            not invent this value; use a real provider key ID returned by PostHog,
+            or omit/null when no provider key should be pinned.
+      required:
+      - model
+      - provider
     TaggerTypeEnum:
       enum:
       - llm
@@ -116914,6 +117819,39 @@ components:
       description: |-
         * `llm` - LLM
         * `hog` - Hog
+    TaggerUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 400
+        description:
+          type: string
+        enabled:
+          type: boolean
+        tagger_type:
+          allOf:
+          - $ref: '#/components/schemas/TaggerTypeEnum'
+          default: llm
+        tagger_config:
+          allOf:
+          - $ref: '#/components/schemas/TaggerConfig'
+          description: 'Tagger configuration. For tagger_type ''llm'': {prompt, tags,
+            min_tags?, max_tags?}. For tagger_type ''hog'': {source, tags?}.'
+        conditions:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaggerCondition'
+          description: Conditions that scope when the tagger runs
+        model_configuration:
+          oneOf:
+          - $ref: '#/components/schemas/TaggerModelConfigurationWrite'
+          - type: 'null'
+        deleted:
+          type: boolean
+      required:
+      - name
+      - tagger_config
     TargetTypeEnum:
       enum:
       - email
@@ -118788,6 +119726,93 @@ components:
       - output_preview
       - reasoning
       - result
+    TestHogTaggerRequest:
+      type: object
+      properties:
+        source:
+          type: string
+          description: Hog source code to test. Return a tag name string, a list of
+            tag name strings, or null.
+          minLength: 1
+        sample_count:
+          type: integer
+          maximum: 10
+          minimum: 1
+          default: 5
+          description: Number of recent $ai_generation events to test against (1-10,
+            default 5).
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/TestHogTaggerTag'
+          description: Optional tag whitelist. Returned tags outside this list are
+            filtered out.
+      required:
+      - source
+    TestHogTaggerResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/TestHogTaggerResultItem'
+          description: Per-event Hog tagger test results.
+        message:
+          type: string
+          description: Optional message, for example when no recent AI events were
+            found.
+      required:
+      - results
+    TestHogTaggerResultItem:
+      type: object
+      properties:
+        event_uuid:
+          type: string
+          description: UUID of the sampled $ai_generation event.
+        trace_id:
+          type:
+          - string
+          - 'null'
+          description: Trace ID if available.
+        input_preview:
+          type: string
+          description: First 200 characters of the generation input.
+        output_preview:
+          type: string
+          description: First 200 characters of the generation output.
+        tags:
+          type: array
+          items:
+            type: string
+          description: Tag names returned by the Hog code.
+        reasoning:
+          type: string
+          description: Text written to stdout by the Hog code.
+        error:
+          type:
+          - string
+          - 'null'
+          description: Error message if the Hog code failed.
+      required:
+      - event_uuid
+      - input_preview
+      - output_preview
+      - reasoning
+      - tags
+    TestHogTaggerTag:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Tag identifier to allow in Hog test results.
+          maxLength: 100
+        description:
+          type: string
+          default: ''
+          description: Optional description for the tag.
+          maxLength: 500
+      required:
+      - name
     TextMatching:
       enum:
       - contains
@@ -126737,6 +127762,7 @@ tags:
 - name: public_hog_function_templates
 - name: query
 - name: replay
+- name: replay_vision
 - name: reverse_proxy
 - name: role_external_references
 - name: roles
@@ -126763,6 +127789,7 @@ tags:
 - name: user_home_settings
 - name: user_interviews
 - name: users
+- name: vision
 - name: visual_review
 - name: warehouse_dag
 - name: warehouse_model_paths
@@ -126877,6 +127904,7 @@ x-tagGroups:
   - public_hog_function_templates
   - query
   - replay
+  - replay_vision
   - reverse_proxy
   - role_external_references
   - roles
@@ -126903,6 +127931,7 @@ x-tagGroups:
   - user_home_settings
   - user_interviews
   - users
+  - vision
   - visual_review
   - warehouse_dag
   - warehouse_model_paths

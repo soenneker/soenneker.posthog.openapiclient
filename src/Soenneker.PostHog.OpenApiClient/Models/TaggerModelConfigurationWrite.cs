@@ -7,11 +7,10 @@ using System.IO;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>
-    /// Nested serializer for model configuration.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class TaggerModelConfiguration : IAdditionalDataHolder, IParsable
+    #pragma warning disable CS1591
+    public partial class TaggerModelConfigurationWrite : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -27,30 +26,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.LLMProviderEnum? Provider { get; set; }
         /// <summary>Existing LLM provider key UUID for the current project. Do not invent this value; use a real provider key ID returned by PostHog, or omit/null when no provider key should be pinned.</summary>
         public Guid? ProviderKeyId { get; set; }
-        /// <summary>The provider_key_name property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? ProviderKeyName { get; private set; }
-#nullable restore
-#else
-        public string ProviderKeyName { get; private set; }
-#endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaggerModelConfiguration"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaggerModelConfigurationWrite"/> and sets the default values.
         /// </summary>
-        public TaggerModelConfiguration()
+        public TaggerModelConfigurationWrite()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaggerModelConfiguration"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaggerModelConfigurationWrite"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.PostHog.OpenApiClient.Models.TaggerModelConfiguration CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.PostHog.OpenApiClient.Models.TaggerModelConfigurationWrite CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.TaggerModelConfiguration();
+            return new global::Soenneker.PostHog.OpenApiClient.Models.TaggerModelConfigurationWrite();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -63,7 +54,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "provider", n => { Provider = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LLMProviderEnum>(); } },
                 { "provider_key_id", n => { ProviderKeyId = n.GetGuidValue(); } },
-                { "provider_key_name", n => { ProviderKeyName = n.GetStringValue(); } },
             };
         }
         /// <summary>

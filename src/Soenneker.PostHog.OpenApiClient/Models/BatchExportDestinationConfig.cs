@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AzureBlobDestinationConfig"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DatabricksDestinationConfig"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AzureBlobDestinationConfig"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BigQueryDestinationConfig"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DatabricksDestinationConfig"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class BatchExportDestinationConfig : IComposedTypeWrapper, IParsable
@@ -20,6 +20,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.AzureBlobDestinationConfig AzureBlobDestinationConfig { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BigQueryDestinationConfig"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.BigQueryDestinationConfig? BigQueryDestinationConfig { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.BigQueryDestinationConfig BigQueryDestinationConfig { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DatabricksDestinationConfig"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -43,6 +51,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 result.AzureBlobDestinationConfig = new global::Soenneker.PostHog.OpenApiClient.Models.AzureBlobDestinationConfig();
             }
+            else if("BigQuery".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.BigQueryDestinationConfig = new global::Soenneker.PostHog.OpenApiClient.Models.BigQueryDestinationConfig();
+            }
             else if("Databricks".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.DatabricksDestinationConfig = new global::Soenneker.PostHog.OpenApiClient.Models.DatabricksDestinationConfig();
@@ -58,6 +70,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(AzureBlobDestinationConfig != null)
             {
                 return AzureBlobDestinationConfig.GetFieldDeserializers();
+            }
+            else if(BigQueryDestinationConfig != null)
+            {
+                return BigQueryDestinationConfig.GetFieldDeserializers();
             }
             else if(DatabricksDestinationConfig != null)
             {
@@ -75,6 +91,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(AzureBlobDestinationConfig != null)
             {
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AzureBlobDestinationConfig>(null, AzureBlobDestinationConfig);
+            }
+            else if(BigQueryDestinationConfig != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BigQueryDestinationConfig>(null, BigQueryDestinationConfig);
             }
             else if(DatabricksDestinationConfig != null)
             {

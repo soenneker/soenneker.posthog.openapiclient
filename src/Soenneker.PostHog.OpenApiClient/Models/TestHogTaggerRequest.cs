@@ -9,43 +9,45 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class DateRange : IAdditionalDataHolder, IParsable
+    public partial class TestHogTaggerRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Start of the date range. Accepts ISO 8601 timestamps or relative formats: -7d, -1h, -1mStart, etc.</summary>
+        /// <summary>Number of recent $ai_generation events to test against (1-10, default 5).</summary>
+        public int? SampleCount { get; set; }
+        /// <summary>Hog source code to test. Return a tag name string, a list of tag name strings, or null.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DateFrom { get; set; }
+        public string? Source { get; set; }
 #nullable restore
 #else
-        public string DateFrom { get; set; }
+        public string Source { get; set; }
 #endif
-        /// <summary>End of the date range. Same format as date_from. Omit or null for &quot;now&quot;.</summary>
+        /// <summary>Optional tag whitelist. Returned tags outside this list are filtered out.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DateTo { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TestHogTaggerTag>? Tags { get; set; }
 #nullable restore
 #else
-        public string DateTo { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TestHogTaggerTag> Tags { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DateRange"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TestHogTaggerRequest"/> and sets the default values.
         /// </summary>
-        public DateRange()
+        public TestHogTaggerRequest()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DateRange"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TestHogTaggerRequest"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.PostHog.OpenApiClient.Models.DateRange CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.PostHog.OpenApiClient.Models.TestHogTaggerRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.DateRange();
+            return new global::Soenneker.PostHog.OpenApiClient.Models.TestHogTaggerRequest();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -55,8 +57,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "date_from", n => { DateFrom = n.GetStringValue(); } },
-                { "date_to", n => { DateTo = n.GetStringValue(); } },
+                { "sample_count", n => { SampleCount = n.GetIntValue(); } },
+                { "source", n => { Source = n.GetStringValue(); } },
+                { "tags", n => { Tags = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TestHogTaggerTag>(global::Soenneker.PostHog.OpenApiClient.Models.TestHogTaggerTag.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -66,8 +69,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("date_from", DateFrom);
-            writer.WriteStringValue("date_to", DateTo);
+            writer.WriteIntValue("sample_count", SampleCount);
+            writer.WriteStringValue("source", Source);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TestHogTaggerTag>("tags", Tags);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

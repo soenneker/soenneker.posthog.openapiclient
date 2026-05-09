@@ -61,6 +61,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Subscriptions;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Taggers;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Tracing;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.User_interviews;
+using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Warehouse_saved_queries;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Warehouse_saved_query_folders;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Warehouse_tables;
@@ -374,6 +375,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.User_interviews.User_interviewsRequestBuilder User_interviews
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.User_interviews.User_interviewsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The vision property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision.VisionRequestBuilder Vision
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision.VisionRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The warehouse_saved_queries property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Warehouse_saved_queries.Warehouse_saved_queriesRequestBuilder Warehouse_saved_queries

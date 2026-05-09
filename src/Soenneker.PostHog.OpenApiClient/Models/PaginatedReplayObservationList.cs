@@ -9,43 +9,53 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class DateRange : IAdditionalDataHolder, IParsable
+    public partial class PaginatedReplayObservationList : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Start of the date range. Accepts ISO 8601 timestamps or relative formats: -7d, -1h, -1mStart, etc.</summary>
+        /// <summary>The count property</summary>
+        public int? Count { get; set; }
+        /// <summary>The next property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DateFrom { get; set; }
+        public string? Next { get; set; }
 #nullable restore
 #else
-        public string DateFrom { get; set; }
+        public string Next { get; set; }
 #endif
-        /// <summary>End of the date range. Same format as date_from. Omit or null for &quot;now&quot;.</summary>
+        /// <summary>The previous property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DateTo { get; set; }
+        public string? Previous { get; set; }
 #nullable restore
 #else
-        public string DateTo { get; set; }
+        public string Previous { get; set; }
+#endif
+        /// <summary>The results property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservation>? Results { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservation> Results { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DateRange"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedReplayObservationList"/> and sets the default values.
         /// </summary>
-        public DateRange()
+        public PaginatedReplayObservationList()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DateRange"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedReplayObservationList"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.PostHog.OpenApiClient.Models.DateRange CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.PostHog.OpenApiClient.Models.PaginatedReplayObservationList CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.DateRange();
+            return new global::Soenneker.PostHog.OpenApiClient.Models.PaginatedReplayObservationList();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -55,8 +65,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "date_from", n => { DateFrom = n.GetStringValue(); } },
-                { "date_to", n => { DateTo = n.GetStringValue(); } },
+                { "count", n => { Count = n.GetIntValue(); } },
+                { "next", n => { Next = n.GetStringValue(); } },
+                { "previous", n => { Previous = n.GetStringValue(); } },
+                { "results", n => { Results = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservation>(global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservation.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -66,8 +78,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("date_from", DateFrom);
-            writer.WriteStringValue("date_to", DateTo);
+            writer.WriteIntValue("count", Count);
+            writer.WriteStringValue("next", Next);
+            writer.WriteStringValue("previous", Previous);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservation>("results", Results);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
