@@ -121920,6 +121920,11 @@ components:
           type: string
           readOnly: true
           description: Trace ID for the review.
+        trace_url:
+          type: string
+          format: uri
+          readOnly: true
+          description: Absolute URL to the trace this review is attached to.
         comment:
           type:
           - string
@@ -121963,6 +121968,7 @@ components:
       - scores
       - team
       - trace_id
+      - trace_url
       - updated_at
     TraceReviewCreate:
       type: object

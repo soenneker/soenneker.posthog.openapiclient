@@ -60,6 +60,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string TraceId { get; private set; }
 #endif
+        /// <summary>Absolute URL to the trace this review is attached to.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? TraceUrl { get; private set; }
+#nullable restore
+#else
+        public string TraceUrl { get; private set; }
+#endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>
@@ -95,6 +103,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "scores", n => { Scores = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TraceReviewScore>(global::Soenneker.PostHog.OpenApiClient.Models.TraceReviewScore.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "team", n => { Team = n.GetIntValue(); } },
                 { "trace_id", n => { TraceId = n.GetStringValue(); } },
+                { "trace_url", n => { TraceUrl = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }
