@@ -9219,9 +9219,10 @@ paths:
   /api/environments/{environment_id}/insights/viewed/:
     post:
       operationId: environments_insights_viewed_create
-      description: |-
-        Update insight view timestamps.
-        Expects: {"insight_ids": [1, 2, 3, ...]}
+      description: Record that the current user has just viewed one or more insights.
+        Submitted ids that do not belong to the current project or that point at deleted
+        insights are silently dropped. Returns 201 on success regardless of how many
+        ids were retained.
       parameters:
       - $ref: '#/components/parameters/EnvironmentIdPath'
       - in: query
@@ -9238,13 +9239,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Insight'
+              $ref: '#/components/schemas/InsightViewedRequest'
+        required: true
       security:
       - PersonalAPIKeyAuth:
         - insight:read
       responses:
-        '200':
-          description: No response body
+        '201':
+          description: Views recorded.
       deprecated: true
       x-explicit-tags:
       - product_analytics
@@ -23017,6 +23019,34 @@ paths:
           description: ''
       x-explicit-tags:
       - llm_analytics
+  /api/environments/{project_id}/tracing/spans/aggregate/:
+    post:
+      operationId: tracing_spans_aggregate_create
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - tracing
+      - tracing
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/_TracingAggregationRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/_TracingAggregationRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/_TracingAggregationRequest'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - tracing:read
+      responses:
+        '200':
+          description: No response body
+      x-explicit-tags:
+      - tracing
   /api/environments/{project_id}/tracing/spans/attributes/:
     get:
       operationId: tracing_spans_attributes_retrieve
@@ -23174,6 +23204,34 @@ paths:
           multipart/form-data:
             schema:
               $ref: '#/components/schemas/_TracingTraceRequest'
+      security:
+      - PersonalAPIKeyAuth:
+        - tracing:read
+      responses:
+        '200':
+          description: No response body
+      x-explicit-tags:
+      - tracing
+  /api/environments/{project_id}/tracing/spans/tree/:
+    post:
+      operationId: tracing_spans_tree_create
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - tracing
+      - tracing
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/_TracingTreeRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/_TracingTreeRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/_TracingTreeRequest'
+        required: true
       security:
       - PersonalAPIKeyAuth:
         - tracing:read
@@ -28875,6 +28933,217 @@ paths:
           description: No response body
       x-explicit-tags:
       - batch_exports
+  /api/projects/{project_id}/business_knowledge/sources/:
+    get:
+      operationId: business_knowledge_sources_list
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - business_knowledge
+      - business_knowledge
+      security:
+      - PersonalAPIKeyAuth:
+        - business_knowledge:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedKnowledgeSourceList'
+          description: ''
+      x-explicit-tags:
+      - business_knowledge
+    post:
+      operationId: business_knowledge_sources_create
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - business_knowledge
+      - business_knowledge
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTextSource'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CreateTextSource'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CreateTextSource'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - business_knowledge:write
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KnowledgeSource'
+          description: ''
+      x-explicit-tags:
+      - business_knowledge
+  /api/projects/{project_id}/business_knowledge/sources/{id}/:
+    get:
+      operationId: business_knowledge_sources_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this knowledge source.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - business_knowledge
+      - business_knowledge
+      security:
+      - PersonalAPIKeyAuth:
+        - business_knowledge:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KnowledgeSource'
+          description: ''
+      x-explicit-tags:
+      - business_knowledge
+    patch:
+      operationId: business_knowledge_sources_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this knowledge source.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - business_knowledge
+      - business_knowledge
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUpdateTextSource'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedUpdateTextSource'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedUpdateTextSource'
+      security:
+      - PersonalAPIKeyAuth:
+        - business_knowledge:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KnowledgeSource'
+          description: ''
+      x-explicit-tags:
+      - business_knowledge
+    delete:
+      operationId: business_knowledge_sources_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this knowledge source.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - business_knowledge
+      - business_knowledge
+      security:
+      - PersonalAPIKeyAuth:
+        - business_knowledge:write
+      responses:
+        '204':
+          description: No response body
+      x-explicit-tags:
+      - business_knowledge
+  /api/projects/{project_id}/business_knowledge/sources/{id}/refresh/:
+    post:
+      operationId: business_knowledge_sources_refresh_create
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this knowledge source.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - business_knowledge
+      - business_knowledge
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/KnowledgeSource'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/KnowledgeSource'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/KnowledgeSource'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KnowledgeSource'
+          description: ''
+      x-explicit-tags:
+      - business_knowledge
+  /api/projects/{project_id}/business_knowledge/sources/{id}/text/:
+    get:
+      operationId: business_knowledge_sources_text_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this knowledge source.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - business_knowledge
+      - business_knowledge
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  text:
+                    type: string
+          description: ''
+      x-explicit-tags:
+      - business_knowledge
   /api/projects/{project_id}/cohorts/:
     get:
       operationId: cohorts_list
@@ -41964,9 +42233,10 @@ paths:
   /api/projects/{project_id}/insights/viewed/:
     post:
       operationId: insights_viewed_create
-      description: |-
-        Update insight view timestamps.
-        Expects: {"insight_ids": [1, 2, 3, ...]}
+      description: Record that the current user has just viewed one or more insights.
+        Submitted ids that do not belong to the current project or that point at deleted
+        insights are silently dropped. Returns 201 on success regardless of how many
+        ids were retained.
       parameters:
       - in: query
         name: format
@@ -41983,13 +42253,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Insight'
+              $ref: '#/components/schemas/InsightViewedRequest'
+        required: true
       security:
       - PersonalAPIKeyAuth:
         - insight:read
       responses:
-        '200':
-          description: No response body
+        '201':
+          description: Views recorded.
       x-explicit-tags:
       - product_analytics
   /api/projects/{project_id}/integrations/:
@@ -56070,6 +56341,44 @@ components:
         * `flags` - flags
         * `llm_analytics` - llm_analytics
         * `sandbox` - sandbox
+    AggregatedSpanRow:
+      additionalProperties: false
+      properties:
+        avg_duration_nano:
+          title: Avg Duration Nano
+          type: number
+        count:
+          title: Count
+          type: integer
+        error_count:
+          title: Error Count
+          type: integer
+        name:
+          title: Name
+          type: string
+        p50_duration_nano:
+          title: P50 Duration Nano
+          type: number
+        p95_duration_nano:
+          title: P95 Duration Nano
+          type: number
+        service_name:
+          title: Service Name
+          type: string
+        total_duration_nano:
+          title: Total Duration Nano
+          type: number
+      required:
+      - avg_duration_nano
+      - count
+      - error_count
+      - name
+      - p50_duration_nano
+      - p95_duration_nano
+      - service_name
+      - total_duration_nano
+      title: AggregatedSpanRow
+      type: object
     AggregationAxisFormat:
       enum:
       - numeric
@@ -61984,6 +62293,18 @@ components:
       - p99_count_per_actor
       title: CountPerActorMathType
       type: string
+    CrawlModeEnum:
+      enum:
+      - single
+      - sitemap
+      - same_origin
+      - github_repo
+      type: string
+      description: |-
+        * `single` - Single page
+        * `sitemap` - Sitemap
+        * `same_origin` - Same origin crawl
+        * `github_repo` - GitHub repository
     CreateGroup:
       type: object
       properties:
@@ -62254,6 +62575,21 @@ components:
       required:
       - run_id
       - uploads
+    CreateTextSource:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Short human label for the source. Shown in the settings list
+            and in agent citations.
+          maxLength: 255
+        text:
+          type: string
+          description: Raw text to index. Capped at 1 MB; larger payloads should be
+            split into multiple sources or wait for URL/file support in Stage 2/3.
+      required:
+      - name
+      - text
     CreatedViaEnum:
       enum:
       - web
@@ -79562,6 +79898,8 @@ components:
           - $ref: '#/components/schemas/LogAttributesQuery'
           - $ref: '#/components/schemas/LogValuesQuery'
           - $ref: '#/components/schemas/TraceSpansQuery'
+          - $ref: '#/components/schemas/TraceSpansAggregationQuery'
+          - $ref: '#/components/schemas/TraceSpansTreeQuery'
           - $ref: '#/components/schemas/ExperimentFunnelsQuery'
           - $ref: '#/components/schemas/ExperimentTrendsQuery'
           - $ref: '#/components/schemas/CalendarHeatmapQuery'
@@ -79790,6 +80128,8 @@ components:
           - $ref: '#/components/schemas/LogAttributesQuery'
           - $ref: '#/components/schemas/LogValuesQuery'
           - $ref: '#/components/schemas/TraceSpansQuery'
+          - $ref: '#/components/schemas/TraceSpansAggregationQuery'
+          - $ref: '#/components/schemas/TraceSpansTreeQuery'
           - $ref: '#/components/schemas/ExperimentFunnelsQuery'
           - $ref: '#/components/schemas/ExperimentTrendsQuery'
           - $ref: '#/components/schemas/CalendarHeatmapQuery'
@@ -81149,6 +81489,18 @@ components:
         * `Boolean` - Boolean
         * `List` - List
         * `Date` - Date
+    InsightViewedRequest:
+      type: object
+      properties:
+        insight_ids:
+          type: array
+          items:
+            type: integer
+          description: Insight IDs that were just viewed by the current user. At most
+            2500 ids per request.
+          maxItems: 2500
+      required:
+      - insight_ids
     InsightVizNode:
       additionalProperties: false
       properties:
@@ -81724,6 +82076,126 @@ components:
       - ActionsNode
       title: Kind
       type: string
+    KnowledgeSource:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        team_id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+        source_type:
+          allOf:
+          - $ref: '#/components/schemas/KnowledgeSourceSourceTypeEnum'
+          readOnly: true
+        status:
+          allOf:
+          - $ref: '#/components/schemas/KnowledgeSourceStatusEnum'
+          readOnly: true
+        error_message:
+          type: string
+          readOnly: true
+        document_count:
+          type: integer
+          readOnly: true
+          default: 0
+          description: Number of documents belonging to this source.
+        chunk_count:
+          type: integer
+          readOnly: true
+          default: 0
+          description: Number of chunks belonging to this source.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        source_url:
+          type: string
+          format: uri
+          readOnly: true
+        last_refresh_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        last_refresh_status:
+          allOf:
+          - $ref: '#/components/schemas/LastRefreshStatusEnum'
+          readOnly: true
+        last_refresh_error:
+          type: string
+          readOnly: true
+        crawl_mode:
+          allOf:
+          - $ref: '#/components/schemas/CrawlModeEnum'
+          readOnly: true
+        crawl_config:
+          readOnly: true
+        original_filename:
+          type: string
+          readOnly: true
+        file_content_type:
+          type: string
+          readOnly: true
+        file_size_bytes:
+          type:
+          - integer
+          - 'null'
+          readOnly: true
+      required:
+      - chunk_count
+      - crawl_config
+      - crawl_mode
+      - created_at
+      - document_count
+      - error_message
+      - file_content_type
+      - file_size_bytes
+      - id
+      - last_refresh_at
+      - last_refresh_error
+      - last_refresh_status
+      - name
+      - original_filename
+      - source_type
+      - source_url
+      - status
+      - team_id
+      - updated_at
+    KnowledgeSourceSourceTypeEnum:
+      enum:
+      - text
+      - url
+      - file
+      type: string
+      description: |-
+        * `text` - Text
+        * `url` - URL
+        * `file` - File
+    KnowledgeSourceStatusEnum:
+      enum:
+      - pending
+      - processing
+      - ready
+      - error
+      type: string
+      description: |-
+        * `pending` - Pending
+        * `processing` - Processing
+        * `ready` - Ready
+        * `error` - Error
     LLMModelInfo:
       type: object
       properties:
@@ -82843,6 +83315,16 @@ components:
       - uuid
       title: LastEvent
       type: object
+    LastRefreshStatusEnum:
+      enum:
+      - success
+      - not_modified
+      - error
+      type: string
+      description: |-
+        * `success` - Success
+        * `not_modified` - Not modified
+        * `error` - Error
     LegalDocumentCreator:
       type: object
       properties:
@@ -88882,6 +89364,31 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/IntegrationConfig'
+    PaginatedKnowledgeSourceList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/KnowledgeSource'
     PaginatedLLMPromptListList:
       type: object
       required:
@@ -97612,6 +98119,19 @@ components:
           type:
           - boolean
           - 'null'
+    PatchedUpdateTextSource:
+      type: object
+      description: |-
+        PATCH payload for text sources. Both fields optional, at least one
+        required. `text` triggers a re-chunk; `name` alone does not.
+      properties:
+        name:
+          type: string
+          description: New human label for the source.
+          maxLength: 255
+        text:
+          type: string
+          description: Replacement text. Omit to keep the existing content.
     PatchedUser:
       type: object
       properties:
@@ -101075,7 +101595,9 @@ components:
               TeamTaxonomyQuery: '#/components/schemas/TeamTaxonomyQuery'
               TraceNeighborsQuery: '#/components/schemas/TraceNeighborsQuery'
               TraceQuery: '#/components/schemas/TraceQuery'
+              TraceSpansAggregationQuery: '#/components/schemas/TraceSpansAggregationQuery'
               TraceSpansQuery: '#/components/schemas/TraceSpansQuery'
+              TraceSpansTreeQuery: '#/components/schemas/TraceSpansTreeQuery'
               TracesQuery: '#/components/schemas/TracesQuery'
               TrendsQuery: '#/components/schemas/TrendsQuery'
               UsageMetricsQuery: '#/components/schemas/UsageMetricsQuery'
@@ -101154,6 +101676,8 @@ components:
           - $ref: '#/components/schemas/LogAttributesQuery'
           - $ref: '#/components/schemas/LogValuesQuery'
           - $ref: '#/components/schemas/TraceSpansQuery'
+          - $ref: '#/components/schemas/TraceSpansAggregationQuery'
+          - $ref: '#/components/schemas/TraceSpansTreeQuery'
           - $ref: '#/components/schemas/SuggestedQuestionsQuery'
           - $ref: '#/components/schemas/TeamTaxonomyQuery'
           - $ref: '#/components/schemas/EventTaxonomyQuery'
@@ -101275,13 +101799,15 @@ components:
       - $ref: '#/components/schemas/QueryResponseAlternative81'
       - $ref: '#/components/schemas/QueryResponseAlternative82'
       - $ref: '#/components/schemas/QueryResponseAlternative83'
+      - $ref: '#/components/schemas/QueryResponseAlternative84'
       - $ref: '#/components/schemas/QueryResponseAlternative85'
-      - $ref: '#/components/schemas/QueryResponseAlternative86'
       - $ref: '#/components/schemas/QueryResponseAlternative87'
       - $ref: '#/components/schemas/QueryResponseAlternative88'
       - $ref: '#/components/schemas/QueryResponseAlternative89'
       - $ref: '#/components/schemas/QueryResponseAlternative90'
       - $ref: '#/components/schemas/QueryResponseAlternative91'
+      - $ref: '#/components/schemas/QueryResponseAlternative92'
+      - $ref: '#/components/schemas/QueryResponseAlternative93'
       title: QueryResponseAlternative
     QueryResponseAlternative1:
       additionalProperties: false
@@ -106241,13 +106767,67 @@ components:
     QueryResponseAlternative79:
       additionalProperties: false
       properties:
-        questions:
+        compare:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/AggregatedSpanRow'
+            type: array
+          - type: 'null'
+          default: null
+          description: Result rows for the comparison period when `compareFilter.compare`
+            is true.
+          title: Compare
+        error:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Query error. Returned only if 'explain' or `modifiers.debug`
+            is true. Throws an error otherwise.
+          title: Error
+        hogql:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Generated HogQL query.
+          title: Hogql
+        modifiers:
+          anyOf:
+          - $ref: '#/components/schemas/HogQLQueryModifiers'
+          - type: 'null'
+          default: null
+          description: Modifiers used when performing the query
+        query_status:
+          anyOf:
+          - $ref: '#/components/schemas/QueryStatus'
+          - type: 'null'
+          default: null
+          description: Query status indicates whether next to the provided data, a
+            query is still running.
+        resolved_date_range:
+          anyOf:
+          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
+          - type: 'null'
+          default: null
+          description: The date range used for the query
+        results:
           items:
-            type: string
-          title: Questions
+            $ref: '#/components/schemas/AggregatedSpanRow'
+          title: Results
           type: array
+        timings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/QueryTiming'
+            type: array
+          - type: 'null'
+          default: null
+          description: Measured timings for different parts of the query generation
+            process
+          title: Timings
       required:
-      - questions
+      - results
       title: QueryResponseAlternative79
       type: object
     QueryResponseAlternative8:
@@ -106371,6 +106951,84 @@ components:
     QueryResponseAlternative80:
       additionalProperties: false
       properties:
+        compare:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/SpanTreeNode'
+            type: array
+          - type: 'null'
+          default: null
+          description: Result rows for the comparison period when `compareFilter.compare`
+            is true.
+          title: Compare
+        error:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Query error. Returned only if 'explain' or `modifiers.debug`
+            is true. Throws an error otherwise.
+          title: Error
+        hogql:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Generated HogQL query.
+          title: Hogql
+        modifiers:
+          anyOf:
+          - $ref: '#/components/schemas/HogQLQueryModifiers'
+          - type: 'null'
+          default: null
+          description: Modifiers used when performing the query
+        query_status:
+          anyOf:
+          - $ref: '#/components/schemas/QueryStatus'
+          - type: 'null'
+          default: null
+          description: Query status indicates whether next to the provided data, a
+            query is still running.
+        resolved_date_range:
+          anyOf:
+          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
+          - type: 'null'
+          default: null
+          description: The date range used for the query
+        results:
+          items:
+            $ref: '#/components/schemas/SpanTreeNode'
+          title: Results
+          type: array
+        timings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/QueryTiming'
+            type: array
+          - type: 'null'
+          default: null
+          description: Measured timings for different parts of the query generation
+            process
+          title: Timings
+      required:
+      - results
+      title: QueryResponseAlternative80
+      type: object
+    QueryResponseAlternative81:
+      additionalProperties: false
+      properties:
+        questions:
+          items:
+            type: string
+          title: Questions
+          type: array
+      required:
+      - questions
+      title: QueryResponseAlternative81
+      type: object
+    QueryResponseAlternative82:
+      additionalProperties: false
+      properties:
         error:
           anyOf:
           - type: string
@@ -106440,9 +107098,9 @@ components:
           title: Timings
       required:
       - results
-      title: QueryResponseAlternative80
+      title: QueryResponseAlternative82
       type: object
-    QueryResponseAlternative81:
+    QueryResponseAlternative83:
       additionalProperties: false
       properties:
         error:
@@ -106514,9 +107172,9 @@ components:
           title: Timings
       required:
       - results
-      title: QueryResponseAlternative81
+      title: QueryResponseAlternative83
       type: object
-    QueryResponseAlternative82:
+    QueryResponseAlternative84:
       additionalProperties: false
       properties:
         error:
@@ -106572,9 +107230,9 @@ components:
           title: Timings
       required:
       - results
-      title: QueryResponseAlternative82
+      title: QueryResponseAlternative84
       type: object
-    QueryResponseAlternative83:
+    QueryResponseAlternative85:
       additionalProperties: false
       properties:
         columns:
@@ -106654,9 +107312,9 @@ components:
           title: Timings
       required:
       - results
-      title: QueryResponseAlternative83
+      title: QueryResponseAlternative85
       type: object
-    QueryResponseAlternative85:
+    QueryResponseAlternative87:
       additionalProperties: false
       properties:
         newerTimestamp:
@@ -106697,9 +107355,9 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
-      title: QueryResponseAlternative85
+      title: QueryResponseAlternative87
       type: object
-    QueryResponseAlternative86:
+    QueryResponseAlternative88:
       additionalProperties: false
       properties:
         error:
@@ -106753,9 +107411,9 @@ components:
           title: Timings
       required:
       - results
-      title: QueryResponseAlternative86
+      title: QueryResponseAlternative88
       type: object
-    QueryResponseAlternative87:
+    QueryResponseAlternative89:
       additionalProperties: false
       properties:
         error:
@@ -106807,149 +107465,6 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
-      required:
-      - results
-      title: QueryResponseAlternative87
-      type: object
-    QueryResponseAlternative88:
-      additionalProperties: false
-      properties:
-        error:
-          anyOf:
-          - type: string
-          - type: 'null'
-          default: null
-          description: Query error. Returned only if 'explain' or `modifiers.debug`
-            is true. Throws an error otherwise.
-          title: Error
-        hogql:
-          anyOf:
-          - type: string
-          - type: 'null'
-          default: null
-          description: Generated HogQL query.
-          title: Hogql
-        modifiers:
-          anyOf:
-          - $ref: '#/components/schemas/HogQLQueryModifiers'
-          - type: 'null'
-          default: null
-          description: Modifiers used when performing the query
-        query_status:
-          anyOf:
-          - $ref: '#/components/schemas/QueryStatus'
-          - type: 'null'
-          default: null
-          description: Query status indicates whether next to the provided data, a
-            query is still running.
-        resolved_date_range:
-          anyOf:
-          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
-          - type: 'null'
-          default: null
-          description: The date range used for the query
-        results:
-          items:
-            $ref: '#/components/schemas/EndpointsUsageOverviewItem'
-          title: Results
-          type: array
-        timings:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/QueryTiming'
-            type: array
-          - type: 'null'
-          default: null
-          description: Measured timings for different parts of the query generation
-            process
-          title: Timings
-      required:
-      - results
-      title: QueryResponseAlternative88
-      type: object
-    QueryResponseAlternative89:
-      additionalProperties: false
-      properties:
-        columns:
-          anyOf:
-          - items: {}
-            type: array
-          - type: 'null'
-          default: null
-          title: Columns
-        error:
-          anyOf:
-          - type: string
-          - type: 'null'
-          default: null
-          description: Query error. Returned only if 'explain' or `modifiers.debug`
-            is true. Throws an error otherwise.
-          title: Error
-        hasMore:
-          anyOf:
-          - type: boolean
-          - type: 'null'
-          default: null
-          title: Hasmore
-        hogql:
-          anyOf:
-          - type: string
-          - type: 'null'
-          default: null
-          description: Generated HogQL query.
-          title: Hogql
-        limit:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          default: null
-          title: Limit
-        modifiers:
-          anyOf:
-          - $ref: '#/components/schemas/HogQLQueryModifiers'
-          - type: 'null'
-          default: null
-          description: Modifiers used when performing the query
-        offset:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          default: null
-          title: Offset
-        query_status:
-          anyOf:
-          - $ref: '#/components/schemas/QueryStatus'
-          - type: 'null'
-          default: null
-          description: Query status indicates whether next to the provided data, a
-            query is still running.
-        resolved_date_range:
-          anyOf:
-          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
-          - type: 'null'
-          default: null
-          description: The date range used for the query
-        results:
-          items: {}
-          title: Results
-          type: array
-        timings:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/QueryTiming'
-            type: array
-          - type: 'null'
-          default: null
-          description: Measured timings for different parts of the query generation
-            process
-          title: Timings
-        types:
-          anyOf:
-          - items: {}
-            type: array
-          - type: 'null'
-          default: null
-          title: Types
       required:
       - results
       title: QueryResponseAlternative89
@@ -107050,8 +107565,7 @@ components:
           description: The date range used for the query
         results:
           items:
-            additionalProperties: true
-            type: object
+            $ref: '#/components/schemas/EndpointsUsageOverviewItem'
           title: Results
           type: array
         timings:
@@ -107069,6 +107583,150 @@ components:
       title: QueryResponseAlternative90
       type: object
     QueryResponseAlternative91:
+      additionalProperties: false
+      properties:
+        columns:
+          anyOf:
+          - items: {}
+            type: array
+          - type: 'null'
+          default: null
+          title: Columns
+        error:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Query error. Returned only if 'explain' or `modifiers.debug`
+            is true. Throws an error otherwise.
+          title: Error
+        hasMore:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          title: Hasmore
+        hogql:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Generated HogQL query.
+          title: Hogql
+        limit:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          default: null
+          title: Limit
+        modifiers:
+          anyOf:
+          - $ref: '#/components/schemas/HogQLQueryModifiers'
+          - type: 'null'
+          default: null
+          description: Modifiers used when performing the query
+        offset:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          default: null
+          title: Offset
+        query_status:
+          anyOf:
+          - $ref: '#/components/schemas/QueryStatus'
+          - type: 'null'
+          default: null
+          description: Query status indicates whether next to the provided data, a
+            query is still running.
+        resolved_date_range:
+          anyOf:
+          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
+          - type: 'null'
+          default: null
+          description: The date range used for the query
+        results:
+          items: {}
+          title: Results
+          type: array
+        timings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/QueryTiming'
+            type: array
+          - type: 'null'
+          default: null
+          description: Measured timings for different parts of the query generation
+            process
+          title: Timings
+        types:
+          anyOf:
+          - items: {}
+            type: array
+          - type: 'null'
+          default: null
+          title: Types
+      required:
+      - results
+      title: QueryResponseAlternative91
+      type: object
+    QueryResponseAlternative92:
+      additionalProperties: false
+      properties:
+        error:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Query error. Returned only if 'explain' or `modifiers.debug`
+            is true. Throws an error otherwise.
+          title: Error
+        hogql:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Generated HogQL query.
+          title: Hogql
+        modifiers:
+          anyOf:
+          - $ref: '#/components/schemas/HogQLQueryModifiers'
+          - type: 'null'
+          default: null
+          description: Modifiers used when performing the query
+        query_status:
+          anyOf:
+          - $ref: '#/components/schemas/QueryStatus'
+          - type: 'null'
+          default: null
+          description: Query status indicates whether next to the provided data, a
+            query is still running.
+        resolved_date_range:
+          anyOf:
+          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
+          - type: 'null'
+          default: null
+          description: The date range used for the query
+        results:
+          items:
+            additionalProperties: true
+            type: object
+          title: Results
+          type: array
+        timings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/QueryTiming'
+            type: array
+          - type: 'null'
+          default: null
+          description: Measured timings for different parts of the query generation
+            process
+          title: Timings
+      required:
+      - results
+      title: QueryResponseAlternative92
+      type: object
+    QueryResponseAlternative93:
       additionalProperties: false
       properties:
         error:
@@ -107122,7 +107780,7 @@ components:
           title: Timings
       required:
       - results
-      title: QueryResponseAlternative91
+      title: QueryResponseAlternative93
       type: object
     QueryStatus:
       additionalProperties: false
@@ -107325,7 +107983,9 @@ components:
               TeamTaxonomyQuery: '#/components/schemas/TeamTaxonomyQuery'
               TraceNeighborsQuery: '#/components/schemas/TraceNeighborsQuery'
               TraceQuery: '#/components/schemas/TraceQuery'
+              TraceSpansAggregationQuery: '#/components/schemas/TraceSpansAggregationQuery'
               TraceSpansQuery: '#/components/schemas/TraceSpansQuery'
+              TraceSpansTreeQuery: '#/components/schemas/TraceSpansTreeQuery'
               TracesQuery: '#/components/schemas/TracesQuery'
               TrendsQuery: '#/components/schemas/TrendsQuery'
               UsageMetricsQuery: '#/components/schemas/UsageMetricsQuery'
@@ -107404,6 +108064,8 @@ components:
           - $ref: '#/components/schemas/LogAttributesQuery'
           - $ref: '#/components/schemas/LogValuesQuery'
           - $ref: '#/components/schemas/TraceSpansQuery'
+          - $ref: '#/components/schemas/TraceSpansAggregationQuery'
+          - $ref: '#/components/schemas/TraceSpansTreeQuery'
           - $ref: '#/components/schemas/SuggestedQuestionsQuery'
           - $ref: '#/components/schemas/TeamTaxonomyQuery'
           - $ref: '#/components/schemas/EventTaxonomyQuery'
@@ -107490,7 +108152,9 @@ components:
               TeamTaxonomyQuery: '#/components/schemas/TeamTaxonomyQuery'
               TraceNeighborsQuery: '#/components/schemas/TraceNeighborsQuery'
               TraceQuery: '#/components/schemas/TraceQuery'
+              TraceSpansAggregationQuery: '#/components/schemas/TraceSpansAggregationQuery'
               TraceSpansQuery: '#/components/schemas/TraceSpansQuery'
+              TraceSpansTreeQuery: '#/components/schemas/TraceSpansTreeQuery'
               TracesQuery: '#/components/schemas/TracesQuery'
               TrendsQuery: '#/components/schemas/TrendsQuery'
               UsageMetricsQuery: '#/components/schemas/UsageMetricsQuery'
@@ -107569,6 +108233,8 @@ components:
           - $ref: '#/components/schemas/LogAttributesQuery'
           - $ref: '#/components/schemas/LogValuesQuery'
           - $ref: '#/components/schemas/TraceSpansQuery'
+          - $ref: '#/components/schemas/TraceSpansAggregationQuery'
+          - $ref: '#/components/schemas/TraceSpansTreeQuery'
           - $ref: '#/components/schemas/SuggestedQuestionsQuery'
           - $ref: '#/components/schemas/TeamTaxonomyQuery'
           - $ref: '#/components/schemas/EventTaxonomyQuery'
@@ -115183,6 +115849,59 @@ components:
       - span_resource_attribute
       title: SpanPropertyFilterType
       type: string
+    SpanTreeNode:
+      additionalProperties: false
+      properties:
+        avg_duration_nano:
+          title: Avg Duration Nano
+          type: number
+        avg_start_offset_nano:
+          description: Average nanoseconds from the parent span's start to this span's
+            start. Zero for root spans. Used to order children left-to-right by typical
+            start time in the flame graph.
+          title: Avg Start Offset Nano
+          type: number
+        count:
+          title: Count
+          type: integer
+        error_count:
+          title: Error Count
+          type: integer
+        name:
+          title: Name
+          type: string
+        p50_duration_nano:
+          title: P50 Duration Nano
+          type: number
+        p95_duration_nano:
+          title: P95 Duration Nano
+          type: number
+        parent_name:
+          title: Parent Name
+          type: string
+        parent_service:
+          title: Parent Service
+          type: string
+        service_name:
+          title: Service Name
+          type: string
+        total_duration_nano:
+          title: Total Duration Nano
+          type: number
+      required:
+      - avg_duration_nano
+      - avg_start_offset_nano
+      - count
+      - error_count
+      - name
+      - p50_duration_nano
+      - p95_duration_nano
+      - parent_name
+      - parent_service
+      - service_name
+      - total_duration_nano
+      title: SpanTreeNode
+      type: object
     SparklineBreakdownByEnum:
       enum:
       - severity
@@ -122119,6 +122838,129 @@ components:
           description: Boolean value selected for this score.
       required:
       - definition_id
+    TraceSpansAggregationQuery:
+      additionalProperties: false
+      properties:
+        compareFilter:
+          anyOf:
+          - $ref: '#/components/schemas/CompareFilter'
+          - type: 'null'
+          default: null
+          description: Optional comparison window — when `compare` is true, the runner
+            returns an extra `compare` result set.
+        dateRange:
+          $ref: '#/components/schemas/DateRange'
+        filterGroup:
+          anyOf:
+          - $ref: '#/components/schemas/PropertyGroupFilter'
+          - type: 'null'
+          default: null
+        kind:
+          const: TraceSpansAggregationQuery
+          default: TraceSpansAggregationQuery
+          title: Kind
+          type: string
+        modifiers:
+          anyOf:
+          - $ref: '#/components/schemas/HogQLQueryModifiers'
+          - type: 'null'
+          default: null
+          description: Modifiers used when performing the query
+        response:
+          anyOf:
+          - $ref: '#/components/schemas/TraceSpansAggregationQueryResponse'
+          - type: 'null'
+          default: null
+        serviceNames:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          default: null
+          title: Servicenames
+        tags:
+          anyOf:
+          - $ref: '#/components/schemas/QueryLogTags'
+          - type: 'null'
+          default: null
+        version:
+          anyOf:
+          - type: number
+          - type: 'null'
+          default: null
+          description: version of the node, used for schema migrations
+          title: Version
+      required:
+      - dateRange
+      title: TraceSpansAggregationQuery
+      type: object
+    TraceSpansAggregationQueryResponse:
+      additionalProperties: false
+      properties:
+        compare:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/AggregatedSpanRow'
+            type: array
+          - type: 'null'
+          default: null
+          description: Result rows for the comparison period when `compareFilter.compare`
+            is true.
+          title: Compare
+        error:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Query error. Returned only if 'explain' or `modifiers.debug`
+            is true. Throws an error otherwise.
+          title: Error
+        hogql:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Generated HogQL query.
+          title: Hogql
+        modifiers:
+          anyOf:
+          - $ref: '#/components/schemas/HogQLQueryModifiers'
+          - type: 'null'
+          default: null
+          description: Modifiers used when performing the query
+        query_status:
+          anyOf:
+          - $ref: '#/components/schemas/QueryStatus'
+          - type: 'null'
+          default: null
+          description: Query status indicates whether next to the provided data, a
+            query is still running.
+        resolved_date_range:
+          anyOf:
+          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
+          - type: 'null'
+          default: null
+          description: The date range used for the query
+        results:
+          items:
+            $ref: '#/components/schemas/AggregatedSpanRow'
+          title: Results
+          type: array
+        timings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/QueryTiming'
+            type: array
+          - type: 'null'
+          default: null
+          description: Measured timings for different parts of the query generation
+            process
+          title: Timings
+      required:
+      - results
+      title: TraceSpansAggregationQueryResponse
+      type: object
     TraceSpansQuery:
       additionalProperties: false
       properties:
@@ -122298,6 +123140,137 @@ components:
       required:
       - results
       title: TraceSpansQueryResponse
+      type: object
+    TraceSpansTreeQuery:
+      additionalProperties: false
+      properties:
+        compareFilter:
+          anyOf:
+          - $ref: '#/components/schemas/CompareFilter'
+          - type: 'null'
+          default: null
+          description: Optional comparison window — when `compare` is true, the runner
+            returns an extra `compare` result set.
+        dateRange:
+          $ref: '#/components/schemas/DateRange'
+        filterGroup:
+          anyOf:
+          - $ref: '#/components/schemas/PropertyGroupFilter'
+          - type: 'null'
+          default: null
+        kind:
+          const: TraceSpansTreeQuery
+          default: TraceSpansTreeQuery
+          title: Kind
+          type: string
+        modifiers:
+          anyOf:
+          - $ref: '#/components/schemas/HogQLQueryModifiers'
+          - type: 'null'
+          default: null
+          description: Modifiers used when performing the query
+        response:
+          anyOf:
+          - $ref: '#/components/schemas/TraceSpansTreeQueryResponse'
+          - type: 'null'
+          default: null
+        serviceNames:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          default: null
+          title: Servicenames
+        spanName:
+          description: Span name to scope the matched trace set. Required because
+            the `(trace_id, parent_span_id)` self-join is prohibitive without bounding
+            the matched traces — at high name cardinality the query becomes unsafe
+            to run.
+          title: Spanname
+          type: string
+        tags:
+          anyOf:
+          - $ref: '#/components/schemas/QueryLogTags'
+          - type: 'null'
+          default: null
+        version:
+          anyOf:
+          - type: number
+          - type: 'null'
+          default: null
+          description: version of the node, used for schema migrations
+          title: Version
+      required:
+      - dateRange
+      - spanName
+      title: TraceSpansTreeQuery
+      type: object
+    TraceSpansTreeQueryResponse:
+      additionalProperties: false
+      properties:
+        compare:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/SpanTreeNode'
+            type: array
+          - type: 'null'
+          default: null
+          description: Result rows for the comparison period when `compareFilter.compare`
+            is true.
+          title: Compare
+        error:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Query error. Returned only if 'explain' or `modifiers.debug`
+            is true. Throws an error otherwise.
+          title: Error
+        hogql:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Generated HogQL query.
+          title: Hogql
+        modifiers:
+          anyOf:
+          - $ref: '#/components/schemas/HogQLQueryModifiers'
+          - type: 'null'
+          default: null
+          description: Modifiers used when performing the query
+        query_status:
+          anyOf:
+          - $ref: '#/components/schemas/QueryStatus'
+          - type: 'null'
+          default: null
+          description: Query status indicates whether next to the provided data, a
+            query is still running.
+        resolved_date_range:
+          anyOf:
+          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
+          - type: 'null'
+          default: null
+          description: The date range used for the query
+        results:
+          items:
+            $ref: '#/components/schemas/SpanTreeNode'
+          title: Results
+          type: array
+        timings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/QueryTiming'
+            type: array
+          - type: 'null'
+          default: null
+          description: Measured timings for different parts of the query generation
+            process
+          title: Timings
+      required:
+      - results
+      title: TraceSpansTreeQueryResponse
       type: object
     TracesQuery:
       additionalProperties: false
@@ -126678,6 +127651,20 @@ components:
           title: Window
       title: ZScoreDetectorConfig
       type: object
+    _CompareFilter:
+      type: object
+      properties:
+        compare:
+          type: boolean
+          default: false
+          description: When true, also fetch results for a comparison window and return
+            them under `compare`.
+        compare_to:
+          type:
+          - string
+          - 'null'
+          description: Relative date offset for the comparison window (e.g. '-1h',
+            '-1d', '-7d'). Defaults to the immediately previous period of equal length.
     _DateRange:
       type: object
       properties:
@@ -127443,6 +128430,38 @@ components:
             expires after one hour.
       required:
       - url
+    _TracingAggregationQueryBody:
+      type: object
+      properties:
+        dateRange:
+          allOf:
+          - $ref: '#/components/schemas/_TracingDateRange'
+          description: Date range for the primary window. Defaults to last hour.
+        compareFilter:
+          allOf:
+          - $ref: '#/components/schemas/_CompareFilter'
+          description: Optional comparison-window configuration. When omitted, only
+            the primary window is returned.
+        serviceNames:
+          type: array
+          items:
+            type: string
+          description: Filter by service names.
+        filterGroup:
+          type: array
+          items:
+            $ref: '#/components/schemas/_SpanPropertyFilter'
+          default: []
+          description: Property filters applied to spans in both windows.
+    _TracingAggregationRequest:
+      type: object
+      properties:
+        query:
+          allOf:
+          - $ref: '#/components/schemas/_TracingAggregationQueryBody'
+          description: The span aggregation query to execute.
+      required:
+      - query
     _TracingDateRange:
       type: object
       properties:
@@ -127522,6 +128541,45 @@ components:
           allOf:
           - $ref: '#/components/schemas/_TracingDateRange'
           description: Date range for the query. Defaults to last 24 hours.
+    _TracingTreeQueryBody:
+      type: object
+      properties:
+        spanName:
+          type: string
+          description: Span name to scope the matched trace set. Required because
+            the (trace_id, parent_span_id) self-join is unsafe without bounding the
+            matched traces.
+        dateRange:
+          allOf:
+          - $ref: '#/components/schemas/_TracingDateRange'
+          description: Date range for the primary window. Defaults to last hour.
+        compareFilter:
+          allOf:
+          - $ref: '#/components/schemas/_CompareFilter'
+          description: Optional comparison-window configuration. When omitted, only
+            the primary window is returned.
+        serviceNames:
+          type: array
+          items:
+            type: string
+          description: Filter by service names.
+        filterGroup:
+          type: array
+          items:
+            $ref: '#/components/schemas/_SpanPropertyFilter'
+          default: []
+          description: Additional property filters applied to spans in both windows.
+      required:
+      - spanName
+    _TracingTreeRequest:
+      type: object
+      properties:
+        query:
+          allOf:
+          - $ref: '#/components/schemas/_TracingTreeQueryBody'
+          description: The span call-tree aggregation query to execute.
+      required:
+      - query
     _User:
       type: object
       properties:
@@ -127679,6 +128737,7 @@ tags:
 - name: annotations
 - name: approval_policies
 - name: batch_exports
+- name: business_knowledge
 - name: cdp
 - name: change_requests
 - name: cimd_verification_tokens
@@ -127821,6 +128880,7 @@ x-tagGroups:
   - annotations
   - approval_policies
   - batch_exports
+  - business_knowledge
   - cdp
   - change_requests
   - cimd_verification_tokens

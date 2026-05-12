@@ -12,53 +12,37 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class QueryResponseAlternative87 : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Query error. Returned only if &apos;explain&apos; or `modifiers.debug` is true. Throws an error otherwise.</summary>
+        /// <summary>Timestamp of the newer trace</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Error { get; set; }
+        public string? NewerTimestamp { get; set; }
 #nullable restore
 #else
-        public string Error { get; set; }
+        public string NewerTimestamp { get; set; }
 #endif
-        /// <summary>Generated HogQL query.</summary>
+        /// <summary>ID of the newer trace (chronologically after current)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Hogql { get; set; }
+        public string? NewerTraceId { get; set; }
 #nullable restore
 #else
-        public string Hogql { get; set; }
+        public string NewerTraceId { get; set; }
 #endif
-        /// <summary>Modifiers used when performing the query</summary>
+        /// <summary>Timestamp of the older trace</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers? Modifiers { get; set; }
+        public string? OlderTimestamp { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers Modifiers { get; set; }
+        public string OlderTimestamp { get; set; }
 #endif
-        /// <summary>Query status indicates whether next to the provided data, a query is still running.</summary>
+        /// <summary>ID of the older trace (chronologically before current)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus? QueryStatus { get; set; }
+        public string? OlderTraceId { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus QueryStatus { get; set; }
-#endif
-        /// <summary>The date range used for the query</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse? ResolvedDateRange { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse ResolvedDateRange { get; set; }
-#endif
-        /// <summary>The results property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.UsageMetric>? Results { get; set; }
-#nullable restore
-#else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.UsageMetric> Results { get; set; }
+        public string OlderTraceId { get; set; }
 #endif
         /// <summary>Measured timings for different parts of the query generation process</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -86,12 +70,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "error", n => { Error = n.GetStringValue(); } },
-                { "hogql", n => { Hogql = n.GetStringValue(); } },
-                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
-                { "query_status", n => { QueryStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus>(global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus.CreateFromDiscriminatorValue); } },
-                { "resolved_date_range", n => { ResolvedDateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse.CreateFromDiscriminatorValue); } },
-                { "results", n => { Results = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.UsageMetric>(global::Soenneker.PostHog.OpenApiClient.Models.UsageMetric.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "newerTimestamp", n => { NewerTimestamp = n.GetStringValue(); } },
+                { "newerTraceId", n => { NewerTraceId = n.GetStringValue(); } },
+                { "olderTimestamp", n => { OlderTimestamp = n.GetStringValue(); } },
+                { "olderTraceId", n => { OlderTraceId = n.GetStringValue(); } },
                 { "timings", n => { Timings = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.QueryTiming>(global::Soenneker.PostHog.OpenApiClient.Models.QueryTiming.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -102,12 +84,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("error", Error);
-            writer.WriteStringValue("hogql", Hogql);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus>("query_status", QueryStatus);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse>("resolved_date_range", ResolvedDateRange);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.UsageMetric>("results", Results);
+            writer.WriteStringValue("newerTimestamp", NewerTimestamp);
+            writer.WriteStringValue("newerTraceId", NewerTraceId);
+            writer.WriteStringValue("olderTimestamp", OlderTimestamp);
+            writer.WriteStringValue("olderTraceId", OlderTraceId);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.QueryTiming>("timings", Timings);
         }
     }

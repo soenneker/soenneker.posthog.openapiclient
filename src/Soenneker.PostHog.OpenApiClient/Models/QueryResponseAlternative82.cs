@@ -20,6 +20,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Error { get; set; }
 #endif
+        /// <summary>The hasMore property</summary>
+        public bool? HasMore { get; set; }
         /// <summary>Generated HogQL query.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -28,6 +30,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Hogql { get; set; }
 #endif
+        /// <summary>The limit property</summary>
+        public int? Limit { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -36,6 +40,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers Modifiers { get; set; }
 #endif
+        /// <summary>The offset property</summary>
+        public int? Offset { get; set; }
         /// <summary>Query status indicates whether next to the provided data, a query is still running.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -55,10 +61,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The results property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative82.QueryResponseAlternative82_results? Results { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TeamTaxonomyItem>? Results { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative82.QueryResponseAlternative82_results Results { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TeamTaxonomyItem> Results { get; set; }
 #endif
         /// <summary>Measured timings for different parts of the query generation process</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -87,11 +93,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "error", n => { Error = n.GetStringValue(); } },
+                { "hasMore", n => { HasMore = n.GetBoolValue(); } },
                 { "hogql", n => { Hogql = n.GetStringValue(); } },
+                { "limit", n => { Limit = n.GetIntValue(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
+                { "offset", n => { Offset = n.GetIntValue(); } },
                 { "query_status", n => { QueryStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus>(global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus.CreateFromDiscriminatorValue); } },
                 { "resolved_date_range", n => { ResolvedDateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse.CreateFromDiscriminatorValue); } },
-                { "results", n => { Results = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative82.QueryResponseAlternative82_results>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative82.QueryResponseAlternative82_results.CreateFromDiscriminatorValue); } },
+                { "results", n => { Results = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TeamTaxonomyItem>(global::Soenneker.PostHog.OpenApiClient.Models.TeamTaxonomyItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "timings", n => { Timings = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.QueryTiming>(global::Soenneker.PostHog.OpenApiClient.Models.QueryTiming.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -103,80 +112,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("error", Error);
+            writer.WriteBoolValue("hasMore", HasMore);
             writer.WriteStringValue("hogql", Hogql);
+            writer.WriteIntValue("limit", Limit);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);
+            writer.WriteIntValue("offset", Offset);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus>("query_status", QueryStatus);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse>("resolved_date_range", ResolvedDateRange);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative82.QueryResponseAlternative82_results>("results", Results);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TeamTaxonomyItem>("results", Results);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.QueryTiming>("timings", Timings);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyResponse"/>, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyResponse&gt;
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class QueryResponseAlternative82_results : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type List&lt;global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyResponse&gt;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public List<global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyResponse>? ActorsPropertyTaxonomyResponse { get; set; }
-#nullable restore
-#else
-            public List<global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyResponse> ActorsPropertyTaxonomyResponse { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyResponse"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyResponse? QueryResponseAlternative82ResultsActorsPropertyTaxonomyResponse { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyResponse QueryResponseAlternative82ResultsActorsPropertyTaxonomyResponse { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative82.QueryResponseAlternative82_results"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative82.QueryResponseAlternative82_results CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative82.QueryResponseAlternative82_results();
-                if(parseNode.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyResponse.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyResponse> actorsPropertyTaxonomyResponseValue)
-                {
-                    result.ActorsPropertyTaxonomyResponse = actorsPropertyTaxonomyResponseValue;
-                }
-                else {
-                    result.QueryResponseAlternative82ResultsActorsPropertyTaxonomyResponse = new global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyResponse();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(QueryResponseAlternative82ResultsActorsPropertyTaxonomyResponse != null)
-                {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(QueryResponseAlternative82ResultsActorsPropertyTaxonomyResponse);
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(ActorsPropertyTaxonomyResponse != null)
-                {
-                    writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyResponse>(null, ActorsPropertyTaxonomyResponse);
-                }
-                else {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyResponse>(null, QueryResponseAlternative82ResultsActorsPropertyTaxonomyResponse);
-                }
-            }
         }
     }
 }

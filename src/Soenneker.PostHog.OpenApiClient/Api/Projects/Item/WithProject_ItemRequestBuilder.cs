@@ -8,6 +8,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Advanced_activity_logs;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Alerts;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Annotations;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Batch_exports;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Cohorts;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations;
@@ -122,6 +123,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Batch_exports.Batch_exportsRequestBuilder Batch_exports
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Batch_exports.Batch_exportsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The business_knowledge property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Business_knowledgeRequestBuilder Business_knowledge
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Business_knowledgeRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The cohorts property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Cohorts.CohortsRequestBuilder Cohorts

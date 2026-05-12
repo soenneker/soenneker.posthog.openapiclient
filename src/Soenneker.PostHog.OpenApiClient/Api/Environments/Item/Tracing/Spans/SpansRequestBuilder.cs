@@ -2,11 +2,13 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Tracing.Spans.Aggregate;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Tracing.Spans.Attributes;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Tracing.Spans.Query;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Tracing.Spans.ServiceNames;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Tracing.Spans.Sparkline;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Tracing.Spans.Trace;
+using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Tracing.Spans.Tree;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Tracing.Spans.Values;
 using System.Collections.Generic;
 using System.IO;
@@ -20,6 +22,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Tracing.Spans
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SpansRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The aggregate property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Tracing.Spans.Aggregate.AggregateRequestBuilder Aggregate
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Tracing.Spans.Aggregate.AggregateRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The attributes property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Tracing.Spans.Attributes.AttributesRequestBuilder Attributes
         {
@@ -44,6 +51,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Tracing.Spans
         public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Tracing.Spans.Trace.TraceRequestBuilder TracePath
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Tracing.Spans.Trace.TraceRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The tree property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Tracing.Spans.Tree.TreeRequestBuilder Tree
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Tracing.Spans.Tree.TreeRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The values property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Tracing.Spans.Values.ValuesRequestBuilder Values

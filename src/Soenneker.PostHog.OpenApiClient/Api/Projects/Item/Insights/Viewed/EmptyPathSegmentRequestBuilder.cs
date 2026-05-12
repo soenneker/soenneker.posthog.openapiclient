@@ -34,38 +34,37 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Viewed
         {
         }
         /// <summary>
-        /// Update insight view timestamps.Expects: {&quot;insight_ids&quot;: [1, 2, 3, ...]}
+        /// Record that the current user has just viewed one or more insights. Submitted ids that do not belong to the current project or that point at deleted insights are silently dropped. Returns 201 on success regardless of how many ids were retained.
         /// </summary>
-        /// <returns>A <see cref="Stream"/></returns>
-        /// <param name="body">Simplified serializer to speed response times when loading large amounts of objects.</param>
+        /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Stream?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.Insight body, Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Viewed.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.InsightViewedRequest body, Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Viewed.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Stream> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.Insight body, Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Viewed.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.InsightViewedRequest body, Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Viewed.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Update insight view timestamps.Expects: {&quot;insight_ids&quot;: [1, 2, 3, ...]}
+        /// Record that the current user has just viewed one or more insights. Submitted ids that do not belong to the current project or that point at deleted insights are silently dropped. Returns 201 on success regardless of how many ids were retained.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">Simplified serializer to speed response times when loading large amounts of objects.</param>
+        /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.Insight body, Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Viewed.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPostQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.InsightViewedRequest body, Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Viewed.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPostQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.Insight body, Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Viewed.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPostQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.InsightViewedRequest body, Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Viewed.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderPostQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -84,7 +83,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Viewed
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Viewed.EmptyPathSegmentRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Update insight view timestamps.Expects: {&quot;insight_ids&quot;: [1, 2, 3, ...]}
+        /// Record that the current user has just viewed one or more insights. Submitted ids that do not belong to the current project or that point at deleted insights are silently dropped. Returns 201 on success regardless of how many ids were retained.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EmptyPathSegmentRequestBuilderPostQueryParameters 
