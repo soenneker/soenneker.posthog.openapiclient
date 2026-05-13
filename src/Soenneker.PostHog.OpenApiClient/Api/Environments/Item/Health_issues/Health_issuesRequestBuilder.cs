@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Health_issues.Item;
+using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Health_issues.Refresh;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Health_issues.Summary;
 using System.Collections.Generic;
 using System.IO;
@@ -20,6 +21,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Health_issues
         public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Health_issues.EmptyPathSegmentRequestBuilder EmptyPathSegment
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Health_issues.EmptyPathSegmentRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The refresh property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Health_issues.Refresh.RefreshRequestBuilder Refresh
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Health_issues.Refresh.RefreshRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The summary property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Health_issues.Summary.SummaryRequestBuilder Summary

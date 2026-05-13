@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision.Lenses.Item.Observations;
+using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision.Lenses.Item.Observe;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -24,6 +25,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision.Lenses.It
         public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision.Lenses.Item.Observations.ObservationsRequestBuilder Observations
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision.Lenses.Item.Observations.ObservationsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The observe property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision.Lenses.Item.Observe.ObserveRequestBuilder Observe
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision.Lenses.Item.Observe.ObserveRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision.Lenses.Item.ItemRequestBuilder"/> and sets the default values.

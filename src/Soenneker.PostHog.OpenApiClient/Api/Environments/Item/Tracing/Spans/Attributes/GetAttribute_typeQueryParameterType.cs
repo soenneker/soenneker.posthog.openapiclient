@@ -8,13 +8,13 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Tracing.Spans.At
     public enum GetAttribute_typeQueryParameterType
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "span")]
+        [EnumMember(Value = "span_attribute")]
         #pragma warning disable CS1591
-        Span,
+        Span_attribute,
         #pragma warning restore CS1591
-        [EnumMember(Value = "resource")]
+        [EnumMember(Value = "span_resource_attribute")]
         #pragma warning disable CS1591
-        Resource,
+        Span_resource_attribute,
         #pragma warning restore CS1591
     }
 }

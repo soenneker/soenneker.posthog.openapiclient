@@ -12,9 +12,13 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Tracing.Spans.Va
         #pragma warning disable CS1591
         Span,
         #pragma warning restore CS1591
-        [EnumMember(Value = "resource")]
+        [EnumMember(Value = "span_attribute")]
         #pragma warning disable CS1591
-        Resource,
+        Span_attribute,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "span_resource_attribute")]
+        #pragma warning disable CS1591
+        Span_resource_attribute,
         #pragma warning restore CS1591
     }
 }

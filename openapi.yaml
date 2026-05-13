@@ -18737,6 +18737,22 @@ paths:
                 $ref: '#/components/schemas/HealthIssue'
           description: ''
       x-explicit-tags: []
+  /api/environments/{project_id}/health_issues/refresh/:
+    post:
+      operationId: health_issues_refresh_create
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - health_issues
+      security:
+      - PersonalAPIKeyAuth:
+        - health_issue:write
+      responses:
+        '202':
+          description: Health check refresh jobs scheduled for the team.
+        '429':
+          description: Refresh was triggered recently; try again later.
+      x-explicit-tags: []
   /api/environments/{project_id}/health_issues/summary/:
     get:
       operationId: health_issues_summary_retrieve
@@ -23055,15 +23071,15 @@ paths:
         name: attribute_type
         schema:
           enum:
-          - span
-          - resource
+          - span_attribute
+          - span_resource_attribute
           type: string
           minLength: 1
         description: |-
-          Type of attributes: "span" for span attributes, "resource" for resource attributes.
+          Type of attributes: "span_attribute" for span-level attributes, "span_resource_attribute" for resource-level attributes.
 
-          * `span` - span
-          * `resource` - resource
+          * `span_attribute` - span_attribute
+          * `span_resource_attribute` - span_resource_attribute
       - in: query
         name: limit
         schema:
@@ -23249,14 +23265,16 @@ paths:
         schema:
           enum:
           - span
-          - resource
+          - span_attribute
+          - span_resource_attribute
           type: string
           minLength: 1
         description: |-
-          Type of attribute: "span" or "resource".
+          Type of attribute: "span" for built-in span fields (e.g. name), "span_attribute" for span-level attributes, "span_resource_attribute" for resource-level attributes.
 
           * `span` - span
-          * `resource` - resource
+          * `span_attribute` - span_attribute
+          * `span_resource_attribute` - span_resource_attribute
       - in: query
         name: key
         schema:
@@ -23817,6 +23835,48 @@ paths:
       responses:
         '204':
           description: No response body
+      x-explicit-tags:
+      - replay_vision
+  /api/environments/{project_id}/vision/lenses/{id}/observe/:
+    post:
+      operationId: vision_lenses_observe_create
+      description: Apply this lens to one specific session, on demand. Returns 202
+        with the workflow handle.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this replay lens.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - replay_vision
+      - vision
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ObserveRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ObserveRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ObserveRequest'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - replay_lens:write
+        - session_recording:read
+      responses:
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObserveResponse'
+          description: ''
       x-explicit-tags:
       - replay_vision
   /api/environments/{project_id}/web_analytics/weekly_digest/:
@@ -87013,6 +87073,26 @@ components:
       description: |-
         * `schedule` - Schedule
         * `on_demand` - On demand
+    ObserveRequest:
+      type: object
+      description: Body of POST /vision/lenses/{id}/observe/.
+      properties:
+        session_id:
+          type: string
+          description: ID of the session recording to apply the lens to.
+          maxLength: 128
+      required:
+      - session_id
+    ObserveResponse:
+      type: object
+      description: Async-accepted response for POST /vision/lenses/{id}/observe/.
+      properties:
+        workflow_id:
+          type: string
+          description: Temporal workflow id for this lens application. Look up the
+            resulting ReplayObservation via GET /vision/lenses/{id}/observations/?session_id=<session_id>.
+      required:
+      - workflow_id
     OfflineExperimentItemsRequest:
       type: object
       properties:

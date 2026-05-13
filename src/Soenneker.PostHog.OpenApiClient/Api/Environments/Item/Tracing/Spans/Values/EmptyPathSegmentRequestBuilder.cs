@@ -76,7 +76,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Tracing.Spans.Va
         public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 
         #pragma warning restore CS1591
         {
-            /// <summary>Type of attribute: &quot;span&quot; or &quot;resource&quot;.* `span` - span* `resource` - resource</summary>
+            /// <summary>Type of attribute: &quot;span&quot; for built-in span fields (e.g. name), &quot;span_attribute&quot; for span-level attributes, &quot;span_resource_attribute&quot; for resource-level attributes.* `span` - span* `span_attribute` - span_attribute* `span_resource_attribute` - span_resource_attribute</summary>
             [QueryParameter("attribute_type")]
             public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Tracing.Spans.Values.GetAttribute_typeQueryParameterType? AttributeType { get; set; }
             /// <summary>The attribute key to get values for.</summary>
