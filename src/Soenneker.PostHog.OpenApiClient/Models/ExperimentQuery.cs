@@ -165,11 +165,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             public static global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery.ExperimentQuery_metric CreateFromDiscriminatorValue(IParseNode parseNode)
             {
                 if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
+                var mappingValue = parseNode.GetChildNode("metric_type")?.GetStringValue();
                 var result = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery.ExperimentQuery_metric();
-                result.ExperimentFunnelMetric = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetric();
-                result.ExperimentMeanMetric = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetric();
-                result.ExperimentRatioMetric = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric();
-                result.ExperimentRetentionMetric = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetric();
+                if("funnel".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+                {
+                    result.ExperimentFunnelMetric = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetric();
+                }
+                else if("mean".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+                {
+                    result.ExperimentMeanMetric = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetric();
+                }
+                else if("ratio".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+                {
+                    result.ExperimentRatioMetric = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric();
+                }
+                else if("retention".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+                {
+                    result.ExperimentRetentionMetric = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetric();
+                }
                 return result;
             }
             /// <summary>
@@ -178,9 +191,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
-                if(ExperimentFunnelMetric != null || ExperimentMeanMetric != null || ExperimentRatioMetric != null || ExperimentRetentionMetric != null)
+                if(ExperimentFunnelMetric != null)
                 {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ExperimentFunnelMetric, ExperimentMeanMetric, ExperimentRatioMetric, ExperimentRetentionMetric);
+                    return ExperimentFunnelMetric.GetFieldDeserializers();
+                }
+                else if(ExperimentMeanMetric != null)
+                {
+                    return ExperimentMeanMetric.GetFieldDeserializers();
+                }
+                else if(ExperimentRatioMetric != null)
+                {
+                    return ExperimentRatioMetric.GetFieldDeserializers();
+                }
+                else if(ExperimentRetentionMetric != null)
+                {
+                    return ExperimentRetentionMetric.GetFieldDeserializers();
                 }
                 return new Dictionary<string, Action<IParseNode>>();
             }
@@ -191,7 +216,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             public virtual void Serialize(ISerializationWriter writer)
             {
                 if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetric>(null, ExperimentFunnelMetric, ExperimentMeanMetric, ExperimentRatioMetric, ExperimentRetentionMetric);
+                if(ExperimentFunnelMetric != null)
+                {
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetric>(null, ExperimentFunnelMetric);
+                }
+                else if(ExperimentMeanMetric != null)
+                {
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetric>(null, ExperimentMeanMetric);
+                }
+                else if(ExperimentRatioMetric != null)
+                {
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric>(null, ExperimentRatioMetric);
+                }
+                else if(ExperimentRetentionMetric != null)
+                {
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetric>(null, ExperimentRetentionMetric);
+                }
             }
         }
     }

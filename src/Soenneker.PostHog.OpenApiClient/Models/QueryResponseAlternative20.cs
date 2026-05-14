@@ -73,10 +73,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The metric property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20.QueryResponseAlternative20_metric? Metric { get; set; }
+        public UntypedNode? Metric { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20.QueryResponseAlternative20_metric Metric { get; set; }
+        public UntypedNode Metric { get; set; }
 #endif
         /// <summary>The probability property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -143,7 +143,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "insight", n => { Insight = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_insight>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_insight.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "is_precomputed", n => { IsPrecomputed = n.GetBoolValue(); } },
                 { "kind", n => { Kind = n.GetStringValue(); } },
-                { "metric", n => { Metric = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20.QueryResponseAlternative20_metric>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20.QueryResponseAlternative20_metric.CreateFromDiscriminatorValue); } },
+                { "metric", n => { Metric = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "p_value", n => { PValue = n.GetDoubleValue(); } },
                 { "probability", n => { Probability = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "significance_code", n => { SignificanceCode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSignificanceCode>(); } },
@@ -168,7 +168,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_insight>("insight", Insight);
             writer.WriteBoolValue("is_precomputed", IsPrecomputed);
             writer.WriteStringValue("kind", Kind);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20.QueryResponseAlternative20_metric>("metric", Metric);
+            writer.WriteObjectValue<UntypedNode>("metric", Metric);
             writer.WriteObjectValue<UntypedNode>("probability", Probability);
             writer.WriteDoubleValue("p_value", PValue);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSignificanceCode>("significance_code", SignificanceCode);
@@ -176,90 +176,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("stats_version", StatsVersion);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20.QueryResponseAlternative20_variant_results>("variant_results", VariantResults);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20.QueryResponseAlternative20_variants>("variants", Variants);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetric"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetric"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetric"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_metricMember1"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class QueryResponseAlternative20_metric : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetric"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetric? ExperimentFunnelMetric { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetric ExperimentFunnelMetric { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetric"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetric? ExperimentMeanMetric { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetric ExperimentMeanMetric { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric? ExperimentRatioMetric { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric ExperimentRatioMetric { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetric"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetric? ExperimentRetentionMetric { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetric ExperimentRetentionMetric { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_metricMember1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_metricMember1? QueryResponseAlternative20MetricMember1 { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_metricMember1 QueryResponseAlternative20MetricMember1 { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20.QueryResponseAlternative20_metric"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20.QueryResponseAlternative20_metric CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20.QueryResponseAlternative20_metric();
-                result.ExperimentFunnelMetric = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetric();
-                result.ExperimentMeanMetric = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetric();
-                result.ExperimentRatioMetric = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric();
-                result.ExperimentRetentionMetric = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetric();
-                result.QueryResponseAlternative20MetricMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_metricMember1();
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(ExperimentFunnelMetric != null || ExperimentMeanMetric != null || ExperimentRatioMetric != null || ExperimentRetentionMetric != null || QueryResponseAlternative20MetricMember1 != null)
-                {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ExperimentFunnelMetric, ExperimentMeanMetric, ExperimentRatioMetric, ExperimentRetentionMetric, QueryResponseAlternative20MetricMember1);
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetric>(null, ExperimentFunnelMetric, ExperimentMeanMetric, ExperimentRatioMetric, ExperimentRetentionMetric, QueryResponseAlternative20MetricMember1);
-            }
         }
         /// <summary>
         /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_variant_resultsMember1"/>, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultBayesian&gt;, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist&gt;

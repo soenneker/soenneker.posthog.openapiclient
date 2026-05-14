@@ -60,6 +60,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Sessions;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Subscriptions;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Taggers;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Tracing;
+using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.User_interview_topics;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.User_interviews;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Warehouse_saved_queries;
@@ -370,6 +371,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Tracing.TracingRequestBuilder Tracing
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Tracing.TracingRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The user_interview_topics property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.User_interview_topics.User_interview_topicsRequestBuilder User_interview_topics
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.User_interview_topics.User_interview_topicsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The user_interviews property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.User_interviews.User_interviewsRequestBuilder User_interviews

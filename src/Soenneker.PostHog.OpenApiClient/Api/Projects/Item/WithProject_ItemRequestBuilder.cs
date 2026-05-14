@@ -19,6 +19,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_modeling_jobs;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dataset_items;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Datasets;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Deployment_projects;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Early_access_feature;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Elements;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Endpoints;
@@ -178,6 +179,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Datasets.DatasetsRequestBuilder Datasets
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Datasets.DatasetsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The deployment_projects property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Deployment_projects.Deployment_projectsRequestBuilder Deployment_projects
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Deployment_projects.Deployment_projectsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The early_access_feature property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Early_access_feature.Early_access_featureRequestBuilder Early_access_feature

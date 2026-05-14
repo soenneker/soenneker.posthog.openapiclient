@@ -9,27 +9,37 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class ExperimentQueryResponse_metricMember1 : IAdditionalDataHolder, IParsable
+    public partial class UserPushTokenRegisterRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Device platform the token was issued for. One of `ios`, `android`, or `web`.* `ios` - iOS* `android` - Android* `web` - Web</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.PushTokenPlatformEnum? Platform { get; set; }
+        /// <summary>Opaque push token issued by the device&apos;s platform push service (e.g. an Expo push token).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Token { get; set; }
+#nullable restore
+#else
+        public string Token { get; set; }
+#endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponse_metricMember1"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.UserPushTokenRegisterRequest"/> and sets the default values.
         /// </summary>
-        public ExperimentQueryResponse_metricMember1()
+        public UserPushTokenRegisterRequest()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponse_metricMember1"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.UserPushTokenRegisterRequest"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponse_metricMember1 CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.PostHog.OpenApiClient.Models.UserPushTokenRegisterRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponse_metricMember1();
+            return new global::Soenneker.PostHog.OpenApiClient.Models.UserPushTokenRegisterRequest();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -39,6 +49,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "platform", n => { Platform = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PushTokenPlatformEnum>(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -48,6 +60,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PushTokenPlatformEnum>("platform", Platform);
+            writer.WriteStringValue("token", Token);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

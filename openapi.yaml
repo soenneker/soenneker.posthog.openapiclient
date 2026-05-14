@@ -23313,6 +23313,521 @@ paths:
           description: No response body
       x-explicit-tags:
       - tracing
+  /api/environments/{project_id}/user_interview_topics/:
+    get:
+      operationId: user_interview_topics_list
+      description: 'Planned user interview topics: who we want to target (cohort)
+        and what we want to ask about.'
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - user_interviews
+      - user_interview_topics
+      security:
+      - PersonalAPIKeyAuth:
+        - user_interview:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedUserInterviewTopicList'
+          description: ''
+      x-explicit-tags:
+      - user_interviews
+    post:
+      operationId: user_interview_topics_create
+      description: 'Planned user interview topics: who we want to target (cohort)
+        and what we want to ask about.'
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - user_interviews
+      - user_interview_topics
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserInterviewTopic'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UserInterviewTopic'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UserInterviewTopic'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - user_interview:write
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserInterviewTopic'
+          description: ''
+      x-explicit-tags:
+      - user_interviews
+  /api/environments/{project_id}/user_interview_topics/{id}/:
+    get:
+      operationId: user_interview_topics_retrieve
+      description: 'Planned user interview topics: who we want to target (cohort)
+        and what we want to ask about.'
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this user interview topic.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - user_interviews
+      - user_interview_topics
+      security:
+      - PersonalAPIKeyAuth:
+        - user_interview:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserInterviewTopic'
+          description: ''
+      x-explicit-tags:
+      - user_interviews
+    put:
+      operationId: user_interview_topics_update
+      description: 'Planned user interview topics: who we want to target (cohort)
+        and what we want to ask about.'
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this user interview topic.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - user_interviews
+      - user_interview_topics
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserInterviewTopic'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UserInterviewTopic'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UserInterviewTopic'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - user_interview:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserInterviewTopic'
+          description: ''
+      x-explicit-tags:
+      - user_interviews
+    patch:
+      operationId: user_interview_topics_partial_update
+      description: 'Planned user interview topics: who we want to target (cohort)
+        and what we want to ask about.'
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this user interview topic.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - user_interviews
+      - user_interview_topics
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUserInterviewTopic'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedUserInterviewTopic'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedUserInterviewTopic'
+      security:
+      - PersonalAPIKeyAuth:
+        - user_interview:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserInterviewTopic'
+          description: ''
+      x-explicit-tags:
+      - user_interviews
+    delete:
+      operationId: user_interview_topics_destroy
+      description: 'Planned user interview topics: who we want to target (cohort)
+        and what we want to ask about.'
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this user interview topic.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - user_interviews
+      - user_interview_topics
+      security:
+      - PersonalAPIKeyAuth:
+        - user_interview:write
+      responses:
+        '204':
+          description: No response body
+      x-explicit-tags:
+      - user_interviews
+  /api/environments/{project_id}/user_interview_topics/{id}/generate_links/:
+    post:
+      operationId: user_interview_topics_generate_links_create
+      description: Generate one public interview link per targeted interviewee. Materializes
+        an IntervieweeContext row for every identifier on the topic (without overwriting
+        existing per-person context), and an enabled SharingConfiguration with a unique
+        access token. The URL resolves to the public interview viewer with no PostHog
+        auth required.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this user interview topic.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - user_interviews
+      - user_interview_topics
+      security:
+      - PersonalAPIKeyAuth:
+        - user_interview:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedInterviewLinkList'
+          description: ''
+      x-explicit-tags:
+      - user_interviews
+  /api/environments/{project_id}/user_interview_topics/{id}/send_invites/:
+    post:
+      operationId: user_interview_topics_send_invites_create
+      description: Generate (if needed) and email a personalized public interview
+        link to every targeted interviewee on this topic whose identifier is an email
+        address. Distinct-ID-only interviewees are skipped and surfaced in the response.
+        Each invite is keyed on the underlying SharingConfiguration so re-runs after
+        token rotation produce a fresh send.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this user interview topic.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - user_interviews
+      - user_interview_topics
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendInvitesRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SendInvitesRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SendInvitesRequest'
+      security:
+      - PersonalAPIKeyAuth:
+        - user_interview:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedInterviewInviteResultList'
+          description: ''
+      x-explicit-tags:
+      - user_interviews
+  /api/environments/{project_id}/user_interview_topics/{topic_id}/interviewees/:
+    get:
+      operationId: user_interview_topics_interviewees_list
+      description: Per-interviewee extra context for a user interview topic. At most
+        one row per (topic, interviewee_identifier).
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: path
+        name: topic_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - user_interviews
+      - user_interview_topics
+      security:
+      - PersonalAPIKeyAuth:
+        - user_interview:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedIntervieweeContextList'
+          description: ''
+      x-explicit-tags:
+      - user_interviews
+    post:
+      operationId: user_interview_topics_interviewees_create
+      description: Per-interviewee extra context for a user interview topic. At most
+        one row per (topic, interviewee_identifier).
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: path
+        name: topic_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - user_interviews
+      - user_interview_topics
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IntervieweeContext'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/IntervieweeContext'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/IntervieweeContext'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - user_interview:write
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntervieweeContext'
+          description: ''
+      x-explicit-tags:
+      - user_interviews
+  /api/environments/{project_id}/user_interview_topics/{topic_id}/interviewees/{id}/:
+    get:
+      operationId: user_interview_topics_interviewees_retrieve
+      description: Per-interviewee extra context for a user interview topic. At most
+        one row per (topic, interviewee_identifier).
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this interviewee context.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: path
+        name: topic_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - user_interviews
+      - user_interview_topics
+      security:
+      - PersonalAPIKeyAuth:
+        - user_interview:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntervieweeContext'
+          description: ''
+      x-explicit-tags:
+      - user_interviews
+    put:
+      operationId: user_interview_topics_interviewees_update
+      description: Per-interviewee extra context for a user interview topic. At most
+        one row per (topic, interviewee_identifier).
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this interviewee context.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: path
+        name: topic_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - user_interviews
+      - user_interview_topics
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IntervieweeContext'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/IntervieweeContext'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/IntervieweeContext'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - user_interview:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntervieweeContext'
+          description: ''
+      x-explicit-tags:
+      - user_interviews
+    patch:
+      operationId: user_interview_topics_interviewees_partial_update
+      description: Per-interviewee extra context for a user interview topic. At most
+        one row per (topic, interviewee_identifier).
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this interviewee context.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: path
+        name: topic_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - user_interviews
+      - user_interview_topics
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedIntervieweeContext'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedIntervieweeContext'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedIntervieweeContext'
+      security:
+      - PersonalAPIKeyAuth:
+        - user_interview:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntervieweeContext'
+          description: ''
+      x-explicit-tags:
+      - user_interviews
+    delete:
+      operationId: user_interview_topics_interviewees_destroy
+      description: Per-interviewee extra context for a user interview topic. At most
+        one row per (topic, interviewee_identifier).
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this interviewee context.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: path
+        name: topic_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - user_interviews
+      - user_interview_topics
+      security:
+      - PersonalAPIKeyAuth:
+        - user_interview:write
+      responses:
+        '204':
+          description: No response body
+      x-explicit-tags:
+      - user_interviews
   /api/environments/{project_id}/user_interviews/:
     get:
       operationId: user_interviews_list
@@ -23335,7 +23850,7 @@ paths:
       - user_interviews
       security:
       - PersonalAPIKeyAuth:
-        - user_interview_DO_NOT_USE:read
+        - user_interview:read
       responses:
         '200':
           content:
@@ -23363,7 +23878,7 @@ paths:
         required: true
       security:
       - PersonalAPIKeyAuth:
-        - user_interview_DO_NOT_USE:write
+        - user_interview:write
       responses:
         '201':
           content:
@@ -23390,7 +23905,7 @@ paths:
       - user_interviews
       security:
       - PersonalAPIKeyAuth:
-        - user_interview_DO_NOT_USE:read
+        - user_interview:read
       responses:
         '200':
           content:
@@ -23425,7 +23940,7 @@ paths:
         required: true
       security:
       - PersonalAPIKeyAuth:
-        - user_interview_DO_NOT_USE:write
+        - user_interview:write
       responses:
         '200':
           content:
@@ -23459,7 +23974,7 @@ paths:
               $ref: '#/components/schemas/PatchedUserInterview'
       security:
       - PersonalAPIKeyAuth:
-        - user_interview_DO_NOT_USE:write
+        - user_interview:write
       responses:
         '200':
           content:
@@ -23485,7 +24000,7 @@ paths:
       - user_interviews
       security:
       - PersonalAPIKeyAuth:
-        - user_interview_DO_NOT_USE:write
+        - user_interview:write
       responses:
         '204':
           description: No response body
@@ -30264,6 +30779,42 @@ paths:
           description: ''
       x-explicit-tags:
       - conversations
+  /api/projects/{project_id}/conversations/tickets/compose/:
+    post:
+      operationId: conversations_tickets_compose_create
+      description: Create a new outbound ticket and send the first message to the
+        customer.
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - conversations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ComposeTicket'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ComposeTicket'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ComposeTicket'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ComposeTicketResponse'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuggestReplyError'
+          description: ''
+      x-explicit-tags:
+      - conversations
   /api/projects/{project_id}/conversations/tickets/unread_count/:
     get:
       operationId: conversations_tickets_unread_count_retrieve
@@ -32437,6 +32988,755 @@ paths:
           description: No response body
       x-explicit-tags:
       - llm_analytics
+  /api/projects/{project_id}/deployment_projects/:
+    get:
+      operationId: deployment_projects_list
+      description: |-
+        CRUD for DeploymentProject (the connected-repo + hosting-target entity).
+
+        Create-time provisioning calls Cloudflare BEFORE writing the DB row
+        (see services/provision_project.py for the rationale). Delete is a
+        soft-delete; Cloudflare-side cleanup is deferred to a periodic Celery
+        task.
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - deployments
+      - deployment_projects
+      security:
+      - PersonalAPIKeyAuth:
+        - deployment:read
+      - PersonalAPIKeyAuth:
+        - deployment:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedDeploymentProjectList'
+          description: ''
+      x-explicit-tags:
+      - deployments
+    post:
+      operationId: deployment_projects_create
+      description: |-
+        CRUD for DeploymentProject (the connected-repo + hosting-target entity).
+
+        Create-time provisioning calls Cloudflare BEFORE writing the DB row
+        (see services/provision_project.py for the rationale). Delete is a
+        soft-delete; Cloudflare-side cleanup is deferred to a periodic Celery
+        task.
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - deployments
+      - deployment_projects
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeploymentProjectCreate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DeploymentProjectCreate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DeploymentProjectCreate'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - deployment:write
+      - PersonalAPIKeyAuth:
+        - deployment:write
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeploymentProject'
+          description: ''
+        '502':
+          description: Cloudflare provisioning failed.
+      x-explicit-tags:
+      - deployments
+  /api/projects/{project_id}/deployment_projects/{deployment_project_id}/deployments/:
+    get:
+      operationId: deployment_projects_deployments_list
+      description: |-
+        Full lifecycle viewset for Deployments.
+
+        All deployments are scoped to a parent DeploymentProject via the URL
+        parent lookup `deployment_project_id`. The viewset enforces that
+        scoping in `safely_get_queryset` so a user can never see / mutate a
+        deployment that doesn't belong to the project in the URL.
+      parameters:
+      - in: path
+        name: deployment_project_id
+        schema:
+          type: string
+          format: uuid
+        description: UUID of the parent DeploymentProject.
+        required: true
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - deployments
+      - deployment_projects
+      security:
+      - PersonalAPIKeyAuth:
+        - deployment:read
+      - PersonalAPIKeyAuth:
+        - deployment:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedDeploymentList'
+          description: ''
+      x-explicit-tags:
+      - deployments
+    post:
+      operationId: deployment_projects_deployments_create
+      description: |-
+        Full lifecycle viewset for Deployments.
+
+        All deployments are scoped to a parent DeploymentProject via the URL
+        parent lookup `deployment_project_id`. The viewset enforces that
+        scoping in `safely_get_queryset` so a user can never see / mutate a
+        deployment that doesn't belong to the project in the URL.
+      parameters:
+      - in: path
+        name: deployment_project_id
+        schema:
+          type: string
+          format: uuid
+        description: UUID of the parent DeploymentProject.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - deployments
+      - deployment_projects
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeploymentCreateInput'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DeploymentCreateInput'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DeploymentCreateInput'
+      security:
+      - PersonalAPIKeyAuth:
+        - deployment:write
+      - PersonalAPIKeyAuth:
+        - deployment:write
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deployment'
+          description: ''
+        '409':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeploymentConflictResponse'
+          description: ''
+        '502':
+          description: Upstream (GitHub commit lookup or build workflow dispatch)
+            failed.
+      x-explicit-tags:
+      - deployments
+  /api/projects/{project_id}/deployment_projects/{deployment_project_id}/deployments/{id}/:
+    get:
+      operationId: deployment_projects_deployments_retrieve
+      description: |-
+        Full lifecycle viewset for Deployments.
+
+        All deployments are scoped to a parent DeploymentProject via the URL
+        parent lookup `deployment_project_id`. The viewset enforces that
+        scoping in `safely_get_queryset` so a user can never see / mutate a
+        deployment that doesn't belong to the project in the URL.
+      parameters:
+      - in: path
+        name: deployment_project_id
+        schema:
+          type: string
+          format: uuid
+        description: UUID of the parent DeploymentProject.
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this deployment.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - deployments
+      - deployment_projects
+      security:
+      - PersonalAPIKeyAuth:
+        - deployment:read
+      - PersonalAPIKeyAuth:
+        - deployment:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deployment'
+          description: ''
+      x-explicit-tags:
+      - deployments
+  /api/projects/{project_id}/deployment_projects/{deployment_project_id}/deployments/{id}/cancel/:
+    post:
+      operationId: deployment_projects_deployments_cancel_create
+      description: |-
+        Full lifecycle viewset for Deployments.
+
+        All deployments are scoped to a parent DeploymentProject via the URL
+        parent lookup `deployment_project_id`. The viewset enforces that
+        scoping in `safely_get_queryset` so a user can never see / mutate a
+        deployment that doesn't belong to the project in the URL.
+      parameters:
+      - in: path
+        name: deployment_project_id
+        schema:
+          type: string
+          format: uuid
+        description: UUID of the parent DeploymentProject.
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this deployment.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - deployments
+      - deployment_projects
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeploymentActionResponse'
+          description: ''
+      x-explicit-tags:
+      - deployments
+  /api/projects/{project_id}/deployment_projects/{deployment_project_id}/deployments/{id}/events/:
+    get:
+      operationId: deployment_projects_deployments_events_list
+      description: |-
+        Full lifecycle viewset for Deployments.
+
+        All deployments are scoped to a parent DeploymentProject via the URL
+        parent lookup `deployment_project_id`. The viewset enforces that
+        scoping in `safely_get_queryset` so a user can never see / mutate a
+        deployment that doesn't belong to the project in the URL.
+      parameters:
+      - in: path
+        name: deployment_project_id
+        schema:
+          type: string
+          format: uuid
+        description: UUID of the parent DeploymentProject.
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this deployment.
+        required: true
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - deployments
+      - deployment_projects
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedDeploymentEventList'
+          description: ''
+      x-explicit-tags:
+      - deployments
+  /api/projects/{project_id}/deployment_projects/{deployment_project_id}/deployments/{id}/logs/:
+    get:
+      operationId: deployment_projects_deployments_logs_retrieve
+      description: |-
+        Full lifecycle viewset for Deployments.
+
+        All deployments are scoped to a parent DeploymentProject via the URL
+        parent lookup `deployment_project_id`. The viewset enforces that
+        scoping in `safely_get_queryset` so a user can never see / mutate a
+        deployment that doesn't belong to the project in the URL.
+      parameters:
+      - in: path
+        name: deployment_project_id
+        schema:
+          type: string
+          format: uuid
+        description: UUID of the parent DeploymentProject.
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this deployment.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - deployments
+      - deployment_projects
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeploymentLogsResponse'
+          description: ''
+        '502':
+          description: HogQL query against the events store failed.
+      x-explicit-tags:
+      - deployments
+  /api/projects/{project_id}/deployment_projects/{deployment_project_id}/deployments/{id}/redeploy/:
+    post:
+      operationId: deployment_projects_deployments_redeploy_create
+      description: |-
+        Full lifecycle viewset for Deployments.
+
+        All deployments are scoped to a parent DeploymentProject via the URL
+        parent lookup `deployment_project_id`. The viewset enforces that
+        scoping in `safely_get_queryset` so a user can never see / mutate a
+        deployment that doesn't belong to the project in the URL.
+      parameters:
+      - in: path
+        name: deployment_project_id
+        schema:
+          type: string
+          format: uuid
+        description: UUID of the parent DeploymentProject.
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this deployment.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - deployments
+      - deployment_projects
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deployment'
+          description: ''
+        '409':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeploymentConflictResponse'
+          description: ''
+        '502':
+          description: Upstream (GitHub commit lookup or build workflow dispatch)
+            failed.
+      x-explicit-tags:
+      - deployments
+  /api/projects/{project_id}/deployment_projects/{deployment_project_id}/deployments/{id}/refresh_preview/:
+    post:
+      operationId: deployment_projects_deployments_refresh_preview_create
+      description: |-
+        Full lifecycle viewset for Deployments.
+
+        All deployments are scoped to a parent DeploymentProject via the URL
+        parent lookup `deployment_project_id`. The viewset enforces that
+        scoping in `safely_get_queryset` so a user can never see / mutate a
+        deployment that doesn't belong to the project in the URL.
+      parameters:
+      - in: path
+        name: deployment_project_id
+        schema:
+          type: string
+          format: uuid
+        description: UUID of the parent DeploymentProject.
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this deployment.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - deployments
+      - deployment_projects
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deployment'
+          description: ''
+      x-explicit-tags:
+      - deployments
+  /api/projects/{project_id}/deployment_projects/{deployment_project_id}/deployments/{id}/rollback/:
+    post:
+      operationId: deployment_projects_deployments_rollback_create
+      description: |-
+        Full lifecycle viewset for Deployments.
+
+        All deployments are scoped to a parent DeploymentProject via the URL
+        parent lookup `deployment_project_id`. The viewset enforces that
+        scoping in `safely_get_queryset` so a user can never see / mutate a
+        deployment that doesn't belong to the project in the URL.
+      parameters:
+      - in: path
+        name: deployment_project_id
+        schema:
+          type: string
+          format: uuid
+        description: UUID of the parent DeploymentProject.
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this deployment.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - deployments
+      - deployment_projects
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deployment'
+          description: ''
+        '409':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeploymentConflictResponse'
+          description: ''
+        '502':
+          description: Upstream (GitHub commit lookup or build workflow dispatch)
+            failed.
+      x-explicit-tags:
+      - deployments
+  /api/projects/{project_id}/deployment_projects/{id}/:
+    get:
+      operationId: deployment_projects_retrieve
+      description: |-
+        CRUD for DeploymentProject (the connected-repo + hosting-target entity).
+
+        Create-time provisioning calls Cloudflare BEFORE writing the DB row
+        (see services/provision_project.py for the rationale). Delete is a
+        soft-delete; Cloudflare-side cleanup is deferred to a periodic Celery
+        task.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this deployment project.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - deployments
+      - deployment_projects
+      security:
+      - PersonalAPIKeyAuth:
+        - deployment:read
+      - PersonalAPIKeyAuth:
+        - deployment:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeploymentProject'
+          description: ''
+      x-explicit-tags:
+      - deployments
+    put:
+      operationId: deployment_projects_update
+      description: |-
+        CRUD for DeploymentProject (the connected-repo + hosting-target entity).
+
+        Create-time provisioning calls Cloudflare BEFORE writing the DB row
+        (see services/provision_project.py for the rationale). Delete is a
+        soft-delete; Cloudflare-side cleanup is deferred to a periodic Celery
+        task.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this deployment project.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - deployments
+      - deployment_projects
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeploymentProjectWrite'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DeploymentProjectWrite'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DeploymentProjectWrite'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - deployment:write
+      - PersonalAPIKeyAuth:
+        - deployment:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeploymentProject'
+          description: ''
+      x-explicit-tags:
+      - deployments
+    patch:
+      operationId: deployment_projects_partial_update
+      description: |-
+        CRUD for DeploymentProject (the connected-repo + hosting-target entity).
+
+        Create-time provisioning calls Cloudflare BEFORE writing the DB row
+        (see services/provision_project.py for the rationale). Delete is a
+        soft-delete; Cloudflare-side cleanup is deferred to a periodic Celery
+        task.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this deployment project.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - deployments
+      - deployment_projects
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedDeploymentProjectWrite'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedDeploymentProjectWrite'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedDeploymentProjectWrite'
+      security:
+      - PersonalAPIKeyAuth:
+        - deployment:write
+      - PersonalAPIKeyAuth:
+        - deployment:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeploymentProject'
+          description: ''
+      x-explicit-tags:
+      - deployments
+    delete:
+      operationId: deployment_projects_destroy
+      description: |-
+        CRUD for DeploymentProject (the connected-repo + hosting-target entity).
+
+        Create-time provisioning calls Cloudflare BEFORE writing the DB row
+        (see services/provision_project.py for the rationale). Delete is a
+        soft-delete; Cloudflare-side cleanup is deferred to a periodic Celery
+        task.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this deployment project.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - deployments
+      - deployment_projects
+      security:
+      - PersonalAPIKeyAuth:
+        - deployment:write
+      - PersonalAPIKeyAuth:
+        - deployment:write
+      responses:
+        '204':
+          description: No response body
+      x-explicit-tags:
+      - deployments
+  /api/projects/{project_id}/deployment_projects/{id}/refresh/:
+    post:
+      operationId: deployment_projects_refresh_create
+      description: |-
+        CRUD for DeploymentProject (the connected-repo + hosting-target entity).
+
+        Create-time provisioning calls Cloudflare BEFORE writing the DB row
+        (see services/provision_project.py for the rationale). Delete is a
+        soft-delete; Cloudflare-side cleanup is deferred to a periodic Celery
+        task.
+      summary: Refresh a deployment project's GitHub branch
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this deployment project.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - deployments
+      - deployment_projects
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeploymentProjectRefreshResponse'
+          description: ''
+      x-explicit-tags:
+      - deployments
+  /api/projects/{project_id}/deployment_projects/detect/:
+    post:
+      operationId: deployment_projects_detect_create
+      description: Pure inspection — no git access, no DB writes. The connect-repo
+        UI calls this after fetching `package.json` (via the team's GitHub integration)
+        and uses the response to prefill the form.
+      summary: Suggest project config from a repo's package.json and lockfiles
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - deployments
+      - deployment_projects
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DetectConfigRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DetectConfigRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DetectConfigRequest'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DetectConfigResponse'
+          description: ''
+      x-explicit-tags:
+      - deployments
   /api/projects/{project_id}/early_access_feature/:
     get:
       operationId: early_access_feature_list
@@ -55142,6 +56442,81 @@ paths:
           description: ''
       x-explicit-tags:
       - core
+  /api/users/{uuid}/push_tokens/:
+    post:
+      operationId: users_push_tokens_create
+      description: 'Idempotent upsert: if the (user, token) pair already exists, `platform`
+        and `last_seen_at` are refreshed. Otherwise a new row is created.'
+      summary: Register a push notification token
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - core
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserPushTokenRegisterRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UserPushTokenRegisterRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UserPushTokenRegisterRequest'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - user:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserPushTokenItem'
+          description: Token was registered or refreshed.
+      x-explicit-tags:
+      - core
+  /api/users/{uuid}/push_tokens/unregister/:
+    post:
+      operationId: users_push_tokens_unregister_create
+      description: Delete the row matching `(user, token)`. Returns 204 even if no
+        row matches so the mobile client can call this unconditionally when the user
+        opts out.
+      summary: Unregister a push notification token
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - core
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserPushTokenUnregisterRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UserPushTokenUnregisterRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UserPushTokenUnregisterRequest'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - user:write
+      responses:
+        '204':
+          description: Token removed (or never existed).
+      x-explicit-tags:
+      - core
   /api/users/{uuid}/scene_personalisation/:
     post:
       operationId: users_scene_personalisation_create
@@ -61464,6 +62839,49 @@ components:
       - value
       title: CompareItem
       type: object
+    ComposeTicket:
+      type: object
+      properties:
+        recipient_email:
+          type: string
+          format: email
+          description: Recipient email address.
+        recipient_distinct_id:
+          type: string
+          description: PostHog distinct_id to link the ticket to a person. Falls back
+            to recipient_email.
+          maxLength: 400
+        email_subject:
+          type: string
+          description: Email subject line.
+          maxLength: 500
+        email_config_id:
+          type: string
+          format: uuid
+          description: ID of the EmailChannel to send from.
+        message:
+          type: string
+          description: Message content in markdown.
+          maxLength: 5000
+        rich_content:
+          description: TipTap rich content JSON for formatted messages.
+      required:
+      - email_config_id
+      - message
+      - recipient_email
+    ComposeTicketResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Created ticket UUID.
+        ticket_number:
+          type: integer
+          description: Human-readable ticket number.
+      required:
+      - id
+      - ticket_number
     CompressionEnum:
       enum:
       - brotli
@@ -65696,6 +67114,562 @@ components:
       - id
       - key
       - name
+    Deployment:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Unique identifier for the deployment.
+        project:
+          type: string
+          format: uuid
+          readOnly: true
+          description: The deployment project this deployment belongs to.
+        status:
+          allOf:
+          - $ref: '#/components/schemas/DeploymentStatusEnum'
+          description: |-
+            Current pipeline stage. Valid values: queued, initializing, building, ready, error, cancelled.
+
+            * `queued` - Queued
+            * `initializing` - Initializing
+            * `building` - Building
+            * `ready` - Ready
+            * `error` - Error
+            * `cancelled` - Cancelled
+        started_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: When the pipeline started building. Null while still queued.
+        finished_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: When the pipeline finished (regardless of outcome). Null while
+            still running.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: When the deployment row was created (~ queued_at).
+        commit_sha:
+          type: string
+          description: Git commit SHA the deployment was built from.
+          maxLength: 64
+        commit_message:
+          type: string
+          description: Commit message associated with the commit SHA.
+        commit_author_name:
+          type: string
+          description: Display name of the commit author.
+          maxLength: 255
+        commit_author_email:
+          type: string
+          description: Email address of the commit author. Used by the Author filter
+            on the list page.
+          maxLength: 255
+        repo_url:
+          type: string
+          format: uri
+          description: HTTPS URL of the source repository. Captured at deploy time.
+          maxLength: 1024
+        branch:
+          type: string
+          description: Source branch the deployment was built from.
+          maxLength: 255
+        deployment_url:
+          type: string
+          format: uri
+          description: Public URL serving the built site once ready.
+          maxLength: 1024
+        preview_image_url:
+          type: string
+          format: uri
+          description: URL of the captured site screenshot, used in the list/card
+            view.
+          maxLength: 1024
+        triggered_by_deployment:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          readOnly: true
+          description: The deployment this one was triggered from (for rollbacks and
+            redeploys).
+        triggered_by_user_id:
+          type:
+          - integer
+          - 'null'
+          readOnly: true
+          description: Posthog user id of the user who clicked Deploy/Redeploy/Rollback.
+            Null for git-triggered or seed rows.
+        trigger_kind:
+          allOf:
+          - $ref: '#/components/schemas/TriggerKindEnum'
+          description: |-
+            What caused this deployment to start: manual | git | redeploy | rollback | seed.
+
+            * `manual` - Manual
+            * `git` - Git
+            * `redeploy` - Redeploy
+            * `rollback` - Rollback
+            * `seed` - Seed
+        error_message:
+          type: string
+          readOnly: true
+          description: Failure detail set when status=error. Empty for successful
+            or in-flight deployments.
+        error_step:
+          description: |-
+            Build step that failed: dispatch | clone | install | build | publish. Empty when status != error.
+
+            * `dispatch` - Dispatch
+            * `clone` - Clone
+            * `install` - Install
+            * `build` - Build
+            * `publish` - Publish
+          oneOf:
+          - $ref: '#/components/schemas/ErrorStepEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+        cloudflare_deployment_id:
+          type: string
+          readOnly: true
+          description: Cloudflare Pages deployment id, set once the publish step succeeds.
+        temporal_workflow_id:
+          type: string
+          readOnly: true
+          description: Temporal workflow id for this build. Used for cancellation
+            signalling.
+        is_current:
+          type: boolean
+          readOnly: true
+          description: True if this deployment is currently serving production traffic
+            for its project.
+        duration_seconds:
+          type: integer
+          readOnly: true
+          description: Build duration in seconds (finished_at - started_at). 0 while
+            still running.
+      required:
+      - cloudflare_deployment_id
+      - created_at
+      - duration_seconds
+      - error_message
+      - id
+      - is_current
+      - project
+      - status
+      - temporal_workflow_id
+      - trigger_kind
+      - triggered_by_deployment
+      - triggered_by_user_id
+    DeploymentActionResponse:
+      type: object
+      description: Response shape for one-off action endpoints (cancel, refresh_preview).
+      properties:
+        detail:
+          type: string
+          description: Short human-readable confirmation message.
+      required:
+      - detail
+    DeploymentConflictResponse:
+      type: object
+      description: Response shape returned with HTTP 409 when an active deploy exists.
+      properties:
+        detail:
+          type: string
+          description: Reason for the conflict.
+        active_deployment_id:
+          type: string
+          format: uuid
+          description: The deployment currently in-flight for the project. Frontend
+            can poll this id.
+      required:
+      - active_deployment_id
+      - detail
+    DeploymentCreateInput:
+      type: object
+      description: Body of POST /api/projects/{}/deployment_projects/{}/deployments/.
+      properties:
+        commit_sha:
+          type: string
+          description: Optional commit SHA. If omitted, the build worker resolves
+            HEAD of `branch` (or the project's default_branch).
+          maxLength: 64
+        branch:
+          type: string
+          description: Optional branch override. If omitted, uses the project's `default_branch`.
+          maxLength: 255
+    DeploymentEvent:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Unique identifier for the event row.
+        deployment:
+          type: string
+          format: uuid
+          readOnly: true
+          description: The deployment this event belongs to.
+        event_type:
+          type: string
+          description: Event category, e.g. `status_changed`, `preview_captured`,
+            `dispatched`.
+          maxLength: 50
+        payload:
+          description: Arbitrary structured payload for the event. Shape varies by
+            event_type.
+        occurred_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: When the event occurred (server time).
+      required:
+      - deployment
+      - event_type
+      - id
+      - occurred_at
+      - payload
+    DeploymentLogEntry:
+      type: object
+      description: One line of build output emitted by the build worker as a `$log`
+        event.
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+          description: When the line was emitted by the build worker.
+        level:
+          type:
+          - string
+          - 'null'
+          description: 'Log level: "info" | "warn" | "error". Null if the event did
+            not carry one.'
+        step:
+          type:
+          - string
+          - 'null'
+          description: 'Pipeline step: "clone" | "install" | "build" | "publish".
+            Null if the event did not carry one.'
+        line:
+          type:
+          - string
+          - 'null'
+          description: The log line itself (a single line of stdout or stderr).
+        exit_code:
+          type:
+          - integer
+          - 'null'
+          description: Set on the last line of a step; null on all other lines.
+      required:
+      - exit_code
+      - level
+      - line
+      - step
+      - timestamp
+    DeploymentLogsResponse:
+      type: object
+      description: Response shape for GET /deployments/{id}/logs/.
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeploymentLogEntry'
+          description: Log lines for the deployment, oldest first.
+        has_more:
+          type: boolean
+          description: True if the row limit was hit and older lines may exist beyond
+            this page.
+        row_limit:
+          type: integer
+          description: The hard cap applied by the server.
+      required:
+      - has_more
+      - results
+      - row_limit
+    DeploymentProject:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Unique identifier for the deployment project.
+        name:
+          type: string
+          description: Human-readable project name shown in the UI.
+          maxLength: 200
+        slug:
+          type: string
+          description: URL-safe handle. Combined with the team id to form the Cloudflare
+            project name; the actual subdomain comes from Cloudflare and is returned
+            in the read-only `subdomain` field. Must be unique per team.
+          maxLength: 80
+          pattern: ^[-a-zA-Z0-9_]+$
+        repo_url:
+          type: string
+          format: uri
+          readOnly: true
+          description: HTTPS URL of the connected GitHub repository, resolved from
+            the selected repository id.
+          maxLength: 1024
+        default_branch:
+          type: string
+          description: Branch PostHog tracks for deployment updates. Defaults to the
+            repository default branch.
+          maxLength: 255
+        github_integration_id:
+          type:
+          - integer
+          - 'null'
+          description: Existing PostHog GitHub integration id used for repository
+            access.
+        github_repo_id:
+          type:
+          - integer
+          - 'null'
+          description: Stable GitHub repository identifier selected from the existing
+            integration's repository list.
+        build_command:
+          type:
+          - string
+          - 'null'
+          description: Optional shell command run inside the build container. Null
+            = the build worker infers it from `framework` (or auto-detection if framework
+            is also null).
+        output_dir:
+          type: string
+          default: dist
+          description: Directory containing the built static site, relative to the
+            repository root.
+          maxLength: 255
+        framework:
+          type:
+          - string
+          - 'null'
+          description: Optional framework hint (e.g. `nextjs`, `vite`, `astro`). Null
+            = auto-detect.
+          maxLength: 50
+        inject_posthog_snippet:
+          type: boolean
+          default: false
+          description: If true, the build injects a PostHog snippet into every HTML
+            file that registers `release = deployment_id` as a super-property — runtime
+            exceptions are then linked back to the deployment that introduced them.
+        cloudflare_project_name:
+          type: string
+          readOnly: true
+          description: Cloudflare Pages project name, assigned during provisioning.
+        subdomain:
+          type: string
+          readOnly: true
+          description: Public subdomain at which deployments of this project serve.
+        cloudflare_ready_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+          description: Timestamp when the Cloudflare project was fully provisioned
+            and ready to receive deploys.
+        current_deployment:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          readOnly: true
+          description: The deployment currently serving traffic for this project.
+            Null if no deployment has ever succeeded.
+        is_ready_to_deploy:
+          type: boolean
+          readOnly: true
+          description: True when the project has both a provisioned Cloudflare backend
+            and a configured GitHub credential — meaning a deploy can be triggered
+            right now.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Timestamp when the project was created.
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Timestamp when the project was last modified.
+      required:
+      - cloudflare_project_name
+      - cloudflare_ready_at
+      - created_at
+      - current_deployment
+      - id
+      - is_ready_to_deploy
+      - name
+      - repo_url
+      - slug
+      - subdomain
+      - updated_at
+    DeploymentProjectCreate:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Human-readable project name shown in the UI.
+          maxLength: 200
+        slug:
+          type: string
+          description: URL-safe handle. Becomes the subdomain `{slug}.posthog-app.com`.
+            Must be unique per team.
+          maxLength: 80
+          pattern: ^[-a-zA-Z0-9_]+$
+        default_branch:
+          type: string
+          description: Branch PostHog tracks for deployment updates. Defaults to the
+            repository default branch.
+          maxLength: 255
+        github_integration_id:
+          type: integer
+          description: Existing PostHog GitHub integration id used for repository
+            access.
+        github_repo_id:
+          type: integer
+          description: Stable GitHub repository identifier selected from the existing
+            integration's repository list.
+        build_command:
+          type:
+          - string
+          - 'null'
+          description: Optional shell command run inside the build container. Null
+            = the build worker infers it from `framework` (or auto-detection if framework
+            is also null).
+        output_dir:
+          type: string
+          default: dist
+          description: Directory containing the built static site, relative to the
+            repository root.
+          maxLength: 255
+        framework:
+          type:
+          - string
+          - 'null'
+          description: Optional framework hint (e.g. `nextjs`, `vite`, `astro`). Null
+            = auto-detect.
+          maxLength: 50
+        inject_posthog_snippet:
+          type: boolean
+          default: false
+          description: If true, the build injects a PostHog snippet into every HTML
+            file that registers `release = deployment_id` as a super-property — runtime
+            exceptions are then linked back to the deployment that introduced them.
+      required:
+      - github_integration_id
+      - github_repo_id
+      - name
+      - slug
+    DeploymentProjectRefreshResponse:
+      type: object
+      description: Response shape for refreshing a deployment project's GitHub branch.
+      properties:
+        detail:
+          type: string
+          description: Human-readable explanation of the refresh result.
+        repo_url:
+          type: string
+          format: uri
+          description: HTTPS URL of the connected GitHub repository.
+        default_branch:
+          type: string
+          description: Branch checked by the refresh action.
+        commit_sha:
+          type: string
+          description: Current GitHub HEAD SHA for default_branch.
+      required:
+      - commit_sha
+      - default_branch
+      - detail
+      - repo_url
+    DeploymentProjectWrite:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Human-readable project name shown in the UI.
+          maxLength: 200
+        slug:
+          type: string
+          description: URL-safe handle. Combined with the team id to form the Cloudflare
+            project name; the actual subdomain comes from Cloudflare and is returned
+            in the read-only `subdomain` field. Must be unique per team.
+          maxLength: 80
+          pattern: ^[-a-zA-Z0-9_]+$
+        default_branch:
+          type: string
+          description: Branch PostHog tracks for deployment updates. Defaults to the
+            repository default branch.
+          maxLength: 255
+        github_integration_id:
+          type:
+          - integer
+          - 'null'
+          description: Existing PostHog GitHub integration id used for repository
+            access.
+        github_repo_id:
+          type:
+          - integer
+          - 'null'
+          description: Stable GitHub repository identifier selected from the existing
+            integration's repository list.
+        build_command:
+          type:
+          - string
+          - 'null'
+          description: Optional shell command run inside the build container. Null
+            = the build worker infers it from `framework` (or auto-detection if framework
+            is also null).
+        output_dir:
+          type: string
+          default: dist
+          description: Directory containing the built static site, relative to the
+            repository root.
+          maxLength: 255
+        framework:
+          type:
+          - string
+          - 'null'
+          description: Optional framework hint (e.g. `nextjs`, `vite`, `astro`). Null
+            = auto-detect.
+          maxLength: 50
+        inject_posthog_snippet:
+          type: boolean
+          default: false
+          description: If true, the build injects a PostHog snippet into every HTML
+            file that registers `release = deployment_id` as a super-property — runtime
+            exceptions are then linked back to the deployment that introduced them.
+      required:
+      - name
+      - slug
+    DeploymentStatusEnum:
+      enum:
+      - queued
+      - initializing
+      - building
+      - ready
+      - error
+      - cancelled
+      type: string
+      description: |-
+        * `queued` - Queued
+        * `initializing` - Initializing
+        * `building` - Building
+        * `ready` - Ready
+        * `error` - Error
+        * `cancelled` - Cancelled
     DeprovisionWarehouseResponse:
       type: object
       properties:
@@ -65908,6 +67882,75 @@ components:
       - median
       title: DetailedResultsAggregationType
       type: string
+    DetectConfigRequest:
+      type: object
+      description: |-
+        Inputs the `/detect/` endpoint needs to suggest a project config.
+
+        Decouples detection from any one git provider — callers fetch
+        `package.json` and the list of lockfiles however they like (GitHub
+        raw content via the team's existing integration, a temporary clone,
+        user-pasted JSON during early development) and pass them here.
+      properties:
+        package_json:
+          description: Parsed contents of the repo's `package.json`. Pass null or
+            omit if the repo doesn't have one — the response is then the plain-HTML
+            fallback.
+        lockfiles:
+          type: array
+          items:
+            type: string
+            maxLength: 64
+          description: Filenames of package-manager lockfiles found in the repo root
+            (e.g. ["pnpm-lock.yaml"]). Used to pick the package manager.
+    DetectConfigResponse:
+      type: object
+      description: |-
+        Suggested project config. Every field is overridable in the connect-repo UI.
+
+        `build_command`, `output_dir`, and `framework` map directly to the
+        `DeploymentProject` model fields. `package_manager`, `install_command`,
+        and `node_version` are informational hints — the model doesn't store
+        them today, but the UI can display them so the user knows what the
+        build worker will end up running.
+      properties:
+        package_manager:
+          allOf:
+          - $ref: '#/components/schemas/PackageManagerEnum'
+          description: |-
+            Detected package manager from lockfile presence.
+
+            * `npm` - npm
+            * `pnpm` - pnpm
+            * `yarn` - yarn
+            * `bun` - bun
+        install_command:
+          type: string
+          description: Suggested install command, or empty when no install is needed.
+        build_command:
+          type: string
+          description: Suggested build command, or empty when no known framework matched.
+        output_dir:
+          type: string
+          description: Suggested output directory relative to repo root.
+        node_version:
+          type: string
+          description: Suggested Node major version, parsed from `engines.node` or
+            defaulted to 20.
+        framework:
+          type:
+          - string
+          - 'null'
+          description: Detected framework hint (e.g. `nextjs`, `vite`, `astro`) to
+            write into `DeploymentProject.framework`. Null when no framework matched
+            — leaving the field null lets the build worker fall back to its own auto-detection.
+      required:
+      - build_command
+      - framework
+      - install_command
+      - node_version
+      - output_dir
+      - package_manager
     DetectorConfig:
       anyOf:
       - $ref: '#/components/schemas/EnsembleDetectorConfig'
@@ -67998,6 +70041,20 @@ components:
           description: Error message
       required:
       - error
+    ErrorStepEnum:
+      enum:
+      - dispatch
+      - clone
+      - install
+      - build
+      - publish
+      type: string
+      description: |-
+        * `dispatch` - Dispatch
+        * `clone` - Clone
+        * `install` - Install
+        * `build` - Build
+        * `publish` - Publish
     ErrorTrackingAggregations:
       type: object
       properties:
@@ -73536,7 +75593,14 @@ components:
           title: Kind
           type: string
         metric:
-          anyOf:
+          discriminator:
+            mapping:
+              funnel: '#/components/schemas/ExperimentFunnelMetric'
+              mean: '#/components/schemas/ExperimentMeanMetric'
+              ratio: '#/components/schemas/ExperimentRatioMetric'
+              retention: '#/components/schemas/ExperimentRetentionMetric'
+            propertyName: metric_type
+          oneOf:
           - $ref: '#/components/schemas/ExperimentMeanMetric'
           - $ref: '#/components/schemas/ExperimentFunnelMetric'
           - $ref: '#/components/schemas/ExperimentRatioMetric'
@@ -73643,10 +75707,18 @@ components:
           type: string
         metric:
           anyOf:
-          - $ref: '#/components/schemas/ExperimentMeanMetric'
-          - $ref: '#/components/schemas/ExperimentFunnelMetric'
-          - $ref: '#/components/schemas/ExperimentRatioMetric'
-          - $ref: '#/components/schemas/ExperimentRetentionMetric'
+          - discriminator:
+              mapping:
+                funnel: '#/components/schemas/ExperimentFunnelMetric'
+                mean: '#/components/schemas/ExperimentMeanMetric'
+                ratio: '#/components/schemas/ExperimentRatioMetric'
+                retention: '#/components/schemas/ExperimentRetentionMetric'
+              propertyName: metric_type
+            oneOf:
+            - $ref: '#/components/schemas/ExperimentMeanMetric'
+            - $ref: '#/components/schemas/ExperimentFunnelMetric'
+            - $ref: '#/components/schemas/ExperimentRatioMetric'
+            - $ref: '#/components/schemas/ExperimentRetentionMetric'
           - type: 'null'
           default: null
           title: Metric
@@ -82002,6 +84074,95 @@ components:
       - month
       title: IntervalType
       type: string
+    InterviewInviteResult:
+      type: object
+      properties:
+        interviewee_identifier:
+          type: string
+          description: The original identifier (email or distinct ID) from the topic
+            targeting.
+        email:
+          type:
+          - string
+          - 'null'
+          format: email
+          description: Email used for delivery. Null when the identifier was not an
+            email (e.g., a distinct ID).
+        interview_url:
+          type: string
+          format: uri
+          description: The personalized public interview URL embedded in the email
+            body.
+        sent:
+          type: boolean
+          description: True if an email was queued for delivery. False when the recipient
+            was skipped — see `reason`.
+        reason:
+          type: string
+          description: Why the email was skipped (e.g., `not_an_email`, `already_sent`).
+            Empty when sent=true.
+      required:
+      - interview_url
+      - interviewee_identifier
+      - sent
+    InterviewLink:
+      type: object
+      properties:
+        interviewee_identifier:
+          type: string
+          description: The original identifier (email or distinct ID) from the topic
+            targeting.
+          maxLength: 400
+        user_name:
+          type: string
+          description: Best-effort display name derived from the identifier, used
+            to greet the interviewee.
+        interview_url:
+          type: string
+          format: uri
+          description: Public, unauthenticated URL the interviewee opens to start
+            the call. Backed by a SharingConfiguration access token.
+        agent_context:
+          type: string
+          description: The merged topic + per-interviewee context the voice agent
+            will see during the call.
+      required:
+      - agent_context
+      - interview_url
+      - interviewee_identifier
+      - user_name
+    IntervieweeContext:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        created_by:
+          allOf:
+          - $ref: '#/components/schemas/UserBasic'
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        interviewee_identifier:
+          type: string
+          description: Identifier for the interviewee — typically an email address
+            or PostHog distinct ID. Must match a value in the parent topic's interviewee_emails
+            or interviewee_distinct_ids.
+          maxLength: 400
+        agent_context:
+          type: string
+          description: Extra context the voice agent should know about this specific
+            interviewee — e.g. 'uses the replay product but has never used summarization'.
+          maxLength: 10000
+      required:
+      - agent_context
+      - created_at
+      - created_by
+      - id
+      - interviewee_identifier
     InvestigationInconclusiveActionEnum:
       enum:
       - notify
@@ -87705,6 +89866,7 @@ components:
       - user_created
       - automation
       - slack
+      - sendblue
       - support_queue
       - session_summaries
       - signal_report
@@ -87715,6 +89877,7 @@ components:
         * `user_created` - User Created
         * `automation` - Automation
         * `slack` - Slack
+        * `sendblue` - Sendblue
         * `support_queue` - Support Queue
         * `session_summaries` - Session Summaries
         * `signal_report` - Signal Report
@@ -87790,6 +89953,18 @@ components:
           title: Window
       title: PCADetectorConfig
       type: object
+    PackageManagerEnum:
+      enum:
+      - npm
+      - pnpm
+      - yarn
+      - bun
+      type: string
+      description: |-
+        * `npm` - npm
+        * `pnpm` - pnpm
+        * `yarn` - yarn
+        * `bun` - bun
     PageURL:
       additionalProperties: false
       properties:
@@ -88419,6 +90594,81 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Dataset'
+    PaginatedDeploymentEventList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeploymentEvent'
+    PaginatedDeploymentList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Deployment'
+    PaginatedDeploymentProjectList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeploymentProject'
     PaginatedDesktopRecordingList:
       type: object
       required:
@@ -89444,6 +91694,81 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/IntegrationConfig'
+    PaginatedInterviewInviteResultList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/InterviewInviteResult'
+    PaginatedInterviewLinkList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/InterviewLink'
+    PaginatedIntervieweeContextList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/IntervieweeContext'
     PaginatedKnowledgeSourceList:
       type: object
       required:
@@ -91087,6 +93412,31 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/UserInterview'
+    PaginatedUserInterviewTopicList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserInterviewTopic'
     PaginatedUserList:
       type: object
       required:
@@ -92409,6 +94759,63 @@ components:
         team:
           type: integer
           readOnly: true
+    PatchedDeploymentProjectWrite:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Human-readable project name shown in the UI.
+          maxLength: 200
+        slug:
+          type: string
+          description: URL-safe handle. Combined with the team id to form the Cloudflare
+            project name; the actual subdomain comes from Cloudflare and is returned
+            in the read-only `subdomain` field. Must be unique per team.
+          maxLength: 80
+          pattern: ^[-a-zA-Z0-9_]+$
+        default_branch:
+          type: string
+          description: Branch PostHog tracks for deployment updates. Defaults to the
+            repository default branch.
+          maxLength: 255
+        github_integration_id:
+          type:
+          - integer
+          - 'null'
+          description: Existing PostHog GitHub integration id used for repository
+            access.
+        github_repo_id:
+          type:
+          - integer
+          - 'null'
+          description: Stable GitHub repository identifier selected from the existing
+            integration's repository list.
+        build_command:
+          type:
+          - string
+          - 'null'
+          description: Optional shell command run inside the build container. Null
+            = the build worker infers it from `framework` (or auto-detection if framework
+            is also null).
+        output_dir:
+          type: string
+          default: dist
+          description: Directory containing the built static site, relative to the
+            repository root.
+          maxLength: 255
+        framework:
+          type:
+          - string
+          - 'null'
+          description: Optional framework hint (e.g. `nextjs`, `vite`, `astro`). Null
+            = auto-detect.
+          maxLength: 50
+        inject_posthog_snippet:
+          type: boolean
+          default: false
+          description: If true, the build injects a PostHog snippet into every HTML
+            file that registers `release = deployment_id` as a super-property — runtime
+            exceptions are then linked back to the deployment that introduced them.
     PatchedDesktopRecording:
       type: object
       properties:
@@ -94498,6 +96905,32 @@ components:
         display_name:
           type: string
           readOnly: true
+    PatchedIntervieweeContext:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        created_by:
+          allOf:
+          - $ref: '#/components/schemas/UserBasic'
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        interviewee_identifier:
+          type: string
+          description: Identifier for the interviewee — typically an email address
+            or PostHog distinct ID. Must match a value in the parent topic's interviewee_emails
+            or interviewee_distinct_ids.
+          maxLength: 400
+        agent_context:
+          type: string
+          description: Extra context the voice agent should know about this specific
+            interviewee — e.g. 'uses the replay product but has never used summarization'.
+          maxLength: 10000
     PatchedJsSnippetVersion:
       type: object
       properties:
@@ -97018,8 +99451,9 @@ components:
           allOf:
           - $ref: '#/components/schemas/SubscriptionFrequencyEnum'
           description: |-
-            How often to deliver: daily, weekly, monthly, or yearly.
+            How often to deliver: hourly, daily, weekly, monthly, or yearly. Hourly is feature-flagged and limited to one active subscription per organization.
 
+            * `hourly` - Hourly
             * `daily` - Daily
             * `weekly` - Weekly
             * `monthly` - Monthly
@@ -98448,6 +100882,15 @@ components:
           items:
             type: string
             maxLength: 254
+        interviewee_identifier:
+          type: string
+          readOnly: true
+        topic:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          readOnly: true
         transcript:
           type: string
           readOnly: true
@@ -98457,6 +100900,55 @@ components:
           type: string
           format: uri
           writeOnly: true
+    PatchedUserInterviewTopic:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        created_by:
+          allOf:
+          - $ref: '#/components/schemas/UserBasic'
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        interviewee_cohort:
+          type:
+          - integer
+          - 'null'
+          description: Optional cohort ID identifying who to target. Not enforced
+            as a foreign key.
+        interviewee_emails:
+          type: array
+          items:
+            type: string
+            maxLength: 254
+          description: Email addresses of people to interview. May be combined with
+            interviewee_cohort and interviewee_distinct_ids.
+        interviewee_distinct_ids:
+          type: array
+          items:
+            type: string
+            maxLength: 400
+          description: PostHog distinct IDs of people to interview. May be combined
+            with interviewee_cohort and interviewee_emails.
+        topic:
+          type: string
+          description: The product, feature, or idea you want to ask interviewees
+            about.
+        agent_context:
+          type: string
+          description: Optional additional system prompt for the voice agent — extra
+            background, tone, or constraints.
+        questions:
+          type: array
+          items:
+            type: string
+          description: Ordered list of questions the voice agent should work through
+            during the interview.
     PatchedViewLink:
       type: object
       properties:
@@ -101473,6 +103965,16 @@ components:
         * `erroring` - Erroring
         * `deleting` - Deleting
         * `timed_out` - Timed Out
+    PushTokenPlatformEnum:
+      enum:
+      - ios
+      - android
+      - web
+      type: string
+      description: |-
+        * `ios` - iOS
+        * `android` - Android
+        * `web` - Web
     QuarantineInput:
       type: object
       properties:
@@ -102660,10 +105162,18 @@ components:
           type: string
         metric:
           anyOf:
-          - $ref: '#/components/schemas/ExperimentMeanMetric'
-          - $ref: '#/components/schemas/ExperimentFunnelMetric'
-          - $ref: '#/components/schemas/ExperimentRatioMetric'
-          - $ref: '#/components/schemas/ExperimentRetentionMetric'
+          - discriminator:
+              mapping:
+                funnel: '#/components/schemas/ExperimentFunnelMetric'
+                mean: '#/components/schemas/ExperimentMeanMetric'
+                ratio: '#/components/schemas/ExperimentRatioMetric'
+                retention: '#/components/schemas/ExperimentRetentionMetric'
+              propertyName: metric_type
+            oneOf:
+            - $ref: '#/components/schemas/ExperimentMeanMetric'
+            - $ref: '#/components/schemas/ExperimentFunnelMetric'
+            - $ref: '#/components/schemas/ExperimentRatioMetric'
+            - $ref: '#/components/schemas/ExperimentRetentionMetric'
           - type: 'null'
           default: null
           title: Metric
@@ -113924,6 +116434,24 @@ components:
       description: |-
         * `single` - single
         * `multiple` - multiple
+    SendInvitesRequest:
+      type: object
+      properties:
+        subject:
+          type: string
+          description: Override the default email subject line. Defaults to a friendly
+            prompt referencing the topic.
+          maxLength: 200
+        reply_to:
+          type: string
+          format: email
+          description: Email address replies should go to. Defaults to the topic creator's
+            email if blank.
+        send_async:
+          type: boolean
+          default: true
+          description: If true (default), queue delivery via Celery. If false, send
+            synchronously and surface errors immediately.
     SentimentBatchResponse:
       type: object
       properties:
@@ -116583,8 +119111,9 @@ components:
           allOf:
           - $ref: '#/components/schemas/SubscriptionFrequencyEnum'
           description: |-
-            How often to deliver: daily, weekly, monthly, or yearly.
+            How often to deliver: hourly, daily, weekly, monthly, or yearly. Hourly is feature-flagged and limited to one active subscription per organization.
 
+            * `hourly` - Hourly
             * `daily` - Daily
             * `weekly` - Weekly
             * `monthly` - Monthly
@@ -116832,12 +119361,14 @@ components:
         * `skipped` - Skipped
     SubscriptionFrequencyEnum:
       enum:
+      - hourly
       - daily
       - weekly
       - monthly
       - yearly
       type: string
       description: |-
+        * `hourly` - Hourly
         * `daily` - Daily
         * `weekly` - Weekly
         * `monthly` - Monthly
@@ -123747,17 +126278,36 @@ components:
           - $ref: '#/components/schemas/AggregationAxisFormat'
           - type: 'null'
           default: numeric
+          description: |-
+            Y-axis value formatter. Picks a human-friendly unit per value at render time without changing the underlying series values.
+
+            - `numeric` (default): raw numbers, e.g. `1,234`.
+            - `duration`: values are in seconds; rendered as friendly units per value (`45s`, `2m 12s`, `1h 4m`). Use this whenever the series is in seconds (latency, session length, time-to-event) instead of dividing in `formula` to force minutes or hours.
+            - `duration_ms`: values are in milliseconds; rendered as friendly units (`850ms`, `1.5s`, `1m 4s`).
+            - `percentage`: values are already in the 0-100 range; appends `%`.
+            - `percentage_scaled`: values are a 0-1 ratio; multiplied and rendered as `%`.
+            - `currency`: values are in the project's base currency (set in project settings, defaults to USD); rendered with that currency symbol. For values pinned to a specific currency regardless of project base (e.g. `$ai_total_cost_usd` is always USD), use `aggregationAxisPrefix` instead.
+            - `short`: compact notation for large counts (`1.2K`, `3.4M`).
         aggregationAxisPostfix:
           anyOf:
           - type: string
           - type: 'null'
           default: null
+          description: Literal suffix applied to every value (e.g. ` req`). Reserve
+            for units that `aggregationAxisFormat` cannot express. Do not use ` mins`,
+            ` s`, ` ms`, `%` etc. — pick the matching `aggregationAxisFormat` instead
+            so the underlying values stay numerically correct for breakdowns, formulas,
+            and alerts. Include any leading space yourself.
           title: Aggregationaxispostfix
         aggregationAxisPrefix:
           anyOf:
           - type: string
           - type: 'null'
           default: null
+          description: Literal prefix applied to every value (e.g. `$`). Use to pin
+            a unit or currency symbol that does not depend on `aggregationAxisFormat`
+            — for example, when values are denominated in a fixed currency regardless
+            of the project's base currency. Include any trailing space yourself.
           title: Aggregationaxisprefix
         breakdown_histogram_bin_count:
           anyOf:
@@ -123776,6 +126326,8 @@ components:
           - type: number
           - type: 'null'
           default: null
+          description: Maximum number of decimal places shown. 1 or 2 is usually right
+            for percentages and currency.
           title: Decimalplaces
         detailedResultsAggregationType:
           anyOf:
@@ -124188,6 +126740,20 @@ components:
       - job_id
       - job_type
       - payload
+    TriggerKindEnum:
+      enum:
+      - manual
+      - git
+      - redeploy
+      - rollback
+      - seed
+      type: string
+      description: |-
+        * `manual` - Manual
+        * `git` - Git
+        * `redeploy` - Redeploy
+        * `rollback` - Rollback
+        * `seed` - Seed
     UploadTarget:
       type: object
       properties:
@@ -124876,6 +127442,15 @@ components:
           items:
             type: string
             maxLength: 254
+        interviewee_identifier:
+          type: string
+          readOnly: true
+        topic:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          readOnly: true
         transcript:
           type: string
           readOnly: true
@@ -124890,7 +127465,121 @@ components:
       - created_at
       - created_by
       - id
+      - interviewee_identifier
+      - topic
       - transcript
+    UserInterviewTopic:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        created_by:
+          allOf:
+          - $ref: '#/components/schemas/UserBasic'
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        interviewee_cohort:
+          type:
+          - integer
+          - 'null'
+          description: Optional cohort ID identifying who to target. Not enforced
+            as a foreign key.
+        interviewee_emails:
+          type: array
+          items:
+            type: string
+            maxLength: 254
+          description: Email addresses of people to interview. May be combined with
+            interviewee_cohort and interviewee_distinct_ids.
+        interviewee_distinct_ids:
+          type: array
+          items:
+            type: string
+            maxLength: 400
+          description: PostHog distinct IDs of people to interview. May be combined
+            with interviewee_cohort and interviewee_emails.
+        topic:
+          type: string
+          description: The product, feature, or idea you want to ask interviewees
+            about.
+        agent_context:
+          type: string
+          description: Optional additional system prompt for the voice agent — extra
+            background, tone, or constraints.
+        questions:
+          type: array
+          items:
+            type: string
+          description: Ordered list of questions the voice agent should work through
+            during the interview.
+      required:
+      - created_at
+      - created_by
+      - id
+      - topic
+    UserPushTokenItem:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: PostHog UserPushToken row id.
+        platform:
+          allOf:
+          - $ref: '#/components/schemas/PushTokenPlatformEnum'
+          description: |-
+            Device platform the token was issued for.
+
+            * `ios` - iOS
+            * `android` - Android
+            * `web` - Web
+        created_at:
+          type: string
+          format: date-time
+          description: When this token was first registered.
+        last_seen_at:
+          type: string
+          format: date-time
+          description: Last time the mobile app re-registered this token.
+      required:
+      - created_at
+      - id
+      - last_seen_at
+      - platform
+    UserPushTokenRegisterRequest:
+      type: object
+      properties:
+        token:
+          type: string
+          description: Opaque push token issued by the device's platform push service
+            (e.g. an Expo push token).
+          maxLength: 512
+        platform:
+          allOf:
+          - $ref: '#/components/schemas/PushTokenPlatformEnum'
+          description: |-
+            Device platform the token was issued for. One of `ios`, `android`, or `web`.
+
+            * `ios` - iOS
+            * `android` - Android
+            * `web` - Web
+      required:
+      - platform
+      - token
+    UserPushTokenUnregisterRequest:
+      type: object
+      properties:
+        token:
+          type: string
+          description: The opaque push token to remove for the authenticated user.
+          maxLength: 512
+      required:
+      - token
     ValidationStatusEnum:
       enum:
       - valid
@@ -128837,6 +131526,8 @@ tags:
 - name: data_warehouse
 - name: dataset_items
 - name: datasets
+- name: deployment_projects
+- name: deployments
 - name: desktop_recordings
 - name: docs
 - name: domains
@@ -128932,6 +131623,7 @@ tags:
 - name: tracing
 - name: uploaded_media
 - name: user_home_settings
+- name: user_interview_topics
 - name: user_interviews
 - name: users
 - name: vision
@@ -128980,6 +131672,8 @@ x-tagGroups:
   - data_warehouse
   - dataset_items
   - datasets
+  - deployment_projects
+  - deployments
   - desktop_recordings
   - docs
   - domains
@@ -129075,6 +131769,7 @@ x-tagGroups:
   - tracing
   - uploaded_media
   - user_home_settings
+  - user_interview_topics
   - user_interviews
   - users
   - vision

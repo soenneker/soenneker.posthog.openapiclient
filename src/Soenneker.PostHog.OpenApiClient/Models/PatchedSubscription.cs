@@ -51,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? Deleted { get; set; }
         /// <summary>Whether the subscription is active. Set to false to pause delivery without deleting. Auto-set to false when the delivery integration becomes invalid.</summary>
         public bool? Enabled { get; set; }
-        /// <summary>How often to deliver: daily, weekly, monthly, or yearly.* `daily` - Daily* `weekly` - Weekly* `monthly` - Monthly* `yearly` - Yearly</summary>
+        /// <summary>How often to deliver: hourly, daily, weekly, monthly, or yearly. Hourly is feature-flagged and limited to one active subscription per organization.* `hourly` - Hourly* `daily` - Daily* `weekly` - Weekly* `monthly` - Monthly* `yearly` - Yearly</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionFrequencyEnum? Frequency { get; set; }
         /// <summary>The id property</summary>
         public int? Id { get; private set; }

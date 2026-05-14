@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `error_tracking` - Error Tracking* `eval_clusters` - Eval Clusters* `user_created` - User Created* `automation` - Automation* `slack` - Slack* `support_queue` - Support Queue* `session_summaries` - Session Summaries* `signal_report` - Signal Report</summary>
+    /// <summary>* `error_tracking` - Error Tracking* `eval_clusters` - Eval Clusters* `user_created` - User Created* `automation` - Automation* `slack` - Slack* `sendblue` - Sendblue* `support_queue` - Support Queue* `session_summaries` - Session Summaries* `signal_report` - Signal Report</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum OriginProductEnum
     {
@@ -26,6 +26,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "slack")]
         #pragma warning disable CS1591
         Slack,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "sendblue")]
+        #pragma warning disable CS1591
+        Sendblue,
         #pragma warning restore CS1591
         [EnumMember(Value = "support_queue")]
         #pragma warning disable CS1591

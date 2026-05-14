@@ -64,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.Task_latest_run LatestRun { get; private set; }
 #endif
-        /// <summary>* `error_tracking` - Error Tracking* `eval_clusters` - Eval Clusters* `user_created` - User Created* `automation` - Automation* `slack` - Slack* `support_queue` - Support Queue* `session_summaries` - Session Summaries* `signal_report` - Signal Report</summary>
+        /// <summary>* `error_tracking` - Error Tracking* `eval_clusters` - Eval Clusters* `user_created` - User Created* `automation` - Automation* `slack` - Slack* `sendblue` - Sendblue* `support_queue` - Support Queue* `session_summaries` - Session Summaries* `signal_report` - Signal Report</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.OriginProductEnum? OriginProduct { get; set; }
         /// <summary>The repository property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

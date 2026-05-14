@@ -42,6 +42,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> IntervieweeEmails { get; set; }
 #endif
+        /// <summary>The interviewee_identifier property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? IntervieweeIdentifier { get; private set; }
+#nullable restore
+#else
+        public string IntervieweeIdentifier { get; private set; }
+#endif
         /// <summary>The summary property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -50,6 +58,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Summary { get; set; }
 #endif
+        /// <summary>The topic property</summary>
+        public Guid? Topic { get; private set; }
         /// <summary>The transcript property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -88,7 +98,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "interviewee_emails", n => { IntervieweeEmails = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "interviewee_identifier", n => { IntervieweeIdentifier = n.GetStringValue(); } },
                 { "summary", n => { Summary = n.GetStringValue(); } },
+                { "topic", n => { Topic = n.GetGuidValue(); } },
                 { "transcript", n => { Transcript = n.GetStringValue(); } },
             };
         }

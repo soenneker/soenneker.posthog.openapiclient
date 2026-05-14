@@ -12,9 +12,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class TrendsFilter : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>The aggregationAxisFormat property</summary>
+        /// <summary>Y-axis value formatter. Picks a human-friendly unit per value at render time without changing the underlying series values.- `numeric` (default): raw numbers, e.g. `1,234`.- `duration`: values are in seconds; rendered as friendly units per value (`45s`, `2m 12s`, `1h 4m`). Use this whenever the series is in seconds (latency, session length, time-to-event) instead of dividing in `formula` to force minutes or hours.- `duration_ms`: values are in milliseconds; rendered as friendly units (`850ms`, `1.5s`, `1m 4s`).- `percentage`: values are already in the 0-100 range; appends `%`.- `percentage_scaled`: values are a 0-1 ratio; multiplied and rendered as `%`.- `currency`: values are in the project&apos;s base currency (set in project settings, defaults to USD); rendered with that currency symbol. For values pinned to a specific currency regardless of project base (e.g. `$ai_total_cost_usd` is always USD), use `aggregationAxisPrefix` instead.- `short`: compact notation for large counts (`1.2K`, `3.4M`).</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.AggregationAxisFormat? AggregationAxisFormat { get; set; }
-        /// <summary>The aggregationAxisPostfix property</summary>
+        /// <summary>Literal suffix applied to every value (e.g. ` req`). Reserve for units that `aggregationAxisFormat` cannot express. Do not use ` mins`, ` s`, ` ms`, `%` etc. — pick the matching `aggregationAxisFormat` instead so the underlying values stay numerically correct for breakdowns, formulas, and alerts. Include any leading space yourself.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AggregationAxisPostfix { get; set; }
@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string AggregationAxisPostfix { get; set; }
 #endif
-        /// <summary>The aggregationAxisPrefix property</summary>
+        /// <summary>Literal prefix applied to every value (e.g. `$`). Use to pin a unit or currency symbol that does not depend on `aggregationAxisFormat` — for example, when values are denominated in a fixed currency regardless of the project&apos;s base currency. Include any trailing space yourself.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AggregationAxisPrefix { get; set; }
@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public double? BreakdownHistogramBinCount { get; set; }
         /// <summary>The confidenceLevel property</summary>
         public double? ConfidenceLevel { get; set; }
-        /// <summary>The decimalPlaces property</summary>
+        /// <summary>Maximum number of decimal places shown. 1 or 2 is usually right for percentages and currency.</summary>
         public double? DecimalPlaces { get; set; }
         /// <summary>detailed results table</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DetailedResultsAggregationType? DetailedResultsAggregationType { get; set; }

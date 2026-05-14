@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Bulk_update_tags;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Compose;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Unread_count;
 using System.Collections.Generic;
@@ -21,6 +22,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Ticket
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Bulk_update_tags.Bulk_update_tagsRequestBuilder Bulk_update_tags
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Bulk_update_tags.Bulk_update_tagsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The compose property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Compose.ComposeRequestBuilder Compose
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Compose.ComposeRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The EmptyPathSegment property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.EmptyPathSegmentRequestBuilder EmptyPathSegment

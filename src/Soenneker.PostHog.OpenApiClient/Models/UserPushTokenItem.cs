@@ -9,27 +9,35 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class QueryResponseAlternative20_metricMember1 : IAdditionalDataHolder, IParsable
+    public partial class UserPushTokenItem : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>When this token was first registered.</summary>
+        public DateTimeOffset? CreatedAt { get; set; }
+        /// <summary>PostHog UserPushToken row id.</summary>
+        public Guid? Id { get; set; }
+        /// <summary>Last time the mobile app re-registered this token.</summary>
+        public DateTimeOffset? LastSeenAt { get; set; }
+        /// <summary>Device platform the token was issued for.* `ios` - iOS* `android` - Android* `web` - Web</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.PushTokenPlatformEnum? Platform { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_metricMember1"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.UserPushTokenItem"/> and sets the default values.
         /// </summary>
-        public QueryResponseAlternative20_metricMember1()
+        public UserPushTokenItem()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_metricMember1"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.UserPushTokenItem"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_metricMember1 CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.PostHog.OpenApiClient.Models.UserPushTokenItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_metricMember1();
+            return new global::Soenneker.PostHog.OpenApiClient.Models.UserPushTokenItem();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -39,6 +47,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
+                { "id", n => { Id = n.GetGuidValue(); } },
+                { "last_seen_at", n => { LastSeenAt = n.GetDateTimeOffsetValue(); } },
+                { "platform", n => { Platform = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PushTokenPlatformEnum>(); } },
             };
         }
         /// <summary>
@@ -48,6 +60,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
+            writer.WriteGuidValue("id", Id);
+            writer.WriteDateTimeOffsetValue("last_seen_at", LastSeenAt);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PushTokenPlatformEnum>("platform", Platform);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
