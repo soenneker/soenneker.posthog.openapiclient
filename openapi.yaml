@@ -23316,8 +23316,8 @@ paths:
   /api/environments/{project_id}/user_interview_topics/:
     get:
       operationId: user_interview_topics_list
-      description: 'Planned user interview topics: who we want to target (cohort)
-        and what we want to ask about.'
+      description: 'Planned user interview topics: who we want to target and what
+        we want to ask about.'
       parameters:
       - name: limit
         required: false
@@ -23355,8 +23355,8 @@ paths:
       - user_interviews
     post:
       operationId: user_interview_topics_create
-      description: 'Planned user interview topics: who we want to target (cohort)
-        and what we want to ask about.'
+      description: 'Planned user interview topics: who we want to target and what
+        we want to ask about.'
       parameters:
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -23389,8 +23389,8 @@ paths:
   /api/environments/{project_id}/user_interview_topics/{id}/:
     get:
       operationId: user_interview_topics_retrieve
-      description: 'Planned user interview topics: who we want to target (cohort)
-        and what we want to ask about.'
+      description: 'Planned user interview topics: who we want to target and what
+        we want to ask about.'
       parameters:
       - in: path
         name: id
@@ -23417,8 +23417,8 @@ paths:
       - user_interviews
     put:
       operationId: user_interview_topics_update
-      description: 'Planned user interview topics: who we want to target (cohort)
-        and what we want to ask about.'
+      description: 'Planned user interview topics: who we want to target and what
+        we want to ask about.'
       parameters:
       - in: path
         name: id
@@ -23457,8 +23457,8 @@ paths:
       - user_interviews
     patch:
       operationId: user_interview_topics_partial_update
-      description: 'Planned user interview topics: who we want to target (cohort)
-        and what we want to ask about.'
+      description: 'Planned user interview topics: who we want to target and what
+        we want to ask about.'
       parameters:
       - in: path
         name: id
@@ -23496,8 +23496,8 @@ paths:
       - user_interviews
     delete:
       operationId: user_interview_topics_destroy
-      description: 'Planned user interview topics: who we want to target (cohort)
-        and what we want to ask about.'
+      description: 'Planned user interview topics: who we want to target and what
+        we want to ask about.'
       parameters:
       - in: path
         name: id
@@ -23845,6 +23845,11 @@ paths:
         schema:
           type: integer
       - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: topic
+        schema:
+          type: string
+          format: uuid
       tags:
       - user_interviews
       - user_interviews
@@ -89866,7 +89871,6 @@ components:
       - user_created
       - automation
       - slack
-      - sendblue
       - support_queue
       - session_summaries
       - signal_report
@@ -89877,7 +89881,6 @@ components:
         * `user_created` - User Created
         * `automation` - Automation
         * `slack` - Slack
-        * `sendblue` - Sendblue
         * `support_queue` - Support Queue
         * `session_summaries` - Session Summaries
         * `signal_report` - Signal Report
@@ -100915,26 +100918,20 @@ components:
           type: string
           format: date-time
           readOnly: true
-        interviewee_cohort:
-          type:
-          - integer
-          - 'null'
-          description: Optional cohort ID identifying who to target. Not enforced
-            as a foreign key.
         interviewee_emails:
           type: array
           items:
             type: string
             maxLength: 254
           description: Email addresses of people to interview. May be combined with
-            interviewee_cohort and interviewee_distinct_ids.
+            interviewee_distinct_ids.
         interviewee_distinct_ids:
           type: array
           items:
             type: string
             maxLength: 400
           description: PostHog distinct IDs of people to interview. May be combined
-            with interviewee_cohort and interviewee_emails.
+            with interviewee_emails.
         topic:
           type: string
           description: The product, feature, or idea you want to ask interviewees
@@ -127483,26 +127480,20 @@ components:
           type: string
           format: date-time
           readOnly: true
-        interviewee_cohort:
-          type:
-          - integer
-          - 'null'
-          description: Optional cohort ID identifying who to target. Not enforced
-            as a foreign key.
         interviewee_emails:
           type: array
           items:
             type: string
             maxLength: 254
           description: Email addresses of people to interview. May be combined with
-            interviewee_cohort and interviewee_distinct_ids.
+            interviewee_distinct_ids.
         interviewee_distinct_ids:
           type: array
           items:
             type: string
             maxLength: 400
           description: PostHog distinct IDs of people to interview. May be combined
-            with interviewee_cohort and interviewee_emails.
+            with interviewee_emails.
         topic:
           type: string
           description: The product, feature, or idea you want to ask interviewees

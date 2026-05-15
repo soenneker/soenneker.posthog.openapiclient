@@ -34,9 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
-        /// <summary>Optional cohort ID identifying who to target. Not enforced as a foreign key.</summary>
-        public int? IntervieweeCohort { get; set; }
-        /// <summary>PostHog distinct IDs of people to interview. May be combined with interviewee_cohort and interviewee_emails.</summary>
+        /// <summary>PostHog distinct IDs of people to interview. May be combined with interviewee_emails.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? IntervieweeDistinctIds { get; set; }
@@ -44,7 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> IntervieweeDistinctIds { get; set; }
 #endif
-        /// <summary>Email addresses of people to interview. May be combined with interviewee_cohort and interviewee_distinct_ids.</summary>
+        /// <summary>Email addresses of people to interview. May be combined with interviewee_distinct_ids.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? IntervieweeEmails { get; set; }
@@ -97,7 +95,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "interviewee_cohort", n => { IntervieweeCohort = n.GetIntValue(); } },
                 { "interviewee_distinct_ids", n => { IntervieweeDistinctIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "interviewee_emails", n => { IntervieweeEmails = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "questions", n => { Questions = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -112,7 +109,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("agent_context", AgentContext);
-            writer.WriteIntValue("interviewee_cohort", IntervieweeCohort);
             writer.WriteCollectionOfPrimitiveValues<string>("interviewee_distinct_ids", IntervieweeDistinctIds);
             writer.WriteCollectionOfPrimitiveValues<string>("interviewee_emails", IntervieweeEmails);
             writer.WriteCollectionOfPrimitiveValues<string>("questions", Questions);
