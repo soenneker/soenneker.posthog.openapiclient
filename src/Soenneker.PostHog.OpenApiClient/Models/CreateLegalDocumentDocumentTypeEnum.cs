@@ -5,7 +5,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>* `BAA` - BAA* `DPA` - DPA</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum DocumentTypeEnum
+    public enum CreateLegalDocumentDocumentTypeEnum
     {
         [EnumMember(Value = "BAA")]
         #pragma warning disable CS1591

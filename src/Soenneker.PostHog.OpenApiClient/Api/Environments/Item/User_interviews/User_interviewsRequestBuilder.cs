@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.User_interviews.Item;
+using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.User_interviews.Search;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -19,6 +20,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.User_interviews
         public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.User_interviews.EmptyPathSegmentRequestBuilder EmptyPathSegment
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.User_interviews.EmptyPathSegmentRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The search property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.User_interviews.Search.SearchRequestBuilder Search
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.User_interviews.Search.SearchRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.environments.item.user_interviews.item collection</summary>
         /// <param name="position">A UUID string identifying this user interview.</param>

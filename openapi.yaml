@@ -23518,6 +23518,50 @@ paths:
           description: No response body
       x-explicit-tags:
       - user_interviews
+  /api/environments/{project_id}/user_interview_topics/{id}/add_interviewee/:
+    post:
+      operationId: user_interview_topics_add_interviewee_create
+      description: Add a single interviewee to this topic. Email-shaped identifiers
+        (including the `Display Name <email@host>` form) are appended to `interviewee_emails`;
+        everything else is appended to `interviewee_distinct_ids`. Idempotent — adding
+        an identifier that's already present leaves the topic unchanged. Returns the
+        updated topic.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this user interview topic.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - user_interviews
+      - user_interview_topics
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IntervieweeIdentifierRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/IntervieweeIdentifierRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/IntervieweeIdentifierRequest'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - user_interview:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserInterviewTopic'
+          description: ''
+      x-explicit-tags:
+      - user_interviews
   /api/environments/{project_id}/user_interview_topics/{id}/generate_links/:
     post:
       operationId: user_interview_topics_generate_links_create
@@ -23547,6 +23591,51 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedInterviewLinkList'
+          description: ''
+      x-explicit-tags:
+      - user_interviews
+  /api/environments/{project_id}/user_interview_topics/{id}/remove_interviewee/:
+    post:
+      operationId: user_interview_topics_remove_interviewee_create
+      description: Remove an interviewee from this topic. Drops the identifier from
+        both `interviewee_emails` and `interviewee_distinct_ids`, and disables any
+        active SharingConfiguration linked to an IntervieweeContext for that identifier
+        on this topic so the removed person can no longer open their interview link.
+        Idempotent — removing an identifier that isn't present is a no-op. Returns
+        the updated topic.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this user interview topic.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - user_interviews
+      - user_interview_topics
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IntervieweeIdentifierRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/IntervieweeIdentifierRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/IntervieweeIdentifierRequest'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - user_interview:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserInterviewTopic'
           description: ''
       x-explicit-tags:
       - user_interviews
@@ -24009,6 +24098,41 @@ paths:
       responses:
         '204':
           description: No response body
+      x-explicit-tags:
+      - user_interviews
+  /api/environments/{project_id}/user_interviews/search/:
+    post:
+      operationId: user_interviews_search_create
+      description: Embed `query` with the same model used to index interview transcripts
+        and summaries, then return the top matches by cosine distance. Each match
+        is a single (interview, document_type) pair — an interview can appear up to
+        twice if both its transcript and summary score above other interviews. Useful
+        for surfacing relevant interview snippets in natural language, without exact
+        keyword matches.
+      summary: Search interview responses by semantic similarity
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - user_interviews
+      - user_interviews
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserInterviewSearchRequest'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - user_interview:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserInterviewSearchResult'
+          description: Matches ranked by cosine similarity (descending).
       x-explicit-tags:
       - user_interviews
   /api/environments/{project_id}/vision/lenses/:
@@ -63811,7 +63935,7 @@ components:
       properties:
         document_type:
           allOf:
-          - $ref: '#/components/schemas/DocumentTypeEnum'
+          - $ref: '#/components/schemas/CreateLegalDocumentDocumentTypeEnum'
           description: |-
             Either 'BAA' or 'DPA'.
 
@@ -63835,6 +63959,14 @@ components:
       - company_name
       - document_type
       - representative_email
+    CreateLegalDocumentDocumentTypeEnum:
+      enum:
+      - BAA
+      - DPA
+      type: string
+      description: |-
+        * `BAA` - BAA
+        * `DPA` - DPA
     CreateRecordingRequest:
       type: object
       description: Request body for creating a new recording
@@ -68374,14 +68506,6 @@ components:
       - results
       title: DocumentSimilarityQueryResponse
       type: object
-    DocumentTypeEnum:
-      enum:
-      - BAA
-      - DPA
-      type: string
-      description: |-
-        * `BAA` - BAA
-        * `DPA` - DPA
     DraftStatusResponse:
       type: object
       properties:
@@ -84168,6 +84292,17 @@ components:
       - created_by
       - id
       - interviewee_identifier
+    IntervieweeIdentifierRequest:
+      type: object
+      properties:
+        identifier:
+          type: string
+          description: Email address or PostHog distinct ID for the interviewee. Email-shaped
+            values (including the `Display Name <email@host>` form) are routed to
+            `interviewee_emails`; everything else lands in `interviewee_distinct_ids`.
+          maxLength: 400
+      required:
+      - identifier
     InvestigationInconclusiveActionEnum:
       enum:
       - notify
@@ -127465,6 +127600,90 @@ components:
       - interviewee_identifier
       - topic
       - transcript
+    UserInterviewSearchDocumentTypeEnum:
+      enum:
+      - transcript
+      - summary
+      type: string
+      description: |-
+        * `transcript` - transcript
+        * `summary` - summary
+    UserInterviewSearchRequest:
+      type: object
+      properties:
+        query:
+          type: string
+          description: Natural-language query to match semantically against interview
+            transcripts and summaries.
+          maxLength: 2000
+        document_types:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserInterviewSearchDocumentTypeEnum'
+          description: Which document types to search across. Omit to default to both
+            `transcript` and `summary`. Pass a non-empty subset to restrict the search.
+          minItems: 1
+        topic_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          description: Optional. Restrict results to interviews belonging to a specific
+            UserInterviewTopic.
+        limit:
+          type: integer
+          maximum: 50
+          minimum: 1
+          description: Maximum number of matches to return (1-50). Defaults to 10.
+            Two matches per interview are possible — one for the transcript, one for
+            the summary.
+      required:
+      - query
+    UserInterviewSearchResult:
+      type: object
+      properties:
+        interview_id:
+          type: string
+          format: uuid
+          description: ID of the matched UserInterview.
+        document_type:
+          allOf:
+          - $ref: '#/components/schemas/UserInterviewSearchDocumentTypeEnum'
+          description: |-
+            Which document type matched — `transcript` is the raw conversation, `summary` is the AI-generated abstract.
+
+            * `transcript` - transcript
+            * `summary` - summary
+        similarity:
+          type: number
+          format: double
+          description: Cosine similarity in [0, 1]; higher is closer to the query.
+            Computed as `1 - cosineDistance`.
+        content_snippet:
+          type: string
+          description: Excerpt of the matched document (first 500 characters).
+        interviewee_identifier:
+          type: string
+          description: Email or PostHog distinct ID of the interviewee.
+        topic_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          description: ID of the UserInterviewTopic the interview was conducted for,
+            or null if detached.
+        created_at:
+          type: string
+          format: date-time
+          description: When the interview row was created.
+      required:
+      - content_snippet
+      - created_at
+      - document_type
+      - interview_id
+      - interviewee_identifier
+      - similarity
+      - topic_id
     UserInterviewTopic:
       type: object
       properties:

@@ -2,8 +2,10 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.User_interview_topics.Item.Add_interviewee;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.User_interview_topics.Item.Generate_links;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.User_interview_topics.Item.Interviewees;
+using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.User_interview_topics.Item.Remove_interviewee;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.User_interview_topics.Item.Send_invites;
 using System.Collections.Generic;
 using System.IO;
@@ -17,6 +19,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.User_interview_t
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The add_interviewee property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.User_interview_topics.Item.Add_interviewee.Add_intervieweeRequestBuilder Add_interviewee
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.User_interview_topics.Item.Add_interviewee.Add_intervieweeRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The EmptyPathSegment property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.User_interview_topics.Item.EmptyPathSegmentRequestBuilder EmptyPathSegment
         {
@@ -31,6 +38,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.User_interview_t
         public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.User_interview_topics.Item.Interviewees.IntervieweesRequestBuilder Interviewees
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.User_interview_topics.Item.Interviewees.IntervieweesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The remove_interviewee property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.User_interview_topics.Item.Remove_interviewee.Remove_intervieweeRequestBuilder Remove_interviewee
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.User_interview_topics.Item.Remove_interviewee.Remove_intervieweeRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The send_invites property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.User_interview_topics.Item.Send_invites.Send_invitesRequestBuilder Send_invites

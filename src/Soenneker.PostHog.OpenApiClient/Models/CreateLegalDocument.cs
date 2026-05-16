@@ -32,7 +32,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string CompanyName { get; set; }
 #endif
         /// <summary>Either &apos;BAA&apos; or &apos;DPA&apos;.* `BAA` - BAA* `DPA` - DPA</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.DocumentTypeEnum? DocumentType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CreateLegalDocumentDocumentTypeEnum? DocumentType { get; set; }
         /// <summary>Email the signed PandaDoc envelope is sent to (PandaDoc&apos;s Client.Email).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -68,7 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "company_address", n => { CompanyAddress = n.GetStringValue(); } },
                 { "company_name", n => { CompanyName = n.GetStringValue(); } },
-                { "document_type", n => { DocumentType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DocumentTypeEnum>(); } },
+                { "document_type", n => { DocumentType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateLegalDocumentDocumentTypeEnum>(); } },
                 { "representative_email", n => { RepresentativeEmail = n.GetStringValue(); } },
             };
         }
@@ -81,7 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("company_address", CompanyAddress);
             writer.WriteStringValue("company_name", CompanyName);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DocumentTypeEnum>("document_type", DocumentType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateLegalDocumentDocumentTypeEnum>("document_type", DocumentType);
             writer.WriteStringValue("representative_email", RepresentativeEmail);
             writer.WriteAdditionalData(AdditionalData);
         }
