@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `check` - Check* `reset` - Reset* `enable` - Enable* `disable` - Disable* `snooze` - Snooze* `unsnooze` - Unsnooze* `threshold_change` - Threshold change</summary>
+    /// <summary>* `check` - Check* `reset` - Reset* `enable` - Enable* `disable` - Disable* `snooze` - Snooze* `unsnooze` - Unsnooze* `threshold_change` - Threshold change* `broken_config` - Broken config</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum LogsAlertEventKindEnum
     {
@@ -34,6 +34,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "threshold_change")]
         #pragma warning disable CS1591
         Threshold_change,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "broken_config")]
+        #pragma warning disable CS1591
+        Broken_config,
         #pragma warning restore CS1591
     }
 }

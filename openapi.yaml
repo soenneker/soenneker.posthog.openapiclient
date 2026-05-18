@@ -6733,32 +6733,6 @@ paths:
       deprecated: true
       x-explicit-tags:
       - workflows
-  /api/environments/{environment_id}/hog_flows/{id}/blocked_runs/:
-    get:
-      operationId: environments_hog_flows_blocked_runs_retrieve
-      description: List workflow runs that were blocked by the dedup bug.
-      parameters:
-      - $ref: '#/components/parameters/EnvironmentIdPath'
-      - in: path
-        name: id
-        schema:
-          type: string
-          format: uuid
-        description: A UUID string identifying this hog flow.
-        required: true
-      tags:
-      - workflows
-      - hog_flows
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HogFlow'
-          description: ''
-      deprecated: true
-      x-explicit-tags:
-      - workflows
   /api/environments/{environment_id}/hog_flows/{id}/invocations/:
     post:
       operationId: environments_hog_flows_invocations_create
@@ -7035,83 +7009,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AppMetricsTotalsResponse'
-          description: ''
-      deprecated: true
-      x-explicit-tags:
-      - workflows
-  /api/environments/{environment_id}/hog_flows/{id}/replay_all_blocked_runs/:
-    post:
-      operationId: environments_hog_flows_replay_all_blocked_runs_create
-      description: Replay all blocked runs in a single bulk call to Node.
-      parameters:
-      - $ref: '#/components/parameters/EnvironmentIdPath'
-      - in: path
-        name: id
-        schema:
-          type: string
-          format: uuid
-        description: A UUID string identifying this hog flow.
-        required: true
-      tags:
-      - workflows
-      - hog_flows
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/HogFlow'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/HogFlow'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/HogFlow'
-        required: true
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HogFlow'
-          description: ''
-      deprecated: true
-      x-explicit-tags:
-      - workflows
-  /api/environments/{environment_id}/hog_flows/{id}/replay_blocked_run/:
-    post:
-      operationId: environments_hog_flows_replay_blocked_run_create
-      description: Replay a single blocked run. Django fetches the event, Node creates
-        the invocation and writes the log.
-      parameters:
-      - $ref: '#/components/parameters/EnvironmentIdPath'
-      - in: path
-        name: id
-        schema:
-          type: string
-          format: uuid
-        description: A UUID string identifying this hog flow.
-        required: true
-      tags:
-      - workflows
-      - hog_flows
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/HogFlow'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/HogFlow'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/HogFlow'
-        required: true
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HogFlow'
           description: ''
       deprecated: true
       x-explicit-tags:
@@ -37411,11 +37308,14 @@ paths:
     post:
       operationId: experiments_ship_variant_create
       description: |-
-        Ship a variant to 100% of users and (optionally) end the experiment.
+        Ship a variant and (optionally) end the experiment.
 
-        Rewrites the feature flag so that the selected variant is served to everyone.
-        Existing release conditions (flag groups) are preserved so the change can be
-        rolled back by deleting the auto-added release condition in the feature flag UI.
+        Updates the feature flag so the selected variant gets 100% of the variant
+        distribution. By default, existing release conditions on the flag are preserved
+        untouched — the variant is served only to users who already match them. Pass
+        ``release_to_everyone: true`` to also prepend a catch-all release condition
+        that rolls the variant out to 100% of users (overrides any existing release
+        conditions on the flag).
 
         Can be called on both running and stopped experiments. If the experiment is
         still running, it will also be ended (end_date set and status marked as stopped).
@@ -41214,31 +41114,6 @@ paths:
           description: ''
       x-explicit-tags:
       - workflows
-  /api/projects/{project_id}/hog_flows/{id}/blocked_runs/:
-    get:
-      operationId: hog_flows_blocked_runs_retrieve
-      description: List workflow runs that were blocked by the dedup bug.
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-          format: uuid
-        description: A UUID string identifying this hog flow.
-        required: true
-      - $ref: '#/components/parameters/ProjectIdPath'
-      tags:
-      - workflows
-      - hog_flows
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HogFlow'
-          description: ''
-      x-explicit-tags:
-      - workflows
   /api/projects/{project_id}/hog_flows/{id}/invocations/:
     post:
       operationId: hog_flows_invocations_create
@@ -41512,81 +41387,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AppMetricsTotalsResponse'
-          description: ''
-      x-explicit-tags:
-      - workflows
-  /api/projects/{project_id}/hog_flows/{id}/replay_all_blocked_runs/:
-    post:
-      operationId: hog_flows_replay_all_blocked_runs_create
-      description: Replay all blocked runs in a single bulk call to Node.
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-          format: uuid
-        description: A UUID string identifying this hog flow.
-        required: true
-      - $ref: '#/components/parameters/ProjectIdPath'
-      tags:
-      - workflows
-      - hog_flows
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/HogFlow'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/HogFlow'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/HogFlow'
-        required: true
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HogFlow'
-          description: ''
-      x-explicit-tags:
-      - workflows
-  /api/projects/{project_id}/hog_flows/{id}/replay_blocked_run/:
-    post:
-      operationId: hog_flows_replay_blocked_run_create
-      description: Replay a single blocked run. Django fetches the event, Node creates
-        the invocation and writes the log.
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-          format: uuid
-        description: A UUID string identifying this hog flow.
-        required: true
-      - $ref: '#/components/parameters/ProjectIdPath'
-      tags:
-      - workflows
-      - hog_flows
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/HogFlow'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/HogFlow'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/HogFlow'
-        required: true
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HogFlow'
           description: ''
       x-explicit-tags:
       - workflows
@@ -76119,13 +75919,22 @@ components:
           readOnly: true
         name:
           type: string
+          description: Name of the shared metric. Must be unique within the project
+            (case-insensitive).
           maxLength: 400
         description:
           type:
           - string
           - 'null'
+          description: Short description of what the metric measures.
           maxLength: 400
-        query: {}
+        query:
+          description: 'ExperimentMetric JSON. Must have kind=''ExperimentMetric''
+            and a metric_type: ''mean'' (set source to an EventsNode with an event
+            name), ''funnel'' (set series to an array of EventsNode steps), ''ratio''
+            (set numerator and denominator EventsNode entries), or ''retention'' (set
+            start_event and completion_event). Legacy kinds (ExperimentTrendsQuery,
+            ExperimentFunnelsQuery) are rejected for new shared metrics.'
         created_by:
           allOf:
           - $ref: '#/components/schemas/UserBasic'
@@ -86940,6 +86749,7 @@ components:
       - snooze
       - unsnooze
       - threshold_change
+      - broken_config
       type: string
       description: |-
         * `check` - Check
@@ -86949,6 +86759,7 @@ components:
         * `snooze` - Snooze
         * `unsnooze` - Unsnooze
         * `threshold_change` - Threshold change
+        * `broken_config` - Broken config
     LogsAlertSimulateBucket:
       type: object
       properties:
@@ -96058,13 +95869,22 @@ components:
           readOnly: true
         name:
           type: string
+          description: Name of the shared metric. Must be unique within the project
+            (case-insensitive).
           maxLength: 400
         description:
           type:
           - string
           - 'null'
+          description: Short description of what the metric measures.
           maxLength: 400
-        query: {}
+        query:
+          description: 'ExperimentMetric JSON. Must have kind=''ExperimentMetric''
+            and a metric_type: ''mean'' (set source to an EventsNode with an event
+            name), ''funnel'' (set series to an array of EventsNode steps), ''ratio''
+            (set numerator and denominator EventsNode entries), or ''retention'' (set
+            start_event and completion_event). Legacy kinds (ExperimentTrendsQuery,
+            ExperimentFunnelsQuery) are rejected for new shared metrics.'
         created_by:
           allOf:
           - $ref: '#/components/schemas/UserBasic'
@@ -100330,7 +100150,27 @@ components:
           type: boolean
         completed_snippet_onboarding:
           type: boolean
-        test_account_filters: {}
+        test_account_filters:
+          description: |-
+            Filters used to identify internal/test users. Each entry is a property filter.
+
+                        Supported entry types and the exact shape each accepts:
+
+                        # Person property — match (or exclude) by a person property
+                        {"key": "email", "type": "person", "value": "@example.com", "operator": "icontains"}
+
+                        # Event property — match by an event property
+                        {"key": "$host", "type": "event", "value": "localhost", "operator": "icontains"}
+
+                        # Cohort membership — match (or exclude) members of a cohort.
+                        # Use operator "in" for inclusion and "not_in" for exclusion. Do NOT use a
+                        # `negation` field here — `negation` is specific to cohort *definitions*
+                        # (the inner sub-filters that build a cohort) and is rejected by the
+                        # property-filter schema.
+                        {"key": "id", "type": "cohort", "value": 8814, "operator": "not_in"}
+
+                        Common operators: "exact", "is_not", "icontains", "not_icontains", "regex",
+                        "not_regex", "gt", "lt", "gte", "lte", "is_set", "is_not_set", "in", "not_in".
         test_account_filters_default_checked:
           type:
           - boolean
@@ -118038,7 +117878,15 @@ components:
           description: Optional comment about the experiment conclusion.
         variant_key:
           type: string
-          description: The key of the variant to ship to 100% of users.
+          description: The key of the variant to ship.
+        release_to_everyone:
+          type: boolean
+          default: false
+          description: If true, prepend a release condition to the feature flag that
+            rolls the variant out to 100% of users, overriding any existing release
+            conditions on the flag. If false (default), only update the variant distribution
+            — existing release conditions are preserved and the variant is served
+            only to users who already match them.
       required:
       - variant_key
     ShortcutPositionEnum:
@@ -122621,7 +122469,27 @@ components:
           type: boolean
         completed_snippet_onboarding:
           type: boolean
-        test_account_filters: {}
+        test_account_filters:
+          description: |-
+            Filters used to identify internal/test users. Each entry is a property filter.
+
+                        Supported entry types and the exact shape each accepts:
+
+                        # Person property — match (or exclude) by a person property
+                        {"key": "email", "type": "person", "value": "@example.com", "operator": "icontains"}
+
+                        # Event property — match by an event property
+                        {"key": "$host", "type": "event", "value": "localhost", "operator": "icontains"}
+
+                        # Cohort membership — match (or exclude) members of a cohort.
+                        # Use operator "in" for inclusion and "not_in" for exclusion. Do NOT use a
+                        # `negation` field here — `negation` is specific to cohort *definitions*
+                        # (the inner sub-filters that build a cohort) and is rejected by the
+                        # property-filter schema.
+                        {"key": "id", "type": "cohort", "value": 8814, "operator": "not_in"}
+
+                        Common operators: "exact", "is_not", "icontains", "not_icontains", "regex",
+                        "not_regex", "gt", "lt", "gte", "lte", "is_set", "is_not_set", "in", "not_in".
         test_account_filters_default_checked:
           type:
           - boolean
@@ -125917,6 +125785,12 @@ components:
           - $ref: '#/components/schemas/TraceSpansTreeQueryResponse'
           - type: 'null'
           default: null
+        serviceName:
+          description: Service name that scopes the returned tree. Applied to the
+            spans CTE so the call-tree only contains spans from this service, even
+            when matched traces span multiple services.
+          title: Servicename
+          type: string
         serviceNames:
           anyOf:
           - items:
@@ -125946,6 +125820,7 @@ components:
           title: Version
       required:
       - dateRange
+      - serviceName
       - spanName
       title: TraceSpansTreeQuery
       type: object
@@ -131528,6 +131403,11 @@ components:
           description: Span name to scope the matched trace set. Required because
             the (trace_id, parent_span_id) self-join is unsafe without bounding the
             matched traces.
+        serviceName:
+          type: string
+          description: Service name that scopes the returned tree. Applied to the
+            spans CTE so the call-tree only contains spans from this service, even
+            when matched traces span multiple services.
         dateRange:
           allOf:
           - $ref: '#/components/schemas/_TracingDateRange'
@@ -131549,6 +131429,7 @@ components:
           default: []
           description: Additional property filters applied to spans in both windows.
       required:
+      - serviceName
       - spanName
     _TracingTreeRequest:
       type: object

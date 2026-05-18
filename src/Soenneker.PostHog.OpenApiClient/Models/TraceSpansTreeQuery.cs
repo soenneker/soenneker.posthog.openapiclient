@@ -60,6 +60,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansTreeQueryResponse Response { get; set; }
 #endif
+        /// <summary>Service name that scopes the returned tree. Applied to the spans CTE so the call-tree only contains spans from this service, even when matched traces span multiple services.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ServiceName { get; set; }
+#nullable restore
+#else
+        public string ServiceName { get; set; }
+#endif
         /// <summary>The serviceNames property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -117,6 +125,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "kind", n => { Kind = n.GetStringValue(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansTreeQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansTreeQueryResponse.CreateFromDiscriminatorValue); } },
+                { "serviceName", n => { ServiceName = n.GetStringValue(); } },
                 { "serviceNames", n => { ServiceNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "spanName", n => { SpanName = n.GetStringValue(); } },
                 { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
@@ -136,6 +145,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansTreeQueryResponse>("response", Response);
+            writer.WriteStringValue("serviceName", ServiceName);
             writer.WriteCollectionOfPrimitiveValues<string>("serviceNames", ServiceNames);
             writer.WriteStringValue("spanName", SpanName);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);

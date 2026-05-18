@@ -38,6 +38,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter> FilterGroup { get; set; }
 #endif
+        /// <summary>Service name that scopes the returned tree. Applied to the spans CTE so the call-tree only contains spans from this service, even when matched traces span multiple services.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ServiceName { get; set; }
+#nullable restore
+#else
+        public string ServiceName { get; set; }
+#endif
         /// <summary>Filter by service names.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -82,6 +90,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "compareFilter", n => { CompareFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter>(global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter.CreateFromDiscriminatorValue); } },
                 { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingDateRange>(global::Soenneker.PostHog.OpenApiClient.Models.TracingDateRange.CreateFromDiscriminatorValue); } },
                 { "filterGroup", n => { FilterGroup = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter>(global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "serviceName", n => { ServiceName = n.GetStringValue(); } },
                 { "serviceNames", n => { ServiceNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "spanName", n => { SpanName = n.GetStringValue(); } },
             };
@@ -96,6 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter>("compareFilter", CompareFilter);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingDateRange>("dateRange", DateRange);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter>("filterGroup", FilterGroup);
+            writer.WriteStringValue("serviceName", ServiceName);
             writer.WriteCollectionOfPrimitiveValues<string>("serviceNames", ServiceNames);
             writer.WriteStringValue("spanName", SpanName);
             writer.WriteAdditionalData(AdditionalData);

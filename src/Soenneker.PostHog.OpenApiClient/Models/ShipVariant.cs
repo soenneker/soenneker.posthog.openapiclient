@@ -30,7 +30,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ConclusionComment { get; set; }
 #endif
-        /// <summary>The key of the variant to ship to 100% of users.</summary>
+        /// <summary>If true, prepend a release condition to the feature flag that rolls the variant out to 100% of users, overriding any existing release conditions on the flag. If false (default), only update the variant distribution — existing release conditions are preserved and the variant is served only to users who already match them.</summary>
+        public bool? ReleaseToEveryone { get; set; }
+        /// <summary>The key of the variant to ship.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? VariantKey { get; set; }
@@ -65,6 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "conclusion", n => { Conclusion = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ShipVariant.ShipVariant_conclusion>(global::Soenneker.PostHog.OpenApiClient.Models.ShipVariant.ShipVariant_conclusion.CreateFromDiscriminatorValue); } },
                 { "conclusion_comment", n => { ConclusionComment = n.GetStringValue(); } },
+                { "release_to_everyone", n => { ReleaseToEveryone = n.GetBoolValue(); } },
                 { "variant_key", n => { VariantKey = n.GetStringValue(); } },
             };
         }
@@ -77,6 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ShipVariant.ShipVariant_conclusion>("conclusion", Conclusion);
             writer.WriteStringValue("conclusion_comment", ConclusionComment);
+            writer.WriteBoolValue("release_to_everyone", ReleaseToEveryone);
             writer.WriteStringValue("variant_key", VariantKey);
             writer.WriteAdditionalData(AdditionalData);
         }
