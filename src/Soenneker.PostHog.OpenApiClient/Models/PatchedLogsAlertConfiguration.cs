@@ -47,10 +47,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Filter criteria — subset of LogsViewerFilters. Must contain at least one of: severityLevels (list of severity strings), serviceNames (list of service name strings), or filterGroup (property filter group object). May be empty on draft alerts (enabled=false).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertFilters? Filters { get; set; }
 #nullable restore
 #else
-        public UntypedNode Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertFilters Filters { get; set; }
 #endif
         /// <summary>When the alert was first enabled. Null means the alert is still in draft state.</summary>
         public DateTimeOffset? FirstEnabledAt { get; private set; }
@@ -133,7 +133,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "destination_types", n => { DestinationTypes = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.NotificationDestinationTypeEnum>()?.AsList(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "evaluation_periods", n => { EvaluationPeriods = n.GetIntValue(); } },
-                { "filters", n => { Filters = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertFilters>(global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertFilters.CreateFromDiscriminatorValue); } },
                 { "first_enabled_at", n => { FirstEnabledAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "last_checked_at", n => { LastCheckedAt = n.GetDateTimeOffsetValue(); } },
@@ -161,7 +161,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("datapoints_to_alarm", DatapointsToAlarm);
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteIntValue("evaluation_periods", EvaluationPeriods);
-            writer.WriteObjectValue<UntypedNode>("filters", Filters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertFilters>("filters", Filters);
             writer.WriteStringValue("name", Name);
             writer.WriteDateTimeOffsetValue("snooze_until", SnoozeUntil);
             writer.WriteIntValue("threshold_count", ThresholdCount);

@@ -44,7 +44,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string CreatedBy { get; private set; }
 #endif
         /// <summary>How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent/MCP tool calls. Ignored on update.* `web` - web* `api` - api* `mcp` - mcp</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.CreatedViaEnum? CreatedVia { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers.ExternalDataSourceSerializers_created_via? CreatedVia { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers.ExternalDataSourceSerializers_created_via CreatedVia { get; set; }
+#endif
         /// <summary>The description property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -161,7 +167,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "client_secret", n => { ClientSecret = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetStringValue(); } },
-                { "created_via", n => { CreatedVia = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CreatedViaEnum>(); } },
+                { "created_via", n => { CreatedVia = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers.ExternalDataSourceSerializers_created_via>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers.ExternalDataSourceSerializers_created_via.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "engine", n => { Engine = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers.ExternalDataSourceSerializers_engine>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers.ExternalDataSourceSerializers_engine.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
@@ -186,11 +192,76 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("account_id", AccountId);
             writer.WriteStringValue("client_secret", ClientSecret);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CreatedViaEnum>("created_via", CreatedVia);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers.ExternalDataSourceSerializers_created_via>("created_via", CreatedVia);
             writer.WriteStringValue("description", Description);
             writer.WriteObjectValue<UntypedNode>("job_inputs", JobInputs);
             writer.WriteStringValue("prefix", Prefix);
             writer.WriteAdditionalData(AdditionalData);
+        }
+        /// <summary>
+        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CreatedViaEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class ExternalDataSourceSerializers_created_via : IComposedTypeWrapper, IParsable
+        {
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CreatedViaEnum"/></summary>
+            public global::Soenneker.PostHog.OpenApiClient.Models.CreatedViaEnum? CreatedViaEnum { get; set; }
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum? NullEnum { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum NullEnum { get; set; }
+#endif
+            /// <summary>
+            /// Creates a new instance of the appropriate class based on discriminator value
+            /// </summary>
+            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers.ExternalDataSourceSerializers_created_via"/></returns>
+            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
+            public static global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers.ExternalDataSourceSerializers_created_via CreateFromDiscriminatorValue(IParseNode parseNode)
+            {
+                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
+                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
+                var result = new global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers.ExternalDataSourceSerializers_created_via();
+                if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CreatedViaEnum>() is global::Soenneker.PostHog.OpenApiClient.Models.CreatedViaEnum createdViaEnumValue)
+                {
+                    result.CreatedViaEnum = createdViaEnumValue;
+                }
+                else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+                {
+                    result.NullEnum = new global::Soenneker.PostHog.OpenApiClient.Models.NullEnum();
+                }
+                return result;
+            }
+            /// <summary>
+            /// The deserialization information for the current model
+            /// </summary>
+            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
+            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+            {
+                if(NullEnum != null)
+                {
+                    return NullEnum.GetFieldDeserializers();
+                }
+                return new Dictionary<string, Action<IParseNode>>();
+            }
+            /// <summary>
+            /// Serializes information the current object
+            /// </summary>
+            /// <param name="writer">Serialization writer to use to serialize this model</param>
+            public virtual void Serialize(ISerializationWriter writer)
+            {
+                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+                if(CreatedViaEnum != null)
+                {
+                    writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CreatedViaEnum>(null, CreatedViaEnum);
+                }
+                else if(NullEnum != null)
+                {
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NullEnum>(null, NullEnum);
+                }
+            }
         }
         /// <summary>
         /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EngineEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>

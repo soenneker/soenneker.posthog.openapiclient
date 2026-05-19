@@ -12,7 +12,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class TeamCustomerAnalyticsConfig : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>The activity_event property</summary>
+        /// <summary>Index of the group type to treat as an Account in customer analytics. Must reference an existing group type configured for the project.</summary>
+        public int? AccountGroupTypeIndex { get; set; }
+        /// <summary>Event used as the activity signal (DAU/WAU/MAU).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public UntypedNode? ActivityEvent { get; set; }
@@ -22,7 +24,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The payment_event property</summary>
+        /// <summary>Event used to count payments on dashboards.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public UntypedNode? PaymentEvent { get; set; }
@@ -30,7 +32,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public UntypedNode PaymentEvent { get; set; }
 #endif
-        /// <summary>The signup_event property</summary>
+        /// <summary>Event used to count signups on dashboards.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public UntypedNode? SignupEvent { get; set; }
@@ -38,7 +40,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public UntypedNode SignupEvent { get; set; }
 #endif
-        /// <summary>The signup_pageview_event property</summary>
+        /// <summary>Event used to count signup pageviews on dashboards.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public UntypedNode? SignupPageviewEvent { get; set; }
@@ -46,7 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public UntypedNode SignupPageviewEvent { get; set; }
 #endif
-        /// <summary>The subscription_event property</summary>
+        /// <summary>Event used to count subscriptions on dashboards.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public UntypedNode? SubscriptionEvent { get; set; }
@@ -79,6 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "account_group_type_index", n => { AccountGroupTypeIndex = n.GetIntValue(); } },
                 { "activity_event", n => { ActivityEvent = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "payment_event", n => { PaymentEvent = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "signup_event", n => { SignupEvent = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
@@ -93,6 +96,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteIntValue("account_group_type_index", AccountGroupTypeIndex);
             writer.WriteObjectValue<UntypedNode>("activity_event", ActivityEvent);
             writer.WriteObjectValue<UntypedNode>("payment_event", PaymentEvent);
             writer.WriteObjectValue<UntypedNode>("signup_event", SignupEvent);

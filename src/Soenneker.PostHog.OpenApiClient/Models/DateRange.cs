@@ -9,10 +9,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class DateRange : IParsable
+    public partial class DateRange : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Start of the date range. Accepts ISO 8601 timestamps (e.g., 2024-01-15T00:00:00Z) or relative formats: -7d (7 days ago), -2w (2 weeks ago), -1m (1 month ago),-1h (1 hour ago), -1mStart (start of last month), -1yStart (start of last year).</summary>
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Start of the date range. Accepts ISO 8601 timestamps or relative formats: -7d, -1h, -1mStart, etc.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? DateFrom { get; set; }
@@ -28,8 +30,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string DateTo { get; set; }
 #endif
-        /// <summary>Whether the date_from and date_to should be used verbatim. Disables rounding to the start and end of period.</summary>
-        public bool? ExplicitDate { get; set; }
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DateRange"/> and sets the default values.
+        /// </summary>
+        public DateRange()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -50,7 +57,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "date_from", n => { DateFrom = n.GetStringValue(); } },
                 { "date_to", n => { DateTo = n.GetStringValue(); } },
-                { "explicitDate", n => { ExplicitDate = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -62,7 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("date_from", DateFrom);
             writer.WriteStringValue("date_to", DateTo);
-            writer.WriteBoolValue("explicitDate", ExplicitDate);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

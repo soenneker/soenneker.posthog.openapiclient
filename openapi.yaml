@@ -48252,6 +48252,13 @@ paths:
           default: false
         description: Whether to exclude properties marked as hidden
       - in: query
+        name: exclude_restricted
+        schema:
+          type: boolean
+          default: false
+        description: Whether to exclude properties that the current user does not
+          have read access to via field-level access control
+      - in: query
         name: excluded_properties
         schema:
           type: string
@@ -77047,14 +77054,15 @@ components:
           - 'null'
           readOnly: true
         created_via:
-          allOf:
-          - $ref: '#/components/schemas/CreatedViaEnum'
           description: |-
             How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent/MCP tool calls. Ignored on update.
 
             * `web` - web
             * `api` - api
             * `mcp` - mcp
+          oneOf:
+          - $ref: '#/components/schemas/CreatedViaEnum'
+          - $ref: '#/components/schemas/NullEnum'
         status:
           type: string
           readOnly: true
@@ -85548,6 +85556,57 @@ components:
       - google
       type: string
       description: '* `google` - Google'
+    LensSnapshot:
+      type: object
+      description: Mirrors `temporal.types.LensSnapshot` for OpenAPI generation.
+      properties:
+        name:
+          type: string
+          description: Lens name at run time.
+        lens_type:
+          allOf:
+          - $ref: '#/components/schemas/LensTypeEnum'
+          description: |-
+            Lens type (monitor, classifier, scorer, summarizer, indexer) at run time.
+
+            * `monitor` - Monitor
+            * `classifier` - Classifier
+            * `scorer` - Scorer
+            * `summarizer` - Summarizer
+            * `indexer` - Indexer
+        lens_version:
+          type: integer
+          description: The `ReplayLens.lens_version` value at the moment the workflow
+            ran.
+        model:
+          allOf:
+          - $ref: '#/components/schemas/LensModelEnum'
+          description: |-
+            Concrete model that ran the observation.
+
+            * `gemini-3-flash` - Gemini 3 Flash
+            * `gemini-3-flash-lite` - Gemini 3 Flash Lite
+        provider:
+          allOf:
+          - $ref: '#/components/schemas/LensProviderEnum'
+          description: |-
+            Concrete provider that ran the observation.
+
+            * `google` - Google
+        emits_signals:
+          type: boolean
+          description: Whether the observation was run with Signal emission enabled.
+        lens_config:
+          description: Lens-type-specific configuration at run time (prompt, tags,
+            scale, etc.).
+      required:
+      - emits_signals
+      - lens_config
+      - lens_type
+      - lens_version
+      - model
+      - name
+      - provider
     LensTypeEnum:
       enum:
       - monitor
@@ -86467,6 +86526,8 @@ components:
           description: Whether the alert is actively being evaluated. Disabling resets
             the state to not_firing.
         filters:
+          allOf:
+          - $ref: '#/components/schemas/LogsAlertFilters'
           description: 'Filter criteria — subset of LogsViewerFilters. Must contain
             at least one of: severityLevels (list of severity strings), serviceNames
             (list of service name strings), or filterGroup (property filter group
@@ -86760,6 +86821,32 @@ components:
         * `unsnooze` - Unsnooze
         * `threshold_change` - Threshold change
         * `broken_config` - Broken config
+    LogsAlertFilters:
+      additionalProperties: false
+      properties:
+        filterGroup:
+          anyOf:
+          - $ref: '#/components/schemas/PropertyGroupFilter'
+          - type: 'null'
+          default: null
+        serviceNames:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          default: null
+          title: Servicenames
+        severityLevels:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/LogSeverityLevel'
+            type: array
+          - type: 'null'
+          default: null
+          title: Severitylevels
+      title: LogsAlertFilters
+      type: object
     LogsAlertSimulateBucket:
       type: object
       properties:
@@ -86793,6 +86880,8 @@ components:
       type: object
       properties:
         filters:
+          allOf:
+          - $ref: '#/components/schemas/LogsAlertFilters'
           description: Filter criteria — same format as LogsAlertConfiguration.filters.
         threshold_count:
           type: integer
@@ -87151,16 +87240,16 @@ components:
             additionalProperties: true
           description: Optional list of predicates over string attributes, e.g. [{"key":"http.route","op":"eq","value":"/api"}].
         config:
-          description: 'Type-specific JSON. For path_drop: object with required `patterns`
-            (list of regex strings) and optional `match_attribute_key` (string). When
-            `match_attribute_key` is omitted or empty, patterns match the same virtual
-            path string as ingestion (url.path, http.path, http.route, path). When
-            set, each pattern is tested only against that string attribute on the
-            log record. For severity_sampling: object with `actions` per severity
-            level and optional `always_keep`. For rate_limit: object with required
-            `logs_per_second` (integer 1–1000000) and optional `burst_logs` (integer
-            ≥ logs_per_second, max 60000000); rate_limit rules require non-null `scope_service`
-            matching `service.name` on each log line.'
+          description: 'Type-specific JSON. For path_drop: object with optional `filter_group`
+            (PropertyGroupFilter shape — AND/OR tree of property predicates evaluated
+            per record) and/or legacy `patterns` (list of regex strings) + `match_attribute_key`
+            (string). When both are present a record is dropped if EITHER matches.
+            Filter group example: `{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api"}]}]}`.
+            For severity_sampling: object with `actions` per severity level and optional
+            `always_keep`. For rate_limit: object with required `logs_per_second`
+            (integer 1–1000000) and optional `burst_logs` (integer ≥ logs_per_second,
+            max 60000000); rate_limit rules require non-null `scope_service` matching
+            `service.name` on each log line.'
         version:
           type: integer
           readOnly: true
@@ -96051,14 +96140,15 @@ components:
           - 'null'
           readOnly: true
         created_via:
-          allOf:
-          - $ref: '#/components/schemas/CreatedViaEnum'
           description: |-
             How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent/MCP tool calls. Ignored on update.
 
             * `web` - web
             * `api` - api
             * `mcp` - mcp
+          oneOf:
+          - $ref: '#/components/schemas/CreatedViaEnum'
+          - $ref: '#/components/schemas/NullEnum'
         status:
           type: string
           readOnly: true
@@ -97088,6 +97178,8 @@ components:
           description: Whether the alert is actively being evaluated. Disabling resets
             the state to not_firing.
         filters:
+          allOf:
+          - $ref: '#/components/schemas/LogsAlertFilters'
           description: 'Filter criteria — subset of LogsViewerFilters. Must contain
             at least one of: severityLevels (list of severity strings), serviceNames
             (list of service name strings), or filterGroup (property filter group
@@ -97287,16 +97379,16 @@ components:
             additionalProperties: true
           description: Optional list of predicates over string attributes, e.g. [{"key":"http.route","op":"eq","value":"/api"}].
         config:
-          description: 'Type-specific JSON. For path_drop: object with required `patterns`
-            (list of regex strings) and optional `match_attribute_key` (string). When
-            `match_attribute_key` is omitted or empty, patterns match the same virtual
-            path string as ingestion (url.path, http.path, http.route, path). When
-            set, each pattern is tested only against that string attribute on the
-            log record. For severity_sampling: object with `actions` per severity
-            level and optional `always_keep`. For rate_limit: object with required
-            `logs_per_second` (integer 1–1000000) and optional `burst_logs` (integer
-            ≥ logs_per_second, max 60000000); rate_limit rules require non-null `scope_service`
-            matching `service.name` on each log line.'
+          description: 'Type-specific JSON. For path_drop: object with optional `filter_group`
+            (PropertyGroupFilter shape — AND/OR tree of property predicates evaluated
+            per record) and/or legacy `patterns` (list of regex strings) + `match_attribute_key`
+            (string). When both are present a record is dropped if EITHER matches.
+            Filter group example: `{"type":"AND","values":[{"type":"AND","values":[{"key":"service.name","operator":"exact","value":"api"}]}]}`.
+            For severity_sampling: object with `actions` per severity level and optional
+            `always_keep`. For rate_limit: object with required `logs_per_second`
+            (integer 1–1000000) and optional `burst_logs` (integer ≥ logs_per_second,
+            max 60000000); rate_limit rules require non-null `scope_service` matching
+            `service.name` on each log line.'
         version:
           type: integer
           readOnly: true
@@ -111376,30 +111468,19 @@ components:
         error_reason:
           type: string
           readOnly: true
-          description: Populated on failure. Includes the malformed model response
+          description: Populated on failure; includes the malformed model response
             when validation fails.
         workflow_id:
           type: string
           readOnly: true
           description: Temporal workflow id for progress queries and debugging. Empty
             until the workflow starts.
-        lens_version:
-          type: integer
+        lens_snapshot:
+          allOf:
+          - $ref: '#/components/schemas/LensSnapshot'
           readOnly: true
-          description: The `ReplayLens.lens_version` value at the moment the workflow
-            ran.
-        lens_config_snapshot:
-          readOnly: true
-          description: Snapshot of `ReplayLens.lens_config` at run time. Lens edits
-            do not retroactively mutate observations.
-        model_used:
-          type: string
-          readOnly: true
-          description: Concrete model that ran the observation.
-        provider_used:
-          type: string
-          readOnly: true
-          description: Concrete provider that ran the observation.
+          description: Frozen view of the lens at run time; lens edits do not retroactively
+            mutate this observation.
         triggered_by:
           allOf:
           - $ref: '#/components/schemas/ObservationTriggerEnum'
@@ -111414,7 +111495,7 @@ components:
           - $ref: '#/components/schemas/UserBasic'
           - type: 'null'
           readOnly: true
-          description: User who triggered an on-demand observation. Null for scheduled
+          description: User who triggered an on-demand observation; null for scheduled
             observations.
         started_at:
           type:
@@ -111434,11 +111515,8 @@ components:
       - created_at
       - error_reason
       - id
-      - lens_config_snapshot
       - lens_id
-      - lens_version
-      - model_used
-      - provider_used
+      - lens_snapshot
       - session_id
       - status
       - triggered_by
@@ -122815,11 +122893,22 @@ components:
     TeamCustomerAnalyticsConfig:
       type: object
       properties:
-        activity_event: {}
-        signup_pageview_event: {}
-        signup_event: {}
-        subscription_event: {}
-        payment_event: {}
+        activity_event:
+          description: Event used as the activity signal (DAU/WAU/MAU).
+        signup_pageview_event:
+          description: Event used to count signup pageviews on dashboards.
+        signup_event:
+          description: Event used to count signups on dashboards.
+        subscription_event:
+          description: Event used to count subscriptions on dashboards.
+        payment_event:
+          description: Event used to count payments on dashboards.
+        account_group_type_index:
+          type:
+          - integer
+          - 'null'
+          description: Index of the group type to treat as an Account in customer
+            analytics. Must reference an existing group type configured for the project.
     TeamMarketingAnalyticsConfig:
       type: object
       properties:

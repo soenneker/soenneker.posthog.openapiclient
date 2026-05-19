@@ -18,7 +18,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? CompletedAt { get; set; }
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
-        /// <summary>Populated on failure. Includes the malformed model response when validation fails.</summary>
+        /// <summary>Populated on failure; includes the malformed model response when validation fails.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ErrorReason { get; private set; }
@@ -28,33 +28,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
-        /// <summary>Snapshot of `ReplayLens.lens_config` at run time. Lens edits do not retroactively mutate observations.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public UntypedNode? LensConfigSnapshot { get; private set; }
-#nullable restore
-#else
-        public UntypedNode LensConfigSnapshot { get; private set; }
-#endif
         /// <summary>The lens that produced this observation.</summary>
         public Guid? LensId { get; private set; }
-        /// <summary>The `ReplayLens.lens_version` value at the moment the workflow ran.</summary>
-        public int? LensVersion { get; private set; }
-        /// <summary>Concrete model that ran the observation.</summary>
+        /// <summary>Frozen view of the lens at run time; lens edits do not retroactively mutate this observation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ModelUsed { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LensSnapshot? LensSnapshot { get; private set; }
 #nullable restore
 #else
-        public string ModelUsed { get; private set; }
-#endif
-        /// <summary>Concrete provider that ran the observation.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? ProviderUsed { get; private set; }
-#nullable restore
-#else
-        public string ProviderUsed { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LensSnapshot LensSnapshot { get; private set; }
 #endif
         /// <summary>Session recording id this lens was applied to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -70,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatusEnum? Status { get; private set; }
         /// <summary>Whether this observation came from the schedule or an on-demand request.* `schedule` - Schedule* `on_demand` - On demand</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ObservationTriggerEnum? TriggeredBy { get; private set; }
-        /// <summary>User who triggered an on-demand observation. Null for scheduled observations.</summary>
+        /// <summary>User who triggered an on-demand observation; null for scheduled observations.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? TriggeredByUser { get; private set; }
@@ -115,11 +97,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "error_reason", n => { ErrorReason = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "lens_config_snapshot", n => { LensConfigSnapshot = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "lens_id", n => { LensId = n.GetGuidValue(); } },
-                { "lens_version", n => { LensVersion = n.GetIntValue(); } },
-                { "model_used", n => { ModelUsed = n.GetStringValue(); } },
-                { "provider_used", n => { ProviderUsed = n.GetStringValue(); } },
+                { "lens_snapshot", n => { LensSnapshot = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LensSnapshot>(global::Soenneker.PostHog.OpenApiClient.Models.LensSnapshot.CreateFromDiscriminatorValue); } },
                 { "session_id", n => { SessionId = n.GetStringValue(); } },
                 { "started_at", n => { StartedAt = n.GetDateTimeOffsetValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatusEnum>(); } },

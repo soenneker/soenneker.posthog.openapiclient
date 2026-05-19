@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Property_definitions
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/property_definitions/{?event_names*,exclude_core_properties*,exclude_hidden*,excluded_properties*,filter_by_event_names*,group_type_index*,is_feature_flag*,is_numerical*,limit*,offset*,properties*,search*,type*,verified*}", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/property_definitions/{?event_names*,exclude_core_properties*,exclude_hidden*,exclude_restricted*,excluded_properties*,filter_by_event_names*,group_type_index*,is_feature_flag*,is_numerical*,limit*,offset*,properties*,search*,type*,verified*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Property_definitions
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/property_definitions/{?event_names*,exclude_core_properties*,exclude_hidden*,excluded_properties*,filter_by_event_names*,group_type_index*,is_feature_flag*,is_numerical*,limit*,offset*,properties*,search*,type*,verified*}", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/property_definitions/{?event_names*,exclude_core_properties*,exclude_hidden*,exclude_restricted*,excluded_properties*,filter_by_event_names*,group_type_index*,is_feature_flag*,is_numerical*,limit*,offset*,properties*,search*,type*,verified*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedEnterprisePropertyDefinitionList"/></returns>
@@ -104,6 +104,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Property_definitions
             /// <summary>Whether to exclude properties marked as hidden</summary>
             [QueryParameter("exclude_hidden")]
             public bool? ExcludeHidden { get; set; }
+            /// <summary>Whether to exclude properties that the current user does not have read access to via field-level access control</summary>
+            [QueryParameter("exclude_restricted")]
+            public bool? ExcludeRestricted { get; set; }
             /// <summary>Whether to return only properties for events in `event_names`</summary>
             [QueryParameter("filter_by_event_names")]
             public bool? FilterByEventNames { get; set; }
