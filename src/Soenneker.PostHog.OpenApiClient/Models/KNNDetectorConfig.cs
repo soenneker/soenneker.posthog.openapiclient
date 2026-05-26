@@ -12,36 +12,54 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class KNNDetectorConfig : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Distance method: &apos;largest&apos;, &apos;mean&apos;, &apos;median&apos; (default: &apos;largest&apos;)</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.MethodObject? Method { get; set; }
-        /// <summary>Number of neighbors to consider (default: 5)</summary>
-        public int? NNeighbors { get; set; }
+        /// <summary>&quot;Distance method: &apos;largest&apos;, &apos;mean&apos;, &apos;median&apos; (default: &apos;largest&apos;)&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.KNNDetectorConfig_method? Method { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.KNNDetectorConfig_method Method { get; set; }
+#endif
+        /// <summary>&quot;Number of neighbors to consider (default: 5)&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.KNNDetectorConfig_n_neighbors? NNeighbors { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.KNNDetectorConfig_n_neighbors NNeighbors { get; set; }
+#endif
         /// <summary>Preprocessing transforms applied before detection</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig? Preprocessing { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.KNNDetectorConfig_preprocessing? Preprocessing { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig Preprocessing { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.KNNDetectorConfig_preprocessing Preprocessing { get; set; }
 #endif
-        /// <summary>Anomaly probability threshold (default: 0.9)</summary>
-        public double? Threshold { get; set; }
-        /// <summary>The type property</summary>
+        /// <summary>&quot;Anomaly probability threshold (default: 0.9)&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Type { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.KNNDetectorConfig_threshold? Threshold { get; set; }
 #nullable restore
 #else
-        public string Type { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.KNNDetectorConfig_threshold Threshold { get; set; }
 #endif
-        /// <summary>Rolling window size — how many historical data points to train on (default: based on calculation interval)</summary>
-        public int? Window { get; set; }
+        /// <summary>The type property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.KNNDetectorConfig_type? Type { get; set; }
+        /// <summary>&quot;Rolling window size — how many historical data points to train on (default: based on calculation interval)&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.KNNDetectorConfig_window? Window { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.KNNDetectorConfig_window Window { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.KNNDetectorConfig"/> and sets the default values.
         /// </summary>
         public KNNDetectorConfig()
         {
-            Type = "knn";
+            Type = global::Soenneker.PostHog.OpenApiClient.Models.KNNDetectorConfig_type.Knn;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -61,12 +79,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "method", n => { Method = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MethodObject>(); } },
-                { "n_neighbors", n => { NNeighbors = n.GetIntValue(); } },
-                { "preprocessing", n => { Preprocessing = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig>(global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig.CreateFromDiscriminatorValue); } },
-                { "threshold", n => { Threshold = n.GetDoubleValue(); } },
-                { "type", n => { Type = n.GetStringValue(); } },
-                { "window", n => { Window = n.GetIntValue(); } },
+                { "method", n => { Method = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.KNNDetectorConfig_method>(global::Soenneker.PostHog.OpenApiClient.Models.KNNDetectorConfig_method.CreateFromDiscriminatorValue); } },
+                { "n_neighbors", n => { NNeighbors = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.KNNDetectorConfig_n_neighbors>(global::Soenneker.PostHog.OpenApiClient.Models.KNNDetectorConfig_n_neighbors.CreateFromDiscriminatorValue); } },
+                { "preprocessing", n => { Preprocessing = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.KNNDetectorConfig_preprocessing>(global::Soenneker.PostHog.OpenApiClient.Models.KNNDetectorConfig_preprocessing.CreateFromDiscriminatorValue); } },
+                { "threshold", n => { Threshold = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.KNNDetectorConfig_threshold>(global::Soenneker.PostHog.OpenApiClient.Models.KNNDetectorConfig_threshold.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.KNNDetectorConfig_type>(); } },
+                { "window", n => { Window = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.KNNDetectorConfig_window>(global::Soenneker.PostHog.OpenApiClient.Models.KNNDetectorConfig_window.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -76,12 +94,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MethodObject>("method", Method);
-            writer.WriteIntValue("n_neighbors", NNeighbors);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig>("preprocessing", Preprocessing);
-            writer.WriteDoubleValue("threshold", Threshold);
-            writer.WriteStringValue("type", Type);
-            writer.WriteIntValue("window", Window);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.KNNDetectorConfig_method>("method", Method);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.KNNDetectorConfig_n_neighbors>("n_neighbors", NNeighbors);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.KNNDetectorConfig_preprocessing>("preprocessing", Preprocessing);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.KNNDetectorConfig_threshold>("threshold", Threshold);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.KNNDetectorConfig_type>("type", Type);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.KNNDetectorConfig_window>("window", Window);
         }
     }
 }

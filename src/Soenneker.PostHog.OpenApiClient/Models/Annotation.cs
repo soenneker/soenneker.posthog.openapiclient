@@ -27,12 +27,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Annotation_created_by? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Annotation_created_by CreatedBy { get; private set; }
 #endif
-        /// <summary>Who created this annotation. Use `USR` for user-created notes and `GIT` for bot/deployment notes.* `USR` - user* `GIT` - GitHub</summary>
+        /// <summary>* `USR` - user* `GIT` - GitHub</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.CreationTypeEnum? CreationType { get; set; }
         /// <summary>The dashboard_id property</summary>
         public int? DashboardId { get; set; }
@@ -76,7 +76,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string InsightShortId { get; private set; }
 #endif
-        /// <summary>Annotation visibility scope: `project`, `organization`, `dashboard`, or `dashboard_item`. `recording` is deprecated and rejected.* `dashboard_item` - insight* `dashboard` - dashboard* `project` - project* `organization` - organization* `recording` - recording</summary>
+        /// <summary>* `dashboard_item` - insight* `dashboard` - dashboard* `project` - project* `organization` - organization* `recording` - recording</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScopeEnum? Scope { get; set; }
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
@@ -107,7 +107,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "content", n => { Content = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Annotation_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.Annotation_created_by.CreateFromDiscriminatorValue); } },
                 { "creation_type", n => { CreationType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CreationTypeEnum>(); } },
                 { "dashboard_id", n => { DashboardId = n.GetIntValue(); } },
                 { "dashboard_item", n => { DashboardItem = n.GetIntValue(); } },

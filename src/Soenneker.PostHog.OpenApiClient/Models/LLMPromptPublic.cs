@@ -45,10 +45,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Full prompt content. Omitted when &apos;content=preview&apos; or &apos;content=none&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Prompt { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LLMPromptPublic_prompt? Prompt { get; set; }
 #nullable restore
 #else
-        public UntypedNode Prompt { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LLMPromptPublic_prompt Prompt { get; set; }
 #endif
         /// <summary>First 160 characters of the prompt. Only present when &apos;content=preview&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -97,7 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "latest_version", n => { LatestVersion = n.GetIntValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "outline", n => { Outline = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LLMPromptOutlineEntry>(global::Soenneker.PostHog.OpenApiClient.Models.LLMPromptOutlineEntry.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "prompt", n => { Prompt = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "prompt", n => { Prompt = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LLMPromptPublic_prompt>(global::Soenneker.PostHog.OpenApiClient.Models.LLMPromptPublic_prompt.CreateFromDiscriminatorValue); } },
                 { "prompt_preview", n => { PromptPreview = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "version", n => { Version = n.GetIntValue(); } },
@@ -119,7 +119,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("latest_version", LatestVersion);
             writer.WriteStringValue("name", Name);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LLMPromptOutlineEntry>("outline", Outline);
-            writer.WriteObjectValue<UntypedNode>("prompt", Prompt);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LLMPromptPublic_prompt>("prompt", Prompt);
             writer.WriteStringValue("prompt_preview", PromptPreview);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteIntValue("version", Version);

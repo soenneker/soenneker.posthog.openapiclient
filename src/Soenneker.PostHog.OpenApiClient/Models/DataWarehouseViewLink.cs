@@ -15,26 +15,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_at property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CreatedAt { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseViewLink_created_at? CreatedAt { get; set; }
 #nullable restore
 #else
-        public string CreatedAt { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseViewLink_created_at CreatedAt { get; set; }
 #endif
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasicType? CreatedBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseViewLink_created_by? CreatedBy { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasicType CreatedBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseViewLink_created_by CreatedBy { get; set; }
 #endif
         /// <summary>The field_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FieldName { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseViewLink_field_name? FieldName { get; set; }
 #nullable restore
 #else
-        public string FieldName { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseViewLink_field_name FieldName { get; set; }
 #endif
         /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -47,34 +47,34 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The joining_table_key property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? JoiningTableKey { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseViewLink_joining_table_key? JoiningTableKey { get; set; }
 #nullable restore
 #else
-        public string JoiningTableKey { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseViewLink_joining_table_key JoiningTableKey { get; set; }
 #endif
         /// <summary>The joining_table_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? JoiningTableName { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseViewLink_joining_table_name? JoiningTableName { get; set; }
 #nullable restore
 #else
-        public string JoiningTableName { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseViewLink_joining_table_name JoiningTableName { get; set; }
 #endif
         /// <summary>The source_table_key property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SourceTableKey { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseViewLink_source_table_key? SourceTableKey { get; set; }
 #nullable restore
 #else
-        public string SourceTableKey { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseViewLink_source_table_key SourceTableKey { get; set; }
 #endif
         /// <summary>The source_table_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SourceTableName { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseViewLink_source_table_name? SourceTableName { get; set; }
 #nullable restore
 #else
-        public string SourceTableName { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseViewLink_source_table_name SourceTableName { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -94,14 +94,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "created_at", n => { CreatedAt = n.GetStringValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasicType>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasicType.CreateFromDiscriminatorValue); } },
-                { "field_name", n => { FieldName = n.GetStringValue(); } },
+                { "created_at", n => { CreatedAt = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseViewLink_created_at>(global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseViewLink_created_at.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseViewLink_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseViewLink_created_by.CreateFromDiscriminatorValue); } },
+                { "field_name", n => { FieldName = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseViewLink_field_name>(global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseViewLink_field_name.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "joining_table_key", n => { JoiningTableKey = n.GetStringValue(); } },
-                { "joining_table_name", n => { JoiningTableName = n.GetStringValue(); } },
-                { "source_table_key", n => { SourceTableKey = n.GetStringValue(); } },
-                { "source_table_name", n => { SourceTableName = n.GetStringValue(); } },
+                { "joining_table_key", n => { JoiningTableKey = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseViewLink_joining_table_key>(global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseViewLink_joining_table_key.CreateFromDiscriminatorValue); } },
+                { "joining_table_name", n => { JoiningTableName = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseViewLink_joining_table_name>(global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseViewLink_joining_table_name.CreateFromDiscriminatorValue); } },
+                { "source_table_key", n => { SourceTableKey = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseViewLink_source_table_key>(global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseViewLink_source_table_key.CreateFromDiscriminatorValue); } },
+                { "source_table_name", n => { SourceTableName = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseViewLink_source_table_name>(global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseViewLink_source_table_name.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -111,14 +111,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("created_at", CreatedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasicType>("created_by", CreatedBy);
-            writer.WriteStringValue("field_name", FieldName);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseViewLink_created_at>("created_at", CreatedAt);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseViewLink_created_by>("created_by", CreatedBy);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseViewLink_field_name>("field_name", FieldName);
             writer.WriteStringValue("id", Id);
-            writer.WriteStringValue("joining_table_key", JoiningTableKey);
-            writer.WriteStringValue("joining_table_name", JoiningTableName);
-            writer.WriteStringValue("source_table_key", SourceTableKey);
-            writer.WriteStringValue("source_table_name", SourceTableName);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseViewLink_joining_table_key>("joining_table_key", JoiningTableKey);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseViewLink_joining_table_name>("joining_table_name", JoiningTableName);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseViewLink_source_table_key>("source_table_key", SourceTableKey);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseViewLink_source_table_name>("source_table_name", SourceTableName);
         }
     }
 }

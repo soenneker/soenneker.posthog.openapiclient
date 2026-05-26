@@ -23,9 +23,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Key { get; set; }
 #endif
-        /// <summary>Date comparison operator.* `is_date_exact` - is_date_exact* `is_date_before` - is_date_before* `is_date_after` - is_date_after</summary>
+        /// <summary>* `is_date_exact` - is_date_exact* `is_date_before` - is_date_before* `is_date_after` - is_date_after</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DateOperatorEnum? Operator { get; set; }
-        /// <summary>Property type (event, person, session, etc.).* `event` - event* `event_metadata` - event_metadata* `feature` - feature* `person` - person* `cohort` - cohort* `element` - element* `static-cohort` - static-cohort* `dynamic-cohort` - dynamic-cohort* `precalculated-cohort` - precalculated-cohort* `group` - group* `recording` - recording* `log_entry` - log_entry* `behavioral` - behavioral* `session` - session* `hogql` - hogql* `data_warehouse` - data_warehouse* `data_warehouse_person_property` - data_warehouse_person_property* `error_tracking_issue` - error_tracking_issue* `log` - log* `log_attribute` - log_attribute* `log_resource_attribute` - log_resource_attribute* `span` - span* `span_attribute` - span_attribute* `span_resource_attribute` - span_resource_attribute* `revenue_analytics` - revenue_analytics* `flag` - flag* `workflow_variable` - workflow_variable</summary>
+        /// <summary>* `event` - event* `event_metadata` - event_metadata* `feature` - feature* `person` - person* `cohort` - cohort* `element` - element* `static-cohort` - static-cohort* `dynamic-cohort` - dynamic-cohort* `precalculated-cohort` - precalculated-cohort* `group` - group* `recording` - recording* `log_entry` - log_entry* `behavioral` - behavioral* `session` - session* `hogql` - hogql* `data_warehouse` - data_warehouse* `data_warehouse_person_property` - data_warehouse_person_property* `error_tracking_issue` - error_tracking_issue* `log` - log* `log_attribute` - log_attribute* `log_resource_attribute` - log_resource_attribute* `span` - span* `span_attribute` - span_attribute* `span_resource_attribute` - span_resource_attribute* `revenue_analytics` - revenue_analytics* `flag` - flag* `workflow_variable` - workflow_variable</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PropertyFilterTypeEnum? Type { get; set; }
         /// <summary>Date or datetime string in ISO 8601 format (e.g. &apos;2024-01-15&apos; or &apos;2024-01-15T10:30:00Z&apos;).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -41,8 +41,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DatePropertyFilter()
         {
             AdditionalData = new Dictionary<string, object>();
-            Operator = global::Soenneker.PostHog.OpenApiClient.Models.DateOperatorEnum.Is_date_exact;
-            Type = global::Soenneker.PostHog.OpenApiClient.Models.PropertyFilterTypeEnum.Event;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value

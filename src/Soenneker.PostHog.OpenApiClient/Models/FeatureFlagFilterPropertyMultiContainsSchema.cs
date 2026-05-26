@@ -32,9 +32,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Key { get; set; }
 #endif
-        /// <summary>Multi-contains operator.* `icontains_multi` - icontains_multi* `not_icontains_multi` - not_icontains_multi</summary>
+        /// <summary>* `icontains_multi` - icontains_multi* `not_icontains_multi` - not_icontains_multi</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyMultiContainsSchemaOperatorEnum? Operator { get; set; }
-        /// <summary>Property filter type. Common values are &apos;person&apos; and &apos;cohort&apos;.* `cohort` - cohort* `person` - person* `group` - group</summary>
+        /// <summary>* `cohort` - cohort* `person` - person* `group` - group</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupTypeEnum? Type { get; set; }
         /// <summary>List of strings to evaluate against.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

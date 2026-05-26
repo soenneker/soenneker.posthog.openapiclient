@@ -34,8 +34,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? RowsMaterialized { get; private set; }
         /// <summary>The saved_query_id property</summary>
         public Guid? SavedQueryId { get; private set; }
-        /// <summary>The status property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataModelingJobStatusEnum? Status { get; private set; }
+        /// <summary>* `Cancelled` - Cancelled* `Completed` - Completed* `Failed` - Failed* `Running` - Running</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataModelingJobStatusEnum? Status { get; set; }
         /// <summary>The workflow_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -96,6 +96,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DataModelingJobStatusEnum>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

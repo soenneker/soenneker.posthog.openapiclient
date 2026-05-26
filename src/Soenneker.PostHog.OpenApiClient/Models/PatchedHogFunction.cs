@@ -19,20 +19,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The bytecode property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Bytecode { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunction_bytecode? Bytecode { get; private set; }
 #nullable restore
 #else
-        public UntypedNode Bytecode { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunction_bytecode Bytecode { get; private set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunction_created_by? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunction_created_by CreatedBy { get; private set; }
 #endif
         /// <summary>The create_in_folder property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -59,10 +59,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Event filters that control which events trigger this function.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters? Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunction_filters? Filters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunction_filters Filters { get; set; }
 #endif
         /// <summary>Source code. Hog language for most types; TypeScript for site_destination and site_app.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -109,10 +109,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>PII masking configuration with TTL, threshold, and hash expression.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMasking? Masking { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunction_masking? Masking { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMasking Masking { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunction_masking Masking { get; set; }
 #endif
         /// <summary>Display name for the function.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -125,18 +125,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The status property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionStatus? Status { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunction_status? Status { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionStatus Status { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunction_status Status { get; private set; }
 #endif
         /// <summary>The template property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionTemplate? Template { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunction_template? Template { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionTemplate Template { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunction_template Template { get; private set; }
 #endif
         /// <summary>ID of the template to create this function from.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -154,13 +154,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Transpiled { get; private set; }
 #endif
-        /// <summary>Function type: destination, site_destination, internal_destination, source_webhook, warehouse_source_webhook, site_app, or transformation.* `destination` - Destination* `site_destination` - Site Destination* `internal_destination` - Internal Destination* `source_webhook` - Source Webhook* `warehouse_source_webhook` - Warehouse Source Webhook* `site_app` - Site App* `transformation` - Transformation</summary>
+        /// <summary>&quot;Function type: destination, site_destination, internal_destination, source_webhook, warehouse_source_webhook, site_app, or transformation.* `destination` - Destination* `site_destination` - Site Destination* `internal_destination` - Internal Destination* `source_webhook` - Source Webhook* `warehouse_source_webhook` - Warehouse Source Webhook* `site_app` - Site App* `transformation` - Transformation&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunction.PatchedHogFunction_type? Type { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunction_type? Type { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunction.PatchedHogFunction_type Type { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunction_type Type { get; set; }
 #endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
@@ -190,28 +190,28 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "batch_export_id", n => { BatchExportId = n.GetGuidValue(); } },
-                { "bytecode", n => { Bytecode = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "bytecode", n => { Bytecode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunction_bytecode>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunction_bytecode.CreateFromDiscriminatorValue); } },
                 { "_create_in_folder", n => { CreateInFolder = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunction_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunction_created_by.CreateFromDiscriminatorValue); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "execution_order", n => { ExecutionOrder = n.GetIntValue(); } },
-                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters.CreateFromDiscriminatorValue); } },
+                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunction_filters>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunction_filters.CreateFromDiscriminatorValue); } },
                 { "hog", n => { Hog = n.GetStringValue(); } },
                 { "icon_url", n => { IconUrl = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "inputs", n => { Inputs = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunction_inputs>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunction_inputs.CreateFromDiscriminatorValue); } },
                 { "inputs_schema", n => { InputsSchema = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItem>(global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "mappings", n => { Mappings = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.Mappings>(global::Soenneker.PostHog.OpenApiClient.Models.Mappings.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "masking", n => { Masking = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMasking>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMasking.CreateFromDiscriminatorValue); } },
+                { "masking", n => { Masking = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunction_masking>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunction_masking.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionStatus>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionStatus.CreateFromDiscriminatorValue); } },
-                { "template", n => { Template = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionTemplate>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionTemplate.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunction_status>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunction_status.CreateFromDiscriminatorValue); } },
+                { "template", n => { Template = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunction_template>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunction_template.CreateFromDiscriminatorValue); } },
                 { "template_id", n => { TemplateId = n.GetStringValue(); } },
                 { "transpiled", n => { Transpiled = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunction.PatchedHogFunction_type>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunction.PatchedHogFunction_type.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunction_type>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunction_type.CreateFromDiscriminatorValue); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }
@@ -227,82 +227,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("description", Description);
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteIntValue("execution_order", ExecutionOrder);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters>("filters", Filters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunction_filters>("filters", Filters);
             writer.WriteStringValue("hog", Hog);
             writer.WriteStringValue("icon_url", IconUrl);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunction_inputs>("inputs", Inputs);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItem>("inputs_schema", InputsSchema);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.Mappings>("mappings", Mappings);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMasking>("masking", Masking);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunction_masking>("masking", Masking);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("template_id", TemplateId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunction.PatchedHogFunction_type>("type", Type);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunction_type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionTypeEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class PatchedHogFunction_type : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionTypeEnum"/></summary>
-            public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionTypeEnum? HogFunctionTypeEnum { get; set; }
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum? NullEnum { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum NullEnum { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunction.PatchedHogFunction_type"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunction.PatchedHogFunction_type CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunction.PatchedHogFunction_type();
-                if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionTypeEnum>() is global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionTypeEnum hogFunctionTypeEnumValue)
-                {
-                    result.HogFunctionTypeEnum = hogFunctionTypeEnumValue;
-                }
-                else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.NullEnum = new global::Soenneker.PostHog.OpenApiClient.Models.NullEnum();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(NullEnum != null)
-                {
-                    return NullEnum.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(HogFunctionTypeEnum != null)
-                {
-                    writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionTypeEnum>(null, HogFunctionTypeEnum);
-                }
-                else if(NullEnum != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NullEnum>(null, NullEnum);
-                }
-            }
         }
     }
 }

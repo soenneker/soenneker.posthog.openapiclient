@@ -17,7 +17,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Position within byweekday set for monthly frequency (e.g. 1 for first, -1 for last).</summary>
         public int? Bysetpos { get; set; }
-        /// <summary>Days of week for weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday.</summary>
+        /// <summary>&quot;Days of week for weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.Subscription_byweekday?>? Byweekday { get; set; }
@@ -32,10 +32,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Subscription_created_by? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Subscription_created_by CreatedBy { get; private set; }
 #endif
         /// <summary>Dashboard ID to subscribe to (mutually exclusive with insight on create).</summary>
         public int? Dashboard { get; set; }
@@ -51,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? Deleted { get; set; }
         /// <summary>Whether the subscription is active. Set to false to pause delivery without deleting. Auto-set to false when the delivery integration becomes invalid.</summary>
         public bool? Enabled { get; set; }
-        /// <summary>How often to deliver: hourly, daily, weekly, monthly, or yearly. Hourly is feature-flagged and limited to one active subscription per organization.* `hourly` - Hourly* `daily` - Daily* `weekly` - Weekly* `monthly` - Monthly* `yearly` - Yearly</summary>
+        /// <summary>* `daily` - Daily* `weekly` - Weekly* `monthly` - Monthly* `yearly` - Yearly</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionFrequencyEnum? Frequency { get; set; }
         /// <summary>The id property</summary>
         public int? Id { get; private set; }
@@ -107,9 +107,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SummaryPromptGuide { get; set; }
 #endif
-        /// <summary>Delivery channel: email, slack, or webhook.* `email` - Email* `slack` - Slack* `webhook` - Webhook</summary>
+        /// <summary>* `email` - Email* `slack` - Slack* `webhook` - Webhook</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TargetTypeEnum? TargetType { get; set; }
-        /// <summary>Recipient(s): comma-separated email addresses for email, Slack channel name/ID for slack, or full URL for webhook.</summary>
+        /// <summary>&quot;Recipient(s): comma-separated email addresses for email, Slack channel name/ID for slack, or full URL for webhook.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? TargetValue { get; set; }
@@ -156,7 +156,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "byweekday", n => { Byweekday = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.Subscription_byweekday>()?.AsList(); } },
                 { "count", n => { Count = n.GetIntValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Subscription_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.Subscription_created_by.CreateFromDiscriminatorValue); } },
                 { "dashboard", n => { Dashboard = n.GetIntValue(); } },
                 { "dashboard_export_insights", n => { DashboardExportInsights = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },

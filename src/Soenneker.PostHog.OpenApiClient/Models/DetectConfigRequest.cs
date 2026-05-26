@@ -26,10 +26,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Parsed contents of the repo&apos;s `package.json`. Pass null or omit if the repo doesn&apos;t have one — the response is then the plain-HTML fallback.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? PackageJson { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DetectConfigRequest_package_json? PackageJson { get; set; }
 #nullable restore
 #else
-        public UntypedNode PackageJson { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DetectConfigRequest_package_json PackageJson { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DetectConfigRequest"/> and sets the default values.
@@ -57,7 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "lockfiles", n => { Lockfiles = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "package_json", n => { PackageJson = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "package_json", n => { PackageJson = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DetectConfigRequest_package_json>(global::Soenneker.PostHog.OpenApiClient.Models.DetectConfigRequest_package_json.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -68,7 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("lockfiles", Lockfiles);
-            writer.WriteObjectValue<UntypedNode>("package_json", PackageJson);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DetectConfigRequest_package_json>("package_json", PackageJson);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

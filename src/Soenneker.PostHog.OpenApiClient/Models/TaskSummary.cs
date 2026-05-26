@@ -21,10 +21,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The latest_run property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummary? LatestRun { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskSummary_latest_run? LatestRun { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummary LatestRun { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskSummary_latest_run LatestRun { get; private set; }
 #endif
         /// <summary>The repository property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -71,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "latest_run", n => { LatestRun = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummary>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummary.CreateFromDiscriminatorValue); } },
+                { "latest_run", n => { LatestRun = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskSummary_latest_run>(global::Soenneker.PostHog.OpenApiClient.Models.TaskSummary_latest_run.CreateFromDiscriminatorValue); } },
                 { "repository", n => { Repository = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },

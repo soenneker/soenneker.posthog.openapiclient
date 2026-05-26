@@ -45,7 +45,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCreateRequestSchema CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCreateRequestSchema();
             if("ClaudeTaskRunCreateSchema".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {

@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Filter definition for the metric. Two shapes are accepted, discriminated by an optional `source` key.**Events** (default, when `source` is missing or `&quot;events&quot;`): HogFunction filter shape — `events: [...]`, optional `actions: [...]`, `properties: [...]`, `filter_test_accounts: bool`.**Data warehouse** (`source: &quot;data_warehouse&quot;`): `table_name` (synced DW table), `timestamp_field` (timestamp column or HogQL expression), `key_field` (column whose value matches the entity key). Currently DW metrics only render on group profiles — person profiles are not yet supported.
+    /// &quot;Filter definition for the metric. Two shapes are accepted, discriminated by an optional `source` key.**Events** (default, when `source` is missing or `\&quot;events\&quot;`): HogFunction filter shape — `events: [...]`, optional `actions: [...]`, `properties: [...]`, `filter_test_accounts: bool`.**Data warehouse** (`source: \&quot;data_warehouse\&quot;`): `table_name` (synced DW table), `timestamp_field` (timestamp column or HogQL expression), `key_field` (column whose value matches the entity key). Currently DW metrics only render on group profiles — person profiles are not yet supported.&quot;
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class GroupUsageMetric_filters : IAdditionalDataHolder, IParsable

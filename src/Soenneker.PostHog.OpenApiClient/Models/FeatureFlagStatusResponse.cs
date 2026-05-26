@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Reason { get; set; }
 #endif
-        /// <summary>Flag status: active, stale, deleted, or unknown</summary>
+        /// <summary>&quot;Flag status: active, stale, deleted, or unknown&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Status { get; set; }

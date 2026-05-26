@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Config { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceResult_config? Config { get; set; }
 #nullable restore
 #else
-        public UntypedNode Config { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceResult_config Config { get; set; }
 #endif
         /// <summary>The external_url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -35,10 +35,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The integration property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceIntegrationResult? Integration { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceResult_integration? Integration { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceIntegrationResult Integration { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceResult_integration Integration { get; private set; }
 #endif
         /// <summary>The integration_id property</summary>
         public int? IntegrationId { get; set; }
@@ -69,10 +69,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "config", n => { Config = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceResult_config>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceResult_config.CreateFromDiscriminatorValue); } },
                 { "external_url", n => { ExternalUrl = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "integration", n => { Integration = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceIntegrationResult>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceIntegrationResult.CreateFromDiscriminatorValue); } },
+                { "integration", n => { Integration = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceResult_integration>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceResult_integration.CreateFromDiscriminatorValue); } },
                 { "integration_id", n => { IntegrationId = n.GetIntValue(); } },
                 { "issue", n => { Issue = n.GetGuidValue(); } },
             };
@@ -84,7 +84,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<UntypedNode>("config", Config);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceResult_config>("config", Config);
             writer.WriteIntValue("integration_id", IntegrationId);
             writer.WriteGuidValue("issue", Issue);
             writer.WriteAdditionalData(AdditionalData);

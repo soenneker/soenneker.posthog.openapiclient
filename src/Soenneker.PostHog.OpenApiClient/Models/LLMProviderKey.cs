@@ -67,10 +67,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LLMProviderKey_created_by? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LLMProviderKey_created_by CreatedBy { get; private set; }
 #endif
         /// <summary>The error_message property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -96,8 +96,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.LLMProviderEnum? Provider { get; set; }
         /// <summary>The set_as_active property</summary>
         public bool? SetAsActive { get; set; }
-        /// <summary>The state property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.LLMProviderKeyStateEnum? State { get; private set; }
+        /// <summary>* `unknown` - Unknown* `ok` - Ok* `invalid` - Invalid* `error` - Error</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.LLMProviderKeyStateEnum? State { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LLMProviderKey"/> and sets the default values.
         /// </summary>
@@ -130,7 +130,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "azure_endpoint", n => { AzureEndpoint = n.GetStringValue(); } },
                 { "azure_endpoint_display", n => { AzureEndpointDisplay = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LLMProviderKey_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.LLMProviderKey_created_by.CreateFromDiscriminatorValue); } },
                 { "error_message", n => { ErrorMessage = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "last_used_at", n => { LastUsedAt = n.GetDateTimeOffsetValue(); } },
@@ -153,6 +153,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LLMProviderEnum>("provider", Provider);
             writer.WriteBoolValue("set_as_active", SetAsActive);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LLMProviderKeyStateEnum>("state", State);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

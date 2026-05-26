@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.Recommendations.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\environments\{environment_-id}\error_tracking\recommendations\{id}
+    /// Builds and executes requests for operations under \api\environments\{project_id}\error_tracking\recommendations\{id}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RecommendationsItemRequestBuilder : BaseRequestBuilder
@@ -37,7 +37,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.R
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RecommendationsItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{environment_%2Did}/error_tracking/recommendations/{id}", pathParameters)
+        public RecommendationsItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{project_id}/error_tracking/recommendations/{id}", pathParameters)
         {
         }
         /// <summary>
@@ -45,7 +45,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.R
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RecommendationsItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{environment_%2Did}/error_tracking/recommendations/{id}", rawUrl)
+        public RecommendationsItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{project_id}/error_tracking/recommendations/{id}", rawUrl)
         {
         }
     }

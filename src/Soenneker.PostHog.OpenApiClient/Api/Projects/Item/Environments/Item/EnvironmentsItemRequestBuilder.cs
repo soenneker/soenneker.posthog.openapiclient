@@ -57,11 +57,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Delete_secret_token_backup.Delete_secret_token_backupRequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>The EmptyPathSegment property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.EmptyPathSegmentRequestBuilder EmptyPathSegment
-        {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.EmptyPathSegmentRequestBuilder(PathParameters, RequestAdapter);
-        }
         /// <summary>The event_ingestion_restrictions property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Event_ingestion_restrictions.Event_ingestion_restrictionsRequestBuilder Event_ingestion_restrictions
         {

@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Branch { get; set; }
 #endif
-        /// <summary>Transition a cloud run to local. Use the resume_in_cloud action to move a run into cloud.* `local` - local</summary>
+        /// <summary>* `local` - local</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunUpdateEnvironmentEnum? Environment { get; set; }
         /// <summary>Error message if execution failed</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -35,10 +35,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Output from the run</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Output { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskRunUpdate_output? Output { get; set; }
 #nullable restore
 #else
-        public UntypedNode Output { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskRunUpdate_output Output { get; set; }
 #endif
         /// <summary>Current stage of the run (e.g. research, plan, build)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -51,10 +51,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>State of the run</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? State { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskRunUpdate_state? State { get; set; }
 #nullable restore
 #else
-        public UntypedNode State { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskRunUpdate_state State { get; set; }
 #endif
         /// <summary>State keys to remove atomically before applying any state updates.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -64,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> StateRemoveKeys { get; set; }
 #endif
-        /// <summary>Current execution status* `not_started` - not_started* `queued` - queued* `in_progress` - in_progress* `completed` - completed* `failed` - failed* `cancelled` - cancelled</summary>
+        /// <summary>* `not_started` - not_started* `queued` - queued* `in_progress` - in_progress* `completed` - completed* `failed` - failed* `cancelled` - cancelled</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunUpdateStatusEnum? Status { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskRunUpdate"/> and sets the default values.
@@ -94,9 +94,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "branch", n => { Branch = n.GetStringValue(); } },
                 { "environment", n => { Environment = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunUpdateEnvironmentEnum>(); } },
                 { "error_message", n => { ErrorMessage = n.GetStringValue(); } },
-                { "output", n => { Output = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "output", n => { Output = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskRunUpdate_output>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskRunUpdate_output.CreateFromDiscriminatorValue); } },
                 { "stage", n => { Stage = n.GetStringValue(); } },
-                { "state", n => { State = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "state", n => { State = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskRunUpdate_state>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskRunUpdate_state.CreateFromDiscriminatorValue); } },
                 { "state_remove_keys", n => { StateRemoveKeys = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunUpdateStatusEnum>(); } },
             };
@@ -111,9 +111,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("branch", Branch);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunUpdateEnvironmentEnum>("environment", Environment);
             writer.WriteStringValue("error_message", ErrorMessage);
-            writer.WriteObjectValue<UntypedNode>("output", Output);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskRunUpdate_output>("output", Output);
             writer.WriteStringValue("stage", Stage);
-            writer.WriteObjectValue<UntypedNode>("state", State);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskRunUpdate_state>("state", State);
             writer.WriteCollectionOfPrimitiveValues<string>("state_remove_keys", StateRemoveKeys);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunUpdateStatusEnum>("status", Status);
             writer.WriteAdditionalData(AdditionalData);

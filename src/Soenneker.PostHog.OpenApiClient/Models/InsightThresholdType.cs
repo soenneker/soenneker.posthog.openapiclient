@@ -3,9 +3,10 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>Whether bounds are compared as absolute values or as percentage change from the previous interval.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public enum InsightThresholdType
+    #pragma warning restore CS1591
     {
         [EnumMember(Value = "absolute")]
         #pragma warning disable CS1591

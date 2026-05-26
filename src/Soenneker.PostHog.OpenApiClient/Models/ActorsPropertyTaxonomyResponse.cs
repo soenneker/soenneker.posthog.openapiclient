@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The sample_values property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? SampleValues { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.UnionBranch>? SampleValues { get; set; }
 #nullable restore
 #else
-        public List<string> SampleValues { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.UnionBranch> SampleValues { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -41,7 +41,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "sample_count", n => { SampleCount = n.GetIntValue(); } },
-                { "sample_values", n => { SampleValues = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "sample_values", n => { SampleValues = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.UnionBranch>(global::Soenneker.PostHog.OpenApiClient.Models.UnionBranch.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("sample_count", SampleCount);
-            writer.WriteCollectionOfPrimitiveValues<string>("sample_values", SampleValues);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.UnionBranch>("sample_values", SampleValues);
         }
     }
 }

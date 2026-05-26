@@ -25,10 +25,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The issue property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSpikeEventIssue? Issue { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSpikeEvent_issue? Issue { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSpikeEventIssue Issue { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSpikeEvent_issue Issue { get; private set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSpikeEvent"/> and sets the default values.
@@ -59,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "current_bucket_value", n => { CurrentBucketValue = n.GetIntValue(); } },
                 { "detected_at", n => { DetectedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "issue", n => { Issue = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSpikeEventIssue>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSpikeEventIssue.CreateFromDiscriminatorValue); } },
+                { "issue", n => { Issue = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSpikeEvent_issue>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSpikeEvent_issue.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>

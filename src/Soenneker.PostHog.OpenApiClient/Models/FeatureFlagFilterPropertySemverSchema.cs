@@ -32,9 +32,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Key { get; set; }
 #endif
-        /// <summary>Semantic version comparison operator.* `semver_gt` - semver_gt* `semver_gte` - semver_gte* `semver_lt` - semver_lt* `semver_lte` - semver_lte* `semver_eq` - semver_eq* `semver_neq` - semver_neq* `semver_tilde` - semver_tilde* `semver_caret` - semver_caret* `semver_wildcard` - semver_wildcard</summary>
+        /// <summary>* `semver_gt` - semver_gt* `semver_gte` - semver_gte* `semver_lt` - semver_lt* `semver_lte` - semver_lte* `semver_eq` - semver_eq* `semver_neq` - semver_neq* `semver_tilde` - semver_tilde* `semver_caret` - semver_caret* `semver_wildcard` - semver_wildcard</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySemverSchemaOperatorEnum? Operator { get; set; }
-        /// <summary>Property filter type. Common values are &apos;person&apos; and &apos;cohort&apos;.* `cohort` - cohort* `person` - person* `group` - group</summary>
+        /// <summary>* `cohort` - cohort* `person` - person* `group` - group</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupTypeEnum? Type { get; set; }
         /// <summary>Semantic version string.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

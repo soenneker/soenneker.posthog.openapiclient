@@ -7,28 +7,56 @@ using System.IO;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogTaggerConfig"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LLMTaggerConfig"/>
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class TaggerConfig : IComposedTypeWrapper, IParsable
+    #pragma warning disable CS1591
+    public partial class TaggerConfig : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogTaggerConfig"/></summary>
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Maximum number of tags to apply (null = no limit)</summary>
+        public int? MaxTags { get; set; }
+        /// <summary>Minimum number of tags to apply</summary>
+        public int? MinTags { get; set; }
+        /// <summary>Prompt instructing the LLM how to tag generations</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogTaggerConfig? HogTaggerConfig { get; set; }
+        public string? Prompt { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogTaggerConfig HogTaggerConfig { get; set; }
+        public string Prompt { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LLMTaggerConfig"/></summary>
+        /// <summary>Hog source code to classify a generation into tags.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LLMTaggerConfig? LLMTaggerConfig { get; set; }
+        public string? Source { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LLMTaggerConfig LLMTaggerConfig { get; set; }
+        public string Source { get; set; }
 #endif
+        /// <summary>Available tags the LLM can assign</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TagDefinition>? Tags { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TagDefinition> Tags { get; set; }
+#endif
+        /// <summary>Union discriminator</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Type { get; set; }
+#nullable restore
+#else
+        public string Type { get; set; }
+#endif
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaggerConfig"/> and sets the default values.
+        /// </summary>
+        public TaggerConfig()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -37,17 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.TaggerConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-            var result = new global::Soenneker.PostHog.OpenApiClient.Models.TaggerConfig();
-            if("HogTaggerConfig".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.HogTaggerConfig = new global::Soenneker.PostHog.OpenApiClient.Models.HogTaggerConfig();
-            }
-            else if("LLMTaggerConfig".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.LLMTaggerConfig = new global::Soenneker.PostHog.OpenApiClient.Models.LLMTaggerConfig();
-            }
-            return result;
+            return new global::Soenneker.PostHog.OpenApiClient.Models.TaggerConfig();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -55,15 +73,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(HogTaggerConfig != null)
+            return new Dictionary<string, Action<IParseNode>>
             {
-                return HogTaggerConfig.GetFieldDeserializers();
-            }
-            else if(LLMTaggerConfig != null)
-            {
-                return LLMTaggerConfig.GetFieldDeserializers();
-            }
-            return new Dictionary<string, Action<IParseNode>>();
+                { "max_tags", n => { MaxTags = n.GetIntValue(); } },
+                { "min_tags", n => { MinTags = n.GetIntValue(); } },
+                { "prompt", n => { Prompt = n.GetStringValue(); } },
+                { "source", n => { Source = n.GetStringValue(); } },
+                { "tags", n => { Tags = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TagDefinition>(global::Soenneker.PostHog.OpenApiClient.Models.TagDefinition.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "type", n => { Type = n.GetStringValue(); } },
+            };
         }
         /// <summary>
         /// Serializes information the current object
@@ -72,14 +90,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(HogTaggerConfig != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogTaggerConfig>(null, HogTaggerConfig);
-            }
-            else if(LLMTaggerConfig != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LLMTaggerConfig>(null, LLMTaggerConfig);
-            }
+            writer.WriteIntValue("max_tags", MaxTags);
+            writer.WriteIntValue("min_tags", MinTags);
+            writer.WriteStringValue("prompt", Prompt);
+            writer.WriteStringValue("source", Source);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TagDefinition>("tags", Tags);
+            writer.WriteStringValue("type", Type);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

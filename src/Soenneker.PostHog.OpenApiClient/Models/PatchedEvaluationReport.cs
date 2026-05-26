@@ -24,19 +24,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? DailyRunCap { get; set; }
         /// <summary>Set to true to soft-delete this report config.</summary>
         public bool? Deleted { get; set; }
-        /// <summary>List of delivery targets. Each entry is either {type: &apos;email&apos;, value: &apos;user@example.com&apos;} or {type: &apos;slack&apos;, integration_id: &lt;int&gt;, channel: &apos;&lt;channel&gt;&apos;}. Slack integration_id must belong to this team.</summary>
+        /// <summary>&quot;List of delivery targets. Each entry is either {type: &apos;email&apos;, value: &apos;user@example.com&apos;} or {type: &apos;slack&apos;, integration_id: &lt;int&gt;, channel: &apos;&lt;channel&gt;&apos;}. Slack integration_id must belong to this team.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? DeliveryTargets { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationReport_delivery_targets? DeliveryTargets { get; set; }
 #nullable restore
 #else
-        public UntypedNode DeliveryTargets { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationReport_delivery_targets DeliveryTargets { get; set; }
 #endif
         /// <summary>Whether report delivery is active. Disabled configs do not fire.</summary>
         public bool? Enabled { get; set; }
         /// <summary>UUID of the evaluation this report config belongs to.</summary>
         public Guid? Evaluation { get; set; }
-        /// <summary>How report generation is triggered. &apos;every_n&apos; fires once N new evaluation results have accumulated (subject to cooldown_minutes and daily_run_cap). &apos;scheduled&apos; fires on the cadence defined by rrule + starts_at + timezone_name.* `scheduled` - Scheduled* `every_n` - Every N</summary>
+        /// <summary>* `scheduled` - Scheduled* `every_n` - Every N</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportFrequencyEnum? Frequency { get; set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
@@ -104,7 +104,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_by", n => { CreatedBy = n.GetIntValue(); } },
                 { "daily_run_cap", n => { DailyRunCap = n.GetIntValue(); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
-                { "delivery_targets", n => { DeliveryTargets = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "delivery_targets", n => { DeliveryTargets = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationReport_delivery_targets>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationReport_delivery_targets.CreateFromDiscriminatorValue); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "evaluation", n => { Evaluation = n.GetGuidValue(); } },
                 { "frequency", n => { Frequency = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportFrequencyEnum>(); } },
@@ -129,7 +129,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("cooldown_minutes", CooldownMinutes);
             writer.WriteIntValue("daily_run_cap", DailyRunCap);
             writer.WriteBoolValue("deleted", Deleted);
-            writer.WriteObjectValue<UntypedNode>("delivery_targets", DeliveryTargets);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationReport_delivery_targets>("delivery_targets", DeliveryTargets);
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteGuidValue("evaluation", Evaluation);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportFrequencyEnum>("frequency", Frequency);

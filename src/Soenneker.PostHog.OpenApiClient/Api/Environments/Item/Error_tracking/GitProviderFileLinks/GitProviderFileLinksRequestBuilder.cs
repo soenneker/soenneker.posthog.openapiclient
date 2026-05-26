@@ -11,7 +11,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.GitProviderFileLinks
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\environments\{environment_-id}\error_tracking\git-provider-file-links
+    /// Builds and executes requests for operations under \api\environments\{project_id}\error_tracking\git-provider-file-links
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class GitProviderFileLinksRequestBuilder : BaseRequestBuilder
@@ -31,7 +31,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.G
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public GitProviderFileLinksRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{environment_%2Did}/error_tracking/git-provider-file-links", pathParameters)
+        public GitProviderFileLinksRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{project_id}/error_tracking/git-provider-file-links", pathParameters)
         {
         }
         /// <summary>
@@ -39,7 +39,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.G
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public GitProviderFileLinksRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{environment_%2Did}/error_tracking/git-provider-file-links", rawUrl)
+        public GitProviderFileLinksRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{project_id}/error_tracking/git-provider-file-links", rawUrl)
         {
         }
     }

@@ -17,32 +17,32 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Generated report content (markdown or structured text).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Content { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRun_content? Content { get; private set; }
 #nullable restore
 #else
-        public UntypedNode Content { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRun_content Content { get; private set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>List of delivery error messages if delivery failed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? DeliveryErrors { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRun_delivery_errors? DeliveryErrors { get; private set; }
 #nullable restore
 #else
-        public UntypedNode DeliveryErrors { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRun_delivery_errors DeliveryErrors { get; private set; }
 #endif
-        /// <summary>&apos;pending&apos;, &apos;delivered&apos;, or &apos;failed&apos;.* `pending` - Pending* `delivered` - Delivered* `partial_failure` - Partial Failure* `failed` - Failed</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.DeliveryStatusEnum? DeliveryStatus { get; private set; }
+        /// <summary>* `pending` - Pending* `delivered` - Delivered* `partial_failure` - Partial Failure* `failed` - Failed</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.DeliveryStatusEnum? DeliveryStatus { get; set; }
         /// <summary>UUID of this report run.</summary>
         public Guid? Id { get; private set; }
         /// <summary>Run metadata including model used, token counts, and generation stats.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Metadata { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRun_metadata? Metadata { get; private set; }
 #nullable restore
 #else
-        public UntypedNode Metadata { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRun_metadata Metadata { get; private set; }
 #endif
         /// <summary>End of the evaluation window covered by this report.</summary>
         public DateTimeOffset? PeriodEnd { get; private set; }
@@ -75,12 +75,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "content", n => { Content = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "content", n => { Content = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRun_content>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRun_content.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "delivery_errors", n => { DeliveryErrors = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "delivery_errors", n => { DeliveryErrors = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRun_delivery_errors>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRun_delivery_errors.CreateFromDiscriminatorValue); } },
                 { "delivery_status", n => { DeliveryStatus = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DeliveryStatusEnum>(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "metadata", n => { Metadata = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRun_metadata>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRun_metadata.CreateFromDiscriminatorValue); } },
                 { "period_end", n => { PeriodEnd = n.GetDateTimeOffsetValue(); } },
                 { "period_start", n => { PeriodStart = n.GetDateTimeOffsetValue(); } },
                 { "report", n => { Report = n.GetGuidValue(); } },
@@ -93,6 +93,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DeliveryStatusEnum>("delivery_status", DeliveryStatus);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

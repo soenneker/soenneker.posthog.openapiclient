@@ -28,10 +28,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataWarehouseSavedQuery_created_by? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataWarehouseSavedQuery_created_by CreatedBy { get; private set; }
 #endif
         /// <summary>Optional DAG to place this view into</summary>
         public Guid? DagId { get; set; }
@@ -94,28 +94,28 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Where this SavedQuery is created.* `data_warehouse` - Data Warehouse* `endpoint` - Endpoint* `managed_viewset` - Managed Viewset</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataWarehouseSavedQuery.PatchedDataWarehouseSavedQuery_origin? Origin { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataWarehouseSavedQuery_origin? Origin { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataWarehouseSavedQuery.PatchedDataWarehouseSavedQuery_origin Origin { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataWarehouseSavedQuery_origin Origin { get; private set; }
 #endif
-        /// <summary>HogQL query definition as a JSON object with a &quot;query&quot; key containing the SQL string and a &quot;kind&quot; key containing the query type. Example: {&quot;query&quot;: &quot;SELECT * FROM events LIMIT 100&quot;, &quot;kind&quot;: &quot;HogQLQuery&quot;}</summary>
+        /// <summary>&quot;HogQL query definition as a JSON object with a \&quot;query\&quot; key containing the SQL string and a \&quot;kind\&quot; key (always \&quot;HogQLQuery\&quot;). Example: {\&quot;kind\&quot;: \&quot;HogQLQuery\&quot;, \&quot;query\&quot;: \&quot;SELECT * FROM events LIMIT 100\&quot;}&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Query { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataWarehouseSavedQueryQuery? Query { get; set; }
 #nullable restore
 #else
-        public UntypedNode Query { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataWarehouseSavedQueryQuery Query { get; set; }
 #endif
         /// <summary>If true, skip column inference and validation. For saving drafts.</summary>
         public bool? SoftUpdate { get; set; }
         /// <summary>The status of when this SavedQuery last ran.* `Cancelled` - Cancelled* `Modified` - Modified* `Completed` - Completed* `Failed` - Failed* `Running` - Running</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataWarehouseSavedQuery.PatchedDataWarehouseSavedQuery_status? Status { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataWarehouseSavedQuery_status? Status { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataWarehouseSavedQuery.PatchedDataWarehouseSavedQuery_status Status { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataWarehouseSavedQuery_status Status { get; private set; }
 #endif
         /// <summary>The sync_frequency property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -160,7 +160,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "columns", n => { Columns = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataWarehouseSavedQuery_columns>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataWarehouseSavedQuery_columns.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataWarehouseSavedQuery_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataWarehouseSavedQuery_created_by.CreateFromDiscriminatorValue); } },
                 { "dag_id", n => { DagId = n.GetGuidValue(); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "edited_history_id", n => { EditedHistoryId = n.GetStringValue(); } },
@@ -175,10 +175,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "latest_history_id", n => { LatestHistoryId = n.GetIntValue(); } },
                 { "managed_viewset_kind", n => { ManagedViewsetKind = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "origin", n => { Origin = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataWarehouseSavedQuery.PatchedDataWarehouseSavedQuery_origin>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataWarehouseSavedQuery.PatchedDataWarehouseSavedQuery_origin.CreateFromDiscriminatorValue); } },
-                { "query", n => { Query = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "origin", n => { Origin = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataWarehouseSavedQuery_origin>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataWarehouseSavedQuery_origin.CreateFromDiscriminatorValue); } },
+                { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataWarehouseSavedQueryQuery>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataWarehouseSavedQueryQuery.CreateFromDiscriminatorValue); } },
                 { "soft_update", n => { SoftUpdate = n.GetBoolValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataWarehouseSavedQuery.PatchedDataWarehouseSavedQuery_status>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataWarehouseSavedQuery.PatchedDataWarehouseSavedQuery_status.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataWarehouseSavedQuery_status>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataWarehouseSavedQuery_status.CreateFromDiscriminatorValue); } },
                 { "sync_frequency", n => { SyncFrequency = n.GetStringValue(); } },
                 { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },
             };
@@ -196,139 +196,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteGuidValue("folder_id", FolderId);
             writer.WriteBoolValue("is_test", IsTest);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<UntypedNode>("query", Query);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataWarehouseSavedQueryQuery>("query", Query);
             writer.WriteBoolValue("soft_update", SoftUpdate);
             writer.WriteAdditionalData(AdditionalData);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OriginEnum"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class PatchedDataWarehouseSavedQuery_origin : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum? NullEnum { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum NullEnum { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OriginEnum"/></summary>
-            public global::Soenneker.PostHog.OpenApiClient.Models.OriginEnum? OriginEnum { get; set; }
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataWarehouseSavedQuery.PatchedDataWarehouseSavedQuery_origin"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataWarehouseSavedQuery.PatchedDataWarehouseSavedQuery_origin CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataWarehouseSavedQuery.PatchedDataWarehouseSavedQuery_origin();
-                if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.NullEnum = new global::Soenneker.PostHog.OpenApiClient.Models.NullEnum();
-                }
-                else if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OriginEnum>() is global::Soenneker.PostHog.OpenApiClient.Models.OriginEnum originEnumValue)
-                {
-                    result.OriginEnum = originEnumValue;
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(NullEnum != null)
-                {
-                    return NullEnum.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(NullEnum != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NullEnum>(null, NullEnum);
-                }
-                else if(OriginEnum != null)
-                {
-                    writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OriginEnum>(null, OriginEnum);
-                }
-            }
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryStatusEnum"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class PatchedDataWarehouseSavedQuery_status : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum? NullEnum { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum NullEnum { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryStatusEnum"/></summary>
-            public global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryStatusEnum? SavedQueryStatusEnum { get; set; }
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataWarehouseSavedQuery.PatchedDataWarehouseSavedQuery_status"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataWarehouseSavedQuery.PatchedDataWarehouseSavedQuery_status CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataWarehouseSavedQuery.PatchedDataWarehouseSavedQuery_status();
-                if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.NullEnum = new global::Soenneker.PostHog.OpenApiClient.Models.NullEnum();
-                }
-                else if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryStatusEnum>() is global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryStatusEnum savedQueryStatusEnumValue)
-                {
-                    result.SavedQueryStatusEnum = savedQueryStatusEnumValue;
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(NullEnum != null)
-                {
-                    return NullEnum.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(NullEnum != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NullEnum>(null, NullEnum);
-                }
-                else if(SavedQueryStatusEnum != null)
-                {
-                    writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryStatusEnum>(null, SavedQueryStatusEnum);
-                }
-            }
         }
     }
 }

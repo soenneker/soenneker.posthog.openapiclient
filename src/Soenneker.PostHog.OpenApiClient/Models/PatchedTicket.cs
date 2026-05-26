@@ -20,37 +20,37 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Customer-provided traits such as name and email</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? AnonymousTraits { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket_anonymous_traits? AnonymousTraits { get; set; }
 #nullable restore
 #else
-        public UntypedNode AnonymousTraits { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket_anonymous_traits AnonymousTraits { get; set; }
 #endif
         /// <summary>The assignee property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TicketAssignment? Assignee { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket_assignee? Assignee { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TicketAssignment Assignee { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket_assignee Assignee { get; private set; }
 #endif
         /// <summary>The cc_participants property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? CcParticipants { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket_cc_participants? CcParticipants { get; private set; }
 #nullable restore
 #else
-        public UntypedNode CcParticipants { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket_cc_participants CcParticipants { get; private set; }
 #endif
         /// <summary>The channel_detail property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket.PatchedTicket_channel_detail? ChannelDetail { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket_channel_detail? ChannelDetail { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket.PatchedTicket_channel_detail ChannelDetail { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket_channel_detail ChannelDetail { get; private set; }
 #endif
-        /// <summary>The channel_source property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChannelSourceEnum? ChannelSource { get; private set; }
+        /// <summary>* `widget` - Widget* `email` - Email* `slack` - Slack* `teams` - Microsoft Teams* `github` - GitHub</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChannelSourceEnum? ChannelSource { get; set; }
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>The distinct_id property</summary>
@@ -120,12 +120,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The person property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TicketPerson? Person { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket_person? Person { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TicketPerson Person { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket_person Person { get; private set; }
 #endif
-        /// <summary>Ticket priority: low, medium, or high. Null if unset.* `low` - Low* `medium` - Medium* `high` - High</summary>
+        /// <summary>&quot;Ticket priority: low, medium, or high. Null if unset.* `low` - Low* `medium` - Medium* `high` - High&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket.PatchedTicket_priority? Priority { get; set; }
@@ -136,10 +136,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The session_context property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? SessionContext { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket_session_context? SessionContext { get; private set; }
 #nullable restore
 #else
-        public UntypedNode SessionContext { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket_session_context SessionContext { get; private set; }
 #endif
         /// <summary>The session_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -177,15 +177,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? SlaDueAt { get; set; }
         /// <summary>The snoozed_until property</summary>
         public DateTimeOffset? SnoozedUntil { get; set; }
-        /// <summary>Ticket status: new, open, pending, on_hold, or resolved* `new` - New* `open` - Open* `pending` - Pending* `on_hold` - On hold* `resolved` - Resolved</summary>
+        /// <summary>* `new` - New* `open` - Open* `pending` - Pending* `on_hold` - On hold* `resolved` - Resolved</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TicketStatusEnum? Status { get; set; }
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Tags { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket_tags>? Tags { get; set; }
 #nullable restore
 #else
-        public UntypedNode Tags { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket_tags> Tags { get; set; }
 #endif
         /// <summary>The ticket_number property</summary>
         public int? TicketNumber { get; private set; }
@@ -221,10 +221,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "ai_resolved", n => { AiResolved = n.GetBoolValue(); } },
-                { "anonymous_traits", n => { AnonymousTraits = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "assignee", n => { Assignee = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TicketAssignment>(global::Soenneker.PostHog.OpenApiClient.Models.TicketAssignment.CreateFromDiscriminatorValue); } },
-                { "cc_participants", n => { CcParticipants = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "channel_detail", n => { ChannelDetail = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket.PatchedTicket_channel_detail>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket.PatchedTicket_channel_detail.CreateFromDiscriminatorValue); } },
+                { "anonymous_traits", n => { AnonymousTraits = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket_anonymous_traits>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket_anonymous_traits.CreateFromDiscriminatorValue); } },
+                { "assignee", n => { Assignee = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket_assignee>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket_assignee.CreateFromDiscriminatorValue); } },
+                { "cc_participants", n => { CcParticipants = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket_cc_participants>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket_cc_participants.CreateFromDiscriminatorValue); } },
+                { "channel_detail", n => { ChannelDetail = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket_channel_detail>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket_channel_detail.CreateFromDiscriminatorValue); } },
                 { "channel_source", n => { ChannelSource = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ChannelSourceEnum>(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "distinct_id", n => { DistinctId = n.GetStringValue(); } },
@@ -238,9 +238,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "last_message_at", n => { LastMessageAt = n.GetDateTimeOffsetValue(); } },
                 { "last_message_text", n => { LastMessageText = n.GetStringValue(); } },
                 { "message_count", n => { MessageCount = n.GetIntValue(); } },
-                { "person", n => { Person = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TicketPerson>(global::Soenneker.PostHog.OpenApiClient.Models.TicketPerson.CreateFromDiscriminatorValue); } },
+                { "person", n => { Person = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket_person>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket_person.CreateFromDiscriminatorValue); } },
                 { "priority", n => { Priority = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket.PatchedTicket_priority>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket.PatchedTicket_priority.CreateFromDiscriminatorValue); } },
-                { "session_context", n => { SessionContext = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "session_context", n => { SessionContext = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket_session_context>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket_session_context.CreateFromDiscriminatorValue); } },
                 { "session_id", n => { SessionId = n.GetStringValue(); } },
                 { "sla_due_at", n => { SlaDueAt = n.GetDateTimeOffsetValue(); } },
                 { "slack_channel_id", n => { SlackChannelId = n.GetStringValue(); } },
@@ -248,7 +248,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "slack_thread_ts", n => { SlackThreadTs = n.GetStringValue(); } },
                 { "snoozed_until", n => { SnoozedUntil = n.GetDateTimeOffsetValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TicketStatusEnum>(); } },
-                { "tags", n => { Tags = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "tags", n => { Tags = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket_tags>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket_tags.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "ticket_number", n => { TicketNumber = n.GetIntValue(); } },
                 { "unread_customer_count", n => { UnreadCustomerCount = n.GetIntValue(); } },
                 { "unread_team_count", n => { UnreadTeamCount = n.GetIntValue(); } },
@@ -263,104 +263,46 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("ai_resolved", AiResolved);
-            writer.WriteObjectValue<UntypedNode>("anonymous_traits", AnonymousTraits);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket_anonymous_traits>("anonymous_traits", AnonymousTraits);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ChannelSourceEnum>("channel_source", ChannelSource);
             writer.WriteStringValue("escalation_reason", EscalationReason);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket.PatchedTicket_priority>("priority", Priority);
             writer.WriteDateTimeOffsetValue("sla_due_at", SlaDueAt);
             writer.WriteDateTimeOffsetValue("snoozed_until", SnoozedUntil);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TicketStatusEnum>("status", Status);
-            writer.WriteObjectValue<UntypedNode>("tags", Tags);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket_tags>("tags", Tags);
             writer.WriteAdditionalData(AdditionalData);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ChannelDetailEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class PatchedTicket_channel_detail : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ChannelDetailEnum"/></summary>
-            public global::Soenneker.PostHog.OpenApiClient.Models.ChannelDetailEnum? ChannelDetailEnum { get; set; }
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum? NullEnum { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum NullEnum { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket.PatchedTicket_channel_detail"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket.PatchedTicket_channel_detail CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket.PatchedTicket_channel_detail();
-                if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ChannelDetailEnum>() is global::Soenneker.PostHog.OpenApiClient.Models.ChannelDetailEnum channelDetailEnumValue)
-                {
-                    result.ChannelDetailEnum = channelDetailEnumValue;
-                }
-                else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.NullEnum = new global::Soenneker.PostHog.OpenApiClient.Models.NullEnum();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(NullEnum != null)
-                {
-                    return NullEnum.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(ChannelDetailEnum != null)
-                {
-                    writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ChannelDetailEnum>(null, ChannelDetailEnum);
-                }
-                else if(NullEnum != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NullEnum>(null, NullEnum);
-                }
-            }
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PriorityEnum"/>
+        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket_priorityMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PriorityEnum_Wrapper"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class PatchedTicket_priority : IComposedTypeWrapper, IParsable
         {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum"/></summary>
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum? BlankEnum { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper? BlankEnumWrapper { get; set; }
 #nullable restore
 #else
-            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum BlankEnum { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper BlankEnumWrapper { get; set; }
 #endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket_priorityMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum? NullEnum { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket_priorityMember1? PatchedTicketPriorityMember1 { get; set; }
 #nullable restore
 #else
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum NullEnum { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket_priorityMember1 PatchedTicketPriorityMember1 { get; set; }
 #endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PriorityEnum"/></summary>
-            public global::Soenneker.PostHog.OpenApiClient.Models.PriorityEnum? PriorityEnum { get; set; }
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PriorityEnum_Wrapper"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.PriorityEnum_Wrapper? PriorityEnumWrapper { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.PriorityEnum_Wrapper PriorityEnumWrapper { get; set; }
+#endif
             /// <summary>
             /// Creates a new instance of the appropriate class based on discriminator value
             /// </summary>
@@ -371,17 +313,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
                 var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
                 var result = new global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket.PatchedTicket_priority();
-                if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+                if("BlankEnum_Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
                 {
-                    result.BlankEnum = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum();
+                    result.BlankEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper();
                 }
                 else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
                 {
-                    result.NullEnum = new global::Soenneker.PostHog.OpenApiClient.Models.NullEnum();
+                    result.PatchedTicketPriorityMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket_priorityMember1();
                 }
-                else if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PriorityEnum>() is global::Soenneker.PostHog.OpenApiClient.Models.PriorityEnum priorityEnumValue)
+                else if("PriorityEnum_Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
                 {
-                    result.PriorityEnum = priorityEnumValue;
+                    result.PriorityEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.PriorityEnum_Wrapper();
                 }
                 return result;
             }
@@ -391,13 +333,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
-                if(BlankEnum != null)
+                if(BlankEnumWrapper != null)
                 {
-                    return BlankEnum.GetFieldDeserializers();
+                    return BlankEnumWrapper.GetFieldDeserializers();
                 }
-                else if(NullEnum != null)
+                else if(PatchedTicketPriorityMember1 != null)
                 {
-                    return NullEnum.GetFieldDeserializers();
+                    return PatchedTicketPriorityMember1.GetFieldDeserializers();
+                }
+                else if(PriorityEnumWrapper != null)
+                {
+                    return PriorityEnumWrapper.GetFieldDeserializers();
                 }
                 return new Dictionary<string, Action<IParseNode>>();
             }
@@ -408,17 +354,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             public virtual void Serialize(ISerializationWriter writer)
             {
                 if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(BlankEnum != null)
+                if(BlankEnumWrapper != null)
                 {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum>(null, BlankEnum);
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper>(null, BlankEnumWrapper);
                 }
-                else if(NullEnum != null)
+                else if(PatchedTicketPriorityMember1 != null)
                 {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NullEnum>(null, NullEnum);
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicket_priorityMember1>(null, PatchedTicketPriorityMember1);
                 }
-                else if(PriorityEnum != null)
+                else if(PriorityEnumWrapper != null)
                 {
-                    writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PriorityEnum>(null, PriorityEnum);
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PriorityEnum_Wrapper>(null, PriorityEnumWrapper);
                 }
             }
         }

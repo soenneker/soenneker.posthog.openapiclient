@@ -7,36 +7,38 @@ using System.IO;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AzureBlobDestinationRequest"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BigQueryDestinationRequest"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DatabricksDestinationRequest"/>
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class BatchExportDestinationRequest : IComposedTypeWrapper, IParsable
+    #pragma warning disable CS1591
+    public partial class BatchExportDestinationRequest : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AzureBlobDestinationRequest"/></summary>
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Typed configuration for a Databricks batch-export destination.Credentials live in the linked Integration, not in this config. Mirrors`DatabricksBatchExportInputs` in `products/batch_exports/backend/service.py`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AzureBlobDestinationRequest? AzureBlobDestinationRequest { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DatabricksDestinationConfig? Config { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AzureBlobDestinationRequest AzureBlobDestinationRequest { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DatabricksDestinationConfig Config { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BigQueryDestinationRequest"/></summary>
+        /// <summary>ID of a databricks-kind Integration. Use the integrations-list MCP tool to find one.</summary>
+        public int? IntegrationId { get; set; }
+        /// <summary>Union discriminator</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BigQueryDestinationRequest? BigQueryDestinationRequest { get; set; }
+        public string? Type { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BigQueryDestinationRequest BigQueryDestinationRequest { get; set; }
+        public string Type { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DatabricksDestinationRequest"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatabricksDestinationRequest? DatabricksDestinationRequest { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatabricksDestinationRequest DatabricksDestinationRequest { get; set; }
-#endif
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationRequest"/> and sets the default values.
+        /// </summary>
+        public BatchExportDestinationRequest()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -45,21 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
-            var result = new global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationRequest();
-            if("AzureBlob".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.AzureBlobDestinationRequest = new global::Soenneker.PostHog.OpenApiClient.Models.AzureBlobDestinationRequest();
-            }
-            else if("BigQuery".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.BigQueryDestinationRequest = new global::Soenneker.PostHog.OpenApiClient.Models.BigQueryDestinationRequest();
-            }
-            else if("Databricks".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.DatabricksDestinationRequest = new global::Soenneker.PostHog.OpenApiClient.Models.DatabricksDestinationRequest();
-            }
-            return result;
+            return new global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationRequest();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -67,19 +55,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(AzureBlobDestinationRequest != null)
+            return new Dictionary<string, Action<IParseNode>>
             {
-                return AzureBlobDestinationRequest.GetFieldDeserializers();
-            }
-            else if(BigQueryDestinationRequest != null)
-            {
-                return BigQueryDestinationRequest.GetFieldDeserializers();
-            }
-            else if(DatabricksDestinationRequest != null)
-            {
-                return DatabricksDestinationRequest.GetFieldDeserializers();
-            }
-            return new Dictionary<string, Action<IParseNode>>();
+                { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatabricksDestinationConfig>(global::Soenneker.PostHog.OpenApiClient.Models.DatabricksDestinationConfig.CreateFromDiscriminatorValue); } },
+                { "integration_id", n => { IntegrationId = n.GetIntValue(); } },
+                { "type", n => { Type = n.GetStringValue(); } },
+            };
         }
         /// <summary>
         /// Serializes information the current object
@@ -88,18 +69,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(AzureBlobDestinationRequest != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AzureBlobDestinationRequest>(null, AzureBlobDestinationRequest);
-            }
-            else if(BigQueryDestinationRequest != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BigQueryDestinationRequest>(null, BigQueryDestinationRequest);
-            }
-            else if(DatabricksDestinationRequest != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatabricksDestinationRequest>(null, DatabricksDestinationRequest);
-            }
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatabricksDestinationConfig>("config", Config);
+            writer.WriteIntValue("integration_id", IntegrationId);
+            writer.WriteStringValue("type", Type);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

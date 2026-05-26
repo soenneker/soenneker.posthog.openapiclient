@@ -23,10 +23,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The session_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SessionId { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MatchedRecording_session_id? SessionId { get; set; }
 #nullable restore
 #else
-        public string SessionId { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MatchedRecording_session_id SessionId { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -47,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "events", n => { Events = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MatchedRecordingEvent>(global::Soenneker.PostHog.OpenApiClient.Models.MatchedRecordingEvent.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "session_id", n => { SessionId = n.GetStringValue(); } },
+                { "session_id", n => { SessionId = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MatchedRecording_session_id>(global::Soenneker.PostHog.OpenApiClient.Models.MatchedRecording_session_id.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -58,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MatchedRecordingEvent>("events", Events);
-            writer.WriteStringValue("session_id", SessionId);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MatchedRecording_session_id>("session_id", SessionId);
         }
     }
 }

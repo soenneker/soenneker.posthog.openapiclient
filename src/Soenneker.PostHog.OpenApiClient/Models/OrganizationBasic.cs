@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The members_can_use_personal_api_keys property</summary>
         public bool? MembersCanUsePersonalApiKeys { get; set; }
         /// <summary>The membership_level property</summary>
-        public int? MembershipLevel { get; private set; }
+        public int? MembershipLevel { get; set; }
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -98,6 +98,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("is_not_active_reason", IsNotActiveReason);
             writer.WriteBoolValue("is_pending_deletion", IsPendingDeletion);
             writer.WriteBoolValue("members_can_use_personal_api_keys", MembersCanUsePersonalApiKeys);
+            writer.WriteIntValue("membership_level", MembershipLevel);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("slug", Slug);
             writer.WriteAdditionalData(AdditionalData);

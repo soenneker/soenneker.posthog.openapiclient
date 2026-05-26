@@ -23,10 +23,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The property_group property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SchemaPropertyGroup? PropertyGroup { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EventSchema_property_group? PropertyGroup { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SchemaPropertyGroup PropertyGroup { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EventSchema_property_group PropertyGroup { get; private set; }
 #endif
         /// <summary>The property_group_id property</summary>
         public Guid? PropertyGroupId { get; set; }
@@ -60,7 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "event_definition", n => { EventDefinition = n.GetGuidValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "property_group", n => { PropertyGroup = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SchemaPropertyGroup>(global::Soenneker.PostHog.OpenApiClient.Models.SchemaPropertyGroup.CreateFromDiscriminatorValue); } },
+                { "property_group", n => { PropertyGroup = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventSchema_property_group>(global::Soenneker.PostHog.OpenApiClient.Models.EventSchema_property_group.CreateFromDiscriminatorValue); } },
                 { "property_group_id", n => { PropertyGroupId = n.GetGuidValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };

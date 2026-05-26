@@ -27,10 +27,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The group_properties property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? GroupProperties { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Group_group_properties? GroupProperties { get; set; }
 #nullable restore
 #else
-        public UntypedNode GroupProperties { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Group_group_properties GroupProperties { get; set; }
 #endif
         /// <summary>The group_type_index property</summary>
         public int? GroupTypeIndex { get; set; }
@@ -61,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "group_key", n => { GroupKey = n.GetStringValue(); } },
-                { "group_properties", n => { GroupProperties = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "group_properties", n => { GroupProperties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Group_group_properties>(global::Soenneker.PostHog.OpenApiClient.Models.Group_group_properties.CreateFromDiscriminatorValue); } },
                 { "group_type_index", n => { GroupTypeIndex = n.GetIntValue(); } },
             };
         }
@@ -73,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("group_key", GroupKey);
-            writer.WriteObjectValue<UntypedNode>("group_properties", GroupProperties);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Group_group_properties>("group_properties", GroupProperties);
             writer.WriteIntValue("group_type_index", GroupTypeIndex);
             writer.WriteAdditionalData(AdditionalData);
         }

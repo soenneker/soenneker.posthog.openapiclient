@@ -25,10 +25,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Full function configuration to test.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunction? Configuration { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocation_configuration? Configuration { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunction Configuration { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocation_configuration Configuration { get; set; }
 #endif
         /// <summary>Mock global variables available during test invocation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -49,10 +49,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Execution logs from the test invocation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Logs { get; private set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocation_logs>? Logs { get; private set; }
 #nullable restore
 #else
-        public UntypedNode Logs { get; private set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocation_logs> Logs { get; private set; }
 #endif
         /// <summary>When true (default), async functions like fetch() are simulated.</summary>
         public bool? MockAsyncFunctions { get; set; }
@@ -90,10 +90,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "clickhouse_event", n => { ClickhouseEvent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocation_clickhouse_event>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocation_clickhouse_event.CreateFromDiscriminatorValue); } },
-                { "configuration", n => { Configuration = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunction>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunction.CreateFromDiscriminatorValue); } },
+                { "configuration", n => { Configuration = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocation_configuration>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocation_configuration.CreateFromDiscriminatorValue); } },
                 { "globals", n => { Globals = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocation_globals>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocation_globals.CreateFromDiscriminatorValue); } },
                 { "invocation_id", n => { InvocationId = n.GetStringValue(); } },
-                { "logs", n => { Logs = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "logs", n => { Logs = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocation_logs>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocation_logs.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "mock_async_functions", n => { MockAsyncFunctions = n.GetBoolValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
             };
@@ -106,7 +106,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocation_clickhouse_event>("clickhouse_event", ClickhouseEvent);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunction>("configuration", Configuration);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocation_configuration>("configuration", Configuration);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocation_globals>("globals", Globals);
             writer.WriteStringValue("invocation_id", InvocationId);
             writer.WriteBoolValue("mock_async_functions", MockAsyncFunctions);

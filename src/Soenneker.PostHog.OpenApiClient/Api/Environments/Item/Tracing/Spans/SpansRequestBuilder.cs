@@ -17,7 +17,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Tracing.Spans
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\environments\{environment_-id}\tracing\spans
+    /// Builds and executes requests for operations under \api\environments\{project_id}\tracing\spans
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SpansRequestBuilder : BaseRequestBuilder
@@ -67,7 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Tracing.Spans
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SpansRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{environment_%2Did}/tracing/spans", pathParameters)
+        public SpansRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{project_id}/tracing/spans", pathParameters)
         {
         }
         /// <summary>
@@ -75,7 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Tracing.Spans
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SpansRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{environment_%2Did}/tracing/spans", rawUrl)
+        public SpansRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{project_id}/tracing/spans", rawUrl)
         {
         }
     }

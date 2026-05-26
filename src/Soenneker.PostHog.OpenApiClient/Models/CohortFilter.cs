@@ -15,45 +15,33 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The bytecode property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Bytecode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_bytecode? Bytecode { get; set; }
 #nullable restore
 #else
-        public UntypedNode Bytecode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_bytecode Bytecode { get; set; }
 #endif
         /// <summary>The bytecode_error property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BytecodeError { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_bytecode_error? BytecodeError { get; set; }
 #nullable restore
 #else
-        public string BytecodeError { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_bytecode_error BytecodeError { get; set; }
 #endif
         /// <summary>The conditionHash property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ConditionHash { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_conditionHash? ConditionHash { get; set; }
 #nullable restore
 #else
-        public string ConditionHash { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_conditionHash ConditionHash { get; set; }
 #endif
         /// <summary>The key property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Key { get; set; }
-#nullable restore
-#else
-        public string Key { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_key? Key { get; set; }
         /// <summary>The negation property</summary>
         public bool? Negation { get; set; }
         /// <summary>The type property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Type { get; set; }
-#nullable restore
-#else
-        public string Type { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_type? Type { get; set; }
         /// <summary>The value property</summary>
         public int? Value { get; set; }
         /// <summary>
@@ -74,12 +62,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "bytecode", n => { Bytecode = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "bytecode_error", n => { BytecodeError = n.GetStringValue(); } },
-                { "conditionHash", n => { ConditionHash = n.GetStringValue(); } },
-                { "key", n => { Key = n.GetStringValue(); } },
+                { "bytecode", n => { Bytecode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_bytecode>(global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_bytecode.CreateFromDiscriminatorValue); } },
+                { "bytecode_error", n => { BytecodeError = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_bytecode_error>(global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_bytecode_error.CreateFromDiscriminatorValue); } },
+                { "conditionHash", n => { ConditionHash = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_conditionHash>(global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_conditionHash.CreateFromDiscriminatorValue); } },
+                { "key", n => { Key = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_key>(); } },
                 { "negation", n => { Negation = n.GetBoolValue(); } },
-                { "type", n => { Type = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_type>(); } },
                 { "value", n => { Value = n.GetIntValue(); } },
             };
         }
@@ -90,12 +78,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<UntypedNode>("bytecode", Bytecode);
-            writer.WriteStringValue("bytecode_error", BytecodeError);
-            writer.WriteStringValue("conditionHash", ConditionHash);
-            writer.WriteStringValue("key", Key);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_bytecode>("bytecode", Bytecode);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_bytecode_error>("bytecode_error", BytecodeError);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_conditionHash>("conditionHash", ConditionHash);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_key>("key", Key);
             writer.WriteBoolValue("negation", Negation);
-            writer.WriteStringValue("type", Type);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_type>("type", Type);
             writer.WriteIntValue("value", Value);
         }
     }

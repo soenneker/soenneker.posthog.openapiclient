@@ -32,6 +32,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ReleaseId { get; set; }
 #endif
+        /// <summary>Whether to skip uploaded symbol sets whose content hash changed instead of failing.</summary>
+        public bool? SkipOnConflict { get; set; }
         /// <summary>Symbol sets to upload with per-symbol release IDs and content hashes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -68,6 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "chunk_ids", n => { ChunkIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "force", n => { Force = n.GetBoolValue(); } },
                 { "release_id", n => { ReleaseId = n.GetStringValue(); } },
+                { "skip_on_conflict", n => { SkipOnConflict = n.GetBoolValue(); } },
                 { "symbol_sets", n => { SymbolSets = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetUpload>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetUpload.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -81,6 +84,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("chunk_ids", ChunkIds);
             writer.WriteBoolValue("force", Force);
             writer.WriteStringValue("release_id", ReleaseId);
+            writer.WriteBoolValue("skip_on_conflict", SkipOnConflict);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetUpload>("symbol_sets", SymbolSets);
             writer.WriteAdditionalData(AdditionalData);
         }

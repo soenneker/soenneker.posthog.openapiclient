@@ -15,10 +15,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The aiSessionId property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AiSessionId { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_aiSessionId? AiSessionId { get; set; }
 #nullable restore
 #else
-        public string AiSessionId { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_aiSessionId AiSessionId { get; set; }
 #endif
         /// <summary>The createdAt property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -37,7 +37,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string DistinctId { get; set; }
 #endif
         /// <summary>The errorCount property</summary>
-        public double? ErrorCount { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_errorCount? ErrorCount { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_errorCount ErrorCount { get; set; }
+#endif
         /// <summary>The events property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -55,63 +61,117 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Id { get; set; }
 #endif
         /// <summary>The inputCost property</summary>
-        public double? InputCost { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_inputCost? InputCost { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_inputCost InputCost { get; set; }
+#endif
         /// <summary>The inputState property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? InputState { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_inputState? InputState { get; set; }
 #nullable restore
 #else
-        public UntypedNode InputState { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_inputState InputState { get; set; }
 #endif
         /// <summary>The inputTokens property</summary>
-        public double? InputTokens { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_inputTokens? InputTokens { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_inputTokens InputTokens { get; set; }
+#endif
         /// <summary>The isSupportTrace property</summary>
-        public bool? IsSupportTrace { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_isSupportTrace? IsSupportTrace { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_isSupportTrace IsSupportTrace { get; set; }
+#endif
         /// <summary>The outputCost property</summary>
-        public double? OutputCost { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_outputCost? OutputCost { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_outputCost OutputCost { get; set; }
+#endif
         /// <summary>The outputState property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? OutputState { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_outputState? OutputState { get; set; }
 #nullable restore
 #else
-        public UntypedNode OutputState { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_outputState OutputState { get; set; }
 #endif
         /// <summary>The outputTokens property</summary>
-        public double? OutputTokens { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_outputTokens? OutputTokens { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_outputTokens OutputTokens { get; set; }
+#endif
         /// <summary>The person property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LLMTracePerson? Person { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_person? Person { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LLMTracePerson Person { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_person Person { get; set; }
 #endif
         /// <summary>The requestCost property</summary>
-        public double? RequestCost { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_requestCost? RequestCost { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_requestCost RequestCost { get; set; }
+#endif
         /// <summary>The tools property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Tools { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_tools? Tools { get; set; }
 #nullable restore
 #else
-        public List<string> Tools { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_tools Tools { get; set; }
 #endif
         /// <summary>The totalCost property</summary>
-        public double? TotalCost { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_totalCost? TotalCost { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_totalCost TotalCost { get; set; }
+#endif
         /// <summary>The totalLatency property</summary>
-        public double? TotalLatency { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_totalLatency? TotalLatency { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_totalLatency TotalLatency { get; set; }
+#endif
         /// <summary>The traceName property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TraceName { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_traceName? TraceName { get; set; }
 #nullable restore
 #else
-        public string TraceName { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_traceName TraceName { get; set; }
 #endif
         /// <summary>The webSearchCost property</summary>
-        public double? WebSearchCost { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_webSearchCost? WebSearchCost { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_webSearchCost WebSearchCost { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -130,26 +190,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "aiSessionId", n => { AiSessionId = n.GetStringValue(); } },
+                { "aiSessionId", n => { AiSessionId = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_aiSessionId>(global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_aiSessionId.CreateFromDiscriminatorValue); } },
                 { "createdAt", n => { CreatedAt = n.GetStringValue(); } },
                 { "distinctId", n => { DistinctId = n.GetStringValue(); } },
-                { "errorCount", n => { ErrorCount = n.GetDoubleValue(); } },
+                { "errorCount", n => { ErrorCount = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_errorCount>(global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_errorCount.CreateFromDiscriminatorValue); } },
                 { "events", n => { Events = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LLMTraceEvent>(global::Soenneker.PostHog.OpenApiClient.Models.LLMTraceEvent.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "inputCost", n => { InputCost = n.GetDoubleValue(); } },
-                { "inputState", n => { InputState = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "inputTokens", n => { InputTokens = n.GetDoubleValue(); } },
-                { "isSupportTrace", n => { IsSupportTrace = n.GetBoolValue(); } },
-                { "outputCost", n => { OutputCost = n.GetDoubleValue(); } },
-                { "outputState", n => { OutputState = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "outputTokens", n => { OutputTokens = n.GetDoubleValue(); } },
-                { "person", n => { Person = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LLMTracePerson>(global::Soenneker.PostHog.OpenApiClient.Models.LLMTracePerson.CreateFromDiscriminatorValue); } },
-                { "requestCost", n => { RequestCost = n.GetDoubleValue(); } },
-                { "tools", n => { Tools = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "totalCost", n => { TotalCost = n.GetDoubleValue(); } },
-                { "totalLatency", n => { TotalLatency = n.GetDoubleValue(); } },
-                { "traceName", n => { TraceName = n.GetStringValue(); } },
-                { "webSearchCost", n => { WebSearchCost = n.GetDoubleValue(); } },
+                { "inputCost", n => { InputCost = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_inputCost>(global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_inputCost.CreateFromDiscriminatorValue); } },
+                { "inputState", n => { InputState = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_inputState>(global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_inputState.CreateFromDiscriminatorValue); } },
+                { "inputTokens", n => { InputTokens = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_inputTokens>(global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_inputTokens.CreateFromDiscriminatorValue); } },
+                { "isSupportTrace", n => { IsSupportTrace = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_isSupportTrace>(global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_isSupportTrace.CreateFromDiscriminatorValue); } },
+                { "outputCost", n => { OutputCost = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_outputCost>(global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_outputCost.CreateFromDiscriminatorValue); } },
+                { "outputState", n => { OutputState = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_outputState>(global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_outputState.CreateFromDiscriminatorValue); } },
+                { "outputTokens", n => { OutputTokens = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_outputTokens>(global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_outputTokens.CreateFromDiscriminatorValue); } },
+                { "person", n => { Person = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_person>(global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_person.CreateFromDiscriminatorValue); } },
+                { "requestCost", n => { RequestCost = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_requestCost>(global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_requestCost.CreateFromDiscriminatorValue); } },
+                { "tools", n => { Tools = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_tools>(global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_tools.CreateFromDiscriminatorValue); } },
+                { "totalCost", n => { TotalCost = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_totalCost>(global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_totalCost.CreateFromDiscriminatorValue); } },
+                { "totalLatency", n => { TotalLatency = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_totalLatency>(global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_totalLatency.CreateFromDiscriminatorValue); } },
+                { "traceName", n => { TraceName = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_traceName>(global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_traceName.CreateFromDiscriminatorValue); } },
+                { "webSearchCost", n => { WebSearchCost = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_webSearchCost>(global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_webSearchCost.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -159,26 +219,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("aiSessionId", AiSessionId);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_aiSessionId>("aiSessionId", AiSessionId);
             writer.WriteStringValue("createdAt", CreatedAt);
             writer.WriteStringValue("distinctId", DistinctId);
-            writer.WriteDoubleValue("errorCount", ErrorCount);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_errorCount>("errorCount", ErrorCount);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LLMTraceEvent>("events", Events);
             writer.WriteStringValue("id", Id);
-            writer.WriteDoubleValue("inputCost", InputCost);
-            writer.WriteObjectValue<UntypedNode>("inputState", InputState);
-            writer.WriteDoubleValue("inputTokens", InputTokens);
-            writer.WriteBoolValue("isSupportTrace", IsSupportTrace);
-            writer.WriteDoubleValue("outputCost", OutputCost);
-            writer.WriteObjectValue<UntypedNode>("outputState", OutputState);
-            writer.WriteDoubleValue("outputTokens", OutputTokens);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LLMTracePerson>("person", Person);
-            writer.WriteDoubleValue("requestCost", RequestCost);
-            writer.WriteCollectionOfPrimitiveValues<string>("tools", Tools);
-            writer.WriteDoubleValue("totalCost", TotalCost);
-            writer.WriteDoubleValue("totalLatency", TotalLatency);
-            writer.WriteStringValue("traceName", TraceName);
-            writer.WriteDoubleValue("webSearchCost", WebSearchCost);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_inputCost>("inputCost", InputCost);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_inputState>("inputState", InputState);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_inputTokens>("inputTokens", InputTokens);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_isSupportTrace>("isSupportTrace", IsSupportTrace);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_outputCost>("outputCost", OutputCost);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_outputState>("outputState", OutputState);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_outputTokens>("outputTokens", OutputTokens);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_person>("person", Person);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_requestCost>("requestCost", RequestCost);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_tools>("tools", Tools);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_totalCost>("totalCost", TotalCost);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_totalLatency>("totalLatency", TotalLatency);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_traceName>("traceName", TraceName);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LLMTrace_webSearchCost>("webSearchCost", WebSearchCost);
         }
     }
 }

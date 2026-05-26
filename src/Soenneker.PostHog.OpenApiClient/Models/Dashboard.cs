@@ -26,20 +26,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Custom color mapping for breakdown values.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? BreakdownColors { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Dashboard_breakdown_colors? BreakdownColors { get; set; }
 #nullable restore
 #else
-        public UntypedNode BreakdownColors { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Dashboard_breakdown_colors BreakdownColors { get; set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Dashboard_created_by? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Dashboard_created_by CreatedBy { get; private set; }
 #endif
         /// <summary>The create_in_folder property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -49,8 +49,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string CreateInFolder { get; set; }
 #endif
-        /// <summary>The creation_mode property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.CreationModeEnum? CreationMode { get; private set; }
+        /// <summary>* `default` - Default* `template` - Template* `duplicate` - Duplicate* `unlisted` - Unlisted (product-embedded)</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.CreationModeEnum? CreationMode { get; set; }
         /// <summary>ID of the color theme used for chart visualizations.</summary>
         public int? DataColorThemeId { get; set; }
         /// <summary>The deleted property</summary>
@@ -66,9 +66,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Description { get; set; }
 #endif
         /// <summary>The effective_privilege_level property</summary>
-        public int? EffectivePrivilegeLevel { get; private set; }
+        public int? EffectivePrivilegeLevel { get; set; }
         /// <summary>The effective_restriction_level property</summary>
-        public int? EffectiveRestrictionLevel { get; private set; }
+        public int? EffectiveRestrictionLevel { get; set; }
         /// <summary>The filters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -126,10 +126,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Tags { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.Dashboard_tags>? Tags { get; set; }
 #nullable restore
 #else
-        public UntypedNode Tags { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.Dashboard_tags> Tags { get; set; }
 #endif
         /// <summary>The team_id property</summary>
         public int? TeamId { get; private set; }
@@ -193,10 +193,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "access_control_version", n => { AccessControlVersion = n.GetStringValue(); } },
-                { "breakdown_colors", n => { BreakdownColors = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "breakdown_colors", n => { BreakdownColors = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Dashboard_breakdown_colors>(global::Soenneker.PostHog.OpenApiClient.Models.Dashboard_breakdown_colors.CreateFromDiscriminatorValue); } },
                 { "_create_in_folder", n => { CreateInFolder = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Dashboard_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.Dashboard_created_by.CreateFromDiscriminatorValue); } },
                 { "creation_mode", n => { CreationMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CreationModeEnum>(); } },
                 { "data_color_theme_id", n => { DataColorThemeId = n.GetIntValue(); } },
                 { "delete_insights", n => { DeleteInsights = n.GetBoolValue(); } },
@@ -216,7 +216,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "pinned", n => { Pinned = n.GetBoolValue(); } },
                 { "quick_filter_ids", n => { QuickFilterIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "restriction_level", n => { RestrictionLevel = n.GetIntValue(); } },
-                { "tags", n => { Tags = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "tags", n => { Tags = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.Dashboard_tags>(global::Soenneker.PostHog.OpenApiClient.Models.Dashboard_tags.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "team_id", n => { TeamId = n.GetIntValue(); } },
                 { "tiles", n => { Tiles = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.Dashboard_tiles>(global::Soenneker.PostHog.OpenApiClient.Models.Dashboard_tiles.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "use_dashboard", n => { UseDashboard = n.GetIntValue(); } },
@@ -232,19 +232,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<UntypedNode>("breakdown_colors", BreakdownColors);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Dashboard_breakdown_colors>("breakdown_colors", BreakdownColors);
             writer.WriteStringValue("_create_in_folder", CreateInFolder);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CreationModeEnum>("creation_mode", CreationMode);
             writer.WriteIntValue("data_color_theme_id", DataColorThemeId);
             writer.WriteBoolValue("deleted", Deleted);
             writer.WriteBoolValue("delete_insights", DeleteInsights);
             writer.WriteStringValue("description", Description);
+            writer.WriteIntValue("effective_privilege_level", EffectivePrivilegeLevel);
+            writer.WriteIntValue("effective_restriction_level", EffectiveRestrictionLevel);
             writer.WriteDateTimeOffsetValue("last_accessed_at", LastAccessedAt);
             writer.WriteDateTimeOffsetValue("last_refresh", LastRefresh);
             writer.WriteStringValue("name", Name);
             writer.WriteBoolValue("pinned", Pinned);
             writer.WriteCollectionOfPrimitiveValues<string>("quick_filter_ids", QuickFilterIds);
             writer.WriteIntValue("restriction_level", RestrictionLevel);
-            writer.WriteObjectValue<UntypedNode>("tags", Tags);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.Dashboard_tags>("tags", Tags);
             writer.WriteIntValue("use_dashboard", UseDashboard);
             writer.WriteStringValue("use_template", UseTemplate);
             writer.WriteAdditionalData(AdditionalData);

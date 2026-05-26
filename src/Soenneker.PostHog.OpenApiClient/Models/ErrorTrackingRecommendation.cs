@@ -32,8 +32,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingRecommendation_meta Meta { get; private set; }
 #endif
-        /// <summary>&apos;ready&apos; if meta is fresh, &apos;computing&apos; if a refresh is in progress.* `ready` - Ready* `computing` - Computing</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingRecommendationStatusEnum? Status { get; private set; }
+        /// <summary>* `ready` - Ready* `computing` - Computing</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingRecommendationStatusEnum? Status { get; set; }
         /// <summary>Recommendation type identifier (e.g. &apos;alerts&apos;).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -87,6 +87,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingRecommendationStatusEnum>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -14,6 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Sum of uncompressed bytes for the bucket.</summary>
+        public int? BytesUncompressed { get; set; }
         /// <summary>The count property</summary>
         public int? Count { get; set; }
         /// <summary>Service name when sparklineBreakdownBy=&quot;service&quot;. Present only for service-broken-down sparklines.</summary>
@@ -65,6 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "bytes_uncompressed", n => { BytesUncompressed = n.GetIntValue(); } },
                 { "count", n => { Count = n.GetIntValue(); } },
                 { "service", n => { Service = n.GetStringValue(); } },
                 { "severity", n => { Severity = n.GetStringValue(); } },
@@ -78,6 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteIntValue("bytes_uncompressed", BytesUncompressed);
             writer.WriteIntValue("count", Count);
             writer.WriteStringValue("service", Service);
             writer.WriteStringValue("severity", Severity);

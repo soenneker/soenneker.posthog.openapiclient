@@ -12,32 +12,38 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class IQRDetectorConfig : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>IQR multiplier for fence calculation (default: 1.5, use 3.0 for far outliers)</summary>
-        public double? Multiplier { get; set; }
+        /// <summary>&quot;IQR multiplier for fence calculation (default: 1.5, use 3.0 for far outliers)&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.IQRDetectorConfig_multiplier? Multiplier { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.IQRDetectorConfig_multiplier Multiplier { get; set; }
+#endif
         /// <summary>Preprocessing transforms applied before detection</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig? Preprocessing { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.IQRDetectorConfig_preprocessing? Preprocessing { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig Preprocessing { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.IQRDetectorConfig_preprocessing Preprocessing { get; set; }
 #endif
         /// <summary>The type property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.IQRDetectorConfig_type? Type { get; set; }
+        /// <summary>&quot;Rolling window size for calculating quartiles (default: 30)&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Type { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.IQRDetectorConfig_window? Window { get; set; }
 #nullable restore
 #else
-        public string Type { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.IQRDetectorConfig_window Window { get; set; }
 #endif
-        /// <summary>Rolling window size for calculating quartiles (default: 30)</summary>
-        public int? Window { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.IQRDetectorConfig"/> and sets the default values.
         /// </summary>
         public IQRDetectorConfig()
         {
-            Type = "iqr";
+            Type = global::Soenneker.PostHog.OpenApiClient.Models.IQRDetectorConfig_type.Iqr;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -57,10 +63,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "multiplier", n => { Multiplier = n.GetDoubleValue(); } },
-                { "preprocessing", n => { Preprocessing = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig>(global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetStringValue(); } },
-                { "window", n => { Window = n.GetIntValue(); } },
+                { "multiplier", n => { Multiplier = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IQRDetectorConfig_multiplier>(global::Soenneker.PostHog.OpenApiClient.Models.IQRDetectorConfig_multiplier.CreateFromDiscriminatorValue); } },
+                { "preprocessing", n => { Preprocessing = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IQRDetectorConfig_preprocessing>(global::Soenneker.PostHog.OpenApiClient.Models.IQRDetectorConfig_preprocessing.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IQRDetectorConfig_type>(); } },
+                { "window", n => { Window = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IQRDetectorConfig_window>(global::Soenneker.PostHog.OpenApiClient.Models.IQRDetectorConfig_window.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -70,10 +76,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteDoubleValue("multiplier", Multiplier);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig>("preprocessing", Preprocessing);
-            writer.WriteStringValue("type", Type);
-            writer.WriteIntValue("window", Window);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IQRDetectorConfig_multiplier>("multiplier", Multiplier);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IQRDetectorConfig_preprocessing>("preprocessing", Preprocessing);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IQRDetectorConfig_type>("type", Type);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IQRDetectorConfig_window>("window", Window);
         }
     }
 }

@@ -25,10 +25,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The cohort property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingIssueFull_cohort? Cohort { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingIssueFullCohort? Cohort { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingIssueFull_cohort Cohort { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingIssueFullCohort Cohort { get; private set; }
 #endif
         /// <summary>The description property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -86,7 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "assignee", n => { Assignee = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAssignment>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAssignment.CreateFromDiscriminatorValue); } },
-                { "cohort", n => { Cohort = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingIssueFull_cohort>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingIssueFull_cohort.CreateFromDiscriminatorValue); } },
+                { "cohort", n => { Cohort = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingIssueFullCohort>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingIssueFullCohort.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "external_issues", n => { ExternalIssues = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceResult>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceResult.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "first_seen", n => { FirstSeen = n.GetDateTimeOffsetValue(); } },

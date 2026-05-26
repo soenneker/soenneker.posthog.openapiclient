@@ -36,16 +36,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>User who created the endpoint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponse_created_by? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponse_created_by CreatedBy { get; private set; }
 #endif
         /// <summary>Latest version number.</summary>
         public int? CurrentVersion { get; set; }
         /// <summary>UUID of the current EndpointVersion row.</summary>
         public Guid? CurrentVersionId { get; set; }
-        /// <summary>How fresh the data is, in seconds. One of: 900, 1800, 3600, 21600, 43200, 86400, 604800.</summary>
+        /// <summary>&quot;How fresh the data is, in seconds. One of: 900, 1800, 3600, 21600, 43200, 86400, 604800.&quot;</summary>
         public int? DataFreshnessSeconds { get; set; }
         /// <summary>Short ID of the source insight, if derived from one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -84,10 +84,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Materialization status and configuration for the current version.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointMaterialization? Materialization { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponse_materialization? Materialization { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointMaterialization Materialization { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponse_materialization Materialization { get; set; }
 #endif
         /// <summary>URL-safe endpoint name, unique per team.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -100,10 +100,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The HogQL or insight query definition (JSON object with &apos;kind&apos; key).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Query { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponse_query? Query { get; set; }
 #nullable restore
 #else
-        public UntypedNode Query { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponse_query Query { get; set; }
 #endif
         /// <summary>Absolute URL to view this endpoint in the PostHog UI.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -136,10 +136,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>User who created this version.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? VersionCreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponse_version_created_by? VersionCreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic VersionCreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponse_version_created_by VersionCreatedBy { get; private set; }
 #endif
         /// <summary>Version unique identifier (UUID).</summary>
         public Guid? VersionId { get; set; }
@@ -181,7 +181,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "bucket_overrides", n => { BucketOverrides = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponse_bucket_overrides>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponse_bucket_overrides.CreateFromDiscriminatorValue); } },
                 { "columns", n => { Columns = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EndpointColumn>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointColumn.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponse_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponse_created_by.CreateFromDiscriminatorValue); } },
                 { "current_version", n => { CurrentVersion = n.GetIntValue(); } },
                 { "current_version_id", n => { CurrentVersionId = n.GetGuidValue(); } },
                 { "data_freshness_seconds", n => { DataFreshnessSeconds = n.GetIntValue(); } },
@@ -193,15 +193,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "is_active", n => { IsActive = n.GetBoolValue(); } },
                 { "is_materialized", n => { IsMaterialized = n.GetBoolValue(); } },
                 { "last_executed_at", n => { LastExecutedAt = n.GetDateTimeOffsetValue(); } },
-                { "materialization", n => { Materialization = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointMaterialization>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointMaterialization.CreateFromDiscriminatorValue); } },
+                { "materialization", n => { Materialization = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponse_materialization>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponse_materialization.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "query", n => { Query = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponse_query>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponse_query.CreateFromDiscriminatorValue); } },
                 { "ui_url", n => { UiUrl = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
                 { "version", n => { Version = n.GetIntValue(); } },
                 { "version_created_at", n => { VersionCreatedAt = n.GetStringValue(); } },
-                { "version_created_by", n => { VersionCreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "version_created_by", n => { VersionCreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponse_version_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponse_version_created_by.CreateFromDiscriminatorValue); } },
                 { "version_id", n => { VersionId = n.GetGuidValue(); } },
                 { "version_updated_at", n => { VersionUpdatedAt = n.GetStringValue(); } },
                 { "versions_count", n => { VersionsCount = n.GetIntValue(); } },
@@ -228,9 +228,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("is_active", IsActive);
             writer.WriteBoolValue("is_materialized", IsMaterialized);
             writer.WriteDateTimeOffsetValue("last_executed_at", LastExecutedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointMaterialization>("materialization", Materialization);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponse_materialization>("materialization", Materialization);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<UntypedNode>("query", Query);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponse_query>("query", Query);
             writer.WriteStringValue("ui_url", UiUrl);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteStringValue("url", Url);

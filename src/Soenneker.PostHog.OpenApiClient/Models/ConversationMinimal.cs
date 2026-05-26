@@ -20,7 +20,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public Guid? Id { get; private set; }
         /// <summary>Whether this conversation was created during an impersonated session (e.g., by support agents). Internal conversations are hidden from customers.</summary>
         public bool? IsInternal { get; private set; }
-        /// <summary>Unique key for Slack thread: &apos;{workspace_id}:{channel}:{thread_ts}&apos;</summary>
+        /// <summary>&quot;Unique key for Slack thread: &apos;{workspace_id}:{channel}:{thread_ts}&apos;&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SlackThreadKey { get; private set; }
@@ -36,8 +36,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SlackWorkspaceDomain { get; private set; }
 #endif
-        /// <summary>The status property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationStatus? Status { get; private set; }
+        /// <summary>* `idle` - Idle* `in_progress` - In progress* `canceling` - Canceling</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationStatus? Status { get; set; }
         /// <summary>Title of the conversation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -46,17 +46,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Title { get; private set; }
 #endif
-        /// <summary>The type property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationType? Type { get; private set; }
+        /// <summary>* `assistant` - Assistant* `tool_call` - Tool call* `deep_research` - Deep research* `slack` - Slack</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationType? Type { get; set; }
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>The user property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? User { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationMinimal_user? User { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic User { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationMinimal_user User { get; private set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConversationMinimal"/> and sets the default values.
@@ -92,7 +92,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "title", n => { Title = n.GetStringValue(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationType>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
-                { "user", n => { User = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "user", n => { User = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationMinimal_user>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationMinimal_user.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -102,6 +102,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

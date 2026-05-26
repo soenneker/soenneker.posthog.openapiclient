@@ -43,10 +43,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Presigned S3 POST configuration for uploading the file</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.S3PresignedPost? PresignedPost { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskStagedArtifactPrepareUploadResponse_presigned_post? PresignedPost { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.S3PresignedPost PresignedPost { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskStagedArtifactPrepareUploadResponse_presigned_post PresignedPost { get; set; }
 #endif
         /// <summary>Expected upload size in bytes</summary>
         public int? Size { get; set; }
@@ -103,7 +103,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "expires_in", n => { ExpiresIn = n.GetIntValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "presigned_post", n => { PresignedPost = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.S3PresignedPost>(global::Soenneker.PostHog.OpenApiClient.Models.S3PresignedPost.CreateFromDiscriminatorValue); } },
+                { "presigned_post", n => { PresignedPost = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskStagedArtifactPrepareUploadResponse_presigned_post>(global::Soenneker.PostHog.OpenApiClient.Models.TaskStagedArtifactPrepareUploadResponse_presigned_post.CreateFromDiscriminatorValue); } },
                 { "size", n => { Size = n.GetIntValue(); } },
                 { "source", n => { Source = n.GetStringValue(); } },
                 { "storage_path", n => { StoragePath = n.GetStringValue(); } },
@@ -121,7 +121,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("expires_in", ExpiresIn);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.S3PresignedPost>("presigned_post", PresignedPost);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskStagedArtifactPrepareUploadResponse_presigned_post>("presigned_post", PresignedPost);
             writer.WriteIntValue("size", Size);
             writer.WriteStringValue("source", Source);
             writer.WriteStringValue("storage_path", StoragePath);

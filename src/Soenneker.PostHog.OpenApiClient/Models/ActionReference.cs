@@ -19,10 +19,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>User who created the resource</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActionReference_created_by? CreatedBy { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActionReference_created_by CreatedBy { get; set; }
 #endif
         /// <summary>Resource ID (integer or UUID depending on type)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -40,7 +40,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>Resource type: insight, experiment, cohort, or hog_function</summary>
+        /// <summary>&quot;Resource type: insight, experiment, cohort, or hog_function&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Type { get; set; }
@@ -82,7 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActionReference_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.ActionReference_created_by.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "type", n => { Type = n.GetStringValue(); } },
@@ -97,7 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>("created_by", CreatedBy);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActionReference_created_by>("created_by", CreatedBy);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("type", Type);

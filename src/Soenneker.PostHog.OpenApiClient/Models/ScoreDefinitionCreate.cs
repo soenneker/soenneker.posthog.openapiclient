@@ -19,10 +19,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Initial immutable scorer configuration.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionConfig? Config { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreate_config? Config { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionConfig Config { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreate_config Config { get; set; }
 #endif
         /// <summary>Optional human-readable description.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -32,7 +32,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
-        /// <summary>Scorer kind. This cannot be changed after creation.* `categorical` - categorical* `numeric` - numeric* `boolean` - boolean</summary>
+        /// <summary>* `categorical` - categorical* `numeric` - numeric* `boolean` - boolean</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricKindEnum? Kind { get; set; }
         /// <summary>Human-readable scorer name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -68,7 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "archived", n => { Archived = n.GetBoolValue(); } },
-                { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionConfig>(global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionConfig.CreateFromDiscriminatorValue); } },
+                { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreate_config>(global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreate_config.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricKindEnum>(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
@@ -82,7 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("archived", Archived);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionConfig>("config", Config);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreate_config>("config", Config);
             writer.WriteStringValue("description", Description);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricKindEnum>("kind", Kind);
             writer.WriteStringValue("name", Name);

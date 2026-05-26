@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The anomaly_scores property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? AnomalyScores { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertCheck_anomaly_scores? AnomalyScores { get; private set; }
 #nullable restore
 #else
-        public UntypedNode AnomalyScores { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertCheck_anomaly_scores AnomalyScores { get; private set; }
 #endif
         /// <summary>The calculated_value property</summary>
         public double? CalculatedValue { get; private set; }
@@ -47,10 +47,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The investigation_status property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertCheck.AlertCheck_investigation_status? InvestigationStatus { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertCheck_investigation_status? InvestigationStatus { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertCheck.AlertCheck_investigation_status InvestigationStatus { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertCheck_investigation_status InvestigationStatus { get; private set; }
 #endif
         /// <summary>The investigation_summary property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -63,42 +63,42 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The investigation_verdict property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertCheck.AlertCheck_investigation_verdict? InvestigationVerdict { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertCheck_investigation_verdict? InvestigationVerdict { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertCheck.AlertCheck_investigation_verdict InvestigationVerdict { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertCheck_investigation_verdict InvestigationVerdict { get; private set; }
 #endif
         /// <summary>The notification_sent_at property</summary>
         public DateTimeOffset? NotificationSentAt { get; private set; }
         /// <summary>The notification_suppressed_by_agent property</summary>
         public bool? NotificationSuppressedByAgent { get; private set; }
-        /// <summary>The state property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertCheckStateEnum? State { get; private set; }
+        /// <summary>* `Firing` - Firing* `Not firing` - Not firing* `Errored` - Errored* `Snoozed` - Snoozed</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertCheckStateEnum? State { get; set; }
         /// <summary>The targets_notified property</summary>
         public bool? TargetsNotified { get; private set; }
         /// <summary>The triggered_dates property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? TriggeredDates { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertCheck_triggered_dates? TriggeredDates { get; private set; }
 #nullable restore
 #else
-        public UntypedNode TriggeredDates { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertCheck_triggered_dates TriggeredDates { get; private set; }
 #endif
         /// <summary>The triggered_metadata property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? TriggeredMetadata { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertCheck_triggered_metadata? TriggeredMetadata { get; private set; }
 #nullable restore
 #else
-        public UntypedNode TriggeredMetadata { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertCheck_triggered_metadata TriggeredMetadata { get; private set; }
 #endif
         /// <summary>The triggered_points property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? TriggeredPoints { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertCheck_triggered_points? TriggeredPoints { get; private set; }
 #nullable restore
 #else
-        public UntypedNode TriggeredPoints { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertCheck_triggered_points TriggeredPoints { get; private set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AlertCheck"/> and sets the default values.
@@ -125,22 +125,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "anomaly_scores", n => { AnomalyScores = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "anomaly_scores", n => { AnomalyScores = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertCheck_anomaly_scores>(global::Soenneker.PostHog.OpenApiClient.Models.AlertCheck_anomaly_scores.CreateFromDiscriminatorValue); } },
                 { "calculated_value", n => { CalculatedValue = n.GetDoubleValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "interval", n => { Interval = n.GetStringValue(); } },
                 { "investigation_notebook_short_id", n => { InvestigationNotebookShortId = n.GetStringValue(); } },
-                { "investigation_status", n => { InvestigationStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertCheck.AlertCheck_investigation_status>(global::Soenneker.PostHog.OpenApiClient.Models.AlertCheck.AlertCheck_investigation_status.CreateFromDiscriminatorValue); } },
+                { "investigation_status", n => { InvestigationStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertCheck_investigation_status>(global::Soenneker.PostHog.OpenApiClient.Models.AlertCheck_investigation_status.CreateFromDiscriminatorValue); } },
                 { "investigation_summary", n => { InvestigationSummary = n.GetStringValue(); } },
-                { "investigation_verdict", n => { InvestigationVerdict = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertCheck.AlertCheck_investigation_verdict>(global::Soenneker.PostHog.OpenApiClient.Models.AlertCheck.AlertCheck_investigation_verdict.CreateFromDiscriminatorValue); } },
+                { "investigation_verdict", n => { InvestigationVerdict = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertCheck_investigation_verdict>(global::Soenneker.PostHog.OpenApiClient.Models.AlertCheck_investigation_verdict.CreateFromDiscriminatorValue); } },
                 { "notification_sent_at", n => { NotificationSentAt = n.GetDateTimeOffsetValue(); } },
                 { "notification_suppressed_by_agent", n => { NotificationSuppressedByAgent = n.GetBoolValue(); } },
                 { "state", n => { State = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertCheckStateEnum>(); } },
                 { "targets_notified", n => { TargetsNotified = n.GetBoolValue(); } },
-                { "triggered_dates", n => { TriggeredDates = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "triggered_metadata", n => { TriggeredMetadata = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "triggered_points", n => { TriggeredPoints = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "triggered_dates", n => { TriggeredDates = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertCheck_triggered_dates>(global::Soenneker.PostHog.OpenApiClient.Models.AlertCheck_triggered_dates.CreateFromDiscriminatorValue); } },
+                { "triggered_metadata", n => { TriggeredMetadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertCheck_triggered_metadata>(global::Soenneker.PostHog.OpenApiClient.Models.AlertCheck_triggered_metadata.CreateFromDiscriminatorValue); } },
+                { "triggered_points", n => { TriggeredPoints = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertCheck_triggered_points>(global::Soenneker.PostHog.OpenApiClient.Models.AlertCheck_triggered_points.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -150,137 +150,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertCheckStateEnum>("state", State);
             writer.WriteAdditionalData(AdditionalData);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InvestigationStatusEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class AlertCheck_investigation_status : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InvestigationStatusEnum"/></summary>
-            public global::Soenneker.PostHog.OpenApiClient.Models.InvestigationStatusEnum? InvestigationStatusEnum { get; set; }
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum? NullEnum { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum NullEnum { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AlertCheck.AlertCheck_investigation_status"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.AlertCheck.AlertCheck_investigation_status CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.AlertCheck.AlertCheck_investigation_status();
-                if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InvestigationStatusEnum>() is global::Soenneker.PostHog.OpenApiClient.Models.InvestigationStatusEnum investigationStatusEnumValue)
-                {
-                    result.InvestigationStatusEnum = investigationStatusEnumValue;
-                }
-                else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.NullEnum = new global::Soenneker.PostHog.OpenApiClient.Models.NullEnum();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(NullEnum != null)
-                {
-                    return NullEnum.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(InvestigationStatusEnum != null)
-                {
-                    writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InvestigationStatusEnum>(null, InvestigationStatusEnum);
-                }
-                else if(NullEnum != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NullEnum>(null, NullEnum);
-                }
-            }
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InvestigationVerdictEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class AlertCheck_investigation_verdict : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InvestigationVerdictEnum"/></summary>
-            public global::Soenneker.PostHog.OpenApiClient.Models.InvestigationVerdictEnum? InvestigationVerdictEnum { get; set; }
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum? NullEnum { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum NullEnum { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AlertCheck.AlertCheck_investigation_verdict"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.AlertCheck.AlertCheck_investigation_verdict CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.AlertCheck.AlertCheck_investigation_verdict();
-                if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InvestigationVerdictEnum>() is global::Soenneker.PostHog.OpenApiClient.Models.InvestigationVerdictEnum investigationVerdictEnumValue)
-                {
-                    result.InvestigationVerdictEnum = investigationVerdictEnumValue;
-                }
-                else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.NullEnum = new global::Soenneker.PostHog.OpenApiClient.Models.NullEnum();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(NullEnum != null)
-                {
-                    return NullEnum.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(InvestigationVerdictEnum != null)
-                {
-                    writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InvestigationVerdictEnum>(null, InvestigationVerdictEnum);
-                }
-                else if(NullEnum != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NullEnum>(null, NullEnum);
-                }
-            }
         }
     }
 }

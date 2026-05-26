@@ -31,7 +31,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string CompanyName { get; set; }
 #endif
-        /// <summary>Either &apos;BAA&apos; or &apos;DPA&apos;.* `BAA` - BAA* `DPA` - DPA</summary>
+        /// <summary>* `BAA` - BAA* `DPA` - DPA</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.CreateLegalDocumentDocumentTypeEnum? DocumentType { get; set; }
         /// <summary>Email the signed PandaDoc envelope is sent to (PandaDoc&apos;s Client.Email).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

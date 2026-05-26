@@ -17,28 +17,28 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The assignee property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRule_assignee? Assignee { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRuleAssignee? Assignee { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRule_assignee Assignee { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRuleAssignee Assignee { get; private set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>The disabled_data property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? DisabledData { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRule_disabled_data? DisabledData { get; set; }
 #nullable restore
 #else
-        public UntypedNode DisabledData { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRule_disabled_data DisabledData { get; set; }
 #endif
         /// <summary>The filters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRule_filters? Filters { get; set; }
 #nullable restore
 #else
-        public UntypedNode Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRule_filters Filters { get; set; }
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
@@ -71,10 +71,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "assignee", n => { Assignee = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRule_assignee>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRule_assignee.CreateFromDiscriminatorValue); } },
+                { "assignee", n => { Assignee = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRuleAssignee>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRuleAssignee.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "disabled_data", n => { DisabledData = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "filters", n => { Filters = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "disabled_data", n => { DisabledData = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRule_disabled_data>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRule_disabled_data.CreateFromDiscriminatorValue); } },
+                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRule_filters>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRule_filters.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "order_key", n => { OrderKey = n.GetIntValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
@@ -87,8 +87,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<UntypedNode>("disabled_data", DisabledData);
-            writer.WriteObjectValue<UntypedNode>("filters", Filters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRule_disabled_data>("disabled_data", DisabledData);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRule_filters>("filters", Filters);
             writer.WriteIntValue("order_key", OrderKey);
             writer.WriteAdditionalData(AdditionalData);
         }

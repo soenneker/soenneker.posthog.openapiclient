@@ -31,10 +31,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Arbitrary structured payload for the event. Shape varies by event_type.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Payload { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DeploymentEvent_payload? Payload { get; set; }
 #nullable restore
 #else
-        public UntypedNode Payload { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DeploymentEvent_payload Payload { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DeploymentEvent"/> and sets the default values.
@@ -65,7 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "event_type", n => { EventType = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "occurred_at", n => { OccurredAt = n.GetDateTimeOffsetValue(); } },
-                { "payload", n => { Payload = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "payload", n => { Payload = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DeploymentEvent_payload>(global::Soenneker.PostHog.OpenApiClient.Models.DeploymentEvent_payload.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -76,7 +76,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("event_type", EventType);
-            writer.WriteObjectValue<UntypedNode>("payload", Payload);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DeploymentEvent_payload>("payload", Payload);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

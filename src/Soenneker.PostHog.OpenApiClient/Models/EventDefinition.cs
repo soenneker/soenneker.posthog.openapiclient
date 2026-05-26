@@ -15,10 +15,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The elements property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Elements { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.EventDefinition_elements>? Elements { get; set; }
 #nullable restore
 #else
-        public UntypedNode Elements { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.EventDefinition_elements> Elements { get; set; }
 #endif
         /// <summary>The event property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -54,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "elements", n => { Elements = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "elements", n => { Elements = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EventDefinition_elements>(global::Soenneker.PostHog.OpenApiClient.Models.EventDefinition_elements.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "event", n => { Event = n.GetStringValue(); } },
                 { "properties", n => { Properties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventDefinition_properties>(global::Soenneker.PostHog.OpenApiClient.Models.EventDefinition_properties.CreateFromDiscriminatorValue); } },
             };
@@ -66,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<UntypedNode>("elements", Elements);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EventDefinition_elements>("elements", Elements);
             writer.WriteStringValue("event", Event);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventDefinition_properties>("properties", Properties);
         }

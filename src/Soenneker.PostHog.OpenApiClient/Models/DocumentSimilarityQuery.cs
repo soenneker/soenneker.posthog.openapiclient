@@ -31,15 +31,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public List<string> DocumentTypes { get; set; }
 #endif
         /// <summary>The kind property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQuery_kind? Kind { get; set; }
+        /// <summary>The limit property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQuery_limit? Limit { get; set; }
 #nullable restore
 #else
-        public string Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQuery_limit Limit { get; set; }
 #endif
-        /// <summary>The limit property</summary>
-        public int? Limit { get; set; }
         /// <summary>The model property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -51,13 +51,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers? Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQuery_modifiers? Modifiers { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQuery_modifiers Modifiers { get; set; }
 #endif
         /// <summary>The offset property</summary>
-        public int? Offset { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQuery_offset? Offset { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQuery_offset Offset { get; set; }
+#endif
         /// <summary>The order_by property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.OrderBy? OrderBy { get; set; }
         /// <summary>The order_direction property</summary>
@@ -89,29 +95,41 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQueryResponse? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQuery_response? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQueryResponse Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQuery_response Response { get; set; }
 #endif
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags? Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQuery_tags? Tags { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQuery_tags Tags { get; set; }
 #endif
         /// <summary>The threshold property</summary>
-        public double? Threshold { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQuery_threshold? Threshold { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQuery_threshold Threshold { get; set; }
+#endif
         /// <summary>version of the node, used for schema migrations</summary>
-        public double? Version { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQuery_version? Version { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQuery_version Version { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQuery"/> and sets the default values.
         /// </summary>
         public DocumentSimilarityQuery()
         {
-            Kind = "DocumentSimilarityQuery";
+            Kind = global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQuery_kind.DocumentSimilarityQuery;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -134,20 +152,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>(global::Soenneker.PostHog.OpenApiClient.Models.DateRange.CreateFromDiscriminatorValue); } },
                 { "distance_func", n => { DistanceFunc = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DistanceFunc>(); } },
                 { "document_types", n => { DocumentTypes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
-                { "limit", n => { Limit = n.GetIntValue(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQuery_kind>(); } },
+                { "limit", n => { Limit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQuery_limit>(global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQuery_limit.CreateFromDiscriminatorValue); } },
                 { "model", n => { Model = n.GetStringValue(); } },
-                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
-                { "offset", n => { Offset = n.GetIntValue(); } },
+                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQuery_modifiers>(global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQuery_modifiers.CreateFromDiscriminatorValue); } },
+                { "offset", n => { Offset = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQuery_offset>(global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQuery_offset.CreateFromDiscriminatorValue); } },
                 { "order_by", n => { OrderBy = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OrderBy>(); } },
                 { "order_direction", n => { OrderDirection = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OrderDirection1>(); } },
                 { "origin", n => { Origin = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmbeddedDocument>(global::Soenneker.PostHog.OpenApiClient.Models.EmbeddedDocument.CreateFromDiscriminatorValue); } },
                 { "products", n => { Products = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "renderings", n => { Renderings = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQueryResponse.CreateFromDiscriminatorValue); } },
-                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
-                { "threshold", n => { Threshold = n.GetDoubleValue(); } },
-                { "version", n => { Version = n.GetDoubleValue(); } },
+                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQuery_response>(global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQuery_response.CreateFromDiscriminatorValue); } },
+                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQuery_tags>(global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQuery_tags.CreateFromDiscriminatorValue); } },
+                { "threshold", n => { Threshold = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQuery_threshold>(global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQuery_threshold.CreateFromDiscriminatorValue); } },
+                { "version", n => { Version = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQuery_version>(global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQuery_version.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -160,20 +178,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>("dateRange", DateRange);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DistanceFunc>("distance_func", DistanceFunc);
             writer.WriteCollectionOfPrimitiveValues<string>("document_types", DocumentTypes);
-            writer.WriteStringValue("kind", Kind);
-            writer.WriteIntValue("limit", Limit);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQuery_kind>("kind", Kind);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQuery_limit>("limit", Limit);
             writer.WriteStringValue("model", Model);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);
-            writer.WriteIntValue("offset", Offset);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQuery_modifiers>("modifiers", Modifiers);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQuery_offset>("offset", Offset);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OrderBy>("order_by", OrderBy);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OrderDirection1>("order_direction", OrderDirection);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmbeddedDocument>("origin", Origin);
             writer.WriteCollectionOfPrimitiveValues<string>("products", Products);
             writer.WriteCollectionOfPrimitiveValues<string>("renderings", Renderings);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQueryResponse>("response", Response);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
-            writer.WriteDoubleValue("threshold", Threshold);
-            writer.WriteDoubleValue("version", Version);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQuery_response>("response", Response);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQuery_tags>("tags", Tags);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQuery_threshold>("threshold", Threshold);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQuery_version>("version", Version);
         }
     }
 }

@@ -66,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SqlQuery { get; set; }
 #endif
-        /// <summary>Per-version badge tooltip text matching the SDK Doctor UI exactly. Quote verbatim when reporting to users. Varies by state: &apos;Released X ago. Upgrade recommended.&apos; for outdated versions, &apos;You have the latest available. Click Releases above to check for any since.&apos; for current versions, or &apos;Released X ago. Upgrading is a good idea, but it&apos;s not urgent yet.&apos; for recent-but-behind versions.</summary>
+        /// <summary>&quot;Per-version badge tooltip text matching the SDK Doctor UI exactly. Quote verbatim when reporting to users. Varies by state: &apos;Released X ago. Upgrade recommended.&apos; for outdated versions, &apos;You have the latest available. Click Releases above to check for any since.&apos; for current versions, or &apos;Released X ago. Upgrading is a good idea, but it&apos;s not urgent yet.&apos; for recent-but-behind versions.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? StatusReason { get; set; }

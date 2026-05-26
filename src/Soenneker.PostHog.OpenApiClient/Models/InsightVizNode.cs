@@ -13,35 +13,95 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning restore CS1591
     {
         /// <summary>Query is embedded inside another bordered component</summary>
-        public bool? Embedded { get; set; }
-        /// <summary>Show with most visual options enabled. Used in insight scene.</summary>
-        public bool? Full { get; set; }
-        /// <summary>The hidePersonsModal property</summary>
-        public bool? HidePersonsModal { get; set; }
-        /// <summary>The hideTooltipOnScroll property</summary>
-        public bool? HideTooltipOnScroll { get; set; }
-        /// <summary>The kind property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_embedded? Embedded { get; set; }
 #nullable restore
 #else
-        public string Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_embedded Embedded { get; set; }
 #endif
+        /// <summary>Show with most visual options enabled. Used in insight scene.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_full? Full { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_full Full { get; set; }
+#endif
+        /// <summary>The hidePersonsModal property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_hidePersonsModal? HidePersonsModal { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_hidePersonsModal HidePersonsModal { get; set; }
+#endif
+        /// <summary>The hideTooltipOnScroll property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_hideTooltipOnScroll? HideTooltipOnScroll { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_hideTooltipOnScroll HideTooltipOnScroll { get; set; }
+#endif
+        /// <summary>The kind property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_kind? Kind { get; set; }
         /// <summary>The showCorrelationTable property</summary>
-        public bool? ShowCorrelationTable { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_showCorrelationTable? ShowCorrelationTable { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_showCorrelationTable ShowCorrelationTable { get; set; }
+#endif
         /// <summary>The showFilters property</summary>
-        public bool? ShowFilters { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_showFilters? ShowFilters { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_showFilters ShowFilters { get; set; }
+#endif
         /// <summary>The showHeader property</summary>
-        public bool? ShowHeader { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_showHeader? ShowHeader { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_showHeader ShowHeader { get; set; }
+#endif
         /// <summary>The showLastComputation property</summary>
-        public bool? ShowLastComputation { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_showLastComputation? ShowLastComputation { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_showLastComputation ShowLastComputation { get; set; }
+#endif
         /// <summary>The showLastComputationRefresh property</summary>
-        public bool? ShowLastComputationRefresh { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_showLastComputationRefresh? ShowLastComputationRefresh { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_showLastComputationRefresh ShowLastComputationRefresh { get; set; }
+#endif
         /// <summary>The showResults property</summary>
-        public bool? ShowResults { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_showResults? ShowResults { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_showResults ShowResults { get; set; }
+#endif
         /// <summary>The showTable property</summary>
-        public bool? ShowTable { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_showTable? ShowTable { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_showTable ShowTable { get; set; }
+#endif
         /// <summary>The source property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -51,23 +111,35 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode.InsightVizNode_source Source { get; set; }
 #endif
         /// <summary>The suppressSessionAnalysisWarning property</summary>
-        public bool? SuppressSessionAnalysisWarning { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_suppressSessionAnalysisWarning? SuppressSessionAnalysisWarning { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_suppressSessionAnalysisWarning SuppressSessionAnalysisWarning { get; set; }
+#endif
         /// <summary>version of the node, used for schema migrations</summary>
-        public double? Version { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_version? Version { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_version Version { get; set; }
+#endif
         /// <summary>The vizSpecificOptions property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.VizSpecificOptions? VizSpecificOptions { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_vizSpecificOptions? VizSpecificOptions { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.VizSpecificOptions VizSpecificOptions { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_vizSpecificOptions VizSpecificOptions { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode"/> and sets the default values.
         /// </summary>
         public InsightVizNode()
         {
-            Kind = "InsightVizNode";
+            Kind = global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_kind.InsightVizNode;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -87,22 +159,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "embedded", n => { Embedded = n.GetBoolValue(); } },
-                { "full", n => { Full = n.GetBoolValue(); } },
-                { "hidePersonsModal", n => { HidePersonsModal = n.GetBoolValue(); } },
-                { "hideTooltipOnScroll", n => { HideTooltipOnScroll = n.GetBoolValue(); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
-                { "showCorrelationTable", n => { ShowCorrelationTable = n.GetBoolValue(); } },
-                { "showFilters", n => { ShowFilters = n.GetBoolValue(); } },
-                { "showHeader", n => { ShowHeader = n.GetBoolValue(); } },
-                { "showLastComputation", n => { ShowLastComputation = n.GetBoolValue(); } },
-                { "showLastComputationRefresh", n => { ShowLastComputationRefresh = n.GetBoolValue(); } },
-                { "showResults", n => { ShowResults = n.GetBoolValue(); } },
-                { "showTable", n => { ShowTable = n.GetBoolValue(); } },
+                { "embedded", n => { Embedded = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_embedded>(global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_embedded.CreateFromDiscriminatorValue); } },
+                { "full", n => { Full = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_full>(global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_full.CreateFromDiscriminatorValue); } },
+                { "hidePersonsModal", n => { HidePersonsModal = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_hidePersonsModal>(global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_hidePersonsModal.CreateFromDiscriminatorValue); } },
+                { "hideTooltipOnScroll", n => { HideTooltipOnScroll = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_hideTooltipOnScroll>(global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_hideTooltipOnScroll.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_kind>(); } },
+                { "showCorrelationTable", n => { ShowCorrelationTable = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_showCorrelationTable>(global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_showCorrelationTable.CreateFromDiscriminatorValue); } },
+                { "showFilters", n => { ShowFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_showFilters>(global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_showFilters.CreateFromDiscriminatorValue); } },
+                { "showHeader", n => { ShowHeader = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_showHeader>(global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_showHeader.CreateFromDiscriminatorValue); } },
+                { "showLastComputation", n => { ShowLastComputation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_showLastComputation>(global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_showLastComputation.CreateFromDiscriminatorValue); } },
+                { "showLastComputationRefresh", n => { ShowLastComputationRefresh = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_showLastComputationRefresh>(global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_showLastComputationRefresh.CreateFromDiscriminatorValue); } },
+                { "showResults", n => { ShowResults = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_showResults>(global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_showResults.CreateFromDiscriminatorValue); } },
+                { "showTable", n => { ShowTable = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_showTable>(global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_showTable.CreateFromDiscriminatorValue); } },
                 { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode.InsightVizNode_source>(global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode.InsightVizNode_source.CreateFromDiscriminatorValue); } },
-                { "suppressSessionAnalysisWarning", n => { SuppressSessionAnalysisWarning = n.GetBoolValue(); } },
-                { "version", n => { Version = n.GetDoubleValue(); } },
-                { "vizSpecificOptions", n => { VizSpecificOptions = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.VizSpecificOptions>(global::Soenneker.PostHog.OpenApiClient.Models.VizSpecificOptions.CreateFromDiscriminatorValue); } },
+                { "suppressSessionAnalysisWarning", n => { SuppressSessionAnalysisWarning = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_suppressSessionAnalysisWarning>(global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_suppressSessionAnalysisWarning.CreateFromDiscriminatorValue); } },
+                { "version", n => { Version = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_version>(global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_version.CreateFromDiscriminatorValue); } },
+                { "vizSpecificOptions", n => { VizSpecificOptions = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_vizSpecificOptions>(global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_vizSpecificOptions.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -112,22 +184,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteBoolValue("embedded", Embedded);
-            writer.WriteBoolValue("full", Full);
-            writer.WriteBoolValue("hidePersonsModal", HidePersonsModal);
-            writer.WriteBoolValue("hideTooltipOnScroll", HideTooltipOnScroll);
-            writer.WriteStringValue("kind", Kind);
-            writer.WriteBoolValue("showCorrelationTable", ShowCorrelationTable);
-            writer.WriteBoolValue("showFilters", ShowFilters);
-            writer.WriteBoolValue("showHeader", ShowHeader);
-            writer.WriteBoolValue("showLastComputation", ShowLastComputation);
-            writer.WriteBoolValue("showLastComputationRefresh", ShowLastComputationRefresh);
-            writer.WriteBoolValue("showResults", ShowResults);
-            writer.WriteBoolValue("showTable", ShowTable);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_embedded>("embedded", Embedded);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_full>("full", Full);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_hidePersonsModal>("hidePersonsModal", HidePersonsModal);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_hideTooltipOnScroll>("hideTooltipOnScroll", HideTooltipOnScroll);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_kind>("kind", Kind);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_showCorrelationTable>("showCorrelationTable", ShowCorrelationTable);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_showFilters>("showFilters", ShowFilters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_showHeader>("showHeader", ShowHeader);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_showLastComputation>("showLastComputation", ShowLastComputation);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_showLastComputationRefresh>("showLastComputationRefresh", ShowLastComputationRefresh);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_showResults>("showResults", ShowResults);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_showTable>("showTable", ShowTable);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode.InsightVizNode_source>("source", Source);
-            writer.WriteBoolValue("suppressSessionAnalysisWarning", SuppressSessionAnalysisWarning);
-            writer.WriteDoubleValue("version", Version);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.VizSpecificOptions>("vizSpecificOptions", VizSpecificOptions);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_suppressSessionAnalysisWarning>("suppressSessionAnalysisWarning", SuppressSessionAnalysisWarning);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_version>("version", Version);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode_vizSpecificOptions>("vizSpecificOptions", VizSpecificOptions);
         }
         /// <summary>
         /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LifecycleQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RetentionQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TrendsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebOverviewQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery"/>

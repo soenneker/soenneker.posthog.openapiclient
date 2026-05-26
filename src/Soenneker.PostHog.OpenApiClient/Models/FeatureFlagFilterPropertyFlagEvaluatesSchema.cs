@@ -32,17 +32,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Key { get; set; }
 #endif
-        /// <summary>Operator for feature flag dependency evaluation.* `flag_evaluates_to` - flag_evaluates_to</summary>
+        /// <summary>* `flag_evaluates_to` - flag_evaluates_to</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyFlagEvaluatesSchemaOperatorEnum? Operator { get; set; }
-        /// <summary>Flag property type required for flag dependency checks.* `flag` - flag</summary>
+        /// <summary>* `flag` - flag</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyFlagEvaluatesSchemaTypeEnum? Type { get; set; }
         /// <summary>Value to compare flag evaluation against.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Value { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyFlagEvaluatesSchema_value? Value { get; set; }
 #nullable restore
 #else
-        public UntypedNode Value { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyFlagEvaluatesSchema_value Value { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyFlagEvaluatesSchema"/> and sets the default values.
@@ -74,7 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "key", n => { Key = n.GetStringValue(); } },
                 { "operator", n => { Operator = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyFlagEvaluatesSchemaOperatorEnum>(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyFlagEvaluatesSchemaTypeEnum>(); } },
-                { "value", n => { Value = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "value", n => { Value = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyFlagEvaluatesSchema_value>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyFlagEvaluatesSchema_value.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -89,7 +89,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("key", Key);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyFlagEvaluatesSchemaOperatorEnum>("operator", Operator);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyFlagEvaluatesSchemaTypeEnum>("type", Type);
-            writer.WriteObjectValue<UntypedNode>("value", Value);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyFlagEvaluatesSchema_value>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

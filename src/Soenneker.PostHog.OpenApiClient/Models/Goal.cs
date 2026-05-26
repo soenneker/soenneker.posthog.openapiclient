@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Period-over-period change in conversions, null when not meaningful.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WoWChange? Change { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Goal_change? Change { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WoWChange Change { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Goal_change Change { get; set; }
 #endif
         /// <summary>Total conversions in the period.</summary>
         public int? Conversions { get; set; }
@@ -57,7 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "change", n => { Change = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WoWChange>(global::Soenneker.PostHog.OpenApiClient.Models.WoWChange.CreateFromDiscriminatorValue); } },
+                { "change", n => { Change = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Goal_change>(global::Soenneker.PostHog.OpenApiClient.Models.Goal_change.CreateFromDiscriminatorValue); } },
                 { "conversions", n => { Conversions = n.GetIntValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
             };
@@ -69,7 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WoWChange>("change", Change);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Goal_change>("change", Change);
             writer.WriteIntValue("conversions", Conversions);
             writer.WriteStringValue("name", Name);
             writer.WriteAdditionalData(AdditionalData);

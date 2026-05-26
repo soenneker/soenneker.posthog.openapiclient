@@ -15,10 +15,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The ch_table_names property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ChTableNames { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative9_ch_table_names? ChTableNames { get; set; }
 #nullable restore
 #else
-        public List<string> ChTableNames { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative9_ch_table_names ChTableNames { get; set; }
 #endif
         /// <summary>The errors property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -29,9 +29,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public List<global::Soenneker.PostHog.OpenApiClient.Models.HogQLNotice> Errors { get; set; }
 #endif
         /// <summary>The isUsingIndices property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryIndexUsage? IsUsingIndices { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative9_isUsingIndices? IsUsingIndices { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative9_isUsingIndices IsUsingIndices { get; set; }
+#endif
         /// <summary>The isValid property</summary>
-        public bool? IsValid { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative9_isValid? IsValid { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative9_isValid IsValid { get; set; }
+#endif
         /// <summary>The notices property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -43,18 +55,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The query property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Query { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative9_query? Query { get; set; }
 #nullable restore
 #else
-        public string Query { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative9_query Query { get; set; }
 #endif
         /// <summary>The table_names property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? TableNames { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative9_table_names? TableNames { get; set; }
 #nullable restore
 #else
-        public List<string> TableNames { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative9_table_names TableNames { get; set; }
 #endif
         /// <summary>The warnings property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -82,13 +94,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "ch_table_names", n => { ChTableNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "ch_table_names", n => { ChTableNames = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative9_ch_table_names>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative9_ch_table_names.CreateFromDiscriminatorValue); } },
                 { "errors", n => { Errors = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogQLNotice>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLNotice.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "isUsingIndices", n => { IsUsingIndices = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryIndexUsage>(); } },
-                { "isValid", n => { IsValid = n.GetBoolValue(); } },
+                { "isUsingIndices", n => { IsUsingIndices = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative9_isUsingIndices>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative9_isUsingIndices.CreateFromDiscriminatorValue); } },
+                { "isValid", n => { IsValid = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative9_isValid>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative9_isValid.CreateFromDiscriminatorValue); } },
                 { "notices", n => { Notices = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogQLNotice>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLNotice.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "query", n => { Query = n.GetStringValue(); } },
-                { "table_names", n => { TableNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative9_query>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative9_query.CreateFromDiscriminatorValue); } },
+                { "table_names", n => { TableNames = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative9_table_names>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative9_table_names.CreateFromDiscriminatorValue); } },
                 { "warnings", n => { Warnings = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogQLNotice>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLNotice.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -99,13 +111,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfPrimitiveValues<string>("ch_table_names", ChTableNames);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative9_ch_table_names>("ch_table_names", ChTableNames);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogQLNotice>("errors", Errors);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryIndexUsage>("isUsingIndices", IsUsingIndices);
-            writer.WriteBoolValue("isValid", IsValid);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative9_isUsingIndices>("isUsingIndices", IsUsingIndices);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative9_isValid>("isValid", IsValid);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogQLNotice>("notices", Notices);
-            writer.WriteStringValue("query", Query);
-            writer.WriteCollectionOfPrimitiveValues<string>("table_names", TableNames);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative9_query>("query", Query);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative9_table_names>("table_names", TableNames);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogQLNotice>("warnings", Warnings);
         }
     }

@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Device platform the token was issued for. One of `ios`, `android`, or `web`.* `ios` - iOS* `android` - Android* `web` - Web</summary>
+        /// <summary>* `ios` - iOS* `android` - Android* `web` - Web</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PushTokenPlatformEnum? Platform { get; set; }
         /// <summary>Opaque push token issued by the device&apos;s platform push service (e.g. an Expo push token).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

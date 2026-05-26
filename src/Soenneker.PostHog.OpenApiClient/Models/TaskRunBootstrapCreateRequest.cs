@@ -23,7 +23,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Branch { get; set; }
 #endif
-        /// <summary>Execution environment for the new run. Use &apos;cloud&apos; for remote sandbox runs and &apos;local&apos; for desktop sessions.* `local` - local* `cloud` - cloud</summary>
+        /// <summary>* `local` - local* `cloud` - cloud</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestEnvironmentEnum? Environment { get; set; }
         /// <summary>Ephemeral GitHub user token from PostHog Code for user-authored cloud pull requests.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -33,9 +33,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string GithubUserToken { get; set; }
 #endif
-        /// <summary>Initial permission mode for the agent session. Claude runtimes accept PostHog permission presets like &apos;plan&apos;. Codex runtimes accept native Codex modes like &apos;auto&apos; and &apos;read-only&apos;.* `default` - default* `acceptEdits` - acceptEdits* `plan` - plan* `bypassPermissions` - bypassPermissions* `auto` - auto* `read-only` - read-only* `full-access` - full-access</summary>
+        /// <summary>* `default` - default* `acceptEdits` - acceptEdits* `plan` - plan* `bypassPermissions` - bypassPermissions* `auto` - auto* `read-only` - read-only* `full-access` - full-access</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestInitialPermissionModeEnum? InitialPermissionMode { get; set; }
-        /// <summary>Execution mode: &apos;interactive&apos; for user-connected runs, &apos;background&apos; for autonomous runs* `interactive` - interactive* `background` - background</summary>
+        /// <summary>* `interactive` - interactive* `background` - background</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskExecutionModeEnum? Mode { get; set; }
         /// <summary>LLM model identifier to run in the selected runtime.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -45,13 +45,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Model { get; set; }
 #endif
-        /// <summary>Whether pull requests for this run should be authored by the user or the bot.* `user` - user* `bot` - bot</summary>
+        /// <summary>* `user` - user* `bot` - bot</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PrAuthorshipModeEnum? PrAuthorshipMode { get; set; }
-        /// <summary>Reasoning effort to request for models that expose an effort control.* `low` - low* `medium` - medium* `high` - high* `xhigh` - xhigh* `max` - max</summary>
+        /// <summary>* `low` - low* `medium` - medium* `high` - high* `xhigh` - xhigh* `max` - max</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ReasoningEffortEnum? ReasoningEffort { get; set; }
-        /// <summary>High-level source that triggered this run, used to distinguish manual and signal-based cloud runs.* `manual` - manual* `signal_report` - signal_report</summary>
+        /// <summary>* `manual` - manual* `signal_report` - signal_report</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.RunSourceEnum? RunSource { get; set; }
-        /// <summary>Agent runtime adapter to launch for this run. Use &apos;claude&apos; for the Claude runtime or &apos;codex&apos; for the Codex runtime.* `claude` - claude* `codex` - codex</summary>
+        /// <summary>* `claude` - claude* `codex` - codex</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.RuntimeAdapterEnum? RuntimeAdapter { get; set; }
         /// <summary>Optional sandbox environment to apply for this cloud run.</summary>
         public Guid? SandboxEnvironmentId { get; set; }
@@ -69,8 +69,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public TaskRunBootstrapCreateRequest()
         {
             AdditionalData = new Dictionary<string, object>();
-            Environment = global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestEnvironmentEnum.Local;
-            Mode = global::Soenneker.PostHog.OpenApiClient.Models.TaskExecutionModeEnum.Background;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value

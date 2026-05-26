@@ -48,7 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
-        /// <summary>The install_source property</summary>
+        /// <summary>* `posthog` - posthog* `posthog-code` - posthog-code</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.InstallSourceEnum? InstallSource { get; set; }
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -80,7 +80,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public InstallCustom()
         {
             AdditionalData = new Dictionary<string, object>();
-            InstallSource = global::Soenneker.PostHog.OpenApiClient.Models.InstallSourceEnum.Posthog;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value

@@ -208,6 +208,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Activity_log
         #pragma warning disable CS1591
         ExternalDataSchema,
         #pragma warning restore CS1591
+        [EnumMember(Value = "Evaluation")]
+        #pragma warning disable CS1591
+        Evaluation,
+        #pragma warning restore CS1591
         [EnumMember(Value = "LLMTrace")]
         #pragma warning disable CS1591
         LLMTrace,

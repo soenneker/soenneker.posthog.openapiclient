@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Session_summaries
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\environments\{environment_-id}\session_summaries
+    /// Builds and executes requests for operations under \api\environments\{project_id}\session_summaries
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Session_summariesRequestBuilder : BaseRequestBuilder
@@ -37,7 +37,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Session_summarie
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Session_summariesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{environment_%2Did}/session_summaries", pathParameters)
+        public Session_summariesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{project_id}/session_summaries", pathParameters)
         {
         }
         /// <summary>
@@ -45,7 +45,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Session_summarie
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Session_summariesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{environment_%2Did}/session_summaries", rawUrl)
+        public Session_summariesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{project_id}/session_summaries", rawUrl)
         {
         }
     }

@@ -25,10 +25,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The funnels_query property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery? FunnelsQuery { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Response23_funnels_query? FunnelsQuery { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery FunnelsQuery { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Response23_funnels_query FunnelsQuery { get; set; }
 #endif
         /// <summary>The insight property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -39,13 +39,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public UntypedNode Insight { get; set; }
 #endif
         /// <summary>The kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Kind { get; set; }
-#nullable restore
-#else
-        public string Kind { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.Response23_kind? Kind { get; set; }
         /// <summary>The probability property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -59,7 +53,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The significant property</summary>
         public bool? Significant { get; set; }
         /// <summary>The stats_version property</summary>
-        public int? StatsVersion { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.Response23_stats_version? StatsVersion { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.Response23_stats_version StatsVersion { get; set; }
+#endif
         /// <summary>The variants property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -73,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// </summary>
         public Response23()
         {
-            Kind = "ExperimentFunnelsQuery";
+            Kind = global::Soenneker.PostHog.OpenApiClient.Models.Response23_kind.ExperimentFunnelsQuery;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -95,13 +95,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "credible_intervals", n => { CredibleIntervals = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Response23_credible_intervals>(global::Soenneker.PostHog.OpenApiClient.Models.Response23_credible_intervals.CreateFromDiscriminatorValue); } },
                 { "expected_loss", n => { ExpectedLoss = n.GetDoubleValue(); } },
-                { "funnels_query", n => { FunnelsQuery = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery.CreateFromDiscriminatorValue); } },
+                { "funnels_query", n => { FunnelsQuery = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Response23_funnels_query>(global::Soenneker.PostHog.OpenApiClient.Models.Response23_funnels_query.CreateFromDiscriminatorValue); } },
                 { "insight", n => { Insight = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Response23_kind>(); } },
                 { "probability", n => { Probability = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Response23_probability>(global::Soenneker.PostHog.OpenApiClient.Models.Response23_probability.CreateFromDiscriminatorValue); } },
                 { "significance_code", n => { SignificanceCode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSignificanceCode>(); } },
                 { "significant", n => { Significant = n.GetBoolValue(); } },
-                { "stats_version", n => { StatsVersion = n.GetIntValue(); } },
+                { "stats_version", n => { StatsVersion = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Response23_stats_version>(global::Soenneker.PostHog.OpenApiClient.Models.Response23_stats_version.CreateFromDiscriminatorValue); } },
                 { "variants", n => { Variants = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantFunnelsBaseStats>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantFunnelsBaseStats.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -114,13 +114,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Response23_credible_intervals>("credible_intervals", CredibleIntervals);
             writer.WriteDoubleValue("expected_loss", ExpectedLoss);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery>("funnels_query", FunnelsQuery);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Response23_funnels_query>("funnels_query", FunnelsQuery);
             writer.WriteObjectValue<UntypedNode>("insight", Insight);
-            writer.WriteStringValue("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Response23_kind>("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Response23_probability>("probability", Probability);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSignificanceCode>("significance_code", SignificanceCode);
             writer.WriteBoolValue("significant", Significant);
-            writer.WriteIntValue("stats_version", StatsVersion);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Response23_stats_version>("stats_version", StatsVersion);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantFunnelsBaseStats>("variants", Variants);
         }
     }

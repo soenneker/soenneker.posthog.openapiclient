@@ -27,10 +27,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Full prompt payload to publish as a new version. Mutually exclusive with edits.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Prompt { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedLLMPromptPublish_prompt? Prompt { get; set; }
 #nullable restore
 #else
-        public UntypedNode Prompt { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedLLMPromptPublish_prompt Prompt { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedLLMPromptPublish"/> and sets the default values.
@@ -59,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "base_version", n => { BaseVersion = n.GetIntValue(); } },
                 { "edits", n => { Edits = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LLMPromptEditOperation>(global::Soenneker.PostHog.OpenApiClient.Models.LLMPromptEditOperation.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "prompt", n => { Prompt = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "prompt", n => { Prompt = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLLMPromptPublish_prompt>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedLLMPromptPublish_prompt.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -71,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("base_version", BaseVersion);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LLMPromptEditOperation>("edits", Edits);
-            writer.WriteObjectValue<UntypedNode>("prompt", Prompt);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLLMPromptPublish_prompt>("prompt", Prompt);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

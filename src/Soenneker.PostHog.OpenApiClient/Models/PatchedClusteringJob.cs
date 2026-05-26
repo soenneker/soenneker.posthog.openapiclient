@@ -23,10 +23,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The event_filters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? EventFilters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedClusteringJob_event_filters? EventFilters { get; set; }
 #nullable restore
 #else
-        public UntypedNode EventFilters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedClusteringJob_event_filters EventFilters { get; set; }
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
@@ -68,7 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "analysis_level", n => { AnalysisLevel = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringJobAnalysisLevelEnum>(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
-                { "event_filters", n => { EventFilters = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "event_filters", n => { EventFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedClusteringJob_event_filters>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedClusteringJob_event_filters.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
@@ -83,7 +83,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringJobAnalysisLevelEnum>("analysis_level", AnalysisLevel);
             writer.WriteBoolValue("enabled", Enabled);
-            writer.WriteObjectValue<UntypedNode>("event_filters", EventFilters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedClusteringJob_event_filters>("event_filters", EventFilters);
             writer.WriteStringValue("name", Name);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -27,18 +27,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Tracking capability state</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CapabilityState? CoreSuggestions { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RepositoryReadinessResponse_coreSuggestions? CoreSuggestions { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CapabilityState CoreSuggestions { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RepositoryReadinessResponse_coreSuggestions CoreSuggestions { get; set; }
 #endif
         /// <summary>Error tracking capability state</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CapabilityState? ErrorInsights { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RepositoryReadinessResponse_errorInsights? ErrorInsights { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CapabilityState ErrorInsights { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RepositoryReadinessResponse_errorInsights ErrorInsights { get; set; }
 #endif
         /// <summary>Count of replay-derived evidence tasks</summary>
         public int? EvidenceTaskCount { get; set; }
@@ -63,10 +63,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Computer vision capability state</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CapabilityState? ReplayInsights { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RepositoryReadinessResponse_replayInsights? ReplayInsights { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CapabilityState ReplayInsights { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RepositoryReadinessResponse_replayInsights ReplayInsights { get; set; }
 #endif
         /// <summary>Normalized repository identifier</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -79,10 +79,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Scan evidence details</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScanEvidence? Scan { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RepositoryReadinessResponse_scan? Scan { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScanEvidence Scan { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RepositoryReadinessResponse_scan Scan { get; set; }
 #endif
         /// <summary>Lookback window in days</summary>
         public int? WindowDays { get; set; }
@@ -113,15 +113,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "cacheAgeSeconds", n => { CacheAgeSeconds = n.GetIntValue(); } },
                 { "classification", n => { Classification = n.GetStringValue(); } },
-                { "coreSuggestions", n => { CoreSuggestions = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CapabilityState>(global::Soenneker.PostHog.OpenApiClient.Models.CapabilityState.CreateFromDiscriminatorValue); } },
-                { "errorInsights", n => { ErrorInsights = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CapabilityState>(global::Soenneker.PostHog.OpenApiClient.Models.CapabilityState.CreateFromDiscriminatorValue); } },
+                { "coreSuggestions", n => { CoreSuggestions = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RepositoryReadinessResponse_coreSuggestions>(global::Soenneker.PostHog.OpenApiClient.Models.RepositoryReadinessResponse_coreSuggestions.CreateFromDiscriminatorValue); } },
+                { "errorInsights", n => { ErrorInsights = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RepositoryReadinessResponse_errorInsights>(global::Soenneker.PostHog.OpenApiClient.Models.RepositoryReadinessResponse_errorInsights.CreateFromDiscriminatorValue); } },
                 { "evidenceTaskCount", n => { EvidenceTaskCount = n.GetIntValue(); } },
                 { "excluded", n => { Excluded = n.GetBoolValue(); } },
                 { "generatedAt", n => { GeneratedAt = n.GetStringValue(); } },
                 { "overall", n => { Overall = n.GetStringValue(); } },
-                { "replayInsights", n => { ReplayInsights = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CapabilityState>(global::Soenneker.PostHog.OpenApiClient.Models.CapabilityState.CreateFromDiscriminatorValue); } },
+                { "replayInsights", n => { ReplayInsights = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RepositoryReadinessResponse_replayInsights>(global::Soenneker.PostHog.OpenApiClient.Models.RepositoryReadinessResponse_replayInsights.CreateFromDiscriminatorValue); } },
                 { "repository", n => { Repository = n.GetStringValue(); } },
-                { "scan", n => { Scan = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScanEvidence>(global::Soenneker.PostHog.OpenApiClient.Models.ScanEvidence.CreateFromDiscriminatorValue); } },
+                { "scan", n => { Scan = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RepositoryReadinessResponse_scan>(global::Soenneker.PostHog.OpenApiClient.Models.RepositoryReadinessResponse_scan.CreateFromDiscriminatorValue); } },
                 { "windowDays", n => { WindowDays = n.GetIntValue(); } },
             };
         }
@@ -134,15 +134,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("cacheAgeSeconds", CacheAgeSeconds);
             writer.WriteStringValue("classification", Classification);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CapabilityState>("coreSuggestions", CoreSuggestions);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CapabilityState>("errorInsights", ErrorInsights);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RepositoryReadinessResponse_coreSuggestions>("coreSuggestions", CoreSuggestions);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RepositoryReadinessResponse_errorInsights>("errorInsights", ErrorInsights);
             writer.WriteIntValue("evidenceTaskCount", EvidenceTaskCount);
             writer.WriteBoolValue("excluded", Excluded);
             writer.WriteStringValue("generatedAt", GeneratedAt);
             writer.WriteStringValue("overall", Overall);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CapabilityState>("replayInsights", ReplayInsights);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RepositoryReadinessResponse_replayInsights>("replayInsights", ReplayInsights);
             writer.WriteStringValue("repository", Repository);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScanEvidence>("scan", Scan);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RepositoryReadinessResponse_scan>("scan", Scan);
             writer.WriteIntValue("windowDays", WindowDays);
             writer.WriteAdditionalData(AdditionalData);
         }

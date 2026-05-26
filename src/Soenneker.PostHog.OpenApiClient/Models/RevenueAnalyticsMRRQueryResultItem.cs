@@ -15,42 +15,42 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The churn property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Churn { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQueryResultItem_churn? Churn { get; set; }
 #nullable restore
 #else
-        public UntypedNode Churn { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQueryResultItem_churn Churn { get; set; }
 #endif
         /// <summary>The contraction property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Contraction { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQueryResultItem_contraction? Contraction { get; set; }
 #nullable restore
 #else
-        public UntypedNode Contraction { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQueryResultItem_contraction Contraction { get; set; }
 #endif
         /// <summary>The expansion property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Expansion { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQueryResultItem_expansion? Expansion { get; set; }
 #nullable restore
 #else
-        public UntypedNode Expansion { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQueryResultItem_expansion Expansion { get; set; }
 #endif
         /// <summary>The new property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? New { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQueryResultItem_new? New { get; set; }
 #nullable restore
 #else
-        public UntypedNode New { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQueryResultItem_new New { get; set; }
 #endif
         /// <summary>The total property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Total { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQueryResultItem_total? Total { get; set; }
 #nullable restore
 #else
-        public UntypedNode Total { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQueryResultItem_total Total { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -70,11 +70,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "churn", n => { Churn = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "contraction", n => { Contraction = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "expansion", n => { Expansion = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "new", n => { New = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "total", n => { Total = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "churn", n => { Churn = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQueryResultItem_churn>(global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQueryResultItem_churn.CreateFromDiscriminatorValue); } },
+                { "contraction", n => { Contraction = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQueryResultItem_contraction>(global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQueryResultItem_contraction.CreateFromDiscriminatorValue); } },
+                { "expansion", n => { Expansion = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQueryResultItem_expansion>(global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQueryResultItem_expansion.CreateFromDiscriminatorValue); } },
+                { "new", n => { New = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQueryResultItem_new>(global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQueryResultItem_new.CreateFromDiscriminatorValue); } },
+                { "total", n => { Total = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQueryResultItem_total>(global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQueryResultItem_total.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -84,11 +84,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<UntypedNode>("churn", Churn);
-            writer.WriteObjectValue<UntypedNode>("contraction", Contraction);
-            writer.WriteObjectValue<UntypedNode>("expansion", Expansion);
-            writer.WriteObjectValue<UntypedNode>("new", New);
-            writer.WriteObjectValue<UntypedNode>("total", Total);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQueryResultItem_churn>("churn", Churn);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQueryResultItem_contraction>("contraction", Contraction);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQueryResultItem_expansion>("expansion", Expansion);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQueryResultItem_new>("new", New);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQueryResultItem_total>("total", Total);
         }
     }
 }

@@ -120,29 +120,35 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteAdditionalData(AdditionalData);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RoleAtOrganizationEnum"/>
+        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RoleAtOrganizationEnum_Wrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.UserBasic_role_at_organizationMember1"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class UserBasic_role_at_organization : IComposedTypeWrapper, IParsable
         {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum"/></summary>
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum? BlankEnum { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper? BlankEnumWrapper { get; set; }
 #nullable restore
 #else
-            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum BlankEnum { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper BlankEnumWrapper { get; set; }
 #endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RoleAtOrganizationEnum_Wrapper"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum? NullEnum { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.RoleAtOrganizationEnum_Wrapper? RoleAtOrganizationEnumWrapper { get; set; }
 #nullable restore
 #else
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum NullEnum { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.RoleAtOrganizationEnum_Wrapper RoleAtOrganizationEnumWrapper { get; set; }
 #endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RoleAtOrganizationEnum"/></summary>
-            public global::Soenneker.PostHog.OpenApiClient.Models.RoleAtOrganizationEnum? RoleAtOrganizationEnum { get; set; }
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.UserBasic_role_at_organizationMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic_role_at_organizationMember1? UserBasicRoleAtOrganizationMember1 { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic_role_at_organizationMember1 UserBasicRoleAtOrganizationMember1 { get; set; }
+#endif
             /// <summary>
             /// Creates a new instance of the appropriate class based on discriminator value
             /// </summary>
@@ -153,17 +159,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
                 var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
                 var result = new global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.UserBasic_role_at_organization();
-                if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+                if("BlankEnum_Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
                 {
-                    result.BlankEnum = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum();
+                    result.BlankEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper();
+                }
+                else if("RoleAtOrganizationEnum_Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+                {
+                    result.RoleAtOrganizationEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.RoleAtOrganizationEnum_Wrapper();
                 }
                 else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
                 {
-                    result.NullEnum = new global::Soenneker.PostHog.OpenApiClient.Models.NullEnum();
-                }
-                else if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RoleAtOrganizationEnum>() is global::Soenneker.PostHog.OpenApiClient.Models.RoleAtOrganizationEnum roleAtOrganizationEnumValue)
-                {
-                    result.RoleAtOrganizationEnum = roleAtOrganizationEnumValue;
+                    result.UserBasicRoleAtOrganizationMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.UserBasic_role_at_organizationMember1();
                 }
                 return result;
             }
@@ -173,13 +179,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
-                if(BlankEnum != null)
+                if(BlankEnumWrapper != null)
                 {
-                    return BlankEnum.GetFieldDeserializers();
+                    return BlankEnumWrapper.GetFieldDeserializers();
                 }
-                else if(NullEnum != null)
+                else if(RoleAtOrganizationEnumWrapper != null)
                 {
-                    return NullEnum.GetFieldDeserializers();
+                    return RoleAtOrganizationEnumWrapper.GetFieldDeserializers();
+                }
+                else if(UserBasicRoleAtOrganizationMember1 != null)
+                {
+                    return UserBasicRoleAtOrganizationMember1.GetFieldDeserializers();
                 }
                 return new Dictionary<string, Action<IParseNode>>();
             }
@@ -190,17 +200,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             public virtual void Serialize(ISerializationWriter writer)
             {
                 if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(BlankEnum != null)
+                if(BlankEnumWrapper != null)
                 {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum>(null, BlankEnum);
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper>(null, BlankEnumWrapper);
                 }
-                else if(NullEnum != null)
+                else if(RoleAtOrganizationEnumWrapper != null)
                 {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NullEnum>(null, NullEnum);
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RoleAtOrganizationEnum_Wrapper>(null, RoleAtOrganizationEnumWrapper);
                 }
-                else if(RoleAtOrganizationEnum != null)
+                else if(UserBasicRoleAtOrganizationMember1 != null)
                 {
-                    writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RoleAtOrganizationEnum>(null, RoleAtOrganizationEnum);
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic_role_at_organizationMember1>(null, UserBasicRoleAtOrganizationMember1);
                 }
             }
         }

@@ -10,7 +10,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Managed_viewsets
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\environments\{environment_-id}\managed_viewsets
+    /// Builds and executes requests for operations under \api\environments\{project_id}\managed_viewsets
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Managed_viewsetsRequestBuilder : BaseRequestBuilder
@@ -32,7 +32,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Managed_viewsets
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Managed_viewsetsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{environment_%2Did}/managed_viewsets", pathParameters)
+        public Managed_viewsetsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{project_id}/managed_viewsets", pathParameters)
         {
         }
         /// <summary>
@@ -40,7 +40,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Managed_viewsets
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Managed_viewsetsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{environment_%2Did}/managed_viewsets", rawUrl)
+        public Managed_viewsetsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{project_id}/managed_viewsets", rawUrl)
         {
         }
     }

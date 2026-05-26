@@ -17,20 +17,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The configuration property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Configuration { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ViewLink_configuration? Configuration { get; set; }
 #nullable restore
 #else
-        public UntypedNode Configuration { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ViewLink_configuration Configuration { get; set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ViewLink_created_by? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ViewLink_created_by CreatedBy { get; private set; }
 #endif
         /// <summary>The deleted property</summary>
         public bool? Deleted { get; set; }
@@ -101,9 +101,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "configuration", n => { Configuration = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "configuration", n => { Configuration = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ViewLink_configuration>(global::Soenneker.PostHog.OpenApiClient.Models.ViewLink_configuration.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ViewLink_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.ViewLink_created_by.CreateFromDiscriminatorValue); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "field_name", n => { FieldName = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
@@ -120,7 +120,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<UntypedNode>("configuration", Configuration);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ViewLink_configuration>("configuration", Configuration);
             writer.WriteBoolValue("deleted", Deleted);
             writer.WriteStringValue("field_name", FieldName);
             writer.WriteStringValue("joining_table_key", JoiningTableKey);

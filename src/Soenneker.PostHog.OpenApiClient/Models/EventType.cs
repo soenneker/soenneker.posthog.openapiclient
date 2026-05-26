@@ -31,10 +31,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The elements_chain property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ElementsChain { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EventType_elements_chain? ElementsChain { get; set; }
 #nullable restore
 #else
-        public string ElementsChain { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EventType_elements_chain ElementsChain { get; set; }
 #endif
         /// <summary>The event property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -55,26 +55,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The person property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.Person? Person { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EventType_person? Person { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.Person Person { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EventType_person Person { get; set; }
 #endif
         /// <summary>The person_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PersonId { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EventType_person_id? PersonId { get; set; }
 #nullable restore
 #else
-        public string PersonId { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EventType_person_id PersonId { get; set; }
 #endif
         /// <summary>The person_mode property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PersonMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EventType_person_mode? PersonMode { get; set; }
 #nullable restore
 #else
-        public string PersonMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EventType_person_mode PersonMode { get; set; }
 #endif
         /// <summary>The properties property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -95,10 +95,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The uuid property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Uuid { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EventType_uuid? Uuid { get; set; }
 #nullable restore
 #else
-        public string Uuid { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EventType_uuid Uuid { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -120,15 +120,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "distinct_id", n => { DistinctId = n.GetStringValue(); } },
                 { "elements", n => { Elements = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ElementType>(global::Soenneker.PostHog.OpenApiClient.Models.ElementType.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "elements_chain", n => { ElementsChain = n.GetStringValue(); } },
+                { "elements_chain", n => { ElementsChain = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventType_elements_chain>(global::Soenneker.PostHog.OpenApiClient.Models.EventType_elements_chain.CreateFromDiscriminatorValue); } },
                 { "event", n => { Event = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "person", n => { Person = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Person>(global::Soenneker.PostHog.OpenApiClient.Models.Person.CreateFromDiscriminatorValue); } },
-                { "person_id", n => { PersonId = n.GetStringValue(); } },
-                { "person_mode", n => { PersonMode = n.GetStringValue(); } },
+                { "person", n => { Person = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventType_person>(global::Soenneker.PostHog.OpenApiClient.Models.EventType_person.CreateFromDiscriminatorValue); } },
+                { "person_id", n => { PersonId = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventType_person_id>(global::Soenneker.PostHog.OpenApiClient.Models.EventType_person_id.CreateFromDiscriminatorValue); } },
+                { "person_mode", n => { PersonMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventType_person_mode>(global::Soenneker.PostHog.OpenApiClient.Models.EventType_person_mode.CreateFromDiscriminatorValue); } },
                 { "properties", n => { Properties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventType_properties>(global::Soenneker.PostHog.OpenApiClient.Models.EventType_properties.CreateFromDiscriminatorValue); } },
                 { "timestamp", n => { Timestamp = n.GetStringValue(); } },
-                { "uuid", n => { Uuid = n.GetStringValue(); } },
+                { "uuid", n => { Uuid = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventType_uuid>(global::Soenneker.PostHog.OpenApiClient.Models.EventType_uuid.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -140,15 +140,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("distinct_id", DistinctId);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ElementType>("elements", Elements);
-            writer.WriteStringValue("elements_chain", ElementsChain);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventType_elements_chain>("elements_chain", ElementsChain);
             writer.WriteStringValue("event", Event);
             writer.WriteStringValue("id", Id);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Person>("person", Person);
-            writer.WriteStringValue("person_id", PersonId);
-            writer.WriteStringValue("person_mode", PersonMode);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventType_person>("person", Person);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventType_person_id>("person_id", PersonId);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventType_person_mode>("person_mode", PersonMode);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventType_properties>("properties", Properties);
             writer.WriteStringValue("timestamp", Timestamp);
-            writer.WriteStringValue("uuid", Uuid);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventType_uuid>("uuid", Uuid);
         }
     }
 }

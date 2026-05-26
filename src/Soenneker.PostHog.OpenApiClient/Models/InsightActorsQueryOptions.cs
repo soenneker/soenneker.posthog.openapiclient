@@ -13,20 +13,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning restore CS1591
     {
         /// <summary>The kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Kind { get; set; }
-#nullable restore
-#else
-        public string Kind { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptions_kind? Kind { get; set; }
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptionsResponse? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptions_response? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptionsResponse Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptions_response Response { get; set; }
 #endif
         /// <summary>The source property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -37,13 +31,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptions.InsightActorsQueryOptions_source Source { get; set; }
 #endif
         /// <summary>version of the node, used for schema migrations</summary>
-        public double? Version { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptions_version? Version { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptions_version Version { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptions"/> and sets the default values.
         /// </summary>
         public InsightActorsQueryOptions()
         {
-            Kind = "InsightActorsQueryOptions";
+            Kind = global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptions_kind.InsightActorsQueryOptions;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -63,10 +63,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "kind", n => { Kind = n.GetStringValue(); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptionsResponse>(global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptionsResponse.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptions_kind>(); } },
+                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptions_response>(global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptions_response.CreateFromDiscriminatorValue); } },
                 { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptions.InsightActorsQueryOptions_source>(global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptions.InsightActorsQueryOptions_source.CreateFromDiscriminatorValue); } },
-                { "version", n => { Version = n.GetDoubleValue(); } },
+                { "version", n => { Version = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptions_version>(global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptions_version.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -76,10 +76,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("kind", Kind);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptionsResponse>("response", Response);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptions_kind>("kind", Kind);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptions_response>("response", Response);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptions.InsightActorsQueryOptions_source>("source", Source);
-            writer.WriteDoubleValue("version", Version);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptions_version>("version", Version);
         }
         /// <summary>
         /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.StickinessActorsQuery"/>

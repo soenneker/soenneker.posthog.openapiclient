@@ -21,13 +21,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Event { get; set; }
 #endif
         /// <summary>The kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Kind { get; set; }
-#nullable restore
-#else
-        public string Kind { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfig_kind? Kind { get; set; }
         /// <summary>The properties property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -39,19 +33,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfig_response? Response { get; set; }
 #nullable restore
 #else
-        public UntypedNode Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfig_response Response { get; set; }
 #endif
         /// <summary>version of the node, used for schema migrations</summary>
-        public double? Version { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfig_version? Version { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfig_version Version { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfig"/> and sets the default values.
         /// </summary>
         public ExperimentEventExposureConfig()
         {
-            Kind = "ExperimentEventExposureConfig";
+            Kind = global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfig_kind.ExperimentEventExposureConfig;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -72,10 +72,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "event", n => { Event = n.GetStringValue(); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfig_kind>(); } },
                 { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfig.ExperimentEventExposureConfig_properties>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfig.ExperimentEventExposureConfig_properties.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "response", n => { Response = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "version", n => { Version = n.GetDoubleValue(); } },
+                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfig_response>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfig_response.CreateFromDiscriminatorValue); } },
+                { "version", n => { Version = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfig_version>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfig_version.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -86,10 +86,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("event", Event);
-            writer.WriteStringValue("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfig_kind>("kind", Kind);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfig.ExperimentEventExposureConfig_properties>("properties", Properties);
-            writer.WriteObjectValue<UntypedNode>("response", Response);
-            writer.WriteDoubleValue("version", Version);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfig_response>("response", Response);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfig_version>("version", Version);
         }
         /// <summary>
         /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataWarehousePersonPropertyFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataWarehousePropertyFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ElementPropertyFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EmptyPropertyFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EventMetadataPropertyFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeaturePropertyFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FlagPropertyFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.GroupPropertyFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogQLPropertyFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogEntryPropertyFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogPropertyFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertyFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RecordingPropertyFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsPropertyFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SessionPropertyFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WorkflowVariablePropertyFilter"/>

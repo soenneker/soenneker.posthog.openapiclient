@@ -13,24 +13,30 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning restore CS1591
     {
         /// <summary>The groupTypeIndex property</summary>
-        public int? GroupTypeIndex { get; set; }
-        /// <summary>The kind property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQuery_groupTypeIndex? GroupTypeIndex { get; set; }
 #nullable restore
 #else
-        public string Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQuery_groupTypeIndex GroupTypeIndex { get; set; }
 #endif
+        /// <summary>The kind property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQuery_kind? Kind { get; set; }
         /// <summary>The maxPropertyValues property</summary>
-        public int? MaxPropertyValues { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQuery_maxPropertyValues? MaxPropertyValues { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQuery_maxPropertyValues MaxPropertyValues { get; set; }
+#endif
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers? Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQuery_modifiers? Modifiers { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQuery_modifiers Modifiers { get; set; }
 #endif
         /// <summary>The properties property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -43,27 +49,33 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQueryResponse? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQuery_response? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQueryResponse Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQuery_response Response { get; set; }
 #endif
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags? Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQuery_tags? Tags { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQuery_tags Tags { get; set; }
 #endif
         /// <summary>version of the node, used for schema migrations</summary>
-        public double? Version { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQuery_version? Version { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQuery_version Version { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQuery"/> and sets the default values.
         /// </summary>
         public ActorsPropertyTaxonomyQuery()
         {
-            Kind = "ActorsPropertyTaxonomyQuery";
+            Kind = global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQuery_kind.ActorsPropertyTaxonomyQuery;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -83,14 +95,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "groupTypeIndex", n => { GroupTypeIndex = n.GetIntValue(); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
-                { "maxPropertyValues", n => { MaxPropertyValues = n.GetIntValue(); } },
-                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
+                { "groupTypeIndex", n => { GroupTypeIndex = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQuery_groupTypeIndex>(global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQuery_groupTypeIndex.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQuery_kind>(); } },
+                { "maxPropertyValues", n => { MaxPropertyValues = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQuery_maxPropertyValues>(global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQuery_maxPropertyValues.CreateFromDiscriminatorValue); } },
+                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQuery_modifiers>(global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQuery_modifiers.CreateFromDiscriminatorValue); } },
                 { "properties", n => { Properties = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQueryResponse.CreateFromDiscriminatorValue); } },
-                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
-                { "version", n => { Version = n.GetDoubleValue(); } },
+                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQuery_response>(global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQuery_response.CreateFromDiscriminatorValue); } },
+                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQuery_tags>(global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQuery_tags.CreateFromDiscriminatorValue); } },
+                { "version", n => { Version = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQuery_version>(global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQuery_version.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -100,14 +112,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteIntValue("groupTypeIndex", GroupTypeIndex);
-            writer.WriteStringValue("kind", Kind);
-            writer.WriteIntValue("maxPropertyValues", MaxPropertyValues);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQuery_groupTypeIndex>("groupTypeIndex", GroupTypeIndex);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQuery_kind>("kind", Kind);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQuery_maxPropertyValues>("maxPropertyValues", MaxPropertyValues);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQuery_modifiers>("modifiers", Modifiers);
             writer.WriteCollectionOfPrimitiveValues<string>("properties", Properties);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQueryResponse>("response", Response);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
-            writer.WriteDoubleValue("version", Version);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQuery_response>("response", Response);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQuery_tags>("tags", Tags);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQuery_version>("version", Version);
         }
     }
 }

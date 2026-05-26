@@ -15,21 +15,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The chartSettings property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChartSettings? ChartSettings { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataVisualizationNode_chartSettings? ChartSettings { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChartSettings ChartSettings { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataVisualizationNode_chartSettings ChartSettings { get; set; }
 #endif
         /// <summary>The display property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayType? Display { get; set; }
-        /// <summary>The kind property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataVisualizationNode_display? Display { get; set; }
 #nullable restore
 #else
-        public string Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataVisualizationNode_display Display { get; set; }
 #endif
+        /// <summary>The kind property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataVisualizationNode_kind? Kind { get; set; }
         /// <summary>The source property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -41,19 +41,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The tableSettings property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TableSettings? TableSettings { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataVisualizationNode_tableSettings? TableSettings { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TableSettings TableSettings { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataVisualizationNode_tableSettings TableSettings { get; set; }
 #endif
         /// <summary>version of the node, used for schema migrations</summary>
-        public double? Version { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataVisualizationNode_version? Version { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataVisualizationNode_version Version { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataVisualizationNode"/> and sets the default values.
         /// </summary>
         public DataVisualizationNode()
         {
-            Kind = "DataVisualizationNode";
+            Kind = global::Soenneker.PostHog.OpenApiClient.Models.DataVisualizationNode_kind.DataVisualizationNode;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -73,12 +79,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "chartSettings", n => { ChartSettings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartSettings>(global::Soenneker.PostHog.OpenApiClient.Models.ChartSettings.CreateFromDiscriminatorValue); } },
-                { "display", n => { Display = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayType>(); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
+                { "chartSettings", n => { ChartSettings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataVisualizationNode_chartSettings>(global::Soenneker.PostHog.OpenApiClient.Models.DataVisualizationNode_chartSettings.CreateFromDiscriminatorValue); } },
+                { "display", n => { Display = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataVisualizationNode_display>(global::Soenneker.PostHog.OpenApiClient.Models.DataVisualizationNode_display.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DataVisualizationNode_kind>(); } },
                 { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery.CreateFromDiscriminatorValue); } },
-                { "tableSettings", n => { TableSettings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TableSettings>(global::Soenneker.PostHog.OpenApiClient.Models.TableSettings.CreateFromDiscriminatorValue); } },
-                { "version", n => { Version = n.GetDoubleValue(); } },
+                { "tableSettings", n => { TableSettings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataVisualizationNode_tableSettings>(global::Soenneker.PostHog.OpenApiClient.Models.DataVisualizationNode_tableSettings.CreateFromDiscriminatorValue); } },
+                { "version", n => { Version = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataVisualizationNode_version>(global::Soenneker.PostHog.OpenApiClient.Models.DataVisualizationNode_version.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -88,12 +94,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartSettings>("chartSettings", ChartSettings);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayType>("display", Display);
-            writer.WriteStringValue("kind", Kind);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataVisualizationNode_chartSettings>("chartSettings", ChartSettings);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataVisualizationNode_display>("display", Display);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DataVisualizationNode_kind>("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery>("source", Source);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TableSettings>("tableSettings", TableSettings);
-            writer.WriteDoubleValue("version", Version);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataVisualizationNode_tableSettings>("tableSettings", TableSettings);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataVisualizationNode_version>("version", Version);
         }
     }
 }

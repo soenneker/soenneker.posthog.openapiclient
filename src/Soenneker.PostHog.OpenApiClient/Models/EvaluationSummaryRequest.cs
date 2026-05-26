@@ -17,11 +17,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>UUID of the evaluation config to summarize</summary>
         public Guid? EvaluationId { get; set; }
-        /// <summary>Filter type to apply (&apos;all&apos;, &apos;pass&apos;, &apos;fail&apos;, or &apos;na&apos;)* `all` - all* `pass` - pass* `fail` - fail* `na` - na</summary>
+        /// <summary>* `all` - all* `pass` - pass* `fail` - fail* `na` - na</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.FilterEnum? Filter { get; set; }
         /// <summary>If true, bypass cache and generate a fresh summary</summary>
         public bool? ForceRefresh { get; set; }
-        /// <summary>Optional: specific generation IDs to include in summary (max 250)</summary>
+        /// <summary>&quot;Optional: specific generation IDs to include in summary (max 250)&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<Guid?>? GenerationIds { get; set; }
@@ -35,7 +35,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public EvaluationSummaryRequest()
         {
             AdditionalData = new Dictionary<string, object>();
-            Filter = global::Soenneker.PostHog.OpenApiClient.Models.FilterEnum.All;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value

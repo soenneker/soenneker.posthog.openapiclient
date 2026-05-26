@@ -41,14 +41,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The p75 property</summary>
         public double? P75 { get; set; }
         /// <summary>The series_index property</summary>
-        public int? SeriesIndex { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.BoxPlotDatum_series_index? SeriesIndex { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.BoxPlotDatum_series_index SeriesIndex { get; set; }
+#endif
         /// <summary>The series_label property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SeriesLabel { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BoxPlotDatum_series_label? SeriesLabel { get; set; }
 #nullable restore
 #else
-        public string SeriesLabel { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BoxPlotDatum_series_label SeriesLabel { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -76,8 +82,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "min", n => { Min = n.GetDoubleValue(); } },
                 { "p25", n => { P25 = n.GetDoubleValue(); } },
                 { "p75", n => { P75 = n.GetDoubleValue(); } },
-                { "series_index", n => { SeriesIndex = n.GetIntValue(); } },
-                { "series_label", n => { SeriesLabel = n.GetStringValue(); } },
+                { "series_index", n => { SeriesIndex = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BoxPlotDatum_series_index>(global::Soenneker.PostHog.OpenApiClient.Models.BoxPlotDatum_series_index.CreateFromDiscriminatorValue); } },
+                { "series_label", n => { SeriesLabel = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BoxPlotDatum_series_label>(global::Soenneker.PostHog.OpenApiClient.Models.BoxPlotDatum_series_label.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -95,8 +101,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("min", Min);
             writer.WriteDoubleValue("p25", P25);
             writer.WriteDoubleValue("p75", P75);
-            writer.WriteIntValue("series_index", SeriesIndex);
-            writer.WriteStringValue("series_label", SeriesLabel);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BoxPlotDatum_series_index>("series_index", SeriesIndex);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BoxPlotDatum_series_label>("series_label", SeriesLabel);
         }
     }
 }

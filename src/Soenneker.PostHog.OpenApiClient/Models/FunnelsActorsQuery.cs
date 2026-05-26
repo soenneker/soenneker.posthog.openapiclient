@@ -13,50 +13,62 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning restore CS1591
     {
         /// <summary>Index of the step for which we want to get the timestamp for, per person. Positive for converted persons, negative for dropped of persons.</summary>
-        public int? FunnelStep { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_funnelStep? FunnelStep { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_funnelStep FunnelStep { get; set; }
+#endif
         /// <summary>The breakdown value for which to get persons for. This is an array for person and event properties, a string for groups and an integer for cohorts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery.FunnelsActorsQuery_funnelStepBreakdown? FunnelStepBreakdown { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_funnelStepBreakdown? FunnelStepBreakdown { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery.FunnelsActorsQuery_funnelStepBreakdown FunnelStepBreakdown { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_funnelStepBreakdown FunnelStepBreakdown { get; set; }
 #endif
         /// <summary>The funnelTrendsDropOff property</summary>
-        public bool? FunnelTrendsDropOff { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_funnelTrendsDropOff? FunnelTrendsDropOff { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_funnelTrendsDropOff FunnelTrendsDropOff { get; set; }
+#endif
         /// <summary>Used together with `funnelTrendsDropOff` for funnels time conversion date for the persons modal.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FunnelTrendsEntrancePeriodStart { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_funnelTrendsEntrancePeriodStart? FunnelTrendsEntrancePeriodStart { get; set; }
 #nullable restore
 #else
-        public string FunnelTrendsEntrancePeriodStart { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_funnelTrendsEntrancePeriodStart FunnelTrendsEntrancePeriodStart { get; set; }
 #endif
         /// <summary>The includeRecordings property</summary>
-        public bool? IncludeRecordings { get; set; }
-        /// <summary>The kind property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_includeRecordings? IncludeRecordings { get; set; }
 #nullable restore
 #else
-        public string Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_includeRecordings IncludeRecordings { get; set; }
 #endif
+        /// <summary>The kind property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_kind? Kind { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers? Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_modifiers? Modifiers { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_modifiers Modifiers { get; set; }
 #endif
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryResponse? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_response? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryResponse Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_response Response { get; set; }
 #endif
         /// <summary>The source property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -69,19 +81,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags? Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_tags? Tags { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_tags Tags { get; set; }
 #endif
         /// <summary>version of the node, used for schema migrations</summary>
-        public double? Version { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_version? Version { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_version Version { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery"/> and sets the default values.
         /// </summary>
         public FunnelsActorsQuery()
         {
-            Kind = "FunnelsActorsQuery";
+            Kind = global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_kind.FunnelsActorsQuery;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -101,17 +119,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "funnelStep", n => { FunnelStep = n.GetIntValue(); } },
-                { "funnelStepBreakdown", n => { FunnelStepBreakdown = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery.FunnelsActorsQuery_funnelStepBreakdown>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery.FunnelsActorsQuery_funnelStepBreakdown.CreateFromDiscriminatorValue); } },
-                { "funnelTrendsDropOff", n => { FunnelTrendsDropOff = n.GetBoolValue(); } },
-                { "funnelTrendsEntrancePeriodStart", n => { FunnelTrendsEntrancePeriodStart = n.GetStringValue(); } },
-                { "includeRecordings", n => { IncludeRecordings = n.GetBoolValue(); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
-                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryResponse.CreateFromDiscriminatorValue); } },
+                { "funnelStep", n => { FunnelStep = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_funnelStep>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_funnelStep.CreateFromDiscriminatorValue); } },
+                { "funnelStepBreakdown", n => { FunnelStepBreakdown = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_funnelStepBreakdown>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_funnelStepBreakdown.CreateFromDiscriminatorValue); } },
+                { "funnelTrendsDropOff", n => { FunnelTrendsDropOff = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_funnelTrendsDropOff>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_funnelTrendsDropOff.CreateFromDiscriminatorValue); } },
+                { "funnelTrendsEntrancePeriodStart", n => { FunnelTrendsEntrancePeriodStart = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_funnelTrendsEntrancePeriodStart>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_funnelTrendsEntrancePeriodStart.CreateFromDiscriminatorValue); } },
+                { "includeRecordings", n => { IncludeRecordings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_includeRecordings>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_includeRecordings.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_kind>(); } },
+                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_modifiers>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_modifiers.CreateFromDiscriminatorValue); } },
+                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_response>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_response.CreateFromDiscriminatorValue); } },
                 { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery.CreateFromDiscriminatorValue); } },
-                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
-                { "version", n => { Version = n.GetDoubleValue(); } },
+                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_tags>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_tags.CreateFromDiscriminatorValue); } },
+                { "version", n => { Version = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_version>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_version.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -121,121 +139,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteIntValue("funnelStep", FunnelStep);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery.FunnelsActorsQuery_funnelStepBreakdown>("funnelStepBreakdown", FunnelStepBreakdown);
-            writer.WriteBoolValue("funnelTrendsDropOff", FunnelTrendsDropOff);
-            writer.WriteStringValue("funnelTrendsEntrancePeriodStart", FunnelTrendsEntrancePeriodStart);
-            writer.WriteBoolValue("includeRecordings", IncludeRecordings);
-            writer.WriteStringValue("kind", Kind);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryResponse>("response", Response);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_funnelStep>("funnelStep", FunnelStep);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_funnelStepBreakdown>("funnelStepBreakdown", FunnelStepBreakdown);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_funnelTrendsDropOff>("funnelTrendsDropOff", FunnelTrendsDropOff);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_funnelTrendsEntrancePeriodStart>("funnelTrendsEntrancePeriodStart", FunnelTrendsEntrancePeriodStart);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_includeRecordings>("includeRecordings", IncludeRecordings);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_kind>("kind", Kind);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_modifiers>("modifiers", Modifiers);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_response>("response", Response);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery>("source", Source);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
-            writer.WriteDoubleValue("version", Version);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="double"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_funnelStepBreakdownMember2"/>, <see cref="int"/>, <see cref="string"/>, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_funnelStepBreakdownMember1&gt;
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class FunnelsActorsQuery_funnelStepBreakdown : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="double"/></summary>
-            public double? Double { get; set; }
-            /// <summary>Composed type representation for type List&lt;global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_funnelStepBreakdownMember1&gt;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public List<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_funnelStepBreakdownMember1>? FunnelsActorsQueryFunnelStepBreakdownMember1 { get; set; }
-#nullable restore
-#else
-            public List<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_funnelStepBreakdownMember1> FunnelsActorsQueryFunnelStepBreakdownMember1 { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_funnelStepBreakdownMember2"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_funnelStepBreakdownMember2? FunnelsActorsQueryFunnelStepBreakdownMember2 { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_funnelStepBreakdownMember2 FunnelsActorsQueryFunnelStepBreakdownMember2 { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="int"/></summary>
-            public int? Integer { get; set; }
-            /// <summary>Composed type representation for type <see cref="string"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public string? String { get; set; }
-#nullable restore
-#else
-            public string String { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery.FunnelsActorsQuery_funnelStepBreakdown"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery.FunnelsActorsQuery_funnelStepBreakdown CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery.FunnelsActorsQuery_funnelStepBreakdown();
-                if(parseNode.GetDoubleValue() is double doubleValue)
-                {
-                    result.Double = doubleValue;
-                }
-                else if(parseNode.GetIntValue() is int integerValue)
-                {
-                    result.Integer = integerValue;
-                }
-                else if(parseNode.GetStringValue() is string stringValue)
-                {
-                    result.String = stringValue;
-                }
-                else if(parseNode.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_funnelStepBreakdownMember1>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_funnelStepBreakdownMember1.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_funnelStepBreakdownMember1> funnelsActorsQueryFunnelStepBreakdownMember1Value)
-                {
-                    result.FunnelsActorsQueryFunnelStepBreakdownMember1 = funnelsActorsQueryFunnelStepBreakdownMember1Value;
-                }
-                else {
-                    result.FunnelsActorsQueryFunnelStepBreakdownMember2 = new global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_funnelStepBreakdownMember2();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(FunnelsActorsQueryFunnelStepBreakdownMember2 != null)
-                {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(FunnelsActorsQueryFunnelStepBreakdownMember2);
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(Double != null)
-                {
-                    writer.WriteDoubleValue(null, Double);
-                }
-                else if(Integer != null)
-                {
-                    writer.WriteIntValue(null, Integer);
-                }
-                else if(String != null)
-                {
-                    writer.WriteStringValue(null, String);
-                }
-                else if(FunnelsActorsQueryFunnelStepBreakdownMember1 != null)
-                {
-                    writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_funnelStepBreakdownMember1>(null, FunnelsActorsQueryFunnelStepBreakdownMember1);
-                }
-                else {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_funnelStepBreakdownMember2>(null, FunnelsActorsQueryFunnelStepBreakdownMember2);
-                }
-            }
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_tags>("tags", Tags);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery_version>("version", Version);
         }
     }
 }

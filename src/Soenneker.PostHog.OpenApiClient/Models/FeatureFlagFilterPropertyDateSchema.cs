@@ -32,9 +32,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Key { get; set; }
 #endif
-        /// <summary>Date comparison operator.* `is_date_exact` - is_date_exact* `is_date_after` - is_date_after* `is_date_before` - is_date_before</summary>
+        /// <summary>* `is_date_exact` - is_date_exact* `is_date_before` - is_date_before* `is_date_after` - is_date_after</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DateOperatorEnum? Operator { get; set; }
-        /// <summary>Property filter type. Common values are &apos;person&apos; and &apos;cohort&apos;.* `cohort` - cohort* `person` - person* `group` - group</summary>
+        /// <summary>* `cohort` - cohort* `person` - person* `group` - group</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupTypeEnum? Type { get; set; }
         /// <summary>Date value in ISO format or relative date expression.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

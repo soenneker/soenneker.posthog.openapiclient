@@ -23,38 +23,38 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The actions property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Actions { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimal_actions? Actions { get; private set; }
 #nullable restore
 #else
-        public UntypedNode Actions { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimal_actions Actions { get; private set; }
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The billable_action_types property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? BillableActionTypes { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimal_billable_action_types? BillableActionTypes { get; private set; }
 #nullable restore
 #else
-        public UntypedNode BillableActionTypes { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimal_billable_action_types BillableActionTypes { get; private set; }
 #endif
         /// <summary>The conversion property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Conversion { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimal_conversion? Conversion { get; private set; }
 #nullable restore
 #else
-        public UntypedNode Conversion { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimal_conversion Conversion { get; private set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimal_created_by? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimal_created_by CreatedBy { get; private set; }
 #endif
         /// <summary>The description property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -67,13 +67,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The edges property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Edges { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimal_edges? Edges { get; private set; }
 #nullable restore
 #else
-        public UntypedNode Edges { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimal_edges Edges { get; private set; }
 #endif
-        /// <summary>The exit_condition property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExitConditionEnum? ExitCondition { get; private set; }
+        /// <summary>* `exit_on_conversion` - Conversion* `exit_on_trigger_not_matched` - Trigger Not Matched* `exit_on_trigger_not_matched_or_conversion` - Trigger Not Matched Or Conversion* `exit_only_at_end` - Only At End</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExitConditionEnum? ExitCondition { get; set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>The name property</summary>
@@ -84,33 +84,33 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; private set; }
 #endif
-        /// <summary>The status property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowStatusEnum? Status { get; private set; }
+        /// <summary>* `draft` - Draft* `active` - Active* `archived` - Archived</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowStatusEnum? Status { get; set; }
         /// <summary>The trigger property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Trigger { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimal_trigger? Trigger { get; private set; }
 #nullable restore
 #else
-        public UntypedNode Trigger { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimal_trigger Trigger { get; private set; }
 #endif
         /// <summary>The trigger_masking property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? TriggerMasking { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimal_trigger_masking? TriggerMasking { get; private set; }
 #nullable restore
 #else
-        public UntypedNode TriggerMasking { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimal_trigger_masking TriggerMasking { get; private set; }
 #endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>The variables property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Variables { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimal_variables? Variables { get; private set; }
 #nullable restore
 #else
-        public UntypedNode Variables { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimal_variables Variables { get; private set; }
 #endif
         /// <summary>The version property</summary>
         public int? Version { get; private set; }
@@ -140,21 +140,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "abort_action", n => { AbortAction = n.GetStringValue(); } },
-                { "actions", n => { Actions = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "billable_action_types", n => { BillableActionTypes = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "conversion", n => { Conversion = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "actions", n => { Actions = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimal_actions>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimal_actions.CreateFromDiscriminatorValue); } },
+                { "billable_action_types", n => { BillableActionTypes = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimal_billable_action_types>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimal_billable_action_types.CreateFromDiscriminatorValue); } },
+                { "conversion", n => { Conversion = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimal_conversion>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimal_conversion.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimal_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimal_created_by.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
-                { "edges", n => { Edges = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "edges", n => { Edges = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimal_edges>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimal_edges.CreateFromDiscriminatorValue); } },
                 { "exit_condition", n => { ExitCondition = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExitConditionEnum>(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowStatusEnum>(); } },
-                { "trigger", n => { Trigger = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "trigger_masking", n => { TriggerMasking = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "trigger", n => { Trigger = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimal_trigger>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimal_trigger.CreateFromDiscriminatorValue); } },
+                { "trigger_masking", n => { TriggerMasking = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimal_trigger_masking>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimal_trigger_masking.CreateFromDiscriminatorValue); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
-                { "variables", n => { Variables = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "variables", n => { Variables = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimal_variables>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimal_variables.CreateFromDiscriminatorValue); } },
                 { "version", n => { Version = n.GetIntValue(); } },
             };
         }
@@ -165,6 +165,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExitConditionEnum>("exit_condition", ExitCondition);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowStatusEnum>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

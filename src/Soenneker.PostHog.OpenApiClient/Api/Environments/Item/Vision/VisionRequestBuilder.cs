@@ -2,7 +2,7 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
-using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision.Lenses;
+using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision.Scanners;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -10,22 +10,22 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\environments\{environment_-id}\vision
+    /// Builds and executes requests for operations under \api\environments\{project_id}\vision
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class VisionRequestBuilder : BaseRequestBuilder
     {
-        /// <summary>The lenses property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision.Lenses.LensesRequestBuilder Lenses
+        /// <summary>The scanners property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision.Scanners.ScannersRequestBuilder Scanners
         {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision.Lenses.LensesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision.Scanners.ScannersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision.VisionRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public VisionRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{environment_%2Did}/vision", pathParameters)
+        public VisionRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{project_id}/vision", pathParameters)
         {
         }
         /// <summary>
@@ -33,7 +33,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public VisionRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{environment_%2Did}/vision", rawUrl)
+        public VisionRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{project_id}/vision", rawUrl)
         {
         }
     }

@@ -40,7 +40,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Source { get; set; }
 #endif
-        /// <summary>Classification for the artifact* `plan` - plan* `context` - context* `reference` - reference* `output` - output* `artifact` - artifact* `tree_snapshot` - tree_snapshot* `user_attachment` - user_attachment</summary>
+        /// <summary>* `plan` - plan* `context` - context* `reference` - reference* `output` - output* `artifact` - artifact* `tree_snapshot` - tree_snapshot* `user_attachment` - user_attachment</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactTypeEnum? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskStagedArtifactPrepareUpload"/> and sets the default values.

@@ -22,23 +22,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ChangeSummary { get; private set; }
 #endif
-        /// <summary>Snapshot at send time: dashboard metadata, total_insight_count, and per-exported-insight entries (id, short_id, name, query_hash, cache_key, query_results, optional query_error).</summary>
+        /// <summary>&quot;Snapshot at send time: dashboard metadata, total_insight_count, and per-exported-insight entries (id, short_id, name, query_hash, cache_key, query_results, optional query_error).&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? ContentSnapshot { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDelivery_content_snapshot? ContentSnapshot { get; private set; }
 #nullable restore
 #else
-        public UntypedNode ContentSnapshot { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDelivery_content_snapshot ContentSnapshot { get; private set; }
 #endif
         /// <summary>When the delivery row was created.</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>Top-level failure payload when status is failed, if any.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Error { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDelivery_error? Error { get; private set; }
 #nullable restore
 #else
-        public UntypedNode Error { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDelivery_error Error { get; private set; }
 #endif
         /// <summary>ExportedAsset ids generated for this send.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -65,15 +65,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Per-destination outcomes; items use status success, failed, or partial.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? RecipientResults { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDelivery_recipient_results? RecipientResults { get; private set; }
 #nullable restore
 #else
-        public UntypedNode RecipientResults { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDelivery_recipient_results RecipientResults { get; private set; }
 #endif
         /// <summary>Planned send time when applicable.</summary>
         public DateTimeOffset? ScheduledAt { get; private set; }
-        /// <summary>Overall run status: starting, completed, failed, or skipped.* `starting` - Starting* `completed` - Completed* `failed` - Failed* `skipped` - Skipped</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDeliveryStatusEnum? Status { get; private set; }
+        /// <summary>* `starting` - Starting* `completed` - Completed* `failed` - Failed* `skipped` - Skipped</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDeliveryStatusEnum? Status { get; set; }
         /// <summary>Parent subscription id.</summary>
         public int? Subscription { get; private set; }
         /// <summary>Channel snapshot at send time (email, slack, webhook).</summary>
@@ -134,15 +134,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "change_summary", n => { ChangeSummary = n.GetStringValue(); } },
-                { "content_snapshot", n => { ContentSnapshot = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "content_snapshot", n => { ContentSnapshot = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDelivery_content_snapshot>(global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDelivery_content_snapshot.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "error", n => { Error = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "error", n => { Error = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDelivery_error>(global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDelivery_error.CreateFromDiscriminatorValue); } },
                 { "exported_asset_ids", n => { ExportedAssetIds = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
                 { "finished_at", n => { FinishedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "idempotency_key", n => { IdempotencyKey = n.GetStringValue(); } },
                 { "last_updated_at", n => { LastUpdatedAt = n.GetDateTimeOffsetValue(); } },
-                { "recipient_results", n => { RecipientResults = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "recipient_results", n => { RecipientResults = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDelivery_recipient_results>(global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDelivery_recipient_results.CreateFromDiscriminatorValue); } },
                 { "scheduled_at", n => { ScheduledAt = n.GetDateTimeOffsetValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDeliveryStatusEnum>(); } },
                 { "subscription", n => { Subscription = n.GetIntValue(); } },
@@ -159,6 +159,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDeliveryStatusEnum>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

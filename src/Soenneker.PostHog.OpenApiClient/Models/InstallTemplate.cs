@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ApiKey { get; set; }
 #endif
-        /// <summary>The install_source property</summary>
+        /// <summary>* `posthog` - posthog* `posthog-code` - posthog-code</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.InstallSourceEnum? InstallSource { get; set; }
         /// <summary>The posthog_code_callback_url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -40,7 +40,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public InstallTemplate()
         {
             AdditionalData = new Dictionary<string, object>();
-            InstallSource = global::Soenneker.PostHog.OpenApiClient.Models.InstallSourceEnum.Posthog;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value

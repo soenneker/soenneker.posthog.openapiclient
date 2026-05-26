@@ -27,10 +27,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Feature flag targeting configuration.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFiltersSchema? Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchema_filters? Filters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFiltersSchema Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchema_filters Filters { get; set; }
 #endif
         /// <summary>Feature flag key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -83,7 +83,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "active", n => { Active = n.GetBoolValue(); } },
                 { "evaluation_contexts", n => { EvaluationContexts = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFiltersSchema>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFiltersSchema.CreateFromDiscriminatorValue); } },
+                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchema_filters>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchema_filters.CreateFromDiscriminatorValue); } },
                 { "key", n => { Key = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -98,7 +98,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("active", Active);
             writer.WriteCollectionOfPrimitiveValues<string>("evaluation_contexts", EvaluationContexts);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFiltersSchema>("filters", Filters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchema_filters>("filters", Filters);
             writer.WriteStringValue("key", Key);
             writer.WriteStringValue("name", Name);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);

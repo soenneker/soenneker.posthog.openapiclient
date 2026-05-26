@@ -10,7 +10,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Max_tools
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\environments\{environment_-id}\max_tools
+    /// Builds and executes requests for operations under \api\environments\{project_id}\max_tools
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Max_toolsRequestBuilder : BaseRequestBuilder
@@ -25,7 +25,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Max_tools
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Max_toolsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{environment_%2Did}/max_tools", pathParameters)
+        public Max_toolsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{project_id}/max_tools", pathParameters)
         {
         }
         /// <summary>
@@ -33,7 +33,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Max_tools
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Max_toolsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{environment_%2Did}/max_tools", rawUrl)
+        public Max_toolsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{project_id}/max_tools", rawUrl)
         {
         }
     }

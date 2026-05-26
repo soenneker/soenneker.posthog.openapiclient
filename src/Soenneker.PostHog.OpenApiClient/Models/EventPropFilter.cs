@@ -23,20 +23,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The operator property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Operator { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EventPropFilter_operator? Operator { get; set; }
 #nullable restore
 #else
-        public string Operator { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EventPropFilter_operator Operator { get; set; }
 #endif
         /// <summary>The type property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.EventPropFilterTypeEnum? Type { get; set; }
         /// <summary>The value property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Value { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EventPropFilter_value? Value { get; set; }
 #nullable restore
 #else
-        public UntypedNode Value { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EventPropFilter_value Value { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -57,9 +57,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "key", n => { Key = n.GetStringValue(); } },
-                { "operator", n => { Operator = n.GetStringValue(); } },
+                { "operator", n => { Operator = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventPropFilter_operator>(global::Soenneker.PostHog.OpenApiClient.Models.EventPropFilter_operator.CreateFromDiscriminatorValue); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EventPropFilterTypeEnum>(); } },
-                { "value", n => { Value = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "value", n => { Value = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventPropFilter_value>(global::Soenneker.PostHog.OpenApiClient.Models.EventPropFilter_value.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -70,9 +70,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("key", Key);
-            writer.WriteStringValue("operator", Operator);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventPropFilter_operator>("operator", Operator);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EventPropFilterTypeEnum>("type", Type);
-            writer.WriteObjectValue<UntypedNode>("value", Value);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventPropFilter_value>("value", Value);
         }
     }
 }

@@ -23,7 +23,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>Serialized column type: integer, float, string, datetime, date, boolean, array, json, or unknown.</summary>
+        /// <summary>&quot;Serialized column type: integer, float, string, datetime, date, boolean, array, json, or unknown.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Type { get; set; }

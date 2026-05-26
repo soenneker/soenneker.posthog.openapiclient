@@ -13,14 +13,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning restore CS1591
     {
         /// <summary>The end property</summary>
-        public int? End { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLNotice_end? End { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLNotice_end End { get; set; }
+#endif
         /// <summary>The fix property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Fix { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLNotice_fix? Fix { get; set; }
 #nullable restore
 #else
-        public string Fix { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLNotice_fix Fix { get; set; }
 #endif
         /// <summary>The message property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -31,7 +37,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Message { get; set; }
 #endif
         /// <summary>The start property</summary>
-        public int? Start { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLNotice_start? Start { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLNotice_start Start { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -50,10 +62,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "end", n => { End = n.GetIntValue(); } },
-                { "fix", n => { Fix = n.GetStringValue(); } },
+                { "end", n => { End = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLNotice_end>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLNotice_end.CreateFromDiscriminatorValue); } },
+                { "fix", n => { Fix = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLNotice_fix>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLNotice_fix.CreateFromDiscriminatorValue); } },
                 { "message", n => { Message = n.GetStringValue(); } },
-                { "start", n => { Start = n.GetIntValue(); } },
+                { "start", n => { Start = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLNotice_start>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLNotice_start.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -63,10 +75,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteIntValue("end", End);
-            writer.WriteStringValue("fix", Fix);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLNotice_end>("end", End);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLNotice_fix>("fix", Fix);
             writer.WriteStringValue("message", Message);
-            writer.WriteIntValue("start", Start);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLNotice_start>("start", Start);
         }
     }
 }

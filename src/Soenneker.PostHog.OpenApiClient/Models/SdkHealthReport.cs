@@ -14,11 +14,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>UI-level status — &apos;success&apos; when healthy, &apos;warning&apos; when some SDKs are outdated, &apos;danger&apos; when the majority are outdated.* `success` - success* `warning` - warning* `danger` - danger</summary>
+        /// <summary>* `success` - success* `warning` - warning* `danger` - danger</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.HealthEnum? Health { get; set; }
         /// <summary>Number of SDKs that need updating.</summary>
         public int? NeedsUpdatingCount { get; set; }
-        /// <summary>&apos;healthy&apos; when no SDKs need updating, &apos;needs_attention&apos; otherwise.* `healthy` - healthy* `needs_attention` - needs_attention</summary>
+        /// <summary>* `healthy` - healthy* `needs_attention` - needs_attention</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.OverallHealthEnum? OverallHealth { get; set; }
         /// <summary>Per-SDK health assessments.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

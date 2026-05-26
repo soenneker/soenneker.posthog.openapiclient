@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? CompletedAt { get; private set; }
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
-        /// <summary>Execution environment* `local` - Local* `cloud` - Cloud</summary>
+        /// <summary>* `local` - Local* `cloud` - Cloud</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunEnvironmentEnum? Environment { get; set; }
         /// <summary>Error message if execution failed</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -65,34 +65,34 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Run output data (e.g., PR URL, commit SHA, etc.)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Output { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail_output? Output { get; set; }
 #nullable restore
 #else
-        public UntypedNode Output { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail_output Output { get; set; }
 #endif
         /// <summary>Configured LLM provider for this run, such as &apos;anthropic&apos; or &apos;openai&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail.TaskRunDetail_provider? Provider { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail_provider? Provider { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail.TaskRunDetail_provider Provider { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail_provider Provider { get; private set; }
 #endif
         /// <summary>Configured reasoning effort for this run when the selected model supports it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail.TaskRunDetail_reasoning_effort? ReasoningEffort { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail_reasoning_effort? ReasoningEffort { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail.TaskRunDetail_reasoning_effort ReasoningEffort { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail_reasoning_effort ReasoningEffort { get; private set; }
 #endif
         /// <summary>Configured runtime adapter for this run, such as &apos;claude&apos; or &apos;codex&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail.TaskRunDetail_runtime_adapter? RuntimeAdapter { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail_runtime_adapter? RuntimeAdapter { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail.TaskRunDetail_runtime_adapter RuntimeAdapter { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail_runtime_adapter RuntimeAdapter { get; private set; }
 #endif
         /// <summary>Current stage for this run (e.g., &apos;research&apos;, &apos;plan&apos;, &apos;build&apos;)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -105,10 +105,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Run state data for resuming or tracking execution state</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? State { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail_state? State { get; set; }
 #nullable restore
 #else
-        public UntypedNode State { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail_state State { get; set; }
 #endif
         /// <summary>* `not_started` - Not Started* `queued` - Queued* `in_progress` - In Progress* `completed` - Completed* `failed` - Failed* `cancelled` - Cancelled</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunStatusEnum? Status { get; set; }
@@ -150,12 +150,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "log_url", n => { LogUrl = n.GetStringValue(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
-                { "output", n => { Output = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "provider", n => { Provider = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail.TaskRunDetail_provider>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail.TaskRunDetail_provider.CreateFromDiscriminatorValue); } },
-                { "reasoning_effort", n => { ReasoningEffort = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail.TaskRunDetail_reasoning_effort>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail.TaskRunDetail_reasoning_effort.CreateFromDiscriminatorValue); } },
-                { "runtime_adapter", n => { RuntimeAdapter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail.TaskRunDetail_runtime_adapter>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail.TaskRunDetail_runtime_adapter.CreateFromDiscriminatorValue); } },
+                { "output", n => { Output = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail_output>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail_output.CreateFromDiscriminatorValue); } },
+                { "provider", n => { Provider = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail_provider>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail_provider.CreateFromDiscriminatorValue); } },
+                { "reasoning_effort", n => { ReasoningEffort = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail_reasoning_effort>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail_reasoning_effort.CreateFromDiscriminatorValue); } },
+                { "runtime_adapter", n => { RuntimeAdapter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail_runtime_adapter>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail_runtime_adapter.CreateFromDiscriminatorValue); } },
                 { "stage", n => { Stage = n.GetStringValue(); } },
-                { "state", n => { State = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "state", n => { State = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail_state>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail_state.CreateFromDiscriminatorValue); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunStatusEnum>(); } },
                 { "task", n => { Task = n.GetGuidValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
@@ -171,206 +171,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("branch", Branch);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunEnvironmentEnum>("environment", Environment);
             writer.WriteStringValue("error_message", ErrorMessage);
-            writer.WriteObjectValue<UntypedNode>("output", Output);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail_output>("output", Output);
             writer.WriteStringValue("stage", Stage);
-            writer.WriteObjectValue<UntypedNode>("state", State);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail_state>("state", State);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunStatusEnum>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailProviderEnum"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class TaskRunDetail_provider : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum? NullEnum { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum NullEnum { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailProviderEnum"/></summary>
-            public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailProviderEnum? TaskRunDetailProviderEnum { get; set; }
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail.TaskRunDetail_provider"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail.TaskRunDetail_provider CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail.TaskRunDetail_provider();
-                if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.NullEnum = new global::Soenneker.PostHog.OpenApiClient.Models.NullEnum();
-                }
-                else if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailProviderEnum>() is global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailProviderEnum taskRunDetailProviderEnumValue)
-                {
-                    result.TaskRunDetailProviderEnum = taskRunDetailProviderEnumValue;
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(NullEnum != null)
-                {
-                    return NullEnum.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(NullEnum != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NullEnum>(null, NullEnum);
-                }
-                else if(TaskRunDetailProviderEnum != null)
-                {
-                    writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailProviderEnum>(null, TaskRunDetailProviderEnum);
-                }
-            }
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReasoningEffortEnum"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class TaskRunDetail_reasoning_effort : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum? NullEnum { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum NullEnum { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReasoningEffortEnum"/></summary>
-            public global::Soenneker.PostHog.OpenApiClient.Models.ReasoningEffortEnum? ReasoningEffortEnum { get; set; }
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail.TaskRunDetail_reasoning_effort"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail.TaskRunDetail_reasoning_effort CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail.TaskRunDetail_reasoning_effort();
-                if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.NullEnum = new global::Soenneker.PostHog.OpenApiClient.Models.NullEnum();
-                }
-                else if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReasoningEffortEnum>() is global::Soenneker.PostHog.OpenApiClient.Models.ReasoningEffortEnum reasoningEffortEnumValue)
-                {
-                    result.ReasoningEffortEnum = reasoningEffortEnumValue;
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(NullEnum != null)
-                {
-                    return NullEnum.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(NullEnum != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NullEnum>(null, NullEnum);
-                }
-                else if(ReasoningEffortEnum != null)
-                {
-                    writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReasoningEffortEnum>(null, ReasoningEffortEnum);
-                }
-            }
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RuntimeAdapterEnum"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class TaskRunDetail_runtime_adapter : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum? NullEnum { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum NullEnum { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RuntimeAdapterEnum"/></summary>
-            public global::Soenneker.PostHog.OpenApiClient.Models.RuntimeAdapterEnum? RuntimeAdapterEnum { get; set; }
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail.TaskRunDetail_runtime_adapter"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail.TaskRunDetail_runtime_adapter CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetail.TaskRunDetail_runtime_adapter();
-                if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.NullEnum = new global::Soenneker.PostHog.OpenApiClient.Models.NullEnum();
-                }
-                else if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RuntimeAdapterEnum>() is global::Soenneker.PostHog.OpenApiClient.Models.RuntimeAdapterEnum runtimeAdapterEnumValue)
-                {
-                    result.RuntimeAdapterEnum = runtimeAdapterEnumValue;
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(NullEnum != null)
-                {
-                    return NullEnum.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(NullEnum != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NullEnum>(null, NullEnum);
-                }
-                else if(RuntimeAdapterEnum != null)
-                {
-                    writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RuntimeAdapterEnum>(null, RuntimeAdapterEnum);
-                }
-            }
         }
     }
 }

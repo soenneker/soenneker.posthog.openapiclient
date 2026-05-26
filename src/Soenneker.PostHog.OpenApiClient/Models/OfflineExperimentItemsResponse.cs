@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Tuple-positional rows; positions match `RawOfflineExperimentMetricRow` in the frontend.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<UntypedNode>? Results { get; set; }
+        public UntypedNode? Results { get; set; }
 #nullable restore
 #else
-        public List<UntypedNode> Results { get; set; }
+        public UntypedNode Results { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemsResponse"/> and sets the default values.
@@ -47,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "results", n => { Results = n.GetCollectionOfPrimitiveValues<UntypedNode>()?.AsList(); } },
+                { "results", n => { Results = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -57,7 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfPrimitiveValues<UntypedNode>("results", Results);
+            writer.WriteObjectValue<UntypedNode>("results", Results);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

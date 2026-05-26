@@ -60,8 +60,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> SourceProducts { get; private set; }
 #endif
-        /// <summary>The status property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportStatusEnum? Status { get; private set; }
+        /// <summary>* `potential` - Potential* `candidate` - Candidate* `in_progress` - In Progress* `pending_input` - Pending Input* `ready` - Ready* `resolved` - Resolved* `failed` - Failed* `deleted` - Deleted* `suppressed` - Suppressed</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportStatusEnum? Status { get; set; }
         /// <summary>The summary property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -132,6 +132,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportStatusEnum>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -18,20 +18,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Config { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.IntegrationConfig_config? Config { get; set; }
 #nullable restore
 #else
-        public UntypedNode Config { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.IntegrationConfig_config Config { get; set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.IntegrationConfig_created_by? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.IntegrationConfig_created_by CreatedBy { get; private set; }
 #endif
         /// <summary>The display_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -78,9 +78,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "config", n => { Config = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationConfig_config>(global::Soenneker.PostHog.OpenApiClient.Models.IntegrationConfig_config.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationConfig_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.IntegrationConfig_created_by.CreateFromDiscriminatorValue); } },
                 { "display_name", n => { DisplayName = n.GetStringValue(); } },
                 { "errors", n => { Errors = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetIntValue(); } },
@@ -94,7 +94,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<UntypedNode>("config", Config);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationConfig_config>("config", Config);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationKindEnum>("kind", Kind);
             writer.WriteAdditionalData(AdditionalData);
         }

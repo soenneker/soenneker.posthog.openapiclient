@@ -76,7 +76,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.SdkReleaseAssessment> Releases { get; set; }
 #endif
-        /// <summary>UI severity badge — &apos;none&apos; when healthy, &apos;warning&apos; when outdated, &apos;danger&apos; when the majority of team SDKs are outdated.* `none` - none* `warning` - warning* `danger` - danger</summary>
+        /// <summary>* `none` - none* `warning` - warning* `danger` - danger</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessmentSeverityEnum? Severity { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessment"/> and sets the default values.

@@ -31,9 +31,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string GithubUserToken { get; set; }
 #endif
-        /// <summary>Initial permission mode for Codex runtimes.* `auto` - auto* `read-only` - read-only* `full-access` - full-access</summary>
+        /// <summary>* `auto` - auto* `read-only` - read-only* `full-access` - full-access</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.CodexTaskRunCreateSchemaInitialPermissionModeEnum? InitialPermissionMode { get; set; }
-        /// <summary>Execution mode: &apos;interactive&apos; for user-connected runs, &apos;background&apos; for autonomous runs* `interactive` - interactive* `background` - background</summary>
+        /// <summary>* `interactive` - interactive* `background` - background</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskExecutionModeEnum? Mode { get; set; }
         /// <summary>LLM model identifier to run in the Codex runtime.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -59,15 +59,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string PendingUserMessage { get; set; }
 #endif
-        /// <summary>Whether pull requests for this run should be authored by the user or the bot.* `user` - user* `bot` - bot</summary>
+        /// <summary>* `user` - user* `bot` - bot</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PrAuthorshipModeEnum? PrAuthorshipMode { get; set; }
-        /// <summary>Reasoning effort to request for models that expose an effort control.* `low` - low* `medium` - medium* `high` - high* `xhigh` - xhigh* `max` - max</summary>
+        /// <summary>* `low` - low* `medium` - medium* `high` - high* `xhigh` - xhigh* `max` - max</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ReasoningEffortEnum? ReasoningEffort { get; set; }
         /// <summary>ID of a previous run to resume from. Must belong to the same task.</summary>
         public Guid? ResumeFromRunId { get; set; }
-        /// <summary>High-level source that triggered this run, used to distinguish manual and signal-based cloud runs.* `manual` - manual* `signal_report` - signal_report</summary>
+        /// <summary>* `manual` - manual* `signal_report` - signal_report</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.RunSourceEnum? RunSource { get; set; }
-        /// <summary>Agent runtime adapter to launch for this run. Must be &apos;codex&apos; for Codex runtimes.* `codex` - codex</summary>
+        /// <summary>* `codex` - codex</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.CodexRuntimeAdapterEnum? RuntimeAdapter { get; set; }
         /// <summary>Optional sandbox environment to apply for this cloud run.</summary>
         public Guid? SandboxEnvironmentId { get; set; }
@@ -85,7 +85,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public CodexTaskRunCreateSchema()
         {
             AdditionalData = new Dictionary<string, object>();
-            Mode = global::Soenneker.PostHog.OpenApiClient.Models.TaskExecutionModeEnum.Background;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value

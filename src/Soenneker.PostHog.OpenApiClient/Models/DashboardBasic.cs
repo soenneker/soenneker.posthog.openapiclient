@@ -28,13 +28,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasic_created_by? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasic_created_by CreatedBy { get; private set; }
 #endif
-        /// <summary>The creation_mode property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.CreationModeEnum? CreationMode { get; private set; }
+        /// <summary>* `default` - Default* `template` - Template* `duplicate` - Duplicate* `unlisted` - Unlisted (product-embedded)</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.CreationModeEnum? CreationMode { get; set; }
         /// <summary>The deleted property</summary>
         public bool? Deleted { get; private set; }
         /// <summary>Description of the dashboard.</summary>
@@ -46,9 +46,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Description { get; private set; }
 #endif
         /// <summary>The effective_privilege_level property</summary>
-        public int? EffectivePrivilegeLevel { get; private set; }
+        public int? EffectivePrivilegeLevel { get; set; }
         /// <summary>The effective_restriction_level property</summary>
-        public int? EffectiveRestrictionLevel { get; private set; }
+        public int? EffectiveRestrictionLevel { get; set; }
         /// <summary>The id property</summary>
         public int? Id { get; private set; }
         /// <summary>The is_shared property</summary>
@@ -69,15 +69,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Whether the dashboard is pinned to the top of the list.</summary>
         public bool? Pinned { get; private set; }
-        /// <summary>Controls who can edit the dashboard.* `21` - Everyone in the project can edit* `37` - Only those invited to this dashboard can edit</summary>
-        public int? RestrictionLevel { get; private set; }
+        /// <summary>* `21` - Everyone in the project can edit* `37` - Only those invited to this dashboard can edit</summary>
+        public int? RestrictionLevel { get; set; }
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Tags { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasic_tags>? Tags { get; set; }
 #nullable restore
 #else
-        public UntypedNode Tags { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasic_tags> Tags { get; set; }
 #endif
         /// <summary>The team_id property</summary>
         public int? TeamId { get; private set; }
@@ -116,7 +116,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "access_control_version", n => { AccessControlVersion = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasic_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasic_created_by.CreateFromDiscriminatorValue); } },
                 { "creation_mode", n => { CreationMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CreationModeEnum>(); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
@@ -130,7 +130,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "pinned", n => { Pinned = n.GetBoolValue(); } },
                 { "restriction_level", n => { RestrictionLevel = n.GetIntValue(); } },
-                { "tags", n => { Tags = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "tags", n => { Tags = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasic_tags>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasic_tags.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "team_id", n => { TeamId = n.GetIntValue(); } },
                 { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },
             };
@@ -142,7 +142,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<UntypedNode>("tags", Tags);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CreationModeEnum>("creation_mode", CreationMode);
+            writer.WriteIntValue("effective_privilege_level", EffectivePrivilegeLevel);
+            writer.WriteIntValue("effective_restriction_level", EffectiveRestrictionLevel);
+            writer.WriteIntValue("restriction_level", RestrictionLevel);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasic_tags>("tags", Tags);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

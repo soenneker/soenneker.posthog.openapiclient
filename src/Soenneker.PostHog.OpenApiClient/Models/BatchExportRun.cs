@@ -17,8 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The backfill this run belongs to.</summary>
         public Guid? Backfill { get; set; }
-        /// <summary>The BatchExport this run belongs to.</summary>
+        /// <summary>The `BatchExport` this run belongs to.</summary>
         public Guid? BatchExport { get; private set; }
+        /// <summary>The `BatchExportOnDemand` this run belongs to.</summary>
+        public Guid? BatchExportOnDemand { get; set; }
         /// <summary>The number of bytes that have been exported in this BatchExportRun.</summary>
         public long? BytesExported { get; set; }
         /// <summary>The timestamp at which this BatchExportRun was created.</summary>
@@ -55,7 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? RecordsFailed { get; set; }
         /// <summary>The total count of records that should be exported in this BatchExportRun.</summary>
         public int? RecordsTotalCount { get; set; }
-        /// <summary>The status of this run.* `Cancelled` - Cancelled* `Completed` - Completed* `ContinuedAsNew` - Continued As New* `Failed` - Failed* `FailedRetryable` - Failed Retryable* `FailedBilling` - Failed Billing* `Terminated` - Terminated* `TimedOut` - Timedout* `Running` - Running* `Starting` - Starting</summary>
+        /// <summary>* `Cancelled` - Cancelled* `Completed` - Completed* `ContinuedAsNew` - Continued As New* `Failed` - Failed* `FailedRetryable` - Failed Retryable* `FailedBilling` - Failed Billing* `Terminated` - Terminated* `TimedOut` - Timedout* `Running` - Running* `Starting` - Starting</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRunStatusEnum? Status { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRun"/> and sets the default values.
@@ -84,6 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "backfill", n => { Backfill = n.GetGuidValue(); } },
                 { "batch_export", n => { BatchExport = n.GetGuidValue(); } },
+                { "batch_export_on_demand", n => { BatchExportOnDemand = n.GetGuidValue(); } },
                 { "bytes_exported", n => { BytesExported = n.GetLongValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "cursor", n => { Cursor = n.GetStringValue(); } },
@@ -107,6 +110,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteGuidValue("backfill", Backfill);
+            writer.WriteGuidValue("batch_export_on_demand", BatchExportOnDemand);
             writer.WriteLongValue("bytes_exported", BytesExported);
             writer.WriteStringValue("cursor", Cursor);
             writer.WriteDateTimeOffsetValue("data_interval_end", DataIntervalEnd);

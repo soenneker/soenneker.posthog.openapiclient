@@ -9,13 +9,11 @@ using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.Group
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.Issues;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.Query;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.Recommendations;
-using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.Releases;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.Settings;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.Spike_detection_config;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.Spike_events;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.Stack_frames;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.Suppression_rules;
-using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.Symbol_sets;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -23,7 +21,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\environments\{environment_-id}\error_tracking
+    /// Builds and executes requests for operations under \api\environments\{project_id}\error_tracking
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Error_trackingRequestBuilder : BaseRequestBuilder
@@ -63,11 +61,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.Recommendations.RecommendationsRequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>The releases property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.Releases.ReleasesRequestBuilder Releases
-        {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.Releases.ReleasesRequestBuilder(PathParameters, RequestAdapter);
-        }
         /// <summary>The settings property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.Settings.SettingsRequestBuilder Settings
         {
@@ -93,17 +86,12 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.Suppression_rules.Suppression_rulesRequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>The symbol_sets property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.Symbol_sets.Symbol_setsRequestBuilder Symbol_sets
-        {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.Symbol_sets.Symbol_setsRequestBuilder(PathParameters, RequestAdapter);
-        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking.Error_trackingRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Error_trackingRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{environment_%2Did}/error_tracking", pathParameters)
+        public Error_trackingRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{project_id}/error_tracking", pathParameters)
         {
         }
         /// <summary>
@@ -111,7 +99,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Error_tracking
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Error_trackingRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{environment_%2Did}/error_tracking", rawUrl)
+        public Error_trackingRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{project_id}/error_tracking", rawUrl)
         {
         }
     }

@@ -17,18 +17,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The contents property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Contents { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrame_contents? Contents { get; set; }
 #nullable restore
 #else
-        public UntypedNode Contents { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrame_contents Contents { get; set; }
 #endif
         /// <summary>The context property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Context { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrame_context? Context { get; set; }
 #nullable restore
 #else
-        public UntypedNode Context { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrame_context Context { get; set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
@@ -45,10 +45,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The release property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingRelease? Release { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrame_release? Release { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingRelease Release { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrame_release Release { get; private set; }
 #endif
         /// <summary>The resolved property</summary>
         public bool? Resolved { get; set; }
@@ -85,12 +85,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "contents", n => { Contents = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "context", n => { Context = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "contents", n => { Contents = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrame_contents>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrame_contents.CreateFromDiscriminatorValue); } },
+                { "context", n => { Context = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrame_context>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrame_context.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "raw_id", n => { RawId = n.GetStringValue(); } },
-                { "release", n => { Release = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingRelease>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingRelease.CreateFromDiscriminatorValue); } },
+                { "release", n => { Release = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrame_release>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrame_release.CreateFromDiscriminatorValue); } },
                 { "resolved", n => { Resolved = n.GetBoolValue(); } },
                 { "symbol_set_ref", n => { SymbolSetRef = n.GetStringValue(); } },
             };
@@ -102,8 +102,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<UntypedNode>("contents", Contents);
-            writer.WriteObjectValue<UntypedNode>("context", Context);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrame_contents>("contents", Contents);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrame_context>("context", Context);
             writer.WriteBoolValue("resolved", Resolved);
             writer.WriteStringValue("symbol_set_ref", SymbolSetRef);
             writer.WriteAdditionalData(AdditionalData);

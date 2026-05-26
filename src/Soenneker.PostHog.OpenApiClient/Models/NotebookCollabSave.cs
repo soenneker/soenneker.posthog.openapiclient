@@ -25,20 +25,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The resulting ProseMirror document after applying the steps locally.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Content { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookCollabSave_content? Content { get; set; }
 #nullable restore
 #else
-        public UntypedNode Content { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookCollabSave_content Content { get; set; }
 #endif
         /// <summary>ProseMirror cursor head position after applying steps.</summary>
         public int? CursorHead { get; set; }
         /// <summary>List of ProseMirror step JSON objects to apply.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Steps { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.NotebookCollabSave_steps>? Steps { get; set; }
 #nullable restore
 #else
-        public UntypedNode Steps { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.NotebookCollabSave_steps> Steps { get; set; }
 #endif
         /// <summary>Plain text for search indexing.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -84,9 +84,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "client_id", n => { ClientId = n.GetStringValue(); } },
-                { "content", n => { Content = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "content", n => { Content = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookCollabSave_content>(global::Soenneker.PostHog.OpenApiClient.Models.NotebookCollabSave_content.CreateFromDiscriminatorValue); } },
                 { "cursor_head", n => { CursorHead = n.GetIntValue(); } },
-                { "steps", n => { Steps = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "steps", n => { Steps = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.NotebookCollabSave_steps>(global::Soenneker.PostHog.OpenApiClient.Models.NotebookCollabSave_steps.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "text_content", n => { TextContent = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
                 { "version", n => { Version = n.GetIntValue(); } },
@@ -100,9 +100,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("client_id", ClientId);
-            writer.WriteObjectValue<UntypedNode>("content", Content);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookCollabSave_content>("content", Content);
             writer.WriteIntValue("cursor_head", CursorHead);
-            writer.WriteObjectValue<UntypedNode>("steps", Steps);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.NotebookCollabSave_steps>("steps", Steps);
             writer.WriteStringValue("text_content", TextContent);
             writer.WriteStringValue("title", Title);
             writer.WriteIntValue("version", Version);

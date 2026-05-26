@@ -35,10 +35,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The feature_flag property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag? FeatureFlag { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEarlyAccessFeature_feature_flag? FeatureFlag { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag FeatureFlag { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEarlyAccessFeature_feature_flag FeatureFlag { get; private set; }
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
@@ -58,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEarlyAccessFeature_payload Payload { get; private set; }
 #endif
-        /// <summary>Lifecycle stage. Valid values: draft, concept, alpha, beta, general-availability, archived. Moving to an active stage (alpha/beta/general-availability) enables the feature flag for opted-in users.* `draft` - draft* `concept` - concept* `alpha` - alpha* `beta` - beta* `general-availability` - general availability* `archived` - archived</summary>
+        /// <summary>* `draft` - draft* `concept` - concept* `alpha` - alpha* `beta` - beta* `general-availability` - general availability* `archived` - archived</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.StageEnum? Stage { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedEarlyAccessFeature"/> and sets the default values.
@@ -88,7 +88,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "documentation_url", n => { DocumentationUrl = n.GetStringValue(); } },
-                { "feature_flag", n => { FeatureFlag = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag>(global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag.CreateFromDiscriminatorValue); } },
+                { "feature_flag", n => { FeatureFlag = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEarlyAccessFeature_feature_flag>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedEarlyAccessFeature_feature_flag.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "payload", n => { Payload = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEarlyAccessFeature_payload>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedEarlyAccessFeature_payload.CreateFromDiscriminatorValue); } },

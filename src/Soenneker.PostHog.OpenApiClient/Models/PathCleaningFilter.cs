@@ -15,20 +15,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The alias property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Alias { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningFilter_alias? Alias { get; set; }
 #nullable restore
 #else
-        public string Alias { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningFilter_alias Alias { get; set; }
 #endif
         /// <summary>The order property</summary>
-        public double? Order { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningFilter_order? Order { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningFilter_order Order { get; set; }
+#endif
         /// <summary>The regex property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Regex { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningFilter_regex? Regex { get; set; }
 #nullable restore
 #else
-        public string Regex { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningFilter_regex Regex { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -48,9 +54,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "alias", n => { Alias = n.GetStringValue(); } },
-                { "order", n => { Order = n.GetDoubleValue(); } },
-                { "regex", n => { Regex = n.GetStringValue(); } },
+                { "alias", n => { Alias = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningFilter_alias>(global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningFilter_alias.CreateFromDiscriminatorValue); } },
+                { "order", n => { Order = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningFilter_order>(global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningFilter_order.CreateFromDiscriminatorValue); } },
+                { "regex", n => { Regex = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningFilter_regex>(global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningFilter_regex.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -60,9 +66,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("alias", Alias);
-            writer.WriteDoubleValue("order", Order);
-            writer.WriteStringValue("regex", Regex);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningFilter_alias>("alias", Alias);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningFilter_order>("order", Order);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningFilter_regex>("regex", Regex);
         }
     }
 }

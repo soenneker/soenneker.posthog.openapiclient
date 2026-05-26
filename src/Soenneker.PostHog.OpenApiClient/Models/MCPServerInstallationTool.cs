@@ -39,10 +39,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The input_schema property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? InputSchema { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MCPServerInstallationTool_input_schema? InputSchema { get; private set; }
 #nullable restore
 #else
-        public UntypedNode InputSchema { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MCPServerInstallationTool_input_schema InputSchema { get; private set; }
 #endif
         /// <summary>The last_seen_at property</summary>
         public DateTimeOffset? LastSeenAt { get; private set; }
@@ -88,7 +88,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "display_name", n => { DisplayName = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "input_schema", n => { InputSchema = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "input_schema", n => { InputSchema = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MCPServerInstallationTool_input_schema>(global::Soenneker.PostHog.OpenApiClient.Models.MCPServerInstallationTool_input_schema.CreateFromDiscriminatorValue); } },
                 { "last_seen_at", n => { LastSeenAt = n.GetDateTimeOffsetValue(); } },
                 { "removed_at", n => { RemovedAt = n.GetDateTimeOffsetValue(); } },
                 { "tool_name", n => { ToolName = n.GetStringValue(); } },

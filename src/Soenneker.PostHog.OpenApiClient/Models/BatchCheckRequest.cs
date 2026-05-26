@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Summary detail level to check for* `minimal` - minimal* `detailed` - detailed</summary>
+        /// <summary>* `minimal` - minimal* `detailed` - detailed</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DetailModeValueEnum? Mode { get; set; }
         /// <summary>LLM model used for cached summaries</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -38,7 +38,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public BatchCheckRequest()
         {
             AdditionalData = new Dictionary<string, object>();
-            Mode = global::Soenneker.PostHog.OpenApiClient.Models.DetailModeValueEnum.Minimal;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value

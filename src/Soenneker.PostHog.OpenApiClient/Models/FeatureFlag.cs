@@ -40,10 +40,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_created_by? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_created_by CreatedBy { get; private set; }
 #endif
         /// <summary>The create_in_folder property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -53,7 +53,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string CreateInFolder { get; set; }
 #endif
-        /// <summary>Indicates the origin product of the feature flag. Choices: &apos;feature_flags&apos;, &apos;experiments&apos;, &apos;surveys&apos;, &apos;early_access_features&apos;, &apos;web_experiments&apos;, &apos;product_tours&apos;.* `feature_flags` - feature_flags* `experiments` - experiments* `surveys` - surveys* `early_access_features` - early_access_features* `web_experiments` - web_experiments* `product_tours` - product_tours</summary>
+        /// <summary>* `feature_flags` - feature_flags* `experiments` - experiments* `surveys` - surveys* `early_access_features` - early_access_features* `web_experiments` - web_experiments* `product_tours` - product_tours</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagCreationContextEnum? CreationContext { get; set; }
         /// <summary>The deleted property</summary>
         public bool? Deleted { get; set; }
@@ -62,10 +62,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The evaluation_contexts property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? EvaluationContexts { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_evaluation_contexts>? EvaluationContexts { get; set; }
 #nullable restore
 #else
-        public UntypedNode EvaluationContexts { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_evaluation_contexts> EvaluationContexts { get; set; }
 #endif
         /// <summary>Specifies where this feature flag should be evaluated* `server` - Server* `client` - Client* `all` - All</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -130,10 +130,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The last_modified_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? LastModifiedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_last_modified_by? LastModifiedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic LastModifiedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_last_modified_by LastModifiedBy { get; private set; }
 #endif
         /// <summary>contains the description for the flag (field name `name` is kept for backwards-compatibility)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -148,10 +148,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The rollback_conditions property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? RollbackConditions { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_rollback_conditions? RollbackConditions { get; set; }
 #nullable restore
 #else
-        public UntypedNode RollbackConditions { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_rollback_conditions RollbackConditions { get; set; }
 #endif
         /// <summary>The should_create_usage_dashboard property</summary>
         public bool? ShouldCreateUsageDashboard { get; set; }
@@ -174,10 +174,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Tags { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_tags>? Tags { get; set; }
 #nullable restore
 #else
-        public UntypedNode Tags { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_tags> Tags { get; set; }
 #endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
@@ -224,11 +224,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "can_edit", n => { CanEdit = n.GetBoolValue(); } },
                 { "_create_in_folder", n => { CreateInFolder = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_created_by.CreateFromDiscriminatorValue); } },
                 { "creation_context", n => { CreationContext = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagCreationContextEnum>(); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "ensure_experience_continuity", n => { EnsureExperienceContinuity = n.GetBoolValue(); } },
-                { "evaluation_contexts", n => { EvaluationContexts = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "evaluation_contexts", n => { EvaluationContexts = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_evaluation_contexts>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_evaluation_contexts.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "evaluation_runtime", n => { EvaluationRuntime = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag.FeatureFlag_evaluation_runtime>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag.FeatureFlag_evaluation_runtime.CreateFromDiscriminatorValue); } },
                 { "experiment_set", n => { ExperimentSet = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
                 { "experiment_set_metadata", n => { ExperimentSetMetadata = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_experiment_set_metadata>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_experiment_set_metadata.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -241,14 +241,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "is_used_in_replay_settings", n => { IsUsedInReplaySettings = n.GetBoolValue(); } },
                 { "key", n => { Key = n.GetStringValue(); } },
                 { "last_called_at", n => { LastCalledAt = n.GetDateTimeOffsetValue(); } },
-                { "last_modified_by", n => { LastModifiedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "last_modified_by", n => { LastModifiedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_last_modified_by>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_last_modified_by.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "performed_rollback", n => { PerformedRollback = n.GetBoolValue(); } },
-                { "rollback_conditions", n => { RollbackConditions = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "rollback_conditions", n => { RollbackConditions = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_rollback_conditions>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_rollback_conditions.CreateFromDiscriminatorValue); } },
                 { "_should_create_usage_dashboard", n => { ShouldCreateUsageDashboard = n.GetBoolValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
                 { "surveys", n => { Surveys = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_surveys>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_surveys.CreateFromDiscriminatorValue); } },
-                { "tags", n => { Tags = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "tags", n => { Tags = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_tags>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_tags.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "usage_dashboard", n => { UsageDashboard = n.GetIntValue(); } },
                 { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },
@@ -270,7 +270,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagCreationContextEnum>("creation_context", CreationContext);
             writer.WriteBoolValue("deleted", Deleted);
             writer.WriteBoolValue("ensure_experience_continuity", EnsureExperienceContinuity);
-            writer.WriteObjectValue<UntypedNode>("evaluation_contexts", EvaluationContexts);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_evaluation_contexts>("evaluation_contexts", EvaluationContexts);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag.FeatureFlag_evaluation_runtime>("evaluation_runtime", EvaluationRuntime);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_filters>("filters", Filters);
             writer.WriteBoolValue("has_encrypted_payloads", HasEncryptedPayloads);
@@ -280,35 +280,41 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("last_called_at", LastCalledAt);
             writer.WriteStringValue("name", Name);
             writer.WriteBoolValue("performed_rollback", PerformedRollback);
-            writer.WriteObjectValue<UntypedNode>("rollback_conditions", RollbackConditions);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_rollback_conditions>("rollback_conditions", RollbackConditions);
             writer.WriteBoolValue("_should_create_usage_dashboard", ShouldCreateUsageDashboard);
-            writer.WriteObjectValue<UntypedNode>("tags", Tags);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_tags>("tags", Tags);
             writer.WriteIntValue("version", Version);
             writer.WriteAdditionalData(AdditionalData);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BucketingIdentifierEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>
+        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BucketingIdentifierEnum_Wrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_bucketing_identifierMember1"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class FeatureFlag_bucketing_identifier : IComposedTypeWrapper, IParsable
         {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum"/></summary>
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum? BlankEnum { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper? BlankEnumWrapper { get; set; }
 #nullable restore
 #else
-            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum BlankEnum { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper BlankEnumWrapper { get; set; }
 #endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BucketingIdentifierEnum"/></summary>
-            public global::Soenneker.PostHog.OpenApiClient.Models.BucketingIdentifierEnum? BucketingIdentifierEnum { get; set; }
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BucketingIdentifierEnum_Wrapper"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum? NullEnum { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.BucketingIdentifierEnum_Wrapper? BucketingIdentifierEnumWrapper { get; set; }
 #nullable restore
 #else
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum NullEnum { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.BucketingIdentifierEnum_Wrapper BucketingIdentifierEnumWrapper { get; set; }
+#endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_bucketing_identifierMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_bucketing_identifierMember1? FeatureFlagBucketingIdentifierMember1 { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_bucketing_identifierMember1 FeatureFlagBucketingIdentifierMember1 { get; set; }
 #endif
             /// <summary>
             /// Creates a new instance of the appropriate class based on discriminator value
@@ -320,17 +326,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
                 var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
                 var result = new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag.FeatureFlag_bucketing_identifier();
-                if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+                if("BlankEnum_Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
                 {
-                    result.BlankEnum = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum();
+                    result.BlankEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper();
                 }
-                else if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BucketingIdentifierEnum>() is global::Soenneker.PostHog.OpenApiClient.Models.BucketingIdentifierEnum bucketingIdentifierEnumValue)
+                else if("BucketingIdentifierEnum_Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
                 {
-                    result.BucketingIdentifierEnum = bucketingIdentifierEnumValue;
+                    result.BucketingIdentifierEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.BucketingIdentifierEnum_Wrapper();
                 }
                 else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
                 {
-                    result.NullEnum = new global::Soenneker.PostHog.OpenApiClient.Models.NullEnum();
+                    result.FeatureFlagBucketingIdentifierMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_bucketing_identifierMember1();
                 }
                 return result;
             }
@@ -340,13 +346,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
-                if(BlankEnum != null)
+                if(BlankEnumWrapper != null)
                 {
-                    return BlankEnum.GetFieldDeserializers();
+                    return BlankEnumWrapper.GetFieldDeserializers();
                 }
-                else if(NullEnum != null)
+                else if(BucketingIdentifierEnumWrapper != null)
                 {
-                    return NullEnum.GetFieldDeserializers();
+                    return BucketingIdentifierEnumWrapper.GetFieldDeserializers();
+                }
+                else if(FeatureFlagBucketingIdentifierMember1 != null)
+                {
+                    return FeatureFlagBucketingIdentifierMember1.GetFieldDeserializers();
                 }
                 return new Dictionary<string, Action<IParseNode>>();
             }
@@ -357,43 +367,49 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             public virtual void Serialize(ISerializationWriter writer)
             {
                 if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(BlankEnum != null)
+                if(BlankEnumWrapper != null)
                 {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum>(null, BlankEnum);
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper>(null, BlankEnumWrapper);
                 }
-                else if(BucketingIdentifierEnum != null)
+                else if(BucketingIdentifierEnumWrapper != null)
                 {
-                    writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BucketingIdentifierEnum>(null, BucketingIdentifierEnum);
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BucketingIdentifierEnum_Wrapper>(null, BucketingIdentifierEnumWrapper);
                 }
-                else if(NullEnum != null)
+                else if(FeatureFlagBucketingIdentifierMember1 != null)
                 {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NullEnum>(null, NullEnum);
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_bucketing_identifierMember1>(null, FeatureFlagBucketingIdentifierMember1);
                 }
             }
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EvaluationRuntimeEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>
+        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EvaluationRuntimeEnum_Wrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_evaluation_runtimeMember1"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class FeatureFlag_evaluation_runtime : IComposedTypeWrapper, IParsable
         {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum"/></summary>
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum? BlankEnum { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper? BlankEnumWrapper { get; set; }
 #nullable restore
 #else
-            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum BlankEnum { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper BlankEnumWrapper { get; set; }
 #endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EvaluationRuntimeEnum"/></summary>
-            public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationRuntimeEnum? EvaluationRuntimeEnum { get; set; }
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EvaluationRuntimeEnum_Wrapper"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum? NullEnum { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationRuntimeEnum_Wrapper? EvaluationRuntimeEnumWrapper { get; set; }
 #nullable restore
 #else
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum NullEnum { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationRuntimeEnum_Wrapper EvaluationRuntimeEnumWrapper { get; set; }
+#endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_evaluation_runtimeMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_evaluation_runtimeMember1? FeatureFlagEvaluationRuntimeMember1 { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_evaluation_runtimeMember1 FeatureFlagEvaluationRuntimeMember1 { get; set; }
 #endif
             /// <summary>
             /// Creates a new instance of the appropriate class based on discriminator value
@@ -405,17 +421,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
                 var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
                 var result = new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag.FeatureFlag_evaluation_runtime();
-                if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+                if("BlankEnum_Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
                 {
-                    result.BlankEnum = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum();
+                    result.BlankEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper();
                 }
-                else if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationRuntimeEnum>() is global::Soenneker.PostHog.OpenApiClient.Models.EvaluationRuntimeEnum evaluationRuntimeEnumValue)
+                else if("EvaluationRuntimeEnum_Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
                 {
-                    result.EvaluationRuntimeEnum = evaluationRuntimeEnumValue;
+                    result.EvaluationRuntimeEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.EvaluationRuntimeEnum_Wrapper();
                 }
                 else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
                 {
-                    result.NullEnum = new global::Soenneker.PostHog.OpenApiClient.Models.NullEnum();
+                    result.FeatureFlagEvaluationRuntimeMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_evaluation_runtimeMember1();
                 }
                 return result;
             }
@@ -425,13 +441,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
-                if(BlankEnum != null)
+                if(BlankEnumWrapper != null)
                 {
-                    return BlankEnum.GetFieldDeserializers();
+                    return BlankEnumWrapper.GetFieldDeserializers();
                 }
-                else if(NullEnum != null)
+                else if(EvaluationRuntimeEnumWrapper != null)
                 {
-                    return NullEnum.GetFieldDeserializers();
+                    return EvaluationRuntimeEnumWrapper.GetFieldDeserializers();
+                }
+                else if(FeatureFlagEvaluationRuntimeMember1 != null)
+                {
+                    return FeatureFlagEvaluationRuntimeMember1.GetFieldDeserializers();
                 }
                 return new Dictionary<string, Action<IParseNode>>();
             }
@@ -442,17 +462,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             public virtual void Serialize(ISerializationWriter writer)
             {
                 if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(BlankEnum != null)
+                if(BlankEnumWrapper != null)
                 {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum>(null, BlankEnum);
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper>(null, BlankEnumWrapper);
                 }
-                else if(EvaluationRuntimeEnum != null)
+                else if(EvaluationRuntimeEnumWrapper != null)
                 {
-                    writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationRuntimeEnum>(null, EvaluationRuntimeEnum);
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationRuntimeEnum_Wrapper>(null, EvaluationRuntimeEnumWrapper);
                 }
-                else if(NullEnum != null)
+                else if(FeatureFlagEvaluationRuntimeMember1 != null)
                 {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NullEnum>(null, NullEnum);
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_evaluation_runtimeMember1>(null, FeatureFlagEvaluationRuntimeMember1);
                 }
             }
         }

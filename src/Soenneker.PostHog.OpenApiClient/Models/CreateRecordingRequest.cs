@@ -15,7 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Meeting platform being recorded* `zoom` - zoom* `teams` - teams* `meet` - meet* `desktop_audio` - desktop_audio* `slack` - slack</summary>
+        /// <summary>* `zoom` - zoom* `teams` - teams* `meet` - meet* `desktop_audio` - desktop_audio* `slack` - slack</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.CreateRecordingRequestPlatformEnum? Platform { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CreateRecordingRequest"/> and sets the default values.
@@ -23,7 +23,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public CreateRecordingRequest()
         {
             AdditionalData = new Dictionary<string, object>();
-            Platform = global::Soenneker.PostHog.OpenApiClient.Models.CreateRecordingRequestPlatformEnum.Desktop_audio;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value

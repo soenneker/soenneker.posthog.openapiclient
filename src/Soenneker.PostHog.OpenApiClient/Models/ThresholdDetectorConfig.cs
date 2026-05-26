@@ -13,31 +13,37 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning restore CS1591
     {
         /// <summary>Lower bound - values below this are anomalies</summary>
-        public double? LowerBound { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ThresholdDetectorConfig_lower_bound? LowerBound { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ThresholdDetectorConfig_lower_bound LowerBound { get; set; }
+#endif
         /// <summary>Preprocessing transforms applied before detection</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig? Preprocessing { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ThresholdDetectorConfig_preprocessing? Preprocessing { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig Preprocessing { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ThresholdDetectorConfig_preprocessing Preprocessing { get; set; }
 #endif
         /// <summary>The type property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.ThresholdDetectorConfig_type? Type { get; set; }
+        /// <summary>Upper bound - values above this are anomalies</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Type { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ThresholdDetectorConfig_upper_bound? UpperBound { get; set; }
 #nullable restore
 #else
-        public string Type { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ThresholdDetectorConfig_upper_bound UpperBound { get; set; }
 #endif
-        /// <summary>Upper bound - values above this are anomalies</summary>
-        public double? UpperBound { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ThresholdDetectorConfig"/> and sets the default values.
         /// </summary>
         public ThresholdDetectorConfig()
         {
-            Type = "threshold";
+            Type = global::Soenneker.PostHog.OpenApiClient.Models.ThresholdDetectorConfig_type.Threshold;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -57,10 +63,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "lower_bound", n => { LowerBound = n.GetDoubleValue(); } },
-                { "preprocessing", n => { Preprocessing = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig>(global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetStringValue(); } },
-                { "upper_bound", n => { UpperBound = n.GetDoubleValue(); } },
+                { "lower_bound", n => { LowerBound = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ThresholdDetectorConfig_lower_bound>(global::Soenneker.PostHog.OpenApiClient.Models.ThresholdDetectorConfig_lower_bound.CreateFromDiscriminatorValue); } },
+                { "preprocessing", n => { Preprocessing = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ThresholdDetectorConfig_preprocessing>(global::Soenneker.PostHog.OpenApiClient.Models.ThresholdDetectorConfig_preprocessing.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ThresholdDetectorConfig_type>(); } },
+                { "upper_bound", n => { UpperBound = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ThresholdDetectorConfig_upper_bound>(global::Soenneker.PostHog.OpenApiClient.Models.ThresholdDetectorConfig_upper_bound.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -70,10 +76,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteDoubleValue("lower_bound", LowerBound);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig>("preprocessing", Preprocessing);
-            writer.WriteStringValue("type", Type);
-            writer.WriteDoubleValue("upper_bound", UpperBound);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ThresholdDetectorConfig_lower_bound>("lower_bound", LowerBound);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ThresholdDetectorConfig_preprocessing>("preprocessing", Preprocessing);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ThresholdDetectorConfig_type>("type", Type);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ThresholdDetectorConfig_upper_bound>("upper_bound", UpperBound);
         }
     }
 }

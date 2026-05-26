@@ -7,36 +7,111 @@ using System.IO;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AzureBlobDestinationConfig"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BigQueryDestinationConfig"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DatabricksDestinationConfig"/>
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class BatchExportDestinationConfig : IComposedTypeWrapper, IParsable
+    #pragma warning disable CS1591
+    public partial class BatchExportDestinationConfig : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AzureBlobDestinationConfig"/></summary>
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Unity Catalog name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AzureBlobDestinationConfig? AzureBlobDestinationConfig { get; set; }
+        public string? Catalog { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AzureBlobDestinationConfig AzureBlobDestinationConfig { get; set; }
+        public string Catalog { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BigQueryDestinationConfig"/></summary>
+        /// <summary>Optional compression codec applied to exported files. Valid codecs depend on file_format.* `brotli` - brotli* `gzip` - gzip* `lz4` - lz4* `snappy` - snappy* `zstd` - zstd</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BigQueryDestinationConfig? BigQueryDestinationConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfig_compression? Compression { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BigQueryDestinationConfig BigQueryDestinationConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfig_compression Compression { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DatabricksDestinationConfig"/></summary>
+        /// <summary>Azure Blob Storage container name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatabricksDestinationConfig? DatabricksDestinationConfig { get; set; }
+        public string? ContainerName { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatabricksDestinationConfig DatabricksDestinationConfig { get; set; }
+        public string ContainerName { get; set; }
 #endif
+        /// <summary>BigQuery dataset ID to write to.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? DatasetId { get; set; }
+#nullable restore
+#else
+        public string DatasetId { get; set; }
+#endif
+        /// <summary>* `JSONLines` - JSONLines* `Parquet` - Parquet</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.FileFormatEnum? FileFormat { get; set; }
+        /// <summary>Databricks SQL warehouse HTTP path.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? HttpPath { get; set; }
+#nullable restore
+#else
+        public string HttpPath { get; set; }
+#endif
+        /// <summary>If set, rolls to a new file once the current file exceeds this size in MB.</summary>
+        public int? MaxFileSizeMb { get; set; }
+        /// <summary>Object key prefix applied to every exported file.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Prefix { get; set; }
+#nullable restore
+#else
+        public string Prefix { get; set; }
+#endif
+        /// <summary>Schema (database) name inside the catalog.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Schema { get; set; }
+#nullable restore
+#else
+        public string Schema { get; set; }
+#endif
+        /// <summary>BigQuery table ID inside the dataset.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? TableId { get; set; }
+#nullable restore
+#else
+        public string TableId { get; set; }
+#endif
+        /// <summary>Destination table name.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? TableName { get; set; }
+#nullable restore
+#else
+        public string TableName { get; set; }
+#endif
+        /// <summary>Union discriminator</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Type { get; set; }
+#nullable restore
+#else
+        public string Type { get; set; }
+#endif
+        /// <summary>Whether to let Databricks evolve the destination table schema automatically.</summary>
+        public bool? UseAutomaticSchemaEvolution { get; set; }
+        /// <summary>Whether to export &apos;properties&apos;, &apos;set&apos;, and &apos;set_once&apos; fields as the BigQuery JSON type rather than STRING. Cannot be changed after the export is created.</summary>
+        public bool? UseJsonType { get; set; }
+        /// <summary>Whether to use the Databricks VARIANT type for JSON-like columns.</summary>
+        public bool? UseVariantType { get; set; }
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfig"/> and sets the default values.
+        /// </summary>
+        public BatchExportDestinationConfig()
+        {
+            AdditionalData = new Dictionary<string, object>();
+            TableId = "events";
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -45,21 +120,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
-            var result = new global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfig();
-            if("AzureBlob".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.AzureBlobDestinationConfig = new global::Soenneker.PostHog.OpenApiClient.Models.AzureBlobDestinationConfig();
-            }
-            else if("BigQuery".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.BigQueryDestinationConfig = new global::Soenneker.PostHog.OpenApiClient.Models.BigQueryDestinationConfig();
-            }
-            else if("Databricks".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.DatabricksDestinationConfig = new global::Soenneker.PostHog.OpenApiClient.Models.DatabricksDestinationConfig();
-            }
-            return result;
+            return new global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfig();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -67,19 +128,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(AzureBlobDestinationConfig != null)
+            return new Dictionary<string, Action<IParseNode>>
             {
-                return AzureBlobDestinationConfig.GetFieldDeserializers();
-            }
-            else if(BigQueryDestinationConfig != null)
-            {
-                return BigQueryDestinationConfig.GetFieldDeserializers();
-            }
-            else if(DatabricksDestinationConfig != null)
-            {
-                return DatabricksDestinationConfig.GetFieldDeserializers();
-            }
-            return new Dictionary<string, Action<IParseNode>>();
+                { "catalog", n => { Catalog = n.GetStringValue(); } },
+                { "compression", n => { Compression = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfig_compression>(global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfig_compression.CreateFromDiscriminatorValue); } },
+                { "container_name", n => { ContainerName = n.GetStringValue(); } },
+                { "dataset_id", n => { DatasetId = n.GetStringValue(); } },
+                { "file_format", n => { FileFormat = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FileFormatEnum>(); } },
+                { "http_path", n => { HttpPath = n.GetStringValue(); } },
+                { "max_file_size_mb", n => { MaxFileSizeMb = n.GetIntValue(); } },
+                { "prefix", n => { Prefix = n.GetStringValue(); } },
+                { "schema", n => { Schema = n.GetStringValue(); } },
+                { "table_id", n => { TableId = n.GetStringValue(); } },
+                { "table_name", n => { TableName = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetStringValue(); } },
+                { "use_automatic_schema_evolution", n => { UseAutomaticSchemaEvolution = n.GetBoolValue(); } },
+                { "use_json_type", n => { UseJsonType = n.GetBoolValue(); } },
+                { "use_variant_type", n => { UseVariantType = n.GetBoolValue(); } },
+            };
         }
         /// <summary>
         /// Serializes information the current object
@@ -88,18 +154,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(AzureBlobDestinationConfig != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AzureBlobDestinationConfig>(null, AzureBlobDestinationConfig);
-            }
-            else if(BigQueryDestinationConfig != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BigQueryDestinationConfig>(null, BigQueryDestinationConfig);
-            }
-            else if(DatabricksDestinationConfig != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatabricksDestinationConfig>(null, DatabricksDestinationConfig);
-            }
+            writer.WriteStringValue("catalog", Catalog);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfig_compression>("compression", Compression);
+            writer.WriteStringValue("container_name", ContainerName);
+            writer.WriteStringValue("dataset_id", DatasetId);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FileFormatEnum>("file_format", FileFormat);
+            writer.WriteStringValue("http_path", HttpPath);
+            writer.WriteIntValue("max_file_size_mb", MaxFileSizeMb);
+            writer.WriteStringValue("prefix", Prefix);
+            writer.WriteStringValue("schema", Schema);
+            writer.WriteStringValue("table_id", TableId);
+            writer.WriteStringValue("table_name", TableName);
+            writer.WriteStringValue("type", Type);
+            writer.WriteBoolValue("use_automatic_schema_evolution", UseAutomaticSchemaEvolution);
+            writer.WriteBoolValue("use_json_type", UseJsonType);
+            writer.WriteBoolValue("use_variant_type", UseVariantType);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

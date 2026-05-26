@@ -50,20 +50,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Tags { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.EnterprisePropertyDefinition_tags>? Tags { get; set; }
 #nullable restore
 #else
-        public UntypedNode Tags { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.EnterprisePropertyDefinition_tags> Tags { get; set; }
 #endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>The updated_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? UpdatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EnterprisePropertyDefinition_updated_by? UpdatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic UpdatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EnterprisePropertyDefinition_updated_by UpdatedBy { get; private set; }
 #endif
         /// <summary>The verified property</summary>
         public bool? Verified { get; set; }
@@ -72,10 +72,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The verified_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? VerifiedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EnterprisePropertyDefinition_verified_by? VerifiedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic VerifiedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EnterprisePropertyDefinition_verified_by VerifiedBy { get; private set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EnterprisePropertyDefinition"/> and sets the default values.
@@ -109,12 +109,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "is_seen_on_filtered_events", n => { IsSeenOnFilteredEvents = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "property_type", n => { PropertyType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EnterprisePropertyDefinition.EnterprisePropertyDefinition_property_type>(global::Soenneker.PostHog.OpenApiClient.Models.EnterprisePropertyDefinition.EnterprisePropertyDefinition_property_type.CreateFromDiscriminatorValue); } },
-                { "tags", n => { Tags = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "tags", n => { Tags = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EnterprisePropertyDefinition_tags>(global::Soenneker.PostHog.OpenApiClient.Models.EnterprisePropertyDefinition_tags.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
-                { "updated_by", n => { UpdatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "updated_by", n => { UpdatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EnterprisePropertyDefinition_updated_by>(global::Soenneker.PostHog.OpenApiClient.Models.EnterprisePropertyDefinition_updated_by.CreateFromDiscriminatorValue); } },
                 { "verified", n => { Verified = n.GetBoolValue(); } },
                 { "verified_at", n => { VerifiedAt = n.GetDateTimeOffsetValue(); } },
-                { "verified_by", n => { VerifiedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "verified_by", n => { VerifiedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EnterprisePropertyDefinition_verified_by>(global::Soenneker.PostHog.OpenApiClient.Models.EnterprisePropertyDefinition_verified_by.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -127,34 +127,40 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("description", Description);
             writer.WriteBoolValue("hidden", Hidden);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EnterprisePropertyDefinition.EnterprisePropertyDefinition_property_type>("property_type", PropertyType);
-            writer.WriteObjectValue<UntypedNode>("tags", Tags);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EnterprisePropertyDefinition_tags>("tags", Tags);
             writer.WriteBoolValue("verified", Verified);
             writer.WriteAdditionalData(AdditionalData);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyDefinitionTypeEnum"/>
+        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EnterprisePropertyDefinition_property_typeMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyDefinitionTypeEnum_Wrapper"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EnterprisePropertyDefinition_property_type : IComposedTypeWrapper, IParsable
         {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum"/></summary>
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum? BlankEnum { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper? BlankEnumWrapper { get; set; }
 #nullable restore
 #else
-            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum BlankEnum { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper BlankEnumWrapper { get; set; }
 #endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EnterprisePropertyDefinition_property_typeMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum? NullEnum { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.EnterprisePropertyDefinition_property_typeMember1? EnterprisePropertyDefinitionPropertyTypeMember1 { get; set; }
 #nullable restore
 #else
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum NullEnum { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.EnterprisePropertyDefinition_property_typeMember1 EnterprisePropertyDefinitionPropertyTypeMember1 { get; set; }
 #endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyDefinitionTypeEnum"/></summary>
-            public global::Soenneker.PostHog.OpenApiClient.Models.PropertyDefinitionTypeEnum? PropertyDefinitionTypeEnum { get; set; }
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyDefinitionTypeEnum_Wrapper"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.PropertyDefinitionTypeEnum_Wrapper? PropertyDefinitionTypeEnumWrapper { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.PropertyDefinitionTypeEnum_Wrapper PropertyDefinitionTypeEnumWrapper { get; set; }
+#endif
             /// <summary>
             /// Creates a new instance of the appropriate class based on discriminator value
             /// </summary>
@@ -165,17 +171,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
                 var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
                 var result = new global::Soenneker.PostHog.OpenApiClient.Models.EnterprisePropertyDefinition.EnterprisePropertyDefinition_property_type();
-                if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+                if("BlankEnum_Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
                 {
-                    result.BlankEnum = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum();
+                    result.BlankEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper();
                 }
                 else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
                 {
-                    result.NullEnum = new global::Soenneker.PostHog.OpenApiClient.Models.NullEnum();
+                    result.EnterprisePropertyDefinitionPropertyTypeMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.EnterprisePropertyDefinition_property_typeMember1();
                 }
-                else if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyDefinitionTypeEnum>() is global::Soenneker.PostHog.OpenApiClient.Models.PropertyDefinitionTypeEnum propertyDefinitionTypeEnumValue)
+                else if("PropertyDefinitionTypeEnum_Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
                 {
-                    result.PropertyDefinitionTypeEnum = propertyDefinitionTypeEnumValue;
+                    result.PropertyDefinitionTypeEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.PropertyDefinitionTypeEnum_Wrapper();
                 }
                 return result;
             }
@@ -185,13 +191,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
-                if(BlankEnum != null)
+                if(BlankEnumWrapper != null)
                 {
-                    return BlankEnum.GetFieldDeserializers();
+                    return BlankEnumWrapper.GetFieldDeserializers();
                 }
-                else if(NullEnum != null)
+                else if(EnterprisePropertyDefinitionPropertyTypeMember1 != null)
                 {
-                    return NullEnum.GetFieldDeserializers();
+                    return EnterprisePropertyDefinitionPropertyTypeMember1.GetFieldDeserializers();
+                }
+                else if(PropertyDefinitionTypeEnumWrapper != null)
+                {
+                    return PropertyDefinitionTypeEnumWrapper.GetFieldDeserializers();
                 }
                 return new Dictionary<string, Action<IParseNode>>();
             }
@@ -202,17 +212,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             public virtual void Serialize(ISerializationWriter writer)
             {
                 if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(BlankEnum != null)
+                if(BlankEnumWrapper != null)
                 {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum>(null, BlankEnum);
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper>(null, BlankEnumWrapper);
                 }
-                else if(NullEnum != null)
+                else if(EnterprisePropertyDefinitionPropertyTypeMember1 != null)
                 {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NullEnum>(null, NullEnum);
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EnterprisePropertyDefinition_property_typeMember1>(null, EnterprisePropertyDefinitionPropertyTypeMember1);
                 }
-                else if(PropertyDefinitionTypeEnum != null)
+                else if(PropertyDefinitionTypeEnumWrapper != null)
                 {
-                    writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyDefinitionTypeEnum>(null, PropertyDefinitionTypeEnum);
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyDefinitionTypeEnum_Wrapper>(null, PropertyDefinitionTypeEnumWrapper);
                 }
             }
         }

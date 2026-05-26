@@ -38,10 +38,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Query result rows. Each row is a list of values matching the columns order.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Results { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunResponse_results>? Results { get; set; }
 #nullable restore
 #else
-        public UntypedNode Results { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunResponse_results> Results { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunResponse"/> and sets the default values.
@@ -72,7 +72,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "endpoint_version", n => { EndpointVersion = n.GetIntValue(); } },
                 { "hasMore", n => { HasMore = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "results", n => { Results = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "results", n => { Results = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunResponse_results>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunResponse_results.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -86,7 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("endpoint_version", EndpointVersion);
             writer.WriteBoolValue("hasMore", HasMore);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<UntypedNode>("results", Results);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunResponse_results>("results", Results);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

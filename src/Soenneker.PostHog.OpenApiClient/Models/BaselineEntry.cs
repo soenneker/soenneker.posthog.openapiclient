@@ -38,6 +38,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? IsQuarantined { get; set; }
         /// <summary>The last_run_at property</summary>
         public DateTimeOffset? LastRunAt { get; set; }
+        /// <summary>Active quarantine details when `is_quarantined` is true. Null otherwise.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.BaselineEntry_quarantine? Quarantine { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.BaselineEntry_quarantine Quarantine { get; set; }
+#endif
         /// <summary>The recent_drift_avg property</summary>
         public double? RecentDriftAvg { get; set; }
         /// <summary>The run_type property</summary>
@@ -93,6 +101,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "identifier", n => { Identifier = n.GetStringValue(); } },
                 { "is_quarantined", n => { IsQuarantined = n.GetBoolValue(); } },
                 { "last_run_at", n => { LastRunAt = n.GetDateTimeOffsetValue(); } },
+                { "quarantine", n => { Quarantine = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BaselineEntry_quarantine>(global::Soenneker.PostHog.OpenApiClient.Models.BaselineEntry_quarantine.CreateFromDiscriminatorValue); } },
                 { "recent_drift_avg", n => { RecentDriftAvg = n.GetDoubleValue(); } },
                 { "run_type", n => { RunType = n.GetStringValue(); } },
                 { "thumbnail_hash", n => { ThumbnailHash = n.GetStringValue(); } },
@@ -114,6 +123,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("identifier", Identifier);
             writer.WriteBoolValue("is_quarantined", IsQuarantined);
             writer.WriteDateTimeOffsetValue("last_run_at", LastRunAt);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BaselineEntry_quarantine>("quarantine", Quarantine);
             writer.WriteDoubleValue("recent_drift_avg", RecentDriftAvg);
             writer.WriteStringValue("run_type", RunType);
             writer.WriteStringValue("thumbnail_hash", ThumbnailHash);

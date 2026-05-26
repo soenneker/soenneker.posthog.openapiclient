@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Per-column bucket function overrides, e.g. {&quot;timestamp&quot;: &quot;hour&quot;}
+    /// &quot;Per-column bucket function overrides, e.g. {\&quot;timestamp\&quot;: \&quot;hour\&quot;}&quot;
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class MaterializationPreviewRequest_bucket_overrides : IAdditionalDataHolder, IParsable

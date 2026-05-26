@@ -13,49 +13,61 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning restore CS1591
     {
         /// <summary>The kind property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleDataWarehouseTablesQuery_kind? Kind { get; set; }
+        /// <summary>The limit property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleDataWarehouseTablesQuery_limit? Limit { get; set; }
 #nullable restore
 #else
-        public string Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleDataWarehouseTablesQuery_limit Limit { get; set; }
 #endif
-        /// <summary>The limit property</summary>
-        public int? Limit { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers? Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleDataWarehouseTablesQuery_modifiers? Modifiers { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleDataWarehouseTablesQuery_modifiers Modifiers { get; set; }
 #endif
         /// <summary>The offset property</summary>
-        public int? Offset { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleDataWarehouseTablesQuery_offset? Offset { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleDataWarehouseTablesQuery_offset Offset { get; set; }
+#endif
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleDataWarehouseTablesQueryResponse? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleDataWarehouseTablesQuery_response? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleDataWarehouseTablesQueryResponse Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleDataWarehouseTablesQuery_response Response { get; set; }
 #endif
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags? Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleDataWarehouseTablesQuery_tags? Tags { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleDataWarehouseTablesQuery_tags Tags { get; set; }
 #endif
         /// <summary>version of the node, used for schema migrations</summary>
-        public double? Version { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleDataWarehouseTablesQuery_version? Version { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleDataWarehouseTablesQuery_version Version { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleDataWarehouseTablesQuery"/> and sets the default values.
         /// </summary>
         public RevenueExampleDataWarehouseTablesQuery()
         {
-            Kind = "RevenueExampleDataWarehouseTablesQuery";
+            Kind = global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleDataWarehouseTablesQuery_kind.RevenueExampleDataWarehouseTablesQuery;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -75,13 +87,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "kind", n => { Kind = n.GetStringValue(); } },
-                { "limit", n => { Limit = n.GetIntValue(); } },
-                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
-                { "offset", n => { Offset = n.GetIntValue(); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleDataWarehouseTablesQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleDataWarehouseTablesQueryResponse.CreateFromDiscriminatorValue); } },
-                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
-                { "version", n => { Version = n.GetDoubleValue(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleDataWarehouseTablesQuery_kind>(); } },
+                { "limit", n => { Limit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleDataWarehouseTablesQuery_limit>(global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleDataWarehouseTablesQuery_limit.CreateFromDiscriminatorValue); } },
+                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleDataWarehouseTablesQuery_modifiers>(global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleDataWarehouseTablesQuery_modifiers.CreateFromDiscriminatorValue); } },
+                { "offset", n => { Offset = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleDataWarehouseTablesQuery_offset>(global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleDataWarehouseTablesQuery_offset.CreateFromDiscriminatorValue); } },
+                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleDataWarehouseTablesQuery_response>(global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleDataWarehouseTablesQuery_response.CreateFromDiscriminatorValue); } },
+                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleDataWarehouseTablesQuery_tags>(global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleDataWarehouseTablesQuery_tags.CreateFromDiscriminatorValue); } },
+                { "version", n => { Version = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleDataWarehouseTablesQuery_version>(global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleDataWarehouseTablesQuery_version.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -91,13 +103,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("kind", Kind);
-            writer.WriteIntValue("limit", Limit);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);
-            writer.WriteIntValue("offset", Offset);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleDataWarehouseTablesQueryResponse>("response", Response);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
-            writer.WriteDoubleValue("version", Version);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleDataWarehouseTablesQuery_kind>("kind", Kind);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleDataWarehouseTablesQuery_limit>("limit", Limit);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleDataWarehouseTablesQuery_modifiers>("modifiers", Modifiers);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleDataWarehouseTablesQuery_offset>("offset", Offset);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleDataWarehouseTablesQuery_response>("response", Response);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleDataWarehouseTablesQuery_tags>("tags", Tags);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleDataWarehouseTablesQuery_version>("version", Version);
         }
     }
 }

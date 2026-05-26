@@ -15,44 +15,44 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Optional direct external data source id for running against a specific source</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ConnectionId { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_connectionId? ConnectionId { get; set; }
 #nullable restore
 #else
-        public string ConnectionId { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_connectionId ConnectionId { get; set; }
 #endif
         /// <summary>The explain property</summary>
-        public bool? Explain { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_explain? Explain { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_explain Explain { get; set; }
+#endif
         /// <summary>The filters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLFilters? Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_filters? Filters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLFilters Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_filters Filters { get; set; }
 #endif
         /// <summary>The kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Kind { get; set; }
-#nullable restore
-#else
-        public string Kind { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_kind? Kind { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers? Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_modifiers? Modifiers { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_modifiers Modifiers { get; set; }
 #endif
         /// <summary>Client provided name of the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_name? Name { get; set; }
 #nullable restore
 #else
-        public string Name { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_name Name { get; set; }
 #endif
         /// <summary>The query property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -65,45 +65,57 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryResponse? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_response? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryResponse Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_response Response { get; set; }
 #endif
         /// <summary>Run the selected connection query directly without translating it through HogQL first</summary>
-        public bool? SendRawQuery { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_sendRawQuery? SendRawQuery { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_sendRawQuery SendRawQuery { get; set; }
+#endif
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags? Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_tags? Tags { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_tags Tags { get; set; }
 #endif
         /// <summary>Constant values that can be referenced with the {placeholder} syntax in the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Values { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_values? Values { get; set; }
 #nullable restore
 #else
-        public UntypedNode Values { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_values Values { get; set; }
 #endif
         /// <summary>Variables to be substituted into the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Variables { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_variables? Variables { get; set; }
 #nullable restore
 #else
-        public UntypedNode Variables { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_variables Variables { get; set; }
 #endif
         /// <summary>version of the node, used for schema migrations</summary>
-        public double? Version { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_version? Version { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_version Version { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery"/> and sets the default values.
         /// </summary>
         public HogQLQuery()
         {
-            Kind = "HogQLQuery";
+            Kind = global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_kind.HogQLQuery;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -123,19 +135,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "connectionId", n => { ConnectionId = n.GetStringValue(); } },
-                { "explain", n => { Explain = n.GetBoolValue(); } },
-                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLFilters>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLFilters.CreateFromDiscriminatorValue); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
-                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
-                { "name", n => { Name = n.GetStringValue(); } },
+                { "connectionId", n => { ConnectionId = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_connectionId>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_connectionId.CreateFromDiscriminatorValue); } },
+                { "explain", n => { Explain = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_explain>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_explain.CreateFromDiscriminatorValue); } },
+                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_filters>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_filters.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_kind>(); } },
+                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_modifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_modifiers.CreateFromDiscriminatorValue); } },
+                { "name", n => { Name = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_name>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_name.CreateFromDiscriminatorValue); } },
                 { "query", n => { Query = n.GetStringValue(); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryResponse.CreateFromDiscriminatorValue); } },
-                { "sendRawQuery", n => { SendRawQuery = n.GetBoolValue(); } },
-                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
-                { "values", n => { Values = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "variables", n => { Variables = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "version", n => { Version = n.GetDoubleValue(); } },
+                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_response>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_response.CreateFromDiscriminatorValue); } },
+                { "sendRawQuery", n => { SendRawQuery = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_sendRawQuery>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_sendRawQuery.CreateFromDiscriminatorValue); } },
+                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_tags>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_tags.CreateFromDiscriminatorValue); } },
+                { "values", n => { Values = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_values>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_values.CreateFromDiscriminatorValue); } },
+                { "variables", n => { Variables = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_variables>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_variables.CreateFromDiscriminatorValue); } },
+                { "version", n => { Version = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_version>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_version.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -145,19 +157,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("connectionId", ConnectionId);
-            writer.WriteBoolValue("explain", Explain);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLFilters>("filters", Filters);
-            writer.WriteStringValue("kind", Kind);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);
-            writer.WriteStringValue("name", Name);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_connectionId>("connectionId", ConnectionId);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_explain>("explain", Explain);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_filters>("filters", Filters);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_kind>("kind", Kind);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_modifiers>("modifiers", Modifiers);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_name>("name", Name);
             writer.WriteStringValue("query", Query);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryResponse>("response", Response);
-            writer.WriteBoolValue("sendRawQuery", SendRawQuery);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
-            writer.WriteObjectValue<UntypedNode>("values", Values);
-            writer.WriteObjectValue<UntypedNode>("variables", Variables);
-            writer.WriteDoubleValue("version", Version);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_response>("response", Response);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_sendRawQuery>("sendRawQuery", SendRawQuery);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_tags>("tags", Tags);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_values>("values", Values);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_variables>("variables", Variables);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_version>("version", Version);
         }
     }
 }

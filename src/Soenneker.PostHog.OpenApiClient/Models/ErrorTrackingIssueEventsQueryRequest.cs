@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Date range for sampled exception events. Defaults to the last 7 days.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingDateRange? DateRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueEventsQueryRequest_dateRange? DateRange { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingDateRange DateRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueEventsQueryRequest_dateRange DateRange { get; set; }
 #endif
         /// <summary>Advanced flat AND property filters applied to sampled events. HogQL filters are rejected.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -40,7 +40,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? Offset { get; set; }
         /// <summary>When true, include only stack frames marked in_app. Defaults to true.</summary>
         public bool? OnlyAppFrames { get; set; }
-        /// <summary>Timestamp sort direction. Defaults to DESC.* `ASC` - ASC* `DESC` - DESC</summary>
+        /// <summary>* `ASC` - ASC* `DESC` - DESC</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.OrderDirectionEnum? OrderDirection { get; set; }
         /// <summary>Search exception types, exception values, and current URL among sampled events.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -50,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SearchQuery { get; set; }
 #endif
-        /// <summary>Controls exception detail size: summary, stack, or raw. Defaults to summary.* `summary` - summary* `stack` - stack* `raw` - raw</summary>
+        /// <summary>* `summary` - summary* `stack` - stack* `raw` - raw</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.VerbosityEnum? Verbosity { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueEventsQueryRequest"/> and sets the default values.
@@ -58,8 +58,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public ErrorTrackingIssueEventsQueryRequest()
         {
             AdditionalData = new Dictionary<string, object>();
-            OrderDirection = global::Soenneker.PostHog.OpenApiClient.Models.OrderDirectionEnum.DESC;
-            Verbosity = global::Soenneker.PostHog.OpenApiClient.Models.VerbosityEnum.Summary;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -79,7 +77,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingDateRange>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingDateRange.CreateFromDiscriminatorValue); } },
+                { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueEventsQueryRequest_dateRange>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueEventsQueryRequest_dateRange.CreateFromDiscriminatorValue); } },
                 { "filterGroup", n => { FilterGroup = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PropertyItem>(global::Soenneker.PostHog.OpenApiClient.Models.PropertyItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "filterTestAccounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
                 { "issueId", n => { IssueId = n.GetGuidValue(); } },
@@ -98,7 +96,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingDateRange>("dateRange", DateRange);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueEventsQueryRequest_dateRange>("dateRange", DateRange);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PropertyItem>("filterGroup", FilterGroup);
             writer.WriteBoolValue("filterTestAccounts", FilterTestAccounts);
             writer.WriteGuidValue("issueId", IssueId);

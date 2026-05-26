@@ -28,10 +28,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Action_created_by? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Action_created_by CreatedBy { get; private set; }
 #endif
         /// <summary>The create_in_folder property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -98,10 +98,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Tags { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.Action_tags>? Tags { get; set; }
 #nullable restore
 #else
-        public UntypedNode Tags { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.Action_tags> Tags { get; set; }
 #endif
         /// <summary>The team_id property</summary>
         public int? TeamId { get; private set; }
@@ -141,7 +141,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "bytecode_error", n => { BytecodeError = n.GetStringValue(); } },
                 { "_create_in_folder", n => { CreateInFolder = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Action_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.Action_created_by.CreateFromDiscriminatorValue); } },
                 { "creation_context", n => { CreationContext = n.GetStringValue(); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
@@ -154,7 +154,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "post_to_slack", n => { PostToSlack = n.GetBoolValue(); } },
                 { "slack_message_format", n => { SlackMessageFormat = n.GetStringValue(); } },
                 { "steps", n => { Steps = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ActionStepJSON>(global::Soenneker.PostHog.OpenApiClient.Models.ActionStepJSON.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "tags", n => { Tags = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "tags", n => { Tags = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.Action_tags>(global::Soenneker.PostHog.OpenApiClient.Models.Action_tags.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "team_id", n => { TeamId = n.GetIntValue(); } },
                 { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },
             };
@@ -175,7 +175,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("post_to_slack", PostToSlack);
             writer.WriteStringValue("slack_message_format", SlackMessageFormat);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ActionStepJSON>("steps", Steps);
-            writer.WriteObjectValue<UntypedNode>("tags", Tags);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.Action_tags>("tags", Tags);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

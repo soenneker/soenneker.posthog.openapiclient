@@ -27,10 +27,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDashboardTemplate_created_by? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDashboardTemplate_created_by CreatedBy { get; private set; }
 #endif
         /// <summary>The dashboard_description property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -43,10 +43,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The dashboard_filters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? DashboardFilters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDashboardTemplate_dashboard_filters? DashboardFilters { get; set; }
 #nullable restore
 #else
-        public UntypedNode DashboardFilters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDashboardTemplate_dashboard_filters DashboardFilters { get; set; }
 #endif
         /// <summary>The deleted property</summary>
         public bool? Deleted { get; set; }
@@ -91,18 +91,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The tiles property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Tiles { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDashboardTemplate_tiles? Tiles { get; set; }
 #nullable restore
 #else
-        public UntypedNode Tiles { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDashboardTemplate_tiles Tiles { get; set; }
 #endif
         /// <summary>The variables property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Variables { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDashboardTemplate_variables? Variables { get; set; }
 #nullable restore
 #else
-        public UntypedNode Variables { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDashboardTemplate_variables Variables { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedDashboardTemplate"/> and sets the default values.
@@ -131,9 +131,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "availability_contexts", n => { AvailabilityContexts = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedDashboardTemplate_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedDashboardTemplate_created_by.CreateFromDiscriminatorValue); } },
                 { "dashboard_description", n => { DashboardDescription = n.GetStringValue(); } },
-                { "dashboard_filters", n => { DashboardFilters = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "dashboard_filters", n => { DashboardFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedDashboardTemplate_dashboard_filters>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedDashboardTemplate_dashboard_filters.CreateFromDiscriminatorValue); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "image_url", n => { ImageUrl = n.GetStringValue(); } },
@@ -142,8 +142,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "team_id", n => { TeamId = n.GetIntValue(); } },
                 { "template_name", n => { TemplateName = n.GetStringValue(); } },
-                { "tiles", n => { Tiles = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "variables", n => { Variables = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "tiles", n => { Tiles = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedDashboardTemplate_tiles>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedDashboardTemplate_tiles.CreateFromDiscriminatorValue); } },
+                { "variables", n => { Variables = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedDashboardTemplate_variables>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedDashboardTemplate_variables.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -155,40 +155,46 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("availability_contexts", AvailabilityContexts);
             writer.WriteStringValue("dashboard_description", DashboardDescription);
-            writer.WriteObjectValue<UntypedNode>("dashboard_filters", DashboardFilters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedDashboardTemplate_dashboard_filters>("dashboard_filters", DashboardFilters);
             writer.WriteBoolValue("deleted", Deleted);
             writer.WriteStringValue("image_url", ImageUrl);
             writer.WriteBoolValue("is_featured", IsFeatured);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedDashboardTemplate.PatchedDashboardTemplate_scope>("scope", Scope);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteStringValue("template_name", TemplateName);
-            writer.WriteObjectValue<UntypedNode>("tiles", Tiles);
-            writer.WriteObjectValue<UntypedNode>("variables", Variables);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedDashboardTemplate_tiles>("tiles", Tiles);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedDashboardTemplate_variables>("variables", Variables);
             writer.WriteAdditionalData(AdditionalData);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardTemplateScopeEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>
+        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardTemplateScopeEnum_Wrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedDashboardTemplate_scopeMember1"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class PatchedDashboardTemplate_scope : IComposedTypeWrapper, IParsable
         {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum"/></summary>
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum? BlankEnum { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper? BlankEnumWrapper { get; set; }
 #nullable restore
 #else
-            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum BlankEnum { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper BlankEnumWrapper { get; set; }
 #endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardTemplateScopeEnum"/></summary>
-            public global::Soenneker.PostHog.OpenApiClient.Models.DashboardTemplateScopeEnum? DashboardTemplateScopeEnum { get; set; }
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardTemplateScopeEnum_Wrapper"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum? NullEnum { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.DashboardTemplateScopeEnum_Wrapper? DashboardTemplateScopeEnumWrapper { get; set; }
 #nullable restore
 #else
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum NullEnum { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.DashboardTemplateScopeEnum_Wrapper DashboardTemplateScopeEnumWrapper { get; set; }
+#endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedDashboardTemplate_scopeMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDashboardTemplate_scopeMember1? PatchedDashboardTemplateScopeMember1 { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDashboardTemplate_scopeMember1 PatchedDashboardTemplateScopeMember1 { get; set; }
 #endif
             /// <summary>
             /// Creates a new instance of the appropriate class based on discriminator value
@@ -200,17 +206,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
                 var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
                 var result = new global::Soenneker.PostHog.OpenApiClient.Models.PatchedDashboardTemplate.PatchedDashboardTemplate_scope();
-                if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+                if("BlankEnum_Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
                 {
-                    result.BlankEnum = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum();
+                    result.BlankEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper();
                 }
-                else if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardTemplateScopeEnum>() is global::Soenneker.PostHog.OpenApiClient.Models.DashboardTemplateScopeEnum dashboardTemplateScopeEnumValue)
+                else if("DashboardTemplateScopeEnum_Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
                 {
-                    result.DashboardTemplateScopeEnum = dashboardTemplateScopeEnumValue;
+                    result.DashboardTemplateScopeEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.DashboardTemplateScopeEnum_Wrapper();
                 }
                 else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
                 {
-                    result.NullEnum = new global::Soenneker.PostHog.OpenApiClient.Models.NullEnum();
+                    result.PatchedDashboardTemplateScopeMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.PatchedDashboardTemplate_scopeMember1();
                 }
                 return result;
             }
@@ -220,13 +226,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
-                if(BlankEnum != null)
+                if(BlankEnumWrapper != null)
                 {
-                    return BlankEnum.GetFieldDeserializers();
+                    return BlankEnumWrapper.GetFieldDeserializers();
                 }
-                else if(NullEnum != null)
+                else if(DashboardTemplateScopeEnumWrapper != null)
                 {
-                    return NullEnum.GetFieldDeserializers();
+                    return DashboardTemplateScopeEnumWrapper.GetFieldDeserializers();
+                }
+                else if(PatchedDashboardTemplateScopeMember1 != null)
+                {
+                    return PatchedDashboardTemplateScopeMember1.GetFieldDeserializers();
                 }
                 return new Dictionary<string, Action<IParseNode>>();
             }
@@ -237,17 +247,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             public virtual void Serialize(ISerializationWriter writer)
             {
                 if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(BlankEnum != null)
+                if(BlankEnumWrapper != null)
                 {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum>(null, BlankEnum);
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper>(null, BlankEnumWrapper);
                 }
-                else if(DashboardTemplateScopeEnum != null)
+                else if(DashboardTemplateScopeEnumWrapper != null)
                 {
-                    writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardTemplateScopeEnum>(null, DashboardTemplateScopeEnum);
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardTemplateScopeEnum_Wrapper>(null, DashboardTemplateScopeEnumWrapper);
                 }
-                else if(NullEnum != null)
+                else if(PatchedDashboardTemplateScopeMember1 != null)
                 {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NullEnum>(null, NullEnum);
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedDashboardTemplate_scopeMember1>(null, PatchedDashboardTemplateScopeMember1);
                 }
             }
         }

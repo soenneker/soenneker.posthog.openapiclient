@@ -47,10 +47,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The metadata property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Metadata { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingExternalReferenceMetadata? Metadata { get; set; }
 #nullable restore
 #else
-        public UntypedNode Metadata { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingExternalReferenceMetadata Metadata { get; set; }
 #endif
         /// <summary>The title property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -82,7 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "integration", n => { Integration = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Integration>(global::Soenneker.PostHog.OpenApiClient.Models.Integration.CreateFromDiscriminatorValue); } },
                 { "issue_id", n => { IssueId = n.GetStringValue(); } },
-                { "metadata", n => { Metadata = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingExternalReferenceMetadata>(global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingExternalReferenceMetadata.CreateFromDiscriminatorValue); } },
                 { "title", n => { Title = n.GetStringValue(); } },
             };
         }
@@ -97,7 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Integration>("integration", Integration);
             writer.WriteStringValue("issue_id", IssueId);
-            writer.WriteObjectValue<UntypedNode>("metadata", Metadata);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingExternalReferenceMetadata>("metadata", Metadata);
             writer.WriteStringValue("title", Title);
         }
     }

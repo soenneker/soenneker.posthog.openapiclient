@@ -17,12 +17,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Optional property-group filters that define which incoming error events should be suppressed. Omit this field or provide an empty `values` array to create a match-all suppression rule.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilterValue? Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSuppressionRuleCreateRequest_filters? Filters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilterValue Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSuppressionRuleCreateRequest_filters Filters { get; set; }
 #endif
-        /// <summary>Fraction of matching events to suppress. Use `1.0` to suppress all matching events.</summary>
+        /// <summary>Probability that a matching event is dropped. `1.0` drops every match (default); `0.0` drops none; `0.5` drops half. Higher values suppress more.</summary>
         public double? SamplingRate { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSuppressionRuleCreateRequest"/> and sets the default values.
@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilterValue>(global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilterValue.CreateFromDiscriminatorValue); } },
+                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSuppressionRuleCreateRequest_filters>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSuppressionRuleCreateRequest_filters.CreateFromDiscriminatorValue); } },
                 { "sampling_rate", n => { SamplingRate = n.GetDoubleValue(); } },
             };
         }
@@ -60,7 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilterValue>("filters", Filters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSuppressionRuleCreateRequest_filters>("filters", Filters);
             writer.WriteDoubleValue("sampling_rate", SamplingRate);
             writer.WriteAdditionalData(AdditionalData);
         }

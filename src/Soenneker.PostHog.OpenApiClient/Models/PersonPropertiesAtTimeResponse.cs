@@ -40,10 +40,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Metadata about the point-in-time query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertiesAtTimeMetadata? PointInTimeMetadata { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertiesAtTimeResponse_point_in_time_metadata? PointInTimeMetadata { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertiesAtTimeMetadata PointInTimeMetadata { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertiesAtTimeResponse_point_in_time_metadata PointInTimeMetadata { get; set; }
 #endif
         /// <summary>Person properties as they existed at the specified time</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -85,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetIntValue(); } },
                 { "last_seen_at", n => { LastSeenAt = n.GetDateTimeOffsetValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "point_in_time_metadata", n => { PointInTimeMetadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertiesAtTimeMetadata>(global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertiesAtTimeMetadata.CreateFromDiscriminatorValue); } },
+                { "point_in_time_metadata", n => { PointInTimeMetadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertiesAtTimeResponse_point_in_time_metadata>(global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertiesAtTimeResponse_point_in_time_metadata.CreateFromDiscriminatorValue); } },
                 { "properties", n => { Properties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertiesAtTimeResponse_properties>(global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertiesAtTimeResponse_properties.CreateFromDiscriminatorValue); } },
                 { "uuid", n => { Uuid = n.GetGuidValue(); } },
             };
@@ -102,7 +102,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("id", Id);
             writer.WriteDateTimeOffsetValue("last_seen_at", LastSeenAt);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertiesAtTimeMetadata>("point_in_time_metadata", PointInTimeMetadata);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertiesAtTimeResponse_point_in_time_metadata>("point_in_time_metadata", PointInTimeMetadata);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertiesAtTimeResponse_properties>("properties", Properties);
             writer.WriteGuidValue("uuid", Uuid);
             writer.WriteAdditionalData(AdditionalData);

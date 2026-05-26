@@ -31,7 +31,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public List<global::Soenneker.PostHog.OpenApiClient.Models.TaggerCondition_properties> Properties { get; set; }
 #endif
         /// <summary>Percentage of matching events to apply this condition to</summary>
-        public int? RolloutPercentage { get; set; }
+        public double? RolloutPercentage { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaggerCondition"/> and sets the default values.
         /// </summary>
@@ -59,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TaggerCondition_properties>(global::Soenneker.PostHog.OpenApiClient.Models.TaggerCondition_properties.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "rollout_percentage", n => { RolloutPercentage = n.GetIntValue(); } },
+                { "rollout_percentage", n => { RolloutPercentage = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -71,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("id", Id);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TaggerCondition_properties>("properties", Properties);
-            writer.WriteIntValue("rollout_percentage", RolloutPercentage);
+            writer.WriteDoubleValue("rollout_percentage", RolloutPercentage);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -33,10 +33,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Roll-up stats for the Services tab header.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesSummary? Summary { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponse_summary? Summary { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesSummary Summary { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponse_summary Summary { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponse"/> and sets the default values.
@@ -65,7 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "services", n => { Services = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregate>(global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregate.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "sparkline", n => { Sparkline = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesSparklineBucket>(global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesSparklineBucket.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "summary", n => { Summary = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesSummary>(global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesSummary.CreateFromDiscriminatorValue); } },
+                { "summary", n => { Summary = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponse_summary>(global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponse_summary.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -77,7 +77,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregate>("services", Services);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesSparklineBucket>("sparkline", Sparkline);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesSummary>("summary", Summary);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponse_summary>("summary", Summary);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

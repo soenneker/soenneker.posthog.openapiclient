@@ -10,7 +10,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Tracing
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\environments\{environment_-id}\tracing
+    /// Builds and executes requests for operations under \api\environments\{project_id}\tracing
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TracingRequestBuilder : BaseRequestBuilder
@@ -25,7 +25,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Tracing
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TracingRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{environment_%2Did}/tracing", pathParameters)
+        public TracingRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{project_id}/tracing", pathParameters)
         {
         }
         /// <summary>
@@ -33,7 +33,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Tracing
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TracingRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{environment_%2Did}/tracing", rawUrl)
+        public TracingRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{project_id}/tracing", rawUrl)
         {
         }
     }

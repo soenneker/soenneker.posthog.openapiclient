@@ -10,7 +10,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Llm_skills.Resolve
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\environments\{environment_-id}\llm_skills\resolve
+    /// Builds and executes requests for operations under \api\environments\{project_id}\llm_skills\resolve
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ResolveRequestBuilder : BaseRequestBuilder
@@ -25,7 +25,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Llm_skills.Resol
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ResolveRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{environment_%2Did}/llm_skills/resolve", pathParameters)
+        public ResolveRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{project_id}/llm_skills/resolve", pathParameters)
         {
         }
         /// <summary>
@@ -33,7 +33,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Llm_skills.Resol
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ResolveRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{environment_%2Did}/llm_skills/resolve", rawUrl)
+        public ResolveRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{project_id}/llm_skills/resolve", rawUrl)
         {
         }
     }

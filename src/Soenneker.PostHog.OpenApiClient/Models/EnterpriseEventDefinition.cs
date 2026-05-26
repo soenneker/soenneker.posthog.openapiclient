@@ -22,10 +22,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EnterpriseEventDefinition_created_by? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EnterpriseEventDefinition_created_by CreatedBy { get; private set; }
 #endif
         /// <summary>The default_columns property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -90,20 +90,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Tags { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.EnterpriseEventDefinition_tags>? Tags { get; set; }
 #nullable restore
 #else
-        public UntypedNode Tags { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.EnterpriseEventDefinition_tags> Tags { get; set; }
 #endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>The updated_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? UpdatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EnterpriseEventDefinition_updated_by? UpdatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic UpdatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EnterpriseEventDefinition_updated_by UpdatedBy { get; private set; }
 #endif
         /// <summary>The verified property</summary>
         public bool? Verified { get; set; }
@@ -112,10 +112,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The verified_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? VerifiedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EnterpriseEventDefinition_verified_by? VerifiedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic VerifiedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EnterpriseEventDefinition_verified_by VerifiedBy { get; private set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EnterpriseEventDefinition"/> and sets the default values.
@@ -144,7 +144,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "action_id", n => { ActionId = n.GetIntValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EnterpriseEventDefinition_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.EnterpriseEventDefinition_created_by.CreateFromDiscriminatorValue); } },
                 { "default_columns", n => { DefaultColumns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "enforcement_mode", n => { EnforcementMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EnforcementModeEnum>(); } },
@@ -160,12 +160,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "owner", n => { Owner = n.GetIntValue(); } },
                 { "post_to_slack", n => { PostToSlack = n.GetBoolValue(); } },
                 { "primary_property", n => { PrimaryProperty = n.GetStringValue(); } },
-                { "tags", n => { Tags = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "tags", n => { Tags = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EnterpriseEventDefinition_tags>(global::Soenneker.PostHog.OpenApiClient.Models.EnterpriseEventDefinition_tags.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
-                { "updated_by", n => { UpdatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "updated_by", n => { UpdatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EnterpriseEventDefinition_updated_by>(global::Soenneker.PostHog.OpenApiClient.Models.EnterpriseEventDefinition_updated_by.CreateFromDiscriminatorValue); } },
                 { "verified", n => { Verified = n.GetBoolValue(); } },
                 { "verified_at", n => { VerifiedAt = n.GetDateTimeOffsetValue(); } },
-                { "verified_by", n => { VerifiedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "verified_by", n => { VerifiedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EnterpriseEventDefinition_verified_by>(global::Soenneker.PostHog.OpenApiClient.Models.EnterpriseEventDefinition_verified_by.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -183,7 +183,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("owner", Owner);
             writer.WriteBoolValue("post_to_slack", PostToSlack);
             writer.WriteStringValue("primary_property", PrimaryProperty);
-            writer.WriteObjectValue<UntypedNode>("tags", Tags);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EnterpriseEventDefinition_tags>("tags", Tags);
             writer.WriteBoolValue("verified", Verified);
             writer.WriteAdditionalData(AdditionalData);
         }

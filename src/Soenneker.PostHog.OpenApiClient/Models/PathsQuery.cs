@@ -13,44 +13,56 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning restore CS1591
     {
         /// <summary>Groups aggregation</summary>
-        public int? AggregationGroupTypeIndex { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_aggregation_group_type_index? AggregationGroupTypeIndex { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_aggregation_group_type_index AggregationGroupTypeIndex { get; set; }
+#endif
         /// <summary>Colors used in the insight&apos;s visualization</summary>
-        public double? DataColorTheme { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_dataColorTheme? DataColorTheme { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_dataColorTheme DataColorTheme { get; set; }
+#endif
         /// <summary>Date range for the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DateRange? DateRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_dateRange? DateRange { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DateRange DateRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_dateRange DateRange { get; set; }
 #endif
         /// <summary>Exclude internal and test users by applying the respective filters</summary>
-        public bool? FilterTestAccounts { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_filterTestAccounts? FilterTestAccounts { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_filterTestAccounts FilterTestAccounts { get; set; }
+#endif
         /// <summary>Used for displaying paths in relation to funnel steps.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelPathsFilter? FunnelPathsFilter { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_funnelPathsFilter? FunnelPathsFilter { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelPathsFilter FunnelPathsFilter { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_funnelPathsFilter FunnelPathsFilter { get; set; }
 #endif
         /// <summary>The kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Kind { get; set; }
-#nullable restore
-#else
-        public string Kind { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_kind? Kind { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers? Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_modifiers? Modifiers { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_modifiers Modifiers { get; set; }
 #endif
-        /// <summary>Properties specific to the paths insight</summary>
+        /// <summary>The pathsFilter property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter? PathsFilter { get; set; }
@@ -69,29 +81,41 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsQueryResponse? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_response? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsQueryResponse Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_response Response { get; set; }
 #endif
         /// <summary>Sampling rate</summary>
-        public double? SamplingFactor { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_samplingFactor? SamplingFactor { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_samplingFactor SamplingFactor { get; set; }
+#endif
         /// <summary>Tags that will be added to the Query log comment</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags? Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_tags? Tags { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_tags Tags { get; set; }
 #endif
         /// <summary>version of the node, used for schema migrations</summary>
-        public double? Version { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_version? Version { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_version Version { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery"/> and sets the default values.
         /// </summary>
         public PathsQuery()
         {
-            Kind = "PathsQuery";
+            Kind = global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_kind.PathsQuery;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -111,19 +135,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "aggregation_group_type_index", n => { AggregationGroupTypeIndex = n.GetIntValue(); } },
-                { "dataColorTheme", n => { DataColorTheme = n.GetDoubleValue(); } },
-                { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>(global::Soenneker.PostHog.OpenApiClient.Models.DateRange.CreateFromDiscriminatorValue); } },
-                { "filterTestAccounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
-                { "funnelPathsFilter", n => { FunnelPathsFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelPathsFilter>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelPathsFilter.CreateFromDiscriminatorValue); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
-                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
+                { "aggregation_group_type_index", n => { AggregationGroupTypeIndex = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_aggregation_group_type_index>(global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_aggregation_group_type_index.CreateFromDiscriminatorValue); } },
+                { "dataColorTheme", n => { DataColorTheme = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_dataColorTheme>(global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_dataColorTheme.CreateFromDiscriminatorValue); } },
+                { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_dateRange>(global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_dateRange.CreateFromDiscriminatorValue); } },
+                { "filterTestAccounts", n => { FilterTestAccounts = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_filterTestAccounts>(global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_filterTestAccounts.CreateFromDiscriminatorValue); } },
+                { "funnelPathsFilter", n => { FunnelPathsFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_funnelPathsFilter>(global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_funnelPathsFilter.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_kind>(); } },
+                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_modifiers>(global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_modifiers.CreateFromDiscriminatorValue); } },
                 { "pathsFilter", n => { PathsFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter>(global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter.CreateFromDiscriminatorValue); } },
                 { "properties", n => { Properties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery.PathsQuery_properties>(global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery.PathsQuery_properties.CreateFromDiscriminatorValue); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.PathsQueryResponse.CreateFromDiscriminatorValue); } },
-                { "samplingFactor", n => { SamplingFactor = n.GetDoubleValue(); } },
-                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
-                { "version", n => { Version = n.GetDoubleValue(); } },
+                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_response>(global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_response.CreateFromDiscriminatorValue); } },
+                { "samplingFactor", n => { SamplingFactor = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_samplingFactor>(global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_samplingFactor.CreateFromDiscriminatorValue); } },
+                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_tags>(global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_tags.CreateFromDiscriminatorValue); } },
+                { "version", n => { Version = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_version>(global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_version.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -133,22 +157,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteIntValue("aggregation_group_type_index", AggregationGroupTypeIndex);
-            writer.WriteDoubleValue("dataColorTheme", DataColorTheme);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>("dateRange", DateRange);
-            writer.WriteBoolValue("filterTestAccounts", FilterTestAccounts);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelPathsFilter>("funnelPathsFilter", FunnelPathsFilter);
-            writer.WriteStringValue("kind", Kind);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_aggregation_group_type_index>("aggregation_group_type_index", AggregationGroupTypeIndex);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_dataColorTheme>("dataColorTheme", DataColorTheme);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_dateRange>("dateRange", DateRange);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_filterTestAccounts>("filterTestAccounts", FilterTestAccounts);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_funnelPathsFilter>("funnelPathsFilter", FunnelPathsFilter);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_kind>("kind", Kind);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_modifiers>("modifiers", Modifiers);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter>("pathsFilter", PathsFilter);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery.PathsQuery_properties>("properties", Properties);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsQueryResponse>("response", Response);
-            writer.WriteDoubleValue("samplingFactor", SamplingFactor);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
-            writer.WriteDoubleValue("version", Version);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_response>("response", Response);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_samplingFactor>("samplingFactor", SamplingFactor);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_tags>("tags", Tags);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_version>("version", Version);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_propertiesMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter"/>, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.WorkflowVariablePropertyFilter&gt;
+        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_propertiesMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Properties"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class PathsQuery_properties : IComposedTypeWrapper, IParsable
@@ -161,6 +185,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
             public global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_propertiesMember1 PathsQueryPropertiesMember1 { get; set; }
 #endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Properties"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.Properties? Properties { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.Properties Properties { get; set; }
+#endif
             /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -168,14 +200,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
             public global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter PropertyGroupFilter { get; set; }
-#endif
-            /// <summary>Composed type representation for type List&lt;global::Soenneker.PostHog.OpenApiClient.Models.WorkflowVariablePropertyFilter&gt;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public List<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowVariablePropertyFilter>? WorkflowVariablePropertyFilter { get; set; }
-#nullable restore
-#else
-            public List<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowVariablePropertyFilter> WorkflowVariablePropertyFilter { get; set; }
 #endif
             /// <summary>
             /// Creates a new instance of the appropriate class based on discriminator value
@@ -186,14 +210,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
                 var result = new global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery.PathsQuery_properties();
-                if(parseNode.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowVariablePropertyFilter>(global::Soenneker.PostHog.OpenApiClient.Models.WorkflowVariablePropertyFilter.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowVariablePropertyFilter> workflowVariablePropertyFilterValue)
-                {
-                    result.WorkflowVariablePropertyFilter = workflowVariablePropertyFilterValue;
-                }
-                else {
-                    result.PathsQueryPropertiesMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_propertiesMember1();
-                    result.PropertyGroupFilter = new global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter();
-                }
+                result.PathsQueryPropertiesMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_propertiesMember1();
+                result.Properties = new global::Soenneker.PostHog.OpenApiClient.Models.Properties();
+                result.PropertyGroupFilter = new global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter();
                 return result;
             }
             /// <summary>
@@ -202,9 +221,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
-                if(PathsQueryPropertiesMember1 != null || PropertyGroupFilter != null)
+                if(PathsQueryPropertiesMember1 != null || Properties != null || PropertyGroupFilter != null)
                 {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(PathsQueryPropertiesMember1, PropertyGroupFilter);
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(PathsQueryPropertiesMember1, Properties, PropertyGroupFilter);
                 }
                 return new Dictionary<string, Action<IParseNode>>();
             }
@@ -215,13 +234,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             public virtual void Serialize(ISerializationWriter writer)
             {
                 if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(WorkflowVariablePropertyFilter != null)
-                {
-                    writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowVariablePropertyFilter>(null, WorkflowVariablePropertyFilter);
-                }
-                else {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_propertiesMember1>(null, PathsQueryPropertiesMember1, PropertyGroupFilter);
-                }
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery_propertiesMember1>(null, PathsQueryPropertiesMember1, Properties, PropertyGroupFilter);
             }
         }
     }

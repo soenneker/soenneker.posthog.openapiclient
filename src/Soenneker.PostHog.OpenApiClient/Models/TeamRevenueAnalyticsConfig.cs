@@ -19,20 +19,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The events property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Events { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamRevenueAnalyticsConfig_events? Events { get; set; }
 #nullable restore
 #else
-        public UntypedNode Events { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamRevenueAnalyticsConfig_events Events { get; set; }
 #endif
         /// <summary>The filter_test_accounts property</summary>
         public bool? FilterTestAccounts { get; set; }
         /// <summary>The goals property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Goals { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamRevenueAnalyticsConfig_goals? Goals { get; set; }
 #nullable restore
 #else
-        public UntypedNode Goals { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamRevenueAnalyticsConfig_goals Goals { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TeamRevenueAnalyticsConfig"/> and sets the default values.
@@ -60,9 +60,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "base_currency", n => { BaseCurrency = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BaseCurrencyEnum>(); } },
-                { "events", n => { Events = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "events", n => { Events = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamRevenueAnalyticsConfig_events>(global::Soenneker.PostHog.OpenApiClient.Models.TeamRevenueAnalyticsConfig_events.CreateFromDiscriminatorValue); } },
                 { "filter_test_accounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
-                { "goals", n => { Goals = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "goals", n => { Goals = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamRevenueAnalyticsConfig_goals>(global::Soenneker.PostHog.OpenApiClient.Models.TeamRevenueAnalyticsConfig_goals.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -73,9 +73,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BaseCurrencyEnum>("base_currency", BaseCurrency);
-            writer.WriteObjectValue<UntypedNode>("events", Events);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamRevenueAnalyticsConfig_events>("events", Events);
             writer.WriteBoolValue("filter_test_accounts", FilterTestAccounts);
-            writer.WriteObjectValue<UntypedNode>("goals", Goals);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamRevenueAnalyticsConfig_goals>("goals", Goals);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

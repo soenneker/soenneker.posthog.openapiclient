@@ -25,10 +25,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The default property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Default { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItem_default? Default { get; set; }
 #nullable restore
 #else
-        public UntypedNode Default { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItem_default Default { get; set; }
 #endif
         /// <summary>The description property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -103,10 +103,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The templating property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItem.InputsSchemaItem_templating? Templating { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UnionBranch? Templating { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItem.InputsSchemaItem_templating Templating { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UnionBranch Templating { get; set; }
 #endif
         /// <summary>* `string` - string* `number` - number* `boolean` - boolean* `dictionary` - dictionary* `choice` - choice* `json` - json* `integration` - integration* `integration_field` - integration_field* `email` - email* `native_email` - native_email* `posthog_assignee` - posthog_assignee* `posthog_ticket_tags` - posthog_ticket_tags* `posthog_business_hours` - posthog_business_hours</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItemTypeEnum? Type { get; set; }
@@ -136,7 +136,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "choices", n => { Choices = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItem_choices>(global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItem_choices.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "default", n => { Default = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "default", n => { Default = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItem_default>(global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItem_default.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "hidden", n => { Hidden = n.GetBoolValue(); } },
                 { "integration", n => { Integration = n.GetStringValue(); } },
@@ -148,7 +148,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "requiredScopes", n => { RequiredScopes = n.GetStringValue(); } },
                 { "requires_field", n => { RequiresField = n.GetStringValue(); } },
                 { "secret", n => { Secret = n.GetBoolValue(); } },
-                { "templating", n => { Templating = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItem.InputsSchemaItem_templating>(global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItem.InputsSchemaItem_templating.CreateFromDiscriminatorValue); } },
+                { "templating", n => { Templating = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UnionBranch>(global::Soenneker.PostHog.OpenApiClient.Models.UnionBranch.CreateFromDiscriminatorValue); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItemTypeEnum>(); } },
             };
         }
@@ -160,7 +160,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItem_choices>("choices", Choices);
-            writer.WriteObjectValue<UntypedNode>("default", Default);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItem_default>("default", Default);
             writer.WriteStringValue("description", Description);
             writer.WriteBoolValue("hidden", Hidden);
             writer.WriteStringValue("integration", Integration);
@@ -172,70 +172,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("requiredScopes", RequiredScopes);
             writer.WriteStringValue("requires_field", RequiresField);
             writer.WriteBoolValue("secret", Secret);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItem.InputsSchemaItem_templating>("templating", Templating);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UnionBranch>("templating", Templating);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItemTypeEnum>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="bool"/>, <see cref="string"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class InputsSchemaItem_templating : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="bool"/></summary>
-            public bool? Boolean { get; set; }
-            /// <summary>Composed type representation for type <see cref="string"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public string? String { get; set; }
-#nullable restore
-#else
-            public string String { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItem.InputsSchemaItem_templating"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItem.InputsSchemaItem_templating CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItem.InputsSchemaItem_templating();
-                if(parseNode.GetBoolValue() is bool booleanValue)
-                {
-                    result.Boolean = booleanValue;
-                }
-                else if(parseNode.GetStringValue() is string stringValue)
-                {
-                    result.String = stringValue;
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(Boolean != null)
-                {
-                    writer.WriteBoolValue(null, Boolean);
-                }
-                else if(String != null)
-                {
-                    writer.WriteStringValue(null, String);
-                }
-            }
         }
     }
 }

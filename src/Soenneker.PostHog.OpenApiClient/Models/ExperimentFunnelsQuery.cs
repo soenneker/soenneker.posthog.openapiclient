@@ -13,14 +13,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning restore CS1591
     {
         /// <summary>The experiment_id property</summary>
-        public int? ExperimentId { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_experiment_id? ExperimentId { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_experiment_id ExperimentId { get; set; }
+#endif
         /// <summary>The fingerprint property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Fingerprint { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_fingerprint? Fingerprint { get; set; }
 #nullable restore
 #else
-        public string Fingerprint { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_fingerprint Fingerprint { get; set; }
 #endif
         /// <summary>The funnels_query property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -31,61 +37,61 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery FunnelsQuery { get; set; }
 #endif
         /// <summary>The kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Kind { get; set; }
-#nullable restore
-#else
-        public string Kind { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_kind? Kind { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers? Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_modifiers? Modifiers { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_modifiers Modifiers { get; set; }
 #endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_name? Name { get; set; }
 #nullable restore
 #else
-        public string Name { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_name Name { get; set; }
 #endif
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQueryResponse? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_response? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQueryResponse Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_response Response { get; set; }
 #endif
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags? Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_tags? Tags { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_tags Tags { get; set; }
 #endif
         /// <summary>The uuid property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Uuid { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_uuid? Uuid { get; set; }
 #nullable restore
 #else
-        public string Uuid { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_uuid Uuid { get; set; }
 #endif
         /// <summary>version of the node, used for schema migrations</summary>
-        public double? Version { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_version? Version { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_version Version { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery"/> and sets the default values.
         /// </summary>
         public ExperimentFunnelsQuery()
         {
-            Kind = "ExperimentFunnelsQuery";
+            Kind = global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_kind.ExperimentFunnelsQuery;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -105,16 +111,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "experiment_id", n => { ExperimentId = n.GetIntValue(); } },
-                { "fingerprint", n => { Fingerprint = n.GetStringValue(); } },
+                { "experiment_id", n => { ExperimentId = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_experiment_id>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_experiment_id.CreateFromDiscriminatorValue); } },
+                { "fingerprint", n => { Fingerprint = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_fingerprint>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_fingerprint.CreateFromDiscriminatorValue); } },
                 { "funnels_query", n => { FunnelsQuery = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery.CreateFromDiscriminatorValue); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
-                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
-                { "name", n => { Name = n.GetStringValue(); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQueryResponse.CreateFromDiscriminatorValue); } },
-                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
-                { "uuid", n => { Uuid = n.GetStringValue(); } },
-                { "version", n => { Version = n.GetDoubleValue(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_kind>(); } },
+                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_modifiers>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_modifiers.CreateFromDiscriminatorValue); } },
+                { "name", n => { Name = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_name>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_name.CreateFromDiscriminatorValue); } },
+                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_response>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_response.CreateFromDiscriminatorValue); } },
+                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_tags>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_tags.CreateFromDiscriminatorValue); } },
+                { "uuid", n => { Uuid = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_uuid>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_uuid.CreateFromDiscriminatorValue); } },
+                { "version", n => { Version = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_version>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_version.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -124,16 +130,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteIntValue("experiment_id", ExperimentId);
-            writer.WriteStringValue("fingerprint", Fingerprint);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_experiment_id>("experiment_id", ExperimentId);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_fingerprint>("fingerprint", Fingerprint);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery>("funnels_query", FunnelsQuery);
-            writer.WriteStringValue("kind", Kind);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);
-            writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQueryResponse>("response", Response);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
-            writer.WriteStringValue("uuid", Uuid);
-            writer.WriteDoubleValue("version", Version);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_kind>("kind", Kind);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_modifiers>("modifiers", Modifiers);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_name>("name", Name);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_response>("response", Response);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_tags>("tags", Tags);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_uuid>("uuid", Uuid);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_version>("version", Version);
         }
     }
 }

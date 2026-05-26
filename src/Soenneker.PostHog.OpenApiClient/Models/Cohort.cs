@@ -29,10 +29,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Cohort_created_by? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Cohort_created_by CreatedBy { get; private set; }
 #endif
         /// <summary>The create_in_folder property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -73,18 +73,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The filters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CohortFilters? Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Cohort_filters? Filters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CohortFilters Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Cohort_filters Filters { get; set; }
 #endif
         /// <summary>The groups property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Groups { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Cohort_groups? Groups { get; set; }
 #nullable restore
 #else
-        public UntypedNode Groups { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Cohort_groups Groups { get; set; }
 #endif
         /// <summary>The id property</summary>
         public int? Id { get; private set; }
@@ -117,10 +117,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The query property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Query { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Cohort_query? Query { get; set; }
 #nullable restore
 #else
-        public UntypedNode Query { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Cohort_query Query { get; set; }
 #endif
         /// <summary>The version property</summary>
         public int? Version { get; private set; }
@@ -154,13 +154,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "_create_in_folder", n => { CreateInFolder = n.GetStringValue(); } },
                 { "_create_static_person_ids", n => { CreateStaticPersonIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Cohort_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.Cohort_created_by.CreateFromDiscriminatorValue); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "errors_calculating", n => { ErrorsCalculating = n.GetIntValue(); } },
                 { "experiment_set", n => { ExperimentSet = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
-                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilters>(global::Soenneker.PostHog.OpenApiClient.Models.CohortFilters.CreateFromDiscriminatorValue); } },
-                { "groups", n => { Groups = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Cohort_filters>(global::Soenneker.PostHog.OpenApiClient.Models.Cohort_filters.CreateFromDiscriminatorValue); } },
+                { "groups", n => { Groups = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Cohort_groups>(global::Soenneker.PostHog.OpenApiClient.Models.Cohort_groups.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetIntValue(); } },
                 { "is_calculating", n => { IsCalculating = n.GetBoolValue(); } },
                 { "is_static", n => { IsStatic = n.GetBoolValue(); } },
@@ -169,7 +169,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "last_error_message", n => { LastErrorMessage = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "pending_version", n => { PendingVersion = n.GetIntValue(); } },
-                { "query", n => { Query = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Cohort_query>(global::Soenneker.PostHog.OpenApiClient.Models.Cohort_query.CreateFromDiscriminatorValue); } },
                 { "version", n => { Version = n.GetIntValue(); } },
             };
         }
@@ -185,36 +185,42 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("_create_static_person_ids", CreateStaticPersonIds);
             writer.WriteBoolValue("deleted", Deleted);
             writer.WriteStringValue("description", Description);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilters>("filters", Filters);
-            writer.WriteObjectValue<UntypedNode>("groups", Groups);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Cohort_filters>("filters", Filters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Cohort_groups>("groups", Groups);
             writer.WriteBoolValue("is_static", IsStatic);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<UntypedNode>("query", Query);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Cohort_query>("query", Query);
             writer.WriteAdditionalData(AdditionalData);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CohortTypeEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>
+        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CohortTypeEnum_Wrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Cohort_cohort_typeMember1"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Cohort_cohort_type : IComposedTypeWrapper, IParsable
         {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum"/></summary>
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum? BlankEnum { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper? BlankEnumWrapper { get; set; }
 #nullable restore
 #else
-            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum BlankEnum { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper BlankEnumWrapper { get; set; }
 #endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CohortTypeEnum"/></summary>
-            public global::Soenneker.PostHog.OpenApiClient.Models.CohortTypeEnum? CohortTypeEnum { get; set; }
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Cohort_cohort_typeMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum? NullEnum { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.Cohort_cohort_typeMember1? CohortCohortTypeMember1 { get; set; }
 #nullable restore
 #else
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum NullEnum { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.Cohort_cohort_typeMember1 CohortCohortTypeMember1 { get; set; }
+#endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CohortTypeEnum_Wrapper"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.CohortTypeEnum_Wrapper? CohortTypeEnumWrapper { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.CohortTypeEnum_Wrapper CohortTypeEnumWrapper { get; set; }
 #endif
             /// <summary>
             /// Creates a new instance of the appropriate class based on discriminator value
@@ -226,17 +232,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
                 var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
                 var result = new global::Soenneker.PostHog.OpenApiClient.Models.Cohort.Cohort_cohort_type();
-                if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+                if("BlankEnum_Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
                 {
-                    result.BlankEnum = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum();
-                }
-                else if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortTypeEnum>() is global::Soenneker.PostHog.OpenApiClient.Models.CohortTypeEnum cohortTypeEnumValue)
-                {
-                    result.CohortTypeEnum = cohortTypeEnumValue;
+                    result.BlankEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper();
                 }
                 else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
                 {
-                    result.NullEnum = new global::Soenneker.PostHog.OpenApiClient.Models.NullEnum();
+                    result.CohortCohortTypeMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.Cohort_cohort_typeMember1();
+                }
+                else if("CohortTypeEnum_Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+                {
+                    result.CohortTypeEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.CohortTypeEnum_Wrapper();
                 }
                 return result;
             }
@@ -246,13 +252,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
-                if(BlankEnum != null)
+                if(BlankEnumWrapper != null)
                 {
-                    return BlankEnum.GetFieldDeserializers();
+                    return BlankEnumWrapper.GetFieldDeserializers();
                 }
-                else if(NullEnum != null)
+                else if(CohortCohortTypeMember1 != null)
                 {
-                    return NullEnum.GetFieldDeserializers();
+                    return CohortCohortTypeMember1.GetFieldDeserializers();
+                }
+                else if(CohortTypeEnumWrapper != null)
+                {
+                    return CohortTypeEnumWrapper.GetFieldDeserializers();
                 }
                 return new Dictionary<string, Action<IParseNode>>();
             }
@@ -263,17 +273,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             public virtual void Serialize(ISerializationWriter writer)
             {
                 if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(BlankEnum != null)
+                if(BlankEnumWrapper != null)
                 {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum>(null, BlankEnum);
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper>(null, BlankEnumWrapper);
                 }
-                else if(CohortTypeEnum != null)
+                else if(CohortCohortTypeMember1 != null)
                 {
-                    writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortTypeEnum>(null, CohortTypeEnum);
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Cohort_cohort_typeMember1>(null, CohortCohortTypeMember1);
                 }
-                else if(NullEnum != null)
+                else if(CohortTypeEnumWrapper != null)
                 {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NullEnum>(null, NullEnum);
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortTypeEnum_Wrapper>(null, CohortTypeEnumWrapper);
                 }
             }
         }

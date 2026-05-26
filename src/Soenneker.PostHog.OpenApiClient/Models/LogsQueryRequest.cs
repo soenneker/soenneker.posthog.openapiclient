@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The logs query to execute.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsQueryBody? Query { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsQueryRequest_query? Query { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsQueryBody Query { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsQueryRequest_query Query { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsQueryRequest"/> and sets the default values.
@@ -47,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsQueryBody>(global::Soenneker.PostHog.OpenApiClient.Models.LogsQueryBody.CreateFromDiscriminatorValue); } },
+                { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsQueryRequest_query>(global::Soenneker.PostHog.OpenApiClient.Models.LogsQueryRequest_query.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -57,7 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsQueryBody>("query", Query);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsQueryRequest_query>("query", Query);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -16,7 +16,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of matching logs in this bucket.</summary>
         public int? Count { get; set; }
-        /// <summary>Notification action: none, fire, or resolve.</summary>
+        /// <summary>&quot;Notification action: none, fire, or resolve.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Notification { get; set; }

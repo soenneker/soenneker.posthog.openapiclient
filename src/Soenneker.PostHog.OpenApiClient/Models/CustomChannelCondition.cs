@@ -27,10 +27,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The value property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CustomChannelCondition.CustomChannelCondition_value? Value { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CustomChannelCondition_value? Value { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CustomChannelCondition.CustomChannelCondition_value Value { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CustomChannelCondition_value Value { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -53,7 +53,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "key", n => { Key = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomChannelField>(); } },
                 { "op", n => { Op = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomChannelOperator>(); } },
-                { "value", n => { Value = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomChannelCondition.CustomChannelCondition_value>(global::Soenneker.PostHog.OpenApiClient.Models.CustomChannelCondition.CustomChannelCondition_value.CreateFromDiscriminatorValue); } },
+                { "value", n => { Value = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomChannelCondition_value>(global::Soenneker.PostHog.OpenApiClient.Models.CustomChannelCondition_value.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -66,91 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomChannelField>("key", Key);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomChannelOperator>("op", Op);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomChannelCondition.CustomChannelCondition_value>("value", Value);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CustomChannelCondition_valueMember1"/>, <see cref="string"/>, List&lt;string&gt;
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class CustomChannelCondition_value : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CustomChannelCondition_valueMember1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.CustomChannelCondition_valueMember1? CustomChannelConditionValueMember1 { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.CustomChannelCondition_valueMember1 CustomChannelConditionValueMember1 { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="string"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public string? CustomChannelConditionValueString { get; set; }
-#nullable restore
-#else
-            public string CustomChannelConditionValueString { get; set; }
-#endif
-            /// <summary>Composed type representation for type List&lt;string&gt;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public List<string>? String { get; set; }
-#nullable restore
-#else
-            public List<string> String { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CustomChannelCondition.CustomChannelCondition_value"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.CustomChannelCondition.CustomChannelCondition_value CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.CustomChannelCondition.CustomChannelCondition_value();
-                if(parseNode.GetStringValue() is string customChannelConditionValueStringValue)
-                {
-                    result.CustomChannelConditionValueString = customChannelConditionValueStringValue;
-                }
-                else if(parseNode.GetCollectionOfPrimitiveValues<string>()?.AsList() is List<string> stringValue)
-                {
-                    result.String = stringValue;
-                }
-                else {
-                    result.CustomChannelConditionValueMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.CustomChannelCondition_valueMember1();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(CustomChannelConditionValueMember1 != null)
-                {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(CustomChannelConditionValueMember1);
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(CustomChannelConditionValueString != null)
-                {
-                    writer.WriteStringValue(null, CustomChannelConditionValueString);
-                }
-                else if(String != null)
-                {
-                    writer.WriteCollectionOfPrimitiveValues<string>(null, String);
-                }
-                else {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomChannelCondition_valueMember1>(null, CustomChannelConditionValueMember1);
-                }
-            }
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomChannelCondition_value>("value", Value);
         }
     }
 }

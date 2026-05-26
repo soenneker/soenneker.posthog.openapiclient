@@ -13,77 +13,95 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning restore CS1591
     {
         /// <summary>Optional breakdown for stacked charts</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageBreakdown? BreakdownBy { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_breakdownBy? BreakdownBy { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_breakdownBy BreakdownBy { get; set; }
+#endif
         /// <summary>Compare to previous period</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter? CompareFilter { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_compareFilter? CompareFilter { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter CompareFilter { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_compareFilter CompareFilter { get; set; }
 #endif
         /// <summary>The dateRange property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DateRange? DateRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_dateRange? DateRange { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DateRange DateRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_dateRange DateRange { get; set; }
 #endif
         /// <summary>Filter to specific endpoints by name</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? EndpointNames { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_endpointNames? EndpointNames { get; set; }
 #nullable restore
 #else
-        public List<string> EndpointNames { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_endpointNames EndpointNames { get; set; }
 #endif
         /// <summary>Time interval</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.IntervalType? Interval { get; set; }
-        /// <summary>The kind property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_interval? Interval { get; set; }
 #nullable restore
 #else
-        public string Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_interval Interval { get; set; }
 #endif
+        /// <summary>The kind property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_kind? Kind { get; set; }
         /// <summary>Filter by materialization type</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.MaterializationType? MaterializationType { get; set; }
-        /// <summary>Metric to trend</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_materializationType? MaterializationType { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_materializationType MaterializationType { get; set; }
+#endif
+        /// <summary>The metric property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.Metric? Metric { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers? Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_modifiers? Modifiers { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_modifiers Modifiers { get; set; }
 #endif
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQueryResponse? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_response? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQueryResponse Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_response Response { get; set; }
 #endif
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags? Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_tags? Tags { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_tags Tags { get; set; }
 #endif
         /// <summary>version of the node, used for schema migrations</summary>
-        public double? Version { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_version? Version { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_version Version { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery"/> and sets the default values.
         /// </summary>
         public EndpointsUsageTrendsQuery()
         {
-            Kind = "EndpointsUsageTrendsQuery";
+            Kind = global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_kind.EndpointsUsageTrendsQuery;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -103,18 +121,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "breakdownBy", n => { BreakdownBy = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageBreakdown>(); } },
-                { "compareFilter", n => { CompareFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter>(global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter.CreateFromDiscriminatorValue); } },
-                { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>(global::Soenneker.PostHog.OpenApiClient.Models.DateRange.CreateFromDiscriminatorValue); } },
-                { "endpointNames", n => { EndpointNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "interval", n => { Interval = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalType>(); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
-                { "materializationType", n => { MaterializationType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MaterializationType>(); } },
+                { "breakdownBy", n => { BreakdownBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_breakdownBy>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_breakdownBy.CreateFromDiscriminatorValue); } },
+                { "compareFilter", n => { CompareFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_compareFilter>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_compareFilter.CreateFromDiscriminatorValue); } },
+                { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_dateRange>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_dateRange.CreateFromDiscriminatorValue); } },
+                { "endpointNames", n => { EndpointNames = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_endpointNames>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_endpointNames.CreateFromDiscriminatorValue); } },
+                { "interval", n => { Interval = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_interval>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_interval.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_kind>(); } },
+                { "materializationType", n => { MaterializationType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_materializationType>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_materializationType.CreateFromDiscriminatorValue); } },
                 { "metric", n => { Metric = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Metric>(); } },
-                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQueryResponse.CreateFromDiscriminatorValue); } },
-                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
-                { "version", n => { Version = n.GetDoubleValue(); } },
+                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_modifiers>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_modifiers.CreateFromDiscriminatorValue); } },
+                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_response>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_response.CreateFromDiscriminatorValue); } },
+                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_tags>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_tags.CreateFromDiscriminatorValue); } },
+                { "version", n => { Version = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_version>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_version.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -124,18 +142,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageBreakdown>("breakdownBy", BreakdownBy);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter>("compareFilter", CompareFilter);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>("dateRange", DateRange);
-            writer.WriteCollectionOfPrimitiveValues<string>("endpointNames", EndpointNames);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalType>("interval", Interval);
-            writer.WriteStringValue("kind", Kind);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MaterializationType>("materializationType", MaterializationType);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_breakdownBy>("breakdownBy", BreakdownBy);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_compareFilter>("compareFilter", CompareFilter);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_dateRange>("dateRange", DateRange);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_endpointNames>("endpointNames", EndpointNames);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_interval>("interval", Interval);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_kind>("kind", Kind);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_materializationType>("materializationType", MaterializationType);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Metric>("metric", Metric);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQueryResponse>("response", Response);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
-            writer.WriteDoubleValue("version", Version);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_modifiers>("modifiers", Modifiers);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_response>("response", Response);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_tags>("tags", Tags);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery_version>("version", Version);
         }
     }
 }

@@ -23,48 +23,60 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Feature flag key for breakdown filtering.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FeatureFlagKey { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_featureFlagKey? FeatureFlagKey { get; set; }
 #nullable restore
 #else
-        public string FeatureFlagKey { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_featureFlagKey FeatureFlagKey { get; set; }
 #endif
         /// <summary>Index of the step for which we want to get actors for, per experiment variant. Positive for converted persons, negative for dropped off persons.</summary>
-        public int? FunnelStep { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_funnelStep? FunnelStep { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_funnelStep FunnelStep { get; set; }
+#endif
         /// <summary>The variant key for filtering actors. For experiments, this filters by feature flag variant (e.g., &apos;control&apos;, &apos;test&apos;).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery.ExperimentActorsQuery_funnelStepBreakdown? FunnelStepBreakdown { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_funnelStepBreakdown? FunnelStepBreakdown { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery.ExperimentActorsQuery_funnelStepBreakdown FunnelStepBreakdown { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_funnelStepBreakdown FunnelStepBreakdown { get; set; }
 #endif
         /// <summary>The includeRecordings property</summary>
-        public bool? IncludeRecordings { get; set; }
-        /// <summary>The kind property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_includeRecordings? IncludeRecordings { get; set; }
 #nullable restore
 #else
-        public string Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_includeRecordings IncludeRecordings { get; set; }
 #endif
+        /// <summary>The kind property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_kind? Kind { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers? Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_modifiers? Modifiers { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_modifiers Modifiers { get; set; }
 #endif
         /// <summary>How to handle users with multiple variant exposures.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.MultipleVariantHandling? MultipleVariantHandling { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_multipleVariantHandling? MultipleVariantHandling { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_multipleVariantHandling MultipleVariantHandling { get; set; }
+#endif
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryResponse? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_response? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryResponse Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_response Response { get; set; }
 #endif
         /// <summary>The source property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -77,19 +89,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags? Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_tags? Tags { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_tags Tags { get; set; }
 #endif
         /// <summary>version of the node, used for schema migrations</summary>
-        public double? Version { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_version? Version { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_version Version { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery"/> and sets the default values.
         /// </summary>
         public ExperimentActorsQuery()
         {
-            Kind = "ExperimentActorsQuery";
+            Kind = global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_kind.ExperimentActorsQuery;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -110,17 +128,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "exposureConfig", n => { ExposureConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery.ExperimentActorsQuery_exposureConfig>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery.ExperimentActorsQuery_exposureConfig.CreateFromDiscriminatorValue); } },
-                { "featureFlagKey", n => { FeatureFlagKey = n.GetStringValue(); } },
-                { "funnelStep", n => { FunnelStep = n.GetIntValue(); } },
-                { "funnelStepBreakdown", n => { FunnelStepBreakdown = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery.ExperimentActorsQuery_funnelStepBreakdown>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery.ExperimentActorsQuery_funnelStepBreakdown.CreateFromDiscriminatorValue); } },
-                { "includeRecordings", n => { IncludeRecordings = n.GetBoolValue(); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
-                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
-                { "multipleVariantHandling", n => { MultipleVariantHandling = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MultipleVariantHandling>(); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryResponse.CreateFromDiscriminatorValue); } },
+                { "featureFlagKey", n => { FeatureFlagKey = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_featureFlagKey>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_featureFlagKey.CreateFromDiscriminatorValue); } },
+                { "funnelStep", n => { FunnelStep = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_funnelStep>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_funnelStep.CreateFromDiscriminatorValue); } },
+                { "funnelStepBreakdown", n => { FunnelStepBreakdown = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_funnelStepBreakdown>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_funnelStepBreakdown.CreateFromDiscriminatorValue); } },
+                { "includeRecordings", n => { IncludeRecordings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_includeRecordings>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_includeRecordings.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_kind>(); } },
+                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_modifiers>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_modifiers.CreateFromDiscriminatorValue); } },
+                { "multipleVariantHandling", n => { MultipleVariantHandling = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_multipleVariantHandling>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_multipleVariantHandling.CreateFromDiscriminatorValue); } },
+                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_response>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_response.CreateFromDiscriminatorValue); } },
                 { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery.CreateFromDiscriminatorValue); } },
-                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
-                { "version", n => { Version = n.GetDoubleValue(); } },
+                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_tags>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_tags.CreateFromDiscriminatorValue); } },
+                { "version", n => { Version = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_version>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_version.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -131,17 +149,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery.ExperimentActorsQuery_exposureConfig>("exposureConfig", ExposureConfig);
-            writer.WriteStringValue("featureFlagKey", FeatureFlagKey);
-            writer.WriteIntValue("funnelStep", FunnelStep);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery.ExperimentActorsQuery_funnelStepBreakdown>("funnelStepBreakdown", FunnelStepBreakdown);
-            writer.WriteBoolValue("includeRecordings", IncludeRecordings);
-            writer.WriteStringValue("kind", Kind);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MultipleVariantHandling>("multipleVariantHandling", MultipleVariantHandling);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryResponse>("response", Response);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_featureFlagKey>("featureFlagKey", FeatureFlagKey);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_funnelStep>("funnelStep", FunnelStep);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_funnelStepBreakdown>("funnelStepBreakdown", FunnelStepBreakdown);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_includeRecordings>("includeRecordings", IncludeRecordings);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_kind>("kind", Kind);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_modifiers>("modifiers", Modifiers);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_multipleVariantHandling>("multipleVariantHandling", MultipleVariantHandling);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_response>("response", Response);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery>("source", Source);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
-            writer.WriteDoubleValue("version", Version);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_tags>("tags", Tags);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_version>("version", Version);
         }
         /// <summary>
         /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActionsNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_exposureConfigMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfig"/>
@@ -207,110 +225,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActionsNode>(null, ActionsNode, ExperimentActorsQueryExposureConfigMember1, ExperimentEventExposureConfig);
-            }
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="double"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_funnelStepBreakdownMember2"/>, <see cref="int"/>, <see cref="string"/>, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_funnelStepBreakdownMember1&gt;
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class ExperimentActorsQuery_funnelStepBreakdown : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="double"/></summary>
-            public double? Double { get; set; }
-            /// <summary>Composed type representation for type List&lt;global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_funnelStepBreakdownMember1&gt;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_funnelStepBreakdownMember1>? ExperimentActorsQueryFunnelStepBreakdownMember1 { get; set; }
-#nullable restore
-#else
-            public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_funnelStepBreakdownMember1> ExperimentActorsQueryFunnelStepBreakdownMember1 { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_funnelStepBreakdownMember2"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_funnelStepBreakdownMember2? ExperimentActorsQueryFunnelStepBreakdownMember2 { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_funnelStepBreakdownMember2 ExperimentActorsQueryFunnelStepBreakdownMember2 { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="int"/></summary>
-            public int? Integer { get; set; }
-            /// <summary>Composed type representation for type <see cref="string"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public string? String { get; set; }
-#nullable restore
-#else
-            public string String { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery.ExperimentActorsQuery_funnelStepBreakdown"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery.ExperimentActorsQuery_funnelStepBreakdown CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery.ExperimentActorsQuery_funnelStepBreakdown();
-                if(parseNode.GetDoubleValue() is double doubleValue)
-                {
-                    result.Double = doubleValue;
-                }
-                else if(parseNode.GetIntValue() is int integerValue)
-                {
-                    result.Integer = integerValue;
-                }
-                else if(parseNode.GetStringValue() is string stringValue)
-                {
-                    result.String = stringValue;
-                }
-                else if(parseNode.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_funnelStepBreakdownMember1>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_funnelStepBreakdownMember1.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_funnelStepBreakdownMember1> experimentActorsQueryFunnelStepBreakdownMember1Value)
-                {
-                    result.ExperimentActorsQueryFunnelStepBreakdownMember1 = experimentActorsQueryFunnelStepBreakdownMember1Value;
-                }
-                else {
-                    result.ExperimentActorsQueryFunnelStepBreakdownMember2 = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_funnelStepBreakdownMember2();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(ExperimentActorsQueryFunnelStepBreakdownMember2 != null)
-                {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ExperimentActorsQueryFunnelStepBreakdownMember2);
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(Double != null)
-                {
-                    writer.WriteDoubleValue(null, Double);
-                }
-                else if(Integer != null)
-                {
-                    writer.WriteIntValue(null, Integer);
-                }
-                else if(String != null)
-                {
-                    writer.WriteStringValue(null, String);
-                }
-                else if(ExperimentActorsQueryFunnelStepBreakdownMember1 != null)
-                {
-                    writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_funnelStepBreakdownMember1>(null, ExperimentActorsQueryFunnelStepBreakdownMember1);
-                }
-                else {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery_funnelStepBreakdownMember2>(null, ExperimentActorsQueryFunnelStepBreakdownMember2);
-                }
             }
         }
     }

@@ -23,7 +23,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEndpointRequest_bucket_overrides BucketOverrides { get; set; }
 #endif
-        /// <summary>How fresh the data should be, in seconds. Must be one of: 900 (15 min), 1800 (30 min), 3600 (1 h), 21600 (6 h), 43200 (12 h), 86400 (24 h, default), 604800 (7 d). Controls cache TTL and materialization sync frequency.</summary>
+        /// <summary>&quot;How fresh the data should be, in seconds. Must be one of: 900 (15 min), 1800 (30 min), 3600 (1 h), 21600 (6 h), 43200 (12 h), 86400 (24 h, default), 604800 (7 d). Controls cache TTL and materialization sync frequency.&quot;</summary>
         public int? DataFreshnessSeconds { get; set; }
         /// <summary>Set to true to soft-delete this endpoint.</summary>
         public bool? Deleted { get; set; }
@@ -58,10 +58,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>HogQL or insight query this endpoint executes. Changing this auto-creates a new version.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Query { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEndpointRequest_query? Query { get; set; }
 #nullable restore
 #else
-        public UntypedNode Query { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEndpointRequest_query Query { get; set; }
 #endif
         /// <summary>Target a specific version for updates (defaults to current version).</summary>
         public int? Version { get; set; }
@@ -98,7 +98,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "is_active", n => { IsActive = n.GetBoolValue(); } },
                 { "is_materialized", n => { IsMaterialized = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "query", n => { Query = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEndpointRequest_query>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedEndpointRequest_query.CreateFromDiscriminatorValue); } },
                 { "version", n => { Version = n.GetIntValue(); } },
             };
         }
@@ -117,7 +117,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("is_active", IsActive);
             writer.WriteBoolValue("is_materialized", IsMaterialized);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<UntypedNode>("query", Query);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEndpointRequest_query>("query", Query);
             writer.WriteIntValue("version", Version);
             writer.WriteAdditionalData(AdditionalData);
         }

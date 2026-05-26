@@ -15,13 +15,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>For CDC syncs: consolidated, cdc_only, or both.* `consolidated` - consolidated* `cdc_only` - cdc_only* `both` - both</summary>
+        /// <summary>Source-side column metadata (name, data type, nullable) discovered for this schema. Empty until the source has been refreshed via `refresh_schemas`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema.PatchedExternalDataSchema_cdc_table_mode? CdcTableMode { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema_available_columns>? AvailableColumns { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema.PatchedExternalDataSchema_cdc_table_mode CdcTableMode { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema_available_columns> AvailableColumns { get; private set; }
+#endif
+        /// <summary>&quot;For CDC syncs: consolidated, cdc_only, or both.* `consolidated` - consolidated* `cdc_only` - cdc_only* `both` - both&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema_cdc_table_mode? CdcTableMode { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema_cdc_table_mode CdcTableMode { get; set; }
 #endif
         /// <summary>The description property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -30,6 +38,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string Description { get; private set; }
+#endif
+        /// <summary>Names of source columns to sync. `null` (default) syncs all columns. Primary-key columns and the active incremental field are always retained, even if not listed here.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? EnabledColumns { get; set; }
+#nullable restore
+#else
+        public List<string> EnabledColumns { get; set; }
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
@@ -46,10 +62,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Data type of the incremental field.* `integer` - integer* `numeric` - numeric* `datetime` - datetime* `date` - date* `timestamp` - timestamp* `objectid` - objectid</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema.PatchedExternalDataSchema_incremental_field_type? IncrementalFieldType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema_incremental_field_type? IncrementalFieldType { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema.PatchedExternalDataSchema_incremental_field_type IncrementalFieldType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema_incremental_field_type IncrementalFieldType { get; set; }
 #endif
         /// <summary>The label property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -98,20 +114,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>How often to sync.* `never` - never* `1min` - 1min* `5min` - 5min* `15min` - 15min* `30min` - 30min* `1hour` - 1hour* `6hour` - 6hour* `12hour` - 12hour* `24hour` - 24hour* `7day` - 7day* `30day` - 30day</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema.PatchedExternalDataSchema_sync_frequency? SyncFrequency { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema_sync_frequency? SyncFrequency { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema.PatchedExternalDataSchema_sync_frequency SyncFrequency { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema_sync_frequency SyncFrequency { get; set; }
 #endif
         /// <summary>UTC time of day to run the sync (HH:MM:SS).</summary>
         public Time? SyncTimeOfDay { get; set; }
-        /// <summary>Sync strategy: incremental, full_refresh, append, or cdc.* `full_refresh` - full_refresh* `incremental` - incremental* `append` - append* `webhook` - webhook* `cdc` - cdc</summary>
+        /// <summary>&quot;Sync strategy: incremental, full_refresh, append, or cdc.* `full_refresh` - full_refresh* `incremental` - incremental* `append` - append* `webhook` - webhook* `cdc` - cdc&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema.PatchedExternalDataSchema_sync_type? SyncType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema_sync_type? SyncType { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema.PatchedExternalDataSchema_sync_type SyncType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema_sync_type SyncType { get; set; }
 #endif
         /// <summary>The table property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -146,12 +162,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "cdc_table_mode", n => { CdcTableMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema.PatchedExternalDataSchema_cdc_table_mode>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema.PatchedExternalDataSchema_cdc_table_mode.CreateFromDiscriminatorValue); } },
+                { "available_columns", n => { AvailableColumns = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema_available_columns>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema_available_columns.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "cdc_table_mode", n => { CdcTableMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema_cdc_table_mode>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema_cdc_table_mode.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
+                { "enabled_columns", n => { EnabledColumns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "incremental", n => { Incremental = n.GetBoolValue(); } },
                 { "incremental_field", n => { IncrementalField = n.GetStringValue(); } },
-                { "incremental_field_type", n => { IncrementalFieldType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema.PatchedExternalDataSchema_incremental_field_type>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema.PatchedExternalDataSchema_incremental_field_type.CreateFromDiscriminatorValue); } },
+                { "incremental_field_type", n => { IncrementalFieldType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema_incremental_field_type>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema_incremental_field_type.CreateFromDiscriminatorValue); } },
                 { "label", n => { Label = n.GetStringValue(); } },
                 { "last_synced_at", n => { LastSyncedAt = n.GetDateTimeOffsetValue(); } },
                 { "latest_error", n => { LatestError = n.GetStringValue(); } },
@@ -159,9 +177,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "primary_key_columns", n => { PrimaryKeyColumns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "should_sync", n => { ShouldSync = n.GetBoolValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
-                { "sync_frequency", n => { SyncFrequency = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema.PatchedExternalDataSchema_sync_frequency>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema.PatchedExternalDataSchema_sync_frequency.CreateFromDiscriminatorValue); } },
+                { "sync_frequency", n => { SyncFrequency = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema_sync_frequency>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema_sync_frequency.CreateFromDiscriminatorValue); } },
                 { "sync_time_of_day", n => { SyncTimeOfDay = n.GetTimeValue(); } },
-                { "sync_type", n => { SyncType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema.PatchedExternalDataSchema_sync_type>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema.PatchedExternalDataSchema_sync_type.CreateFromDiscriminatorValue); } },
+                { "sync_type", n => { SyncType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema_sync_type>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema_sync_type.CreateFromDiscriminatorValue); } },
                 { "table", n => { Table = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema_table>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema_table.CreateFromDiscriminatorValue); } },
             };
         }
@@ -172,275 +190,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema.PatchedExternalDataSchema_cdc_table_mode>("cdc_table_mode", CdcTableMode);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema_cdc_table_mode>("cdc_table_mode", CdcTableMode);
+            writer.WriteCollectionOfPrimitiveValues<string>("enabled_columns", EnabledColumns);
             writer.WriteStringValue("incremental_field", IncrementalField);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema.PatchedExternalDataSchema_incremental_field_type>("incremental_field_type", IncrementalFieldType);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema_incremental_field_type>("incremental_field_type", IncrementalFieldType);
             writer.WriteCollectionOfPrimitiveValues<string>("primary_key_columns", PrimaryKeyColumns);
             writer.WriteBoolValue("should_sync", ShouldSync);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema.PatchedExternalDataSchema_sync_frequency>("sync_frequency", SyncFrequency);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema_sync_frequency>("sync_frequency", SyncFrequency);
             writer.WriteTimeValue("sync_time_of_day", SyncTimeOfDay);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema.PatchedExternalDataSchema_sync_type>("sync_type", SyncType);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema_sync_type>("sync_type", SyncType);
             writer.WriteAdditionalData(AdditionalData);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CdcTableModeEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class PatchedExternalDataSchema_cdc_table_mode : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CdcTableModeEnum"/></summary>
-            public global::Soenneker.PostHog.OpenApiClient.Models.CdcTableModeEnum? CdcTableModeEnum { get; set; }
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum? NullEnum { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum NullEnum { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema.PatchedExternalDataSchema_cdc_table_mode"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema.PatchedExternalDataSchema_cdc_table_mode CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema.PatchedExternalDataSchema_cdc_table_mode();
-                if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CdcTableModeEnum>() is global::Soenneker.PostHog.OpenApiClient.Models.CdcTableModeEnum cdcTableModeEnumValue)
-                {
-                    result.CdcTableModeEnum = cdcTableModeEnumValue;
-                }
-                else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.NullEnum = new global::Soenneker.PostHog.OpenApiClient.Models.NullEnum();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(NullEnum != null)
-                {
-                    return NullEnum.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(CdcTableModeEnum != null)
-                {
-                    writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CdcTableModeEnum>(null, CdcTableModeEnum);
-                }
-                else if(NullEnum != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NullEnum>(null, NullEnum);
-                }
-            }
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.IncrementalFieldTypeEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class PatchedExternalDataSchema_incremental_field_type : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.IncrementalFieldTypeEnum"/></summary>
-            public global::Soenneker.PostHog.OpenApiClient.Models.IncrementalFieldTypeEnum? IncrementalFieldTypeEnum { get; set; }
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum? NullEnum { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum NullEnum { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema.PatchedExternalDataSchema_incremental_field_type"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema.PatchedExternalDataSchema_incremental_field_type CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema.PatchedExternalDataSchema_incremental_field_type();
-                if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IncrementalFieldTypeEnum>() is global::Soenneker.PostHog.OpenApiClient.Models.IncrementalFieldTypeEnum incrementalFieldTypeEnumValue)
-                {
-                    result.IncrementalFieldTypeEnum = incrementalFieldTypeEnumValue;
-                }
-                else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.NullEnum = new global::Soenneker.PostHog.OpenApiClient.Models.NullEnum();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(NullEnum != null)
-                {
-                    return NullEnum.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(IncrementalFieldTypeEnum != null)
-                {
-                    writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IncrementalFieldTypeEnum>(null, IncrementalFieldTypeEnum);
-                }
-                else if(NullEnum != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NullEnum>(null, NullEnum);
-                }
-            }
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyEnum"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class PatchedExternalDataSchema_sync_frequency : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum? NullEnum { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum NullEnum { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyEnum"/></summary>
-            public global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyEnum? SyncFrequencyEnum { get; set; }
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema.PatchedExternalDataSchema_sync_frequency"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema.PatchedExternalDataSchema_sync_frequency CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema.PatchedExternalDataSchema_sync_frequency();
-                if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.NullEnum = new global::Soenneker.PostHog.OpenApiClient.Models.NullEnum();
-                }
-                else if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyEnum>() is global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyEnum syncFrequencyEnumValue)
-                {
-                    result.SyncFrequencyEnum = syncFrequencyEnumValue;
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(NullEnum != null)
-                {
-                    return NullEnum.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(NullEnum != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NullEnum>(null, NullEnum);
-                }
-                else if(SyncFrequencyEnum != null)
-                {
-                    writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyEnum>(null, SyncFrequencyEnum);
-                }
-            }
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SyncTypeEnum"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class PatchedExternalDataSchema_sync_type : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum? NullEnum { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum NullEnum { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SyncTypeEnum"/></summary>
-            public global::Soenneker.PostHog.OpenApiClient.Models.SyncTypeEnum? SyncTypeEnum { get; set; }
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema.PatchedExternalDataSchema_sync_type"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema.PatchedExternalDataSchema_sync_type CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchema.PatchedExternalDataSchema_sync_type();
-                if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.NullEnum = new global::Soenneker.PostHog.OpenApiClient.Models.NullEnum();
-                }
-                else if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncTypeEnum>() is global::Soenneker.PostHog.OpenApiClient.Models.SyncTypeEnum syncTypeEnumValue)
-                {
-                    result.SyncTypeEnum = syncTypeEnumValue;
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(NullEnum != null)
-                {
-                    return NullEnum.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(NullEnum != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NullEnum>(null, NullEnum);
-                }
-                else if(SyncTypeEnum != null)
-                {
-                    writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncTypeEnum>(null, SyncTypeEnum);
-                }
-            }
         }
     }
 }

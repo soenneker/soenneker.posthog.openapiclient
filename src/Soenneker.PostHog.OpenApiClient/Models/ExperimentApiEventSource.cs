@@ -15,22 +15,28 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Event name, e.g. &apos;$pageview&apos;. Required for EventsNode.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Event { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource_event? Event { get; set; }
 #nullable restore
 #else
-        public string Event { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource_event Event { get; set; }
 #endif
         /// <summary>Action ID. Required for ActionsNode.</summary>
-        public int? Id { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource_id? Id { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource_id Id { get; set; }
+#endif
         /// <summary>The kind property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.Kind? Kind { get; set; }
         /// <summary>Event property filters to narrow which events are counted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter>? Properties { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource_properties? Properties { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter> Properties { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource_properties Properties { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -50,10 +56,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "event", n => { Event = n.GetStringValue(); } },
-                { "id", n => { Id = n.GetIntValue(); } },
+                { "event", n => { Event = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource_event>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource_event.CreateFromDiscriminatorValue); } },
+                { "id", n => { Id = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource_id>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource_id.CreateFromDiscriminatorValue); } },
                 { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Kind>(); } },
-                { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter>(global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "properties", n => { Properties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource_properties>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource_properties.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -63,10 +69,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("event", Event);
-            writer.WriteIntValue("id", Id);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource_event>("event", Event);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource_id>("id", Id);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Kind>("kind", Kind);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter>("properties", Properties);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource_properties>("properties", Properties);
         }
     }
 }

@@ -27,10 +27,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SandboxEnvironmentList_created_by? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SandboxEnvironmentList_created_by CreatedBy { get; private set; }
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
@@ -48,7 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.NetworkAccessLevelEnum? NetworkAccessLevel { get; set; }
         /// <summary>If true, only the creator can see this environment. Otherwise visible to whole team.</summary>
         public bool? Private { get; set; }
-        /// <summary>List of repositories this environment applies to (format: org/repo)</summary>
+        /// <summary>&quot;List of repositories this environment applies to (format: org/repo)&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? Repositories { get; set; }
@@ -85,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "allowed_domains", n => { AllowedDomains = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SandboxEnvironmentList_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.SandboxEnvironmentList_created_by.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "internal", n => { Internal = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },

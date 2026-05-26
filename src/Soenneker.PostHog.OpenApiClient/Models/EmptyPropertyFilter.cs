@@ -13,19 +13,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning restore CS1591
     {
         /// <summary>The type property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Type { get; set; }
-#nullable restore
-#else
-        public string Type { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.EmptyPropertyFilter_type? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EmptyPropertyFilter"/> and sets the default values.
         /// </summary>
         public EmptyPropertyFilter()
         {
-            Type = "empty";
+            Type = global::Soenneker.PostHog.OpenApiClient.Models.EmptyPropertyFilter_type.Empty;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -45,7 +39,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "type", n => { Type = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EmptyPropertyFilter_type>(); } },
             };
         }
         /// <summary>
@@ -55,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("type", Type);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EmptyPropertyFilter_type>("type", Type);
         }
     }
 }

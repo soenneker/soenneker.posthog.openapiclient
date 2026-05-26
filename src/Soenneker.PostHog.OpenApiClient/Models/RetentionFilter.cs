@@ -7,91 +7,179 @@ using System.IO;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>
-    /// Properties specific to the retention insight
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class RetentionFilter : IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>The property to aggregate when aggregationType is sum or avg</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AggregationProperty { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_aggregationProperty? AggregationProperty { get; set; }
 #nullable restore
 #else
-        public string AggregationProperty { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_aggregationProperty AggregationProperty { get; set; }
 #endif
         /// <summary>The type of property to aggregate on (event, person or data_warehouse). Defaults to event.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.AggregationPropertyType1? AggregationPropertyType { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_aggregationPropertyType? AggregationPropertyType { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_aggregationPropertyType AggregationPropertyType { get; set; }
+#endif
         /// <summary>The aggregation type to use for retention</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.AggregationType? AggregationType { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_aggregationType? AggregationType { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_aggregationType AggregationType { get; set; }
+#endif
+        /// <summary>Starting index used when labeling cohort columns (e.g. 0 for D0/D1/D2, 1 for D1/D2/D3). Display-only — does not affect retention calculations.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_cohortLabelStartIndex? CohortLabelStartIndex { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_cohortLabelStartIndex CohortLabelStartIndex { get; set; }
+#endif
         /// <summary>The cumulative property</summary>
-        public bool? Cumulative { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_cumulative? Cumulative { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_cumulative Cumulative { get; set; }
+#endif
         /// <summary>For data warehouse based retention insights when the aggregation target can&apos;t be mapped to persons or groups.</summary>
-        public bool? CustomAggregationTarget { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_customAggregationTarget? CustomAggregationTarget { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_customAggregationTarget CustomAggregationTarget { get; set; }
+#endif
         /// <summary>The dashboardDisplay property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionDashboardDisplayType? DashboardDisplay { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_dashboardDisplay? DashboardDisplay { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_dashboardDisplay DashboardDisplay { get; set; }
+#endif
         /// <summary>controls the display of the retention graph</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayType? Display { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_display? Display { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_display Display { get; set; }
+#endif
         /// <summary>The goalLines property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine>? GoalLines { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_goalLines? GoalLines { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine> GoalLines { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_goalLines GoalLines { get; set; }
 #endif
         /// <summary>The meanRetentionCalculation property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.MeanRetentionCalculation? MeanRetentionCalculation { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_meanRetentionCalculation? MeanRetentionCalculation { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_meanRetentionCalculation MeanRetentionCalculation { get; set; }
+#endif
         /// <summary>The minimumOccurrences property</summary>
-        public int? MinimumOccurrences { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_minimumOccurrences? MinimumOccurrences { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_minimumOccurrences MinimumOccurrences { get; set; }
+#endif
         /// <summary>The period property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionPeriod? Period { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_period? Period { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_period Period { get; set; }
+#endif
         /// <summary>Custom brackets for retention calculations</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<double?>? RetentionCustomBrackets { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_retentionCustomBrackets? RetentionCustomBrackets { get; set; }
 #nullable restore
 #else
-        public List<double?> RetentionCustomBrackets { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_retentionCustomBrackets RetentionCustomBrackets { get; set; }
 #endif
         /// <summary>Whether retention is with regard to initial cohort size, or that of the previous period.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionReference? RetentionReference { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_retentionReference? RetentionReference { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_retentionReference RetentionReference { get; set; }
+#endif
         /// <summary>The retentionType property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionType? RetentionType { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_retentionType? RetentionType { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_retentionType RetentionType { get; set; }
+#endif
         /// <summary>The returningEntity property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity? ReturningEntity { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_returningEntity? ReturningEntity { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity ReturningEntity { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_returningEntity ReturningEntity { get; set; }
 #endif
         /// <summary>The selected interval to display across all cohorts (null = show all intervals for each cohort)</summary>
-        public int? SelectedInterval { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_selectedInterval? SelectedInterval { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_selectedInterval SelectedInterval { get; set; }
+#endif
         /// <summary>The showTrendLines property</summary>
-        public bool? ShowTrendLines { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_showTrendLines? ShowTrendLines { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_showTrendLines ShowTrendLines { get; set; }
+#endif
         /// <summary>The targetEntity property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity? TargetEntity { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_targetEntity? TargetEntity { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity TargetEntity { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_targetEntity TargetEntity { get; set; }
 #endif
         /// <summary>The time window mode to use for retention calculations</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.TimeWindowMode? TimeWindowMode { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_timeWindowMode? TimeWindowMode { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_timeWindowMode TimeWindowMode { get; set; }
+#endif
         /// <summary>The totalIntervals property</summary>
-        public int? TotalIntervals { get; set; }
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter"/> and sets the default values.
-        /// </summary>
-        public RetentionFilter()
-        {
-            AggregationPropertyType = global::Soenneker.PostHog.OpenApiClient.Models.AggregationPropertyType1.Event;
-            AggregationType = global::Soenneker.PostHog.OpenApiClient.Models.AggregationType.Count;
-            Period = global::Soenneker.PostHog.OpenApiClient.Models.RetentionPeriod.Day;
-        }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_totalIntervals? TotalIntervals { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_totalIntervals TotalIntervals { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -110,26 +198,27 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "aggregationProperty", n => { AggregationProperty = n.GetStringValue(); } },
-                { "aggregationPropertyType", n => { AggregationPropertyType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AggregationPropertyType1>(); } },
-                { "aggregationType", n => { AggregationType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AggregationType>(); } },
-                { "cumulative", n => { Cumulative = n.GetBoolValue(); } },
-                { "customAggregationTarget", n => { CustomAggregationTarget = n.GetBoolValue(); } },
-                { "dashboardDisplay", n => { DashboardDisplay = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionDashboardDisplayType>(); } },
-                { "display", n => { Display = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayType>(); } },
-                { "goalLines", n => { GoalLines = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine>(global::Soenneker.PostHog.OpenApiClient.Models.GoalLine.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "meanRetentionCalculation", n => { MeanRetentionCalculation = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MeanRetentionCalculation>(); } },
-                { "minimumOccurrences", n => { MinimumOccurrences = n.GetIntValue(); } },
-                { "period", n => { Period = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionPeriod>(); } },
-                { "retentionCustomBrackets", n => { RetentionCustomBrackets = n.GetCollectionOfPrimitiveValues<double?>()?.AsList(); } },
-                { "retentionReference", n => { RetentionReference = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionReference>(); } },
-                { "retentionType", n => { RetentionType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionType>(); } },
-                { "returningEntity", n => { ReturningEntity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity.CreateFromDiscriminatorValue); } },
-                { "selectedInterval", n => { SelectedInterval = n.GetIntValue(); } },
-                { "showTrendLines", n => { ShowTrendLines = n.GetBoolValue(); } },
-                { "targetEntity", n => { TargetEntity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity.CreateFromDiscriminatorValue); } },
-                { "timeWindowMode", n => { TimeWindowMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TimeWindowMode>(); } },
-                { "totalIntervals", n => { TotalIntervals = n.GetIntValue(); } },
+                { "aggregationProperty", n => { AggregationProperty = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_aggregationProperty>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_aggregationProperty.CreateFromDiscriminatorValue); } },
+                { "aggregationPropertyType", n => { AggregationPropertyType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_aggregationPropertyType>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_aggregationPropertyType.CreateFromDiscriminatorValue); } },
+                { "aggregationType", n => { AggregationType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_aggregationType>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_aggregationType.CreateFromDiscriminatorValue); } },
+                { "cohortLabelStartIndex", n => { CohortLabelStartIndex = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_cohortLabelStartIndex>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_cohortLabelStartIndex.CreateFromDiscriminatorValue); } },
+                { "cumulative", n => { Cumulative = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_cumulative>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_cumulative.CreateFromDiscriminatorValue); } },
+                { "customAggregationTarget", n => { CustomAggregationTarget = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_customAggregationTarget>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_customAggregationTarget.CreateFromDiscriminatorValue); } },
+                { "dashboardDisplay", n => { DashboardDisplay = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_dashboardDisplay>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_dashboardDisplay.CreateFromDiscriminatorValue); } },
+                { "display", n => { Display = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_display>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_display.CreateFromDiscriminatorValue); } },
+                { "goalLines", n => { GoalLines = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_goalLines>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_goalLines.CreateFromDiscriminatorValue); } },
+                { "meanRetentionCalculation", n => { MeanRetentionCalculation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_meanRetentionCalculation>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_meanRetentionCalculation.CreateFromDiscriminatorValue); } },
+                { "minimumOccurrences", n => { MinimumOccurrences = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_minimumOccurrences>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_minimumOccurrences.CreateFromDiscriminatorValue); } },
+                { "period", n => { Period = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_period>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_period.CreateFromDiscriminatorValue); } },
+                { "retentionCustomBrackets", n => { RetentionCustomBrackets = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_retentionCustomBrackets>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_retentionCustomBrackets.CreateFromDiscriminatorValue); } },
+                { "retentionReference", n => { RetentionReference = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_retentionReference>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_retentionReference.CreateFromDiscriminatorValue); } },
+                { "retentionType", n => { RetentionType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_retentionType>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_retentionType.CreateFromDiscriminatorValue); } },
+                { "returningEntity", n => { ReturningEntity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_returningEntity>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_returningEntity.CreateFromDiscriminatorValue); } },
+                { "selectedInterval", n => { SelectedInterval = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_selectedInterval>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_selectedInterval.CreateFromDiscriminatorValue); } },
+                { "showTrendLines", n => { ShowTrendLines = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_showTrendLines>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_showTrendLines.CreateFromDiscriminatorValue); } },
+                { "targetEntity", n => { TargetEntity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_targetEntity>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_targetEntity.CreateFromDiscriminatorValue); } },
+                { "timeWindowMode", n => { TimeWindowMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_timeWindowMode>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_timeWindowMode.CreateFromDiscriminatorValue); } },
+                { "totalIntervals", n => { TotalIntervals = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_totalIntervals>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_totalIntervals.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -139,26 +228,27 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("aggregationProperty", AggregationProperty);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AggregationPropertyType1>("aggregationPropertyType", AggregationPropertyType);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AggregationType>("aggregationType", AggregationType);
-            writer.WriteBoolValue("cumulative", Cumulative);
-            writer.WriteBoolValue("customAggregationTarget", CustomAggregationTarget);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionDashboardDisplayType>("dashboardDisplay", DashboardDisplay);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayType>("display", Display);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine>("goalLines", GoalLines);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MeanRetentionCalculation>("meanRetentionCalculation", MeanRetentionCalculation);
-            writer.WriteIntValue("minimumOccurrences", MinimumOccurrences);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionPeriod>("period", Period);
-            writer.WriteCollectionOfPrimitiveValues<double?>("retentionCustomBrackets", RetentionCustomBrackets);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionReference>("retentionReference", RetentionReference);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionType>("retentionType", RetentionType);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity>("returningEntity", ReturningEntity);
-            writer.WriteIntValue("selectedInterval", SelectedInterval);
-            writer.WriteBoolValue("showTrendLines", ShowTrendLines);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity>("targetEntity", TargetEntity);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TimeWindowMode>("timeWindowMode", TimeWindowMode);
-            writer.WriteIntValue("totalIntervals", TotalIntervals);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_aggregationProperty>("aggregationProperty", AggregationProperty);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_aggregationPropertyType>("aggregationPropertyType", AggregationPropertyType);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_aggregationType>("aggregationType", AggregationType);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_cohortLabelStartIndex>("cohortLabelStartIndex", CohortLabelStartIndex);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_cumulative>("cumulative", Cumulative);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_customAggregationTarget>("customAggregationTarget", CustomAggregationTarget);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_dashboardDisplay>("dashboardDisplay", DashboardDisplay);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_display>("display", Display);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_goalLines>("goalLines", GoalLines);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_meanRetentionCalculation>("meanRetentionCalculation", MeanRetentionCalculation);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_minimumOccurrences>("minimumOccurrences", MinimumOccurrences);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_period>("period", Period);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_retentionCustomBrackets>("retentionCustomBrackets", RetentionCustomBrackets);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_retentionReference>("retentionReference", RetentionReference);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_retentionType>("retentionType", RetentionType);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_returningEntity>("returningEntity", ReturningEntity);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_selectedInterval>("selectedInterval", SelectedInterval);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_showTrendLines>("showTrendLines", ShowTrendLines);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_targetEntity>("targetEntity", TargetEntity);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_timeWindowMode>("timeWindowMode", TimeWindowMode);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_totalIntervals>("totalIntervals", TotalIntervals);
         }
     }
 }

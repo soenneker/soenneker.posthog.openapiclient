@@ -20,7 +20,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public Guid? Id { get; set; }
         /// <summary>Last time the mobile app re-registered this token.</summary>
         public DateTimeOffset? LastSeenAt { get; set; }
-        /// <summary>Device platform the token was issued for.* `ios` - iOS* `android` - Android* `web` - Web</summary>
+        /// <summary>* `ios` - iOS* `android` - Android* `web` - Web</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PushTokenPlatformEnum? Platform { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.UserPushTokenItem"/> and sets the default values.

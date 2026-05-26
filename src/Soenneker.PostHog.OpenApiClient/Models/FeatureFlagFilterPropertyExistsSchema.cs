@@ -32,17 +32,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Key { get; set; }
 #endif
-        /// <summary>Existence operator.* `is_set` - is_set* `is_not_set` - is_not_set</summary>
+        /// <summary>* `is_set` - is_set* `is_not_set` - is_not_set</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ExistenceOperatorEnum? Operator { get; set; }
-        /// <summary>Property filter type. Common values are &apos;person&apos; and &apos;cohort&apos;.* `cohort` - cohort* `person` - person* `group` - group</summary>
+        /// <summary>* `cohort` - cohort* `person` - person* `group` - group</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupTypeEnum? Type { get; set; }
         /// <summary>Optional value. Runtime behavior determines whether this is ignored.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Value { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyExistsSchema_value? Value { get; set; }
 #nullable restore
 #else
-        public UntypedNode Value { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyExistsSchema_value Value { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyExistsSchema"/> and sets the default values.
@@ -74,7 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "key", n => { Key = n.GetStringValue(); } },
                 { "operator", n => { Operator = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExistenceOperatorEnum>(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupTypeEnum>(); } },
-                { "value", n => { Value = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "value", n => { Value = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyExistsSchema_value>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyExistsSchema_value.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -89,7 +89,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("key", Key);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExistenceOperatorEnum>("operator", Operator);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupTypeEnum>("type", Type);
-            writer.WriteObjectValue<UntypedNode>("value", Value);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyExistsSchema_value>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

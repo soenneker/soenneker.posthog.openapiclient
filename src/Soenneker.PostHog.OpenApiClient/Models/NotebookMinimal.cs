@@ -19,10 +19,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookMinimal_created_by? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookMinimal_created_by CreatedBy { get; private set; }
 #endif
         /// <summary>The create_in_folder property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -41,10 +41,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The last_modified_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? LastModifiedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookMinimal_last_modified_by? LastModifiedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic LastModifiedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookMinimal_last_modified_by LastModifiedBy { get; private set; }
 #endif
         /// <summary>Short alphanumeric identifier used in URLs and API lookups.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -97,11 +97,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "_create_in_folder", n => { CreateInFolder = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookMinimal_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.NotebookMinimal_created_by.CreateFromDiscriminatorValue); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "last_modified_at", n => { LastModifiedAt = n.GetDateTimeOffsetValue(); } },
-                { "last_modified_by", n => { LastModifiedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "last_modified_by", n => { LastModifiedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookMinimal_last_modified_by>(global::Soenneker.PostHog.OpenApiClient.Models.NotebookMinimal_last_modified_by.CreateFromDiscriminatorValue); } },
                 { "short_id", n => { ShortId = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
                 { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },

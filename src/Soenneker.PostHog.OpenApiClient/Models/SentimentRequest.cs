@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Whether the IDs are &apos;trace&apos; IDs or &apos;generation&apos; IDs.* `trace` - trace* `generation` - generation</summary>
+        /// <summary>* `trace` - trace* `generation` - generation</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SentimentRequestAnalysisLevelEnum? AnalysisLevel { get; set; }
         /// <summary>Start of date range for the lookup (e.g. &apos;-7d&apos; or &apos;2026-01-01&apos;). Defaults to -30d.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -48,7 +48,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public SentimentRequest()
         {
             AdditionalData = new Dictionary<string, object>();
-            AnalysisLevel = global::Soenneker.PostHog.OpenApiClient.Models.SentimentRequestAnalysisLevelEnum.Trace;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value

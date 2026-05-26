@@ -15,34 +15,34 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The bytecode property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Bytecode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7_bytecode? Bytecode { get; set; }
 #nullable restore
 #else
-        public UntypedNode Bytecode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7_bytecode Bytecode { get; set; }
 #endif
         /// <summary>The coloredBytecode property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? ColoredBytecode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7_coloredBytecode? ColoredBytecode { get; set; }
 #nullable restore
 #else
-        public UntypedNode ColoredBytecode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7_coloredBytecode ColoredBytecode { get; set; }
 #endif
         /// <summary>The results property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Results { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7_results? Results { get; set; }
 #nullable restore
 #else
-        public UntypedNode Results { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7_results Results { get; set; }
 #endif
         /// <summary>The stdout property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Stdout { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7_stdout? Stdout { get; set; }
 #nullable restore
 #else
-        public string Stdout { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7_stdout Stdout { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -62,10 +62,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "bytecode", n => { Bytecode = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "coloredBytecode", n => { ColoredBytecode = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "results", n => { Results = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "stdout", n => { Stdout = n.GetStringValue(); } },
+                { "bytecode", n => { Bytecode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7_bytecode>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7_bytecode.CreateFromDiscriminatorValue); } },
+                { "coloredBytecode", n => { ColoredBytecode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7_coloredBytecode>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7_coloredBytecode.CreateFromDiscriminatorValue); } },
+                { "results", n => { Results = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7_results>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7_results.CreateFromDiscriminatorValue); } },
+                { "stdout", n => { Stdout = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7_stdout>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7_stdout.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -75,10 +75,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<UntypedNode>("bytecode", Bytecode);
-            writer.WriteObjectValue<UntypedNode>("coloredBytecode", ColoredBytecode);
-            writer.WriteObjectValue<UntypedNode>("results", Results);
-            writer.WriteStringValue("stdout", Stdout);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7_bytecode>("bytecode", Bytecode);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7_coloredBytecode>("coloredBytecode", ColoredBytecode);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7_results>("results", Results);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7_stdout>("stdout", Stdout);
         }
     }
 }

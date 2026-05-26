@@ -13,14 +13,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning restore CS1591
     {
         /// <summary>Groups aggregation - not used in Web Analytics but required for type compatibility</summary>
-        public int? AggregationGroupTypeIndex { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_aggregation_group_type_index? AggregationGroupTypeIndex { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_aggregation_group_type_index AggregationGroupTypeIndex { get; set; }
+#endif
         /// <summary>The compareFilter property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter? CompareFilter { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_compareFilter? CompareFilter { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter CompareFilter { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_compareFilter CompareFilter { get; set; }
 #endif
         /// <summary>The conversionGoal property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -31,46 +37,70 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery.WebVitalsQuery_conversionGoal ConversionGoal { get; set; }
 #endif
         /// <summary>Colors used in the insight&apos;s visualization - not used in Web Analytics but required for type compatibility</summary>
-        public double? DataColorTheme { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_dataColorTheme? DataColorTheme { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_dataColorTheme DataColorTheme { get; set; }
+#endif
         /// <summary>The dateRange property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DateRange? DateRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_dateRange? DateRange { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DateRange DateRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_dateRange DateRange { get; set; }
 #endif
         /// <summary>The doPathCleaning property</summary>
-        public bool? DoPathCleaning { get; set; }
-        /// <summary>The filterTestAccounts property</summary>
-        public bool? FilterTestAccounts { get; set; }
-        /// <summary>The includeRevenue property</summary>
-        public bool? IncludeRevenue { get; set; }
-        /// <summary>Interval for date range calculation (affects date_to rounding for hour vs day ranges)</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.IntervalType? Interval { get; set; }
-        /// <summary>The kind property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_doPathCleaning? DoPathCleaning { get; set; }
 #nullable restore
 #else
-        public string Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_doPathCleaning DoPathCleaning { get; set; }
 #endif
+        /// <summary>The filterTestAccounts property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_filterTestAccounts? FilterTestAccounts { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_filterTestAccounts FilterTestAccounts { get; set; }
+#endif
+        /// <summary>The includeRevenue property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_includeRevenue? IncludeRevenue { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_includeRevenue IncludeRevenue { get; set; }
+#endif
+        /// <summary>Interval for date range calculation (affects date_to rounding for hour vs day ranges)</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_interval? Interval { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_interval Interval { get; set; }
+#endif
+        /// <summary>The kind property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_kind? Kind { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers? Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_modifiers? Modifiers { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_modifiers Modifiers { get; set; }
 #endif
         /// <summary>The orderBy property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? OrderBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_orderBy? OrderBy { get; set; }
 #nullable restore
 #else
-        public List<string> OrderBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_orderBy OrderBy { get; set; }
 #endif
         /// <summary>The properties property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -83,21 +113,27 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebGoalsQueryResponse? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_response? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebGoalsQueryResponse Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_response Response { get; set; }
 #endif
         /// <summary>The sampling property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsSampling? Sampling { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_sampling? Sampling { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsSampling Sampling { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_sampling Sampling { get; set; }
 #endif
         /// <summary>Sampling rate</summary>
-        public double? SamplingFactor { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_samplingFactor? SamplingFactor { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_samplingFactor SamplingFactor { get; set; }
+#endif
         /// <summary>The source property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -109,21 +145,33 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags? Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_tags? Tags { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_tags Tags { get; set; }
 #endif
         /// <summary>The useSessionsTable property</summary>
-        public bool? UseSessionsTable { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_useSessionsTable? UseSessionsTable { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_useSessionsTable UseSessionsTable { get; set; }
+#endif
         /// <summary>version of the node, used for schema migrations</summary>
-        public double? Version { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_version? Version { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_version Version { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery"/> and sets the default values.
         /// </summary>
         public WebVitalsQuery()
         {
-            Kind = "WebVitalsQuery";
+            Kind = global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_kind.WebVitalsQuery;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -143,26 +191,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "aggregation_group_type_index", n => { AggregationGroupTypeIndex = n.GetIntValue(); } },
-                { "compareFilter", n => { CompareFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter>(global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter.CreateFromDiscriminatorValue); } },
+                { "aggregation_group_type_index", n => { AggregationGroupTypeIndex = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_aggregation_group_type_index>(global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_aggregation_group_type_index.CreateFromDiscriminatorValue); } },
+                { "compareFilter", n => { CompareFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_compareFilter>(global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_compareFilter.CreateFromDiscriminatorValue); } },
                 { "conversionGoal", n => { ConversionGoal = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery.WebVitalsQuery_conversionGoal>(global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery.WebVitalsQuery_conversionGoal.CreateFromDiscriminatorValue); } },
-                { "dataColorTheme", n => { DataColorTheme = n.GetDoubleValue(); } },
-                { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>(global::Soenneker.PostHog.OpenApiClient.Models.DateRange.CreateFromDiscriminatorValue); } },
-                { "doPathCleaning", n => { DoPathCleaning = n.GetBoolValue(); } },
-                { "filterTestAccounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
-                { "includeRevenue", n => { IncludeRevenue = n.GetBoolValue(); } },
-                { "interval", n => { Interval = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalType>(); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
-                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
-                { "orderBy", n => { OrderBy = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "dataColorTheme", n => { DataColorTheme = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_dataColorTheme>(global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_dataColorTheme.CreateFromDiscriminatorValue); } },
+                { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_dateRange>(global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_dateRange.CreateFromDiscriminatorValue); } },
+                { "doPathCleaning", n => { DoPathCleaning = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_doPathCleaning>(global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_doPathCleaning.CreateFromDiscriminatorValue); } },
+                { "filterTestAccounts", n => { FilterTestAccounts = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_filterTestAccounts>(global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_filterTestAccounts.CreateFromDiscriminatorValue); } },
+                { "includeRevenue", n => { IncludeRevenue = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_includeRevenue>(global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_includeRevenue.CreateFromDiscriminatorValue); } },
+                { "interval", n => { Interval = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_interval>(global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_interval.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_kind>(); } },
+                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_modifiers>(global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_modifiers.CreateFromDiscriminatorValue); } },
+                { "orderBy", n => { OrderBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_orderBy>(global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_orderBy.CreateFromDiscriminatorValue); } },
                 { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery.WebVitalsQuery_properties>(global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery.WebVitalsQuery_properties.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebGoalsQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.WebGoalsQueryResponse.CreateFromDiscriminatorValue); } },
-                { "sampling", n => { Sampling = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsSampling>(global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsSampling.CreateFromDiscriminatorValue); } },
-                { "samplingFactor", n => { SamplingFactor = n.GetDoubleValue(); } },
+                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_response>(global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_response.CreateFromDiscriminatorValue); } },
+                { "sampling", n => { Sampling = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_sampling>(global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_sampling.CreateFromDiscriminatorValue); } },
+                { "samplingFactor", n => { SamplingFactor = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_samplingFactor>(global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_samplingFactor.CreateFromDiscriminatorValue); } },
                 { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery.WebVitalsQuery_source>(global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery.WebVitalsQuery_source.CreateFromDiscriminatorValue); } },
-                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
-                { "useSessionsTable", n => { UseSessionsTable = n.GetBoolValue(); } },
-                { "version", n => { Version = n.GetDoubleValue(); } },
+                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_tags>(global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_tags.CreateFromDiscriminatorValue); } },
+                { "useSessionsTable", n => { UseSessionsTable = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_useSessionsTable>(global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_useSessionsTable.CreateFromDiscriminatorValue); } },
+                { "version", n => { Version = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_version>(global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_version.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -172,26 +220,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteIntValue("aggregation_group_type_index", AggregationGroupTypeIndex);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter>("compareFilter", CompareFilter);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_aggregation_group_type_index>("aggregation_group_type_index", AggregationGroupTypeIndex);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_compareFilter>("compareFilter", CompareFilter);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery.WebVitalsQuery_conversionGoal>("conversionGoal", ConversionGoal);
-            writer.WriteDoubleValue("dataColorTheme", DataColorTheme);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>("dateRange", DateRange);
-            writer.WriteBoolValue("doPathCleaning", DoPathCleaning);
-            writer.WriteBoolValue("filterTestAccounts", FilterTestAccounts);
-            writer.WriteBoolValue("includeRevenue", IncludeRevenue);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalType>("interval", Interval);
-            writer.WriteStringValue("kind", Kind);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);
-            writer.WriteCollectionOfPrimitiveValues<string>("orderBy", OrderBy);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_dataColorTheme>("dataColorTheme", DataColorTheme);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_dateRange>("dateRange", DateRange);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_doPathCleaning>("doPathCleaning", DoPathCleaning);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_filterTestAccounts>("filterTestAccounts", FilterTestAccounts);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_includeRevenue>("includeRevenue", IncludeRevenue);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_interval>("interval", Interval);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_kind>("kind", Kind);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_modifiers>("modifiers", Modifiers);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_orderBy>("orderBy", OrderBy);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery.WebVitalsQuery_properties>("properties", Properties);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebGoalsQueryResponse>("response", Response);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsSampling>("sampling", Sampling);
-            writer.WriteDoubleValue("samplingFactor", SamplingFactor);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_response>("response", Response);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_sampling>("sampling", Sampling);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_samplingFactor>("samplingFactor", SamplingFactor);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery.WebVitalsQuery_source>("source", Source);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
-            writer.WriteBoolValue("useSessionsTable", UseSessionsTable);
-            writer.WriteDoubleValue("version", Version);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_tags>("tags", Tags);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_useSessionsTable>("useSessionsTable", UseSessionsTable);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_version>("version", Version);
         }
         /// <summary>
         /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActionConversionGoal"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CustomEventConversionGoal"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery_conversionGoalMember1"/>

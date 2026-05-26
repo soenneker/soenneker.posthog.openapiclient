@@ -23,10 +23,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The metadata property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Metadata { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentToSavedMetric_metadata? Metadata { get; set; }
 #nullable restore
 #else
-        public UntypedNode Metadata { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentToSavedMetric_metadata Metadata { get; set; }
 #endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -39,10 +39,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The query property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Query { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentToSavedMetric_query? Query { get; private set; }
 #nullable restore
 #else
-        public UntypedNode Query { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentToSavedMetric_query Query { get; private set; }
 #endif
         /// <summary>The saved_metric property</summary>
         public int? SavedMetric { get; set; }
@@ -74,9 +74,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "experiment", n => { Experiment = n.GetIntValue(); } },
                 { "id", n => { Id = n.GetIntValue(); } },
-                { "metadata", n => { Metadata = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentToSavedMetric_metadata>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentToSavedMetric_metadata.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "query", n => { Query = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentToSavedMetric_query>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentToSavedMetric_query.CreateFromDiscriminatorValue); } },
                 { "saved_metric", n => { SavedMetric = n.GetIntValue(); } },
             };
         }
@@ -88,7 +88,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("experiment", Experiment);
-            writer.WriteObjectValue<UntypedNode>("metadata", Metadata);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentToSavedMetric_metadata>("metadata", Metadata);
             writer.WriteIntValue("saved_metric", SavedMetric);
             writer.WriteAdditionalData(AdditionalData);
         }

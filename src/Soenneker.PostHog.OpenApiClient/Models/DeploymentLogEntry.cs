@@ -17,7 +17,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Set on the last line of a step; null on all other lines.</summary>
         public int? ExitCode { get; set; }
-        /// <summary>Log level: &quot;info&quot; | &quot;warn&quot; | &quot;error&quot;. Null if the event did not carry one.</summary>
+        /// <summary>&quot;Log level: \&quot;info\&quot; | \&quot;warn\&quot; | \&quot;error\&quot;. Null if the event did not carry one.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Level { get; set; }
@@ -33,7 +33,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Line { get; set; }
 #endif
-        /// <summary>Pipeline step: &quot;clone&quot; | &quot;install&quot; | &quot;build&quot; | &quot;publish&quot;. Null if the event did not carry one.</summary>
+        /// <summary>&quot;Pipeline step: \&quot;clone\&quot; | \&quot;install\&quot; | \&quot;build\&quot; | \&quot;publish\&quot;. Null if the event did not carry one.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Step { get; set; }

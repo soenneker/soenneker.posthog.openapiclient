@@ -35,6 +35,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Exports;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_schemas;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_exports;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_system;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_system_shortcut;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Flag_value;
@@ -259,6 +260,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Feature_flagsRequestBuilder Feature_flags
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Feature_flagsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The file_download_batch_exports property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_exports.File_download_batch_exportsRequestBuilder File_download_batch_exports
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_exports.File_download_batch_exportsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The file_system property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_system.File_systemRequestBuilder File_system

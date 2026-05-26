@@ -35,13 +35,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>Variants for the web experiment. Example:        {            &quot;control&quot;: {                &quot;transforms&quot;: [                    {                        &quot;text&quot;: &quot;Here comes Superman!&quot;,                        &quot;html&quot;: &quot;&quot;,                        &quot;selector&quot;: &quot;#page &gt; #body &gt; .header h1&quot;                    }                ],                &quot;conditions&quot;: &quot;None&quot;,                &quot;rollout_percentage&quot;: 50            },        }</summary>
+        /// <summary>&quot;Variants for the web experiment. Example:        {            \&quot;control\&quot;: {                \&quot;transforms\&quot;: [                    {                        \&quot;text\&quot;: \&quot;Here comes Superman!\&quot;,                        \&quot;html\&quot;: \&quot;\&quot;,                        \&quot;selector\&quot;: \&quot;#page &gt; #body &gt; .header h1\&quot;                    }                ],                \&quot;conditions\&quot;: \&quot;None\&quot;,                \&quot;rollout_percentage\&quot;: 50            },        }&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Variants { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebExperimentsAPI_variants? Variants { get; set; }
 #nullable restore
 #else
-        public UntypedNode Variants { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebExperimentsAPI_variants Variants { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebExperimentsAPI"/> and sets the default values.
@@ -72,7 +72,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "feature_flag_key", n => { FeatureFlagKey = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetIntValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "variants", n => { Variants = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "variants", n => { Variants = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebExperimentsAPI_variants>(global::Soenneker.PostHog.OpenApiClient.Models.WebExperimentsAPI_variants.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -84,7 +84,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<UntypedNode>("variants", Variants);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebExperimentsAPI_variants>("variants", Variants);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

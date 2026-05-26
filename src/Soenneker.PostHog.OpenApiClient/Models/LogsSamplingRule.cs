@@ -14,13 +14,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Type-specific JSON. For path_drop: object with optional `filter_group` (PropertyGroupFilter shape — AND/OR tree of property predicates evaluated per record) and/or legacy `patterns` (list of regex strings) + `match_attribute_key` (string). When both are present a record is dropped if EITHER matches. Filter group example: `{&quot;type&quot;:&quot;AND&quot;,&quot;values&quot;:[{&quot;type&quot;:&quot;AND&quot;,&quot;values&quot;:[{&quot;key&quot;:&quot;service.name&quot;,&quot;operator&quot;:&quot;exact&quot;,&quot;value&quot;:&quot;api&quot;}]}]}`. For severity_sampling: object with `actions` per severity level and optional `always_keep`. For rate_limit: object with required `logs_per_second` (integer 1–1000000) and optional `burst_logs` (integer ≥ logs_per_second, max 60000000); rate_limit rules require non-null `scope_service` matching `service.name` on each log line.</summary>
+        /// <summary>&quot;Type-specific JSON. For path_drop: object with optional `filter_group` (PropertyGroupFilter shape — AND/OR tree of property predicates evaluated per record) and/or legacy `patterns` (list of regex strings) + `match_attribute_key` (string). When both are present a record is dropped if EITHER matches. Filter group example: `{\&quot;type\&quot;:\&quot;AND\&quot;,\&quot;values\&quot;:[{\&quot;type\&quot;:\&quot;AND\&quot;,\&quot;values\&quot;:[{\&quot;key\&quot;:\&quot;service.name\&quot;,\&quot;operator\&quot;:\&quot;exact\&quot;,\&quot;value\&quot;:\&quot;api\&quot;}]}]}`. For severity_sampling: object with `actions` per severity level and optional `always_keep`. For rate_limit: object with EITHER `logs_per_second` (integer 1–1000000, optional `burst_logs` integer ≥ logs_per_second, max 10000000) OR `kb_per_second` (integer 1–1000000 = 1 GB/s, optional `burst_kb` integer ≥ kb_per_second, max 10000000) — not both. Plus optional `filter_group` to narrow which logs the cap applies to. KB-mode charges each log its own uncompressed byte size, matching how billing measures ingested bytes.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Config { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsSamplingRule_config? Config { get; set; }
 #nullable restore
 #else
-        public UntypedNode Config { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsSamplingRule_config Config { get; set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
@@ -40,7 +40,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Lower numbers are evaluated first; the first matching rule wins. Omit to append after existing rules.</summary>
         public int? Priority { get; set; }
-        /// <summary>Rule kind: severity_sampling, path_drop, or rate_limit (caps logs/sec for scope_service at ingestion).* `severity_sampling` - Severity-based reduction* `path_drop` - Path exclusion* `rate_limit` - Rate limit</summary>
+        /// <summary>* `severity_sampling` - Severity-based reduction* `path_drop` - Path exclusion* `rate_limit` - Rate limit</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.RuleTypeEnum? RuleType { get; set; }
         /// <summary>Optional list of predicates over string attributes, e.g. [{&quot;key&quot;:&quot;http.route&quot;,&quot;op&quot;:&quot;eq&quot;,&quot;value&quot;:&quot;/api&quot;}].</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -58,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ScopePathPattern { get; set; }
 #endif
-        /// <summary>If set, the rule applies only to this service name; null means all services.</summary>
+        /// <summary>Optional legacy service-name scope; new rules use `config.filter_group` for matching instead.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ScopeService { get; set; }
@@ -95,7 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "config", n => { Config = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsSamplingRule_config>(global::Soenneker.PostHog.OpenApiClient.Models.LogsSamplingRule_config.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetIntValue(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
@@ -117,7 +117,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<UntypedNode>("config", Config);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsSamplingRule_config>("config", Config);
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteStringValue("name", Name);
             writer.WriteIntValue("priority", Priority);

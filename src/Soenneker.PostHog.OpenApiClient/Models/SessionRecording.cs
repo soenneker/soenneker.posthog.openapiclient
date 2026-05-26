@@ -107,10 +107,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The summary_outcome property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.Outcome? SummaryOutcome { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecording_summary_outcome? SummaryOutcome { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.Outcome SummaryOutcome { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecording_summary_outcome SummaryOutcome { get; private set; }
 #endif
         /// <summary>The viewed property</summary>
         public bool? Viewed { get; private set; }
@@ -171,7 +171,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "snapshot_source", n => { SnapshotSource = n.GetStringValue(); } },
                 { "start_time", n => { StartTime = n.GetDateTimeOffsetValue(); } },
                 { "start_url", n => { StartUrl = n.GetStringValue(); } },
-                { "summary_outcome", n => { SummaryOutcome = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Outcome>(global::Soenneker.PostHog.OpenApiClient.Models.Outcome.CreateFromDiscriminatorValue); } },
+                { "summary_outcome", n => { SummaryOutcome = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecording_summary_outcome>(global::Soenneker.PostHog.OpenApiClient.Models.SessionRecording_summary_outcome.CreateFromDiscriminatorValue); } },
                 { "viewed", n => { Viewed = n.GetBoolValue(); } },
                 { "viewers", n => { Viewers = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };

@@ -26,8 +26,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
-        /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertEventKindEnum? Kind { get; private set; }
+        /// <summary>* `check` - Check* `reset` - Reset* `enable` - Enable* `disable` - Disable* `snooze` - Snooze* `unsnooze` - Unsnooze* `threshold_change` - Threshold change* `broken_config` - Broken config</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertEventKindEnum? Kind { get; set; }
         /// <summary>The query_duration_ms property</summary>
         public int? QueryDurationMs { get; private set; }
         /// <summary>The result_count property</summary>
@@ -93,6 +93,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertEventKindEnum>("kind", Kind);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

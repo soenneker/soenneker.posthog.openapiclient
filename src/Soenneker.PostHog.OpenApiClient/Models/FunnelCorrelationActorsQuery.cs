@@ -13,7 +13,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning restore CS1591
     {
         /// <summary>The funnelCorrelationPersonConverted property</summary>
-        public bool? FunnelCorrelationPersonConverted { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_funnelCorrelationPersonConverted? FunnelCorrelationPersonConverted { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_funnelCorrelationPersonConverted FunnelCorrelationPersonConverted { get; set; }
+#endif
         /// <summary>The funnelCorrelationPersonEntity property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -25,36 +31,36 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The funnelCorrelationPropertyValues property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery.FunnelCorrelationActorsQuery_funnelCorrelationPropertyValues>? FunnelCorrelationPropertyValues { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_funnelCorrelationPropertyValues? FunnelCorrelationPropertyValues { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery.FunnelCorrelationActorsQuery_funnelCorrelationPropertyValues> FunnelCorrelationPropertyValues { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_funnelCorrelationPropertyValues FunnelCorrelationPropertyValues { get; set; }
 #endif
         /// <summary>The includeRecordings property</summary>
-        public bool? IncludeRecordings { get; set; }
-        /// <summary>The kind property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_includeRecordings? IncludeRecordings { get; set; }
 #nullable restore
 #else
-        public string Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_includeRecordings IncludeRecordings { get; set; }
 #endif
+        /// <summary>The kind property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_kind? Kind { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers? Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_modifiers? Modifiers { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_modifiers Modifiers { get; set; }
 #endif
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryResponse? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_response? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryResponse Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_response Response { get; set; }
 #endif
         /// <summary>The source property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -67,19 +73,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags? Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_tags? Tags { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_tags Tags { get; set; }
 #endif
         /// <summary>version of the node, used for schema migrations</summary>
-        public double? Version { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_version? Version { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_version Version { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery"/> and sets the default values.
         /// </summary>
         public FunnelCorrelationActorsQuery()
         {
-            Kind = "FunnelCorrelationActorsQuery";
+            Kind = global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_kind.FunnelCorrelationActorsQuery;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -99,16 +111,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "funnelCorrelationPersonConverted", n => { FunnelCorrelationPersonConverted = n.GetBoolValue(); } },
+                { "funnelCorrelationPersonConverted", n => { FunnelCorrelationPersonConverted = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_funnelCorrelationPersonConverted>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_funnelCorrelationPersonConverted.CreateFromDiscriminatorValue); } },
                 { "funnelCorrelationPersonEntity", n => { FunnelCorrelationPersonEntity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery.FunnelCorrelationActorsQuery_funnelCorrelationPersonEntity>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery.FunnelCorrelationActorsQuery_funnelCorrelationPersonEntity.CreateFromDiscriminatorValue); } },
-                { "funnelCorrelationPropertyValues", n => { FunnelCorrelationPropertyValues = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery.FunnelCorrelationActorsQuery_funnelCorrelationPropertyValues>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery.FunnelCorrelationActorsQuery_funnelCorrelationPropertyValues.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "includeRecordings", n => { IncludeRecordings = n.GetBoolValue(); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
-                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryResponse.CreateFromDiscriminatorValue); } },
+                { "funnelCorrelationPropertyValues", n => { FunnelCorrelationPropertyValues = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_funnelCorrelationPropertyValues>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_funnelCorrelationPropertyValues.CreateFromDiscriminatorValue); } },
+                { "includeRecordings", n => { IncludeRecordings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_includeRecordings>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_includeRecordings.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_kind>(); } },
+                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_modifiers>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_modifiers.CreateFromDiscriminatorValue); } },
+                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_response>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_response.CreateFromDiscriminatorValue); } },
                 { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationQuery>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationQuery.CreateFromDiscriminatorValue); } },
-                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
-                { "version", n => { Version = n.GetDoubleValue(); } },
+                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_tags>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_tags.CreateFromDiscriminatorValue); } },
+                { "version", n => { Version = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_version>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_version.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -118,16 +130,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteBoolValue("funnelCorrelationPersonConverted", FunnelCorrelationPersonConverted);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_funnelCorrelationPersonConverted>("funnelCorrelationPersonConverted", FunnelCorrelationPersonConverted);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery.FunnelCorrelationActorsQuery_funnelCorrelationPersonEntity>("funnelCorrelationPersonEntity", FunnelCorrelationPersonEntity);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery.FunnelCorrelationActorsQuery_funnelCorrelationPropertyValues>("funnelCorrelationPropertyValues", FunnelCorrelationPropertyValues);
-            writer.WriteBoolValue("includeRecordings", IncludeRecordings);
-            writer.WriteStringValue("kind", Kind);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryResponse>("response", Response);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_funnelCorrelationPropertyValues>("funnelCorrelationPropertyValues", FunnelCorrelationPropertyValues);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_includeRecordings>("includeRecordings", IncludeRecordings);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_kind>("kind", Kind);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_modifiers>("modifiers", Modifiers);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_response>("response", Response);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationQuery>("source", Source);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
-            writer.WriteDoubleValue("version", Version);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_tags>("tags", Tags);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_version>("version", Version);
         }
         /// <summary>
         /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActionsNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EventsNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery_funnelCorrelationPersonEntityMember1"/>
@@ -202,225 +214,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActionsNode>(null, ActionsNode, DataWarehouseNode, EventsNode, FunnelCorrelationActorsQueryFunnelCorrelationPersonEntityMember1);
-            }
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataWarehousePersonPropertyFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataWarehousePropertyFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ElementPropertyFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EmptyPropertyFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EventMetadataPropertyFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeaturePropertyFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FlagPropertyFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.GroupPropertyFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogQLPropertyFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogEntryPropertyFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogPropertyFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertyFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RecordingPropertyFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsPropertyFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SessionPropertyFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WorkflowVariablePropertyFilter"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class FunnelCorrelationActorsQuery_funnelCorrelationPropertyValues : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilter"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilter? CohortPropertyFilter { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilter CohortPropertyFilter { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataWarehousePersonPropertyFilter"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.DataWarehousePersonPropertyFilter? DataWarehousePersonPropertyFilter { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.DataWarehousePersonPropertyFilter DataWarehousePersonPropertyFilter { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataWarehousePropertyFilter"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.DataWarehousePropertyFilter? DataWarehousePropertyFilter { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.DataWarehousePropertyFilter DataWarehousePropertyFilter { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ElementPropertyFilter"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.ElementPropertyFilter? ElementPropertyFilter { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.ElementPropertyFilter ElementPropertyFilter { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EmptyPropertyFilter"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.EmptyPropertyFilter? EmptyPropertyFilter { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.EmptyPropertyFilter EmptyPropertyFilter { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueFilter"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueFilter? ErrorTrackingIssueFilter { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueFilter ErrorTrackingIssueFilter { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EventMetadataPropertyFilter"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.EventMetadataPropertyFilter? EventMetadataPropertyFilter { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.EventMetadataPropertyFilter EventMetadataPropertyFilter { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter? EventPropertyFilter { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter EventPropertyFilter { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeaturePropertyFilter"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.FeaturePropertyFilter? FeaturePropertyFilter { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.FeaturePropertyFilter FeaturePropertyFilter { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FlagPropertyFilter"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.FlagPropertyFilter? FlagPropertyFilter { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.FlagPropertyFilter FlagPropertyFilter { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.GroupPropertyFilter"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.GroupPropertyFilter? GroupPropertyFilter { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.GroupPropertyFilter GroupPropertyFilter { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogQLPropertyFilter"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.HogQLPropertyFilter? HogQLPropertyFilter { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.HogQLPropertyFilter HogQLPropertyFilter { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogEntryPropertyFilter"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.LogEntryPropertyFilter? LogEntryPropertyFilter { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.LogEntryPropertyFilter LogEntryPropertyFilter { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogPropertyFilter"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.LogPropertyFilter? LogPropertyFilter { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.LogPropertyFilter LogPropertyFilter { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertyFilter"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertyFilter? PersonPropertyFilter { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertyFilter PersonPropertyFilter { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RecordingPropertyFilter"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.RecordingPropertyFilter? RecordingPropertyFilter { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.RecordingPropertyFilter RecordingPropertyFilter { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsPropertyFilter"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsPropertyFilter? RevenueAnalyticsPropertyFilter { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsPropertyFilter RevenueAnalyticsPropertyFilter { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SessionPropertyFilter"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.SessionPropertyFilter? SessionPropertyFilter { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.SessionPropertyFilter SessionPropertyFilter { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter? SpanPropertyFilter { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter SpanPropertyFilter { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WorkflowVariablePropertyFilter"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowVariablePropertyFilter? WorkflowVariablePropertyFilter { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowVariablePropertyFilter WorkflowVariablePropertyFilter { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery.FunnelCorrelationActorsQuery_funnelCorrelationPropertyValues"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery.FunnelCorrelationActorsQuery_funnelCorrelationPropertyValues CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationActorsQuery.FunnelCorrelationActorsQuery_funnelCorrelationPropertyValues();
-                result.CohortPropertyFilter = new global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilter();
-                result.DataWarehousePersonPropertyFilter = new global::Soenneker.PostHog.OpenApiClient.Models.DataWarehousePersonPropertyFilter();
-                result.DataWarehousePropertyFilter = new global::Soenneker.PostHog.OpenApiClient.Models.DataWarehousePropertyFilter();
-                result.ElementPropertyFilter = new global::Soenneker.PostHog.OpenApiClient.Models.ElementPropertyFilter();
-                result.EmptyPropertyFilter = new global::Soenneker.PostHog.OpenApiClient.Models.EmptyPropertyFilter();
-                result.ErrorTrackingIssueFilter = new global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueFilter();
-                result.EventMetadataPropertyFilter = new global::Soenneker.PostHog.OpenApiClient.Models.EventMetadataPropertyFilter();
-                result.EventPropertyFilter = new global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter();
-                result.FeaturePropertyFilter = new global::Soenneker.PostHog.OpenApiClient.Models.FeaturePropertyFilter();
-                result.FlagPropertyFilter = new global::Soenneker.PostHog.OpenApiClient.Models.FlagPropertyFilter();
-                result.GroupPropertyFilter = new global::Soenneker.PostHog.OpenApiClient.Models.GroupPropertyFilter();
-                result.HogQLPropertyFilter = new global::Soenneker.PostHog.OpenApiClient.Models.HogQLPropertyFilter();
-                result.LogEntryPropertyFilter = new global::Soenneker.PostHog.OpenApiClient.Models.LogEntryPropertyFilter();
-                result.LogPropertyFilter = new global::Soenneker.PostHog.OpenApiClient.Models.LogPropertyFilter();
-                result.PersonPropertyFilter = new global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertyFilter();
-                result.RecordingPropertyFilter = new global::Soenneker.PostHog.OpenApiClient.Models.RecordingPropertyFilter();
-                result.RevenueAnalyticsPropertyFilter = new global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsPropertyFilter();
-                result.SessionPropertyFilter = new global::Soenneker.PostHog.OpenApiClient.Models.SessionPropertyFilter();
-                result.SpanPropertyFilter = new global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter();
-                result.WorkflowVariablePropertyFilter = new global::Soenneker.PostHog.OpenApiClient.Models.WorkflowVariablePropertyFilter();
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(CohortPropertyFilter != null || DataWarehousePersonPropertyFilter != null || DataWarehousePropertyFilter != null || ElementPropertyFilter != null || EmptyPropertyFilter != null || ErrorTrackingIssueFilter != null || EventMetadataPropertyFilter != null || EventPropertyFilter != null || FeaturePropertyFilter != null || FlagPropertyFilter != null || GroupPropertyFilter != null || HogQLPropertyFilter != null || LogEntryPropertyFilter != null || LogPropertyFilter != null || PersonPropertyFilter != null || RecordingPropertyFilter != null || RevenueAnalyticsPropertyFilter != null || SessionPropertyFilter != null || SpanPropertyFilter != null || WorkflowVariablePropertyFilter != null)
-                {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(CohortPropertyFilter, DataWarehousePersonPropertyFilter, DataWarehousePropertyFilter, ElementPropertyFilter, EmptyPropertyFilter, ErrorTrackingIssueFilter, EventMetadataPropertyFilter, EventPropertyFilter, FeaturePropertyFilter, FlagPropertyFilter, GroupPropertyFilter, HogQLPropertyFilter, LogEntryPropertyFilter, LogPropertyFilter, PersonPropertyFilter, RecordingPropertyFilter, RevenueAnalyticsPropertyFilter, SessionPropertyFilter, SpanPropertyFilter, WorkflowVariablePropertyFilter);
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilter>(null, CohortPropertyFilter, DataWarehousePersonPropertyFilter, DataWarehousePropertyFilter, ElementPropertyFilter, EmptyPropertyFilter, ErrorTrackingIssueFilter, EventMetadataPropertyFilter, EventPropertyFilter, FeaturePropertyFilter, FlagPropertyFilter, GroupPropertyFilter, HogQLPropertyFilter, LogEntryPropertyFilter, LogPropertyFilter, PersonPropertyFilter, RecordingPropertyFilter, RevenueAnalyticsPropertyFilter, SessionPropertyFilter, SpanPropertyFilter, WorkflowVariablePropertyFilter);
             }
         }
     }

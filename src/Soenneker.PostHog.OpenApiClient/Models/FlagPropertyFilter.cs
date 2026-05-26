@@ -23,42 +23,30 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The label property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Label { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FlagPropertyFilter_label? Label { get; set; }
 #nullable restore
 #else
-        public string Label { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FlagPropertyFilter_label Label { get; set; }
 #endif
         /// <summary>Only flag_evaluates_to operator is allowed for flag dependencies</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Operator { get; set; }
-#nullable restore
-#else
-        public string Operator { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.FlagPropertyFilter_operator? Operator { get; set; }
         /// <summary>Feature flag dependency</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Type { get; set; }
-#nullable restore
-#else
-        public string Type { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.FlagPropertyFilter_type? Type { get; set; }
         /// <summary>The value can be true, false, or a variant name</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FlagPropertyFilter.FlagPropertyFilter_value? Value { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Value? Value { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FlagPropertyFilter.FlagPropertyFilter_value Value { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Value Value { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FlagPropertyFilter"/> and sets the default values.
         /// </summary>
         public FlagPropertyFilter()
         {
-            Operator = "flag_evaluates_to";
-            Type = "flag";
+            Operator = global::Soenneker.PostHog.OpenApiClient.Models.FlagPropertyFilter_operator.Flag_evaluates_to;
+            Type = global::Soenneker.PostHog.OpenApiClient.Models.FlagPropertyFilter_type.Flag;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -79,10 +67,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "key", n => { Key = n.GetStringValue(); } },
-                { "label", n => { Label = n.GetStringValue(); } },
-                { "operator", n => { Operator = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetStringValue(); } },
-                { "value", n => { Value = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FlagPropertyFilter.FlagPropertyFilter_value>(global::Soenneker.PostHog.OpenApiClient.Models.FlagPropertyFilter.FlagPropertyFilter_value.CreateFromDiscriminatorValue); } },
+                { "label", n => { Label = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FlagPropertyFilter_label>(global::Soenneker.PostHog.OpenApiClient.Models.FlagPropertyFilter_label.CreateFromDiscriminatorValue); } },
+                { "operator", n => { Operator = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FlagPropertyFilter_operator>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FlagPropertyFilter_type>(); } },
+                { "value", n => { Value = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Value>(global::Soenneker.PostHog.OpenApiClient.Models.Value.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -93,70 +81,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("key", Key);
-            writer.WriteStringValue("label", Label);
-            writer.WriteStringValue("operator", Operator);
-            writer.WriteStringValue("type", Type);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FlagPropertyFilter.FlagPropertyFilter_value>("value", Value);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="bool"/>, <see cref="string"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class FlagPropertyFilter_value : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="bool"/></summary>
-            public bool? Boolean { get; set; }
-            /// <summary>Composed type representation for type <see cref="string"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public string? String { get; set; }
-#nullable restore
-#else
-            public string String { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FlagPropertyFilter.FlagPropertyFilter_value"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.FlagPropertyFilter.FlagPropertyFilter_value CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.FlagPropertyFilter.FlagPropertyFilter_value();
-                if(parseNode.GetBoolValue() is bool booleanValue)
-                {
-                    result.Boolean = booleanValue;
-                }
-                else if(parseNode.GetStringValue() is string stringValue)
-                {
-                    result.String = stringValue;
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(Boolean != null)
-                {
-                    writer.WriteBoolValue(null, Boolean);
-                }
-                else if(String != null)
-                {
-                    writer.WriteStringValue(null, String);
-                }
-            }
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FlagPropertyFilter_label>("label", Label);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FlagPropertyFilter_operator>("operator", Operator);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FlagPropertyFilter_type>("type", Type);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Value>("value", Value);
         }
     }
 }

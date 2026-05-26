@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Date range for issue impact and latest-event metadata. Defaults to the last 7 days.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingDateRange? DateRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueQueryRequest_dateRange? DateRange { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingDateRange DateRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueQueryRequest_dateRange DateRange { get; set; }
 #endif
         /// <summary>When true, exclude internal/test account data from results. Defaults to true.</summary>
         public bool? FilterTestAccounts { get; set; }
@@ -55,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingDateRange>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingDateRange.CreateFromDiscriminatorValue); } },
+                { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueQueryRequest_dateRange>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueQueryRequest_dateRange.CreateFromDiscriminatorValue); } },
                 { "filterTestAccounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
                 { "includeSparkline", n => { IncludeSparkline = n.GetBoolValue(); } },
                 { "issueId", n => { IssueId = n.GetGuidValue(); } },
@@ -69,7 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingDateRange>("dateRange", DateRange);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueQueryRequest_dateRange>("dateRange", DateRange);
             writer.WriteBoolValue("filterTestAccounts", FilterTestAccounts);
             writer.WriteBoolValue("includeSparkline", IncludeSparkline);
             writer.WriteGuidValue("issueId", IssueId);

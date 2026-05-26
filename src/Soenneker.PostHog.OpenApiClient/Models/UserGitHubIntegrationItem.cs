@@ -15,10 +15,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Installation account metadata from GitHub.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubAccount? Account { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubIntegrationItem_account? Account { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubAccount Account { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubIntegrationItem_account Account { get; set; }
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -77,7 +77,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "account", n => { Account = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubAccount>(global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubAccount.CreateFromDiscriminatorValue); } },
+                { "account", n => { Account = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubIntegrationItem_account>(global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubIntegrationItem_account.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "installation_id", n => { InstallationId = n.GetStringValue(); } },
@@ -93,7 +93,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubAccount>("account", Account);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubIntegrationItem_account>("account", Account);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteGuidValue("id", Id);
             writer.WriteStringValue("installation_id", InstallationId);

@@ -25,10 +25,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The bytecode property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Bytecode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_bytecode? Bytecode { get; set; }
 #nullable restore
 #else
-        public UntypedNode Bytecode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_bytecode Bytecode { get; set; }
 #endif
         /// <summary>The bytecode_error property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -64,15 +64,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_properties> Properties { get; set; }
 #endif
-        /// <summary>The source property</summary>
+        /// <summary>* `events` - events* `person-updates` - person-updates* `data-warehouse-table` - data-warehouse-table</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersSourceEnum? Source { get; set; }
         /// <summary>The transpiled property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Transpiled { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_transpiled? Transpiled { get; set; }
 #nullable restore
 #else
-        public UntypedNode Transpiled { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_transpiled Transpiled { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters"/> and sets the default values.
@@ -80,7 +80,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public HogFunctionFilters()
         {
             AdditionalData = new Dictionary<string, object>();
-            Source = global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersSourceEnum.Events;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -101,14 +100,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "actions", n => { Actions = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_actions>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_actions.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "bytecode", n => { Bytecode = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "bytecode", n => { Bytecode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_bytecode>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_bytecode.CreateFromDiscriminatorValue); } },
                 { "bytecode_error", n => { BytecodeError = n.GetStringValue(); } },
                 { "data_warehouse", n => { DataWarehouse = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_data_warehouse>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_data_warehouse.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "events", n => { Events = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_events>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_events.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "filter_test_accounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
                 { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_properties>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_properties.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "source", n => { Source = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersSourceEnum>(); } },
-                { "transpiled", n => { Transpiled = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "transpiled", n => { Transpiled = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_transpiled>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_transpiled.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -119,14 +118,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_actions>("actions", Actions);
-            writer.WriteObjectValue<UntypedNode>("bytecode", Bytecode);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_bytecode>("bytecode", Bytecode);
             writer.WriteStringValue("bytecode_error", BytecodeError);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_data_warehouse>("data_warehouse", DataWarehouse);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_events>("events", Events);
             writer.WriteBoolValue("filter_test_accounts", FilterTestAccounts);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_properties>("properties", Properties);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersSourceEnum>("source", Source);
-            writer.WriteObjectValue<UntypedNode>("transpiled", Transpiled);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_transpiled>("transpiled", Transpiled);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

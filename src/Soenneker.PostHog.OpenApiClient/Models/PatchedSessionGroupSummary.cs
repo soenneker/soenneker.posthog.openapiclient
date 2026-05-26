@@ -19,28 +19,28 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSessionGroupSummary_created_by? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSessionGroupSummary_created_by CreatedBy { get; private set; }
 #endif
         /// <summary>Additional context passed to the summary (ExtraSummaryContext schema)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? ExtraSummaryContext { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSessionGroupSummary_extra_summary_context? ExtraSummaryContext { get; private set; }
 #nullable restore
 #else
-        public UntypedNode ExtraSummaryContext { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSessionGroupSummary_extra_summary_context ExtraSummaryContext { get; private set; }
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>Summary run metadata (SessionSummaryRunMeta schema)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? RunMetadata { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSessionGroupSummary_run_metadata? RunMetadata { get; private set; }
 #nullable restore
 #else
-        public UntypedNode RunMetadata { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSessionGroupSummary_run_metadata RunMetadata { get; private set; }
 #endif
         /// <summary>List of session replay IDs included in this group summary</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -53,10 +53,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Group summary in JSON format (EnrichedSessionGroupSummaryPatternsList schema)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Summary { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSessionGroupSummary_summary? Summary { get; private set; }
 #nullable restore
 #else
-        public UntypedNode Summary { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSessionGroupSummary_summary Summary { get; private set; }
 #endif
         /// <summary>The team property</summary>
         public int? Team { get; private set; }
@@ -94,12 +94,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
-                { "extra_summary_context", n => { ExtraSummaryContext = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSessionGroupSummary_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedSessionGroupSummary_created_by.CreateFromDiscriminatorValue); } },
+                { "extra_summary_context", n => { ExtraSummaryContext = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSessionGroupSummary_extra_summary_context>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedSessionGroupSummary_extra_summary_context.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "run_metadata", n => { RunMetadata = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "run_metadata", n => { RunMetadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSessionGroupSummary_run_metadata>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedSessionGroupSummary_run_metadata.CreateFromDiscriminatorValue); } },
                 { "session_ids", n => { SessionIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "summary", n => { Summary = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "summary", n => { Summary = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSessionGroupSummary_summary>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedSessionGroupSummary_summary.CreateFromDiscriminatorValue); } },
                 { "team", n => { Team = n.GetIntValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
             };

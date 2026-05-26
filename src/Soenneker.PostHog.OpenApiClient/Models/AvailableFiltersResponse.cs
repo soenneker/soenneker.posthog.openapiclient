@@ -25,10 +25,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Pre-computed filter options for scopes, activities, and users.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.StaticFilters? StaticFilters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AvailableFiltersResponse_static_filters? StaticFilters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.StaticFilters StaticFilters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AvailableFiltersResponse_static_filters StaticFilters { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AvailableFiltersResponse"/> and sets the default values.
@@ -56,7 +56,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "detail_fields", n => { DetailFields = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AvailableFiltersResponse_detail_fields>(global::Soenneker.PostHog.OpenApiClient.Models.AvailableFiltersResponse_detail_fields.CreateFromDiscriminatorValue); } },
-                { "static_filters", n => { StaticFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StaticFilters>(global::Soenneker.PostHog.OpenApiClient.Models.StaticFilters.CreateFromDiscriminatorValue); } },
+                { "static_filters", n => { StaticFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AvailableFiltersResponse_static_filters>(global::Soenneker.PostHog.OpenApiClient.Models.AvailableFiltersResponse_static_filters.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -67,7 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AvailableFiltersResponse_detail_fields>("detail_fields", DetailFields);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StaticFilters>("static_filters", StaticFilters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AvailableFiltersResponse_static_filters>("static_filters", StaticFilters);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

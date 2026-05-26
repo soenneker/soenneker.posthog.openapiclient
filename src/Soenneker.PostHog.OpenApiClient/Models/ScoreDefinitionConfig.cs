@@ -7,36 +7,64 @@ using System.IO;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BooleanScoreDefinitionConfig"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreDefinitionConfig"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NumericScoreDefinitionConfig"/>
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class ScoreDefinitionConfig : IComposedTypeWrapper, IParsable
+    #pragma warning disable CS1591
+    public partial class ScoreDefinitionConfig : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BooleanScoreDefinitionConfig"/></summary>
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Optional label for a false value.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BooleanScoreDefinitionConfig? BooleanScoreDefinitionConfig { get; set; }
+        public string? FalseLabel { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BooleanScoreDefinitionConfig BooleanScoreDefinitionConfig { get; set; }
+        public string FalseLabel { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreDefinitionConfig"/></summary>
+        /// <summary>Optional inclusive maximum score.</summary>
+        public double? Max { get; set; }
+        /// <summary>Optional maximum number of options that can be selected when `selection_mode` is `multiple`.</summary>
+        public int? MaxSelections { get; set; }
+        /// <summary>Optional inclusive minimum score.</summary>
+        public double? Min { get; set; }
+        /// <summary>Optional minimum number of options that can be selected when `selection_mode` is `multiple`.</summary>
+        public int? MinSelections { get; set; }
+        /// <summary>Ordered categorical options available to the scorer.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreDefinitionConfig? CategoricalScoreDefinitionConfig { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreOption>? Options { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreDefinitionConfig CategoricalScoreDefinitionConfig { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreOption> Options { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NumericScoreDefinitionConfig"/></summary>
+        /// <summary>* `single` - single* `multiple` - multiple</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.SelectionModeEnum? SelectionMode { get; set; }
+        /// <summary>Optional increment step for numeric input, for example 1 or 0.5.</summary>
+        public double? Step { get; set; }
+        /// <summary>Optional label for a true value.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.NumericScoreDefinitionConfig? NumericScoreDefinitionConfig { get; set; }
+        public string? TrueLabel { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.NumericScoreDefinitionConfig NumericScoreDefinitionConfig { get; set; }
+        public string TrueLabel { get; set; }
 #endif
+        /// <summary>Union discriminator</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Type { get; set; }
+#nullable restore
+#else
+        public string Type { get; set; }
+#endif
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionConfig"/> and sets the default values.
+        /// </summary>
+        public ScoreDefinitionConfig()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -45,21 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-            var result = new global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionConfig();
-            if("BooleanScoreDefinitionConfig".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.BooleanScoreDefinitionConfig = new global::Soenneker.PostHog.OpenApiClient.Models.BooleanScoreDefinitionConfig();
-            }
-            else if("CategoricalScoreDefinitionConfig".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.CategoricalScoreDefinitionConfig = new global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreDefinitionConfig();
-            }
-            else if("NumericScoreDefinitionConfig".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.NumericScoreDefinitionConfig = new global::Soenneker.PostHog.OpenApiClient.Models.NumericScoreDefinitionConfig();
-            }
-            return result;
+            return new global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionConfig();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -67,19 +81,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(BooleanScoreDefinitionConfig != null)
+            return new Dictionary<string, Action<IParseNode>>
             {
-                return BooleanScoreDefinitionConfig.GetFieldDeserializers();
-            }
-            else if(CategoricalScoreDefinitionConfig != null)
-            {
-                return CategoricalScoreDefinitionConfig.GetFieldDeserializers();
-            }
-            else if(NumericScoreDefinitionConfig != null)
-            {
-                return NumericScoreDefinitionConfig.GetFieldDeserializers();
-            }
-            return new Dictionary<string, Action<IParseNode>>();
+                { "false_label", n => { FalseLabel = n.GetStringValue(); } },
+                { "max", n => { Max = n.GetDoubleValue(); } },
+                { "max_selections", n => { MaxSelections = n.GetIntValue(); } },
+                { "min", n => { Min = n.GetDoubleValue(); } },
+                { "min_selections", n => { MinSelections = n.GetIntValue(); } },
+                { "options", n => { Options = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreOption>(global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreOption.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "selection_mode", n => { SelectionMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SelectionModeEnum>(); } },
+                { "step", n => { Step = n.GetDoubleValue(); } },
+                { "true_label", n => { TrueLabel = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetStringValue(); } },
+            };
         }
         /// <summary>
         /// Serializes information the current object
@@ -88,18 +102,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(BooleanScoreDefinitionConfig != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BooleanScoreDefinitionConfig>(null, BooleanScoreDefinitionConfig);
-            }
-            else if(CategoricalScoreDefinitionConfig != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreDefinitionConfig>(null, CategoricalScoreDefinitionConfig);
-            }
-            else if(NumericScoreDefinitionConfig != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NumericScoreDefinitionConfig>(null, NumericScoreDefinitionConfig);
-            }
+            writer.WriteStringValue("false_label", FalseLabel);
+            writer.WriteDoubleValue("max", Max);
+            writer.WriteIntValue("max_selections", MaxSelections);
+            writer.WriteDoubleValue("min", Min);
+            writer.WriteIntValue("min_selections", MinSelections);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreOption>("options", Options);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SelectionModeEnum>("selection_mode", SelectionMode);
+            writer.WriteDoubleValue("step", Step);
+            writer.WriteStringValue("true_label", TrueLabel);
+            writer.WriteStringValue("type", Type);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

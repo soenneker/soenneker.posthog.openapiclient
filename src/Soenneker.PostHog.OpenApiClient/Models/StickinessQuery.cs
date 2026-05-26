@@ -15,42 +15,60 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Compare to date range</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter? CompareFilter { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_compareFilter? CompareFilter { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter CompareFilter { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_compareFilter CompareFilter { get; set; }
 #endif
         /// <summary>Colors used in the insight&apos;s visualization</summary>
-        public double? DataColorTheme { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_dataColorTheme? DataColorTheme { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_dataColorTheme DataColorTheme { get; set; }
+#endif
         /// <summary>Date range for the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DateRange? DateRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_dateRange? DateRange { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DateRange DateRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_dateRange DateRange { get; set; }
 #endif
         /// <summary>Exclude internal and test users by applying the respective filters</summary>
-        public bool? FilterTestAccounts { get; set; }
-        /// <summary>Granularity of the response. Can be one of `hour`, `day`, `week` or `month`</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.IntervalType? Interval { get; set; }
-        /// <summary>How many intervals comprise a period. Only used for cohorts, otherwise default 1.</summary>
-        public int? IntervalCount { get; set; }
-        /// <summary>The kind property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_filterTestAccounts? FilterTestAccounts { get; set; }
 #nullable restore
 #else
-        public string Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_filterTestAccounts FilterTestAccounts { get; set; }
 #endif
+        /// <summary>Granularity of the response. Can be one of `hour`, `day`, `week` or `month`</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_interval? Interval { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_interval Interval { get; set; }
+#endif
+        /// <summary>How many intervals comprise a period. Only used for cohorts, otherwise default 1.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_intervalCount? IntervalCount { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_intervalCount IntervalCount { get; set; }
+#endif
+        /// <summary>The kind property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_kind? Kind { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers? Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_modifiers? Modifiers { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_modifiers Modifiers { get; set; }
 #endif
         /// <summary>Property filters for all series</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -63,13 +81,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessQueryResponse? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_response? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessQueryResponse Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_response Response { get; set; }
 #endif
         /// <summary>Sampling rate</summary>
-        public double? SamplingFactor { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_samplingFactor? SamplingFactor { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_samplingFactor SamplingFactor { get; set; }
+#endif
         /// <summary>Events and actions to include</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -81,28 +105,33 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Properties specific to the stickiness insight</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilter? StickinessFilter { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_stickinessFilter? StickinessFilter { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilter StickinessFilter { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_stickinessFilter StickinessFilter { get; set; }
 #endif
         /// <summary>Tags that will be added to the Query log comment</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags? Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_tags? Tags { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_tags Tags { get; set; }
 #endif
         /// <summary>version of the node, used for schema migrations</summary>
-        public double? Version { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_version? Version { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_version Version { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery"/> and sets the default values.
         /// </summary>
         public StickinessQuery()
         {
-            Interval = global::Soenneker.PostHog.OpenApiClient.Models.IntervalType.Day;
-            Kind = "StickinessQuery";
+            Kind = global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_kind.StickinessQuery;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -122,21 +151,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "compareFilter", n => { CompareFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter>(global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter.CreateFromDiscriminatorValue); } },
-                { "dataColorTheme", n => { DataColorTheme = n.GetDoubleValue(); } },
-                { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>(global::Soenneker.PostHog.OpenApiClient.Models.DateRange.CreateFromDiscriminatorValue); } },
-                { "filterTestAccounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
-                { "interval", n => { Interval = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalType>(); } },
-                { "intervalCount", n => { IntervalCount = n.GetIntValue(); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
-                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
+                { "compareFilter", n => { CompareFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_compareFilter>(global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_compareFilter.CreateFromDiscriminatorValue); } },
+                { "dataColorTheme", n => { DataColorTheme = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_dataColorTheme>(global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_dataColorTheme.CreateFromDiscriminatorValue); } },
+                { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_dateRange>(global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_dateRange.CreateFromDiscriminatorValue); } },
+                { "filterTestAccounts", n => { FilterTestAccounts = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_filterTestAccounts>(global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_filterTestAccounts.CreateFromDiscriminatorValue); } },
+                { "interval", n => { Interval = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_interval>(global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_interval.CreateFromDiscriminatorValue); } },
+                { "intervalCount", n => { IntervalCount = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_intervalCount>(global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_intervalCount.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_kind>(); } },
+                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_modifiers>(global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_modifiers.CreateFromDiscriminatorValue); } },
                 { "properties", n => { Properties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery.StickinessQuery_properties>(global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery.StickinessQuery_properties.CreateFromDiscriminatorValue); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.StickinessQueryResponse.CreateFromDiscriminatorValue); } },
-                { "samplingFactor", n => { SamplingFactor = n.GetDoubleValue(); } },
+                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_response>(global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_response.CreateFromDiscriminatorValue); } },
+                { "samplingFactor", n => { SamplingFactor = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_samplingFactor>(global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_samplingFactor.CreateFromDiscriminatorValue); } },
                 { "series", n => { Series = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery.StickinessQuery_series>(global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery.StickinessQuery_series.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "stickinessFilter", n => { StickinessFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilter>(global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilter.CreateFromDiscriminatorValue); } },
-                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
-                { "version", n => { Version = n.GetDoubleValue(); } },
+                { "stickinessFilter", n => { StickinessFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_stickinessFilter>(global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_stickinessFilter.CreateFromDiscriminatorValue); } },
+                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_tags>(global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_tags.CreateFromDiscriminatorValue); } },
+                { "version", n => { Version = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_version>(global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_version.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -146,28 +175,36 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter>("compareFilter", CompareFilter);
-            writer.WriteDoubleValue("dataColorTheme", DataColorTheme);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>("dateRange", DateRange);
-            writer.WriteBoolValue("filterTestAccounts", FilterTestAccounts);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalType>("interval", Interval);
-            writer.WriteIntValue("intervalCount", IntervalCount);
-            writer.WriteStringValue("kind", Kind);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_compareFilter>("compareFilter", CompareFilter);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_dataColorTheme>("dataColorTheme", DataColorTheme);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_dateRange>("dateRange", DateRange);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_filterTestAccounts>("filterTestAccounts", FilterTestAccounts);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_interval>("interval", Interval);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_intervalCount>("intervalCount", IntervalCount);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_kind>("kind", Kind);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_modifiers>("modifiers", Modifiers);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery.StickinessQuery_properties>("properties", Properties);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQueryResponse>("response", Response);
-            writer.WriteDoubleValue("samplingFactor", SamplingFactor);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_response>("response", Response);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_samplingFactor>("samplingFactor", SamplingFactor);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery.StickinessQuery_series>("series", Series);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilter>("stickinessFilter", StickinessFilter);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
-            writer.WriteDoubleValue("version", Version);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_stickinessFilter>("stickinessFilter", StickinessFilter);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_tags>("tags", Tags);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_version>("version", Version);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_propertiesMember1"/>, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.WorkflowVariablePropertyFilter&gt;
+        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Properties"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_propertiesMember1"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class StickinessQuery_properties : IComposedTypeWrapper, IParsable
         {
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Properties"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.Properties? Properties { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.Properties Properties { get; set; }
+#endif
             /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -184,14 +221,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
             public global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_propertiesMember1 StickinessQueryPropertiesMember1 { get; set; }
 #endif
-            /// <summary>Composed type representation for type List&lt;global::Soenneker.PostHog.OpenApiClient.Models.WorkflowVariablePropertyFilter&gt;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public List<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowVariablePropertyFilter>? WorkflowVariablePropertyFilter { get; set; }
-#nullable restore
-#else
-            public List<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowVariablePropertyFilter> WorkflowVariablePropertyFilter { get; set; }
-#endif
             /// <summary>
             /// Creates a new instance of the appropriate class based on discriminator value
             /// </summary>
@@ -201,14 +230,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
                 var result = new global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery.StickinessQuery_properties();
-                if(parseNode.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowVariablePropertyFilter>(global::Soenneker.PostHog.OpenApiClient.Models.WorkflowVariablePropertyFilter.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowVariablePropertyFilter> workflowVariablePropertyFilterValue)
-                {
-                    result.WorkflowVariablePropertyFilter = workflowVariablePropertyFilterValue;
-                }
-                else {
-                    result.PropertyGroupFilter = new global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter();
-                    result.StickinessQueryPropertiesMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_propertiesMember1();
-                }
+                result.Properties = new global::Soenneker.PostHog.OpenApiClient.Models.Properties();
+                result.PropertyGroupFilter = new global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter();
+                result.StickinessQueryPropertiesMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery_propertiesMember1();
                 return result;
             }
             /// <summary>
@@ -217,9 +241,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
-                if(PropertyGroupFilter != null || StickinessQueryPropertiesMember1 != null)
+                if(Properties != null || PropertyGroupFilter != null || StickinessQueryPropertiesMember1 != null)
                 {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(PropertyGroupFilter, StickinessQueryPropertiesMember1);
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(Properties, PropertyGroupFilter, StickinessQueryPropertiesMember1);
                 }
                 return new Dictionary<string, Action<IParseNode>>();
             }
@@ -230,13 +254,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             public virtual void Serialize(ISerializationWriter writer)
             {
                 if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(WorkflowVariablePropertyFilter != null)
-                {
-                    writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowVariablePropertyFilter>(null, WorkflowVariablePropertyFilter);
-                }
-                else {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter>(null, PropertyGroupFilter, StickinessQueryPropertiesMember1);
-                }
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Properties>(null, Properties, PropertyGroupFilter, StickinessQueryPropertiesMember1);
             }
         }
         /// <summary>

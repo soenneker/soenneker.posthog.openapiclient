@@ -21,10 +21,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OrganizationInvite_created_by? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OrganizationInvite_created_by CreatedBy { get; private set; }
 #endif
         /// <summary>The emailing_attempt_made property</summary>
         public bool? EmailingAttemptMade { get; private set; }
@@ -53,10 +53,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>List of team IDs and corresponding access levels to private projects.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? PrivateProjectAccess { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OrganizationInvite_private_project_access? PrivateProjectAccess { get; set; }
 #nullable restore
 #else
-        public UntypedNode PrivateProjectAccess { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OrganizationInvite_private_project_access PrivateProjectAccess { get; set; }
 #endif
         /// <summary>The send_email property</summary>
         public bool? SendEmail { get; set; }
@@ -97,14 +97,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "combine_pending_invites", n => { CombinePendingInvites = n.GetBoolValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationInvite_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.OrganizationInvite_created_by.CreateFromDiscriminatorValue); } },
                 { "emailing_attempt_made", n => { EmailingAttemptMade = n.GetBoolValue(); } },
                 { "first_name", n => { FirstName = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "is_expired", n => { IsExpired = n.GetBoolValue(); } },
                 { "level", n => { Level = n.GetIntValue(); } },
                 { "message", n => { Message = n.GetStringValue(); } },
-                { "private_project_access", n => { PrivateProjectAccess = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "private_project_access", n => { PrivateProjectAccess = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationInvite_private_project_access>(global::Soenneker.PostHog.OpenApiClient.Models.OrganizationInvite_private_project_access.CreateFromDiscriminatorValue); } },
                 { "send_email", n => { SendEmail = n.GetBoolValue(); } },
                 { "target_email", n => { TargetEmail = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
@@ -121,7 +121,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("first_name", FirstName);
             writer.WriteIntValue("level", Level);
             writer.WriteStringValue("message", Message);
-            writer.WriteObjectValue<UntypedNode>("private_project_access", PrivateProjectAccess);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationInvite_private_project_access>("private_project_access", PrivateProjectAccess);
             writer.WriteBoolValue("send_email", SendEmail);
             writer.WriteStringValue("target_email", TargetEmail);
             writer.WriteAdditionalData(AdditionalData);

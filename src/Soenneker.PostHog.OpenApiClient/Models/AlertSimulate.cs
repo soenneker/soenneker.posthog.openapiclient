@@ -25,10 +25,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Detector configuration to simulate.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig? DetectorConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulate_detector_config? DetectorConfig { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig DetectorConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulate_detector_config DetectorConfig { get; set; }
 #endif
         /// <summary>Insight ID to simulate the detector on.</summary>
         public int? Insight { get; set; }
@@ -60,7 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "date_from", n => { DateFrom = n.GetStringValue(); } },
-                { "detector_config", n => { DetectorConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig>(global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig.CreateFromDiscriminatorValue); } },
+                { "detector_config", n => { DetectorConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulate_detector_config>(global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulate_detector_config.CreateFromDiscriminatorValue); } },
                 { "insight", n => { Insight = n.GetIntValue(); } },
                 { "series_index", n => { SeriesIndex = n.GetIntValue(); } },
             };
@@ -73,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("date_from", DateFrom);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig>("detector_config", DetectorConfig);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulate_detector_config>("detector_config", DetectorConfig);
             writer.WriteIntValue("insight", Insight);
             writer.WriteIntValue("series_index", SeriesIndex);
             writer.WriteAdditionalData(AdditionalData);

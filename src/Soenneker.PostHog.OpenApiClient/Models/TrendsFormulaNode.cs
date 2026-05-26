@@ -15,10 +15,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Optional user-defined name for the formula</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CustomName { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TrendsFormulaNode_custom_name? CustomName { get; set; }
 #nullable restore
 #else
-        public string CustomName { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TrendsFormulaNode_custom_name CustomName { get; set; }
 #endif
         /// <summary>The formula property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -46,7 +46,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "custom_name", n => { CustomName = n.GetStringValue(); } },
+                { "custom_name", n => { CustomName = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TrendsFormulaNode_custom_name>(global::Soenneker.PostHog.OpenApiClient.Models.TrendsFormulaNode_custom_name.CreateFromDiscriminatorValue); } },
                 { "formula", n => { Formula = n.GetStringValue(); } },
             };
         }
@@ -57,7 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("custom_name", CustomName);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TrendsFormulaNode_custom_name>("custom_name", CustomName);
             writer.WriteStringValue("formula", Formula);
         }
     }

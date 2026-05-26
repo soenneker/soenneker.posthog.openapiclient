@@ -32,10 +32,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The export_context property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? ExportContext { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExportedAsset_export_context? ExportContext { get; set; }
 #nullable restore
 #else
-        public UntypedNode ExportContext { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExportedAsset_export_context ExportContext { get; set; }
 #endif
         /// <summary>* `image/png` - image/png* `application/pdf` - application/pdf* `text/csv` - text/csv* `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet` - application/vnd.openxmlformats-officedocument.spreadsheetml.sheet* `video/webm` - video/webm* `video/mp4` - video/mp4* `image/gif` - image/gif* `application/json` - application/json</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ExportFormatEnum? ExportFormat { get; set; }
@@ -82,7 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "dashboard", n => { Dashboard = n.GetIntValue(); } },
                 { "exception", n => { Exception = n.GetStringValue(); } },
                 { "expires_after", n => { ExpiresAfter = n.GetDateTimeOffsetValue(); } },
-                { "export_context", n => { ExportContext = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "export_context", n => { ExportContext = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExportedAsset_export_context>(global::Soenneker.PostHog.OpenApiClient.Models.ExportedAsset_export_context.CreateFromDiscriminatorValue); } },
                 { "export_format", n => { ExportFormat = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExportFormatEnum>(); } },
                 { "filename", n => { Filename = n.GetStringValue(); } },
                 { "has_content", n => { HasContent = n.GetBoolValue(); } },
@@ -98,7 +98,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("dashboard", Dashboard);
-            writer.WriteObjectValue<UntypedNode>("export_context", ExportContext);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExportedAsset_export_context>("export_context", ExportContext);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExportFormatEnum>("export_format", ExportFormat);
             writer.WriteIntValue("insight", Insight);
             writer.WriteAdditionalData(AdditionalData);

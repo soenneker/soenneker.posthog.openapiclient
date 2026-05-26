@@ -10,7 +10,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Web_analytics
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\environments\{environment_-id}\web_analytics
+    /// Builds and executes requests for operations under \api\environments\{project_id}\web_analytics
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Web_analyticsRequestBuilder : BaseRequestBuilder
@@ -25,7 +25,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Web_analytics
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Web_analyticsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{environment_%2Did}/web_analytics", pathParameters)
+        public Web_analyticsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{project_id}/web_analytics", pathParameters)
         {
         }
         /// <summary>
@@ -33,7 +33,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Web_analytics
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Web_analyticsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{environment_%2Did}/web_analytics", rawUrl)
+        public Web_analyticsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{project_id}/web_analytics", rawUrl)
         {
         }
     }

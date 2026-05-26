@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `product_analytics` - product_analytics* `sql` - sql* `session_replay` - session_replay* `error_tracking` - error_tracking* `plan` - plan* `execution` - execution* `survey` - survey* `research` - research* `flags` - flags* `llm_analytics` - llm_analytics* `sandbox` - sandbox</summary>
+    /// <summary>* `product_analytics` - product_analytics* `sql` - sql* `session_replay` - session_replay* `error_tracking` - error_tracking* `plan` - plan* `execution` - execution* `survey` - survey* `research` - research* `flags` - flags* `llm_analytics` - llm_analytics* `sandbox` - sandbox* `user_interview` - user_interview</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum AgentModeEnum
     {
@@ -50,6 +50,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "sandbox")]
         #pragma warning disable CS1591
         Sandbox,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "user_interview")]
+        #pragma warning disable CS1591
+        User_interview,
         #pragma warning restore CS1591
     }
 }

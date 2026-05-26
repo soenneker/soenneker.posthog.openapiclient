@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Date range for the query. Defaults to last 24 hours.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracingDateRange? DateRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TracingTraceRequest_dateRange? DateRange { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracingDateRange DateRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TracingTraceRequest_dateRange DateRange { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TracingTraceRequest"/> and sets the default values.
@@ -47,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingDateRange>(global::Soenneker.PostHog.OpenApiClient.Models.TracingDateRange.CreateFromDiscriminatorValue); } },
+                { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingTraceRequest_dateRange>(global::Soenneker.PostHog.OpenApiClient.Models.TracingTraceRequest_dateRange.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -57,7 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingDateRange>("dateRange", DateRange);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingTraceRequest_dateRange>("dateRange", DateRange);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

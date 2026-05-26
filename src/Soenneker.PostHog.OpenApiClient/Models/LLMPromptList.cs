@@ -19,10 +19,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LLMPromptList_created_by? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LLMPromptList_created_by CreatedBy { get; private set; }
 #endif
         /// <summary>The deleted property</summary>
         public bool? Deleted { get; private set; }
@@ -59,10 +59,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Prompt payload as JSON or string data.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Prompt { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LLMPromptList_prompt? Prompt { get; private set; }
 #nullable restore
 #else
-        public UntypedNode Prompt { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LLMPromptList_prompt Prompt { get; private set; }
 #endif
         /// <summary>The prompt_preview property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -106,7 +106,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LLMPromptList_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.LLMPromptList_created_by.CreateFromDiscriminatorValue); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "first_version_created_at", n => { FirstVersionCreatedAt = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
@@ -114,7 +114,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "latest_version", n => { LatestVersion = n.GetIntValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "outline", n => { Outline = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LLMPromptOutlineEntry>(global::Soenneker.PostHog.OpenApiClient.Models.LLMPromptOutlineEntry.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "prompt", n => { Prompt = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "prompt", n => { Prompt = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LLMPromptList_prompt>(global::Soenneker.PostHog.OpenApiClient.Models.LLMPromptList_prompt.CreateFromDiscriminatorValue); } },
                 { "prompt_preview", n => { PromptPreview = n.GetStringValue(); } },
                 { "prompt_size_bytes", n => { PromptSizeBytes = n.GetIntValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },

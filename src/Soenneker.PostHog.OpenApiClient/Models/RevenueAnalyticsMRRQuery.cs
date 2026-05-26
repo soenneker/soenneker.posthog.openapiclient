@@ -23,28 +23,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The dateRange property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DateRange? DateRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQuery_dateRange? DateRange { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DateRange DateRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQuery_dateRange DateRange { get; set; }
 #endif
         /// <summary>The interval property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SimpleIntervalType? Interval { get; set; }
         /// <summary>The kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Kind { get; set; }
-#nullable restore
-#else
-        public string Kind { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQuery_kind? Kind { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers? Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQuery_modifiers? Modifiers { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQuery_modifiers Modifiers { get; set; }
 #endif
         /// <summary>The properties property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -57,27 +51,33 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQueryResponse? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQuery_response? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQueryResponse Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQuery_response Response { get; set; }
 #endif
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags? Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQuery_tags? Tags { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQuery_tags Tags { get; set; }
 #endif
         /// <summary>version of the node, used for schema migrations</summary>
-        public double? Version { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQuery_version? Version { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQuery_version Version { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQuery"/> and sets the default values.
         /// </summary>
         public RevenueAnalyticsMRRQuery()
         {
-            Kind = "RevenueAnalyticsMRRQuery";
+            Kind = global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQuery_kind.RevenueAnalyticsMRRQuery;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -98,14 +98,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "breakdown", n => { Breakdown = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsBreakdown>(global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsBreakdown.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>(global::Soenneker.PostHog.OpenApiClient.Models.DateRange.CreateFromDiscriminatorValue); } },
+                { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQuery_dateRange>(global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQuery_dateRange.CreateFromDiscriminatorValue); } },
                 { "interval", n => { Interval = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SimpleIntervalType>(); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
-                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQuery_kind>(); } },
+                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQuery_modifiers>(global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQuery_modifiers.CreateFromDiscriminatorValue); } },
                 { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsPropertyFilter>(global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsPropertyFilter.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQueryResponse.CreateFromDiscriminatorValue); } },
-                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
-                { "version", n => { Version = n.GetDoubleValue(); } },
+                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQuery_response>(global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQuery_response.CreateFromDiscriminatorValue); } },
+                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQuery_tags>(global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQuery_tags.CreateFromDiscriminatorValue); } },
+                { "version", n => { Version = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQuery_version>(global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQuery_version.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -116,14 +116,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsBreakdown>("breakdown", Breakdown);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>("dateRange", DateRange);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQuery_dateRange>("dateRange", DateRange);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SimpleIntervalType>("interval", Interval);
-            writer.WriteStringValue("kind", Kind);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQuery_kind>("kind", Kind);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQuery_modifiers>("modifiers", Modifiers);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsPropertyFilter>("properties", Properties);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQueryResponse>("response", Response);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
-            writer.WriteDoubleValue("version", Version);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQuery_response>("response", Response);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQuery_tags>("tags", Tags);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQuery_version>("version", Version);
         }
     }
 }

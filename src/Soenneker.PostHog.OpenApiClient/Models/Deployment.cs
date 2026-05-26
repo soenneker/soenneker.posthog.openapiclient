@@ -82,7 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ErrorMessage { get; private set; }
 #endif
-        /// <summary>Build step that failed: dispatch | clone | install | build | publish. Empty when status != error.* `dispatch` - Dispatch* `clone` - Clone* `install` - Install* `build` - Build* `publish` - Publish</summary>
+        /// <summary>&quot;Build step that failed: dispatch | clone | install | build | publish. Empty when status != error.* `dispatch` - Dispatch* `clone` - Clone* `install` - Install* `build` - Build* `publish` - Publish&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.Deployment.Deployment_error_step? ErrorStep { get; set; }
@@ -116,7 +116,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>When the pipeline started building. Null while still queued.</summary>
         public DateTimeOffset? StartedAt { get; set; }
-        /// <summary>Current pipeline stage. Valid values: queued, initializing, building, ready, error, cancelled.* `queued` - Queued* `initializing` - Initializing* `building` - Building* `ready` - Ready* `error` - Error* `cancelled` - Cancelled</summary>
+        /// <summary>* `queued` - Queued* `initializing` - Initializing* `building` - Building* `ready` - Ready* `error` - Error* `cancelled` - Cancelled</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DeploymentStatusEnum? Status { get; set; }
         /// <summary>Temporal workflow id for this build. Used for cancellation signalling.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -130,7 +130,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public Guid? TriggeredByDeployment { get; private set; }
         /// <summary>Posthog user id of the user who clicked Deploy/Redeploy/Rollback. Null for git-triggered or seed rows.</summary>
         public int? TriggeredByUserId { get; private set; }
-        /// <summary>What caused this deployment to start: manual | git | redeploy | rollback | seed.* `manual` - Manual* `git` - Git* `redeploy` - Redeploy* `rollback` - Rollback* `seed` - Seed</summary>
+        /// <summary>* `manual` - Manual* `git` - Git* `redeploy` - Redeploy* `rollback` - Rollback* `seed` - Seed</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TriggerKindEnum? TriggerKind { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Deployment"/> and sets the default values.
@@ -205,21 +205,27 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteAdditionalData(AdditionalData);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorStepEnum"/>
+        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorStepEnum_Wrapper"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Deployment_error_step : IComposedTypeWrapper, IParsable
         {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum"/></summary>
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum? BlankEnum { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper? BlankEnumWrapper { get; set; }
 #nullable restore
 #else
-            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum BlankEnum { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper BlankEnumWrapper { get; set; }
 #endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorStepEnum"/></summary>
-            public global::Soenneker.PostHog.OpenApiClient.Models.ErrorStepEnum? ErrorStepEnum { get; set; }
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorStepEnum_Wrapper"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.ErrorStepEnum_Wrapper? ErrorStepEnumWrapper { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.ErrorStepEnum_Wrapper ErrorStepEnumWrapper { get; set; }
+#endif
             /// <summary>
             /// Creates a new instance of the appropriate class based on discriminator value
             /// </summary>
@@ -230,13 +236,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
                 var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
                 var result = new global::Soenneker.PostHog.OpenApiClient.Models.Deployment.Deployment_error_step();
-                if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+                if("BlankEnum_Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
                 {
-                    result.BlankEnum = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum();
+                    result.BlankEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper();
                 }
-                else if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorStepEnum>() is global::Soenneker.PostHog.OpenApiClient.Models.ErrorStepEnum errorStepEnumValue)
+                else if("ErrorStepEnum_Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
                 {
-                    result.ErrorStepEnum = errorStepEnumValue;
+                    result.ErrorStepEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.ErrorStepEnum_Wrapper();
                 }
                 return result;
             }
@@ -246,9 +252,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
-                if(BlankEnum != null)
+                if(BlankEnumWrapper != null)
                 {
-                    return BlankEnum.GetFieldDeserializers();
+                    return BlankEnumWrapper.GetFieldDeserializers();
+                }
+                else if(ErrorStepEnumWrapper != null)
+                {
+                    return ErrorStepEnumWrapper.GetFieldDeserializers();
                 }
                 return new Dictionary<string, Action<IParseNode>>();
             }
@@ -259,13 +269,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             public virtual void Serialize(ISerializationWriter writer)
             {
                 if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(BlankEnum != null)
+                if(BlankEnumWrapper != null)
                 {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum>(null, BlankEnum);
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper>(null, BlankEnumWrapper);
                 }
-                else if(ErrorStepEnum != null)
+                else if(ErrorStepEnumWrapper != null)
                 {
-                    writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorStepEnum>(null, ErrorStepEnum);
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorStepEnum_Wrapper>(null, ErrorStepEnumWrapper);
                 }
             }
         }

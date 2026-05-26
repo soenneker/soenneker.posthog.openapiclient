@@ -35,10 +35,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The detail property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Detail { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActivityLog_detail? Detail { get; set; }
 #nullable restore
 #else
-        public UntypedNode Detail { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActivityLog_detail Detail { get; set; }
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
@@ -104,7 +104,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "activity", n => { Activity = n.GetStringValue(); } },
                 { "client", n => { Client = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "detail", n => { Detail = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "detail", n => { Detail = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActivityLog_detail>(global::Soenneker.PostHog.OpenApiClient.Models.ActivityLog_detail.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "is_system", n => { IsSystem = n.GetBoolValue(); } },
                 { "item_id", n => { ItemId = n.GetStringValue(); } },
@@ -126,7 +126,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("activity", Activity);
             writer.WriteStringValue("client", Client);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
-            writer.WriteObjectValue<UntypedNode>("detail", Detail);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActivityLog_detail>("detail", Detail);
             writer.WriteBoolValue("is_system", IsSystem);
             writer.WriteStringValue("item_id", ItemId);
             writer.WriteGuidValue("organization_id", OrganizationId);

@@ -38,7 +38,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
-        /// <summary>Format for the description field.* `text` - text* `html` - html</summary>
+        /// <summary>* `html` - html* `text` - text</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DescriptionContentTypeEnum? DescriptionContentType { get; set; }
         /// <summary>Whether the final option should be an open-text choice (for example, &apos;Other&apos;).</summary>
         public bool? HasOpenChoice { get; set; }

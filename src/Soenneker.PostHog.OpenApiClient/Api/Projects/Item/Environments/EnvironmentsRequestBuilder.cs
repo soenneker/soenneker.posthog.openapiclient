@@ -15,11 +15,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class EnvironmentsRequestBuilder : BaseRequestBuilder
     {
-        /// <summary>The EmptyPathSegment property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.EmptyPathSegmentRequestBuilder EmptyPathSegment
-        {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.EmptyPathSegmentRequestBuilder(PathParameters, RequestAdapter);
-        }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.environments.item collection</summary>
         /// <param name="position">A unique integer value identifying this environment (aka team).</param>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.EnvironmentsItemRequestBuilder"/></returns>

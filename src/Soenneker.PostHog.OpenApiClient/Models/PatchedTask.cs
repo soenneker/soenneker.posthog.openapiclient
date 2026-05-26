@@ -14,6 +14,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>If true, the task is hidden from default list responses. Used by PostHog Code clients to share archive state across desktop and mobile.</summary>
+        public bool? Archived { get; set; }
+        /// <summary>The archived_at property</summary>
+        public DateTimeOffset? ArchivedAt { get; private set; }
         /// <summary>Custom prompt for CI fixes. If blank, a default prompt will be used.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -27,10 +31,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTask_created_by? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTask_created_by CreatedBy { get; private set; }
 #endif
         /// <summary>The description property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -51,10 +55,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>JSON schema for the task. This is used to validate the output of the task.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? JsonSchema { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTask_json_schema? JsonSchema { get; set; }
 #nullable restore
 #else
-        public UntypedNode JsonSchema { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTask_json_schema JsonSchema { get; set; }
 #endif
         /// <summary>Latest run details for this task</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -76,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The signal_report property</summary>
         public Guid? SignalReport { get; set; }
-        /// <summary>The signal_report_task_relationship property</summary>
+        /// <summary>* `implementation` - Implementation</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportTaskRelationshipEnum? SignalReportTaskRelationship { get; set; }
         /// <summary>The slug property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -125,15 +129,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "archived", n => { Archived = n.GetBoolValue(); } },
+                { "archived_at", n => { ArchivedAt = n.GetDateTimeOffsetValue(); } },
                 { "ci_prompt", n => { CiPrompt = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTask_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTask_created_by.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "github_integration", n => { GithubIntegration = n.GetIntValue(); } },
                 { "github_user_integration", n => { GithubUserIntegration = n.GetGuidValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "internal", n => { Internal = n.GetBoolValue(); } },
-                { "json_schema", n => { JsonSchema = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "json_schema", n => { JsonSchema = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTask_json_schema>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTask_json_schema.CreateFromDiscriminatorValue); } },
                 { "latest_run", n => { LatestRun = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTask_latest_run>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTask_latest_run.CreateFromDiscriminatorValue); } },
                 { "origin_product", n => { OriginProduct = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OriginProductEnum>(); } },
                 { "repository", n => { Repository = n.GetStringValue(); } },
@@ -153,12 +159,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteBoolValue("archived", Archived);
             writer.WriteStringValue("ci_prompt", CiPrompt);
             writer.WriteStringValue("description", Description);
             writer.WriteIntValue("github_integration", GithubIntegration);
             writer.WriteGuidValue("github_user_integration", GithubUserIntegration);
             writer.WriteBoolValue("internal", Internal);
-            writer.WriteObjectValue<UntypedNode>("json_schema", JsonSchema);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTask_json_schema>("json_schema", JsonSchema);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OriginProductEnum>("origin_product", OriginProduct);
             writer.WriteStringValue("repository", Repository);
             writer.WriteGuidValue("signal_report", SignalReport);

@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Content { get; set; }
 #endif
-        /// <summary>Encoding used for content. Use base64 for binary files and utf-8 for text payloads.* `utf-8` - utf-8* `base64` - base64</summary>
+        /// <summary>* `utf-8` - utf-8* `base64` - base64</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ContentEncodingEnum? ContentEncoding { get; set; }
         /// <summary>Optional MIME type for the artifact</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -48,7 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Source { get; set; }
 #endif
-        /// <summary>Classification for the artifact* `plan` - plan* `context` - context* `reference` - reference* `output` - output* `artifact` - artifact* `tree_snapshot` - tree_snapshot* `user_attachment` - user_attachment</summary>
+        /// <summary>* `plan` - plan* `context` - context* `reference` - reference* `output` - output* `artifact` - artifact* `tree_snapshot` - tree_snapshot* `user_attachment` - user_attachment</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactTypeEnum? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactUpload"/> and sets the default values.
@@ -56,7 +56,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public TaskRunArtifactUpload()
         {
             AdditionalData = new Dictionary<string, object>();
-            ContentEncoding = global::Soenneker.PostHog.OpenApiClient.Models.ContentEncodingEnum.Utf8;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value

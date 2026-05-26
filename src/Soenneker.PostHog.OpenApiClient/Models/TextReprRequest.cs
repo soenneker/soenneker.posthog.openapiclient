@@ -17,20 +17,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Event data to stringify. For traces, should include &apos;trace&apos; and &apos;hierarchy&apos; fields.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Data { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TextReprRequest_data? Data { get; set; }
 #nullable restore
 #else
-        public UntypedNode Data { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TextReprRequest_data Data { get; set; }
 #endif
-        /// <summary>Type of LLM event to stringify* `$ai_generation` - $ai_generation* `$ai_span` - $ai_span* `$ai_embedding` - $ai_embedding* `$ai_trace` - $ai_trace</summary>
+        /// <summary>* `$ai_generation` - $ai_generation* `$ai_span` - $ai_span* `$ai_embedding` - $ai_embedding* `$ai_trace` - $ai_trace</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.EventTypeEnum? EventType { get; set; }
         /// <summary>Optional configuration for text generation</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TextReprOptions? Options { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TextReprRequest_options? Options { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TextReprOptions Options { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TextReprRequest_options Options { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TextReprRequest"/> and sets the default values.
@@ -57,9 +57,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "data", n => { Data = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "data", n => { Data = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TextReprRequest_data>(global::Soenneker.PostHog.OpenApiClient.Models.TextReprRequest_data.CreateFromDiscriminatorValue); } },
                 { "event_type", n => { EventType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EventTypeEnum>(); } },
-                { "options", n => { Options = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TextReprOptions>(global::Soenneker.PostHog.OpenApiClient.Models.TextReprOptions.CreateFromDiscriminatorValue); } },
+                { "options", n => { Options = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TextReprRequest_options>(global::Soenneker.PostHog.OpenApiClient.Models.TextReprRequest_options.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -69,9 +69,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<UntypedNode>("data", Data);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TextReprRequest_data>("data", Data);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EventTypeEnum>("event_type", EventType);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TextReprOptions>("options", Options);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TextReprRequest_options>("options", Options);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

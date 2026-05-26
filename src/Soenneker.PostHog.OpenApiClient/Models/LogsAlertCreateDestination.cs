@@ -32,7 +32,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Integration ID for the Slack workspace. Required when type=slack.</summary>
         public int? SlackWorkspaceId { get; set; }
-        /// <summary>Destination type — slack or webhook.* `slack` - slack* `webhook` - webhook</summary>
+        /// <summary>* `slack` - slack* `webhook` - webhook</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.NotificationDestinationTypeEnum? Type { get; set; }
         /// <summary>HTTPS endpoint to POST to. Required when type=webhook.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

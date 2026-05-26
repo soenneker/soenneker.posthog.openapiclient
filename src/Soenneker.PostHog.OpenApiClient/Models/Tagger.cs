@@ -27,10 +27,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Tagger_created_by? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Tagger_created_by CreatedBy { get; private set; }
 #endif
         /// <summary>The deleted property</summary>
         public bool? Deleted { get; set; }
@@ -49,10 +49,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The model_configuration property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaggerModelConfiguration? ModelConfiguration { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Tagger_model_configuration? ModelConfiguration { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaggerModelConfiguration ModelConfiguration { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Tagger_model_configuration ModelConfiguration { get; set; }
 #endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -62,15 +62,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>Tagger configuration. For tagger_type &apos;llm&apos;: {prompt, tags, min_tags?, max_tags?}. For tagger_type &apos;hog&apos;: {source, tags?}.</summary>
+        /// <summary>&quot;Tagger configuration. For tagger_type &apos;llm&apos;: {prompt, tags, min_tags?, max_tags?}. For tagger_type &apos;hog&apos;: {source, tags?}.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaggerConfig? TaggerConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Tagger_tagger_config? TaggerConfig { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaggerConfig TaggerConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Tagger_tagger_config TaggerConfig { get; set; }
 #endif
-        /// <summary>The tagger_type property</summary>
+        /// <summary>* `llm` - LLM* `hog` - Hog</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TaggerTypeEnum? TaggerType { get; set; }
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
@@ -80,7 +80,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public Tagger()
         {
             AdditionalData = new Dictionary<string, object>();
-            TaggerType = global::Soenneker.PostHog.OpenApiClient.Models.TaggerTypeEnum.Llm;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -102,14 +101,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "conditions", n => { Conditions = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TaggerCondition>(global::Soenneker.PostHog.OpenApiClient.Models.TaggerCondition.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Tagger_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.Tagger_created_by.CreateFromDiscriminatorValue); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "model_configuration", n => { ModelConfiguration = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaggerModelConfiguration>(global::Soenneker.PostHog.OpenApiClient.Models.TaggerModelConfiguration.CreateFromDiscriminatorValue); } },
+                { "model_configuration", n => { ModelConfiguration = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Tagger_model_configuration>(global::Soenneker.PostHog.OpenApiClient.Models.Tagger_model_configuration.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "tagger_config", n => { TaggerConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaggerConfig>(global::Soenneker.PostHog.OpenApiClient.Models.TaggerConfig.CreateFromDiscriminatorValue); } },
+                { "tagger_config", n => { TaggerConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Tagger_tagger_config>(global::Soenneker.PostHog.OpenApiClient.Models.Tagger_tagger_config.CreateFromDiscriminatorValue); } },
                 { "tagger_type", n => { TaggerType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaggerTypeEnum>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
@@ -125,9 +124,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("deleted", Deleted);
             writer.WriteStringValue("description", Description);
             writer.WriteBoolValue("enabled", Enabled);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaggerModelConfiguration>("model_configuration", ModelConfiguration);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Tagger_model_configuration>("model_configuration", ModelConfiguration);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaggerConfig>("tagger_config", TaggerConfig);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Tagger_tagger_config>("tagger_config", TaggerConfig);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaggerTypeEnum>("tagger_type", TaggerType);
             writer.WriteAdditionalData(AdditionalData);
         }

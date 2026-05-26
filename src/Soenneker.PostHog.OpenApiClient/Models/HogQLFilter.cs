@@ -21,20 +21,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Key { get; set; }
 #endif
         /// <summary>The type property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Type { get; set; }
-#nullable restore
-#else
-        public string Type { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLFilter_type? Type { get; set; }
         /// <summary>The value property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Value { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLFilter_value? Value { get; set; }
 #nullable restore
 #else
-        public UntypedNode Value { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLFilter_value Value { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -55,8 +49,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "key", n => { Key = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetStringValue(); } },
-                { "value", n => { Value = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLFilter_type>(); } },
+                { "value", n => { Value = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLFilter_value>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLFilter_value.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -67,8 +61,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("key", Key);
-            writer.WriteStringValue("type", Type);
-            writer.WriteObjectValue<UntypedNode>("value", Value);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLFilter_type>("type", Type);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLFilter_value>("value", Value);
         }
     }
 }

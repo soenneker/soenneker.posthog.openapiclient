@@ -25,10 +25,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The baseline_artifact property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.Artifact? BaselineArtifact { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Snapshot_baseline_artifact? BaselineArtifact { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.Artifact BaselineArtifact { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Snapshot_baseline_artifact BaselineArtifact { get; set; }
 #endif
         /// <summary>The change_kind property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -49,26 +49,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The cluster_summary property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ClusterSummary? ClusterSummary { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Snapshot_cluster_summary? ClusterSummary { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ClusterSummary ClusterSummary { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Snapshot_cluster_summary ClusterSummary { get; set; }
 #endif
         /// <summary>The current_artifact property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.Artifact? CurrentArtifact { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Snapshot_current_artifact? CurrentArtifact { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.Artifact CurrentArtifact { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Snapshot_current_artifact CurrentArtifact { get; set; }
 #endif
         /// <summary>The diff_artifact property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.Artifact? DiffArtifact { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Snapshot_diff_artifact? DiffArtifact { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.Artifact DiffArtifact { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Snapshot_diff_artifact DiffArtifact { get; set; }
 #endif
         /// <summary>The diff_percentage property</summary>
         public double? DiffPercentage { get; set; }
@@ -107,10 +107,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The reviewed_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasicInfo? ReviewedBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Snapshot_reviewed_by? ReviewedBy { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasicInfo ReviewedBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Snapshot_reviewed_by ReviewedBy { get; set; }
 #endif
         /// <summary>The review_state property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -152,12 +152,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "approved_hash", n => { ApprovedHash = n.GetStringValue(); } },
-                { "baseline_artifact", n => { BaselineArtifact = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Artifact>(global::Soenneker.PostHog.OpenApiClient.Models.Artifact.CreateFromDiscriminatorValue); } },
+                { "baseline_artifact", n => { BaselineArtifact = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Snapshot_baseline_artifact>(global::Soenneker.PostHog.OpenApiClient.Models.Snapshot_baseline_artifact.CreateFromDiscriminatorValue); } },
                 { "change_kind", n => { ChangeKind = n.GetStringValue(); } },
                 { "classification_reason", n => { ClassificationReason = n.GetStringValue(); } },
-                { "cluster_summary", n => { ClusterSummary = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ClusterSummary>(global::Soenneker.PostHog.OpenApiClient.Models.ClusterSummary.CreateFromDiscriminatorValue); } },
-                { "current_artifact", n => { CurrentArtifact = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Artifact>(global::Soenneker.PostHog.OpenApiClient.Models.Artifact.CreateFromDiscriminatorValue); } },
-                { "diff_artifact", n => { DiffArtifact = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Artifact>(global::Soenneker.PostHog.OpenApiClient.Models.Artifact.CreateFromDiscriminatorValue); } },
+                { "cluster_summary", n => { ClusterSummary = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Snapshot_cluster_summary>(global::Soenneker.PostHog.OpenApiClient.Models.Snapshot_cluster_summary.CreateFromDiscriminatorValue); } },
+                { "current_artifact", n => { CurrentArtifact = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Snapshot_current_artifact>(global::Soenneker.PostHog.OpenApiClient.Models.Snapshot_current_artifact.CreateFromDiscriminatorValue); } },
+                { "diff_artifact", n => { DiffArtifact = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Snapshot_diff_artifact>(global::Soenneker.PostHog.OpenApiClient.Models.Snapshot_diff_artifact.CreateFromDiscriminatorValue); } },
                 { "diff_percentage", n => { DiffPercentage = n.GetDoubleValue(); } },
                 { "diff_pixel_count", n => { DiffPixelCount = n.GetIntValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
@@ -167,7 +167,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "result", n => { Result = n.GetStringValue(); } },
                 { "review_state", n => { ReviewState = n.GetStringValue(); } },
                 { "reviewed_at", n => { ReviewedAt = n.GetDateTimeOffsetValue(); } },
-                { "reviewed_by", n => { ReviewedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasicInfo>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasicInfo.CreateFromDiscriminatorValue); } },
+                { "reviewed_by", n => { ReviewedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Snapshot_reviewed_by>(global::Soenneker.PostHog.OpenApiClient.Models.Snapshot_reviewed_by.CreateFromDiscriminatorValue); } },
                 { "size_mismatch", n => { SizeMismatch = n.GetBoolValue(); } },
                 { "ssim_score", n => { SsimScore = n.GetDoubleValue(); } },
                 { "tolerated_hash_id", n => { ToleratedHashId = n.GetGuidValue(); } },
@@ -181,12 +181,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("approved_hash", ApprovedHash);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Artifact>("baseline_artifact", BaselineArtifact);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Snapshot_baseline_artifact>("baseline_artifact", BaselineArtifact);
             writer.WriteStringValue("change_kind", ChangeKind);
             writer.WriteStringValue("classification_reason", ClassificationReason);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ClusterSummary>("cluster_summary", ClusterSummary);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Artifact>("current_artifact", CurrentArtifact);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Artifact>("diff_artifact", DiffArtifact);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Snapshot_cluster_summary>("cluster_summary", ClusterSummary);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Snapshot_current_artifact>("current_artifact", CurrentArtifact);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Snapshot_diff_artifact>("diff_artifact", DiffArtifact);
             writer.WriteDoubleValue("diff_percentage", DiffPercentage);
             writer.WriteIntValue("diff_pixel_count", DiffPixelCount);
             writer.WriteGuidValue("id", Id);
@@ -195,7 +195,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Snapshot_metadata>("metadata", Metadata);
             writer.WriteStringValue("result", Result);
             writer.WriteDateTimeOffsetValue("reviewed_at", ReviewedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasicInfo>("reviewed_by", ReviewedBy);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Snapshot_reviewed_by>("reviewed_by", ReviewedBy);
             writer.WriteStringValue("review_state", ReviewState);
             writer.WriteBoolValue("size_mismatch", SizeMismatch);
             writer.WriteDoubleValue("ssim_score", SsimScore);

@@ -20,7 +20,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? End { get; set; }
         /// <summary>Interval start (UTC, inclusive).</summary>
         public DateTimeOffset? Start { get; set; }
-        /// <summary>Alert state during this interval.* `not_firing` - Not firing* `firing` - Firing* `pending_resolve` - Pending resolve* `errored` - Errored* `snoozed` - Snoozed* `broken` - Broken</summary>
+        /// <summary>* `not_firing` - Not firing* `firing` - Firing* `pending_resolve` - Pending resolve* `errored` - Errored* `snoozed` - Snoozed* `broken` - Broken</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertConfigurationStateEnum? State { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateInterval"/> and sets the default values.

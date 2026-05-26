@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Filter shape mirrors the previous frontend `api.query({filters: ...})` payload.`filters` accepts the same `HogQLFilters` schema that the legacy frontend HogQLpath used (dateRange, filterTestAccounts, properties), so the migration isbehaviour-preserving for callers that pass a request unchanged.
+    /// &quot;Filter shape mirrors the previous frontend `api.query({filters: ...})` payload.`filters` accepts the same `HogQLFilters` schema that the legacy frontend HogQLpath used (dateRange, filterTestAccounts, properties), so the migration isbehaviour-preserving for callers that pass a request unchanged.&quot;
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SentimentGenerationsRequest : IAdditionalDataHolder, IParsable
@@ -18,10 +18,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The filters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SentimentGenerationsRequest_filters? Filters { get; set; }
 #nullable restore
 #else
-        public UntypedNode Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SentimentGenerationsRequest_filters Filters { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SentimentGenerationsRequest"/> and sets the default values.
@@ -48,7 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "filters", n => { Filters = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SentimentGenerationsRequest_filters>(global::Soenneker.PostHog.OpenApiClient.Models.SentimentGenerationsRequest_filters.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -58,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<UntypedNode>("filters", Filters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SentimentGenerationsRequest_filters>("filters", Filters);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

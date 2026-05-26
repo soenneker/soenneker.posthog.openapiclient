@@ -16,15 +16,15 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments
     public partial class EnvironmentsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.environments.item collection</summary>
-        /// <param name="position">Deprecated. Use /api/projects/{project_id}/ instead.</param>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Environment_ItemRequestBuilder"/></returns>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Environment_ItemRequestBuilder this[string position]
+        /// <param name="position">Project ID of the project you&apos;re trying to access. To find the ID of the project, make a call to /api/projects/.</param>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.WithProject_ItemRequestBuilder"/></returns>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.WithProject_ItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("environment_%2Did", position);
-                return new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Environment_ItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("project_id", position);
+                return new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.WithProject_ItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>

@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Config { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction_config? Config { get; set; }
 #nullable restore
 #else
-        public UntypedNode Config { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction_config Config { get; set; }
 #endif
         /// <summary>The created_at property</summary>
         public int? CreatedAt { get; set; }
@@ -35,10 +35,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The filters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters? Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction_filters? Filters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction_filters Filters { get; set; }
 #endif
         /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -59,18 +59,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The on_error property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction.HogFlowAction_on_error? OnError { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction_on_error? OnError { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction.HogFlowAction_on_error OnError { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction_on_error OnError { get; set; }
 #endif
         /// <summary>The output_variable property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? OutputVariable { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction_output_variable? OutputVariable { get; set; }
 #nullable restore
 #else
-        public UntypedNode OutputVariable { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction_output_variable OutputVariable { get; set; }
 #endif
         /// <summary>The type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -107,14 +107,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "config", n => { Config = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction_config>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction_config.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetIntValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
-                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters.CreateFromDiscriminatorValue); } },
+                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction_filters>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction_filters.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "on_error", n => { OnError = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction.HogFlowAction_on_error>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction.HogFlowAction_on_error.CreateFromDiscriminatorValue); } },
-                { "output_variable", n => { OutputVariable = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "on_error", n => { OnError = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction_on_error>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction_on_error.CreateFromDiscriminatorValue); } },
+                { "output_variable", n => { OutputVariable = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction_output_variable>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction_output_variable.CreateFromDiscriminatorValue); } },
                 { "type", n => { Type = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetIntValue(); } },
             };
@@ -126,82 +126,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<UntypedNode>("config", Config);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction_config>("config", Config);
             writer.WriteIntValue("created_at", CreatedAt);
             writer.WriteStringValue("description", Description);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters>("filters", Filters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction_filters>("filters", Filters);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction.HogFlowAction_on_error>("on_error", OnError);
-            writer.WriteObjectValue<UntypedNode>("output_variable", OutputVariable);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction_on_error>("on_error", OnError);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction_output_variable>("output_variable", OutputVariable);
             writer.WriteStringValue("type", Type);
             writer.WriteIntValue("updated_at", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OnErrorEnum"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class HogFlowAction_on_error : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum? NullEnum { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum NullEnum { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OnErrorEnum"/></summary>
-            public global::Soenneker.PostHog.OpenApiClient.Models.OnErrorEnum? OnErrorEnum { get; set; }
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction.HogFlowAction_on_error"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction.HogFlowAction_on_error CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction.HogFlowAction_on_error();
-                if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.NullEnum = new global::Soenneker.PostHog.OpenApiClient.Models.NullEnum();
-                }
-                else if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OnErrorEnum>() is global::Soenneker.PostHog.OpenApiClient.Models.OnErrorEnum onErrorEnumValue)
-                {
-                    result.OnErrorEnum = onErrorEnumValue;
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(NullEnum != null)
-                {
-                    return NullEnum.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(NullEnum != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NullEnum>(null, NullEnum);
-                }
-                else if(OnErrorEnum != null)
-                {
-                    writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OnErrorEnum>(null, OnErrorEnum);
-                }
-            }
         }
     }
 }

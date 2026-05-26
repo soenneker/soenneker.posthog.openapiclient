@@ -61,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.SurveyQuestionInputSchema CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.SurveyQuestionInputSchema();
             if("SurveyLinkQuestionSchema".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {

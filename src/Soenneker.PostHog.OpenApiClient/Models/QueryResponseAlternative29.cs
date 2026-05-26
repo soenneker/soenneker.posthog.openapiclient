@@ -23,10 +23,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The error property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalQueryError? Error { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative29_error? Error { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalQueryError Error { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative29_error Error { get; set; }
 #endif
         /// <summary>The status property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ExternalQueryStatus? Status { get; set; }
@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "data", n => { Data = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative29_data>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative29_data.CreateFromDiscriminatorValue); } },
-                { "error", n => { Error = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalQueryError>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalQueryError.CreateFromDiscriminatorValue); } },
+                { "error", n => { Error = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative29_error>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative29_error.CreateFromDiscriminatorValue); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalQueryStatus>(); } },
             };
         }
@@ -61,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative29_data>("data", Data);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalQueryError>("error", Error);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative29_error>("error", Error);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalQueryStatus>("status", Status);
         }
     }

@@ -22,6 +22,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.SlackChannel> Channels { get; set; }
 #endif
+        /// <summary>Whether more channels match the current search beyond this page.</summary>
+        public bool? HasMore { get; set; }
         /// <summary>ISO 8601 timestamp of the last full Slack API refresh (only set on full lists, not single-channel lookups).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -56,6 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "channels", n => { Channels = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SlackChannel>(global::Soenneker.PostHog.OpenApiClient.Models.SlackChannel.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "has_more", n => { HasMore = n.GetBoolValue(); } },
                 { "lastRefreshedAt", n => { LastRefreshedAt = n.GetStringValue(); } },
             };
         }
@@ -67,6 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SlackChannel>("channels", Channels);
+            writer.WriteBoolValue("has_more", HasMore);
             writer.WriteStringValue("lastRefreshedAt", LastRefreshedAt);
             writer.WriteAdditionalData(AdditionalData);
         }

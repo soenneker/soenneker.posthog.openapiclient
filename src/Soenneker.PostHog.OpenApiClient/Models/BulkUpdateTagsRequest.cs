@@ -12,7 +12,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class BulkUpdateTagsRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>&apos;add&apos; merges with existing tags, &apos;remove&apos; deletes specific tags, &apos;set&apos; replaces all tags.* `add` - add* `remove` - remove* `set` - set</summary>
+        /// <summary>* `add` - add* `remove` - remove* `set` - set</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ActionEnum? Action { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }

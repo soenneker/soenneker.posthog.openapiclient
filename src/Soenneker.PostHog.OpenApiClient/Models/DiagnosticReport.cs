@@ -27,10 +27,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Top-level outcome and recommended next action.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticReportSummary? Summary { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticReport_summary? Summary { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticReportSummary Summary { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticReport_summary Summary { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticReport"/> and sets the default values.
@@ -59,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "checks", n => { Checks = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticCheckResult>(global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticCheckResult.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "ran_at", n => { RanAt = n.GetDateTimeOffsetValue(); } },
-                { "summary", n => { Summary = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticReportSummary>(global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticReportSummary.CreateFromDiscriminatorValue); } },
+                { "summary", n => { Summary = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticReport_summary>(global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticReport_summary.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -71,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticCheckResult>("checks", Checks);
             writer.WriteDateTimeOffsetValue("ran_at", RanAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticReportSummary>("summary", Summary);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticReport_summary>("summary", Summary);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

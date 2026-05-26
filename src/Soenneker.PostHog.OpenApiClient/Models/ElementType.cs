@@ -15,10 +15,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The attr_class property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? AttrClass { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ElementType_attr_class? AttrClass { get; set; }
 #nullable restore
 #else
-        public List<string> AttrClass { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ElementType_attr_class AttrClass { get; set; }
 #endif
         /// <summary>The attributes property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -31,25 +31,43 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The attr_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AttrId { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ElementType_attr_id? AttrId { get; set; }
 #nullable restore
 #else
-        public string AttrId { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ElementType_attr_id AttrId { get; set; }
 #endif
         /// <summary>The href property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Href { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ElementType_href? Href { get; set; }
 #nullable restore
 #else
-        public string Href { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ElementType_href Href { get; set; }
 #endif
         /// <summary>The nth_child property</summary>
-        public double? NthChild { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ElementType_nth_child? NthChild { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ElementType_nth_child NthChild { get; set; }
+#endif
         /// <summary>The nth_of_type property</summary>
-        public double? NthOfType { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ElementType_nth_of_type? NthOfType { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ElementType_nth_of_type NthOfType { get; set; }
+#endif
         /// <summary>The order property</summary>
-        public double? Order { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ElementType_order? Order { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ElementType_order Order { get; set; }
+#endif
         /// <summary>The tag_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -61,10 +79,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The text property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Text { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ElementType_text? Text { get; set; }
 #nullable restore
 #else
-        public string Text { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ElementType_text Text { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -84,15 +102,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "attr_class", n => { AttrClass = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "attr_id", n => { AttrId = n.GetStringValue(); } },
+                { "attr_class", n => { AttrClass = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ElementType_attr_class>(global::Soenneker.PostHog.OpenApiClient.Models.ElementType_attr_class.CreateFromDiscriminatorValue); } },
+                { "attr_id", n => { AttrId = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ElementType_attr_id>(global::Soenneker.PostHog.OpenApiClient.Models.ElementType_attr_id.CreateFromDiscriminatorValue); } },
                 { "attributes", n => { Attributes = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ElementType_attributes>(global::Soenneker.PostHog.OpenApiClient.Models.ElementType_attributes.CreateFromDiscriminatorValue); } },
-                { "href", n => { Href = n.GetStringValue(); } },
-                { "nth_child", n => { NthChild = n.GetDoubleValue(); } },
-                { "nth_of_type", n => { NthOfType = n.GetDoubleValue(); } },
-                { "order", n => { Order = n.GetDoubleValue(); } },
+                { "href", n => { Href = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ElementType_href>(global::Soenneker.PostHog.OpenApiClient.Models.ElementType_href.CreateFromDiscriminatorValue); } },
+                { "nth_child", n => { NthChild = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ElementType_nth_child>(global::Soenneker.PostHog.OpenApiClient.Models.ElementType_nth_child.CreateFromDiscriminatorValue); } },
+                { "nth_of_type", n => { NthOfType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ElementType_nth_of_type>(global::Soenneker.PostHog.OpenApiClient.Models.ElementType_nth_of_type.CreateFromDiscriminatorValue); } },
+                { "order", n => { Order = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ElementType_order>(global::Soenneker.PostHog.OpenApiClient.Models.ElementType_order.CreateFromDiscriminatorValue); } },
                 { "tag_name", n => { TagName = n.GetStringValue(); } },
-                { "text", n => { Text = n.GetStringValue(); } },
+                { "text", n => { Text = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ElementType_text>(global::Soenneker.PostHog.OpenApiClient.Models.ElementType_text.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -102,15 +120,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfPrimitiveValues<string>("attr_class", AttrClass);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ElementType_attr_class>("attr_class", AttrClass);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ElementType_attributes>("attributes", Attributes);
-            writer.WriteStringValue("attr_id", AttrId);
-            writer.WriteStringValue("href", Href);
-            writer.WriteDoubleValue("nth_child", NthChild);
-            writer.WriteDoubleValue("nth_of_type", NthOfType);
-            writer.WriteDoubleValue("order", Order);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ElementType_attr_id>("attr_id", AttrId);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ElementType_href>("href", Href);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ElementType_nth_child>("nth_child", NthChild);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ElementType_nth_of_type>("nth_of_type", NthOfType);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ElementType_order>("order", Order);
             writer.WriteStringValue("tag_name", TagName);
-            writer.WriteStringValue("text", Text);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ElementType_text>("text", Text);
         }
     }
 }

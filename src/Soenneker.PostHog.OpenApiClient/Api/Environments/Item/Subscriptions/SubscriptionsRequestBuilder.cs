@@ -3,7 +3,6 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Subscriptions.Item;
-using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Subscriptions.Summary_quota;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -11,31 +10,21 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Subscriptions
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\environments\{environment_-id}\subscriptions
+    /// Builds and executes requests for operations under \api\environments\{project_id}\subscriptions
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SubscriptionsRequestBuilder : BaseRequestBuilder
     {
-        /// <summary>The EmptyPathSegment property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Subscriptions.EmptyPathSegmentRequestBuilder EmptyPathSegment
-        {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Subscriptions.EmptyPathSegmentRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The summary_quota property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Subscriptions.Summary_quota.Summary_quotaRequestBuilder Summary_quota
-        {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Subscriptions.Summary_quota.Summary_quotaRequestBuilder(PathParameters, RequestAdapter);
-        }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.environments.item.subscriptions.item collection</summary>
-        /// <param name="position">A unique integer value identifying this subscription.</param>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Subscriptions.Item.ItemRequestBuilder"/></returns>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Subscriptions.Item.ItemRequestBuilder this[int position]
+        /// <param name="position">Unique identifier of the item</param>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Subscriptions.Item.WithSubscription_ItemRequestBuilder"/></returns>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Subscriptions.Item.WithSubscription_ItemRequestBuilder this[int position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("%2Did", position);
-                return new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Subscriptions.Item.ItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("subscription_id", position);
+                return new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Subscriptions.Item.WithSubscription_ItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
@@ -43,7 +32,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Subscriptions
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SubscriptionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{environment_%2Did}/subscriptions", pathParameters)
+        public SubscriptionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{project_id}/subscriptions", pathParameters)
         {
         }
         /// <summary>
@@ -51,7 +40,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Subscriptions
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SubscriptionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{environment_%2Did}/subscriptions", rawUrl)
+        public SubscriptionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{project_id}/subscriptions", rawUrl)
         {
         }
     }

@@ -40,10 +40,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Stack trace at the time of the hit</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? StackTrace { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.BreakpointHit_stackTrace>? StackTrace { get; set; }
 #nullable restore
 #else
-        public UntypedNode StackTrace { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.BreakpointHit_stackTrace> StackTrace { get; set; }
 #endif
         /// <summary>When the breakpoint was hit</summary>
         public DateTimeOffset? Timestamp { get; set; }
@@ -85,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "functionName", n => { FunctionName = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "lineNumber", n => { LineNumber = n.GetIntValue(); } },
-                { "stackTrace", n => { StackTrace = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "stackTrace", n => { StackTrace = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.BreakpointHit_stackTrace>(global::Soenneker.PostHog.OpenApiClient.Models.BreakpointHit_stackTrace.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "timestamp", n => { Timestamp = n.GetDateTimeOffsetValue(); } },
                 { "variables", n => { Variables = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BreakpointHit_variables>(global::Soenneker.PostHog.OpenApiClient.Models.BreakpointHit_variables.CreateFromDiscriminatorValue); } },
             };
@@ -102,7 +102,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("functionName", FunctionName);
             writer.WriteGuidValue("id", Id);
             writer.WriteIntValue("lineNumber", LineNumber);
-            writer.WriteObjectValue<UntypedNode>("stackTrace", StackTrace);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.BreakpointHit_stackTrace>("stackTrace", StackTrace);
             writer.WriteDateTimeOffsetValue("timestamp", Timestamp);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BreakpointHit_variables>("variables", Variables);
             writer.WriteAdditionalData(AdditionalData);

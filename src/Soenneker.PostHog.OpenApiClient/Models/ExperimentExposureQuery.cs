@@ -15,13 +15,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The end_date property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EndDate { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_end_date? EndDate { get; set; }
 #nullable restore
 #else
-        public string EndDate { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_end_date EndDate { get; set; }
 #endif
         /// <summary>The experiment_id property</summary>
-        public int? ExperimentId { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_experiment_id? ExperimentId { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_experiment_id ExperimentId { get; set; }
+#endif
         /// <summary>The experiment_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -33,10 +39,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The exposure_criteria property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureCriteria? ExposureCriteria { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_exposure_criteria? ExposureCriteria { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureCriteria ExposureCriteria { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_exposure_criteria ExposureCriteria { get; set; }
 #endif
         /// <summary>The feature_flag property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -49,59 +55,59 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The holdout property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHoldoutType? Holdout { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_holdout? Holdout { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHoldoutType Holdout { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_holdout Holdout { get; set; }
 #endif
         /// <summary>The kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Kind { get; set; }
-#nullable restore
-#else
-        public string Kind { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_kind? Kind { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers? Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_modifiers? Modifiers { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_modifiers Modifiers { get; set; }
 #endif
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQueryResponse? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_response? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQueryResponse Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_response Response { get; set; }
 #endif
         /// <summary>The start_date property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? StartDate { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_start_date? StartDate { get; set; }
 #nullable restore
 #else
-        public string StartDate { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_start_date StartDate { get; set; }
 #endif
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags? Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_tags? Tags { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_tags Tags { get; set; }
 #endif
         /// <summary>version of the node, used for schema migrations</summary>
-        public double? Version { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_version? Version { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_version Version { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery"/> and sets the default values.
         /// </summary>
         public ExperimentExposureQuery()
         {
-            Kind = "ExperimentExposureQuery";
+            Kind = global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_kind.ExperimentExposureQuery;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -121,18 +127,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "end_date", n => { EndDate = n.GetStringValue(); } },
-                { "experiment_id", n => { ExperimentId = n.GetIntValue(); } },
+                { "end_date", n => { EndDate = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_end_date>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_end_date.CreateFromDiscriminatorValue); } },
+                { "experiment_id", n => { ExperimentId = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_experiment_id>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_experiment_id.CreateFromDiscriminatorValue); } },
                 { "experiment_name", n => { ExperimentName = n.GetStringValue(); } },
-                { "exposure_criteria", n => { ExposureCriteria = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureCriteria>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureCriteria.CreateFromDiscriminatorValue); } },
+                { "exposure_criteria", n => { ExposureCriteria = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_exposure_criteria>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_exposure_criteria.CreateFromDiscriminatorValue); } },
                 { "feature_flag", n => { FeatureFlag = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_feature_flag>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_feature_flag.CreateFromDiscriminatorValue); } },
-                { "holdout", n => { Holdout = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHoldoutType>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHoldoutType.CreateFromDiscriminatorValue); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
-                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQueryResponse.CreateFromDiscriminatorValue); } },
-                { "start_date", n => { StartDate = n.GetStringValue(); } },
-                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
-                { "version", n => { Version = n.GetDoubleValue(); } },
+                { "holdout", n => { Holdout = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_holdout>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_holdout.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_kind>(); } },
+                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_modifiers>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_modifiers.CreateFromDiscriminatorValue); } },
+                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_response>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_response.CreateFromDiscriminatorValue); } },
+                { "start_date", n => { StartDate = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_start_date>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_start_date.CreateFromDiscriminatorValue); } },
+                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_tags>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_tags.CreateFromDiscriminatorValue); } },
+                { "version", n => { Version = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_version>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_version.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -142,18 +148,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("end_date", EndDate);
-            writer.WriteIntValue("experiment_id", ExperimentId);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_end_date>("end_date", EndDate);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_experiment_id>("experiment_id", ExperimentId);
             writer.WriteStringValue("experiment_name", ExperimentName);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureCriteria>("exposure_criteria", ExposureCriteria);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_exposure_criteria>("exposure_criteria", ExposureCriteria);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_feature_flag>("feature_flag", FeatureFlag);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHoldoutType>("holdout", Holdout);
-            writer.WriteStringValue("kind", Kind);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQueryResponse>("response", Response);
-            writer.WriteStringValue("start_date", StartDate);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
-            writer.WriteDoubleValue("version", Version);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_holdout>("holdout", Holdout);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_kind>("kind", Kind);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_modifiers>("modifiers", Modifiers);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_response>("response", Response);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_start_date>("start_date", StartDate);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_tags>("tags", Tags);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_version>("version", Version);
         }
     }
 }

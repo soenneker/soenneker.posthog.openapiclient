@@ -3,14 +3,10 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `hourly` - Hourly* `daily` - Daily* `weekly` - Weekly* `monthly` - Monthly* `yearly` - Yearly</summary>
+    /// <summary>* `daily` - Daily* `weekly` - Weekly* `monthly` - Monthly* `yearly` - Yearly</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum SubscriptionFrequencyEnum
     {
-        [EnumMember(Value = "hourly")]
-        #pragma warning disable CS1591
-        Hourly,
-        #pragma warning restore CS1591
         [EnumMember(Value = "daily")]
         #pragma warning disable CS1591
         Daily,

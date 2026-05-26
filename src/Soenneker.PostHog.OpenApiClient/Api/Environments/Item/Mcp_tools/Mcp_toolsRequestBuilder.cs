@@ -11,7 +11,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Mcp_tools
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\environments\{environment_-id}\mcp_tools
+    /// Builds and executes requests for operations under \api\environments\{project_id}\mcp_tools
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Mcp_toolsRequestBuilder : BaseRequestBuilder
@@ -38,7 +38,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Mcp_tools
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Mcp_toolsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{environment_%2Did}/mcp_tools", pathParameters)
+        public Mcp_toolsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{project_id}/mcp_tools", pathParameters)
         {
         }
         /// <summary>
@@ -46,7 +46,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Mcp_tools
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Mcp_toolsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{environment_%2Did}/mcp_tools", rawUrl)
+        public Mcp_toolsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/environments/{project_id}/mcp_tools", rawUrl)
         {
         }
     }

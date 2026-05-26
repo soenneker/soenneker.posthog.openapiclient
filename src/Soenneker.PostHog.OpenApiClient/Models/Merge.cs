@@ -17,18 +17,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The source property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Source { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Merge_source? Source { get; private set; }
 #nullable restore
 #else
-        public UntypedNode Source { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Merge_source Source { get; private set; }
 #endif
         /// <summary>The target property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Target { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Merge_target? Target { get; private set; }
 #nullable restore
 #else
-        public UntypedNode Target { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Merge_target Target { get; private set; }
 #endif
         /// <summary>The type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -63,8 +63,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "source", n => { Source = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "target", n => { Target = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Merge_source>(global::Soenneker.PostHog.OpenApiClient.Models.Merge_source.CreateFromDiscriminatorValue); } },
+                { "target", n => { Target = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Merge_target>(global::Soenneker.PostHog.OpenApiClient.Models.Merge_target.CreateFromDiscriminatorValue); } },
                 { "type", n => { Type = n.GetStringValue(); } },
             };
         }

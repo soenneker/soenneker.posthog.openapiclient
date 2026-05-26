@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
-        /// <summary>Format for the description field.* `text` - text* `html` - html</summary>
+        /// <summary>* `html` - html* `text` - text</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DescriptionContentTypeEnum? DescriptionContentType { get; set; }
         /// <summary>HTTPS or mailto URL for link questions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

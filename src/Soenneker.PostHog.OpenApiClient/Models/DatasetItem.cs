@@ -19,10 +19,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItem_created_by? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItem_created_by CreatedBy { get; private set; }
 #endif
         /// <summary>The dataset property</summary>
         public Guid? Dataset { get; set; }
@@ -33,26 +33,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The input property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Input { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItem_input? Input { get; set; }
 #nullable restore
 #else
-        public UntypedNode Input { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItem_input Input { get; set; }
 #endif
         /// <summary>The metadata property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Metadata { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItem_metadata? Metadata { get; set; }
 #nullable restore
 #else
-        public UntypedNode Metadata { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItem_metadata Metadata { get; set; }
 #endif
         /// <summary>The output property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Output { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItem_output? Output { get; set; }
 #nullable restore
 #else
-        public UntypedNode Output { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItem_output Output { get; set; }
 #endif
         /// <summary>The ref_source_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -102,13 +102,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetItem_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.DatasetItem_created_by.CreateFromDiscriminatorValue); } },
                 { "dataset", n => { Dataset = n.GetGuidValue(); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "input", n => { Input = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "metadata", n => { Metadata = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "output", n => { Output = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "input", n => { Input = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetItem_input>(global::Soenneker.PostHog.OpenApiClient.Models.DatasetItem_input.CreateFromDiscriminatorValue); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetItem_metadata>(global::Soenneker.PostHog.OpenApiClient.Models.DatasetItem_metadata.CreateFromDiscriminatorValue); } },
+                { "output", n => { Output = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetItem_output>(global::Soenneker.PostHog.OpenApiClient.Models.DatasetItem_output.CreateFromDiscriminatorValue); } },
                 { "ref_source_id", n => { RefSourceId = n.GetStringValue(); } },
                 { "ref_timestamp", n => { RefTimestamp = n.GetDateTimeOffsetValue(); } },
                 { "ref_trace_id", n => { RefTraceId = n.GetStringValue(); } },
@@ -125,9 +125,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteGuidValue("dataset", Dataset);
             writer.WriteBoolValue("deleted", Deleted);
-            writer.WriteObjectValue<UntypedNode>("input", Input);
-            writer.WriteObjectValue<UntypedNode>("metadata", Metadata);
-            writer.WriteObjectValue<UntypedNode>("output", Output);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetItem_input>("input", Input);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetItem_metadata>("metadata", Metadata);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetItem_output>("output", Output);
             writer.WriteStringValue("ref_source_id", RefSourceId);
             writer.WriteDateTimeOffsetValue("ref_timestamp", RefTimestamp);
             writer.WriteStringValue("ref_trace_id", RefTraceId);

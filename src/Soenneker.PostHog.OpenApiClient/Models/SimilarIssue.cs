@@ -41,10 +41,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The library property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Library { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SimilarIssue_library? Library { get; set; }
 #nullable restore
 #else
-        public string Library { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SimilarIssue_library Library { get; set; }
 #endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -84,7 +84,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "distance", n => { Distance = n.GetDoubleValue(); } },
                 { "first_seen", n => { FirstSeen = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "library", n => { Library = n.GetStringValue(); } },
+                { "library", n => { Library = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SimilarIssue_library>(global::Soenneker.PostHog.OpenApiClient.Models.SimilarIssue_library.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
             };
@@ -100,7 +100,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("distance", Distance);
             writer.WriteStringValue("first_seen", FirstSeen);
             writer.WriteStringValue("id", Id);
-            writer.WriteStringValue("library", Library);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SimilarIssue_library>("library", Library);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("status", Status);
         }

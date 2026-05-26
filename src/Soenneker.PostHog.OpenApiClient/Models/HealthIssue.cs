@@ -31,17 +31,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The payload property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Payload { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HealthIssue_payload? Payload { get; private set; }
 #nullable restore
 #else
-        public UntypedNode Payload { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HealthIssue_payload Payload { get; private set; }
 #endif
         /// <summary>The resolved_at property</summary>
         public DateTimeOffset? ResolvedAt { get; private set; }
-        /// <summary>The severity property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSeverityEnum? Severity { get; private set; }
-        /// <summary>The status property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueStatusEnum? Status { get; private set; }
+        /// <summary>* `critical` - Critical* `warning` - Warning* `info` - Info</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSeverityEnum? Severity { get; set; }
+        /// <summary>* `active` - Active* `resolved` - Resolved</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueStatusEnum? Status { get; set; }
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>
@@ -73,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "dismissed", n => { Dismissed = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "kind", n => { Kind = n.GetStringValue(); } },
-                { "payload", n => { Payload = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "payload", n => { Payload = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HealthIssue_payload>(global::Soenneker.PostHog.OpenApiClient.Models.HealthIssue_payload.CreateFromDiscriminatorValue); } },
                 { "resolved_at", n => { ResolvedAt = n.GetDateTimeOffsetValue(); } },
                 { "severity", n => { Severity = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSeverityEnum>(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueStatusEnum>(); } },
@@ -88,6 +88,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("dismissed", Dismissed);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSeverityEnum>("severity", Severity);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueStatusEnum>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

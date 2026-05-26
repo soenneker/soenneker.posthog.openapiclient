@@ -28,10 +28,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTable_created_by? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTable_created_by CreatedBy { get; private set; }
 #endif
         /// <summary>The credential property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -46,10 +46,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The external_data_source property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SimpleExternalDataSourceSerializers? ExternalDataSource { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTable_external_data_source? ExternalDataSource { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SimpleExternalDataSourceSerializers ExternalDataSource { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTable_external_data_source ExternalDataSource { get; private set; }
 #endif
         /// <summary>The external_schema property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -122,10 +122,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "columns", n => { Columns = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTable_columns>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTable_columns.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTable_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTable_created_by.CreateFromDiscriminatorValue); } },
                 { "credential", n => { Credential = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Credential>(global::Soenneker.PostHog.OpenApiClient.Models.Credential.CreateFromDiscriminatorValue); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
-                { "external_data_source", n => { ExternalDataSource = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SimpleExternalDataSourceSerializers>(global::Soenneker.PostHog.OpenApiClient.Models.SimpleExternalDataSourceSerializers.CreateFromDiscriminatorValue); } },
+                { "external_data_source", n => { ExternalDataSource = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTable_external_data_source>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTable_external_data_source.CreateFromDiscriminatorValue); } },
                 { "external_schema", n => { ExternalSchema = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTable_external_schema>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTable_external_schema.CreateFromDiscriminatorValue); } },
                 { "format", n => { Format = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TableFormatEnum>(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },

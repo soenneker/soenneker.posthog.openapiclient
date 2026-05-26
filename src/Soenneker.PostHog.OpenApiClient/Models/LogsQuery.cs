@@ -15,10 +15,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Cursor for fetching the next page of results</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? After { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_after? After { get; set; }
 #nullable restore
 #else
-        public string After { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_after After { get; set; }
 #endif
         /// <summary>The dateRange property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -37,58 +37,70 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter FilterGroup { get; set; }
 #endif
         /// <summary>The kind property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_kind? Kind { get; set; }
+        /// <summary>The limit property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_limit? Limit { get; set; }
 #nullable restore
 #else
-        public string Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_limit Limit { get; set; }
 #endif
-        /// <summary>The limit property</summary>
-        public int? Limit { get; set; }
         /// <summary>The liveLogsCheckpoint property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LiveLogsCheckpoint { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_liveLogsCheckpoint? LiveLogsCheckpoint { get; set; }
 #nullable restore
 #else
-        public string LiveLogsCheckpoint { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_liveLogsCheckpoint LiveLogsCheckpoint { get; set; }
 #endif
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers? Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_modifiers? Modifiers { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_modifiers Modifiers { get; set; }
 #endif
         /// <summary>The offset property</summary>
-        public int? Offset { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_offset? Offset { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_offset Offset { get; set; }
+#endif
         /// <summary>The orderBy property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsOrderBy? OrderBy { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_orderBy? OrderBy { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_orderBy OrderBy { get; set; }
+#endif
         /// <summary>The resourceFingerprint property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ResourceFingerprint { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_resourceFingerprint? ResourceFingerprint { get; set; }
 #nullable restore
 #else
-        public string ResourceFingerprint { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_resourceFingerprint ResourceFingerprint { get; set; }
 #endif
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsQueryResponse? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_response? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsQueryResponse Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_response Response { get; set; }
 #endif
         /// <summary>The searchTerm property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SearchTerm { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_searchTerm? SearchTerm { get; set; }
 #nullable restore
 #else
-        public string SearchTerm { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_searchTerm SearchTerm { get; set; }
 #endif
         /// <summary>The serviceNames property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -107,23 +119,35 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public List<global::Soenneker.PostHog.OpenApiClient.Models.LogSeverityLevel?> SeverityLevels { get; set; }
 #endif
         /// <summary>Field to break down sparkline data by (used only by sparkline endpoint)</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsSparklineBreakdownBy? SparklineBreakdownBy { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_sparklineBreakdownBy? SparklineBreakdownBy { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_sparklineBreakdownBy SparklineBreakdownBy { get; set; }
+#endif
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags? Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_tags? Tags { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_tags Tags { get; set; }
 #endif
         /// <summary>version of the node, used for schema migrations</summary>
-        public double? Version { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_version? Version { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_version Version { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery"/> and sets the default values.
         /// </summary>
         public LogsQuery()
         {
-            Kind = "LogsQuery";
+            Kind = global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_kind.LogsQuery;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -143,23 +167,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "after", n => { After = n.GetStringValue(); } },
+                { "after", n => { After = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_after>(global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_after.CreateFromDiscriminatorValue); } },
                 { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>(global::Soenneker.PostHog.OpenApiClient.Models.DateRange.CreateFromDiscriminatorValue); } },
                 { "filterGroup", n => { FilterGroup = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter>(global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter.CreateFromDiscriminatorValue); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
-                { "limit", n => { Limit = n.GetIntValue(); } },
-                { "liveLogsCheckpoint", n => { LiveLogsCheckpoint = n.GetStringValue(); } },
-                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
-                { "offset", n => { Offset = n.GetIntValue(); } },
-                { "orderBy", n => { OrderBy = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsOrderBy>(); } },
-                { "resourceFingerprint", n => { ResourceFingerprint = n.GetStringValue(); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.LogsQueryResponse.CreateFromDiscriminatorValue); } },
-                { "searchTerm", n => { SearchTerm = n.GetStringValue(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_kind>(); } },
+                { "limit", n => { Limit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_limit>(global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_limit.CreateFromDiscriminatorValue); } },
+                { "liveLogsCheckpoint", n => { LiveLogsCheckpoint = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_liveLogsCheckpoint>(global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_liveLogsCheckpoint.CreateFromDiscriminatorValue); } },
+                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_modifiers>(global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_modifiers.CreateFromDiscriminatorValue); } },
+                { "offset", n => { Offset = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_offset>(global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_offset.CreateFromDiscriminatorValue); } },
+                { "orderBy", n => { OrderBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_orderBy>(global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_orderBy.CreateFromDiscriminatorValue); } },
+                { "resourceFingerprint", n => { ResourceFingerprint = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_resourceFingerprint>(global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_resourceFingerprint.CreateFromDiscriminatorValue); } },
+                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_response>(global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_response.CreateFromDiscriminatorValue); } },
+                { "searchTerm", n => { SearchTerm = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_searchTerm>(global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_searchTerm.CreateFromDiscriminatorValue); } },
                 { "serviceNames", n => { ServiceNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "severityLevels", n => { SeverityLevels = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.LogSeverityLevel>()?.AsList(); } },
-                { "sparklineBreakdownBy", n => { SparklineBreakdownBy = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsSparklineBreakdownBy>(); } },
-                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
-                { "version", n => { Version = n.GetDoubleValue(); } },
+                { "sparklineBreakdownBy", n => { SparklineBreakdownBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_sparklineBreakdownBy>(global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_sparklineBreakdownBy.CreateFromDiscriminatorValue); } },
+                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_tags>(global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_tags.CreateFromDiscriminatorValue); } },
+                { "version", n => { Version = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_version>(global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_version.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -169,23 +193,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("after", After);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_after>("after", After);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>("dateRange", DateRange);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter>("filterGroup", FilterGroup);
-            writer.WriteStringValue("kind", Kind);
-            writer.WriteIntValue("limit", Limit);
-            writer.WriteStringValue("liveLogsCheckpoint", LiveLogsCheckpoint);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);
-            writer.WriteIntValue("offset", Offset);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsOrderBy>("orderBy", OrderBy);
-            writer.WriteStringValue("resourceFingerprint", ResourceFingerprint);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsQueryResponse>("response", Response);
-            writer.WriteStringValue("searchTerm", SearchTerm);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_kind>("kind", Kind);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_limit>("limit", Limit);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_liveLogsCheckpoint>("liveLogsCheckpoint", LiveLogsCheckpoint);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_modifiers>("modifiers", Modifiers);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_offset>("offset", Offset);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_orderBy>("orderBy", OrderBy);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_resourceFingerprint>("resourceFingerprint", ResourceFingerprint);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_response>("response", Response);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_searchTerm>("searchTerm", SearchTerm);
             writer.WriteCollectionOfPrimitiveValues<string>("serviceNames", ServiceNames);
             writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.LogSeverityLevel>("severityLevels", SeverityLevels);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsSparklineBreakdownBy>("sparklineBreakdownBy", SparklineBreakdownBy);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
-            writer.WriteDoubleValue("version", Version);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_sparklineBreakdownBy>("sparklineBreakdownBy", SparklineBreakdownBy);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_tags>("tags", Tags);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery_version>("version", Version);
         }
     }
 }

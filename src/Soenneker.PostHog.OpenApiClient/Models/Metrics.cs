@@ -13,17 +13,53 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning restore CS1591
     {
         /// <summary>The Bounces property</summary>
-        public double? Bounces { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.Metrics_Bounces? Bounces { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.Metrics_Bounces Bounces { get; set; }
+#endif
         /// <summary>The PageViews property</summary>
-        public double? PageViews { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.Metrics_PageViews? PageViews { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.Metrics_PageViews PageViews { get; set; }
+#endif
         /// <summary>The SessionDuration property</summary>
-        public double? SessionDuration { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.Metrics_SessionDuration? SessionDuration { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.Metrics_SessionDuration SessionDuration { get; set; }
+#endif
         /// <summary>The Sessions property</summary>
-        public double? Sessions { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.Metrics_Sessions? Sessions { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.Metrics_Sessions Sessions { get; set; }
+#endif
         /// <summary>The TotalSessions property</summary>
-        public double? TotalSessions { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.Metrics_TotalSessions? TotalSessions { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.Metrics_TotalSessions TotalSessions { get; set; }
+#endif
         /// <summary>The UniqueUsers property</summary>
-        public double? UniqueUsers { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.Metrics_UniqueUsers? UniqueUsers { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.Metrics_UniqueUsers UniqueUsers { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -42,12 +78,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "Bounces", n => { Bounces = n.GetDoubleValue(); } },
-                { "PageViews", n => { PageViews = n.GetDoubleValue(); } },
-                { "SessionDuration", n => { SessionDuration = n.GetDoubleValue(); } },
-                { "Sessions", n => { Sessions = n.GetDoubleValue(); } },
-                { "TotalSessions", n => { TotalSessions = n.GetDoubleValue(); } },
-                { "UniqueUsers", n => { UniqueUsers = n.GetDoubleValue(); } },
+                { "Bounces", n => { Bounces = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Metrics_Bounces>(global::Soenneker.PostHog.OpenApiClient.Models.Metrics_Bounces.CreateFromDiscriminatorValue); } },
+                { "PageViews", n => { PageViews = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Metrics_PageViews>(global::Soenneker.PostHog.OpenApiClient.Models.Metrics_PageViews.CreateFromDiscriminatorValue); } },
+                { "SessionDuration", n => { SessionDuration = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Metrics_SessionDuration>(global::Soenneker.PostHog.OpenApiClient.Models.Metrics_SessionDuration.CreateFromDiscriminatorValue); } },
+                { "Sessions", n => { Sessions = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Metrics_Sessions>(global::Soenneker.PostHog.OpenApiClient.Models.Metrics_Sessions.CreateFromDiscriminatorValue); } },
+                { "TotalSessions", n => { TotalSessions = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Metrics_TotalSessions>(global::Soenneker.PostHog.OpenApiClient.Models.Metrics_TotalSessions.CreateFromDiscriminatorValue); } },
+                { "UniqueUsers", n => { UniqueUsers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Metrics_UniqueUsers>(global::Soenneker.PostHog.OpenApiClient.Models.Metrics_UniqueUsers.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -57,12 +93,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteDoubleValue("Bounces", Bounces);
-            writer.WriteDoubleValue("PageViews", PageViews);
-            writer.WriteDoubleValue("SessionDuration", SessionDuration);
-            writer.WriteDoubleValue("Sessions", Sessions);
-            writer.WriteDoubleValue("TotalSessions", TotalSessions);
-            writer.WriteDoubleValue("UniqueUsers", UniqueUsers);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Metrics_Bounces>("Bounces", Bounces);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Metrics_PageViews>("PageViews", PageViews);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Metrics_SessionDuration>("SessionDuration", SessionDuration);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Metrics_Sessions>("Sessions", Sessions);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Metrics_TotalSessions>("TotalSessions", TotalSessions);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Metrics_UniqueUsers>("UniqueUsers", UniqueUsers);
         }
     }
 }

@@ -25,10 +25,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The attributes property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Attributes { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedElement_attributes? Attributes { get; set; }
 #nullable restore
 #else
-        public UntypedNode Attributes { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedElement_attributes Attributes { get; set; }
 #endif
         /// <summary>The attr_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -95,7 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "attr_class", n => { AttrClass = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "attr_id", n => { AttrId = n.GetStringValue(); } },
-                { "attributes", n => { Attributes = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "attributes", n => { Attributes = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedElement_attributes>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedElement_attributes.CreateFromDiscriminatorValue); } },
                 { "href", n => { Href = n.GetStringValue(); } },
                 { "nth_child", n => { NthChild = n.GetIntValue(); } },
                 { "nth_of_type", n => { NthOfType = n.GetIntValue(); } },
@@ -112,7 +112,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("attr_class", AttrClass);
-            writer.WriteObjectValue<UntypedNode>("attributes", Attributes);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedElement_attributes>("attributes", Attributes);
             writer.WriteStringValue("attr_id", AttrId);
             writer.WriteStringValue("href", Href);
             writer.WriteIntValue("nth_child", NthChild);

@@ -43,10 +43,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LLMSkill_created_by? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LLMSkill_created_by CreatedBy { get; private set; }
 #endif
         /// <summary>The deleted property</summary>
         public bool? Deleted { get; private set; }
@@ -147,7 +147,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "body", n => { Body = n.GetStringValue(); } },
                 { "compatibility", n => { Compatibility = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LLMSkill_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.LLMSkill_created_by.CreateFromDiscriminatorValue); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "files", n => { Files = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LLMSkillFileManifest>(global::Soenneker.PostHog.OpenApiClient.Models.LLMSkillFileManifest.CreateFromDiscriminatorValue)?.AsList(); } },

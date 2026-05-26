@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Code;
 using Soenneker.PostHog.OpenApiClient.Api.Environments;
+using Soenneker.PostHog.OpenApiClient.Api.Llm_analytics;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations;
 using Soenneker.PostHog.OpenApiClient.Api.Projects;
 using Soenneker.PostHog.OpenApiClient.Api.Public_hog_function_templates;
@@ -30,6 +31,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api
         public global::Soenneker.PostHog.OpenApiClient.Api.Environments.EnvironmentsRequestBuilder Environments
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.EnvironmentsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The llm_analytics property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Llm_analytics.Llm_analyticsRequestBuilder Llm_analytics
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Llm_analytics.Llm_analyticsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The organizations property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.OrganizationsRequestBuilder Organizations

@@ -19,10 +19,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The available_product_features property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? AvailableProductFeatures { get; private set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.Organization_available_product_features>? AvailableProductFeatures { get; private set; }
 #nullable restore
 #else
-        public UntypedNode AvailableProductFeatures { get; private set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.Organization_available_product_features> AvailableProductFeatures { get; private set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
@@ -60,6 +60,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? IsActive { get; private set; }
         /// <summary>The is_ai_data_processing_approved property</summary>
         public bool? IsAiDataProcessingApproved { get; set; }
+        /// <summary>When True, in-app callouts inviting members to enable AI training are shown.</summary>
+        public bool? IsAiTrainingCtaShown { get; private set; }
+        /// <summary>When True, the AI training opt-out setting cannot be modified through the UI or API.</summary>
+        public bool? IsAiTrainingLocked { get; private set; }
+        /// <summary>When True, this organization allows its data to be used to train PostHog AI models.</summary>
+        public bool? IsAiTrainingOptedIn { get; set; }
+        /// <summary>The is_hipaa property</summary>
+        public bool? IsHipaa { get; private set; }
         /// <summary>Legacy field; member-join emails are controlled per user in account notification settings.</summary>
         public bool? IsMemberJoinEmailEnabled { get; private set; }
         /// <summary>(optional) reason for why the organization has been de-activated. This will be displayed to users on the web app.</summary>
@@ -81,14 +89,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The members_can_use_personal_api_keys property</summary>
         public bool? MembersCanUsePersonalApiKeys { get; set; }
         /// <summary>The membership_level property</summary>
-        public int? MembershipLevel { get; private set; }
+        public int? MembershipLevel { get; set; }
         /// <summary>The metadata property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.Organization_metadata? Metadata { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Organization_metadata? Metadata { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.Organization_metadata Metadata { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Organization_metadata Metadata { get; set; }
 #endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -98,8 +106,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>The plugins_access_level property</summary>
-        public int? PluginsAccessLevel { get; private set; }
+        /// <summary>* `0` - none* `3` - config* `6` - install* `9` - root</summary>
+        public int? PluginsAccessLevel { get; set; }
         /// <summary>The projects property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -152,7 +160,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "allow_publicly_shared_resources", n => { AllowPubliclySharedResources = n.GetBoolValue(); } },
-                { "available_product_features", n => { AvailableProductFeatures = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "available_product_features", n => { AvailableProductFeatures = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.Organization_available_product_features>(global::Soenneker.PostHog.OpenApiClient.Models.Organization_available_product_features.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "customer_id", n => { CustomerId = n.GetStringValue(); } },
                 { "default_anonymize_ips", n => { DefaultAnonymizeIps = n.GetBoolValue(); } },
@@ -162,6 +170,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "is_active", n => { IsActive = n.GetBoolValue(); } },
                 { "is_ai_data_processing_approved", n => { IsAiDataProcessingApproved = n.GetBoolValue(); } },
+                { "is_ai_training_cta_shown", n => { IsAiTrainingCtaShown = n.GetBoolValue(); } },
+                { "is_ai_training_locked", n => { IsAiTrainingLocked = n.GetBoolValue(); } },
+                { "is_ai_training_opted_in", n => { IsAiTrainingOptedIn = n.GetBoolValue(); } },
+                { "is_hipaa", n => { IsHipaa = n.GetBoolValue(); } },
                 { "is_member_join_email_enabled", n => { IsMemberJoinEmailEnabled = n.GetBoolValue(); } },
                 { "is_not_active_reason", n => { IsNotActiveReason = n.GetStringValue(); } },
                 { "is_pending_deletion", n => { IsPendingDeletion = n.GetBoolValue(); } },
@@ -192,35 +204,45 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("default_role_id", DefaultRoleId);
             writer.WriteBoolValue("enforce_2fa", Enforce2fa);
             writer.WriteBoolValue("is_ai_data_processing_approved", IsAiDataProcessingApproved);
+            writer.WriteBoolValue("is_ai_training_opted_in", IsAiTrainingOptedIn);
             writer.WriteGuidValue("logo_media_id", LogoMediaId);
             writer.WriteBoolValue("members_can_invite", MembersCanInvite);
             writer.WriteBoolValue("members_can_use_personal_api_keys", MembersCanUsePersonalApiKeys);
+            writer.WriteIntValue("membership_level", MembershipLevel);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Organization_metadata>("metadata", Metadata);
             writer.WriteStringValue("name", Name);
+            writer.WriteIntValue("plugins_access_level", PluginsAccessLevel);
             writer.WriteAdditionalData(AdditionalData);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DefaultExperimentStatsMethodEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>
+        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DefaultExperimentStatsMethodEnum_Wrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Organization_default_experiment_stats_methodMember1"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Organization_default_experiment_stats_method : IComposedTypeWrapper, IParsable
         {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum"/></summary>
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum? BlankEnum { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper? BlankEnumWrapper { get; set; }
 #nullable restore
 #else
-            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum BlankEnum { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper BlankEnumWrapper { get; set; }
 #endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DefaultExperimentStatsMethodEnum"/></summary>
-            public global::Soenneker.PostHog.OpenApiClient.Models.DefaultExperimentStatsMethodEnum? DefaultExperimentStatsMethodEnum { get; set; }
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DefaultExperimentStatsMethodEnum_Wrapper"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum? NullEnum { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.DefaultExperimentStatsMethodEnum_Wrapper? DefaultExperimentStatsMethodEnumWrapper { get; set; }
 #nullable restore
 #else
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum NullEnum { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.DefaultExperimentStatsMethodEnum_Wrapper DefaultExperimentStatsMethodEnumWrapper { get; set; }
+#endif
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Organization_default_experiment_stats_methodMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.Organization_default_experiment_stats_methodMember1? OrganizationDefaultExperimentStatsMethodMember1 { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.Organization_default_experiment_stats_methodMember1 OrganizationDefaultExperimentStatsMethodMember1 { get; set; }
 #endif
             /// <summary>
             /// Creates a new instance of the appropriate class based on discriminator value
@@ -232,17 +254,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
                 var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
                 var result = new global::Soenneker.PostHog.OpenApiClient.Models.Organization.Organization_default_experiment_stats_method();
-                if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+                if("BlankEnum_Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
                 {
-                    result.BlankEnum = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum();
+                    result.BlankEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper();
                 }
-                else if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DefaultExperimentStatsMethodEnum>() is global::Soenneker.PostHog.OpenApiClient.Models.DefaultExperimentStatsMethodEnum defaultExperimentStatsMethodEnumValue)
+                else if("DefaultExperimentStatsMethodEnum_Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
                 {
-                    result.DefaultExperimentStatsMethodEnum = defaultExperimentStatsMethodEnumValue;
+                    result.DefaultExperimentStatsMethodEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.DefaultExperimentStatsMethodEnum_Wrapper();
                 }
                 else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
                 {
-                    result.NullEnum = new global::Soenneker.PostHog.OpenApiClient.Models.NullEnum();
+                    result.OrganizationDefaultExperimentStatsMethodMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.Organization_default_experiment_stats_methodMember1();
                 }
                 return result;
             }
@@ -252,13 +274,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
-                if(BlankEnum != null)
+                if(BlankEnumWrapper != null)
                 {
-                    return BlankEnum.GetFieldDeserializers();
+                    return BlankEnumWrapper.GetFieldDeserializers();
                 }
-                else if(NullEnum != null)
+                else if(DefaultExperimentStatsMethodEnumWrapper != null)
                 {
-                    return NullEnum.GetFieldDeserializers();
+                    return DefaultExperimentStatsMethodEnumWrapper.GetFieldDeserializers();
+                }
+                else if(OrganizationDefaultExperimentStatsMethodMember1 != null)
+                {
+                    return OrganizationDefaultExperimentStatsMethodMember1.GetFieldDeserializers();
                 }
                 return new Dictionary<string, Action<IParseNode>>();
             }
@@ -269,17 +295,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             public virtual void Serialize(ISerializationWriter writer)
             {
                 if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(BlankEnum != null)
+                if(BlankEnumWrapper != null)
                 {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum>(null, BlankEnum);
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper>(null, BlankEnumWrapper);
                 }
-                else if(DefaultExperimentStatsMethodEnum != null)
+                else if(DefaultExperimentStatsMethodEnumWrapper != null)
                 {
-                    writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DefaultExperimentStatsMethodEnum>(null, DefaultExperimentStatsMethodEnum);
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DefaultExperimentStatsMethodEnum_Wrapper>(null, DefaultExperimentStatsMethodEnumWrapper);
                 }
-                else if(NullEnum != null)
+                else if(OrganizationDefaultExperimentStatsMethodMember1 != null)
                 {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NullEnum>(null, NullEnum);
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Organization_default_experiment_stats_methodMember1>(null, OrganizationDefaultExperimentStatsMethodMember1);
                 }
             }
         }

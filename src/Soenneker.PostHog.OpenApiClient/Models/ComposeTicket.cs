@@ -51,10 +51,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>TipTap rich content JSON for formatted messages.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? RichContent { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ComposeTicket_rich_content? RichContent { get; set; }
 #nullable restore
 #else
-        public UntypedNode RichContent { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ComposeTicket_rich_content RichContent { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ComposeTicket"/> and sets the default values.
@@ -86,7 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "message", n => { Message = n.GetStringValue(); } },
                 { "recipient_distinct_id", n => { RecipientDistinctId = n.GetStringValue(); } },
                 { "recipient_email", n => { RecipientEmail = n.GetStringValue(); } },
-                { "rich_content", n => { RichContent = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "rich_content", n => { RichContent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ComposeTicket_rich_content>(global::Soenneker.PostHog.OpenApiClient.Models.ComposeTicket_rich_content.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -101,7 +101,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("message", Message);
             writer.WriteStringValue("recipient_distinct_id", RecipientDistinctId);
             writer.WriteStringValue("recipient_email", RecipientEmail);
-            writer.WriteObjectValue<UntypedNode>("rich_content", RichContent);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ComposeTicket_rich_content>("rich_content", RichContent);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

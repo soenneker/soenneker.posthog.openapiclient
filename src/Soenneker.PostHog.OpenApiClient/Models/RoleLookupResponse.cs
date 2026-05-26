@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Matching reference, or null if none exists.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RoleExternalReference? Reference { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RoleLookupResponse_reference? Reference { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RoleExternalReference Reference { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RoleLookupResponse_reference Reference { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RoleLookupResponse"/> and sets the default values.
@@ -47,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "reference", n => { Reference = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RoleExternalReference>(global::Soenneker.PostHog.OpenApiClient.Models.RoleExternalReference.CreateFromDiscriminatorValue); } },
+                { "reference", n => { Reference = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RoleLookupResponse_reference>(global::Soenneker.PostHog.OpenApiClient.Models.RoleLookupResponse_reference.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -57,7 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RoleExternalReference>("reference", Reference);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RoleLookupResponse_reference>("reference", Reference);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

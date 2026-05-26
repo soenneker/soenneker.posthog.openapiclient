@@ -21,13 +21,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.DateRange DateRange { get; set; }
 #endif
         /// <summary>The kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Kind { get; set; }
-#nullable restore
-#else
-        public string Kind { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsExternalSummaryQuery_kind? Kind { get; set; }
         /// <summary>The properties property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -39,19 +33,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsExternalSummaryQueryResponse? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsExternalSummaryQuery_response? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsExternalSummaryQueryResponse Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsExternalSummaryQuery_response Response { get; set; }
 #endif
         /// <summary>version of the node, used for schema migrations</summary>
-        public double? Version { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsExternalSummaryQuery_version? Version { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsExternalSummaryQuery_version Version { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsExternalSummaryQuery"/> and sets the default values.
         /// </summary>
         public WebAnalyticsExternalSummaryQuery()
         {
-            Kind = "WebAnalyticsExternalSummaryQuery";
+            Kind = global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsExternalSummaryQuery_kind.WebAnalyticsExternalSummaryQuery;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -72,10 +72,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>(global::Soenneker.PostHog.OpenApiClient.Models.DateRange.CreateFromDiscriminatorValue); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsExternalSummaryQuery_kind>(); } },
                 { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsExternalSummaryQuery.WebAnalyticsExternalSummaryQuery_properties>(global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsExternalSummaryQuery.WebAnalyticsExternalSummaryQuery_properties.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsExternalSummaryQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsExternalSummaryQueryResponse.CreateFromDiscriminatorValue); } },
-                { "version", n => { Version = n.GetDoubleValue(); } },
+                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsExternalSummaryQuery_response>(global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsExternalSummaryQuery_response.CreateFromDiscriminatorValue); } },
+                { "version", n => { Version = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsExternalSummaryQuery_version>(global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsExternalSummaryQuery_version.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -86,10 +86,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>("dateRange", DateRange);
-            writer.WriteStringValue("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsExternalSummaryQuery_kind>("kind", Kind);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsExternalSummaryQuery.WebAnalyticsExternalSummaryQuery_properties>("properties", Properties);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsExternalSummaryQueryResponse>("response", Response);
-            writer.WriteDoubleValue("version", Version);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsExternalSummaryQuery_response>("response", Response);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsExternalSummaryQuery_version>("version", Version);
         }
         /// <summary>
         /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertyFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SessionPropertyFilter"/>

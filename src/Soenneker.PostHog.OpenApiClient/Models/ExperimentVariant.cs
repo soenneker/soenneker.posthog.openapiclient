@@ -23,15 +23,27 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Human-readable variant name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariant_name? Name { get; set; }
 #nullable restore
 #else
-        public string Name { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariant_name Name { get; set; }
 #endif
         /// <summary>The rollout_percentage property</summary>
-        public double? RolloutPercentage { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariant_rollout_percentage? RolloutPercentage { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariant_rollout_percentage RolloutPercentage { get; set; }
+#endif
         /// <summary>Percentage of users assigned to this variant (0–100). All variants must sum to 100. One of split_percent (recommended) or rollout_percentage must be provided.</summary>
-        public double? SplitPercent { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariant_split_percent? SplitPercent { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariant_split_percent SplitPercent { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -51,9 +63,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "key", n => { Key = n.GetStringValue(); } },
-                { "name", n => { Name = n.GetStringValue(); } },
-                { "rollout_percentage", n => { RolloutPercentage = n.GetDoubleValue(); } },
-                { "split_percent", n => { SplitPercent = n.GetDoubleValue(); } },
+                { "name", n => { Name = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariant_name>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariant_name.CreateFromDiscriminatorValue); } },
+                { "rollout_percentage", n => { RolloutPercentage = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariant_rollout_percentage>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariant_rollout_percentage.CreateFromDiscriminatorValue); } },
+                { "split_percent", n => { SplitPercent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariant_split_percent>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariant_split_percent.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -64,9 +76,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("key", Key);
-            writer.WriteStringValue("name", Name);
-            writer.WriteDoubleValue("rollout_percentage", RolloutPercentage);
-            writer.WriteDoubleValue("split_percent", SplitPercent);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariant_name>("name", Name);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariant_rollout_percentage>("rollout_percentage", RolloutPercentage);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariant_split_percent>("split_percent", SplitPercent);
         }
     }
 }

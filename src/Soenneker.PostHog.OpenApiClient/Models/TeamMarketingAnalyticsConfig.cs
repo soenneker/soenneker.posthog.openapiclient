@@ -21,42 +21,42 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The campaign_field_preferences property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? CampaignFieldPreferences { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfig_campaign_field_preferences? CampaignFieldPreferences { get; set; }
 #nullable restore
 #else
-        public UntypedNode CampaignFieldPreferences { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfig_campaign_field_preferences CampaignFieldPreferences { get; set; }
 #endif
         /// <summary>The campaign_name_mappings property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? CampaignNameMappings { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfig_campaign_name_mappings? CampaignNameMappings { get; set; }
 #nullable restore
 #else
-        public UntypedNode CampaignNameMappings { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfig_campaign_name_mappings CampaignNameMappings { get; set; }
 #endif
         /// <summary>The conversion_goals property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? ConversionGoals { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfig_conversion_goals? ConversionGoals { get; set; }
 #nullable restore
 #else
-        public UntypedNode ConversionGoals { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfig_conversion_goals ConversionGoals { get; set; }
 #endif
         /// <summary>The custom_source_mappings property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? CustomSourceMappings { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfig_custom_source_mappings? CustomSourceMappings { get; set; }
 #nullable restore
 #else
-        public UntypedNode CustomSourceMappings { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfig_custom_source_mappings CustomSourceMappings { get; set; }
 #endif
         /// <summary>The sources_map property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? SourcesMap { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfig_sources_map? SourcesMap { get; set; }
 #nullable restore
 #else
-        public UntypedNode SourcesMap { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfig_sources_map SourcesMap { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfig"/> and sets the default values.
@@ -85,11 +85,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "attribution_mode", n => { AttributionMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AttributionModeEnum>(); } },
                 { "attribution_window_days", n => { AttributionWindowDays = n.GetIntValue(); } },
-                { "campaign_field_preferences", n => { CampaignFieldPreferences = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "campaign_name_mappings", n => { CampaignNameMappings = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "conversion_goals", n => { ConversionGoals = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "custom_source_mappings", n => { CustomSourceMappings = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "sources_map", n => { SourcesMap = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "campaign_field_preferences", n => { CampaignFieldPreferences = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfig_campaign_field_preferences>(global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfig_campaign_field_preferences.CreateFromDiscriminatorValue); } },
+                { "campaign_name_mappings", n => { CampaignNameMappings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfig_campaign_name_mappings>(global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfig_campaign_name_mappings.CreateFromDiscriminatorValue); } },
+                { "conversion_goals", n => { ConversionGoals = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfig_conversion_goals>(global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfig_conversion_goals.CreateFromDiscriminatorValue); } },
+                { "custom_source_mappings", n => { CustomSourceMappings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfig_custom_source_mappings>(global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfig_custom_source_mappings.CreateFromDiscriminatorValue); } },
+                { "sources_map", n => { SourcesMap = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfig_sources_map>(global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfig_sources_map.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -101,11 +101,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AttributionModeEnum>("attribution_mode", AttributionMode);
             writer.WriteIntValue("attribution_window_days", AttributionWindowDays);
-            writer.WriteObjectValue<UntypedNode>("campaign_field_preferences", CampaignFieldPreferences);
-            writer.WriteObjectValue<UntypedNode>("campaign_name_mappings", CampaignNameMappings);
-            writer.WriteObjectValue<UntypedNode>("conversion_goals", ConversionGoals);
-            writer.WriteObjectValue<UntypedNode>("custom_source_mappings", CustomSourceMappings);
-            writer.WriteObjectValue<UntypedNode>("sources_map", SourcesMap);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfig_campaign_field_preferences>("campaign_field_preferences", CampaignFieldPreferences);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfig_campaign_name_mappings>("campaign_name_mappings", CampaignNameMappings);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfig_conversion_goals>("conversion_goals", ConversionGoals);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfig_custom_source_mappings>("custom_source_mappings", CustomSourceMappings);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfig_sources_map>("sources_map", SourcesMap);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

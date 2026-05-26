@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Version pin: null for latest, &quot;1.358.0&quot; for exact, &quot;1&quot; for major, &quot;1.358&quot; for minor</summary>
+        /// <summary>&quot;Version pin: null for latest, \&quot;1.358.0\&quot; for exact, \&quot;1\&quot; for major, \&quot;1.358\&quot; for minor&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? JsSnippetVersion { get; set; }

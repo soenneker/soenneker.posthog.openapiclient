@@ -19,13 +19,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? AllowUnknownEvents { get; set; }
         /// <summary>Whether the experiment is archived.</summary>
         public bool? Archived { get; set; }
-        /// <summary>Experiment conclusion: won, lost, inconclusive, stopped_early, or invalid.* `won` - won* `lost` - lost* `inconclusive` - inconclusive* `stopped_early` - stopped_early* `invalid` - invalid</summary>
+        /// <summary>&quot;Experiment conclusion: won, lost, inconclusive, stopped_early, or invalid.* `won` - won* `lost` - lost* `inconclusive` - inconclusive* `stopped_early` - stopped_early* `invalid` - invalid&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.Experiment.Experiment_conclusion? Conclusion { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Experiment_conclusion? Conclusion { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.Experiment.Experiment_conclusion Conclusion { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Experiment_conclusion Conclusion { get; set; }
 #endif
         /// <summary>Comment about the experiment conclusion.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -40,10 +40,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Experiment_created_by? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Experiment_created_by CreatedBy { get; private set; }
 #endif
         /// <summary>The create_in_folder property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -70,10 +70,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Exposure configuration including filter test accounts and custom exposure events.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiExposureCriteria? ExposureCriteria { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Experiment_exposure_criteria? ExposureCriteria { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiExposureCriteria ExposureCriteria { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Experiment_exposure_criteria ExposureCriteria { get; set; }
 #endif
         /// <summary>The feature_flag property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -94,38 +94,38 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The filters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Experiment_filters? Filters { get; set; }
 #nullable restore
 #else
-        public UntypedNode Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Experiment_filters Filters { get; set; }
 #endif
         /// <summary>The holdout property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHoldout? Holdout { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Experiment_holdout? Holdout { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHoldout Holdout { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Experiment_holdout Holdout { get; private set; }
 #endif
         /// <summary>ID of a holdout group to exclude from the experiment.</summary>
         public int? HoldoutId { get; set; }
         /// <summary>The id property</summary>
         public int? Id { get; private set; }
-        /// <summary>Primary experiment metrics. Each metric must have kind=&apos;ExperimentMetric&apos; and a metric_type: &apos;mean&apos; (set source to an EventsNode with an event name), &apos;funnel&apos; (set series to an array of EventsNode steps), &apos;ratio&apos; (set numerator and denominator EventsNode entries), or &apos;retention&apos; (set start_event and completion_event). Use the event-definitions-list tool to find available events in the project.</summary>
+        /// <summary>&quot;Primary experiment metrics. Each metric must have kind=&apos;ExperimentMetric&apos; and a metric_type: &apos;mean&apos; (set source to an EventsNode with an event name), &apos;funnel&apos; (set series to an array of EventsNode steps), &apos;ratio&apos; (set numerator and denominator EventsNode entries), or &apos;retention&apos; (set start_event and completion_event). Use the event-definitions-list tool to find available events in the project.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric>? Metrics { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Experiment_metrics? Metrics { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric> Metrics { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Experiment_metrics Metrics { get; set; }
 #endif
         /// <summary>Secondary metrics for additional measurements. Same format as primary metrics.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric>? MetricsSecondary { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Experiment_metrics_secondary? MetricsSecondary { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric> MetricsSecondary { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Experiment_metrics_secondary MetricsSecondary { get; set; }
 #endif
         /// <summary>Name of the experiment.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -137,21 +137,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The only_count_matured_users property</summary>
         public bool? OnlyCountMaturedUsers { get; set; }
-        /// <summary>Variant definitions and rollout configuration. Set feature_flag_variants to customize the split (default: 50/50 control/test). Each variant needs a key and split_percent (the variant&apos;s share of traffic); percentages must sum to 100. Set rollout_percentage (0-100, default 100) to limit what fraction of users enter the experiment. Set minimum_detectable_effect (percentage, suggest 20-30) to control statistical power.</summary>
+        /// <summary>&quot;Variant definitions and rollout configuration. Set feature_flag_variants to customize the split (default: 50/50 control/test). Each variant needs a key and split_percent (the variant&apos;s share of traffic); percentages must sum to 100. Set rollout_percentage (0-100, default 100) to limit what fraction of users enter the experiment. Set minimum_detectable_effect (percentage, suggest 20-30) to control statistical power.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParameters? Parameters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Experiment_parameters? Parameters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParameters Parameters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Experiment_parameters Parameters { get; set; }
 #endif
         /// <summary>The primary_metrics_ordered_uuids property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? PrimaryMetricsOrderedUuids { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Experiment_primary_metrics_ordered_uuids? PrimaryMetricsOrderedUuids { get; set; }
 #nullable restore
 #else
-        public UntypedNode PrimaryMetricsOrderedUuids { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Experiment_primary_metrics_ordered_uuids PrimaryMetricsOrderedUuids { get; set; }
 #endif
         /// <summary>The saved_metrics property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -164,54 +164,54 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>IDs of shared saved metrics to attach to this experiment. Each item has &apos;id&apos; (saved metric ID) and &apos;metadata&apos; with &apos;type&apos; (primary or secondary).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? SavedMetricsIds { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.Experiment_saved_metrics_ids>? SavedMetricsIds { get; set; }
 #nullable restore
 #else
-        public UntypedNode SavedMetricsIds { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.Experiment_saved_metrics_ids> SavedMetricsIds { get; set; }
 #endif
         /// <summary>The scheduling_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? SchedulingConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Experiment_scheduling_config? SchedulingConfig { get; set; }
 #nullable restore
 #else
-        public UntypedNode SchedulingConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Experiment_scheduling_config SchedulingConfig { get; set; }
 #endif
         /// <summary>The secondary_metrics property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? SecondaryMetrics { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Experiment_secondary_metrics? SecondaryMetrics { get; set; }
 #nullable restore
 #else
-        public UntypedNode SecondaryMetrics { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Experiment_secondary_metrics SecondaryMetrics { get; set; }
 #endif
         /// <summary>The secondary_metrics_ordered_uuids property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? SecondaryMetricsOrderedUuids { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Experiment_secondary_metrics_ordered_uuids? SecondaryMetricsOrderedUuids { get; set; }
 #nullable restore
 #else
-        public UntypedNode SecondaryMetricsOrderedUuids { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Experiment_secondary_metrics_ordered_uuids SecondaryMetricsOrderedUuids { get; set; }
 #endif
         /// <summary>The start_date property</summary>
         public DateTimeOffset? StartDate { get; set; }
         /// <summary>The stats_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? StatsConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Experiment_stats_config? StatsConfig { get; set; }
 #nullable restore
 #else
-        public UntypedNode StatsConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Experiment_stats_config StatsConfig { get; set; }
 #endif
-        /// <summary>Experiment lifecycle state: &apos;draft&apos; (not yet launched), &apos;running&apos; (launched with active feature flag), &apos;paused&apos; (running with feature flag deactivated — virtual state derived from feature_flag.active, not stored), &apos;stopped&apos; (ended).</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatusEnum? Status { get; private set; }
-        /// <summary>Experiment type: web for frontend UI changes, product for backend/API changes.* `web` - web* `product` - product</summary>
+        /// <summary>The status property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatusEnum? Status { get; set; }
+        /// <summary>&quot;Experiment type: web for frontend UI changes, product for backend/API changes.* `web` - web* `product` - product&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.Experiment.Experiment_type? Type { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Experiment_type? Type { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.Experiment.Experiment_type Type { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Experiment_type Type { get; set; }
 #endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
@@ -252,37 +252,37 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "allow_unknown_events", n => { AllowUnknownEvents = n.GetBoolValue(); } },
                 { "archived", n => { Archived = n.GetBoolValue(); } },
-                { "conclusion", n => { Conclusion = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Experiment.Experiment_conclusion>(global::Soenneker.PostHog.OpenApiClient.Models.Experiment.Experiment_conclusion.CreateFromDiscriminatorValue); } },
+                { "conclusion", n => { Conclusion = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Experiment_conclusion>(global::Soenneker.PostHog.OpenApiClient.Models.Experiment_conclusion.CreateFromDiscriminatorValue); } },
                 { "conclusion_comment", n => { ConclusionComment = n.GetStringValue(); } },
                 { "_create_in_folder", n => { CreateInFolder = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Experiment_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.Experiment_created_by.CreateFromDiscriminatorValue); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "end_date", n => { EndDate = n.GetDateTimeOffsetValue(); } },
                 { "exposure_cohort", n => { ExposureCohort = n.GetIntValue(); } },
-                { "exposure_criteria", n => { ExposureCriteria = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiExposureCriteria>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiExposureCriteria.CreateFromDiscriminatorValue); } },
+                { "exposure_criteria", n => { ExposureCriteria = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Experiment_exposure_criteria>(global::Soenneker.PostHog.OpenApiClient.Models.Experiment_exposure_criteria.CreateFromDiscriminatorValue); } },
                 { "feature_flag", n => { FeatureFlag = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Experiment_feature_flag>(global::Soenneker.PostHog.OpenApiClient.Models.Experiment_feature_flag.CreateFromDiscriminatorValue); } },
                 { "feature_flag_key", n => { FeatureFlagKey = n.GetStringValue(); } },
-                { "filters", n => { Filters = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "holdout", n => { Holdout = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHoldout>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHoldout.CreateFromDiscriminatorValue); } },
+                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Experiment_filters>(global::Soenneker.PostHog.OpenApiClient.Models.Experiment_filters.CreateFromDiscriminatorValue); } },
+                { "holdout", n => { Holdout = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Experiment_holdout>(global::Soenneker.PostHog.OpenApiClient.Models.Experiment_holdout.CreateFromDiscriminatorValue); } },
                 { "holdout_id", n => { HoldoutId = n.GetIntValue(); } },
                 { "id", n => { Id = n.GetIntValue(); } },
-                { "metrics", n => { Metrics = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "metrics_secondary", n => { MetricsSecondary = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "metrics", n => { Metrics = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Experiment_metrics>(global::Soenneker.PostHog.OpenApiClient.Models.Experiment_metrics.CreateFromDiscriminatorValue); } },
+                { "metrics_secondary", n => { MetricsSecondary = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Experiment_metrics_secondary>(global::Soenneker.PostHog.OpenApiClient.Models.Experiment_metrics_secondary.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "only_count_matured_users", n => { OnlyCountMaturedUsers = n.GetBoolValue(); } },
-                { "parameters", n => { Parameters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParameters>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParameters.CreateFromDiscriminatorValue); } },
-                { "primary_metrics_ordered_uuids", n => { PrimaryMetricsOrderedUuids = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "parameters", n => { Parameters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Experiment_parameters>(global::Soenneker.PostHog.OpenApiClient.Models.Experiment_parameters.CreateFromDiscriminatorValue); } },
+                { "primary_metrics_ordered_uuids", n => { PrimaryMetricsOrderedUuids = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Experiment_primary_metrics_ordered_uuids>(global::Soenneker.PostHog.OpenApiClient.Models.Experiment_primary_metrics_ordered_uuids.CreateFromDiscriminatorValue); } },
                 { "saved_metrics", n => { SavedMetrics = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentToSavedMetric>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentToSavedMetric.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "saved_metrics_ids", n => { SavedMetricsIds = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "scheduling_config", n => { SchedulingConfig = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "secondary_metrics", n => { SecondaryMetrics = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "secondary_metrics_ordered_uuids", n => { SecondaryMetricsOrderedUuids = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "saved_metrics_ids", n => { SavedMetricsIds = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.Experiment_saved_metrics_ids>(global::Soenneker.PostHog.OpenApiClient.Models.Experiment_saved_metrics_ids.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "scheduling_config", n => { SchedulingConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Experiment_scheduling_config>(global::Soenneker.PostHog.OpenApiClient.Models.Experiment_scheduling_config.CreateFromDiscriminatorValue); } },
+                { "secondary_metrics", n => { SecondaryMetrics = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Experiment_secondary_metrics>(global::Soenneker.PostHog.OpenApiClient.Models.Experiment_secondary_metrics.CreateFromDiscriminatorValue); } },
+                { "secondary_metrics_ordered_uuids", n => { SecondaryMetricsOrderedUuids = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Experiment_secondary_metrics_ordered_uuids>(global::Soenneker.PostHog.OpenApiClient.Models.Experiment_secondary_metrics_ordered_uuids.CreateFromDiscriminatorValue); } },
                 { "start_date", n => { StartDate = n.GetDateTimeOffsetValue(); } },
-                { "stats_config", n => { StatsConfig = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "stats_config", n => { StatsConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Experiment_stats_config>(global::Soenneker.PostHog.OpenApiClient.Models.Experiment_stats_config.CreateFromDiscriminatorValue); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatusEnum>(); } },
-                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Experiment.Experiment_type>(global::Soenneker.PostHog.OpenApiClient.Models.Experiment.Experiment_type.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Experiment_type>(global::Soenneker.PostHog.OpenApiClient.Models.Experiment_type.CreateFromDiscriminatorValue); } },
                 { "update_feature_flag_params", n => { UpdateFeatureFlagParams = n.GetBoolValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },
@@ -297,161 +297,32 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("allow_unknown_events", AllowUnknownEvents);
             writer.WriteBoolValue("archived", Archived);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Experiment.Experiment_conclusion>("conclusion", Conclusion);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Experiment_conclusion>("conclusion", Conclusion);
             writer.WriteStringValue("conclusion_comment", ConclusionComment);
             writer.WriteStringValue("_create_in_folder", CreateInFolder);
             writer.WriteBoolValue("deleted", Deleted);
             writer.WriteStringValue("description", Description);
             writer.WriteDateTimeOffsetValue("end_date", EndDate);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiExposureCriteria>("exposure_criteria", ExposureCriteria);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Experiment_exposure_criteria>("exposure_criteria", ExposureCriteria);
             writer.WriteStringValue("feature_flag_key", FeatureFlagKey);
-            writer.WriteObjectValue<UntypedNode>("filters", Filters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Experiment_filters>("filters", Filters);
             writer.WriteIntValue("holdout_id", HoldoutId);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric>("metrics", Metrics);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric>("metrics_secondary", MetricsSecondary);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Experiment_metrics>("metrics", Metrics);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Experiment_metrics_secondary>("metrics_secondary", MetricsSecondary);
             writer.WriteStringValue("name", Name);
             writer.WriteBoolValue("only_count_matured_users", OnlyCountMaturedUsers);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParameters>("parameters", Parameters);
-            writer.WriteObjectValue<UntypedNode>("primary_metrics_ordered_uuids", PrimaryMetricsOrderedUuids);
-            writer.WriteObjectValue<UntypedNode>("saved_metrics_ids", SavedMetricsIds);
-            writer.WriteObjectValue<UntypedNode>("scheduling_config", SchedulingConfig);
-            writer.WriteObjectValue<UntypedNode>("secondary_metrics", SecondaryMetrics);
-            writer.WriteObjectValue<UntypedNode>("secondary_metrics_ordered_uuids", SecondaryMetricsOrderedUuids);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Experiment_parameters>("parameters", Parameters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Experiment_primary_metrics_ordered_uuids>("primary_metrics_ordered_uuids", PrimaryMetricsOrderedUuids);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.Experiment_saved_metrics_ids>("saved_metrics_ids", SavedMetricsIds);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Experiment_scheduling_config>("scheduling_config", SchedulingConfig);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Experiment_secondary_metrics>("secondary_metrics", SecondaryMetrics);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Experiment_secondary_metrics_ordered_uuids>("secondary_metrics_ordered_uuids", SecondaryMetricsOrderedUuids);
             writer.WriteDateTimeOffsetValue("start_date", StartDate);
-            writer.WriteObjectValue<UntypedNode>("stats_config", StatsConfig);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Experiment.Experiment_type>("type", Type);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Experiment_stats_config>("stats_config", StatsConfig);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatusEnum>("status", Status);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Experiment_type>("type", Type);
             writer.WriteBoolValue("update_feature_flag_params", UpdateFeatureFlagParams);
             writer.WriteAdditionalData(AdditionalData);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConclusionEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class Experiment_conclusion : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConclusionEnum"/></summary>
-            public global::Soenneker.PostHog.OpenApiClient.Models.ConclusionEnum? ConclusionEnum { get; set; }
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum? NullEnum { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum NullEnum { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Experiment.Experiment_conclusion"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.Experiment.Experiment_conclusion CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.Experiment.Experiment_conclusion();
-                if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ConclusionEnum>() is global::Soenneker.PostHog.OpenApiClient.Models.ConclusionEnum conclusionEnumValue)
-                {
-                    result.ConclusionEnum = conclusionEnumValue;
-                }
-                else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.NullEnum = new global::Soenneker.PostHog.OpenApiClient.Models.NullEnum();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(NullEnum != null)
-                {
-                    return NullEnum.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(ConclusionEnum != null)
-                {
-                    writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ConclusionEnum>(null, ConclusionEnum);
-                }
-                else if(NullEnum != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NullEnum>(null, NullEnum);
-                }
-            }
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTypeEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class Experiment_type : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTypeEnum"/></summary>
-            public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTypeEnum? ExperimentTypeEnum { get; set; }
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum? NullEnum { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum NullEnum { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Experiment.Experiment_type"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.Experiment.Experiment_type CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.Experiment.Experiment_type();
-                if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTypeEnum>() is global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTypeEnum experimentTypeEnumValue)
-                {
-                    result.ExperimentTypeEnum = experimentTypeEnumValue;
-                }
-                else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.NullEnum = new global::Soenneker.PostHog.OpenApiClient.Models.NullEnum();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(NullEnum != null)
-                {
-                    return NullEnum.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(ExperimentTypeEnum != null)
-                {
-                    writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTypeEnum>(null, ExperimentTypeEnum);
-                }
-                else if(NullEnum != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NullEnum>(null, NullEnum);
-                }
-            }
         }
     }
 }

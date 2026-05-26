@@ -41,10 +41,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Value of your filter. For example `test@example.com` or `https://example.com/test/`. Can be an array for an OR query, like `[&quot;test@example.com&quot;,&quot;ok@example.com&quot;]`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyItem.PropertyItem_value? Value { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UnionBranch? Value { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyItem.PropertyItem_value Value { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UnionBranch Value { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyItem"/> and sets the default values.
@@ -74,7 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "key", n => { Key = n.GetStringValue(); } },
                 { "operator", n => { Operator = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyItem.PropertyItem_operator>(global::Soenneker.PostHog.OpenApiClient.Models.PropertyItem.PropertyItem_operator.CreateFromDiscriminatorValue); } },
                 { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyItem.PropertyItem_type>(global::Soenneker.PostHog.OpenApiClient.Models.PropertyItem.PropertyItem_type.CreateFromDiscriminatorValue); } },
-                { "value", n => { Value = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyItem.PropertyItem_value>(global::Soenneker.PostHog.OpenApiClient.Models.PropertyItem.PropertyItem_value.CreateFromDiscriminatorValue); } },
+                { "value", n => { Value = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UnionBranch>(global::Soenneker.PostHog.OpenApiClient.Models.UnionBranch.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -87,33 +87,39 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("key", Key);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyItem.PropertyItem_operator>("operator", Operator);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyItem.PropertyItem_type>("type", Type);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyItem.PropertyItem_value>("value", Value);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UnionBranch>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyItemOperatorEnum"/>
+        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyItemOperatorEnum_Wrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyItem_operatorMember1"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class PropertyItem_operator : IComposedTypeWrapper, IParsable
         {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum"/></summary>
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum? BlankEnum { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper? BlankEnumWrapper { get; set; }
 #nullable restore
 #else
-            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum BlankEnum { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper BlankEnumWrapper { get; set; }
 #endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyItemOperatorEnum_Wrapper"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum? NullEnum { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.PropertyItemOperatorEnum_Wrapper? PropertyItemOperatorEnumWrapper { get; set; }
 #nullable restore
 #else
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum NullEnum { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.PropertyItemOperatorEnum_Wrapper PropertyItemOperatorEnumWrapper { get; set; }
 #endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyItemOperatorEnum"/></summary>
-            public global::Soenneker.PostHog.OpenApiClient.Models.PropertyItemOperatorEnum? PropertyItemOperatorEnum { get; set; }
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyItem_operatorMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.PropertyItem_operatorMember1? PropertyItemOperatorMember1 { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.PropertyItem_operatorMember1 PropertyItemOperatorMember1 { get; set; }
+#endif
             /// <summary>
             /// Creates a new instance of the appropriate class based on discriminator value
             /// </summary>
@@ -124,17 +130,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
                 var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
                 var result = new global::Soenneker.PostHog.OpenApiClient.Models.PropertyItem.PropertyItem_operator();
-                if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+                if("BlankEnum_Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
                 {
-                    result.BlankEnum = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum();
+                    result.BlankEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper();
+                }
+                else if("PropertyItemOperatorEnum_Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+                {
+                    result.PropertyItemOperatorEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.PropertyItemOperatorEnum_Wrapper();
                 }
                 else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
                 {
-                    result.NullEnum = new global::Soenneker.PostHog.OpenApiClient.Models.NullEnum();
-                }
-                else if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyItemOperatorEnum>() is global::Soenneker.PostHog.OpenApiClient.Models.PropertyItemOperatorEnum propertyItemOperatorEnumValue)
-                {
-                    result.PropertyItemOperatorEnum = propertyItemOperatorEnumValue;
+                    result.PropertyItemOperatorMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.PropertyItem_operatorMember1();
                 }
                 return result;
             }
@@ -144,13 +150,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
-                if(BlankEnum != null)
+                if(BlankEnumWrapper != null)
                 {
-                    return BlankEnum.GetFieldDeserializers();
+                    return BlankEnumWrapper.GetFieldDeserializers();
                 }
-                else if(NullEnum != null)
+                else if(PropertyItemOperatorEnumWrapper != null)
                 {
-                    return NullEnum.GetFieldDeserializers();
+                    return PropertyItemOperatorEnumWrapper.GetFieldDeserializers();
+                }
+                else if(PropertyItemOperatorMember1 != null)
+                {
+                    return PropertyItemOperatorMember1.GetFieldDeserializers();
                 }
                 return new Dictionary<string, Action<IParseNode>>();
             }
@@ -161,36 +171,42 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             public virtual void Serialize(ISerializationWriter writer)
             {
                 if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(BlankEnum != null)
+                if(BlankEnumWrapper != null)
                 {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum>(null, BlankEnum);
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper>(null, BlankEnumWrapper);
                 }
-                else if(NullEnum != null)
+                else if(PropertyItemOperatorEnumWrapper != null)
                 {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NullEnum>(null, NullEnum);
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyItemOperatorEnum_Wrapper>(null, PropertyItemOperatorEnumWrapper);
                 }
-                else if(PropertyItemOperatorEnum != null)
+                else if(PropertyItemOperatorMember1 != null)
                 {
-                    writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyItemOperatorEnum>(null, PropertyItemOperatorEnum);
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyItem_operatorMember1>(null, PropertyItemOperatorMember1);
                 }
             }
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyFilterTypeEnum"/>
+        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyFilterTypeEnum_Wrapper"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class PropertyItem_type : IComposedTypeWrapper, IParsable
         {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum"/></summary>
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum? BlankEnum { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper? BlankEnumWrapper { get; set; }
 #nullable restore
 #else
-            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum BlankEnum { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper BlankEnumWrapper { get; set; }
 #endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyFilterTypeEnum"/></summary>
-            public global::Soenneker.PostHog.OpenApiClient.Models.PropertyFilterTypeEnum? PropertyFilterTypeEnum { get; set; }
+            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyFilterTypeEnum_Wrapper"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::Soenneker.PostHog.OpenApiClient.Models.PropertyFilterTypeEnum_Wrapper? PropertyFilterTypeEnumWrapper { get; set; }
+#nullable restore
+#else
+            public global::Soenneker.PostHog.OpenApiClient.Models.PropertyFilterTypeEnum_Wrapper PropertyFilterTypeEnumWrapper { get; set; }
+#endif
             /// <summary>
             /// Creates a new instance of the appropriate class based on discriminator value
             /// </summary>
@@ -201,13 +217,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
                 var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
                 var result = new global::Soenneker.PostHog.OpenApiClient.Models.PropertyItem.PropertyItem_type();
-                if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+                if("BlankEnum_Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
                 {
-                    result.BlankEnum = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum();
+                    result.BlankEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper();
                 }
-                else if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyFilterTypeEnum>() is global::Soenneker.PostHog.OpenApiClient.Models.PropertyFilterTypeEnum propertyFilterTypeEnumValue)
+                else if("PropertyFilterTypeEnum_Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
                 {
-                    result.PropertyFilterTypeEnum = propertyFilterTypeEnumValue;
+                    result.PropertyFilterTypeEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.PropertyFilterTypeEnum_Wrapper();
                 }
                 return result;
             }
@@ -217,9 +233,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
-                if(BlankEnum != null)
+                if(BlankEnumWrapper != null)
                 {
-                    return BlankEnum.GetFieldDeserializers();
+                    return BlankEnumWrapper.GetFieldDeserializers();
+                }
+                else if(PropertyFilterTypeEnumWrapper != null)
+                {
+                    return PropertyFilterTypeEnumWrapper.GetFieldDeserializers();
                 }
                 return new Dictionary<string, Action<IParseNode>>();
             }
@@ -230,100 +250,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             public virtual void Serialize(ISerializationWriter writer)
             {
                 if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(BlankEnum != null)
+                if(BlankEnumWrapper != null)
                 {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum>(null, BlankEnum);
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper>(null, BlankEnumWrapper);
                 }
-                else if(PropertyFilterTypeEnum != null)
+                else if(PropertyFilterTypeEnumWrapper != null)
                 {
-                    writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyFilterTypeEnum>(null, PropertyFilterTypeEnum);
-                }
-            }
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="bool"/>, <see cref="double"/>, <see cref="string"/>, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.PropertyItem_valueMember1&gt;
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class PropertyItem_value : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="bool"/></summary>
-            public bool? Boolean { get; set; }
-            /// <summary>Composed type representation for type <see cref="double"/></summary>
-            public double? Double { get; set; }
-            /// <summary>Composed type representation for type List&lt;global::Soenneker.PostHog.OpenApiClient.Models.PropertyItem_valueMember1&gt;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public List<global::Soenneker.PostHog.OpenApiClient.Models.PropertyItem_valueMember1>? PropertyItemValueMember1 { get; set; }
-#nullable restore
-#else
-            public List<global::Soenneker.PostHog.OpenApiClient.Models.PropertyItem_valueMember1> PropertyItemValueMember1 { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="string"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public string? String { get; set; }
-#nullable restore
-#else
-            public string String { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyItem.PropertyItem_value"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.PropertyItem.PropertyItem_value CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.PropertyItem.PropertyItem_value();
-                if(parseNode.GetBoolValue() is bool booleanValue)
-                {
-                    result.Boolean = booleanValue;
-                }
-                else if(parseNode.GetDoubleValue() is double doubleValue)
-                {
-                    result.Double = doubleValue;
-                }
-                else if(parseNode.GetStringValue() is string stringValue)
-                {
-                    result.String = stringValue;
-                }
-                else if(parseNode.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PropertyItem_valueMember1>(global::Soenneker.PostHog.OpenApiClient.Models.PropertyItem_valueMember1.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.PostHog.OpenApiClient.Models.PropertyItem_valueMember1> propertyItemValueMember1Value)
-                {
-                    result.PropertyItemValueMember1 = propertyItemValueMember1Value;
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(Boolean != null)
-                {
-                    writer.WriteBoolValue(null, Boolean);
-                }
-                else if(Double != null)
-                {
-                    writer.WriteDoubleValue(null, Double);
-                }
-                else if(String != null)
-                {
-                    writer.WriteStringValue(null, String);
-                }
-                else if(PropertyItemValueMember1 != null)
-                {
-                    writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PropertyItem_valueMember1>(null, PropertyItemValueMember1);
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyFilterTypeEnum_Wrapper>(null, PropertyFilterTypeEnumWrapper);
                 }
             }
         }

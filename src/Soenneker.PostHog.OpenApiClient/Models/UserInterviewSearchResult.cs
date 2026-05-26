@@ -24,7 +24,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>When the interview row was created.</summary>
         public DateTimeOffset? CreatedAt { get; set; }
-        /// <summary>Which document type matched — `transcript` is the raw conversation, `summary` is the AI-generated abstract.* `transcript` - transcript* `summary` - summary</summary>
+        /// <summary>* `transcript` - transcript* `summary` - summary</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.UserInterviewSearchDocumentTypeEnum? DocumentType { get; set; }
         /// <summary>Email or PostHog distinct ID of the interviewee.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

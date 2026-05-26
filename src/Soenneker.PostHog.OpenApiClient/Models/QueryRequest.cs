@@ -13,34 +13,46 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning restore CS1591
     {
         /// <summary>The async property</summary>
-        public bool? Async { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryRequest_async? Async { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryRequest_async Async { get; set; }
+#endif
         /// <summary>Client provided query ID. Can be used to retrieve the status or cancel the query.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ClientQueryId { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryRequest_client_query_id? ClientQueryId { get; set; }
 #nullable restore
 #else
-        public string ClientQueryId { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryRequest_client_query_id ClientQueryId { get; set; }
 #endif
         /// <summary>The filters_override property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter? FiltersOverride { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryRequest_filters_override? FiltersOverride { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter FiltersOverride { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryRequest_filters_override FiltersOverride { get; set; }
 #endif
         /// <summary>Limit context for the query. Only &apos;posthog_ai&apos; is allowed as a client-provided value.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.LimitContext? LimitContext { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryRequest_limit_context? LimitContext { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryRequest_limit_context LimitContext { get; set; }
+#endif
         /// <summary>Name given to a query. It&apos;s used to identify the query in the UI. Up to 128 characters for a name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryRequest_name? Name { get; set; }
 #nullable restore
 #else
-        public string Name { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryRequest_name Name { get; set; }
 #endif
-        /// <summary>Submit a JSON string representing a query for PostHog data analysis, for example a HogQL query.Example payload:```{&quot;query&quot;: {&quot;kind&quot;: &quot;HogQLQuery&quot;, &quot;query&quot;: &quot;select * from events limit 100&quot;}}```For more details on HogQL queries, see the [PostHog HogQL documentation](/docs/hogql#api-access).</summary>
+        /// <summary>&quot;Submit a JSON string representing a query for PostHog data analysis, for example a HogQL query.Example payload:```{\&quot;query\&quot;: {\&quot;kind\&quot;: \&quot;HogQLQuery\&quot;, \&quot;query\&quot;: \&quot;select * from events limit 100\&quot;}}```For more details on HogQL queries, see the [PostHog HogQL documentation](/docs/hogql#api-access).&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.QueryRequest.QueryRequest_query? Query { get; set; }
@@ -49,22 +61,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.QueryRequest.QueryRequest_query Query { get; set; }
 #endif
         /// <summary>Whether results should be calculated sync or async, and how much to rely on the cache:- `&apos;blocking&apos;` - calculate synchronously (returning only when the query is done), UNLESS there are very fresh results in the cache- `&apos;async&apos;` - kick off background calculation (returning immediately with a query status), UNLESS there are very fresh results in the cache- `&apos;lazy_async&apos;` - kick off background calculation, UNLESS there are somewhat fresh results in the cache- `&apos;force_blocking&apos;` - calculate synchronously, even if fresh results are already cached- `&apos;force_async&apos;` - kick off background calculation, even if fresh results are already cached- `&apos;force_cache&apos;` - return cached data or a cache miss; always completes immediately as it never calculates Background calculation can be tracked using the `query_status` response field.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.RefreshType? Refresh { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryRequest_refresh? Refresh { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryRequest_refresh Refresh { get; set; }
+#endif
         /// <summary>The variables_override property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? VariablesOverride { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryRequestVariablesOverride? VariablesOverride { get; set; }
 #nullable restore
 #else
-        public UntypedNode VariablesOverride { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryRequestVariablesOverride VariablesOverride { get; set; }
 #endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryRequest"/> and sets the default values.
-        /// </summary>
-        public QueryRequest()
-        {
-            Refresh = global::Soenneker.PostHog.OpenApiClient.Models.RefreshType.Blocking;
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -83,14 +94,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "async", n => { Async = n.GetBoolValue(); } },
-                { "client_query_id", n => { ClientQueryId = n.GetStringValue(); } },
-                { "filters_override", n => { FiltersOverride = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter.CreateFromDiscriminatorValue); } },
-                { "limit_context", n => { LimitContext = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LimitContext>(); } },
-                { "name", n => { Name = n.GetStringValue(); } },
+                { "async", n => { Async = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryRequest_async>(global::Soenneker.PostHog.OpenApiClient.Models.QueryRequest_async.CreateFromDiscriminatorValue); } },
+                { "client_query_id", n => { ClientQueryId = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryRequest_client_query_id>(global::Soenneker.PostHog.OpenApiClient.Models.QueryRequest_client_query_id.CreateFromDiscriminatorValue); } },
+                { "filters_override", n => { FiltersOverride = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryRequest_filters_override>(global::Soenneker.PostHog.OpenApiClient.Models.QueryRequest_filters_override.CreateFromDiscriminatorValue); } },
+                { "limit_context", n => { LimitContext = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryRequest_limit_context>(global::Soenneker.PostHog.OpenApiClient.Models.QueryRequest_limit_context.CreateFromDiscriminatorValue); } },
+                { "name", n => { Name = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryRequest_name>(global::Soenneker.PostHog.OpenApiClient.Models.QueryRequest_name.CreateFromDiscriminatorValue); } },
                 { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryRequest.QueryRequest_query>(global::Soenneker.PostHog.OpenApiClient.Models.QueryRequest.QueryRequest_query.CreateFromDiscriminatorValue); } },
-                { "refresh", n => { Refresh = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RefreshType>(); } },
-                { "variables_override", n => { VariablesOverride = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "refresh", n => { Refresh = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryRequest_refresh>(global::Soenneker.PostHog.OpenApiClient.Models.QueryRequest_refresh.CreateFromDiscriminatorValue); } },
+                { "variables_override", n => { VariablesOverride = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryRequestVariablesOverride>(global::Soenneker.PostHog.OpenApiClient.Models.QueryRequestVariablesOverride.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -100,14 +111,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteBoolValue("async", Async);
-            writer.WriteStringValue("client_query_id", ClientQueryId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter>("filters_override", FiltersOverride);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LimitContext>("limit_context", LimitContext);
-            writer.WriteStringValue("name", Name);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryRequest_async>("async", Async);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryRequest_client_query_id>("client_query_id", ClientQueryId);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryRequest_filters_override>("filters_override", FiltersOverride);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryRequest_limit_context>("limit_context", LimitContext);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryRequest_name>("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryRequest.QueryRequest_query>("query", Query);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RefreshType>("refresh", Refresh);
-            writer.WriteObjectValue<UntypedNode>("variables_override", VariablesOverride);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryRequest_refresh>("refresh", Refresh);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryRequestVariablesOverride>("variables_override", VariablesOverride);
         }
         /// <summary>
         /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActionsNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActorsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DatabaseSchemaQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataVisualizationNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageOverviewQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTableQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTrendsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueCorrelationQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSimilarIssuesQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EventsNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EventsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelsDataWarehouseNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.GroupsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogQLAutocomplete"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogQLMetadata"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptions"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LifecycleDataWarehouseNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LifecycleQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogAttributesQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogValuesQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAggregatedQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NonIntegratedConversionsTableQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PathsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PersonsNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RetentionQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsGrossRevenueQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMetricsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsOverviewQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsTopCustomersQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleDataWarehouseTablesQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RevenueExampleEventsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SavedInsightNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SessionAttributionExplorerQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SuggestedQuestionsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TeamTaxonomyQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TraceNeighborsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TraceQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansAggregationQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansTreeQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TrendsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.VectorSearchQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsExternalSummaryQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebExternalClicksTableQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebGoalsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebNotableChangesQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebOverviewQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebPageURLSearchQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsPathBreakdownQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery"/>

@@ -15,7 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Why the user is leaving onboarding. &apos;later&apos; keeps them able to return; &apos;other&apos; is a catch-all. &apos;delegated&apos; is rejected here — use the delegate endpoint so the delegation invite is created atomically.* `later` - Later* `other` - Other</summary>
+        /// <summary>* `later` - Later* `other` - Other</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ReasonEnum? Reason { get; set; }
         /// <summary>Onboarding step key the user was on when skipping, for analytics only.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

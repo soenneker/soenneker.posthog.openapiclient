@@ -25,10 +25,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertConfiguration_created_by? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertConfiguration_created_by CreatedBy { get; private set; }
 #endif
         /// <summary>How many periods within the evaluation window must breach the threshold to fire (N in N-of-M).</summary>
         public int? DatapointsToAlarm { get; set; }
@@ -44,13 +44,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? Enabled { get; set; }
         /// <summary>Total number of check periods in the sliding evaluation window for firing (M in N-of-M).</summary>
         public int? EvaluationPeriods { get; set; }
-        /// <summary>Filter criteria — subset of LogsViewerFilters. Must contain at least one of: severityLevels (list of severity strings), serviceNames (list of service name strings), or filterGroup (property filter group object). May be empty on draft alerts (enabled=false).</summary>
+        /// <summary>&quot;Filter criteria — subset of LogsViewerFilters. Must contain at least one of: severityLevels (list of severity strings), serviceNames (list of service name strings), or filterGroup (property filter group object). May be empty on draft alerts (enabled=false).&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertFilters? Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertConfiguration_filters? Filters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertFilters Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertConfiguration_filters Filters { get; set; }
 #endif
         /// <summary>When the alert was first enabled. Null means the alert is still in draft state.</summary>
         public DateTimeOffset? FirstEnabledAt { get; private set; }
@@ -80,8 +80,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? NextCheckAt { get; private set; }
         /// <summary>ISO 8601 timestamp until which the alert is snoozed. Set to null to unsnooze.</summary>
         public DateTimeOffset? SnoozeUntil { get; set; }
-        /// <summary>Current alert state: not_firing, firing, pending_resolve, errored, or snoozed. Server-managed.* `not_firing` - Not firing* `firing` - Firing* `pending_resolve` - Pending resolve* `errored` - Errored* `snoozed` - Snoozed* `broken` - Broken</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertConfigurationStateEnum? State { get; private set; }
+        /// <summary>* `not_firing` - Not firing* `firing` - Firing* `pending_resolve` - Pending resolve* `errored` - Errored* `snoozed` - Snoozed* `broken` - Broken</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertConfigurationStateEnum? State { get; set; }
         /// <summary>Continuous state intervals over the last 24h, ordered oldest-first. Each interval covers a span during which (state, enabled) was constant. Derived from LogsAlertEvent rows walked in chronological order; consecutive identical intervals are collapsed. Drives the &apos;Last 24h&apos; status bar on the alert list.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -92,11 +92,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Number of matching log entries that constitutes a threshold breach within the evaluation window. Defaults to 100.</summary>
         public int? ThresholdCount { get; set; }
-        /// <summary>Whether the alert fires when the count is above or below the threshold.* `above` - Above* `below` - Below</summary>
+        /// <summary>* `above` - Above* `below` - Below</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ThresholdOperatorEnum? ThresholdOperator { get; set; }
         /// <summary>When the alert was last modified.</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
-        /// <summary>Time window in minutes over which log entries are counted. Allowed values: 5, 10, 15, 30, 60.</summary>
+        /// <summary>&quot;Time window in minutes over which log entries are counted. Allowed values: 5, 10, 15, 30, 60.&quot;</summary>
         public int? WindowMinutes { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertConfiguration"/> and sets the default values.
@@ -104,7 +104,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public LogsAlertConfiguration()
         {
             AdditionalData = new Dictionary<string, object>();
-            ThresholdOperator = global::Soenneker.PostHog.OpenApiClient.Models.ThresholdOperatorEnum.Above;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -128,12 +127,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "consecutive_failures", n => { ConsecutiveFailures = n.GetIntValue(); } },
                 { "cooldown_minutes", n => { CooldownMinutes = n.GetIntValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertConfiguration_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertConfiguration_created_by.CreateFromDiscriminatorValue); } },
                 { "datapoints_to_alarm", n => { DatapointsToAlarm = n.GetIntValue(); } },
                 { "destination_types", n => { DestinationTypes = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.NotificationDestinationTypeEnum>()?.AsList(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "evaluation_periods", n => { EvaluationPeriods = n.GetIntValue(); } },
-                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertFilters>(global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertFilters.CreateFromDiscriminatorValue); } },
+                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertConfiguration_filters>(global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertConfiguration_filters.CreateFromDiscriminatorValue); } },
                 { "first_enabled_at", n => { FirstEnabledAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "last_checked_at", n => { LastCheckedAt = n.GetDateTimeOffsetValue(); } },
@@ -161,9 +160,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("datapoints_to_alarm", DatapointsToAlarm);
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteIntValue("evaluation_periods", EvaluationPeriods);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertFilters>("filters", Filters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertConfiguration_filters>("filters", Filters);
             writer.WriteStringValue("name", Name);
             writer.WriteDateTimeOffsetValue("snooze_until", SnoozeUntil);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertConfigurationStateEnum>("state", State);
             writer.WriteIntValue("threshold_count", ThresholdCount);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ThresholdOperatorEnum>("threshold_operator", ThresholdOperator);
             writer.WriteIntValue("window_minutes", WindowMinutes);

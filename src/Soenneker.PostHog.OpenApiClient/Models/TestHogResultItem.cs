@@ -54,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Reasoning { get; set; }
 #endif
-        /// <summary>True = pass, False = fail, null = N/A or error.</summary>
+        /// <summary>True = pass, false = fail, null = N/A or error.</summary>
         public bool? Result { get; set; }
         /// <summary>Trace ID if available.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

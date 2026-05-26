@@ -30,8 +30,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The starts_at property</summary>
         public DateTimeOffset? StartsAt { get; set; }
-        /// <summary>The status property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowScheduleStatusEnum? Status { get; private set; }
+        /// <summary>* `active` - Active* `paused` - Paused* `completed` - Completed</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowScheduleStatusEnum? Status { get; set; }
         /// <summary>The timezone property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -45,10 +45,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The variables property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Variables { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowSchedule_variables? Variables { get; set; }
 #nullable restore
 #else
-        public UntypedNode Variables { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowSchedule_variables Variables { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogFlowSchedule"/> and sets the default values.
@@ -83,7 +83,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowScheduleStatusEnum>(); } },
                 { "timezone", n => { Timezone = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
-                { "variables", n => { Variables = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "variables", n => { Variables = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowSchedule_variables>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowSchedule_variables.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -95,8 +95,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("rrule", Rrule);
             writer.WriteDateTimeOffsetValue("starts_at", StartsAt);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowScheduleStatusEnum>("status", Status);
             writer.WriteStringValue("timezone", Timezone);
-            writer.WriteObjectValue<UntypedNode>("variables", Variables);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowSchedule_variables>("variables", Variables);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

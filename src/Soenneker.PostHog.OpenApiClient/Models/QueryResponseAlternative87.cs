@@ -15,42 +15,42 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Timestamp of the newer trace</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? NewerTimestamp { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative87_newerTimestamp? NewerTimestamp { get; set; }
 #nullable restore
 #else
-        public string NewerTimestamp { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative87_newerTimestamp NewerTimestamp { get; set; }
 #endif
         /// <summary>ID of the newer trace (chronologically after current)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? NewerTraceId { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative87_newerTraceId? NewerTraceId { get; set; }
 #nullable restore
 #else
-        public string NewerTraceId { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative87_newerTraceId NewerTraceId { get; set; }
 #endif
         /// <summary>Timestamp of the older trace</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OlderTimestamp { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative87_olderTimestamp? OlderTimestamp { get; set; }
 #nullable restore
 #else
-        public string OlderTimestamp { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative87_olderTimestamp OlderTimestamp { get; set; }
 #endif
         /// <summary>ID of the older trace (chronologically before current)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OlderTraceId { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative87_olderTraceId? OlderTraceId { get; set; }
 #nullable restore
 #else
-        public string OlderTraceId { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative87_olderTraceId OlderTraceId { get; set; }
 #endif
         /// <summary>Measured timings for different parts of the query generation process</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.QueryTiming>? Timings { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative87_timings? Timings { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.QueryTiming> Timings { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative87_timings Timings { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -70,11 +70,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "newerTimestamp", n => { NewerTimestamp = n.GetStringValue(); } },
-                { "newerTraceId", n => { NewerTraceId = n.GetStringValue(); } },
-                { "olderTimestamp", n => { OlderTimestamp = n.GetStringValue(); } },
-                { "olderTraceId", n => { OlderTraceId = n.GetStringValue(); } },
-                { "timings", n => { Timings = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.QueryTiming>(global::Soenneker.PostHog.OpenApiClient.Models.QueryTiming.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "newerTimestamp", n => { NewerTimestamp = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative87_newerTimestamp>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative87_newerTimestamp.CreateFromDiscriminatorValue); } },
+                { "newerTraceId", n => { NewerTraceId = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative87_newerTraceId>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative87_newerTraceId.CreateFromDiscriminatorValue); } },
+                { "olderTimestamp", n => { OlderTimestamp = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative87_olderTimestamp>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative87_olderTimestamp.CreateFromDiscriminatorValue); } },
+                { "olderTraceId", n => { OlderTraceId = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative87_olderTraceId>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative87_olderTraceId.CreateFromDiscriminatorValue); } },
+                { "timings", n => { Timings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative87_timings>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative87_timings.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -84,11 +84,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("newerTimestamp", NewerTimestamp);
-            writer.WriteStringValue("newerTraceId", NewerTraceId);
-            writer.WriteStringValue("olderTimestamp", OlderTimestamp);
-            writer.WriteStringValue("olderTraceId", OlderTraceId);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.QueryTiming>("timings", Timings);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative87_newerTimestamp>("newerTimestamp", NewerTimestamp);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative87_newerTraceId>("newerTraceId", NewerTraceId);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative87_olderTimestamp>("olderTimestamp", OlderTimestamp);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative87_olderTraceId>("olderTraceId", OlderTraceId);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative87_timings>("timings", Timings);
         }
     }
 }

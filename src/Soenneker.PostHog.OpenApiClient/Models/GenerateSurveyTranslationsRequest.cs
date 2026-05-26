@@ -16,7 +16,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether to overwrite existing translations for this language.</summary>
         public bool? Overwrite { get; set; }
-        /// <summary>Source language code for the existing survey copy.</summary>
+        /// <summary>Optional override for the source language code. Defaults to the survey&apos;s `base_language` (or &apos;en&apos; if unset).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SourceLanguage { get; set; }
@@ -46,7 +46,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public GenerateSurveyTranslationsRequest()
         {
             AdditionalData = new Dictionary<string, object>();
-            SourceLanguage = "en";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value

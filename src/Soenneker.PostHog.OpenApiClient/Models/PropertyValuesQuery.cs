@@ -15,28 +15,28 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The event_names property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? EventNames { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery_event_names? EventNames { get; set; }
 #nullable restore
 #else
-        public List<string> EventNames { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery_event_names EventNames { get; set; }
 #endif
         /// <summary>The is_column property</summary>
-        public bool? IsColumn { get; set; }
-        /// <summary>The kind property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery_is_column? IsColumn { get; set; }
 #nullable restore
 #else
-        public string Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery_is_column IsColumn { get; set; }
 #endif
+        /// <summary>The kind property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery_kind? Kind { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers? Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery_modifiers? Modifiers { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery_modifiers Modifiers { get; set; }
 #endif
         /// <summary>The property_key property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -51,35 +51,41 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQueryResponse? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery_response? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQueryResponse Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery_response Response { get; set; }
 #endif
         /// <summary>The search_value property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SearchValue { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery_search_value? SearchValue { get; set; }
 #nullable restore
 #else
-        public string SearchValue { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery_search_value SearchValue { get; set; }
 #endif
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags? Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery_tags? Tags { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery_tags Tags { get; set; }
 #endif
         /// <summary>version of the node, used for schema migrations</summary>
-        public double? Version { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery_version? Version { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery_version Version { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery"/> and sets the default values.
         /// </summary>
         public PropertyValuesQuery()
         {
-            Kind = "PropertyValuesQuery";
+            Kind = global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery_kind.PropertyValuesQuery;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -99,16 +105,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "event_names", n => { EventNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "is_column", n => { IsColumn = n.GetBoolValue(); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
-                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
+                { "event_names", n => { EventNames = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery_event_names>(global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery_event_names.CreateFromDiscriminatorValue); } },
+                { "is_column", n => { IsColumn = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery_is_column>(global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery_is_column.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery_kind>(); } },
+                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery_modifiers>(global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery_modifiers.CreateFromDiscriminatorValue); } },
                 { "property_key", n => { PropertyKey = n.GetStringValue(); } },
                 { "property_type", n => { PropertyType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyType>(); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQueryResponse.CreateFromDiscriminatorValue); } },
-                { "search_value", n => { SearchValue = n.GetStringValue(); } },
-                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
-                { "version", n => { Version = n.GetDoubleValue(); } },
+                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery_response>(global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery_response.CreateFromDiscriminatorValue); } },
+                { "search_value", n => { SearchValue = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery_search_value>(global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery_search_value.CreateFromDiscriminatorValue); } },
+                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery_tags>(global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery_tags.CreateFromDiscriminatorValue); } },
+                { "version", n => { Version = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery_version>(global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery_version.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -118,16 +124,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfPrimitiveValues<string>("event_names", EventNames);
-            writer.WriteBoolValue("is_column", IsColumn);
-            writer.WriteStringValue("kind", Kind);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery_event_names>("event_names", EventNames);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery_is_column>("is_column", IsColumn);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery_kind>("kind", Kind);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery_modifiers>("modifiers", Modifiers);
             writer.WriteStringValue("property_key", PropertyKey);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyType>("property_type", PropertyType);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQueryResponse>("response", Response);
-            writer.WriteStringValue("search_value", SearchValue);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
-            writer.WriteDoubleValue("version", Version);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery_response>("response", Response);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery_search_value>("search_value", SearchValue);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery_tags>("tags", Tags);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQuery_version>("version", Version);
         }
     }
 }

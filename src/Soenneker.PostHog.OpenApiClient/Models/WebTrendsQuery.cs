@@ -13,14 +13,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning restore CS1591
     {
         /// <summary>Groups aggregation - not used in Web Analytics but required for type compatibility</summary>
-        public int? AggregationGroupTypeIndex { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_aggregation_group_type_index? AggregationGroupTypeIndex { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_aggregation_group_type_index AggregationGroupTypeIndex { get; set; }
+#endif
         /// <summary>The compareFilter property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter? CompareFilter { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_compareFilter? CompareFilter { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter CompareFilter { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_compareFilter CompareFilter { get; set; }
 #endif
         /// <summary>The conversionGoal property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -31,33 +37,57 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery.WebTrendsQuery_conversionGoal ConversionGoal { get; set; }
 #endif
         /// <summary>Colors used in the insight&apos;s visualization - not used in Web Analytics but required for type compatibility</summary>
-        public double? DataColorTheme { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_dataColorTheme? DataColorTheme { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_dataColorTheme DataColorTheme { get; set; }
+#endif
         /// <summary>The dateRange property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DateRange? DateRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_dateRange? DateRange { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DateRange DateRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_dateRange DateRange { get; set; }
 #endif
         /// <summary>The doPathCleaning property</summary>
-        public bool? DoPathCleaning { get; set; }
-        /// <summary>The filterTestAccounts property</summary>
-        public bool? FilterTestAccounts { get; set; }
-        /// <summary>The includeRevenue property</summary>
-        public bool? IncludeRevenue { get; set; }
-        /// <summary>Interval for date range calculation (affects date_to rounding for hour vs day ranges)</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.IntervalType? Interval { get; set; }
-        /// <summary>The kind property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_doPathCleaning? DoPathCleaning { get; set; }
 #nullable restore
 #else
-        public string Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_doPathCleaning DoPathCleaning { get; set; }
 #endif
+        /// <summary>The filterTestAccounts property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_filterTestAccounts? FilterTestAccounts { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_filterTestAccounts FilterTestAccounts { get; set; }
+#endif
+        /// <summary>The includeRevenue property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_includeRevenue? IncludeRevenue { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_includeRevenue IncludeRevenue { get; set; }
+#endif
+        /// <summary>The interval property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.IntervalType? Interval { get; set; }
+        /// <summary>The kind property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_kind? Kind { get; set; }
         /// <summary>The limit property</summary>
-        public int? Limit { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_limit? Limit { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_limit Limit { get; set; }
+#endif
         /// <summary>The metrics property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -69,20 +99,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers? Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_modifiers? Modifiers { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_modifiers Modifiers { get; set; }
 #endif
         /// <summary>The offset property</summary>
-        public int? Offset { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_offset? Offset { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_offset Offset { get; set; }
+#endif
         /// <summary>The orderBy property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? OrderBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_orderBy? OrderBy { get; set; }
 #nullable restore
 #else
-        public List<string> OrderBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_orderBy OrderBy { get; set; }
 #endif
         /// <summary>The properties property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -95,39 +131,57 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQueryResponse? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_response? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQueryResponse Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_response Response { get; set; }
 #endif
         /// <summary>The sampling property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsSampling? Sampling { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_sampling? Sampling { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsSampling Sampling { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_sampling Sampling { get; set; }
 #endif
         /// <summary>Sampling rate</summary>
-        public double? SamplingFactor { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_samplingFactor? SamplingFactor { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_samplingFactor SamplingFactor { get; set; }
+#endif
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags? Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_tags? Tags { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_tags Tags { get; set; }
 #endif
         /// <summary>The useSessionsTable property</summary>
-        public bool? UseSessionsTable { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_useSessionsTable? UseSessionsTable { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_useSessionsTable UseSessionsTable { get; set; }
+#endif
         /// <summary>version of the node, used for schema migrations</summary>
-        public double? Version { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_version? Version { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_version Version { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery"/> and sets the default values.
         /// </summary>
         public WebTrendsQuery()
         {
-            Kind = "WebTrendsQuery";
+            Kind = global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_kind.WebTrendsQuery;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -147,28 +201,28 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "aggregation_group_type_index", n => { AggregationGroupTypeIndex = n.GetIntValue(); } },
-                { "compareFilter", n => { CompareFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter>(global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter.CreateFromDiscriminatorValue); } },
+                { "aggregation_group_type_index", n => { AggregationGroupTypeIndex = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_aggregation_group_type_index>(global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_aggregation_group_type_index.CreateFromDiscriminatorValue); } },
+                { "compareFilter", n => { CompareFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_compareFilter>(global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_compareFilter.CreateFromDiscriminatorValue); } },
                 { "conversionGoal", n => { ConversionGoal = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery.WebTrendsQuery_conversionGoal>(global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery.WebTrendsQuery_conversionGoal.CreateFromDiscriminatorValue); } },
-                { "dataColorTheme", n => { DataColorTheme = n.GetDoubleValue(); } },
-                { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>(global::Soenneker.PostHog.OpenApiClient.Models.DateRange.CreateFromDiscriminatorValue); } },
-                { "doPathCleaning", n => { DoPathCleaning = n.GetBoolValue(); } },
-                { "filterTestAccounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
-                { "includeRevenue", n => { IncludeRevenue = n.GetBoolValue(); } },
+                { "dataColorTheme", n => { DataColorTheme = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_dataColorTheme>(global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_dataColorTheme.CreateFromDiscriminatorValue); } },
+                { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_dateRange>(global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_dateRange.CreateFromDiscriminatorValue); } },
+                { "doPathCleaning", n => { DoPathCleaning = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_doPathCleaning>(global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_doPathCleaning.CreateFromDiscriminatorValue); } },
+                { "filterTestAccounts", n => { FilterTestAccounts = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_filterTestAccounts>(global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_filterTestAccounts.CreateFromDiscriminatorValue); } },
+                { "includeRevenue", n => { IncludeRevenue = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_includeRevenue>(global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_includeRevenue.CreateFromDiscriminatorValue); } },
                 { "interval", n => { Interval = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalType>(); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
-                { "limit", n => { Limit = n.GetIntValue(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_kind>(); } },
+                { "limit", n => { Limit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_limit>(global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_limit.CreateFromDiscriminatorValue); } },
                 { "metrics", n => { Metrics = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsMetric>()?.AsList(); } },
-                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
-                { "offset", n => { Offset = n.GetIntValue(); } },
-                { "orderBy", n => { OrderBy = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_modifiers>(global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_modifiers.CreateFromDiscriminatorValue); } },
+                { "offset", n => { Offset = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_offset>(global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_offset.CreateFromDiscriminatorValue); } },
+                { "orderBy", n => { OrderBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_orderBy>(global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_orderBy.CreateFromDiscriminatorValue); } },
                 { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery.WebTrendsQuery_properties>(global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery.WebTrendsQuery_properties.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQueryResponse.CreateFromDiscriminatorValue); } },
-                { "sampling", n => { Sampling = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsSampling>(global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsSampling.CreateFromDiscriminatorValue); } },
-                { "samplingFactor", n => { SamplingFactor = n.GetDoubleValue(); } },
-                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
-                { "useSessionsTable", n => { UseSessionsTable = n.GetBoolValue(); } },
-                { "version", n => { Version = n.GetDoubleValue(); } },
+                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_response>(global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_response.CreateFromDiscriminatorValue); } },
+                { "sampling", n => { Sampling = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_sampling>(global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_sampling.CreateFromDiscriminatorValue); } },
+                { "samplingFactor", n => { SamplingFactor = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_samplingFactor>(global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_samplingFactor.CreateFromDiscriminatorValue); } },
+                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_tags>(global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_tags.CreateFromDiscriminatorValue); } },
+                { "useSessionsTable", n => { UseSessionsTable = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_useSessionsTable>(global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_useSessionsTable.CreateFromDiscriminatorValue); } },
+                { "version", n => { Version = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_version>(global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_version.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -178,28 +232,28 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteIntValue("aggregation_group_type_index", AggregationGroupTypeIndex);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter>("compareFilter", CompareFilter);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_aggregation_group_type_index>("aggregation_group_type_index", AggregationGroupTypeIndex);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_compareFilter>("compareFilter", CompareFilter);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery.WebTrendsQuery_conversionGoal>("conversionGoal", ConversionGoal);
-            writer.WriteDoubleValue("dataColorTheme", DataColorTheme);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>("dateRange", DateRange);
-            writer.WriteBoolValue("doPathCleaning", DoPathCleaning);
-            writer.WriteBoolValue("filterTestAccounts", FilterTestAccounts);
-            writer.WriteBoolValue("includeRevenue", IncludeRevenue);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_dataColorTheme>("dataColorTheme", DataColorTheme);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_dateRange>("dateRange", DateRange);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_doPathCleaning>("doPathCleaning", DoPathCleaning);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_filterTestAccounts>("filterTestAccounts", FilterTestAccounts);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_includeRevenue>("includeRevenue", IncludeRevenue);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalType>("interval", Interval);
-            writer.WriteStringValue("kind", Kind);
-            writer.WriteIntValue("limit", Limit);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_kind>("kind", Kind);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_limit>("limit", Limit);
             writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsMetric>("metrics", Metrics);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);
-            writer.WriteIntValue("offset", Offset);
-            writer.WriteCollectionOfPrimitiveValues<string>("orderBy", OrderBy);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_modifiers>("modifiers", Modifiers);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_offset>("offset", Offset);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_orderBy>("orderBy", OrderBy);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery.WebTrendsQuery_properties>("properties", Properties);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQueryResponse>("response", Response);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsSampling>("sampling", Sampling);
-            writer.WriteDoubleValue("samplingFactor", SamplingFactor);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
-            writer.WriteBoolValue("useSessionsTable", UseSessionsTable);
-            writer.WriteDoubleValue("version", Version);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_response>("response", Response);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_sampling>("sampling", Sampling);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_samplingFactor>("samplingFactor", SamplingFactor);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_tags>("tags", Tags);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_useSessionsTable>("useSessionsTable", UseSessionsTable);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_version>("version", Version);
         }
         /// <summary>
         /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActionConversionGoal"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CustomEventConversionGoal"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebTrendsQuery_conversionGoalMember1"/>

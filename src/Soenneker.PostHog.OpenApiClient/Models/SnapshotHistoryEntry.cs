@@ -43,10 +43,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The current_artifact property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.Artifact? CurrentArtifact { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SnapshotHistoryEntry_current_artifact? CurrentArtifact { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.Artifact CurrentArtifact { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SnapshotHistoryEntry_current_artifact CurrentArtifact { get; set; }
 #endif
         /// <summary>The diff_percentage property</summary>
         public double? DiffPercentage { get; set; }
@@ -105,7 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "change_kind", n => { ChangeKind = n.GetStringValue(); } },
                 { "commit_sha", n => { CommitSha = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "current_artifact", n => { CurrentArtifact = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Artifact>(global::Soenneker.PostHog.OpenApiClient.Models.Artifact.CreateFromDiscriminatorValue); } },
+                { "current_artifact", n => { CurrentArtifact = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SnapshotHistoryEntry_current_artifact>(global::Soenneker.PostHog.OpenApiClient.Models.SnapshotHistoryEntry_current_artifact.CreateFromDiscriminatorValue); } },
                 { "diff_percentage", n => { DiffPercentage = n.GetDoubleValue(); } },
                 { "pr_number", n => { PrNumber = n.GetIntValue(); } },
                 { "result", n => { Result = n.GetStringValue(); } },
@@ -127,7 +127,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("change_kind", ChangeKind);
             writer.WriteStringValue("commit_sha", CommitSha);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Artifact>("current_artifact", CurrentArtifact);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SnapshotHistoryEntry_current_artifact>("current_artifact", CurrentArtifact);
             writer.WriteDoubleValue("diff_percentage", DiffPercentage);
             writer.WriteIntValue("pr_number", PrNumber);
             writer.WriteStringValue("result", Result);

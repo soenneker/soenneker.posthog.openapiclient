@@ -23,9 +23,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Key { get; set; }
 #endif
-        /// <summary>Existence check operator.* `is_set` - is_set* `is_not_set` - is_not_set</summary>
+        /// <summary>* `is_set` - is_set* `is_not_set` - is_not_set</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ExistenceOperatorEnum? Operator { get; set; }
-        /// <summary>Property type (event, person, session, etc.).* `event` - event* `event_metadata` - event_metadata* `feature` - feature* `person` - person* `cohort` - cohort* `element` - element* `static-cohort` - static-cohort* `dynamic-cohort` - dynamic-cohort* `precalculated-cohort` - precalculated-cohort* `group` - group* `recording` - recording* `log_entry` - log_entry* `behavioral` - behavioral* `session` - session* `hogql` - hogql* `data_warehouse` - data_warehouse* `data_warehouse_person_property` - data_warehouse_person_property* `error_tracking_issue` - error_tracking_issue* `log` - log* `log_attribute` - log_attribute* `log_resource_attribute` - log_resource_attribute* `span` - span* `span_attribute` - span_attribute* `span_resource_attribute` - span_resource_attribute* `revenue_analytics` - revenue_analytics* `flag` - flag* `workflow_variable` - workflow_variable</summary>
+        /// <summary>* `event` - event* `event_metadata` - event_metadata* `feature` - feature* `person` - person* `cohort` - cohort* `element` - element* `static-cohort` - static-cohort* `dynamic-cohort` - dynamic-cohort* `precalculated-cohort` - precalculated-cohort* `group` - group* `recording` - recording* `log_entry` - log_entry* `behavioral` - behavioral* `session` - session* `hogql` - hogql* `data_warehouse` - data_warehouse* `data_warehouse_person_property` - data_warehouse_person_property* `error_tracking_issue` - error_tracking_issue* `log` - log* `log_attribute` - log_attribute* `log_resource_attribute` - log_resource_attribute* `span` - span* `span_attribute` - span_attribute* `span_resource_attribute` - span_resource_attribute* `revenue_analytics` - revenue_analytics* `flag` - flag* `workflow_variable` - workflow_variable</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PropertyFilterTypeEnum? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExistencePropertyFilter"/> and sets the default values.
@@ -33,7 +33,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public ExistencePropertyFilter()
         {
             AdditionalData = new Dictionary<string, object>();
-            Type = global::Soenneker.PostHog.OpenApiClient.Models.PropertyFilterTypeEnum.Event;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value

@@ -18,10 +18,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>How CDC-backed tables should be exposed.* `consolidated` - consolidated* `cdc_only` - cdc_only* `both` - both</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchema.ExternalDataSourceBulkUpdateSchema_cdc_table_mode? CdcTableMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchema_cdc_table_mode? CdcTableMode { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchema.ExternalDataSourceBulkUpdateSchema_cdc_table_mode CdcTableMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchema_cdc_table_mode CdcTableMode { get; set; }
+#endif
+        /// <summary>Columns to sync. Null means sync all columns.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? EnabledColumns { get; set; }
+#nullable restore
+#else
+        public List<string> EnabledColumns { get; set; }
 #endif
         /// <summary>Schema identifier to update.</summary>
         public Guid? Id { get; set; }
@@ -56,10 +64,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Requested sync mode for the schema.* `full_refresh` - full_refresh* `incremental` - incremental* `append` - append* `webhook` - webhook* `cdc` - cdc</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchema.ExternalDataSourceBulkUpdateSchema_sync_type? SyncType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchema_sync_type? SyncType { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchema.ExternalDataSourceBulkUpdateSchema_sync_type SyncType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchema_sync_type SyncType { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchema"/> and sets the default values.
@@ -86,14 +94,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "cdc_table_mode", n => { CdcTableMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchema.ExternalDataSourceBulkUpdateSchema_cdc_table_mode>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchema.ExternalDataSourceBulkUpdateSchema_cdc_table_mode.CreateFromDiscriminatorValue); } },
+                { "cdc_table_mode", n => { CdcTableMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchema_cdc_table_mode>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchema_cdc_table_mode.CreateFromDiscriminatorValue); } },
+                { "enabled_columns", n => { EnabledColumns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "incremental_field", n => { IncrementalField = n.GetStringValue(); } },
                 { "incremental_field_type", n => { IncrementalFieldType = n.GetStringValue(); } },
                 { "should_sync", n => { ShouldSync = n.GetBoolValue(); } },
                 { "sync_frequency", n => { SyncFrequency = n.GetStringValue(); } },
                 { "sync_time_of_day", n => { SyncTimeOfDay = n.GetTimeValue(); } },
-                { "sync_type", n => { SyncType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchema.ExternalDataSourceBulkUpdateSchema_sync_type>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchema.ExternalDataSourceBulkUpdateSchema_sync_type.CreateFromDiscriminatorValue); } },
+                { "sync_type", n => { SyncType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchema_sync_type>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchema_sync_type.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -103,145 +112,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchema.ExternalDataSourceBulkUpdateSchema_cdc_table_mode>("cdc_table_mode", CdcTableMode);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchema_cdc_table_mode>("cdc_table_mode", CdcTableMode);
+            writer.WriteCollectionOfPrimitiveValues<string>("enabled_columns", EnabledColumns);
             writer.WriteGuidValue("id", Id);
             writer.WriteStringValue("incremental_field", IncrementalField);
             writer.WriteStringValue("incremental_field_type", IncrementalFieldType);
             writer.WriteBoolValue("should_sync", ShouldSync);
             writer.WriteStringValue("sync_frequency", SyncFrequency);
             writer.WriteTimeValue("sync_time_of_day", SyncTimeOfDay);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchema.ExternalDataSourceBulkUpdateSchema_sync_type>("sync_type", SyncType);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchema_sync_type>("sync_type", SyncType);
             writer.WriteAdditionalData(AdditionalData);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CdcTableModeEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class ExternalDataSourceBulkUpdateSchema_cdc_table_mode : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CdcTableModeEnum"/></summary>
-            public global::Soenneker.PostHog.OpenApiClient.Models.CdcTableModeEnum? CdcTableModeEnum { get; set; }
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum? NullEnum { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum NullEnum { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchema.ExternalDataSourceBulkUpdateSchema_cdc_table_mode"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchema.ExternalDataSourceBulkUpdateSchema_cdc_table_mode CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchema.ExternalDataSourceBulkUpdateSchema_cdc_table_mode();
-                if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CdcTableModeEnum>() is global::Soenneker.PostHog.OpenApiClient.Models.CdcTableModeEnum cdcTableModeEnumValue)
-                {
-                    result.CdcTableModeEnum = cdcTableModeEnumValue;
-                }
-                else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.NullEnum = new global::Soenneker.PostHog.OpenApiClient.Models.NullEnum();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(NullEnum != null)
-                {
-                    return NullEnum.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(CdcTableModeEnum != null)
-                {
-                    writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CdcTableModeEnum>(null, CdcTableModeEnum);
-                }
-                else if(NullEnum != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NullEnum>(null, NullEnum);
-                }
-            }
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SyncTypeEnum"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class ExternalDataSourceBulkUpdateSchema_sync_type : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum? NullEnum { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum NullEnum { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SyncTypeEnum"/></summary>
-            public global::Soenneker.PostHog.OpenApiClient.Models.SyncTypeEnum? SyncTypeEnum { get; set; }
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchema.ExternalDataSourceBulkUpdateSchema_sync_type"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchema.ExternalDataSourceBulkUpdateSchema_sync_type CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchema.ExternalDataSourceBulkUpdateSchema_sync_type();
-                if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.NullEnum = new global::Soenneker.PostHog.OpenApiClient.Models.NullEnum();
-                }
-                else if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncTypeEnum>() is global::Soenneker.PostHog.OpenApiClient.Models.SyncTypeEnum syncTypeEnumValue)
-                {
-                    result.SyncTypeEnum = syncTypeEnumValue;
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(NullEnum != null)
-                {
-                    return NullEnum.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(NullEnum != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NullEnum>(null, NullEnum);
-                }
-                else if(SyncTypeEnum != null)
-                {
-                    writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncTypeEnum>(null, SyncTypeEnum);
-                }
-            }
         }
     }
 }

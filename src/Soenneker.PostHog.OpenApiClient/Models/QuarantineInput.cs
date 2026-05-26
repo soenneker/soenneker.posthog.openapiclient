@@ -16,7 +16,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The expires_at property</summary>
         public DateTimeOffset? ExpiresAt { get; set; }
-        /// <summary>The identifier property</summary>
+        /// <summary>Snapshot identifier to quarantine.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Identifier { get; set; }
@@ -24,7 +24,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Identifier { get; set; }
 #endif
-        /// <summary>The reason property</summary>
+        /// <summary>Why this snapshot is being quarantined.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Reason { get; set; }
@@ -32,6 +32,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Reason { get; set; }
 #endif
+        /// <summary>Optional pointer to the run whose failing snapshot prompted this quarantine — used to surface a &apos;view the failing run&apos; link later.</summary>
+        public Guid? SourceRunId { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QuarantineInput"/> and sets the default values.
         /// </summary>
@@ -60,6 +62,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "expires_at", n => { ExpiresAt = n.GetDateTimeOffsetValue(); } },
                 { "identifier", n => { Identifier = n.GetStringValue(); } },
                 { "reason", n => { Reason = n.GetStringValue(); } },
+                { "source_run_id", n => { SourceRunId = n.GetGuidValue(); } },
             };
         }
         /// <summary>
@@ -72,6 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("expires_at", ExpiresAt);
             writer.WriteStringValue("identifier", Identifier);
             writer.WriteStringValue("reason", Reason);
+            writer.WriteGuidValue("source_run_id", SourceRunId);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

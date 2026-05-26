@@ -55,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string OutputDir { get; set; }
 #endif
-        /// <summary>Detected package manager from lockfile presence.* `npm` - npm* `pnpm` - pnpm* `yarn` - yarn* `bun` - bun</summary>
+        /// <summary>* `npm` - npm* `pnpm` - pnpm* `yarn` - yarn* `bun` - bun</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PackageManagerEnum? PackageManager { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DetectConfigResponse"/> and sets the default values.

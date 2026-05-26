@@ -13,8 +13,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ExternalDataSourceSerializers : IAdditionalDataHolder, IParsable
     {
-        /// <summary>The access_method property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccessMethodEnum? AccessMethod { get; private set; }
+        /// <summary>* `warehouse` - warehouse* `direct` - direct</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccessMethodEnum? AccessMethod { get; set; }
         /// <summary>The account_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -46,10 +46,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent/MCP tool calls. Ignored on update.* `web` - web* `api` - api* `mcp` - mcp</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers.ExternalDataSourceSerializers_created_via? CreatedVia { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers_created_via? CreatedVia { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers.ExternalDataSourceSerializers_created_via CreatedVia { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers_created_via CreatedVia { get; set; }
 #endif
         /// <summary>The description property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -62,20 +62,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Backend engine detected for the direct connection.* `duckdb` - duckdb* `postgres` - postgres</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers.ExternalDataSourceSerializers_engine? Engine { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers_engine? Engine { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers.ExternalDataSourceSerializers_engine Engine { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers_engine Engine { get; private set; }
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>The job_inputs property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? JobInputs { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers_job_inputs? JobInputs { get; set; }
 #nullable restore
 #else
-        public UntypedNode JobInputs { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers_job_inputs JobInputs { get; set; }
 #endif
         /// <summary>The last_run_at property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -104,10 +104,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The revenue_analytics_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceRevenueAnalyticsConfig? RevenueAnalyticsConfig { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers_revenue_analytics_config? RevenueAnalyticsConfig { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceRevenueAnalyticsConfig RevenueAnalyticsConfig { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers_revenue_analytics_config RevenueAnalyticsConfig { get; private set; }
 #endif
         /// <summary>The schemas property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -117,8 +117,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers_schemas> Schemas { get; private set; }
 #endif
-        /// <summary>The source_type property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceTypeEnum? SourceType { get; private set; }
+        /// <summary>* `Ashby` - Ashby* `Supabase` - Supabase* `CustomerIO` - CustomerIO* `Github` - Github* `Stripe` - Stripe* `Hubspot` - Hubspot* `Postgres` - Postgres* `Zendesk` - Zendesk* `Snowflake` - Snowflake* `Salesforce` - Salesforce* `MySQL` - MySQL* `MongoDB` - MongoDB* `MSSQL` - MSSQL* `Vitally` - Vitally* `BigQuery` - BigQuery* `Chargebee` - Chargebee* `Clerk` - Clerk* `GoogleAds` - GoogleAds* `TemporalIO` - TemporalIO* `DoIt` - DoIt* `GoogleSheets` - GoogleSheets* `MetaAds` - MetaAds* `Klaviyo` - Klaviyo* `Mailchimp` - Mailchimp* `Braze` - Braze* `Mailjet` - Mailjet* `Redshift` - Redshift* `Polar` - Polar* `RevenueCat` - RevenueCat* `LinkedinAds` - LinkedinAds* `RedditAds` - RedditAds* `TikTokAds` - TikTokAds* `BingAds` - BingAds* `Shopify` - Shopify* `Attio` - Attio* `SnapchatAds` - SnapchatAds* `Linear` - Linear* `Intercom` - Intercom* `Amplitude` - Amplitude* `Mixpanel` - Mixpanel* `Jira` - Jira* `ActiveCampaign` - ActiveCampaign* `Marketo` - Marketo* `Adjust` - Adjust* `AppsFlyer` - AppsFlyer* `Freshdesk` - Freshdesk* `GoogleAnalytics` - GoogleAnalytics* `Pipedrive` - Pipedrive* `SendGrid` - SendGrid* `Slack` - Slack* `PagerDuty` - PagerDuty* `Asana` - Asana* `Notion` - Notion* `Airtable` - Airtable* `Greenhouse` - Greenhouse* `BambooHR` - BambooHR* `Lever` - Lever* `GitLab` - GitLab* `Datadog` - Datadog* `Sentry` - Sentry* `Pendo` - Pendo* `FullStory` - FullStory* `AmazonAds` - AmazonAds* `PinterestAds` - PinterestAds* `AppleSearchAds` - AppleSearchAds* `QuickBooks` - QuickBooks* `Xero` - Xero* `NetSuite` - NetSuite* `WooCommerce` - WooCommerce* `BigCommerce` - BigCommerce* `PayPal` - PayPal* `Square` - Square* `Zoom` - Zoom* `Trello` - Trello* `Monday` - Monday* `ClickUp` - ClickUp* `Confluence` - Confluence* `Recurly` - Recurly* `SalesLoft` - SalesLoft* `Outreach` - Outreach* `Gong` - Gong* `Calendly` - Calendly* `Typeform` - Typeform* `Iterable` - Iterable* `ZohoCRM` - ZohoCRM* `Close` - Close* `Oracle` - Oracle* `DynamoDB` - DynamoDB* `Elasticsearch` - Elasticsearch* `Kafka` - Kafka* `LaunchDarkly` - LaunchDarkly* `Braintree` - Braintree* `Recharge` - Recharge* `HelpScout` - HelpScout* `Gorgias` - Gorgias* `Instagram` - Instagram* `YouTubeAnalytics` - YouTubeAnalytics* `FacebookPages` - FacebookPages* `TwitterAds` - TwitterAds* `Workday` - Workday* `ServiceNow` - ServiceNow* `Pardot` - Pardot* `Copper` - Copper* `Front` - Front* `ChartMogul` - ChartMogul* `Zuora` - Zuora* `Paddle` - Paddle* `CircleCI` - CircleCI* `CockroachDB` - CockroachDB* `Firebase` - Firebase* `AzureBlob` - AzureBlob* `GoogleDrive` - GoogleDrive* `OneDrive` - OneDrive* `SharePoint` - SharePoint* `Box` - Box* `SFTP` - SFTP* `MicrosoftTeams` - MicrosoftTeams* `Aircall` - Aircall* `Webflow` - Webflow* `Okta` - Okta* `Auth0` - Auth0* `Productboard` - Productboard* `Smartsheet` - Smartsheet* `Wrike` - Wrike* `Plaid` - Plaid* `SurveyMonkey` - SurveyMonkey* `Eventbrite` - Eventbrite* `RingCentral` - RingCentral* `Twilio` - Twilio* `Freshsales` - Freshsales* `Shortcut` - Shortcut* `ConvertKit` - ConvertKit* `Drip` - Drip* `CampaignMonitor` - CampaignMonitor* `MailerLite` - MailerLite* `Omnisend` - Omnisend* `Brevo` - Brevo* `Postmark` - Postmark* `Granola` - Granola* `BuildBetter` - BuildBetter* `Convex` - Convex* `ClickHouse` - ClickHouse* `Plain` - Plain* `Resend` - Resend* `PgAnalyze` - PgAnalyze</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceTypeEnum? SourceType { get; set; }
         /// <summary>The status property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -167,15 +167,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "client_secret", n => { ClientSecret = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetStringValue(); } },
-                { "created_via", n => { CreatedVia = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers.ExternalDataSourceSerializers_created_via>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers.ExternalDataSourceSerializers_created_via.CreateFromDiscriminatorValue); } },
+                { "created_via", n => { CreatedVia = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers_created_via>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers_created_via.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
-                { "engine", n => { Engine = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers.ExternalDataSourceSerializers_engine>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers.ExternalDataSourceSerializers_engine.CreateFromDiscriminatorValue); } },
+                { "engine", n => { Engine = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers_engine>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers_engine.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "job_inputs", n => { JobInputs = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "job_inputs", n => { JobInputs = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers_job_inputs>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers_job_inputs.CreateFromDiscriminatorValue); } },
                 { "last_run_at", n => { LastRunAt = n.GetStringValue(); } },
                 { "latest_error", n => { LatestError = n.GetStringValue(); } },
                 { "prefix", n => { Prefix = n.GetStringValue(); } },
-                { "revenue_analytics_config", n => { RevenueAnalyticsConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceRevenueAnalyticsConfig>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceRevenueAnalyticsConfig.CreateFromDiscriminatorValue); } },
+                { "revenue_analytics_config", n => { RevenueAnalyticsConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers_revenue_analytics_config>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers_revenue_analytics_config.CreateFromDiscriminatorValue); } },
                 { "schemas", n => { Schemas = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers_schemas>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers_schemas.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "source_type", n => { SourceType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceTypeEnum>(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
@@ -190,143 +190,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccessMethodEnum>("access_method", AccessMethod);
             writer.WriteStringValue("account_id", AccountId);
             writer.WriteStringValue("client_secret", ClientSecret);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers.ExternalDataSourceSerializers_created_via>("created_via", CreatedVia);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers_created_via>("created_via", CreatedVia);
             writer.WriteStringValue("description", Description);
-            writer.WriteObjectValue<UntypedNode>("job_inputs", JobInputs);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers_job_inputs>("job_inputs", JobInputs);
             writer.WriteStringValue("prefix", Prefix);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceTypeEnum>("source_type", SourceType);
             writer.WriteAdditionalData(AdditionalData);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CreatedViaEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class ExternalDataSourceSerializers_created_via : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CreatedViaEnum"/></summary>
-            public global::Soenneker.PostHog.OpenApiClient.Models.CreatedViaEnum? CreatedViaEnum { get; set; }
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum? NullEnum { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum NullEnum { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers.ExternalDataSourceSerializers_created_via"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers.ExternalDataSourceSerializers_created_via CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers.ExternalDataSourceSerializers_created_via();
-                if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CreatedViaEnum>() is global::Soenneker.PostHog.OpenApiClient.Models.CreatedViaEnum createdViaEnumValue)
-                {
-                    result.CreatedViaEnum = createdViaEnumValue;
-                }
-                else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.NullEnum = new global::Soenneker.PostHog.OpenApiClient.Models.NullEnum();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(NullEnum != null)
-                {
-                    return NullEnum.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(CreatedViaEnum != null)
-                {
-                    writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CreatedViaEnum>(null, CreatedViaEnum);
-                }
-                else if(NullEnum != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NullEnum>(null, NullEnum);
-                }
-            }
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EngineEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class ExternalDataSourceSerializers_engine : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EngineEnum"/></summary>
-            public global::Soenneker.PostHog.OpenApiClient.Models.EngineEnum? EngineEnum { get; set; }
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum? NullEnum { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum NullEnum { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers.ExternalDataSourceSerializers_engine"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers.ExternalDataSourceSerializers_engine CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers.ExternalDataSourceSerializers_engine();
-                if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EngineEnum>() is global::Soenneker.PostHog.OpenApiClient.Models.EngineEnum engineEnumValue)
-                {
-                    result.EngineEnum = engineEnumValue;
-                }
-                else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.NullEnum = new global::Soenneker.PostHog.OpenApiClient.Models.NullEnum();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(NullEnum != null)
-                {
-                    return NullEnum.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(EngineEnum != null)
-                {
-                    writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EngineEnum>(null, EngineEnum);
-                }
-                else if(NullEnum != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NullEnum>(null, NullEnum);
-                }
-            }
         }
     }
 }

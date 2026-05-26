@@ -15,58 +15,58 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The breakdown property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownItem>? Breakdown { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_breakdown? Breakdown { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownItem> Breakdown { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_breakdown Breakdown { get; set; }
 #endif
         /// <summary>The breakdowns property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MultipleBreakdownOptions>? Breakdowns { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_breakdowns? Breakdowns { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MultipleBreakdownOptions> Breakdowns { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_breakdowns Breakdowns { get; set; }
 #endif
         /// <summary>The compare property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CompareItem>? Compare { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_compare? Compare { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CompareItem> Compare { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_compare Compare { get; set; }
 #endif
         /// <summary>The day property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DayItem>? Day { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_day? Day { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DayItem> Day { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_day Day { get; set; }
 #endif
         /// <summary>The interval property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.IntervalItem>? Interval { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_interval? Interval { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.IntervalItem> Interval { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_interval Interval { get; set; }
 #endif
         /// <summary>The series property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.Series>? Series { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_series? Series { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.Series> Series { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_series Series { get; set; }
 #endif
         /// <summary>The status property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.StatusItem>? Status { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_status? Status { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.StatusItem> Status { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_status Status { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -86,13 +86,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "breakdown", n => { Breakdown = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownItem>(global::Soenneker.PostHog.OpenApiClient.Models.BreakdownItem.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "breakdowns", n => { Breakdowns = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MultipleBreakdownOptions>(global::Soenneker.PostHog.OpenApiClient.Models.MultipleBreakdownOptions.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "compare", n => { Compare = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CompareItem>(global::Soenneker.PostHog.OpenApiClient.Models.CompareItem.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "day", n => { Day = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DayItem>(global::Soenneker.PostHog.OpenApiClient.Models.DayItem.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "interval", n => { Interval = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.IntervalItem>(global::Soenneker.PostHog.OpenApiClient.Models.IntervalItem.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "series", n => { Series = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.Series>(global::Soenneker.PostHog.OpenApiClient.Models.Series.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "status", n => { Status = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.StatusItem>(global::Soenneker.PostHog.OpenApiClient.Models.StatusItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "breakdown", n => { Breakdown = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_breakdown>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_breakdown.CreateFromDiscriminatorValue); } },
+                { "breakdowns", n => { Breakdowns = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_breakdowns>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_breakdowns.CreateFromDiscriminatorValue); } },
+                { "compare", n => { Compare = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_compare>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_compare.CreateFromDiscriminatorValue); } },
+                { "day", n => { Day = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_day>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_day.CreateFromDiscriminatorValue); } },
+                { "interval", n => { Interval = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_interval>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_interval.CreateFromDiscriminatorValue); } },
+                { "series", n => { Series = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_series>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_series.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_status>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_status.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -102,13 +102,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownItem>("breakdown", Breakdown);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MultipleBreakdownOptions>("breakdowns", Breakdowns);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CompareItem>("compare", Compare);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DayItem>("day", Day);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.IntervalItem>("interval", Interval);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.Series>("series", Series);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.StatusItem>("status", Status);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_breakdown>("breakdown", Breakdown);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_breakdowns>("breakdowns", Breakdowns);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_compare>("compare", Compare);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_day>("day", Day);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_interval>("interval", Interval);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_series>("series", Series);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_status>("status", Status);
         }
     }
 }

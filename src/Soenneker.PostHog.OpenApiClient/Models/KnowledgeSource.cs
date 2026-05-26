@@ -19,13 +19,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The crawl_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? CrawlConfig { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSource_crawl_config? CrawlConfig { get; private set; }
 #nullable restore
 #else
-        public UntypedNode CrawlConfig { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSource_crawl_config CrawlConfig { get; private set; }
 #endif
-        /// <summary>The crawl_mode property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.CrawlModeEnum? CrawlMode { get; private set; }
+        /// <summary>* `single` - Single page* `sitemap` - Sitemap* `same_origin` - Same origin crawl* `github_repo` - GitHub repository</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.CrawlModeEnum? CrawlMode { get; set; }
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>Number of documents belonging to this source.</summary>
@@ -60,8 +60,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string LastRefreshError { get; private set; }
 #endif
-        /// <summary>The last_refresh_status property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.LastRefreshStatusEnum? LastRefreshStatus { get; private set; }
+        /// <summary>* `success` - Success* `not_modified` - Not modified* `error` - Error</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.LastRefreshStatusEnum? LastRefreshStatus { get; set; }
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -78,8 +78,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string OriginalFilename { get; private set; }
 #endif
-        /// <summary>The source_type property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceSourceTypeEnum? SourceType { get; private set; }
+        /// <summary>* `text` - Text* `url` - URL* `file` - File</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceSourceTypeEnum? SourceType { get; set; }
         /// <summary>The source_url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -88,8 +88,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SourceUrl { get; private set; }
 #endif
-        /// <summary>The status property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceStatusEnum? Status { get; private set; }
+        /// <summary>* `pending` - Pending* `processing` - Processing* `ready` - Ready* `error` - Error</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceStatusEnum? Status { get; set; }
         /// <summary>The team_id property</summary>
         public int? TeamId { get; private set; }
         /// <summary>The updated_at property</summary>
@@ -120,7 +120,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "chunk_count", n => { ChunkCount = n.GetIntValue(); } },
-                { "crawl_config", n => { CrawlConfig = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "crawl_config", n => { CrawlConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSource_crawl_config>(global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSource_crawl_config.CreateFromDiscriminatorValue); } },
                 { "crawl_mode", n => { CrawlMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CrawlModeEnum>(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "document_count", n => { DocumentCount = n.GetIntValue(); } },
@@ -147,6 +147,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CrawlModeEnum>("crawl_mode", CrawlMode);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LastRefreshStatusEnum>("last_refresh_status", LastRefreshStatus);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceSourceTypeEnum>("source_type", SourceType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceStatusEnum>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

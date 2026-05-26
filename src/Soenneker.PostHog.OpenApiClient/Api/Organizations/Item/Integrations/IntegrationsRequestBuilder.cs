@@ -15,11 +15,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Integrations
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class IntegrationsRequestBuilder : BaseRequestBuilder
     {
-        /// <summary>The EmptyPathSegment property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Integrations.EmptyPathSegmentRequestBuilder EmptyPathSegment
-        {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Integrations.EmptyPathSegmentRequestBuilder(PathParameters, RequestAdapter);
-        }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.organizations.item.integrations.item collection</summary>
         /// <param name="position">A UUID string identifying this organization integration.</param>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Integrations.Item.IntegrationsItemRequestBuilder"/></returns>

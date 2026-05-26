@@ -23,13 +23,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The dateRange property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DateRange? DateRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQuery_dateRange? DateRange { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DateRange DateRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQuery_dateRange DateRange { get; set; }
 #endif
         /// <summary>The filterTestAccounts property</summary>
-        public bool? FilterTestAccounts { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQuery_filterTestAccounts? FilterTestAccounts { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQuery_filterTestAccounts FilterTestAccounts { get; set; }
+#endif
         /// <summary>The issueId property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -39,47 +45,53 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string IssueId { get; set; }
 #endif
         /// <summary>The kind property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQuery_kind? Kind { get; set; }
+        /// <summary>The maxValuesPerProperty property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQuery_maxValuesPerProperty? MaxValuesPerProperty { get; set; }
 #nullable restore
 #else
-        public string Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQuery_maxValuesPerProperty MaxValuesPerProperty { get; set; }
 #endif
-        /// <summary>The maxValuesPerProperty property</summary>
-        public int? MaxValuesPerProperty { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers? Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQuery_modifiers? Modifiers { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQuery_modifiers Modifiers { get; set; }
 #endif
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQueryResponse? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQuery_response? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQueryResponse Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQuery_response Response { get; set; }
 #endif
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags? Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQuery_tags? Tags { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQuery_tags Tags { get; set; }
 #endif
         /// <summary>version of the node, used for schema migrations</summary>
-        public double? Version { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQuery_version? Version { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQuery_version Version { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQuery"/> and sets the default values.
         /// </summary>
         public ErrorTrackingBreakdownsQuery()
         {
-            Kind = "ErrorTrackingBreakdownsQuery";
+            Kind = global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQuery_kind.ErrorTrackingBreakdownsQuery;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -100,15 +112,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "breakdownProperties", n => { BreakdownProperties = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>(global::Soenneker.PostHog.OpenApiClient.Models.DateRange.CreateFromDiscriminatorValue); } },
-                { "filterTestAccounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
+                { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQuery_dateRange>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQuery_dateRange.CreateFromDiscriminatorValue); } },
+                { "filterTestAccounts", n => { FilterTestAccounts = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQuery_filterTestAccounts>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQuery_filterTestAccounts.CreateFromDiscriminatorValue); } },
                 { "issueId", n => { IssueId = n.GetStringValue(); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
-                { "maxValuesPerProperty", n => { MaxValuesPerProperty = n.GetIntValue(); } },
-                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers.CreateFromDiscriminatorValue); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQueryResponse.CreateFromDiscriminatorValue); } },
-                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
-                { "version", n => { Version = n.GetDoubleValue(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQuery_kind>(); } },
+                { "maxValuesPerProperty", n => { MaxValuesPerProperty = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQuery_maxValuesPerProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQuery_maxValuesPerProperty.CreateFromDiscriminatorValue); } },
+                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQuery_modifiers>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQuery_modifiers.CreateFromDiscriminatorValue); } },
+                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQuery_response>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQuery_response.CreateFromDiscriminatorValue); } },
+                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQuery_tags>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQuery_tags.CreateFromDiscriminatorValue); } },
+                { "version", n => { Version = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQuery_version>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQuery_version.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -119,15 +131,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("breakdownProperties", BreakdownProperties);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>("dateRange", DateRange);
-            writer.WriteBoolValue("filterTestAccounts", FilterTestAccounts);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQuery_dateRange>("dateRange", DateRange);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQuery_filterTestAccounts>("filterTestAccounts", FilterTestAccounts);
             writer.WriteStringValue("issueId", IssueId);
-            writer.WriteStringValue("kind", Kind);
-            writer.WriteIntValue("maxValuesPerProperty", MaxValuesPerProperty);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQLQueryModifiers>("modifiers", Modifiers);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQueryResponse>("response", Response);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
-            writer.WriteDoubleValue("version", Version);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQuery_kind>("kind", Kind);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQuery_maxValuesPerProperty>("maxValuesPerProperty", MaxValuesPerProperty);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQuery_modifiers>("modifiers", Modifiers);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQuery_response>("response", Response);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQuery_tags>("tags", Tags);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownsQuery_version>("version", Version);
         }
     }
 }

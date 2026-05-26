@@ -27,10 +27,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SandboxEnvironment_created_by? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SandboxEnvironment_created_by CreatedBy { get; private set; }
 #endif
         /// <summary>Computed domain allowlist based on network_access_level and allowed_domains</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -43,10 +43,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Encrypted environment variables (write-only, never returned in responses)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? EnvironmentVariables { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SandboxEnvironment_environment_variables? EnvironmentVariables { get; set; }
 #nullable restore
 #else
-        public UntypedNode EnvironmentVariables { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SandboxEnvironment_environment_variables EnvironmentVariables { get; set; }
 #endif
         /// <summary>Whether this environment has any environment variables set</summary>
         public bool? HasEnvironmentVariables { get; private set; }
@@ -68,7 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.NetworkAccessLevelEnum? NetworkAccessLevel { get; set; }
         /// <summary>If true, only the creator can see this environment. Otherwise visible to whole team.</summary>
         public bool? Private { get; set; }
-        /// <summary>List of repositories this environment applies to (format: org/repo)</summary>
+        /// <summary>&quot;List of repositories this environment applies to (format: org/repo)&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? Repositories { get; set; }
@@ -105,9 +105,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "allowed_domains", n => { AllowedDomains = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SandboxEnvironment_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.SandboxEnvironment_created_by.CreateFromDiscriminatorValue); } },
                 { "effective_domains", n => { EffectiveDomains = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "environment_variables", n => { EnvironmentVariables = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "environment_variables", n => { EnvironmentVariables = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SandboxEnvironment_environment_variables>(global::Soenneker.PostHog.OpenApiClient.Models.SandboxEnvironment_environment_variables.CreateFromDiscriminatorValue); } },
                 { "has_environment_variables", n => { HasEnvironmentVariables = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "include_default_domains", n => { IncludeDefaultDomains = n.GetBoolValue(); } },
@@ -127,7 +127,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("allowed_domains", AllowedDomains);
-            writer.WriteObjectValue<UntypedNode>("environment_variables", EnvironmentVariables);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SandboxEnvironment_environment_variables>("environment_variables", EnvironmentVariables);
             writer.WriteBoolValue("include_default_domains", IncludeDefaultDomains);
             writer.WriteStringValue("name", Name);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.NetworkAccessLevelEnum>("network_access_level", NetworkAccessLevel);

@@ -15,15 +15,27 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The breakdownFilter property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter? BreakdownFilter { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_breakdownFilter? BreakdownFilter { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter BreakdownFilter { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_breakdownFilter BreakdownFilter { get; set; }
 #endif
         /// <summary>The conversion_window property</summary>
-        public int? ConversionWindow { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_conversion_window? ConversionWindow { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_conversion_window ConversionWindow { get; set; }
+#endif
         /// <summary>The conversion_window_unit property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnit? ConversionWindowUnit { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_conversion_window_unit? ConversionWindowUnit { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_conversion_window_unit ConversionWindowUnit { get; set; }
+#endif
         /// <summary>The denominator property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -35,38 +47,38 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The fingerprint property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Fingerprint { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_fingerprint? Fingerprint { get; set; }
 #nullable restore
 #else
-        public string Fingerprint { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_fingerprint Fingerprint { get; set; }
 #endif
         /// <summary>The goal property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricGoal? Goal { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_goal? Goal { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_goal Goal { get; set; }
+#endif
         /// <summary>The isSharedMetric property</summary>
-        public bool? IsSharedMetric { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_isSharedMetric? IsSharedMetric { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_isSharedMetric IsSharedMetric { get; set; }
+#endif
         /// <summary>The kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Kind { get; set; }
-#nullable restore
-#else
-        public string Kind { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_kind? Kind { get; set; }
         /// <summary>The metric_type property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? MetricType { get; set; }
-#nullable restore
-#else
-        public string MetricType { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_metric_type? MetricType { get; set; }
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_name? Name { get; set; }
 #nullable restore
 #else
-        public string Name { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_name Name { get; set; }
 #endif
         /// <summary>The numerator property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -79,30 +91,42 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_response? Response { get; set; }
 #nullable restore
 #else
-        public UntypedNode Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_response Response { get; set; }
 #endif
         /// <summary>The sharedMetricId property</summary>
-        public double? SharedMetricId { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_sharedMetricId? SharedMetricId { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_sharedMetricId SharedMetricId { get; set; }
+#endif
         /// <summary>The uuid property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Uuid { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_uuid? Uuid { get; set; }
 #nullable restore
 #else
-        public string Uuid { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_uuid Uuid { get; set; }
 #endif
         /// <summary>version of the node, used for schema migrations</summary>
-        public double? Version { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_version? Version { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_version Version { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric"/> and sets the default values.
         /// </summary>
         public ExperimentRatioMetric()
         {
-            Kind = "ExperimentMetric";
-            MetricType = "ratio";
+            Kind = global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_kind.ExperimentMetric;
+            MetricType = global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_metric_type.Ratio;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -122,21 +146,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "breakdownFilter", n => { BreakdownFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter>(global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter.CreateFromDiscriminatorValue); } },
-                { "conversion_window", n => { ConversionWindow = n.GetIntValue(); } },
-                { "conversion_window_unit", n => { ConversionWindowUnit = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnit>(); } },
+                { "breakdownFilter", n => { BreakdownFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_breakdownFilter>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_breakdownFilter.CreateFromDiscriminatorValue); } },
+                { "conversion_window", n => { ConversionWindow = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_conversion_window>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_conversion_window.CreateFromDiscriminatorValue); } },
+                { "conversion_window_unit", n => { ConversionWindowUnit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_conversion_window_unit>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_conversion_window_unit.CreateFromDiscriminatorValue); } },
                 { "denominator", n => { Denominator = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric.ExperimentRatioMetric_denominator>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric.ExperimentRatioMetric_denominator.CreateFromDiscriminatorValue); } },
-                { "fingerprint", n => { Fingerprint = n.GetStringValue(); } },
-                { "goal", n => { Goal = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricGoal>(); } },
-                { "isSharedMetric", n => { IsSharedMetric = n.GetBoolValue(); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
-                { "metric_type", n => { MetricType = n.GetStringValue(); } },
-                { "name", n => { Name = n.GetStringValue(); } },
+                { "fingerprint", n => { Fingerprint = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_fingerprint>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_fingerprint.CreateFromDiscriminatorValue); } },
+                { "goal", n => { Goal = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_goal>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_goal.CreateFromDiscriminatorValue); } },
+                { "isSharedMetric", n => { IsSharedMetric = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_isSharedMetric>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_isSharedMetric.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_kind>(); } },
+                { "metric_type", n => { MetricType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_metric_type>(); } },
+                { "name", n => { Name = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_name>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_name.CreateFromDiscriminatorValue); } },
                 { "numerator", n => { Numerator = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric.ExperimentRatioMetric_numerator>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric.ExperimentRatioMetric_numerator.CreateFromDiscriminatorValue); } },
-                { "response", n => { Response = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "sharedMetricId", n => { SharedMetricId = n.GetDoubleValue(); } },
-                { "uuid", n => { Uuid = n.GetStringValue(); } },
-                { "version", n => { Version = n.GetDoubleValue(); } },
+                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_response>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_response.CreateFromDiscriminatorValue); } },
+                { "sharedMetricId", n => { SharedMetricId = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_sharedMetricId>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_sharedMetricId.CreateFromDiscriminatorValue); } },
+                { "uuid", n => { Uuid = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_uuid>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_uuid.CreateFromDiscriminatorValue); } },
+                { "version", n => { Version = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_version>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_version.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -146,21 +170,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter>("breakdownFilter", BreakdownFilter);
-            writer.WriteIntValue("conversion_window", ConversionWindow);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnit>("conversion_window_unit", ConversionWindowUnit);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_breakdownFilter>("breakdownFilter", BreakdownFilter);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_conversion_window>("conversion_window", ConversionWindow);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_conversion_window_unit>("conversion_window_unit", ConversionWindowUnit);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric.ExperimentRatioMetric_denominator>("denominator", Denominator);
-            writer.WriteStringValue("fingerprint", Fingerprint);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricGoal>("goal", Goal);
-            writer.WriteBoolValue("isSharedMetric", IsSharedMetric);
-            writer.WriteStringValue("kind", Kind);
-            writer.WriteStringValue("metric_type", MetricType);
-            writer.WriteStringValue("name", Name);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_fingerprint>("fingerprint", Fingerprint);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_goal>("goal", Goal);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_isSharedMetric>("isSharedMetric", IsSharedMetric);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_kind>("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_metric_type>("metric_type", MetricType);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_name>("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric.ExperimentRatioMetric_numerator>("numerator", Numerator);
-            writer.WriteObjectValue<UntypedNode>("response", Response);
-            writer.WriteDoubleValue("sharedMetricId", SharedMetricId);
-            writer.WriteStringValue("uuid", Uuid);
-            writer.WriteDoubleValue("version", Version);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_response>("response", Response);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_sharedMetricId>("sharedMetricId", SharedMetricId);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_uuid>("uuid", Uuid);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_version>("version", Version);
         }
         /// <summary>
         /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActionsNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EventsNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentDataWarehouseNode"/>
@@ -200,10 +224,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             public static global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric.ExperimentRatioMetric_denominator CreateFromDiscriminatorValue(IParseNode parseNode)
             {
                 if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
+                var mappingValue = parseNode.GetChildNode("kind")?.GetStringValue();
                 var result = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric.ExperimentRatioMetric_denominator();
-                result.ActionsNode = new global::Soenneker.PostHog.OpenApiClient.Models.ActionsNode();
-                result.EventsNode = new global::Soenneker.PostHog.OpenApiClient.Models.EventsNode();
-                result.ExperimentDataWarehouseNode = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentDataWarehouseNode();
+                if("ActionsNode".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+                {
+                    result.ActionsNode = new global::Soenneker.PostHog.OpenApiClient.Models.ActionsNode();
+                }
+                else if("EventsNode".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+                {
+                    result.EventsNode = new global::Soenneker.PostHog.OpenApiClient.Models.EventsNode();
+                }
+                else if("ExperimentDataWarehouseNode".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+                {
+                    result.ExperimentDataWarehouseNode = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentDataWarehouseNode();
+                }
                 return result;
             }
             /// <summary>
@@ -212,9 +246,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
-                if(ActionsNode != null || EventsNode != null || ExperimentDataWarehouseNode != null)
+                if(ActionsNode != null)
                 {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ActionsNode, EventsNode, ExperimentDataWarehouseNode);
+                    return ActionsNode.GetFieldDeserializers();
+                }
+                else if(EventsNode != null)
+                {
+                    return EventsNode.GetFieldDeserializers();
+                }
+                else if(ExperimentDataWarehouseNode != null)
+                {
+                    return ExperimentDataWarehouseNode.GetFieldDeserializers();
                 }
                 return new Dictionary<string, Action<IParseNode>>();
             }
@@ -225,7 +267,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             public virtual void Serialize(ISerializationWriter writer)
             {
                 if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActionsNode>(null, ActionsNode, EventsNode, ExperimentDataWarehouseNode);
+                if(ActionsNode != null)
+                {
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActionsNode>(null, ActionsNode);
+                }
+                else if(EventsNode != null)
+                {
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventsNode>(null, EventsNode);
+                }
+                else if(ExperimentDataWarehouseNode != null)
+                {
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentDataWarehouseNode>(null, ExperimentDataWarehouseNode);
+                }
             }
         }
         /// <summary>
@@ -266,10 +319,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             public static global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric.ExperimentRatioMetric_numerator CreateFromDiscriminatorValue(IParseNode parseNode)
             {
                 if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
+                var mappingValue = parseNode.GetChildNode("kind")?.GetStringValue();
                 var result = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric.ExperimentRatioMetric_numerator();
-                result.ActionsNode = new global::Soenneker.PostHog.OpenApiClient.Models.ActionsNode();
-                result.EventsNode = new global::Soenneker.PostHog.OpenApiClient.Models.EventsNode();
-                result.ExperimentDataWarehouseNode = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentDataWarehouseNode();
+                if("ActionsNode".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+                {
+                    result.ActionsNode = new global::Soenneker.PostHog.OpenApiClient.Models.ActionsNode();
+                }
+                else if("EventsNode".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+                {
+                    result.EventsNode = new global::Soenneker.PostHog.OpenApiClient.Models.EventsNode();
+                }
+                else if("ExperimentDataWarehouseNode".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+                {
+                    result.ExperimentDataWarehouseNode = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentDataWarehouseNode();
+                }
                 return result;
             }
             /// <summary>
@@ -278,9 +341,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
-                if(ActionsNode != null || EventsNode != null || ExperimentDataWarehouseNode != null)
+                if(ActionsNode != null)
                 {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ActionsNode, EventsNode, ExperimentDataWarehouseNode);
+                    return ActionsNode.GetFieldDeserializers();
+                }
+                else if(EventsNode != null)
+                {
+                    return EventsNode.GetFieldDeserializers();
+                }
+                else if(ExperimentDataWarehouseNode != null)
+                {
+                    return ExperimentDataWarehouseNode.GetFieldDeserializers();
                 }
                 return new Dictionary<string, Action<IParseNode>>();
             }
@@ -291,7 +362,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             public virtual void Serialize(ISerializationWriter writer)
             {
                 if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActionsNode>(null, ActionsNode, EventsNode, ExperimentDataWarehouseNode);
+                if(ActionsNode != null)
+                {
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActionsNode>(null, ActionsNode);
+                }
+                else if(EventsNode != null)
+                {
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventsNode>(null, EventsNode);
+                }
+                else if(ExperimentDataWarehouseNode != null)
+                {
+                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentDataWarehouseNode>(null, ExperimentDataWarehouseNode);
+                }
             }
         }
     }

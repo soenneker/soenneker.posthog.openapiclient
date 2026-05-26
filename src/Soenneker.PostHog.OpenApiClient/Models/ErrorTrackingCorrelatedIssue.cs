@@ -15,26 +15,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The assignee property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAssignee? Assignee { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingCorrelatedIssue_assignee? Assignee { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAssignee Assignee { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingCorrelatedIssue_assignee Assignee { get; set; }
 #endif
         /// <summary>The cohort property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueCohort? Cohort { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingCorrelatedIssue_cohort? Cohort { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueCohort Cohort { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingCorrelatedIssue_cohort Cohort { get; set; }
 #endif
         /// <summary>The description property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingCorrelatedIssue_description? Description { get; set; }
 #nullable restore
 #else
-        public string Description { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingCorrelatedIssue_description Description { get; set; }
 #endif
         /// <summary>The event property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -47,10 +47,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The external_issues property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReference>? ExternalIssues { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingCorrelatedIssue_external_issues? ExternalIssues { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReference> ExternalIssues { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingCorrelatedIssue_external_issues ExternalIssues { get; set; }
 #endif
         /// <summary>The first_seen property</summary>
         public DateTimeOffset? FirstSeen { get; set; }
@@ -67,18 +67,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The library property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Library { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingCorrelatedIssue_library? Library { get; set; }
 #nullable restore
 #else
-        public string Library { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingCorrelatedIssue_library Library { get; set; }
 #endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingCorrelatedIssue_name? Name { get; set; }
 #nullable restore
 #else
-        public string Name { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingCorrelatedIssue_name Name { get; set; }
 #endif
         /// <summary>The odds_ratio property</summary>
         public double? OddsRatio { get; set; }
@@ -110,16 +110,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "assignee", n => { Assignee = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAssignee>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAssignee.CreateFromDiscriminatorValue); } },
-                { "cohort", n => { Cohort = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueCohort>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueCohort.CreateFromDiscriminatorValue); } },
-                { "description", n => { Description = n.GetStringValue(); } },
+                { "assignee", n => { Assignee = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingCorrelatedIssue_assignee>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingCorrelatedIssue_assignee.CreateFromDiscriminatorValue); } },
+                { "cohort", n => { Cohort = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingCorrelatedIssue_cohort>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingCorrelatedIssue_cohort.CreateFromDiscriminatorValue); } },
+                { "description", n => { Description = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingCorrelatedIssue_description>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingCorrelatedIssue_description.CreateFromDiscriminatorValue); } },
                 { "event", n => { Event = n.GetStringValue(); } },
-                { "external_issues", n => { ExternalIssues = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReference>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReference.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "external_issues", n => { ExternalIssues = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingCorrelatedIssue_external_issues>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingCorrelatedIssue_external_issues.CreateFromDiscriminatorValue); } },
                 { "first_seen", n => { FirstSeen = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "last_seen", n => { LastSeen = n.GetDateTimeOffsetValue(); } },
-                { "library", n => { Library = n.GetStringValue(); } },
-                { "name", n => { Name = n.GetStringValue(); } },
+                { "library", n => { Library = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingCorrelatedIssue_library>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingCorrelatedIssue_library.CreateFromDiscriminatorValue); } },
+                { "name", n => { Name = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingCorrelatedIssue_name>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingCorrelatedIssue_name.CreateFromDiscriminatorValue); } },
                 { "odds_ratio", n => { OddsRatio = n.GetDoubleValue(); } },
                 { "population", n => { Population = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Population>(global::Soenneker.PostHog.OpenApiClient.Models.Population.CreateFromDiscriminatorValue); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueStatus>(); } },
@@ -132,16 +132,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAssignee>("assignee", Assignee);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueCohort>("cohort", Cohort);
-            writer.WriteStringValue("description", Description);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingCorrelatedIssue_assignee>("assignee", Assignee);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingCorrelatedIssue_cohort>("cohort", Cohort);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingCorrelatedIssue_description>("description", Description);
             writer.WriteStringValue("event", Event);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReference>("external_issues", ExternalIssues);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingCorrelatedIssue_external_issues>("external_issues", ExternalIssues);
             writer.WriteDateTimeOffsetValue("first_seen", FirstSeen);
             writer.WriteStringValue("id", Id);
             writer.WriteDateTimeOffsetValue("last_seen", LastSeen);
-            writer.WriteStringValue("library", Library);
-            writer.WriteStringValue("name", Name);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingCorrelatedIssue_library>("library", Library);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingCorrelatedIssue_name>("name", Name);
             writer.WriteDoubleValue("odds_ratio", OddsRatio);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Population>("population", Population);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueStatus>("status", Status);

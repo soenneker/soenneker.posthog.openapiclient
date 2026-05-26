@@ -26,10 +26,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Request ID echoed back (string or number)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Id { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponse_id? Id { get; set; }
 #nullable restore
 #else
-        public UntypedNode Id { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponse_id Id { get; set; }
 #endif
         /// <summary>JSON-RPC version</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -73,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "error", n => { Error = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponse_error>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponse_error.CreateFromDiscriminatorValue); } },
-                { "id", n => { Id = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "id", n => { Id = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponse_id>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponse_id.CreateFromDiscriminatorValue); } },
                 { "jsonrpc", n => { Jsonrpc = n.GetStringValue(); } },
                 { "result", n => { Result = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponse_result>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponse_result.CreateFromDiscriminatorValue); } },
             };
@@ -86,7 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponse_error>("error", Error);
-            writer.WriteObjectValue<UntypedNode>("id", Id);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponse_id>("id", Id);
             writer.WriteStringValue("jsonrpc", Jsonrpc);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponse_result>("result", Result);
             writer.WriteAdditionalData(AdditionalData);
