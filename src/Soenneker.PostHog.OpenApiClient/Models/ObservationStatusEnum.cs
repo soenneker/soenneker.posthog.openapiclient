@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `pending` - Pending* `running` - Running* `succeeded` - Succeeded* `failed` - Failed</summary>
+    /// <summary>* `pending` - Pending* `running` - Running* `succeeded` - Succeeded* `failed` - Failed* `ineligible` - Ineligible</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ObservationStatusEnum
     {
@@ -22,6 +22,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "failed")]
         #pragma warning disable CS1591
         Failed,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ineligible")]
+        #pragma warning disable CS1591
+        Ineligible,
         #pragma warning restore CS1591
     }
 }

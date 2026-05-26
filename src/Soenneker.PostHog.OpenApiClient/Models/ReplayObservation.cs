@@ -18,7 +18,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? CompletedAt { get; set; }
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
-        /// <summary>Populated on failure; includes the malformed model response when validation fails.</summary>
+        /// <summary>Populated on terminal non-success statuses; formatted as `kind:human-readable message`. For `ineligible`, kind is one of no_recording / too_short / too_inactive / too_long / no_events. For `failed`, kind is one of provider_transient / provider_rejected / rasterization_failed / validation_failed / internal_error.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ErrorReason { get; private set; }
@@ -56,7 +56,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The started_at property</summary>
         public DateTimeOffset? StartedAt { get; set; }
-        /// <summary>* `pending` - Pending* `running` - Running* `succeeded` - Succeeded* `failed` - Failed</summary>
+        /// <summary>* `pending` - Pending* `running` - Running* `succeeded` - Succeeded* `failed` - Failed* `ineligible` - Ineligible</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatusEnum? Status { get; set; }
         /// <summary>* `schedule` - Schedule* `on_demand` - On demand</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ObservationTriggerEnum? TriggeredBy { get; set; }

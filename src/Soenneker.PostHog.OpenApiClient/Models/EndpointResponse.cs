@@ -103,6 +103,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.EndpointResponse_query Query { get; set; }
 #endif
+        /// <summary>Tag names associated with this endpoint.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Tags { get; set; }
+#nullable restore
+#else
+        public List<string> Tags { get; set; }
+#endif
         /// <summary>Absolute URL to view this endpoint in the PostHog UI.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -165,6 +173,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "materialization", n => { Materialization = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointResponse_materialization>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointResponse_materialization.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointResponse_query>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointResponse_query.CreateFromDiscriminatorValue); } },
+                { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "ui_url", n => { UiUrl = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
@@ -194,6 +203,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointResponse_materialization>("materialization", Materialization);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointResponse_query>("query", Query);
+            writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteStringValue("ui_url", UiUrl);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteStringValue("url", Url);

@@ -1431,6 +1431,50 @@
             ]
           }
         ]
+      },
+      "delete": {
+        "tags": [
+          "max",
+          "conversations"
+        ],
+        "description": "Delete a conversation.",
+        "operationId": "conversations-destroy",
+        "parameters": [
+          {
+            "name": "conversation",
+            "in": "path",
+            "description": "A UUID string identifying this conversation.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/ProjectIdPath"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Default",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "DefaultResponse",
+                  "type": "object",
+                  "description": "Default response schema"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "PersonalAPIKeyAuth": [
+              "conversation:write"
+            ]
+          }
+        ]
       }
     },
     "/api/environments/{project_id}/conversations/{conversation}/append_message": {
@@ -15282,6 +15326,111 @@
         ]
       }
     },
+    "/api/environments/{project_id}/vision/observations": {
+      "get": {
+        "tags": [
+          "replay_vision",
+          "vision"
+        ],
+        "description": "Read-only access to a session's observations across every scanner the caller can read, for the replay-page dock.",
+        "operationId": "vision-observations-list",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of results to return per page.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "The initial index from which to return the results.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/ProjectIdPath"
+          },
+          {
+            "name": "session_id",
+            "in": "query",
+            "description": "Session recording id to return observations for.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginatedReplayObservationList"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "PersonalAPIKeyAuth": [
+              "replay_scanner:read",
+              "session_recording:read"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/environments/{project_id}/vision/observations/{id}": {
+      "get": {
+        "tags": [
+          "replay_vision",
+          "vision"
+        ],
+        "description": "Read-only access to a session's observations across every scanner the caller can read, for the replay-page dock.",
+        "operationId": "vision-observations-retrieve",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "A UUID string identifying this replay observation.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/ProjectIdPath"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReplayObservation"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "PersonalAPIKeyAuth": [
+              "replay_scanner:read",
+              "session_recording:read"
+            ]
+          }
+        ]
+      }
+    },
     "/api/environments/{project_id}/vision/scanners": {
       "get": {
         "tags": [
@@ -15722,10 +15871,11 @@
           {
             "name": "status",
             "in": "query",
-            "description": "Filter by observation status.\n\n* `pending` - Pending\n* `running` - Running\n* `succeeded` - Succeeded\n* `failed` - Failed",
+            "description": "Filter by observation status.\n\n* `pending` - Pending\n* `running` - Running\n* `succeeded` - Succeeded\n* `failed` - Failed\n* `ineligible` - Ineligible",
             "schema": {
               "enum": [
                 "failed",
+                "ineligible",
                 "pending",
                 "running",
                 "succeeded"
@@ -15809,6 +15959,60 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ReplayObservation"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "PersonalAPIKeyAuth": [
+              "replay_scanner:read",
+              "session_recording:read"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/environments/{project_id}/vision/scanners/estimate": {
+      "post": {
+        "tags": [
+          "replay_vision",
+          "vision"
+        ],
+        "description": "Estimate the observation volume a proposed scanner would generate, for the pre-save cost preview.",
+        "operationId": "vision-scanners-estimate-create",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ProjectIdPath"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EstimateRequest"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/EstimateRequest"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/EstimateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EstimateResponse"
                 }
               }
             }
@@ -38388,6 +38592,71 @@
           {
             "PersonalAPIKeyAuth": [
               "batch_export:read"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/projects/{project_id}/file_download_batch_exports/{id}/cancel": {
+      "post": {
+        "tags": [
+          "batch_exports",
+          "file_download_batch_exports"
+        ],
+        "description": "Cancel an ongoing file-download batch export.",
+        "operationId": "file-download-batch-exports-cancel-create",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "A UUID string identifying this batch export run.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/ProjectIdPath"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FileDownloadBatchExportOnDemand"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/FileDownloadBatchExportOnDemand"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/FileDownloadBatchExportOnDemand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Default",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "DefaultResponse",
+                  "type": "object",
+                  "description": "Default response schema"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "PersonalAPIKeyAuth": [
+              "batch_export:write"
             ]
           }
         ]
@@ -68006,8 +68275,8 @@
         "type": "string",
         "additionalProperties": false
       },
-      "AggregationPropertyType1": {
-        "title": "AggregationPropertyType1",
+      "AggregationPropertyType": {
+        "title": "AggregationPropertyType",
         "enum": [
           "event",
           "person",
@@ -82562,6 +82831,13 @@
           "deleted": {
             "type": "boolean",
             "description": "Set to true to soft-delete this endpoint."
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of tag names to associate with this endpoint. Replaces any existing tags."
           }
         },
         "description": "Schema for creating/updating endpoints. OpenAPI docs only — validation uses Pydantic."
@@ -82584,6 +82860,7 @@
           "materialization",
           "name",
           "query",
+          "tags",
           "ui_url",
           "updated_at",
           "url",
@@ -82774,6 +83051,13 @@
               "$ref": "#/components/schemas/EndpointColumn"
             },
             "description": "Column names and types from the query's SELECT clause."
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Tag names associated with this endpoint."
           }
         },
         "description": "Full endpoint representation returned by list/retrieve/create/update."
@@ -82940,6 +83224,7 @@
           "materialization",
           "name",
           "query",
+          "tags",
           "ui_url",
           "updated_at",
           "url",
@@ -83135,6 +83420,13 @@
               "$ref": "#/components/schemas/EndpointColumn"
             },
             "description": "Column names and types from the query's SELECT clause."
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Tag names associated with this endpoint."
           },
           "version": {
             "type": "integer",
@@ -88470,6 +88762,53 @@
             "format": "double"
           }
         }
+      },
+      "EstimateRequest": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "object",
+            "description": "Proposed `RecordingsQuery` for the candidate filter. `date_from`/`date_to` are ignored — the estimate always uses a fixed 30-day lookback. Omit to estimate against all recordings."
+          },
+          "sampling_rate": {
+            "maximum": 1,
+            "minimum": 0,
+            "type": "number",
+            "description": "0..1 downsample applied to matched sessions. Defaults to 1.0 (no downsampling).",
+            "format": "double",
+            "default": 1
+          }
+        },
+        "description": "Body of POST /vision/scanners/estimate/ — a proposed, unsaved scanner config."
+      },
+      "EstimateResponse": {
+        "required": [
+          "estimated_observations_per_month",
+          "matched_sessions_in_window",
+          "sampling_rate",
+          "window_days"
+        ],
+        "type": "object",
+        "properties": {
+          "matched_sessions_in_window": {
+            "type": "integer",
+            "description": "Distinct sessions matching the query within the 30-day lookback, before sampling."
+          },
+          "window_days": {
+            "type": "integer",
+            "description": "Lookback window the estimate is based on. Normally 30; smaller when the team has fewer days of recordings."
+          },
+          "estimated_observations_per_month": {
+            "type": "integer",
+            "description": "\"Projected monthly observations: matched sessions scaled to 30 days, times sampling_rate.\""
+          },
+          "sampling_rate": {
+            "type": "number",
+            "description": "Sampling rate applied to the projection. Echoed from the request.",
+            "format": "double"
+          }
+        },
+        "description": "Forward-looking observation-volume estimate for a proposed scanner. Pricing-agnostic."
       },
       "Evaluation": {
         "required": [
@@ -97155,6 +97494,54 @@
           }
         },
         "additionalProperties": false
+      },
+      "FileDownloadBatchExportOnDemand": {
+        "required": [
+          "data_interval_end",
+          "data_interval_start",
+          "file",
+          "model"
+        ],
+        "type": "object",
+        "properties": {
+          "file": {
+            "$ref": "#/components/schemas/FileDownloadDestinationFileConfig"
+          },
+          "model": {
+            "$ref": "#/components/schemas/FileDownloadBatchExportOnDemandModelEnum"
+          },
+          "include": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "exclude": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "data_interval_start": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "data_interval_end": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "description": "Request shape for a FileDownload batch export on demand."
+      },
+      "FileDownloadBatchExportOnDemandModelEnum": {
+        "enum": [
+          "events",
+          "persons",
+          "sessions"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "* `events` - events\n* `persons` - persons\n* `sessions` - sessions"
       },
       "FileDownloadDestinationFileConfig": {
         "type": "object",
@@ -114462,11 +114849,12 @@
           "pending",
           "running",
           "succeeded",
-          "failed"
+          "failed",
+          "ineligible"
         ],
         "type": "string",
         "additionalProperties": false,
-        "description": "* `pending` - Pending\n* `running` - Running\n* `succeeded` - Succeeded\n* `failed` - Failed"
+        "description": "* `pending` - Pending\n* `running` - Running\n* `succeeded` - Succeeded\n* `failed` - Failed\n* `ineligible` - Ineligible"
       },
       "ObservationTriggerEnum": {
         "enum": [
@@ -122238,6 +122626,13 @@
           "deleted": {
             "type": "boolean",
             "description": "Set to true to soft-delete this endpoint."
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of tag names to associate with this endpoint. Replaces any existing tags."
           }
         },
         "description": "Schema for creating/updating endpoints. OpenAPI docs only — validation uses Pydantic."
@@ -147618,7 +148013,7 @@
           },
           "error_reason": {
             "type": "string",
-            "description": "Populated on failure; includes the malformed model response when validation fails.",
+            "description": "Populated on terminal non-success statuses; formatted as `kind:human-readable message`. For `ineligible`, kind is one of no_recording / too_short / too_inactive / too_long / no_events. For `failed`, kind is one of provider_transient / provider_rejected / rasterization_failed / validation_failed / internal_error.",
             "readOnly": true
           },
           "workflow_id": {
@@ -151693,7 +152088,7 @@
             "type": "object",
             "anyOf": [
               {
-                "$ref": "#/components/schemas/AggregationPropertyType1_Wrapper"
+                "$ref": "#/components/schemas/AggregationPropertyType_Wrapper"
               },
               {
                 "type": "object"
@@ -170309,6 +170704,32 @@
             ],
             "default": 1
           },
+          "xAxisLabel": {
+            "title": "Xaxislabel",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Xaxislabel"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Custom label rendered under the X axis."
+          },
+          "yAxisLabel": {
+            "title": "Yaxislabel",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Yaxislabel"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Custom label rendered alongside the Y axis."
+          },
           "yAxisScaleType": {
             "type": "object",
             "anyOf": [
@@ -187331,14 +187752,14 @@
           }
         }
       },
-      "AggregationPropertyType1_Wrapper": {
+      "AggregationPropertyType_Wrapper": {
         "required": [
           "value"
         ],
         "type": "object",
         "properties": {
           "value": {
-            "$ref": "#/components/schemas/AggregationPropertyType1"
+            "$ref": "#/components/schemas/AggregationPropertyType"
           }
         }
       },

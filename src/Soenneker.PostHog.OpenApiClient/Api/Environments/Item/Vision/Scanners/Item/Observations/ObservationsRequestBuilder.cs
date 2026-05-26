@@ -124,7 +124,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision.Scanners.
             [QueryParameter("session_id")]
             public string SessionId { get; set; }
 #endif
-            /// <summary>Filter by observation status.* `pending` - Pending* `running` - Running* `succeeded` - Succeeded* `failed` - Failed</summary>
+            /// <summary>Filter by observation status.* `pending` - Pending* `running` - Running* `succeeded` - Succeeded* `failed` - Failed* `ineligible` - Ineligible</summary>
             [QueryParameter("status")]
             public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision.Scanners.Item.Observations.GetStatusQueryParameterType? Status { get; set; }
             /// <summary>Filter by trigger source (schedule or on_demand).* `schedule` - Schedule* `on_demand` - On demand</summary>

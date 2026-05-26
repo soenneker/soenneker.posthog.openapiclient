@@ -247,6 +247,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQuery_response_count_query_trendsFilter_smoothingIntervals SmoothingIntervals { get; set; }
 #endif
+        /// <summary>Custom label rendered under the X axis.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQuery_response_count_query_trendsFilter_xAxisLabel? XAxisLabel { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQuery_response_count_query_trendsFilter_xAxisLabel XAxisLabel { get; set; }
+#endif
+        /// <summary>Custom label rendered alongside the Y axis.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQuery_response_count_query_trendsFilter_yAxisLabel? YAxisLabel { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQuery_response_count_query_trendsFilter_yAxisLabel YAxisLabel { get; set; }
+#endif
         /// <summary>The yAxisScaleType property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -309,6 +325,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "showTrendLines", n => { ShowTrendLines = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQuery_response_count_query_trendsFilter_showTrendLines>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQuery_response_count_query_trendsFilter_showTrendLines.CreateFromDiscriminatorValue); } },
                 { "showValuesOnSeries", n => { ShowValuesOnSeries = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQuery_response_count_query_trendsFilter_showValuesOnSeries>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQuery_response_count_query_trendsFilter_showValuesOnSeries.CreateFromDiscriminatorValue); } },
                 { "smoothingIntervals", n => { SmoothingIntervals = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQuery_response_count_query_trendsFilter_smoothingIntervals>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQuery_response_count_query_trendsFilter_smoothingIntervals.CreateFromDiscriminatorValue); } },
+                { "xAxisLabel", n => { XAxisLabel = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQuery_response_count_query_trendsFilter_xAxisLabel>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQuery_response_count_query_trendsFilter_xAxisLabel.CreateFromDiscriminatorValue); } },
+                { "yAxisLabel", n => { YAxisLabel = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQuery_response_count_query_trendsFilter_yAxisLabel>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQuery_response_count_query_trendsFilter_yAxisLabel.CreateFromDiscriminatorValue); } },
                 { "yAxisScaleType", n => { YAxisScaleType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQuery_response_count_query_trendsFilter_yAxisScaleType>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQuery_response_count_query_trendsFilter_yAxisScaleType.CreateFromDiscriminatorValue); } },
             };
         }
@@ -348,6 +366,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQuery_response_count_query_trendsFilter_showTrendLines>("showTrendLines", ShowTrendLines);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQuery_response_count_query_trendsFilter_showValuesOnSeries>("showValuesOnSeries", ShowValuesOnSeries);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQuery_response_count_query_trendsFilter_smoothingIntervals>("smoothingIntervals", SmoothingIntervals);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQuery_response_count_query_trendsFilter_xAxisLabel>("xAxisLabel", XAxisLabel);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQuery_response_count_query_trendsFilter_yAxisLabel>("yAxisLabel", YAxisLabel);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQuery_response_count_query_trendsFilter_yAxisScaleType>("yAxisScaleType", YAxisScaleType);
             writer.WriteAdditionalData(AdditionalData);
         }

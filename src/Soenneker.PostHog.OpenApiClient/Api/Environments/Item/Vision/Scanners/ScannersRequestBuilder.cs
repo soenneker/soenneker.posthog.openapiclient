@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision.Scanners.Estimate;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision.Scanners.Item;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -18,6 +19,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision.Scanners
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ScannersRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The estimate property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision.Scanners.Estimate.EstimateRequestBuilder Estimate
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision.Scanners.Estimate.EstimateRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.environments.item.vision.scanners.item collection</summary>
         /// <param name="position">A UUID string identifying this replay scanner.</param>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision.Scanners.Item.ItemRequestBuilder"/></returns>

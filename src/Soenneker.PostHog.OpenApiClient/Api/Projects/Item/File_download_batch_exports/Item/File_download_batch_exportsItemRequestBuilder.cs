@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_exports.Item.Cancel;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_exports.Item.Download;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_exports.Item.Logs;
 using Soenneker.PostHog.OpenApiClient.Models;
@@ -19,6 +20,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class File_download_batch_exportsItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The cancel property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_exports.Item.Cancel.CancelRequestBuilder Cancel
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_exports.Item.Cancel.CancelRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The download property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_exports.Item.Download.DownloadRequestBuilder Download
         {

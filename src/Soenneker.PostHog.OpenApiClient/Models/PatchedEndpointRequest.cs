@@ -63,6 +63,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEndpointRequest_query Query { get; set; }
 #endif
+        /// <summary>List of tag names to associate with this endpoint. Replaces any existing tags.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Tags { get; set; }
+#nullable restore
+#else
+        public List<string> Tags { get; set; }
+#endif
         /// <summary>Target a specific version for updates (defaults to current version).</summary>
         public int? Version { get; set; }
         /// <summary>
@@ -99,6 +107,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "is_materialized", n => { IsMaterialized = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEndpointRequest_query>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedEndpointRequest_query.CreateFromDiscriminatorValue); } },
+                { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "version", n => { Version = n.GetIntValue(); } },
             };
         }
@@ -118,6 +127,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("is_materialized", IsMaterialized);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEndpointRequest_query>("query", Query);
+            writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteIntValue("version", Version);
             writer.WriteAdditionalData(AdditionalData);
         }

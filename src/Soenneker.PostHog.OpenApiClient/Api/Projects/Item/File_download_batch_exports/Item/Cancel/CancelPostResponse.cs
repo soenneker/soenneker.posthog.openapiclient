@@ -5,34 +5,32 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Soenneker.PostHog.OpenApiClient.Models
+namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_exports.Item.Cancel
 {
     /// <summary>
-    /// The type of property to aggregate on (event, person or data_warehouse). Defaults to event.
+    /// Default response schema
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class RetentionFilter_aggregationPropertyType : IAdditionalDataHolder, IParsable
+    public partial class CancelPostResponse : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The value property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.AggregationPropertyType? Value { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_aggregationPropertyType"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_exports.Item.Cancel.CancelPostResponse"/> and sets the default values.
         /// </summary>
-        public RetentionFilter_aggregationPropertyType()
+        public CancelPostResponse()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_aggregationPropertyType"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_exports.Item.Cancel.CancelPostResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_aggregationPropertyType CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_exports.Item.Cancel.CancelPostResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter_aggregationPropertyType();
+            return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_exports.Item.Cancel.CancelPostResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -42,7 +40,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "value", n => { Value = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AggregationPropertyType>(); } },
             };
         }
         /// <summary>
@@ -52,7 +49,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AggregationPropertyType>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

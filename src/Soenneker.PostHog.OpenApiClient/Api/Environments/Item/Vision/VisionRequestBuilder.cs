@@ -2,6 +2,7 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision.Observations;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision.Scanners;
 using System.Collections.Generic;
 using System.IO;
@@ -15,6 +16,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class VisionRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The observations property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision.Observations.ObservationsRequestBuilder Observations
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision.Observations.ObservationsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The scanners property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision.Scanners.ScannersRequestBuilder Scanners
         {

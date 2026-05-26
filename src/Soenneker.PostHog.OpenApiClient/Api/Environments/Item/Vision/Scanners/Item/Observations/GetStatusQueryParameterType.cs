@@ -12,6 +12,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision.Scanners.
         #pragma warning disable CS1591
         Failed,
         #pragma warning restore CS1591
+        [EnumMember(Value = "ineligible")]
+        #pragma warning disable CS1591
+        Ineligible,
+        #pragma warning restore CS1591
         [EnumMember(Value = "pending")]
         #pragma warning disable CS1591
         Pending,

@@ -5569,6 +5569,43 @@ paths:
       deprecated: true
       x-explicit-tags:
       - batch_exports
+  /api/environments/{environment_id}/file_download_batch_exports/{id}/cancel/:
+    post:
+      operationId: environments_file_download_batch_exports_cancel_create
+      description: Cancel an ongoing file-download batch export.
+      parameters:
+      - $ref: '#/components/parameters/EnvironmentIdPath'
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this batch export run.
+        required: true
+      tags:
+      - batch_exports
+      - file_download_batch_exports
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FileDownloadBatchExportOnDemand'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FileDownloadBatchExportOnDemand'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FileDownloadBatchExportOnDemand'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - batch_export:write
+      responses:
+        '200':
+          description: No response body
+      deprecated: true
+      x-explicit-tags:
+      - batch_exports
   /api/environments/{environment_id}/file_download_batch_exports/{id}/download/:
     get:
       operationId: environments_file_download_batch_exports_download_retrieve
@@ -16147,6 +16184,29 @@ paths:
           description: ''
       x-explicit-tags:
       - max
+    delete:
+      operationId: conversations_destroy
+      description: Delete a conversation.
+      parameters:
+      - in: path
+        name: conversation
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this conversation.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - max
+      - conversations
+      security:
+      - PersonalAPIKeyAuth:
+        - conversation:write
+      responses:
+        '204':
+          description: No response body
+      x-explicit-tags:
+      - max
   /api/environments/{project_id}/conversations/{conversation}/append_message/:
     post:
       operationId: conversations_append_message_create
@@ -24842,6 +24902,77 @@ paths:
           description: Matches ranked by cosine similarity (descending).
       x-explicit-tags:
       - user_interviews
+  /api/environments/{project_id}/vision/observations/:
+    get:
+      operationId: vision_observations_list
+      description: Read-only access to a session's observations across every scanner
+        the caller can read, for the replay-page dock.
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: session_id
+        schema:
+          type: string
+        description: Session recording id to return observations for.
+        required: true
+      tags:
+      - replay_vision
+      - vision
+      security:
+      - PersonalAPIKeyAuth:
+        - replay_scanner:read
+        - session_recording:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedReplayObservationList'
+          description: ''
+      x-explicit-tags:
+      - replay_vision
+  /api/environments/{project_id}/vision/observations/{id}/:
+    get:
+      operationId: vision_observations_retrieve
+      description: Read-only access to a session's observations across every scanner
+        the caller can read, for the replay-page dock.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this replay observation.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - replay_vision
+      - vision
+      security:
+      - PersonalAPIKeyAuth:
+        - replay_scanner:read
+        - session_recording:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReplayObservation'
+          description: ''
+      x-explicit-tags:
+      - replay_vision
   /api/environments/{project_id}/vision/scanners/:
     get:
       operationId: vision_scanners_list
@@ -25157,6 +25288,7 @@ paths:
           type: string
           enum:
           - failed
+          - ineligible
           - pending
           - running
           - succeeded
@@ -25167,6 +25299,7 @@ paths:
           * `running` - Running
           * `succeeded` - Succeeded
           * `failed` - Failed
+          * `ineligible` - Ineligible
       - in: query
         name: triggered_by
         schema:
@@ -25227,6 +25360,40 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ReplayObservation'
+          description: ''
+      x-explicit-tags:
+      - replay_vision
+  /api/environments/{project_id}/vision/scanners/estimate/:
+    post:
+      operationId: vision_scanners_estimate_create
+      description: Estimate the observation volume a proposed scanner would generate,
+        for the pre-save cost preview.
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - replay_vision
+      - vision
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EstimateRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/EstimateRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/EstimateRequest'
+      security:
+      - PersonalAPIKeyAuth:
+        - replay_scanner:read
+        - session_recording:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EstimateResponse'
           description: ''
       x-explicit-tags:
       - replay_vision
@@ -40693,6 +40860,42 @@ paths:
               schema:
                 $ref: '#/components/schemas/RetrieveFileDownloadResponse'
           description: ''
+      x-explicit-tags:
+      - batch_exports
+  /api/projects/{project_id}/file_download_batch_exports/{id}/cancel/:
+    post:
+      operationId: file_download_batch_exports_cancel_create
+      description: Cancel an ongoing file-download batch export.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this batch export run.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - batch_exports
+      - file_download_batch_exports
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FileDownloadBatchExportOnDemand'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FileDownloadBatchExportOnDemand'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FileDownloadBatchExportOnDemand'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - batch_export:write
+      responses:
+        '200':
+          description: No response body
       x-explicit-tags:
       - batch_exports
   /api/projects/{project_id}/file_download_batch_exports/{id}/download/:
@@ -59430,12 +59633,12 @@ components:
       - short
       title: AggregationAxisFormat
       type: string
-    AggregationPropertyType1:
+    AggregationPropertyType:
       enum:
       - event
       - person
       - data_warehouse
-      title: AggregationPropertyType1
+      title: AggregationPropertyType
       type: string
     AggregationType:
       enum:
@@ -70908,6 +71111,14 @@ components:
           - boolean
           - 'null'
           description: Set to true to soft-delete this endpoint.
+        tags:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+          description: List of tag names to associate with this endpoint. Replaces
+            any existing tags.
     EndpointResponse:
       type: object
       description: Full endpoint representation returned by list/retrieve/create/update.
@@ -71002,6 +71213,11 @@ components:
           items:
             $ref: '#/components/schemas/EndpointColumn'
           description: Column names and types from the query's SELECT clause.
+        tags:
+          type: array
+          items:
+            type: string
+          description: Tag names associated with this endpoint.
       required:
       - bucket_overrides
       - columns
@@ -71019,6 +71235,7 @@ components:
       - materialization
       - name
       - query
+      - tags
       - ui_url
       - updated_at
       - url
@@ -71214,6 +71431,11 @@ components:
           items:
             $ref: '#/components/schemas/EndpointColumn'
           description: Column names and types from the query's SELECT clause.
+        tags:
+          type: array
+          items:
+            type: string
+          description: Tag names associated with this endpoint.
         version:
           type: integer
           description: Version number.
@@ -71256,6 +71478,7 @@ components:
       - materialization
       - name
       - query
+      - tags
       - ui_url
       - updated_at
       - url
@@ -74438,6 +74661,49 @@ components:
           description: Occurrence count for the bucket.
       required:
       - label
+    EstimateRequest:
+      type: object
+      description: Body of POST /vision/scanners/estimate/ — a proposed, unsaved scanner
+        config.
+      properties:
+        query:
+          description: Proposed `RecordingsQuery` for the candidate filter. `date_from`/`date_to`
+            are ignored — the estimate always uses a fixed 30-day lookback. Omit to
+            estimate against all recordings.
+        sampling_rate:
+          type: number
+          format: double
+          maximum: 1.0
+          minimum: 0.0
+          default: 1.0
+          description: 0..1 downsample applied to matched sessions. Defaults to 1.0
+            (no downsampling).
+    EstimateResponse:
+      type: object
+      description: Forward-looking observation-volume estimate for a proposed scanner.
+        Pricing-agnostic.
+      properties:
+        matched_sessions_in_window:
+          type: integer
+          description: Distinct sessions matching the query within the 30-day lookback,
+            before sampling.
+        window_days:
+          type: integer
+          description: Lookback window the estimate is based on. Normally 30; smaller
+            when the team has fewer days of recordings.
+        estimated_observations_per_month:
+          type: integer
+          description: 'Projected monthly observations: matched sessions scaled to
+            30 days, times sampling_rate.'
+        sampling_rate:
+          type: number
+          format: double
+          description: Sampling rate applied to the projection. Echoed from the request.
+      required:
+      - estimated_observations_per_month
+      - matched_sessions_in_window
+      - sampling_rate
+      - window_days
     Evaluation:
       type: object
       properties:
@@ -80640,6 +80906,43 @@ components:
       - operator
       title: FeaturePropertyFilter
       type: object
+    FileDownloadBatchExportOnDemand:
+      type: object
+      description: Request shape for a FileDownload batch export on demand.
+      properties:
+        file:
+          $ref: '#/components/schemas/FileDownloadDestinationFileConfig'
+        model:
+          $ref: '#/components/schemas/FileDownloadBatchExportOnDemandModelEnum'
+        include:
+          type: array
+          items:
+            type: string
+        exclude:
+          type: array
+          items:
+            type: string
+        data_interval_start:
+          type: string
+          format: date-time
+        data_interval_end:
+          type: string
+          format: date-time
+      required:
+      - data_interval_end
+      - data_interval_start
+      - file
+      - model
+    FileDownloadBatchExportOnDemandModelEnum:
+      enum:
+      - events
+      - persons
+      - sessions
+      type: string
+      description: |-
+        * `events` - events
+        * `persons` - persons
+        * `sessions` - sessions
     FileDownloadDestinationFileConfig:
       type: object
       description: Typed configuration for a FileDownload batch-export destination.
@@ -91478,12 +91781,14 @@ components:
       - running
       - succeeded
       - failed
+      - ineligible
       type: string
       description: |-
         * `pending` - Pending
         * `running` - Running
         * `succeeded` - Succeeded
         * `failed` - Failed
+        * `ineligible` - Ineligible
     ObservationTriggerEnum:
       enum:
       - schedule
@@ -97556,6 +97861,14 @@ components:
           - boolean
           - 'null'
           description: Set to true to soft-delete this endpoint.
+        tags:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+          description: List of tag names to associate with this endpoint. Replaces
+            any existing tags.
     PatchedEnterpriseEventDefinition:
       type: object
       description: Serializer mixin that handles tags for objects.
@@ -114092,17 +114405,20 @@ components:
           - $ref: '#/components/schemas/ObservationStatusEnum'
           readOnly: true
           description: |-
-            Observation status (pending, running, succeeded, failed).
+            Observation status (pending, running, succeeded, failed, ineligible).
 
             * `pending` - Pending
             * `running` - Running
             * `succeeded` - Succeeded
             * `failed` - Failed
+            * `ineligible` - Ineligible
         error_reason:
           type: string
           readOnly: true
-          description: Populated on failure; includes the malformed model response
-            when validation fails.
+          description: Populated on terminal non-success statuses; formatted as `kind:human-readable
+            message`. For `ineligible`, kind is one of no_recording / too_short /
+            too_inactive / too_long / no_events. For `failed`, kind is one of provider_transient
+            / provider_rejected / rasterization_failed / validation_failed / internal_error.
         workflow_id:
           type: string
           readOnly: true
@@ -116567,7 +116883,7 @@ components:
           title: Aggregationproperty
         aggregationPropertyType:
           anyOf:
-          - $ref: '#/components/schemas/AggregationPropertyType1'
+          - $ref: '#/components/schemas/AggregationPropertyType'
           - type: 'null'
           default: event
           description: The type of property to aggregate on (event, person or data_warehouse).
@@ -129679,6 +129995,20 @@ components:
           - type: 'null'
           default: 1
           title: Smoothingintervals
+        xAxisLabel:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Custom label rendered under the X axis.
+          title: Xaxislabel
+        yAxisLabel:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Custom label rendered alongside the Y axis.
+          title: Yaxislabel
         yAxisScaleType:
           anyOf:
           - $ref: '#/components/schemas/YAxisScaleType'
