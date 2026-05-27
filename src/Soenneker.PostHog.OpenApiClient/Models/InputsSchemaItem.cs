@@ -98,6 +98,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string RequiresField { get; set; }
 #endif
+        /// <summary>The searchable property</summary>
+        public bool? Searchable { get; set; }
         /// <summary>The secret property</summary>
         public bool? Secret { get; set; }
         /// <summary>The templating property</summary>
@@ -147,6 +149,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "required", n => { Required = n.GetBoolValue(); } },
                 { "requiredScopes", n => { RequiredScopes = n.GetStringValue(); } },
                 { "requires_field", n => { RequiresField = n.GetStringValue(); } },
+                { "searchable", n => { Searchable = n.GetBoolValue(); } },
                 { "secret", n => { Secret = n.GetBoolValue(); } },
                 { "templating", n => { Templating = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UnionBranch>(global::Soenneker.PostHog.OpenApiClient.Models.UnionBranch.CreateFromDiscriminatorValue); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItemTypeEnum>(); } },
@@ -171,6 +174,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("required", Required);
             writer.WriteStringValue("requiredScopes", RequiredScopes);
             writer.WriteStringValue("requires_field", RequiresField);
+            writer.WriteBoolValue("searchable", Searchable);
             writer.WriteBoolValue("secret", Secret);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UnionBranch>("templating", Templating);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItemTypeEnum>("type", Type);

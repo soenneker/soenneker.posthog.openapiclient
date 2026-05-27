@@ -35,7 +35,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public File_download_batch_exportsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/file_download_batch_exports", pathParameters)
+        public File_download_batch_exportsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/file_download_batch_exports{?limit*,offset*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,8 +43,23 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public File_download_batch_exportsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/file_download_batch_exports", rawUrl)
+        public File_download_batch_exportsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/file_download_batch_exports{?limit*,offset*}", rawUrl)
         {
+        }
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedListOutputList"/></returns>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedListOutputList?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_exports.File_download_batch_exportsRequestBuilder.File_download_batch_exportsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#nullable restore
+#else
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedListOutputList> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_exports.File_download_batch_exportsRequestBuilder.File_download_batch_exportsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#endif
+            var requestInfo = ToGetRequestInformation(requestConfiguration);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedListOutputList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedListOutputList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Create and start a batch export on demand run to download a file.
@@ -65,6 +80,22 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.CreateOutput>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.CreateOutput.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+        }
+        /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_exports.File_download_batch_exportsRequestBuilder.File_download_batch_exportsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        {
+#nullable restore
+#else
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_exports.File_download_batch_exportsRequestBuilder.File_download_batch_exportsRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        {
+#endif
+            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
+            requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
+            return requestInfo;
         }
         /// <summary>
         /// Create and start a batch export on demand run to download a file.
@@ -96,6 +127,18 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_exports.File_download_batch_exportsRequestBuilder WithUrl(string rawUrl)
         {
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_exports.File_download_batch_exportsRequestBuilder(rawUrl, RequestAdapter);
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        #pragma warning disable CS1591
+        public partial class File_download_batch_exportsRequestBuilderGetQueryParameters 
+        #pragma warning restore CS1591
+        {
+            /// <summary>Number of results to return per page.</summary>
+            [QueryParameter("limit")]
+            public int? Limit { get; set; }
+            /// <summary>The initial index from which to return the results.</summary>
+            [QueryParameter("offset")]
+            public int? Offset { get; set; }
         }
     }
 }

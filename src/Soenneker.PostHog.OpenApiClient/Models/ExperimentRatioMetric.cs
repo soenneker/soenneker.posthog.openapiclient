@@ -44,6 +44,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric.ExperimentRatioMetric_denominator Denominator { get; set; }
 #endif
+        /// <summary>The denominator_outlier_handling property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_denominator_outlier_handling? DenominatorOutlierHandling { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_denominator_outlier_handling DenominatorOutlierHandling { get; set; }
+#endif
         /// <summary>The fingerprint property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -87,6 +95,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric.ExperimentRatioMetric_numerator Numerator { get; set; }
+#endif
+        /// <summary>The numerator_outlier_handling property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_numerator_outlier_handling? NumeratorOutlierHandling { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_numerator_outlier_handling NumeratorOutlierHandling { get; set; }
 #endif
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -150,6 +166,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "conversion_window", n => { ConversionWindow = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_conversion_window>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_conversion_window.CreateFromDiscriminatorValue); } },
                 { "conversion_window_unit", n => { ConversionWindowUnit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_conversion_window_unit>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_conversion_window_unit.CreateFromDiscriminatorValue); } },
                 { "denominator", n => { Denominator = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric.ExperimentRatioMetric_denominator>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric.ExperimentRatioMetric_denominator.CreateFromDiscriminatorValue); } },
+                { "denominator_outlier_handling", n => { DenominatorOutlierHandling = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_denominator_outlier_handling>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_denominator_outlier_handling.CreateFromDiscriminatorValue); } },
                 { "fingerprint", n => { Fingerprint = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_fingerprint>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_fingerprint.CreateFromDiscriminatorValue); } },
                 { "goal", n => { Goal = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_goal>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_goal.CreateFromDiscriminatorValue); } },
                 { "isSharedMetric", n => { IsSharedMetric = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_isSharedMetric>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_isSharedMetric.CreateFromDiscriminatorValue); } },
@@ -157,6 +174,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "metric_type", n => { MetricType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_metric_type>(); } },
                 { "name", n => { Name = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_name>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_name.CreateFromDiscriminatorValue); } },
                 { "numerator", n => { Numerator = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric.ExperimentRatioMetric_numerator>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric.ExperimentRatioMetric_numerator.CreateFromDiscriminatorValue); } },
+                { "numerator_outlier_handling", n => { NumeratorOutlierHandling = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_numerator_outlier_handling>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_numerator_outlier_handling.CreateFromDiscriminatorValue); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_response>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_response.CreateFromDiscriminatorValue); } },
                 { "sharedMetricId", n => { SharedMetricId = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_sharedMetricId>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_sharedMetricId.CreateFromDiscriminatorValue); } },
                 { "uuid", n => { Uuid = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_uuid>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_uuid.CreateFromDiscriminatorValue); } },
@@ -174,6 +192,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_conversion_window>("conversion_window", ConversionWindow);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_conversion_window_unit>("conversion_window_unit", ConversionWindowUnit);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric.ExperimentRatioMetric_denominator>("denominator", Denominator);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_denominator_outlier_handling>("denominator_outlier_handling", DenominatorOutlierHandling);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_fingerprint>("fingerprint", Fingerprint);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_goal>("goal", Goal);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_isSharedMetric>("isSharedMetric", IsSharedMetric);
@@ -181,6 +200,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_metric_type>("metric_type", MetricType);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_name>("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric.ExperimentRatioMetric_numerator>("numerator", Numerator);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_numerator_outlier_handling>("numerator_outlier_handling", NumeratorOutlierHandling);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_response>("response", Response);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_sharedMetricId>("sharedMetricId", SharedMetricId);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric_uuid>("uuid", Uuid);

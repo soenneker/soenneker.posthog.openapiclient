@@ -14,11 +14,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The approve_all property</summary>
+        /// <summary>Approve every changed and new snapshot in the run. Mutually exclusive with `snapshots` — pass one or the other.</summary>
         public bool? ApproveAll { get; set; }
-        /// <summary>The commit_to_github property</summary>
+        /// <summary>Whether to commit the updated baseline YAML to the PR branch on GitHub. Set to false to record the approval without pushing a commit.</summary>
         public bool? CommitToGithub { get; set; }
-        /// <summary>The snapshots property</summary>
+        /// <summary>Specific snapshots to approve, each with `identifier` and `new_hash`. Ignored when `approve_all` is true.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ApproveSnapshotInput>? Snapshots { get; set; }

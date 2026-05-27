@@ -140,6 +140,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative42_types Types { get; set; }
 #endif
+        /// <summary>Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative42_warnings? Warnings { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative42_warnings Warnings { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -174,6 +182,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "results", n => { Results = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative42_results>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative42_results.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "timings", n => { Timings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative42_timings>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative42_timings.CreateFromDiscriminatorValue); } },
                 { "types", n => { Types = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative42_types>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative42_types.CreateFromDiscriminatorValue); } },
+                { "warnings", n => { Warnings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative42_warnings>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative42_warnings.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -199,6 +208,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative42_results>("results", Results);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative42_timings>("timings", Timings);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative42_types>("types", Types);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative42_warnings>("warnings", Warnings);
         }
     }
 }

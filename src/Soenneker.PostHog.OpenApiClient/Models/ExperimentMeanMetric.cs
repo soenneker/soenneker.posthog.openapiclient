@@ -70,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The kind property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetric_kind? Kind { get; set; }
-        /// <summary>The lower_bound_percentile property</summary>
+        /// <summary>Winsorization lower percentile bound, as a fraction in [0, 1] (e.g. 0.01 for the 1st percentile).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetric_lower_bound_percentile? LowerBoundPercentile { get; set; }
@@ -112,7 +112,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetric.ExperimentMeanMetric_source Source { get; set; }
 #endif
-        /// <summary>The upper_bound_percentile property</summary>
+        /// <summary>Winsorization upper percentile bound, as a fraction in [0, 1] (e.g. 0.99 for the 99th percentile).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetric_upper_bound_percentile? UpperBoundPercentile { get; set; }

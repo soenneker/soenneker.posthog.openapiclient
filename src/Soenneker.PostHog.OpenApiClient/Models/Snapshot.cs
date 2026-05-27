@@ -120,6 +120,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ReviewState { get; set; }
 #endif
+        /// <summary>The run_id property</summary>
+        public Guid? RunId { get; set; }
         /// <summary>The size_mismatch property</summary>
         public bool? SizeMismatch { get; set; }
         /// <summary>The ssim_score property</summary>
@@ -168,6 +170,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "review_state", n => { ReviewState = n.GetStringValue(); } },
                 { "reviewed_at", n => { ReviewedAt = n.GetDateTimeOffsetValue(); } },
                 { "reviewed_by", n => { ReviewedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Snapshot_reviewed_by>(global::Soenneker.PostHog.OpenApiClient.Models.Snapshot_reviewed_by.CreateFromDiscriminatorValue); } },
+                { "run_id", n => { RunId = n.GetGuidValue(); } },
                 { "size_mismatch", n => { SizeMismatch = n.GetBoolValue(); } },
                 { "ssim_score", n => { SsimScore = n.GetDoubleValue(); } },
                 { "tolerated_hash_id", n => { ToleratedHashId = n.GetGuidValue(); } },
@@ -197,6 +200,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("reviewed_at", ReviewedAt);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Snapshot_reviewed_by>("reviewed_by", ReviewedBy);
             writer.WriteStringValue("review_state", ReviewState);
+            writer.WriteGuidValue("run_id", RunId);
             writer.WriteBoolValue("size_mismatch", SizeMismatch);
             writer.WriteDoubleValue("ssim_score", SsimScore);
             writer.WriteGuidValue("tolerated_hash_id", ToleratedHashId);

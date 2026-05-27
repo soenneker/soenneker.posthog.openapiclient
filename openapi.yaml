@@ -4225,6 +4225,11 @@ paths:
           - csv
           - json
       - in: query
+        name: include_person
+        schema:
+          type: boolean
+        description: 'Include person details for each event. Default: false.'
+      - in: query
         name: limit
         schema:
           type: integer
@@ -4299,6 +4304,11 @@ paths:
         schema:
           type: string
         required: true
+      - in: query
+        name: include_person
+        schema:
+          type: boolean
+        description: 'Include person details for the event. Default: false.'
       tags:
       - events
       security:
@@ -5503,6 +5513,38 @@ paths:
       x-explicit-tags:
       - data_warehouse
   /api/environments/{environment_id}/file_download_batch_exports/:
+    get:
+      operationId: environments_file_download_batch_exports_list
+      parameters:
+      - $ref: '#/components/parameters/EnvironmentIdPath'
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      tags:
+      - batch_exports
+      - file_download_batch_exports
+      security:
+      - PersonalAPIKeyAuth:
+        - batch_export:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedListOutputList'
+          description: ''
+      deprecated: true
+      x-explicit-tags:
+      - batch_exports
     post:
       operationId: environments_file_download_batch_exports_create
       description: Create and start a batch export on demand run to download a file.
@@ -5539,7 +5581,7 @@ paths:
     get:
       operationId: environments_file_download_batch_exports_retrieve
       description: |-
-        Get a run of a batch export on demand.
+        Get a batch export on demand run.
 
         If the underlying batch export run has completed, we return keys to the
         generated file downloads so that users may download them by making a request
@@ -8128,6 +8170,7 @@ paths:
       deprecated: true
       x-explicit-tags:
       - data_warehouse
+      - product_analytics
     post:
       operationId: environments_insight_variables_create
       parameters:
@@ -8160,6 +8203,7 @@ paths:
       deprecated: true
       x-explicit-tags:
       - data_warehouse
+      - product_analytics
   /api/environments/{environment_id}/insight_variables/{id}/:
     get:
       operationId: environments_insight_variables_retrieve
@@ -29023,6 +29067,7 @@ paths:
           - LogsExclusionRule
           - ProductTour
           - Ticket
+          - InstanceSetting
           type: string
           minLength: 1
         description: |-
@@ -29087,6 +29132,7 @@ paths:
           * `LogsExclusionRule` - LogsExclusionRule
           * `ProductTour` - ProductTour
           * `Ticket` - Ticket
+          * `InstanceSetting` - InstanceSetting
       - in: query
         name: scopes
         schema:
@@ -29152,6 +29198,7 @@ paths:
             - LogsExclusionRule
             - ProductTour
             - Ticket
+            - InstanceSetting
             type: string
             description: |-
               * `Cohort` - Cohort
@@ -29213,6 +29260,7 @@ paths:
               * `LogsExclusionRule` - LogsExclusionRule
               * `ProductTour` - ProductTour
               * `Ticket` - Ticket
+              * `InstanceSetting` - InstanceSetting
         description: Filter by multiple activity scopes, comma-separated. Values must
           be valid ActivityScope enum values. E.g. "FeatureFlag,Insight".
       - in: query
@@ -37340,6 +37388,11 @@ paths:
           - csv
           - json
       - in: query
+        name: include_person
+        schema:
+          type: boolean
+        description: 'Include person details for each event. Default: false.'
+      - in: query
         name: limit
         schema:
           type: integer
@@ -37413,6 +37466,11 @@ paths:
         schema:
           type: string
         required: true
+      - in: query
+        name: include_person
+        schema:
+          type: boolean
+        description: 'Include person details for the event. Default: false.'
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
       - events
@@ -40798,6 +40856,37 @@ paths:
       x-explicit-tags:
       - feature_flags
   /api/projects/{project_id}/file_download_batch_exports/:
+    get:
+      operationId: file_download_batch_exports_list
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - batch_exports
+      - file_download_batch_exports
+      security:
+      - PersonalAPIKeyAuth:
+        - batch_export:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedListOutputList'
+          description: ''
+      x-explicit-tags:
+      - batch_exports
     post:
       operationId: file_download_batch_exports_create
       description: Create and start a batch export on demand run to download a file.
@@ -40833,7 +40922,7 @@ paths:
     get:
       operationId: file_download_batch_exports_retrieve
       description: |-
-        Get a run of a batch export on demand.
+        Get a batch export on demand run.
 
         If the underlying batch export run has completed, we return keys to the
         generated file downloads so that users may download them by making a request
@@ -41616,7 +41705,8 @@ paths:
           description: Bad request
         '404':
           description: Not found
-      x-explicit-tags: []
+      x-explicit-tags:
+      - feature_flags
   /api/projects/{project_id}/groups/:
     get:
       operationId: groups_list
@@ -43797,6 +43887,7 @@ paths:
           description: ''
       x-explicit-tags:
       - data_warehouse
+      - product_analytics
     post:
       operationId: insight_variables_create
       parameters:
@@ -43828,6 +43919,7 @@ paths:
           description: ''
       x-explicit-tags:
       - data_warehouse
+      - product_analytics
   /api/projects/{project_id}/insight_variables/{id}/:
     get:
       operationId: insight_variables_retrieve
@@ -50270,6 +50362,32 @@ paths:
                 $ref: '#/components/schemas/QueryUpgradeResponse'
           description: ''
       x-explicit-tags: []
+  /api/projects/{project_id}/quota_limits/:
+    get:
+      operationId: quota_limits_list
+      description: Return the current quota-limit state for the team identified in
+        the URL, keyed by `QuotaResource` value. Used by the LLM gateway to gate billable
+        products on AI credits exhaustion.
+      summary: Get a team's quota-limit state
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - quota_limits
+      - quota_limits
+      security:
+      - PersonalAPIKeyAuth:
+        - project:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/QuotaLimitsResponse'
+          description: ''
+      x-explicit-tags:
+      - quota_limits
   /api/projects/{project_id}/sandbox_environments/:
     get:
       operationId: sandbox_list
@@ -57278,6 +57396,150 @@ paths:
         '204':
           description: No response body
       x-explicit-tags: []
+  /api/projects/{project_id}/wizard/sessions/:
+    get:
+      operationId: wizard_sessions_list
+      description: 'List wizard sessions for the project, ordered by started_at desc.
+        This should only be called by the PostHog Wizard. Optional filters: ?workflow_id=<id>
+        and ?skill_id=<id>.'
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: skill_id
+        schema:
+          type: string
+        description: Filter to a single skill within the workflow (e.g. 'nextjs').
+      - in: query
+        name: workflow_id
+        schema:
+          type: string
+        description: Filter to a single workflow (e.g. 'onboarding').
+      tags:
+      - wizard
+      security:
+      - PersonalAPIKeyAuth:
+        - wizard_session:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedWizardSessionDTOList'
+          description: ''
+      x-explicit-tags:
+      - wizard
+    post:
+      operationId: wizard_sessions_create
+      description: Upsert a wizard session. The `session_id` key is the idempotency
+        anchor — reposting the same `session_id` replaces the existing row. Returns
+        201 on create, 200 on update.
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - wizard
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpsertWizardSessionRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UpsertWizardSessionRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UpsertWizardSessionRequest'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - wizard_session:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WizardSessionDTO'
+          description: ''
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WizardSessionDTO'
+          description: ''
+      x-explicit-tags:
+      - wizard
+  /api/projects/{project_id}/wizard/sessions/{session_id}/:
+    get:
+      operationId: wizard_sessions_retrieve
+      description: Retrieve a single wizard session by its session_id.
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: path
+        name: session_id
+        schema:
+          type: string
+          pattern: ^(?!stream$)[^/]+$
+        required: true
+      tags:
+      - wizard
+      security:
+      - PersonalAPIKeyAuth:
+        - wizard_session:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WizardSessionDTO'
+          description: ''
+        '404':
+          description: No session with that id for this project.
+      x-explicit-tags:
+      - wizard
+  /api/projects/{project_id}/wizard/sessions/stream/:
+    get:
+      operationId: wizard_sessions_stream_retrieve
+      description: |-
+        Server-Sent Events stream of wizard session updates for a (workflow_id, skill_id) pair. On connect, the current latest session (if any) is emitted as the first event; subsequent upserts are streamed in real time. The server closes the connection after 1800 seconds with an `event: end` line so the client (EventSource) can reconnect.
+
+        **SDK consumers**: do not call the generated fetch wrapper for this path — it will buffer the entire infinite stream. Use the URL builder (`getWizardSessionsStreamRetrieveUrl`) with the browser's `EventSource` API instead.
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: skill_id
+        schema:
+          type: string
+      - in: query
+        name: workflow_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - wizard
+      security:
+      - PersonalAPIKeyAuth:
+        - wizard_session:read
+      responses:
+        '200':
+          content:
+            text/event-stream:
+              schema:
+                type: string
+                description: SSE stream of WizardSession events.
+          description: ''
+      x-explicit-tags:
+      - wizard
   /api/public_hog_function_templates/:
     get:
       operationId: public_hog_function_templates_list
@@ -60254,17 +60516,29 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ApproveSnapshotInput'
+          description: Specific snapshots to approve, each with `identifier` and `new_hash`.
+            Ignored when `approve_all` is true.
         approve_all:
           type: boolean
+          default: false
+          description: Approve every changed and new snapshot in the run. Mutually
+            exclusive with `snapshots` — pass one or the other.
         commit_to_github:
           type: boolean
+          default: true
+          description: Whether to commit the updated baseline YAML to the PR branch
+            on GitHub. Set to false to record the approval without pushing a commit.
     ApproveSnapshotInput:
       type: object
       properties:
         identifier:
           type: string
+          description: The snapshot identifier to approve (e.g. Storybook story id
+            plus theme).
         new_hash:
           type: string
+          description: The content hash of the new baseline image to record for this
+            identifier.
       required:
       - identifier
       - new_hash
@@ -63350,12 +63624,18 @@ components:
     CalendarHeatmapFilter:
       additionalProperties: false
       properties:
-        dummy:
+        bucketBySessionStart:
           anyOf:
-          - type: string
+          - type: boolean
           - type: 'null'
-          default: null
-          title: Dummy
+          default: false
+          description: When true and the series math is `dau`/`unique_users`, each
+            user contributes to the (day-of-week, hour) bucket of their session's
+            first event only — matching the web overview session-start attribution.
+            When false (default), the user contributes to every bucket they have any
+            event in. No effect on `total` math (event counts are unchanged either
+            way).
+          title: Bucketbysessionstart
       title: CalendarHeatmapFilter
       type: object
     CalendarHeatmapMathType:
@@ -67284,6 +67564,7 @@ components:
           - $ref: '#/components/schemas/Response4'
           - $ref: '#/components/schemas/Response5'
           - $ref: '#/components/schemas/Response6'
+          - $ref: '#/components/schemas/Response7'
           - $ref: '#/components/schemas/Response8'
           - $ref: '#/components/schemas/Response9'
           - $ref: '#/components/schemas/Response10'
@@ -68239,6 +68520,39 @@ components:
       - status
       - sync_frequency
       - user_access_level
+    DataWarehouseSyncWarning:
+      additionalProperties: false
+      properties:
+        message:
+          description: Human-readable warning shown to the user
+          title: Message
+          type: string
+        schema_name:
+          description: Name of the ExternalDataSchema responsible for syncing the
+            table
+          title: Schema Name
+          type: string
+        source_type:
+          description: Source type, e.g. "Stripe", "Hubspot"
+          title: Source Type
+          type: string
+        status:
+          description: Sync status that triggered the warning, e.g. "Failed", "Paused",
+            "BillingLimitReached"
+          title: Status
+          type: string
+        table_name:
+          description: Name of the warehouse table the warning refers to
+          title: Table Name
+          type: string
+      required:
+      - message
+      - schema_name
+      - source_type
+      - status
+      - table_name
+      title: DataWarehouseSyncWarning
+      type: object
     DataWarehouseViewLink:
       additionalProperties: false
       properties:
@@ -76794,6 +77108,38 @@ components:
           title: Id
         kind:
           $ref: '#/components/schemas/Kind'
+        math:
+          anyOf:
+          - $ref: '#/components/schemas/ExperimentMetricMathType'
+          - type: 'null'
+          default: null
+          description: 'How to aggregate this source. Defaults to ''total'' (event
+            count). Use ''sum'' together with math_property to aggregate a numeric
+            property — e.g. a ratio numerator of revenue per order. Other options:
+            ''avg'', ''min'', ''max'', ''unique_session'', ''dau'', ''unique_group'',
+            ''hogql''.'
+        math_group_type_index:
+          anyOf:
+          - $ref: '#/components/schemas/MathGroupTypeIndex'
+          - type: 'null'
+          default: null
+          description: Group type index to aggregate over. Required when math is 'unique_group'.
+        math_hogql:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: HogQL aggregation expression. Required when math is 'hogql'
+            — without it the metric silently falls back to a plain count/sum.
+          title: Math Hogql
+        math_property:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Numeric event property to aggregate when math is 'sum', 'avg',
+            'min', or 'max' (e.g. 'revenue').
+          title: Math Property
         properties:
           anyOf:
           - items:
@@ -76868,17 +77214,44 @@ components:
           - type: 'null'
           default: null
           description: 'For ratio metrics: denominator source.'
+        denominator_outlier_handling:
+          anyOf:
+          - $ref: '#/components/schemas/ExperimentMetricOutlierHandling'
+          - type: 'null'
+          default: null
+          description: 'For ratio metrics: winsorization applied to the denominator
+            aggregate. Leave unset for a binomial-style denominator, which is never
+            clamped.'
         goal:
           anyOf:
           - $ref: '#/components/schemas/ExperimentMetricGoal'
           - type: 'null'
           default: null
           description: Whether higher or lower values indicate success.
+        ignore_zeros:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          description: 'For mean metrics: exclude zero values when computing the winsorization
+            percentile thresholds.'
+          title: Ignore Zeros
         kind:
           const: ExperimentMetric
           default: ExperimentMetric
           title: Kind
           type: string
+        lower_bound_percentile:
+          anyOf:
+          - maximum: 1.0
+            minimum: 0.0
+            type: number
+          - type: 'null'
+          default: null
+          description: 'For mean metrics: winsorization lower percentile bound, as
+            a fraction in [0, 1] (e.g. 0.01 for the 1st percentile). Per-user values
+            below this percentile are clamped to it before aggregation.'
+          title: Lower Bound Percentile
         metric_type:
           $ref: '#/components/schemas/ExperimentMetricType'
         name:
@@ -76894,6 +77267,14 @@ components:
           - type: 'null'
           default: null
           description: 'For ratio metrics: numerator source.'
+        numerator_outlier_handling:
+          anyOf:
+          - $ref: '#/components/schemas/ExperimentMetricOutlierHandling'
+          - type: 'null'
+          default: null
+          description: 'For ratio metrics: winsorization applied to the numerator
+            aggregate, independently of the denominator and each with its own percentile
+            thresholds.'
         retention_window_end:
           anyOf:
           - type: integer
@@ -76937,6 +77318,17 @@ components:
           - $ref: '#/components/schemas/StartHandling'
           - type: 'null'
           default: null
+        upper_bound_percentile:
+          anyOf:
+          - maximum: 1.0
+            minimum: 0.0
+            type: number
+          - type: 'null'
+          default: null
+          description: 'For mean metrics: winsorization upper percentile bound, as
+            a fraction in [0, 1] (e.g. 0.99 for the 99th percentile). Per-user values
+            above this percentile are clamped to it before aggregation.'
+          title: Upper Bound Percentile
         uuid:
           anyOf:
           - type: string
@@ -77710,9 +78102,13 @@ components:
           type: string
         lower_bound_percentile:
           anyOf:
-          - type: number
+          - maximum: 1.0
+            minimum: 0.0
+            type: number
           - type: 'null'
           default: null
+          description: Winsorization lower percentile bound, as a fraction in [0,
+            1] (e.g. 0.01 for the 1st percentile).
           title: Lower Bound Percentile
         metric_type:
           const: mean
@@ -77752,9 +78148,13 @@ components:
           title: Source
         upper_bound_percentile:
           anyOf:
-          - type: number
+          - maximum: 1.0
+            minimum: 0.0
+            type: number
           - type: 'null'
           default: null
+          description: Winsorization upper percentile bound, as a fraction in [0,
+            1] (e.g. 0.99 for the 99th percentile).
           title: Upper Bound Percentile
         uuid:
           anyOf:
@@ -77802,6 +78202,37 @@ components:
       - hogql
       title: ExperimentMetricMathType
       type: string
+    ExperimentMetricOutlierHandling:
+      additionalProperties: false
+      properties:
+        ignore_zeros:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          title: Ignore Zeros
+        lower_bound_percentile:
+          anyOf:
+          - maximum: 1.0
+            minimum: 0.0
+            type: number
+          - type: 'null'
+          default: null
+          description: Winsorization lower percentile bound, as a fraction in [0,
+            1] (e.g. 0.01 for the 1st percentile).
+          title: Lower Bound Percentile
+        upper_bound_percentile:
+          anyOf:
+          - maximum: 1.0
+            minimum: 0.0
+            type: number
+          - type: 'null'
+          default: null
+          description: Winsorization upper percentile bound, as a fraction in [0,
+            1] (e.g. 0.99 for the 99th percentile).
+          title: Upper Bound Percentile
+      title: ExperimentMetricOutlierHandling
+      type: object
     ExperimentMetricType:
       enum:
       - funnel
@@ -78073,6 +78504,11 @@ components:
           - $ref: '#/components/schemas/ActionsNode'
           - $ref: '#/components/schemas/ExperimentDataWarehouseNode'
           title: Denominator
+        denominator_outlier_handling:
+          anyOf:
+          - $ref: '#/components/schemas/ExperimentMetricOutlierHandling'
+          - type: 'null'
+          default: null
         fingerprint:
           anyOf:
           - type: string
@@ -78118,6 +78554,11 @@ components:
           - $ref: '#/components/schemas/ActionsNode'
           - $ref: '#/components/schemas/ExperimentDataWarehouseNode'
           title: Numerator
+        numerator_outlier_handling:
+          anyOf:
+          - $ref: '#/components/schemas/ExperimentMetricOutlierHandling'
+          - type: 'null'
+          default: null
         response:
           anyOf:
           - additionalProperties: true
@@ -85333,6 +85774,17 @@ components:
           default: null
           description: Types of returned columns
           title: Types
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data.
+          title: Warnings
       required:
       - results
       title: HogQLQueryResponse
@@ -85545,6 +85997,8 @@ components:
           items:
             type: object
             additionalProperties: true
+        searchable:
+          type: boolean
         required:
           type: boolean
           default: false
@@ -88543,6 +88997,33 @@ components:
       - posthog_ai
       - null
       title: LimitContext
+    ListOutput:
+      type: object
+      description: Typed output for view set `list`.
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: ID of the file download batch export run.
+        status:
+          allOf:
+          - $ref: '#/components/schemas/BatchExportRunStatusEnum'
+          description: |-
+            Current status of the file download batch export run.
+
+            * `Cancelled` - Cancelled
+            * `Completed` - Completed
+            * `ContinuedAsNew` - Continued As New
+            * `Failed` - Failed
+            * `FailedRetryable` - Failed Retryable
+            * `FailedBilling` - Failed Billing
+            * `Terminated` - Terminated
+            * `TimedOut` - Timedout
+            * `Running` - Running
+            * `Starting` - Starting
+      required:
+      - id
+      - status
     LiveDebuggerBreakpoint:
       type: object
       properties:
@@ -90091,6 +90572,9 @@ components:
         snapshot_id:
           type: string
           format: uuid
+          description: UUID of the changed snapshot to mark as a known tolerated alternate.
+            Future runs that produce the same alternate hash for this identifier will
+            not be flagged as changes.
       required:
       - snapshot_id
     MarketingAnalyticsAggregatedQuery:
@@ -91438,6 +91922,25 @@ components:
           - 'null'
           readOnly: true
           description: The effective access level the user has for this object
+        parent_resource:
+          type:
+          - object
+          - 'null'
+          description: 'Parent resource this notebook is attached to, or `null`. Returns
+            `{type: ''account'', id: <uuid>}` for account-linked notebooks; used by
+            the frontend to route breadcrumbs back to the resource''s list.'
+          properties:
+            type:
+              type: string
+              enum:
+              - account
+            id:
+              type: string
+              format: uuid
+          required:
+          - type
+          - id
+          readOnly: true
         _create_in_folder:
           type: string
           writeOnly: true
@@ -91448,6 +91951,7 @@ components:
       - id
       - last_modified_at
       - last_modified_by
+      - parent_resource
       - short_id
       - user_access_level
     NotebookCollabSave:
@@ -94533,6 +95037,31 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LegalDocumentDTO'
+    PaginatedListOutputList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListOutput'
     PaginatedLiveDebuggerBreakpointList:
       type: object
       required:
@@ -96151,6 +96680,31 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/WebExperimentsAPI'
+    PaginatedWizardSessionDTOList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/WizardSessionDTO'
     ParserMode:
       enum:
       - cpp_only
@@ -100305,6 +100859,25 @@ components:
           - 'null'
           readOnly: true
           description: The effective access level the user has for this object
+        parent_resource:
+          type:
+          - object
+          - 'null'
+          description: 'Parent resource this notebook is attached to, or `null`. Returns
+            `{type: ''account'', id: <uuid>}` for account-linked notebooks; used by
+            the frontend to route breadcrumbs back to the resource''s list.'
+          properties:
+            type:
+              type: string
+              enum:
+              - account
+            id:
+              type: string
+              format: uuid
+          required:
+          - type
+          - id
+          readOnly: true
         _create_in_folder:
           type: string
           writeOnly: true
@@ -107411,6 +107984,7 @@ components:
       - $ref: '#/components/schemas/QueryResponseAlternative23'
       - $ref: '#/components/schemas/QueryResponseAlternative24'
       - $ref: '#/components/schemas/QueryResponseAlternative25'
+      - $ref: '#/components/schemas/QueryResponseAlternative26'
       - $ref: '#/components/schemas/QueryResponseAlternative27'
       - $ref: '#/components/schemas/QueryResponseAlternative28'
       - $ref: '#/components/schemas/QueryResponseAlternative29'
@@ -107431,6 +108005,7 @@ components:
       - $ref: '#/components/schemas/QueryResponseAlternative43'
       - $ref: '#/components/schemas/QueryResponseAlternative44'
       - $ref: '#/components/schemas/QueryResponseAlternative45'
+      - $ref: '#/components/schemas/QueryResponseAlternative46'
       - $ref: '#/components/schemas/QueryResponseAlternative47'
       - $ref: '#/components/schemas/QueryResponseAlternative48'
       - $ref: '#/components/schemas/QueryResponseAlternative49'
@@ -108707,6 +109282,112 @@ components:
       - results
       title: QueryResponseAlternative25
       type: object
+    QueryResponseAlternative26:
+      additionalProperties: false
+      properties:
+        columns:
+          anyOf:
+          - items: {}
+            type: array
+          - type: 'null'
+          default: null
+          title: Columns
+        error:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Query error. Returned only if 'explain' or `modifiers.debug`
+            is true. Throws an error otherwise.
+          title: Error
+        hasMore:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          title: Hasmore
+        hogql:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Generated HogQL query.
+          title: Hogql
+        limit:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          default: null
+          title: Limit
+        modifiers:
+          anyOf:
+          - $ref: '#/components/schemas/HogQLQueryModifiers'
+          - type: 'null'
+          default: null
+          description: Modifiers used when performing the query
+        offset:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          default: null
+          title: Offset
+        query_status:
+          anyOf:
+          - $ref: '#/components/schemas/QueryStatus'
+          - type: 'null'
+          default: null
+          description: Query status indicates whether next to the provided data, a
+            query is still running.
+        resolved_date_range:
+          anyOf:
+          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
+          - type: 'null'
+          default: null
+          description: The date range used for the query
+        results:
+          items: {}
+          title: Results
+          type: array
+        samplingRate:
+          anyOf:
+          - $ref: '#/components/schemas/SamplingRate'
+          - type: 'null'
+          default: null
+        timings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/QueryTiming'
+            type: array
+          - type: 'null'
+          default: null
+          description: Measured timings for different parts of the query generation
+            process
+          title: Timings
+        types:
+          anyOf:
+          - items: {}
+            type: array
+          - type: 'null'
+          default: null
+          title: Types
+        usedLazyPrecompute:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          description: Whether the response was served from the lazy precompute path.
+          title: Usedlazyprecompute
+        usedPreAggregatedTables:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          description: Whether the response was served from a precomputed table.
+          title: Usedpreaggregatedtables
+      required:
+      - results
+      title: QueryResponseAlternative26
+      type: object
     QueryResponseAlternative27:
       additionalProperties: false
       properties:
@@ -108761,6 +109442,12 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        usedLazyPrecompute:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          title: Usedlazyprecompute
       required:
       - results
       title: QueryResponseAlternative27
@@ -110026,6 +110713,17 @@ components:
           default: null
           description: Types of returned columns
           title: Types
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative42
@@ -110311,6 +111009,112 @@ components:
       - results
       title: QueryResponseAlternative45
       type: object
+    QueryResponseAlternative46:
+      additionalProperties: false
+      properties:
+        columns:
+          anyOf:
+          - items: {}
+            type: array
+          - type: 'null'
+          default: null
+          title: Columns
+        error:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Query error. Returned only if 'explain' or `modifiers.debug`
+            is true. Throws an error otherwise.
+          title: Error
+        hasMore:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          title: Hasmore
+        hogql:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Generated HogQL query.
+          title: Hogql
+        limit:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          default: null
+          title: Limit
+        modifiers:
+          anyOf:
+          - $ref: '#/components/schemas/HogQLQueryModifiers'
+          - type: 'null'
+          default: null
+          description: Modifiers used when performing the query
+        offset:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          default: null
+          title: Offset
+        query_status:
+          anyOf:
+          - $ref: '#/components/schemas/QueryStatus'
+          - type: 'null'
+          default: null
+          description: Query status indicates whether next to the provided data, a
+            query is still running.
+        resolved_date_range:
+          anyOf:
+          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
+          - type: 'null'
+          default: null
+          description: The date range used for the query
+        results:
+          items: {}
+          title: Results
+          type: array
+        samplingRate:
+          anyOf:
+          - $ref: '#/components/schemas/SamplingRate'
+          - type: 'null'
+          default: null
+        timings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/QueryTiming'
+            type: array
+          - type: 'null'
+          default: null
+          description: Measured timings for different parts of the query generation
+            process
+          title: Timings
+        types:
+          anyOf:
+          - items: {}
+            type: array
+          - type: 'null'
+          default: null
+          title: Types
+        usedLazyPrecompute:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          description: Whether the response was served from the lazy precompute path.
+          title: Usedlazyprecompute
+        usedPreAggregatedTables:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          description: Whether the response was served from a precomputed table.
+          title: Usedpreaggregatedtables
+      required:
+      - results
+      title: QueryResponseAlternative46
+      type: object
     QueryResponseAlternative47:
       additionalProperties: false
       properties:
@@ -110365,6 +111169,12 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        usedLazyPrecompute:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          title: Usedlazyprecompute
       required:
       - results
       title: QueryResponseAlternative47
@@ -112642,6 +113452,17 @@ components:
           default: null
           description: Types of returned columns
           title: Types
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative8
@@ -113951,6 +114772,26 @@ components:
       - query
       title: QueryUpgradeResponse
       type: object
+    QuotaLimitsResponse:
+      type: object
+      properties:
+        limited:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/QuotaResourceLimit'
+          description: Per-resource limit state keyed by `QuotaResource` value. Currently
+            only `ai_credits` is reported; additional resources may be added.
+      required:
+      - limited
+    QuotaResourceLimit:
+      type: object
+      properties:
+        limited:
+          type: boolean
+          description: True when the team is currently over its quota for this resource
+            and limits are in effect.
+      required:
+      - limited
     RETENTION:
       additionalProperties: false
       properties:
@@ -116252,6 +117093,17 @@ components:
           default: null
           description: Types of returned columns
           title: Types
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data.
+          title: Warnings
       required:
       - results
       title: Response3
@@ -116537,6 +117389,112 @@ components:
       - results
       title: Response6
       type: object
+    Response7:
+      additionalProperties: false
+      properties:
+        columns:
+          anyOf:
+          - items: {}
+            type: array
+          - type: 'null'
+          default: null
+          title: Columns
+        error:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Query error. Returned only if 'explain' or `modifiers.debug`
+            is true. Throws an error otherwise.
+          title: Error
+        hasMore:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          title: Hasmore
+        hogql:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Generated HogQL query.
+          title: Hogql
+        limit:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          default: null
+          title: Limit
+        modifiers:
+          anyOf:
+          - $ref: '#/components/schemas/HogQLQueryModifiers'
+          - type: 'null'
+          default: null
+          description: Modifiers used when performing the query
+        offset:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          default: null
+          title: Offset
+        query_status:
+          anyOf:
+          - $ref: '#/components/schemas/QueryStatus'
+          - type: 'null'
+          default: null
+          description: Query status indicates whether next to the provided data, a
+            query is still running.
+        resolved_date_range:
+          anyOf:
+          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
+          - type: 'null'
+          default: null
+          description: The date range used for the query
+        results:
+          items: {}
+          title: Results
+          type: array
+        samplingRate:
+          anyOf:
+          - $ref: '#/components/schemas/SamplingRate'
+          - type: 'null'
+          default: null
+        timings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/QueryTiming'
+            type: array
+          - type: 'null'
+          default: null
+          description: Measured timings for different parts of the query generation
+            process
+          title: Timings
+        types:
+          anyOf:
+          - items: {}
+            type: array
+          - type: 'null'
+          default: null
+          title: Types
+        usedLazyPrecompute:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          description: Whether the response was served from the lazy precompute path.
+          title: Usedlazyprecompute
+        usedPreAggregatedTables:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          description: Whether the response was served from a precomputed table.
+          title: Usedpreaggregatedtables
+      required:
+      - results
+      title: Response7
+      type: object
     Response8:
       additionalProperties: false
       properties:
@@ -116591,6 +117549,12 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        usedLazyPrecompute:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          title: Usedlazyprecompute
       required:
       - results
       title: Response8
@@ -118646,6 +119610,18 @@ components:
           description: Results for each insight tile on the dashboard.
       required:
       - results
+    RunPhaseEnum:
+      enum:
+      - idle
+      - running
+      - completed
+      - error
+      type: string
+      description: |-
+        * `idle` - IDLE
+        * `running` - RUNNING
+        * `completed` - COMPLETED
+        * `error` - ERROR
     RunSourceEnum:
       enum:
       - manual
@@ -121623,6 +122599,9 @@ components:
         id:
           type: string
           format: uuid
+        run_id:
+          type: string
+          format: uuid
         identifier:
           type: string
         result:
@@ -121676,6 +122655,7 @@ components:
       - result
       - review_state
       - reviewed_at
+      - run_id
     SnapshotHistoryEntry:
       type: object
       properties:
@@ -130049,6 +131029,14 @@ components:
           - type: 'null'
           default: null
           description: Breakdown of the events and actions
+        calendarHeatmapFilter:
+          anyOf:
+          - $ref: '#/components/schemas/CalendarHeatmapFilter'
+          - type: 'null'
+          default: null
+          description: Properties specific to the calendar heatmap display variant.
+            Only consulted when `trendsFilter.display === ChartDisplayType.CalendarHeatmap`;
+            ignored otherwise.
         compareFilter:
           anyOf:
           - $ref: '#/components/schemas/CompareFilter'
@@ -130294,6 +131282,66 @@ components:
       - content_hash
       - fields
       - url
+    UpsertWizardSessionRequest:
+      type: object
+      description: 'Input: validates the JSON the wizard CLI posts. team_id is derived
+        from URL.'
+      properties:
+        session_id:
+          type: string
+          description: 'Stable identifier the wizard mints for this run (format: ''{workflow_id}-{skill_id}-{started_at_iso}'').
+            Reposting with the same session_id upserts the existing row.'
+          maxLength: 255
+        workflow_id:
+          type: string
+          description: High-level workflow being run, e.g. 'onboarding', 'migration',
+            'audit'.
+          maxLength: 255
+        skill_id:
+          type: string
+          description: Specific skill within the workflow, e.g. 'nextjs', 'django',
+            'laravel'.
+          maxLength: 255
+        started_at:
+          type: string
+          format: date-time
+          description: UTC timestamp when the wizard started this run. Matches the
+            timestamp encoded in session_id.
+        run_phase:
+          allOf:
+          - $ref: '#/components/schemas/RunPhaseEnum'
+          description: |-
+            Lifecycle stage of the wizard run.
+
+            * `idle` - IDLE
+            * `running` - RUNNING
+            * `completed` - COMPLETED
+            * `error` - ERROR
+        tasks:
+          type: array
+          items:
+            $ref: '#/components/schemas/WizardTaskDTO'
+        event_plan:
+          type:
+          - object
+          - 'null'
+          additionalProperties: true
+          description: Optional structured plan of events the wizard intends to instrument.
+            Schema is workflow-specific.
+        error:
+          type:
+          - object
+          - 'null'
+          additionalProperties: true
+          description: 'Populated when run_phase=''error''. Shape: { type: string,
+            message: string }.'
+      required:
+      - run_phase
+      - session_id
+      - skill_id
+      - started_at
+      - tasks
+      - workflow_id
     UrlMatching:
       enum:
       - contains
@@ -131968,6 +133016,15 @@ components:
           - type: 'null'
           default: null
           title: Usesessionstable
+        useWebAnalyticsPrecompute:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          description: Opt this specific query into the web_goals_query precompute
+            path. Requires the `web-analytics-precompute-toggle` PostHog feature flag
+            to be on for the team's organization for the gate to pass. *
+          title: Usewebanalyticsprecompute
         version:
           anyOf:
           - type: number
@@ -132067,6 +133124,20 @@ components:
           - type: 'null'
           default: null
           title: Types
+        usedLazyPrecompute:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          description: Whether the response was served from the lazy precompute path.
+          title: Usedlazyprecompute
+        usedPreAggregatedTables:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          description: Whether the response was served from a precomputed table.
+          title: Usedpreaggregatedtables
       required:
       - results
       title: WebGoalsQueryResponse
@@ -133539,6 +134610,16 @@ components:
           - type: 'null'
           default: null
           title: Usesessionstable
+        useWebAnalyticsPrecompute:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          description: Opt this specific query into the web vitals path breakdown
+            precompute path. Requires the `web-analytics-precompute-toggle` PostHog
+            feature flag to be on for the team's organization for the gate to pass.
+            *
+          title: Usewebanalyticsprecompute
         version:
           anyOf:
           - type: number
@@ -133607,6 +134688,12 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        usedLazyPrecompute:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          title: Usedlazyprecompute
       required:
       - results
       title: WebVitalsPathBreakdownQueryResponse
@@ -133919,6 +135006,85 @@ components:
         * `button` - button
         * `tab` - tab
         * `selector` - selector
+    WizardSessionDTO:
+      type: object
+      description: 'Output: serialises a WizardSessionDTO returned by the facade.'
+      properties:
+        session_id:
+          type: string
+        team_id:
+          type: integer
+        workflow_id:
+          type: string
+        skill_id:
+          type: string
+        started_at:
+          type: string
+          format: date-time
+        run_phase:
+          $ref: '#/components/schemas/RunPhaseEnum'
+        tasks:
+          type: array
+          items:
+            $ref: '#/components/schemas/WizardTaskDTO'
+        event_plan:
+          type:
+          - object
+          - 'null'
+          additionalProperties: true
+        error:
+          type:
+          - object
+          - 'null'
+          additionalProperties: true
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        is_stale:
+          type: boolean
+      required:
+      - created_at
+      - error
+      - event_plan
+      - is_stale
+      - run_phase
+      - session_id
+      - skill_id
+      - started_at
+      - tasks
+      - team_id
+      - updated_at
+      - workflow_id
+    WizardTaskDTO:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        status:
+          $ref: '#/components/schemas/WizardTaskDTOStatusEnum'
+      required:
+      - id
+      - status
+      - title
+    WizardTaskDTOStatusEnum:
+      enum:
+      - pending
+      - in_progress
+      - completed
+      - failed
+      - canceled
+      type: string
+      description: |-
+        * `pending` - PENDING
+        * `in_progress` - IN_PROGRESS
+        * `completed` - COMPLETED
+        * `failed` - FAILED
+        * `canceled` - CANCELED
     WoWChange:
       type: object
       properties:
@@ -135483,6 +136649,7 @@ tags:
 - name: proxy_records
 - name: public_hog_function_templates
 - name: query
+- name: quota_limits
 - name: replay
 - name: replay_vision
 - name: reverse_proxy
@@ -135525,6 +136692,7 @@ tags:
 - name: web_experiments
 - name: web_vitals
 - name: welcome
+- name: wizard
 - name: workflows
 x-tagGroups:
 - name: All endpoints
@@ -135633,6 +136801,7 @@ x-tagGroups:
   - proxy_records
   - public_hog_function_templates
   - query
+  - quota_limits
   - replay
   - replay_vision
   - reverse_proxy
@@ -135675,4 +136844,5 @@ x-tagGroups:
   - web_experiments
   - web_vitals
   - welcome
+  - wizard
   - workflows

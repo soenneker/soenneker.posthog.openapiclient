@@ -54,6 +54,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedNotebook_last_modified_by LastModifiedBy { get; private set; }
 #endif
+        /// <summary>&quot;Parent resource this notebook is attached to, or `null`. Returns `{type: &apos;account&apos;, id: &lt;uuid&gt;}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource&apos;s list.&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedNotebookParentResource? ParentResource { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedNotebookParentResource ParentResource { get; private set; }
+#endif
         /// <summary>Short alphanumeric identifier used in URLs and API lookups.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -121,6 +129,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "last_modified_at", n => { LastModifiedAt = n.GetDateTimeOffsetValue(); } },
                 { "last_modified_by", n => { LastModifiedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedNotebook_last_modified_by>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedNotebook_last_modified_by.CreateFromDiscriminatorValue); } },
+                { "parent_resource", n => { ParentResource = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedNotebookParentResource>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedNotebookParentResource.CreateFromDiscriminatorValue); } },
                 { "short_id", n => { ShortId = n.GetStringValue(); } },
                 { "text_content", n => { TextContent = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },

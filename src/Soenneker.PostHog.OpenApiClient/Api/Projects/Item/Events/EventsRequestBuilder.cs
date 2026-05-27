@@ -41,7 +41,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Events
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EventsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/events{?after*,before*,distinct_id*,event*,format*,limit*,offset*,person_id*,properties*,select*,where*}", pathParameters)
+        public EventsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/events{?after*,before*,distinct_id*,event*,format*,include_person*,limit*,offset*,person_id*,properties*,select*,where*}", pathParameters)
         {
         }
         /// <summary>
@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Events
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EventsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/events{?after*,before*,distinct_id*,event*,format*,limit*,offset*,person_id*,properties*,select*,where*}", rawUrl)
+        public EventsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/events{?after*,before*,distinct_id*,event*,format*,include_person*,limit*,offset*,person_id*,properties*,select*,where*}", rawUrl)
         {
         }
         /// <summary>
@@ -125,6 +125,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Events
 #endif
             [QueryParameter("format")]
             public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Events.GetFormatQueryParameterType? Format { get; set; }
+            /// <summary>&quot;Include person details for each event. Default: false.&quot;</summary>
+            [QueryParameter("include_person")]
+            public bool? IncludePerson { get; set; }
             /// <summary>The maximum number of results to return</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }

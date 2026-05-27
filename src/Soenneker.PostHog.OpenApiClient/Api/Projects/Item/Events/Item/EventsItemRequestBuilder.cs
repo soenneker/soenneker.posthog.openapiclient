@@ -21,7 +21,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Events.Item
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EventsItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/events/{id}{?format*}", pathParameters)
+        public EventsItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/events/{id}{?format*,include_person*}", pathParameters)
         {
         }
         /// <summary>
@@ -29,7 +29,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Events.Item
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EventsItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/events/{id}{?format*}", rawUrl)
+        public EventsItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/events/{id}{?format*,include_person*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Events.Item.EventsGetResponse"/></returns>
@@ -79,6 +79,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Events.Item
         {
             [QueryParameter("format")]
             public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Events.Item.GetFormatQueryParameterType? Format { get; set; }
+            /// <summary>&quot;Include person details for the event. Default: false.&quot;</summary>
+            [QueryParameter("include_person")]
+            public bool? IncludePerson { get; set; }
         }
     }
 }

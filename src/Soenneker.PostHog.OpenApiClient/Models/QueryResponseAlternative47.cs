@@ -68,6 +68,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative47_timings Timings { get; set; }
 #endif
+        /// <summary>The usedLazyPrecompute property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative47_usedLazyPrecompute? UsedLazyPrecompute { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative47_usedLazyPrecompute UsedLazyPrecompute { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -93,6 +101,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "resolved_date_range", n => { ResolvedDateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative47_resolved_date_range>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative47_resolved_date_range.CreateFromDiscriminatorValue); } },
                 { "results", n => { Results = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsPathBreakdownResult>(global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsPathBreakdownResult.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "timings", n => { Timings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative47_timings>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative47_timings.CreateFromDiscriminatorValue); } },
+                { "usedLazyPrecompute", n => { UsedLazyPrecompute = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative47_usedLazyPrecompute>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative47_usedLazyPrecompute.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -109,6 +118,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative47_resolved_date_range>("resolved_date_range", ResolvedDateRange);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsPathBreakdownResult>("results", Results);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative47_timings>("timings", Timings);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative47_usedLazyPrecompute>("usedLazyPrecompute", UsedLazyPrecompute);
         }
     }
 }

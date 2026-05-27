@@ -33,6 +33,38 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The kind property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.Kind? Kind { get; set; }
+        /// <summary>&quot;How to aggregate this source. Defaults to &apos;total&apos; (event count). Use &apos;sum&apos; together with math_property to aggregate a numeric property — e.g. a ratio numerator of revenue per order. Other options: &apos;avg&apos;, &apos;min&apos;, &apos;max&apos;, &apos;unique_session&apos;, &apos;dau&apos;, &apos;unique_group&apos;, &apos;hogql&apos;.&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_numerator_math? Math { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_numerator_math Math { get; set; }
+#endif
+        /// <summary>Group type index to aggregate over. Required when math is &apos;unique_group&apos;.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_numerator_math_group_type_index? MathGroupTypeIndex { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_numerator_math_group_type_index MathGroupTypeIndex { get; set; }
+#endif
+        /// <summary>HogQL aggregation expression. Required when math is &apos;hogql&apos; — without it the metric silently falls back to a plain count/sum.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_numerator_math_hogql? MathHogql { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_numerator_math_hogql MathHogql { get; set; }
+#endif
+        /// <summary>Numeric event property to aggregate when math is &apos;sum&apos;, &apos;avg&apos;, &apos;min&apos;, or &apos;max&apos; (e.g. &apos;revenue&apos;).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_numerator_math_property? MathProperty { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_numerator_math_property MathProperty { get; set; }
+#endif
         /// <summary>Event property filters to narrow which events are counted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -69,6 +101,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "event", n => { Event = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_numerator_event>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_numerator_event.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_numerator_id>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_numerator_id.CreateFromDiscriminatorValue); } },
                 { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Kind>(); } },
+                { "math", n => { Math = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_numerator_math>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_numerator_math.CreateFromDiscriminatorValue); } },
+                { "math_group_type_index", n => { MathGroupTypeIndex = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_numerator_math_group_type_index>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_numerator_math_group_type_index.CreateFromDiscriminatorValue); } },
+                { "math_hogql", n => { MathHogql = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_numerator_math_hogql>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_numerator_math_hogql.CreateFromDiscriminatorValue); } },
+                { "math_property", n => { MathProperty = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_numerator_math_property>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_numerator_math_property.CreateFromDiscriminatorValue); } },
                 { "properties", n => { Properties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_numerator_properties>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_numerator_properties.CreateFromDiscriminatorValue); } },
             };
         }
@@ -82,6 +118,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_numerator_event>("event", Event);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_numerator_id>("id", Id);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Kind>("kind", Kind);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_numerator_math>("math", Math);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_numerator_math_group_type_index>("math_group_type_index", MathGroupTypeIndex);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_numerator_math_hogql>("math_hogql", MathHogql);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_numerator_math_property>("math_property", MathProperty);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_numerator_properties>("properties", Properties);
             writer.WriteAdditionalData(AdditionalData);
         }

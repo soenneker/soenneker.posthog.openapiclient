@@ -61,6 +61,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Product_tours;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Project_secret_api_keys;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Property_definitions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Query;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Quota_limits;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Sandbox_environments;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Saved;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Schema_property_groups;
@@ -84,6 +85,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_tables;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_view_link;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_view_links;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Web_experiments;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -391,6 +393,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Query.QueryRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The quota_limits property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Quota_limits.Quota_limitsRequestBuilder Quota_limits
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Quota_limits.Quota_limitsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The sandbox_environments property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Sandbox_environments.Sandbox_environmentsRequestBuilder Sandbox_environments
         {
@@ -505,6 +512,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Web_experiments.Web_experimentsRequestBuilder Web_experiments
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Web_experiments.Web_experimentsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The wizard property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.WizardRequestBuilder Wizard
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.WizardRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.WithProject_ItemRequestBuilder"/> and sets the default values.

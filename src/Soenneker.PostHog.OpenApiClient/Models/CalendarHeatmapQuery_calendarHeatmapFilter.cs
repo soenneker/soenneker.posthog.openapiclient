@@ -15,13 +15,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The dummy property</summary>
+        /// <summary>When true and the series math is `dau`/`unique_users`, each user contributes to the (day-of-week, hour) bucket of their session&apos;s first event only — matching the web overview session-start attribution. When false (default), the user contributes to every bucket they have any event in. No effect on `total` math (event counts are unchanged either way).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapQuery_calendarHeatmapFilter_dummy? Dummy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapQuery_calendarHeatmapFilter_bucketBySessionStart? BucketBySessionStart { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapQuery_calendarHeatmapFilter_dummy Dummy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapQuery_calendarHeatmapFilter_bucketBySessionStart BucketBySessionStart { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapQuery_calendarHeatmapFilter"/> and sets the default values.
@@ -48,7 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "dummy", n => { Dummy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapQuery_calendarHeatmapFilter_dummy>(global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapQuery_calendarHeatmapFilter_dummy.CreateFromDiscriminatorValue); } },
+                { "bucketBySessionStart", n => { BucketBySessionStart = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapQuery_calendarHeatmapFilter_bucketBySessionStart>(global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapQuery_calendarHeatmapFilter_bucketBySessionStart.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -58,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapQuery_calendarHeatmapFilter_dummy>("dummy", Dummy);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapQuery_calendarHeatmapFilter_bucketBySessionStart>("bucketBySessionStart", BucketBySessionStart);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

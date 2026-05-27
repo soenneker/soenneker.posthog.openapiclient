@@ -158,6 +158,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.WebGoalsQuery_useSessionsTable UseSessionsTable { get; set; }
 #endif
+        /// <summary>Opt this specific query into the web_goals_query precompute path. Requires the `web-analytics-precompute-toggle` PostHog feature flag to be on for the team&apos;s organization for the gate to pass. *</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebGoalsQuery_useWebAnalyticsPrecompute? UseWebAnalyticsPrecompute { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebGoalsQuery_useWebAnalyticsPrecompute UseWebAnalyticsPrecompute { get; set; }
+#endif
         /// <summary>version of the node, used for schema migrations</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -210,6 +218,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "samplingFactor", n => { SamplingFactor = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebGoalsQuery_samplingFactor>(global::Soenneker.PostHog.OpenApiClient.Models.WebGoalsQuery_samplingFactor.CreateFromDiscriminatorValue); } },
                 { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebGoalsQuery_tags>(global::Soenneker.PostHog.OpenApiClient.Models.WebGoalsQuery_tags.CreateFromDiscriminatorValue); } },
                 { "useSessionsTable", n => { UseSessionsTable = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebGoalsQuery_useSessionsTable>(global::Soenneker.PostHog.OpenApiClient.Models.WebGoalsQuery_useSessionsTable.CreateFromDiscriminatorValue); } },
+                { "useWebAnalyticsPrecompute", n => { UseWebAnalyticsPrecompute = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebGoalsQuery_useWebAnalyticsPrecompute>(global::Soenneker.PostHog.OpenApiClient.Models.WebGoalsQuery_useWebAnalyticsPrecompute.CreateFromDiscriminatorValue); } },
                 { "version", n => { Version = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebGoalsQuery_version>(global::Soenneker.PostHog.OpenApiClient.Models.WebGoalsQuery_version.CreateFromDiscriminatorValue); } },
             };
         }
@@ -239,6 +248,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebGoalsQuery_samplingFactor>("samplingFactor", SamplingFactor);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebGoalsQuery_tags>("tags", Tags);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebGoalsQuery_useSessionsTable>("useSessionsTable", UseSessionsTable);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebGoalsQuery_useWebAnalyticsPrecompute>("useWebAnalyticsPrecompute", UseWebAnalyticsPrecompute);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebGoalsQuery_version>("version", Version);
         }
         /// <summary>

@@ -244,5 +244,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Activity_log
         #pragma warning disable CS1591
         Ticket,
         #pragma warning restore CS1591
+        [EnumMember(Value = "InstanceSetting")]
+        #pragma warning disable CS1591
+        InstanceSetting,
+        #pragma warning restore CS1591
     }
 }

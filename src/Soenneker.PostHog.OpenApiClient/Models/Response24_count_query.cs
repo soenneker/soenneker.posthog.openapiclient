@@ -30,6 +30,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.Response24_count_query_breakdownFilter BreakdownFilter { get; set; }
 #endif
+        /// <summary>Properties specific to the calendar heatmap display variant. Only consulted when `trendsFilter.display === ChartDisplayType.CalendarHeatmap`; ignored otherwise.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.Response24_count_query_calendarHeatmapFilter? CalendarHeatmapFilter { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.Response24_count_query_calendarHeatmapFilter CalendarHeatmapFilter { get; set; }
+#endif
         /// <summary>Compare to date range</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -172,6 +180,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "aggregation_group_type_index", n => { AggregationGroupTypeIndex = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Response24_count_query_aggregation_group_type_index>(global::Soenneker.PostHog.OpenApiClient.Models.Response24_count_query_aggregation_group_type_index.CreateFromDiscriminatorValue); } },
                 { "breakdownFilter", n => { BreakdownFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Response24_count_query_breakdownFilter>(global::Soenneker.PostHog.OpenApiClient.Models.Response24_count_query_breakdownFilter.CreateFromDiscriminatorValue); } },
+                { "calendarHeatmapFilter", n => { CalendarHeatmapFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Response24_count_query_calendarHeatmapFilter>(global::Soenneker.PostHog.OpenApiClient.Models.Response24_count_query_calendarHeatmapFilter.CreateFromDiscriminatorValue); } },
                 { "compareFilter", n => { CompareFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Response24_count_query_compareFilter>(global::Soenneker.PostHog.OpenApiClient.Models.Response24_count_query_compareFilter.CreateFromDiscriminatorValue); } },
                 { "conversionGoal", n => { ConversionGoal = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Response24_count_query.Response24_count_query_conversionGoal>(global::Soenneker.PostHog.OpenApiClient.Models.Response24_count_query.Response24_count_query_conversionGoal.CreateFromDiscriminatorValue); } },
                 { "dataColorTheme", n => { DataColorTheme = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Response24_count_query_dataColorTheme>(global::Soenneker.PostHog.OpenApiClient.Models.Response24_count_query_dataColorTheme.CreateFromDiscriminatorValue); } },
@@ -198,6 +207,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Response24_count_query_aggregation_group_type_index>("aggregation_group_type_index", AggregationGroupTypeIndex);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Response24_count_query_breakdownFilter>("breakdownFilter", BreakdownFilter);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Response24_count_query_calendarHeatmapFilter>("calendarHeatmapFilter", CalendarHeatmapFilter);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Response24_count_query_compareFilter>("compareFilter", CompareFilter);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Response24_count_query.Response24_count_query_conversionGoal>("conversionGoal", ConversionGoal);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Response24_count_query_dataColorTheme>("dataColorTheme", DataColorTheme);

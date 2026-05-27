@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_
         {
         }
         /// <summary>
-        /// Get a run of a batch export on demand.If the underlying batch export run has completed, we return keys to thegenerated file downloads so that users may download them by making a requestto /download.
+        /// Get a batch export on demand run.If the underlying batch export run has completed, we return keys to thegenerated file downloads so that users may download them by making a requestto /download.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RetrieveFileDownloadResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -70,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.RetrieveFileDownloadResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.RetrieveFileDownloadResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Get a run of a batch export on demand.If the underlying batch export run has completed, we return keys to thegenerated file downloads so that users may download them by making a requestto /download.
+        /// Get a batch export on demand run.If the underlying batch export run has completed, we return keys to thegenerated file downloads so that users may download them by making a requestto /download.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
