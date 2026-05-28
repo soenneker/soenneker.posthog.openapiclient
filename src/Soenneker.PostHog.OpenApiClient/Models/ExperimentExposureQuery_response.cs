@@ -56,6 +56,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_response_total_exposures TotalExposures { get; set; }
 #endif
+        /// <summary>Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings for semantics.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_response_warnings? Warnings { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_response_warnings Warnings { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_response"/> and sets the default values.
         /// </summary>
@@ -88,6 +96,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "sample_ratio_mismatch", n => { SampleRatioMismatch = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_response_sample_ratio_mismatch>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_response_sample_ratio_mismatch.CreateFromDiscriminatorValue); } },
                 { "timeseries", n => { Timeseries = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureTimeSeries>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureTimeSeries.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "total_exposures", n => { TotalExposures = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_response_total_exposures>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_response_total_exposures.CreateFromDiscriminatorValue); } },
+                { "warnings", n => { Warnings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_response_warnings>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_response_warnings.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -103,6 +112,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_response_sample_ratio_mismatch>("sample_ratio_mismatch", SampleRatioMismatch);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureTimeSeries>("timeseries", Timeseries);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_response_total_exposures>("total_exposures", TotalExposures);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_response_warnings>("warnings", Warnings);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

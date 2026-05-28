@@ -132,6 +132,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.Response7_usedPreAggregatedTables UsedPreAggregatedTables { get; set; }
 #endif
+        /// <summary>Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.Response7_warnings? Warnings { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.Response7_warnings Warnings { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -165,6 +173,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "types", n => { Types = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Response7_types>(global::Soenneker.PostHog.OpenApiClient.Models.Response7_types.CreateFromDiscriminatorValue); } },
                 { "usedLazyPrecompute", n => { UsedLazyPrecompute = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Response7_usedLazyPrecompute>(global::Soenneker.PostHog.OpenApiClient.Models.Response7_usedLazyPrecompute.CreateFromDiscriminatorValue); } },
                 { "usedPreAggregatedTables", n => { UsedPreAggregatedTables = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Response7_usedPreAggregatedTables>(global::Soenneker.PostHog.OpenApiClient.Models.Response7_usedPreAggregatedTables.CreateFromDiscriminatorValue); } },
+                { "warnings", n => { Warnings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Response7_warnings>(global::Soenneker.PostHog.OpenApiClient.Models.Response7_warnings.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -189,6 +198,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Response7_types>("types", Types);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Response7_usedLazyPrecompute>("usedLazyPrecompute", UsedLazyPrecompute);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Response7_usedPreAggregatedTables>("usedPreAggregatedTables", UsedPreAggregatedTables);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Response7_warnings>("warnings", Warnings);
         }
     }
 }

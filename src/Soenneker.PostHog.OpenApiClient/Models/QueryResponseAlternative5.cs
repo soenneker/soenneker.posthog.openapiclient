@@ -68,6 +68,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_status Status { get; set; }
 #endif
+        /// <summary>Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings for semantics.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_warnings? Warnings { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_warnings Warnings { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -93,6 +101,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "interval", n => { Interval = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_interval>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_interval.CreateFromDiscriminatorValue); } },
                 { "series", n => { Series = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_series>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_series.CreateFromDiscriminatorValue); } },
                 { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_status>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_status.CreateFromDiscriminatorValue); } },
+                { "warnings", n => { Warnings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_warnings>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_warnings.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -109,6 +118,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_interval>("interval", Interval);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_series>("series", Series);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_status>("status", Status);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5_warnings>("warnings", Warnings);
         }
     }
 }

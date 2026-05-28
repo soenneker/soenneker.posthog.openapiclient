@@ -16125,7 +16125,7 @@
     "/api/llm_analytics/@me/spend": {
       "get": {
         "tags": [
-          "LLM Analytics",
+          "AI observability",
           "llm_analytics"
         ],
         "description": "\"Return a structured personal LLM spend analysis for the requesting user. Pass `date_from` / `date_to` (absolute like `2026-04-23` or relative like `-7d`) to bound the window — defaults to the last 30 days, max 90 days. The `product=<ai_product>` query param is required and scopes the tool / model / trace breakdowns to a single product; supported values: posthog_code. `by_product` is always returned for cross-product visibility. Use `refresh=true` to bypass the 5-minute response cache.\"",
@@ -20630,6 +20630,18 @@
             "description": "Reserved for future HogQL-based filtering.",
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "ip_addresses",
+            "in": "query",
+            "description": "Filter by client IP addresses. Accepts exact IPv4/IPv6 values or wildcard patterns using `*` (e.g. `203.0.113.*`). Multiple entries are OR-combined.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "default": [ ]
             }
           },
           {
@@ -26278,6 +26290,85 @@
         ]
       }
     },
+    "/api/projects/{project_id}/dashboards/{id}/create_text_tile": {
+      "post": {
+        "tags": [
+          "core",
+          "dashboards"
+        ],
+        "description": "Add a markdown text tile to a dashboard.\n\nText tiles render as markdown blocks on the dashboard — useful as section headings, dividers,\nor annotations between insight tiles to give the dashboard structure.",
+        "operationId": "dashboards-create-text-tile-create",
+        "parameters": [
+          {
+            "name": "format",
+            "in": "query",
+            "schema": {
+              "enum": [
+                "json",
+                "txt"
+              ],
+              "type": "string",
+              "additionalProperties": false
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "A unique integer value identifying this dashboard.",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/ProjectIdPath"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTextTileRequest"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTextTileRequest"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTextTileRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "201 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DashboardTile"
+                }
+              },
+              "text/event-stream": {
+                "schema": {
+                  "$ref": "#/components/schemas/DashboardTile"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "PersonalAPIKeyAuth": [
+              "dashboard:write"
+            ]
+          }
+        ]
+      }
+    },
     "/api/projects/{project_id}/dashboards/{id}/move_tile": {
       "patch": {
         "tags": [
@@ -26673,6 +26764,85 @@
             }
           }
         }
+      }
+    },
+    "/api/projects/{project_id}/dashboards/{id}/update_text_tile": {
+      "post": {
+        "tags": [
+          "core",
+          "dashboards"
+        ],
+        "description": "Update the markdown body, layout, or color of an existing text tile on a dashboard.",
+        "operationId": "dashboards-update-text-tile-create",
+        "parameters": [
+          {
+            "name": "format",
+            "in": "query",
+            "schema": {
+              "enum": [
+                "json",
+                "txt"
+              ],
+              "type": "string",
+              "additionalProperties": false
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "A unique integer value identifying this dashboard.",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/ProjectIdPath"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTextTileRequest"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTextTileRequest"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTextTileRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DashboardTile"
+                }
+              },
+              "text/event-stream": {
+                "schema": {
+                  "$ref": "#/components/schemas/DashboardTile"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "PersonalAPIKeyAuth": [
+              "dashboard:write"
+            ]
+          }
+        ]
       }
     },
     "/api/projects/{project_id}/dashboards/bulk_update_tags": {
@@ -66145,7 +66315,7 @@
           "users"
         ],
         "summary": "Start GitHub personal integration linking",
-        "description": "\"Start GitHub linking: either full App install or OAuth-only (user-to-server).\n\n``**_kwargs`` absorbs ``parent_lookup_uuid`` from the nested\n``/api/users/{uuid}/integrations/`` router (same pattern as ``local_evaluation``\nunder projects).\n\nUsually returns ``install_url`` pointing at ``/installations/new`` so the\nuser can pick any GitHub org (new or already connected).  GitHub's install\npage handles both cases: orgs where the app is installed show \\\"Configure\\\"\n(no admin needed), orgs where it isn't show \\\"Install\\\" (needs admin).\n\n**First-party app fast path:** when ``connect_from`` is one of\n``APP_CONNECT_FROM_VALUES`` (e.g. ``\\\"posthog_code\\\"`` or ``\\\"posthog_mobile\\\"``),\nthe current project already has a team-level GitHub installation, and the\nuser has no ``UserIntegration`` for that installation yet, we skip the org\npicker and redirect straight to ``/login/oauth/authorize`` so the user\nonly authorizes themselves and returns to the originating client immediately.\n\nIn both cases the response key is ``install_url`` for compatibility with callers.\"",
+        "description": "\"Start GitHub linking: either full App install or OAuth-only (user-to-server).\n\n``**_kwargs`` absorbs ``parent_lookup_uuid`` from the nested\n``/api/users/{uuid}/integrations/`` router (same pattern as ``local_evaluation``\nunder projects).\n\nUsually returns ``install_url`` pointing at ``/installations/new`` so the\nuser can pick any GitHub org (new or already connected).  GitHub's install\npage handles both cases: orgs where the app is installed show \\\"Configure\\\"\n(no admin needed), orgs where it isn't show \\\"Install\\\" (needs admin).\n\n**OAuth fast path:** when the current project already has a team-level\nGitHub installation, and the user has no ``UserIntegration`` for that\ninstallation yet, we skip the org picker and redirect straight to\n``/login/oauth/authorize`` so the user only authorizes themselves.\n``connect_from`` is preserved for first-party clients so they return to\nthe originating client immediately.\n\nIn both cases the response key is ``install_url`` for compatibility with callers.\"",
         "operationId": "users-integrations-github-start-create",
         "parameters": [
           {
@@ -67841,6 +68011,9 @@
             "maxLength": 32,
             "type": "string"
           },
+          "ip_address": {
+            "type": "string"
+          },
           "activity": {
             "maxLength": 79,
             "type": "string"
@@ -68122,6 +68295,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -68469,6 +68655,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -72073,6 +72272,175 @@
         "additionalProperties": false,
         "description": "* `b2b` - B2B\n* `b2c` - B2C\n* `other` - Other"
       },
+      "ButtonTile": {
+        "required": [
+          "created_by",
+          "dashboard_tiles",
+          "id",
+          "last_modified_at",
+          "last_modified_by",
+          "team",
+          "text",
+          "url"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "created_by": {
+            "required": [
+              "email",
+              "hedgehog_config",
+              "id",
+              "uuid"
+            ],
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "readOnly": true
+              },
+              "uuid": {
+                "type": "string",
+                "format": "uuid",
+                "readOnly": true
+              },
+              "distinct_id": {
+                "maxLength": 200,
+                "type": "string"
+              },
+              "first_name": {
+                "maxLength": 150,
+                "type": "string"
+              },
+              "last_name": {
+                "maxLength": 150,
+                "type": "string"
+              },
+              "email": {
+                "title": "Email address",
+                "maxLength": 254,
+                "type": "string",
+                "format": "email"
+              },
+              "is_email_verified": {
+                "type": "boolean"
+              },
+              "hedgehog_config": {
+                "type": "object",
+                "readOnly": true
+              },
+              "role_at_organization": {
+                "type": "object",
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RoleAtOrganizationEnum_Wrapper"
+                  },
+                  {
+                    "$ref": "#/components/schemas/BlankEnum_Wrapper"
+                  },
+                  {
+                    "type": "object"
+                  }
+                ]
+              }
+            },
+            "readOnly": true
+          },
+          "last_modified_by": {
+            "required": [
+              "email",
+              "hedgehog_config",
+              "id",
+              "uuid"
+            ],
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "readOnly": true
+              },
+              "uuid": {
+                "type": "string",
+                "format": "uuid",
+                "readOnly": true
+              },
+              "distinct_id": {
+                "maxLength": 200,
+                "type": "string"
+              },
+              "first_name": {
+                "maxLength": 150,
+                "type": "string"
+              },
+              "last_name": {
+                "maxLength": 150,
+                "type": "string"
+              },
+              "email": {
+                "title": "Email address",
+                "maxLength": 254,
+                "type": "string",
+                "format": "email"
+              },
+              "is_email_verified": {
+                "type": "boolean"
+              },
+              "hedgehog_config": {
+                "type": "object",
+                "readOnly": true
+              },
+              "role_at_organization": {
+                "type": "object",
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RoleAtOrganizationEnum_Wrapper"
+                  },
+                  {
+                    "$ref": "#/components/schemas/BlankEnum_Wrapper"
+                  },
+                  {
+                    "type": "object"
+                  }
+                ]
+              }
+            },
+            "readOnly": true
+          },
+          "url": {
+            "maxLength": 2000,
+            "type": "string"
+          },
+          "text": {
+            "maxLength": 200,
+            "type": "string"
+          },
+          "placement": {
+            "$ref": "#/components/schemas/PlacementEnum"
+          },
+          "dashboard_tiles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DashboardTileBasic"
+            },
+            "readOnly": true
+          },
+          "style": {
+            "$ref": "#/components/schemas/StyleEnum"
+          },
+          "last_modified_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "team": {
+            "type": "integer"
+          }
+        }
+      },
       "CIMDVerificationToken": {
         "required": [
           "created_at",
@@ -72690,6 +73058,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -76325,6 +76706,75 @@
           }
         }
       },
+      "CreateTextTileRequest": {
+        "required": [
+          "body"
+        ],
+        "type": "object",
+        "properties": {
+          "body": {
+            "maxLength": 4000,
+            "minLength": 1,
+            "type": "string",
+            "description": "Markdown body for the text tile. Supports headings, lists, and inline formatting. Useful as a dashboard section heading, divider, or annotation between insights. Max 4000 characters."
+          },
+          "layouts": {
+            "type": "object",
+            "properties": {
+              "sm": {
+                "type": "object",
+                "properties": {
+                  "x": {
+                    "type": "integer",
+                    "description": "Column position in the dashboard grid (0-indexed)."
+                  },
+                  "y": {
+                    "type": "integer",
+                    "description": "Row position in the dashboard grid (0-indexed)."
+                  },
+                  "w": {
+                    "type": "integer",
+                    "description": "Width in grid columns. The desktop grid is 12 columns wide."
+                  },
+                  "h": {
+                    "type": "integer",
+                    "description": "Height in grid rows."
+                  }
+                },
+                "description": "Layout for the standard (desktop) breakpoint. The grid is 12 columns wide."
+              },
+              "xs": {
+                "type": "object",
+                "properties": {
+                  "x": {
+                    "type": "integer",
+                    "description": "Column position in the dashboard grid (0-indexed)."
+                  },
+                  "y": {
+                    "type": "integer",
+                    "description": "Row position in the dashboard grid (0-indexed)."
+                  },
+                  "w": {
+                    "type": "integer",
+                    "description": "Width in grid columns. The desktop grid is 12 columns wide."
+                  },
+                  "h": {
+                    "type": "integer",
+                    "description": "Height in grid rows."
+                  }
+                },
+                "description": "Layout for the small (mobile) breakpoint. The grid is 1 column wide."
+              }
+            },
+            "description": "Optional grid layout per breakpoint. If omitted, the tile is placed at the bottom of the dashboard using the default size. Text tiles typically use a thin full-width banner (e.g. w=12, h=1)."
+          },
+          "color": {
+            "maxLength": 400,
+            "type": "string",
+            "description": "Optional accent color name (e.g. 'blue', 'green', 'purple', 'black')."
+          }
+        }
+      },
       "CreatedViaEnum": {
         "enum": [
           "web",
@@ -77498,6 +77948,44 @@
         "type": "string",
         "additionalProperties": false,
         "description": "* `team` - Only team\n* `global` - Global\n* `feature_flag` - Feature Flag"
+      },
+      "DashboardTile": {
+        "required": [
+          "button_tile",
+          "insight",
+          "text"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "insight": {
+            "$ref": "#/components/schemas/Insight"
+          },
+          "text": {
+            "$ref": "#/components/schemas/Text"
+          },
+          "button_tile": {
+            "$ref": "#/components/schemas/ButtonTile"
+          },
+          "layouts": {
+            "type": "object"
+          },
+          "color": {
+            "maxLength": 400,
+            "type": "string"
+          },
+          "filters_overrides": {
+            "type": "object"
+          },
+          "show_description": {
+            "type": "boolean"
+          },
+          "transparent_background": {
+            "type": "boolean"
+          }
+        }
       },
       "DashboardTileBasic": {
         "required": [
@@ -82339,6 +82827,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -82921,7 +83422,7 @@
             "type": "object",
             "anyOf": [
               {
-                "$ref": "#/components/schemas/Text"
+                "$ref": "#/components/schemas/Text_Wrapper"
               },
               {
                 "type": "object"
@@ -84128,6 +84629,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -84420,6 +84934,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -84652,6 +85179,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -85764,6 +86304,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -86792,6 +87345,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -88108,6 +88674,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -88512,6 +89091,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -90642,6 +91234,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -91445,7 +92050,7 @@
             "type": "object",
             "anyOf": [
               {
-                "$ref": "#/components/schemas/Text"
+                "$ref": "#/components/schemas/Text_Wrapper"
               },
               {
                 "type": "object"
@@ -91638,6 +92243,19 @@
             "items": {
               "type": "string"
             }
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -93227,6 +93845,19 @@
             "additionalProperties": {
               "type": "number"
             }
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings for semantics."
           }
         },
         "additionalProperties": false
@@ -93664,6 +94295,19 @@
             "items": {
               "$ref": "#/components/schemas/ExperimentVariantFunnelsBaseStats"
             }
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings for semantics."
           }
         },
         "additionalProperties": false
@@ -94547,6 +95191,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings for semantics."
           }
         },
         "additionalProperties": false
@@ -95572,6 +96229,19 @@
             "items": {
               "$ref": "#/components/schemas/ExperimentVariantTrendsBaseStats"
             }
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings for semantics."
           }
         },
         "additionalProperties": false
@@ -96451,6 +97121,7 @@
           "schemas",
           "source_type",
           "status",
+          "supports_column_selection",
           "supports_webhooks",
           "user_access_level"
         ],
@@ -96558,6 +97229,11 @@
           },
           "supports_webhooks": {
             "type": "boolean",
+            "readOnly": true
+          },
+          "supports_column_selection": {
+            "type": "boolean",
+            "description": "Whether this source supports per-column sync selection via `enabled_columns`.",
             "readOnly": true
           }
         },
@@ -98901,6 +99577,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -100421,6 +101110,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -101576,6 +102278,19 @@
             "items": {
               "type": "string"
             }
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -105023,7 +105738,7 @@
                 "type": "object"
               }
             ],
-            "description": "HogQL parser backend; absent → `cpp_only`. `*_shadow` modes return the primary result and sample-compare against the other parser, reporting divergences without failing the request. The `rust_py_*` modes drive the same hand-rolled Rust parser as `rust_*` but build `posthog.hogql.ast` dataclass instances directly via PyO3, skipping the JSON round-trip."
+            "description": "HogQL parser backend; absent → `cpp_with_rust_py_shadow` (cpp is primary, rust-py runs as a sampled shadow). `*_shadow` modes return the primary result and sample-compare against the other parser, reporting divergences without failing the request. The `rust_py_*` modes drive the same hand-rolled Rust parser as `rust_*` but build `posthog.hogql.ast` dataclass instances directly via PyO3, skipping the JSON round-trip."
           },
           "personsArgMaxVersion": {
             "type": "object",
@@ -106480,6 +107195,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings for semantics."
           }
         },
         "additionalProperties": false
@@ -110374,6 +111102,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -110779,6 +111520,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -111165,6 +111919,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -112140,6 +112907,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -113048,6 +113828,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -113646,6 +114439,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -114772,6 +115578,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -120702,6 +121521,7 @@
         "enum": [
           "cpp_only",
           "cpp_with_rust_shadow",
+          "cpp_with_rust_py_shadow",
           "rust_with_cpp_shadow",
           "rust_only",
           "rust_py_only",
@@ -125290,6 +126110,11 @@
           },
           "supports_webhooks": {
             "type": "boolean",
+            "readOnly": true
+          },
+          "supports_column_selection": {
+            "type": "boolean",
+            "description": "Whether this source supports per-column sync selection via `enabled_columns`.",
             "readOnly": true
           }
         },
@@ -132897,6 +133722,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -133968,6 +134806,15 @@
             "description": "Tab descriptor for the user's chosen home page — the destination opened when they click the PostHog logo or hit `/`. Set to a tab descriptor to pick a homepage, send `null` or `{}` to clear it and fall back to the project default."
           }
         }
+      },
+      "PlacementEnum": {
+        "enum": [
+          "left",
+          "right"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "* `left` - left\n* `right` - right"
       },
       "PluginLogEntry": {
         "required": [
@@ -135960,6 +136807,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -137205,6 +138065,19 @@
             "items": {
               "type": "string"
             }
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -137390,6 +138263,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -137530,6 +138416,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -137658,6 +138557,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -137750,6 +138662,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -137890,6 +138815,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -137980,6 +138918,19 @@
             "items": {
               "$ref": "#/components/schemas/ExperimentVariantFunnelsBaseStats"
             }
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings for semantics."
           }
         },
         "additionalProperties": false
@@ -138078,6 +139029,19 @@
             "items": {
               "$ref": "#/components/schemas/ExperimentVariantTrendsBaseStats"
             }
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings for semantics."
           }
         },
         "additionalProperties": false
@@ -138218,6 +139182,19 @@
             "items": {
               "type": "string"
             }
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -138426,6 +139403,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings for semantics."
           }
         },
         "additionalProperties": false
@@ -138484,6 +139474,19 @@
             "additionalProperties": {
               "type": "number"
             }
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings for semantics."
           }
         },
         "additionalProperties": false
@@ -138612,6 +139615,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -138763,6 +139779,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -138950,6 +139979,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -139113,6 +140155,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -139302,6 +140357,19 @@
               }
             ],
             "description": "Whether the response was served from a precomputed table."
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -139408,6 +140476,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -139524,6 +140605,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -139695,6 +140789,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -139810,6 +140917,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -139914,6 +141034,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -140015,6 +141148,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -140119,6 +141265,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -140211,6 +141370,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -140312,6 +141484,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -140478,6 +141663,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -140581,6 +141779,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -140747,6 +141958,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -140900,6 +142124,19 @@
             "items": {
               "type": "string"
             }
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -141034,6 +142271,19 @@
             "items": {
               "type": "string"
             }
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -141176,6 +142426,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -141310,6 +142573,19 @@
             "items": {
               "type": "string"
             }
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -141679,6 +142955,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -141866,6 +143155,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -142029,6 +143331,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -142218,6 +143533,19 @@
               }
             ],
             "description": "Whether the response was served from a precomputed table."
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -142324,6 +143652,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -142473,6 +143814,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -142613,6 +143967,19 @@
             "items": {
               "type": "string"
             }
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -142704,6 +144071,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings for semantics."
           }
         },
         "additionalProperties": false
@@ -142808,6 +144188,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -142909,6 +144302,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -143013,6 +144419,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -143105,6 +144524,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -143206,6 +144638,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -143355,6 +144800,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -143521,6 +144979,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -143624,6 +145095,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -143790,6 +145274,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -143894,6 +145391,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -144034,6 +145544,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -144124,6 +145647,19 @@
             "items": {
               "$ref": "#/components/schemas/ExperimentVariantFunnelsBaseStats"
             }
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings for semantics."
           }
         },
         "additionalProperties": false
@@ -144222,6 +145758,19 @@
             "items": {
               "$ref": "#/components/schemas/ExperimentVariantTrendsBaseStats"
             }
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings for semantics."
           }
         },
         "additionalProperties": false
@@ -144362,6 +145911,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -144514,6 +146076,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -144631,6 +146206,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -144720,6 +146308,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -144812,6 +146413,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -144904,6 +146518,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -145046,6 +146673,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -145194,6 +146834,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -145354,6 +147007,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -145504,6 +147170,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -145601,6 +147280,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -145693,6 +147385,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -145831,6 +147536,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -145936,6 +147654,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -146259,6 +147990,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -146276,6 +148020,19 @@
             "items": {
               "type": "string"
             }
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings for semantics."
           }
         },
         "additionalProperties": false
@@ -146404,6 +148161,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -146532,6 +148302,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -146629,6 +148412,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -146769,6 +148565,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -146841,6 +148650,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings for semantics."
           }
         },
         "additionalProperties": false
@@ -146933,6 +148755,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -147025,6 +148860,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -147209,6 +149057,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -147361,6 +149222,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -147453,6 +149327,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -147545,6 +149432,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -149056,6 +150956,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -149680,6 +151593,19 @@
             "items": {
               "type": "string"
             }
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -149822,6 +151748,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -149962,6 +151901,19 @@
             "items": {
               "type": "string"
             }
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -150066,6 +152018,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -150167,6 +152132,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -150271,6 +152249,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -150363,6 +152354,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -150464,6 +152468,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -150613,6 +152630,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -150779,6 +152809,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -150882,6 +152925,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -151016,6 +153072,19 @@
             "items": {
               "type": "string"
             }
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -151182,6 +153251,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -151322,6 +153404,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -151462,6 +153557,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -151552,6 +153660,19 @@
             "items": {
               "$ref": "#/components/schemas/ExperimentVariantFunnelsBaseStats"
             }
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings for semantics."
           }
         },
         "additionalProperties": false
@@ -151650,6 +153771,19 @@
             "items": {
               "$ref": "#/components/schemas/ExperimentVariantTrendsBaseStats"
             }
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings for semantics."
           }
         },
         "additionalProperties": false
@@ -151790,6 +153924,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -151942,6 +154089,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -152311,6 +154471,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -152498,6 +154671,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -152661,6 +154847,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -152850,6 +155049,19 @@
               }
             ],
             "description": "Whether the response was served from a precomputed table."
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -152956,6 +155168,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -153105,6 +155330,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -153917,6 +156155,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -154355,6 +156606,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -154554,6 +156818,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -154784,6 +157061,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -154987,6 +157277,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -155234,6 +157537,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -155499,6 +157815,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -155734,6 +158063,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -158659,6 +161001,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -160159,6 +162514,19 @@
             "items": {
               "type": "string"
             }
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -160364,6 +162732,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -162012,6 +164393,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -162096,6 +164490,15 @@
         ],
         "type": "string",
         "additionalProperties": false
+      },
+      "StyleEnum": {
+        "enum": [
+          "primary",
+          "secondary"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "* `primary` - Primary\n* `secondary` - Secondary"
       },
       "Subscription": {
         "required": [
@@ -162541,6 +164944,19 @@
             "items": {
               "type": "string"
             }
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings for semantics."
           }
         },
         "additionalProperties": false
@@ -167706,6 +170122,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -167941,6 +170370,162 @@
               }
             ],
             "description": "Most recent test interview completed by the topic author, or null if none yet."
+          }
+        }
+      },
+      "Text": {
+        "required": [
+          "created_by",
+          "dashboard_tiles",
+          "id",
+          "last_modified_at",
+          "last_modified_by",
+          "team"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "created_by": {
+            "required": [
+              "email",
+              "hedgehog_config",
+              "id",
+              "uuid"
+            ],
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "readOnly": true
+              },
+              "uuid": {
+                "type": "string",
+                "format": "uuid",
+                "readOnly": true
+              },
+              "distinct_id": {
+                "maxLength": 200,
+                "type": "string"
+              },
+              "first_name": {
+                "maxLength": 150,
+                "type": "string"
+              },
+              "last_name": {
+                "maxLength": 150,
+                "type": "string"
+              },
+              "email": {
+                "title": "Email address",
+                "maxLength": 254,
+                "type": "string",
+                "format": "email"
+              },
+              "is_email_verified": {
+                "type": "boolean"
+              },
+              "hedgehog_config": {
+                "type": "object",
+                "readOnly": true
+              },
+              "role_at_organization": {
+                "type": "object",
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RoleAtOrganizationEnum_Wrapper"
+                  },
+                  {
+                    "$ref": "#/components/schemas/BlankEnum_Wrapper"
+                  },
+                  {
+                    "type": "object"
+                  }
+                ]
+              }
+            },
+            "readOnly": true
+          },
+          "last_modified_by": {
+            "required": [
+              "email",
+              "hedgehog_config",
+              "id",
+              "uuid"
+            ],
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "readOnly": true
+              },
+              "uuid": {
+                "type": "string",
+                "format": "uuid",
+                "readOnly": true
+              },
+              "distinct_id": {
+                "maxLength": 200,
+                "type": "string"
+              },
+              "first_name": {
+                "maxLength": 150,
+                "type": "string"
+              },
+              "last_name": {
+                "maxLength": 150,
+                "type": "string"
+              },
+              "email": {
+                "title": "Email address",
+                "maxLength": 254,
+                "type": "string",
+                "format": "email"
+              },
+              "is_email_verified": {
+                "type": "boolean"
+              },
+              "hedgehog_config": {
+                "type": "object",
+                "readOnly": true
+              },
+              "role_at_organization": {
+                "type": "object",
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RoleAtOrganizationEnum_Wrapper"
+                  },
+                  {
+                    "$ref": "#/components/schemas/BlankEnum_Wrapper"
+                  },
+                  {
+                    "type": "object"
+                  }
+                ]
+              }
+            },
+            "readOnly": true
+          },
+          "body": {
+            "maxLength": 4000,
+            "type": "string"
+          },
+          "dashboard_tiles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DashboardTileBasic"
+            },
+            "readOnly": true
+          },
+          "last_modified_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "team": {
+            "type": "integer"
           }
         }
       },
@@ -168713,6 +171298,76 @@
               }
             },
             "readOnly": true
+          }
+        }
+      },
+      "TileLayoutBox": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "integer",
+            "description": "Column position in the dashboard grid (0-indexed)."
+          },
+          "y": {
+            "type": "integer",
+            "description": "Row position in the dashboard grid (0-indexed)."
+          },
+          "w": {
+            "type": "integer",
+            "description": "Width in grid columns. The desktop grid is 12 columns wide."
+          },
+          "h": {
+            "type": "integer",
+            "description": "Height in grid rows."
+          }
+        }
+      },
+      "TileLayouts": {
+        "type": "object",
+        "properties": {
+          "sm": {
+            "type": "object",
+            "properties": {
+              "x": {
+                "type": "integer",
+                "description": "Column position in the dashboard grid (0-indexed)."
+              },
+              "y": {
+                "type": "integer",
+                "description": "Row position in the dashboard grid (0-indexed)."
+              },
+              "w": {
+                "type": "integer",
+                "description": "Width in grid columns. The desktop grid is 12 columns wide."
+              },
+              "h": {
+                "type": "integer",
+                "description": "Height in grid rows."
+              }
+            },
+            "description": "Layout for the standard (desktop) breakpoint. The grid is 12 columns wide."
+          },
+          "xs": {
+            "type": "object",
+            "properties": {
+              "x": {
+                "type": "integer",
+                "description": "Column position in the dashboard grid (0-indexed)."
+              },
+              "y": {
+                "type": "integer",
+                "description": "Row position in the dashboard grid (0-indexed)."
+              },
+              "w": {
+                "type": "integer",
+                "description": "Width in grid columns. The desktop grid is 12 columns wide."
+              },
+              "h": {
+                "type": "integer",
+                "description": "Height in grid rows."
+              }
+            },
+            "description": "Layout for the small (mobile) breakpoint. The grid is 1 column wide."
           }
         }
       },
@@ -169686,6 +172341,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings for semantics."
           }
         },
         "additionalProperties": false
@@ -169919,6 +172587,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -170469,6 +173150,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -170795,6 +173489,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -171015,6 +173722,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -171351,6 +174071,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -172474,6 +175207,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -172511,6 +175257,79 @@
         "type": "string",
         "additionalProperties": false,
         "description": "* `manual` - Manual\n* `git` - Git\n* `redeploy` - Redeploy\n* `rollback` - Rollback\n* `seed` - Seed"
+      },
+      "UpdateTextTileRequest": {
+        "required": [
+          "tile_id"
+        ],
+        "type": "object",
+        "properties": {
+          "tile_id": {
+            "type": "integer",
+            "description": "ID of the dashboard tile to update. Use dashboard-get to look up tile IDs."
+          },
+          "body": {
+            "maxLength": 4000,
+            "minLength": 1,
+            "type": "string",
+            "description": "New markdown body for the text tile. Omit to leave the body unchanged. Max 4000 characters."
+          },
+          "layouts": {
+            "type": "object",
+            "properties": {
+              "sm": {
+                "type": "object",
+                "properties": {
+                  "x": {
+                    "type": "integer",
+                    "description": "Column position in the dashboard grid (0-indexed)."
+                  },
+                  "y": {
+                    "type": "integer",
+                    "description": "Row position in the dashboard grid (0-indexed)."
+                  },
+                  "w": {
+                    "type": "integer",
+                    "description": "Width in grid columns. The desktop grid is 12 columns wide."
+                  },
+                  "h": {
+                    "type": "integer",
+                    "description": "Height in grid rows."
+                  }
+                },
+                "description": "Layout for the standard (desktop) breakpoint. The grid is 12 columns wide."
+              },
+              "xs": {
+                "type": "object",
+                "properties": {
+                  "x": {
+                    "type": "integer",
+                    "description": "Column position in the dashboard grid (0-indexed)."
+                  },
+                  "y": {
+                    "type": "integer",
+                    "description": "Row position in the dashboard grid (0-indexed)."
+                  },
+                  "w": {
+                    "type": "integer",
+                    "description": "Width in grid columns. The desktop grid is 12 columns wide."
+                  },
+                  "h": {
+                    "type": "integer",
+                    "description": "Height in grid rows."
+                  }
+                },
+                "description": "Layout for the small (mobile) breakpoint. The grid is 1 column wide."
+              }
+            },
+            "description": "New grid layout per breakpoint. Omit to leave the layout unchanged."
+          },
+          "color": {
+            "maxLength": 400,
+            "type": "string",
+            "description": "New accent color name, empty string or null to clear. Omit to leave unchanged."
+          }
+        }
       },
       "UploadTarget": {
         "required": [
@@ -172882,6 +175701,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -174263,6 +177095,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -175151,6 +177996,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -175610,6 +178468,19 @@
               }
             ],
             "description": "Whether the response was served from a precomputed table."
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -176026,6 +178897,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -176513,6 +179397,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -176910,6 +179807,19 @@
               }
             ],
             "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -177463,6 +180373,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -177991,6 +180914,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -178384,6 +181320,19 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
           }
         },
         "additionalProperties": false
@@ -183354,6 +186303,20 @@
           }
         }
       },
+      "Warnings": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DataWarehouseSyncWarning"
+            }
+          }
+        }
+      },
       "UnionBranch": {
         "required": [
           "value"
@@ -185121,7 +188084,7 @@
           }
         }
       },
-      "Text": {
+      "Text_Wrapper": {
         "required": [
           "value"
         ],
@@ -187510,20 +190473,6 @@
         "properties": {
           "value": {
             "type": "string"
-          }
-        }
-      },
-      "Warnings": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/DataWarehouseSyncWarning"
-            }
           }
         }
       },
@@ -190674,9 +193623,6 @@
   "tags": [
     {
       "name": "AI observability"
-    },
-    {
-      "name": "LLM Analytics"
     },
     {
       "name": "accounts"

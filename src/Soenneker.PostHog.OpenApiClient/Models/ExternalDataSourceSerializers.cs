@@ -127,6 +127,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Status { get; private set; }
 #endif
+        /// <summary>Whether this source supports per-column sync selection via `enabled_columns`.</summary>
+        public bool? SupportsColumnSelection { get; private set; }
         /// <summary>The supports_webhooks property</summary>
         public bool? SupportsWebhooks { get; private set; }
         /// <summary>The effective access level the user has for this object</summary>
@@ -179,6 +181,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "schemas", n => { Schemas = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers_schemas>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers_schemas.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "source_type", n => { SourceType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceTypeEnum>(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
+                { "supports_column_selection", n => { SupportsColumnSelection = n.GetBoolValue(); } },
                 { "supports_webhooks", n => { SupportsWebhooks = n.GetBoolValue(); } },
                 { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },
             };

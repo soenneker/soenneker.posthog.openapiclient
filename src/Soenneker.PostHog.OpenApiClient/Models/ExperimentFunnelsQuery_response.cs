@@ -70,6 +70,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantFunnelsBaseStats> Variants { get; set; }
 #endif
+        /// <summary>Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings for semantics.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_response_warnings? Warnings { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_response_warnings Warnings { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_response"/> and sets the default values.
         /// </summary>
@@ -106,6 +114,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "significant", n => { Significant = n.GetBoolValue(); } },
                 { "stats_version", n => { StatsVersion = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_response_stats_version>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_response_stats_version.CreateFromDiscriminatorValue); } },
                 { "variants", n => { Variants = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantFunnelsBaseStats>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantFunnelsBaseStats.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "warnings", n => { Warnings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_response_warnings>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_response_warnings.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -125,6 +134,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("significant", Significant);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_response_stats_version>("stats_version", StatsVersion);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantFunnelsBaseStats>("variants", Variants);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery_response_warnings>("warnings", Warnings);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

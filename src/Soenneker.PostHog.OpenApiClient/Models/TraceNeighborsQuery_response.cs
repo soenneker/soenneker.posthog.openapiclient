@@ -54,6 +54,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.TraceNeighborsQuery_response_timings Timings { get; set; }
 #endif
+        /// <summary>Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings for semantics.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.TraceNeighborsQuery_response_warnings? Warnings { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.TraceNeighborsQuery_response_warnings Warnings { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TraceNeighborsQuery_response"/> and sets the default values.
         /// </summary>
@@ -84,6 +92,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "olderTimestamp", n => { OlderTimestamp = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceNeighborsQuery_response_olderTimestamp>(global::Soenneker.PostHog.OpenApiClient.Models.TraceNeighborsQuery_response_olderTimestamp.CreateFromDiscriminatorValue); } },
                 { "olderTraceId", n => { OlderTraceId = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceNeighborsQuery_response_olderTraceId>(global::Soenneker.PostHog.OpenApiClient.Models.TraceNeighborsQuery_response_olderTraceId.CreateFromDiscriminatorValue); } },
                 { "timings", n => { Timings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceNeighborsQuery_response_timings>(global::Soenneker.PostHog.OpenApiClient.Models.TraceNeighborsQuery_response_timings.CreateFromDiscriminatorValue); } },
+                { "warnings", n => { Warnings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceNeighborsQuery_response_warnings>(global::Soenneker.PostHog.OpenApiClient.Models.TraceNeighborsQuery_response_warnings.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -98,6 +107,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceNeighborsQuery_response_olderTimestamp>("olderTimestamp", OlderTimestamp);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceNeighborsQuery_response_olderTraceId>("olderTraceId", OlderTraceId);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceNeighborsQuery_response_timings>("timings", Timings);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceNeighborsQuery_response_warnings>("warnings", Warnings);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

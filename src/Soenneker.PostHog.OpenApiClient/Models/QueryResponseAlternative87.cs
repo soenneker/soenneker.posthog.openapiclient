@@ -52,6 +52,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative87_timings Timings { get; set; }
 #endif
+        /// <summary>Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings for semantics.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative87_warnings? Warnings { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative87_warnings Warnings { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -75,6 +83,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "olderTimestamp", n => { OlderTimestamp = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative87_olderTimestamp>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative87_olderTimestamp.CreateFromDiscriminatorValue); } },
                 { "olderTraceId", n => { OlderTraceId = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative87_olderTraceId>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative87_olderTraceId.CreateFromDiscriminatorValue); } },
                 { "timings", n => { Timings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative87_timings>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative87_timings.CreateFromDiscriminatorValue); } },
+                { "warnings", n => { Warnings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative87_warnings>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative87_warnings.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -89,6 +98,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative87_olderTimestamp>("olderTimestamp", OlderTimestamp);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative87_olderTraceId>("olderTraceId", OlderTraceId);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative87_timings>("timings", Timings);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative87_warnings>("warnings", Warnings);
         }
     }
 }

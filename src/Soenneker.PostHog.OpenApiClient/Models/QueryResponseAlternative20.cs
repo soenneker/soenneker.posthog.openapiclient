@@ -134,6 +134,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_variants Variants { get; set; }
 #endif
+        /// <summary>Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings for semantics.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_warnings? Warnings { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_warnings Warnings { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20"/> and sets the default values.
         /// </summary>
@@ -175,6 +183,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "stats_version", n => { StatsVersion = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_stats_version>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_stats_version.CreateFromDiscriminatorValue); } },
                 { "variant_results", n => { VariantResults = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_variant_results>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_variant_results.CreateFromDiscriminatorValue); } },
                 { "variants", n => { Variants = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_variants>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_variants.CreateFromDiscriminatorValue); } },
+                { "warnings", n => { Warnings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_warnings>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_warnings.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -200,6 +209,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_stats_version>("stats_version", StatsVersion);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_variant_results>("variant_results", VariantResults);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_variants>("variants", Variants);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20_warnings>("warnings", Warnings);
         }
     }
 }

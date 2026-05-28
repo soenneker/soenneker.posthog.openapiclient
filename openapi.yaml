@@ -1684,6 +1684,60 @@ paths:
       deprecated: true
       x-explicit-tags:
       - core
+  /api/environments/{environment_id}/dashboards/{id}/create_text_tile/:
+    post:
+      operationId: environments_dashboards_create_text_tile_create
+      description: |-
+        Add a markdown text tile to a dashboard.
+
+        Text tiles render as markdown blocks on the dashboard — useful as section headings, dividers,
+        or annotations between insight tiles to give the dashboard structure.
+      parameters:
+      - $ref: '#/components/parameters/EnvironmentIdPath'
+      - in: query
+        name: format
+        schema:
+          type: string
+          enum:
+          - json
+          - txt
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this dashboard.
+        required: true
+      tags:
+      - core
+      - dashboards
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTextTileRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CreateTextTileRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CreateTextTileRequest'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - dashboard:write
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DashboardTile'
+            text/event-stream:
+              schema:
+                $ref: '#/components/schemas/DashboardTile'
+          description: ''
+      deprecated: true
+      x-explicit-tags:
+      - core
   /api/environments/{environment_id}/dashboards/{id}/move_tile/:
     patch:
       operationId: environments_dashboards_move_tile_partial_update
@@ -1950,6 +2004,57 @@ paths:
       responses:
         '200':
           description: No response body
+      deprecated: true
+      x-explicit-tags:
+      - core
+  /api/environments/{environment_id}/dashboards/{id}/update_text_tile/:
+    post:
+      operationId: environments_dashboards_update_text_tile_create
+      description: Update the markdown body, layout, or color of an existing text
+        tile on a dashboard.
+      parameters:
+      - $ref: '#/components/parameters/EnvironmentIdPath'
+      - in: query
+        name: format
+        schema:
+          type: string
+          enum:
+          - json
+          - txt
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this dashboard.
+        required: true
+      tags:
+      - core
+      - dashboards
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTextTileRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UpdateTextTileRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UpdateTextTileRequest'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - dashboard:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DashboardTile'
+            text/event-stream:
+              schema:
+                $ref: '#/components/schemas/DashboardTile'
+          description: ''
       deprecated: true
       x-explicit-tags:
       - core
@@ -2647,6 +2752,7 @@ paths:
       deprecated: true
       x-explicit-tags:
       - llm_analytics
+      - ai_observability
     post:
       operationId: environments_dataset_items_create
       parameters:
@@ -2679,6 +2785,7 @@ paths:
       deprecated: true
       x-explicit-tags:
       - llm_analytics
+      - ai_observability
   /api/environments/{environment_id}/dataset_items/{id}/:
     get:
       operationId: environments_dataset_items_retrieve
@@ -2877,6 +2984,7 @@ paths:
       deprecated: true
       x-explicit-tags:
       - llm_analytics
+      - ai_observability
     post:
       operationId: environments_datasets_create
       parameters:
@@ -2909,6 +3017,7 @@ paths:
       deprecated: true
       x-explicit-tags:
       - llm_analytics
+      - ai_observability
   /api/environments/{environment_id}/datasets/{id}/:
     get:
       operationId: environments_datasets_retrieve
@@ -18863,6 +18972,7 @@ paths:
           description: ''
       x-explicit-tags:
       - llm_analytics
+      - ai_observability
   /api/environments/{project_id}/evaluations/:
     get:
       operationId: evaluations_list
@@ -18939,6 +19049,7 @@ paths:
           description: ''
       x-explicit-tags:
       - llm_analytics
+      - ai_observability
     post:
       operationId: evaluations_create
       parameters:
@@ -18970,6 +19081,7 @@ paths:
           description: ''
       x-explicit-tags:
       - llm_analytics
+      - ai_observability
   /api/environments/{project_id}/evaluations/{id}/:
     get:
       operationId: evaluations_retrieve
@@ -19129,6 +19241,7 @@ paths:
           description: ''
       x-explicit-tags:
       - llm_analytics
+      - ai_observability
   /api/environments/{project_id}/event_filter/:
     get:
       operationId: event_filter_retrieve
@@ -19416,7 +19529,7 @@ paths:
                 additionalProperties: true
           description: ''
       x-explicit-tags:
-      - llm_analytics
+      - ai_observability
   /api/environments/{project_id}/llm_analytics/clustering_config/set_event_filters/:
     post:
       operationId: llm_analytics_clustering_config_set_event_filters_create
@@ -19438,7 +19551,7 @@ paths:
                 additionalProperties: true
           description: ''
       x-explicit-tags:
-      - llm_analytics
+      - ai_observability
   /api/environments/{project_id}/llm_analytics/clustering_jobs/:
     get:
       operationId: llm_analytics_clustering_jobs_list
@@ -19470,7 +19583,7 @@ paths:
                 $ref: '#/components/schemas/PaginatedClusteringJobList'
           description: ''
       x-explicit-tags:
-      - llm_analytics
+      - ai_observability
     post:
       operationId: llm_analytics_clustering_jobs_create
       description: CRUD for clustering job configurations (max 5 per team).
@@ -19501,7 +19614,7 @@ paths:
                 $ref: '#/components/schemas/ClusteringJob'
           description: ''
       x-explicit-tags:
-      - llm_analytics
+      - ai_observability
   /api/environments/{project_id}/llm_analytics/clustering_jobs/{id}/:
     get:
       operationId: llm_analytics_clustering_jobs_retrieve
@@ -19641,7 +19754,7 @@ paths:
                 $ref: '#/components/schemas/EvaluationConfig'
           description: ''
       x-explicit-tags:
-      - llm_analytics
+      - ai_observability
   /api/environments/{project_id}/llm_analytics/evaluation_config/set_active_key/:
     post:
       operationId: llm_analytics_evaluation_config_set_active_key_create
@@ -19673,7 +19786,7 @@ paths:
                 $ref: '#/components/schemas/EvaluationConfig'
           description: ''
       x-explicit-tags:
-      - llm_analytics
+      - ai_observability
   /api/environments/{project_id}/llm_analytics/evaluation_reports/:
     get:
       operationId: llm_analytics_evaluation_reports_list
@@ -19707,6 +19820,7 @@ paths:
           description: ''
       x-explicit-tags:
       - llm_analytics
+      - ai_observability
     post:
       operationId: llm_analytics_evaluation_reports_create
       description: CRUD for evaluation report configurations + report run history.
@@ -19739,6 +19853,7 @@ paths:
           description: ''
       x-explicit-tags:
       - llm_analytics
+      - ai_observability
   /api/environments/{project_id}/llm_analytics/evaluation_reports/{id}/:
     get:
       operationId: llm_analytics_evaluation_reports_retrieve
@@ -20036,7 +20151,7 @@ paths:
           description: ''
       x-explicit-tags:
       - AI observability
-      - llm_analytics
+      - ai_observability
   /api/environments/{project_id}/llm_analytics/models/:
     get:
       operationId: llm_analytics_models_retrieve
@@ -20080,7 +20195,7 @@ paths:
                 $ref: '#/components/schemas/LLMModelsListResponse'
           description: ''
       x-explicit-tags:
-      - llm_analytics
+      - ai_observability
   /api/environments/{project_id}/llm_analytics/offline_evaluations/experiment_items/:
     post:
       operationId: llm_analytics_offline_evaluations_experiment_items_create
@@ -20127,7 +20242,7 @@ paths:
           description: ''
       x-explicit-tags:
       - AI observability
-      - llm_analytics
+      - ai_observability
   /api/environments/{project_id}/llm_analytics/provider_key_validations/:
     post:
       operationId: llm_analytics_provider_key_validations_create
@@ -20148,7 +20263,7 @@ paths:
                 additionalProperties: true
           description: ''
       x-explicit-tags:
-      - llm_analytics
+      - ai_observability
   /api/environments/{project_id}/llm_analytics/provider_keys/:
     get:
       operationId: llm_analytics_provider_keys_list
@@ -20179,7 +20294,7 @@ paths:
                 $ref: '#/components/schemas/PaginatedLLMProviderKeyList'
           description: ''
       x-explicit-tags:
-      - llm_analytics
+      - ai_observability
     post:
       operationId: llm_analytics_provider_keys_create
       parameters:
@@ -20209,7 +20324,7 @@ paths:
                 $ref: '#/components/schemas/LLMProviderKey'
           description: ''
       x-explicit-tags:
-      - llm_analytics
+      - ai_observability
   /api/environments/{project_id}/llm_analytics/provider_keys/{id}/:
     get:
       operationId: llm_analytics_provider_keys_retrieve
@@ -20435,7 +20550,7 @@ paths:
                 $ref: '#/components/schemas/LLMProviderKey'
           description: ''
       x-explicit-tags:
-      - llm_analytics
+      - ai_observability
   /api/environments/{project_id}/llm_analytics/review_queue_items/:
     get:
       operationId: llm_analytics_review_queue_items_list
@@ -20509,6 +20624,7 @@ paths:
           description: ''
       x-explicit-tags:
       - llm_analytics
+      - ai_observability
     post:
       operationId: llm_analytics_review_queue_items_create
       parameters:
@@ -20540,6 +20656,7 @@ paths:
           description: ''
       x-explicit-tags:
       - llm_analytics
+      - ai_observability
   /api/environments/{project_id}/llm_analytics/review_queue_items/{id}/:
     get:
       operationId: llm_analytics_review_queue_items_retrieve
@@ -20679,6 +20796,7 @@ paths:
           description: ''
       x-explicit-tags:
       - llm_analytics
+      - ai_observability
     post:
       operationId: llm_analytics_review_queues_create
       parameters:
@@ -20710,6 +20828,7 @@ paths:
           description: ''
       x-explicit-tags:
       - llm_analytics
+      - ai_observability
   /api/environments/{project_id}/llm_analytics/review_queues/{id}/:
     get:
       operationId: llm_analytics_review_queues_retrieve
@@ -20864,6 +20983,7 @@ paths:
           description: ''
       x-explicit-tags:
       - llm_analytics
+      - ai_observability
     post:
       operationId: llm_analytics_score_definitions_create
       parameters:
@@ -20895,6 +21015,7 @@ paths:
           description: ''
       x-explicit-tags:
       - llm_analytics
+      - ai_observability
   /api/environments/{project_id}/llm_analytics/score_definitions/{id}/:
     get:
       operationId: llm_analytics_score_definitions_retrieve
@@ -21044,7 +21165,7 @@ paths:
           description: ''
       x-explicit-tags:
       - AI observability
-      - llm_analytics
+      - ai_observability
   /api/environments/{project_id}/llm_analytics/sentiment/generations/:
     post:
       operationId: llm_analytics_sentiment_generations_create
@@ -21087,7 +21208,7 @@ paths:
           description: ''
       x-explicit-tags:
       - AI observability
-      - llm_analytics
+      - ai_observability
   /api/environments/{project_id}/llm_analytics/summarization/:
     post:
       operationId: llm_analytics_summarization_create
@@ -21208,7 +21329,7 @@ paths:
           description: ''
       x-explicit-tags:
       - AI observability
-      - llm_analytics
+      - ai_observability
   /api/environments/{project_id}/llm_analytics/summarization/batch_check/:
     post:
       operationId: llm_analytics_summarization_batch_check_create
@@ -21258,7 +21379,7 @@ paths:
           description: ''
       x-explicit-tags:
       - AI observability
-      - llm_analytics
+      - ai_observability
   /api/environments/{project_id}/llm_analytics/text_repr/:
     post:
       operationId: llm_analytics_text_repr_create
@@ -21385,7 +21506,7 @@ paths:
           description: ''
       x-explicit-tags:
       - AI observability
-      - llm_analytics
+      - ai_observability
   /api/environments/{project_id}/llm_analytics/trace_reviews/:
     get:
       operationId: llm_analytics_trace_reviews_list
@@ -21465,6 +21586,7 @@ paths:
           description: ''
       x-explicit-tags:
       - llm_analytics
+      - ai_observability
     post:
       operationId: llm_analytics_trace_reviews_create
       parameters:
@@ -21496,6 +21618,7 @@ paths:
           description: ''
       x-explicit-tags:
       - llm_analytics
+      - ai_observability
   /api/environments/{project_id}/llm_analytics/trace_reviews/{id}/:
     get:
       operationId: llm_analytics_trace_reviews_retrieve
@@ -21614,7 +21737,7 @@ paths:
                 additionalProperties: true
           description: ''
       x-explicit-tags:
-      - llm_analytics
+      - ai_observability
   /api/environments/{project_id}/llm_prompts/:
     get:
       operationId: llm_prompts_list
@@ -21970,6 +22093,7 @@ paths:
           description: ''
       x-explicit-tags:
       - llm_analytics
+      - ai_observability
     post:
       operationId: llm_skills_create
       parameters:
@@ -22001,6 +22125,7 @@ paths:
           description: ''
       x-explicit-tags:
       - llm_analytics
+      - ai_observability
   /api/environments/{project_id}/llm_skills/name/{skill_name}/:
     get:
       operationId: llm_skills_name_retrieve
@@ -22034,6 +22159,7 @@ paths:
           description: ''
       x-explicit-tags:
       - llm_analytics
+      - ai_observability
     patch:
       operationId: llm_skills_name_partial_update
       parameters:
@@ -22070,6 +22196,7 @@ paths:
           description: ''
       x-explicit-tags:
       - llm_analytics
+      - ai_observability
   /api/environments/{project_id}/llm_skills/name/{skill_name}/archive/:
     post:
       operationId: llm_skills_name_archive_create
@@ -22092,6 +22219,7 @@ paths:
           description: No response body
       x-explicit-tags:
       - llm_analytics
+      - ai_observability
   /api/environments/{project_id}/llm_skills/name/{skill_name}/duplicate/:
     post:
       operationId: llm_skills_name_duplicate_create
@@ -22130,6 +22258,7 @@ paths:
           description: ''
       x-explicit-tags:
       - llm_analytics
+      - ai_observability
   /api/environments/{project_id}/llm_skills/name/{skill_name}/files/:
     post:
       operationId: llm_skills_name_files_create
@@ -22168,6 +22297,7 @@ paths:
           description: ''
       x-explicit-tags:
       - llm_analytics
+      - ai_observability
   /api/environments/{project_id}/llm_skills/name/{skill_name}/files-rename/:
     post:
       operationId: llm_skills_name_files_rename_create
@@ -22206,6 +22336,7 @@ paths:
           description: ''
       x-explicit-tags:
       - llm_analytics
+      - ai_observability
   /api/environments/{project_id}/llm_skills/name/{skill_name}/files/{file_path}/:
     get:
       operationId: llm_skills_name_files_retrieve
@@ -22245,6 +22376,7 @@ paths:
           description: ''
       x-explicit-tags:
       - llm_analytics
+      - ai_observability
     delete:
       operationId: llm_skills_name_files_destroy
       parameters:
@@ -22283,6 +22415,7 @@ paths:
           description: ''
       x-explicit-tags:
       - llm_analytics
+      - ai_observability
   /api/environments/{project_id}/llm_skills/resolve/name/{skill_name}/:
     get:
       operationId: llm_skills_resolve_name_retrieve
@@ -22344,6 +22477,7 @@ paths:
           description: ''
       x-explicit-tags:
       - llm_analytics
+      - ai_observability
   /api/environments/{project_id}/logs/explainLogWithAI/:
     post:
       operationId: logs_explainLogWithAI_create
@@ -23556,7 +23690,7 @@ paths:
                 $ref: '#/components/schemas/PaginatedTaggerList'
           description: ''
       x-explicit-tags:
-      - llm_analytics
+      - ai_observability
     post:
       operationId: taggers_create
       parameters:
@@ -23586,7 +23720,7 @@ paths:
                 $ref: '#/components/schemas/Tagger'
           description: ''
       x-explicit-tags:
-      - llm_analytics
+      - ai_observability
   /api/environments/{project_id}/taggers/{id}/:
     get:
       operationId: taggers_retrieve
@@ -23736,7 +23870,7 @@ paths:
                 $ref: '#/components/schemas/TestHogTaggerResponse'
           description: ''
       x-explicit-tags:
-      - llm_analytics
+      - ai_observability
   /api/environments/{project_id}/tracing/spans/aggregate/:
     post:
       operationId: tracing_spans_aggregate_create
@@ -25567,7 +25701,7 @@ paths:
         description: If true, bypass the result cache and re-run the underlying queries
           against ClickHouse.
       tags:
-      - LLM Analytics
+      - AI observability
       - llm_analytics
       security:
       - PersonalAPIKeyAuth:
@@ -25612,8 +25746,8 @@ paths:
                 $ref: '#/components/schemas/_ErrorResponse'
           description: ''
       x-explicit-tags:
-      - LLM Analytics
-      - llm_analytics
+      - AI observability
+      - ai_observability
   /api/organizations/:
     get:
       operationId: list
@@ -25837,6 +25971,16 @@ paths:
         schema:
           type: string
         description: Reserved for future HogQL-based filtering.
+      - in: query
+        name: ip_addresses
+        schema:
+          type: array
+          items:
+            type: string
+          default: []
+        description: Filter by client IP addresses. Accepts exact IPv4/IPv6 values
+          or wildcard patterns using `*` (e.g. `203.0.113.*`). Multiple entries are
+          OR-combined.
       - in: query
         name: is_system
         schema:
@@ -29324,6 +29468,16 @@ paths:
         schema:
           type: string
         description: Reserved for future HogQL-based filtering.
+      - in: query
+        name: ip_addresses
+        schema:
+          type: array
+          items:
+            type: string
+          default: []
+        description: Filter by client IP addresses. Accepts exact IPv4/IPv6 values
+          or wildcard patterns using `*` (e.g. `203.0.113.*`). Multiple entries are
+          OR-combined.
       - in: query
         name: is_system
         schema:
@@ -32863,6 +33017,59 @@ paths:
           description: ''
       x-explicit-tags:
       - core
+  /api/projects/{project_id}/dashboards/{id}/create_text_tile/:
+    post:
+      operationId: dashboards_create_text_tile_create
+      description: |-
+        Add a markdown text tile to a dashboard.
+
+        Text tiles render as markdown blocks on the dashboard — useful as section headings, dividers,
+        or annotations between insight tiles to give the dashboard structure.
+      parameters:
+      - in: query
+        name: format
+        schema:
+          type: string
+          enum:
+          - json
+          - txt
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this dashboard.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - core
+      - dashboards
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTextTileRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CreateTextTileRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CreateTextTileRequest'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - dashboard:write
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DashboardTile'
+            text/event-stream:
+              schema:
+                $ref: '#/components/schemas/DashboardTile'
+          description: ''
+      x-explicit-tags:
+      - core
   /api/projects/{project_id}/dashboards/{id}/move_tile/:
     patch:
       operationId: dashboards_move_tile_partial_update
@@ -33125,6 +33332,56 @@ paths:
       responses:
         '200':
           description: No response body
+      x-explicit-tags:
+      - core
+  /api/projects/{project_id}/dashboards/{id}/update_text_tile/:
+    post:
+      operationId: dashboards_update_text_tile_create
+      description: Update the markdown body, layout, or color of an existing text
+        tile on a dashboard.
+      parameters:
+      - in: query
+        name: format
+        schema:
+          type: string
+          enum:
+          - json
+          - txt
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this dashboard.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - core
+      - dashboards
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTextTileRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UpdateTextTileRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UpdateTextTileRequest'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - dashboard:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DashboardTile'
+            text/event-stream:
+              schema:
+                $ref: '#/components/schemas/DashboardTile'
+          description: ''
       x-explicit-tags:
       - core
   /api/projects/{project_id}/dashboards/bulk_update_tags/:
@@ -33795,6 +34052,7 @@ paths:
           description: ''
       x-explicit-tags:
       - llm_analytics
+      - ai_observability
     post:
       operationId: dataset_items_create
       parameters:
@@ -33826,6 +34084,7 @@ paths:
           description: ''
       x-explicit-tags:
       - llm_analytics
+      - ai_observability
   /api/projects/{project_id}/dataset_items/{id}/:
     get:
       operationId: dataset_items_retrieve
@@ -34019,6 +34278,7 @@ paths:
           description: ''
       x-explicit-tags:
       - llm_analytics
+      - ai_observability
     post:
       operationId: datasets_create
       parameters:
@@ -34050,6 +34310,7 @@ paths:
           description: ''
       x-explicit-tags:
       - llm_analytics
+      - ai_observability
   /api/projects/{project_id}/datasets/{id}/:
     get:
       operationId: datasets_retrieve
@@ -58239,12 +58500,12 @@ paths:
         page handles both cases: orgs where the app is installed show "Configure"
         (no admin needed), orgs where it isn't show "Install" (needs admin).
 
-        **First-party app fast path:** when ``connect_from`` is one of
-        ``APP_CONNECT_FROM_VALUES`` (e.g. ``"posthog_code"`` or ``"posthog_mobile"``),
-        the current project already has a team-level GitHub installation, and the
-        user has no ``UserIntegration`` for that installation yet, we skip the org
-        picker and redirect straight to ``/login/oauth/authorize`` so the user
-        only authorizes themselves and returns to the originating client immediately.
+        **OAuth fast path:** when the current project already has a team-level
+        GitHub installation, and the user has no ``UserIntegration`` for that
+        installation yet, we skip the org picker and redirect straight to
+        ``/login/oauth/authorize`` so the user only authorizes themselves.
+        ``connect_from`` is preserved for first-party clients so they return to
+        the originating client immediately.
 
         In both cases the response key is ``install_url`` for compatibility with callers.
       summary: Start GitHub personal integration linking
@@ -59388,6 +59649,10 @@ components:
           - string
           - 'null'
           maxLength: 32
+        ip_address:
+          type:
+          - string
+          - 'null'
         activity:
           type: string
           maxLength: 79
@@ -59574,6 +59839,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: ActorsPropertyTaxonomyQueryResponse
@@ -59785,6 +60064,20 @@ components:
           - type: 'null'
           default: null
           title: Types
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - columns
       - hogql
@@ -63481,6 +63774,53 @@ components:
         * `b2b` - B2B
         * `b2c` - B2C
         * `other` - Other
+    ButtonTile:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        created_by:
+          allOf:
+          - $ref: '#/components/schemas/UserBasic'
+          readOnly: true
+        last_modified_by:
+          allOf:
+          - $ref: '#/components/schemas/UserBasic'
+          readOnly: true
+        url:
+          type: string
+          maxLength: 2000
+        text:
+          type: string
+          maxLength: 200
+        placement:
+          allOf:
+          - $ref: '#/components/schemas/PlacementEnum'
+          default: left
+        dashboard_tiles:
+          type: array
+          items:
+            $ref: '#/components/schemas/DashboardTileBasic'
+          readOnly: true
+        style:
+          $ref: '#/components/schemas/StyleEnum'
+        last_modified_at:
+          type: string
+          format: date-time
+          readOnly: true
+        team:
+          type: integer
+      required:
+      - created_by
+      - dashboard_tiles
+      - id
+      - last_modified_at
+      - last_modified_by
+      - team
+      - text
+      - url
     CIMDVerificationToken:
       type: object
       properties:
@@ -63832,6 +64172,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: CalendarHeatmapResponse
@@ -66501,6 +66855,31 @@ components:
       required:
       - name
       - text
+    CreateTextTileRequest:
+      type: object
+      properties:
+        body:
+          type: string
+          description: Markdown body for the text tile. Supports headings, lists,
+            and inline formatting. Useful as a dashboard section heading, divider,
+            or annotation between insights. Max 4000 characters.
+          maxLength: 4000
+          minLength: 1
+        layouts:
+          allOf:
+          - $ref: '#/components/schemas/TileLayouts'
+          description: Optional grid layout per breakpoint. If omitted, the tile is
+            placed at the bottom of the dashboard using the default size. Text tiles
+            typically use a thin full-width banner (e.g. w=12, h=1).
+        color:
+          type:
+          - string
+          - 'null'
+          description: Optional accent color name (e.g. 'blue', 'green', 'purple',
+            'black').
+          maxLength: 400
+      required:
+      - body
     CreatedViaEnum:
       enum:
       - web
@@ -67312,6 +67691,36 @@ components:
         * `team` - Only team
         * `global` - Global
         * `feature_flag` - Feature Flag
+    DashboardTile:
+      type: object
+      properties:
+        id:
+          type: integer
+        insight:
+          $ref: '#/components/schemas/Insight'
+        text:
+          $ref: '#/components/schemas/Text'
+        button_tile:
+          $ref: '#/components/schemas/ButtonTile'
+        layouts: {}
+        color:
+          type:
+          - string
+          - 'null'
+          maxLength: 400
+        filters_overrides: {}
+        show_description:
+          type:
+          - boolean
+          - 'null'
+        transparent_background:
+          type:
+          - boolean
+          - 'null'
+      required:
+      - button_tile
+      - insight
+      - text
     DashboardTileBasic:
       type: object
       properties:
@@ -70845,6 +71254,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: DocumentSimilarityQueryResponse
@@ -71975,6 +72398,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: EndpointsUsageOverviewQueryResponse
@@ -72141,6 +72578,20 @@ components:
           - type: 'null'
           default: null
           title: Types
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: EndpointsUsageTableQueryResponse
@@ -72274,6 +72725,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: EndpointsUsageTrendsQueryResponse
@@ -72814,6 +73279,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: ErrorTrackingBreakdownsQueryResponse
@@ -73440,6 +73919,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: ErrorTrackingIssueCorrelationQueryResponse
@@ -74359,6 +74852,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: ErrorTrackingQueryResponse
@@ -74636,6 +75143,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: ErrorTrackingSimilarIssuesQueryResponse
@@ -76028,6 +76549,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: EventTaxonomyQueryResponse
@@ -76722,6 +77257,20 @@ components:
             type: string
           title: Types
           type: array
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - columns
       - hogql
@@ -77723,6 +78272,16 @@ components:
             type: number
           title: Total Exposures
           type: object
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings
+            for semantics.
+          title: Warnings
       required:
       - date_range
       - timeseries
@@ -77965,6 +78524,16 @@ components:
             $ref: '#/components/schemas/ExperimentVariantFunnelsBaseStats'
           title: Variants
           type: array
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings
+            for semantics.
+          title: Warnings
       required:
       - credible_intervals
       - expected_loss
@@ -78471,6 +79040,16 @@ components:
           - type: 'null'
           default: null
           title: Variants
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings
+            for semantics.
+          title: Warnings
       title: ExperimentQueryResponse
       type: object
     ExperimentRatioMetric:
@@ -79020,6 +79599,16 @@ components:
             $ref: '#/components/schemas/ExperimentVariantTrendsBaseStats'
           title: Variants
           type: array
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings
+            for semantics.
+          title: Warnings
       required:
       - credible_intervals
       - insight
@@ -79958,6 +80547,11 @@ components:
         supports_webhooks:
           type: boolean
           readOnly: true
+        supports_column_selection:
+          type: boolean
+          readOnly: true
+          description: Whether this source supports per-column sync selection via
+            `enabled_columns`.
       required:
       - access_method
       - account_id
@@ -79972,6 +80566,7 @@ components:
       - schemas
       - source_type
       - status
+      - supports_column_selection
       - supports_webhooks
       - user_access_level
     ExternalDataSourceTypeEnum:
@@ -81953,6 +82548,20 @@ components:
           - type: 'null'
           default: null
           title: Types
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: FunnelCorrelationResponse
@@ -82961,6 +83570,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: FunnelsQueryResponse
@@ -83794,6 +84417,20 @@ components:
             type: string
           title: Types
           type: array
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - columns
       - hogql
@@ -85565,10 +86202,11 @@ components:
           - $ref: '#/components/schemas/ParserMode'
           - type: 'null'
           default: null
-          description: HogQL parser backend; absent → `cpp_only`. `*_shadow` modes
-            return the primary result and sample-compare against the other parser,
-            reporting divergences without failing the request. The `rust_py_*` modes
-            drive the same hand-rolled Rust parser as `rust_*` but build `posthog.hogql.ast`
+          description: HogQL parser backend; absent → `cpp_with_rust_py_shadow` (cpp
+            is primary, rust-py runs as a sampled shadow). `*_shadow` modes return
+            the primary result and sample-compare against the other parser, reporting
+            divergences without failing the request. The `rust_py_*` modes drive the
+            same hand-rolled Rust parser as `rust_*` but build `posthog.hogql.ast`
             dataclass instances directly via PyO3, skipping the JSON round-trip.
         personsArgMaxVersion:
           anyOf:
@@ -86468,6 +87106,16 @@ components:
           - type: 'null'
           default: null
           title: Status
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings
+            for semantics.
+          title: Warnings
       title: InsightActorsQueryOptionsResponse
       type: object
     InsightResult:
@@ -88980,6 +89628,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: LifecycleQueryResponse
@@ -89255,6 +89917,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - count
       - results
@@ -89503,6 +90179,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: LogValuesQueryResponse
@@ -90182,6 +90872,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: LogsQueryResponse
@@ -90784,6 +91488,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: MarketingAnalyticsAggregatedQueryResponse
@@ -91121,6 +91839,20 @@ components:
           - type: 'null'
           default: null
           title: Types
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: MarketingAnalyticsTableQueryResponse
@@ -91862,6 +92594,20 @@ components:
           - type: 'null'
           default: null
           title: Types
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: NonIntegratedConversionsTableQueryResponse
@@ -96709,6 +97455,7 @@ components:
       enum:
       - cpp_only
       - cpp_with_rust_shadow
+      - cpp_with_rust_py_shadow
       - rust_with_cpp_shadow
       - rust_only
       - rust_py_only
@@ -99567,6 +100314,11 @@ components:
         supports_webhooks:
           type: boolean
           readOnly: true
+        supports_column_selection:
+          type: boolean
+          readOnly: true
+          description: Whether this source supports per-column sync selection via
+            `enabled_columns`.
     PatchedFeatureFlagPartialUpdateRequestSchema:
       type: object
       properties:
@@ -104830,6 +105582,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: PathsQueryResponse
@@ -105549,6 +106315,14 @@ components:
             opened when they click the PostHog logo or hit `/`. Set to a tab descriptor
             to pick a homepage, send `null` or `{}` to clear it and fall back to the
             project default.
+    PlacementEnum:
+      enum:
+      - left
+      - right
+      type: string
+      description: |-
+        * `left` - left
+        * `right` - right
     PluginLogEntry:
       type: object
       properties:
@@ -107470,6 +108244,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: PropertyValuesQueryResponse
@@ -108134,6 +108922,20 @@ components:
             type: string
           title: Types
           type: array
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - columns
       - hogql
@@ -108249,6 +109051,20 @@ components:
           - type: 'null'
           default: null
           title: Types
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative11
@@ -108331,6 +109147,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative14
@@ -108405,6 +109235,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative15
@@ -108461,6 +109305,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative16
@@ -108543,6 +109401,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative17
@@ -108599,6 +109471,16 @@ components:
             $ref: '#/components/schemas/ExperimentVariantFunnelsBaseStats'
           title: Variants
           type: array
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings
+            for semantics.
+          title: Warnings
       required:
       - credible_intervals
       - expected_loss
@@ -108664,6 +109546,16 @@ components:
             $ref: '#/components/schemas/ExperimentVariantTrendsBaseStats'
           title: Variants
           type: array
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings
+            for semantics.
+          title: Warnings
       required:
       - credible_intervals
       - insight
@@ -108751,6 +109643,20 @@ components:
             type: string
           title: Types
           type: array
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - columns
       - hogql
@@ -108889,6 +109795,16 @@ components:
           - type: 'null'
           default: null
           title: Variants
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings
+            for semantics.
+          title: Warnings
       title: QueryResponseAlternative20
       type: object
     QueryResponseAlternative21:
@@ -108921,6 +109837,16 @@ components:
             type: number
           title: Total Exposures
           type: object
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings
+            for semantics.
+          title: Warnings
       required:
       - date_range
       - timeseries
@@ -108997,6 +109923,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative22
@@ -109082,6 +110022,20 @@ components:
           - type: 'null'
           default: null
           title: Usedpreaggregatedtables
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative23
@@ -109186,6 +110140,20 @@ components:
           - type: 'null'
           default: null
           title: Usedpreaggregatedtables
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative24
@@ -109278,6 +110246,20 @@ components:
           - type: 'null'
           default: null
           title: Types
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative25
@@ -109384,6 +110366,20 @@ components:
           default: null
           description: Whether the response was served from a precomputed table.
           title: Usedpreaggregatedtables
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative26
@@ -109448,6 +110444,20 @@ components:
           - type: 'null'
           default: null
           title: Usedlazyprecompute
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative27
@@ -109516,6 +110526,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative28
@@ -109619,6 +110643,20 @@ components:
           - type: 'null'
           default: null
           title: Types
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - columns
       - hogql
@@ -109690,6 +110728,20 @@ components:
           - type: 'null'
           default: null
           title: Usedpreaggregatedtables
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative30
@@ -109753,6 +110805,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative31
@@ -109814,6 +110880,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative32
@@ -109878,6 +110958,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative33
@@ -109934,6 +111028,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative34
@@ -109995,6 +111103,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative35
@@ -110090,6 +111212,20 @@ components:
           - type: 'null'
           default: null
           title: Types
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative36
@@ -110151,6 +111287,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative37
@@ -110246,6 +111396,20 @@ components:
           - type: 'null'
           default: null
           title: Types
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative38
@@ -110334,6 +111498,20 @@ components:
             type: string
           title: Types
           type: array
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - columns
       - hogql
@@ -110417,6 +111595,20 @@ components:
             type: string
           title: Types
           type: array
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - columns
       - hogql
@@ -110506,6 +111698,20 @@ components:
           - type: 'null'
           default: null
           title: Types
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - columns
       - hogql
@@ -110590,6 +111796,20 @@ components:
             type: string
           title: Types
           type: array
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - columns
       - hogql
@@ -110809,6 +112029,20 @@ components:
           - type: 'null'
           default: null
           title: Usedpreaggregatedtables
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative43
@@ -110913,6 +112147,20 @@ components:
           - type: 'null'
           default: null
           title: Usedpreaggregatedtables
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative44
@@ -111005,6 +112253,20 @@ components:
           - type: 'null'
           default: null
           title: Types
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative45
@@ -111111,6 +112373,20 @@ components:
           default: null
           description: Whether the response was served from a precomputed table.
           title: Usedpreaggregatedtables
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative46
@@ -111175,6 +112451,20 @@ components:
           - type: 'null'
           default: null
           title: Usedlazyprecompute
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative47
@@ -111260,6 +112550,20 @@ components:
           - type: 'null'
           default: null
           title: Types
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative48
@@ -111341,6 +112645,20 @@ components:
             type: string
           title: Types
           type: array
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - columns
       - hogql
@@ -111407,6 +112725,16 @@ components:
           - type: 'null'
           default: null
           title: Status
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings
+            for semantics.
+          title: Warnings
       title: QueryResponseAlternative5
       type: object
     QueryResponseAlternative50:
@@ -111468,6 +112796,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative50
@@ -111529,6 +112871,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative51
@@ -111593,6 +112949,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative52
@@ -111649,6 +113019,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative53
@@ -111710,6 +113094,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative54
@@ -111795,6 +113193,20 @@ components:
           - type: 'null'
           default: null
           title: Types
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative55
@@ -111890,6 +113302,20 @@ components:
           - type: 'null'
           default: null
           title: Types
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative57
@@ -111951,6 +113377,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative58
@@ -112046,6 +113486,20 @@ components:
           - type: 'null'
           default: null
           title: Types
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative59
@@ -112108,6 +113562,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative6
@@ -112190,6 +113658,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative60
@@ -112246,6 +113728,16 @@ components:
             $ref: '#/components/schemas/ExperimentVariantFunnelsBaseStats'
           title: Variants
           type: array
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings
+            for semantics.
+          title: Warnings
       required:
       - credible_intervals
       - expected_loss
@@ -112311,6 +113803,16 @@ components:
             $ref: '#/components/schemas/ExperimentVariantTrendsBaseStats'
           title: Variants
           type: array
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings
+            for semantics.
+          title: Warnings
       required:
       - credible_intervals
       - insight
@@ -112399,6 +113901,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative64
@@ -112486,6 +114002,20 @@ components:
           - type: 'null'
           default: null
           title: Types
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative65
@@ -112558,6 +114088,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative66
@@ -112611,6 +114155,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative67
@@ -112667,6 +114225,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative68
@@ -112723,6 +114295,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative69
@@ -112809,6 +114395,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative70
@@ -112894,6 +114494,20 @@ components:
           - type: 'null'
           default: null
           title: Types
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative72
@@ -112987,6 +114601,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - has_next
       - results
@@ -113074,6 +114702,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative75
@@ -113133,6 +114775,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - count
       - results
@@ -113190,6 +114846,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative77
@@ -113268,6 +114938,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative78
@@ -113334,6 +115018,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative79
@@ -113529,6 +115227,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative80
@@ -113541,6 +115253,16 @@ components:
             type: string
           title: Questions
           type: array
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings
+            for semantics.
+          title: Warnings
       required:
       - questions
       title: QueryResponseAlternative81
@@ -113615,6 +115337,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative82
@@ -113689,6 +115425,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative83
@@ -113747,6 +115497,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative84
@@ -113829,6 +115593,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative85
@@ -113874,6 +115652,16 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings
+            for semantics.
+          title: Warnings
       title: QueryResponseAlternative87
       type: object
     QueryResponseAlternative88:
@@ -113928,6 +115716,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative88
@@ -113984,6 +115786,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative89
@@ -114097,6 +115913,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative90
@@ -114184,6 +116014,20 @@ components:
           - type: 'null'
           default: null
           title: Types
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative91
@@ -114241,6 +116085,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative92
@@ -114297,6 +116155,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: QueryResponseAlternative93
@@ -115197,6 +117069,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - has_next
       - results
@@ -115614,6 +117500,20 @@ components:
             type: string
           title: Types
           type: array
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - columns
       - hogql
@@ -115701,6 +117601,20 @@ components:
           - type: 'null'
           default: null
           title: Types
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - columns
       - hogql
@@ -115786,6 +117700,20 @@ components:
             type: string
           title: Types
           type: array
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - columns
       - hogql
@@ -115852,6 +117780,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: Response11
@@ -115913,6 +117855,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: Response12
@@ -115977,6 +117933,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: Response13
@@ -116033,6 +118003,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: Response14
@@ -116094,6 +118078,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: Response15
@@ -116179,6 +118177,20 @@ components:
           - type: 'null'
           default: null
           title: Types
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: Response16
@@ -116274,6 +118286,20 @@ components:
           - type: 'null'
           default: null
           title: Types
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: Response18
@@ -116335,6 +118361,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: Response19
@@ -116415,6 +118455,20 @@ components:
             type: string
           title: Types
           type: array
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - columns
       - hogql
@@ -116515,6 +118569,20 @@ components:
           - type: 'null'
           default: null
           title: Types
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: Response20
@@ -116597,6 +118665,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: Response21
@@ -116679,6 +118761,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: Response22
@@ -116735,6 +118831,16 @@ components:
             $ref: '#/components/schemas/ExperimentVariantFunnelsBaseStats'
           title: Variants
           type: array
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings
+            for semantics.
+          title: Warnings
       required:
       - credible_intervals
       - expected_loss
@@ -116800,6 +118906,16 @@ components:
             $ref: '#/components/schemas/ExperimentVariantTrendsBaseStats'
           title: Variants
           type: array
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings
+            for semantics.
+          title: Warnings
       required:
       - credible_intervals
       - insight
@@ -116888,6 +119004,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: Response25
@@ -116975,6 +119105,20 @@ components:
           - type: 'null'
           default: null
           title: Types
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: Response26
@@ -117189,6 +119333,20 @@ components:
           - type: 'null'
           default: null
           title: Usedpreaggregatedtables
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: Response4
@@ -117293,6 +119451,20 @@ components:
           - type: 'null'
           default: null
           title: Usedpreaggregatedtables
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: Response5
@@ -117385,6 +119557,20 @@ components:
           - type: 'null'
           default: null
           title: Types
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: Response6
@@ -117491,6 +119677,20 @@ components:
           default: null
           description: Whether the response was served from a precomputed table.
           title: Usedpreaggregatedtables
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: Response7
@@ -117555,6 +119755,20 @@ components:
           - type: 'null'
           default: null
           title: Usedlazyprecompute
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: Response8
@@ -117640,6 +119854,20 @@ components:
           - type: 'null'
           default: null
           title: Types
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: Response9
@@ -118144,6 +120372,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: RetentionQueryResponse
@@ -118420,6 +120662,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: RevenueAnalyticsGrossRevenueQueryResponse
@@ -118538,6 +120794,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: RevenueAnalyticsMRRQueryResponse
@@ -118674,6 +120944,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: RevenueAnalyticsMetricsQueryResponse
@@ -118795,6 +121079,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: RevenueAnalyticsOverviewQueryResponse
@@ -118948,6 +121246,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: RevenueAnalyticsTopCustomersQueryResponse
@@ -119094,6 +121406,20 @@ components:
           - type: 'null'
           default: null
           title: Types
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: RevenueExampleDataWarehouseTablesQueryResponse
@@ -119224,6 +121550,20 @@ components:
           - type: 'null'
           default: null
           title: Types
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: RevenueExampleEventsQueryResponse
@@ -120995,6 +123335,20 @@ components:
           - type: 'null'
           default: null
           title: Types
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: SessionAttributionExplorerQueryResponse
@@ -121962,6 +124316,20 @@ components:
             type: string
           title: Types
           type: array
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - columns
       - hogql
@@ -122083,6 +124451,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: SessionsTimelineQueryResponse
@@ -123285,6 +125667,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: StickinessQueryResponse
@@ -123398,6 +125794,14 @@ components:
       - percent
       title: Style
       type: string
+    StyleEnum:
+      enum:
+      - primary
+      - secondary
+      type: string
+      description: |-
+        * `primary` - Primary
+        * `secondary` - Secondary
     Subscription:
       type: object
       description: Standard Subscription serializer.
@@ -123766,6 +126170,16 @@ components:
             type: string
           title: Questions
           type: array
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings
+            for semantics.
+          title: Warnings
       required:
       - questions
       title: SuggestedQuestionsQueryResponse
@@ -127431,6 +129845,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: TeamTaxonomyQueryResponse
@@ -127627,6 +130055,43 @@ components:
       required:
       - interview_url
       - latest_test_interview
+    Text:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_by:
+          allOf:
+          - $ref: '#/components/schemas/UserBasic'
+          readOnly: true
+        last_modified_by:
+          allOf:
+          - $ref: '#/components/schemas/UserBasic'
+          readOnly: true
+        body:
+          type:
+          - string
+          - 'null'
+          maxLength: 4000
+        dashboard_tiles:
+          type: array
+          items:
+            $ref: '#/components/schemas/DashboardTileBasic'
+          readOnly: true
+        last_modified_at:
+          type: string
+          format: date-time
+          readOnly: true
+        team:
+          type: integer
+      required:
+      - created_by
+      - dashboard_tiles
+      - id
+      - last_modified_at
+      - last_modified_by
+      - team
     TextMatching:
       enum:
       - contains
@@ -128117,6 +130582,34 @@ components:
       - id
       - name
       - short_id
+    TileLayoutBox:
+      type: object
+      properties:
+        x:
+          type: integer
+          description: Column position in the dashboard grid (0-indexed).
+        y:
+          type: integer
+          description: Row position in the dashboard grid (0-indexed).
+        w:
+          type: integer
+          description: Width in grid columns. The desktop grid is 12 columns wide.
+        h:
+          type: integer
+          description: Height in grid rows.
+    TileLayouts:
+      type: object
+      properties:
+        sm:
+          allOf:
+          - $ref: '#/components/schemas/TileLayoutBox'
+          description: Layout for the standard (desktop) breakpoint. The grid is 12
+            columns wide.
+        xs:
+          allOf:
+          - $ref: '#/components/schemas/TileLayoutBox'
+          description: Layout for the small (mobile) breakpoint. The grid is 1 column
+            wide.
     TimeWindowMode:
       enum:
       - strict_calendar_dates
@@ -129567,6 +132060,16 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings
+            for semantics.
+          title: Warnings
       title: TraceNeighborsQueryResponse
       type: object
     TraceQuery:
@@ -129719,6 +132222,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: TraceQueryResponse
@@ -130052,6 +132569,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: TraceSpansAggregationQueryResponse
@@ -130232,6 +132763,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: TraceSpansQueryResponse
@@ -130370,6 +132915,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: TraceSpansTreeQueryResponse
@@ -130576,6 +133135,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: TracesQueryResponse
@@ -131234,6 +133807,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: TrendsQueryResponse
@@ -131267,6 +133854,32 @@ components:
         * `redeploy` - Redeploy
         * `rollback` - Rollback
         * `seed` - Seed
+    UpdateTextTileRequest:
+      type: object
+      properties:
+        tile_id:
+          type: integer
+          description: ID of the dashboard tile to update. Use dashboard-get to look
+            up tile IDs.
+        body:
+          type: string
+          description: New markdown body for the text tile. Omit to leave the body
+            unchanged. Max 4000 characters.
+          maxLength: 4000
+          minLength: 1
+        layouts:
+          allOf:
+          - $ref: '#/components/schemas/TileLayouts'
+          description: New grid layout per breakpoint. Omit to leave the layout unchanged.
+        color:
+          type:
+          - string
+          - 'null'
+          description: New accent color name, empty string or null to clear. Omit
+            to leave unchanged.
+          maxLength: 400
+      required:
+      - tile_id
     UploadTarget:
       type: object
       properties:
@@ -131526,6 +134139,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: UsageMetricsQueryResponse
@@ -132353,6 +134980,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: VectorSearchQueryResponse
@@ -132887,6 +135528,20 @@ components:
           - type: 'null'
           default: null
           title: Types
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: WebExternalClicksTableQueryResponse
@@ -133138,6 +135793,20 @@ components:
           default: null
           description: Whether the response was served from a precomputed table.
           title: Usedpreaggregatedtables
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: WebGoalsQueryResponse
@@ -133375,6 +136044,20 @@ components:
           - type: 'null'
           default: null
           title: Usedpreaggregatedtables
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: WebNotableChangesQueryResponse
@@ -133642,6 +136325,20 @@ components:
           - type: 'null'
           default: null
           title: Usedpreaggregatedtables
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: WebOverviewQueryResponse
@@ -133858,6 +136555,20 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: WebPageURLSearchQueryResponse
@@ -134169,6 +136880,20 @@ components:
           - type: 'null'
           default: null
           title: Usedpreaggregatedtables
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: WebStatsTableQueryResponse
@@ -134468,6 +137193,20 @@ components:
           - type: 'null'
           default: null
           title: Usedpreaggregatedtables
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: WebTrendsQueryResponse
@@ -134694,6 +137433,20 @@ components:
           - type: 'null'
           default: null
           title: Usedlazyprecompute
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries.
+          title: Warnings
       required:
       - results
       title: WebVitalsPathBreakdownQueryResponse
@@ -136546,7 +139299,6 @@ components:
         of the organization, make a call to /api/organizations/.
 tags:
 - name: AI observability
-- name: LLM Analytics
 - name: accounts
 - name: actions
 - name: activity_log
@@ -136698,7 +139450,6 @@ x-tagGroups:
 - name: All endpoints
   tags:
   - AI observability
-  - LLM Analytics
   - accounts
   - actions
   - activity_log

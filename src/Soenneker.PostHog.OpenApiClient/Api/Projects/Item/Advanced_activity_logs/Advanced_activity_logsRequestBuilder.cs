@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Advanced_activity_lo
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Advanced_activity_logsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/advanced_activity_logs{?activities*,clients*,detail_filters*,end_date*,hogql_filter*,is_system*,item_ids*,page*,page_size*,scopes*,search_text*,start_date*,team_ids*,users*,was_impersonated*}", pathParameters)
+        public Advanced_activity_logsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/advanced_activity_logs{?activities*,clients*,detail_filters*,end_date*,hogql_filter*,ip_addresses*,is_system*,item_ids*,page*,page_size*,scopes*,search_text*,start_date*,team_ids*,users*,was_impersonated*}", pathParameters)
         {
         }
         /// <summary>
@@ -42,7 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Advanced_activity_lo
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Advanced_activity_logsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/advanced_activity_logs{?activities*,clients*,detail_filters*,end_date*,hogql_filter*,is_system*,item_ids*,page*,page_size*,scopes*,search_text*,start_date*,team_ids*,users*,was_impersonated*}", rawUrl)
+        public Advanced_activity_logsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/advanced_activity_logs{?activities*,clients*,detail_filters*,end_date*,hogql_filter*,ip_addresses*,is_system*,item_ids*,page*,page_size*,scopes*,search_text*,start_date*,team_ids*,users*,was_impersonated*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedActivityLogList"/></returns>
@@ -132,6 +132,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Advanced_activity_lo
 #else
             [QueryParameter("hogql_filter")]
             public string HogqlFilter { get; set; }
+#endif
+            /// <summary>Filter by client IP addresses. Accepts exact IPv4/IPv6 values or wildcard patterns using `*` (e.g. `203.0.113.*`). Multiple entries are OR-combined.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("ip_addresses")]
+            public string[]? IpAddresses { get; set; }
+#nullable restore
+#else
+            [QueryParameter("ip_addresses")]
+            public string[] IpAddresses { get; set; }
 #endif
             /// <summary>When set, filters rows authored by the system (no user).</summary>
             [QueryParameter("is_system")]

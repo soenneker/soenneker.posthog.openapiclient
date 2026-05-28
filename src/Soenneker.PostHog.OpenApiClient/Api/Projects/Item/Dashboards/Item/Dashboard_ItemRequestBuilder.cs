@@ -6,12 +6,14 @@ using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Analyze_refresh_result;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Collaborators;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Copy_tile;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Create_text_tile;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Move_tile;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Reorder_tiles;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Run_insights;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Sharing;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Snapshot;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Stream_tiles;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Update_text_tile;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -40,6 +42,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Copy_tile.Copy_tileRequestBuilder Copy_tile
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Copy_tile.Copy_tileRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The create_text_tile property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Create_text_tile.Create_text_tileRequestBuilder Create_text_tile
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Create_text_tile.Create_text_tileRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The move_tile property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Move_tile.Move_tileRequestBuilder Move_tile
@@ -70,6 +77,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Stream_tiles.Stream_tilesRequestBuilder Stream_tiles
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Stream_tiles.Stream_tilesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The update_text_tile property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Update_text_tile.Update_text_tileRequestBuilder Update_text_tile
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Update_text_tile.Update_text_tileRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Dashboard_ItemRequestBuilder"/> and sets the default values.

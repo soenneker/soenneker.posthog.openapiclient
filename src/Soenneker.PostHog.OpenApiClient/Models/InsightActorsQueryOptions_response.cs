@@ -70,6 +70,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptions_response_status Status { get; set; }
 #endif
+        /// <summary>Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings for semantics.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptions_response_warnings? Warnings { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptions_response_warnings Warnings { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptions_response"/> and sets the default values.
         /// </summary>
@@ -102,6 +110,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "interval", n => { Interval = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptions_response_interval>(global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptions_response_interval.CreateFromDiscriminatorValue); } },
                 { "series", n => { Series = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptions_response_series>(global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptions_response_series.CreateFromDiscriminatorValue); } },
                 { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptions_response_status>(global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptions_response_status.CreateFromDiscriminatorValue); } },
+                { "warnings", n => { Warnings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptions_response_warnings>(global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptions_response_warnings.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -118,6 +127,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptions_response_interval>("interval", Interval);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptions_response_series>("series", Series);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptions_response_status>("status", Status);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptions_response_warnings>("warnings", Warnings);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
