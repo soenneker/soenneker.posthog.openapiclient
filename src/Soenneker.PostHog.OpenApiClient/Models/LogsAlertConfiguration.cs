@@ -90,7 +90,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateInterval> StateTimeline { get; private set; }
 #endif
-        /// <summary>Number of matching log entries that constitutes a threshold breach within the evaluation window. Defaults to 100.</summary>
+        /// <summary>Number of matching log entries that constitutes a threshold breach within the evaluation window. Defaults to 100. Use 0 with the &apos;above&apos; operator to fire on any matching log.</summary>
         public int? ThresholdCount { get; set; }
         /// <summary>* `above` - Above* `below` - Below</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ThresholdOperatorEnum? ThresholdOperator { get; set; }

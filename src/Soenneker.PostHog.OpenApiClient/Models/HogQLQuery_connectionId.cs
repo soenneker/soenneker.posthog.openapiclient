@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Optional direct external data source id for running against a specific source
+    /// Optional id of a direct external data source (access_method=&apos;direct&apos;) to run against instead of ClickHouse. Warehouse import sources are not valid here.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class HogQLQuery_connectionId : IAdditionalDataHolder, IParsable

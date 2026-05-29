@@ -12,7 +12,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class HogQLQuery : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Optional direct external data source id for running against a specific source</summary>
+        /// <summary>Optional id of a direct external data source (access_method=&apos;direct&apos;) to run against instead of ClickHouse. Warehouse import sources are not valid here.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.HogQLQuery_connectionId? ConnectionId { get; set; }

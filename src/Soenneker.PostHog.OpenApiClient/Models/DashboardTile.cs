@@ -68,6 +68,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The transparent_background property</summary>
         public bool? TransparentBackground { get; set; }
+        /// <summary>The widget property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardTile_widget? Widget { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardTile_widget Widget { get; private set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardTile"/> and sets the default values.
         /// </summary>
@@ -102,6 +110,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "show_description", n => { ShowDescription = n.GetBoolValue(); } },
                 { "text", n => { Text = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Text>(global::Soenneker.PostHog.OpenApiClient.Models.Text.CreateFromDiscriminatorValue); } },
                 { "transparent_background", n => { TransparentBackground = n.GetBoolValue(); } },
+                { "widget", n => { Widget = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardTile_widget>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardTile_widget.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>

@@ -14,6 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>* `preserve` - preserve* `two_column` - two_column* `full_width` - full_width</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.LayoutEnum? Layout { get; set; }
         /// <summary>Array of tile IDs in the desired display order (top to bottom, left to right).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -47,6 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "layout", n => { Layout = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LayoutEnum>(); } },
                 { "tile_order", n => { TileOrder = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
             };
         }
@@ -57,6 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LayoutEnum>("layout", Layout);
             writer.WriteCollectionOfPrimitiveValues<int?>("tile_order", TileOrder);
             writer.WriteAdditionalData(AdditionalData);
         }

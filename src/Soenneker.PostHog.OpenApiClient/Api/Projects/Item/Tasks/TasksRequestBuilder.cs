@@ -6,6 +6,7 @@ using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Repositories;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Repository_readiness;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Slack_thread_context;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Summaries;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -30,6 +31,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Repository_readiness.Repository_readinessRequestBuilder Repository_readiness
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Repository_readiness.Repository_readinessRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The slack_thread_context property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Slack_thread_context.Slack_thread_contextRequestBuilder Slack_thread_context
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Slack_thread_context.Slack_thread_contextRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The summaries property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Summaries.SummariesRequestBuilder Summaries

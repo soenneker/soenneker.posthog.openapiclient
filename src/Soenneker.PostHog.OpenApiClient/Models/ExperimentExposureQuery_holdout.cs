@@ -47,13 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupType> Filters { get; set; }
 #endif
         /// <summary>The id property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_holdout_id? Id { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_holdout_id Id { get; set; }
-#endif
+        public int? Id { get; set; }
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -99,7 +93,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_holdout_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_holdout_created_by.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_holdout_description>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_holdout_description.CreateFromDiscriminatorValue); } },
                 { "filters", n => { Filters = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupType>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupType.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "id", n => { Id = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_holdout_id>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_holdout_id.CreateFromDiscriminatorValue); } },
+                { "id", n => { Id = n.GetIntValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_holdout_updated_at>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_holdout_updated_at.CreateFromDiscriminatorValue); } },
             };
@@ -115,7 +109,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_holdout_created_by>("created_by", CreatedBy);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_holdout_description>("description", Description);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupType>("filters", Filters);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_holdout_id>("id", Id);
+            writer.WriteIntValue("id", Id);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQuery_holdout_updated_at>("updated_at", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);

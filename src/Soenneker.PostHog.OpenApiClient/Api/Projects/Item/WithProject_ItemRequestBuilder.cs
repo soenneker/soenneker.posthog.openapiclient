@@ -52,6 +52,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.JsSnippet;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Live_debugger_breakpoints;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Object_media_previews;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persisted_folder;
@@ -347,6 +348,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.LogsRequestBuilder Logs
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.LogsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The metrics property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.MetricsRequestBuilder Metrics
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.MetricsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The notebooks property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.NotebooksRequestBuilder Notebooks

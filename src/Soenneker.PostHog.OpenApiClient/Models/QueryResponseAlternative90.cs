@@ -55,10 +55,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The results property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageOverviewItem>? Results { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.UsageMetric>? Results { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageOverviewItem> Results { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.UsageMetric> Results { get; set; }
 #endif
         /// <summary>Measured timings for different parts of the query generation process</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -99,7 +99,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative90_modifiers>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative90_modifiers.CreateFromDiscriminatorValue); } },
                 { "query_status", n => { QueryStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative90_query_status>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative90_query_status.CreateFromDiscriminatorValue); } },
                 { "resolved_date_range", n => { ResolvedDateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative90_resolved_date_range>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative90_resolved_date_range.CreateFromDiscriminatorValue); } },
-                { "results", n => { Results = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageOverviewItem>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageOverviewItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "results", n => { Results = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.UsageMetric>(global::Soenneker.PostHog.OpenApiClient.Models.UsageMetric.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "timings", n => { Timings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative90_timings>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative90_timings.CreateFromDiscriminatorValue); } },
                 { "warnings", n => { Warnings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative90_warnings>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative90_warnings.CreateFromDiscriminatorValue); } },
             };
@@ -116,7 +116,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative90_modifiers>("modifiers", Modifiers);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative90_query_status>("query_status", QueryStatus);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative90_resolved_date_range>("resolved_date_range", ResolvedDateRange);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageOverviewItem>("results", Results);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.UsageMetric>("results", Results);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative90_timings>("timings", Timings);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative90_warnings>("warnings", Warnings);
         }

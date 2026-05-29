@@ -43,14 +43,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagCreateRequestSchema_filters_payloads Payloads { get; set; }
 #endif
-        /// <summary>Additional super condition groups used by experiments.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagCreateRequestSchema_filters_super_groups>? SuperGroups { get; set; }
-#nullable restore
-#else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagCreateRequestSchema_filters_super_groups> SuperGroups { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagCreateRequestSchema_filters"/> and sets the default values.
         /// </summary>
@@ -81,7 +73,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "groups", n => { Groups = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionGroupSchema>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionGroupSchema.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "multivariate", n => { Multivariate = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagCreateRequestSchema_filters_multivariate>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagCreateRequestSchema_filters_multivariate.CreateFromDiscriminatorValue); } },
                 { "payloads", n => { Payloads = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagCreateRequestSchema_filters_payloads>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagCreateRequestSchema_filters_payloads.CreateFromDiscriminatorValue); } },
-                { "super_groups", n => { SuperGroups = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagCreateRequestSchema_filters_super_groups>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagCreateRequestSchema_filters_super_groups.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -96,7 +87,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionGroupSchema>("groups", Groups);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagCreateRequestSchema_filters_multivariate>("multivariate", Multivariate);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagCreateRequestSchema_filters_payloads>("payloads", Payloads);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagCreateRequestSchema_filters_super_groups>("super_groups", SuperGroups);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -15,6 +15,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedExperiment_parameters_excluded_variants? ExcludedVariants { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedExperiment_parameters_excluded_variants ExcludedVariants { get; set; }
+#endif
         /// <summary>Experiment variants. If specified, must include a variant with key &apos;control&apos; (lowercase). Defaults to a 50/50 control/test split when omitted. Minimum 2, maximum 20.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -64,6 +72,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "excluded_variants", n => { ExcludedVariants = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExperiment_parameters_excluded_variants>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExperiment_parameters_excluded_variants.CreateFromDiscriminatorValue); } },
                 { "feature_flag_variants", n => { FeatureFlagVariants = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExperiment_parameters_feature_flag_variants>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExperiment_parameters_feature_flag_variants.CreateFromDiscriminatorValue); } },
                 { "minimum_detectable_effect", n => { MinimumDetectableEffect = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExperiment_parameters_minimum_detectable_effect>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExperiment_parameters_minimum_detectable_effect.CreateFromDiscriminatorValue); } },
                 { "rollout_percentage", n => { RolloutPercentage = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExperiment_parameters_rollout_percentage>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExperiment_parameters_rollout_percentage.CreateFromDiscriminatorValue); } },
@@ -76,6 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExperiment_parameters_excluded_variants>("excluded_variants", ExcludedVariants);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExperiment_parameters_feature_flag_variants>("feature_flag_variants", FeatureFlagVariants);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExperiment_parameters_minimum_detectable_effect>("minimum_detectable_effect", MinimumDetectableEffect);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExperiment_parameters_rollout_percentage>("rollout_percentage", RolloutPercentage);

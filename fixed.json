@@ -15431,6 +15431,39 @@
         ]
       }
     },
+    "/api/environments/{project_id}/vision/quota": {
+      "get": {
+        "tags": [
+          "replay_vision",
+          "vision"
+        ],
+        "operationId": "environment-vision-quota-retrieve",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ProjectIdPath"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VisionQuota"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "PersonalAPIKeyAuth": [
+              "replay_scanner:read"
+            ]
+          }
+        ]
+      }
+    },
     "/api/environments/{project_id}/vision/scanners": {
       "get": {
         "tags": [
@@ -48751,6 +48784,138 @@
         ]
       }
     },
+    "/api/projects/{project_id}/metrics/has_metrics": {
+      "get": {
+        "tags": [
+          "metrics"
+        ],
+        "operationId": "metrics-has-metrics-retrieve",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ProjectIdPath"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "PersonalAPIKeyAuth": [
+              "metrics:read"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/projects/{project_id}/metrics/query": {
+      "post": {
+        "tags": [
+          "metrics"
+        ],
+        "operationId": "metrics-query-create",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ProjectIdPath"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MetricQueryRequest"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/MetricQueryRequest"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/MetricQueryRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MetricQueryResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "PersonalAPIKeyAuth": [
+              "metrics:read"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/projects/{project_id}/metrics/values": {
+      "get": {
+        "tags": [
+          "metrics"
+        ],
+        "description": "Distinct metric names for the team. Backs the picker UI.",
+        "operationId": "metrics-values-retrieve",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Max number of names to return. Defaults to 100, capped at 1000.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/ProjectIdPath"
+          },
+          {
+            "name": "value",
+            "in": "query",
+            "description": "Substring filter (case-insensitive) applied to metric names.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MetricNamesResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "PersonalAPIKeyAuth": [
+              "metrics:read"
+            ]
+          }
+        ]
+      }
+    },
     "/api/projects/{project_id}/notebooks": {
       "get": {
         "tags": [
@@ -60925,6 +61090,56 @@
         ]
       }
     },
+    "/api/projects/{project_id}/tasks/slack_thread_context": {
+      "get": {
+        "tags": [
+          "tasks"
+        ],
+        "summary": "Resolve a Slack thread to its task, runs, and Temporal workflows",
+        "description": "PostHog-internal debug tool. Resolves a Slack permalink to the linked task, its runs, the task-processing and mention-dispatch Temporal workflow ids/URLs, and presigned log URLs.",
+        "operationId": "tasks-slack-thread-context-retrieve",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ProjectIdPath"
+          },
+          {
+            "name": "url",
+            "in": "query",
+            "description": "Full Slack permalink to any message in the thread (e.g. https://posthog.slack.com/archives/C…/p1779956938619299). Replies inside the thread are accepted too — the `thread_ts` query param (when present) takes precedence over the in-path message ts.",
+            "required": true,
+            "schema": {
+              "minLength": 1,
+              "type": "string",
+              "format": "uri"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Task, runs, and Temporal workflow handles for the Slack thread.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SlackThreadContextResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "PersonalAPIKeyAuth": [
+              "task:read"
+            ]
+          },
+          {
+            "PersonalAPIKeyAuth": [
+              "task:read"
+            ]
+          }
+        ]
+      }
+    },
     "/api/projects/{project_id}/tasks/summaries": {
       "post": {
         "tags": [
@@ -67308,6 +67523,335 @@
           }
         }
       },
+      "AccountsQuery": {
+        "title": "AccountsQuery",
+        "type": "object",
+        "properties": {
+          "accountExecutive": {
+            "title": "Accountexecutive",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Accountexecutive"
+              },
+              {
+                "type": "object"
+              }
+            ]
+          },
+          "accountOwner": {
+            "title": "Accountowner",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Accountowner"
+              },
+              {
+                "type": "object"
+              }
+            ]
+          },
+          "allRolesUnassigned": {
+            "title": "Allrolesunassigned",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Allrolesunassigned"
+              },
+              {
+                "type": "object"
+              }
+            ]
+          },
+          "csm": {
+            "title": "Csm",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Csm"
+              },
+              {
+                "type": "object"
+              }
+            ]
+          },
+          "kind": {
+            "title": "Kind",
+            "enum": [
+              "AccountsQuery"
+            ],
+            "type": "string",
+            "default": "AccountsQuery"
+          },
+          "limit": {
+            "title": "Limit",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Limit"
+              },
+              {
+                "type": "object"
+              }
+            ]
+          },
+          "modifiers": {
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/HogQLQueryModifiers"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Modifiers used when performing the query"
+          },
+          "offset": {
+            "title": "Offset",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Offset"
+              },
+              {
+                "type": "object"
+              }
+            ]
+          },
+          "orderBy": {
+            "title": "Orderby",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Orderby"
+              },
+              {
+                "type": "object"
+              }
+            ]
+          },
+          "response": {
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/AccountsQueryResponse"
+              },
+              {
+                "type": "object"
+              }
+            ]
+          },
+          "search": {
+            "title": "Search",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Search"
+              },
+              {
+                "type": "object"
+              }
+            ]
+          },
+          "select": {
+            "title": "Select",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Select"
+              },
+              {
+                "type": "object"
+              }
+            ]
+          },
+          "tagNames": {
+            "title": "Tagnames",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Tagnames"
+              },
+              {
+                "type": "object"
+              }
+            ]
+          },
+          "tags": {
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/QueryLogTags"
+              },
+              {
+                "type": "object"
+              }
+            ]
+          },
+          "version": {
+            "title": "Version",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Version"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "version of the node, used for schema migrations"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AccountsQueryResponse": {
+        "title": "AccountsQueryResponse",
+        "required": [
+          "columns",
+          "hogql",
+          "limit",
+          "offset",
+          "results",
+          "types"
+        ],
+        "type": "object",
+        "properties": {
+          "columns": {
+            "title": "Columns",
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "error": {
+            "title": "Error",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Error"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Query error. Returned only if 'explain' or `modifiers.debug` is true. Throws an error otherwise."
+          },
+          "hasMore": {
+            "title": "Hasmore",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Hasmore"
+              },
+              {
+                "type": "object"
+              }
+            ]
+          },
+          "hogql": {
+            "title": "Hogql",
+            "type": "string",
+            "description": "Generated HogQL query."
+          },
+          "kind": {
+            "title": "Kind",
+            "enum": [
+              "AccountsQuery"
+            ],
+            "type": "string",
+            "default": "AccountsQuery"
+          },
+          "limit": {
+            "title": "Limit",
+            "type": "integer"
+          },
+          "modifiers": {
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/HogQLQueryModifiers"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Modifiers used when performing the query"
+          },
+          "offset": {
+            "title": "Offset",
+            "type": "integer"
+          },
+          "query_status": {
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/QueryStatus"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Query status indicates whether next to the provided data, a query is still running."
+          },
+          "resolved_date_range": {
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ResolvedDateRangeResponse"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "The date range used for the query"
+          },
+          "results": {
+            "title": "Results",
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          },
+          "timings": {
+            "title": "Timings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Timings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Measured timings for different parts of the query generation process"
+          },
+          "types": {
+            "title": "Types",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
+          }
+        },
+        "additionalProperties": false
+      },
       "Action": {
         "required": [
           "bytecode_error",
@@ -68791,6 +69335,17 @@
         ],
         "type": "string",
         "additionalProperties": false
+      },
+      "AggregationEnum": {
+        "enum": [
+          "sum",
+          "avg",
+          "count",
+          "p95"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "* `sum` - sum\n* `avg` - avg\n* `count` - count\n* `p95` - p95"
       },
       "AggregationPropertyType": {
         "title": "AggregationPropertyType",
@@ -77953,7 +78508,8 @@
         "required": [
           "button_tile",
           "insight",
-          "text"
+          "text",
+          "widget"
         ],
         "type": "object",
         "properties": {
@@ -77984,6 +78540,49 @@
           },
           "transparent_background": {
             "type": "boolean"
+          },
+          "widget": {
+            "required": [
+              "id",
+              "team",
+              "widget_type"
+            ],
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "format": "uuid",
+                "readOnly": true
+              },
+              "widget_type": {
+                "maxLength": 64,
+                "type": "string"
+              },
+              "name": {
+                "maxLength": 400,
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "config": {
+                "type": "object"
+              },
+              "last_modified_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "created_by": {
+                "type": "integer"
+              },
+              "last_modified_by": {
+                "type": "integer"
+              },
+              "team": {
+                "type": "integer"
+              }
+            },
+            "readOnly": true
           }
         }
       },
@@ -78451,6 +79050,9 @@
                 "$ref": "#/components/schemas/Response26"
               },
               {
+                "$ref": "#/components/schemas/Response27"
+              },
+              {
                 "type": "object"
               }
             ]
@@ -78850,6 +79452,9 @@
               },
               {
                 "$ref": "#/components/schemas/EndpointsUsageTableQuery"
+              },
+              {
+                "$ref": "#/components/schemas/AccountsQuery"
               }
             ],
             "description": "Source of the events"
@@ -80179,6 +80784,19 @@
                 "type": "object"
               }
             ]
+          },
+          "search_aliases": {
+            "title": "Search Aliases",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Search_Aliases"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Alternate names the table is queryable by (e.g. the flat underscore form), in addition to `name`."
           },
           "source": {
             "type": "object",
@@ -94413,6 +95031,7 @@
         "title": "ExperimentHoldoutType",
         "required": [
           "filters",
+          "id",
           "name"
         ],
         "type": "object",
@@ -94461,15 +95080,7 @@
           },
           "id": {
             "title": "Id",
-            "type": "object",
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/Id"
-              },
-              {
-                "type": "object"
-              }
-            ]
+            "type": "integer"
           },
           "name": {
             "title": "Name",
@@ -94810,6 +95421,19 @@
         "title": "ExperimentParameters",
         "type": "object",
         "properties": {
+          "excluded_variants": {
+            "title": "Excluded Variants",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Excluded_Variants"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis."
+          },
           "feature_flag_variants": {
             "title": "Feature Flag Variants",
             "type": "object",
@@ -97894,13 +98518,6 @@
                 },
                 "description": "Optional payload values keyed by variant key."
               },
-              "super_groups": {
-                "type": "array",
-                "items": {
-                  "type": "object"
-                },
-                "description": "Additional super condition groups used by experiments."
-              },
               "feature_enrollment": {
                 "type": "boolean",
                 "description": "Whether this flag has early access feature enrollment enabled. When true, the flag is evaluated against the person property $feature_enrollment/{flag_key}."
@@ -98323,13 +98940,6 @@
               "type": "string"
             },
             "description": "Optional payload values keyed by variant key."
-          },
-          "super_groups": {
-            "type": "array",
-            "items": {
-              "type": "object"
-            },
-            "description": "Additional super condition groups used by experiments."
           },
           "feature_enrollment": {
             "type": "boolean",
@@ -104502,7 +105112,7 @@
                 "type": "object"
               }
             ],
-            "description": "Optional direct external data source id for running against a specific source"
+            "description": "Optional id of a direct external data source (access_method='direct') to run against instead of ClickHouse. Warehouse import sources are not valid here."
           },
           "endPosition": {
             "title": "Endposition",
@@ -104740,6 +105350,9 @@
                 "$ref": "#/components/schemas/UsageMetricsQuery"
               },
               {
+                "$ref": "#/components/schemas/AccountsQuery"
+              },
+              {
                 "$ref": "#/components/schemas/EndpointsUsageOverviewQuery"
               },
               {
@@ -104909,7 +105522,7 @@
                 "type": "object"
               }
             ],
-            "description": "Optional direct external data source id for running against a specific source"
+            "description": "Optional id of a direct external data source (access_method='direct') to run against instead of ClickHouse. Warehouse import sources are not valid here."
           },
           "debug": {
             "title": "Debug",
@@ -105153,6 +105766,9 @@
               },
               {
                 "$ref": "#/components/schemas/UsageMetricsQuery"
+              },
+              {
+                "$ref": "#/components/schemas/AccountsQuery"
               },
               {
                 "$ref": "#/components/schemas/EndpointsUsageOverviewQuery"
@@ -105418,7 +106034,7 @@
                 "type": "object"
               }
             ],
-            "description": "Optional direct external data source id for running against a specific source"
+            "description": "Optional id of a direct external data source (access_method='direct') to run against instead of ClickHouse. Warehouse import sources are not valid here."
           },
           "explain": {
             "title": "Explain",
@@ -105738,7 +106354,7 @@
                 "type": "object"
               }
             ],
-            "description": "HogQL parser backend; absent → `cpp_with_rust_py_shadow` (cpp is primary, rust-py runs as a sampled shadow). `*_shadow` modes return the primary result and sample-compare against the other parser, reporting divergences without failing the request. The `rust_py_*` modes drive the same hand-rolled Rust parser as `rust_*` but build `posthog.hogql.ast` dataclass instances directly via PyO3, skipping the JSON round-trip."
+            "description": "HogQL parser backend; absent → `rust_py_with_cpp_shadow` (rust-py is primary, cpp runs as a sampled shadow). `*_shadow` modes return the primary result and sample-compare against the other parser, reporting divergences without failing the request. The `rust_py_*` modes drive the same hand-rolled Rust parser as `rust_*` but build `posthog.hogql.ast` dataclass instances directly via PyO3, skipping the JSON round-trip."
           },
           "personsArgMaxVersion": {
             "type": "object",
@@ -110463,6 +111079,16 @@
           }
         }
       },
+      "LayoutEnum": {
+        "enum": [
+          "preserve",
+          "two_column",
+          "full_width"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "* `preserve` - preserve\n* `two_column` - two_column\n* `full_width` - full_width"
+      },
       "LegalDocumentCreator": {
         "required": [
           "email",
@@ -112013,9 +112639,9 @@
             "description": "\"Filter criteria — subset of LogsViewerFilters. Must contain at least one of: severityLevels (list of severity strings), serviceNames (list of service name strings), or filterGroup (property filter group object). May be empty on draft alerts (enabled=false).\""
           },
           "threshold_count": {
-            "minimum": 1,
+            "minimum": 0,
             "type": "integer",
-            "description": "Number of matching log entries that constitutes a threshold breach within the evaluation window. Defaults to 100.",
+            "description": "Number of matching log entries that constitutes a threshold breach within the evaluation window. Defaults to 100. Use 0 with the 'above' operator to fire on any matching log.",
             "default": 100
           },
           "threshold_operator": {
@@ -112456,7 +113082,7 @@
             "description": "Filter criteria — same format as LogsAlertConfiguration.filters."
           },
           "threshold_count": {
-            "minimum": 1,
+            "minimum": 0,
             "type": "integer",
             "description": "Threshold count to evaluate against."
           },
@@ -115097,6 +115723,48 @@
           },
           "value": {
             "type": "object"
+          }
+        }
+      },
+      "Nested": {
+        "required": [
+          "id",
+          "team",
+          "widget_type"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "widget_type": {
+            "maxLength": 64,
+            "type": "string"
+          },
+          "name": {
+            "maxLength": 400,
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "config": {
+            "type": "object"
+          },
+          "last_modified_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "created_by": {
+            "type": "integer"
+          },
+          "last_modified_by": {
+            "type": "integer"
+          },
+          "team": {
+            "type": "integer"
           }
         }
       },
@@ -126164,13 +126832,6 @@
                 },
                 "description": "Optional payload values keyed by variant key."
               },
-              "super_groups": {
-                "type": "array",
-                "items": {
-                  "type": "object"
-                },
-                "description": "Additional super condition groups used by experiments."
-              },
               "feature_enrollment": {
                 "type": "boolean",
                 "description": "Whether this flag has early access feature enrollment enabled. When true, the flag is evaluated against the person property $feature_enrollment/{flag_key}."
@@ -127814,9 +128475,9 @@
             "description": "\"Filter criteria — subset of LogsViewerFilters. Must contain at least one of: severityLevels (list of severity strings), serviceNames (list of service name strings), or filterGroup (property filter group object). May be empty on draft alerts (enabled=false).\""
           },
           "threshold_count": {
-            "minimum": 1,
+            "minimum": 0,
             "type": "integer",
-            "description": "Number of matching log entries that constitutes a threshold breach within the evaluation window. Defaults to 100.",
+            "description": "Number of matching log entries that constitutes a threshold breach within the evaluation window. Defaults to 100. Use 0 with the 'above' operator to fire on any matching log.",
             "default": 100
           },
           "threshold_operator": {
@@ -137422,6 +138083,9 @@
                 "$ref": "#/components/schemas/UsageMetricsQuery"
               },
               {
+                "$ref": "#/components/schemas/AccountsQuery"
+              },
+              {
                 "$ref": "#/components/schemas/EndpointsUsageOverviewQuery"
               },
               {
@@ -137443,6 +138107,7 @@
             "discriminator": {
               "propertyName": "kind",
               "mapping": {
+                "AccountsQuery": "#/components/schemas/AccountsQuery",
                 "ActionsNode": "#/components/schemas/ActionsNode",
                 "ActorsPropertyTaxonomyQuery": "#/components/schemas/ActorsPropertyTaxonomyQuery",
                 "ActorsQuery": "#/components/schemas/ActorsQuery",
@@ -137754,7 +138419,7 @@
             "$ref": "#/components/schemas/QueryResponseAlternative70"
           },
           {
-            "$ref": "#/components/schemas/QueryResponseAlternative72"
+            "$ref": "#/components/schemas/QueryResponseAlternative71"
           },
           {
             "$ref": "#/components/schemas/QueryResponseAlternative73"
@@ -137796,7 +138461,7 @@
             "$ref": "#/components/schemas/QueryResponseAlternative85"
           },
           {
-            "$ref": "#/components/schemas/QueryResponseAlternative87"
+            "$ref": "#/components/schemas/QueryResponseAlternative86"
           },
           {
             "$ref": "#/components/schemas/QueryResponseAlternative88"
@@ -137815,6 +138480,12 @@
           },
           {
             "$ref": "#/components/schemas/QueryResponseAlternative93"
+          },
+          {
+            "$ref": "#/components/schemas/QueryResponseAlternative94"
+          },
+          {
+            "$ref": "#/components/schemas/QueryResponseAlternative95"
           }
         ],
         "properties": {
@@ -137892,7 +138563,7 @@
             "QueryResponseAlternative68": "#/components/schemas/QueryResponseAlternative68",
             "QueryResponseAlternative69": "#/components/schemas/QueryResponseAlternative69",
             "QueryResponseAlternative70": "#/components/schemas/QueryResponseAlternative70",
-            "QueryResponseAlternative72": "#/components/schemas/QueryResponseAlternative72",
+            "QueryResponseAlternative71": "#/components/schemas/QueryResponseAlternative71",
             "QueryResponseAlternative73": "#/components/schemas/QueryResponseAlternative73",
             "QueryResponseAlternative74": "#/components/schemas/QueryResponseAlternative74",
             "QueryResponseAlternative75": "#/components/schemas/QueryResponseAlternative75",
@@ -137906,13 +138577,15 @@
             "QueryResponseAlternative83": "#/components/schemas/QueryResponseAlternative83",
             "QueryResponseAlternative84": "#/components/schemas/QueryResponseAlternative84",
             "QueryResponseAlternative85": "#/components/schemas/QueryResponseAlternative85",
-            "QueryResponseAlternative87": "#/components/schemas/QueryResponseAlternative87",
+            "QueryResponseAlternative86": "#/components/schemas/QueryResponseAlternative86",
             "QueryResponseAlternative88": "#/components/schemas/QueryResponseAlternative88",
             "QueryResponseAlternative89": "#/components/schemas/QueryResponseAlternative89",
             "QueryResponseAlternative90": "#/components/schemas/QueryResponseAlternative90",
             "QueryResponseAlternative91": "#/components/schemas/QueryResponseAlternative91",
             "QueryResponseAlternative92": "#/components/schemas/QueryResponseAlternative92",
-            "QueryResponseAlternative93": "#/components/schemas/QueryResponseAlternative93"
+            "QueryResponseAlternative93": "#/components/schemas/QueryResponseAlternative93",
+            "QueryResponseAlternative94": "#/components/schemas/QueryResponseAlternative94",
+            "QueryResponseAlternative95": "#/components/schemas/QueryResponseAlternative95"
           }
         }
       },
@@ -146096,6 +146769,153 @@
       "QueryResponseAlternative66": {
         "title": "QueryResponseAlternative66",
         "required": [
+          "columns",
+          "hogql",
+          "limit",
+          "offset",
+          "results",
+          "types"
+        ],
+        "type": "object",
+        "properties": {
+          "columns": {
+            "title": "Columns",
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "error": {
+            "title": "Error",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Error"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Query error. Returned only if 'explain' or `modifiers.debug` is true. Throws an error otherwise."
+          },
+          "hasMore": {
+            "title": "Hasmore",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Hasmore"
+              },
+              {
+                "type": "object"
+              }
+            ]
+          },
+          "hogql": {
+            "title": "Hogql",
+            "type": "string",
+            "description": "Generated HogQL query."
+          },
+          "kind": {
+            "title": "Kind",
+            "enum": [
+              "AccountsQuery"
+            ],
+            "type": "string",
+            "default": "AccountsQuery"
+          },
+          "limit": {
+            "title": "Limit",
+            "type": "integer"
+          },
+          "modifiers": {
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/HogQLQueryModifiers"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Modifiers used when performing the query"
+          },
+          "offset": {
+            "title": "Offset",
+            "type": "integer"
+          },
+          "query_status": {
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/QueryStatus"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Query status indicates whether next to the provided data, a query is still running."
+          },
+          "resolved_date_range": {
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ResolvedDateRangeResponse"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "The date range used for the query"
+          },
+          "results": {
+            "title": "Results",
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          },
+          "timings": {
+            "title": "Timings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Timings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Measured timings for different parts of the query generation process"
+          },
+          "types": {
+            "title": "Types",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
+          }
+        },
+        "additionalProperties": false
+      },
+      "QueryResponseAlternative67": {
+        "title": "QueryResponseAlternative67",
+        "required": [
           "results"
         ],
         "type": "object",
@@ -146223,108 +147043,6 @@
         },
         "additionalProperties": false
       },
-      "QueryResponseAlternative67": {
-        "title": "QueryResponseAlternative67",
-        "required": [
-          "results"
-        ],
-        "type": "object",
-        "properties": {
-          "error": {
-            "title": "Error",
-            "type": "object",
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/Error"
-              },
-              {
-                "type": "object"
-              }
-            ],
-            "description": "Query error. Returned only if 'explain' or `modifiers.debug` is true. Throws an error otherwise."
-          },
-          "hogql": {
-            "title": "Hogql",
-            "type": "object",
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/Hogql"
-              },
-              {
-                "type": "object"
-              }
-            ],
-            "description": "Generated HogQL query."
-          },
-          "modifiers": {
-            "type": "object",
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/HogQLQueryModifiers"
-              },
-              {
-                "type": "object"
-              }
-            ],
-            "description": "Modifiers used when performing the query"
-          },
-          "query_status": {
-            "type": "object",
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/QueryStatus"
-              },
-              {
-                "type": "object"
-              }
-            ],
-            "description": "Query status indicates whether next to the provided data, a query is still running."
-          },
-          "resolved_date_range": {
-            "type": "object",
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/ResolvedDateRangeResponse"
-              },
-              {
-                "type": "object"
-              }
-            ],
-            "description": "The date range used for the query"
-          },
-          "results": {
-            "title": "Results",
-            "type": "object"
-          },
-          "timings": {
-            "title": "Timings",
-            "type": "object",
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/Timings"
-              },
-              {
-                "type": "object"
-              }
-            ],
-            "description": "Measured timings for different parts of the query generation process"
-          },
-          "warnings": {
-            "title": "Warnings",
-            "type": "object",
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/Warnings"
-              },
-              {
-                "type": "object"
-              }
-            ],
-            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
-          }
-        },
-        "additionalProperties": false
-      },
       "QueryResponseAlternative68": {
         "title": "QueryResponseAlternative68",
         "required": [
@@ -146396,10 +147114,7 @@
           },
           "results": {
             "title": "Results",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/RetentionResult"
-            }
+            "type": "object"
           },
           "timings": {
             "title": "Timings",
@@ -146503,7 +147218,7 @@
             "title": "Results",
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/PathsLink"
+              "$ref": "#/components/schemas/RetentionResult"
             }
           },
           "timings": {
@@ -146658,6 +147373,111 @@
             "title": "Results",
             "type": "array",
             "items": {
+              "$ref": "#/components/schemas/PathsLink"
+            }
+          },
+          "timings": {
+            "title": "Timings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Timings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
+          }
+        },
+        "additionalProperties": false
+      },
+      "QueryResponseAlternative71": {
+        "title": "QueryResponseAlternative71",
+        "required": [
+          "results"
+        ],
+        "type": "object",
+        "properties": {
+          "error": {
+            "title": "Error",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Error"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Query error. Returned only if 'explain' or `modifiers.debug` is true. Throws an error otherwise."
+          },
+          "hogql": {
+            "title": "Hogql",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Hogql"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Generated HogQL query."
+          },
+          "modifiers": {
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/HogQLQueryModifiers"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Modifiers used when performing the query"
+          },
+          "query_status": {
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/QueryStatus"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Query status indicates whether next to the provided data, a query is still running."
+          },
+          "resolved_date_range": {
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ResolvedDateRangeResponse"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "The date range used for the query"
+          },
+          "results": {
+            "title": "Results",
+            "type": "array",
+            "items": {
               "type": "object"
             }
           },
@@ -146690,8 +147510,8 @@
         },
         "additionalProperties": false
       },
-      "QueryResponseAlternative72": {
-        "title": "QueryResponseAlternative72",
+      "QueryResponseAlternative73": {
+        "title": "QueryResponseAlternative73",
         "required": [
           "results"
         ],
@@ -146851,8 +147671,8 @@
         },
         "additionalProperties": false
       },
-      "QueryResponseAlternative73": {
-        "title": "QueryResponseAlternative73",
+      "QueryResponseAlternative74": {
+        "title": "QueryResponseAlternative74",
         "required": [
           "joins",
           "tables"
@@ -146901,8 +147721,8 @@
         },
         "additionalProperties": false
       },
-      "QueryResponseAlternative74": {
-        "title": "QueryResponseAlternative74",
+      "QueryResponseAlternative75": {
+        "title": "QueryResponseAlternative75",
         "required": [
           "has_next",
           "results"
@@ -147024,8 +147844,8 @@
         },
         "additionalProperties": false
       },
-      "QueryResponseAlternative75": {
-        "title": "QueryResponseAlternative75",
+      "QueryResponseAlternative76": {
+        "title": "QueryResponseAlternative76",
         "required": [
           "results"
         ],
@@ -147187,8 +148007,8 @@
         },
         "additionalProperties": false
       },
-      "QueryResponseAlternative76": {
-        "title": "QueryResponseAlternative76",
+      "QueryResponseAlternative77": {
+        "title": "QueryResponseAlternative77",
         "required": [
           "count",
           "results"
@@ -147297,8 +148117,8 @@
         },
         "additionalProperties": false
       },
-      "QueryResponseAlternative77": {
-        "title": "QueryResponseAlternative77",
+      "QueryResponseAlternative78": {
+        "title": "QueryResponseAlternative78",
         "required": [
           "results"
         ],
@@ -147402,8 +148222,8 @@
         },
         "additionalProperties": false
       },
-      "QueryResponseAlternative78": {
-        "title": "QueryResponseAlternative78",
+      "QueryResponseAlternative79": {
+        "title": "QueryResponseAlternative79",
         "required": [
           "results"
         ],
@@ -147523,124 +148343,6 @@
           "results": {
             "title": "Results",
             "type": "object"
-          },
-          "timings": {
-            "title": "Timings",
-            "type": "object",
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/Timings"
-              },
-              {
-                "type": "object"
-              }
-            ],
-            "description": "Measured timings for different parts of the query generation process"
-          },
-          "warnings": {
-            "title": "Warnings",
-            "type": "object",
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/Warnings"
-              },
-              {
-                "type": "object"
-              }
-            ],
-            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
-          }
-        },
-        "additionalProperties": false
-      },
-      "QueryResponseAlternative79": {
-        "title": "QueryResponseAlternative79",
-        "required": [
-          "results"
-        ],
-        "type": "object",
-        "properties": {
-          "compare": {
-            "title": "Compare",
-            "type": "object",
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/Compare_Wrapper"
-              },
-              {
-                "type": "object"
-              }
-            ],
-            "description": "Result rows for the comparison period when `compareFilter.compare` is true."
-          },
-          "error": {
-            "title": "Error",
-            "type": "object",
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/Error"
-              },
-              {
-                "type": "object"
-              }
-            ],
-            "description": "Query error. Returned only if 'explain' or `modifiers.debug` is true. Throws an error otherwise."
-          },
-          "hogql": {
-            "title": "Hogql",
-            "type": "object",
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/Hogql"
-              },
-              {
-                "type": "object"
-              }
-            ],
-            "description": "Generated HogQL query."
-          },
-          "modifiers": {
-            "type": "object",
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/HogQLQueryModifiers"
-              },
-              {
-                "type": "object"
-              }
-            ],
-            "description": "Modifiers used when performing the query"
-          },
-          "query_status": {
-            "type": "object",
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/QueryStatus"
-              },
-              {
-                "type": "object"
-              }
-            ],
-            "description": "Query status indicates whether next to the provided data, a query is still running."
-          },
-          "resolved_date_range": {
-            "type": "object",
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/ResolvedDateRangeResponse"
-              },
-              {
-                "type": "object"
-              }
-            ],
-            "description": "The date range used for the query"
-          },
-          "results": {
-            "title": "Results",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/AggregatedSpanRow"
-            }
           },
           "timings": {
             "title": "Timings",
@@ -147975,7 +148677,7 @@
             "title": "Results",
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/SpanTreeNode"
+              "$ref": "#/components/schemas/AggregatedSpanRow"
             }
           },
           "timings": {
@@ -148010,6 +148712,124 @@
       "QueryResponseAlternative81": {
         "title": "QueryResponseAlternative81",
         "required": [
+          "results"
+        ],
+        "type": "object",
+        "properties": {
+          "compare": {
+            "title": "Compare",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Compare_Wrapper"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Result rows for the comparison period when `compareFilter.compare` is true."
+          },
+          "error": {
+            "title": "Error",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Error"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Query error. Returned only if 'explain' or `modifiers.debug` is true. Throws an error otherwise."
+          },
+          "hogql": {
+            "title": "Hogql",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Hogql"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Generated HogQL query."
+          },
+          "modifiers": {
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/HogQLQueryModifiers"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Modifiers used when performing the query"
+          },
+          "query_status": {
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/QueryStatus"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Query status indicates whether next to the provided data, a query is still running."
+          },
+          "resolved_date_range": {
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ResolvedDateRangeResponse"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "The date range used for the query"
+          },
+          "results": {
+            "title": "Results",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SpanTreeNode"
+            }
+          },
+          "timings": {
+            "title": "Timings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Timings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
+          }
+        },
+        "additionalProperties": false
+      },
+      "QueryResponseAlternative82": {
+        "title": "QueryResponseAlternative82",
+        "required": [
           "questions"
         ],
         "type": "object",
@@ -148037,8 +148857,8 @@
         },
         "additionalProperties": false
       },
-      "QueryResponseAlternative82": {
-        "title": "QueryResponseAlternative82",
+      "QueryResponseAlternative83": {
+        "title": "QueryResponseAlternative83",
         "required": [
           "results"
         ],
@@ -148178,8 +148998,8 @@
         },
         "additionalProperties": false
       },
-      "QueryResponseAlternative83": {
-        "title": "QueryResponseAlternative83",
+      "QueryResponseAlternative84": {
+        "title": "QueryResponseAlternative84",
         "required": [
           "results"
         ],
@@ -148319,8 +149139,8 @@
         },
         "additionalProperties": false
       },
-      "QueryResponseAlternative84": {
-        "title": "QueryResponseAlternative84",
+      "QueryResponseAlternative85": {
+        "title": "QueryResponseAlternative85",
         "required": [
           "results"
         ],
@@ -148429,8 +149249,8 @@
         },
         "additionalProperties": false
       },
-      "QueryResponseAlternative85": {
-        "title": "QueryResponseAlternative85",
+      "QueryResponseAlternative86": {
+        "title": "QueryResponseAlternative86",
         "required": [
           "results"
         ],
@@ -148582,8 +149402,8 @@
         },
         "additionalProperties": false
       },
-      "QueryResponseAlternative87": {
-        "title": "QueryResponseAlternative87",
+      "QueryResponseAlternative88": {
+        "title": "QueryResponseAlternative88",
         "type": "object",
         "properties": {
           "newerTimestamp": {
@@ -148667,111 +149487,6 @@
         },
         "additionalProperties": false
       },
-      "QueryResponseAlternative88": {
-        "title": "QueryResponseAlternative88",
-        "required": [
-          "results"
-        ],
-        "type": "object",
-        "properties": {
-          "error": {
-            "title": "Error",
-            "type": "object",
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/Error"
-              },
-              {
-                "type": "object"
-              }
-            ],
-            "description": "Query error. Returned only if 'explain' or `modifiers.debug` is true. Throws an error otherwise."
-          },
-          "hogql": {
-            "title": "Hogql",
-            "type": "object",
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/Hogql"
-              },
-              {
-                "type": "object"
-              }
-            ],
-            "description": "Generated HogQL query."
-          },
-          "modifiers": {
-            "type": "object",
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/HogQLQueryModifiers"
-              },
-              {
-                "type": "object"
-              }
-            ],
-            "description": "Modifiers used when performing the query"
-          },
-          "query_status": {
-            "type": "object",
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/QueryStatus"
-              },
-              {
-                "type": "object"
-              }
-            ],
-            "description": "Query status indicates whether next to the provided data, a query is still running."
-          },
-          "resolved_date_range": {
-            "type": "object",
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/ResolvedDateRangeResponse"
-              },
-              {
-                "type": "object"
-              }
-            ],
-            "description": "The date range used for the query"
-          },
-          "results": {
-            "title": "Results",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/VectorSearchResponseItem"
-            }
-          },
-          "timings": {
-            "title": "Timings",
-            "type": "object",
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/Timings"
-              },
-              {
-                "type": "object"
-              }
-            ],
-            "description": "Measured timings for different parts of the query generation process"
-          },
-          "warnings": {
-            "title": "Warnings",
-            "type": "object",
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/Warnings"
-              },
-              {
-                "type": "object"
-              }
-            ],
-            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
-          }
-        },
-        "additionalProperties": false
-      },
       "QueryResponseAlternative89": {
         "title": "QueryResponseAlternative89",
         "required": [
@@ -148845,7 +149560,7 @@
             "title": "Results",
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/UsageMetric"
+              "$ref": "#/components/schemas/VectorSearchResponseItem"
             }
           },
           "timings": {
@@ -149042,7 +149757,7 @@
             "title": "Results",
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/EndpointsUsageOverviewItem"
+              "$ref": "#/components/schemas/UsageMetric"
             }
           },
           "timings": {
@@ -149076,6 +149791,258 @@
       },
       "QueryResponseAlternative91": {
         "title": "QueryResponseAlternative91",
+        "required": [
+          "columns",
+          "hogql",
+          "limit",
+          "offset",
+          "results",
+          "types"
+        ],
+        "type": "object",
+        "properties": {
+          "columns": {
+            "title": "Columns",
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "error": {
+            "title": "Error",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Error"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Query error. Returned only if 'explain' or `modifiers.debug` is true. Throws an error otherwise."
+          },
+          "hasMore": {
+            "title": "Hasmore",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Hasmore"
+              },
+              {
+                "type": "object"
+              }
+            ]
+          },
+          "hogql": {
+            "title": "Hogql",
+            "type": "string",
+            "description": "Generated HogQL query."
+          },
+          "kind": {
+            "title": "Kind",
+            "enum": [
+              "AccountsQuery"
+            ],
+            "type": "string",
+            "default": "AccountsQuery"
+          },
+          "limit": {
+            "title": "Limit",
+            "type": "integer"
+          },
+          "modifiers": {
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/HogQLQueryModifiers"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Modifiers used when performing the query"
+          },
+          "offset": {
+            "title": "Offset",
+            "type": "integer"
+          },
+          "query_status": {
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/QueryStatus"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Query status indicates whether next to the provided data, a query is still running."
+          },
+          "resolved_date_range": {
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ResolvedDateRangeResponse"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "The date range used for the query"
+          },
+          "results": {
+            "title": "Results",
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          },
+          "timings": {
+            "title": "Timings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Timings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Measured timings for different parts of the query generation process"
+          },
+          "types": {
+            "title": "Types",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
+          }
+        },
+        "additionalProperties": false
+      },
+      "QueryResponseAlternative92": {
+        "title": "QueryResponseAlternative92",
+        "required": [
+          "results"
+        ],
+        "type": "object",
+        "properties": {
+          "error": {
+            "title": "Error",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Error"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Query error. Returned only if 'explain' or `modifiers.debug` is true. Throws an error otherwise."
+          },
+          "hogql": {
+            "title": "Hogql",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Hogql"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Generated HogQL query."
+          },
+          "modifiers": {
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/HogQLQueryModifiers"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Modifiers used when performing the query"
+          },
+          "query_status": {
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/QueryStatus"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Query status indicates whether next to the provided data, a query is still running."
+          },
+          "resolved_date_range": {
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ResolvedDateRangeResponse"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "The date range used for the query"
+          },
+          "results": {
+            "title": "Results",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EndpointsUsageOverviewItem"
+            }
+          },
+          "timings": {
+            "title": "Timings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Timings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Measured timings for different parts of the query generation process"
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
+          }
+        },
+        "additionalProperties": false
+      },
+      "QueryResponseAlternative93": {
+        "title": "QueryResponseAlternative93",
         "required": [
           "results"
         ],
@@ -149239,8 +150206,8 @@
         },
         "additionalProperties": false
       },
-      "QueryResponseAlternative92": {
-        "title": "QueryResponseAlternative92",
+      "QueryResponseAlternative94": {
+        "title": "QueryResponseAlternative94",
         "required": [
           "results"
         ],
@@ -149344,8 +150311,8 @@
         },
         "additionalProperties": false
       },
-      "QueryResponseAlternative93": {
-        "title": "QueryResponseAlternative93",
+      "QueryResponseAlternative95": {
+        "title": "QueryResponseAlternative95",
         "required": [
           "results"
         ],
@@ -149902,6 +150869,9 @@
                 "$ref": "#/components/schemas/UsageMetricsQuery"
               },
               {
+                "$ref": "#/components/schemas/AccountsQuery"
+              },
+              {
                 "$ref": "#/components/schemas/EndpointsUsageOverviewQuery"
               },
               {
@@ -149922,6 +150892,7 @@
             "discriminator": {
               "propertyName": "kind",
               "mapping": {
+                "AccountsQuery": "#/components/schemas/AccountsQuery",
                 "ActionsNode": "#/components/schemas/ActionsNode",
                 "ActorsPropertyTaxonomyQuery": "#/components/schemas/ActorsPropertyTaxonomyQuery",
                 "ActorsQuery": "#/components/schemas/ActorsQuery",
@@ -150243,6 +151214,9 @@
                 "$ref": "#/components/schemas/UsageMetricsQuery"
               },
               {
+                "$ref": "#/components/schemas/AccountsQuery"
+              },
+              {
                 "$ref": "#/components/schemas/EndpointsUsageOverviewQuery"
               },
               {
@@ -150263,6 +151237,7 @@
             "discriminator": {
               "propertyName": "kind",
               "mapping": {
+                "AccountsQuery": "#/components/schemas/AccountsQuery",
                 "ActionsNode": "#/components/schemas/ActionsNode",
                 "ActorsPropertyTaxonomyQuery": "#/components/schemas/ActorsPropertyTaxonomyQuery",
                 "ActorsQuery": "#/components/schemas/ActorsQuery",
@@ -151000,6 +151975,9 @@
               "type": "integer"
             },
             "description": "Array of tile IDs in the desired display order (top to bottom, left to right)."
+          },
+          "layout": {
+            "$ref": "#/components/schemas/LayoutEnum"
           }
         }
       },
@@ -154089,6 +155067,153 @@
                 "type": "object"
               }
             ]
+          },
+          "warnings": {
+            "title": "Warnings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Warnings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries."
+          }
+        },
+        "additionalProperties": false
+      },
+      "Response27": {
+        "title": "Response27",
+        "required": [
+          "columns",
+          "hogql",
+          "limit",
+          "offset",
+          "results",
+          "types"
+        ],
+        "type": "object",
+        "properties": {
+          "columns": {
+            "title": "Columns",
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "error": {
+            "title": "Error",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Error"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Query error. Returned only if 'explain' or `modifiers.debug` is true. Throws an error otherwise."
+          },
+          "hasMore": {
+            "title": "Hasmore",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Hasmore"
+              },
+              {
+                "type": "object"
+              }
+            ]
+          },
+          "hogql": {
+            "title": "Hogql",
+            "type": "string",
+            "description": "Generated HogQL query."
+          },
+          "kind": {
+            "title": "Kind",
+            "enum": [
+              "AccountsQuery"
+            ],
+            "type": "string",
+            "default": "AccountsQuery"
+          },
+          "limit": {
+            "title": "Limit",
+            "type": "integer"
+          },
+          "modifiers": {
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/HogQLQueryModifiers"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Modifiers used when performing the query"
+          },
+          "offset": {
+            "title": "Offset",
+            "type": "integer"
+          },
+          "query_status": {
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/QueryStatus"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Query status indicates whether next to the provided data, a query is still running."
+          },
+          "resolved_date_range": {
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ResolvedDateRangeResponse"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "The date range used for the query"
+          },
+          "results": {
+            "title": "Results",
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          },
+          "timings": {
+            "title": "Timings",
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Timings"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Measured timings for different parts of the query generation process"
+          },
+          "types": {
+            "title": "Types",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "warnings": {
             "title": "Warnings",
@@ -163345,6 +164470,282 @@
             "description": "Whether more channels match the current search beyond this page."
           }
         }
+      },
+      "SlackThreadContextRepoResearch": {
+        "required": [
+          "log_url",
+          "run_id",
+          "sandbox_url",
+          "status",
+          "task_id",
+          "task_processing_workflow_id",
+          "task_processing_workflow_url",
+          "task_view_url"
+        ],
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string",
+            "description": "UUID of the internal repo-research Task."
+          },
+          "run_id": {
+            "type": "string",
+            "description": "UUID of the internal repo-research TaskRun."
+          },
+          "status": {
+            "type": "string",
+            "description": "Research run status, or null if the run row could not be loaded."
+          },
+          "task_processing_workflow_id": {
+            "type": "string",
+            "description": "Temporal workflow id for the research sandbox run (`task-processing-<task_id>-<run_id>`)."
+          },
+          "task_processing_workflow_url": {
+            "type": "string",
+            "description": "Full Temporal Web UI URL for the research workflow; null when `TEMPORAL_UI_HOST` is unset."
+          },
+          "sandbox_url": {
+            "type": "string",
+            "description": "Live sandbox tunnel URL for the research run, when one was attached."
+          },
+          "task_view_url": {
+            "type": "string",
+            "description": "Absolute URL to the research task detail page (carries `?ph_debug=true`)."
+          },
+          "log_url": {
+            "type": "string",
+            "description": "Presigned S3 URL for the research run's JSONL log transcript (valid ~1 hour)."
+          }
+        },
+        "description": "The internal sandbox run the discovery agent used to pick this run's repo.\n\nOnly present when the originating mention was ambiguous (multiple candidate\nrepos, no explicit mention) — that's the only path that spins up a research\nsandbox. Null otherwise."
+      },
+      "SlackThreadContextResponse": {
+        "required": [
+          "runs",
+          "task",
+          "thread"
+        ],
+        "type": "object",
+        "properties": {
+          "thread": {
+            "required": [
+              "channel",
+              "mentioning_slack_user_id",
+              "slack_workspace_id",
+              "thread_ts",
+              "url"
+            ],
+            "type": "object",
+            "properties": {
+              "url": {
+                "type": "string",
+                "description": "Echoed input URL."
+              },
+              "channel": {
+                "type": "string",
+                "description": "Slack channel id parsed from the URL (e.g. C0ACRAMJUAG)."
+              },
+              "thread_ts": {
+                "type": "string",
+                "description": "Slack thread_ts (e.g. 1779956938.619299)."
+              },
+              "slack_workspace_id": {
+                "type": "string",
+                "description": "Slack workspace id (e.g. T…). Null when no mapping exists yet."
+              },
+              "mentioning_slack_user_id": {
+                "type": "string",
+                "description": "The Slack user who triggered the task. Null when no mapping exists yet."
+              }
+            },
+            "description": "Slack-side identifiers and the mapping metadata."
+          },
+          "task": {
+            "type": "object",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/SlackThreadContextTask"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Linked PostHog Task. Null when no mapping was found for the thread."
+          },
+          "runs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SlackThreadContextRun"
+            },
+            "description": "All runs on the task, oldest first. Empty when no mapping was found."
+          }
+        },
+        "description": "Top-level response for the slack-thread debug endpoint."
+      },
+      "SlackThreadContextRun": {
+        "required": [
+          "completed_at",
+          "created_at",
+          "error_message",
+          "id",
+          "log_url",
+          "mention_workflow_id",
+          "mention_workflow_url",
+          "pr_url",
+          "repo_research",
+          "sandbox_url",
+          "status",
+          "task_processing_workflow_id",
+          "task_processing_workflow_url",
+          "task_view_url"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "UUID of the TaskRun row."
+          },
+          "status": {
+            "type": "string",
+            "description": "Run status (queued/in_progress/completed/failed/…)."
+          },
+          "created_at": {
+            "type": "string",
+            "description": "When the run was created.",
+            "format": "date-time"
+          },
+          "completed_at": {
+            "type": "string",
+            "description": "When the run reached a terminal state, or null while still running.",
+            "format": "date-time"
+          },
+          "sandbox_url": {
+            "type": "string",
+            "description": "Live sandbox tunnel URL, when one was attached."
+          },
+          "pr_url": {
+            "type": "string",
+            "description": "PR URL produced by the run, when one was opened."
+          },
+          "error_message": {
+            "type": "string",
+            "description": "Error captured on terminal failure, or null on success."
+          },
+          "task_processing_workflow_id": {
+            "type": "string",
+            "description": "Temporal workflow id for the sandbox/agent run (`task-processing-<task_id>-<run_id>`)."
+          },
+          "task_processing_workflow_url": {
+            "type": "string",
+            "description": "Full Temporal Web UI URL for the task-processing workflow; null when `TEMPORAL_UI_HOST` is unset."
+          },
+          "mention_workflow_id": {
+            "type": "string",
+            "description": "Temporal workflow id of the Slack mention that dispatched this run (`posthog-code-mention-<workspace>:<event_id_or_channel:ts>`). Null for runs created before this field was persisted."
+          },
+          "mention_workflow_url": {
+            "type": "string",
+            "description": "Full Temporal Web UI URL for the mention dispatch workflow; null when unavailable."
+          },
+          "task_view_url": {
+            "type": "string",
+            "description": "Absolute URL to the task detail page focused on this run."
+          },
+          "log_url": {
+            "type": "string",
+            "description": "Presigned S3 URL for the run's full JSONL log transcript (valid ~1 hour)."
+          },
+          "repo_research": {
+            "type": "object",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/SlackThreadContextRepoResearch"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "The discovery-agent sandbox that picked this run's repo, when the mention was ambiguous."
+          }
+        },
+        "description": "One TaskRun and its associated Temporal workflow handles."
+      },
+      "SlackThreadContextTask": {
+        "required": [
+          "created_at",
+          "id",
+          "origin_product",
+          "repository",
+          "team_id",
+          "title",
+          "url"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "UUID of the Task row."
+          },
+          "team_id": {
+            "type": "integer",
+            "description": "Team that owns the task."
+          },
+          "title": {
+            "type": "string",
+            "description": "Task title (typically the first ~255 chars of the Slack ask)."
+          },
+          "repository": {
+            "type": "string",
+            "description": "Resolved repository in `org/repo` form, or null if the run started without a repo."
+          },
+          "origin_product": {
+            "type": "string",
+            "description": "`Task.OriginProduct` (`slack` for slack-originated tasks)."
+          },
+          "created_at": {
+            "type": "string",
+            "description": "When the task was created (server-side timestamp).",
+            "format": "date-time"
+          },
+          "url": {
+            "type": "string",
+            "description": "Absolute URL to the task detail page in the PostHog app."
+          }
+        },
+        "description": "The PostHog Task linked to the Slack thread."
+      },
+      "SlackThreadContextThread": {
+        "required": [
+          "channel",
+          "mentioning_slack_user_id",
+          "slack_workspace_id",
+          "thread_ts",
+          "url"
+        ],
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "Echoed input URL."
+          },
+          "channel": {
+            "type": "string",
+            "description": "Slack channel id parsed from the URL (e.g. C0ACRAMJUAG)."
+          },
+          "thread_ts": {
+            "type": "string",
+            "description": "Slack thread_ts (e.g. 1779956938.619299)."
+          },
+          "slack_workspace_id": {
+            "type": "string",
+            "description": "Slack workspace id (e.g. T…). Null when no mapping exists yet."
+          },
+          "mentioning_slack_user_id": {
+            "type": "string",
+            "description": "The Slack user who triggered the task. Null when no mapping exists yet."
+          }
+        },
+        "description": "Slack-side identifiers and the mapping metadata for a thread → task lookup."
       },
       "Snapshot": {
         "required": [
@@ -177279,6 +178680,51 @@
           }
         }
       },
+      "VisionQuota": {
+        "required": [
+          "exhausted",
+          "monthly_quota",
+          "period_end",
+          "period_start",
+          "remaining",
+          "usage_this_month"
+        ],
+        "type": "object",
+        "properties": {
+          "monthly_quota": {
+            "type": "integer",
+            "description": "Total observations the org may complete per calendar month.",
+            "readOnly": true
+          },
+          "usage_this_month": {
+            "type": "integer",
+            "description": "Observations created this month that are in flight or have succeeded, counted against the quota.",
+            "readOnly": true
+          },
+          "remaining": {
+            "type": "integer",
+            "description": "`monthly_quota - usage_this_month`, floored at 0.",
+            "readOnly": true
+          },
+          "exhausted": {
+            "type": "boolean",
+            "description": "True when `usage_this_month >= monthly_quota`; further observations are skipped until next period.",
+            "readOnly": true
+          },
+          "period_start": {
+            "type": "string",
+            "description": "First moment of the current quota period (UTC).",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "period_end": {
+            "type": "string",
+            "description": "First moment of the next quota period (UTC); the current period's exclusive upper bound.",
+            "format": "date-time",
+            "readOnly": true
+          }
+        }
+      },
       "VizSpecificOptions": {
         "title": "VizSpecificOptions",
         "type": "object",
@@ -183448,6 +184894,134 @@
           }
         }
       },
+      "MetricName": {
+        "required": [
+          "metric_type",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Metric name as it appears in the team's data."
+          },
+          "metric_type": {
+            "type": "string",
+            "description": "OTel metric type (gauge, sum, histogram, summary, exponential_histogram)."
+          }
+        }
+      },
+      "MetricNamesResponse": {
+        "required": [
+          "results"
+        ],
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MetricName"
+            },
+            "description": "Distinct metric names ordered by recent activity."
+          }
+        }
+      },
+      "MetricQueryBody": {
+        "required": [
+          "dateFrom",
+          "metricName"
+        ],
+        "type": "object",
+        "properties": {
+          "metricName": {
+            "maxLength": 255,
+            "type": "string",
+            "description": "Exact metric name to query (e.g. 'http.server.duration')."
+          },
+          "aggregation": {
+            "$ref": "#/components/schemas/AggregationEnum"
+          },
+          "dateFrom": {
+            "type": "string",
+            "description": "Lower bound (inclusive) for the query range. ISO 8601.",
+            "format": "date-time"
+          },
+          "dateTo": {
+            "type": "string",
+            "description": "Upper bound (exclusive) for the query range. Defaults to now if omitted.",
+            "format": "date-time"
+          }
+        }
+      },
+      "MetricQueryPoint": {
+        "required": [
+          "time",
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "time": {
+            "type": "string",
+            "description": "Bucket start as ISO 8601 timestamp."
+          },
+          "value": {
+            "type": "number",
+            "description": "Aggregated value for the bucket.",
+            "format": "double"
+          }
+        }
+      },
+      "MetricQueryRequest": {
+        "required": [
+          "query"
+        ],
+        "type": "object",
+        "properties": {
+          "query": {
+            "required": [
+              "dateFrom",
+              "metricName"
+            ],
+            "type": "object",
+            "properties": {
+              "metricName": {
+                "maxLength": 255,
+                "type": "string",
+                "description": "Exact metric name to query (e.g. 'http.server.duration')."
+              },
+              "aggregation": {
+                "$ref": "#/components/schemas/AggregationEnum"
+              },
+              "dateFrom": {
+                "type": "string",
+                "description": "Lower bound (inclusive) for the query range. ISO 8601.",
+                "format": "date-time"
+              },
+              "dateTo": {
+                "type": "string",
+                "description": "Upper bound (exclusive) for the query range. Defaults to now if omitted.",
+                "format": "date-time"
+              }
+            },
+            "description": "The metric query to execute."
+          }
+        }
+      },
+      "MetricQueryResponse": {
+        "required": [
+          "results"
+        ],
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MetricQueryPoint"
+            },
+            "description": "Time-bucketed points, ordered by time ascending."
+          }
+        }
+      },
       "ModelBreakdown": {
         "required": [
           "items",
@@ -185281,7 +186855,7 @@
           "type": "number"
         }
       },
-      "QueryResponseAlternative73Tables": {
+      "QueryResponseAlternative74Tables": {
         "title": "Tables",
         "type": "object",
         "additionalProperties": {
@@ -185792,6 +187366,9 @@
       "LogsHasLogsRetrieve200": {
         "type": "object"
       },
+      "MetricsHasMetricsRetrieve200": {
+        "type": "object"
+      },
       "NotebooksSharingList200": {
         "type": "array",
         "items": {
@@ -185866,6 +187443,186 @@
       "ExamplePayload": {
         "type": "object",
         "description": "Placeholder schema for path example refs"
+      },
+      "Accountexecutive": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          }
+        }
+      },
+      "Accountowner": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          }
+        }
+      },
+      "Allrolesunassigned": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Csm": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          }
+        }
+      },
+      "Limit": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "integer"
+          }
+        }
+      },
+      "Offset": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "integer"
+          }
+        }
+      },
+      "Orderby": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "Search": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          }
+        }
+      },
+      "Select": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "Tagnames": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "Version": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "number"
+          }
+        }
+      },
+      "Error": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          }
+        }
+      },
+      "Hasmore": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Timings": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/QueryTiming"
+            }
+          }
+        }
+      },
+      "Warnings": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DataWarehouseSyncWarning"
+            }
+          }
+        }
       },
       "ActionStepMatchingEnum_Wrapper": {
         "required": [
@@ -186198,17 +187955,6 @@
           }
         }
       },
-      "Version": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "number"
-          }
-        }
-      },
       "Disablehoveroffset": {
         "required": [
           "value"
@@ -186253,17 +187999,6 @@
           }
         }
       },
-      "Error": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "string"
-          }
-        }
-      },
       "Hogql": {
         "required": [
           "value"
@@ -186289,34 +188024,6 @@
           }
         }
       },
-      "Timings": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/QueryTiming"
-            }
-          }
-        }
-      },
-      "Warnings": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/DataWarehouseSyncWarning"
-            }
-          }
-        }
-      },
       "UnionBranch": {
         "required": [
           "value"
@@ -186325,78 +188032,6 @@
         "properties": {
           "value": {
             "type": "string"
-          }
-        }
-      },
-      "Limit": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "integer"
-          }
-        }
-      },
-      "Offset": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "integer"
-          }
-        }
-      },
-      "Orderby": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        }
-      },
-      "Search": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "string"
-          }
-        }
-      },
-      "Select": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        }
-      },
-      "Hasmore": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "boolean"
           }
         }
       },
@@ -187880,6 +189515,20 @@
           }
         }
       },
+      "Search_Aliases": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
       "Status": {
         "required": [
           "value"
@@ -189029,6 +190678,20 @@
         "properties": {
           "value": {
             "type": "string"
+          }
+        }
+      },
+      "Excluded_Variants": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       },
@@ -193878,6 +195541,9 @@
     },
     {
       "name": "members"
+    },
+    {
+      "name": "metrics"
     },
     {
       "name": "notebooks"

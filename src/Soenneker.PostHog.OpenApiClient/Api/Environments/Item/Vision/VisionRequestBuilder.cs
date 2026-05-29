@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision.Observations;
+using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision.Quota;
 using Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision.Scanners;
 using System.Collections.Generic;
 using System.IO;
@@ -20,6 +21,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision
         public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision.Observations.ObservationsRequestBuilder Observations
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision.Observations.ObservationsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The quota property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision.Quota.QuotaRequestBuilder Quota
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision.Quota.QuotaRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The scanners property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision.Scanners.ScannersRequestBuilder Scanners
