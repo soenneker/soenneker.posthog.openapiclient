@@ -12,10 +12,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision.Scanners
         #pragma warning disable CS1591
         Classifier,
         #pragma warning restore CS1591
-        [EnumMember(Value = "indexer")]
-        #pragma warning disable CS1591
-        Indexer,
-        #pragma warning restore CS1591
         [EnumMember(Value = "monitor")]
         #pragma warning disable CS1591
         Monitor,

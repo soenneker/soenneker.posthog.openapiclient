@@ -8,29 +8,53 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Type-specific configuration. All scanner types require `prompt`; classifiers add `tags`, scorers add `scale`, summarizers add optional `length` and `emits_embeddings` flag.
+    /// One citation attached to a finding. Mirrors `SignalsScoutEvidenceEntry`.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class PatchedReplayScanner_scanner_config : IAdditionalDataHolder, IParsable
+    public partial class EvidenceEntry : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Optional ID of the cited entity (issue id, recording id, log query id).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? EntityId { get; set; }
+#nullable restore
+#else
+        public string EntityId { get; set; }
+#endif
+        /// <summary>Source the citation came from (`error_tracking`, `session_replay`, `logs`, ...).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SourceProduct { get; set; }
+#nullable restore
+#else
+        public string SourceProduct { get; set; }
+#endif
+        /// <summary>One-sentence prose about why this evidence supports the finding.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Summary { get; set; }
+#nullable restore
+#else
+        public string Summary { get; set; }
+#endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScanner_scanner_config"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EvidenceEntry"/> and sets the default values.
         /// </summary>
-        public PatchedReplayScanner_scanner_config()
+        public EvidenceEntry()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScanner_scanner_config"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EvidenceEntry"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScanner_scanner_config CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.PostHog.OpenApiClient.Models.EvidenceEntry CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScanner_scanner_config();
+            return new global::Soenneker.PostHog.OpenApiClient.Models.EvidenceEntry();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -40,6 +64,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "entity_id", n => { EntityId = n.GetStringValue(); } },
+                { "source_product", n => { SourceProduct = n.GetStringValue(); } },
+                { "summary", n => { Summary = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -49,6 +76,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("entity_id", EntityId);
+            writer.WriteStringValue("source_product", SourceProduct);
+            writer.WriteStringValue("summary", Summary);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

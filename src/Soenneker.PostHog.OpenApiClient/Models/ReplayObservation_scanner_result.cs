@@ -15,14 +15,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;Maps the short `event_id` the LLM cites in `model_output.reasoning` to citation metadata: `{uuid, timestamp_ms}`. Only includes hashes the LLM actually cited.&quot;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservation_scanner_result_event_id_mapping? EventIdMapping { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservation_scanner_result_event_id_mapping EventIdMapping { get; set; }
-#endif
         /// <summary>Validated scanner output. Shape depends on `scanner_snapshot.scanner_type`; always carries `confidence` and `scanner_type`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -58,7 +50,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "event_id_mapping", n => { EventIdMapping = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservation_scanner_result_event_id_mapping>(global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservation_scanner_result_event_id_mapping.CreateFromDiscriminatorValue); } },
                 { "model_output", n => { ModelOutput = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservation_scanner_result_model_output>(global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservation_scanner_result_model_output.CreateFromDiscriminatorValue); } },
                 { "signals_count", n => { SignalsCount = n.GetIntValue(); } },
             };
@@ -70,7 +61,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservation_scanner_result_event_id_mapping>("event_id_mapping", EventIdMapping);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservation_scanner_result_model_output>("model_output", ModelOutput);
             writer.WriteIntValue("signals_count", SignalsCount);
             writer.WriteAdditionalData(AdditionalData);

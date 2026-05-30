@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `session_analysis_cluster` - Session analysis cluster* `evaluation` - Evaluation* `issue` - Issue* `ticket` - Ticket* `issue_created` - Issue created* `issue_reopened` - Issue reopened* `issue_spiking` - Issue spiking</summary>
+    /// <summary>* `session_analysis_cluster` - Session analysis cluster* `evaluation` - Evaluation* `issue` - Issue* `ticket` - Ticket* `issue_created` - Issue created* `issue_reopened` - Issue reopened* `issue_spiking` - Issue spiking* `cross_source_issue` - Cross source issue</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum SignalSourceConfigSourceTypeEnum
     {
@@ -34,6 +34,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "issue_spiking")]
         #pragma warning disable CS1591
         Issue_spiking,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "cross_source_issue")]
+        #pragma warning disable CS1591
+        Cross_source_issue,
         #pragma warning restore CS1591
     }
 }

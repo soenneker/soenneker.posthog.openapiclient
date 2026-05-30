@@ -168,7 +168,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision.Scanners
             [QueryParameter("order_by")]
             public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision.Scanners.GetOrder_byQueryParameterType[] OrderBy { get; set; }
 #endif
-            /// <summary>Filter by scanner type (monitor, classifier, scorer, summarizer, indexer).* `monitor` - Monitor* `classifier` - Classifier* `scorer` - Scorer* `summarizer` - Summarizer* `indexer` - Indexer</summary>
+            /// <summary>Filter by scanner type (monitor, classifier, scorer, summarizer).* `monitor` - Monitor* `classifier` - Classifier* `scorer` - Scorer* `summarizer` - Summarizer</summary>
             [QueryParameter("scanner_type")]
             public global::Soenneker.PostHog.OpenApiClient.Api.Environments.Item.Vision.Scanners.GetScanner_typeQueryParameterType? ScannerType { get; set; }
         }

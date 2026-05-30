@@ -12,6 +12,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Event_
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Experiments_config;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Generate_conversations_public_token;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Is_generating_demo_data;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Logs_config;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Reset_token;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Rotate_secret_token;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Settings_as_of;
@@ -76,6 +77,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Is_generating_demo_data.Is_generating_demo_dataRequestBuilder Is_generating_demo_data
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Is_generating_demo_data.Is_generating_demo_dataRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The logs_config property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Logs_config.Logs_configRequestBuilder Logs_config
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Logs_config.Logs_configRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The reset_token property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Reset_token.Reset_tokenRequestBuilder Reset_token

@@ -8,29 +8,31 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Type-specific configuration. All scanner types require `prompt`; classifiers add `tags`, scorers add `scale`, summarizers add optional `length` and `emits_embeddings` flag.
+    /// Optional severity tag — one of P0, P1, P2, P3, P4. Informational only.* `P0` - P0* `P1` - P1* `P2` - P2* `P3` - P3* `P4` - P4
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class PatchedReplayScanner_scanner_config : IAdditionalDataHolder, IParsable
+    public partial class EmitFindingRequest_severity : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>* `P0` - P0* `P1` - P1* `P2` - P2* `P3` - P3* `P4` - P4</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutonomyPriorityEnum? Value { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScanner_scanner_config"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequest_severity"/> and sets the default values.
         /// </summary>
-        public PatchedReplayScanner_scanner_config()
+        public EmitFindingRequest_severity()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScanner_scanner_config"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequest_severity"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScanner_scanner_config CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequest_severity CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScanner_scanner_config();
+            return new global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequest_severity();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -40,6 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "value", n => { Value = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AutonomyPriorityEnum>(); } },
             };
         }
         /// <summary>
@@ -49,6 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AutonomyPriorityEnum>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

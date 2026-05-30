@@ -8,29 +8,47 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Type-specific configuration. All scanner types require `prompt`; classifiers add `tags`, scorers add `scale`, summarizers add optional `length` and `emits_embeddings` flag.
+    /// Request body for `remember`.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class PatchedReplayScanner_scanner_config : IAdditionalDataHolder, IParsable
+    public partial class RememberRequest : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Prose to write. Read verbatim into future prompts.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Content { get; set; }
+#nullable restore
+#else
+        public string Content { get; set; }
+#endif
+        /// <summary>Agent-chosen semantic key. Re-using a key updates the existing entry in place.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Key { get; set; }
+#nullable restore
+#else
+        public string Key { get; set; }
+#endif
+        /// <summary>Run that authored this memory; persisted as `created_by_run_id` for lineage. Must reference a run on this same project — cross-project run UUIDs are rejected.</summary>
+        public Guid? RunId { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScanner_scanner_config"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RememberRequest"/> and sets the default values.
         /// </summary>
-        public PatchedReplayScanner_scanner_config()
+        public RememberRequest()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScanner_scanner_config"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RememberRequest"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScanner_scanner_config CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.PostHog.OpenApiClient.Models.RememberRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScanner_scanner_config();
+            return new global::Soenneker.PostHog.OpenApiClient.Models.RememberRequest();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -40,6 +58,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "content", n => { Content = n.GetStringValue(); } },
+                { "key", n => { Key = n.GetStringValue(); } },
+                { "run_id", n => { RunId = n.GetGuidValue(); } },
             };
         }
         /// <summary>
@@ -49,6 +70,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("content", Content);
+            writer.WriteStringValue("key", Key);
+            writer.WriteGuidValue("run_id", RunId);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -8,29 +8,45 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Maps the short `event_id` the LLM cites in `model_output.reasoning` to citation metadata: `{uuid, timestamp_ms}`. Only includes hashes the LLM actually cited.&quot;
+    /// Optional time window the finding refers to.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class ReplayObservation_scanner_result_event_id_mapping : IAdditionalDataHolder, IParsable
+    public partial class EmitFindingRequest_time_range : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>ISO-8601 inclusive lower bound for the finding&apos;s window.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? DateFrom { get; set; }
+#nullable restore
+#else
+        public string DateFrom { get; set; }
+#endif
+        /// <summary>ISO-8601 inclusive upper bound for the finding&apos;s window.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? DateTo { get; set; }
+#nullable restore
+#else
+        public string DateTo { get; set; }
+#endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservation_scanner_result_event_id_mapping"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequest_time_range"/> and sets the default values.
         /// </summary>
-        public ReplayObservation_scanner_result_event_id_mapping()
+        public EmitFindingRequest_time_range()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservation_scanner_result_event_id_mapping"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequest_time_range"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservation_scanner_result_event_id_mapping CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequest_time_range CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservation_scanner_result_event_id_mapping();
+            return new global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequest_time_range();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -40,6 +56,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "date_from", n => { DateFrom = n.GetStringValue(); } },
+                { "date_to", n => { DateTo = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -49,6 +67,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("date_from", DateFrom);
+            writer.WriteStringValue("date_to", DateTo);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

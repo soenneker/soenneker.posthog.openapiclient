@@ -5,32 +5,32 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Soenneker.PostHog.OpenApiClient.Models
+namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Logs_config
 {
     /// <summary>
-    /// Type-specific configuration. All scanner types require `prompt`; classifiers add `tags`, scorers add `scale`, summarizers add optional `length` and `emits_embeddings` flag.
+    /// Default response schema
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class PatchedReplayScanner_scanner_config : IAdditionalDataHolder, IParsable
+    public partial class Logs_configGetResponse : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScanner_scanner_config"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Logs_config.Logs_configGetResponse"/> and sets the default values.
         /// </summary>
-        public PatchedReplayScanner_scanner_config()
+        public Logs_configGetResponse()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScanner_scanner_config"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Logs_config.Logs_configGetResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScanner_scanner_config CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Logs_config.Logs_configGetResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScanner_scanner_config();
+            return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Logs_config.Logs_configGetResponse();
         }
         /// <summary>
         /// The deserialization information for the current model

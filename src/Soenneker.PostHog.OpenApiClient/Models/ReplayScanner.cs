@@ -62,7 +62,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>0..1 random downsample applied after the query matches. Defaults to 1.0 (no downsampling).</summary>
         public double? SamplingRate { get; set; }
-        /// <summary>Type-specific configuration. Monitor/classifier/scorer/summarizer require `prompt`; classifiers add `tags`, scorers add `scale`. Indexer is fixed-task and rejects `prompt`.</summary>
+        /// <summary>Type-specific configuration. All scanner types require `prompt`; classifiers add `tags`, scorers add `scale`, summarizers add optional `length` and `emits_embeddings` flag.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ReplayScanner_scanner_config? ScannerConfig { get; set; }
@@ -70,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ReplayScanner_scanner_config ScannerConfig { get; set; }
 #endif
-        /// <summary>* `monitor` - Monitor* `classifier` - Classifier* `scorer` - Scorer* `summarizer` - Summarizer* `indexer` - Indexer</summary>
+        /// <summary>* `monitor` - Monitor* `classifier` - Classifier* `scorer` - Scorer* `summarizer` - Summarizer</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeEnum? ScannerType { get; set; }
         /// <summary>Increments on every config-changing save. Observations snapshot this value.</summary>
         public int? ScannerVersion { get; private set; }

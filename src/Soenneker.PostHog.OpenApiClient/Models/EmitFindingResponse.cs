@@ -7,30 +7,47 @@ using System.IO;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>
-    /// Type-specific configuration. All scanner types require `prompt`; classifiers add `tags`, scorers add `scale`, summarizers add optional `length` and `emits_embeddings` flag.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class PatchedReplayScanner_scanner_config : IAdditionalDataHolder, IParsable
+    #pragma warning disable CS1591
+    public partial class EmitFindingResponse : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Whether `emit_signal` was actually fired.</summary>
+        public bool? Emitted { get; set; }
+        /// <summary>Stable id for the finding (echoed back from request, or generated).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? FindingId { get; set; }
+#nullable restore
+#else
+        public string FindingId { get; set; }
+#endif
+        /// <summary>`ai_processing_not_approved` | `source_disabled` | null when emitted normally.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SkippedReason { get; set; }
+#nullable restore
+#else
+        public string SkippedReason { get; set; }
+#endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScanner_scanner_config"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingResponse"/> and sets the default values.
         /// </summary>
-        public PatchedReplayScanner_scanner_config()
+        public EmitFindingResponse()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScanner_scanner_config"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScanner_scanner_config CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScanner_scanner_config();
+            return new global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -40,6 +57,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "emitted", n => { Emitted = n.GetBoolValue(); } },
+                { "finding_id", n => { FindingId = n.GetStringValue(); } },
+                { "skipped_reason", n => { SkippedReason = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -49,6 +69,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteBoolValue("emitted", Emitted);
+            writer.WriteStringValue("finding_id", FindingId);
+            writer.WriteStringValue("skipped_reason", SkippedReason);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

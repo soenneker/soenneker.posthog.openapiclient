@@ -25321,18 +25321,16 @@ paths:
           type: string
           enum:
           - classifier
-          - indexer
           - monitor
           - scorer
           - summarizer
         description: |-
-          Filter by scanner type (monitor, classifier, scorer, summarizer, indexer).
+          Filter by scanner type (monitor, classifier, scorer, summarizer).
 
           * `monitor` - Monitor
           * `classifier` - Classifier
           * `scorer` - Scorer
           * `summarizer` - Summarizer
-          * `indexer` - Indexer
       tags:
       - replay_vision
       - vision
@@ -36646,6 +36644,52 @@ paths:
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
       - environments
+      responses:
+        '200':
+          description: No response body
+      x-explicit-tags: []
+  /api/projects/{project_id}/environments/{id}/logs_config/:
+    get:
+      operationId: environments_logs_config_retrieve
+      description: Manage logs product configuration for this environment.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this environment (aka team).
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - environments
+      responses:
+        '200':
+          description: No response body
+      x-explicit-tags: []
+    patch:
+      operationId: environments_logs_config_partial_update
+      description: Manage logs product configuration for this environment.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this environment (aka team).
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - environments
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedTeam'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedTeam'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedTeam'
       responses:
         '200':
           description: No response body
@@ -52320,6 +52364,260 @@ paths:
                 $ref: '#/components/schemas/SignalReport'
           description: ''
       x-explicit-tags: []
+  /api/projects/{project_id}/signals/scout/runs/:
+    get:
+      operationId: signals_scout_runs_list
+      description: Return the most recent `SignalScoutRun` summaries for this project,
+        newest first. Used by the headless scout to dedupe against work other runs
+        already covered. ILIKE matches on `summary`. `date_from` / `date_to` are a
+        half-open window on `created_at` (`>= date_from`, `< date_to`); pass `date_to`
+        on subsequent calls to walk past the 100-row cap. Results capped at 100.
+      summary: Search recent agent runs
+      parameters:
+      - in: query
+        name: date_from
+        schema:
+          type: string
+          format: date-time
+        description: ISO-8601 inclusive lower bound on `created_at`. Omit to skip
+          the lower bound.
+      - in: query
+        name: date_to
+        schema:
+          type: string
+          format: date-time
+        description: 'ISO-8601 exclusive upper bound on `created_at`. Pass to walk
+          back past the result cap on subsequent calls (cursor-style: set to the `started_at`
+          of the oldest run from the prior page).'
+      - in: query
+        name: limit
+        schema:
+          type: integer
+          maximum: 100
+          minimum: 1
+        description: Max rows to return (default 20, hard cap 100).
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: text
+        schema:
+          type: string
+          minLength: 1
+        description: Case-insensitive substring match on the scout's end-of-run `summary`.
+          Omit to skip the filter.
+      tags:
+      - signals
+      security:
+      - PersonalAPIKeyAuth:
+        - signal_scout:read
+      - PersonalAPIKeyAuth:
+        - signal_scout:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SignalScoutRunSummary'
+          description: Recent run summaries newest-first.
+      x-explicit-tags:
+      - signals
+  /api/projects/{project_id}/signals/scout/runs/{id}/:
+    get:
+      operationId: signals_scout_runs_retrieve
+      description: Return the full `SignalScoutRun` row. Status, timing, and error
+        flow from the linked `tasks.TaskRun`. Strictly team-scoped — a UUID belonging
+        to another team returns 404.
+      summary: Get a run by ID
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this Signal scout run.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - signals
+      security:
+      - PersonalAPIKeyAuth:
+        - signal_scout:read
+      - PersonalAPIKeyAuth:
+        - signal_scout:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignalScoutRunDetail'
+          description: Full run detail.
+        '404':
+          description: Run not found or not visible to this project.
+      x-explicit-tags:
+      - signals
+  /api/projects/{project_id}/signals/scout/runs/{id}/emit-signal/:
+    post:
+      operationId: signals_scout_emit_signal
+      description: Fire `emit_signal` with `source_product = signals_scout`. The `finding_id`
+        is baked into the deterministic `Signal.source_id = run:<id>:finding:<id>`
+        for traceability, but this is NOT idempotent — a second call with the same
+        `finding_id` emits a second signal, so do not retry an emit that may have
+        already succeeded.
+      summary: Emit a finding for a run
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this Signal scout run.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - signals
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmitFindingRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/EmitFindingRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/EmitFindingRequest'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - signal_scout_internal:write
+      - PersonalAPIKeyAuth:
+        - signal_scout_internal:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmitFindingResponse'
+          description: Finding emitted, or skipped by a preflight gate.
+        '400':
+          description: Invalid emit shape (description, weight, confidence, evidence
+            cap).
+        '404':
+          description: Run not found for this project.
+      x-explicit-tags:
+      - signals
+  /api/projects/{project_id}/signals/scout/scratchpad/:
+    get:
+      operationId: signals_scout_scratchpad_search
+      description: Return `SignalScratchpad` entries for this project. ILIKE matches
+        on `content` and `key`.
+      summary: Search the scout scratchpad
+      parameters:
+      - in: query
+        name: limit
+        schema:
+          type: integer
+          maximum: 100
+          minimum: 1
+        description: Max rows to return (default 20, hard cap 100).
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: text
+        schema:
+          type: string
+        description: ILIKE substring match against `content`. Omit to return the most
+          recent entries.
+      tags:
+      - signals
+      security:
+      - PersonalAPIKeyAuth:
+        - signal_scout:read
+      - PersonalAPIKeyAuth:
+        - signal_scout:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ScratchpadEntry'
+          description: Matching memory entries newest-first.
+      x-explicit-tags:
+      - signals
+    post:
+      operationId: signals_scout_scratchpad_remember
+      description: Upsert a memory keyed on `(team, key)`. Re-using a key updates
+        the existing entry in place.
+      summary: Remember a scratchpad entry
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - signals
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RememberRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RememberRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RememberRequest'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - signal_scout_internal:write
+      - PersonalAPIKeyAuth:
+        - signal_scout_internal:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScratchpadEntry'
+          description: Memory entry written or refreshed.
+        '400':
+          description: Invalid memory shape (empty key/content, key too long).
+      x-explicit-tags:
+      - signals
+  /api/projects/{project_id}/signals/scout/scratchpad/forget/:
+    post:
+      operationId: signals_scout_scratchpad_forget
+      description: Delete an entry by key. Returns `deleted=false` if no row matched.
+      summary: Forget a scratchpad entry by key
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - signals
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ForgetRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ForgetRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ForgetRequest'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - signal_scout_internal:write
+      - PersonalAPIKeyAuth:
+        - signal_scout_internal:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForgetResponse'
+          description: Whether a row was removed.
+      x-explicit-tags:
+      - signals
   /api/projects/{project_id}/signals/source_configs/:
     get:
       operationId: signals_source_configs_list
@@ -56178,6 +56476,9 @@ paths:
             schema:
               $ref: '#/components/schemas/MarkToleratedInput'
         required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - visual_review:write
       responses:
         '200':
           content:
@@ -70005,6 +70306,7 @@ components:
             * `Plain` - Plain
             * `Resend` - Resend
             * `PgAnalyze` - PgAnalyze
+            * `Custom` - Custom
       required:
       - source_type
     DatabaseSchemaSchema:
@@ -72153,6 +72455,98 @@ components:
       - timestamp
       title: EmbeddingRecord
       type: object
+    EmitFindingRequest:
+      type: object
+      description: Request body for `emit-finding`. Run attribution is taken from
+        the URL path.
+      properties:
+        description:
+          type: string
+          description: Canonical evidence-bundle prose. Becomes the signal's `description`.
+          maxLength: 50000
+        weight:
+          type: number
+          format: double
+          maximum: 1.0
+          minimum: 0.0
+          description: Agent's weight for the signal in [0, 1]. Drives ranking in
+            the inbox.
+        confidence:
+          type: number
+          format: double
+          maximum: 1.0
+          minimum: 0.0
+          description: Agent's confidence the finding is real in [0, 1]. Persisted
+            in `extra`.
+        evidence:
+          type: array
+          items:
+            $ref: '#/components/schemas/EvidenceEntry'
+          description: Citations supporting the finding. Capped at 20 entries.
+          maxItems: 20
+        hypothesis:
+          type:
+          - string
+          - 'null'
+          description: Optional one-line hypothesis the finding tests.
+        severity:
+          description: |-
+            Optional severity tag — one of P0, P1, P2, P3, P4. Informational only.
+
+            * `P0` - P0
+            * `P1` - P1
+            * `P2` - P2
+            * `P3` - P3
+            * `P4` - P4
+          oneOf:
+          - $ref: '#/components/schemas/AutonomyPriorityEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        dedupe_keys:
+          type: array
+          items:
+            type: string
+          description: Optional keys for downstream dedupe (e.g. `error_tracking_issue:<id>`).
+        time_range:
+          oneOf:
+          - $ref: '#/components/schemas/TimeRange'
+          - type: 'null'
+          description: Optional time window the finding refers to.
+        mcp_trace_id:
+          type:
+          - string
+          - 'null'
+          description: Optional MCP trace id for cross-system debugging.
+        finding_id:
+          type:
+          - string
+          - 'null'
+          description: Stable id for this finding, baked into the signal's source_id
+            for traceability. NOT a dedupe key — re-emitting the same id creates another
+            signal.
+      required:
+      - confidence
+      - description
+      - evidence
+      - weight
+    EmitFindingResponse:
+      type: object
+      properties:
+        finding_id:
+          type: string
+          description: Stable id for the finding (echoed back from request, or generated).
+        emitted:
+          type: boolean
+          description: Whether `emit_signal` was actually fired.
+        skipped_reason:
+          type:
+          - string
+          - 'null'
+          description: '`ai_processing_not_approved` | `source_disabled` | null when
+            emitted normally.'
+      required:
+      - emitted
+      - finding_id
+      - skipped_reason
     EmptyPropertyFilter:
       additionalProperties: false
       properties:
@@ -77743,6 +78137,26 @@ components:
       - types
       title: EventsQueryResponse
       type: object
+    EvidenceEntry:
+      type: object
+      description: One citation attached to a finding. Mirrors `SignalsScoutEvidenceEntry`.
+      properties:
+        source_product:
+          type: string
+          description: Source the citation came from (`error_tracking`, `session_replay`,
+            `logs`, ...).
+        summary:
+          type: string
+          description: One-sentence prose about why this evidence supports the finding.
+        entity_id:
+          type:
+          - string
+          - 'null'
+          description: Optional ID of the cited entity (issue id, recording id, log
+            query id).
+      required:
+      - source_product
+      - summary
     ExistenceOperatorEnum:
       enum:
       - is_set
@@ -77870,12 +78284,11 @@ components:
           oneOf:
           - $ref: '#/components/schemas/ExperimentParameters'
           - type: 'null'
-          description: 'Variant definitions and rollout configuration. Set feature_flag_variants
-            to customize the split (default: 50/50 control/test). Each variant needs
-            a key and split_percent (the variant''s share of traffic); percentages
-            must sum to 100. Set rollout_percentage (0-100, default 100) to limit
-            what fraction of users enter the experiment. Set minimum_detectable_effect
-            (percentage, suggest 20-30) to control statistical power.'
+          description: Experiment parameters JSON. Supported keys include `feature_flag_variants`,
+            `rollout_percentage`, `minimum_detectable_effect`, `recommended_running_time`,
+            `recommended_sample_size`, `custom_exposure_filter`, and `excluded_variants`
+            (list of variant keys to drop from statistical analysis; the baseline
+            variant and holdout pseudo-variants cannot be excluded).
         secondary_metrics: {}
         saved_metrics:
           type: array
@@ -80880,6 +81293,7 @@ components:
             * `Plain` - Plain
             * `Resend` - Resend
             * `PgAnalyze` - PgAnalyze
+            * `Custom` - Custom
         payload:
           type: object
           additionalProperties: true
@@ -81189,6 +81603,7 @@ components:
       - Plain
       - Resend
       - PgAnalyze
+      - Custom
       type: string
       description: |-
         * `Ashby` - Ashby
@@ -81336,6 +81751,7 @@ components:
         * `Plain` - Plain
         * `Resend` - Resend
         * `PgAnalyze` - PgAnalyze
+        * `Custom` - Custom
     ExternalQueryError:
       additionalProperties: false
       properties:
@@ -82770,6 +83186,25 @@ components:
       required:
       - refreshing
       - results
+    ForgetRequest:
+      type: object
+      description: Request body for `forget`.
+      properties:
+        key:
+          type: string
+          description: Memory key to delete.
+          maxLength: 300
+      required:
+      - key
+    ForgetResponse:
+      type: object
+      properties:
+        deleted:
+          type: boolean
+          description: Whether a row was actually removed (false if the key didn't
+            exist).
+      required:
+      - deleted
     FunnelConversionWindowTimeUnit:
       enum:
       - second
@@ -94228,6 +94663,7 @@ components:
       - support_queue
       - session_summaries
       - signal_report
+      - signals_scout
       type: string
       description: |-
         * `error_tracking` - Error Tracking
@@ -94238,6 +94674,7 @@ components:
         * `support_queue` - Support Queue
         * `session_summaries` - Session Summaries
         * `signal_report` - Signal Report
+        * `signals_scout` - Signals Scout
     Outcome:
       type: object
       description: Initial goal and session outcome coming from LLM.
@@ -100383,12 +100820,11 @@ components:
           oneOf:
           - $ref: '#/components/schemas/ExperimentParameters'
           - type: 'null'
-          description: 'Variant definitions and rollout configuration. Set feature_flag_variants
-            to customize the split (default: 50/50 control/test). Each variant needs
-            a key and split_percent (the variant''s share of traffic); percentages
-            must sum to 100. Set rollout_percentage (0-100, default 100) to limit
-            what fraction of users enter the experiment. Set minimum_detectable_effect
-            (percentage, suggest 20-30) to control statistical power.'
+          description: Experiment parameters JSON. Supported keys include `feature_flag_variants`,
+            `rollout_percentage`, `minimum_detectable_effect`, `recommended_running_time`,
+            `recommended_sample_size`, `custom_exposure_filter`, and `excluded_variants`
+            (list of variant keys to drop from statistical analysis; the baseline
+            variant and holdout pseudo-variants cannot be excluded).
         secondary_metrics: {}
         saved_metrics:
           type: array
@@ -103597,17 +104033,16 @@ components:
           allOf:
           - $ref: '#/components/schemas/ScannerTypeEnum'
           description: |-
-            What the scanner does: monitor, classifier, scorer, summarizer, or indexer.
+            What the scanner does: monitor, classifier, scorer, or summarizer.
 
             * `monitor` - Monitor
             * `classifier` - Classifier
             * `scorer` - Scorer
             * `summarizer` - Summarizer
-            * `indexer` - Indexer
         scanner_config:
-          description: Type-specific configuration. Monitor/classifier/scorer/summarizer
-            require `prompt`; classifiers add `tags`, scorers add `scale`. Indexer
-            is fixed-task and rejects `prompt`.
+          description: Type-specific configuration. All scanner types require `prompt`;
+            classifiers add `tags`, scorers add `scale`, summarizers add optional
+            `length` and `emits_embeddings` flag.
         query:
           description: Persisted `RecordingsQuery` shape used to pick candidate sessions.
             `date_from`/`date_to` are stripped on save — the schedule controls time,
@@ -117824,6 +118259,30 @@ components:
       - lazy_async
       title: RefreshType
       type: string
+    RememberRequest:
+      type: object
+      description: Request body for `remember`.
+      properties:
+        key:
+          type: string
+          description: Agent-chosen semantic key. Re-using a key updates the existing
+            entry in place.
+          maxLength: 300
+        content:
+          type: string
+          description: Prose to write. Read verbatim into future prompts.
+          maxLength: 50000
+        run_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          description: Run that authored this memory; persisted as `created_by_run_id`
+            for lineage. Must reference a run on this same project — cross-project
+            run UUIDs are rejected.
+      required:
+      - content
+      - key
     ReorderTilesRequest:
       type: object
       properties:
@@ -117960,17 +118419,16 @@ components:
           allOf:
           - $ref: '#/components/schemas/ScannerTypeEnum'
           description: |-
-            What the scanner does: monitor, classifier, scorer, summarizer, or indexer.
+            What the scanner does: monitor, classifier, scorer, or summarizer.
 
             * `monitor` - Monitor
             * `classifier` - Classifier
             * `scorer` - Scorer
             * `summarizer` - Summarizer
-            * `indexer` - Indexer
         scanner_config:
-          description: Type-specific configuration. Monitor/classifier/scorer/summarizer
-            require `prompt`; classifiers add `tags`, scorers add `scale`. Indexer
-            is fixed-task and rejects `prompt`.
+          description: Type-specific configuration. All scanner types require `prompt`;
+            classifiers add `tags`, scorers add `scale`, summarizers add optional
+            `length` and `emits_embeddings` flag.
         query:
           description: Persisted `RecordingsQuery` shape used to pick candidate sessions.
             `date_from`/`date_to` are stripped on save — the schedule controls time,
@@ -123393,14 +123851,7 @@ components:
           type: integer
           minimum: 0
           description: Number of PostHog Signals emitted from this observation.
-        event_id_mapping:
-          type: object
-          additionalProperties: true
-          description: 'Maps the short `event_id` the LLM cites in `model_output.reasoning`
-            to citation metadata: `{uuid, timestamp_ms}`. Only includes hashes the
-            LLM actually cited.'
       required:
-      - event_id_mapping
       - model_output
       - signals_count
     ScannerSnapshot:
@@ -123414,13 +123865,12 @@ components:
           allOf:
           - $ref: '#/components/schemas/ScannerTypeEnum'
           description: |-
-            Scanner type (monitor, classifier, scorer, summarizer, indexer) at run time.
+            Scanner type (monitor, classifier, scorer, summarizer) at run time.
 
             * `monitor` - Monitor
             * `classifier` - Classifier
             * `scorer` - Scorer
             * `summarizer` - Summarizer
-            * `indexer` - Indexer
         scanner_version:
           type: integer
           description: The `ReplayScanner.scanner_version` value at the moment the
@@ -123460,14 +123910,12 @@ components:
       - classifier
       - scorer
       - summarizer
-      - indexer
       type: string
       description: |-
         * `monitor` - Monitor
         * `classifier` - Classifier
         * `scorer` - Scorer
         * `summarizer` - Summarizer
-        * `indexer` - Indexer
     ScenePersonalisationBasic:
       type: object
       properties:
@@ -123698,6 +124146,37 @@ components:
             fails with 409. Omit to skip the optimistic-concurrency check.
       required:
       - config
+    ScratchpadEntry:
+      type: object
+      description: '`SignalScratchpad` projection used by `search-memory` and `remember`.'
+      properties:
+        key:
+          type: string
+          description: Agent-chosen semantic key, unique per team.
+        content:
+          type: string
+          description: Prose content for prompt injection.
+        created_at:
+          type:
+          - string
+          - 'null'
+          description: ISO-8601 creation timestamp.
+        updated_at:
+          type:
+          - string
+          - 'null'
+          description: ISO-8601 last-write timestamp.
+        created_by_run_id:
+          type:
+          - string
+          - 'null'
+          description: Run that wrote this entry, or null if human-authored.
+      required:
+      - content
+      - created_at
+      - created_by_run_id
+      - key
+      - updated_at
     SdkAssessment:
       type: object
       properties:
@@ -125558,6 +126037,120 @@ components:
       - implementation
       type: string
       description: '* `implementation` - Implementation'
+    SignalScoutRunDetail:
+      type: object
+      description: |-
+        Full `SignalScoutRun` projection used by `get-run`. Same shape as the summary
+        today; kept distinct so future detail-only extensions (linked Signal rows,
+        LLMA token-cost join) can land here without bloating the list response.
+      properties:
+        run_id:
+          type: string
+          description: UUID of the bridge row.
+        skill_name:
+          type: string
+          description: Canonical skill name the run executed (e.g. `signals-scout-general`).
+        skill_version:
+          type: integer
+          description: Skill version snapshotted at run start.
+        status:
+          type: string
+          description: 'Status from the linked TaskRun: not_started | queued | in_progress
+            | completed | failed | cancelled.'
+        started_at:
+          type: string
+          description: ISO-8601 timestamp the TaskRun was created.
+        completed_at:
+          type:
+          - string
+          - 'null'
+          description: ISO-8601 timestamp the TaskRun completed; null while still
+            running.
+        task_id:
+          type:
+          - string
+          - 'null'
+          description: UUID of the Tasks `Task` the scout span ran inside.
+        task_run_id:
+          type:
+          - string
+          - 'null'
+          description: UUID of the Tasks `TaskRun`. Pairs with `task_id` to deep-link.
+        task_url:
+          type:
+          - string
+          - 'null'
+          description: Relative deep-link to the Tasks UI for this run, e.g. `/project/{team_id}/tasks/{task_id}?runId={task_run_id}`.
+        summary:
+          type: string
+          description: One-paragraph close-out the scout wrote at end-of-run. Empty
+            string for runs that errored before close-out. The dedupe key for non-emitting
+            runs.
+      required:
+      - completed_at
+      - run_id
+      - skill_name
+      - skill_version
+      - started_at
+      - status
+      - summary
+    SignalScoutRunSummary:
+      type: object
+      description: |-
+        Lightweight projection of a `SignalScoutRun` row used by `search-recent-runs`.
+
+        Status and timestamps flow from the linked `tasks.TaskRun`.
+      properties:
+        run_id:
+          type: string
+          description: UUID of the bridge row.
+        skill_name:
+          type: string
+          description: Canonical skill name the run executed (e.g. `signals-scout-general`).
+        skill_version:
+          type: integer
+          description: Skill version snapshotted at run start.
+        status:
+          type: string
+          description: 'Status from the linked TaskRun: not_started | queued | in_progress
+            | completed | failed | cancelled.'
+        started_at:
+          type: string
+          description: ISO-8601 timestamp the TaskRun was created.
+        completed_at:
+          type:
+          - string
+          - 'null'
+          description: ISO-8601 timestamp the TaskRun completed; null while still
+            running.
+        task_id:
+          type:
+          - string
+          - 'null'
+          description: UUID of the Tasks `Task` the scout span ran inside.
+        task_run_id:
+          type:
+          - string
+          - 'null'
+          description: UUID of the Tasks `TaskRun`. Pairs with `task_id` to deep-link.
+        task_url:
+          type:
+          - string
+          - 'null'
+          description: Relative deep-link to the Tasks UI for this run, e.g. `/project/{team_id}/tasks/{task_id}?runId={task_run_id}`.
+        summary:
+          type: string
+          description: One-paragraph close-out the scout wrote at end-of-run. Empty
+            string for runs that errored before close-out. The dedupe key for non-emitting
+            runs.
+      required:
+      - completed_at
+      - run_id
+      - skill_name
+      - skill_version
+      - started_at
+      - status
+      - summary
     SignalSourceConfig:
       type: object
       properties:
@@ -125601,6 +126194,7 @@ components:
       - issue_created
       - issue_reopened
       - issue_spiking
+      - cross_source_issue
       type: string
       description: |-
         * `session_analysis_cluster` - Session analysis cluster
@@ -125610,6 +126204,7 @@ components:
         * `issue_created` - Issue created
         * `issue_reopened` - Issue reopened
         * `issue_spiking` - Issue spiking
+        * `cross_source_issue` - Cross source issue
     SignalUserAutonomyConfig:
       type: object
       properties:
@@ -126192,6 +126787,7 @@ components:
       - conversations
       - error_tracking
       - pganalyze
+      - signals_scout
       type: string
       description: |-
         * `session_replay` - Session replay
@@ -126202,6 +126798,7 @@ components:
         * `conversations` - Conversations
         * `error_tracking` - Error tracking
         * `pganalyze` - pganalyze
+        * `signals_scout` - Signals scout
     SpanPropertyFilter:
       additionalProperties: false
       properties:
@@ -131677,6 +132274,18 @@ components:
           - $ref: '#/components/schemas/TileLayoutBox'
           description: Layout for the small (mobile) breakpoint. The grid is 1 column
             wide.
+    TimeRange:
+      type: object
+      properties:
+        date_from:
+          type: string
+          description: ISO-8601 inclusive lower bound for the finding's window.
+        date_to:
+          type: string
+          description: ISO-8601 inclusive upper bound for the finding's window.
+      required:
+      - date_from
+      - date_to
     TimeWindowMode:
       enum:
       - strict_calendar_dates

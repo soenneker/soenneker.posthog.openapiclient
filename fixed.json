@@ -15534,11 +15534,10 @@
           {
             "name": "scanner_type",
             "in": "query",
-            "description": "Filter by scanner type (monitor, classifier, scorer, summarizer, indexer).\n\n* `monitor` - Monitor\n* `classifier` - Classifier\n* `scorer` - Scorer\n* `summarizer` - Summarizer\n* `indexer` - Indexer",
+            "description": "Filter by scanner type (monitor, classifier, scorer, summarizer).\n\n* `monitor` - Monitor\n* `classifier` - Classifier\n* `scorer` - Scorer\n* `summarizer` - Summarizer",
             "schema": {
               "enum": [
                 "classifier",
-                "indexer",
                 "monitor",
                 "scorer",
                 "summarizer"
@@ -31570,6 +31569,97 @@
             "$ref": "#/components/parameters/ProjectIdPath"
           }
         ],
+        "responses": {
+          "200": {
+            "description": "Default",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "DefaultResponse",
+                  "type": "object",
+                  "description": "Default response schema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/projects/{project_id}/environments/{id}/logs_config": {
+      "get": {
+        "tags": [
+          "environments"
+        ],
+        "description": "Manage logs product configuration for this environment.",
+        "operationId": "environments-logs-config-retrieve",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "A unique integer value identifying this environment (aka team).",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/ProjectIdPath"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Default",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "DefaultResponse",
+                  "type": "object",
+                  "description": "Default response schema"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "environments"
+        ],
+        "description": "Manage logs product configuration for this environment.",
+        "operationId": "environments-logs-config-partial-update",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "A unique integer value identifying this environment (aka team).",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/ProjectIdPath"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchedTeam"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchedTeam"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchedTeam"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Default",
@@ -56510,6 +56600,376 @@
         ]
       }
     },
+    "/api/projects/{project_id}/signals/scout/runs": {
+      "get": {
+        "tags": [
+          "signals"
+        ],
+        "summary": "Search recent agent runs",
+        "description": "Return the most recent `SignalScoutRun` summaries for this project, newest first. Used by the headless scout to dedupe against work other runs already covered. ILIKE matches on `summary`. `date_from` / `date_to` are a half-open window on `created_at` (`>= date_from`, `< date_to`); pass `date_to` on subsequent calls to walk past the 100-row cap. Results capped at 100.",
+        "operationId": "signals-scout-runs-list",
+        "parameters": [
+          {
+            "name": "date_from",
+            "in": "query",
+            "description": "ISO-8601 inclusive lower bound on `created_at`. Omit to skip the lower bound.",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "date_to",
+            "in": "query",
+            "description": "\"ISO-8601 exclusive upper bound on `created_at`. Pass to walk back past the result cap on subsequent calls (cursor-style: set to the `started_at` of the oldest run from the prior page).\"",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Max rows to return (default 20, hard cap 100).",
+            "schema": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/ProjectIdPath"
+          },
+          {
+            "name": "text",
+            "in": "query",
+            "description": "Case-insensitive substring match on the scout's end-of-run `summary`. Omit to skip the filter.",
+            "schema": {
+              "minLength": 1,
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Recent run summaries newest-first.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SignalScoutRunSummary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "PersonalAPIKeyAuth": [
+              "signal_scout:read"
+            ]
+          },
+          {
+            "PersonalAPIKeyAuth": [
+              "signal_scout:read"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/projects/{project_id}/signals/scout/runs/{id}": {
+      "get": {
+        "tags": [
+          "signals"
+        ],
+        "summary": "Get a run by ID",
+        "description": "Return the full `SignalScoutRun` row. Status, timing, and error flow from the linked `tasks.TaskRun`. Strictly team-scoped — a UUID belonging to another team returns 404.",
+        "operationId": "signals-scout-runs-retrieve",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "A UUID string identifying this Signal scout run.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/ProjectIdPath"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Full run detail.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SignalScoutRunDetail"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "PersonalAPIKeyAuth": [
+              "signal_scout:read"
+            ]
+          },
+          {
+            "PersonalAPIKeyAuth": [
+              "signal_scout:read"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/projects/{project_id}/signals/scout/runs/{id}/emit-signal": {
+      "post": {
+        "tags": [
+          "signals"
+        ],
+        "summary": "Emit a finding for a run",
+        "description": "Fire `emit_signal` with `source_product = signals_scout`. The `finding_id` is baked into the deterministic `Signal.source_id = run:<id>:finding:<id>` for traceability, but this is NOT idempotent — a second call with the same `finding_id` emits a second signal, so do not retry an emit that may have already succeeded.",
+        "operationId": "signals-scout-emit-signal",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "A UUID string identifying this Signal scout run.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/ProjectIdPath"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmitFindingRequest"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/EmitFindingRequest"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/EmitFindingRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Finding emitted, or skipped by a preflight gate.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmitFindingResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "PersonalAPIKeyAuth": [
+              "signal_scout_internal:write"
+            ]
+          },
+          {
+            "PersonalAPIKeyAuth": [
+              "signal_scout_internal:write"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/projects/{project_id}/signals/scout/scratchpad": {
+      "get": {
+        "tags": [
+          "signals"
+        ],
+        "summary": "Search the scout scratchpad",
+        "description": "Return `SignalScratchpad` entries for this project. ILIKE matches on `content` and `key`.",
+        "operationId": "signals-scout-scratchpad-search",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Max rows to return (default 20, hard cap 100).",
+            "schema": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/ProjectIdPath"
+          },
+          {
+            "name": "text",
+            "in": "query",
+            "description": "ILIKE substring match against `content`. Omit to return the most recent entries.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Matching memory entries newest-first.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ScratchpadEntry"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "PersonalAPIKeyAuth": [
+              "signal_scout:read"
+            ]
+          },
+          {
+            "PersonalAPIKeyAuth": [
+              "signal_scout:read"
+            ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "signals"
+        ],
+        "summary": "Remember a scratchpad entry",
+        "description": "Upsert a memory keyed on `(team, key)`. Re-using a key updates the existing entry in place.",
+        "operationId": "signals-scout-scratchpad-remember",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ProjectIdPath"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RememberRequest"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/RememberRequest"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/RememberRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Memory entry written or refreshed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScratchpadEntry"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "PersonalAPIKeyAuth": [
+              "signal_scout_internal:write"
+            ]
+          },
+          {
+            "PersonalAPIKeyAuth": [
+              "signal_scout_internal:write"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/projects/{project_id}/signals/scout/scratchpad/forget": {
+      "post": {
+        "tags": [
+          "signals"
+        ],
+        "summary": "Forget a scratchpad entry by key",
+        "description": "Delete an entry by key. Returns `deleted=false` if no row matched.",
+        "operationId": "signals-scout-scratchpad-forget",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ProjectIdPath"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ForgetRequest"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/ForgetRequest"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/ForgetRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Whether a row was removed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForgetResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "PersonalAPIKeyAuth": [
+              "signal_scout_internal:write"
+            ]
+          },
+          {
+            "PersonalAPIKeyAuth": [
+              "signal_scout_internal:write"
+            ]
+          }
+        ]
+      }
+    },
     "/api/projects/{project_id}/signals/source_configs": {
       "get": {
         "tags": [
@@ -62478,7 +62938,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "PersonalAPIKeyAuth": [
+              "visual_review:write"
+            ]
+          }
+        ]
       }
     },
     "/api/projects/{project_id}/visual_review/runs/{id}/tolerated-hashes": {
@@ -84157,6 +84624,110 @@
         },
         "additionalProperties": false
       },
+      "EmitFindingRequest": {
+        "required": [
+          "confidence",
+          "description",
+          "evidence",
+          "weight"
+        ],
+        "type": "object",
+        "properties": {
+          "description": {
+            "maxLength": 50000,
+            "type": "string",
+            "description": "Canonical evidence-bundle prose. Becomes the signal's `description`."
+          },
+          "weight": {
+            "maximum": 1,
+            "minimum": 0,
+            "type": "number",
+            "description": "Agent's weight for the signal in [0, 1]. Drives ranking in the inbox.",
+            "format": "double"
+          },
+          "confidence": {
+            "maximum": 1,
+            "minimum": 0,
+            "type": "number",
+            "description": "Agent's confidence the finding is real in [0, 1]. Persisted in `extra`.",
+            "format": "double"
+          },
+          "evidence": {
+            "maxItems": 20,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EvidenceEntry"
+            },
+            "description": "Citations supporting the finding. Capped at 20 entries."
+          },
+          "hypothesis": {
+            "type": "string",
+            "description": "Optional one-line hypothesis the finding tests."
+          },
+          "severity": {
+            "type": "object",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/AutonomyPriorityEnum_Wrapper"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Optional severity tag — one of P0, P1, P2, P3, P4. Informational only.\n\n* `P0` - P0\n* `P1` - P1\n* `P2` - P2\n* `P3` - P3\n* `P4` - P4"
+          },
+          "dedupe_keys": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Optional keys for downstream dedupe (e.g. `error_tracking_issue:<id>`)."
+          },
+          "time_range": {
+            "type": "object",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/TimeRange"
+              },
+              {
+                "type": "object"
+              }
+            ],
+            "description": "Optional time window the finding refers to."
+          },
+          "mcp_trace_id": {
+            "type": "string",
+            "description": "Optional MCP trace id for cross-system debugging."
+          },
+          "finding_id": {
+            "type": "string",
+            "description": "Stable id for this finding, baked into the signal's source_id for traceability. NOT a dedupe key — re-emitting the same id creates another signal."
+          }
+        },
+        "description": "Request body for `emit-finding`. Run attribution is taken from the URL path."
+      },
+      "EmitFindingResponse": {
+        "required": [
+          "emitted",
+          "finding_id",
+          "skipped_reason"
+        ],
+        "type": "object",
+        "properties": {
+          "finding_id": {
+            "type": "string",
+            "description": "Stable id for the finding (echoed back from request, or generated)."
+          },
+          "emitted": {
+            "type": "boolean",
+            "description": "Whether `emit_signal` was actually fired."
+          },
+          "skipped_reason": {
+            "type": "string",
+            "description": "`ai_processing_not_approved` | `source_disabled` | null when emitted normally."
+          }
+        }
+      },
       "EmptyPropertyFilter": {
         "title": "EmptyPropertyFilter",
         "type": "object",
@@ -92878,6 +93449,28 @@
         },
         "additionalProperties": false
       },
+      "EvidenceEntry": {
+        "required": [
+          "source_product",
+          "summary"
+        ],
+        "type": "object",
+        "properties": {
+          "source_product": {
+            "type": "string",
+            "description": "Source the citation came from (`error_tracking`, `session_replay`, `logs`, ...)."
+          },
+          "summary": {
+            "type": "string",
+            "description": "One-sentence prose about why this evidence supports the finding."
+          },
+          "entity_id": {
+            "type": "string",
+            "description": "Optional ID of the cited entity (issue id, recording id, log query id)."
+          }
+        },
+        "description": "One citation attached to a finding. Mirrors `SignalsScoutEvidenceEntry`."
+      },
       "ExistenceOperatorEnum": {
         "enum": [
           "is_set",
@@ -93081,7 +93674,7 @@
                 "type": "object"
               }
             ],
-            "description": "\"Variant definitions and rollout configuration. Set feature_flag_variants to customize the split (default: 50/50 control/test). Each variant needs a key and split_percent (the variant's share of traffic); percentages must sum to 100. Set rollout_percentage (0-100, default 100) to limit what fraction of users enter the experiment. Set minimum_detectable_effect (percentage, suggest 20-30) to control statistical power.\""
+            "description": "Experiment parameters JSON. Supported keys include `feature_flag_variants`, `rollout_percentage`, `minimum_detectable_effect`, `recommended_running_time`, `recommended_sample_size`, `custom_exposure_filter`, and `excluded_variants` (list of variant keys to drop from statistical analysis; the baseline variant and holdout pseudo-variants cannot be excluded)."
           },
           "secondary_metrics": {
             "type": "object"
@@ -98009,11 +98602,12 @@
           "ClickHouse",
           "Plain",
           "Resend",
-          "PgAnalyze"
+          "PgAnalyze",
+          "Custom"
         ],
         "type": "string",
         "additionalProperties": false,
-        "description": "* `Ashby` - Ashby\n* `Supabase` - Supabase\n* `CustomerIO` - CustomerIO\n* `Github` - Github\n* `Stripe` - Stripe\n* `Hubspot` - Hubspot\n* `Postgres` - Postgres\n* `Zendesk` - Zendesk\n* `Snowflake` - Snowflake\n* `Salesforce` - Salesforce\n* `MySQL` - MySQL\n* `MongoDB` - MongoDB\n* `MSSQL` - MSSQL\n* `Vitally` - Vitally\n* `BigQuery` - BigQuery\n* `Chargebee` - Chargebee\n* `Clerk` - Clerk\n* `GoogleAds` - GoogleAds\n* `TemporalIO` - TemporalIO\n* `DoIt` - DoIt\n* `GoogleSheets` - GoogleSheets\n* `MetaAds` - MetaAds\n* `Klaviyo` - Klaviyo\n* `Mailchimp` - Mailchimp\n* `Braze` - Braze\n* `Mailjet` - Mailjet\n* `Redshift` - Redshift\n* `Polar` - Polar\n* `RevenueCat` - RevenueCat\n* `LinkedinAds` - LinkedinAds\n* `RedditAds` - RedditAds\n* `TikTokAds` - TikTokAds\n* `BingAds` - BingAds\n* `Shopify` - Shopify\n* `Attio` - Attio\n* `SnapchatAds` - SnapchatAds\n* `Linear` - Linear\n* `Intercom` - Intercom\n* `Amplitude` - Amplitude\n* `Mixpanel` - Mixpanel\n* `Jira` - Jira\n* `ActiveCampaign` - ActiveCampaign\n* `Marketo` - Marketo\n* `Adjust` - Adjust\n* `AppsFlyer` - AppsFlyer\n* `Freshdesk` - Freshdesk\n* `GoogleAnalytics` - GoogleAnalytics\n* `Pipedrive` - Pipedrive\n* `SendGrid` - SendGrid\n* `Slack` - Slack\n* `PagerDuty` - PagerDuty\n* `Asana` - Asana\n* `Notion` - Notion\n* `Airtable` - Airtable\n* `Greenhouse` - Greenhouse\n* `BambooHR` - BambooHR\n* `Lever` - Lever\n* `GitLab` - GitLab\n* `Datadog` - Datadog\n* `Sentry` - Sentry\n* `Pendo` - Pendo\n* `FullStory` - FullStory\n* `AmazonAds` - AmazonAds\n* `PinterestAds` - PinterestAds\n* `AppleSearchAds` - AppleSearchAds\n* `QuickBooks` - QuickBooks\n* `Xero` - Xero\n* `NetSuite` - NetSuite\n* `WooCommerce` - WooCommerce\n* `BigCommerce` - BigCommerce\n* `PayPal` - PayPal\n* `Square` - Square\n* `Zoom` - Zoom\n* `Trello` - Trello\n* `Monday` - Monday\n* `ClickUp` - ClickUp\n* `Confluence` - Confluence\n* `Recurly` - Recurly\n* `SalesLoft` - SalesLoft\n* `Outreach` - Outreach\n* `Gong` - Gong\n* `Calendly` - Calendly\n* `Typeform` - Typeform\n* `Iterable` - Iterable\n* `ZohoCRM` - ZohoCRM\n* `Close` - Close\n* `Oracle` - Oracle\n* `DynamoDB` - DynamoDB\n* `Elasticsearch` - Elasticsearch\n* `Kafka` - Kafka\n* `LaunchDarkly` - LaunchDarkly\n* `Braintree` - Braintree\n* `Recharge` - Recharge\n* `HelpScout` - HelpScout\n* `Gorgias` - Gorgias\n* `Instagram` - Instagram\n* `YouTubeAnalytics` - YouTubeAnalytics\n* `FacebookPages` - FacebookPages\n* `TwitterAds` - TwitterAds\n* `Workday` - Workday\n* `ServiceNow` - ServiceNow\n* `Pardot` - Pardot\n* `Copper` - Copper\n* `Front` - Front\n* `ChartMogul` - ChartMogul\n* `Zuora` - Zuora\n* `Paddle` - Paddle\n* `CircleCI` - CircleCI\n* `CockroachDB` - CockroachDB\n* `Firebase` - Firebase\n* `AzureBlob` - AzureBlob\n* `GoogleDrive` - GoogleDrive\n* `OneDrive` - OneDrive\n* `SharePoint` - SharePoint\n* `Box` - Box\n* `SFTP` - SFTP\n* `MicrosoftTeams` - MicrosoftTeams\n* `Aircall` - Aircall\n* `Webflow` - Webflow\n* `Okta` - Okta\n* `Auth0` - Auth0\n* `Productboard` - Productboard\n* `Smartsheet` - Smartsheet\n* `Wrike` - Wrike\n* `Plaid` - Plaid\n* `SurveyMonkey` - SurveyMonkey\n* `Eventbrite` - Eventbrite\n* `RingCentral` - RingCentral\n* `Twilio` - Twilio\n* `Freshsales` - Freshsales\n* `Shortcut` - Shortcut\n* `ConvertKit` - ConvertKit\n* `Drip` - Drip\n* `CampaignMonitor` - CampaignMonitor\n* `MailerLite` - MailerLite\n* `Omnisend` - Omnisend\n* `Brevo` - Brevo\n* `Postmark` - Postmark\n* `Granola` - Granola\n* `BuildBetter` - BuildBetter\n* `Convex` - Convex\n* `ClickHouse` - ClickHouse\n* `Plain` - Plain\n* `Resend` - Resend\n* `PgAnalyze` - PgAnalyze"
+        "description": "* `Ashby` - Ashby\n* `Supabase` - Supabase\n* `CustomerIO` - CustomerIO\n* `Github` - Github\n* `Stripe` - Stripe\n* `Hubspot` - Hubspot\n* `Postgres` - Postgres\n* `Zendesk` - Zendesk\n* `Snowflake` - Snowflake\n* `Salesforce` - Salesforce\n* `MySQL` - MySQL\n* `MongoDB` - MongoDB\n* `MSSQL` - MSSQL\n* `Vitally` - Vitally\n* `BigQuery` - BigQuery\n* `Chargebee` - Chargebee\n* `Clerk` - Clerk\n* `GoogleAds` - GoogleAds\n* `TemporalIO` - TemporalIO\n* `DoIt` - DoIt\n* `GoogleSheets` - GoogleSheets\n* `MetaAds` - MetaAds\n* `Klaviyo` - Klaviyo\n* `Mailchimp` - Mailchimp\n* `Braze` - Braze\n* `Mailjet` - Mailjet\n* `Redshift` - Redshift\n* `Polar` - Polar\n* `RevenueCat` - RevenueCat\n* `LinkedinAds` - LinkedinAds\n* `RedditAds` - RedditAds\n* `TikTokAds` - TikTokAds\n* `BingAds` - BingAds\n* `Shopify` - Shopify\n* `Attio` - Attio\n* `SnapchatAds` - SnapchatAds\n* `Linear` - Linear\n* `Intercom` - Intercom\n* `Amplitude` - Amplitude\n* `Mixpanel` - Mixpanel\n* `Jira` - Jira\n* `ActiveCampaign` - ActiveCampaign\n* `Marketo` - Marketo\n* `Adjust` - Adjust\n* `AppsFlyer` - AppsFlyer\n* `Freshdesk` - Freshdesk\n* `GoogleAnalytics` - GoogleAnalytics\n* `Pipedrive` - Pipedrive\n* `SendGrid` - SendGrid\n* `Slack` - Slack\n* `PagerDuty` - PagerDuty\n* `Asana` - Asana\n* `Notion` - Notion\n* `Airtable` - Airtable\n* `Greenhouse` - Greenhouse\n* `BambooHR` - BambooHR\n* `Lever` - Lever\n* `GitLab` - GitLab\n* `Datadog` - Datadog\n* `Sentry` - Sentry\n* `Pendo` - Pendo\n* `FullStory` - FullStory\n* `AmazonAds` - AmazonAds\n* `PinterestAds` - PinterestAds\n* `AppleSearchAds` - AppleSearchAds\n* `QuickBooks` - QuickBooks\n* `Xero` - Xero\n* `NetSuite` - NetSuite\n* `WooCommerce` - WooCommerce\n* `BigCommerce` - BigCommerce\n* `PayPal` - PayPal\n* `Square` - Square\n* `Zoom` - Zoom\n* `Trello` - Trello\n* `Monday` - Monday\n* `ClickUp` - ClickUp\n* `Confluence` - Confluence\n* `Recurly` - Recurly\n* `SalesLoft` - SalesLoft\n* `Outreach` - Outreach\n* `Gong` - Gong\n* `Calendly` - Calendly\n* `Typeform` - Typeform\n* `Iterable` - Iterable\n* `ZohoCRM` - ZohoCRM\n* `Close` - Close\n* `Oracle` - Oracle\n* `DynamoDB` - DynamoDB\n* `Elasticsearch` - Elasticsearch\n* `Kafka` - Kafka\n* `LaunchDarkly` - LaunchDarkly\n* `Braintree` - Braintree\n* `Recharge` - Recharge\n* `HelpScout` - HelpScout\n* `Gorgias` - Gorgias\n* `Instagram` - Instagram\n* `YouTubeAnalytics` - YouTubeAnalytics\n* `FacebookPages` - FacebookPages\n* `TwitterAds` - TwitterAds\n* `Workday` - Workday\n* `ServiceNow` - ServiceNow\n* `Pardot` - Pardot\n* `Copper` - Copper\n* `Front` - Front\n* `ChartMogul` - ChartMogul\n* `Zuora` - Zuora\n* `Paddle` - Paddle\n* `CircleCI` - CircleCI\n* `CockroachDB` - CockroachDB\n* `Firebase` - Firebase\n* `AzureBlob` - AzureBlob\n* `GoogleDrive` - GoogleDrive\n* `OneDrive` - OneDrive\n* `SharePoint` - SharePoint\n* `Box` - Box\n* `SFTP` - SFTP\n* `MicrosoftTeams` - MicrosoftTeams\n* `Aircall` - Aircall\n* `Webflow` - Webflow\n* `Okta` - Okta\n* `Auth0` - Auth0\n* `Productboard` - Productboard\n* `Smartsheet` - Smartsheet\n* `Wrike` - Wrike\n* `Plaid` - Plaid\n* `SurveyMonkey` - SurveyMonkey\n* `Eventbrite` - Eventbrite\n* `RingCentral` - RingCentral\n* `Twilio` - Twilio\n* `Freshsales` - Freshsales\n* `Shortcut` - Shortcut\n* `ConvertKit` - ConvertKit\n* `Drip` - Drip\n* `CampaignMonitor` - CampaignMonitor\n* `MailerLite` - MailerLite\n* `Omnisend` - Omnisend\n* `Brevo` - Brevo\n* `Postmark` - Postmark\n* `Granola` - Granola\n* `BuildBetter` - BuildBetter\n* `Convex` - Convex\n* `ClickHouse` - ClickHouse\n* `Plain` - Plain\n* `Resend` - Resend\n* `PgAnalyze` - PgAnalyze\n* `Custom` - Custom"
       },
       "ExternalQueryError": {
         "title": "ExternalQueryError",
@@ -99796,6 +100390,32 @@
           },
           "refreshing": {
             "type": "boolean"
+          }
+        }
+      },
+      "ForgetRequest": {
+        "required": [
+          "key"
+        ],
+        "type": "object",
+        "properties": {
+          "key": {
+            "maxLength": 300,
+            "type": "string",
+            "description": "Memory key to delete."
+          }
+        },
+        "description": "Request body for `forget`."
+      },
+      "ForgetResponse": {
+        "required": [
+          "deleted"
+        ],
+        "type": "object",
+        "properties": {
+          "deleted": {
+            "type": "boolean",
+            "description": "Whether a row was actually removed (false if the key didn't exist)."
           }
         }
       },
@@ -117834,11 +118454,12 @@
           "slack",
           "support_queue",
           "session_summaries",
-          "signal_report"
+          "signal_report",
+          "signals_scout"
         ],
         "type": "string",
         "additionalProperties": false,
-        "description": "* `error_tracking` - Error Tracking\n* `eval_clusters` - Eval Clusters\n* `user_created` - User Created\n* `automation` - Automation\n* `slack` - Slack\n* `support_queue` - Support Queue\n* `session_summaries` - Session Summaries\n* `signal_report` - Signal Report"
+        "description": "* `error_tracking` - Error Tracking\n* `eval_clusters` - Eval Clusters\n* `user_created` - User Created\n* `automation` - Automation\n* `slack` - Slack\n* `support_queue` - Support Queue\n* `session_summaries` - Session Summaries\n* `signal_report` - Signal Report\n* `signals_scout` - Signals Scout"
       },
       "Outcome": {
         "type": "object",
@@ -126119,7 +126740,7 @@
                 "type": "object"
               }
             ],
-            "description": "\"Variant definitions and rollout configuration. Set feature_flag_variants to customize the split (default: 50/50 control/test). Each variant needs a key and split_percent (the variant's share of traffic); percentages must sum to 100. Set rollout_percentage (0-100, default 100) to limit what fraction of users enter the experiment. Set minimum_detectable_effect (percentage, suggest 20-30) to control statistical power.\""
+            "description": "Experiment parameters JSON. Supported keys include `feature_flag_variants`, `rollout_percentage`, `minimum_detectable_effect`, `recommended_running_time`, `recommended_sample_size`, `custom_exposure_filter`, and `excluded_variants` (list of variant keys to drop from statistical analysis; the baseline variant and holdout pseudo-variants cannot be excluded)."
           },
           "secondary_metrics": {
             "type": "object"
@@ -130304,7 +130925,7 @@
           },
           "scanner_config": {
             "type": "object",
-            "description": "Type-specific configuration. Monitor/classifier/scorer/summarizer require `prompt`; classifiers add `tags`, scorers add `scale`. Indexer is fixed-task and rejects `prompt`."
+            "description": "Type-specific configuration. All scanner types require `prompt`; classifiers add `tags`, scorers add `scale`, summarizers add optional `length` and `emits_embeddings` flag."
           },
           "query": {
             "type": "object",
@@ -151962,6 +152583,31 @@
         "type": "string",
         "additionalProperties": false
       },
+      "RememberRequest": {
+        "required": [
+          "content",
+          "key"
+        ],
+        "type": "object",
+        "properties": {
+          "key": {
+            "maxLength": 300,
+            "type": "string",
+            "description": "Agent-chosen semantic key. Re-using a key updates the existing entry in place."
+          },
+          "content": {
+            "maxLength": 50000,
+            "type": "string",
+            "description": "Prose to write. Read verbatim into future prompts."
+          },
+          "run_id": {
+            "type": "string",
+            "description": "Run that authored this memory; persisted as `created_by_run_id` for lineage. Must reference a run on this same project — cross-project run UUIDs are rejected.",
+            "format": "uuid"
+          }
+        },
+        "description": "Request body for `remember`."
+      },
       "ReorderTilesRequest": {
         "required": [
           "tile_order"
@@ -152117,7 +152763,7 @@
           },
           "scanner_config": {
             "type": "object",
-            "description": "Type-specific configuration. Monitor/classifier/scorer/summarizer require `prompt`; classifiers add `tags`, scorers add `scale`. Indexer is fixed-task and rejects `prompt`."
+            "description": "Type-specific configuration. All scanner types require `prompt`; classifiers add `tags`, scorers add `scale`, summarizers add optional `length` and `emits_embeddings` flag."
           },
           "query": {
             "type": "object",
@@ -161086,7 +161732,6 @@
       },
       "ScannerResult": {
         "required": [
-          "event_id_mapping",
           "model_output",
           "signals_count"
         ],
@@ -161100,10 +161745,6 @@
             "minimum": 0,
             "type": "integer",
             "description": "Number of PostHog Signals emitted from this observation."
-          },
-          "event_id_mapping": {
-            "type": "object",
-            "description": "\"Maps the short `event_id` the LLM cites in `model_output.reasoning` to citation metadata: `{uuid, timestamp_ms}`. Only includes hashes the LLM actually cited.\""
           }
         },
         "description": "Mirrors `temporal.types.ScannerResult` for OpenAPI generation."
@@ -161153,12 +161794,11 @@
           "monitor",
           "classifier",
           "scorer",
-          "summarizer",
-          "indexer"
+          "summarizer"
         ],
         "type": "string",
         "additionalProperties": false,
-        "description": "* `monitor` - Monitor\n* `classifier` - Classifier\n* `scorer` - Scorer\n* `summarizer` - Summarizer\n* `indexer` - Indexer"
+        "description": "* `monitor` - Monitor\n* `classifier` - Classifier\n* `scorer` - Scorer\n* `summarizer` - Summarizer"
       },
       "ScenePersonalisationBasic": {
         "required": [
@@ -161523,6 +162163,39 @@
             "description": "Version number the caller observed before requesting this bump. If provided and it does not match the scorer's current version, the request fails with 409. Omit to skip the optimistic-concurrency check."
           }
         }
+      },
+      "ScratchpadEntry": {
+        "required": [
+          "content",
+          "created_at",
+          "created_by_run_id",
+          "key",
+          "updated_at"
+        ],
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "description": "Agent-chosen semantic key, unique per team."
+          },
+          "content": {
+            "type": "string",
+            "description": "Prose content for prompt injection."
+          },
+          "created_at": {
+            "type": "string",
+            "description": "ISO-8601 creation timestamp."
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "ISO-8601 last-write timestamp."
+          },
+          "created_by_run_id": {
+            "type": "string",
+            "description": "Run that wrote this entry, or null if human-authored."
+          }
+        },
+        "description": "`SignalScratchpad` projection used by `search-memory` and `remember`."
       },
       "SdkAssessment": {
         "required": [
@@ -164158,6 +164831,116 @@
         "additionalProperties": false,
         "description": "* `implementation` - Implementation"
       },
+      "SignalScoutRunDetail": {
+        "required": [
+          "completed_at",
+          "run_id",
+          "skill_name",
+          "skill_version",
+          "started_at",
+          "status",
+          "summary"
+        ],
+        "type": "object",
+        "properties": {
+          "run_id": {
+            "type": "string",
+            "description": "UUID of the bridge row."
+          },
+          "skill_name": {
+            "type": "string",
+            "description": "Canonical skill name the run executed (e.g. `signals-scout-general`)."
+          },
+          "skill_version": {
+            "type": "integer",
+            "description": "Skill version snapshotted at run start."
+          },
+          "status": {
+            "type": "string",
+            "description": "\"Status from the linked TaskRun: not_started | queued | in_progress | completed | failed | cancelled.\""
+          },
+          "started_at": {
+            "type": "string",
+            "description": "ISO-8601 timestamp the TaskRun was created."
+          },
+          "completed_at": {
+            "type": "string",
+            "description": "ISO-8601 timestamp the TaskRun completed; null while still running."
+          },
+          "task_id": {
+            "type": "string",
+            "description": "UUID of the Tasks `Task` the scout span ran inside."
+          },
+          "task_run_id": {
+            "type": "string",
+            "description": "UUID of the Tasks `TaskRun`. Pairs with `task_id` to deep-link."
+          },
+          "task_url": {
+            "type": "string",
+            "description": "Relative deep-link to the Tasks UI for this run, e.g. `/project/{team_id}/tasks/{task_id}?runId={task_run_id}`."
+          },
+          "summary": {
+            "type": "string",
+            "description": "One-paragraph close-out the scout wrote at end-of-run. Empty string for runs that errored before close-out. The dedupe key for non-emitting runs."
+          }
+        },
+        "description": "Full `SignalScoutRun` projection used by `get-run`. Same shape as the summary\ntoday; kept distinct so future detail-only extensions (linked Signal rows,\nLLMA token-cost join) can land here without bloating the list response."
+      },
+      "SignalScoutRunSummary": {
+        "required": [
+          "completed_at",
+          "run_id",
+          "skill_name",
+          "skill_version",
+          "started_at",
+          "status",
+          "summary"
+        ],
+        "type": "object",
+        "properties": {
+          "run_id": {
+            "type": "string",
+            "description": "UUID of the bridge row."
+          },
+          "skill_name": {
+            "type": "string",
+            "description": "Canonical skill name the run executed (e.g. `signals-scout-general`)."
+          },
+          "skill_version": {
+            "type": "integer",
+            "description": "Skill version snapshotted at run start."
+          },
+          "status": {
+            "type": "string",
+            "description": "\"Status from the linked TaskRun: not_started | queued | in_progress | completed | failed | cancelled.\""
+          },
+          "started_at": {
+            "type": "string",
+            "description": "ISO-8601 timestamp the TaskRun was created."
+          },
+          "completed_at": {
+            "type": "string",
+            "description": "ISO-8601 timestamp the TaskRun completed; null while still running."
+          },
+          "task_id": {
+            "type": "string",
+            "description": "UUID of the Tasks `Task` the scout span ran inside."
+          },
+          "task_run_id": {
+            "type": "string",
+            "description": "UUID of the Tasks `TaskRun`. Pairs with `task_id` to deep-link."
+          },
+          "task_url": {
+            "type": "string",
+            "description": "Relative deep-link to the Tasks UI for this run, e.g. `/project/{team_id}/tasks/{task_id}?runId={task_run_id}`."
+          },
+          "summary": {
+            "type": "string",
+            "description": "One-paragraph close-out the scout wrote at end-of-run. Empty string for runs that errored before close-out. The dedupe key for non-emitting runs."
+          }
+        },
+        "description": "Lightweight projection of a `SignalScoutRun` row used by `search-recent-runs`.\n\nStatus and timestamps flow from the linked `tasks.TaskRun`."
+      },
       "SignalSourceConfig": {
         "required": [
           "created_at",
@@ -164210,11 +164993,12 @@
           "ticket",
           "issue_created",
           "issue_reopened",
-          "issue_spiking"
+          "issue_spiking",
+          "cross_source_issue"
         ],
         "type": "string",
         "additionalProperties": false,
-        "description": "* `session_analysis_cluster` - Session analysis cluster\n* `evaluation` - Evaluation\n* `issue` - Issue\n* `ticket` - Ticket\n* `issue_created` - Issue created\n* `issue_reopened` - Issue reopened\n* `issue_spiking` - Issue spiking"
+        "description": "* `session_analysis_cluster` - Session analysis cluster\n* `evaluation` - Evaluation\n* `issue` - Issue\n* `ticket` - Ticket\n* `issue_created` - Issue created\n* `issue_reopened` - Issue reopened\n* `issue_spiking` - Issue spiking\n* `cross_source_issue` - Cross source issue"
       },
       "SignalUserAutonomyConfig": {
         "required": [
@@ -164981,11 +165765,12 @@
           "zendesk",
           "conversations",
           "error_tracking",
-          "pganalyze"
+          "pganalyze",
+          "signals_scout"
         ],
         "type": "string",
         "additionalProperties": false,
-        "description": "* `session_replay` - Session replay\n* `llm_analytics` - LLM analytics\n* `github` - GitHub\n* `linear` - Linear\n* `zendesk` - Zendesk\n* `conversations` - Conversations\n* `error_tracking` - Error tracking\n* `pganalyze` - pganalyze"
+        "description": "* `session_replay` - Session replay\n* `llm_analytics` - LLM analytics\n* `github` - GitHub\n* `linear` - Linear\n* `zendesk` - Zendesk\n* `conversations` - Conversations\n* `error_tracking` - Error tracking\n* `pganalyze` - pganalyze\n* `signals_scout` - Signals scout"
       },
       "SpanPropertyFilter": {
         "title": "SpanPropertyFilter",
@@ -172769,6 +173554,23 @@
               }
             },
             "description": "Layout for the small (mobile) breakpoint. The grid is 1 column wide."
+          }
+        }
+      },
+      "TimeRange": {
+        "required": [
+          "date_from",
+          "date_to"
+        ],
+        "type": "object",
+        "properties": {
+          "date_from": {
+            "type": "string",
+            "description": "ISO-8601 inclusive lower bound for the finding's window."
+          },
+          "date_to": {
+            "type": "string",
+            "description": "ISO-8601 inclusive upper bound for the finding's window."
           }
         }
       },
@@ -187408,6 +188210,18 @@
           "$ref": "#/components/schemas/SharingConfiguration"
         }
       },
+      "SignalsScoutRunsList200": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/SignalScoutRunSummary"
+        }
+      },
+      "SignalsScoutScratchpadSearch200": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/ScratchpadEntry"
+        }
+      },
       "SubscriptionsSummaryQuotaRetrieve200": {
         "required": [
           "active_count",
@@ -189741,6 +190555,17 @@
         "properties": {
           "value": {
             "type": "string"
+          }
+        }
+      },
+      "AutonomyPriorityEnum_Wrapper": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/AutonomyPriorityEnum"
           }
         }
       },
@@ -194511,17 +195336,6 @@
                 }
               ]
             }
-          }
-        }
-      },
-      "AutonomyPriorityEnum_Wrapper": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "$ref": "#/components/schemas/AutonomyPriorityEnum"
           }
         }
       },

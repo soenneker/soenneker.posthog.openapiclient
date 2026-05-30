@@ -28,9 +28,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? Enabled { get; set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
-        /// <summary>* `session_replay` - Session replay* `llm_analytics` - LLM analytics* `github` - GitHub* `linear` - Linear* `zendesk` - Zendesk* `conversations` - Conversations* `error_tracking` - Error tracking* `pganalyze` - pganalyze</summary>
+        /// <summary>* `session_replay` - Session replay* `llm_analytics` - LLM analytics* `github` - GitHub* `linear` - Linear* `zendesk` - Zendesk* `conversations` - Conversations* `error_tracking` - Error tracking* `pganalyze` - pganalyze* `signals_scout` - Signals scout</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SourceProductEnum? SourceProduct { get; set; }
-        /// <summary>* `session_analysis_cluster` - Session analysis cluster* `evaluation` - Evaluation* `issue` - Issue* `ticket` - Ticket* `issue_created` - Issue created* `issue_reopened` - Issue reopened* `issue_spiking` - Issue spiking</summary>
+        /// <summary>* `session_analysis_cluster` - Session analysis cluster* `evaluation` - Evaluation* `issue` - Issue* `ticket` - Ticket* `issue_created` - Issue created* `issue_reopened` - Issue reopened* `issue_spiking` - Issue spiking* `cross_source_issue` - Cross source issue</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalSourceConfigSourceTypeEnum? SourceType { get; set; }
         /// <summary>The status property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

@@ -37,7 +37,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservation_scanner_snapshot_scanner_config ScannerConfig { get; set; }
 #endif
-        /// <summary>* `monitor` - Monitor* `classifier` - Classifier* `scorer` - Scorer* `summarizer` - Summarizer* `indexer` - Indexer</summary>
+        /// <summary>* `monitor` - Monitor* `classifier` - Classifier* `scorer` - Scorer* `summarizer` - Summarizer</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeEnum? ScannerType { get; set; }
         /// <summary>The `ReplayScanner.scanner_version` value at the moment the workflow ran.</summary>
         public int? ScannerVersion { get; set; }

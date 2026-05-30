@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `session_replay` - Session replay* `llm_analytics` - LLM analytics* `github` - GitHub* `linear` - Linear* `zendesk` - Zendesk* `conversations` - Conversations* `error_tracking` - Error tracking* `pganalyze` - pganalyze</summary>
+    /// <summary>* `session_replay` - Session replay* `llm_analytics` - LLM analytics* `github` - GitHub* `linear` - Linear* `zendesk` - Zendesk* `conversations` - Conversations* `error_tracking` - Error tracking* `pganalyze` - pganalyze* `signals_scout` - Signals scout</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum SourceProductEnum
     {
@@ -38,6 +38,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "pganalyze")]
         #pragma warning disable CS1591
         Pganalyze,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "signals_scout")]
+        #pragma warning disable CS1591
+        Signals_scout,
         #pragma warning restore CS1591
     }
 }

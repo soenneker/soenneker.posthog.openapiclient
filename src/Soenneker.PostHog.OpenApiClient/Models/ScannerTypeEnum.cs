@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `monitor` - Monitor* `classifier` - Classifier* `scorer` - Scorer* `summarizer` - Summarizer* `indexer` - Indexer</summary>
+    /// <summary>* `monitor` - Monitor* `classifier` - Classifier* `scorer` - Scorer* `summarizer` - Summarizer</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ScannerTypeEnum
     {
@@ -22,10 +22,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "summarizer")]
         #pragma warning disable CS1591
         Summarizer,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "indexer")]
-        #pragma warning disable CS1591
-        Indexer,
         #pragma warning restore CS1591
     }
 }

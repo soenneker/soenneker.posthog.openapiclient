@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Processing;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Source_configs;
 using System.Collections.Generic;
 using System.IO;
@@ -26,6 +27,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.ReportsRequestBuilder Reports
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.ReportsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The scout property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.ScoutRequestBuilder Scout
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.ScoutRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The source_configs property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Source_configs.Source_configsRequestBuilder Source_configs
