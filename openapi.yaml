@@ -52364,6 +52364,53 @@ paths:
                 $ref: '#/components/schemas/SignalReport'
           description: ''
       x-explicit-tags: []
+  /api/projects/{project_id}/signals/scout/project_profile/current/:
+    get:
+      operationId: signals_scout_project_profile_get
+      description: Return the team's deterministic project profile. For the internal
+        scout token the response reflects the newest non-expired cached row or a freshly-built
+        one (lazy compute on cache miss); `force_refresh=true` skips the cache and
+        rebuilds from authoritative sources. Public read callers (session auth or
+        a `signal_scout:read` PAK) get the newest cached profile, or 404 if none has
+        been built yet — they never trigger a rebuild. Read this at the start of a
+        run to orient on the team's product mix, integrations, warehouse sources,
+        signal coverage, and existing inbox surface.
+      summary: Get the current project profile
+      parameters:
+      - in: query
+        name: force_refresh
+        schema:
+          type: boolean
+          default: false
+        description: When true, skip the cache and rebuild the profile from authoritative
+          sources before responding. Use after seeding events, importing data, or
+          any other change the caller knows just landed but hasn't surfaced through
+          natural cache expiry yet. Honored only for the internal scout token — public
+          read callers get the cached profile regardless. Concurrent forced rebuilds
+          are serialized by the team-keyed advisory lock — at most one extra `build_inventory`
+          per simultaneous request.
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - signals
+      security:
+      - PersonalAPIKeyAuth:
+        - signal_scout:read
+      - PersonalAPIKeyAuth:
+        - signal_scout:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectProfile'
+          description: The team's current project profile (cached, or freshly built
+            for the internal scout token).
+        '404':
+          description: No profile has been built for this team yet, and the caller
+            is not the internal scout token (which builds on cache miss). Public read
+            callers never trigger a build.
+      x-explicit-tags:
+      - signals
   /api/projects/{project_id}/signals/scout/runs/:
     get:
       operationId: signals_scout_runs_list
@@ -78218,6 +78265,22 @@ components:
       required:
       - key
       - operator
+    ExistingInboxReports:
+      type: object
+      description: '`inventory.existing_inbox_reports` — what''s already been surfaced
+        to the inbox.'
+      properties:
+        total:
+          type: integer
+          description: Total non-deleted, non-suppressed reports for this team.
+        by_status:
+          type: array
+          items:
+            $ref: '#/components/schemas/InboxReportStatusBucket'
+          description: Per-status breakdown of inbox reports.
+      required:
+      - by_status
+      - total
     ExitConditionEnum:
       enum:
       - exit_on_conversion
@@ -81333,6 +81396,29 @@ components:
       required:
       - payload
       - source_type
+    ExternalDataSourceEntry:
+      type: object
+      description: One row in `inventory.external_data_sources`.
+      properties:
+        source_type:
+          type: string
+          description: Warehouse source type (e.g. `Stripe`, `Postgres`, `BigQuery`).
+        status:
+          type: string
+          description: Current sync status (`Running`, `Failed`, `Paused`, etc.).
+        prefix:
+          type: string
+          description: Schema prefix used by this source, if any.
+        created_at:
+          type:
+          - string
+          - 'null'
+          description: ISO-8601 timestamp the source was connected.
+      required:
+      - created_at
+      - prefix
+      - source_type
+      - status
     ExternalDataSourceRevenueAnalyticsConfig:
       type: object
       properties:
@@ -87486,6 +87572,19 @@ components:
       - leftjoin_conjoined
       title: InCohortVia
       type: string
+    InboxReportStatusBucket:
+      type: object
+      description: One bucket in `inventory.existing_inbox_reports.by_status`.
+      properties:
+        status:
+          type: string
+          description: Report status (e.g. `potential`, `candidate`, `ready`).
+        count:
+          type: integer
+          description: Number of reports in this status (excludes deleted/suppressed).
+      required:
+      - count
+      - status
     IncrementalFieldTypeEnum:
       enum:
       - integer
@@ -88432,6 +88531,22 @@ components:
       - display_name
       - errors
       - id
+      - kind
+    IntegrationEntry:
+      type: object
+      description: One row in `inventory.integrations`. Sensitive config is intentionally
+        excluded.
+      properties:
+        kind:
+          type: string
+          description: Integration kind (e.g. `slack`, `github`, `linear`).
+        created_at:
+          type:
+          - string
+          - 'null'
+          description: ISO-8601 timestamp the integration was connected.
+      required:
+      - created_at
       - kind
     IntegrationFilter:
       additionalProperties: false
@@ -107440,6 +107555,28 @@ components:
         * `low` - Low
         * `medium` - Medium
         * `high` - High
+    ProductIntentEntry:
+      type: object
+      description: One row in `inventory.product_intents`.
+      properties:
+        product_type:
+          type: string
+          description: Product key the team signaled intent to use.
+        activated_at:
+          type:
+          - string
+          - 'null'
+          description: ISO-8601 timestamp the team activated the product, or null
+            if intent only.
+        created_at:
+          type:
+          - string
+          - 'null'
+          description: ISO-8601 timestamp the intent was first recorded.
+      required:
+      - activated_at
+      - created_at
+      - product_type
     ProductTour:
       type: object
       description: Read-only serializer for ProductTour.
@@ -108579,6 +108716,218 @@ components:
       - organization
       - timezone
       - uuid
+    ProjectContext:
+      type: object
+      description: '`inventory.project_context` — free-form orientation about the
+        project''s product.'
+      properties:
+        product_description:
+          type:
+          - string
+          - 'null'
+          description: Human-set product description on the project (max 1000 chars).
+            When present, the most direct "what does this team's product do" answer.
+            `null` when unset.
+        app_urls:
+          type: array
+          items:
+            type: string
+          description: Registered app URLs for this team (toolbar / replay). The team's
+            actual product surface; complements `$pageview.$host` discovery via `read-data-schema`.
+      required:
+      - app_urls
+      - product_description
+    ProjectProfile:
+      type: object
+      description: |-
+        Wire shape for the project profile returned by `signals-scout-harness-project-profile-list`.
+
+        Read this once at the start of a run (after `skill-get`) to orient on the team. Cache
+        is per-team with a soft TTL (`PROFILE_TTL`); the response always reflects either the
+        latest cached profile or a freshly-built one if the cache was stale or the caller passed
+        `force_refresh=true`.
+      properties:
+        profile_id:
+          type: string
+          description: UUID of the `SignalProjectProfile` row.
+        computed_at:
+          type: string
+          description: ISO-8601 timestamp the profile was built.
+        expires_at:
+          type: string
+          description: ISO-8601 timestamp after which the profile is considered stale.
+        source_version:
+          type: string
+          description: Schema version of the inventory builder. Bumps invalidate older
+            cached rows.
+        payload:
+          allOf:
+          - $ref: '#/components/schemas/ProjectProfilePayload'
+          description: Structured profile content. v1 has `inventory` only.
+      required:
+      - computed_at
+      - expires_at
+      - payload
+      - profile_id
+      - source_version
+    ProjectProfileInventory:
+      type: object
+      description: |-
+        The deterministic inventory layer of a project profile.
+
+        Read this to orient on the team's product mix, integrations, warehouse sources, signal
+        coverage, and existing inbox surface in one tool call. Distinct from `SignalScratchpad`:
+        profile is ground truth from authoritative tables; memory is agent inference.
+      properties:
+        project_context:
+          allOf:
+          - $ref: '#/components/schemas/ProjectContext'
+          description: 'Free-form orientation: human-set product description + registered
+            app URLs.'
+        products_in_use:
+          type: array
+          items:
+            type: string
+          description: Product keys this team has completed onboarding for, sorted
+            alphabetically.
+        product_intents:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductIntentEntry'
+          description: Products the team signaled intent to use; useful for spotting
+            stuck onboardings.
+        integrations:
+          type: array
+          items:
+            $ref: '#/components/schemas/IntegrationEntry'
+          description: Connected integrations (kind + connection time only — config
+            never surfaced).
+        external_data_sources:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExternalDataSourceEntry'
+          description: Connected warehouse sources (excludes soft-deleted).
+        signal_source_configs:
+          allOf:
+          - $ref: '#/components/schemas/SignalSourceConfigsBuckets'
+          description: Signal source configs split into enabled / disabled buckets.
+        existing_inbox_reports:
+          allOf:
+          - $ref: '#/components/schemas/ExistingInboxReports'
+          description: Counts of reports already in the inbox, grouped by status.
+        recent_activity:
+          allOf:
+          - $ref: '#/components/schemas/RecentActivity'
+          description: Per-scope counts off the activity log over the recent-activity
+            window — cross-cutting orientation across every entity type (surveys,
+            feature flags, experiments, dashboards, insights, cohorts, notebooks,
+            actions, etc.). Each scope reports `edits` (total log entries), `users`
+            (distinct user count), and `last_edit` (ISO-8601). Use to triage which
+            scope a team has been working in lately before drilling down via the per-entity
+            readers or `activity-log-list`.
+        recent_dashboards:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecentDashboardEntry'
+          description: Up to 20 dashboards on this team sorted by `last_accessed_at`
+            desc — what the team is currently looking at, not necessarily the most-trafficked.
+            We don't have per-dashboard view counts in Postgres, only the timestamp
+            of the most recent access.
+        recent_surveys:
+          allOf:
+          - $ref: '#/components/schemas/RecentSurveys'
+          description: 'Surveys orientation: total + active count, plus the 5 most
+            recently updated surveys with id, name, type, status (draft / running
+            / stopped / archived), and updated_at.'
+        recent_feature_flags:
+          allOf:
+          - $ref: '#/components/schemas/RecentFeatureFlags'
+          description: 'Feature flag orientation: total + active count, plus the 5
+            most recently updated non-deleted flags with id, key, name, active, and
+            updated_at.'
+        recent_experiments:
+          allOf:
+          - $ref: '#/components/schemas/RecentExperiments'
+          description: 'Experiment orientation: total + running count, plus the 5
+            most recently updated experiments. The feature_flag_key on each row lets
+            the scout correlate experiments with the `recent_feature_flags` section.'
+        recent_alerts:
+          allOf:
+          - $ref: '#/components/schemas/RecentAlerts'
+          description: 'Alert orientation: total + enabled count, plus the 5 most
+            recently created alerts with their state and threshold metadata.'
+        recent_hog_functions:
+          allOf:
+          - $ref: '#/components/schemas/RecentHogFunctions'
+          description: 'Hog function orientation: total + enabled count, plus the
+            5 most recently updated destinations / transformations the team has wired
+            up via the CDP pipelines.'
+        recent_hog_flows:
+          allOf:
+          - $ref: '#/components/schemas/RecentHogFlows'
+          description: 'Hog flow orientation: total + non-archived count, plus the
+            5 most recently updated automation flows.'
+        recent_notebooks:
+          allOf:
+          - $ref: '#/components/schemas/RecentNotebooks'
+          description: 'Notebook orientation: total + the 5 most recently modified
+            notebooks — useful signal for what the team has been investigating.'
+        recent_cohorts:
+          allOf:
+          - $ref: '#/components/schemas/RecentCohorts'
+          description: 'Cohort orientation: total + the 5 most recently created cohorts
+            on the team.'
+        recent_actions:
+          allOf:
+          - $ref: '#/components/schemas/RecentActions'
+          description: 'Action orientation: total + the 5 most recently updated actions
+            — useful to anchor agent reasoning about what the team treats as a meaningful
+            interaction.'
+        top_events:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TopEventEntry'
+          description: Top ~50 events by count over the last 7 days, with first/last
+            seen timestamps within the window. `null` if the underlying ClickHouse
+            query failed or timed out (distinct from `[]`, which means the team has
+            no captures in the window). Use the gap between `first_seen` and `now`
+            to spot new event types or recent bursts.
+      required:
+      - existing_inbox_reports
+      - external_data_sources
+      - integrations
+      - product_intents
+      - products_in_use
+      - project_context
+      - recent_actions
+      - recent_activity
+      - recent_alerts
+      - recent_cohorts
+      - recent_dashboards
+      - recent_experiments
+      - recent_feature_flags
+      - recent_hog_flows
+      - recent_hog_functions
+      - recent_notebooks
+      - recent_surveys
+      - signal_source_configs
+      - top_events
+    ProjectProfilePayload:
+      type: object
+      description: |-
+        Top-level `payload` shape on a `SignalProjectProfile` row.
+
+        v1 carries `inventory` only. Phase 7 will add `deltas`, `activity_notes`, and
+        `narrative` slots — they're absent (not null) in v1 responses.
+      properties:
+        inventory:
+          allOf:
+          - $ref: '#/components/schemas/ProjectProfileInventory'
+          description: Deterministic snapshot of what's true about the project.
+      required:
+      - inventory
     ProjectSecretAPIKey:
       type: object
       properties:
@@ -117869,6 +118218,472 @@ components:
         * `high` - high
         * `xhigh` - xhigh
         * `max` - max
+    RecentActionEntry:
+      type: object
+      description: One row in `inventory.recent_actions.recent`.
+      properties:
+        id:
+          type: integer
+          description: Action ID.
+        name:
+          type: string
+          description: Action name.
+        updated_at:
+          type:
+          - string
+          - 'null'
+          description: ISO-8601 last-modified timestamp.
+      required:
+      - id
+      - name
+      - updated_at
+    RecentActions:
+      type: object
+      description: '`inventory.recent_actions` — total + the 5 most recently modified.'
+      properties:
+        total_count:
+          type: integer
+          description: Total non-deleted actions on the team.
+        recent:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecentActionEntry'
+          description: The 5 most recently updated actions.
+      required:
+      - recent
+      - total_count
+    RecentActivity:
+      type: object
+      description: '`inventory.recent_activity` — per-scope counts off the activity
+        log.'
+      properties:
+        window_days:
+          type: integer
+          description: Lookback window in days the per-scope counts cover.
+        by_scope:
+          type: array
+          items:
+            $ref: '#/components/schemas/ScopeActivityEntry'
+          description: Per-scope activity rows, busiest scope first. Triage which
+            entity type the team has worked in lately.
+      required:
+      - by_scope
+      - window_days
+    RecentAlertEntry:
+      type: object
+      description: One row in `inventory.recent_alerts.recent`.
+      properties:
+        id:
+          type: string
+          description: Alert configuration UUID.
+        name:
+          type: string
+          description: Alert name.
+        enabled:
+          type: boolean
+          description: Whether the alert is currently armed.
+        state:
+          type: string
+          description: Alert state (e.g. `not_firing`, `firing`).
+        calculation_interval:
+          type:
+          - string
+          - 'null'
+          description: How often the alert is evaluated (e.g. `daily`, `hourly`);
+            null if unset.
+        insight_id:
+          type:
+          - integer
+          - 'null'
+          description: ID of the insight the alert watches; null if none.
+        created_at:
+          type:
+          - string
+          - 'null'
+          description: ISO-8601 creation timestamp.
+      required:
+      - calculation_interval
+      - created_at
+      - enabled
+      - id
+      - insight_id
+      - name
+      - state
+    RecentAlerts:
+      type: object
+      description: '`inventory.recent_alerts` — total + currently-enabled count, plus
+        the 5 most recently created.'
+      properties:
+        total_count:
+          type: integer
+          description: Total insight alerts on the team.
+        enabled_count:
+          type: integer
+          description: Alerts currently armed (`enabled=true`).
+        recent:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecentAlertEntry'
+          description: The 5 most recently created alerts.
+      required:
+      - enabled_count
+      - recent
+      - total_count
+    RecentCohortEntry:
+      type: object
+      description: One row in `inventory.recent_cohorts.recent`.
+      properties:
+        id:
+          type: integer
+          description: Cohort ID.
+        name:
+          type: string
+          description: Cohort name.
+        is_static:
+          type: boolean
+          description: True for a one-shot snapshot cohort; false for a dynamic-filter
+            cohort.
+        count:
+          type:
+          - integer
+          - 'null'
+          description: Membership size when last calculated; null if never calculated.
+        created_at:
+          type:
+          - string
+          - 'null'
+          description: ISO-8601 creation timestamp.
+      required:
+      - count
+      - created_at
+      - id
+      - is_static
+      - name
+    RecentCohorts:
+      type: object
+      description: '`inventory.recent_cohorts` — total + the 5 most recently created.'
+      properties:
+        total_count:
+          type: integer
+          description: Total non-deleted cohorts on the team.
+        recent:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecentCohortEntry'
+          description: The 5 most recently created cohorts.
+      required:
+      - recent
+      - total_count
+    RecentDashboardEntry:
+      type: object
+      description: One row in `inventory.recent_dashboards`.
+      properties:
+        id:
+          type: integer
+          description: Dashboard ID — pass to `dashboard-get` to pull the full payload.
+        name:
+          type: string
+          description: Dashboard name (may be blank if unnamed).
+        last_accessed_at:
+          type:
+          - string
+          - 'null'
+          description: ISO-8601 timestamp of the most recent view in the PostHog UI.
+        last_refresh:
+          type:
+          - string
+          - 'null'
+          description: ISO-8601 timestamp of the most recent data refresh. Distinct
+            from access — a dashboard can be refreshed without anyone viewing it.
+        created_at:
+          type:
+          - string
+          - 'null'
+          description: ISO-8601 timestamp the dashboard was created.
+      required:
+      - created_at
+      - id
+      - last_accessed_at
+      - last_refresh
+      - name
+    RecentExperimentEntry:
+      type: object
+      description: One row in `inventory.recent_experiments.recent`.
+      properties:
+        id:
+          type: integer
+          description: Experiment ID.
+        name:
+          type: string
+          description: Experiment name.
+        status:
+          type: string
+          description: 'Derived status: `draft`, `running`, `stopped`, or `archived`.'
+        feature_flag_key:
+          type:
+          - string
+          - 'null'
+          description: Key of the experiment's feature flag — cross-ref into `recent_feature_flags`.
+            Null if unlinked.
+        updated_at:
+          type:
+          - string
+          - 'null'
+          description: ISO-8601 last-modified timestamp.
+      required:
+      - feature_flag_key
+      - id
+      - name
+      - status
+      - updated_at
+    RecentExperiments:
+      type: object
+      description: '`inventory.recent_experiments` — total + currently-running count,
+        plus the 5 most recently modified.'
+      properties:
+        total_count:
+          type: integer
+          description: Total experiments on the team.
+        running_count:
+          type: integer
+          description: Experiments currently running (started, not ended, not archived).
+        recent:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecentExperimentEntry'
+          description: The 5 most recently updated experiments.
+      required:
+      - recent
+      - running_count
+      - total_count
+    RecentFeatureFlagEntry:
+      type: object
+      description: One row in `inventory.recent_feature_flags.recent`.
+      properties:
+        id:
+          type: integer
+          description: Feature flag ID.
+        key:
+          type: string
+          description: Flag key used in code (`posthog.isFeatureEnabled('<key>')`).
+        name:
+          type: string
+          description: Human-set description; falls back to the key when blank.
+        active:
+          type: boolean
+          description: Whether the flag is currently evaluating (a user could be hitting
+            it).
+        updated_at:
+          type:
+          - string
+          - 'null'
+          description: ISO-8601 last-modified timestamp.
+      required:
+      - active
+      - id
+      - key
+      - name
+      - updated_at
+    RecentFeatureFlags:
+      type: object
+      description: '`inventory.recent_feature_flags` — total + active count, plus
+        the 5 most recently modified.'
+      properties:
+        total_count:
+          type: integer
+          description: Total non-deleted feature flags on the team.
+        active_count:
+          type: integer
+          description: Flags currently evaluating (`active=true`).
+        recent:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecentFeatureFlagEntry'
+          description: The 5 most recently updated non-deleted flags.
+      required:
+      - active_count
+      - recent
+      - total_count
+    RecentHogFlowEntry:
+      type: object
+      description: One row in `inventory.recent_hog_flows.recent`.
+      properties:
+        id:
+          type: string
+          description: Hog flow UUID.
+        name:
+          type: string
+          description: Hog flow name.
+        status:
+          type: string
+          description: Flow lifecycle state (e.g. `draft`, `active`, `archived`).
+        updated_at:
+          type:
+          - string
+          - 'null'
+          description: ISO-8601 last-modified timestamp.
+      required:
+      - id
+      - name
+      - status
+      - updated_at
+    RecentHogFlows:
+      type: object
+      description: '`inventory.recent_hog_flows` — total + non-archived count, plus
+        the 5 most recently modified.'
+      properties:
+        total_count:
+          type: integer
+          description: Total hog flows on the team.
+        active_count:
+          type: integer
+          description: Hog flows that are not archived.
+        recent:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecentHogFlowEntry'
+          description: The 5 most recently updated hog flows.
+      required:
+      - active_count
+      - recent
+      - total_count
+    RecentHogFunctionEntry:
+      type: object
+      description: One row in `inventory.recent_hog_functions.recent`.
+      properties:
+        id:
+          type: string
+          description: Hog function UUID.
+        name:
+          type: string
+          description: Hog function name.
+        type:
+          type:
+          - string
+          - 'null'
+          description: 'Function type: `destination`, `transformation`, `site_app`,
+            etc. Null if unset.'
+        kind:
+          type:
+          - string
+          - 'null'
+          description: Function kind sub-classifier; null if unset.
+        enabled:
+          type: boolean
+          description: Whether the function is currently enabled.
+        updated_at:
+          type:
+          - string
+          - 'null'
+          description: ISO-8601 last-modified timestamp.
+      required:
+      - enabled
+      - id
+      - kind
+      - name
+      - type
+      - updated_at
+    RecentHogFunctions:
+      type: object
+      description: '`inventory.recent_hog_functions` — total + enabled count, plus
+        the 5 most recently modified.'
+      properties:
+        total_count:
+          type: integer
+          description: Total non-deleted hog functions on the team.
+        enabled_count:
+          type: integer
+          description: Hog functions currently enabled (`enabled=true`).
+        recent:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecentHogFunctionEntry'
+          description: The 5 most recently updated hog functions.
+      required:
+      - enabled_count
+      - recent
+      - total_count
+    RecentNotebookEntry:
+      type: object
+      description: One row in `inventory.recent_notebooks.recent`.
+      properties:
+        short_id:
+          type: string
+          description: Notebook short ID — pass to the notebooks API to open it.
+        title:
+          type: string
+          description: Notebook title (may be blank if untitled).
+        last_modified_at:
+          type:
+          - string
+          - 'null'
+          description: ISO-8601 last-modified timestamp.
+      required:
+      - last_modified_at
+      - short_id
+      - title
+    RecentNotebooks:
+      type: object
+      description: '`inventory.recent_notebooks` — total + the 5 most recently modified.'
+      properties:
+        total_count:
+          type: integer
+          description: Total non-deleted notebooks on the team.
+        recent:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecentNotebookEntry'
+          description: The 5 most recently modified notebooks.
+      required:
+      - recent
+      - total_count
+    RecentSurveyEntry:
+      type: object
+      description: One row in `inventory.recent_surveys.recent`.
+      properties:
+        id:
+          type: string
+          description: Survey UUID — pass to `survey-get` for full question shape.
+        name:
+          type: string
+          description: Survey name (may be blank if unnamed).
+        type:
+          type: string
+          description: 'Survey mode: `popover`, `widget`, `external_survey`, or `api`.'
+        status:
+          type: string
+          description: 'Derived status: `draft`, `running`, `stopped`, or `archived`.'
+        updated_at:
+          type:
+          - string
+          - 'null'
+          description: ISO-8601 last-modified timestamp.
+      required:
+      - id
+      - name
+      - status
+      - type
+      - updated_at
+    RecentSurveys:
+      type: object
+      description: '`inventory.recent_surveys` — total + active count, plus the 5
+        most recently modified.'
+      properties:
+        total_count:
+          type: integer
+          description: Total surveys on the team.
+        active_count:
+          type: integer
+          description: Surveys that are live (not archived, started, and not yet ended).
+        recent:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecentSurveyEntry'
+          description: The 5 most recently updated surveys.
+      required:
+      - active_count
+      - recent
+      - total_count
     RecomputeResult:
       type: object
       properties:
@@ -124024,6 +124839,31 @@ components:
         * `Numeric` - Numeric
         * `Boolean` - Boolean
         * `Object` - Object
+    ScopeActivityEntry:
+      type: object
+      description: One row in `inventory.recent_activity.by_scope`.
+      properties:
+        scope:
+          type: string
+          description: Activity-log scope (entity type), e.g. `FeatureFlag`, `Dashboard`,
+            `Survey`.
+        edits:
+          type: integer
+          description: Total activity-log entries for this scope in the window (write
+            velocity).
+        users:
+          type: integer
+          description: Distinct users who edited this scope in the window.
+        last_edit:
+          type:
+          - string
+          - 'null'
+          description: ISO-8601 timestamp of the most recent edit in the window.
+      required:
+      - edits
+      - last_edit
+      - scope
+      - users
     ScoreDefinition:
       type: object
       properties:
@@ -126185,6 +127025,19 @@ components:
       - source_type
       - status
       - updated_at
+    SignalSourceConfigEntry:
+      type: object
+      description: One row in either bucket of `inventory.signal_source_configs`.
+      properties:
+        source_product:
+          type: string
+          description: Source product the config applies to.
+        source_type:
+          type: string
+          description: Source type within the product.
+      required:
+      - source_product
+      - source_type
     SignalSourceConfigSourceTypeEnum:
       enum:
       - session_analysis_cluster
@@ -126205,6 +127058,25 @@ components:
         * `issue_reopened` - Issue reopened
         * `issue_spiking` - Issue spiking
         * `cross_source_issue` - Cross source issue
+    SignalSourceConfigsBuckets:
+      type: object
+      description: '`inventory.signal_source_configs` split into enabled and disabled
+        buckets.'
+      properties:
+        enabled:
+          type: array
+          items:
+            $ref: '#/components/schemas/SignalSourceConfigEntry'
+          description: Source configs the team has explicitly enabled.
+        disabled:
+          type: array
+          items:
+            $ref: '#/components/schemas/SignalSourceConfigEntry'
+          description: Source configs the team has explicitly disabled (different
+            from never wired up).
+      required:
+      - disabled
+      - enabled
     SignalUserAutonomyConfig:
       type: object
       properties:
@@ -133565,6 +134437,52 @@ components:
       description: |-
         * `disabled` - disabled
         * `toolbar` - toolbar
+    TopEventEntry:
+      type: object
+      description: One row in `inventory.top_events`.
+      properties:
+        event:
+          type: string
+          description: Event name as captured.
+        count:
+          type: integer
+          description: Number of occurrences in the lookback window (last 7 days).
+        distinct_users:
+          type: integer
+          description: '`uniq(person_id)` over the window — reach. Distinguishes a
+            high-count event firing on one power user from one firing on many users.'
+        recent_24h_count:
+          type: integer
+          description: 'Count in just the last 24 hours. Compare to `count / 7` to
+            spot bursts: a ratio well above 1/7 means the event is concentrated in
+            the last day.'
+        recent_24h_users:
+          type: integer
+          description: '`uniq(person_id)` over just the last 24 hours. A burst across
+            many users is qualitatively different from one user in a loop.'
+        first_seen:
+          type:
+          - string
+          - 'null'
+          description: 'ISO-8601 timestamp of the earliest occurrence within the lookback
+            window. Compare to the window start to spot new event types: `first_seen`
+            close to `now` ⇒ likely new or recently bursting; close to the window
+            edge ⇒ has been around at least that long (the window can''t tell you
+            when the event *truly* first appeared).'
+        last_seen:
+          type:
+          - string
+          - 'null'
+          description: ISO-8601 timestamp of the most recent occurrence within the
+            lookback window.
+      required:
+      - count
+      - distinct_users
+      - event
+      - first_seen
+      - last_seen
+      - recent_24h_count
+      - recent_24h_users
     TopPage:
       type: object
       properties:

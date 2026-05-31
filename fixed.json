@@ -56600,6 +56600,54 @@
         ]
       }
     },
+    "/api/projects/{project_id}/signals/scout/project_profile/current": {
+      "get": {
+        "tags": [
+          "signals"
+        ],
+        "summary": "Get the current project profile",
+        "description": "Return the team's deterministic project profile. For the internal scout token the response reflects the newest non-expired cached row or a freshly-built one (lazy compute on cache miss); `force_refresh=true` skips the cache and rebuilds from authoritative sources. Public read callers (session auth or a `signal_scout:read` PAK) get the newest cached profile, or 404 if none has been built yet — they never trigger a rebuild. Read this at the start of a run to orient on the team's product mix, integrations, warehouse sources, signal coverage, and existing inbox surface.",
+        "operationId": "signals-scout-project-profile-get",
+        "parameters": [
+          {
+            "name": "force_refresh",
+            "in": "query",
+            "description": "When true, skip the cache and rebuild the profile from authoritative sources before responding. Use after seeding events, importing data, or any other change the caller knows just landed but hasn't surfaced through natural cache expiry yet. Honored only for the internal scout token — public read callers get the cached profile regardless. Concurrent forced rebuilds are serialized by the team-keyed advisory lock — at most one extra `build_inventory` per simultaneous request.",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "$ref": "#/components/parameters/ProjectIdPath"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The team's current project profile (cached, or freshly built for the internal scout token).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectProfile"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "PersonalAPIKeyAuth": [
+              "signal_scout:read"
+            ]
+          },
+          {
+            "PersonalAPIKeyAuth": [
+              "signal_scout:read"
+            ]
+          }
+        ]
+      }
+    },
     "/api/projects/{project_id}/signals/scout/runs": {
       "get": {
         "tags": [
@@ -93500,6 +93548,27 @@
         },
         "description": "Checks whether a property is set or not, without comparing values."
       },
+      "ExistingInboxReports": {
+        "required": [
+          "by_status",
+          "total"
+        ],
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "integer",
+            "description": "Total non-deleted, non-suppressed reports for this team."
+          },
+          "by_status": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/InboxReportStatusBucket"
+            },
+            "description": "Per-status breakdown of inbox reports."
+          }
+        },
+        "description": "`inventory.existing_inbox_reports` — what's already been surfaced to the inbox."
+      },
       "ExitConditionEnum": {
         "enum": [
           "exit_on_conversion",
@@ -98311,6 +98380,34 @@
             "$ref": "#/components/schemas/CreatedViaEnum"
           }
         }
+      },
+      "ExternalDataSourceEntry": {
+        "required": [
+          "created_at",
+          "prefix",
+          "source_type",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "source_type": {
+            "type": "string",
+            "description": "Warehouse source type (e.g. `Stripe`, `Postgres`, `BigQuery`)."
+          },
+          "status": {
+            "type": "string",
+            "description": "Current sync status (`Running`, `Failed`, `Paused`, etc.)."
+          },
+          "prefix": {
+            "type": "string",
+            "description": "Schema prefix used by this source, if any."
+          },
+          "created_at": {
+            "type": "string",
+            "description": "ISO-8601 timestamp the source was connected."
+          }
+        },
+        "description": "One row in `inventory.external_data_sources`."
       },
       "ExternalDataSourceRevenueAnalyticsConfig": {
         "type": "object",
@@ -107615,6 +107712,24 @@
         "type": "string",
         "additionalProperties": false
       },
+      "InboxReportStatusBucket": {
+        "required": [
+          "count",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "Report status (e.g. `potential`, `candidate`, `ready`)."
+          },
+          "count": {
+            "type": "integer",
+            "description": "Number of reports in this status (excludes deleted/suppressed)."
+          }
+        },
+        "description": "One bucket in `inventory.existing_inbox_reports.by_status`."
+      },
       "IncrementalFieldTypeEnum": {
         "enum": [
           "integer",
@@ -109090,6 +109205,24 @@
           }
         },
         "description": "Standard Integration serializer."
+      },
+      "IntegrationEntry": {
+        "required": [
+          "created_at",
+          "kind"
+        ],
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string",
+            "description": "Integration kind (e.g. `slack`, `github`, `linear`)."
+          },
+          "created_at": {
+            "type": "string",
+            "description": "ISO-8601 timestamp the integration was connected."
+          }
+        },
+        "description": "One row in `inventory.integrations`. Sensitive config is intentionally excluded."
       },
       "IntegrationFilter": {
         "title": "IntegrationFilter",
@@ -136304,6 +136437,29 @@
         "additionalProperties": false,
         "description": "* `low` - Low\n* `medium` - Medium\n* `high` - High"
       },
+      "ProductIntentEntry": {
+        "required": [
+          "activated_at",
+          "created_at",
+          "product_type"
+        ],
+        "type": "object",
+        "properties": {
+          "product_type": {
+            "type": "string",
+            "description": "Product key the team signaled intent to use."
+          },
+          "activated_at": {
+            "type": "string",
+            "description": "ISO-8601 timestamp the team activated the product, or null if intent only."
+          },
+          "created_at": {
+            "type": "string",
+            "description": "ISO-8601 timestamp the intent was first recorded."
+          }
+        },
+        "description": "One row in `inventory.product_intents`."
+      },
       "ProductTour": {
         "required": [
           "created_at",
@@ -137309,6 +137465,1199 @@
           }
         },
         "description": "Like `ProjectBasicSerializer`, but also works as a drop-in replacement for `TeamBasicSerializer` by way of\npassthrough fields. This allows the meaning of `Team` to change from \"project\" to \"environment\" without breaking\nbackward compatibility of the REST API.\nDo not use this in greenfield endpoints!"
+      },
+      "ProjectContext": {
+        "required": [
+          "app_urls",
+          "product_description"
+        ],
+        "type": "object",
+        "properties": {
+          "product_description": {
+            "type": "string",
+            "description": "Human-set product description on the project (max 1000 chars). When present, the most direct \"what does this team's product do\" answer. `null` when unset."
+          },
+          "app_urls": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Registered app URLs for this team (toolbar / replay). The team's actual product surface; complements `$pageview.$host` discovery via `read-data-schema`."
+          }
+        },
+        "description": "`inventory.project_context` — free-form orientation about the project's product."
+      },
+      "ProjectProfile": {
+        "required": [
+          "computed_at",
+          "expires_at",
+          "payload",
+          "profile_id",
+          "source_version"
+        ],
+        "type": "object",
+        "properties": {
+          "profile_id": {
+            "type": "string",
+            "description": "UUID of the `SignalProjectProfile` row."
+          },
+          "computed_at": {
+            "type": "string",
+            "description": "ISO-8601 timestamp the profile was built."
+          },
+          "expires_at": {
+            "type": "string",
+            "description": "ISO-8601 timestamp after which the profile is considered stale."
+          },
+          "source_version": {
+            "type": "string",
+            "description": "Schema version of the inventory builder. Bumps invalidate older cached rows."
+          },
+          "payload": {
+            "required": [
+              "inventory"
+            ],
+            "type": "object",
+            "properties": {
+              "inventory": {
+                "required": [
+                  "existing_inbox_reports",
+                  "external_data_sources",
+                  "integrations",
+                  "product_intents",
+                  "products_in_use",
+                  "project_context",
+                  "recent_actions",
+                  "recent_activity",
+                  "recent_alerts",
+                  "recent_cohorts",
+                  "recent_dashboards",
+                  "recent_experiments",
+                  "recent_feature_flags",
+                  "recent_hog_flows",
+                  "recent_hog_functions",
+                  "recent_notebooks",
+                  "recent_surveys",
+                  "signal_source_configs",
+                  "top_events"
+                ],
+                "type": "object",
+                "properties": {
+                  "project_context": {
+                    "required": [
+                      "app_urls",
+                      "product_description"
+                    ],
+                    "type": "object",
+                    "properties": {
+                      "product_description": {
+                        "type": "string",
+                        "description": "Human-set product description on the project (max 1000 chars). When present, the most direct \"what does this team's product do\" answer. `null` when unset."
+                      },
+                      "app_urls": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "description": "Registered app URLs for this team (toolbar / replay). The team's actual product surface; complements `$pageview.$host` discovery via `read-data-schema`."
+                      }
+                    },
+                    "description": "\"Free-form orientation: human-set product description + registered app URLs.\""
+                  },
+                  "products_in_use": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Product keys this team has completed onboarding for, sorted alphabetically."
+                  },
+                  "product_intents": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ProductIntentEntry"
+                    },
+                    "description": "Products the team signaled intent to use; useful for spotting stuck onboardings."
+                  },
+                  "integrations": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/IntegrationEntry"
+                    },
+                    "description": "Connected integrations (kind + connection time only — config never surfaced)."
+                  },
+                  "external_data_sources": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ExternalDataSourceEntry"
+                    },
+                    "description": "Connected warehouse sources (excludes soft-deleted)."
+                  },
+                  "signal_source_configs": {
+                    "required": [
+                      "disabled",
+                      "enabled"
+                    ],
+                    "type": "object",
+                    "properties": {
+                      "enabled": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/SignalSourceConfigEntry"
+                        },
+                        "description": "Source configs the team has explicitly enabled."
+                      },
+                      "disabled": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/SignalSourceConfigEntry"
+                        },
+                        "description": "Source configs the team has explicitly disabled (different from never wired up)."
+                      }
+                    },
+                    "description": "Signal source configs split into enabled / disabled buckets."
+                  },
+                  "existing_inbox_reports": {
+                    "required": [
+                      "by_status",
+                      "total"
+                    ],
+                    "type": "object",
+                    "properties": {
+                      "total": {
+                        "type": "integer",
+                        "description": "Total non-deleted, non-suppressed reports for this team."
+                      },
+                      "by_status": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/InboxReportStatusBucket"
+                        },
+                        "description": "Per-status breakdown of inbox reports."
+                      }
+                    },
+                    "description": "Counts of reports already in the inbox, grouped by status."
+                  },
+                  "recent_activity": {
+                    "required": [
+                      "by_scope",
+                      "window_days"
+                    ],
+                    "type": "object",
+                    "properties": {
+                      "window_days": {
+                        "type": "integer",
+                        "description": "Lookback window in days the per-scope counts cover."
+                      },
+                      "by_scope": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/ScopeActivityEntry"
+                        },
+                        "description": "Per-scope activity rows, busiest scope first. Triage which entity type the team has worked in lately."
+                      }
+                    },
+                    "description": "Per-scope counts off the activity log over the recent-activity window — cross-cutting orientation across every entity type (surveys, feature flags, experiments, dashboards, insights, cohorts, notebooks, actions, etc.). Each scope reports `edits` (total log entries), `users` (distinct user count), and `last_edit` (ISO-8601). Use to triage which scope a team has been working in lately before drilling down via the per-entity readers or `activity-log-list`."
+                  },
+                  "recent_dashboards": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/RecentDashboardEntry"
+                    },
+                    "description": "Up to 20 dashboards on this team sorted by `last_accessed_at` desc — what the team is currently looking at, not necessarily the most-trafficked. We don't have per-dashboard view counts in Postgres, only the timestamp of the most recent access."
+                  },
+                  "recent_surveys": {
+                    "required": [
+                      "active_count",
+                      "recent",
+                      "total_count"
+                    ],
+                    "type": "object",
+                    "properties": {
+                      "total_count": {
+                        "type": "integer",
+                        "description": "Total surveys on the team."
+                      },
+                      "active_count": {
+                        "type": "integer",
+                        "description": "Surveys that are live (not archived, started, and not yet ended)."
+                      },
+                      "recent": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/RecentSurveyEntry"
+                        },
+                        "description": "The 5 most recently updated surveys."
+                      }
+                    },
+                    "description": "\"Surveys orientation: total + active count, plus the 5 most recently updated surveys with id, name, type, status (draft / running / stopped / archived), and updated_at.\""
+                  },
+                  "recent_feature_flags": {
+                    "required": [
+                      "active_count",
+                      "recent",
+                      "total_count"
+                    ],
+                    "type": "object",
+                    "properties": {
+                      "total_count": {
+                        "type": "integer",
+                        "description": "Total non-deleted feature flags on the team."
+                      },
+                      "active_count": {
+                        "type": "integer",
+                        "description": "Flags currently evaluating (`active=true`)."
+                      },
+                      "recent": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/RecentFeatureFlagEntry"
+                        },
+                        "description": "The 5 most recently updated non-deleted flags."
+                      }
+                    },
+                    "description": "\"Feature flag orientation: total + active count, plus the 5 most recently updated non-deleted flags with id, key, name, active, and updated_at.\""
+                  },
+                  "recent_experiments": {
+                    "required": [
+                      "recent",
+                      "running_count",
+                      "total_count"
+                    ],
+                    "type": "object",
+                    "properties": {
+                      "total_count": {
+                        "type": "integer",
+                        "description": "Total experiments on the team."
+                      },
+                      "running_count": {
+                        "type": "integer",
+                        "description": "Experiments currently running (started, not ended, not archived)."
+                      },
+                      "recent": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/RecentExperimentEntry"
+                        },
+                        "description": "The 5 most recently updated experiments."
+                      }
+                    },
+                    "description": "\"Experiment orientation: total + running count, plus the 5 most recently updated experiments. The feature_flag_key on each row lets the scout correlate experiments with the `recent_feature_flags` section.\""
+                  },
+                  "recent_alerts": {
+                    "required": [
+                      "enabled_count",
+                      "recent",
+                      "total_count"
+                    ],
+                    "type": "object",
+                    "properties": {
+                      "total_count": {
+                        "type": "integer",
+                        "description": "Total insight alerts on the team."
+                      },
+                      "enabled_count": {
+                        "type": "integer",
+                        "description": "Alerts currently armed (`enabled=true`)."
+                      },
+                      "recent": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/RecentAlertEntry"
+                        },
+                        "description": "The 5 most recently created alerts."
+                      }
+                    },
+                    "description": "\"Alert orientation: total + enabled count, plus the 5 most recently created alerts with their state and threshold metadata.\""
+                  },
+                  "recent_hog_functions": {
+                    "required": [
+                      "enabled_count",
+                      "recent",
+                      "total_count"
+                    ],
+                    "type": "object",
+                    "properties": {
+                      "total_count": {
+                        "type": "integer",
+                        "description": "Total non-deleted hog functions on the team."
+                      },
+                      "enabled_count": {
+                        "type": "integer",
+                        "description": "Hog functions currently enabled (`enabled=true`)."
+                      },
+                      "recent": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/RecentHogFunctionEntry"
+                        },
+                        "description": "The 5 most recently updated hog functions."
+                      }
+                    },
+                    "description": "\"Hog function orientation: total + enabled count, plus the 5 most recently updated destinations / transformations the team has wired up via the CDP pipelines.\""
+                  },
+                  "recent_hog_flows": {
+                    "required": [
+                      "active_count",
+                      "recent",
+                      "total_count"
+                    ],
+                    "type": "object",
+                    "properties": {
+                      "total_count": {
+                        "type": "integer",
+                        "description": "Total hog flows on the team."
+                      },
+                      "active_count": {
+                        "type": "integer",
+                        "description": "Hog flows that are not archived."
+                      },
+                      "recent": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/RecentHogFlowEntry"
+                        },
+                        "description": "The 5 most recently updated hog flows."
+                      }
+                    },
+                    "description": "\"Hog flow orientation: total + non-archived count, plus the 5 most recently updated automation flows.\""
+                  },
+                  "recent_notebooks": {
+                    "required": [
+                      "recent",
+                      "total_count"
+                    ],
+                    "type": "object",
+                    "properties": {
+                      "total_count": {
+                        "type": "integer",
+                        "description": "Total non-deleted notebooks on the team."
+                      },
+                      "recent": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/RecentNotebookEntry"
+                        },
+                        "description": "The 5 most recently modified notebooks."
+                      }
+                    },
+                    "description": "\"Notebook orientation: total + the 5 most recently modified notebooks — useful signal for what the team has been investigating.\""
+                  },
+                  "recent_cohorts": {
+                    "required": [
+                      "recent",
+                      "total_count"
+                    ],
+                    "type": "object",
+                    "properties": {
+                      "total_count": {
+                        "type": "integer",
+                        "description": "Total non-deleted cohorts on the team."
+                      },
+                      "recent": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/RecentCohortEntry"
+                        },
+                        "description": "The 5 most recently created cohorts."
+                      }
+                    },
+                    "description": "\"Cohort orientation: total + the 5 most recently created cohorts on the team.\""
+                  },
+                  "recent_actions": {
+                    "required": [
+                      "recent",
+                      "total_count"
+                    ],
+                    "type": "object",
+                    "properties": {
+                      "total_count": {
+                        "type": "integer",
+                        "description": "Total non-deleted actions on the team."
+                      },
+                      "recent": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/RecentActionEntry"
+                        },
+                        "description": "The 5 most recently updated actions."
+                      }
+                    },
+                    "description": "\"Action orientation: total + the 5 most recently updated actions — useful to anchor agent reasoning about what the team treats as a meaningful interaction.\""
+                  },
+                  "top_events": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/TopEventEntry"
+                    },
+                    "description": "Top ~50 events by count over the last 7 days, with first/last seen timestamps within the window. `null` if the underlying ClickHouse query failed or timed out (distinct from `[]`, which means the team has no captures in the window). Use the gap between `first_seen` and `now` to spot new event types or recent bursts."
+                  }
+                },
+                "description": "Deterministic snapshot of what's true about the project."
+              }
+            },
+            "description": "Structured profile content. v1 has `inventory` only."
+          }
+        },
+        "description": "Wire shape for the project profile returned by `signals-scout-harness-project-profile-list`.\n\nRead this once at the start of a run (after `skill-get`) to orient on the team. Cache\nis per-team with a soft TTL (`PROFILE_TTL`); the response always reflects either the\nlatest cached profile or a freshly-built one if the cache was stale or the caller passed\n`force_refresh=true`."
+      },
+      "ProjectProfileInventory": {
+        "required": [
+          "existing_inbox_reports",
+          "external_data_sources",
+          "integrations",
+          "product_intents",
+          "products_in_use",
+          "project_context",
+          "recent_actions",
+          "recent_activity",
+          "recent_alerts",
+          "recent_cohorts",
+          "recent_dashboards",
+          "recent_experiments",
+          "recent_feature_flags",
+          "recent_hog_flows",
+          "recent_hog_functions",
+          "recent_notebooks",
+          "recent_surveys",
+          "signal_source_configs",
+          "top_events"
+        ],
+        "type": "object",
+        "properties": {
+          "project_context": {
+            "required": [
+              "app_urls",
+              "product_description"
+            ],
+            "type": "object",
+            "properties": {
+              "product_description": {
+                "type": "string",
+                "description": "Human-set product description on the project (max 1000 chars). When present, the most direct \"what does this team's product do\" answer. `null` when unset."
+              },
+              "app_urls": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Registered app URLs for this team (toolbar / replay). The team's actual product surface; complements `$pageview.$host` discovery via `read-data-schema`."
+              }
+            },
+            "description": "\"Free-form orientation: human-set product description + registered app URLs.\""
+          },
+          "products_in_use": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Product keys this team has completed onboarding for, sorted alphabetically."
+          },
+          "product_intents": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductIntentEntry"
+            },
+            "description": "Products the team signaled intent to use; useful for spotting stuck onboardings."
+          },
+          "integrations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IntegrationEntry"
+            },
+            "description": "Connected integrations (kind + connection time only — config never surfaced)."
+          },
+          "external_data_sources": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ExternalDataSourceEntry"
+            },
+            "description": "Connected warehouse sources (excludes soft-deleted)."
+          },
+          "signal_source_configs": {
+            "required": [
+              "disabled",
+              "enabled"
+            ],
+            "type": "object",
+            "properties": {
+              "enabled": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/SignalSourceConfigEntry"
+                },
+                "description": "Source configs the team has explicitly enabled."
+              },
+              "disabled": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/SignalSourceConfigEntry"
+                },
+                "description": "Source configs the team has explicitly disabled (different from never wired up)."
+              }
+            },
+            "description": "Signal source configs split into enabled / disabled buckets."
+          },
+          "existing_inbox_reports": {
+            "required": [
+              "by_status",
+              "total"
+            ],
+            "type": "object",
+            "properties": {
+              "total": {
+                "type": "integer",
+                "description": "Total non-deleted, non-suppressed reports for this team."
+              },
+              "by_status": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/InboxReportStatusBucket"
+                },
+                "description": "Per-status breakdown of inbox reports."
+              }
+            },
+            "description": "Counts of reports already in the inbox, grouped by status."
+          },
+          "recent_activity": {
+            "required": [
+              "by_scope",
+              "window_days"
+            ],
+            "type": "object",
+            "properties": {
+              "window_days": {
+                "type": "integer",
+                "description": "Lookback window in days the per-scope counts cover."
+              },
+              "by_scope": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ScopeActivityEntry"
+                },
+                "description": "Per-scope activity rows, busiest scope first. Triage which entity type the team has worked in lately."
+              }
+            },
+            "description": "Per-scope counts off the activity log over the recent-activity window — cross-cutting orientation across every entity type (surveys, feature flags, experiments, dashboards, insights, cohorts, notebooks, actions, etc.). Each scope reports `edits` (total log entries), `users` (distinct user count), and `last_edit` (ISO-8601). Use to triage which scope a team has been working in lately before drilling down via the per-entity readers or `activity-log-list`."
+          },
+          "recent_dashboards": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RecentDashboardEntry"
+            },
+            "description": "Up to 20 dashboards on this team sorted by `last_accessed_at` desc — what the team is currently looking at, not necessarily the most-trafficked. We don't have per-dashboard view counts in Postgres, only the timestamp of the most recent access."
+          },
+          "recent_surveys": {
+            "required": [
+              "active_count",
+              "recent",
+              "total_count"
+            ],
+            "type": "object",
+            "properties": {
+              "total_count": {
+                "type": "integer",
+                "description": "Total surveys on the team."
+              },
+              "active_count": {
+                "type": "integer",
+                "description": "Surveys that are live (not archived, started, and not yet ended)."
+              },
+              "recent": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/RecentSurveyEntry"
+                },
+                "description": "The 5 most recently updated surveys."
+              }
+            },
+            "description": "\"Surveys orientation: total + active count, plus the 5 most recently updated surveys with id, name, type, status (draft / running / stopped / archived), and updated_at.\""
+          },
+          "recent_feature_flags": {
+            "required": [
+              "active_count",
+              "recent",
+              "total_count"
+            ],
+            "type": "object",
+            "properties": {
+              "total_count": {
+                "type": "integer",
+                "description": "Total non-deleted feature flags on the team."
+              },
+              "active_count": {
+                "type": "integer",
+                "description": "Flags currently evaluating (`active=true`)."
+              },
+              "recent": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/RecentFeatureFlagEntry"
+                },
+                "description": "The 5 most recently updated non-deleted flags."
+              }
+            },
+            "description": "\"Feature flag orientation: total + active count, plus the 5 most recently updated non-deleted flags with id, key, name, active, and updated_at.\""
+          },
+          "recent_experiments": {
+            "required": [
+              "recent",
+              "running_count",
+              "total_count"
+            ],
+            "type": "object",
+            "properties": {
+              "total_count": {
+                "type": "integer",
+                "description": "Total experiments on the team."
+              },
+              "running_count": {
+                "type": "integer",
+                "description": "Experiments currently running (started, not ended, not archived)."
+              },
+              "recent": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/RecentExperimentEntry"
+                },
+                "description": "The 5 most recently updated experiments."
+              }
+            },
+            "description": "\"Experiment orientation: total + running count, plus the 5 most recently updated experiments. The feature_flag_key on each row lets the scout correlate experiments with the `recent_feature_flags` section.\""
+          },
+          "recent_alerts": {
+            "required": [
+              "enabled_count",
+              "recent",
+              "total_count"
+            ],
+            "type": "object",
+            "properties": {
+              "total_count": {
+                "type": "integer",
+                "description": "Total insight alerts on the team."
+              },
+              "enabled_count": {
+                "type": "integer",
+                "description": "Alerts currently armed (`enabled=true`)."
+              },
+              "recent": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/RecentAlertEntry"
+                },
+                "description": "The 5 most recently created alerts."
+              }
+            },
+            "description": "\"Alert orientation: total + enabled count, plus the 5 most recently created alerts with their state and threshold metadata.\""
+          },
+          "recent_hog_functions": {
+            "required": [
+              "enabled_count",
+              "recent",
+              "total_count"
+            ],
+            "type": "object",
+            "properties": {
+              "total_count": {
+                "type": "integer",
+                "description": "Total non-deleted hog functions on the team."
+              },
+              "enabled_count": {
+                "type": "integer",
+                "description": "Hog functions currently enabled (`enabled=true`)."
+              },
+              "recent": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/RecentHogFunctionEntry"
+                },
+                "description": "The 5 most recently updated hog functions."
+              }
+            },
+            "description": "\"Hog function orientation: total + enabled count, plus the 5 most recently updated destinations / transformations the team has wired up via the CDP pipelines.\""
+          },
+          "recent_hog_flows": {
+            "required": [
+              "active_count",
+              "recent",
+              "total_count"
+            ],
+            "type": "object",
+            "properties": {
+              "total_count": {
+                "type": "integer",
+                "description": "Total hog flows on the team."
+              },
+              "active_count": {
+                "type": "integer",
+                "description": "Hog flows that are not archived."
+              },
+              "recent": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/RecentHogFlowEntry"
+                },
+                "description": "The 5 most recently updated hog flows."
+              }
+            },
+            "description": "\"Hog flow orientation: total + non-archived count, plus the 5 most recently updated automation flows.\""
+          },
+          "recent_notebooks": {
+            "required": [
+              "recent",
+              "total_count"
+            ],
+            "type": "object",
+            "properties": {
+              "total_count": {
+                "type": "integer",
+                "description": "Total non-deleted notebooks on the team."
+              },
+              "recent": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/RecentNotebookEntry"
+                },
+                "description": "The 5 most recently modified notebooks."
+              }
+            },
+            "description": "\"Notebook orientation: total + the 5 most recently modified notebooks — useful signal for what the team has been investigating.\""
+          },
+          "recent_cohorts": {
+            "required": [
+              "recent",
+              "total_count"
+            ],
+            "type": "object",
+            "properties": {
+              "total_count": {
+                "type": "integer",
+                "description": "Total non-deleted cohorts on the team."
+              },
+              "recent": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/RecentCohortEntry"
+                },
+                "description": "The 5 most recently created cohorts."
+              }
+            },
+            "description": "\"Cohort orientation: total + the 5 most recently created cohorts on the team.\""
+          },
+          "recent_actions": {
+            "required": [
+              "recent",
+              "total_count"
+            ],
+            "type": "object",
+            "properties": {
+              "total_count": {
+                "type": "integer",
+                "description": "Total non-deleted actions on the team."
+              },
+              "recent": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/RecentActionEntry"
+                },
+                "description": "The 5 most recently updated actions."
+              }
+            },
+            "description": "\"Action orientation: total + the 5 most recently updated actions — useful to anchor agent reasoning about what the team treats as a meaningful interaction.\""
+          },
+          "top_events": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TopEventEntry"
+            },
+            "description": "Top ~50 events by count over the last 7 days, with first/last seen timestamps within the window. `null` if the underlying ClickHouse query failed or timed out (distinct from `[]`, which means the team has no captures in the window). Use the gap between `first_seen` and `now` to spot new event types or recent bursts."
+          }
+        },
+        "description": "The deterministic inventory layer of a project profile.\n\nRead this to orient on the team's product mix, integrations, warehouse sources, signal\ncoverage, and existing inbox surface in one tool call. Distinct from `SignalScratchpad`:\nprofile is ground truth from authoritative tables; memory is agent inference."
+      },
+      "ProjectProfilePayload": {
+        "required": [
+          "inventory"
+        ],
+        "type": "object",
+        "properties": {
+          "inventory": {
+            "required": [
+              "existing_inbox_reports",
+              "external_data_sources",
+              "integrations",
+              "product_intents",
+              "products_in_use",
+              "project_context",
+              "recent_actions",
+              "recent_activity",
+              "recent_alerts",
+              "recent_cohorts",
+              "recent_dashboards",
+              "recent_experiments",
+              "recent_feature_flags",
+              "recent_hog_flows",
+              "recent_hog_functions",
+              "recent_notebooks",
+              "recent_surveys",
+              "signal_source_configs",
+              "top_events"
+            ],
+            "type": "object",
+            "properties": {
+              "project_context": {
+                "required": [
+                  "app_urls",
+                  "product_description"
+                ],
+                "type": "object",
+                "properties": {
+                  "product_description": {
+                    "type": "string",
+                    "description": "Human-set product description on the project (max 1000 chars). When present, the most direct \"what does this team's product do\" answer. `null` when unset."
+                  },
+                  "app_urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Registered app URLs for this team (toolbar / replay). The team's actual product surface; complements `$pageview.$host` discovery via `read-data-schema`."
+                  }
+                },
+                "description": "\"Free-form orientation: human-set product description + registered app URLs.\""
+              },
+              "products_in_use": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Product keys this team has completed onboarding for, sorted alphabetically."
+              },
+              "product_intents": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ProductIntentEntry"
+                },
+                "description": "Products the team signaled intent to use; useful for spotting stuck onboardings."
+              },
+              "integrations": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/IntegrationEntry"
+                },
+                "description": "Connected integrations (kind + connection time only — config never surfaced)."
+              },
+              "external_data_sources": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ExternalDataSourceEntry"
+                },
+                "description": "Connected warehouse sources (excludes soft-deleted)."
+              },
+              "signal_source_configs": {
+                "required": [
+                  "disabled",
+                  "enabled"
+                ],
+                "type": "object",
+                "properties": {
+                  "enabled": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/SignalSourceConfigEntry"
+                    },
+                    "description": "Source configs the team has explicitly enabled."
+                  },
+                  "disabled": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/SignalSourceConfigEntry"
+                    },
+                    "description": "Source configs the team has explicitly disabled (different from never wired up)."
+                  }
+                },
+                "description": "Signal source configs split into enabled / disabled buckets."
+              },
+              "existing_inbox_reports": {
+                "required": [
+                  "by_status",
+                  "total"
+                ],
+                "type": "object",
+                "properties": {
+                  "total": {
+                    "type": "integer",
+                    "description": "Total non-deleted, non-suppressed reports for this team."
+                  },
+                  "by_status": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/InboxReportStatusBucket"
+                    },
+                    "description": "Per-status breakdown of inbox reports."
+                  }
+                },
+                "description": "Counts of reports already in the inbox, grouped by status."
+              },
+              "recent_activity": {
+                "required": [
+                  "by_scope",
+                  "window_days"
+                ],
+                "type": "object",
+                "properties": {
+                  "window_days": {
+                    "type": "integer",
+                    "description": "Lookback window in days the per-scope counts cover."
+                  },
+                  "by_scope": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ScopeActivityEntry"
+                    },
+                    "description": "Per-scope activity rows, busiest scope first. Triage which entity type the team has worked in lately."
+                  }
+                },
+                "description": "Per-scope counts off the activity log over the recent-activity window — cross-cutting orientation across every entity type (surveys, feature flags, experiments, dashboards, insights, cohorts, notebooks, actions, etc.). Each scope reports `edits` (total log entries), `users` (distinct user count), and `last_edit` (ISO-8601). Use to triage which scope a team has been working in lately before drilling down via the per-entity readers or `activity-log-list`."
+              },
+              "recent_dashboards": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/RecentDashboardEntry"
+                },
+                "description": "Up to 20 dashboards on this team sorted by `last_accessed_at` desc — what the team is currently looking at, not necessarily the most-trafficked. We don't have per-dashboard view counts in Postgres, only the timestamp of the most recent access."
+              },
+              "recent_surveys": {
+                "required": [
+                  "active_count",
+                  "recent",
+                  "total_count"
+                ],
+                "type": "object",
+                "properties": {
+                  "total_count": {
+                    "type": "integer",
+                    "description": "Total surveys on the team."
+                  },
+                  "active_count": {
+                    "type": "integer",
+                    "description": "Surveys that are live (not archived, started, and not yet ended)."
+                  },
+                  "recent": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/RecentSurveyEntry"
+                    },
+                    "description": "The 5 most recently updated surveys."
+                  }
+                },
+                "description": "\"Surveys orientation: total + active count, plus the 5 most recently updated surveys with id, name, type, status (draft / running / stopped / archived), and updated_at.\""
+              },
+              "recent_feature_flags": {
+                "required": [
+                  "active_count",
+                  "recent",
+                  "total_count"
+                ],
+                "type": "object",
+                "properties": {
+                  "total_count": {
+                    "type": "integer",
+                    "description": "Total non-deleted feature flags on the team."
+                  },
+                  "active_count": {
+                    "type": "integer",
+                    "description": "Flags currently evaluating (`active=true`)."
+                  },
+                  "recent": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/RecentFeatureFlagEntry"
+                    },
+                    "description": "The 5 most recently updated non-deleted flags."
+                  }
+                },
+                "description": "\"Feature flag orientation: total + active count, plus the 5 most recently updated non-deleted flags with id, key, name, active, and updated_at.\""
+              },
+              "recent_experiments": {
+                "required": [
+                  "recent",
+                  "running_count",
+                  "total_count"
+                ],
+                "type": "object",
+                "properties": {
+                  "total_count": {
+                    "type": "integer",
+                    "description": "Total experiments on the team."
+                  },
+                  "running_count": {
+                    "type": "integer",
+                    "description": "Experiments currently running (started, not ended, not archived)."
+                  },
+                  "recent": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/RecentExperimentEntry"
+                    },
+                    "description": "The 5 most recently updated experiments."
+                  }
+                },
+                "description": "\"Experiment orientation: total + running count, plus the 5 most recently updated experiments. The feature_flag_key on each row lets the scout correlate experiments with the `recent_feature_flags` section.\""
+              },
+              "recent_alerts": {
+                "required": [
+                  "enabled_count",
+                  "recent",
+                  "total_count"
+                ],
+                "type": "object",
+                "properties": {
+                  "total_count": {
+                    "type": "integer",
+                    "description": "Total insight alerts on the team."
+                  },
+                  "enabled_count": {
+                    "type": "integer",
+                    "description": "Alerts currently armed (`enabled=true`)."
+                  },
+                  "recent": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/RecentAlertEntry"
+                    },
+                    "description": "The 5 most recently created alerts."
+                  }
+                },
+                "description": "\"Alert orientation: total + enabled count, plus the 5 most recently created alerts with their state and threshold metadata.\""
+              },
+              "recent_hog_functions": {
+                "required": [
+                  "enabled_count",
+                  "recent",
+                  "total_count"
+                ],
+                "type": "object",
+                "properties": {
+                  "total_count": {
+                    "type": "integer",
+                    "description": "Total non-deleted hog functions on the team."
+                  },
+                  "enabled_count": {
+                    "type": "integer",
+                    "description": "Hog functions currently enabled (`enabled=true`)."
+                  },
+                  "recent": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/RecentHogFunctionEntry"
+                    },
+                    "description": "The 5 most recently updated hog functions."
+                  }
+                },
+                "description": "\"Hog function orientation: total + enabled count, plus the 5 most recently updated destinations / transformations the team has wired up via the CDP pipelines.\""
+              },
+              "recent_hog_flows": {
+                "required": [
+                  "active_count",
+                  "recent",
+                  "total_count"
+                ],
+                "type": "object",
+                "properties": {
+                  "total_count": {
+                    "type": "integer",
+                    "description": "Total hog flows on the team."
+                  },
+                  "active_count": {
+                    "type": "integer",
+                    "description": "Hog flows that are not archived."
+                  },
+                  "recent": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/RecentHogFlowEntry"
+                    },
+                    "description": "The 5 most recently updated hog flows."
+                  }
+                },
+                "description": "\"Hog flow orientation: total + non-archived count, plus the 5 most recently updated automation flows.\""
+              },
+              "recent_notebooks": {
+                "required": [
+                  "recent",
+                  "total_count"
+                ],
+                "type": "object",
+                "properties": {
+                  "total_count": {
+                    "type": "integer",
+                    "description": "Total non-deleted notebooks on the team."
+                  },
+                  "recent": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/RecentNotebookEntry"
+                    },
+                    "description": "The 5 most recently modified notebooks."
+                  }
+                },
+                "description": "\"Notebook orientation: total + the 5 most recently modified notebooks — useful signal for what the team has been investigating.\""
+              },
+              "recent_cohorts": {
+                "required": [
+                  "recent",
+                  "total_count"
+                ],
+                "type": "object",
+                "properties": {
+                  "total_count": {
+                    "type": "integer",
+                    "description": "Total non-deleted cohorts on the team."
+                  },
+                  "recent": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/RecentCohortEntry"
+                    },
+                    "description": "The 5 most recently created cohorts."
+                  }
+                },
+                "description": "\"Cohort orientation: total + the 5 most recently created cohorts on the team.\""
+              },
+              "recent_actions": {
+                "required": [
+                  "recent",
+                  "total_count"
+                ],
+                "type": "object",
+                "properties": {
+                  "total_count": {
+                    "type": "integer",
+                    "description": "Total non-deleted actions on the team."
+                  },
+                  "recent": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/RecentActionEntry"
+                    },
+                    "description": "The 5 most recently updated actions."
+                  }
+                },
+                "description": "\"Action orientation: total + the 5 most recently updated actions — useful to anchor agent reasoning about what the team treats as a meaningful interaction.\""
+              },
+              "top_events": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/TopEventEntry"
+                },
+                "description": "Top ~50 events by count over the last 7 days, with first/last seen timestamps within the window. `null` if the underlying ClickHouse query failed or timed out (distinct from `[]`, which means the team has no captures in the window). Use the gap between `first_seen` and `now` to spot new event types or recent bursts."
+              }
+            },
+            "description": "Deterministic snapshot of what's true about the project."
+          }
+        },
+        "description": "Top-level `payload` shape on a `SignalProjectProfile` row.\n\nv1 carries `inventory` only. Phase 7 will add `deltas`, `activity_notes`, and\n`narrative` slots — they're absent (not null) in v1 responses."
       },
       "ProjectSecretAPIKey": {
         "required": [
@@ -152034,6 +153383,566 @@
         "additionalProperties": false,
         "description": "* `low` - low\n* `medium` - medium\n* `high` - high\n* `xhigh` - xhigh\n* `max` - max"
       },
+      "RecentActionEntry": {
+        "required": [
+          "id",
+          "name",
+          "updated_at"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Action ID."
+          },
+          "name": {
+            "type": "string",
+            "description": "Action name."
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "ISO-8601 last-modified timestamp."
+          }
+        },
+        "description": "One row in `inventory.recent_actions.recent`."
+      },
+      "RecentActions": {
+        "required": [
+          "recent",
+          "total_count"
+        ],
+        "type": "object",
+        "properties": {
+          "total_count": {
+            "type": "integer",
+            "description": "Total non-deleted actions on the team."
+          },
+          "recent": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RecentActionEntry"
+            },
+            "description": "The 5 most recently updated actions."
+          }
+        },
+        "description": "`inventory.recent_actions` — total + the 5 most recently modified."
+      },
+      "RecentActivity": {
+        "required": [
+          "by_scope",
+          "window_days"
+        ],
+        "type": "object",
+        "properties": {
+          "window_days": {
+            "type": "integer",
+            "description": "Lookback window in days the per-scope counts cover."
+          },
+          "by_scope": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ScopeActivityEntry"
+            },
+            "description": "Per-scope activity rows, busiest scope first. Triage which entity type the team has worked in lately."
+          }
+        },
+        "description": "`inventory.recent_activity` — per-scope counts off the activity log."
+      },
+      "RecentAlertEntry": {
+        "required": [
+          "calculation_interval",
+          "created_at",
+          "enabled",
+          "id",
+          "insight_id",
+          "name",
+          "state"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Alert configuration UUID."
+          },
+          "name": {
+            "type": "string",
+            "description": "Alert name."
+          },
+          "enabled": {
+            "type": "boolean",
+            "description": "Whether the alert is currently armed."
+          },
+          "state": {
+            "type": "string",
+            "description": "Alert state (e.g. `not_firing`, `firing`)."
+          },
+          "calculation_interval": {
+            "type": "string",
+            "description": "How often the alert is evaluated (e.g. `daily`, `hourly`); null if unset."
+          },
+          "insight_id": {
+            "type": "integer",
+            "description": "ID of the insight the alert watches; null if none."
+          },
+          "created_at": {
+            "type": "string",
+            "description": "ISO-8601 creation timestamp."
+          }
+        },
+        "description": "One row in `inventory.recent_alerts.recent`."
+      },
+      "RecentAlerts": {
+        "required": [
+          "enabled_count",
+          "recent",
+          "total_count"
+        ],
+        "type": "object",
+        "properties": {
+          "total_count": {
+            "type": "integer",
+            "description": "Total insight alerts on the team."
+          },
+          "enabled_count": {
+            "type": "integer",
+            "description": "Alerts currently armed (`enabled=true`)."
+          },
+          "recent": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RecentAlertEntry"
+            },
+            "description": "The 5 most recently created alerts."
+          }
+        },
+        "description": "`inventory.recent_alerts` — total + currently-enabled count, plus the 5 most recently created."
+      },
+      "RecentCohortEntry": {
+        "required": [
+          "count",
+          "created_at",
+          "id",
+          "is_static",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Cohort ID."
+          },
+          "name": {
+            "type": "string",
+            "description": "Cohort name."
+          },
+          "is_static": {
+            "type": "boolean",
+            "description": "True for a one-shot snapshot cohort; false for a dynamic-filter cohort."
+          },
+          "count": {
+            "type": "integer",
+            "description": "Membership size when last calculated; null if never calculated."
+          },
+          "created_at": {
+            "type": "string",
+            "description": "ISO-8601 creation timestamp."
+          }
+        },
+        "description": "One row in `inventory.recent_cohorts.recent`."
+      },
+      "RecentCohorts": {
+        "required": [
+          "recent",
+          "total_count"
+        ],
+        "type": "object",
+        "properties": {
+          "total_count": {
+            "type": "integer",
+            "description": "Total non-deleted cohorts on the team."
+          },
+          "recent": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RecentCohortEntry"
+            },
+            "description": "The 5 most recently created cohorts."
+          }
+        },
+        "description": "`inventory.recent_cohorts` — total + the 5 most recently created."
+      },
+      "RecentDashboardEntry": {
+        "required": [
+          "created_at",
+          "id",
+          "last_accessed_at",
+          "last_refresh",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Dashboard ID — pass to `dashboard-get` to pull the full payload."
+          },
+          "name": {
+            "type": "string",
+            "description": "Dashboard name (may be blank if unnamed)."
+          },
+          "last_accessed_at": {
+            "type": "string",
+            "description": "ISO-8601 timestamp of the most recent view in the PostHog UI."
+          },
+          "last_refresh": {
+            "type": "string",
+            "description": "ISO-8601 timestamp of the most recent data refresh. Distinct from access — a dashboard can be refreshed without anyone viewing it."
+          },
+          "created_at": {
+            "type": "string",
+            "description": "ISO-8601 timestamp the dashboard was created."
+          }
+        },
+        "description": "One row in `inventory.recent_dashboards`."
+      },
+      "RecentExperimentEntry": {
+        "required": [
+          "feature_flag_key",
+          "id",
+          "name",
+          "status",
+          "updated_at"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Experiment ID."
+          },
+          "name": {
+            "type": "string",
+            "description": "Experiment name."
+          },
+          "status": {
+            "type": "string",
+            "description": "\"Derived status: `draft`, `running`, `stopped`, or `archived`.\""
+          },
+          "feature_flag_key": {
+            "type": "string",
+            "description": "Key of the experiment's feature flag — cross-ref into `recent_feature_flags`. Null if unlinked."
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "ISO-8601 last-modified timestamp."
+          }
+        },
+        "description": "One row in `inventory.recent_experiments.recent`."
+      },
+      "RecentExperiments": {
+        "required": [
+          "recent",
+          "running_count",
+          "total_count"
+        ],
+        "type": "object",
+        "properties": {
+          "total_count": {
+            "type": "integer",
+            "description": "Total experiments on the team."
+          },
+          "running_count": {
+            "type": "integer",
+            "description": "Experiments currently running (started, not ended, not archived)."
+          },
+          "recent": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RecentExperimentEntry"
+            },
+            "description": "The 5 most recently updated experiments."
+          }
+        },
+        "description": "`inventory.recent_experiments` — total + currently-running count, plus the 5 most recently modified."
+      },
+      "RecentFeatureFlagEntry": {
+        "required": [
+          "active",
+          "id",
+          "key",
+          "name",
+          "updated_at"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Feature flag ID."
+          },
+          "key": {
+            "type": "string",
+            "description": "Flag key used in code (`posthog.isFeatureEnabled('<key>')`)."
+          },
+          "name": {
+            "type": "string",
+            "description": "Human-set description; falls back to the key when blank."
+          },
+          "active": {
+            "type": "boolean",
+            "description": "Whether the flag is currently evaluating (a user could be hitting it)."
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "ISO-8601 last-modified timestamp."
+          }
+        },
+        "description": "One row in `inventory.recent_feature_flags.recent`."
+      },
+      "RecentFeatureFlags": {
+        "required": [
+          "active_count",
+          "recent",
+          "total_count"
+        ],
+        "type": "object",
+        "properties": {
+          "total_count": {
+            "type": "integer",
+            "description": "Total non-deleted feature flags on the team."
+          },
+          "active_count": {
+            "type": "integer",
+            "description": "Flags currently evaluating (`active=true`)."
+          },
+          "recent": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RecentFeatureFlagEntry"
+            },
+            "description": "The 5 most recently updated non-deleted flags."
+          }
+        },
+        "description": "`inventory.recent_feature_flags` — total + active count, plus the 5 most recently modified."
+      },
+      "RecentHogFlowEntry": {
+        "required": [
+          "id",
+          "name",
+          "status",
+          "updated_at"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Hog flow UUID."
+          },
+          "name": {
+            "type": "string",
+            "description": "Hog flow name."
+          },
+          "status": {
+            "type": "string",
+            "description": "Flow lifecycle state (e.g. `draft`, `active`, `archived`)."
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "ISO-8601 last-modified timestamp."
+          }
+        },
+        "description": "One row in `inventory.recent_hog_flows.recent`."
+      },
+      "RecentHogFlows": {
+        "required": [
+          "active_count",
+          "recent",
+          "total_count"
+        ],
+        "type": "object",
+        "properties": {
+          "total_count": {
+            "type": "integer",
+            "description": "Total hog flows on the team."
+          },
+          "active_count": {
+            "type": "integer",
+            "description": "Hog flows that are not archived."
+          },
+          "recent": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RecentHogFlowEntry"
+            },
+            "description": "The 5 most recently updated hog flows."
+          }
+        },
+        "description": "`inventory.recent_hog_flows` — total + non-archived count, plus the 5 most recently modified."
+      },
+      "RecentHogFunctionEntry": {
+        "required": [
+          "enabled",
+          "id",
+          "kind",
+          "name",
+          "type",
+          "updated_at"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Hog function UUID."
+          },
+          "name": {
+            "type": "string",
+            "description": "Hog function name."
+          },
+          "type": {
+            "type": "string",
+            "description": "\"Function type: `destination`, `transformation`, `site_app`, etc. Null if unset.\""
+          },
+          "kind": {
+            "type": "string",
+            "description": "Function kind sub-classifier; null if unset."
+          },
+          "enabled": {
+            "type": "boolean",
+            "description": "Whether the function is currently enabled."
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "ISO-8601 last-modified timestamp."
+          }
+        },
+        "description": "One row in `inventory.recent_hog_functions.recent`."
+      },
+      "RecentHogFunctions": {
+        "required": [
+          "enabled_count",
+          "recent",
+          "total_count"
+        ],
+        "type": "object",
+        "properties": {
+          "total_count": {
+            "type": "integer",
+            "description": "Total non-deleted hog functions on the team."
+          },
+          "enabled_count": {
+            "type": "integer",
+            "description": "Hog functions currently enabled (`enabled=true`)."
+          },
+          "recent": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RecentHogFunctionEntry"
+            },
+            "description": "The 5 most recently updated hog functions."
+          }
+        },
+        "description": "`inventory.recent_hog_functions` — total + enabled count, plus the 5 most recently modified."
+      },
+      "RecentNotebookEntry": {
+        "required": [
+          "last_modified_at",
+          "short_id",
+          "title"
+        ],
+        "type": "object",
+        "properties": {
+          "short_id": {
+            "type": "string",
+            "description": "Notebook short ID — pass to the notebooks API to open it."
+          },
+          "title": {
+            "type": "string",
+            "description": "Notebook title (may be blank if untitled)."
+          },
+          "last_modified_at": {
+            "type": "string",
+            "description": "ISO-8601 last-modified timestamp."
+          }
+        },
+        "description": "One row in `inventory.recent_notebooks.recent`."
+      },
+      "RecentNotebooks": {
+        "required": [
+          "recent",
+          "total_count"
+        ],
+        "type": "object",
+        "properties": {
+          "total_count": {
+            "type": "integer",
+            "description": "Total non-deleted notebooks on the team."
+          },
+          "recent": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RecentNotebookEntry"
+            },
+            "description": "The 5 most recently modified notebooks."
+          }
+        },
+        "description": "`inventory.recent_notebooks` — total + the 5 most recently modified."
+      },
+      "RecentSurveyEntry": {
+        "required": [
+          "id",
+          "name",
+          "status",
+          "type",
+          "updated_at"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Survey UUID — pass to `survey-get` for full question shape."
+          },
+          "name": {
+            "type": "string",
+            "description": "Survey name (may be blank if unnamed)."
+          },
+          "type": {
+            "type": "string",
+            "description": "\"Survey mode: `popover`, `widget`, `external_survey`, or `api`.\""
+          },
+          "status": {
+            "type": "string",
+            "description": "\"Derived status: `draft`, `running`, `stopped`, or `archived`.\""
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "ISO-8601 last-modified timestamp."
+          }
+        },
+        "description": "One row in `inventory.recent_surveys.recent`."
+      },
+      "RecentSurveys": {
+        "required": [
+          "active_count",
+          "recent",
+          "total_count"
+        ],
+        "type": "object",
+        "properties": {
+          "total_count": {
+            "type": "integer",
+            "description": "Total surveys on the team."
+          },
+          "active_count": {
+            "type": "integer",
+            "description": "Surveys that are live (not archived, started, and not yet ended)."
+          },
+          "recent": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RecentSurveyEntry"
+            },
+            "description": "The 5 most recently updated surveys."
+          }
+        },
+        "description": "`inventory.recent_surveys` — total + active count, plus the 5 most recently modified."
+      },
       "RecomputeResult": {
         "required": [
           "ci_rerun_triggered",
@@ -161988,6 +163897,34 @@
         "additionalProperties": false,
         "description": "* `DateTime` - DateTime\n* `String` - String\n* `Numeric` - Numeric\n* `Boolean` - Boolean\n* `Object` - Object"
       },
+      "ScopeActivityEntry": {
+        "required": [
+          "edits",
+          "last_edit",
+          "scope",
+          "users"
+        ],
+        "type": "object",
+        "properties": {
+          "scope": {
+            "type": "string",
+            "description": "Activity-log scope (entity type), e.g. `FeatureFlag`, `Dashboard`, `Survey`."
+          },
+          "edits": {
+            "type": "integer",
+            "description": "Total activity-log entries for this scope in the window (write velocity)."
+          },
+          "users": {
+            "type": "integer",
+            "description": "Distinct users who edited this scope in the window."
+          },
+          "last_edit": {
+            "type": "string",
+            "description": "ISO-8601 timestamp of the most recent edit in the window."
+          }
+        },
+        "description": "One row in `inventory.recent_activity.by_scope`."
+      },
       "ScoreDefinition": {
         "required": [
           "archived",
@@ -164985,6 +166922,24 @@
           }
         }
       },
+      "SignalSourceConfigEntry": {
+        "required": [
+          "source_product",
+          "source_type"
+        ],
+        "type": "object",
+        "properties": {
+          "source_product": {
+            "type": "string",
+            "description": "Source product the config applies to."
+          },
+          "source_type": {
+            "type": "string",
+            "description": "Source type within the product."
+          }
+        },
+        "description": "One row in either bucket of `inventory.signal_source_configs`."
+      },
       "SignalSourceConfigSourceTypeEnum": {
         "enum": [
           "session_analysis_cluster",
@@ -164999,6 +166954,30 @@
         "type": "string",
         "additionalProperties": false,
         "description": "* `session_analysis_cluster` - Session analysis cluster\n* `evaluation` - Evaluation\n* `issue` - Issue\n* `ticket` - Ticket\n* `issue_created` - Issue created\n* `issue_reopened` - Issue reopened\n* `issue_spiking` - Issue spiking\n* `cross_source_issue` - Cross source issue"
+      },
+      "SignalSourceConfigsBuckets": {
+        "required": [
+          "disabled",
+          "enabled"
+        ],
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SignalSourceConfigEntry"
+            },
+            "description": "Source configs the team has explicitly enabled."
+          },
+          "disabled": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SignalSourceConfigEntry"
+            },
+            "description": "Source configs the team has explicitly disabled (different from never wired up)."
+          }
+        },
+        "description": "`inventory.signal_source_configs` split into enabled and disabled buckets."
       },
       "SignalUserAutonomyConfig": {
         "required": [
@@ -174286,6 +176265,49 @@
         "type": "string",
         "additionalProperties": false,
         "description": "* `disabled` - disabled\n* `toolbar` - toolbar"
+      },
+      "TopEventEntry": {
+        "required": [
+          "count",
+          "distinct_users",
+          "event",
+          "first_seen",
+          "last_seen",
+          "recent_24h_count",
+          "recent_24h_users"
+        ],
+        "type": "object",
+        "properties": {
+          "event": {
+            "type": "string",
+            "description": "Event name as captured."
+          },
+          "count": {
+            "type": "integer",
+            "description": "Number of occurrences in the lookback window (last 7 days)."
+          },
+          "distinct_users": {
+            "type": "integer",
+            "description": "`uniq(person_id)` over the window — reach. Distinguishes a high-count event firing on one power user from one firing on many users."
+          },
+          "recent_24h_count": {
+            "type": "integer",
+            "description": "\"Count in just the last 24 hours. Compare to `count / 7` to spot bursts: a ratio well above 1/7 means the event is concentrated in the last day.\""
+          },
+          "recent_24h_users": {
+            "type": "integer",
+            "description": "`uniq(person_id)` over just the last 24 hours. A burst across many users is qualitatively different from one user in a loop."
+          },
+          "first_seen": {
+            "type": "string",
+            "description": "\"ISO-8601 timestamp of the earliest occurrence within the lookback window. Compare to the window start to spot new event types: `first_seen` close to `now` ⇒ likely new or recently bursting; close to the window edge ⇒ has been around at least that long (the window can't tell you when the event *truly* first appeared).\""
+          },
+          "last_seen": {
+            "type": "string",
+            "description": "ISO-8601 timestamp of the most recent occurrence within the lookback window."
+          }
+        },
+        "description": "One row in `inventory.top_events`."
       },
       "TopPage": {
         "required": [

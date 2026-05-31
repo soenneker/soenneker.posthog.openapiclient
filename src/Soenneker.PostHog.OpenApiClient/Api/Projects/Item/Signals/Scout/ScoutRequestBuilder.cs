@@ -2,6 +2,7 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Project_profile;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Scratchpad;
 using System.Collections.Generic;
@@ -16,6 +17,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ScoutRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The project_profile property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Project_profile.Project_profileRequestBuilder Project_profile
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Project_profile.Project_profileRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The runs property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.RunsRequestBuilder Runs
         {
