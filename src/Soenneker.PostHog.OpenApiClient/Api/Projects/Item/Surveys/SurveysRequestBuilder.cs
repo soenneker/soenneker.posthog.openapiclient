@@ -17,7 +17,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\surveys
+    /// Builds and executes requests for operations under \api\projects\{projectId}\surveys
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SurveysRequestBuilder : BaseRequestBuilder
@@ -59,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SurveysRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/surveys{?archived*,limit*,offset*,search*}", pathParameters)
+        public SurveysRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/surveys{?archived*,ids,limit*,offset*,search*,type*}", pathParameters)
         {
         }
         /// <summary>
@@ -67,7 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SurveysRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/surveys{?archived*,limit*,offset*,search*}", rawUrl)
+        public SurveysRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/surveys{?archived*,ids,limit*,offset*,search*,type*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedSurveyList"/></returns>
@@ -153,13 +153,23 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys
         {
             [QueryParameter("archived")]
             public bool? Archived { get; set; }
+            /// <summary>Multiple values may be separated by commas.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("ids")]
+            public Guid?[]? Ids { get; set; }
+#nullable restore
+#else
+            [QueryParameter("ids")]
+            public Guid?[] Ids { get; set; }
+#endif
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
             /// <summary>The initial index from which to return the results.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
-            /// <summary>Fuzzy match against survey `name` and `description` using Postgres trigram word similarity. Supports typos and prefix-as-you-type.</summary>
+            /// <summary>Match against survey `name` and `description`. Returns exact (case-insensitive substring) matches only; if no exact match exists, returns similar (fuzzy trigram — typos, prefix-as-you-type) matches instead. Each result&apos;s `search_match_type` is `exact` or `similar`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("search")]
@@ -169,6 +179,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys
             [QueryParameter("search")]
             public string Search { get; set; }
 #endif
+            /// <summary>* `popover` - popover* `widget` - widget* `external_survey` - external survey* `api` - api</summary>
+            [QueryParameter("type")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.SurveysListTypeParameter? Type { get; set; }
         }
     }
 }

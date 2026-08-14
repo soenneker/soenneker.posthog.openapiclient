@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Collab.Save
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\notebooks\{notebook_-id}\collab\save
+    /// Builds and executes requests for operations under \api\projects\{projectId}\notebooks\{notebook-id}\collab\save
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SaveRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Colla
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SaveRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/notebooks/{notebook_%2Did}/collab/save", pathParameters)
+        public SaveRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/notebooks/{notebook%2Did}/collab/save", pathParameters)
         {
         }
         /// <summary>
@@ -30,28 +30,28 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Colla
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SaveRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/notebooks/{notebook_%2Did}/collab/save", rawUrl)
+        public SaveRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/notebooks/{notebook%2Did}/collab/save", rawUrl)
         {
         }
         /// <summary>
         /// The API for interacting with Notebooks. This feature is in early access and the API can have breaking changes without announcement.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Collab.Save.SavePostResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NotebooksCollabSaveCreate201Response"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Collab.Save.SavePostResponse?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.NotebookCollabSave body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.NotebooksCollabSaveCreate201Response?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.NotebookCollabSave body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Collab.Save.SavePostResponse> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.NotebookCollabSave body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.NotebooksCollabSaveCreate201Response> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.NotebookCollabSave body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Collab.Save.SavePostResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Collab.Save.SavePostResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.NotebooksCollabSaveCreate201Response>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.NotebooksCollabSaveCreate201Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// The API for interacting with Notebooks. This feature is in early access and the API can have breaking changes without announcement.

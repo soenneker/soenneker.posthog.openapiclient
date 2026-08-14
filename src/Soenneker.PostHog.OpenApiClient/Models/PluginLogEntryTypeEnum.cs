@@ -9,23 +9,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "DEBUG")]
         #pragma warning disable CS1591
-        DEBUG,
+        Debug,
         #pragma warning restore CS1591
         [EnumMember(Value = "LOG")]
         #pragma warning disable CS1591
-        LOG,
+        Log,
         #pragma warning restore CS1591
         [EnumMember(Value = "INFO")]
         #pragma warning disable CS1591
-        INFO,
+        Info,
         #pragma warning restore CS1591
         [EnumMember(Value = "WARN")]
         #pragma warning disable CS1591
-        WARN,
+        Warn,
         #pragma warning restore CS1591
         [EnumMember(Value = "ERROR")]
         #pragma warning disable CS1591
-        ERROR,
+        Error,
         #pragma warning restore CS1591
     }
 }

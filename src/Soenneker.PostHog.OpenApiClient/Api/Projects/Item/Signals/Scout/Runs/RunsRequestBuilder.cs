@@ -3,7 +3,10 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Emissions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Findings;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.RecentPerScout;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -13,21 +16,36 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\signals\scout\runs
+    /// Builds and executes requests for operations under \api\projects\{projectId}\signals\scout\runs
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RunsRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The emissions property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Emissions.EmissionsRequestBuilder Emissions
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Emissions.EmissionsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The findings property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Findings.FindingsRequestBuilder Findings
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Findings.FindingsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The recentPerScout property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.RecentPerScout.RecentPerScoutRequestBuilder RecentPerScout
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.RecentPerScout.RecentPerScoutRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.signals.scout.runs.item collection</summary>
-        /// <param name="position">A UUID string identifying this Signal scout run.</param>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.RunsItemRequestBuilder"/></returns>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.RunsItemRequestBuilder this[Guid position]
+        /// <param name="position">UUID of the `SignalScoutRun` bridge row.</param>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.WithRunItemRequestBuilder"/></returns>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.WithRunItemRequestBuilder this[Guid position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("id", position);
-                return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.RunsItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("runId", position);
+                return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item.WithRunItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
@@ -35,7 +53,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RunsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/signals/scout/runs{?date_from*,date_to*,limit*,text*}", pathParameters)
+        public RunsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/signals/scout/runs{?date_from*,date_to*,emitted*,limit*,skill_name*,skill_version*,text*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,11 +61,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RunsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/signals/scout/runs{?date_from*,date_to*,limit*,text*}", rawUrl)
+        public RunsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/signals/scout/runs{?date_from*,date_to*,emitted*,limit*,skill_name*,skill_version*,text*}", rawUrl)
         {
         }
         /// <summary>
-        /// Return the most recent `SignalScoutRun` summaries for this project, newest first. Used by the headless scout to dedupe against work other runs already covered. ILIKE matches on `summary`. `date_from` / `date_to` are a half-open window on `created_at` (`&gt;= date_from`, `&lt; date_to`); pass `date_to` on subsequent calls to walk past the 100-row cap. Results capped at 100.
+        /// Return the most recent `SignalScoutRun` summaries for this project, newest first. Used by the headless scout to dedupe against work other runs already covered. ILIKE matches on `summary`. `date_from` / `date_to` are a half-open window on `created_at` (`&gt;= date_from`, `&lt; date_to`); pass `date_to` on subsequent calls to walk past the 100-row cap. Pass `emitted=true` to see only runs that surfaced at least one finding. Pass `skill_name` (optionally with `skill_version`) to scope to a single scout. Results capped at 100.
         /// </summary>
         /// <returns>A List&lt;global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutRunSummary&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -66,7 +84,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs
             return collectionResult?.AsList();
         }
         /// <summary>
-        /// Return the most recent `SignalScoutRun` summaries for this project, newest first. Used by the headless scout to dedupe against work other runs already covered. ILIKE matches on `summary`. `date_from` / `date_to` are a half-open window on `created_at` (`&gt;= date_from`, `&lt; date_to`); pass `date_to` on subsequent calls to walk past the 100-row cap. Results capped at 100.
+        /// Return the most recent `SignalScoutRun` summaries for this project, newest first. Used by the headless scout to dedupe against work other runs already covered. ILIKE matches on `summary`. `date_from` / `date_to` are a half-open window on `created_at` (`&gt;= date_from`, `&lt; date_to`); pass `date_to` on subsequent calls to walk past the 100-row cap. Pass `emitted=true` to see only runs that surfaced at least one finding. Pass `skill_name` (optionally with `skill_version`) to scope to a single scout. Results capped at 100.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -94,7 +112,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.RunsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Return the most recent `SignalScoutRun` summaries for this project, newest first. Used by the headless scout to dedupe against work other runs already covered. ILIKE matches on `summary`. `date_from` / `date_to` are a half-open window on `created_at` (`&gt;= date_from`, `&lt; date_to`); pass `date_to` on subsequent calls to walk past the 100-row cap. Results capped at 100.
+        /// Return the most recent `SignalScoutRun` summaries for this project, newest first. Used by the headless scout to dedupe against work other runs already covered. ILIKE matches on `summary`. `date_from` / `date_to` are a half-open window on `created_at` (`&gt;= date_from`, `&lt; date_to`); pass `date_to` on subsequent calls to walk past the 100-row cap. Pass `emitted=true` to see only runs that surfaced at least one finding. Pass `skill_name` (optionally with `skill_version`) to scope to a single scout. Results capped at 100.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class RunsRequestBuilderGetQueryParameters 
@@ -102,12 +120,28 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs
             /// <summary>ISO-8601 inclusive lower bound on `created_at`. Omit to skip the lower bound.</summary>
             [QueryParameter("date_from")]
             public DateTimeOffset? DateFrom { get; set; }
-            /// <summary>&quot;ISO-8601 exclusive upper bound on `created_at`. Pass to walk back past the result cap on subsequent calls (cursor-style: set to the `started_at` of the oldest run from the prior page).&quot;</summary>
+            /// <summary>&quot;ISO-8601 exclusive upper bound on `created_at`. Pass to walk back past the result cap on subsequent calls (cursor-style: set to the `created_at` of the oldest run from the prior page).&quot;</summary>
             [QueryParameter("date_to")]
             public DateTimeOffset? DateTo { get; set; }
+            /// <summary>Filter by emit outcome. `true` returns only runs that emitted at least one finding (`emitted_count &gt; 0`); `false` returns only runs that emitted nothing. Omit for both.</summary>
+            [QueryParameter("emitted")]
+            public bool? Emitted { get; set; }
             /// <summary>Max rows to return (default 20, hard cap 100).</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
+            /// <summary>Exact-match filter on the scout skill (e.g. `signals-scout-errors`). Narrows the run dump to a single scout — the primary scoping path when a specialist dedupes against its own past runs. Omit to span every scout on the team.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("skill_name")]
+            public string? SkillName { get; set; }
+#nullable restore
+#else
+            [QueryParameter("skill_name")]
+            public string SkillName { get; set; }
+#endif
+            /// <summary>Exact-match filter on the skill version. Pair with `skill_name` to pin one version; omit for all.</summary>
+            [QueryParameter("skill_version")]
+            public int? SkillVersion { get; set; }
             /// <summary>Case-insensitive substring match on the scout&apos;s end-of-run `summary`. Omit to skip the filter.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

@@ -3,7 +3,10 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
-using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item.Suggest_reply;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item.Ai_feedback;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item.Messages;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item.Notes;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item.Reply;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -13,22 +16,37 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\conversations\tickets\{id}
+    /// Builds and executes requests for operations under \api\projects\{projectId}\conversations\tickets\{id}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TicketsItemRequestBuilder : BaseRequestBuilder
     {
-        /// <summary>The suggest_reply property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item.Suggest_reply.Suggest_replyRequestBuilder Suggest_reply
+        /// <summary>The ai_feedback property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item.Ai_feedback.Ai_feedbackRequestBuilder Ai_feedback
         {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item.Suggest_reply.Suggest_replyRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item.Ai_feedback.Ai_feedbackRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The messages property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item.Messages.MessagesRequestBuilder Messages
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item.Messages.MessagesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The notes property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item.Notes.NotesRequestBuilder Notes
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item.Notes.NotesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The reply property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item.Reply.ReplyRequestBuilder Reply
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item.Reply.ReplyRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item.TicketsItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TicketsItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/conversations/tickets/{id}", pathParameters)
+        public TicketsItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/conversations/tickets/{id}", pathParameters)
         {
         }
         /// <summary>
@@ -36,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Ticket
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TicketsItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/conversations/tickets/{id}", rawUrl)
+        public TicketsItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/conversations/tickets/{id}", rawUrl)
         {
         }
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -72,7 +90,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Ticket
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.Ticket>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.Ticket.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Ticket"/></returns>
-        /// <param name="body">Serializer mixin that handles tags for objects.</param>
+        /// <param name="body">Mixin for serializers to add user access control fields</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -92,7 +110,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Ticket
         /// Handle ticket updates including assignee changes.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Ticket"/></returns>
-        /// <param name="body">Serializer mixin that handles tags for objects.</param>
+        /// <param name="body">Mixin for serializers to add user access control fields</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -144,7 +162,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Ticket
             return requestInfo;
         }
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">Serializer mixin that handles tags for objects.</param>
+        /// <param name="body">Mixin for serializers to add user access control fields</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -166,7 +184,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Ticket
         /// Handle ticket updates including assignee changes.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">Serializer mixin that handles tags for objects.</param>
+        /// <param name="body">Mixin for serializers to add user access control fields</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

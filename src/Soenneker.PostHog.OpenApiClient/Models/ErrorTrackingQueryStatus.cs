@@ -7,28 +7,36 @@ using System.IO;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
+    /// <summary>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueStatusWrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQueryStatusMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQueryStatusWrapper"/>
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public partial class ErrorTrackingQueryStatus : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
+    public partial class ErrorTrackingQueryStatus : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The value property</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueStatusWrapper"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Value { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueStatusWrapper? ErrorTrackingIssueStatusWrapper { get; set; }
 #nullable restore
 #else
-        public string Value { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueStatusWrapper ErrorTrackingIssueStatusWrapper { get; set; }
 #endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQueryStatus"/> and sets the default values.
-        /// </summary>
-        public ErrorTrackingQueryStatus()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQueryStatusMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQueryStatusMember1? ErrorTrackingQueryStatusMember1 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQueryStatusMember1 ErrorTrackingQueryStatusMember1 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQueryStatusWrapper"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQueryStatusWrapper? ErrorTrackingQueryStatusWrapper { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQueryStatusWrapper ErrorTrackingQueryStatusWrapper { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -37,7 +45,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQueryStatus CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQueryStatus();
+            var result = new global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQueryStatus();
+            result.ErrorTrackingIssueStatusWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueStatusWrapper();
+            result.ErrorTrackingQueryStatusMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQueryStatusMember1();
+            result.ErrorTrackingQueryStatusWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQueryStatusWrapper();
+            return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -45,10 +57,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            if(ErrorTrackingIssueStatusWrapper != null || ErrorTrackingQueryStatusMember1 != null || ErrorTrackingQueryStatusWrapper != null)
             {
-                { "value", n => { Value = n.GetStringValue(); } },
-            };
+                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ErrorTrackingIssueStatusWrapper, ErrorTrackingQueryStatusMember1, ErrorTrackingQueryStatusWrapper);
+            }
+            return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
         /// Serializes information the current object
@@ -57,8 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("value", Value);
-            writer.WriteAdditionalData(AdditionalData);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueStatusWrapper>(null, ErrorTrackingIssueStatusWrapper, ErrorTrackingQueryStatusMember1, ErrorTrackingQueryStatusWrapper);
         }
     }
 }

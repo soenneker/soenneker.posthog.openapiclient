@@ -22,8 +22,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Content { get; set; }
 #endif
-        /// <summary>* `utf-8` - utf-8* `base64` - base64</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ContentEncodingEnum? ContentEncoding { get; set; }
+        /// <summary>Encoding used for content. Use base64 for binary files and utf-8 for text payloads.* `utf-8` - utf-8* `base64` - base64</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactUploadContentEncoding? ContentEncoding { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactUploadContentEncoding ContentEncoding { get; set; }
+#endif
         /// <summary>Optional MIME type for the artifact</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -31,6 +37,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string ContentType { get; set; }
+#endif
+        /// <summary>Optional structured metadata for special artifact types, such as skill bundles.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactUploadMetadata? Metadata { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactUploadMetadata Metadata { get; set; }
 #endif
         /// <summary>File name to associate with the artifact</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -48,8 +62,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Source { get; set; }
 #endif
-        /// <summary>* `plan` - plan* `context` - context* `reference` - reference* `output` - output* `artifact` - artifact* `tree_snapshot` - tree_snapshot* `user_attachment` - user_attachment</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactTypeEnum? Type { get; set; }
+        /// <summary>Classification for the artifact* `plan` - plan* `context` - context* `reference` - reference* `output` - output* `artifact` - artifact* `tree_snapshot` - tree_snapshot* `user_attachment` - user_attachment* `skill_bundle` - skill_bundle</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactUploadType? Type { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactUploadType Type { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactUpload"/> and sets the default values.
         /// </summary>
@@ -76,11 +96,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "content", n => { Content = n.GetStringValue(); } },
-                { "content_encoding", n => { ContentEncoding = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ContentEncodingEnum>(); } },
+                { "content_encoding", n => { ContentEncoding = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactUploadContentEncoding>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactUploadContentEncoding.CreateFromDiscriminatorValue); } },
                 { "content_type", n => { ContentType = n.GetStringValue(); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactUploadMetadata>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactUploadMetadata.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "source", n => { Source = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactTypeEnum>(); } },
+                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactUploadType>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactUploadType.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -91,11 +112,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("content", Content);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ContentEncodingEnum>("content_encoding", ContentEncoding);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactUploadContentEncoding>("content_encoding", ContentEncoding);
             writer.WriteStringValue("content_type", ContentType);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactUploadMetadata>("metadata", Metadata);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("source", Source);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactTypeEnum>("type", Type);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactUploadType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

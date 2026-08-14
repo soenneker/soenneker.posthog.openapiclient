@@ -26,8 +26,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
-        /// <summary>* `check` - Check* `reset` - Reset* `enable` - Enable* `disable` - Disable* `snooze` - Snooze* `unsnooze` - Unsnooze* `threshold_change` - Threshold change* `broken_config` - Broken config</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertEventKindEnum? Kind { get; set; }
+        /// <summary>The kind property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertEventKind? Kind { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertEventKind Kind { get; private set; }
+#endif
         /// <summary>The query_duration_ms property</summary>
         public int? QueryDurationMs { get; private set; }
         /// <summary>The result_count property</summary>
@@ -78,7 +84,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "error_message", n => { ErrorMessage = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertEventKindEnum>(); } },
+                { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertEventKind>(global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertEventKind.CreateFromDiscriminatorValue); } },
                 { "query_duration_ms", n => { QueryDurationMs = n.GetIntValue(); } },
                 { "result_count", n => { ResultCount = n.GetIntValue(); } },
                 { "state_after", n => { StateAfter = n.GetStringValue(); } },
@@ -93,7 +99,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertEventKindEnum>("kind", Kind);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

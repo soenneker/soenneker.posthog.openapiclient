@@ -9,19 +9,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "exit_on_conversion")]
         #pragma warning disable CS1591
-        Exit_on_conversion,
+        ExitOnConversion,
         #pragma warning restore CS1591
         [EnumMember(Value = "exit_on_trigger_not_matched")]
         #pragma warning disable CS1591
-        Exit_on_trigger_not_matched,
+        ExitOnTriggerNotMatched,
         #pragma warning restore CS1591
         [EnumMember(Value = "exit_on_trigger_not_matched_or_conversion")]
         #pragma warning disable CS1591
-        Exit_on_trigger_not_matched_or_conversion,
+        ExitOnTriggerNotMatchedOrConversion,
         #pragma warning restore CS1591
         [EnumMember(Value = "exit_only_at_end")]
         #pragma warning disable CS1591
-        Exit_only_at_end,
+        ExitOnlyAtEnd,
         #pragma warning restore CS1591
     }
 }

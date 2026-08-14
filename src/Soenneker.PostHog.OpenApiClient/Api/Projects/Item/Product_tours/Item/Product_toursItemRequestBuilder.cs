@@ -17,7 +17,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Product_tours.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\product_tours\{id}
+    /// Builds and executes requests for operations under \api\projects\{projectId}\product_tours\{id}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Product_toursItemRequestBuilder : BaseRequestBuilder
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Product_tours.Item
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Product_toursItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/product_tours/{id}", pathParameters)
+        public Product_toursItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/product_tours/{id}", pathParameters)
         {
         }
         /// <summary>
@@ -60,9 +60,12 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Product_tours.Item
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Product_toursItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/product_tours/{id}", rawUrl)
+        public Product_toursItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/product_tours/{id}", rawUrl)
         {
         }
+        /// <summary>
+        /// Create, read, update, and manage product tours and their targeting.
+        /// </summary>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -77,6 +80,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Product_tours.Item
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
             await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken).ConfigureAwait(false);
         }
+        /// <summary>
+        /// Create, read, update, and manage product tours and their targeting.
+        /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ProductTour"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -92,6 +98,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Product_tours.Item
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ProductTour>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ProductTour.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
+        /// <summary>
+        /// Create, read, update, and manage product tours and their targeting.
+        /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ProductTourSerializerCreateUpdateOnly"/></returns>
         /// <param name="body">Serializer for creating and updating ProductTour.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -109,6 +118,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Product_tours.Item
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ProductTourSerializerCreateUpdateOnly>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ProductTourSerializerCreateUpdateOnly.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
+        /// <summary>
+        /// Create, read, update, and manage product tours and their targeting.
+        /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ProductTour"/></returns>
         /// <param name="body">Read-only serializer for ProductTour.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -126,6 +138,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Product_tours.Item
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ProductTour>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ProductTour.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
+        /// <summary>
+        /// Create, read, update, and manage product tours and their targeting.
+        /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -142,6 +157,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Product_tours.Item
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
+        /// <summary>
+        /// Create, read, update, and manage product tours and their targeting.
+        /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -158,6 +176,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Product_tours.Item
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
+        /// <summary>
+        /// Create, read, update, and manage product tours and their targeting.
+        /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">Serializer for creating and updating ProductTour.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -177,6 +198,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Product_tours.Item
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }
+        /// <summary>
+        /// Create, read, update, and manage product tours and their targeting.
+        /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">Read-only serializer for ProductTour.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

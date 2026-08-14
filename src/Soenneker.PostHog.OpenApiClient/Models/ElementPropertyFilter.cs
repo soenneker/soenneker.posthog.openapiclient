@@ -17,30 +17,29 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The label property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ElementPropertyFilter_label? Label { get; set; }
+        public string? Label { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ElementPropertyFilter_label Label { get; set; }
+        public string Label { get; set; }
 #endif
         /// <summary>The operator property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperator? Operator { get; set; }
         /// <summary>The type property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ElementPropertyFilter_type? Type { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Type { get; set; }
+#nullable restore
+#else
+        public string Type { get; set; }
+#endif
         /// <summary>The value property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ElementPropertyFilter_value? Value { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ElementPropertyFilterValue? Value { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ElementPropertyFilter_value Value { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ElementPropertyFilterValue Value { get; set; }
 #endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ElementPropertyFilter"/> and sets the default values.
-        /// </summary>
-        public ElementPropertyFilter()
-        {
-            Type = global::Soenneker.PostHog.OpenApiClient.Models.ElementPropertyFilter_type.Element;
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -60,10 +59,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "key", n => { Key = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Key10>(); } },
-                { "label", n => { Label = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ElementPropertyFilter_label>(global::Soenneker.PostHog.OpenApiClient.Models.ElementPropertyFilter_label.CreateFromDiscriminatorValue); } },
+                { "label", n => { Label = n.GetStringValue(); } },
                 { "operator", n => { Operator = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperator>(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ElementPropertyFilter_type>(); } },
-                { "value", n => { Value = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ElementPropertyFilter_value>(global::Soenneker.PostHog.OpenApiClient.Models.ElementPropertyFilter_value.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetStringValue(); } },
+                { "value", n => { Value = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ElementPropertyFilterValue>(global::Soenneker.PostHog.OpenApiClient.Models.ElementPropertyFilterValue.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -74,10 +73,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Key10>("key", Key);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ElementPropertyFilter_label>("label", Label);
+            writer.WriteStringValue("label", Label);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperator>("operator", Operator);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ElementPropertyFilter_type>("type", Type);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ElementPropertyFilter_value>("value", Value);
+            writer.WriteStringValue("type", Type);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ElementPropertyFilterValue>("value", Value);
         }
     }
 }

@@ -11,7 +11,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.DomainConnect
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\integrations\domain-connect
+    /// Builds and executes requests for operations under \api\projects\{projectId}\integrations\domain-connect
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DomainConnectRequestBuilder : BaseRequestBuilder
@@ -31,7 +31,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.DomainC
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public DomainConnectRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/integrations/domain-connect", pathParameters)
+        public DomainConnectRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/integrations/domain-connect", pathParameters)
         {
         }
         /// <summary>
@@ -39,7 +39,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.DomainC
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public DomainConnectRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/integrations/domain-connect", rawUrl)
+        public DomainConnectRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/integrations/domain-connect", rawUrl)
         {
         }
     }

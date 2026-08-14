@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.Deprovision
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\data_warehouse\deprovision
+    /// Builds and executes requests for operations under \api\projects\{projectId}\data_warehouse\deprovision
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DeprovisionRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.Depro
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public DeprovisionRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/data_warehouse/deprovision", pathParameters)
+        public DeprovisionRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_warehouse/deprovision", pathParameters)
         {
         }
         /// <summary>
@@ -30,11 +30,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.Depro
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public DeprovisionRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/data_warehouse/deprovision", rawUrl)
+        public DeprovisionRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_warehouse/deprovision", rawUrl)
         {
         }
         /// <summary>
-        /// Start deprovisioning the managed warehouse for this team.
+        /// Start deprovisioning the organization&apos;s managed warehouse. Restricted to organization admins.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DeprovisionWarehouseResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.Depro
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.DeprovisionWarehouseResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.DeprovisionWarehouseResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Start deprovisioning the managed warehouse for this team.
+        /// Start deprovisioning the organization&apos;s managed warehouse. Restricted to organization admins.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

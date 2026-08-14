@@ -18,11 +18,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "data_warehouse")]
         #pragma warning disable CS1591
-        Data_warehouse,
+        DataWarehouse,
         #pragma warning restore CS1591
         [EnumMember(Value = "new_entity")]
         #pragma warning disable CS1591
-        New_entity,
+        NewEntity,
         #pragma warning restore CS1591
         [EnumMember(Value = "groups")]
         #pragma warning disable CS1591

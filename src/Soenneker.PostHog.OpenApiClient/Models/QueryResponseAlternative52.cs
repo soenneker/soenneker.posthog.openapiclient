@@ -12,77 +12,69 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class QueryResponseAlternative52 : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>The columns property</summary>
+        /// <summary>The credible_intervals property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52_columns? Columns { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52CredibleIntervalsProperty? CredibleIntervals { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52_columns Columns { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52CredibleIntervalsProperty CredibleIntervals { get; set; }
 #endif
-        /// <summary>Query error. Returned only if &apos;explain&apos; or `modifiers.debug` is true. Throws an error otherwise.</summary>
+        /// <summary>The expected_loss property</summary>
+        public double? ExpectedLoss { get; set; }
+        /// <summary>The funnels_query property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52_error? Error { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery? FunnelsQuery { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52_error Error { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery FunnelsQuery { get; set; }
 #endif
-        /// <summary>Generated HogQL query.</summary>
+        /// <summary>The insight property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52_hogql? Hogql { get; set; }
+        public UntypedNode? Insight { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52_hogql Hogql { get; set; }
+        public UntypedNode Insight { get; set; }
 #endif
-        /// <summary>Modifiers used when performing the query</summary>
+        /// <summary>The kind property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52_modifiers? Modifiers { get; set; }
+        public string? Kind { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52_modifiers Modifiers { get; set; }
+        public string Kind { get; set; }
 #endif
-        /// <summary>Query status indicates whether next to the provided data, a query is still running.</summary>
+        /// <summary>The probability property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52_query_status? QueryStatus { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52ProbabilityProperty? Probability { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52_query_status QueryStatus { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52ProbabilityProperty Probability { get; set; }
 #endif
-        /// <summary>The date range used for the query</summary>
+        /// <summary>The significance_code property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSignificanceCode? SignificanceCode { get; set; }
+        /// <summary>The significant property</summary>
+        public bool? Significant { get; set; }
+        /// <summary>The stats_version property</summary>
+        public int? StatsVersion { get; set; }
+        /// <summary>The variants property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52_resolved_date_range? ResolvedDateRange { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantFunnelsBaseStats>? Variants { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52_resolved_date_range ResolvedDateRange { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantFunnelsBaseStats> Variants { get; set; }
 #endif
-        /// <summary>The results property</summary>
+        /// <summary>Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings for semantics.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQueryResultItem>? Results { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSyncWarning>? Warnings { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQueryResultItem> Results { get; set; }
-#endif
-        /// <summary>Measured timings for different parts of the query generation process</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52_timings? Timings { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52_timings Timings { get; set; }
-#endif
-        /// <summary>Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52_warnings? Warnings { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52_warnings Warnings { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSyncWarning> Warnings { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -102,15 +94,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "columns", n => { Columns = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52_columns>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52_columns.CreateFromDiscriminatorValue); } },
-                { "error", n => { Error = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52_error>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52_error.CreateFromDiscriminatorValue); } },
-                { "hogql", n => { Hogql = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52_hogql>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52_hogql.CreateFromDiscriminatorValue); } },
-                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52_modifiers>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52_modifiers.CreateFromDiscriminatorValue); } },
-                { "query_status", n => { QueryStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52_query_status>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52_query_status.CreateFromDiscriminatorValue); } },
-                { "resolved_date_range", n => { ResolvedDateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52_resolved_date_range>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52_resolved_date_range.CreateFromDiscriminatorValue); } },
-                { "results", n => { Results = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQueryResultItem>(global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQueryResultItem.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "timings", n => { Timings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52_timings>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52_timings.CreateFromDiscriminatorValue); } },
-                { "warnings", n => { Warnings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52_warnings>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52_warnings.CreateFromDiscriminatorValue); } },
+                { "credible_intervals", n => { CredibleIntervals = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52CredibleIntervalsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52CredibleIntervalsProperty.CreateFromDiscriminatorValue); } },
+                { "expected_loss", n => { ExpectedLoss = n.GetDoubleValue(); } },
+                { "funnels_query", n => { FunnelsQuery = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery.CreateFromDiscriminatorValue); } },
+                { "insight", n => { Insight = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
+                { "probability", n => { Probability = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52ProbabilityProperty>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52ProbabilityProperty.CreateFromDiscriminatorValue); } },
+                { "significance_code", n => { SignificanceCode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSignificanceCode>(); } },
+                { "significant", n => { Significant = n.GetBoolValue(); } },
+                { "stats_version", n => { StatsVersion = n.GetIntValue(); } },
+                { "variants", n => { Variants = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantFunnelsBaseStats>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantFunnelsBaseStats.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "warnings", n => { Warnings = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSyncWarning>(global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSyncWarning.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -120,15 +114,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52_columns>("columns", Columns);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52_error>("error", Error);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52_hogql>("hogql", Hogql);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52_modifiers>("modifiers", Modifiers);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52_query_status>("query_status", QueryStatus);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52_resolved_date_range>("resolved_date_range", ResolvedDateRange);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RevenueAnalyticsMRRQueryResultItem>("results", Results);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52_timings>("timings", Timings);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52_warnings>("warnings", Warnings);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52CredibleIntervalsProperty>("credible_intervals", CredibleIntervals);
+            writer.WriteDoubleValue("expected_loss", ExpectedLoss);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery>("funnels_query", FunnelsQuery);
+            writer.WriteObjectValue<UntypedNode>("insight", Insight);
+            writer.WriteStringValue("kind", Kind);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52ProbabilityProperty>("probability", Probability);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSignificanceCode>("significance_code", SignificanceCode);
+            writer.WriteBoolValue("significant", Significant);
+            writer.WriteIntValue("stats_version", StatsVersion);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantFunnelsBaseStats>("variants", Variants);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSyncWarning>("warnings", Warnings);
         }
     }
 }

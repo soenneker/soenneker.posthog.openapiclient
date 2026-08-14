@@ -19,10 +19,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The available_product_features property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganization_available_product_features>? AvailableProductFeatures { get; private set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationAvailableProductFeaturesItem>? AvailableProductFeatures { get; private set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganization_available_product_features> AvailableProductFeatures { get; private set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationAvailableProductFeaturesItem> AvailableProductFeatures { get; private set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
@@ -39,10 +39,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Default statistical method for new experiments in this organization.* `bayesian` - Bayesian* `frequentist` - Frequentist</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganization.PatchedOrganization_default_experiment_stats_method? DefaultExperimentStatsMethod { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationDefaultExperimentStatsMethod? DefaultExperimentStatsMethod { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganization.PatchedOrganization_default_experiment_stats_method DefaultExperimentStatsMethod { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationDefaultExperimentStatsMethod DefaultExperimentStatsMethod { get; set; }
 #endif
         /// <summary>ID of the role to automatically assign to new members joining the organization</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -54,6 +54,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The enforce_2fa property</summary>
         public bool? Enforce2fa { get; set; }
+        /// <summary>When True, logins, signups, and invites for this organization are restricted to email addresses on its verified domains.</summary>
+        public bool? EnforceVerifiedDomains { get; set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>Set this to &apos;No&apos; to temporarily disable an organization.</summary>
@@ -84,19 +86,29 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public Guid? LogoMediaId { get; set; }
         /// <summary>The member_count property</summary>
         public int? MemberCount { get; private set; }
+        /// <summary>When True, organization members (below admin) are allowed to create new projects. Admins and owners can always create projects.</summary>
+        public bool? MembersCanCreateProjects { get; set; }
         /// <summary>The members_can_invite property</summary>
         public bool? MembersCanInvite { get; set; }
+        /// <summary>When False, members (below admin) only see themselves in the members list and only project members in access control.</summary>
+        public bool? MembersCanSeeOrgMembers { get; set; }
         /// <summary>The members_can_use_personal_api_keys property</summary>
         public bool? MembersCanUsePersonalApiKeys { get; set; }
         /// <summary>The membership_level property</summary>
-        public int? MembershipLevel { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationMembershipLevel? MembershipLevel { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationMembershipLevel MembershipLevel { get; private set; }
+#endif
         /// <summary>The metadata property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganization_metadata? Metadata { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationMetadataProperty? Metadata { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganization_metadata Metadata { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationMetadataProperty Metadata { get; set; }
 #endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -106,15 +118,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>* `0` - none* `3` - config* `6` - install* `9` - root</summary>
-        public int? PluginsAccessLevel { get; set; }
+        /// <summary>The plugins_access_level property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationPluginsAccessLevel? PluginsAccessLevel { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationPluginsAccessLevel PluginsAccessLevel { get; private set; }
+#endif
         /// <summary>The projects property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganization_projects>? Projects { get; private set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationProjectsItemProperty>? Projects { get; private set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganization_projects> Projects { get; private set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationProjectsItemProperty> Projects { get; private set; }
 #endif
         /// <summary>The slug property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -127,10 +145,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The teams property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganization_teams>? Teams { get; private set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationTeamsItemProperty>? Teams { get; private set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganization_teams> Teams { get; private set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationTeamsItemProperty> Teams { get; private set; }
 #endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
@@ -160,13 +178,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "allow_publicly_shared_resources", n => { AllowPubliclySharedResources = n.GetBoolValue(); } },
-                { "available_product_features", n => { AvailableProductFeatures = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganization_available_product_features>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganization_available_product_features.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "available_product_features", n => { AvailableProductFeatures = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationAvailableProductFeaturesItem>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationAvailableProductFeaturesItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "customer_id", n => { CustomerId = n.GetStringValue(); } },
                 { "default_anonymize_ips", n => { DefaultAnonymizeIps = n.GetBoolValue(); } },
-                { "default_experiment_stats_method", n => { DefaultExperimentStatsMethod = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganization.PatchedOrganization_default_experiment_stats_method>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganization.PatchedOrganization_default_experiment_stats_method.CreateFromDiscriminatorValue); } },
+                { "default_experiment_stats_method", n => { DefaultExperimentStatsMethod = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationDefaultExperimentStatsMethod>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationDefaultExperimentStatsMethod.CreateFromDiscriminatorValue); } },
                 { "default_role_id", n => { DefaultRoleId = n.GetStringValue(); } },
                 { "enforce_2fa", n => { Enforce2fa = n.GetBoolValue(); } },
+                { "enforce_verified_domains", n => { EnforceVerifiedDomains = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "is_active", n => { IsActive = n.GetBoolValue(); } },
                 { "is_ai_data_processing_approved", n => { IsAiDataProcessingApproved = n.GetBoolValue(); } },
@@ -179,15 +198,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "is_pending_deletion", n => { IsPendingDeletion = n.GetBoolValue(); } },
                 { "logo_media_id", n => { LogoMediaId = n.GetGuidValue(); } },
                 { "member_count", n => { MemberCount = n.GetIntValue(); } },
+                { "members_can_create_projects", n => { MembersCanCreateProjects = n.GetBoolValue(); } },
                 { "members_can_invite", n => { MembersCanInvite = n.GetBoolValue(); } },
+                { "members_can_see_org_members", n => { MembersCanSeeOrgMembers = n.GetBoolValue(); } },
                 { "members_can_use_personal_api_keys", n => { MembersCanUsePersonalApiKeys = n.GetBoolValue(); } },
-                { "membership_level", n => { MembershipLevel = n.GetIntValue(); } },
-                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganization_metadata>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganization_metadata.CreateFromDiscriminatorValue); } },
+                { "membership_level", n => { MembershipLevel = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationMembershipLevel>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationMembershipLevel.CreateFromDiscriminatorValue); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationMetadataProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationMetadataProperty.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "plugins_access_level", n => { PluginsAccessLevel = n.GetIntValue(); } },
-                { "projects", n => { Projects = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganization_projects>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganization_projects.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "plugins_access_level", n => { PluginsAccessLevel = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationPluginsAccessLevel>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationPluginsAccessLevel.CreateFromDiscriminatorValue); } },
+                { "projects", n => { Projects = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationProjectsItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationProjectsItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "slug", n => { Slug = n.GetStringValue(); } },
-                { "teams", n => { Teams = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganization_teams>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganization_teams.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "teams", n => { Teams = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationTeamsItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationTeamsItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }
@@ -200,114 +221,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("allow_publicly_shared_resources", AllowPubliclySharedResources);
             writer.WriteBoolValue("default_anonymize_ips", DefaultAnonymizeIps);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganization.PatchedOrganization_default_experiment_stats_method>("default_experiment_stats_method", DefaultExperimentStatsMethod);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationDefaultExperimentStatsMethod>("default_experiment_stats_method", DefaultExperimentStatsMethod);
             writer.WriteStringValue("default_role_id", DefaultRoleId);
             writer.WriteBoolValue("enforce_2fa", Enforce2fa);
+            writer.WriteBoolValue("enforce_verified_domains", EnforceVerifiedDomains);
             writer.WriteBoolValue("is_ai_data_processing_approved", IsAiDataProcessingApproved);
             writer.WriteBoolValue("is_ai_training_opted_in", IsAiTrainingOptedIn);
             writer.WriteGuidValue("logo_media_id", LogoMediaId);
+            writer.WriteBoolValue("members_can_create_projects", MembersCanCreateProjects);
             writer.WriteBoolValue("members_can_invite", MembersCanInvite);
+            writer.WriteBoolValue("members_can_see_org_members", MembersCanSeeOrgMembers);
             writer.WriteBoolValue("members_can_use_personal_api_keys", MembersCanUsePersonalApiKeys);
-            writer.WriteIntValue("membership_level", MembershipLevel);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganization_metadata>("metadata", Metadata);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationMetadataProperty>("metadata", Metadata);
             writer.WriteStringValue("name", Name);
-            writer.WriteIntValue("plugins_access_level", PluginsAccessLevel);
             writer.WriteAdditionalData(AdditionalData);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DefaultExperimentStatsMethodEnum_Wrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganization_default_experiment_stats_methodMember1"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class PatchedOrganization_default_experiment_stats_method : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper? BlankEnumWrapper { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper BlankEnumWrapper { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DefaultExperimentStatsMethodEnum_Wrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.DefaultExperimentStatsMethodEnum_Wrapper? DefaultExperimentStatsMethodEnumWrapper { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.DefaultExperimentStatsMethodEnum_Wrapper DefaultExperimentStatsMethodEnumWrapper { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganization_default_experiment_stats_methodMember1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganization_default_experiment_stats_methodMember1? PatchedOrganizationDefaultExperimentStatsMethodMember1 { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganization_default_experiment_stats_methodMember1 PatchedOrganizationDefaultExperimentStatsMethodMember1 { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganization.PatchedOrganization_default_experiment_stats_method"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganization.PatchedOrganization_default_experiment_stats_method CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganization.PatchedOrganization_default_experiment_stats_method();
-                if("BlankEnum_Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.BlankEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper();
-                }
-                else if("DefaultExperimentStatsMethodEnum_Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.DefaultExperimentStatsMethodEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.DefaultExperimentStatsMethodEnum_Wrapper();
-                }
-                else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.PatchedOrganizationDefaultExperimentStatsMethodMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganization_default_experiment_stats_methodMember1();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(BlankEnumWrapper != null)
-                {
-                    return BlankEnumWrapper.GetFieldDeserializers();
-                }
-                else if(DefaultExperimentStatsMethodEnumWrapper != null)
-                {
-                    return DefaultExperimentStatsMethodEnumWrapper.GetFieldDeserializers();
-                }
-                else if(PatchedOrganizationDefaultExperimentStatsMethodMember1 != null)
-                {
-                    return PatchedOrganizationDefaultExperimentStatsMethodMember1.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(BlankEnumWrapper != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper>(null, BlankEnumWrapper);
-                }
-                else if(DefaultExperimentStatsMethodEnumWrapper != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DefaultExperimentStatsMethodEnum_Wrapper>(null, DefaultExperimentStatsMethodEnumWrapper);
-                }
-                else if(PatchedOrganizationDefaultExperimentStatsMethodMember1 != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganization_default_experiment_stats_methodMember1>(null, PatchedOrganizationDefaultExperimentStatsMethodMember1);
-                }
-            }
         }
     }
 }

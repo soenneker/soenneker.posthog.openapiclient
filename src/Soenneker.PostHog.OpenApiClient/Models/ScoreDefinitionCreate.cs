@@ -19,10 +19,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Initial immutable scorer configuration.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreate_config? Config { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateConfig? Config { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreate_config Config { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateConfig Config { get; set; }
 #endif
         /// <summary>Optional human-readable description.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -32,8 +32,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
-        /// <summary>* `categorical` - categorical* `numeric` - numeric* `boolean` - boolean</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricKindEnum? Kind { get; set; }
+        /// <summary>Scorer kind. This cannot be changed after creation.* `categorical` - categorical* `numeric` - numeric* `boolean` - boolean</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateKind? Kind { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateKind Kind { get; set; }
+#endif
         /// <summary>Human-readable scorer name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -48,6 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public ScoreDefinitionCreate()
         {
             AdditionalData = new Dictionary<string, object>();
+            Archived = false;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -68,9 +75,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "archived", n => { Archived = n.GetBoolValue(); } },
-                { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreate_config>(global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreate_config.CreateFromDiscriminatorValue); } },
+                { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateConfig>(global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateConfig.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricKindEnum>(); } },
+                { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateKind>(global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateKind.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
             };
         }
@@ -82,9 +89,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("archived", Archived);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreate_config>("config", Config);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateConfig>("config", Config);
             writer.WriteStringValue("description", Description);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricKindEnum>("kind", Kind);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateKind>("kind", Kind);
             writer.WriteStringValue("name", Name);
             writer.WriteAdditionalData(AdditionalData);
         }

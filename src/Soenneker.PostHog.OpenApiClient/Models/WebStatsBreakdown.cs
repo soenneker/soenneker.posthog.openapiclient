@@ -42,31 +42,63 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "InitialReferringURL")]
         #pragma warning disable CS1591
-        InitialReferringURL,
+        InitialReferringUrl,
         #pragma warning restore CS1591
         [EnumMember(Value = "InitialUTMSource")]
         #pragma warning disable CS1591
-        InitialUTMSource,
+        InitialUtmSource,
         #pragma warning restore CS1591
         [EnumMember(Value = "InitialUTMCampaign")]
         #pragma warning disable CS1591
-        InitialUTMCampaign,
+        InitialUtmCampaign,
         #pragma warning restore CS1591
         [EnumMember(Value = "InitialUTMMedium")]
         #pragma warning disable CS1591
-        InitialUTMMedium,
+        InitialUtmMedium,
         #pragma warning restore CS1591
         [EnumMember(Value = "InitialUTMTerm")]
         #pragma warning disable CS1591
-        InitialUTMTerm,
+        InitialUtmTerm,
         #pragma warning restore CS1591
         [EnumMember(Value = "InitialUTMContent")]
         #pragma warning disable CS1591
-        InitialUTMContent,
+        InitialUtmContent,
         #pragma warning restore CS1591
         [EnumMember(Value = "InitialUTMSourceMediumCampaign")]
         #pragma warning disable CS1591
-        InitialUTMSourceMediumCampaign,
+        InitialUtmSourceMediumCampaign,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "FirstPageviewChannelType")]
+        #pragma warning disable CS1591
+        FirstPageviewChannelType,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "FirstPageviewReferringDomain")]
+        #pragma warning disable CS1591
+        FirstPageviewReferringDomain,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "FirstPageviewUTMSource")]
+        #pragma warning disable CS1591
+        FirstPageviewUtmSource,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "FirstPageviewUTMCampaign")]
+        #pragma warning disable CS1591
+        FirstPageviewUtmCampaign,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "FirstPageviewUTMMedium")]
+        #pragma warning disable CS1591
+        FirstPageviewUtmMedium,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "FirstPageviewUTMTerm")]
+        #pragma warning disable CS1591
+        FirstPageviewUtmTerm,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "FirstPageviewUTMContent")]
+        #pragma warning disable CS1591
+        FirstPageviewUtmContent,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "FirstPageviewUTMSourceMediumCampaign")]
+        #pragma warning disable CS1591
+        FirstPageviewUtmSourceMediumCampaign,
         #pragma warning restore CS1591
         [EnumMember(Value = "Browser")]
         #pragma warning disable CS1591
@@ -74,7 +106,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "OS")]
         #pragma warning disable CS1591
-        OS,
+        Os,
         #pragma warning restore CS1591
         [EnumMember(Value = "Viewport")]
         #pragma warning disable CS1591

@@ -3,13 +3,13 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `full_refresh` - full_refresh* `incremental` - incremental* `append` - append* `webhook` - webhook* `cdc` - cdc</summary>
+    /// <summary>* `full_refresh` - full_refresh* `incremental` - incremental* `append` - append* `webhook` - webhook* `cdc` - cdc* `xmin` - xmin</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum SyncTypeEnum
     {
         [EnumMember(Value = "full_refresh")]
         #pragma warning disable CS1591
-        Full_refresh,
+        FullRefresh,
         #pragma warning restore CS1591
         [EnumMember(Value = "incremental")]
         #pragma warning disable CS1591
@@ -26,6 +26,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "cdc")]
         #pragma warning disable CS1591
         Cdc,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "xmin")]
+        #pragma warning disable CS1591
+        Xmin,
         #pragma warning restore CS1591
     }
 }

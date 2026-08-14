@@ -14,7 +14,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Advanced_activity_logs
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\advanced_activity_logs
+    /// Builds and executes requests for operations under \api\projects\{projectId}\advanced_activity_logs
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Advanced_activity_logsRequestBuilder : BaseRequestBuilder
@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Advanced_activity_lo
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Advanced_activity_logsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/advanced_activity_logs{?activities*,clients*,detail_filters*,end_date*,hogql_filter*,ip_addresses*,is_system*,item_ids*,page*,page_size*,scopes*,search_text*,start_date*,team_ids*,users*,was_impersonated*}", pathParameters)
+        public Advanced_activity_logsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/advanced_activity_logs{?activities*,clients*,detail_filters*,end_date*,follow*,hogql_filter*,include_values*,ip_addresses*,is_system*,item_ids*,ordering*,page*,page_size*,schema*,scopes*,search_text*,start_date*,team_ids*,users*,was_impersonated*}", pathParameters)
         {
         }
         /// <summary>
@@ -42,7 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Advanced_activity_lo
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Advanced_activity_logsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/advanced_activity_logs{?activities*,clients*,detail_filters*,end_date*,hogql_filter*,ip_addresses*,is_system*,item_ids*,page*,page_size*,scopes*,search_text*,start_date*,team_ids*,users*,was_impersonated*}", rawUrl)
+        public Advanced_activity_logsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/advanced_activity_logs{?activities*,clients*,detail_filters*,end_date*,follow*,hogql_filter*,include_values*,ip_addresses*,is_system*,item_ids*,ordering*,page*,page_size*,schema*,scopes*,search_text*,start_date*,team_ids*,users*,was_impersonated*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedActivityLogList"/></returns>
@@ -123,6 +123,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Advanced_activity_lo
             /// <summary>Upper bound on `created_at` (inclusive), ISO-8601.</summary>
             [QueryParameter("end_date")]
             public DateTimeOffset? EndDate { get; set; }
+            /// <summary>Keep the next link valid after the last entry, so the same cursor can be re-polled as new entries arrive. Only applies with oldest-first ordering. When following, stop on an empty results list rather than on a null next link.</summary>
+            [QueryParameter("follow")]
+            public bool? Follow { get; set; }
             /// <summary>Reserved for future HogQL-based filtering.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -133,6 +136,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Advanced_activity_lo
             [QueryParameter("hogql_filter")]
             public string HogqlFilter { get; set; }
 #endif
+            /// <summary>Include the previous and new values of changed fields. Only applies when schema is ocsf. Values can contain the content of the changed object, which makes responses larger and sends that content to your security tool.</summary>
+            [QueryParameter("include_values")]
+            public bool? IncludeValues { get; set; }
             /// <summary>Filter by client IP addresses. Accepts exact IPv4/IPv6 values or wildcard patterns using `*` (e.g. `203.0.113.*`). Multiple entries are OR-combined.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -156,12 +162,18 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Advanced_activity_lo
             [QueryParameter("item_ids")]
             public string[] ItemIds { get; set; }
 #endif
+            /// <summary>Sort by when the entry was created. Defaults to newest first. Use created_at for oldest first when polling for new entries, so a saved cursor picks up where the last request stopped.* `-created_at` - -created_at* `created_at` - created_at</summary>
+            [QueryParameter("ordering")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.AdvancedActivityLogsListOrderingParameter? Ordering { get; set; }
             /// <summary>Page number for pagination. When provided, uses page-based pagination ordered by most recent first.</summary>
             [QueryParameter("page")]
             public int? Page { get; set; }
-            /// <summary>&quot;Number of results per page (default: 100, max: 1000). Only used with page-based pagination.&quot;</summary>
+            /// <summary>&quot;Number of results per page (default: 100, max: 1000).&quot;</summary>
             [QueryParameter("page_size")]
             public int? PageSize { get; set; }
+            /// <summary>Response format. Set to ocsf to return Open Cybersecurity Schema Framework events for ingestion into a security tool. Omit for the default PostHog format.* `ocsf` - ocsf</summary>
+            [QueryParameter("schema")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.AdvancedActivityLogsListSchemaParameter? Schema { get; set; }
             /// <summary>Filter by activity scopes (e.g. &quot;FeatureFlag&quot;, &quot;Insight&quot;).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

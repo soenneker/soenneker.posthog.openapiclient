@@ -7,10 +7,11 @@ using System.IO;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
+    /// <summary>
+    /// Mixin for serializers to add user access control fields
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class SharingConfiguration : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>The access_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -31,10 +32,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The settings property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SharingConfiguration_settings? Settings { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SharingConfigurationSettings? Settings { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SharingConfiguration_settings Settings { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SharingConfigurationSettings Settings { get; set; }
 #endif
         /// <summary>The share_passwords property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -43,6 +44,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.SharePassword> SharePasswords { get; private set; }
+#endif
+        /// <summary>The effective access level the user has for this object</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? UserAccessLevel { get; private set; }
+#nullable restore
+#else
+        public string UserAccessLevel { get; private set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SharingConfiguration"/> and sets the default values.
@@ -73,8 +82,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "password_required", n => { PasswordRequired = n.GetBoolValue(); } },
-                { "settings", n => { Settings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SharingConfiguration_settings>(global::Soenneker.PostHog.OpenApiClient.Models.SharingConfiguration_settings.CreateFromDiscriminatorValue); } },
+                { "settings", n => { Settings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SharingConfigurationSettings>(global::Soenneker.PostHog.OpenApiClient.Models.SharingConfigurationSettings.CreateFromDiscriminatorValue); } },
                 { "share_passwords", n => { SharePasswords = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SharePassword>(global::Soenneker.PostHog.OpenApiClient.Models.SharePassword.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -86,7 +96,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteBoolValue("password_required", PasswordRequired);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SharingConfiguration_settings>("settings", Settings);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SharingConfigurationSettings>("settings", Settings);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

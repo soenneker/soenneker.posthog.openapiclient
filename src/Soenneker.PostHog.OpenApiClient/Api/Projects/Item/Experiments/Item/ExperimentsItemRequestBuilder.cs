@@ -3,19 +3,27 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Activity;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Archive;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Copy_to_project;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Create_exposure_cohort_for_experiment;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Duplicate;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.End;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Flag_cleanup_target;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Flag_cleanup_task;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Freeze_exposure;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Launch;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Metrics_recalculation;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Pause;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Recalculate_timeseries;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Reset;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Resume;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Session_buckets;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Session_event_deltas;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Ship_variant;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Timeseries_results;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Unarchive;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Unfreeze_exposure;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -25,11 +33,16 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\experiments\{id}
+    /// Builds and executes requests for operations under \api\projects\{projectId}\experiments\{id}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ExperimentsItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The activity property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Activity.ActivityRequestBuilder Activity
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Activity.ActivityRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The archive property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Archive.ArchiveRequestBuilder Archive
         {
@@ -55,10 +68,30 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.End.EndRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The flag_cleanup_target property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Flag_cleanup_target.Flag_cleanup_targetRequestBuilder Flag_cleanup_target
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Flag_cleanup_target.Flag_cleanup_targetRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The flag_cleanup_task property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Flag_cleanup_task.Flag_cleanup_taskRequestBuilder Flag_cleanup_task
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Flag_cleanup_task.Flag_cleanup_taskRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The freeze_exposure property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Freeze_exposure.Freeze_exposureRequestBuilder Freeze_exposure
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Freeze_exposure.Freeze_exposureRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The launch property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Launch.LaunchRequestBuilder Launch
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Launch.LaunchRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The metrics_recalculation property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Metrics_recalculation.Metrics_recalculationRequestBuilder Metrics_recalculation
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Metrics_recalculation.Metrics_recalculationRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The pause property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Pause.PauseRequestBuilder Pause
@@ -80,6 +113,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Resume.ResumeRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The session_buckets property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Session_buckets.Session_bucketsRequestBuilder Session_buckets
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Session_buckets.Session_bucketsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The session_event_deltas property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Session_event_deltas.Session_event_deltasRequestBuilder Session_event_deltas
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Session_event_deltas.Session_event_deltasRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The ship_variant property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Ship_variant.Ship_variantRequestBuilder Ship_variant
         {
@@ -95,12 +138,17 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Unarchive.UnarchiveRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The unfreeze_exposure property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Unfreeze_exposure.Unfreeze_exposureRequestBuilder Unfreeze_exposure
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Unfreeze_exposure.Unfreeze_exposureRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.ExperimentsItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ExperimentsItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/experiments/{id}", pathParameters)
+        public ExperimentsItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/experiments/{id}", pathParameters)
         {
         }
         /// <summary>
@@ -108,7 +156,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ExperimentsItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/experiments/{id}", rawUrl)
+        public ExperimentsItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/experiments/{id}", rawUrl)
         {
         }
         /// <summary>
@@ -147,19 +195,19 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.Experiment>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.Experiment.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Update an experiment. Use this to modify experiment properties such as name, description, metrics, variants, and configuration. Metrics can be added, changed and removed at any time.
+        /// Update an experiment. Use this to modify experiment properties such as name, description, metrics, variants, and configuration. Metrics can be added, changed and removed at any time. Feature-flag config (variants, rollout, payloads) is sent via the feature_flag object.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Experiment"/></returns>
-        /// <param name="body">Mixin for serializers to add user access control fields</param>
+        /// <param name="body">Experiment write payload. Identical to Experiment, plus the writable `feature_flag` config input.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.Experiment?> PatchAsync(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExperiment body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.Experiment?> PatchAsync(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExperimentWrite body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.Experiment> PatchAsync(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExperiment body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.Experiment> PatchAsync(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExperimentWrite body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -167,19 +215,19 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.Experiment>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.Experiment.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Mixin for ViewSets to handle ApprovalRequired exceptions from decorated serializers.This mixin intercepts ApprovalRequired exceptions raised by the @approval_gate decoratoron serializer methods and converts them into proper HTTP 409 Conflict responses withchange request details.
+        /// Mixin for ViewSets to handle approval-gate exceptions raised from decorated serializers.Intercepts ApprovalRequired (409) and PolicyConflict (400) raised by the @approval_gatedecorator on serializer methods and converts them into the same responses the viewset pathproduces (see decorators._result_to_response), so both paths share one contract.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Experiment"/></returns>
-        /// <param name="body">Mixin for serializers to add user access control fields</param>
+        /// <param name="body">Experiment write payload. Identical to Experiment, plus the writable `feature_flag` config input.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.Experiment?> PutAsync(global::Soenneker.PostHog.OpenApiClient.Models.Experiment body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.Experiment?> PutAsync(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWrite body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.Experiment> PutAsync(global::Soenneker.PostHog.OpenApiClient.Models.Experiment body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.Experiment> PutAsync(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWrite body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -225,18 +273,18 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item
             return requestInfo;
         }
         /// <summary>
-        /// Update an experiment. Use this to modify experiment properties such as name, description, metrics, variants, and configuration. Metrics can be added, changed and removed at any time.
+        /// Update an experiment. Use this to modify experiment properties such as name, description, metrics, variants, and configuration. Metrics can be added, changed and removed at any time. Feature-flag config (variants, rollout, payloads) is sent via the feature_flag object.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">Mixin for serializers to add user access control fields</param>
+        /// <param name="body">Experiment write payload. Identical to Experiment, plus the writable `feature_flag` config input.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPatchRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExperiment body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPatchRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExperimentWrite body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPatchRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExperiment body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPatchRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExperimentWrite body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -247,18 +295,18 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item
             return requestInfo;
         }
         /// <summary>
-        /// Mixin for ViewSets to handle ApprovalRequired exceptions from decorated serializers.This mixin intercepts ApprovalRequired exceptions raised by the @approval_gate decoratoron serializer methods and converts them into proper HTTP 409 Conflict responses withchange request details.
+        /// Mixin for ViewSets to handle approval-gate exceptions raised from decorated serializers.Intercepts ApprovalRequired (409) and PolicyConflict (400) raised by the @approval_gatedecorator on serializer methods and converts them into the same responses the viewset pathproduces (see decorators._result_to_response), so both paths share one contract.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">Mixin for serializers to add user access control fields</param>
+        /// <param name="body">Experiment write payload. Identical to Experiment, plus the writable `feature_flag` config input.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPutRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.Experiment body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWrite body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPutRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.Experiment body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWrite body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));

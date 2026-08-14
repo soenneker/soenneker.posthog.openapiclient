@@ -10,11 +10,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "AND")]
         #pragma warning disable CS1591
-        AND,
+        And,
         #pragma warning restore CS1591
         [EnumMember(Value = "OR")]
         #pragma warning disable CS1591
-        OR,
+        Or,
         #pragma warning restore CS1591
     }
 }

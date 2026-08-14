@@ -9,19 +9,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class QueryTiming : IParsable
+    public partial class QueryTiming : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Key. Shortened to &apos;k&apos; to save on data.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? K { get; set; }
-#nullable restore
-#else
-        public string K { get; set; }
-#endif
-        /// <summary>Time in seconds. Shortened to &apos;t&apos; to save on data.</summary>
-        public double? T { get; set; }
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryTiming"/> and sets the default values.
+        /// </summary>
+        public QueryTiming()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -40,8 +39,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "k", n => { K = n.GetStringValue(); } },
-                { "t", n => { T = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -51,8 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("k", K);
-            writer.WriteDoubleValue("t", T);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

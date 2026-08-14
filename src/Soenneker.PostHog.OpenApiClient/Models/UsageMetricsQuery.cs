@@ -15,68 +15,55 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Group key. Required with group_type_index for group queries.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQuery_group_key? GroupKey { get; set; }
+        public string? GroupKey { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQuery_group_key GroupKey { get; set; }
+        public string GroupKey { get; set; }
 #endif
         /// <summary>Group type index. Required with group_key for group queries.</summary>
+        public int? GroupTypeIndex { get; set; }
+        /// <summary>The kind property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQuery_group_type_index? GroupTypeIndex { get; set; }
+        public string? Kind { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQuery_group_type_index GroupTypeIndex { get; set; }
+        public string Kind { get; set; }
 #endif
-        /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQuery_kind? Kind { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQuery_modifiers? Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers? Modifiers { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQuery_modifiers Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers Modifiers { get; set; }
 #endif
         /// <summary>Person ID to fetch metrics for. Mutually exclusive with group parameters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQuery_person_id? PersonId { get; set; }
+        public string? PersonId { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQuery_person_id PersonId { get; set; }
+        public string PersonId { get; set; }
 #endif
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQuery_response? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQueryResponse? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQuery_response Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQueryResponse Response { get; set; }
 #endif
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQuery_tags? Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags? Tags { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQuery_tags Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags Tags { get; set; }
 #endif
         /// <summary>version of the node, used for schema migrations</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQuery_version? Version { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQuery_version Version { get; set; }
-#endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQuery"/> and sets the default values.
-        /// </summary>
-        public UsageMetricsQuery()
-        {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQuery_kind.UsageMetricsQuery;
-        }
+        public double? Version { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -95,14 +82,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "group_key", n => { GroupKey = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQuery_group_key>(global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQuery_group_key.CreateFromDiscriminatorValue); } },
-                { "group_type_index", n => { GroupTypeIndex = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQuery_group_type_index>(global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQuery_group_type_index.CreateFromDiscriminatorValue); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQuery_kind>(); } },
-                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQuery_modifiers>(global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQuery_modifiers.CreateFromDiscriminatorValue); } },
-                { "person_id", n => { PersonId = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQuery_person_id>(global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQuery_person_id.CreateFromDiscriminatorValue); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQuery_response>(global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQuery_response.CreateFromDiscriminatorValue); } },
-                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQuery_tags>(global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQuery_tags.CreateFromDiscriminatorValue); } },
-                { "version", n => { Version = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQuery_version>(global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQuery_version.CreateFromDiscriminatorValue); } },
+                { "group_key", n => { GroupKey = n.GetStringValue(); } },
+                { "group_type_index", n => { GroupTypeIndex = n.GetIntValue(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
+                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
+                { "person_id", n => { PersonId = n.GetStringValue(); } },
+                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQueryResponse.CreateFromDiscriminatorValue); } },
+                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
+                { "version", n => { Version = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -112,14 +99,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQuery_group_key>("group_key", GroupKey);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQuery_group_type_index>("group_type_index", GroupTypeIndex);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQuery_kind>("kind", Kind);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQuery_modifiers>("modifiers", Modifiers);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQuery_person_id>("person_id", PersonId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQuery_response>("response", Response);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQuery_tags>("tags", Tags);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQuery_version>("version", Version);
+            writer.WriteStringValue("group_key", GroupKey);
+            writer.WriteIntValue("group_type_index", GroupTypeIndex);
+            writer.WriteStringValue("kind", Kind);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
+            writer.WriteStringValue("person_id", PersonId);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQueryResponse>("response", Response);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
+            writer.WriteDoubleValue("version", Version);
         }
     }
 }

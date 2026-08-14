@@ -17,18 +17,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>User or role to assign matching issues to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingAssignmentRuleUpdateRequest_assignee? Assignee { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingAssignmentRuleUpdateRequestAssignee? Assignee { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingAssignmentRuleUpdateRequest_assignee Assignee { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingAssignmentRuleUpdateRequestAssignee Assignee { get; set; }
 #endif
         /// <summary>Property-group filters that define when this rule matches incoming error events.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingAssignmentRuleUpdateRequest_filters? Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingAssignmentRuleUpdateRequestFilters? Filters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingAssignmentRuleUpdateRequest_filters Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingAssignmentRuleUpdateRequestFilters Filters { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingAssignmentRuleUpdateRequest"/> and sets the default values.
@@ -55,8 +55,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "assignee", n => { Assignee = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingAssignmentRuleUpdateRequest_assignee>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingAssignmentRuleUpdateRequest_assignee.CreateFromDiscriminatorValue); } },
-                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingAssignmentRuleUpdateRequest_filters>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingAssignmentRuleUpdateRequest_filters.CreateFromDiscriminatorValue); } },
+                { "assignee", n => { Assignee = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingAssignmentRuleUpdateRequestAssignee>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingAssignmentRuleUpdateRequestAssignee.CreateFromDiscriminatorValue); } },
+                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingAssignmentRuleUpdateRequestFilters>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingAssignmentRuleUpdateRequestFilters.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -66,8 +66,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingAssignmentRuleUpdateRequest_assignee>("assignee", Assignee);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingAssignmentRuleUpdateRequest_filters>("filters", Filters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingAssignmentRuleUpdateRequestAssignee>("assignee", Assignee);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingAssignmentRuleUpdateRequestFilters>("filters", Filters);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

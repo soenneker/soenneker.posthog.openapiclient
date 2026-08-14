@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `duckdb` - duckdb* `postgres` - postgres</summary>
+    /// <summary>* `duckdb` - duckdb* `postgres` - postgres* `mysql` - mysql* `snowflake` - snowflake* `redshift` - redshift* `clickhouse` - clickhouse* `motherduck` - motherduck</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum EngineEnum
     {
@@ -14,6 +14,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "postgres")]
         #pragma warning disable CS1591
         Postgres,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "mysql")]
+        #pragma warning disable CS1591
+        Mysql,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "snowflake")]
+        #pragma warning disable CS1591
+        Snowflake,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "redshift")]
+        #pragma warning disable CS1591
+        Redshift,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "clickhouse")]
+        #pragma warning disable CS1591
+        Clickhouse,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "motherduck")]
+        #pragma warning disable CS1591
+        Motherduck,
         #pragma warning restore CS1591
     }
 }

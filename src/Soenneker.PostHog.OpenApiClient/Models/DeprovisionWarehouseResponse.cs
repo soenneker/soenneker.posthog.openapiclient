@@ -14,21 +14,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The status property</summary>
+        /// <summary>duckgres org identifier (the PostHog organization id)</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Org { get; set; }
+#nullable restore
+#else
+        public string Org { get; set; }
+#endif
+        /// <summary>Deprovisioning lifecycle message, e.g. &apos;deprovisioning started&apos;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Status { get; set; }
 #nullable restore
 #else
         public string Status { get; set; }
-#endif
-        /// <summary>The team property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Team { get; set; }
-#nullable restore
-#else
-        public string Team { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DeprovisionWarehouseResponse"/> and sets the default values.
@@ -55,8 +55,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "org", n => { Org = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
-                { "team", n => { Team = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -66,8 +66,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("org", Org);
             writer.WriteStringValue("status", Status);
-            writer.WriteStringValue("team", Team);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

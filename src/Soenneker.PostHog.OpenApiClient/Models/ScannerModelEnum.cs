@@ -3,17 +3,21 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `gemini-3-flash-preview` - Gemini 3 Flash* `gemini-3.1-flash-lite-preview` - Gemini 3 Flash Lite</summary>
+    /// <summary>* `gemini-3.5-flash-lite` - Gemini 3.5 Flash Lite* `gemini-3-flash-preview` - Gemini 3 Flash* `gemini-3.7-flash` - Gemini 3.7 Flash</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ScannerModelEnum
     {
+        [EnumMember(Value = "gemini-3.5-flash-lite")]
+        #pragma warning disable CS1591
+        Gemini35FlashLite,
+        #pragma warning restore CS1591
         [EnumMember(Value = "gemini-3-flash-preview")]
         #pragma warning disable CS1591
         Gemini3FlashPreview,
         #pragma warning restore CS1591
-        [EnumMember(Value = "gemini-3.1-flash-lite-preview")]
+        [EnumMember(Value = "gemini-3.7-flash")]
         #pragma warning disable CS1591
-        Gemini31FlashLitePreview,
+        Gemini37Flash,
         #pragma warning restore CS1591
     }
 }

@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Responses.Item.Unarchive
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\surveys\{id}\responses\{response_uuid}\unarchive
+    /// Builds and executes requests for operations under \api\projects\{projectId}\surveys\{id}\responses\{responseUuid}\unarchive
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class UnarchiveRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Respons
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public UnarchiveRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/surveys/{id}/responses/{response_uuid}/unarchive", pathParameters)
+        public UnarchiveRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/surveys/{id}/responses/{responseUuid}/unarchive", pathParameters)
         {
         }
         /// <summary>
@@ -30,28 +30,28 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Respons
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public UnarchiveRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/surveys/{id}/responses/{response_uuid}/unarchive", rawUrl)
+        public UnarchiveRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/surveys/{id}/responses/{responseUuid}/unarchive", rawUrl)
         {
         }
         /// <summary>
         /// Unarchive a single survey response.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Responses.Item.Unarchive.UnarchivePostResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SurveysResponsesUnarchiveCreate201Response"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Responses.Item.Unarchive.UnarchivePostResponse?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnly body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.SurveysResponsesUnarchiveCreate201Response?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnly body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Responses.Item.Unarchive.UnarchivePostResponse> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnly body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.SurveysResponsesUnarchiveCreate201Response> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnly body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Responses.Item.Unarchive.UnarchivePostResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Responses.Item.Unarchive.UnarchivePostResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SurveysResponsesUnarchiveCreate201Response>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SurveysResponsesUnarchiveCreate201Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Unarchive a single survey response.

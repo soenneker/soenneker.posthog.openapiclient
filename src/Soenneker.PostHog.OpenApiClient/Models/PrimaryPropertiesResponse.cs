@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Mapping from event name to the team-configured primary property for that event. Names without a configured primary property are omitted; callers should fall back to the core taxonomy defaults for those.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PrimaryPropertiesResponse_primary_properties? PrimaryProperties { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PrimaryPropertiesResponsePrimaryPropertiesProperty? PrimaryProperties { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PrimaryPropertiesResponse_primary_properties PrimaryProperties { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PrimaryPropertiesResponsePrimaryPropertiesProperty PrimaryProperties { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PrimaryPropertiesResponse"/> and sets the default values.
@@ -47,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "primary_properties", n => { PrimaryProperties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PrimaryPropertiesResponse_primary_properties>(global::Soenneker.PostHog.OpenApiClient.Models.PrimaryPropertiesResponse_primary_properties.CreateFromDiscriminatorValue); } },
+                { "primary_properties", n => { PrimaryProperties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PrimaryPropertiesResponsePrimaryPropertiesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PrimaryPropertiesResponsePrimaryPropertiesProperty.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -57,7 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PrimaryPropertiesResponse_primary_properties>("primary_properties", PrimaryProperties);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PrimaryPropertiesResponsePrimaryPropertiesProperty>("primary_properties", PrimaryProperties);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

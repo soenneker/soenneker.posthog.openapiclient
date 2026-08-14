@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `events` - Events* `persons` - Persons* `sessions` - Sessions</summary>
+    /// <summary>* `events` - Events* `persons` - Persons* `sessions` - Sessions* `hogql` - Hogql</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ModelEnum
     {
@@ -18,6 +18,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "sessions")]
         #pragma warning disable CS1591
         Sessions,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "hogql")]
+        #pragma warning disable CS1591
+        Hogql,
         #pragma warning restore CS1591
     }
 }

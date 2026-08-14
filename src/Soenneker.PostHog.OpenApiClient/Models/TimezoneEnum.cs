@@ -17,7 +17,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "Africa/Addis_Ababa")]
         #pragma warning disable CS1591
-        AfricaAddis_Ababa,
+        AfricaAddisAbaba,
         #pragma warning restore CS1591
         [EnumMember(Value = "Africa/Algiers")]
         #pragma warning disable CS1591
@@ -81,7 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "Africa/Dar_es_Salaam")]
         #pragma warning disable CS1591
-        AfricaDar_es_Salaam,
+        AfricaDarEsSalaam,
         #pragma warning restore CS1591
         [EnumMember(Value = "Africa/Djibouti")]
         #pragma warning disable CS1591
@@ -93,7 +93,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "Africa/El_Aaiun")]
         #pragma warning disable CS1591
-        AfricaEl_Aaiun,
+        AfricaElAaiun,
         #pragma warning restore CS1591
         [EnumMember(Value = "Africa/Freetown")]
         #pragma warning disable CS1591
@@ -205,7 +205,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "Africa/Sao_Tome")]
         #pragma warning disable CS1591
-        AfricaSao_Tome,
+        AfricaSaoTome,
         #pragma warning restore CS1591
         [EnumMember(Value = "Africa/Timbuktu")]
         #pragma warning disable CS1591
@@ -245,7 +245,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Argentina/Buenos_Aires")]
         #pragma warning disable CS1591
-        AmericaArgentinaBuenos_Aires,
+        AmericaArgentinaBuenosAires,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Argentina/Catamarca")]
         #pragma warning disable CS1591
@@ -265,7 +265,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Argentina/La_Rioja")]
         #pragma warning disable CS1591
-        AmericaArgentinaLa_Rioja,
+        AmericaArgentinaLaRioja,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Argentina/Mendoza")]
         #pragma warning disable CS1591
@@ -273,7 +273,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Argentina/Rio_Gallegos")]
         #pragma warning disable CS1591
-        AmericaArgentinaRio_Gallegos,
+        AmericaArgentinaRioGallegos,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Argentina/Salta")]
         #pragma warning disable CS1591
@@ -281,11 +281,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Argentina/San_Juan")]
         #pragma warning disable CS1591
-        AmericaArgentinaSan_Juan,
+        AmericaArgentinaSanJuan,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Argentina/San_Luis")]
         #pragma warning disable CS1591
-        AmericaArgentinaSan_Luis,
+        AmericaArgentinaSanLuis,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Argentina/Tucuman")]
         #pragma warning disable CS1591
@@ -317,7 +317,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Bahia_Banderas")]
         #pragma warning disable CS1591
-        AmericaBahia_Banderas,
+        AmericaBahiaBanderas,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Barbados")]
         #pragma warning disable CS1591
@@ -337,7 +337,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Boa_Vista")]
         #pragma warning disable CS1591
-        AmericaBoa_Vista,
+        AmericaBoaVista,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Bogota")]
         #pragma warning disable CS1591
@@ -349,15 +349,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Buenos_Aires")]
         #pragma warning disable CS1591
-        AmericaBuenos_Aires,
+        AmericaBuenosAires,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Cambridge_Bay")]
         #pragma warning disable CS1591
-        AmericaCambridge_Bay,
+        AmericaCambridgeBay,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Campo_Grande")]
         #pragma warning disable CS1591
-        AmericaCampo_Grande,
+        AmericaCampoGrande,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Cancun")]
         #pragma warning disable CS1591
@@ -389,11 +389,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Ciudad_Juarez")]
         #pragma warning disable CS1591
-        AmericaCiudad_Juarez,
+        AmericaCiudadJuarez,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Coral_Harbour")]
         #pragma warning disable CS1591
-        AmericaCoral_Harbour,
+        AmericaCoralHarbour,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Cordoba")]
         #pragma warning disable CS1591
@@ -401,7 +401,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Costa_Rica")]
         #pragma warning disable CS1591
-        AmericaCosta_Rica,
+        AmericaCostaRica,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Creston")]
         #pragma warning disable CS1591
@@ -425,7 +425,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Dawson_Creek")]
         #pragma warning disable CS1591
-        AmericaDawson_Creek,
+        AmericaDawsonCreek,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Denver")]
         #pragma warning disable CS1591
@@ -449,7 +449,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "America/El_Salvador")]
         #pragma warning disable CS1591
-        AmericaEl_Salvador,
+        AmericaElSalvador,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Ensenada")]
         #pragma warning disable CS1591
@@ -457,11 +457,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Fort_Nelson")]
         #pragma warning disable CS1591
-        AmericaFort_Nelson,
+        AmericaFortNelson,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Fort_Wayne")]
         #pragma warning disable CS1591
-        AmericaFort_Wayne,
+        AmericaFortWayne,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Fortaleza")]
         #pragma warning disable CS1591
@@ -469,7 +469,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Glace_Bay")]
         #pragma warning disable CS1591
-        AmericaGlace_Bay,
+        AmericaGlaceBay,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Godthab")]
         #pragma warning disable CS1591
@@ -477,11 +477,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Goose_Bay")]
         #pragma warning disable CS1591
-        AmericaGoose_Bay,
+        AmericaGooseBay,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Grand_Turk")]
         #pragma warning disable CS1591
-        AmericaGrand_Turk,
+        AmericaGrandTurk,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Grenada")]
         #pragma warning disable CS1591
@@ -533,7 +533,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Indiana/Tell_City")]
         #pragma warning disable CS1591
-        AmericaIndianaTell_City,
+        AmericaIndianaTellCity,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Indiana/Vevay")]
         #pragma warning disable CS1591
@@ -581,7 +581,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Knox_IN")]
         #pragma warning disable CS1591
-        AmericaKnox_IN,
+        AmericaKnoxIn,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Kralendijk")]
         #pragma warning disable CS1591
@@ -589,7 +589,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "America/La_Paz")]
         #pragma warning disable CS1591
-        AmericaLa_Paz,
+        AmericaLaPaz,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Lima")]
         #pragma warning disable CS1591
@@ -597,7 +597,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Los_Angeles")]
         #pragma warning disable CS1591
-        AmericaLos_Angeles,
+        AmericaLosAngeles,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Louisville")]
         #pragma warning disable CS1591
@@ -605,7 +605,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Lower_Princes")]
         #pragma warning disable CS1591
-        AmericaLower_Princes,
+        AmericaLowerPrinces,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Maceio")]
         #pragma warning disable CS1591
@@ -653,7 +653,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Mexico_City")]
         #pragma warning disable CS1591
-        AmericaMexico_City,
+        AmericaMexicoCity,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Miquelon")]
         #pragma warning disable CS1591
@@ -685,7 +685,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "America/New_York")]
         #pragma warning disable CS1591
-        AmericaNew_York,
+        AmericaNewYork,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Nipigon")]
         #pragma warning disable CS1591
@@ -701,15 +701,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "America/North_Dakota/Beulah")]
         #pragma warning disable CS1591
-        AmericaNorth_DakotaBeulah,
+        AmericaNorthDakotaBeulah,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/North_Dakota/Center")]
         #pragma warning disable CS1591
-        AmericaNorth_DakotaCenter,
+        AmericaNorthDakotaCenter,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/North_Dakota/New_Salem")]
         #pragma warning disable CS1591
-        AmericaNorth_DakotaNew_Salem,
+        AmericaNorthDakotaNewSalem,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Nuuk")]
         #pragma warning disable CS1591
@@ -741,31 +741,31 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Port_of_Spain")]
         #pragma warning disable CS1591
-        AmericaPort_of_Spain,
+        AmericaPortOfSpain,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Porto_Acre")]
         #pragma warning disable CS1591
-        AmericaPorto_Acre,
+        AmericaPortoAcre,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Porto_Velho")]
         #pragma warning disable CS1591
-        AmericaPorto_Velho,
+        AmericaPortoVelho,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Puerto_Rico")]
         #pragma warning disable CS1591
-        AmericaPuerto_Rico,
+        AmericaPuertoRico,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Punta_Arenas")]
         #pragma warning disable CS1591
-        AmericaPunta_Arenas,
+        AmericaPuntaArenas,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Rainy_River")]
         #pragma warning disable CS1591
-        AmericaRainy_River,
+        AmericaRainyRiver,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Rankin_Inlet")]
         #pragma warning disable CS1591
-        AmericaRankin_Inlet,
+        AmericaRankinInlet,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Recife")]
         #pragma warning disable CS1591
@@ -781,7 +781,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Rio_Branco")]
         #pragma warning disable CS1591
-        AmericaRio_Branco,
+        AmericaRioBranco,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Rosario")]
         #pragma warning disable CS1591
@@ -789,7 +789,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Santa_Isabel")]
         #pragma warning disable CS1591
-        AmericaSanta_Isabel,
+        AmericaSantaIsabel,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Santarem")]
         #pragma warning disable CS1591
@@ -801,11 +801,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Santo_Domingo")]
         #pragma warning disable CS1591
-        AmericaSanto_Domingo,
+        AmericaSantoDomingo,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Sao_Paulo")]
         #pragma warning disable CS1591
-        AmericaSao_Paulo,
+        AmericaSaoPaulo,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Scoresbysund")]
         #pragma warning disable CS1591
@@ -821,31 +821,31 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "America/St_Barthelemy")]
         #pragma warning disable CS1591
-        AmericaSt_Barthelemy,
+        AmericaStBarthelemy,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/St_Johns")]
         #pragma warning disable CS1591
-        AmericaSt_Johns,
+        AmericaStJohns,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/St_Kitts")]
         #pragma warning disable CS1591
-        AmericaSt_Kitts,
+        AmericaStKitts,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/St_Lucia")]
         #pragma warning disable CS1591
-        AmericaSt_Lucia,
+        AmericaStLucia,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/St_Thomas")]
         #pragma warning disable CS1591
-        AmericaSt_Thomas,
+        AmericaStThomas,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/St_Vincent")]
         #pragma warning disable CS1591
-        AmericaSt_Vincent,
+        AmericaStVincent,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Swift_Current")]
         #pragma warning disable CS1591
-        AmericaSwift_Current,
+        AmericaSwiftCurrent,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Tegucigalpa")]
         #pragma warning disable CS1591
@@ -857,7 +857,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Thunder_Bay")]
         #pragma warning disable CS1591
-        AmericaThunder_Bay,
+        AmericaThunderBay,
         #pragma warning restore CS1591
         [EnumMember(Value = "America/Tijuana")]
         #pragma warning disable CS1591
@@ -929,7 +929,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "Antarctica/South_Pole")]
         #pragma warning disable CS1591
-        AntarcticaSouth_Pole,
+        AntarcticaSouthPole,
         #pragma warning restore CS1591
         [EnumMember(Value = "Antarctica/Syowa")]
         #pragma warning disable CS1591
@@ -1081,11 +1081,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "Asia/Ho_Chi_Minh")]
         #pragma warning disable CS1591
-        AsiaHo_Chi_Minh,
+        AsiaHoChiMinh,
         #pragma warning restore CS1591
         [EnumMember(Value = "Asia/Hong_Kong")]
         #pragma warning disable CS1591
-        AsiaHong_Kong,
+        AsiaHongKong,
         #pragma warning restore CS1591
         [EnumMember(Value = "Asia/Hovd")]
         #pragma warning disable CS1591
@@ -1149,7 +1149,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "Asia/Kuala_Lumpur")]
         #pragma warning disable CS1591
-        AsiaKuala_Lumpur,
+        AsiaKualaLumpur,
         #pragma warning restore CS1591
         [EnumMember(Value = "Asia/Kuching")]
         #pragma warning disable CS1591
@@ -1205,7 +1205,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "Asia/Phnom_Penh")]
         #pragma warning disable CS1591
-        AsiaPhnom_Penh,
+        AsiaPhnomPenh,
         #pragma warning restore CS1591
         [EnumMember(Value = "Asia/Pontianak")]
         #pragma warning disable CS1591
@@ -1281,7 +1281,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "Asia/Tel_Aviv")]
         #pragma warning disable CS1591
-        AsiaTel_Aviv,
+        AsiaTelAviv,
         #pragma warning restore CS1591
         [EnumMember(Value = "Asia/Thimbu")]
         #pragma warning disable CS1591
@@ -1301,7 +1301,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "Asia/Ujung_Pandang")]
         #pragma warning disable CS1591
-        AsiaUjung_Pandang,
+        AsiaUjungPandang,
         #pragma warning restore CS1591
         [EnumMember(Value = "Asia/Ulaanbaatar")]
         #pragma warning disable CS1591
@@ -1309,7 +1309,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "Asia/Ulan_Bator")]
         #pragma warning disable CS1591
-        AsiaUlan_Bator,
+        AsiaUlanBator,
         #pragma warning restore CS1591
         [EnumMember(Value = "Asia/Urumqi")]
         #pragma warning disable CS1591
@@ -1357,7 +1357,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "Atlantic/Cape_Verde")]
         #pragma warning disable CS1591
-        AtlanticCape_Verde,
+        AtlanticCapeVerde,
         #pragma warning restore CS1591
         [EnumMember(Value = "Atlantic/Faeroe")]
         #pragma warning disable CS1591
@@ -1369,7 +1369,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "Atlantic/Jan_Mayen")]
         #pragma warning disable CS1591
-        AtlanticJan_Mayen,
+        AtlanticJanMayen,
         #pragma warning restore CS1591
         [EnumMember(Value = "Atlantic/Madeira")]
         #pragma warning disable CS1591
@@ -1381,11 +1381,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "Atlantic/South_Georgia")]
         #pragma warning disable CS1591
-        AtlanticSouth_Georgia,
+        AtlanticSouthGeorgia,
         #pragma warning restore CS1591
         [EnumMember(Value = "Atlantic/St_Helena")]
         #pragma warning disable CS1591
-        AtlanticSt_Helena,
+        AtlanticStHelena,
         #pragma warning restore CS1591
         [EnumMember(Value = "Atlantic/Stanley")]
         #pragma warning disable CS1591
@@ -1393,7 +1393,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "Australia/ACT")]
         #pragma warning disable CS1591
-        AustraliaACT,
+        AustraliaAct,
         #pragma warning restore CS1591
         [EnumMember(Value = "Australia/Adelaide")]
         #pragma warning disable CS1591
@@ -1405,7 +1405,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "Australia/Broken_Hill")]
         #pragma warning disable CS1591
-        AustraliaBroken_Hill,
+        AustraliaBrokenHill,
         #pragma warning restore CS1591
         [EnumMember(Value = "Australia/Canberra")]
         #pragma warning disable CS1591
@@ -1429,7 +1429,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "Australia/LHI")]
         #pragma warning disable CS1591
-        AustraliaLHI,
+        AustraliaLhi,
         #pragma warning restore CS1591
         [EnumMember(Value = "Australia/Lindeman")]
         #pragma warning disable CS1591
@@ -1437,7 +1437,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "Australia/Lord_Howe")]
         #pragma warning disable CS1591
-        AustraliaLord_Howe,
+        AustraliaLordHowe,
         #pragma warning restore CS1591
         [EnumMember(Value = "Australia/Melbourne")]
         #pragma warning disable CS1591
@@ -1445,7 +1445,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "Australia/NSW")]
         #pragma warning disable CS1591
-        AustraliaNSW,
+        AustraliaNsw,
         #pragma warning restore CS1591
         [EnumMember(Value = "Australia/North")]
         #pragma warning disable CS1591
@@ -1501,11 +1501,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "CET")]
         #pragma warning disable CS1591
-        CET,
+        Cet,
         #pragma warning restore CS1591
         [EnumMember(Value = "CST6CDT")]
         #pragma warning disable CS1591
-        CST6CDT,
+        Cst6Cdt,
         #pragma warning restore CS1591
         [EnumMember(Value = "Canada/Atlantic")]
         #pragma warning disable CS1591
@@ -1553,15 +1553,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "EET")]
         #pragma warning disable CS1591
-        EET,
+        Eet,
         #pragma warning restore CS1591
         [EnumMember(Value = "EST")]
         #pragma warning disable CS1591
-        EST,
+        Est,
         #pragma warning restore CS1591
         [EnumMember(Value = "EST5EDT")]
         #pragma warning disable CS1591
-        EST5EDT,
+        Est5Edt,
         #pragma warning restore CS1591
         [EnumMember(Value = "Egypt")]
         #pragma warning disable CS1591
@@ -1573,119 +1573,123 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "Etc/GMT")]
         #pragma warning disable CS1591
-        EtcGMT,
+        EtcGmt,
         #pragma warning restore CS1591
         [EnumMember(Value = "Etc/GMT+0")]
         #pragma warning disable CS1591
-        EtcGMT_plus_0,
+        EtcGMTPlus0,
         #pragma warning restore CS1591
         [EnumMember(Value = "Etc/GMT+1")]
         #pragma warning disable CS1591
-        EtcGMT_plus_1,
+        EtcGMTPlus1,
         #pragma warning restore CS1591
         [EnumMember(Value = "Etc/GMT+10")]
         #pragma warning disable CS1591
-        EtcGMT_plus_10,
+        EtcGMTPlus10,
         #pragma warning restore CS1591
         [EnumMember(Value = "Etc/GMT+11")]
         #pragma warning disable CS1591
-        EtcGMT_plus_11,
+        EtcGMTPlus11,
         #pragma warning restore CS1591
         [EnumMember(Value = "Etc/GMT+12")]
         #pragma warning disable CS1591
-        EtcGMT_plus_12,
+        EtcGMTPlus12,
         #pragma warning restore CS1591
         [EnumMember(Value = "Etc/GMT+2")]
         #pragma warning disable CS1591
-        EtcGMT_plus_2,
+        EtcGMTPlus2,
         #pragma warning restore CS1591
         [EnumMember(Value = "Etc/GMT+3")]
         #pragma warning disable CS1591
-        EtcGMT_plus_3,
+        EtcGMTPlus3,
         #pragma warning restore CS1591
         [EnumMember(Value = "Etc/GMT+4")]
         #pragma warning disable CS1591
-        EtcGMT_plus_4,
+        EtcGMTPlus4,
         #pragma warning restore CS1591
         [EnumMember(Value = "Etc/GMT+5")]
         #pragma warning disable CS1591
-        EtcGMT_plus_5,
+        EtcGMTPlus5,
         #pragma warning restore CS1591
         [EnumMember(Value = "Etc/GMT+6")]
         #pragma warning disable CS1591
-        EtcGMT_plus_6,
+        EtcGMTPlus6,
         #pragma warning restore CS1591
         [EnumMember(Value = "Etc/GMT+7")]
         #pragma warning disable CS1591
-        EtcGMT_plus_7,
+        EtcGMTPlus7,
         #pragma warning restore CS1591
         [EnumMember(Value = "Etc/GMT+8")]
         #pragma warning disable CS1591
-        EtcGMT_plus_8,
+        EtcGMTPlus8,
         #pragma warning restore CS1591
         [EnumMember(Value = "Etc/GMT+9")]
         #pragma warning disable CS1591
-        EtcGMT_plus_9,
+        EtcGMTPlus9,
         #pragma warning restore CS1591
         [EnumMember(Value = "Etc/GMT-0")]
         #pragma warning disable CS1591
-        EtcGMT0,
+        EtcGmt0,
         #pragma warning restore CS1591
         [EnumMember(Value = "Etc/GMT-1")]
         #pragma warning disable CS1591
-        EtcGMT1,
+        EtcGmt1,
         #pragma warning restore CS1591
         [EnumMember(Value = "Etc/GMT-10")]
         #pragma warning disable CS1591
-        EtcGMT10,
+        EtcGmt10,
         #pragma warning restore CS1591
         [EnumMember(Value = "Etc/GMT-11")]
         #pragma warning disable CS1591
-        EtcGMT11,
+        EtcGmt11,
         #pragma warning restore CS1591
         [EnumMember(Value = "Etc/GMT-12")]
         #pragma warning disable CS1591
-        EtcGMT12,
+        EtcGmt12,
         #pragma warning restore CS1591
         [EnumMember(Value = "Etc/GMT-13")]
         #pragma warning disable CS1591
-        EtcGMT13,
+        EtcGmt13,
         #pragma warning restore CS1591
         [EnumMember(Value = "Etc/GMT-14")]
         #pragma warning disable CS1591
-        EtcGMT14,
+        EtcGmt14,
         #pragma warning restore CS1591
         [EnumMember(Value = "Etc/GMT-2")]
         #pragma warning disable CS1591
-        EtcGMT2,
+        EtcGmt2,
         #pragma warning restore CS1591
         [EnumMember(Value = "Etc/GMT-3")]
         #pragma warning disable CS1591
-        EtcGMT3,
+        EtcGmt3,
         #pragma warning restore CS1591
         [EnumMember(Value = "Etc/GMT-4")]
         #pragma warning disable CS1591
-        EtcGMT4,
+        EtcGmt4,
         #pragma warning restore CS1591
         [EnumMember(Value = "Etc/GMT-5")]
         #pragma warning disable CS1591
-        EtcGMT5,
+        EtcGmt5,
         #pragma warning restore CS1591
         [EnumMember(Value = "Etc/GMT-6")]
         #pragma warning disable CS1591
-        EtcGMT6,
+        EtcGmt6,
         #pragma warning restore CS1591
         [EnumMember(Value = "Etc/GMT-7")]
         #pragma warning disable CS1591
-        EtcGMT7,
+        EtcGmt7,
         #pragma warning restore CS1591
         [EnumMember(Value = "Etc/GMT-8")]
         #pragma warning disable CS1591
-        EtcGMT8,
+        EtcGmt8,
         #pragma warning restore CS1591
         [EnumMember(Value = "Etc/GMT-9")]
         #pragma warning disable CS1591
-        EtcGMT9,
+        EtcGmt9,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Etc/GMT0")]
+        #pragma warning disable CS1591
+        EtcGmt01,
         #pragma warning restore CS1591
         [EnumMember(Value = "Etc/Greenwich")]
         #pragma warning disable CS1591
@@ -1693,11 +1697,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "Etc/UCT")]
         #pragma warning disable CS1591
-        EtcUCT,
+        EtcUct,
         #pragma warning restore CS1591
         [EnumMember(Value = "Etc/UTC")]
         #pragma warning disable CS1591
-        EtcUTC,
+        EtcUtc,
         #pragma warning restore CS1591
         [EnumMember(Value = "Etc/Universal")]
         #pragma warning disable CS1591
@@ -1781,7 +1785,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "Europe/Isle_of_Man")]
         #pragma warning disable CS1591
-        EuropeIsle_of_Man,
+        EuropeIsleOfMan,
         #pragma warning restore CS1591
         [EnumMember(Value = "Europe/Istanbul")]
         #pragma warning disable CS1591
@@ -1881,7 +1885,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "Europe/San_Marino")]
         #pragma warning disable CS1591
-        EuropeSan_Marino,
+        EuropeSanMarino,
         #pragma warning restore CS1591
         [EnumMember(Value = "Europe/Sarajevo")]
         #pragma warning disable CS1591
@@ -1965,23 +1969,27 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "GB")]
         #pragma warning disable CS1591
-        GB,
+        Gb,
         #pragma warning restore CS1591
         [EnumMember(Value = "GB-Eire")]
         #pragma warning disable CS1591
-        GBEire,
+        GbEire,
         #pragma warning restore CS1591
         [EnumMember(Value = "GMT")]
         #pragma warning disable CS1591
-        GMT,
+        Gmt,
         #pragma warning restore CS1591
         [EnumMember(Value = "GMT+0")]
         #pragma warning disable CS1591
-        GMT_plus_0,
+        GMTPlus0,
         #pragma warning restore CS1591
         [EnumMember(Value = "GMT-0")]
         #pragma warning disable CS1591
-        GMT0,
+        Gmt0,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GMT0")]
+        #pragma warning disable CS1591
+        Gmt01,
         #pragma warning restore CS1591
         [EnumMember(Value = "Greenwich")]
         #pragma warning disable CS1591
@@ -1989,7 +1997,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "HST")]
         #pragma warning disable CS1591
-        HST,
+        Hst,
         #pragma warning restore CS1591
         [EnumMember(Value = "Hongkong")]
         #pragma warning disable CS1591
@@ -2069,15 +2077,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "MET")]
         #pragma warning disable CS1591
-        MET,
+        Met,
         #pragma warning restore CS1591
         [EnumMember(Value = "MST")]
         #pragma warning disable CS1591
-        MST,
+        Mst,
         #pragma warning restore CS1591
         [EnumMember(Value = "MST7MDT")]
         #pragma warning disable CS1591
-        MST7MDT,
+        Mst7Mdt,
         #pragma warning restore CS1591
         [EnumMember(Value = "Mexico/BajaNorte")]
         #pragma warning disable CS1591
@@ -2093,11 +2101,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "NZ")]
         #pragma warning disable CS1591
-        NZ,
+        Nz,
         #pragma warning restore CS1591
         [EnumMember(Value = "NZ-CHAT")]
         #pragma warning disable CS1591
-        NZCHAT,
+        NzChat,
         #pragma warning restore CS1591
         [EnumMember(Value = "Navajo")]
         #pragma warning disable CS1591
@@ -2105,11 +2113,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "PRC")]
         #pragma warning disable CS1591
-        PRC,
+        Prc,
         #pragma warning restore CS1591
         [EnumMember(Value = "PST8PDT")]
         #pragma warning disable CS1591
-        PST8PDT,
+        Pst8Pdt,
         #pragma warning restore CS1591
         [EnumMember(Value = "Pacific/Apia")]
         #pragma warning disable CS1591
@@ -2225,7 +2233,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "Pacific/Pago_Pago")]
         #pragma warning disable CS1591
-        PacificPago_Pago,
+        PacificPagoPago,
         #pragma warning restore CS1591
         [EnumMember(Value = "Pacific/Palau")]
         #pragma warning disable CS1591
@@ -2245,7 +2253,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "Pacific/Port_Moresby")]
         #pragma warning disable CS1591
-        PacificPort_Moresby,
+        PacificPortMoresby,
         #pragma warning restore CS1591
         [EnumMember(Value = "Pacific/Rarotonga")]
         #pragma warning disable CS1591
@@ -2297,11 +2305,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "ROC")]
         #pragma warning disable CS1591
-        ROC,
+        Roc,
         #pragma warning restore CS1591
         [EnumMember(Value = "ROK")]
         #pragma warning disable CS1591
-        ROK,
+        Rok,
         #pragma warning restore CS1591
         [EnumMember(Value = "Singapore")]
         #pragma warning disable CS1591
@@ -2313,59 +2321,59 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "UCT")]
         #pragma warning disable CS1591
-        UCT,
+        Uct,
         #pragma warning restore CS1591
         [EnumMember(Value = "US/Alaska")]
         #pragma warning disable CS1591
-        USAlaska,
+        UsAlaska,
         #pragma warning restore CS1591
         [EnumMember(Value = "US/Aleutian")]
         #pragma warning disable CS1591
-        USAleutian,
+        UsAleutian,
         #pragma warning restore CS1591
         [EnumMember(Value = "US/Arizona")]
         #pragma warning disable CS1591
-        USArizona,
+        UsArizona,
         #pragma warning restore CS1591
         [EnumMember(Value = "US/Central")]
         #pragma warning disable CS1591
-        USCentral,
+        UsCentral,
         #pragma warning restore CS1591
         [EnumMember(Value = "US/East-Indiana")]
         #pragma warning disable CS1591
-        USEastIndiana,
+        UsEastIndiana,
         #pragma warning restore CS1591
         [EnumMember(Value = "US/Eastern")]
         #pragma warning disable CS1591
-        USEastern,
+        UsEastern,
         #pragma warning restore CS1591
         [EnumMember(Value = "US/Hawaii")]
         #pragma warning disable CS1591
-        USHawaii,
+        UsHawaii,
         #pragma warning restore CS1591
         [EnumMember(Value = "US/Indiana-Starke")]
         #pragma warning disable CS1591
-        USIndianaStarke,
+        UsIndianaStarke,
         #pragma warning restore CS1591
         [EnumMember(Value = "US/Michigan")]
         #pragma warning disable CS1591
-        USMichigan,
+        UsMichigan,
         #pragma warning restore CS1591
         [EnumMember(Value = "US/Mountain")]
         #pragma warning disable CS1591
-        USMountain,
+        UsMountain,
         #pragma warning restore CS1591
         [EnumMember(Value = "US/Pacific")]
         #pragma warning disable CS1591
-        USPacific,
+        UsPacific,
         #pragma warning restore CS1591
         [EnumMember(Value = "US/Samoa")]
         #pragma warning disable CS1591
-        USSamoa,
+        UsSamoa,
         #pragma warning restore CS1591
         [EnumMember(Value = "UTC")]
         #pragma warning disable CS1591
-        UTC,
+        Utc,
         #pragma warning restore CS1591
         [EnumMember(Value = "Universal")]
         #pragma warning disable CS1591
@@ -2373,11 +2381,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "W-SU")]
         #pragma warning disable CS1591
-        WSU,
+        WSu,
         #pragma warning restore CS1591
         [EnumMember(Value = "WET")]
         #pragma warning disable CS1591
-        WET,
+        Wet,
         #pragma warning restore CS1591
         [EnumMember(Value = "Zulu")]
         #pragma warning disable CS1591

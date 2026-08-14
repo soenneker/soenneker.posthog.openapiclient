@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups.Delete_property
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\groups\delete_property
+    /// Builds and executes requests for operations under \api\projects\{projectId}\groups\delete_property
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Delete_propertyRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups.Delete_proper
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Delete_propertyRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/groups/delete_property?group_key={group_key}&group_type_index={group_type_index}", pathParameters)
+        public Delete_propertyRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/groups/delete_property?group_key={group_key}&group_type_index={group_type_index}", pathParameters)
         {
         }
         /// <summary>
@@ -30,25 +30,25 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups.Delete_proper
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Delete_propertyRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/groups/delete_property?group_key={group_key}&group_type_index={group_type_index}", rawUrl)
+        public Delete_propertyRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/groups/delete_property?group_key={group_key}&group_type_index={group_type_index}", rawUrl)
         {
         }
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups.Delete_property.Delete_propertyPostResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.GroupsDeletePropertyCreate201Response"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups.Delete_property.Delete_propertyPostResponse?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.Group body, Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups.Delete_property.Delete_propertyRequestBuilder.Delete_propertyRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.GroupsDeletePropertyCreate201Response?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.Group body, Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups.Delete_property.Delete_propertyRequestBuilder.Delete_propertyRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups.Delete_property.Delete_propertyPostResponse> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.Group body, Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups.Delete_property.Delete_propertyRequestBuilder.Delete_propertyRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.GroupsDeletePropertyCreate201Response> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.Group body, Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups.Delete_property.Delete_propertyRequestBuilder.Delete_propertyRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups.Delete_property.Delete_propertyPostResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups.Delete_property.Delete_propertyPostResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.GroupsDeletePropertyCreate201Response>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.GroupsDeletePropertyCreate201Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

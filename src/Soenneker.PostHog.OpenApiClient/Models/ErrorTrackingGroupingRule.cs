@@ -35,28 +35,28 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The disabled_data property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRule_disabled_data? DisabledData { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRuleDisabledData? DisabledData { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRule_disabled_data DisabledData { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRuleDisabledData DisabledData { get; set; }
 #endif
         /// <summary>The filters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRule_filters? Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRuleFilters? Filters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRule_filters Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRuleFilters Filters { get; set; }
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>Issue linked to this rule</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRule_issue? Issue { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRuleIssue? Issue { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRule_issue Issue { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRuleIssue Issue { get; private set; }
 #endif
         /// <summary>The order_key property</summary>
         public int? OrderKey { get; set; }
@@ -90,10 +90,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "assignee", n => { Assignee = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRuleAssignee>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRuleAssignee.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
-                { "disabled_data", n => { DisabledData = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRule_disabled_data>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRule_disabled_data.CreateFromDiscriminatorValue); } },
-                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRule_filters>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRule_filters.CreateFromDiscriminatorValue); } },
+                { "disabled_data", n => { DisabledData = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRuleDisabledData>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRuleDisabledData.CreateFromDiscriminatorValue); } },
+                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRuleFilters>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRuleFilters.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "issue", n => { Issue = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRule_issue>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRule_issue.CreateFromDiscriminatorValue); } },
+                { "issue", n => { Issue = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRuleIssue>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRuleIssue.CreateFromDiscriminatorValue); } },
                 { "order_key", n => { OrderKey = n.GetIntValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
@@ -106,9 +106,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("description", Description);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRule_disabled_data>("disabled_data", DisabledData);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRule_filters>("filters", Filters);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRule_issue>("issue", Issue);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRuleDisabledData>("disabled_data", DisabledData);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRuleFilters>("filters", Filters);
             writer.WriteIntValue("order_key", OrderKey);
             writer.WriteAdditionalData(AdditionalData);
         }

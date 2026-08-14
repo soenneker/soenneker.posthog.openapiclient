@@ -46,6 +46,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Roles
         public RolesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/organizations/{%2Did}/roles{?limit*,offset*}", rawUrl)
         {
         }
+        /// <summary>
+        /// Role endpoints disclose member records, so they scope them the same way the members listdoes when the org restricts member list visibility.
+        /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedRoleList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -61,6 +64,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Roles
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedRoleList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedRoleList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
+        /// <summary>
+        /// Role endpoints disclose member records, so they scope them the same way the members listdoes when the org restricts member list visibility.
+        /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Role"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -78,6 +84,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Roles
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.Role>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.Role.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
+        /// <summary>
+        /// Role endpoints disclose member records, so they scope them the same way the members listdoes when the org restricts member list visibility.
+        /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -94,6 +103,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Roles
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
+        /// <summary>
+        /// Role endpoints disclose member records, so they scope them the same way the members listdoes when the org restricts member list visibility.
+        /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -122,10 +134,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Roles
         {
             return new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Roles.RolesRequestBuilder(rawUrl, RequestAdapter);
         }
+        /// <summary>
+        /// Role endpoints disclose member records, so they scope them the same way the members listdoes when the org restricts member list visibility.
+        /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        #pragma warning disable CS1591
         public partial class RolesRequestBuilderGetQueryParameters 
-        #pragma warning restore CS1591
         {
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]

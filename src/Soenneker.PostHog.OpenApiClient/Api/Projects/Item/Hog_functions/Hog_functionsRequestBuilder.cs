@@ -16,7 +16,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\hog_functions
+    /// Builds and executes requests for operations under \api\projects\{projectId}\hog_functions
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Hog_functionsRequestBuilder : BaseRequestBuilder
@@ -53,7 +53,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Hog_functionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/hog_functions{?created_at*,created_by*,enabled*,id*,limit*,offset*,type,updated_at*}", pathParameters)
+        public Hog_functionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/hog_functions{?created_at*,created_by*,enabled*,id*,limit*,offset*,type,updated_at*}", pathParameters)
         {
         }
         /// <summary>
@@ -61,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Hog_functionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/hog_functions{?created_at*,created_by*,enabled*,id*,limit*,offset*,type,updated_at*}", rawUrl)
+        public Hog_functionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/hog_functions{?created_at*,created_by*,enabled*,id*,limit*,offset*,type,updated_at*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedHogFunctionMinimalList"/></returns>

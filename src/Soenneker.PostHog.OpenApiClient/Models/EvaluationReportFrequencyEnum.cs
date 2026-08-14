@@ -13,7 +13,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "every_n")]
         #pragma warning disable CS1591
-        Every_n,
+        EveryN,
         #pragma warning restore CS1591
     }
 }

@@ -42,6 +42,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public PersonBulkDeleteRequest()
         {
             AdditionalData = new Dictionary<string, object>();
+            DeleteEvents = false;
+            DeleteRecordings = false;
+            KeepPerson = false;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value

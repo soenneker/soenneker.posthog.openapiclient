@@ -13,11 +13,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "tool_call")]
         #pragma warning disable CS1591
-        Tool_call,
+        ToolCall,
         #pragma warning restore CS1591
         [EnumMember(Value = "deep_research")]
         #pragma warning disable CS1591
-        Deep_research,
+        DeepResearch,
         #pragma warning restore CS1591
         [EnumMember(Value = "slack")]
         #pragma warning disable CS1591

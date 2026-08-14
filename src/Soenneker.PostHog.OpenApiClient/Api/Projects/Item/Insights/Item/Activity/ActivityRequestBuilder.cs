@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item.Activity
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\insights\{-id}\activity
+    /// Builds and executes requests for operations under \api\projects\{projectId}\insights\{-id}\activity
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ActivityRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item.Activi
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ActivityRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/insights/{%2Did}/activity{?format*,limit*,page*}", pathParameters)
+        public ActivityRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/insights/{%2Did}/activity{?format*,limit*,page*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item.Activi
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ActivityRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/insights/{%2Did}/activity{?format*,limit*,page*}", rawUrl)
+        public ActivityRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/insights/{%2Did}/activity{?format*,limit*,page*}", rawUrl)
         {
         }
         /// <summary>
@@ -86,7 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item.Activi
         public partial class ActivityRequestBuilderGetQueryParameters 
         {
             [QueryParameter("format")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item.Activity.GetFormatQueryParameterType? Format { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.InsightsActivityRetrieveFormatParameter? Format { get; set; }
             /// <summary>Page size. Defaults to 10.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }

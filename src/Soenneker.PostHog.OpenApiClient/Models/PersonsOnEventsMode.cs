@@ -14,15 +14,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "person_id_no_override_properties_on_events")]
         #pragma warning disable CS1591
-        Person_id_no_override_properties_on_events,
+        PersonIdNoOverridePropertiesOnEvents,
         #pragma warning restore CS1591
         [EnumMember(Value = "person_id_override_properties_on_events")]
         #pragma warning disable CS1591
-        Person_id_override_properties_on_events,
+        PersonIdOverridePropertiesOnEvents,
         #pragma warning restore CS1591
         [EnumMember(Value = "person_id_override_properties_joined")]
         #pragma warning disable CS1591
-        Person_id_override_properties_joined,
+        PersonIdOverridePropertiesJoined,
         #pragma warning restore CS1591
     }
 }

@@ -39,10 +39,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The matched_recordings property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CohortPersonResult_matched_recordings>? MatchedRecordings { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CohortPersonResultMatchedRecordingsItemProperty>? MatchedRecordings { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CohortPersonResult_matched_recordings> MatchedRecordings { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CohortPersonResultMatchedRecordingsItemProperty> MatchedRecordings { get; set; }
 #endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -55,10 +55,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The properties property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CohortPersonResult_properties? Properties { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CohortPersonResultPropertiesProperty? Properties { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CohortPersonResult_properties Properties { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CohortPersonResultPropertiesProperty Properties { get; set; }
 #endif
         /// <summary>* `person` - person</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.CohortPersonResultTypeEnum? Type { get; set; }
@@ -96,9 +96,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "is_identified", n => { IsIdentified = n.GetBoolValue(); } },
                 { "last_seen_at", n => { LastSeenAt = n.GetDateTimeOffsetValue(); } },
-                { "matched_recordings", n => { MatchedRecordings = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CohortPersonResult_matched_recordings>(global::Soenneker.PostHog.OpenApiClient.Models.CohortPersonResult_matched_recordings.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "matched_recordings", n => { MatchedRecordings = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CohortPersonResultMatchedRecordingsItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.CohortPersonResultMatchedRecordingsItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "properties", n => { Properties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortPersonResult_properties>(global::Soenneker.PostHog.OpenApiClient.Models.CohortPersonResult_properties.CreateFromDiscriminatorValue); } },
+                { "properties", n => { Properties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortPersonResultPropertiesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.CohortPersonResultPropertiesProperty.CreateFromDiscriminatorValue); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortPersonResultTypeEnum>(); } },
                 { "uuid", n => { Uuid = n.GetGuidValue(); } },
                 { "value_at_data_point", n => { ValueAtDataPoint = n.GetDoubleValue(); } },
@@ -116,9 +116,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteBoolValue("is_identified", IsIdentified);
             writer.WriteDateTimeOffsetValue("last_seen_at", LastSeenAt);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CohortPersonResult_matched_recordings>("matched_recordings", MatchedRecordings);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CohortPersonResultMatchedRecordingsItemProperty>("matched_recordings", MatchedRecordings);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortPersonResult_properties>("properties", Properties);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortPersonResultPropertiesProperty>("properties", Properties);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortPersonResultTypeEnum>("type", Type);
             writer.WriteGuidValue("uuid", Uuid);
             writer.WriteDoubleValue("value_at_data_point", ValueAtDataPoint);

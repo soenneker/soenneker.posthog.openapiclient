@@ -16,23 +16,31 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When the survey stopped collecting responses.</summary>
         public DateTimeOffset? EndDate { get; set; }
+        /// <summary>Per-question response counts and distributions. Only present when include_per_question_stats=true was passed. For rating questions includes `average`; for choice/rating questions `distribution` maps answer value to count; for open questions `distribution` is empty (use surveys-responses-list to read free-text).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SurveyStatsResponsePerQuestionStatsItem>? PerQuestionStats { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SurveyStatsResponsePerQuestionStatsItem> PerQuestionStats { get; set; }
+#endif
         /// <summary>Calculated response and dismissal rates.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyStatsResponse_rates? Rates { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyStatsResponseRatesProperty? Rates { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyStatsResponse_rates Rates { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyStatsResponseRatesProperty Rates { get; set; }
 #endif
         /// <summary>When the survey started collecting responses.</summary>
         public DateTimeOffset? StartDate { get; set; }
         /// <summary>Event counts keyed by event name (survey shown, survey dismissed, survey sent).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyStatsResponse_stats? Stats { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyStatsResponseStatsProperty? Stats { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyStatsResponse_stats Stats { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyStatsResponseStatsProperty Stats { get; set; }
 #endif
         /// <summary>The survey ID these stats belong to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -68,9 +76,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "end_date", n => { EndDate = n.GetDateTimeOffsetValue(); } },
-                { "rates", n => { Rates = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyStatsResponse_rates>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyStatsResponse_rates.CreateFromDiscriminatorValue); } },
+                { "per_question_stats", n => { PerQuestionStats = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SurveyStatsResponsePerQuestionStatsItem>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyStatsResponsePerQuestionStatsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "rates", n => { Rates = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyStatsResponseRatesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyStatsResponseRatesProperty.CreateFromDiscriminatorValue); } },
                 { "start_date", n => { StartDate = n.GetDateTimeOffsetValue(); } },
-                { "stats", n => { Stats = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyStatsResponse_stats>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyStatsResponse_stats.CreateFromDiscriminatorValue); } },
+                { "stats", n => { Stats = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyStatsResponseStatsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyStatsResponseStatsProperty.CreateFromDiscriminatorValue); } },
                 { "survey_id", n => { SurveyId = n.GetStringValue(); } },
             };
         }
@@ -82,9 +91,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("end_date", EndDate);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyStatsResponse_rates>("rates", Rates);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SurveyStatsResponsePerQuestionStatsItem>("per_question_stats", PerQuestionStats);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyStatsResponseRatesProperty>("rates", Rates);
             writer.WriteDateTimeOffsetValue("start_date", StartDate);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyStatsResponse_stats>("stats", Stats);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyStatsResponseStatsProperty>("stats", Stats);
             writer.WriteStringValue("survey_id", SurveyId);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Repository_readiness
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\tasks\repository_readiness
+    /// Builds and executes requests for operations under \api\projects\{projectId}\tasks\repository_readiness
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Repository_readinessRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Repository_rea
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Repository_readinessRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/tasks/repository_readiness?repository={repository}{&refresh*,window_days*}", pathParameters)
+        public Repository_readinessRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/tasks/repository_readiness?repository={repository}{&refresh*,window_days*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Repository_rea
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Repository_readinessRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/tasks/repository_readiness?repository={repository}{&refresh*,window_days*}", rawUrl)
+        public Repository_readinessRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/tasks/repository_readiness?repository={repository}{&refresh*,window_days*}", rawUrl)
         {
         }
         /// <summary>

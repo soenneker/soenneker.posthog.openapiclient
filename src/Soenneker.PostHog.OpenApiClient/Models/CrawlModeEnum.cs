@@ -17,11 +17,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "same_origin")]
         #pragma warning disable CS1591
-        Same_origin,
+        SameOrigin,
         #pragma warning restore CS1591
         [EnumMember(Value = "github_repo")]
         #pragma warning disable CS1591
-        Github_repo,
+        GithubRepo,
         #pragma warning restore CS1591
     }
 }

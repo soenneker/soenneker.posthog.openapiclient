@@ -14,11 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Approve every changed and new snapshot in the run. Mutually exclusive with `snapshots` — pass one or the other.</summary>
-        public bool? ApproveAll { get; set; }
-        /// <summary>Whether to commit the updated baseline YAML to the PR branch on GitHub. Set to false to record the approval without pushing a commit.</summary>
-        public bool? CommitToGithub { get; set; }
-        /// <summary>Specific snapshots to approve, each with `identifier` and `new_hash`. Ignored when `approve_all` is true.</summary>
+        /// <summary>Snapshots to mark reviewed, each with `identifier` and `new_hash`. This only records the review in the database (the per-snapshot &quot;Accept change&quot; action) — it does not change the baseline or the GitHub gate. Commit the baseline and green the gate with the finalize endpoint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ApproveSnapshotInput>? Snapshots { get; set; }
@@ -51,8 +47,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "approve_all", n => { ApproveAll = n.GetBoolValue(); } },
-                { "commit_to_github", n => { CommitToGithub = n.GetBoolValue(); } },
                 { "snapshots", n => { Snapshots = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ApproveSnapshotInput>(global::Soenneker.PostHog.OpenApiClient.Models.ApproveSnapshotInput.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -63,8 +57,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteBoolValue("approve_all", ApproveAll);
-            writer.WriteBoolValue("commit_to_github", CommitToGithub);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ApproveSnapshotInput>("snapshots", Snapshots);
             writer.WriteAdditionalData(AdditionalData);
         }

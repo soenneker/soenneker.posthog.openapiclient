@@ -13,31 +13,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning restore CS1591
     {
         /// <summary>The changeFromPreviousPct property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageOverviewItem_changeFromPreviousPct? ChangeFromPreviousPct { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageOverviewItem_changeFromPreviousPct ChangeFromPreviousPct { get; set; }
-#endif
+        public double? ChangeFromPreviousPct { get; set; }
         /// <summary>The key property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageOverviewItemKey? Key { get; set; }
         /// <summary>The previous property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageOverviewItem_previous? Previous { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageOverviewItem_previous Previous { get; set; }
-#endif
+        public double? Previous { get; set; }
         /// <summary>The value property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageOverviewItem_value? Value { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageOverviewItem_value Value { get; set; }
-#endif
+        public double? Value { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -56,10 +38,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "changeFromPreviousPct", n => { ChangeFromPreviousPct = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageOverviewItem_changeFromPreviousPct>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageOverviewItem_changeFromPreviousPct.CreateFromDiscriminatorValue); } },
+                { "changeFromPreviousPct", n => { ChangeFromPreviousPct = n.GetDoubleValue(); } },
                 { "key", n => { Key = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageOverviewItemKey>(); } },
-                { "previous", n => { Previous = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageOverviewItem_previous>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageOverviewItem_previous.CreateFromDiscriminatorValue); } },
-                { "value", n => { Value = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageOverviewItem_value>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageOverviewItem_value.CreateFromDiscriminatorValue); } },
+                { "previous", n => { Previous = n.GetDoubleValue(); } },
+                { "value", n => { Value = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -69,10 +51,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageOverviewItem_changeFromPreviousPct>("changeFromPreviousPct", ChangeFromPreviousPct);
+            writer.WriteDoubleValue("changeFromPreviousPct", ChangeFromPreviousPct);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageOverviewItemKey>("key", Key);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageOverviewItem_previous>("previous", Previous);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageOverviewItem_value>("value", Value);
+            writer.WriteDoubleValue("previous", Previous);
+            writer.WriteDoubleValue("value", Value);
         }
     }
 }

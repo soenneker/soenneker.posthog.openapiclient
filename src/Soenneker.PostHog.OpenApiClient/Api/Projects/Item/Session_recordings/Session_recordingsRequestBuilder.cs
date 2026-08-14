@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Session_recordings.Bulk_delete;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Session_recordings.Item;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -13,11 +14,16 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Session_recordings
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\session_recordings
+    /// Builds and executes requests for operations under \api\projects\{projectId}\session_recordings
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Session_recordingsRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The bulk_delete property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Session_recordings.Bulk_delete.Bulk_deleteRequestBuilder Bulk_delete
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Session_recordings.Bulk_delete.Bulk_deleteRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.session_recordings.item collection</summary>
         /// <param name="position">A UUID string identifying this session recording.</param>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Session_recordings.Item.ItemRequestBuilder"/></returns>
@@ -35,7 +41,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Session_recordings
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Session_recordingsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/session_recordings{?limit*,offset*}", pathParameters)
+        public Session_recordingsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/session_recordings{?limit*,offset*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Session_recordings
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Session_recordingsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/session_recordings{?limit*,offset*}", rawUrl)
+        public Session_recordingsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/session_recordings{?limit*,offset*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedSessionRecordingList"/></returns>

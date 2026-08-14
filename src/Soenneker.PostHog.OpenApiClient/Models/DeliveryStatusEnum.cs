@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `pending` - Pending* `delivered` - Delivered* `partial_failure` - Partial Failure* `failed` - Failed</summary>
+    /// <summary>* `pending` - Pending* `generated` - Generated* `delivered` - Delivered* `partial_failure` - Partial Failure* `failed` - Failed</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum DeliveryStatusEnum
     {
@@ -11,13 +11,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         Pending,
         #pragma warning restore CS1591
+        [EnumMember(Value = "generated")]
+        #pragma warning disable CS1591
+        Generated,
+        #pragma warning restore CS1591
         [EnumMember(Value = "delivered")]
         #pragma warning disable CS1591
         Delivered,
         #pragma warning restore CS1591
         [EnumMember(Value = "partial_failure")]
         #pragma warning disable CS1591
-        Partial_failure,
+        PartialFailure,
         #pragma warning restore CS1591
         [EnumMember(Value = "failed")]
         #pragma warning disable CS1591

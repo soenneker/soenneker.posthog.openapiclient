@@ -3,17 +3,21 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `auto` - auto* `read-only` - read-only* `full-access` - full-access</summary>
+    /// <summary>* `plan` - plan* `auto` - auto* `read-only` - read-only* `full-access` - full-access</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum CodexTaskRunCreateSchemaInitialPermissionModeEnum
     {
+        [EnumMember(Value = "plan")]
+        #pragma warning disable CS1591
+        Plan,
+        #pragma warning restore CS1591
         [EnumMember(Value = "auto")]
         #pragma warning disable CS1591
         Auto,
         #pragma warning restore CS1591
         [EnumMember(Value = "read-only")]
         #pragma warning disable CS1591
-        ReadOnly,
+        ReadOnlyValue,
         #pragma warning restore CS1591
         [EnumMember(Value = "full-access")]
         #pragma warning disable CS1591

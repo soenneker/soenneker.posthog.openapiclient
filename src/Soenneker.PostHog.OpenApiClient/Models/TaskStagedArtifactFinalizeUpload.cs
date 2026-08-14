@@ -30,6 +30,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Id { get; set; }
 #endif
+        /// <summary>Optional structured metadata for special artifact types, such as skill bundles.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskStagedArtifactFinalizeUploadMetadata? Metadata { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskStagedArtifactFinalizeUploadMetadata Metadata { get; set; }
+#endif
         /// <summary>File name associated with the staged artifact</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -54,8 +62,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string StoragePath { get; set; }
 #endif
-        /// <summary>* `plan` - plan* `context` - context* `reference` - reference* `output` - output* `artifact` - artifact* `tree_snapshot` - tree_snapshot* `user_attachment` - user_attachment</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactTypeEnum? Type { get; set; }
+        /// <summary>Classification for the artifact* `plan` - plan* `context` - context* `reference` - reference* `output` - output* `artifact` - artifact* `tree_snapshot` - tree_snapshot* `user_attachment` - user_attachment* `skill_bundle` - skill_bundle</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskStagedArtifactFinalizeUploadType? Type { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskStagedArtifactFinalizeUploadType Type { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskStagedArtifactFinalizeUpload"/> and sets the default values.
         /// </summary>
@@ -83,10 +97,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "content_type", n => { ContentType = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskStagedArtifactFinalizeUploadMetadata>(global::Soenneker.PostHog.OpenApiClient.Models.TaskStagedArtifactFinalizeUploadMetadata.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "source", n => { Source = n.GetStringValue(); } },
                 { "storage_path", n => { StoragePath = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactTypeEnum>(); } },
+                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskStagedArtifactFinalizeUploadType>(global::Soenneker.PostHog.OpenApiClient.Models.TaskStagedArtifactFinalizeUploadType.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -98,10 +113,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("content_type", ContentType);
             writer.WriteStringValue("id", Id);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskStagedArtifactFinalizeUploadMetadata>("metadata", Metadata);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("source", Source);
             writer.WriteStringValue("storage_path", StoragePath);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactTypeEnum>("type", Type);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskStagedArtifactFinalizeUploadType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

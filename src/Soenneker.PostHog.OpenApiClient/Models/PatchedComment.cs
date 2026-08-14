@@ -19,10 +19,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The user who marked this task complete. Null for open tasks and non-task comments.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedComment_completed_by? CompletedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedCommentCompletedBy? CompletedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedComment_completed_by CompletedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedCommentCompletedBy CompletedBy { get; private set; }
 #endif
         /// <summary>The content property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -37,10 +37,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedComment_created_by? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedCommentCreatedBy? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedComment_created_by CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedCommentCreatedBy CreatedBy { get; private set; }
 #endif
         /// <summary>The deleted property</summary>
         public bool? Deleted { get; set; }
@@ -48,13 +48,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public Guid? Id { get; private set; }
         /// <summary>Whether this comment is an actionable task that can be marked complete. Tasks render with a checkbox in the UI and can be filtered as a separate kind. Cannot be set on replies (source_comment) or emoji reactions. Immutable after creation.</summary>
         public bool? IsTask { get; set; }
-        /// <summary>The item_context property</summary>
+        /// <summary>Metadata for the comment target, anchor, thread state, and owning task.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedComment_item_context? ItemContext { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedCommentItemContext? ItemContext { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedComment_item_context ItemContext { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedCommentItemContext ItemContext { get; set; }
 #endif
         /// <summary>The item_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -75,10 +75,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The rich_content property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedComment_rich_content? RichContent { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedCommentRichContent? RichContent { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedComment_rich_content RichContent { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedCommentRichContent RichContent { get; set; }
 #endif
         /// <summary>The scope property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -87,6 +87,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string Scope { get; set; }
+#endif
+        /// <summary>The Slack thread this comment&apos;s discussion is mirrored to, or null. Set only on a tracked thread-root comment; used to surface an &apos;Open in Slack&apos; link and hide re-sending.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedCommentSlackThread? SlackThread { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedCommentSlackThread SlackThread { get; private set; }
 #endif
         /// <summary>The slug property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -106,6 +114,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public PatchedComment()
         {
             AdditionalData = new Dictionary<string, object>();
+            IsTask = false;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -126,18 +135,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "completed_at", n => { CompletedAt = n.GetDateTimeOffsetValue(); } },
-                { "completed_by", n => { CompletedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedComment_completed_by>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedComment_completed_by.CreateFromDiscriminatorValue); } },
+                { "completed_by", n => { CompletedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedCommentCompletedBy>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedCommentCompletedBy.CreateFromDiscriminatorValue); } },
                 { "content", n => { Content = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedComment_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedComment_created_by.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedCommentCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedCommentCreatedBy.CreateFromDiscriminatorValue); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "is_task", n => { IsTask = n.GetBoolValue(); } },
-                { "item_context", n => { ItemContext = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedComment_item_context>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedComment_item_context.CreateFromDiscriminatorValue); } },
+                { "item_context", n => { ItemContext = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedCommentItemContext>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedCommentItemContext.CreateFromDiscriminatorValue); } },
                 { "item_id", n => { ItemId = n.GetStringValue(); } },
                 { "mentions", n => { Mentions = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
-                { "rich_content", n => { RichContent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedComment_rich_content>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedComment_rich_content.CreateFromDiscriminatorValue); } },
+                { "rich_content", n => { RichContent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedCommentRichContent>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedCommentRichContent.CreateFromDiscriminatorValue); } },
                 { "scope", n => { Scope = n.GetStringValue(); } },
+                { "slack_thread", n => { SlackThread = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedCommentSlackThread>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedCommentSlackThread.CreateFromDiscriminatorValue); } },
                 { "slug", n => { Slug = n.GetStringValue(); } },
                 { "source_comment", n => { SourceComment = n.GetGuidValue(); } },
                 { "version", n => { Version = n.GetIntValue(); } },
@@ -153,10 +163,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("content", Content);
             writer.WriteBoolValue("deleted", Deleted);
             writer.WriteBoolValue("is_task", IsTask);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedComment_item_context>("item_context", ItemContext);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedCommentItemContext>("item_context", ItemContext);
             writer.WriteStringValue("item_id", ItemId);
             writer.WriteCollectionOfPrimitiveValues<int?>("mentions", Mentions);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedComment_rich_content>("rich_content", RichContent);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedCommentRichContent>("rich_content", RichContent);
             writer.WriteStringValue("scope", Scope);
             writer.WriteStringValue("slug", Slug);
             writer.WriteGuidValue("source_comment", SourceComment);

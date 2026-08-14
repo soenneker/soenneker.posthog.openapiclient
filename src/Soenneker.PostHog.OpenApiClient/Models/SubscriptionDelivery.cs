@@ -14,6 +14,30 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>AI-generated report markdown delivered by this run. Null for non-AI deliveries or runs without a persisted report.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AiReport { get; private set; }
+#nullable restore
+#else
+        public string AiReport { get; private set; }
+#endif
+        /// <summary>Per-step query diagnostics (generated HogQL + failure type) for this report. Null for non-AI deliveries or runs without persisted diagnostics.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AiReportQueryDiagnostic>? AiReportDiagnostics { get; private set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AiReportQueryDiagnostic> AiReportDiagnostics { get; private set; }
+#endif
+        /// <summary>The subscription&apos;s prompt as it was when this report was generated. Null for older deliveries and non-AI deliveries.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AiReportPrompt { get; private set; }
+#nullable restore
+#else
+        public string AiReportPrompt { get; private set; }
+#endif
         /// <summary>AI-generated summary included in this delivery, when one was produced.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -25,20 +49,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>&quot;Snapshot at send time: dashboard metadata, total_insight_count, and per-exported-insight entries (id, short_id, name, query_hash, cache_key, query_results, optional query_error).&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDelivery_content_snapshot? ContentSnapshot { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDeliveryContentSnapshot? ContentSnapshot { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDelivery_content_snapshot ContentSnapshot { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDeliveryContentSnapshot ContentSnapshot { get; private set; }
 #endif
         /// <summary>When the delivery row was created.</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>Top-level failure payload when status is failed, if any.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDelivery_error? Error { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDeliveryError? Error { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDelivery_error Error { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDeliveryError Error { get; private set; }
 #endif
         /// <summary>ExportedAsset ids generated for this send.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -65,18 +89,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Per-destination outcomes; items use status success, failed, or partial.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDelivery_recipient_results? RecipientResults { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDeliveryRecipientResults? RecipientResults { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDelivery_recipient_results RecipientResults { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDeliveryRecipientResults RecipientResults { get; private set; }
 #endif
         /// <summary>Planned send time when applicable.</summary>
         public DateTimeOffset? ScheduledAt { get; private set; }
-        /// <summary>* `starting` - Starting* `completed` - Completed* `failed` - Failed* `skipped` - Skipped</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDeliveryStatusEnum? Status { get; set; }
+        /// <summary>&quot;Overall run status: starting, completed, failed, or skipped.* `starting` - Starting* `completed` - Completed* `failed` - Failed* `skipped` - Skipped&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDeliveryStatus? Status { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDeliveryStatus Status { get; private set; }
+#endif
         /// <summary>Parent subscription id.</summary>
         public int? Subscription { get; private set; }
-        /// <summary>Channel snapshot at send time (email, slack, webhook).</summary>
+        /// <summary>Channel snapshot at send time (email or slack).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? TargetType { get; private set; }
@@ -100,7 +130,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string TemporalWorkflowId { get; private set; }
 #endif
-        /// <summary>Why the run started (e.g. scheduled, manual, target_change).</summary>
+        /// <summary>Why the run started (e.g. scheduled, manual, subscription update).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? TriggerType { get; private set; }
@@ -133,18 +163,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "ai_report", n => { AiReport = n.GetStringValue(); } },
+                { "ai_report_diagnostics", n => { AiReportDiagnostics = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AiReportQueryDiagnostic>(global::Soenneker.PostHog.OpenApiClient.Models.AiReportQueryDiagnostic.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "ai_report_prompt", n => { AiReportPrompt = n.GetStringValue(); } },
                 { "change_summary", n => { ChangeSummary = n.GetStringValue(); } },
-                { "content_snapshot", n => { ContentSnapshot = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDelivery_content_snapshot>(global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDelivery_content_snapshot.CreateFromDiscriminatorValue); } },
+                { "content_snapshot", n => { ContentSnapshot = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDeliveryContentSnapshot>(global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDeliveryContentSnapshot.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "error", n => { Error = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDelivery_error>(global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDelivery_error.CreateFromDiscriminatorValue); } },
+                { "error", n => { Error = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDeliveryError>(global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDeliveryError.CreateFromDiscriminatorValue); } },
                 { "exported_asset_ids", n => { ExportedAssetIds = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
                 { "finished_at", n => { FinishedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "idempotency_key", n => { IdempotencyKey = n.GetStringValue(); } },
                 { "last_updated_at", n => { LastUpdatedAt = n.GetDateTimeOffsetValue(); } },
-                { "recipient_results", n => { RecipientResults = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDelivery_recipient_results>(global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDelivery_recipient_results.CreateFromDiscriminatorValue); } },
+                { "recipient_results", n => { RecipientResults = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDeliveryRecipientResults>(global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDeliveryRecipientResults.CreateFromDiscriminatorValue); } },
                 { "scheduled_at", n => { ScheduledAt = n.GetDateTimeOffsetValue(); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDeliveryStatusEnum>(); } },
+                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDeliveryStatus>(global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDeliveryStatus.CreateFromDiscriminatorValue); } },
                 { "subscription", n => { Subscription = n.GetIntValue(); } },
                 { "target_type", n => { TargetType = n.GetStringValue(); } },
                 { "target_value", n => { TargetValue = n.GetStringValue(); } },
@@ -159,7 +192,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDeliveryStatusEnum>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -5,9 +5,8 @@ using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Activity;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Add_product_intent;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Complete_product_onboarding;
-using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Default_evaluation_contexts;
-using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Default_release_conditions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Delete_secret_token_backup;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Evaluation_context_suggestions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Event_ingestion_restrictions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Experiments_config;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Generate_conversations_public_token;
@@ -23,7 +22,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\environments\{id}
+    /// Builds and executes requests for operations under \api\projects\{projectId}\environments\{id}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class EnvironmentsItemRequestBuilder : BaseRequestBuilder
@@ -43,20 +42,15 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Complete_product_onboarding.Complete_product_onboardingRequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>The default_evaluation_contexts property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Default_evaluation_contexts.Default_evaluation_contextsRequestBuilder Default_evaluation_contexts
-        {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Default_evaluation_contexts.Default_evaluation_contextsRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The default_release_conditions property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Default_release_conditions.Default_release_conditionsRequestBuilder Default_release_conditions
-        {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Default_release_conditions.Default_release_conditionsRequestBuilder(PathParameters, RequestAdapter);
-        }
         /// <summary>The delete_secret_token_backup property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Delete_secret_token_backup.Delete_secret_token_backupRequestBuilder Delete_secret_token_backup
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Delete_secret_token_backup.Delete_secret_token_backupRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The evaluation_context_suggestions property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Evaluation_context_suggestions.Evaluation_context_suggestionsRequestBuilder Evaluation_context_suggestions
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Evaluation_context_suggestions.Evaluation_context_suggestionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The event_ingestion_restrictions property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Event_ingestion_restrictions.Event_ingestion_restrictionsRequestBuilder Event_ingestion_restrictions
@@ -103,7 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EnvironmentsItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/environments/{id}", pathParameters)
+        public EnvironmentsItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/environments/{id}", pathParameters)
         {
         }
         /// <summary>
@@ -111,7 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EnvironmentsItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/environments/{id}", rawUrl)
+        public EnvironmentsItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/environments/{id}", rawUrl)
         {
         }
     }

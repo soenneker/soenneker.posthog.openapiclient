@@ -14,17 +14,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The config property</summary>
+        /// <summary>&quot;Type-specific config keyed by action type. trigger: {type: event|webhook|manual|batch|schedule|tracking_pixel, filters?}. webhook and manual triggers also require template_id: &apos;template-source-webhook&apos;, and tracking_pixel requires template_id: &apos;template-source-webhook-pixel&apos;. filters shape: {events: [{id, name, type:&apos;events&apos;, properties:[&lt;cond&gt;]}], properties:[&lt;cond&gt;], actions:[...], filter_test_accounts:&lt;bool&gt;}. &lt;cond&gt;: {key, value, operator, type: event|person|group}, or {key: &apos;id&apos;, type: &apos;cohort&apos;, value: &lt;cohort_id&gt;, operator: &apos;in&apos;} to reference a cohort. batch triggers may set filters.audience_type: &apos;persons&apos; (default) or &apos;accounts&apos;. An accounts audience fans out one run per customer analytics account and takes account filters instead: properties entries of type &apos;account_custom_property&apos; (key = definition id), plus tag_names: [&lt;str&gt;], assigned_to_user_ids: [&lt;int&gt;], all_roles_unassigned: &lt;bool&gt;. function*: {template_id, inputs: {&lt;key&gt;: {value: &lt;str&gt;}}}. Wrap values in {value:...} to enable hog templating ({person.x}, {event.x}); flat strings won&apos;t interpolate. function_email also accepts tracking_enabled?: &lt;bool&gt; (default true) - when false, no open pixel is injected, links are not rewritten, and the send skips ESP-level open/click tracking, so opens and clicks are not recorded for that step (delivery/bounce/unsubscribe still are). Dictionary input values are template strings too — write booleans/numbers as single-expression templates (&apos;{true}&apos;, &apos;{42}&apos;), which evaluate to the typed value. delay: {delay_duration: &apos;&lt;number&gt;&lt;unit&gt;&apos;} where unit is s|m|h|d. Fractions OK (&apos;1.5d&apos;=36h). Per-unit max s&lt;=60, m&lt;=60, h&lt;=24, d&lt;=30; values above are SILENTLY CLAMPED. Max 30d. conditional_branch: {conditions: [{filters}, ...]}. Index N matches the &apos;branch&apos; edge with index:N. random_cohort_branch: {cohorts: [{percentage: &lt;number&gt;, name?}, ...]}. Index N matches the &apos;branch&apos; edge with index:N; percentages are relative weights, so they should sum to 100 but a total above or below that still splits traffic in the given proportions. wait_until_condition: {condition: {filters}, events?: [{filters: {events: [{id, name, type: &apos;events&apos;}], actions?: [...]}, name?}], max_wait_duration: &lt;duration&gt;} (same rules as delay). Continues when condition.filters match OR any events entry fires; each events entry must target at least one event or action. On resolution (a condition match or any events entry firing) it advances via the &apos;branch&apos; edge with index:0; the max_wait_duration timeout falls through the &apos;continue&apos; edge. exit: {reason}.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction_config? Config { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowActionConfig? Config { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction_config Config { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowActionConfig Config { get; set; }
 #endif
-        /// <summary>The created_at property</summary>
+        /// <summary>Created at (epoch ms). Frontend-managed.</summary>
         public int? CreatedAt { get; set; }
-        /// <summary>The description property</summary>
+        /// <summary>Optional description.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Description { get; set; }
@@ -32,15 +32,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
-        /// <summary>The filters property</summary>
+        /// <summary>Property filters gating this action.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction_filters? Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowActionFilters? Filters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction_filters Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowActionFilters Filters { get; set; }
 #endif
-        /// <summary>The id property</summary>
+        /// <summary>Unique node ID within the workflow.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Id { get; set; }
@@ -48,7 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Id { get; set; }
 #endif
-        /// <summary>The name property</summary>
+        /// <summary>Display name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
@@ -56,31 +56,31 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>The on_error property</summary>
+        /// <summary>&quot;On failure: continue (skip the action and proceed) or abort (stop the run).* `continue` - continue* `abort` - abort&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction_on_error? OnError { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowActionOnError? OnError { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction_on_error OnError { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowActionOnError OnError { get; set; }
 #endif
-        /// <summary>The output_variable property</summary>
+        /// <summary>&quot;Output variable for downstream actions: {key, result_path?, spread?, label?} or a list of those.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction_output_variable? OutputVariable { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowActionOutputVariable? OutputVariable { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction_output_variable OutputVariable { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowActionOutputVariable OutputVariable { get; set; }
 #endif
-        /// <summary>The type property</summary>
+        /// <summary>&quot;One of: trigger | function | function_email | function_sms | function_push | delay | wait_until_condition | wait_until_time_window | conditional_branch | random_cohort_branch | exit.* `trigger` - trigger* `function` - function* `function_email` - function_email* `function_sms` - function_sms* `function_push` - function_push* `delay` - delay* `wait_until_condition` - wait_until_condition* `wait_until_time_window` - wait_until_time_window* `conditional_branch` - conditional_branch* `random_cohort_branch` - random_cohort_branch* `exit` - exit&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Type { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowActionType? Type { get; set; }
 #nullable restore
 #else
-        public string Type { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowActionType Type { get; set; }
 #endif
-        /// <summary>The updated_at property</summary>
+        /// <summary>Updated at (epoch ms). Frontend-managed.</summary>
         public int? UpdatedAt { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction"/> and sets the default values.
@@ -107,15 +107,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction_config>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction_config.CreateFromDiscriminatorValue); } },
+                { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowActionConfig>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowActionConfig.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetIntValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
-                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction_filters>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction_filters.CreateFromDiscriminatorValue); } },
+                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowActionFilters>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowActionFilters.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "on_error", n => { OnError = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction_on_error>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction_on_error.CreateFromDiscriminatorValue); } },
-                { "output_variable", n => { OutputVariable = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction_output_variable>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction_output_variable.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetStringValue(); } },
+                { "on_error", n => { OnError = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowActionOnError>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowActionOnError.CreateFromDiscriminatorValue); } },
+                { "output_variable", n => { OutputVariable = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowActionOutputVariable>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowActionOutputVariable.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowActionType>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowActionType.CreateFromDiscriminatorValue); } },
                 { "updated_at", n => { UpdatedAt = n.GetIntValue(); } },
             };
         }
@@ -126,15 +126,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction_config>("config", Config);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowActionConfig>("config", Config);
             writer.WriteIntValue("created_at", CreatedAt);
             writer.WriteStringValue("description", Description);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction_filters>("filters", Filters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowActionFilters>("filters", Filters);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction_on_error>("on_error", OnError);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction_output_variable>("output_variable", OutputVariable);
-            writer.WriteStringValue("type", Type);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowActionOnError>("on_error", OnError);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowActionOutputVariable>("output_variable", OutputVariable);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowActionType>("type", Type);
             writer.WriteIntValue("updated_at", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -3,8 +3,10 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_tables.Create_from_upload;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_tables.FileNamespace;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_tables.Item;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_tables.Upload_file;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -14,15 +16,25 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_tables
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\warehouse_tables
+    /// Builds and executes requests for operations under \api\projects\{projectId}\warehouse_tables
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Warehouse_tablesRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The create_from_upload property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_tables.Create_from_upload.Create_from_uploadRequestBuilder Create_from_upload
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_tables.Create_from_upload.Create_from_uploadRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The file property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_tables.FileNamespace.FileRequestBuilder File
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_tables.FileNamespace.FileRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The upload_file property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_tables.Upload_file.Upload_fileRequestBuilder Upload_file
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_tables.Upload_file.Upload_fileRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.warehouse_tables.item collection</summary>
         /// <param name="position">A UUID string identifying this data warehouse table.</param>
@@ -41,7 +53,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_tables
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Warehouse_tablesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/warehouse_tables{?limit*,offset*,search*}", pathParameters)
+        public Warehouse_tablesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/warehouse_tables{?limit*,offset*,search*}", pathParameters)
         {
         }
         /// <summary>
@@ -49,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_tables
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Warehouse_tablesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/warehouse_tables{?limit*,offset*,search*}", rawUrl)
+        public Warehouse_tablesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/warehouse_tables{?limit*,offset*,search*}", rawUrl)
         {
         }
         /// <summary>

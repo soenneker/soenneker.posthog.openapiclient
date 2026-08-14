@@ -5,6 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments.Item.Complete;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments.Item.Reopen;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments.Item.Send_to_slack;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments.Item.ThreadNamespace;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\comments\{id}
+    /// Builds and executes requests for operations under \api\projects\{projectId}\comments\{id}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CommentsItemRequestBuilder : BaseRequestBuilder
@@ -30,6 +31,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments.Item
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments.Item.Reopen.ReopenRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The send_to_slack property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments.Item.Send_to_slack.Send_to_slackRequestBuilder Send_to_slack
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments.Item.Send_to_slack.Send_to_slackRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The thread property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments.Item.ThreadNamespace.ThreadRequestBuilder Thread
         {
@@ -40,7 +46,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments.Item
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public CommentsItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/comments/{id}", pathParameters)
+        public CommentsItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/comments/{id}", pathParameters)
         {
         }
         /// <summary>
@@ -48,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments.Item
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public CommentsItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/comments/{id}", rawUrl)
+        public CommentsItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/comments/{id}", rawUrl)
         {
         }
         /// <summary>

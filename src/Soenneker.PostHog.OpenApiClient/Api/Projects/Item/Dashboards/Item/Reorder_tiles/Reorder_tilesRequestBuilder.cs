@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Reorder_tiles
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\dashboards\{dashboard_-id}\reorder_tiles
+    /// Builds and executes requests for operations under \api\projects\{projectId}\dashboards\{dashboard-id}\reorder_tiles
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Reorder_tilesRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Reor
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Reorder_tilesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/dashboards/{dashboard_%2Did}/reorder_tiles{?format*}", pathParameters)
+        public Reorder_tilesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/dashboards/{dashboard%2Did}/reorder_tiles{?format*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Reor
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Reorder_tilesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/dashboards/{dashboard_%2Did}/reorder_tiles{?format*}", rawUrl)
+        public Reorder_tilesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/dashboards/{dashboard%2Did}/reorder_tiles{?format*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Dashboard"/></returns>
@@ -84,7 +84,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Reor
         #pragma warning restore CS1591
         {
             [QueryParameter("format")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Reorder_tiles.PostFormatQueryParameterType? Format { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.DashboardsReorderTilesCreateFormatParameter? Format { get; set; }
         }
     }
 }

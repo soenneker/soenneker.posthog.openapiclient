@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Array of log entry dictionaries to append</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunAppendLogRequest_entries>? Entries { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunAppendLogRequestEntriesItemProperty>? Entries { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunAppendLogRequest_entries> Entries { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunAppendLogRequestEntriesItemProperty> Entries { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunAppendLogRequest"/> and sets the default values.
@@ -47,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "entries", n => { Entries = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunAppendLogRequest_entries>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunAppendLogRequest_entries.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "entries", n => { Entries = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunAppendLogRequestEntriesItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunAppendLogRequestEntriesItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -57,7 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunAppendLogRequest_entries>("entries", Entries);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunAppendLogRequestEntriesItemProperty>("entries", Entries);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

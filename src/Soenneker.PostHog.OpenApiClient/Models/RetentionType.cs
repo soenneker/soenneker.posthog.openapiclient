@@ -10,15 +10,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "retention_recurring")]
         #pragma warning disable CS1591
-        Retention_recurring,
+        RetentionRecurring,
         #pragma warning restore CS1591
         [EnumMember(Value = "retention_first_time")]
         #pragma warning disable CS1591
-        Retention_first_time,
+        RetentionFirstTime,
         #pragma warning restore CS1591
         [EnumMember(Value = "retention_first_ever_occurrence")]
         #pragma warning disable CS1591
-        Retention_first_ever_occurrence,
+        RetentionFirstEverOccurrence,
         #pragma warning restore CS1591
     }
 }

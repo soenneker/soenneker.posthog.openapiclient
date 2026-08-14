@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Copy_tile
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\dashboards\{dashboard_-id}\copy_tile
+    /// Builds and executes requests for operations under \api\projects\{projectId}\dashboards\{dashboard-id}\copy_tile
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Copy_tileRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Copy
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Copy_tileRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/dashboards/{dashboard_%2Did}/copy_tile{?format*}", pathParameters)
+        public Copy_tileRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/dashboards/{dashboard%2Did}/copy_tile{?format*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,11 +30,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Copy
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Copy_tileRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/dashboards/{dashboard_%2Did}/copy_tile{?format*}", rawUrl)
+        public Copy_tileRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/dashboards/{dashboard%2Did}/copy_tile{?format*}", rawUrl)
         {
         }
         /// <summary>
-        /// Copy an existing dashboard tile to another dashboard (insight or text card; new tile row).
+        /// Copy an existing dashboard tile to another dashboard (insight, text card, or widget tile).
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Dashboard"/></returns>
         /// <param name="body">The request body</param>
@@ -54,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Copy
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.Dashboard>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.Dashboard.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Copy an existing dashboard tile to another dashboard (insight or text card; new tile row).
+        /// Copy an existing dashboard tile to another dashboard (insight, text card, or widget tile).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
@@ -85,13 +85,13 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Copy
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Copy_tile.Copy_tileRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Copy an existing dashboard tile to another dashboard (insight or text card; new tile row).
+        /// Copy an existing dashboard tile to another dashboard (insight, text card, or widget tile).
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Copy_tileRequestBuilderPostQueryParameters 
         {
             [QueryParameter("format")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Copy_tile.PostFormatQueryParameterType? Format { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.DashboardsCopyTileCreateFormatParameter? Format { get; set; }
         }
     }
 }

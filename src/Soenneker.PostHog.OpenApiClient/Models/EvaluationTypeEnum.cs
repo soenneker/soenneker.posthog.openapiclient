@@ -3,17 +3,21 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `llm_judge` - LLM as a judge* `hog` - Hog</summary>
+    /// <summary>* `llm_judge` - LLM as a judge* `hog` - Hog* `sentiment` - Sentiment analysis</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum EvaluationTypeEnum
     {
         [EnumMember(Value = "llm_judge")]
         #pragma warning disable CS1591
-        Llm_judge,
+        LlmJudge,
         #pragma warning restore CS1591
         [EnumMember(Value = "hog")]
         #pragma warning disable CS1591
         Hog,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "sentiment")]
+        #pragma warning disable CS1591
+        Sentiment,
         #pragma warning restore CS1591
     }
 }

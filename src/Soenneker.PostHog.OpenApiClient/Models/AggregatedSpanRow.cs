@@ -9,37 +9,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class AggregatedSpanRow : IParsable
+    public partial class AggregatedSpanRow : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>The avg_duration_nano property</summary>
-        public double? AvgDurationNano { get; set; }
-        /// <summary>The count property</summary>
-        public int? Count { get; set; }
-        /// <summary>The error_count property</summary>
-        public int? ErrorCount { get; set; }
-        /// <summary>The name property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Name { get; set; }
-#nullable restore
-#else
-        public string Name { get; set; }
-#endif
-        /// <summary>The p50_duration_nano property</summary>
-        public double? P50DurationNano { get; set; }
-        /// <summary>The p95_duration_nano property</summary>
-        public double? P95DurationNano { get; set; }
-        /// <summary>The service_name property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? ServiceName { get; set; }
-#nullable restore
-#else
-        public string ServiceName { get; set; }
-#endif
-        /// <summary>The total_duration_nano property</summary>
-        public double? TotalDurationNano { get; set; }
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AggregatedSpanRow"/> and sets the default values.
+        /// </summary>
+        public AggregatedSpanRow()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -58,14 +39,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "avg_duration_nano", n => { AvgDurationNano = n.GetDoubleValue(); } },
-                { "count", n => { Count = n.GetIntValue(); } },
-                { "error_count", n => { ErrorCount = n.GetIntValue(); } },
-                { "name", n => { Name = n.GetStringValue(); } },
-                { "p50_duration_nano", n => { P50DurationNano = n.GetDoubleValue(); } },
-                { "p95_duration_nano", n => { P95DurationNano = n.GetDoubleValue(); } },
-                { "service_name", n => { ServiceName = n.GetStringValue(); } },
-                { "total_duration_nano", n => { TotalDurationNano = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -75,14 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteDoubleValue("avg_duration_nano", AvgDurationNano);
-            writer.WriteIntValue("count", Count);
-            writer.WriteIntValue("error_count", ErrorCount);
-            writer.WriteStringValue("name", Name);
-            writer.WriteDoubleValue("p50_duration_nano", P50DurationNano);
-            writer.WriteDoubleValue("p95_duration_nano", P95DurationNano);
-            writer.WriteStringValue("service_name", ServiceName);
-            writer.WriteDoubleValue("total_duration_nano", TotalDurationNano);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

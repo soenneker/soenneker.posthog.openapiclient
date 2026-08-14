@@ -59,10 +59,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Per-sub-detector scores for ensemble detectors. Each entry has &apos;type&apos; and &apos;scores&apos; fields.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateResponse_sub_detector_scores>? SubDetectorScores { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateResponseSubDetectorScoresItemProperty>? SubDetectorScores { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateResponse_sub_detector_scores> SubDetectorScores { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateResponseSubDetectorScoresItemProperty> SubDetectorScores { get; set; }
 #endif
         /// <summary>Total number of data points analyzed.</summary>
         public int? TotalPoints { get; set; }
@@ -113,7 +113,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "dates", n => { Dates = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "interval", n => { Interval = n.GetStringValue(); } },
                 { "scores", n => { Scores = n.GetCollectionOfPrimitiveValues<double?>()?.AsList(); } },
-                { "sub_detector_scores", n => { SubDetectorScores = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateResponse_sub_detector_scores>(global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateResponse_sub_detector_scores.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "sub_detector_scores", n => { SubDetectorScores = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateResponseSubDetectorScoresItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateResponseSubDetectorScoresItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "total_points", n => { TotalPoints = n.GetIntValue(); } },
                 { "triggered_dates", n => { TriggeredDates = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "triggered_indices", n => { TriggeredIndices = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
@@ -132,7 +132,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("dates", Dates);
             writer.WriteStringValue("interval", Interval);
             writer.WriteCollectionOfPrimitiveValues<double?>("scores", Scores);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateResponse_sub_detector_scores>("sub_detector_scores", SubDetectorScores);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateResponseSubDetectorScoresItemProperty>("sub_detector_scores", SubDetectorScores);
             writer.WriteIntValue("total_points", TotalPoints);
             writer.WriteCollectionOfPrimitiveValues<string>("triggered_dates", TriggeredDates);
             writer.WriteCollectionOfPrimitiveValues<int?>("triggered_indices", TriggeredIndices);

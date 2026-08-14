@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Github.Oauth_authorize
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\integrations\github\oauth_authorize
+    /// Builds and executes requests for operations under \api\projects\{projectId}\integrations\github\oauth_authorize
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Oauth_authorizeRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Github.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Oauth_authorizeRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/integrations/github/oauth_authorize", pathParameters)
+        public Oauth_authorizeRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/integrations/github/oauth_authorize", pathParameters)
         {
         }
         /// <summary>
@@ -30,42 +30,42 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Github.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Oauth_authorizeRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/integrations/github/oauth_authorize", rawUrl)
+        public Oauth_authorizeRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/integrations/github/oauth_authorize", rawUrl)
         {
         }
         /// <summary>
         /// Mint a User OAuth URL to bootstrap a fresh `code` when the install flow returns without one.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Github.Oauth_authorize.Oauth_authorizePostResponse"/></returns>
-        /// <param name="body">Standard Integration serializer.</param>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.GitHubOAuthAuthorizeResponse"/></returns>
+        /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Github.Oauth_authorize.Oauth_authorizePostResponse?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.IntegrationConfig body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.GitHubOAuthAuthorizeResponse?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.GitHubOAuthAuthorizeRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Github.Oauth_authorize.Oauth_authorizePostResponse> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.IntegrationConfig body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.GitHubOAuthAuthorizeResponse> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.GitHubOAuthAuthorizeRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Github.Oauth_authorize.Oauth_authorizePostResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Github.Oauth_authorize.Oauth_authorizePostResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.GitHubOAuthAuthorizeResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.GitHubOAuthAuthorizeResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Mint a User OAuth URL to bootstrap a fresh `code` when the install flow returns without one.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">Standard Integration serializer.</param>
+        /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.IntegrationConfig body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.GitHubOAuthAuthorizeRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.IntegrationConfig body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.GitHubOAuthAuthorizeRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));

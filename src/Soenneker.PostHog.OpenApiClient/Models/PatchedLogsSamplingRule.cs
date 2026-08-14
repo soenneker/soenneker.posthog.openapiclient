@@ -14,13 +14,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;Type-specific JSON. For path_drop: object with optional `filter_group` (PropertyGroupFilter shape — AND/OR tree of property predicates evaluated per record) and/or legacy `patterns` (list of regex strings) + `match_attribute_key` (string). When both are present a record is dropped if EITHER matches. Filter group example: `{\&quot;type\&quot;:\&quot;AND\&quot;,\&quot;values\&quot;:[{\&quot;type\&quot;:\&quot;AND\&quot;,\&quot;values\&quot;:[{\&quot;key\&quot;:\&quot;service.name\&quot;,\&quot;operator\&quot;:\&quot;exact\&quot;,\&quot;value\&quot;:\&quot;api\&quot;}]}]}`. For severity_sampling: object with `actions` per severity level and optional `always_keep`. For rate_limit: object with EITHER `logs_per_second` (integer 1–1000000, optional `burst_logs` integer ≥ logs_per_second, max 10000000) OR `kb_per_second` (integer 1–1000000 = 1 GB/s, optional `burst_kb` integer ≥ kb_per_second, max 10000000) — not both. Plus optional `filter_group` to narrow which logs the cap applies to. KB-mode charges each log its own uncompressed byte size, matching how billing measures ingested bytes.&quot;</summary>
+        /// <summary>&quot;Type-specific JSON. For path_drop: object with optional `filter_group` (PropertyGroupFilter shape — AND/OR tree of property predicates evaluated per record) and/or legacy `patterns` (list of regex strings) + `match_attribute_key` (string). When both are present a record is dropped if EITHER matches. Filter group example: `{\&quot;type\&quot;:\&quot;AND\&quot;,\&quot;values\&quot;:[{\&quot;type\&quot;:\&quot;AND\&quot;,\&quot;values\&quot;:[{\&quot;key\&quot;:\&quot;service.name\&quot;,\&quot;operator\&quot;:\&quot;exact\&quot;,\&quot;value\&quot;:\&quot;api\&quot;}]}]}`. Every group in `filter_group` must contain at least one filter — empty groups never match, so the rule would never apply. For severity_sampling: object with `actions` per severity level and optional `always_keep`. For rate_limit: object with EITHER `logs_per_second` (integer 1–1000000, optional `burst_logs` integer ≥ logs_per_second, max 10000000) OR `kb_per_second` (integer 1–1000000 = 1 GB/s, optional `burst_kb` integer ≥ kb_per_second, max 10000000) — not both. Plus optional `filter_group` to narrow which logs the cap applies to. KB-mode charges each log its own uncompressed byte size, matching how billing measures ingested bytes.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsSamplingRule_config? Config { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsSamplingRuleConfig? Config { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsSamplingRule_config Config { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsSamplingRuleConfig Config { get; set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
@@ -40,15 +40,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Lower numbers are evaluated first; the first matching rule wins. Omit to append after existing rules.</summary>
         public int? Priority { get; set; }
-        /// <summary>* `severity_sampling` - Severity-based reduction* `path_drop` - Path exclusion* `rate_limit` - Rate limit</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.RuleTypeEnum? RuleType { get; set; }
+        /// <summary>&quot;Rule kind: severity_sampling, path_drop, or rate_limit (caps matching log volume at ingestion).* `severity_sampling` - Severity-based reduction* `path_drop` - Path exclusion* `rate_limit` - Rate limit&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsSamplingRuleRuleType? RuleType { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsSamplingRuleRuleType RuleType { get; set; }
+#endif
         /// <summary>Optional list of predicates over string attributes, e.g. [{&quot;key&quot;:&quot;http.route&quot;,&quot;op&quot;:&quot;eq&quot;,&quot;value&quot;:&quot;/api&quot;}].</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsSamplingRule_scope_attribute_filters>? ScopeAttributeFilters { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsSamplingRuleScopeAttributeFiltersItemProperty>? ScopeAttributeFilters { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsSamplingRule_scope_attribute_filters> ScopeAttributeFilters { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsSamplingRuleScopeAttributeFiltersItemProperty> ScopeAttributeFilters { get; set; }
 #endif
         /// <summary>Optional regex matched against a path-like log attribute when present.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -76,6 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public PatchedLogsSamplingRule()
         {
             AdditionalData = new Dictionary<string, object>();
+            Enabled = false;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -95,15 +102,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsSamplingRule_config>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsSamplingRule_config.CreateFromDiscriminatorValue); } },
+                { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsSamplingRuleConfig>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsSamplingRuleConfig.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetIntValue(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "priority", n => { Priority = n.GetIntValue(); } },
-                { "rule_type", n => { RuleType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RuleTypeEnum>(); } },
-                { "scope_attribute_filters", n => { ScopeAttributeFilters = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsSamplingRule_scope_attribute_filters>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsSamplingRule_scope_attribute_filters.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "rule_type", n => { RuleType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsSamplingRuleRuleType>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsSamplingRuleRuleType.CreateFromDiscriminatorValue); } },
+                { "scope_attribute_filters", n => { ScopeAttributeFilters = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsSamplingRuleScopeAttributeFiltersItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsSamplingRuleScopeAttributeFiltersItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "scope_path_pattern", n => { ScopePathPattern = n.GetStringValue(); } },
                 { "scope_service", n => { ScopeService = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
@@ -117,12 +124,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsSamplingRule_config>("config", Config);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsSamplingRuleConfig>("config", Config);
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteStringValue("name", Name);
             writer.WriteIntValue("priority", Priority);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RuleTypeEnum>("rule_type", RuleType);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsSamplingRule_scope_attribute_filters>("scope_attribute_filters", ScopeAttributeFilters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsSamplingRuleRuleType>("rule_type", RuleType);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsSamplingRuleScopeAttributeFiltersItemProperty>("scope_attribute_filters", ScopeAttributeFilters);
             writer.WriteStringValue("scope_path_pattern", ScopePathPattern);
             writer.WriteStringValue("scope_service", ScopeService);
             writer.WriteAdditionalData(AdditionalData);

@@ -14,43 +14,47 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "recording_duration")]
         #pragma warning disable CS1591
-        Recording_duration,
+        RecordingDuration,
         #pragma warning restore CS1591
         [EnumMember(Value = "inactive_seconds")]
         #pragma warning disable CS1591
-        Inactive_seconds,
+        InactiveSeconds,
         #pragma warning restore CS1591
         [EnumMember(Value = "active_seconds")]
         #pragma warning disable CS1591
-        Active_seconds,
+        ActiveSeconds,
         #pragma warning restore CS1591
         [EnumMember(Value = "start_time")]
         #pragma warning disable CS1591
-        Start_time,
+        StartTime,
         #pragma warning restore CS1591
         [EnumMember(Value = "console_error_count")]
         #pragma warning disable CS1591
-        Console_error_count,
+        ConsoleErrorCount,
         #pragma warning restore CS1591
         [EnumMember(Value = "click_count")]
         #pragma warning disable CS1591
-        Click_count,
+        ClickCount,
         #pragma warning restore CS1591
         [EnumMember(Value = "keypress_count")]
         #pragma warning disable CS1591
-        Keypress_count,
+        KeypressCount,
         #pragma warning restore CS1591
         [EnumMember(Value = "mouse_activity_count")]
         #pragma warning disable CS1591
-        Mouse_activity_count,
+        MouseActivityCount,
         #pragma warning restore CS1591
         [EnumMember(Value = "activity_score")]
         #pragma warning disable CS1591
-        Activity_score,
+        ActivityScore,
         #pragma warning restore CS1591
         [EnumMember(Value = "recording_ttl")]
         #pragma warning disable CS1591
-        Recording_ttl,
+        RecordingTtl,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "surfacing_score")]
+        #pragma warning disable CS1591
+        SurfacingScore,
         #pragma warning restore CS1591
     }
 }

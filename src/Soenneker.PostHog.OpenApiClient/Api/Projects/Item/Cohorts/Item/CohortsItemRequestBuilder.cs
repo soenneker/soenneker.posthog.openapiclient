@@ -8,6 +8,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Cohorts.Item.Add_persons
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Cohorts.Item.Calculation_history;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Cohorts.Item.Persons;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Cohorts.Item.Remove_person_from_static_cohort;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Cohorts.Item.Used_in;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -17,7 +18,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Cohorts.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\cohorts\{id}
+    /// Builds and executes requests for operations under \api\projects\{projectId}\cohorts\{id}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CohortsItemRequestBuilder : BaseRequestBuilder
@@ -47,12 +48,17 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Cohorts.Item
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Cohorts.Item.Remove_person_from_static_cohort.Remove_person_from_static_cohortRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The used_in property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Cohorts.Item.Used_in.Used_inRequestBuilder Used_in
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Cohorts.Item.Used_in.Used_inRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Cohorts.Item.CohortsItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public CohortsItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/cohorts/{id}", pathParameters)
+        public CohortsItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/cohorts/{id}", pathParameters)
         {
         }
         /// <summary>
@@ -60,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Cohorts.Item
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public CohortsItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/cohorts/{id}", rawUrl)
+        public CohortsItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/cohorts/{id}", rawUrl)
         {
         }
         /// <summary>

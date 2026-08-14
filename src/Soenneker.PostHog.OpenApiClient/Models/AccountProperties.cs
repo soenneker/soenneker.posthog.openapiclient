@@ -8,27 +8,11 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Typed account properties: assignment fields (csm, account_executive, account_owner) and external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id). Defaults to an empty object. Unknown keys are rejected.&quot;
+    /// &quot;Typed account properties: external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link, metabase_link) plus touchpoint matching lists: email_domains (the company&apos;s email domains) and known_emails (individual addresses pinned to the account). Defaults to an empty object. Unknown keys are rejected. User assignments live on account relationships, not here.&quot;
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AccountProperties : IParsable
     {
-        /// <summary>The account_executive property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountPropertiesAccountExecutive? AccountExecutive { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountPropertiesAccountExecutive AccountExecutive { get; set; }
-#endif
-        /// <summary>The account_owner property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountPropertiesAccountOwner? AccountOwner { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountPropertiesAccountOwner AccountOwner { get; set; }
-#endif
         /// <summary>The billing_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -37,13 +21,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string BillingId { get; set; }
 #endif
-        /// <summary>The csm property</summary>
+        /// <summary>Email domains owned by this account&apos;s company, used to match inbound touchpoints to the account.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountPropertiesCsm? Csm { get; set; }
+        public List<string>? EmailDomains { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountPropertiesCsm Csm { get; set; }
+        public List<string> EmailDomains { get; set; }
 #endif
         /// <summary>The hubspot_deal_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -53,6 +37,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string HubspotDealId { get; set; }
 #endif
+        /// <summary>Individual email addresses pinned to this account, matched before the domain fallback.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? KnownEmails { get; set; }
+#nullable restore
+#else
+        public List<string> KnownEmails { get; set; }
+#endif
+        /// <summary>The metabase_link property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? MetabaseLink { get; set; }
+#nullable restore
+#else
+        public string MetabaseLink { get; set; }
+#endif
         /// <summary>The sfdc_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -61,6 +61,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SfdcId { get; set; }
 #endif
+        /// <summary>The slack_channel_id property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SlackChannelId { get; set; }
+#nullable restore
+#else
+        public string SlackChannelId { get; set; }
+#endif
         /// <summary>The stripe_customer_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -68,6 +76,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string StripeCustomerId { get; set; }
+#endif
+        /// <summary>The usage_dashboard_link property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? UsageDashboardLink { get; set; }
+#nullable restore
+#else
+        public string UsageDashboardLink { get; set; }
 #endif
         /// <summary>The zendesk_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -95,13 +111,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "account_executive", n => { AccountExecutive = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountPropertiesAccountExecutive>(global::Soenneker.PostHog.OpenApiClient.Models.AccountPropertiesAccountExecutive.CreateFromDiscriminatorValue); } },
-                { "account_owner", n => { AccountOwner = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountPropertiesAccountOwner>(global::Soenneker.PostHog.OpenApiClient.Models.AccountPropertiesAccountOwner.CreateFromDiscriminatorValue); } },
                 { "billing_id", n => { BillingId = n.GetStringValue(); } },
-                { "csm", n => { Csm = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountPropertiesCsm>(global::Soenneker.PostHog.OpenApiClient.Models.AccountPropertiesCsm.CreateFromDiscriminatorValue); } },
+                { "email_domains", n => { EmailDomains = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "hubspot_deal_id", n => { HubspotDealId = n.GetStringValue(); } },
+                { "known_emails", n => { KnownEmails = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "metabase_link", n => { MetabaseLink = n.GetStringValue(); } },
                 { "sfdc_id", n => { SfdcId = n.GetStringValue(); } },
+                { "slack_channel_id", n => { SlackChannelId = n.GetStringValue(); } },
                 { "stripe_customer_id", n => { StripeCustomerId = n.GetStringValue(); } },
+                { "usage_dashboard_link", n => { UsageDashboardLink = n.GetStringValue(); } },
                 { "zendesk_id", n => { ZendeskId = n.GetStringValue(); } },
             };
         }
@@ -112,13 +130,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountPropertiesAccountExecutive>("account_executive", AccountExecutive);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountPropertiesAccountOwner>("account_owner", AccountOwner);
             writer.WriteStringValue("billing_id", BillingId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountPropertiesCsm>("csm", Csm);
+            writer.WriteCollectionOfPrimitiveValues<string>("email_domains", EmailDomains);
             writer.WriteStringValue("hubspot_deal_id", HubspotDealId);
+            writer.WriteCollectionOfPrimitiveValues<string>("known_emails", KnownEmails);
+            writer.WriteStringValue("metabase_link", MetabaseLink);
             writer.WriteStringValue("sfdc_id", SfdcId);
+            writer.WriteStringValue("slack_channel_id", SlackChannelId);
             writer.WriteStringValue("stripe_customer_id", StripeCustomerId);
+            writer.WriteStringValue("usage_dashboard_link", UsageDashboardLink);
             writer.WriteStringValue("zendesk_id", ZendeskId);
         }
     }

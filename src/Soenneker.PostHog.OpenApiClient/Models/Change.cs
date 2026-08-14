@@ -25,18 +25,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The after property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.Change_after? After { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChangeAfter? After { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.Change_after After { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChangeAfter After { get; private set; }
 #endif
         /// <summary>The before property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.Change_before? Before { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChangeBefore? Before { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.Change_before Before { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChangeBefore Before { get; private set; }
 #endif
         /// <summary>The field property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -80,8 +80,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "action", n => { Action = n.GetStringValue(); } },
-                { "after", n => { After = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Change_after>(global::Soenneker.PostHog.OpenApiClient.Models.Change_after.CreateFromDiscriminatorValue); } },
-                { "before", n => { Before = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Change_before>(global::Soenneker.PostHog.OpenApiClient.Models.Change_before.CreateFromDiscriminatorValue); } },
+                { "after", n => { After = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChangeAfter>(global::Soenneker.PostHog.OpenApiClient.Models.ChangeAfter.CreateFromDiscriminatorValue); } },
+                { "before", n => { Before = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChangeBefore>(global::Soenneker.PostHog.OpenApiClient.Models.ChangeBefore.CreateFromDiscriminatorValue); } },
                 { "field", n => { Field = n.GetStringValue(); } },
                 { "type", n => { Type = n.GetStringValue(); } },
             };

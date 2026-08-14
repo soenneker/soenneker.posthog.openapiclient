@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Batch_exports.Item.Runs.Item.Logs
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\batch_exports\{batch_export_-id}\runs\{id}\logs
+    /// Builds and executes requests for operations under \api\projects\{projectId}\batch_exports\{batchExport-id}\runs\{id}\logs
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class LogsRequestBuilder : BaseRequestBuilder
@@ -21,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Batch_exports.Item.R
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public LogsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/batch_exports/{batch_export_%2Did}/runs/{id}/logs{?after*,before*,instance_id*,level*,limit*,search*}", pathParameters)
+        public LogsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/batch_exports/{batchExport%2Did}/runs/{id}/logs{?after*,before*,instance_id*,level*,limit*,search*}", pathParameters)
         {
         }
         /// <summary>
@@ -29,23 +30,23 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Batch_exports.Item.R
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public LogsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/batch_exports/{batch_export_%2Did}/runs/{id}/logs{?after*,before*,instance_id*,level*,limit*,search*}", rawUrl)
+        public LogsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/batch_exports/{batchExport%2Did}/runs/{id}/logs{?after*,before*,instance_id*,level*,limit*,search*}", rawUrl)
         {
         }
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Batch_exports.Item.Runs.Item.Logs.LogsGetResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportsRunsLogsRetrieve200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Batch_exports.Item.Runs.Item.Logs.LogsGetResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Batch_exports.Item.Runs.Item.Logs.LogsRequestBuilder.LogsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportsRunsLogsRetrieve200Response?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Batch_exports.Item.Runs.Item.Logs.LogsRequestBuilder.LogsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Batch_exports.Item.Runs.Item.Logs.LogsGetResponse> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Batch_exports.Item.Runs.Item.Logs.LogsRequestBuilder.LogsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportsRunsLogsRetrieve200Response> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Batch_exports.Item.Runs.Item.Logs.LogsRequestBuilder.LogsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Batch_exports.Item.Runs.Item.Logs.LogsGetResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Batch_exports.Item.Runs.Item.Logs.LogsGetResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportsRunsLogsRetrieve200Response>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.BatchExportsRunsLogsRetrieve200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -77,7 +78,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Batch_exports.Item.R
         public partial class LogsRequestBuilderGetQueryParameters 
         #pragma warning restore CS1591
         {
-            /// <summary>Only return entries after this ISO 8601 timestamp.</summary>
+            /// <summary>Only return entries after this ISO 8601 timestamp. Defaults to 7 days ago; pass an explicit value to read further back.</summary>
             [QueryParameter("after")]
             public DateTimeOffset? After { get; set; }
             /// <summary>Only return entries before this ISO 8601 timestamp.</summary>

@@ -17,18 +17,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Calculated response and dismissal rates.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyGlobalStatsResponse_rates? Rates { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyGlobalStatsResponseRatesProperty? Rates { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyGlobalStatsResponse_rates Rates { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyGlobalStatsResponseRatesProperty Rates { get; set; }
 #endif
         /// <summary>Event counts keyed by event name (survey shown, survey dismissed, survey sent).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyGlobalStatsResponse_stats? Stats { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyGlobalStatsResponseStatsProperty? Stats { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyGlobalStatsResponse_stats Stats { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyGlobalStatsResponseStatsProperty Stats { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SurveyGlobalStatsResponse"/> and sets the default values.
@@ -55,8 +55,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "rates", n => { Rates = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyGlobalStatsResponse_rates>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyGlobalStatsResponse_rates.CreateFromDiscriminatorValue); } },
-                { "stats", n => { Stats = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyGlobalStatsResponse_stats>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyGlobalStatsResponse_stats.CreateFromDiscriminatorValue); } },
+                { "rates", n => { Rates = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyGlobalStatsResponseRatesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyGlobalStatsResponseRatesProperty.CreateFromDiscriminatorValue); } },
+                { "stats", n => { Stats = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyGlobalStatsResponseStatsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyGlobalStatsResponseStatsProperty.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -66,8 +66,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyGlobalStatsResponse_rates>("rates", Rates);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyGlobalStatsResponse_stats>("stats", Stats);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyGlobalStatsResponseRatesProperty>("rates", Rates);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyGlobalStatsResponseStatsProperty>("stats", Stats);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

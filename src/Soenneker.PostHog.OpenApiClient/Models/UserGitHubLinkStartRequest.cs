@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ConnectFrom { get; set; }
 #endif
-        /// <summary>Optional team/project id (e.g. PostHog Code); web UI uses the session&apos;s current team.</summary>
+        /// <summary>Optional team/project id (e.g. PostHog Desktop); web UI uses the session&apos;s current team.</summary>
         public int? TeamId { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubLinkStartRequest"/> and sets the default values.

@@ -38,14 +38,14 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Users
         }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.users.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Users.Item.User_ItemRequestBuilder"/></returns>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Users.Item.User_ItemRequestBuilder this[Guid position]
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Users.Item.UserItemRequestBuilder"/></returns>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Users.Item.UserItemRequestBuilder this[Guid position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("user_%2Did", position);
-                return new global::Soenneker.PostHog.OpenApiClient.Api.Users.Item.User_ItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("user%2Did", position);
+                return new global::Soenneker.PostHog.OpenApiClient.Api.Users.Item.UserItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>

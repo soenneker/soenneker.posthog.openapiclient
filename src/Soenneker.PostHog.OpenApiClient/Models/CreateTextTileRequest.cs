@@ -33,10 +33,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Optional grid layout per breakpoint. If omitted, the tile is placed at the bottom of the dashboard using the default size. Text tiles typically use a thin full-width banner (e.g. w=12, h=1).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CreateTextTileRequest_layouts? Layouts { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CreateTextTileRequestLayouts? Layouts { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CreateTextTileRequest_layouts Layouts { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CreateTextTileRequestLayouts Layouts { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CreateTextTileRequest"/> and sets the default values.
@@ -65,7 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "body", n => { Body = n.GetStringValue(); } },
                 { "color", n => { Color = n.GetStringValue(); } },
-                { "layouts", n => { Layouts = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateTextTileRequest_layouts>(global::Soenneker.PostHog.OpenApiClient.Models.CreateTextTileRequest_layouts.CreateFromDiscriminatorValue); } },
+                { "layouts", n => { Layouts = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateTextTileRequestLayouts>(global::Soenneker.PostHog.OpenApiClient.Models.CreateTextTileRequestLayouts.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -77,7 +77,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("body", Body);
             writer.WriteStringValue("color", Color);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateTextTileRequest_layouts>("layouts", Layouts);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateTextTileRequestLayouts>("layouts", Layouts);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

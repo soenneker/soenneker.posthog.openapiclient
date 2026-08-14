@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github;
+using Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Slack;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -13,7 +14,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\users\{user_-id}\integrations
+    /// Builds and executes requests for operations under \api\users\{user-id}\integrations
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class IntegrationsRequestBuilder : BaseRequestBuilder
@@ -23,12 +24,17 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github.GithubRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The slack property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Slack.SlackRequestBuilder Slack
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Slack.SlackRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.IntegrationsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public IntegrationsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/users/{user_%2Did}/integrations{?limit*,offset*}", pathParameters)
+        public IntegrationsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/users/{user%2Did}/integrations{?kind*,limit*,offset*}", pathParameters)
         {
         }
         /// <summary>
@@ -36,11 +42,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public IntegrationsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/users/{user_%2Did}/integrations{?limit*,offset*}", rawUrl)
+        public IntegrationsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/users/{user%2Did}/integrations{?kind*,limit*,offset*}", rawUrl)
         {
         }
         /// <summary>
-        /// `/api/users/@me/integrations/` — manage the user&apos;s personal GitHub integrations.
+        /// &quot;Return the authenticated user&apos;s personal integrations of a given``kind`` (``github`` or ``slack``).The response shape varies per kind because the underlying ``UserIntegration``rows carry different identity fields — GitHub rows expose``installation_id`` / ``account`` / ``uses_shared_installation``; Slackrows expose ``slack_user_id`` / ``slack_team_id`` / ``slack_team_name``.Kind-specific destroy and start actions remain split so their distinctsemantics (e.g. Slack&apos;s lack of \&quot;uninstall on last reference\&quot;) stayexplicit at the URL layer.Default of ``kind=github`` is load-bearing: mobile (``apps/mobile/...``)and the Code SDK (``packages/api-client/...``) both call this endpointwithout a query param today and rely on receiving GitHub rows.&quot;
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedUserGitHubIntegrationListResponseList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -58,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedUserGitHubIntegrationListResponseList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedUserGitHubIntegrationListResponseList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// `/api/users/@me/integrations/` — manage the user&apos;s personal GitHub integrations.
+        /// &quot;Return the authenticated user&apos;s personal integrations of a given``kind`` (``github`` or ``slack``).The response shape varies per kind because the underlying ``UserIntegration``rows carry different identity fields — GitHub rows expose``installation_id`` / ``account`` / ``uses_shared_installation``; Slackrows expose ``slack_user_id`` / ``slack_team_id`` / ``slack_team_name``.Kind-specific destroy and start actions remain split so their distinctsemantics (e.g. Slack&apos;s lack of \&quot;uninstall on last reference\&quot;) stayexplicit at the URL layer.Default of ``kind=github`` is load-bearing: mobile (``apps/mobile/...``)and the Code SDK (``packages/api-client/...``) both call this endpointwithout a query param today and rely on receiving GitHub rows.&quot;
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -86,11 +92,14 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations
             return new global::Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.IntegrationsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// `/api/users/@me/integrations/` — manage the user&apos;s personal GitHub integrations.
+        /// &quot;Return the authenticated user&apos;s personal integrations of a given``kind`` (``github`` or ``slack``).The response shape varies per kind because the underlying ``UserIntegration``rows carry different identity fields — GitHub rows expose``installation_id`` / ``account`` / ``uses_shared_installation``; Slackrows expose ``slack_user_id`` / ``slack_team_id`` / ``slack_team_name``.Kind-specific destroy and start actions remain split so their distinctsemantics (e.g. Slack&apos;s lack of \&quot;uninstall on last reference\&quot;) stayexplicit at the URL layer.Default of ``kind=github`` is load-bearing: mobile (``apps/mobile/...``)and the Code SDK (``packages/api-client/...``) both call this endpointwithout a query param today and rely on receiving GitHub rows.&quot;
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class IntegrationsRequestBuilderGetQueryParameters 
         {
+            /// <summary>Integration kind to list. Defaults to `github` for back-compat with mobile and the Code SDK, which call this endpoint without a query param and expect GitHub-shaped items.</summary>
+            [QueryParameter("kind")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.UsersIntegrationsListKindParameter? Kind { get; set; }
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }

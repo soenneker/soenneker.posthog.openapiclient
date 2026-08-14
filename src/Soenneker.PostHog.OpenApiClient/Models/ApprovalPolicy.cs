@@ -27,18 +27,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The approver_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ApprovalPolicy_approver_config? ApproverConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ApprovalPolicyApproverConfig? ApproverConfig { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ApprovalPolicy_approver_config ApproverConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ApprovalPolicyApproverConfig ApproverConfig { get; set; }
 #endif
         /// <summary>The bypass_org_membership_levels property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ApprovalPolicy_bypass_org_membership_levels? BypassOrgMembershipLevels { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ApprovalPolicyBypassOrgMembershipLevels? BypassOrgMembershipLevels { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ApprovalPolicy_bypass_org_membership_levels BypassOrgMembershipLevels { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ApprovalPolicyBypassOrgMembershipLevels BypassOrgMembershipLevels { get; set; }
 #endif
         /// <summary>The bypass_roles property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -51,20 +51,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The conditions property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ApprovalPolicy_conditions? Conditions { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ApprovalPolicyConditions? Conditions { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ApprovalPolicy_conditions Conditions { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ApprovalPolicyConditions Conditions { get; set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ApprovalPolicy_created_by? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ApprovalPolicyCreatedBy? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ApprovalPolicy_created_by CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ApprovalPolicyCreatedBy CreatedBy { get; private set; }
 #endif
         /// <summary>The enabled property</summary>
         public bool? Enabled { get; set; }
@@ -107,12 +107,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "action_key", n => { ActionKey = n.GetStringValue(); } },
                 { "allow_self_approve", n => { AllowSelfApprove = n.GetBoolValue(); } },
-                { "approver_config", n => { ApproverConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ApprovalPolicy_approver_config>(global::Soenneker.PostHog.OpenApiClient.Models.ApprovalPolicy_approver_config.CreateFromDiscriminatorValue); } },
-                { "bypass_org_membership_levels", n => { BypassOrgMembershipLevels = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ApprovalPolicy_bypass_org_membership_levels>(global::Soenneker.PostHog.OpenApiClient.Models.ApprovalPolicy_bypass_org_membership_levels.CreateFromDiscriminatorValue); } },
+                { "approver_config", n => { ApproverConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ApprovalPolicyApproverConfig>(global::Soenneker.PostHog.OpenApiClient.Models.ApprovalPolicyApproverConfig.CreateFromDiscriminatorValue); } },
+                { "bypass_org_membership_levels", n => { BypassOrgMembershipLevels = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ApprovalPolicyBypassOrgMembershipLevels>(global::Soenneker.PostHog.OpenApiClient.Models.ApprovalPolicyBypassOrgMembershipLevels.CreateFromDiscriminatorValue); } },
                 { "bypass_roles", n => { BypassRoles = n.GetCollectionOfPrimitiveValues<Guid?>()?.AsList(); } },
-                { "conditions", n => { Conditions = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ApprovalPolicy_conditions>(global::Soenneker.PostHog.OpenApiClient.Models.ApprovalPolicy_conditions.CreateFromDiscriminatorValue); } },
+                { "conditions", n => { Conditions = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ApprovalPolicyConditions>(global::Soenneker.PostHog.OpenApiClient.Models.ApprovalPolicyConditions.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ApprovalPolicy_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.ApprovalPolicy_created_by.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ApprovalPolicyCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.ApprovalPolicyCreatedBy.CreateFromDiscriminatorValue); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "expires_after", n => { ExpiresAfter = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
@@ -128,10 +128,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("action_key", ActionKey);
             writer.WriteBoolValue("allow_self_approve", AllowSelfApprove);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ApprovalPolicy_approver_config>("approver_config", ApproverConfig);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ApprovalPolicy_bypass_org_membership_levels>("bypass_org_membership_levels", BypassOrgMembershipLevels);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ApprovalPolicyApproverConfig>("approver_config", ApproverConfig);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ApprovalPolicyBypassOrgMembershipLevels>("bypass_org_membership_levels", BypassOrgMembershipLevels);
             writer.WriteCollectionOfPrimitiveValues<Guid?>("bypass_roles", BypassRoles);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ApprovalPolicy_conditions>("conditions", Conditions);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ApprovalPolicyConditions>("conditions", Conditions);
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteStringValue("expires_after", ExpiresAfter);
             writer.WriteAdditionalData(AdditionalData);

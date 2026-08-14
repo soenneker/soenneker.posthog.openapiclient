@@ -34,10 +34,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Structured profile content. v1 has `inventory` only.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfile_payload? Payload { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfilePayloadComposed? Payload { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfile_payload Payload { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfilePayloadComposed Payload { get; set; }
 #endif
         /// <summary>UUID of the `SignalProjectProfile` row.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -82,7 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "computed_at", n => { ComputedAt = n.GetStringValue(); } },
                 { "expires_at", n => { ExpiresAt = n.GetStringValue(); } },
-                { "payload", n => { Payload = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfile_payload>(global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfile_payload.CreateFromDiscriminatorValue); } },
+                { "payload", n => { Payload = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfilePayloadComposed>(global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfilePayloadComposed.CreateFromDiscriminatorValue); } },
                 { "profile_id", n => { ProfileId = n.GetStringValue(); } },
                 { "source_version", n => { SourceVersion = n.GetStringValue(); } },
             };
@@ -96,7 +96,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("computed_at", ComputedAt);
             writer.WriteStringValue("expires_at", ExpiresAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfile_payload>("payload", Payload);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfilePayloadComposed>("payload", Payload);
             writer.WriteStringValue("profile_id", ProfileId);
             writer.WriteStringValue("source_version", SourceVersion);
             writer.WriteAdditionalData(AdditionalData);

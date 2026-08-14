@@ -14,11 +14,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "legacy_null_as_string")]
         #pragma warning disable CS1591
-        Legacy_null_as_string,
+        LegacyNullAsString,
         #pragma warning restore CS1591
         [EnumMember(Value = "legacy_null_as_null")]
         #pragma warning disable CS1591
-        Legacy_null_as_null,
+        LegacyNullAsNull,
         #pragma warning restore CS1591
         [EnumMember(Value = "disabled")]
         #pragma warning disable CS1591

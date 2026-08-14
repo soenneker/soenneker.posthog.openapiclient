@@ -21,7 +21,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\feature_flags\{id}
+    /// Builds and executes requests for operations under \api\projects\{projectId}\feature_flags\{id}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Feature_flagsItemRequestBuilder : BaseRequestBuilder
@@ -76,7 +76,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Feature_flagsItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/feature_flags/{id}", pathParameters)
+        public Feature_flagsItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/feature_flags/{id}", pathParameters)
         {
         }
         /// <summary>
@@ -84,7 +84,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Feature_flagsItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/feature_flags/{id}", rawUrl)
+        public Feature_flagsItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/feature_flags/{id}", rawUrl)
         {
         }
         /// <summary>

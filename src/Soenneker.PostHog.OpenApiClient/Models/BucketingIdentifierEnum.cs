@@ -9,11 +9,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "distinct_id")]
         #pragma warning disable CS1591
-        Distinct_id,
+        DistinctId,
         #pragma warning restore CS1591
         [EnumMember(Value = "device_id")]
         #pragma warning disable CS1591
-        Device_id,
+        DeviceId,
         #pragma warning restore CS1591
     }
 }

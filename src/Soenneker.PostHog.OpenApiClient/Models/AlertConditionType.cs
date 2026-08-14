@@ -10,15 +10,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "absolute_value")]
         #pragma warning disable CS1591
-        Absolute_value,
+        AbsoluteValue,
         #pragma warning restore CS1591
         [EnumMember(Value = "relative_increase")]
         #pragma warning disable CS1591
-        Relative_increase,
+        RelativeIncrease,
         #pragma warning restore CS1591
         [EnumMember(Value = "relative_decrease")]
         #pragma warning disable CS1591
-        Relative_decrease,
+        RelativeDecrease,
         #pragma warning restore CS1591
     }
 }

@@ -10,7 +10,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "tag_name")]
         #pragma warning disable CS1591
-        Tag_name,
+        TagName,
         #pragma warning restore CS1591
         [EnumMember(Value = "text")]
         #pragma warning disable CS1591

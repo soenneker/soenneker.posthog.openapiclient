@@ -14,7 +14,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Sources.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\business_knowledge\sources\{id}
+    /// Builds and executes requests for operations under \api\projects\{projectId}\business_knowledge\sources\{id}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SourcesItemRequestBuilder : BaseRequestBuilder
@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.S
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SourcesItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/business_knowledge/sources/{id}", pathParameters)
+        public SourcesItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/business_knowledge/sources/{id}", pathParameters)
         {
         }
         /// <summary>
@@ -42,7 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.S
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SourcesItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/business_knowledge/sources/{id}", rawUrl)
+        public SourcesItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/business_knowledge/sources/{id}", rawUrl)
         {
         }
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -75,7 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.S
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSource>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSource.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSource"/></returns>
-        /// <param name="body">PATCH payload for text sources. Both fields optional, at least onerequired. `text` triggers a re-chunk; `name` alone does not.</param>
+        /// <param name="body">PATCH payload for text sources. All fields optional, at least onerequired. `text` triggers a re-chunk; `name` or `always_include` alone does not.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -124,7 +124,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.S
             return requestInfo;
         }
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">PATCH payload for text sources. Both fields optional, at least onerequired. `text` triggers a re-chunk; `name` alone does not.</param>
+        /// <param name="body">PATCH payload for text sources. All fields optional, at least onerequired. `text` triggers a re-chunk; `name` or `always_include` alone does not.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

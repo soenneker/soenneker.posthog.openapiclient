@@ -14,27 +14,27 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The configuration property</summary>
+        /// <summary>Optional join configuration, for example experiments optimization flags.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedViewLink_configuration? Configuration { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedViewLinkConfiguration? Configuration { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedViewLink_configuration Configuration { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedViewLinkConfiguration Configuration { get; set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedViewLink_created_by? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedViewLinkCreatedBy? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedViewLink_created_by CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedViewLinkCreatedBy CreatedBy { get; private set; }
 #endif
-        /// <summary>The deleted property</summary>
+        /// <summary>Whether this join has been soft-deleted.</summary>
         public bool? Deleted { get; set; }
-        /// <summary>The field_name property</summary>
+        /// <summary>Accessor added to the source table to reach the joined rows, for example person in events.person.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? FieldName { get; set; }
@@ -44,7 +44,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
-        /// <summary>The joining_table_key property</summary>
+        /// <summary>Column or HogQL expression on the joining table used as the join key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? JoiningTableKey { get; set; }
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string JoiningTableKey { get; set; }
 #endif
-        /// <summary>The joining_table_name property</summary>
+        /// <summary>Name of the table or view being joined onto the source table.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? JoiningTableName { get; set; }
@@ -60,7 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string JoiningTableName { get; set; }
 #endif
-        /// <summary>The source_table_key property</summary>
+        /// <summary>Column or HogQL expression on the source table used as the join key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SourceTableKey { get; set; }
@@ -68,7 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SourceTableKey { get; set; }
 #endif
-        /// <summary>The source_table_name property</summary>
+        /// <summary>Name of the table the join starts from, for example events.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SourceTableName { get; set; }
@@ -101,9 +101,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "configuration", n => { Configuration = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedViewLink_configuration>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedViewLink_configuration.CreateFromDiscriminatorValue); } },
+                { "configuration", n => { Configuration = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedViewLinkConfiguration>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedViewLinkConfiguration.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedViewLink_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedViewLink_created_by.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedViewLinkCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedViewLinkCreatedBy.CreateFromDiscriminatorValue); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "field_name", n => { FieldName = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
@@ -120,7 +120,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedViewLink_configuration>("configuration", Configuration);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedViewLinkConfiguration>("configuration", Configuration);
             writer.WriteBoolValue("deleted", Deleted);
             writer.WriteStringValue("field_name", FieldName);
             writer.WriteStringValue("joining_table_key", JoiningTableKey);

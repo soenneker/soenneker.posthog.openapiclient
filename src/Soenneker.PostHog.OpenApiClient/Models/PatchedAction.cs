@@ -28,10 +28,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedAction_created_by? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedActionCreatedBy? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedAction_created_by CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedActionCreatedBy CreatedBy { get; private set; }
 #endif
         /// <summary>The create_in_folder property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -90,18 +90,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Action steps defining trigger conditions. Each step matches events by name, properties, URL, or element attributes. Multiple steps are OR-ed together.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ActionStepJSON>? Steps { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ActionStepJson>? Steps { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ActionStepJSON> Steps { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ActionStepJson> Steps { get; set; }
 #endif
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedAction_tags>? Tags { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedActionTagsItem>? Tags { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedAction_tags> Tags { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedActionTagsItem> Tags { get; set; }
 #endif
         /// <summary>The team_id property</summary>
         public int? TeamId { get; private set; }
@@ -119,6 +119,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public PatchedAction()
         {
             AdditionalData = new Dictionary<string, object>();
+            IsAction = true;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -141,7 +142,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "bytecode_error", n => { BytecodeError = n.GetStringValue(); } },
                 { "_create_in_folder", n => { CreateInFolder = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedAction_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedAction_created_by.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedActionCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedActionCreatedBy.CreateFromDiscriminatorValue); } },
                 { "creation_context", n => { CreationContext = n.GetStringValue(); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
@@ -153,8 +154,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "pinned_at", n => { PinnedAt = n.GetDateTimeOffsetValue(); } },
                 { "post_to_slack", n => { PostToSlack = n.GetBoolValue(); } },
                 { "slack_message_format", n => { SlackMessageFormat = n.GetStringValue(); } },
-                { "steps", n => { Steps = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ActionStepJSON>(global::Soenneker.PostHog.OpenApiClient.Models.ActionStepJSON.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "tags", n => { Tags = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedAction_tags>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedAction_tags.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "steps", n => { Steps = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ActionStepJson>(global::Soenneker.PostHog.OpenApiClient.Models.ActionStepJson.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "tags", n => { Tags = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedActionTagsItem>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedActionTagsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "team_id", n => { TeamId = n.GetIntValue(); } },
                 { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },
             };
@@ -174,8 +175,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("pinned_at", PinnedAt);
             writer.WriteBoolValue("post_to_slack", PostToSlack);
             writer.WriteStringValue("slack_message_format", SlackMessageFormat);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ActionStepJSON>("steps", Steps);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedAction_tags>("tags", Tags);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ActionStepJson>("steps", Steps);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedActionTagsItem>("tags", Tags);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -15,7 +15,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboard_templates
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\dashboard_templates
+    /// Builds and executes requests for operations under \api\projects\{projectId}\dashboard_templates
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Dashboard_templatesRequestBuilder : BaseRequestBuilder
@@ -47,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboard_templates
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Dashboard_templatesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/dashboard_templates{?is_featured*,limit*,offset*,ordering*,scope*}", pathParameters)
+        public Dashboard_templatesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/dashboard_templates{?is_featured*,limit*,offset*,ordering*,scope*,search*}", pathParameters)
         {
         }
         /// <summary>
@@ -55,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboard_templates
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Dashboard_templatesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/dashboard_templates{?is_featured*,limit*,offset*,ordering*,scope*}", rawUrl)
+        public Dashboard_templatesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/dashboard_templates{?is_featured*,limit*,offset*,ordering*,scope*,search*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedDashboardTemplateList"/></returns>
@@ -150,10 +150,20 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboard_templates
             public int? Offset { get; set; }
             /// <summary>Optional. When not using `search`, results are sorted with featured templates first (`is_featured=true`), then by `template_name` (case-insensitive A–Z; `-template_name` for Z–A) or by `created_at` (`-created_at` for newest first). When `search` is set, order is featured first, then relevance rank, then case-insensitive name for ties.</summary>
             [QueryParameter("ordering")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboard_templates.GetOrderingQueryParameterType? Ordering { get; set; }
-            /// <summary>&quot;Optional. `global`: official templates only. `team`: this project&apos;s saved templates only (`scope=team` rows for the current project). `feature_flag`: feature-flag dashboard templates only. Omit for both official and this project&apos;s templates (default dashboard template picker behavior).&quot;</summary>
+            public global::Soenneker.PostHog.OpenApiClient.Models.DashboardTemplatesListOrderingParameter? Ordering { get; set; }
+            /// <summary>&quot;Optional. `global`: official templates only. `team`: this project&apos;s saved templates only (`scope=team` rows for the current project). `organization`: templates shared across all projects in this organization. `feature_flag`: feature-flag dashboard templates only. Omit for official, organization, and this project&apos;s templates (default dashboard template picker behavior).&quot;</summary>
             [QueryParameter("scope")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboard_templates.GetScopeQueryParameterType? Scope { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.DashboardTemplatesListScopeParameter? Scope { get; set; }
+            /// <summary>Optional. Full-text search across template name, tags, and description, ranked by relevance. Use it to find templates for a topic (e.g. `retention`, `revenue`, `product analytics`).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("search")]
+            public string? Search { get; set; }
+#nullable restore
+#else
+            [QueryParameter("search")]
+            public string Search { get; set; }
+#endif
         }
     }
 }

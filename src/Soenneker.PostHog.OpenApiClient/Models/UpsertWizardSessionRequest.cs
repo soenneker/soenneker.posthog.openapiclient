@@ -18,21 +18,43 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>&quot;Populated when run_phase=&apos;error&apos;. Shape: { type: string, message: string }.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequest_error? Error { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestError? Error { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequest_error Error { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestError Error { get; set; }
 #endif
         /// <summary>Optional structured plan of events the wizard intends to instrument. Schema is workflow-specific.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequest_event_plan? EventPlan { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestEventPlan? EventPlan { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequest_event_plan EventPlan { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestEventPlan EventPlan { get; set; }
 #endif
-        /// <summary>* `idle` - IDLE* `running` - RUNNING* `completed` - COMPLETED* `error` - ERROR</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.RunPhaseEnum? RunPhase { get; set; }
+        /// <summary>Markdown handoff doc for the run (the wizard&apos;s setup report). Send it once the run has produced one; omitting it on later pushes keeps the stored value.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? HandoffText { get; set; }
+#nullable restore
+#else
+        public string HandoffText { get; set; }
+#endif
+        /// <summary>Populated while the wizard is blocked on a question in the terminal. Null/absent means no input is pending; a push without it clears the previous prompt.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestPendingInput? PendingInput { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestPendingInput PendingInput { get; set; }
+#endif
+        /// <summary>Lifecycle stage of the wizard run.* `idle` - IDLE* `running` - RUNNING* `completed` - COMPLETED* `error` - ERROR</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestRunPhase? RunPhase { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestRunPhase RunPhase { get; set; }
+#endif
         /// <summary>&quot;Stable identifier the wizard mints for this run (format: &apos;{workflow_id}-{skill_id}-{started_at_iso}&apos;). Reposting with the same session_id upserts the existing row.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -54,10 +76,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The tasks property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.WizardTaskDTO>? Tasks { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.WizardTaskDto>? Tasks { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.WizardTaskDTO> Tasks { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.WizardTaskDto> Tasks { get; set; }
 #endif
         /// <summary>High-level workflow being run, e.g. &apos;onboarding&apos;, &apos;migration&apos;, &apos;audit&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -92,13 +114,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "error", n => { Error = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequest_error>(global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequest_error.CreateFromDiscriminatorValue); } },
-                { "event_plan", n => { EventPlan = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequest_event_plan>(global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequest_event_plan.CreateFromDiscriminatorValue); } },
-                { "run_phase", n => { RunPhase = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RunPhaseEnum>(); } },
+                { "error", n => { Error = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestError>(global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestError.CreateFromDiscriminatorValue); } },
+                { "event_plan", n => { EventPlan = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestEventPlan>(global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestEventPlan.CreateFromDiscriminatorValue); } },
+                { "handoff_text", n => { HandoffText = n.GetStringValue(); } },
+                { "pending_input", n => { PendingInput = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestPendingInput>(global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestPendingInput.CreateFromDiscriminatorValue); } },
+                { "run_phase", n => { RunPhase = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestRunPhase>(global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestRunPhase.CreateFromDiscriminatorValue); } },
                 { "session_id", n => { SessionId = n.GetStringValue(); } },
                 { "skill_id", n => { SkillId = n.GetStringValue(); } },
                 { "started_at", n => { StartedAt = n.GetDateTimeOffsetValue(); } },
-                { "tasks", n => { Tasks = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WizardTaskDTO>(global::Soenneker.PostHog.OpenApiClient.Models.WizardTaskDTO.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "tasks", n => { Tasks = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WizardTaskDto>(global::Soenneker.PostHog.OpenApiClient.Models.WizardTaskDto.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "workflow_id", n => { WorkflowId = n.GetStringValue(); } },
             };
         }
@@ -109,13 +133,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequest_error>("error", Error);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequest_event_plan>("event_plan", EventPlan);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RunPhaseEnum>("run_phase", RunPhase);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestError>("error", Error);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestEventPlan>("event_plan", EventPlan);
+            writer.WriteStringValue("handoff_text", HandoffText);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestPendingInput>("pending_input", PendingInput);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestRunPhase>("run_phase", RunPhase);
             writer.WriteStringValue("session_id", SessionId);
             writer.WriteStringValue("skill_id", SkillId);
             writer.WriteDateTimeOffsetValue("started_at", StartedAt);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WizardTaskDTO>("tasks", Tasks);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WizardTaskDto>("tasks", Tasks);
             writer.WriteStringValue("workflow_id", WorkflowId);
             writer.WriteAdditionalData(AdditionalData);
         }

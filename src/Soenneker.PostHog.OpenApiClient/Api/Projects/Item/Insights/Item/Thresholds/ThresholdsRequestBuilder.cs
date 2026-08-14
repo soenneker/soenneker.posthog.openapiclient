@@ -13,7 +13,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item.Thresholds
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\insights\{-id}\thresholds
+    /// Builds and executes requests for operations under \api\projects\{projectId}\insights\{-id}\thresholds
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ThresholdsRequestBuilder : BaseRequestBuilder
@@ -35,7 +35,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item.Thresh
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ThresholdsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/insights/{%2Did}/thresholds{?limit*,offset*}", pathParameters)
+        public ThresholdsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/insights/{%2Did}/thresholds{?limit*,offset*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item.Thresh
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ThresholdsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/insights/{%2Did}/thresholds{?limit*,offset*}", rawUrl)
+        public ThresholdsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/insights/{%2Did}/thresholds{?limit*,offset*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedThresholdWithAlertList"/></returns>

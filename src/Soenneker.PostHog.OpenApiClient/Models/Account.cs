@@ -19,7 +19,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>The created_by property</summary>
         public int? CreatedBy { get; private set; }
-        /// <summary>Identifier for the account in an external system (e.g. CRM ID). Optional.</summary>
+        /// <summary>Identifier linking this account to its source customer — the analytics group key (the customer&apos;s organization id), used to match billing and external records. Optional.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ExternalId { get; set; }
@@ -45,13 +45,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> Notebooks { get; private set; }
 #endif
-        /// <summary>&quot;Typed account properties: assignment fields (csm, account_executive, account_owner) and external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id). Defaults to an empty object. Unknown keys are rejected.&quot;</summary>
+        /// <summary>&quot;Typed account properties: external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link, metabase_link) plus touchpoint matching lists: email_domains (the company&apos;s email domains) and known_emails (individual addresses pinned to the account). Defaults to an empty object. Unknown keys are rejected. User assignments live on account relationships, not here.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.AccountProperties? Properties { get; set; }
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.AccountProperties Properties { get; set; }
+#endif
+        /// <summary>How often to generate an AI summary of the account&apos;s bound Slack channel (daily, weekly, or monthly). Null means summaries are off.* `daily` - daily* `weekly` - weekly* `monthly` - monthly</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountSlackSummaryCadence? SlackSummaryCadence { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountSlackSummaryCadence SlackSummaryCadence { get; set; }
 #endif
         /// <summary>Tag names attached to the account. Pass a list to replace existing tags.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -95,6 +103,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "notebooks", n => { Notebooks = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "properties", n => { Properties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountProperties>(global::Soenneker.PostHog.OpenApiClient.Models.AccountProperties.CreateFromDiscriminatorValue); } },
+                { "slack_summary_cadence", n => { SlackSummaryCadence = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountSlackSummaryCadence>(global::Soenneker.PostHog.OpenApiClient.Models.AccountSlackSummaryCadence.CreateFromDiscriminatorValue); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
@@ -109,6 +118,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("external_id", ExternalId);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountProperties>("properties", Properties);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountSlackSummaryCadence>("slack_summary_cadence", SlackSummaryCadence);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteAdditionalData(AdditionalData);
         }

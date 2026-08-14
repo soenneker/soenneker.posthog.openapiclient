@@ -4,7 +4,10 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Bulk_delete;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Email_sending_suspension;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Metrics;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Reputation;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.User_blast_radius;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -15,7 +18,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\hog_flows
+    /// Builds and executes requests for operations under \api\projects\{projectId}\hog_flows
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Hog_flowsRequestBuilder : BaseRequestBuilder
@@ -24,6 +27,21 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Bulk_delete.Bulk_deleteRequestBuilder Bulk_delete
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Bulk_delete.Bulk_deleteRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The email_sending_suspension property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Email_sending_suspension.Email_sending_suspensionRequestBuilder Email_sending_suspension
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Email_sending_suspension.Email_sending_suspensionRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The metrics property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Metrics.MetricsRequestBuilder Metrics
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Metrics.MetricsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The reputation property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Reputation.ReputationRequestBuilder Reputation
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Reputation.ReputationRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The user_blast_radius property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.User_blast_radius.User_blast_radiusRequestBuilder User_blast_radius
@@ -47,7 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Hog_flowsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/hog_flows{?created_at*,created_by*,id*,limit*,offset*,updated_at*}", pathParameters)
+        public Hog_flowsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/hog_flows{?created_at*,created_by*,id*,limit*,offset*,search*,status*,updated_at*}", pathParameters)
         {
         }
         /// <summary>
@@ -55,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Hog_flowsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/hog_flows{?created_at*,created_by*,id*,limit*,offset*,updated_at*}", rawUrl)
+        public Hog_flowsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/hog_flows{?created_at*,created_by*,id*,limit*,offset*,search*,status*,updated_at*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedHogFlowMinimalList"/></returns>
@@ -74,7 +92,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedHogFlowMinimalList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedHogFlowMinimalList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogFlow"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Mixin for serializers to add user access control fields</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -107,7 +125,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows
             return requestInfo;
         }
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Mixin for serializers to add user access control fields</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -141,8 +159,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows
         {
             [QueryParameter("created_at")]
             public DateTimeOffset? CreatedAt { get; set; }
+            /// <summary>Filter to workflows created by the user with this uuid.</summary>
             [QueryParameter("created_by")]
-            public int? CreatedBy { get; set; }
+            public Guid? CreatedBy { get; set; }
             [QueryParameter("id")]
             public Guid? Id { get; set; }
             /// <summary>Number of results to return per page.</summary>
@@ -151,6 +170,19 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows
             /// <summary>The initial index from which to return the results.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
+            /// <summary>Case-insensitive search across workflow name and description.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("search")]
+            public string? Search { get; set; }
+#nullable restore
+#else
+            [QueryParameter("search")]
+            public string Search { get; set; }
+#endif
+            /// <summary>* `draft` - Draft* `active` - Active* `archived` - Archived</summary>
+            [QueryParameter("status")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowsListStatusParameter? Status { get; set; }
             [QueryParameter("updated_at")]
             public DateTimeOffset? UpdatedAt { get; set; }
         }

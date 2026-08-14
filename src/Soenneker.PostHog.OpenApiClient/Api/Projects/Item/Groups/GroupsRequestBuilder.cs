@@ -6,7 +6,6 @@ using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups.Activity;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups.Delete_property;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups.Find;
-using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups.Property_definitions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups.Property_values;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups.Related;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups.Update_property;
@@ -19,7 +18,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\groups
+    /// Builds and executes requests for operations under \api\projects\{projectId}\groups
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class GroupsRequestBuilder : BaseRequestBuilder
@@ -38,11 +37,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups.Find.FindRequestBuilder Find
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups.Find.FindRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The property_definitions property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups.Property_definitions.Property_definitionsRequestBuilder Property_definitions
-        {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups.Property_definitions.Property_definitionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The property_values property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups.Property_values.Property_valuesRequestBuilder Property_values
@@ -64,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public GroupsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/groups?group_type_index={group_type_index}{&cursor*,group_key*,search*}", pathParameters)
+        public GroupsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/groups{?cursor*,group_key*,search*}", pathParameters)
         {
         }
         /// <summary>
@@ -72,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public GroupsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/groups?group_type_index={group_type_index}{&cursor*,group_key*,search*}", rawUrl)
+        public GroupsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/groups{?cursor*,group_key*,search*}", rawUrl)
         {
         }
         /// <summary>
@@ -125,7 +119,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups.GroupsRequestBuilder.GroupsRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, "{+baseurl}/api/projects/{projectId}/groups?group_type_index={group_type_index}{&cursor*,group_key*,search*}", PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
@@ -143,7 +137,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInformation(Method.POST, "{+baseurl}/api/projects/{project_id}/groups", PathParameters);
+            var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);

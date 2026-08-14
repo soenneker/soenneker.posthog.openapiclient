@@ -14,19 +14,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "not_enough_exposure")]
         #pragma warning disable CS1591
-        Not_enough_exposure,
+        NotEnoughExposure,
         #pragma warning restore CS1591
         [EnumMember(Value = "low_win_probability")]
         #pragma warning disable CS1591
-        Low_win_probability,
+        LowWinProbability,
         #pragma warning restore CS1591
         [EnumMember(Value = "high_loss")]
         #pragma warning disable CS1591
-        High_loss,
+        HighLoss,
         #pragma warning restore CS1591
         [EnumMember(Value = "high_p_value")]
         #pragma warning disable CS1591
-        High_p_value,
+        HighPValue,
         #pragma warning restore CS1591
     }
 }

@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `schedule` - Schedule* `on_demand` - On demand</summary>
+    /// <summary>* `schedule` - Schedule* `on_demand` - On demand* `retry` - Retry* `backfill` - Backfill</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ObservationTriggerEnum
     {
@@ -13,7 +13,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "on_demand")]
         #pragma warning disable CS1591
-        On_demand,
+        OnDemand,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "retry")]
+        #pragma warning disable CS1591
+        Retry,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "backfill")]
+        #pragma warning disable CS1591
+        Backfill,
         #pragma warning restore CS1591
     }
 }

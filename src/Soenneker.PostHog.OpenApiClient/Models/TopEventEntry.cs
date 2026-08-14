@@ -15,7 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Number of occurrences in the lookback window (last 7 days).</summary>
+        /// <summary>Number of occurrences within the last `window_days` (windowed, not lifetime).</summary>
         public int? Count { get; set; }
         /// <summary>`uniq(person_id)` over the window — reach. Distinguishes a high-count event firing on one power user from one firing on many users.</summary>
         public int? DistinctUsers { get; set; }
@@ -27,26 +27,28 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Event { get; set; }
 #endif
-        /// <summary>&quot;ISO-8601 timestamp of the earliest occurrence within the lookback window. Compare to the window start to spot new event types: `first_seen` close to `now` ⇒ likely new or recently bursting; close to the window edge ⇒ has been around at least that long (the window can&apos;t tell you when the event *truly* first appeared).&quot;</summary>
+        /// <summary>&quot;ISO-8601 timestamp of the earliest occurrence within the `window_days` window. Compare to the window start to spot new event types: close to `now` ⇒ likely new or recently bursting; close to the window edge ⇒ has been around at least that long (the window can&apos;t tell you when the event *truly* first appeared).&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FirstSeen { get; set; }
+        public string? FirstSeenInWindow { get; set; }
 #nullable restore
 #else
-        public string FirstSeen { get; set; }
+        public string FirstSeenInWindow { get; set; }
 #endif
-        /// <summary>ISO-8601 timestamp of the most recent occurrence within the lookback window.</summary>
+        /// <summary>ISO-8601 timestamp of the most recent occurrence within the `window_days` window.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LastSeen { get; set; }
+        public string? LastSeenInWindow { get; set; }
 #nullable restore
 #else
-        public string LastSeen { get; set; }
+        public string LastSeenInWindow { get; set; }
 #endif
-        /// <summary>&quot;Count in just the last 24 hours. Compare to `count / 7` to spot bursts: a ratio well above 1/7 means the event is concentrated in the last day.&quot;</summary>
+        /// <summary>&quot;Count in just the last 24 hours. Compare to `count / window_days` to spot bursts: a ratio well above `1 / window_days` means the event is concentrated in the last day.&quot;</summary>
         public int? Recent24hCount { get; set; }
         /// <summary>`uniq(person_id)` over just the last 24 hours. A burst across many users is qualitatively different from one user in a loop.</summary>
         public int? Recent24hUsers { get; set; }
+        /// <summary>&quot;Rolling lookback window (in days) that every count and timestamp on this row is measured over — these are windowed figures, NOT lifetime totals. A capture gap can collapse a real, high-volume project&apos;s in-window counts to near-zero, so a thin `count` here does not by itself mean the project is low-volume: rule out an ingestion gap (compare against a trailing baseline via a direct `execute-sql`) before closing out a surface as unused.&quot;</summary>
+        public int? WindowDays { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TopEventEntry"/> and sets the default values.
         /// </summary>
@@ -75,10 +77,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "count", n => { Count = n.GetIntValue(); } },
                 { "distinct_users", n => { DistinctUsers = n.GetIntValue(); } },
                 { "event", n => { Event = n.GetStringValue(); } },
-                { "first_seen", n => { FirstSeen = n.GetStringValue(); } },
-                { "last_seen", n => { LastSeen = n.GetStringValue(); } },
+                { "first_seen_in_window", n => { FirstSeenInWindow = n.GetStringValue(); } },
+                { "last_seen_in_window", n => { LastSeenInWindow = n.GetStringValue(); } },
                 { "recent_24h_count", n => { Recent24hCount = n.GetIntValue(); } },
                 { "recent_24h_users", n => { Recent24hUsers = n.GetIntValue(); } },
+                { "window_days", n => { WindowDays = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -91,10 +94,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("count", Count);
             writer.WriteIntValue("distinct_users", DistinctUsers);
             writer.WriteStringValue("event", Event);
-            writer.WriteStringValue("first_seen", FirstSeen);
-            writer.WriteStringValue("last_seen", LastSeen);
+            writer.WriteStringValue("first_seen_in_window", FirstSeenInWindow);
+            writer.WriteStringValue("last_seen_in_window", LastSeenInWindow);
             writer.WriteIntValue("recent_24h_count", Recent24hCount);
             writer.WriteIntValue("recent_24h_users", Recent24hUsers);
+            writer.WriteIntValue("window_days", WindowDays);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

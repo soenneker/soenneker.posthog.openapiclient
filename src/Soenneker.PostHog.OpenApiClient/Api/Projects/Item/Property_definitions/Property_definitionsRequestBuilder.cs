@@ -15,7 +15,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Property_definitions
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\property_definitions
+    /// Builds and executes requests for operations under \api\projects\{projectId}\property_definitions
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Property_definitionsRequestBuilder : BaseRequestBuilder
@@ -47,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Property_definitions
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Property_definitionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/property_definitions{?event_names*,exclude_core_properties*,exclude_hidden*,exclude_restricted*,excluded_properties*,filter_by_event_names*,group_type_index*,is_feature_flag*,is_numerical*,limit*,offset*,properties*,search*,type*,verified*}", pathParameters)
+        public Property_definitionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/property_definitions{?event_names*,exclude_core_properties*,exclude_hidden*,exclude_restricted*,excluded_properties*,filter_by_event_names*,group_type_index*,is_feature_flag*,is_numerical*,limit*,offset*,properties*,search*,type*,verified*}", pathParameters)
         {
         }
         /// <summary>
@@ -55,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Property_definitions
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Property_definitionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/property_definitions{?event_names*,exclude_core_properties*,exclude_hidden*,exclude_restricted*,excluded_properties*,filter_by_event_names*,group_type_index*,is_feature_flag*,is_numerical*,limit*,offset*,properties*,search*,type*,verified*}", rawUrl)
+        public Property_definitionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/property_definitions{?event_names*,exclude_core_properties*,exclude_hidden*,exclude_restricted*,excluded_properties*,filter_by_event_names*,group_type_index*,is_feature_flag*,is_numerical*,limit*,offset*,properties*,search*,type*,verified*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedEnterprisePropertyDefinitionList"/></returns>
@@ -132,13 +132,13 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Property_definitions
             /// <summary>Whether to exclude properties that the current user does not have read access to via field-level access control</summary>
             [QueryParameter("exclude_restricted")]
             public bool? ExcludeRestricted { get; set; }
-            /// <summary>Whether to return only properties for events in `event_names`</summary>
+            /// <summary>&quot;Whether to return only properties for events in `event_names`. Note: this event scoping does not apply to feature flag properties ($feature/*), which are global and not tracked per-event; to retrieve feature flags use is_feature_flag=true instead.&quot;</summary>
             [QueryParameter("filter_by_event_names")]
             public bool? FilterByEventNames { get; set; }
             /// <summary>What group type is the property for. Only should be set if `type=group`</summary>
             [QueryParameter("group_type_index")]
             public int? GroupTypeIndex { get; set; }
-            /// <summary>Whether to return only (or excluding) feature flag properties</summary>
+            /// <summary>Whether to return only (or excluding) feature flag properties ($feature/*). Flags are global, not per-event, so they can&apos;t be scoped by event_names/filter_by_event_names — pass is_feature_flag=true to list them all.</summary>
             [QueryParameter("is_feature_flag")]
             public bool? IsFeatureFlag { get; set; }
             /// <summary>Whether to return only (or excluding) numerical property definitions</summary>
@@ -172,7 +172,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Property_definitions
 #endif
             /// <summary>What property definitions to return* `event` - event* `person` - person* `group` - group* `session` - session</summary>
             [QueryParameter("type")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Property_definitions.GetTypeQueryParameterType? Type { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.PropertyDefinitionsListTypeParameter? Type { get; set; }
             /// <summary>Filter by verified status. True returns only verified, false returns only unverified.</summary>
             [QueryParameter("verified")]
             public bool? Verified { get; set; }

@@ -10,21 +10,21 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Releases.Hash
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\error_tracking\releases\hash
+    /// Builds and executes requests for operations under \api\projects\{projectId}\error_tracking\releases\hash
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class HashRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.error_tracking.releases.hash.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Releases.Hash.Item.WithHash_ItemRequestBuilder"/></returns>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Releases.Hash.Item.WithHash_ItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Releases.Hash.Item.WithHashItemRequestBuilder"/></returns>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Releases.Hash.Item.WithHashItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("hash_id", position);
-                return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Releases.Hash.Item.WithHash_ItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("hashId", position);
+                return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Releases.Hash.Item.WithHashItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
@@ -32,7 +32,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Relea
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public HashRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/error_tracking/releases/hash", pathParameters)
+        public HashRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/error_tracking/releases/hash", pathParameters)
         {
         }
         /// <summary>
@@ -40,7 +40,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Relea
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public HashRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/error_tracking/releases/hash", rawUrl)
+        public HashRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/error_tracking/releases/hash", rawUrl)
         {
         }
     }

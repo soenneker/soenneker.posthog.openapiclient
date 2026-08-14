@@ -14,12 +14,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `success` - success* `warning` - warning* `danger` - danger</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.HealthEnum? Health { get; set; }
+        /// <summary>UI-level status — &apos;success&apos; when healthy, &apos;warning&apos; when some SDKs are outdated, &apos;danger&apos; when the majority are outdated.* `success` - success* `warning` - warning* `danger` - danger</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.SdkHealthReportHealth? Health { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.SdkHealthReportHealth Health { get; set; }
+#endif
         /// <summary>Number of SDKs that need updating.</summary>
         public int? NeedsUpdatingCount { get; set; }
-        /// <summary>* `healthy` - healthy* `needs_attention` - needs_attention</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.OverallHealthEnum? OverallHealth { get; set; }
+        /// <summary>&apos;healthy&apos; when no SDKs need updating, &apos;needs_attention&apos; otherwise.* `healthy` - healthy* `needs_attention` - needs_attention</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.SdkHealthReportOverallHealth? OverallHealth { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.SdkHealthReportOverallHealth OverallHealth { get; set; }
+#endif
         /// <summary>Per-SDK health assessments.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -55,9 +67,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "health", n => { Health = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HealthEnum>(); } },
+                { "health", n => { Health = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SdkHealthReportHealth>(global::Soenneker.PostHog.OpenApiClient.Models.SdkHealthReportHealth.CreateFromDiscriminatorValue); } },
                 { "needs_updating_count", n => { NeedsUpdatingCount = n.GetIntValue(); } },
-                { "overall_health", n => { OverallHealth = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OverallHealthEnum>(); } },
+                { "overall_health", n => { OverallHealth = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SdkHealthReportOverallHealth>(global::Soenneker.PostHog.OpenApiClient.Models.SdkHealthReportOverallHealth.CreateFromDiscriminatorValue); } },
                 { "sdks", n => { Sdks = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessment>(global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessment.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "team_sdk_count", n => { TeamSdkCount = n.GetIntValue(); } },
             };
@@ -69,9 +81,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HealthEnum>("health", Health);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SdkHealthReportHealth>("health", Health);
             writer.WriteIntValue("needs_updating_count", NeedsUpdatingCount);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OverallHealthEnum>("overall_health", OverallHealth);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SdkHealthReportOverallHealth>("overall_health", OverallHealth);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessment>("sdks", Sdks);
             writer.WriteIntValue("team_sdk_count", TeamSdkCount);
             writer.WriteAdditionalData(AdditionalData);

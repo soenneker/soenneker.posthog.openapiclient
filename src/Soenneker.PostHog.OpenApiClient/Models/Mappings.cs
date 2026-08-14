@@ -25,10 +25,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The inputs property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.Mappings_inputs? Inputs { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MappingsInputsProperty? Inputs { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.Mappings_inputs Inputs { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MappingsInputsProperty Inputs { get; set; }
 #endif
         /// <summary>The inputs_schema property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -72,7 +72,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters.CreateFromDiscriminatorValue); } },
-                { "inputs", n => { Inputs = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Mappings_inputs>(global::Soenneker.PostHog.OpenApiClient.Models.Mappings_inputs.CreateFromDiscriminatorValue); } },
+                { "inputs", n => { Inputs = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MappingsInputsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.MappingsInputsProperty.CreateFromDiscriminatorValue); } },
                 { "inputs_schema", n => { InputsSchema = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItem>(global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
             };
@@ -85,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters>("filters", Filters);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Mappings_inputs>("inputs", Inputs);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MappingsInputsProperty>("inputs", Inputs);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItem>("inputs_schema", InputsSchema);
             writer.WriteStringValue("name", Name);
             writer.WriteAdditionalData(AdditionalData);

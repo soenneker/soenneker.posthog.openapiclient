@@ -15,41 +15,45 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The cohort_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilter_cohort_name? CohortName { get; set; }
+        public string? CohortName { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilter_cohort_name CohortName { get; set; }
+        public string CohortName { get; set; }
 #endif
         /// <summary>The key property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilter_key? Key { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Key { get; set; }
+#nullable restore
+#else
+        public string Key { get; set; }
+#endif
         /// <summary>The label property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilter_label? Label { get; set; }
+        public string? Label { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilter_label Label { get; set; }
+        public string Label { get; set; }
 #endif
         /// <summary>The operator property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilter_operator? Operator { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperatorWrapper? Operator { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilter_operator Operator { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperatorWrapper Operator { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilter_type? Type { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Type { get; set; }
+#nullable restore
+#else
+        public string Type { get; set; }
+#endif
         /// <summary>The value property</summary>
         public int? Value { get; set; }
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilter"/> and sets the default values.
-        /// </summary>
-        public CohortPropertyFilter()
-        {
-            Key = global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilter_key.Id;
-            Type = global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilter_type.Cohort;
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -68,11 +72,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "cohort_name", n => { CohortName = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilter_cohort_name>(global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilter_cohort_name.CreateFromDiscriminatorValue); } },
-                { "key", n => { Key = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilter_key>(); } },
-                { "label", n => { Label = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilter_label>(global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilter_label.CreateFromDiscriminatorValue); } },
-                { "operator", n => { Operator = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilter_operator>(global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilter_operator.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilter_type>(); } },
+                { "cohort_name", n => { CohortName = n.GetStringValue(); } },
+                { "key", n => { Key = n.GetStringValue(); } },
+                { "label", n => { Label = n.GetStringValue(); } },
+                { "operator", n => { Operator = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperatorWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperatorWrapper.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetStringValue(); } },
                 { "value", n => { Value = n.GetIntValue(); } },
             };
         }
@@ -83,11 +87,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilter_cohort_name>("cohort_name", CohortName);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilter_key>("key", Key);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilter_label>("label", Label);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilter_operator>("operator", Operator);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilter_type>("type", Type);
+            writer.WriteStringValue("cohort_name", CohortName);
+            writer.WriteStringValue("key", Key);
+            writer.WriteStringValue("label", Label);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperatorWrapper>("operator", Operator);
+            writer.WriteStringValue("type", Type);
             writer.WriteIntValue("value", Value);
         }
     }

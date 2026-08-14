@@ -14,7 +14,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Cohorts
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\cohorts
+    /// Builds and executes requests for operations under \api\projects\{projectId}\cohorts
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CohortsRequestBuilder : BaseRequestBuilder
@@ -41,7 +41,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Cohorts
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public CohortsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/cohorts{?limit*,offset*}", pathParameters)
+        public CohortsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/cohorts{?basic*,hide_behavioral_cohorts*,limit*,offset*,search*}", pathParameters)
         {
         }
         /// <summary>
@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Cohorts
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public CohortsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/cohorts{?limit*,offset*}", rawUrl)
+        public CohortsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/cohorts{?basic*,hide_behavioral_cohorts*,limit*,offset*,search*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedCohortList"/></returns>
@@ -133,12 +133,28 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Cohorts
         public partial class CohortsRequestBuilderGetQueryParameters 
         #pragma warning restore CS1591
         {
+            /// <summary>Return a basic payload that omits the `query`, `groups`, `last_error_message`, and `experiment_set` fields (`filters` is kept). Useful for pickers that only need id/name/count.</summary>
+            [QueryParameter("basic")]
+            public bool? Basic { get; set; }
+            /// <summary>Set true to exclude behavioral (event-based) cohorts, which can&apos;t be used in feature flags or batch workflow audiences.</summary>
+            [QueryParameter("hide_behavioral_cohorts")]
+            public bool? HideBehavioralCohorts { get; set; }
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
             /// <summary>The initial index from which to return the results.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
+            /// <summary>Optional. Match against cohort `name`. Returns exact (case-insensitive substring) matches only; if no exact match exists, returns similar (fuzzy trigram — typos, transpositions, prefix-as-you-type) matches instead. Each result&apos;s `search_match_type` is `exact` or `similar`. Results are ordered by relevance. When omitted, cohorts are ordered newest-first. Capped at 200 characters; longer queries return a 400 error.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("search")]
+            public string? Search { get; set; }
+#nullable restore
+#else
+            [QueryParameter("search")]
+            public string Search { get; set; }
+#endif
         }
     }
 }

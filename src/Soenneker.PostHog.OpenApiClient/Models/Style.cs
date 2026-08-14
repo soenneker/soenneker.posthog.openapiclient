@@ -18,7 +18,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "short")]
         #pragma warning disable CS1591
-        Short,
+        ShortValue,
         #pragma warning restore CS1591
         [EnumMember(Value = "percent")]
         #pragma warning disable CS1591

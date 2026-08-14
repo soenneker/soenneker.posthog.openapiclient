@@ -13,20 +13,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning restore CS1591
     {
         /// <summary>The count property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyValueItem_count? Count { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyValueItem_count Count { get; set; }
-#endif
+        public int? Count { get; set; }
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyValueItem_name? Name { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyValueItemName? Name { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyValueItem_name Name { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyValueItemName Name { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -46,8 +40,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "count", n => { Count = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyValueItem_count>(global::Soenneker.PostHog.OpenApiClient.Models.PropertyValueItem_count.CreateFromDiscriminatorValue); } },
-                { "name", n => { Name = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyValueItem_name>(global::Soenneker.PostHog.OpenApiClient.Models.PropertyValueItem_name.CreateFromDiscriminatorValue); } },
+                { "count", n => { Count = n.GetIntValue(); } },
+                { "name", n => { Name = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyValueItemName>(global::Soenneker.PostHog.OpenApiClient.Models.PropertyValueItemName.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -57,8 +51,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyValueItem_count>("count", Count);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyValueItem_name>("name", Name);
+            writer.WriteIntValue("count", Count);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyValueItemName>("name", Name);
         }
     }
 }

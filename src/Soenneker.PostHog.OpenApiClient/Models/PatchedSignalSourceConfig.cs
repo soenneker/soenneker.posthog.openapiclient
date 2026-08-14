@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalSourceConfig_config? Config { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalSourceConfigConfig? Config { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalSourceConfig_config Config { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalSourceConfigConfig Config { get; set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
@@ -28,9 +28,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? Enabled { get; set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
-        /// <summary>* `session_replay` - Session replay* `llm_analytics` - LLM analytics* `github` - GitHub* `linear` - Linear* `zendesk` - Zendesk* `conversations` - Conversations* `error_tracking` - Error tracking* `pganalyze` - pganalyze* `signals_scout` - Signals scout</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SourceProductEnum? SourceProduct { get; set; }
-        /// <summary>* `session_analysis_cluster` - Session analysis cluster* `evaluation` - Evaluation* `issue` - Issue* `ticket` - Ticket* `issue_created` - Issue created* `issue_reopened` - Issue reopened* `issue_spiking` - Issue spiking* `cross_source_issue` - Cross source issue</summary>
+        /// <summary>* `session_replay` - Session replay* `llm_analytics` - LLM analytics* `github` - GitHub* `linear` - Linear* `jira` - Jira* `zendesk` - Zendesk* `conversations` - Conversations* `error_tracking` - Error tracking* `pganalyze` - pganalyze* `signals_scout` - Signals scout* `logs` - Logs* `health_checks` - Health checks* `endpoints` - Endpoints* `replay_vision` - Replay Vision* `analytics` - Product analytics* `freshdesk` - Freshdesk* `freshservice` - Freshservice* `front` - Front* `gorgias` - Gorgias* `kustomer` - Kustomer* `dixa` - Dixa* `plain` - Plain* `gitlab` - GitLab* `gitea` - Gitea* `shortcut` - Shortcut* `sentry` - Sentry* `rollbar` - Rollbar* `bugsnag` - Bugsnag* `honeybadger` - Honeybadger* `raygun` - Raygun* `snyk` - Snyk* `sonarqube` - SonarQube* `semgrep` - Semgrep* `rapid7_insightvm` - Rapid7 InsightVM* `featurebase` - Featurebase* `frill` - Frill* `aha` - Aha* `uservoice` - UserVoice* `productboard` - Productboard* `canny` - Canny* `asknicely` - AskNicely* `retently` - Retently* `appfigures` - Appfigures* `appfollow` - AppFollow* `judgeme_reviews` - Judge.me* `intercom` - Intercom* `hubspot` - HubSpot* `engineering_analytics` - Engineering analytics* `google_search_console` - Google Search Console</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalSourceConfigSourceProductEnum? SourceProduct { get; set; }
+        /// <summary>* `session_analysis_cluster` - Session analysis cluster* `evaluation_report` - Evaluation report* `issue` - Issue* `ticket` - Ticket* `issue_created` - Issue created* `issue_reopened` - Issue reopened* `issue_spiking` - Issue spiking* `cross_source_issue` - Cross source issue* `alert_state_change` - Alert state change* `health_issue` - Health issue* `endpoint_execution_failed` - Endpoint execution failed* `endpoint_breakdown_limit_exceeded` - Endpoint breakdown limit exceeded* `scanner_finding` - Scanner finding* `anomaly_investigation` - Anomaly investigation* `ci_flaky_check` - CI flaky check* `ci_broken_default_branch` - CI broken default branch* `ci_duration_regression` - CI duration regression</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalSourceConfigSourceTypeEnum? SourceType { get; set; }
         /// <summary>The status property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -67,11 +67,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalSourceConfig_config>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalSourceConfig_config.CreateFromDiscriminatorValue); } },
+                { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalSourceConfigConfig>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalSourceConfigConfig.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "source_product", n => { SourceProduct = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SourceProductEnum>(); } },
+                { "source_product", n => { SourceProduct = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalSourceConfigSourceProductEnum>(); } },
                 { "source_type", n => { SourceType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalSourceConfigSourceTypeEnum>(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
@@ -84,9 +84,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalSourceConfig_config>("config", Config);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalSourceConfigConfig>("config", Config);
             writer.WriteBoolValue("enabled", Enabled);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SourceProductEnum>("source_product", SourceProduct);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalSourceConfigSourceProductEnum>("source_product", SourceProduct);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalSourceConfigSourceTypeEnum>("source_type", SourceType);
             writer.WriteAdditionalData(AdditionalData);
         }

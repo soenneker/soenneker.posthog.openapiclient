@@ -17,18 +17,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Average session duration.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponse_avg_session_duration? AvgSessionDuration { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseAvgSessionDuration? AvgSessionDuration { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponse_avg_session_duration AvgSessionDuration { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseAvgSessionDuration AvgSessionDuration { get; set; }
 #endif
         /// <summary>Bounce rate (0–100).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponse_bounce_rate? BounceRate { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseBounceRate? BounceRate { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponse_bounce_rate BounceRate { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseBounceRate BounceRate { get; set; }
 #endif
         /// <summary>Link to the Web analytics dashboard for this project.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -49,18 +49,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Total pageviews.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponse_pageviews? Pageviews { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponsePageviews? Pageviews { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponse_pageviews Pageviews { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponsePageviews Pageviews { get; set; }
 #endif
         /// <summary>Total sessions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponse_sessions? Sessions { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseSessions? Sessions { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponse_sessions Sessions { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseSessions Sessions { get; set; }
 #endif
         /// <summary>Top 5 pages by unique visitors.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -81,10 +81,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Unique visitors.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponse_visitors? Visitors { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseVisitors? Visitors { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponse_visitors Visitors { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseVisitors Visitors { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponse"/> and sets the default values.
@@ -111,15 +111,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "avg_session_duration", n => { AvgSessionDuration = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponse_avg_session_duration>(global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponse_avg_session_duration.CreateFromDiscriminatorValue); } },
-                { "bounce_rate", n => { BounceRate = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponse_bounce_rate>(global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponse_bounce_rate.CreateFromDiscriminatorValue); } },
+                { "avg_session_duration", n => { AvgSessionDuration = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseAvgSessionDuration>(global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseAvgSessionDuration.CreateFromDiscriminatorValue); } },
+                { "bounce_rate", n => { BounceRate = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseBounceRate>(global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseBounceRate.CreateFromDiscriminatorValue); } },
                 { "dashboard_url", n => { DashboardUrl = n.GetStringValue(); } },
                 { "goals", n => { Goals = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.Goal>(global::Soenneker.PostHog.OpenApiClient.Models.Goal.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "pageviews", n => { Pageviews = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponse_pageviews>(global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponse_pageviews.CreateFromDiscriminatorValue); } },
-                { "sessions", n => { Sessions = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponse_sessions>(global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponse_sessions.CreateFromDiscriminatorValue); } },
+                { "pageviews", n => { Pageviews = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponsePageviews>(global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponsePageviews.CreateFromDiscriminatorValue); } },
+                { "sessions", n => { Sessions = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseSessions>(global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseSessions.CreateFromDiscriminatorValue); } },
                 { "top_pages", n => { TopPages = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TopPage>(global::Soenneker.PostHog.OpenApiClient.Models.TopPage.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "top_sources", n => { TopSources = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TopSource>(global::Soenneker.PostHog.OpenApiClient.Models.TopSource.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "visitors", n => { Visitors = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponse_visitors>(global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponse_visitors.CreateFromDiscriminatorValue); } },
+                { "visitors", n => { Visitors = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseVisitors>(global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseVisitors.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -129,15 +129,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponse_avg_session_duration>("avg_session_duration", AvgSessionDuration);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponse_bounce_rate>("bounce_rate", BounceRate);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseAvgSessionDuration>("avg_session_duration", AvgSessionDuration);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseBounceRate>("bounce_rate", BounceRate);
             writer.WriteStringValue("dashboard_url", DashboardUrl);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.Goal>("goals", Goals);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponse_pageviews>("pageviews", Pageviews);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponse_sessions>("sessions", Sessions);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponsePageviews>("pageviews", Pageviews);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseSessions>("sessions", Sessions);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TopPage>("top_pages", TopPages);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TopSource>("top_sources", TopSources);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponse_visitors>("visitors", Visitors);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseVisitors>("visitors", Visitors);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

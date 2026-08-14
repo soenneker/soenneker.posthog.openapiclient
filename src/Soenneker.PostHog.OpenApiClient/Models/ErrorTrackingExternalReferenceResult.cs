@@ -14,15 +14,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The config property</summary>
+        /// <summary>&quot;Provider-specific fields describing the external issue to create. Required keys depend on the integration kind: github -&gt; {repository, title, body}; gitlab -&gt; {title, body}; linear -&gt; {team_id, title, description}; jira -&gt; {project_key, title, description}. Examples: github {\&quot;repository\&quot;:\&quot;posthog\&quot;,\&quot;title\&quot;:\&quot;Checkout TypeError\&quot;,\&quot;body\&quot;:\&quot;Stack trace\&quot;}; linear {\&quot;team_id\&quot;:\&quot;team-id\&quot;,\&quot;title\&quot;:\&quot;Checkout TypeError\&quot;,\&quot;description\&quot;:\&quot;Stack trace\&quot;}; jira {\&quot;project_key\&quot;:\&quot;ENG\&quot;,\&quot;title\&quot;:\&quot;Checkout TypeError\&quot;,\&quot;description\&quot;:\&quot;Stack trace\&quot;}.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceResult_config? Config { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceResultConfigProperty? Config { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceResult_config Config { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceResultConfigProperty Config { get; set; }
 #endif
-        /// <summary>The external_url property</summary>
+        /// <summary>URL of the linked external issue in the provider&apos;s system.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ExternalUrl { get; private set; }
@@ -30,19 +30,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ExternalUrl { get; private set; }
 #endif
-        /// <summary>The id property</summary>
+        /// <summary>Unique ID of the external reference.</summary>
         public Guid? Id { get; private set; }
-        /// <summary>The integration property</summary>
+        /// <summary>The connected integration this reference was created through.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceResult_integration? Integration { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceResultIntegration? Integration { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceResult_integration Integration { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceResultIntegration Integration { get; private set; }
 #endif
-        /// <summary>The integration_id property</summary>
+        /// <summary>ID of the connected integration to create the external issue with. List the project&apos;s integrations to find the right ID and its kind (one of &apos;github&apos;, &apos;gitlab&apos;, &apos;linear&apos;, &apos;jira&apos;).</summary>
         public int? IntegrationId { get; set; }
-        /// <summary>The issue property</summary>
+        /// <summary>ID of the error tracking issue to link the reference to.</summary>
         public Guid? Issue { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceResult"/> and sets the default values.
@@ -69,10 +69,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceResult_config>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceResult_config.CreateFromDiscriminatorValue); } },
+                { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceResultConfigProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceResultConfigProperty.CreateFromDiscriminatorValue); } },
                 { "external_url", n => { ExternalUrl = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "integration", n => { Integration = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceResult_integration>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceResult_integration.CreateFromDiscriminatorValue); } },
+                { "integration", n => { Integration = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceResultIntegration>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceResultIntegration.CreateFromDiscriminatorValue); } },
                 { "integration_id", n => { IntegrationId = n.GetIntValue(); } },
                 { "issue", n => { Issue = n.GetGuidValue(); } },
             };
@@ -84,7 +84,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceResult_config>("config", Config);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceResultConfigProperty>("config", Config);
             writer.WriteIntValue("integration_id", IntegrationId);
             writer.WriteGuidValue("issue", Issue);
             writer.WriteAdditionalData(AdditionalData);

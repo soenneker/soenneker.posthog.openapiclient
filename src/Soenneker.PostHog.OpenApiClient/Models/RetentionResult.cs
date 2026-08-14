@@ -15,10 +15,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Optional breakdown value for retention cohorts</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionResult_breakdown_value? BreakdownValue { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionResultBreakdownValue? BreakdownValue { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionResult_breakdown_value BreakdownValue { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionResultBreakdownValue BreakdownValue { get; set; }
 #endif
         /// <summary>The date property</summary>
         public DateTimeOffset? Date { get; set; }
@@ -56,7 +56,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "breakdown_value", n => { BreakdownValue = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionResult_breakdown_value>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionResult_breakdown_value.CreateFromDiscriminatorValue); } },
+                { "breakdown_value", n => { BreakdownValue = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionResultBreakdownValue>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionResultBreakdownValue.CreateFromDiscriminatorValue); } },
                 { "date", n => { Date = n.GetDateTimeOffsetValue(); } },
                 { "label", n => { Label = n.GetStringValue(); } },
                 { "values", n => { Values = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RetentionValue>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionValue.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -69,7 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionResult_breakdown_value>("breakdown_value", BreakdownValue);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionResultBreakdownValue>("breakdown_value", BreakdownValue);
             writer.WriteDateTimeOffsetValue("date", Date);
             writer.WriteStringValue("label", Label);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RetentionValue>("values", Values);

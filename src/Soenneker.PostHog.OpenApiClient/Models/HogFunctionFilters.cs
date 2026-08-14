@@ -15,21 +15,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The actions property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_actions>? Actions { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersActionsItemProperty>? Actions { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_actions> Actions { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersActionsItemProperty> Actions { get; set; }
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The bytecode property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_bytecode? Bytecode { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_bytecode Bytecode { get; set; }
-#endif
         /// <summary>The bytecode_error property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -41,38 +33,36 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The data_warehouse property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_data_warehouse>? DataWarehouse { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersDataWarehouseItemProperty>? DataWarehouse { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_data_warehouse> DataWarehouse { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersDataWarehouseItemProperty> DataWarehouse { get; set; }
 #endif
         /// <summary>The events property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_events>? Events { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersEventsItemProperty>? Events { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_events> Events { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersEventsItemProperty> Events { get; set; }
 #endif
         /// <summary>The filter_test_accounts property</summary>
         public bool? FilterTestAccounts { get; set; }
         /// <summary>The properties property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_properties>? Properties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersPropertiesItemProperty>? Properties { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_properties> Properties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersPropertiesItemProperty> Properties { get; set; }
 #endif
-        /// <summary>* `events` - events* `person-updates` - person-updates* `data-warehouse-table` - data-warehouse-table</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersSourceEnum? Source { get; set; }
-        /// <summary>The transpiled property</summary>
+        /// <summary>The source property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_transpiled? Transpiled { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersSource? Source { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_transpiled Transpiled { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersSource Source { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters"/> and sets the default values.
@@ -99,15 +89,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "actions", n => { Actions = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_actions>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_actions.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "bytecode", n => { Bytecode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_bytecode>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_bytecode.CreateFromDiscriminatorValue); } },
+                { "actions", n => { Actions = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersActionsItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersActionsItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "bytecode_error", n => { BytecodeError = n.GetStringValue(); } },
-                { "data_warehouse", n => { DataWarehouse = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_data_warehouse>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_data_warehouse.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "events", n => { Events = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_events>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_events.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "data_warehouse", n => { DataWarehouse = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersDataWarehouseItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersDataWarehouseItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "events", n => { Events = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersEventsItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersEventsItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "filter_test_accounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
-                { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_properties>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_properties.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "source", n => { Source = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersSourceEnum>(); } },
-                { "transpiled", n => { Transpiled = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_transpiled>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_transpiled.CreateFromDiscriminatorValue); } },
+                { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersPropertiesItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersPropertiesItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersSource>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersSource.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -117,15 +105,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_actions>("actions", Actions);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_bytecode>("bytecode", Bytecode);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersActionsItemProperty>("actions", Actions);
             writer.WriteStringValue("bytecode_error", BytecodeError);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_data_warehouse>("data_warehouse", DataWarehouse);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_events>("events", Events);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersDataWarehouseItemProperty>("data_warehouse", DataWarehouse);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersEventsItemProperty>("events", Events);
             writer.WriteBoolValue("filter_test_accounts", FilterTestAccounts);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_properties>("properties", Properties);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersSourceEnum>("source", Source);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFilters_transpiled>("transpiled", Transpiled);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersPropertiesItemProperty>("properties", Properties);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersSource>("source", Source);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

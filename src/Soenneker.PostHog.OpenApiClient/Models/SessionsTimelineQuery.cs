@@ -15,68 +15,61 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>&quot;Only fetch sessions that started after this timestamp (default: &apos;-24h&apos;)&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQuery_after? After { get; set; }
+        public string? After { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQuery_after After { get; set; }
+        public string After { get; set; }
 #endif
         /// <summary>&quot;Only fetch sessions that started before this timestamp (default: &apos;+5s&apos;)&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQuery_before? Before { get; set; }
+        public string? Before { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQuery_before Before { get; set; }
+        public string Before { get; set; }
 #endif
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQuery_kind? Kind { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Kind { get; set; }
+#nullable restore
+#else
+        public string Kind { get; set; }
+#endif
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQuery_modifiers? Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers? Modifiers { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQuery_modifiers Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers Modifiers { get; set; }
 #endif
         /// <summary>Fetch sessions only for a given person</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQuery_personId? PersonId { get; set; }
+        public string? PersonId { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQuery_personId PersonId { get; set; }
+        public string PersonId { get; set; }
 #endif
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQuery_response? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQueryResponse? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQuery_response Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQueryResponse Response { get; set; }
 #endif
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQuery_tags? Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags? Tags { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQuery_tags Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags Tags { get; set; }
 #endif
         /// <summary>version of the node, used for schema migrations</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQuery_version? Version { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQuery_version Version { get; set; }
-#endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQuery"/> and sets the default values.
-        /// </summary>
-        public SessionsTimelineQuery()
-        {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQuery_kind.SessionsTimelineQuery;
-        }
+        public double? Version { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -95,14 +88,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "after", n => { After = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQuery_after>(global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQuery_after.CreateFromDiscriminatorValue); } },
-                { "before", n => { Before = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQuery_before>(global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQuery_before.CreateFromDiscriminatorValue); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQuery_kind>(); } },
-                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQuery_modifiers>(global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQuery_modifiers.CreateFromDiscriminatorValue); } },
-                { "personId", n => { PersonId = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQuery_personId>(global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQuery_personId.CreateFromDiscriminatorValue); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQuery_response>(global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQuery_response.CreateFromDiscriminatorValue); } },
-                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQuery_tags>(global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQuery_tags.CreateFromDiscriminatorValue); } },
-                { "version", n => { Version = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQuery_version>(global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQuery_version.CreateFromDiscriminatorValue); } },
+                { "after", n => { After = n.GetStringValue(); } },
+                { "before", n => { Before = n.GetStringValue(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
+                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
+                { "personId", n => { PersonId = n.GetStringValue(); } },
+                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQueryResponse.CreateFromDiscriminatorValue); } },
+                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
+                { "version", n => { Version = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -112,14 +105,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQuery_after>("after", After);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQuery_before>("before", Before);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQuery_kind>("kind", Kind);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQuery_modifiers>("modifiers", Modifiers);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQuery_personId>("personId", PersonId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQuery_response>("response", Response);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQuery_tags>("tags", Tags);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQuery_version>("version", Version);
+            writer.WriteStringValue("after", After);
+            writer.WriteStringValue("before", Before);
+            writer.WriteStringValue("kind", Kind);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
+            writer.WriteStringValue("personId", PersonId);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsTimelineQueryResponse>("response", Response);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
+            writer.WriteDoubleValue("version", Version);
         }
     }
 }

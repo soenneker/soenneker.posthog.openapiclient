@@ -35,10 +35,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The metadata property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SnapshotManifestItem_metadata? Metadata { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SnapshotManifestItemMetadataProperty? Metadata { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SnapshotManifestItem_metadata Metadata { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SnapshotManifestItemMetadataProperty Metadata { get; set; }
 #endif
         /// <summary>The width property</summary>
         public int? Width { get; set; }
@@ -70,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "content_hash", n => { ContentHash = n.GetStringValue(); } },
                 { "height", n => { Height = n.GetIntValue(); } },
                 { "identifier", n => { Identifier = n.GetStringValue(); } },
-                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SnapshotManifestItem_metadata>(global::Soenneker.PostHog.OpenApiClient.Models.SnapshotManifestItem_metadata.CreateFromDiscriminatorValue); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SnapshotManifestItemMetadataProperty>(global::Soenneker.PostHog.OpenApiClient.Models.SnapshotManifestItemMetadataProperty.CreateFromDiscriminatorValue); } },
                 { "width", n => { Width = n.GetIntValue(); } },
             };
         }
@@ -84,7 +84,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("content_hash", ContentHash);
             writer.WriteIntValue("height", Height);
             writer.WriteStringValue("identifier", Identifier);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SnapshotManifestItem_metadata>("metadata", Metadata);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SnapshotManifestItemMetadataProperty>("metadata", Metadata);
             writer.WriteIntValue("width", Width);
             writer.WriteAdditionalData(AdditionalData);
         }

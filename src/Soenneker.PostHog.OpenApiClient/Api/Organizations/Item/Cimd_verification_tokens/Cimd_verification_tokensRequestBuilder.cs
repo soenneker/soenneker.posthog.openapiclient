@@ -47,45 +47,45 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Cimd_verificati
         {
         }
         /// <summary>
-        /// Manage CIMD verification tokens for an organization.A partner embeds the plaintext token in their CIMD metadata document under`posthog_verification_token`. When PostHog fetches the metadata, matchingthe token links the partner app to this organization and grants a higherdefault rate limit for account provisioning.The plaintext value is only available on creation; we store a hash.
+        /// Manage CIMD verification tokens for an organization.A partner embeds the plaintext token in their CIMD metadata document as`verification_token` inside the `com.posthog` object (the legacy top-level`posthog_verification_token` field still works as a fallback). When PostHog fetchesthe metadata, matching the token links the partner app to this organization andgrants a higher default rate limit for account provisioning.Each token is scoped at creation to the one `cimd_url` it will be published at,and verifies nowhere else. Two organizations may name the same URL; only the onewhose token is actually served there verifies, so claiming a URL cannot be usedto block a partner from verifying theirs.The plaintext value is only available on creation; we store a hash.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedCIMDVerificationTokenList"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedCimdVerificationTokenList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedCIMDVerificationTokenList?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Cimd_verification_tokens.Cimd_verification_tokensRequestBuilder.Cimd_verification_tokensRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedCimdVerificationTokenList?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Cimd_verification_tokens.Cimd_verification_tokensRequestBuilder.Cimd_verification_tokensRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedCIMDVerificationTokenList> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Cimd_verification_tokens.Cimd_verification_tokensRequestBuilder.Cimd_verification_tokensRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedCimdVerificationTokenList> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Cimd_verification_tokens.Cimd_verification_tokensRequestBuilder.Cimd_verification_tokensRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedCIMDVerificationTokenList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedCIMDVerificationTokenList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedCimdVerificationTokenList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedCimdVerificationTokenList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Manage CIMD verification tokens for an organization.A partner embeds the plaintext token in their CIMD metadata document under`posthog_verification_token`. When PostHog fetches the metadata, matchingthe token links the partner app to this organization and grants a higherdefault rate limit for account provisioning.The plaintext value is only available on creation; we store a hash.
+        /// Manage CIMD verification tokens for an organization.A partner embeds the plaintext token in their CIMD metadata document as`verification_token` inside the `com.posthog` object (the legacy top-level`posthog_verification_token` field still works as a fallback). When PostHog fetchesthe metadata, matching the token links the partner app to this organization andgrants a higher default rate limit for account provisioning.Each token is scoped at creation to the one `cimd_url` it will be published at,and verifies nowhere else. Two organizations may name the same URL; only the onewhose token is actually served there verifies, so claiming a URL cannot be usedto block a partner from verifying theirs.The plaintext value is only available on creation; we store a hash.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CIMDVerificationTokenWithValue"/></returns>
-        /// <param name="body">The request body</param>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CimdVerificationTokenWithValue"/></returns>
+        /// <param name="body">&quot;Write shape for `create`. `cimd_url` is required and non-null: only tokensissued before URL binding existed are nullable, not new ones.&quot;</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.CIMDVerificationTokenWithValue?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.CIMDVerificationToken body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.CimdVerificationTokenWithValue?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.CimdVerificationTokenCreate body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.CIMDVerificationTokenWithValue> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.CIMDVerificationToken body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.CimdVerificationTokenWithValue> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.CimdVerificationTokenCreate body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.CIMDVerificationTokenWithValue>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.CIMDVerificationTokenWithValue.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.CimdVerificationTokenWithValue>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.CimdVerificationTokenWithValue.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Manage CIMD verification tokens for an organization.A partner embeds the plaintext token in their CIMD metadata document under`posthog_verification_token`. When PostHog fetches the metadata, matchingthe token links the partner app to this organization and grants a higherdefault rate limit for account provisioning.The plaintext value is only available on creation; we store a hash.
+        /// Manage CIMD verification tokens for an organization.A partner embeds the plaintext token in their CIMD metadata document as`verification_token` inside the `com.posthog` object (the legacy top-level`posthog_verification_token` field still works as a fallback). When PostHog fetchesthe metadata, matching the token links the partner app to this organization andgrants a higher default rate limit for account provisioning.Each token is scoped at creation to the one `cimd_url` it will be published at,and verifies nowhere else. Two organizations may name the same URL; only the onewhose token is actually served there verifies, so claiming a URL cannot be usedto block a partner from verifying theirs.The plaintext value is only available on creation; we store a hash.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -104,18 +104,18 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Cimd_verificati
             return requestInfo;
         }
         /// <summary>
-        /// Manage CIMD verification tokens for an organization.A partner embeds the plaintext token in their CIMD metadata document under`posthog_verification_token`. When PostHog fetches the metadata, matchingthe token links the partner app to this organization and grants a higherdefault rate limit for account provisioning.The plaintext value is only available on creation; we store a hash.
+        /// Manage CIMD verification tokens for an organization.A partner embeds the plaintext token in their CIMD metadata document as`verification_token` inside the `com.posthog` object (the legacy top-level`posthog_verification_token` field still works as a fallback). When PostHog fetchesthe metadata, matching the token links the partner app to this organization andgrants a higher default rate limit for account provisioning.Each token is scoped at creation to the one `cimd_url` it will be published at,and verifies nowhere else. Two organizations may name the same URL; only the onewhose token is actually served there verifies, so claiming a URL cannot be usedto block a partner from verifying theirs.The plaintext value is only available on creation; we store a hash.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">&quot;Write shape for `create`. `cimd_url` is required and non-null: only tokensissued before URL binding existed are nullable, not new ones.&quot;</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.CIMDVerificationToken body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.CimdVerificationTokenCreate body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.CIMDVerificationToken body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.CimdVerificationTokenCreate body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -135,7 +135,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Cimd_verificati
             return new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Cimd_verification_tokens.Cimd_verification_tokensRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Manage CIMD verification tokens for an organization.A partner embeds the plaintext token in their CIMD metadata document under`posthog_verification_token`. When PostHog fetches the metadata, matchingthe token links the partner app to this organization and grants a higherdefault rate limit for account provisioning.The plaintext value is only available on creation; we store a hash.
+        /// Manage CIMD verification tokens for an organization.A partner embeds the plaintext token in their CIMD metadata document as`verification_token` inside the `com.posthog` object (the legacy top-level`posthog_verification_token` field still works as a fallback). When PostHog fetchesthe metadata, matching the token links the partner app to this organization andgrants a higher default rate limit for account provisioning.Each token is scoped at creation to the one `cimd_url` it will be published at,and verifies nowhere else. Two organizations may name the same URL; only the onewhose token is actually served there verifies, so claiming a URL cannot be usedto block a partner from verifying theirs.The plaintext value is only available on creation; we store a hash.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Cimd_verification_tokensRequestBuilderGetQueryParameters 

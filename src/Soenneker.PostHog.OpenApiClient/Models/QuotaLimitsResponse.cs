@@ -14,13 +14,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Per-resource limit state keyed by `QuotaResource` value. Currently only `ai_credits` is reported; additional resources may be added.</summary>
+        /// <summary>&quot;Whether the team&apos;s organization pays for PostHog Desktop usage: billing grants the `posthog_code_usage` product feature only on the Desktop usage product&apos;s paid plan, synced into the organization&apos;s available features. Consumers gate paid-tier Desktop behavior on this; an org unknown to billing reads as not paying. Always false for deactivated organizations.&quot;</summary>
+        public bool? CodeUsageBillingActive { get; set; }
+        /// <summary>Per-resource limit state for every `QuotaResource` value, e.g. `ai_credits`, `posthog_code_credits`. Also carries the informational Desktop component resources (`posthog_code_token_credits`, `sandbox_compute_credits`, `sandbox_compute_cpu_millicore_seconds`, `sandbox_compute_memory_mib_seconds`) with usage in their native units, a null limit, and `limited` always false — they are never quota-enforced; only the combined `posthog_code_credits` is.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QuotaLimitsResponse_limited? Limited { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QuotaLimitsResponseLimitedProperty? Limited { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QuotaLimitsResponse_limited Limited { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QuotaLimitsResponseLimitedProperty Limited { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QuotaLimitsResponse"/> and sets the default values.
@@ -47,7 +49,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "limited", n => { Limited = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QuotaLimitsResponse_limited>(global::Soenneker.PostHog.OpenApiClient.Models.QuotaLimitsResponse_limited.CreateFromDiscriminatorValue); } },
+                { "code_usage_billing_active", n => { CodeUsageBillingActive = n.GetBoolValue(); } },
+                { "limited", n => { Limited = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QuotaLimitsResponseLimitedProperty>(global::Soenneker.PostHog.OpenApiClient.Models.QuotaLimitsResponseLimitedProperty.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -57,7 +60,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QuotaLimitsResponse_limited>("limited", Limited);
+            writer.WriteBoolValue("code_usage_billing_active", CodeUsageBillingActive);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QuotaLimitsResponseLimitedProperty>("limited", Limited);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

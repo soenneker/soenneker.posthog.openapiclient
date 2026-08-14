@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Llm_analytics.Me.Spend
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SpendRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/llm_analytics/@me/spend?product={product}{&date_from*,date_to*,limit*,refresh*}", pathParameters)
+        public SpendRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/llm_analytics/@me/spend?product={product}{&bucket_minutes*,date_from*,date_to*,limit*,refresh*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,20 +30,20 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Llm_analytics.Me.Spend
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SpendRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/llm_analytics/@me/spend?product={product}{&date_from*,date_to*,limit*,refresh*}", rawUrl)
+        public SpendRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/llm_analytics/@me/spend?product={product}{&bucket_minutes*,date_from*,date_to*,limit*,refresh*}", rawUrl)
         {
         }
         /// <summary>
-        /// &quot;Return a structured personal LLM spend analysis for the requesting user. Pass `date_from` / `date_to` (absolute like `2026-04-23` or relative like `-7d`) to bound the window — defaults to the last 30 days, max 90 days. The `product=&lt;ai_product&gt;` query param is required and scopes the tool / model / trace breakdowns to a single product; supported values: posthog_code. `by_product` is always returned for cross-product visibility. Use `refresh=true` to bypass the 5-minute response cache.&quot;
+        /// &quot;Return a structured personal LLM spend analysis for the requesting user. Pass `date_from` / `date_to` (absolute like `2026-04-23` or relative like `-7d`) to bound the window — defaults to the last 30 days, max 90 days. The `product=&lt;ai_product&gt;` query param is required and scopes the tool / model / day / trace breakdowns to a single product; supported values: posthog_code. `by_product` is always returned for cross-product visibility. `by_day` returns a day-ascending spend series for the scoped product. Pass `bucket_minutes` (5, 15, 30, or 60; the window may span at most 600 buckets) to additionally get `by_bucket`, a time-ascending series with per-bucket cost split into uncached input / output / cache read / cache creation components. Use `refresh=true` to bypass the 5-minute response cache.&quot;
         /// </summary>
         /// <returns>A List&lt;global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponse&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorResponse_1">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorResponse_1">When receiving a 401 status code</exception>
-        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorResponse_1">When receiving a 403 status code</exception>
-        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorResponse_1">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorResponse_1">When receiving a 429 status code</exception>
+        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorResponse2">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorResponse2">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorResponse2">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorResponse2">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorResponse2">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<List<global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponse>?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Llm_analytics.Me.Spend.SpendRequestBuilder.SpendRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -56,17 +56,17 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Llm_analytics.Me.Spend
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.PostHog.OpenApiClient.Models.ErrorResponse_1.CreateFromDiscriminatorValue },
-                { "401", global::Soenneker.PostHog.OpenApiClient.Models.ErrorResponse_1.CreateFromDiscriminatorValue },
-                { "403", global::Soenneker.PostHog.OpenApiClient.Models.ErrorResponse_1.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.PostHog.OpenApiClient.Models.ErrorResponse_1.CreateFromDiscriminatorValue },
-                { "429", global::Soenneker.PostHog.OpenApiClient.Models.ErrorResponse_1.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.PostHog.OpenApiClient.Models.ErrorResponse2.CreateFromDiscriminatorValue },
+                { "401", global::Soenneker.PostHog.OpenApiClient.Models.ErrorResponse2.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.PostHog.OpenApiClient.Models.ErrorResponse2.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.PostHog.OpenApiClient.Models.ErrorResponse2.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.PostHog.OpenApiClient.Models.ErrorResponse2.CreateFromDiscriminatorValue },
             };
             var collectionResult = await RequestAdapter.SendCollectionAsync<global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
             return collectionResult?.AsList();
         }
         /// <summary>
-        /// &quot;Return a structured personal LLM spend analysis for the requesting user. Pass `date_from` / `date_to` (absolute like `2026-04-23` or relative like `-7d`) to bound the window — defaults to the last 30 days, max 90 days. The `product=&lt;ai_product&gt;` query param is required and scopes the tool / model / trace breakdowns to a single product; supported values: posthog_code. `by_product` is always returned for cross-product visibility. Use `refresh=true` to bypass the 5-minute response cache.&quot;
+        /// &quot;Return a structured personal LLM spend analysis for the requesting user. Pass `date_from` / `date_to` (absolute like `2026-04-23` or relative like `-7d`) to bound the window — defaults to the last 30 days, max 90 days. The `product=&lt;ai_product&gt;` query param is required and scopes the tool / model / day / trace breakdowns to a single product; supported values: posthog_code. `by_product` is always returned for cross-product visibility. `by_day` returns a day-ascending spend series for the scoped product. Pass `bucket_minutes` (5, 15, 30, or 60; the window may span at most 600 buckets) to additionally get `by_bucket`, a time-ascending series with per-bucket cost split into uncached input / output / cache read / cache creation components. Use `refresh=true` to bypass the 5-minute response cache.&quot;
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -94,11 +94,14 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Llm_analytics.Me.Spend
             return new global::Soenneker.PostHog.OpenApiClient.Api.Llm_analytics.Me.Spend.SpendRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// &quot;Return a structured personal LLM spend analysis for the requesting user. Pass `date_from` / `date_to` (absolute like `2026-04-23` or relative like `-7d`) to bound the window — defaults to the last 30 days, max 90 days. The `product=&lt;ai_product&gt;` query param is required and scopes the tool / model / trace breakdowns to a single product; supported values: posthog_code. `by_product` is always returned for cross-product visibility. Use `refresh=true` to bypass the 5-minute response cache.&quot;
+        /// &quot;Return a structured personal LLM spend analysis for the requesting user. Pass `date_from` / `date_to` (absolute like `2026-04-23` or relative like `-7d`) to bound the window — defaults to the last 30 days, max 90 days. The `product=&lt;ai_product&gt;` query param is required and scopes the tool / model / day / trace breakdowns to a single product; supported values: posthog_code. `by_product` is always returned for cross-product visibility. `by_day` returns a day-ascending spend series for the scoped product. Pass `bucket_minutes` (5, 15, 30, or 60; the window may span at most 600 buckets) to additionally get `by_bucket`, a time-ascending series with per-bucket cost split into uncached input / output / cache read / cache creation components. Use `refresh=true` to bypass the 5-minute response cache.&quot;
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class SpendRequestBuilderGetQueryParameters 
         {
+            /// <summary>&quot;When set, additionally return a `by_bucket` breakdown: a time-ascending UTC cost series for the scoped product at this bucket size in minutes, with per-bucket cost split into uncached input / output / cache read / cache creation components plus the matching token sums. Supported bucket sizes: 5, 15, 30, 60. The window may span at most 600 buckets of the chosen size (e.g. 50 hours at 5-minute buckets).* `5` - 5* `15` - 15* `30` - 30* `60` - 60&quot;</summary>
+            [QueryParameter("bucket_minutes")]
+            public int? BucketMinutes { get; set; }
             /// <summary>Start of the spend window. Accepts absolute dates (`2026-04-23`) or relative strings (`-7d`, `-1m`, etc.) — same parser used elsewhere in PostHog. Defaults to `-30d`. The window between `date_from` and `date_to` cannot exceed 90 days.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

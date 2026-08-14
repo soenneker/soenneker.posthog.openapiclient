@@ -9,41 +9,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class DataWarehouseEventsModifier : IParsable
+    public partial class DataWarehouseEventsModifier : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>The distinct_id_field property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? DistinctIdField { get; set; }
-#nullable restore
-#else
-        public string DistinctIdField { get; set; }
-#endif
-        /// <summary>The id_field property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? IdField { get; set; }
-#nullable restore
-#else
-        public string IdField { get; set; }
-#endif
-        /// <summary>The table_name property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? TableName { get; set; }
-#nullable restore
-#else
-        public string TableName { get; set; }
-#endif
-        /// <summary>The timestamp_field property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? TimestampField { get; set; }
-#nullable restore
-#else
-        public string TimestampField { get; set; }
-#endif
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseEventsModifier"/> and sets the default values.
+        /// </summary>
+        public DataWarehouseEventsModifier()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -62,10 +39,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "distinct_id_field", n => { DistinctIdField = n.GetStringValue(); } },
-                { "id_field", n => { IdField = n.GetStringValue(); } },
-                { "table_name", n => { TableName = n.GetStringValue(); } },
-                { "timestamp_field", n => { TimestampField = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -75,10 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("distinct_id_field", DistinctIdField);
-            writer.WriteStringValue("id_field", IdField);
-            writer.WriteStringValue("table_name", TableName);
-            writer.WriteStringValue("timestamp_field", TimestampField);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

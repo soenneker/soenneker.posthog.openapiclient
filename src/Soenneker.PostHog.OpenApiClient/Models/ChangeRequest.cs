@@ -29,10 +29,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The applied_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequest_applied_by? AppliedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestAppliedBy? AppliedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequest_applied_by AppliedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestAppliedBy AppliedBy { get; private set; }
 #endif
         /// <summary>The apply_error property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -45,10 +45,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The approvals property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequest_approvals>? Approvals { get; private set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestApprovalsItemProperty>? Approvals { get; private set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequest_approvals> Approvals { get; private set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestApprovalsItemProperty> Approvals { get; private set; }
 #endif
         /// <summary>Check if current user can approve this change request.</summary>
         public bool? CanApprove { get; private set; }
@@ -59,41 +59,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequest_created_by? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestCreatedBy? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequest_created_by CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestCreatedBy CreatedBy { get; private set; }
 #endif
         /// <summary>The expires_at property</summary>
         public DateTimeOffset? ExpiresAt { get; private set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
-        /// <summary>The intent property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequest_intent? Intent { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequest_intent Intent { get; private set; }
-#endif
-        /// <summary>The intent_display property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequest_intent_display? IntentDisplay { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequest_intent_display IntentDisplay { get; private set; }
-#endif
         /// <summary>Check if current user is the requester.</summary>
         public bool? IsRequester { get; private set; }
-        /// <summary>The policy_snapshot property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequest_policy_snapshot? PolicySnapshot { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequest_policy_snapshot PolicySnapshot { get; private set; }
-#endif
         /// <summary>The resource_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -110,16 +86,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ResourceType { get; private set; }
 #endif
-        /// <summary>The result_data property</summary>
+        /// <summary>The state property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequest_result_data? ResultData { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestState? State { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequest_result_data ResultData { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestState State { get; private set; }
 #endif
-        /// <summary>* `pending` - Pending* `approved` - Approved (awaiting application)* `applied` - Applied* `rejected` - Rejected* `expired` - Expired* `failed` - Failed to apply</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestStateEnum? State { get; set; }
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>Get the current user&apos;s approval decision if they have voted.</summary>
@@ -132,16 +106,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The validated_at property</summary>
         public DateTimeOffset? ValidatedAt { get; private set; }
-        /// <summary>The validation_errors property</summary>
+        /// <summary>The validation_status property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequest_validation_errors? ValidationErrors { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestValidationStatus? ValidationStatus { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequest_validation_errors ValidationErrors { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestValidationStatus ValidationStatus { get; private set; }
 #endif
-        /// <summary>* `valid` - Valid* `invalid` - Invalid* `expired` - Expired* `stale` - Stale (resource changed)</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ValidationStatusEnum? ValidationStatus { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequest"/> and sets the default values.
         /// </summary>
@@ -170,28 +142,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "action_key", n => { ActionKey = n.GetStringValue(); } },
                 { "action_version", n => { ActionVersion = n.GetIntValue(); } },
                 { "applied_at", n => { AppliedAt = n.GetDateTimeOffsetValue(); } },
-                { "applied_by", n => { AppliedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequest_applied_by>(global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequest_applied_by.CreateFromDiscriminatorValue); } },
+                { "applied_by", n => { AppliedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestAppliedBy>(global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestAppliedBy.CreateFromDiscriminatorValue); } },
                 { "apply_error", n => { ApplyError = n.GetStringValue(); } },
-                { "approvals", n => { Approvals = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequest_approvals>(global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequest_approvals.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "approvals", n => { Approvals = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestApprovalsItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestApprovalsItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "can_approve", n => { CanApprove = n.GetBoolValue(); } },
                 { "can_cancel", n => { CanCancel = n.GetBoolValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequest_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequest_created_by.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestCreatedBy.CreateFromDiscriminatorValue); } },
                 { "expires_at", n => { ExpiresAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "intent", n => { Intent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequest_intent>(global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequest_intent.CreateFromDiscriminatorValue); } },
-                { "intent_display", n => { IntentDisplay = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequest_intent_display>(global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequest_intent_display.CreateFromDiscriminatorValue); } },
                 { "is_requester", n => { IsRequester = n.GetBoolValue(); } },
-                { "policy_snapshot", n => { PolicySnapshot = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequest_policy_snapshot>(global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequest_policy_snapshot.CreateFromDiscriminatorValue); } },
                 { "resource_id", n => { ResourceId = n.GetStringValue(); } },
                 { "resource_type", n => { ResourceType = n.GetStringValue(); } },
-                { "result_data", n => { ResultData = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequest_result_data>(global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequest_result_data.CreateFromDiscriminatorValue); } },
-                { "state", n => { State = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestStateEnum>(); } },
+                { "state", n => { State = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestState>(global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestState.CreateFromDiscriminatorValue); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "user_decision", n => { UserDecision = n.GetStringValue(); } },
                 { "validated_at", n => { ValidatedAt = n.GetDateTimeOffsetValue(); } },
-                { "validation_errors", n => { ValidationErrors = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequest_validation_errors>(global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequest_validation_errors.CreateFromDiscriminatorValue); } },
-                { "validation_status", n => { ValidationStatus = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ValidationStatusEnum>(); } },
+                { "validation_status", n => { ValidationStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestValidationStatus>(global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestValidationStatus.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -201,8 +168,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestStateEnum>("state", State);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ValidationStatusEnum>("validation_status", ValidationStatus);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

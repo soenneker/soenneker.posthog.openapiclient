@@ -13,13 +13,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning restore CS1591
     {
         /// <summary>The change_from_previous_pct property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UsageMetric_change_from_previous_pct? ChangeFromPreviousPct { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UsageMetric_change_from_previous_pct ChangeFromPreviousPct { get; set; }
-#endif
+        public double? ChangeFromPreviousPct { get; set; }
         /// <summary>The display property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricDisplay? Display { get; set; }
         /// <summary>The format property</summary>
@@ -47,18 +41,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Daily values over the current interval period. Only populated when display is &apos;sparkline&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UsageMetric_timeseries? Timeseries { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricTimeseries? Timeseries { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UsageMetric_timeseries Timeseries { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricTimeseries Timeseries { get; set; }
 #endif
         /// <summary>ISO date strings for sparkline tooltip labels. Only populated when display is &apos;sparkline&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UsageMetric_timeseries_labels? TimeseriesLabels { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricTimeseriesLabels? TimeseriesLabels { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UsageMetric_timeseries_labels TimeseriesLabels { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricTimeseriesLabels TimeseriesLabels { get; set; }
 #endif
         /// <summary>The value property</summary>
         public double? Value { get; set; }
@@ -80,15 +74,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "change_from_previous_pct", n => { ChangeFromPreviousPct = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UsageMetric_change_from_previous_pct>(global::Soenneker.PostHog.OpenApiClient.Models.UsageMetric_change_from_previous_pct.CreateFromDiscriminatorValue); } },
+                { "change_from_previous_pct", n => { ChangeFromPreviousPct = n.GetDoubleValue(); } },
                 { "display", n => { Display = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricDisplay>(); } },
                 { "format", n => { Format = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricFormat>(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "interval", n => { Interval = n.GetIntValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "previous", n => { Previous = n.GetDoubleValue(); } },
-                { "timeseries", n => { Timeseries = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UsageMetric_timeseries>(global::Soenneker.PostHog.OpenApiClient.Models.UsageMetric_timeseries.CreateFromDiscriminatorValue); } },
-                { "timeseries_labels", n => { TimeseriesLabels = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UsageMetric_timeseries_labels>(global::Soenneker.PostHog.OpenApiClient.Models.UsageMetric_timeseries_labels.CreateFromDiscriminatorValue); } },
+                { "timeseries", n => { Timeseries = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricTimeseries>(global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricTimeseries.CreateFromDiscriminatorValue); } },
+                { "timeseries_labels", n => { TimeseriesLabels = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricTimeseriesLabels>(global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricTimeseriesLabels.CreateFromDiscriminatorValue); } },
                 { "value", n => { Value = n.GetDoubleValue(); } },
             };
         }
@@ -99,15 +93,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UsageMetric_change_from_previous_pct>("change_from_previous_pct", ChangeFromPreviousPct);
+            writer.WriteDoubleValue("change_from_previous_pct", ChangeFromPreviousPct);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricDisplay>("display", Display);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricFormat>("format", Format);
             writer.WriteStringValue("id", Id);
             writer.WriteIntValue("interval", Interval);
             writer.WriteStringValue("name", Name);
             writer.WriteDoubleValue("previous", Previous);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UsageMetric_timeseries>("timeseries", Timeseries);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UsageMetric_timeseries_labels>("timeseries_labels", TimeseriesLabels);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricTimeseries>("timeseries", Timeseries);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricTimeseriesLabels>("timeseries_labels", TimeseriesLabels);
             writer.WriteDoubleValue("value", Value);
         }
     }

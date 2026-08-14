@@ -13,7 +13,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "dry_run")]
         #pragma warning disable CS1591
-        Dry_run,
+        DryRun,
         #pragma warning restore CS1591
         [EnumMember(Value = "live")]
         #pragma warning disable CS1591

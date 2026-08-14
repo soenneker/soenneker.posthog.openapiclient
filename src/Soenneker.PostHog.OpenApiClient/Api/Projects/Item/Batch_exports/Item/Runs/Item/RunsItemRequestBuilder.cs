@@ -15,7 +15,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Batch_exports.Item.Runs.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\batch_exports\{batch_export_-id}\runs\{id}
+    /// Builds and executes requests for operations under \api\projects\{projectId}\batch_exports\{batchExport-id}\runs\{id}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RunsItemRequestBuilder : BaseRequestBuilder
@@ -40,7 +40,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Batch_exports.Item.R
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RunsItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/batch_exports/{batch_export_%2Did}/runs/{id}", pathParameters)
+        public RunsItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/batch_exports/{batchExport%2Did}/runs/{id}", pathParameters)
         {
         }
         /// <summary>
@@ -48,7 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Batch_exports.Item.R
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RunsItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/batch_exports/{batch_export_%2Did}/runs/{id}", rawUrl)
+        public RunsItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/batch_exports/{batchExport%2Did}/runs/{id}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRun"/></returns>

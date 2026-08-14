@@ -10,11 +10,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "platform_access_required")]
         #pragma warning disable CS1591
-        Platform_access_required,
+        PlatformAccessRequired,
         #pragma warning restore CS1591
         [EnumMember(Value = "query_execution_failed")]
         #pragma warning disable CS1591
-        Query_execution_failed,
+        QueryExecutionFailed,
         #pragma warning restore CS1591
     }
 }

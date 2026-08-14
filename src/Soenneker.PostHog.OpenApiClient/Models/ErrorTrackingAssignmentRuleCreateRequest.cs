@@ -17,25 +17,28 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>User or role to assign matching issues to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRuleCreateRequest_assignee? Assignee { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRuleCreateRequestAssignee? Assignee { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRuleCreateRequest_assignee Assignee { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRuleCreateRequestAssignee Assignee { get; set; }
 #endif
         /// <summary>Property-group filters that define when this rule matches incoming error events.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRuleCreateRequest_filters? Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRuleCreateRequestFilters? Filters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRuleCreateRequest_filters Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRuleCreateRequestFilters Filters { get; set; }
 #endif
+        /// <summary>Evaluation priority among rules; lower is evaluated first and the first matching rule wins. Defaults to 0. Pass distinct ascending values when creating several rules at once to give them a deterministic order.</summary>
+        public int? OrderKey { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRuleCreateRequest"/> and sets the default values.
         /// </summary>
         public ErrorTrackingAssignmentRuleCreateRequest()
         {
             AdditionalData = new Dictionary<string, object>();
+            OrderKey = 0;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -55,8 +58,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "assignee", n => { Assignee = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRuleCreateRequest_assignee>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRuleCreateRequest_assignee.CreateFromDiscriminatorValue); } },
-                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRuleCreateRequest_filters>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRuleCreateRequest_filters.CreateFromDiscriminatorValue); } },
+                { "assignee", n => { Assignee = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRuleCreateRequestAssignee>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRuleCreateRequestAssignee.CreateFromDiscriminatorValue); } },
+                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRuleCreateRequestFilters>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRuleCreateRequestFilters.CreateFromDiscriminatorValue); } },
+                { "order_key", n => { OrderKey = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -66,8 +70,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRuleCreateRequest_assignee>("assignee", Assignee);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRuleCreateRequest_filters>("filters", Filters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRuleCreateRequestAssignee>("assignee", Assignee);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignmentRuleCreateRequestFilters>("filters", Filters);
+            writer.WriteIntValue("order_key", OrderKey);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -15,34 +15,34 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The bytecode property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7_bytecode? Bytecode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7Bytecode? Bytecode { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7_bytecode Bytecode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7Bytecode Bytecode { get; set; }
 #endif
         /// <summary>The coloredBytecode property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7_coloredBytecode? ColoredBytecode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7ColoredBytecode? ColoredBytecode { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7_coloredBytecode ColoredBytecode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7ColoredBytecode ColoredBytecode { get; set; }
 #endif
         /// <summary>The results property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7_results? Results { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7Results? Results { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7_results Results { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7Results Results { get; set; }
 #endif
         /// <summary>The stdout property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7_stdout? Stdout { get; set; }
+        public string? Stdout { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7_stdout Stdout { get; set; }
+        public string Stdout { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -62,10 +62,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "bytecode", n => { Bytecode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7_bytecode>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7_bytecode.CreateFromDiscriminatorValue); } },
-                { "coloredBytecode", n => { ColoredBytecode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7_coloredBytecode>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7_coloredBytecode.CreateFromDiscriminatorValue); } },
-                { "results", n => { Results = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7_results>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7_results.CreateFromDiscriminatorValue); } },
-                { "stdout", n => { Stdout = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7_stdout>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7_stdout.CreateFromDiscriminatorValue); } },
+                { "bytecode", n => { Bytecode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7Bytecode>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7Bytecode.CreateFromDiscriminatorValue); } },
+                { "coloredBytecode", n => { ColoredBytecode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7ColoredBytecode>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7ColoredBytecode.CreateFromDiscriminatorValue); } },
+                { "results", n => { Results = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7Results>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7Results.CreateFromDiscriminatorValue); } },
+                { "stdout", n => { Stdout = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -75,10 +75,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7_bytecode>("bytecode", Bytecode);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7_coloredBytecode>("coloredBytecode", ColoredBytecode);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7_results>("results", Results);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7_stdout>("stdout", Stdout);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7Bytecode>("bytecode", Bytecode);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7ColoredBytecode>("coloredBytecode", ColoredBytecode);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7Results>("results", Results);
+            writer.WriteStringValue("stdout", Stdout);
         }
     }
 }

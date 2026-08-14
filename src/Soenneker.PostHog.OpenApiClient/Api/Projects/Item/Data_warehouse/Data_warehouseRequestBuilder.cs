@@ -3,11 +3,16 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.CheckDatabaseName;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.CheckSchemaName;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.Completed_activity;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.Data_health_issues;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.Data_ops_dashboard;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.DeleteOrg;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.Deprovision;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.Job_stats;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.ManagedWarehouseDataStatus;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.ManagedWarehouseSourceSchemas;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.OnboardTeam;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.Property_values;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.Provision;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.ResetPassword;
@@ -21,7 +26,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\data_warehouse
+    /// Builds and executes requests for operations under \api\projects\{projectId}\data_warehouse
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Data_warehouseRequestBuilder : BaseRequestBuilder
@@ -30,6 +35,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.CheckDatabaseName.CheckDatabaseNameRequestBuilder CheckDatabaseName
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.CheckDatabaseName.CheckDatabaseNameRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The checkSchemaName property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.CheckSchemaName.CheckSchemaNameRequestBuilder CheckSchemaName
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.CheckSchemaName.CheckSchemaNameRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The completed_activity property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.Completed_activity.Completed_activityRequestBuilder Completed_activity
@@ -46,6 +56,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.Data_ops_dashboard.Data_ops_dashboardRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The deleteOrg property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.DeleteOrg.DeleteOrgRequestBuilder DeleteOrg
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.DeleteOrg.DeleteOrgRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The deprovision property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.Deprovision.DeprovisionRequestBuilder Deprovision
         {
@@ -55,6 +70,21 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.Job_stats.Job_statsRequestBuilder Job_stats
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.Job_stats.Job_statsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The managedWarehouseDataStatus property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.ManagedWarehouseDataStatus.ManagedWarehouseDataStatusRequestBuilder ManagedWarehouseDataStatus
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.ManagedWarehouseDataStatus.ManagedWarehouseDataStatusRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The managedWarehouseSourceSchemas property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.ManagedWarehouseSourceSchemas.ManagedWarehouseSourceSchemasRequestBuilder ManagedWarehouseSourceSchemas
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.ManagedWarehouseSourceSchemas.ManagedWarehouseSourceSchemasRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The onboardTeam property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.OnboardTeam.OnboardTeamRequestBuilder OnboardTeam
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.OnboardTeam.OnboardTeamRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The property_values property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.Property_values.Property_valuesRequestBuilder Property_values
@@ -91,7 +121,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Data_warehouseRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/data_warehouse", pathParameters)
+        public Data_warehouseRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_warehouse", pathParameters)
         {
         }
         /// <summary>
@@ -99,7 +129,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Data_warehouseRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/data_warehouse", rawUrl)
+        public Data_warehouseRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_warehouse", rawUrl)
         {
         }
     }

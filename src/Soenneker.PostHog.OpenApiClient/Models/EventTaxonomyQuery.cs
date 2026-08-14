@@ -13,94 +13,63 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning restore CS1591
     {
         /// <summary>The actionId property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_actionId? ActionId { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_actionId ActionId { get; set; }
-#endif
+        public int? ActionId { get; set; }
         /// <summary>The event property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_event? Event { get; set; }
+        public string? Event { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_event Event { get; set; }
+        public string Event { get; set; }
 #endif
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_kind? Kind { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Kind { get; set; }
+#nullable restore
+#else
+        public string Kind { get; set; }
+#endif
         /// <summary>Number of rows to return</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_limit? Limit { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_limit Limit { get; set; }
-#endif
+        public int? Limit { get; set; }
         /// <summary>The maxPropertyValues property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_maxPropertyValues? MaxPropertyValues { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_maxPropertyValues MaxPropertyValues { get; set; }
-#endif
+        public int? MaxPropertyValues { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_modifiers? Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers? Modifiers { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_modifiers Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers Modifiers { get; set; }
 #endif
         /// <summary>Number of rows to skip before returning rows</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_offset? Offset { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_offset Offset { get; set; }
-#endif
+        public int? Offset { get; set; }
         /// <summary>The properties property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_properties? Properties { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQueryProperties? Properties { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_properties Properties { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQueryProperties Properties { get; set; }
 #endif
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_response? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQueryResponse? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_response Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQueryResponse Response { get; set; }
 #endif
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_tags? Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags? Tags { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_tags Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags Tags { get; set; }
 #endif
         /// <summary>version of the node, used for schema migrations</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_version? Version { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_version Version { get; set; }
-#endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery"/> and sets the default values.
-        /// </summary>
-        public EventTaxonomyQuery()
-        {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_kind.EventTaxonomyQuery;
-        }
+        public double? Version { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -119,17 +88,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "actionId", n => { ActionId = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_actionId>(global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_actionId.CreateFromDiscriminatorValue); } },
-                { "event", n => { Event = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_event>(global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_event.CreateFromDiscriminatorValue); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_kind>(); } },
-                { "limit", n => { Limit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_limit>(global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_limit.CreateFromDiscriminatorValue); } },
-                { "maxPropertyValues", n => { MaxPropertyValues = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_maxPropertyValues>(global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_maxPropertyValues.CreateFromDiscriminatorValue); } },
-                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_modifiers>(global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_modifiers.CreateFromDiscriminatorValue); } },
-                { "offset", n => { Offset = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_offset>(global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_offset.CreateFromDiscriminatorValue); } },
-                { "properties", n => { Properties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_properties>(global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_properties.CreateFromDiscriminatorValue); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_response>(global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_response.CreateFromDiscriminatorValue); } },
-                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_tags>(global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_tags.CreateFromDiscriminatorValue); } },
-                { "version", n => { Version = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_version>(global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_version.CreateFromDiscriminatorValue); } },
+                { "actionId", n => { ActionId = n.GetIntValue(); } },
+                { "event", n => { Event = n.GetStringValue(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
+                { "limit", n => { Limit = n.GetIntValue(); } },
+                { "maxPropertyValues", n => { MaxPropertyValues = n.GetIntValue(); } },
+                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
+                { "offset", n => { Offset = n.GetIntValue(); } },
+                { "properties", n => { Properties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQueryProperties>(global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQueryProperties.CreateFromDiscriminatorValue); } },
+                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQueryResponse.CreateFromDiscriminatorValue); } },
+                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
+                { "version", n => { Version = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -139,17 +108,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_actionId>("actionId", ActionId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_event>("event", Event);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_kind>("kind", Kind);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_limit>("limit", Limit);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_maxPropertyValues>("maxPropertyValues", MaxPropertyValues);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_modifiers>("modifiers", Modifiers);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_offset>("offset", Offset);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_properties>("properties", Properties);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_response>("response", Response);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_tags>("tags", Tags);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQuery_version>("version", Version);
+            writer.WriteIntValue("actionId", ActionId);
+            writer.WriteStringValue("event", Event);
+            writer.WriteStringValue("kind", Kind);
+            writer.WriteIntValue("limit", Limit);
+            writer.WriteIntValue("maxPropertyValues", MaxPropertyValues);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
+            writer.WriteIntValue("offset", Offset);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQueryProperties>("properties", Properties);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventTaxonomyQueryResponse>("response", Response);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
+            writer.WriteDoubleValue("version", Version);
         }
     }
 }

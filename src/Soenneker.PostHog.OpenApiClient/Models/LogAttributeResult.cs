@@ -12,15 +12,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class LogAttributeResult : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>The matchedOn property</summary>
+        /// <summary>Whether this row matched the search by attribute key or by attribute value.</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.MatchedOn? MatchedOn { get; set; }
         /// <summary>Sample value that matched the search — only set when matchedOn is &apos;value&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogAttributeResult_matchedValue? MatchedValue { get; set; }
+        public string? MatchedValue { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogAttributeResult_matchedValue MatchedValue { get; set; }
+        public string MatchedValue { get; set; }
 #endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -57,7 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "matchedOn", n => { MatchedOn = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MatchedOn>(); } },
-                { "matchedValue", n => { MatchedValue = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogAttributeResult_matchedValue>(global::Soenneker.PostHog.OpenApiClient.Models.LogAttributeResult_matchedValue.CreateFromDiscriminatorValue); } },
+                { "matchedValue", n => { MatchedValue = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "propertyFilterType", n => { PropertyFilterType = n.GetStringValue(); } },
             };
@@ -70,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MatchedOn>("matchedOn", MatchedOn);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogAttributeResult_matchedValue>("matchedValue", MatchedValue);
+            writer.WriteStringValue("matchedValue", MatchedValue);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("propertyFilterType", PropertyFilterType);
         }

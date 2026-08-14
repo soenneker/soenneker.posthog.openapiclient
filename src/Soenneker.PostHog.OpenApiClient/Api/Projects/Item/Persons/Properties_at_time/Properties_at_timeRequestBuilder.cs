@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Properties_at_time
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\persons\properties_at_time
+    /// Builds and executes requests for operations under \api\projects\{projectId}\persons\properties_at_time
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Properties_at_timeRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Properties_a
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Properties_at_timeRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/persons/properties_at_time?timestamp={timestamp}{&distinct_id*,format*,include_set_once*,person_id*}", pathParameters)
+        public Properties_at_timeRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/persons/properties_at_time?timestamp={timestamp}{&distinct_id*,format*,include_set_once*,person_id*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Properties_a
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Properties_at_timeRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/persons/properties_at_time?timestamp={timestamp}{&distinct_id*,format*,include_set_once*,person_id*}", rawUrl)
+        public Properties_at_timeRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/persons/properties_at_time?timestamp={timestamp}{&distinct_id*,format*,include_set_once*,person_id*}", rawUrl)
         {
         }
         /// <summary>
@@ -39,9 +39,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Properties_a
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertiesAtTimeResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Properties_at_time.PersonPropertiesAtTimeResponse400Error">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Properties_at_time.PersonPropertiesAtTimeResponse404Error">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Properties_at_time.PersonPropertiesAtTimeResponse500Error">When receiving a 500 status code</exception>
+        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.PersonsPropertiesAtTimeRetrieve400ResponseSchema">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.PersonsPropertiesAtTimeRetrieve404ResponseSchema">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.PersonsPropertiesAtTimeRetrieve500ResponseSchema">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertiesAtTimeResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Properties_at_time.Properties_at_timeRequestBuilder.Properties_at_timeRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -54,9 +54,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Properties_a
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Properties_at_time.PersonPropertiesAtTimeResponse400Error.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Properties_at_time.PersonPropertiesAtTimeResponse404Error.CreateFromDiscriminatorValue },
-                { "500", global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Properties_at_time.PersonPropertiesAtTimeResponse500Error.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.PostHog.OpenApiClient.Models.PersonsPropertiesAtTimeRetrieve400ResponseSchema.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.PostHog.OpenApiClient.Models.PersonsPropertiesAtTimeRetrieve404ResponseSchema.CreateFromDiscriminatorValue },
+                { "500", global::Soenneker.PostHog.OpenApiClient.Models.PersonsPropertiesAtTimeRetrieve500ResponseSchema.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertiesAtTimeResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertiesAtTimeResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -105,7 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Properties_a
             public string DistinctId { get; set; }
 #endif
             [QueryParameter("format")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Properties_at_time.GetFormatQueryParameterType? Format { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.PersonsPropertiesAtTimeRetrieveFormatParameter? Format { get; set; }
             /// <summary>&quot;Whether to handle $set_once operations (default: false)&quot;</summary>
             [QueryParameter("include_set_once")]
             public bool? IncludeSetOnce { get; set; }

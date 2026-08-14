@@ -4,10 +4,18 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Check_cdc_prerequisites;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Connect_link;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Connections;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Database_schema;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Direct_connection_options;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Draft_custom_manifest;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Oauth_accounts;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Preview_resource;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Setup;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Source_prefix;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Store_credentials;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Stored_credentials;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Wizard;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -18,7 +26,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\external_data_sources
+    /// Builds and executes requests for operations under \api\projects\{projectId}\external_data_sources
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class External_data_sourcesRequestBuilder : BaseRequestBuilder
@@ -27,6 +35,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_source
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Check_cdc_prerequisites.Check_cdc_prerequisitesRequestBuilder Check_cdc_prerequisites
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Check_cdc_prerequisites.Check_cdc_prerequisitesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The connect_link property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Connect_link.Connect_linkRequestBuilder Connect_link
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Connect_link.Connect_linkRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The connections property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Connections.ConnectionsRequestBuilder Connections
@@ -38,10 +51,45 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_source
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Database_schema.Database_schemaRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The direct_connection_options property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Direct_connection_options.Direct_connection_optionsRequestBuilder Direct_connection_options
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Direct_connection_options.Direct_connection_optionsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The draft_custom_manifest property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Draft_custom_manifest.Draft_custom_manifestRequestBuilder Draft_custom_manifest
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Draft_custom_manifest.Draft_custom_manifestRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The oauth_accounts property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Oauth_accounts.Oauth_accountsRequestBuilder Oauth_accounts
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Oauth_accounts.Oauth_accountsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The preview_resource property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Preview_resource.Preview_resourceRequestBuilder Preview_resource
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Preview_resource.Preview_resourceRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The setup property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Setup.SetupRequestBuilder Setup
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Setup.SetupRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The source_prefix property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Source_prefix.Source_prefixRequestBuilder Source_prefix
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Source_prefix.Source_prefixRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The store_credentials property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Store_credentials.Store_credentialsRequestBuilder Store_credentials
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Store_credentials.Store_credentialsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The stored_credentials property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Stored_credentials.Stored_credentialsRequestBuilder Stored_credentials
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Stored_credentials.Stored_credentialsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The wizard property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Wizard.WizardRequestBuilder Wizard
@@ -65,7 +113,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_source
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public External_data_sourcesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/external_data_sources{?limit*,offset*,search*}", pathParameters)
+        public External_data_sourcesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/external_data_sources{?limit*,offset*,search*}", pathParameters)
         {
         }
         /// <summary>
@@ -73,7 +121,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_source
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public External_data_sourcesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/external_data_sources{?limit*,offset*,search*}", rawUrl)
+        public External_data_sourcesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/external_data_sources{?limit*,offset*,search*}", rawUrl)
         {
         }
         /// <summary>
@@ -97,22 +145,22 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_source
         /// <summary>
         /// Create, Read, Update and Delete External data Sources.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceCreateResponse"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceCreate body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceCreateResponse?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceCreate body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceCreate body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceCreateResponse> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceCreate body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceCreateResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceCreateResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Create, Read, Update and Delete External data Sources.

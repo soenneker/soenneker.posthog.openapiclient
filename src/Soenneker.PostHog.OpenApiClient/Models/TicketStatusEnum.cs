@@ -9,7 +9,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "new")]
         #pragma warning disable CS1591
-        New,
+        NewValue,
         #pragma warning restore CS1591
         [EnumMember(Value = "open")]
         #pragma warning disable CS1591
@@ -21,7 +21,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "on_hold")]
         #pragma warning disable CS1591
-        On_hold,
+        OnHold,
         #pragma warning restore CS1591
         [EnumMember(Value = "resolved")]
         #pragma warning disable CS1591

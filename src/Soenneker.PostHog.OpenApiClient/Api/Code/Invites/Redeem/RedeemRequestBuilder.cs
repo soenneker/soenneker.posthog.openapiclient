@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Code.Invites.Redeem
         {
         }
         /// <summary>
-        /// Redeem a PostHog Code invite code to enable access.
+        /// Redeem a PostHog Desktop invite code to enable access.
         /// </summary>
         /// <returns>A <see cref="Stream"/></returns>
         /// <param name="body">The request body</param>
@@ -59,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Code.Invites.Redeem
             return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Redeem a PostHog Code invite code to enable access.
+        /// Redeem a PostHog Desktop invite code to enable access.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

@@ -35,10 +35,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The detail property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ActivityLog_detail? Detail { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActivityLogDetail? Detail { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ActivityLog_detail Detail { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActivityLogDetail Detail { get; set; }
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
@@ -112,7 +112,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "activity", n => { Activity = n.GetStringValue(); } },
                 { "client", n => { Client = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "detail", n => { Detail = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActivityLog_detail>(global::Soenneker.PostHog.OpenApiClient.Models.ActivityLog_detail.CreateFromDiscriminatorValue); } },
+                { "detail", n => { Detail = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActivityLogDetail>(global::Soenneker.PostHog.OpenApiClient.Models.ActivityLogDetail.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "ip_address", n => { IpAddress = n.GetStringValue(); } },
                 { "is_system", n => { IsSystem = n.GetBoolValue(); } },
@@ -135,7 +135,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("activity", Activity);
             writer.WriteStringValue("client", Client);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActivityLog_detail>("detail", Detail);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActivityLogDetail>("detail", Detail);
             writer.WriteStringValue("ip_address", IpAddress);
             writer.WriteBoolValue("is_system", IsSystem);
             writer.WriteStringValue("item_id", ItemId);

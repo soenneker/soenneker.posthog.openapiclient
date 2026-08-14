@@ -23,10 +23,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Key { get; set; }
 #endif
-        /// <summary>* `exact` - exact* `is_not` - is_not* `gt` - gt* `lt` - lt* `gte` - gte* `lte` - lte</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.NumericPropertyFilterOperatorEnum? Operator { get; set; }
-        /// <summary>* `event` - event* `event_metadata` - event_metadata* `feature` - feature* `person` - person* `cohort` - cohort* `element` - element* `static-cohort` - static-cohort* `dynamic-cohort` - dynamic-cohort* `precalculated-cohort` - precalculated-cohort* `group` - group* `recording` - recording* `log_entry` - log_entry* `behavioral` - behavioral* `session` - session* `hogql` - hogql* `data_warehouse` - data_warehouse* `data_warehouse_person_property` - data_warehouse_person_property* `error_tracking_issue` - error_tracking_issue* `log` - log* `log_attribute` - log_attribute* `log_resource_attribute` - log_resource_attribute* `span` - span* `span_attribute` - span_attribute* `span_resource_attribute` - span_resource_attribute* `revenue_analytics` - revenue_analytics* `flag` - flag* `workflow_variable` - workflow_variable</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyFilterTypeEnum? Type { get; set; }
+        /// <summary>Numeric comparison operator.* `exact` - exact* `is_not` - is_not* `gt` - gt* `lt` - lt* `gte` - gte* `lte` - lte</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.NumericPropertyFilterOperator? Operator { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.NumericPropertyFilterOperator Operator { get; set; }
+#endif
+        /// <summary>Property type (event, person, session, etc.).* `event` - event* `event_metadata` - event_metadata* `feature` - feature* `person` - person* `person_metadata` - person_metadata* `cohort` - cohort* `element` - element* `static-cohort` - static-cohort* `dynamic-cohort` - dynamic-cohort* `precalculated-cohort` - precalculated-cohort* `group` - group* `recording` - recording* `log_entry` - log_entry* `behavioral` - behavioral* `session` - session* `hogql` - hogql* `data_warehouse` - data_warehouse* `data_warehouse_person_property` - data_warehouse_person_property* `error_tracking_issue` - error_tracking_issue* `log` - log* `log_attribute` - log_attribute* `log_resource_attribute` - log_resource_attribute* `metric_attribute` - metric_attribute* `span` - span* `span_attribute` - span_attribute* `span_resource_attribute` - span_resource_attribute* `revenue_analytics` - revenue_analytics* `account_custom_property` - account_custom_property* `flag` - flag* `workflow_variable` - workflow_variable</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.NumericPropertyFilterType? Type { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.NumericPropertyFilterType Type { get; set; }
+#endif
         /// <summary>Numeric value to compare against.</summary>
         public double? Value { get; set; }
         /// <summary>
@@ -55,8 +67,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "key", n => { Key = n.GetStringValue(); } },
-                { "operator", n => { Operator = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.NumericPropertyFilterOperatorEnum>(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyFilterTypeEnum>(); } },
+                { "operator", n => { Operator = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NumericPropertyFilterOperator>(global::Soenneker.PostHog.OpenApiClient.Models.NumericPropertyFilterOperator.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NumericPropertyFilterType>(global::Soenneker.PostHog.OpenApiClient.Models.NumericPropertyFilterType.CreateFromDiscriminatorValue); } },
                 { "value", n => { Value = n.GetDoubleValue(); } },
             };
         }
@@ -68,8 +80,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("key", Key);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.NumericPropertyFilterOperatorEnum>("operator", Operator);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyFilterTypeEnum>("type", Type);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NumericPropertyFilterOperator>("operator", Operator);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NumericPropertyFilterType>("type", Type);
             writer.WriteDoubleValue("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }

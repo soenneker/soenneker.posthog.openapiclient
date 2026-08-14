@@ -22,6 +22,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>API client that triggered the activity, from the x-posthog-client request header (e.g. &apos;mcp&apos;). Null for requests that did not send the header.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Client { get; private set; }
+#nullable restore
+#else
+        public string Client { get; private set; }
+#endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>The detail property</summary>
@@ -34,6 +42,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
+        /// <summary>Whether the activity was performed by the system rather than a user.</summary>
+        public bool? IsSystem { get; private set; }
         /// <summary>The item_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -53,11 +63,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The user property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ActivityLogEntry_user? User { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActivityLogEntryUser? User { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ActivityLogEntry_user User { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActivityLogEntryUser User { get; private set; }
 #endif
+        /// <summary>Whether the acting user was being impersonated by PostHog staff.</summary>
+        public bool? WasImpersonated { get; private set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActivityLogEntry"/> and sets the default values.
         /// </summary>
@@ -84,12 +96,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "activity", n => { Activity = n.GetStringValue(); } },
+                { "client", n => { Client = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "detail", n => { Detail = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Detail>(global::Soenneker.PostHog.OpenApiClient.Models.Detail.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
+                { "is_system", n => { IsSystem = n.GetBoolValue(); } },
                 { "item_id", n => { ItemId = n.GetStringValue(); } },
                 { "scope", n => { Scope = n.GetStringValue(); } },
-                { "user", n => { User = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActivityLogEntry_user>(global::Soenneker.PostHog.OpenApiClient.Models.ActivityLogEntry_user.CreateFromDiscriminatorValue); } },
+                { "user", n => { User = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActivityLogEntryUser>(global::Soenneker.PostHog.OpenApiClient.Models.ActivityLogEntryUser.CreateFromDiscriminatorValue); } },
+                { "was_impersonated", n => { WasImpersonated = n.GetBoolValue(); } },
             };
         }
         /// <summary>

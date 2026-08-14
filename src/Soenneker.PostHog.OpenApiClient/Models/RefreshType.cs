@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "async_except_on_cache_miss")]
         #pragma warning disable CS1591
-        Async_except_on_cache_miss,
+        AsyncExceptOnCacheMiss,
         #pragma warning restore CS1591
         [EnumMember(Value = "blocking")]
         #pragma warning disable CS1591
@@ -22,19 +22,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "force_async")]
         #pragma warning disable CS1591
-        Force_async,
+        ForceAsync,
         #pragma warning restore CS1591
         [EnumMember(Value = "force_blocking")]
         #pragma warning disable CS1591
-        Force_blocking,
+        ForceBlocking,
         #pragma warning restore CS1591
         [EnumMember(Value = "force_cache")]
         #pragma warning disable CS1591
-        Force_cache,
+        ForceCache,
         #pragma warning restore CS1591
         [EnumMember(Value = "lazy_async")]
         #pragma warning disable CS1591
-        Lazy_async,
+        LazyAsync,
         #pragma warning restore CS1591
     }
 }

@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `destination` - Destination* `site_destination` - Site Destination* `internal_destination` - Internal Destination* `source_webhook` - Source Webhook* `warehouse_source_webhook` - Warehouse Source Webhook* `site_app` - Site App* `transformation` - Transformation</summary>
+    /// <summary>* `destination` - Destination* `site_destination` - Site Destination* `internal_destination` - Internal Destination* `source_webhook` - Source Webhook* `warehouse_source_webhook` - Warehouse Source Webhook* `site_app` - Site App* `transformation` - Transformation* `transformation_log` - Transformation Log</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum HogFunctionTypeEnum
     {
@@ -13,27 +13,31 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "site_destination")]
         #pragma warning disable CS1591
-        Site_destination,
+        SiteDestination,
         #pragma warning restore CS1591
         [EnumMember(Value = "internal_destination")]
         #pragma warning disable CS1591
-        Internal_destination,
+        InternalDestination,
         #pragma warning restore CS1591
         [EnumMember(Value = "source_webhook")]
         #pragma warning disable CS1591
-        Source_webhook,
+        SourceWebhook,
         #pragma warning restore CS1591
         [EnumMember(Value = "warehouse_source_webhook")]
         #pragma warning disable CS1591
-        Warehouse_source_webhook,
+        WarehouseSourceWebhook,
         #pragma warning restore CS1591
         [EnumMember(Value = "site_app")]
         #pragma warning disable CS1591
-        Site_app,
+        SiteApp,
         #pragma warning restore CS1591
         [EnumMember(Value = "transformation")]
         #pragma warning disable CS1591
         Transformation,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "transformation_log")]
+        #pragma warning disable CS1591
+        TransformationLog,
         #pragma warning restore CS1591
     }
 }

@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "pending_release")]
         #pragma warning disable CS1591
-        Pending_release,
+        PendingRelease,
         #pragma warning restore CS1591
         [EnumMember(Value = "suppressed")]
         #pragma warning disable CS1591

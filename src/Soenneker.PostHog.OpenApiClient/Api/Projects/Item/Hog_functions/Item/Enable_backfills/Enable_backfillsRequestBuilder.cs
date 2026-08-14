@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions.Item.Enable_backfills
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\hog_functions\{id}\enable_backfills
+    /// Builds and executes requests for operations under \api\projects\{projectId}\hog_functions\{id}\enable_backfills
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Enable_backfillsRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions.Item.E
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Enable_backfillsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/hog_functions/{id}/enable_backfills", pathParameters)
+        public Enable_backfillsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/hog_functions/{id}/enable_backfills", pathParameters)
         {
         }
         /// <summary>
@@ -30,25 +30,25 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions.Item.E
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Enable_backfillsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/hog_functions/{id}/enable_backfills", rawUrl)
+        public Enable_backfillsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/hog_functions/{id}/enable_backfills", rawUrl)
         {
         }
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions.Item.Enable_backfills.Enable_backfillsPostResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionsEnableBackfillsCreate201Response"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions.Item.Enable_backfills.Enable_backfillsPostResponse?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.HogFunction body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionsEnableBackfillsCreate201Response?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.HogFunction body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions.Item.Enable_backfills.Enable_backfillsPostResponse> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.HogFunction body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionsEnableBackfillsCreate201Response> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.HogFunction body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions.Item.Enable_backfills.Enable_backfillsPostResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions.Item.Enable_backfills.Enable_backfillsPostResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionsEnableBackfillsCreate201Response>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionsEnableBackfillsCreate201Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

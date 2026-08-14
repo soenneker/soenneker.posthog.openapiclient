@@ -18,20 +18,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The columns property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTable_columns>? Columns { get; private set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTableColumnsItemProperty>? Columns { get; private set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTable_columns> Columns { get; private set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTableColumnsItemProperty> Columns { get; private set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTable_created_by? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTableCreatedBy? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTable_created_by CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTableCreatedBy CreatedBy { get; private set; }
 #endif
         /// <summary>The credential property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -46,21 +46,29 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The external_data_source property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTable_external_data_source? ExternalDataSource { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTableExternalDataSource? ExternalDataSource { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTable_external_data_source ExternalDataSource { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTableExternalDataSource ExternalDataSource { get; private set; }
 #endif
         /// <summary>The external_schema property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTable_external_schema? ExternalSchema { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTableExternalSchema? ExternalSchema { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTable_external_schema ExternalSchema { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTableExternalSchema ExternalSchema { get; private set; }
 #endif
         /// <summary>* `CSV` - CSV* `CSVWithNames` - CSVWithNames* `Parquet` - Parquet* `JSONEachRow` - JSON* `Delta` - Delta* `DeltaS3Wrapper` - DeltaS3Wrapper</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TableFormatEnum? Format { get; set; }
+        /// <summary>Dotted name the table is queried by in HogQL (e.g. `googleanalytics.devices` or `postgres.&lt;prefix&gt;.&lt;table&gt;`), as opposed to `name`, which is the underlying storage identifier.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? HogqlName { get; private set; }
+#nullable restore
+#else
+        public string HogqlName { get; private set; }
+#endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>The name property</summary>
@@ -74,10 +82,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The options property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTable_options? Options { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTableOptionsProperty? Options { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTable_options Options { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTableOptionsProperty Options { get; set; }
 #endif
         /// <summary>The url_pattern property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -120,17 +128,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "columns", n => { Columns = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTable_columns>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTable_columns.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "columns", n => { Columns = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTableColumnsItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTableColumnsItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTable_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTable_created_by.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTableCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTableCreatedBy.CreateFromDiscriminatorValue); } },
                 { "credential", n => { Credential = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Credential>(global::Soenneker.PostHog.OpenApiClient.Models.Credential.CreateFromDiscriminatorValue); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
-                { "external_data_source", n => { ExternalDataSource = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTable_external_data_source>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTable_external_data_source.CreateFromDiscriminatorValue); } },
-                { "external_schema", n => { ExternalSchema = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTable_external_schema>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTable_external_schema.CreateFromDiscriminatorValue); } },
+                { "external_data_source", n => { ExternalDataSource = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTableExternalDataSource>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTableExternalDataSource.CreateFromDiscriminatorValue); } },
+                { "external_schema", n => { ExternalSchema = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTableExternalSchema>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTableExternalSchema.CreateFromDiscriminatorValue); } },
                 { "format", n => { Format = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TableFormatEnum>(); } },
+                { "hogql_name", n => { HogqlName = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "options", n => { Options = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTable_options>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTable_options.CreateFromDiscriminatorValue); } },
+                { "options", n => { Options = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTableOptionsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTableOptionsProperty.CreateFromDiscriminatorValue); } },
                 { "url_pattern", n => { UrlPattern = n.GetStringValue(); } },
                 { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },
             };
@@ -146,7 +155,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("deleted", Deleted);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TableFormatEnum>("format", Format);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTable_options>("options", Options);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTableOptionsProperty>("options", Options);
             writer.WriteStringValue("url_pattern", UrlPattern);
             writer.WriteAdditionalData(AdditionalData);
         }

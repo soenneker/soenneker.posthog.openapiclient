@@ -15,15 +15,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Installation account metadata from GitHub.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubIntegrationItem_account? Account { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubIntegrationItemAccount? Account { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubIntegrationItem_account Account { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubIntegrationItemAccount Account { get; set; }
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When this integration row was created.</summary>
         public DateTimeOffset? CreatedAt { get; set; }
+        /// <summary>The connected user&apos;s own GitHub login (distinct from the installation account).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? GithubLogin { get; set; }
+#nullable restore
+#else
+        public string GithubLogin { get; set; }
+#endif
         /// <summary>PostHog UserIntegration row id.</summary>
         public Guid? Id { get; set; }
         /// <summary>GitHub App installation id.</summary>
@@ -77,8 +85,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "account", n => { Account = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubIntegrationItem_account>(global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubIntegrationItem_account.CreateFromDiscriminatorValue); } },
+                { "account", n => { Account = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubIntegrationItemAccount>(global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubIntegrationItemAccount.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
+                { "github_login", n => { GithubLogin = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "installation_id", n => { InstallationId = n.GetStringValue(); } },
                 { "kind", n => { Kind = n.GetStringValue(); } },
@@ -93,8 +102,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubIntegrationItem_account>("account", Account);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubIntegrationItemAccount>("account", Account);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
+            writer.WriteStringValue("github_login", GithubLogin);
             writer.WriteGuidValue("id", Id);
             writer.WriteStringValue("installation_id", InstallationId);
             writer.WriteStringValue("kind", Kind);

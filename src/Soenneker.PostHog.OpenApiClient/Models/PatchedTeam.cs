@@ -37,10 +37,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The autocapture_exceptions_errors_to_ignore property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_autocapture_exceptions_errors_to_ignore? AutocaptureExceptionsErrorsToIgnore { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamAutocaptureExceptionsErrorsToIgnore? AutocaptureExceptionsErrorsToIgnore { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_autocapture_exceptions_errors_to_ignore AutocaptureExceptionsErrorsToIgnore { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamAutocaptureExceptionsErrorsToIgnore AutocaptureExceptionsErrorsToIgnore { get; set; }
 #endif
         /// <summary>The autocapture_exceptions_opt_in property</summary>
         public bool? AutocaptureExceptionsOptIn { get; set; }
@@ -49,10 +49,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The autocapture_web_vitals_allowed_metrics property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_autocapture_web_vitals_allowed_metrics? AutocaptureWebVitalsAllowedMetrics { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamAutocaptureWebVitalsAllowedMetrics? AutocaptureWebVitalsAllowedMetrics { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_autocapture_web_vitals_allowed_metrics AutocaptureWebVitalsAllowedMetrics { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamAutocaptureWebVitalsAllowedMetrics AutocaptureWebVitalsAllowedMetrics { get; set; }
 #endif
         /// <summary>The autocapture_web_vitals_opt_in property</summary>
         public bool? AutocaptureWebVitalsOptIn { get; set; }
@@ -64,15 +64,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.AvailableSetupTaskIdsEnum?> AvailableSetupTaskIds { get; private set; }
 #endif
-        /// <summary>* `AED` - AED* `AFN` - AFN* `ALL` - ALL* `AMD` - AMD* `ANG` - ANG* `AOA` - AOA* `ARS` - ARS* `AUD` - AUD* `AWG` - AWG* `AZN` - AZN* `BAM` - BAM* `BBD` - BBD* `BDT` - BDT* `BGN` - BGN* `BHD` - BHD* `BIF` - BIF* `BMD` - BMD* `BND` - BND* `BOB` - BOB* `BRL` - BRL* `BSD` - BSD* `BTC` - BTC* `BTN` - BTN* `BWP` - BWP* `BYN` - BYN* `BZD` - BZD* `CAD` - CAD* `CDF` - CDF* `CHF` - CHF* `CLP` - CLP* `CNY` - CNY* `COP` - COP* `CRC` - CRC* `CVE` - CVE* `CZK` - CZK* `DJF` - DJF* `DKK` - DKK* `DOP` - DOP* `DZD` - DZD* `EGP` - EGP* `ERN` - ERN* `ETB` - ETB* `EUR` - EUR* `FJD` - FJD* `GBP` - GBP* `GEL` - GEL* `GHS` - GHS* `GIP` - GIP* `GMD` - GMD* `GNF` - GNF* `GTQ` - GTQ* `GYD` - GYD* `HKD` - HKD* `HNL` - HNL* `HRK` - HRK* `HTG` - HTG* `HUF` - HUF* `IDR` - IDR* `ILS` - ILS* `INR` - INR* `IQD` - IQD* `IRR` - IRR* `ISK` - ISK* `JMD` - JMD* `JOD` - JOD* `JPY` - JPY* `KES` - KES* `KGS` - KGS* `KHR` - KHR* `KMF` - KMF* `KRW` - KRW* `KWD` - KWD* `KYD` - KYD* `KZT` - KZT* `LAK` - LAK* `LBP` - LBP* `LKR` - LKR* `LRD` - LRD* `LTL` - LTL* `LVL` - LVL* `LSL` - LSL* `LYD` - LYD* `MAD` - MAD* `MDL` - MDL* `MGA` - MGA* `MKD` - MKD* `MMK` - MMK* `MNT` - MNT* `MOP` - MOP* `MRU` - MRU* `MTL` - MTL* `MUR` - MUR* `MVR` - MVR* `MWK` - MWK* `MXN` - MXN* `MYR` - MYR* `MZN` - MZN* `NAD` - NAD* `NGN` - NGN* `NIO` - NIO* `NOK` - NOK* `NPR` - NPR* `NZD` - NZD* `OMR` - OMR* `PAB` - PAB* `PEN` - PEN* `PGK` - PGK* `PHP` - PHP* `PKR` - PKR* `PLN` - PLN* `PYG` - PYG* `QAR` - QAR* `RON` - RON* `RSD` - RSD* `RUB` - RUB* `RWF` - RWF* `SAR` - SAR* `SBD` - SBD* `SCR` - SCR* `SDG` - SDG* `SEK` - SEK* `SGD` - SGD* `SRD` - SRD* `SSP` - SSP* `STN` - STN* `SYP` - SYP* `SZL` - SZL* `THB` - THB* `TJS` - TJS* `TMT` - TMT* `TND` - TND* `TOP` - TOP* `TRY` - TRY* `TTD` - TTD* `TWD` - TWD* `TZS` - TZS* `UAH` - UAH* `UGX` - UGX* `USD` - USD* `UYU` - UYU* `UZS` - UZS* `VES` - VES* `VND` - VND* `VUV` - VUV* `WST` - WST* `XAF` - XAF* `XCD` - XCD* `XOF` - XOF* `XPF` - XPF* `YER` - YER* `ZAR` - ZAR* `ZMW` - ZMW</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.BaseCurrencyEnum? BaseCurrency { get; set; }
+        /// <summary>The base_currency property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamBaseCurrency? BaseCurrency { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamBaseCurrency BaseCurrency { get; set; }
+#endif
         /// <summary>Whether this project serves B2B or B2C customers, used to optimize the UI layout.* `b2b` - B2B* `b2c` - B2C* `other` - Other</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam.PatchedTeam_business_model? BusinessModel { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamBusinessModel? BusinessModel { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam.PatchedTeam_business_model BusinessModel { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamBusinessModel BusinessModel { get; set; }
 #endif
         /// <summary>The capture_console_log_opt_in property</summary>
         public bool? CaptureConsoleLogOptIn { get; set; }
@@ -87,26 +93,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The conversations_settings property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_conversations_settings? ConversationsSettings { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamConversationsSettings? ConversationsSettings { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_conversations_settings ConversationsSettings { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamConversationsSettings ConversationsSettings { get; set; }
 #endif
         /// <summary>The cookieless_server_hash_mode property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_cookieless_server_hash_mode? CookielessServerHashMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamCookielessServerHashMode? CookielessServerHashMode { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_cookieless_server_hash_mode CookielessServerHashMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamCookielessServerHashMode CookielessServerHashMode { get; set; }
 #endif
         /// <summary>The correlation_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_correlation_config? CorrelationConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamCorrelationConfig? CorrelationConfig { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_correlation_config CorrelationConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamCorrelationConfig CorrelationConfig { get; set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
@@ -121,10 +127,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The data_attributes property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_data_attributes? DataAttributes { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamDataAttributes? DataAttributes { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_data_attributes DataAttributes { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamDataAttributes DataAttributes { get; set; }
 #endif
         /// <summary>The default_data_theme property</summary>
         public int? DefaultDataTheme { get; set; }
@@ -133,20 +139,30 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The default_modifiers property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_default_modifiers? DefaultModifiers { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamDefaultModifiersProperty? DefaultModifiers { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_default_modifiers DefaultModifiers { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamDefaultModifiersProperty DefaultModifiers { get; set; }
 #endif
         /// <summary>The effective_membership_level property</summary>
-        public int? EffectiveMembershipLevel { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamEffectiveMembershipLevel? EffectiveMembershipLevel { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamEffectiveMembershipLevel EffectiveMembershipLevel { get; private set; }
+#endif
+        /// <summary>The team&apos;s events data retention window in months (plan-derived, synced from billing). When retention enforcement is active for the team, queries do not return events older than this many months.</summary>
+        public int? EventRetentionMonths { get; private set; }
+        /// <summary>Whether events data retention is currently enforced for this team (cohort/flag gated).</summary>
+        public bool? EventsRetentionEnforced { get; private set; }
         /// <summary>The extra_settings property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_extra_settings? ExtraSettings { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamExtraSettings? ExtraSettings { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_extra_settings ExtraSettings { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamExtraSettings ExtraSettings { get; set; }
 #endif
         /// <summary>The feature_flag_confirmation_enabled property</summary>
         public bool? FeatureFlagConfirmationEnabled { get; set; }
@@ -163,18 +179,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The group_types property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_group_types>? GroupTypes { get; private set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamGroupTypesItemProperty>? GroupTypes { get; private set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_group_types> GroupTypes { get; private set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamGroupTypesItemProperty> GroupTypes { get; private set; }
 #endif
         /// <summary>The has_completed_onboarding_for property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_has_completed_onboarding_for? HasCompletedOnboardingFor { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamHasCompletedOnboardingFor? HasCompletedOnboardingFor { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_has_completed_onboarding_for HasCompletedOnboardingFor { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamHasCompletedOnboardingFor HasCompletedOnboardingFor { get; set; }
 #endif
         /// <summary>The has_group_types property</summary>
         public bool? HasGroupTypes { get; private set; }
@@ -209,18 +225,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The logs_settings property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_logs_settings? LogsSettings { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamLogsSettings? LogsSettings { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_logs_settings LogsSettings { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamLogsSettings LogsSettings { get; set; }
 #endif
         /// <summary>The managed_viewsets property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_managed_viewsets? ManagedViewsets { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamManagedViewsetsProperty? ManagedViewsets { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_managed_viewsets ManagedViewsets { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamManagedViewsetsProperty ManagedViewsets { get; set; }
 #endif
         /// <summary>The marketing_analytics_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -233,10 +249,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The modifiers property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_modifiers? Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamModifiers? Modifiers { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_modifiers Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamModifiers Modifiers { get; set; }
 #endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -249,20 +265,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The onboarding_tasks property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_onboarding_tasks? OnboardingTasks { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamOnboardingTasks? OnboardingTasks { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_onboarding_tasks OnboardingTasks { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamOnboardingTasks OnboardingTasks { get; set; }
 #endif
         /// <summary>The organization property</summary>
         public Guid? Organization { get; private set; }
         /// <summary>The path_cleaning_filters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_path_cleaning_filters? PathCleaningFilters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamPathCleaningFilters? PathCleaningFilters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_path_cleaning_filters PathCleaningFilters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamPathCleaningFilters PathCleaningFilters { get; set; }
 #endif
         /// <summary>The person_display_name_properties property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -281,10 +297,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The product_intents property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_product_intents>? ProductIntents { get; private set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamProductIntentsItemProperty>? ProductIntents { get; private set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_product_intents> ProductIntents { get; private set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamProductIntentsItemProperty> ProductIntents { get; private set; }
 #endif
         /// <summary>The project_id property</summary>
         public long? ProjectId { get; private set; }
@@ -335,28 +351,28 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The session_recording_linked_flag property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_session_recording_linked_flag? SessionRecordingLinkedFlag { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamSessionRecordingLinkedFlag? SessionRecordingLinkedFlag { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_session_recording_linked_flag SessionRecordingLinkedFlag { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamSessionRecordingLinkedFlag SessionRecordingLinkedFlag { get; set; }
 #endif
         /// <summary>The session_recording_masking_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_session_recording_masking_config? SessionRecordingMaskingConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamSessionRecordingMaskingConfig? SessionRecordingMaskingConfig { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_session_recording_masking_config SessionRecordingMaskingConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamSessionRecordingMaskingConfig SessionRecordingMaskingConfig { get; set; }
 #endif
         /// <summary>The session_recording_minimum_duration_milliseconds property</summary>
         public int? SessionRecordingMinimumDurationMilliseconds { get; set; }
         /// <summary>The session_recording_network_payload_capture_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_session_recording_network_payload_capture_config? SessionRecordingNetworkPayloadCaptureConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamSessionRecordingNetworkPayloadCaptureConfig? SessionRecordingNetworkPayloadCaptureConfig { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_session_recording_network_payload_capture_config SessionRecordingNetworkPayloadCaptureConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamSessionRecordingNetworkPayloadCaptureConfig SessionRecordingNetworkPayloadCaptureConfig { get; set; }
 #endif
         /// <summary>The session_recording_opt_in property</summary>
         public bool? SessionRecordingOptIn { get; set; }
@@ -373,10 +389,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>V2 trigger groups configuration for session recording. If present, takes precedence over legacy trigger fields.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_session_recording_trigger_groups? SessionRecordingTriggerGroups { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamSessionRecordingTriggerGroups? SessionRecordingTriggerGroups { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_session_recording_trigger_groups SessionRecordingTriggerGroups { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamSessionRecordingTriggerGroups SessionRecordingTriggerGroups { get; set; }
 #endif
         /// <summary>The session_recording_trigger_match_type_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -389,44 +405,44 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The session_recording_url_blocklist_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_session_recording_url_blocklist_config>? SessionRecordingUrlBlocklistConfig { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamSessionRecordingUrlBlocklistConfigItem>? SessionRecordingUrlBlocklistConfig { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_session_recording_url_blocklist_config> SessionRecordingUrlBlocklistConfig { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamSessionRecordingUrlBlocklistConfigItem> SessionRecordingUrlBlocklistConfig { get; set; }
 #endif
         /// <summary>The session_recording_url_trigger_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_session_recording_url_trigger_config>? SessionRecordingUrlTriggerConfig { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamSessionRecordingUrlTriggerConfigItem>? SessionRecordingUrlTriggerConfig { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_session_recording_url_trigger_config> SessionRecordingUrlTriggerConfig { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamSessionRecordingUrlTriggerConfigItem> SessionRecordingUrlTriggerConfig { get; set; }
 #endif
         /// <summary>The session_replay_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_session_replay_config? SessionReplayConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamSessionReplayConfig? SessionReplayConfig { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_session_replay_config SessionReplayConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamSessionReplayConfig SessionReplayConfig { get; set; }
 #endif
         /// <summary>The survey_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_survey_config? SurveyConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamSurveyConfig? SurveyConfig { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_survey_config SurveyConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamSurveyConfig SurveyConfig { get; set; }
 #endif
         /// <summary>The surveys_opt_in property</summary>
         public bool? SurveysOptIn { get; set; }
         /// <summary>&quot;Filters used to identify internal/test users. Each entry is a property filter.            Supported entry types and the exact shape each accepts:            # Person property — match (or exclude) by a person property            {\&quot;key\&quot;: \&quot;email\&quot;, \&quot;type\&quot;: \&quot;person\&quot;, \&quot;value\&quot;: \&quot;@example.com\&quot;, \&quot;operator\&quot;: \&quot;icontains\&quot;}            # Event property — match by an event property            {\&quot;key\&quot;: \&quot;$host\&quot;, \&quot;type\&quot;: \&quot;event\&quot;, \&quot;value\&quot;: \&quot;localhost\&quot;, \&quot;operator\&quot;: \&quot;icontains\&quot;}            # Cohort membership — match (or exclude) members of a cohort.            # Use operator \&quot;in\&quot; for inclusion and \&quot;not_in\&quot; for exclusion. Do NOT use a            # `negation` field here — `negation` is specific to cohort *definitions*            # (the inner sub-filters that build a cohort) and is rejected by the            # property-filter schema.            {\&quot;key\&quot;: \&quot;id\&quot;, \&quot;type\&quot;: \&quot;cohort\&quot;, \&quot;value\&quot;: 8814, \&quot;operator\&quot;: \&quot;not_in\&quot;}            Common operators: \&quot;exact\&quot;, \&quot;is_not\&quot;, \&quot;icontains\&quot;, \&quot;not_icontains\&quot;, \&quot;regex\&quot;,            \&quot;not_regex\&quot;, \&quot;gt\&quot;, \&quot;lt\&quot;, \&quot;gte\&quot;, \&quot;lte\&quot;, \&quot;is_set\&quot;, \&quot;is_not_set\&quot;, \&quot;in\&quot;, \&quot;not_in\&quot;.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_test_account_filters? TestAccountFilters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamTestAccountFilters? TestAccountFilters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_test_account_filters TestAccountFilters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamTestAccountFilters TestAccountFilters { get; set; }
 #endif
         /// <summary>The test_account_filters_default_checked property</summary>
         public bool? TestAccountFiltersDefaultChecked { get; set; }
@@ -449,10 +465,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The week_start_day property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_week_start_day? WeekStartDay { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamWeekStartDay? WeekStartDay { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_week_start_day WeekStartDay { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamWeekStartDay WeekStartDay { get; set; }
+#endif
+        /// <summary>The workflows_config property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamWorkflowsConfig? WorkflowsConfig { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamWorkflowsConfig WorkflowsConfig { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam"/> and sets the default values.
@@ -483,35 +507,37 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "anonymize_ips", n => { AnonymizeIps = n.GetBoolValue(); } },
                 { "api_token", n => { ApiToken = n.GetStringValue(); } },
                 { "app_urls", n => { AppUrls = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "autocapture_exceptions_errors_to_ignore", n => { AutocaptureExceptionsErrorsToIgnore = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_autocapture_exceptions_errors_to_ignore>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_autocapture_exceptions_errors_to_ignore.CreateFromDiscriminatorValue); } },
+                { "autocapture_exceptions_errors_to_ignore", n => { AutocaptureExceptionsErrorsToIgnore = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamAutocaptureExceptionsErrorsToIgnore>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamAutocaptureExceptionsErrorsToIgnore.CreateFromDiscriminatorValue); } },
                 { "autocapture_exceptions_opt_in", n => { AutocaptureExceptionsOptIn = n.GetBoolValue(); } },
                 { "autocapture_opt_out", n => { AutocaptureOptOut = n.GetBoolValue(); } },
-                { "autocapture_web_vitals_allowed_metrics", n => { AutocaptureWebVitalsAllowedMetrics = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_autocapture_web_vitals_allowed_metrics>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_autocapture_web_vitals_allowed_metrics.CreateFromDiscriminatorValue); } },
+                { "autocapture_web_vitals_allowed_metrics", n => { AutocaptureWebVitalsAllowedMetrics = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamAutocaptureWebVitalsAllowedMetrics>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamAutocaptureWebVitalsAllowedMetrics.CreateFromDiscriminatorValue); } },
                 { "autocapture_web_vitals_opt_in", n => { AutocaptureWebVitalsOptIn = n.GetBoolValue(); } },
                 { "available_setup_task_ids", n => { AvailableSetupTaskIds = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.AvailableSetupTaskIdsEnum>()?.AsList(); } },
-                { "base_currency", n => { BaseCurrency = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BaseCurrencyEnum>(); } },
-                { "business_model", n => { BusinessModel = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam.PatchedTeam_business_model>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam.PatchedTeam_business_model.CreateFromDiscriminatorValue); } },
+                { "base_currency", n => { BaseCurrency = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamBaseCurrency>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamBaseCurrency.CreateFromDiscriminatorValue); } },
+                { "business_model", n => { BusinessModel = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamBusinessModel>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamBusinessModel.CreateFromDiscriminatorValue); } },
                 { "capture_console_log_opt_in", n => { CaptureConsoleLogOptIn = n.GetBoolValue(); } },
                 { "capture_dead_clicks", n => { CaptureDeadClicks = n.GetBoolValue(); } },
                 { "capture_performance_opt_in", n => { CapturePerformanceOptIn = n.GetBoolValue(); } },
                 { "completed_snippet_onboarding", n => { CompletedSnippetOnboarding = n.GetBoolValue(); } },
                 { "conversations_enabled", n => { ConversationsEnabled = n.GetBoolValue(); } },
-                { "conversations_settings", n => { ConversationsSettings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_conversations_settings>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_conversations_settings.CreateFromDiscriminatorValue); } },
-                { "cookieless_server_hash_mode", n => { CookielessServerHashMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_cookieless_server_hash_mode>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_cookieless_server_hash_mode.CreateFromDiscriminatorValue); } },
-                { "correlation_config", n => { CorrelationConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_correlation_config>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_correlation_config.CreateFromDiscriminatorValue); } },
+                { "conversations_settings", n => { ConversationsSettings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamConversationsSettings>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamConversationsSettings.CreateFromDiscriminatorValue); } },
+                { "cookieless_server_hash_mode", n => { CookielessServerHashMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamCookielessServerHashMode>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamCookielessServerHashMode.CreateFromDiscriminatorValue); } },
+                { "correlation_config", n => { CorrelationConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamCorrelationConfig>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamCorrelationConfig.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "customer_analytics_config", n => { CustomerAnalyticsConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfig>(global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfig.CreateFromDiscriminatorValue); } },
-                { "data_attributes", n => { DataAttributes = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_data_attributes>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_data_attributes.CreateFromDiscriminatorValue); } },
+                { "data_attributes", n => { DataAttributes = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamDataAttributes>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamDataAttributes.CreateFromDiscriminatorValue); } },
                 { "default_data_theme", n => { DefaultDataTheme = n.GetIntValue(); } },
                 { "default_evaluation_contexts_enabled", n => { DefaultEvaluationContextsEnabled = n.GetBoolValue(); } },
-                { "default_modifiers", n => { DefaultModifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_default_modifiers>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_default_modifiers.CreateFromDiscriminatorValue); } },
-                { "effective_membership_level", n => { EffectiveMembershipLevel = n.GetIntValue(); } },
-                { "extra_settings", n => { ExtraSettings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_extra_settings>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_extra_settings.CreateFromDiscriminatorValue); } },
+                { "default_modifiers", n => { DefaultModifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamDefaultModifiersProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamDefaultModifiersProperty.CreateFromDiscriminatorValue); } },
+                { "effective_membership_level", n => { EffectiveMembershipLevel = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamEffectiveMembershipLevel>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamEffectiveMembershipLevel.CreateFromDiscriminatorValue); } },
+                { "event_retention_months", n => { EventRetentionMonths = n.GetIntValue(); } },
+                { "events_retention_enforced", n => { EventsRetentionEnforced = n.GetBoolValue(); } },
+                { "extra_settings", n => { ExtraSettings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamExtraSettings>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamExtraSettings.CreateFromDiscriminatorValue); } },
                 { "feature_flag_confirmation_enabled", n => { FeatureFlagConfirmationEnabled = n.GetBoolValue(); } },
                 { "feature_flag_confirmation_message", n => { FeatureFlagConfirmationMessage = n.GetStringValue(); } },
                 { "flags_persistence_default", n => { FlagsPersistenceDefault = n.GetBoolValue(); } },
-                { "group_types", n => { GroupTypes = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_group_types>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_group_types.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "has_completed_onboarding_for", n => { HasCompletedOnboardingFor = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_has_completed_onboarding_for>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_has_completed_onboarding_for.CreateFromDiscriminatorValue); } },
+                { "group_types", n => { GroupTypes = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamGroupTypesItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamGroupTypesItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "has_completed_onboarding_for", n => { HasCompletedOnboardingFor = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamHasCompletedOnboardingFor>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamHasCompletedOnboardingFor.CreateFromDiscriminatorValue); } },
                 { "has_group_types", n => { HasGroupTypes = n.GetBoolValue(); } },
                 { "heatmaps_opt_in", n => { HeatmapsOptIn = n.GetBoolValue(); } },
                 { "human_friendly_comparison_periods", n => { HumanFriendlyComparisonPeriods = n.GetBoolValue(); } },
@@ -521,19 +547,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "is_demo", n => { IsDemo = n.GetBoolValue(); } },
                 { "live_events_columns", n => { LiveEventsColumns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "live_events_token", n => { LiveEventsToken = n.GetStringValue(); } },
-                { "logs_settings", n => { LogsSettings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_logs_settings>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_logs_settings.CreateFromDiscriminatorValue); } },
-                { "managed_viewsets", n => { ManagedViewsets = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_managed_viewsets>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_managed_viewsets.CreateFromDiscriminatorValue); } },
+                { "logs_settings", n => { LogsSettings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamLogsSettings>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamLogsSettings.CreateFromDiscriminatorValue); } },
+                { "managed_viewsets", n => { ManagedViewsets = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamManagedViewsetsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamManagedViewsetsProperty.CreateFromDiscriminatorValue); } },
                 { "marketing_analytics_config", n => { MarketingAnalyticsConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfig>(global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfig.CreateFromDiscriminatorValue); } },
-                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_modifiers>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_modifiers.CreateFromDiscriminatorValue); } },
+                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamModifiers.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "onboarding_tasks", n => { OnboardingTasks = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_onboarding_tasks>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_onboarding_tasks.CreateFromDiscriminatorValue); } },
+                { "onboarding_tasks", n => { OnboardingTasks = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamOnboardingTasks>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamOnboardingTasks.CreateFromDiscriminatorValue); } },
                 { "organization", n => { Organization = n.GetGuidValue(); } },
-                { "path_cleaning_filters", n => { PathCleaningFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_path_cleaning_filters>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_path_cleaning_filters.CreateFromDiscriminatorValue); } },
+                { "path_cleaning_filters", n => { PathCleaningFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamPathCleaningFilters>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamPathCleaningFilters.CreateFromDiscriminatorValue); } },
                 { "person_display_name_properties", n => { PersonDisplayNameProperties = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "person_on_events_querying_enabled", n => { PersonOnEventsQueryingEnabled = n.GetBoolValue(); } },
                 { "primary_dashboard", n => { PrimaryDashboard = n.GetIntValue(); } },
                 { "proactive_tasks_enabled", n => { ProactiveTasksEnabled = n.GetBoolValue(); } },
-                { "product_intents", n => { ProductIntents = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_product_intents>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_product_intents.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "product_intents", n => { ProductIntents = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamProductIntentsItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamProductIntentsItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "project_id", n => { ProjectId = n.GetLongValue(); } },
                 { "receive_org_level_activity_logs", n => { ReceiveOrgLevelActivityLogs = n.GetBoolValue(); } },
                 { "recording_domains", n => { RecordingDomains = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -542,28 +568,29 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "secret_api_token", n => { SecretApiToken = n.GetStringValue(); } },
                 { "secret_api_token_backup", n => { SecretApiTokenBackup = n.GetStringValue(); } },
                 { "session_recording_event_trigger_config", n => { SessionRecordingEventTriggerConfig = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "session_recording_linked_flag", n => { SessionRecordingLinkedFlag = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_session_recording_linked_flag>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_session_recording_linked_flag.CreateFromDiscriminatorValue); } },
-                { "session_recording_masking_config", n => { SessionRecordingMaskingConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_session_recording_masking_config>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_session_recording_masking_config.CreateFromDiscriminatorValue); } },
+                { "session_recording_linked_flag", n => { SessionRecordingLinkedFlag = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamSessionRecordingLinkedFlag>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamSessionRecordingLinkedFlag.CreateFromDiscriminatorValue); } },
+                { "session_recording_masking_config", n => { SessionRecordingMaskingConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamSessionRecordingMaskingConfig>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamSessionRecordingMaskingConfig.CreateFromDiscriminatorValue); } },
                 { "session_recording_minimum_duration_milliseconds", n => { SessionRecordingMinimumDurationMilliseconds = n.GetIntValue(); } },
-                { "session_recording_network_payload_capture_config", n => { SessionRecordingNetworkPayloadCaptureConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_session_recording_network_payload_capture_config>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_session_recording_network_payload_capture_config.CreateFromDiscriminatorValue); } },
+                { "session_recording_network_payload_capture_config", n => { SessionRecordingNetworkPayloadCaptureConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamSessionRecordingNetworkPayloadCaptureConfig>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamSessionRecordingNetworkPayloadCaptureConfig.CreateFromDiscriminatorValue); } },
                 { "session_recording_opt_in", n => { SessionRecordingOptIn = n.GetBoolValue(); } },
                 { "session_recording_retention_period", n => { SessionRecordingRetentionPeriod = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingRetentionPeriodEnum>(); } },
                 { "session_recording_sample_rate", n => { SessionRecordingSampleRate = n.GetStringValue(); } },
-                { "session_recording_trigger_groups", n => { SessionRecordingTriggerGroups = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_session_recording_trigger_groups>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_session_recording_trigger_groups.CreateFromDiscriminatorValue); } },
+                { "session_recording_trigger_groups", n => { SessionRecordingTriggerGroups = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamSessionRecordingTriggerGroups>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamSessionRecordingTriggerGroups.CreateFromDiscriminatorValue); } },
                 { "session_recording_trigger_match_type_config", n => { SessionRecordingTriggerMatchTypeConfig = n.GetStringValue(); } },
-                { "session_recording_url_blocklist_config", n => { SessionRecordingUrlBlocklistConfig = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_session_recording_url_blocklist_config>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_session_recording_url_blocklist_config.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "session_recording_url_trigger_config", n => { SessionRecordingUrlTriggerConfig = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_session_recording_url_trigger_config>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_session_recording_url_trigger_config.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "session_replay_config", n => { SessionReplayConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_session_replay_config>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_session_replay_config.CreateFromDiscriminatorValue); } },
-                { "survey_config", n => { SurveyConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_survey_config>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_survey_config.CreateFromDiscriminatorValue); } },
+                { "session_recording_url_blocklist_config", n => { SessionRecordingUrlBlocklistConfig = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamSessionRecordingUrlBlocklistConfigItem>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamSessionRecordingUrlBlocklistConfigItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "session_recording_url_trigger_config", n => { SessionRecordingUrlTriggerConfig = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamSessionRecordingUrlTriggerConfigItem>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamSessionRecordingUrlTriggerConfigItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "session_replay_config", n => { SessionReplayConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamSessionReplayConfig>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamSessionReplayConfig.CreateFromDiscriminatorValue); } },
+                { "survey_config", n => { SurveyConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamSurveyConfig>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamSurveyConfig.CreateFromDiscriminatorValue); } },
                 { "surveys_opt_in", n => { SurveysOptIn = n.GetBoolValue(); } },
-                { "test_account_filters", n => { TestAccountFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_test_account_filters>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_test_account_filters.CreateFromDiscriminatorValue); } },
+                { "test_account_filters", n => { TestAccountFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamTestAccountFilters>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamTestAccountFilters.CreateFromDiscriminatorValue); } },
                 { "test_account_filters_default_checked", n => { TestAccountFiltersDefaultChecked = n.GetBoolValue(); } },
                 { "timezone", n => { Timezone = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TimezoneEnum>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },
                 { "uuid", n => { Uuid = n.GetGuidValue(); } },
                 { "web_analytics_pre_aggregated_tables_enabled", n => { WebAnalyticsPreAggregatedTablesEnabled = n.GetBoolValue(); } },
-                { "week_start_day", n => { WeekStartDay = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_week_start_day>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_week_start_day.CreateFromDiscriminatorValue); } },
+                { "week_start_day", n => { WeekStartDay = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamWeekStartDay>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamWeekStartDay.CreateFromDiscriminatorValue); } },
+                { "workflows_config", n => { WorkflowsConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamWorkflowsConfig>(global::Soenneker.PostHog.OpenApiClient.Models.TeamWorkflowsConfig.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -576,43 +603,43 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("access_control", AccessControl);
             writer.WriteBoolValue("anonymize_ips", AnonymizeIps);
             writer.WriteCollectionOfPrimitiveValues<string>("app_urls", AppUrls);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_autocapture_exceptions_errors_to_ignore>("autocapture_exceptions_errors_to_ignore", AutocaptureExceptionsErrorsToIgnore);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamAutocaptureExceptionsErrorsToIgnore>("autocapture_exceptions_errors_to_ignore", AutocaptureExceptionsErrorsToIgnore);
             writer.WriteBoolValue("autocapture_exceptions_opt_in", AutocaptureExceptionsOptIn);
             writer.WriteBoolValue("autocapture_opt_out", AutocaptureOptOut);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_autocapture_web_vitals_allowed_metrics>("autocapture_web_vitals_allowed_metrics", AutocaptureWebVitalsAllowedMetrics);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamAutocaptureWebVitalsAllowedMetrics>("autocapture_web_vitals_allowed_metrics", AutocaptureWebVitalsAllowedMetrics);
             writer.WriteBoolValue("autocapture_web_vitals_opt_in", AutocaptureWebVitalsOptIn);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BaseCurrencyEnum>("base_currency", BaseCurrency);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam.PatchedTeam_business_model>("business_model", BusinessModel);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamBaseCurrency>("base_currency", BaseCurrency);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamBusinessModel>("business_model", BusinessModel);
             writer.WriteBoolValue("capture_console_log_opt_in", CaptureConsoleLogOptIn);
             writer.WriteBoolValue("capture_dead_clicks", CaptureDeadClicks);
             writer.WriteBoolValue("capture_performance_opt_in", CapturePerformanceOptIn);
             writer.WriteBoolValue("completed_snippet_onboarding", CompletedSnippetOnboarding);
             writer.WriteBoolValue("conversations_enabled", ConversationsEnabled);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_conversations_settings>("conversations_settings", ConversationsSettings);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_cookieless_server_hash_mode>("cookieless_server_hash_mode", CookielessServerHashMode);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_correlation_config>("correlation_config", CorrelationConfig);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamConversationsSettings>("conversations_settings", ConversationsSettings);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamCookielessServerHashMode>("cookieless_server_hash_mode", CookielessServerHashMode);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamCorrelationConfig>("correlation_config", CorrelationConfig);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfig>("customer_analytics_config", CustomerAnalyticsConfig);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_data_attributes>("data_attributes", DataAttributes);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamDataAttributes>("data_attributes", DataAttributes);
             writer.WriteIntValue("default_data_theme", DefaultDataTheme);
             writer.WriteBoolValue("default_evaluation_contexts_enabled", DefaultEvaluationContextsEnabled);
-            writer.WriteIntValue("effective_membership_level", EffectiveMembershipLevel);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_extra_settings>("extra_settings", ExtraSettings);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamDefaultModifiersProperty>("default_modifiers", DefaultModifiers);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamExtraSettings>("extra_settings", ExtraSettings);
             writer.WriteBoolValue("feature_flag_confirmation_enabled", FeatureFlagConfirmationEnabled);
             writer.WriteStringValue("feature_flag_confirmation_message", FeatureFlagConfirmationMessage);
             writer.WriteBoolValue("flags_persistence_default", FlagsPersistenceDefault);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_has_completed_onboarding_for>("has_completed_onboarding_for", HasCompletedOnboardingFor);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamHasCompletedOnboardingFor>("has_completed_onboarding_for", HasCompletedOnboardingFor);
             writer.WriteBoolValue("heatmaps_opt_in", HeatmapsOptIn);
             writer.WriteBoolValue("human_friendly_comparison_periods", HumanFriendlyComparisonPeriods);
             writer.WriteBoolValue("inject_web_apps", InjectWebApps);
             writer.WriteBoolValue("is_demo", IsDemo);
             writer.WriteCollectionOfPrimitiveValues<string>("live_events_columns", LiveEventsColumns);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_logs_settings>("logs_settings", LogsSettings);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_managed_viewsets>("managed_viewsets", ManagedViewsets);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamLogsSettings>("logs_settings", LogsSettings);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamManagedViewsetsProperty>("managed_viewsets", ManagedViewsets);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfig>("marketing_analytics_config", MarketingAnalyticsConfig);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_modifiers>("modifiers", Modifiers);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamModifiers>("modifiers", Modifiers);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_onboarding_tasks>("onboarding_tasks", OnboardingTasks);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_path_cleaning_filters>("path_cleaning_filters", PathCleaningFilters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamOnboardingTasks>("onboarding_tasks", OnboardingTasks);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamPathCleaningFilters>("path_cleaning_filters", PathCleaningFilters);
             writer.WriteCollectionOfPrimitiveValues<string>("person_display_name_properties", PersonDisplayNameProperties);
             writer.WriteIntValue("primary_dashboard", PrimaryDashboard);
             writer.WriteBoolValue("proactive_tasks_enabled", ProactiveTasksEnabled);
@@ -621,121 +648,27 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("require_evaluation_contexts", RequireEvaluationContexts);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamRevenueAnalyticsConfig>("revenue_analytics_config", RevenueAnalyticsConfig);
             writer.WriteCollectionOfPrimitiveValues<string>("session_recording_event_trigger_config", SessionRecordingEventTriggerConfig);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_session_recording_linked_flag>("session_recording_linked_flag", SessionRecordingLinkedFlag);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_session_recording_masking_config>("session_recording_masking_config", SessionRecordingMaskingConfig);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamSessionRecordingLinkedFlag>("session_recording_linked_flag", SessionRecordingLinkedFlag);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamSessionRecordingMaskingConfig>("session_recording_masking_config", SessionRecordingMaskingConfig);
             writer.WriteIntValue("session_recording_minimum_duration_milliseconds", SessionRecordingMinimumDurationMilliseconds);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_session_recording_network_payload_capture_config>("session_recording_network_payload_capture_config", SessionRecordingNetworkPayloadCaptureConfig);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamSessionRecordingNetworkPayloadCaptureConfig>("session_recording_network_payload_capture_config", SessionRecordingNetworkPayloadCaptureConfig);
             writer.WriteBoolValue("session_recording_opt_in", SessionRecordingOptIn);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingRetentionPeriodEnum>("session_recording_retention_period", SessionRecordingRetentionPeriod);
             writer.WriteStringValue("session_recording_sample_rate", SessionRecordingSampleRate);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_session_recording_trigger_groups>("session_recording_trigger_groups", SessionRecordingTriggerGroups);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamSessionRecordingTriggerGroups>("session_recording_trigger_groups", SessionRecordingTriggerGroups);
             writer.WriteStringValue("session_recording_trigger_match_type_config", SessionRecordingTriggerMatchTypeConfig);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_session_recording_url_blocklist_config>("session_recording_url_blocklist_config", SessionRecordingUrlBlocklistConfig);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_session_recording_url_trigger_config>("session_recording_url_trigger_config", SessionRecordingUrlTriggerConfig);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_session_replay_config>("session_replay_config", SessionReplayConfig);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_survey_config>("survey_config", SurveyConfig);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamSessionRecordingUrlBlocklistConfigItem>("session_recording_url_blocklist_config", SessionRecordingUrlBlocklistConfig);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamSessionRecordingUrlTriggerConfigItem>("session_recording_url_trigger_config", SessionRecordingUrlTriggerConfig);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamSessionReplayConfig>("session_replay_config", SessionReplayConfig);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamSurveyConfig>("survey_config", SurveyConfig);
             writer.WriteBoolValue("surveys_opt_in", SurveysOptIn);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_test_account_filters>("test_account_filters", TestAccountFilters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamTestAccountFilters>("test_account_filters", TestAccountFilters);
             writer.WriteBoolValue("test_account_filters_default_checked", TestAccountFiltersDefaultChecked);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TimezoneEnum>("timezone", Timezone);
             writer.WriteBoolValue("web_analytics_pre_aggregated_tables_enabled", WebAnalyticsPreAggregatedTablesEnabled);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_week_start_day>("week_start_day", WeekStartDay);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamWeekStartDay>("week_start_day", WeekStartDay);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamWorkflowsConfig>("workflows_config", WorkflowsConfig);
             writer.WriteAdditionalData(AdditionalData);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BusinessModelEnum_Wrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_business_modelMember1"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class PatchedTeam_business_model : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper? BlankEnumWrapper { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper BlankEnumWrapper { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BusinessModelEnum_Wrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.BusinessModelEnum_Wrapper? BusinessModelEnumWrapper { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.BusinessModelEnum_Wrapper BusinessModelEnumWrapper { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_business_modelMember1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_business_modelMember1? PatchedTeamBusinessModelMember1 { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_business_modelMember1 PatchedTeamBusinessModelMember1 { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam.PatchedTeam_business_model"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam.PatchedTeam_business_model CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam.PatchedTeam_business_model();
-                if("BlankEnum_Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.BlankEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper();
-                }
-                else if("BusinessModelEnum_Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.BusinessModelEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.BusinessModelEnum_Wrapper();
-                }
-                else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.PatchedTeamBusinessModelMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_business_modelMember1();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(BlankEnumWrapper != null)
-                {
-                    return BlankEnumWrapper.GetFieldDeserializers();
-                }
-                else if(BusinessModelEnumWrapper != null)
-                {
-                    return BusinessModelEnumWrapper.GetFieldDeserializers();
-                }
-                else if(PatchedTeamBusinessModelMember1 != null)
-                {
-                    return PatchedTeamBusinessModelMember1.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(BlankEnumWrapper != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper>(null, BlankEnumWrapper);
-                }
-                else if(BusinessModelEnumWrapper != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BusinessModelEnum_Wrapper>(null, BusinessModelEnumWrapper);
-                }
-                else if(PatchedTeamBusinessModelMember1 != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam_business_modelMember1>(null, PatchedTeamBusinessModelMember1);
-                }
-            }
         }
     }
 }

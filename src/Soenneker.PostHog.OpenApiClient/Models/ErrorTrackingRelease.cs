@@ -15,7 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The created_at property</summary>
-        public DateTimeOffset? CreatedAt { get; private set; }
+        public DateTimeOffset? CreatedAt { get; set; }
         /// <summary>The hash_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -25,14 +25,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string HashId { get; set; }
 #endif
         /// <summary>The id property</summary>
-        public Guid? Id { get; private set; }
+        public Guid? Id { get; set; }
         /// <summary>The metadata property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingRelease_metadata? Metadata { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleaseMetadata? Metadata { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingRelease_metadata Metadata { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleaseMetadata Metadata { get; set; }
 #endif
         /// <summary>The project property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -43,7 +43,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Project { get; set; }
 #endif
         /// <summary>The team_id property</summary>
-        public int? TeamId { get; private set; }
+        public int? TeamId { get; set; }
         /// <summary>The version property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -80,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "hash_id", n => { HashId = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingRelease_metadata>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingRelease_metadata.CreateFromDiscriminatorValue); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleaseMetadata>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleaseMetadata.CreateFromDiscriminatorValue); } },
                 { "project", n => { Project = n.GetStringValue(); } },
                 { "team_id", n => { TeamId = n.GetIntValue(); } },
                 { "version", n => { Version = n.GetStringValue(); } },
@@ -93,9 +93,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("hash_id", HashId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingRelease_metadata>("metadata", Metadata);
+            writer.WriteGuidValue("id", Id);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleaseMetadata>("metadata", Metadata);
             writer.WriteStringValue("project", Project);
+            writer.WriteIntValue("team_id", TeamId);
             writer.WriteStringValue("version", Version);
             writer.WriteAdditionalData(AdditionalData);
         }

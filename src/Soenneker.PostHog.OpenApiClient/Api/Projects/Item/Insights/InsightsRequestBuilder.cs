@@ -4,6 +4,8 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Activity;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Bulk_delete;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Bulk_restore;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Bulk_update_tags;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Cancel;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Generate_metadata;
@@ -20,7 +22,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\insights
+    /// Builds and executes requests for operations under \api\projects\{projectId}\insights
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class InsightsRequestBuilder : BaseRequestBuilder
@@ -29,6 +31,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Activity.ActivityRequestBuilder Activity
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Activity.ActivityRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The bulk_delete property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Bulk_delete.Bulk_deleteRequestBuilder Bulk_delete
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Bulk_delete.Bulk_deleteRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The bulk_restore property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Bulk_restore.Bulk_restoreRequestBuilder Bulk_restore
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Bulk_restore.Bulk_restoreRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The bulk_update_tags property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Bulk_update_tags.Bulk_update_tagsRequestBuilder Bulk_update_tags
@@ -63,7 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.insights.item collection</summary>
         /// <param name="position">Numeric primary key or 8-character `short_id` (for example `AaVQ8Ijw`) identifying the insight.</param>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item.ItemRequestBuilder"/></returns>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item.ItemRequestBuilder this[string position]
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item.ItemRequestBuilder this[int position]
         {
             get
             {
@@ -77,7 +89,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public InsightsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/insights{?basic*,created_by*,created_date_from*,created_date_to*,dashboards*,date_from*,date_to*,favorited*,format*,insight*,last_viewed_date_from*,last_viewed_date_to*,limit*,offset*,refresh*,saved*,search*,short_id*,tags*,user*}", pathParameters)
+        public InsightsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/insights{?basic*,created_by*,created_date_from*,created_date_to*,dashboards*,date_from*,date_to*,favorited*,format*,include_dashboards*,insight*,last_viewed_date_from*,last_viewed_date_to*,limit*,offset*,refresh*,saved*,search*,short_id*,tags*,user*}", pathParameters)
         {
         }
         /// <summary>
@@ -85,7 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public InsightsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/insights{?basic*,created_by*,created_date_from*,created_date_to*,dashboards*,date_from*,date_to*,favorited*,format*,insight*,last_viewed_date_from*,last_viewed_date_to*,limit*,offset*,refresh*,saved*,search*,short_id*,tags*,user*}", rawUrl)
+        public InsightsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/insights{?basic*,created_by*,created_date_from*,created_date_to*,dashboards*,date_from*,date_to*,favorited*,format*,include_dashboards*,insight*,last_viewed_date_from*,last_viewed_date_to*,limit*,offset*,refresh*,saved*,search*,short_id*,tags*,user*}", rawUrl)
         {
         }
         /// <summary>
@@ -249,10 +261,13 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights
             [QueryParameter("favorited")]
             public bool? Favorited { get; set; }
             [QueryParameter("format")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.GetFormatQueryParameterType? Format { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.InsightsListFormatParameter? Format { get; set; }
+            /// <summary>Opt in to receiving the deprecated `dashboards` field in insight payloads. Once opt-in enforcement is enabled, API-token callers stop receiving it by default; use `dashboard_tiles` instead.</summary>
+            [QueryParameter("include_dashboards")]
+            public bool? IncludeDashboards { get; set; }
             /// <summary>Restrict to a single insight type. `JSON` matches non-wrapper query insights; `SQL` matches HogQL queries.</summary>
             [QueryParameter("insight")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.GetInsightQueryParameterType? Insight { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.InsightsListInsightParameter? Insight { get; set; }
             /// <summary>Filter by `last_viewed_at &gt; last_viewed_date_from`. Accepts absolute or relative dates.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -281,11 +296,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights
             public int? Offset { get; set; }
             /// <summary>Whether to refresh the retrieved insights, how aggressively, and if sync or async:- `&apos;force_cache&apos;` - return cached data or a cache miss; always completes immediately as it never calculates- `&apos;blocking&apos;` - calculate synchronously (returning only when the query is done), UNLESS there are very fresh results in the cache- `&apos;async&apos;` - kick off background calculation (returning immediately with a query status), UNLESS there are very fresh results in the cache- `&apos;lazy_async&apos;` - kick off background calculation, UNLESS there are somewhat fresh results in the cache- `&apos;force_blocking&apos;` - calculate synchronously, even if fresh results are already cached- `&apos;force_async&apos;` - kick off background calculation, even if fresh results are already cachedBackground calculation can be tracked using the `query_status` response field.</summary>
             [QueryParameter("refresh")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.GetRefreshQueryParameterType? Refresh { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.InsightsListRefreshParameter? Refresh { get; set; }
             /// <summary>When truthy, restricts results to insights that are saved (or attached to a visible dashboard). When falsy, only unsaved insights.</summary>
             [QueryParameter("saved")]
             public bool? Saved { get; set; }
-            /// <summary>Case-insensitive substring match across name, derived_name, description, and tag names.</summary>
+            /// <summary>Search term matched across name, derived_name, description, and tag names. Returns exact (case-insensitive substring) matches only; if no exact match exists, returns similar (fuzzy trigram) matches instead. Each result&apos;s `search_match_type` is `exact` or `similar`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("search")]
@@ -325,7 +340,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights
         public partial class InsightsRequestBuilderPostQueryParameters 
         {
             [QueryParameter("format")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.PostFormatQueryParameterType? Format { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.InsightsCreateFormatParameter? Format { get; set; }
+            /// <summary>Opt in to receiving the deprecated `dashboards` field in insight payloads. Once opt-in enforcement is enabled, API-token callers stop receiving it by default; use `dashboard_tiles` instead.</summary>
+            [QueryParameter("include_dashboards")]
+            public bool? IncludeDashboards { get; set; }
         }
     }
 }

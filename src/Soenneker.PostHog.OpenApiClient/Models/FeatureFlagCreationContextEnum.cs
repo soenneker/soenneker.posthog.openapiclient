@@ -9,7 +9,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "feature_flags")]
         #pragma warning disable CS1591
-        Feature_flags,
+        FeatureFlags,
         #pragma warning restore CS1591
         [EnumMember(Value = "experiments")]
         #pragma warning disable CS1591
@@ -21,15 +21,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "early_access_features")]
         #pragma warning disable CS1591
-        Early_access_features,
+        EarlyAccessFeatures,
         #pragma warning restore CS1591
         [EnumMember(Value = "web_experiments")]
         #pragma warning disable CS1591
-        Web_experiments,
+        WebExperiments,
         #pragma warning restore CS1591
         [EnumMember(Value = "product_tours")]
         #pragma warning disable CS1591
-        Product_tours,
+        ProductTours,
         #pragma warning restore CS1591
     }
 }

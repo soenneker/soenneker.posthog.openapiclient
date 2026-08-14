@@ -16,6 +16,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? Active { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>&quot;Whether the flag is archived. Archived flags are hidden from the flag list by default and must be disabled (`active: false`).&quot;</summary>
+        public bool? Archived { get; set; }
+        /// <summary>&quot;Identifier used to bucket users into rollout percentages and variants: &apos;distinct_id&apos; (user ID, the default) or &apos;device_id&apos;. Using &apos;device_id&apos; is incompatible with ensure_experience_continuity=True.* `distinct_id` - User ID (default)* `device_id` - Device ID&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaBucketingIdentifier? BucketingIdentifier { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaBucketingIdentifier BucketingIdentifier { get; set; }
+#endif
+        /// <summary>Whether to persist a user&apos;s flag value across the anonymous-to-identified transition (the &apos;persist across authentication steps&apos; option). Incompatible with device_id bucketing.</summary>
+        public bool? EnsureExperienceContinuity { get; set; }
         /// <summary>Evaluation contexts that control where this flag evaluates at runtime.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -24,14 +36,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> EvaluationContexts { get; set; }
 #endif
+        /// <summary>&quot;Where this flag is allowed to evaluate: &apos;server&apos; (server-side SDKs only), &apos;client&apos; (client-side SDKs only), or &apos;all&apos; (both). Defaults to &apos;all&apos;.* `server` - Server* `client` - Client* `all` - All&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaEvaluationRuntime? EvaluationRuntime { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaEvaluationRuntime EvaluationRuntime { get; set; }
+#endif
         /// <summary>Feature flag targeting configuration.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchema_filters? Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaFilters? Filters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchema_filters Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaFilters Filters { get; set; }
 #endif
+        /// <summary>Whether this flag is a remote configuration flag that delivers a payload rather than gating a feature.</summary>
+        public bool? IsRemoteConfiguration { get; set; }
         /// <summary>Feature flag key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -82,8 +104,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "active", n => { Active = n.GetBoolValue(); } },
+                { "archived", n => { Archived = n.GetBoolValue(); } },
+                { "bucketing_identifier", n => { BucketingIdentifier = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaBucketingIdentifier>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaBucketingIdentifier.CreateFromDiscriminatorValue); } },
+                { "ensure_experience_continuity", n => { EnsureExperienceContinuity = n.GetBoolValue(); } },
                 { "evaluation_contexts", n => { EvaluationContexts = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchema_filters>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchema_filters.CreateFromDiscriminatorValue); } },
+                { "evaluation_runtime", n => { EvaluationRuntime = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaEvaluationRuntime>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaEvaluationRuntime.CreateFromDiscriminatorValue); } },
+                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaFilters>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaFilters.CreateFromDiscriminatorValue); } },
+                { "is_remote_configuration", n => { IsRemoteConfiguration = n.GetBoolValue(); } },
                 { "key", n => { Key = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -97,8 +124,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("active", Active);
+            writer.WriteBoolValue("archived", Archived);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaBucketingIdentifier>("bucketing_identifier", BucketingIdentifier);
+            writer.WriteBoolValue("ensure_experience_continuity", EnsureExperienceContinuity);
             writer.WriteCollectionOfPrimitiveValues<string>("evaluation_contexts", EvaluationContexts);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchema_filters>("filters", Filters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaEvaluationRuntime>("evaluation_runtime", EvaluationRuntime);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaFilters>("filters", Filters);
+            writer.WriteBoolValue("is_remote_configuration", IsRemoteConfiguration);
             writer.WriteStringValue("key", Key);
             writer.WriteStringValue("name", Name);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);

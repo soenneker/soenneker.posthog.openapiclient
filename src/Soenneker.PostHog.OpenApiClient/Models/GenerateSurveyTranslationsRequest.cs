@@ -27,10 +27,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Optional translation-only draft survey payload to translate instead of the last saved survey.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.GenerateSurveyTranslationsRequest_survey? Survey { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.GenerateSurveyTranslationsRequestSurveyProperty? Survey { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.GenerateSurveyTranslationsRequest_survey Survey { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.GenerateSurveyTranslationsRequestSurveyProperty Survey { get; set; }
 #endif
         /// <summary>Language code to generate translations for, for example pt-BR.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -46,6 +46,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public GenerateSurveyTranslationsRequest()
         {
             AdditionalData = new Dictionary<string, object>();
+            Overwrite = false;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -67,7 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "overwrite", n => { Overwrite = n.GetBoolValue(); } },
                 { "source_language", n => { SourceLanguage = n.GetStringValue(); } },
-                { "survey", n => { Survey = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GenerateSurveyTranslationsRequest_survey>(global::Soenneker.PostHog.OpenApiClient.Models.GenerateSurveyTranslationsRequest_survey.CreateFromDiscriminatorValue); } },
+                { "survey", n => { Survey = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GenerateSurveyTranslationsRequestSurveyProperty>(global::Soenneker.PostHog.OpenApiClient.Models.GenerateSurveyTranslationsRequestSurveyProperty.CreateFromDiscriminatorValue); } },
                 { "target_language", n => { TargetLanguage = n.GetStringValue(); } },
             };
         }
@@ -80,7 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("overwrite", Overwrite);
             writer.WriteStringValue("source_language", SourceLanguage);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GenerateSurveyTranslationsRequest_survey>("survey", Survey);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GenerateSurveyTranslationsRequestSurveyProperty>("survey", Survey);
             writer.WriteStringValue("target_language", TargetLanguage);
             writer.WriteAdditionalData(AdditionalData);
         }

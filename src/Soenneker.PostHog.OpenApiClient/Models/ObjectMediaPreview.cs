@@ -41,10 +41,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The metadata property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ObjectMediaPreview_metadata? Metadata { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ObjectMediaPreviewMetadata? Metadata { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ObjectMediaPreview_metadata Metadata { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ObjectMediaPreviewMetadata Metadata { get; set; }
 #endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
@@ -81,7 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "media_type", n => { MediaType = n.GetStringValue(); } },
                 { "media_url", n => { MediaUrl = n.GetStringValue(); } },
-                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ObjectMediaPreview_metadata>(global::Soenneker.PostHog.OpenApiClient.Models.ObjectMediaPreview_metadata.CreateFromDiscriminatorValue); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ObjectMediaPreviewMetadata>(global::Soenneker.PostHog.OpenApiClient.Models.ObjectMediaPreviewMetadata.CreateFromDiscriminatorValue); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "uploaded_media_id", n => { UploadedMediaId = n.GetGuidValue(); } },
             };
@@ -95,7 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteGuidValue("event_definition_id", EventDefinitionId);
             writer.WriteGuidValue("exported_asset_id", ExportedAssetId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ObjectMediaPreview_metadata>("metadata", Metadata);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ObjectMediaPreviewMetadata>("metadata", Metadata);
             writer.WriteGuidValue("uploaded_media_id", UploadedMediaId);
             writer.WriteAdditionalData(AdditionalData);
         }

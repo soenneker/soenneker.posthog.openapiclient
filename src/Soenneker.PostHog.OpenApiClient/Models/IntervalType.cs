@@ -32,5 +32,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         Month,
         #pragma warning restore CS1591
+        [EnumMember(Value = "quarter")]
+        #pragma warning disable CS1591
+        Quarter,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "year")]
+        #pragma warning disable CS1591
+        Year,
+        #pragma warning restore CS1591
     }
 }

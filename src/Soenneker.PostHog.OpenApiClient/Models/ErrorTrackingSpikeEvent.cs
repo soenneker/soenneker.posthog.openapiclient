@@ -15,20 +15,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The computed_baseline property</summary>
-        public double? ComputedBaseline { get; private set; }
+        public double? ComputedBaseline { get; set; }
         /// <summary>The current_bucket_value property</summary>
-        public int? CurrentBucketValue { get; private set; }
+        public int? CurrentBucketValue { get; set; }
         /// <summary>The detected_at property</summary>
-        public DateTimeOffset? DetectedAt { get; private set; }
+        public DateTimeOffset? DetectedAt { get; set; }
         /// <summary>The id property</summary>
-        public Guid? Id { get; private set; }
+        public Guid? Id { get; set; }
         /// <summary>The issue property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSpikeEvent_issue? Issue { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSpikeEventIssue? Issue { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSpikeEvent_issue Issue { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSpikeEventIssue Issue { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSpikeEvent"/> and sets the default values.
@@ -59,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "current_bucket_value", n => { CurrentBucketValue = n.GetIntValue(); } },
                 { "detected_at", n => { DetectedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "issue", n => { Issue = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSpikeEvent_issue>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSpikeEvent_issue.CreateFromDiscriminatorValue); } },
+                { "issue", n => { Issue = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSpikeEventIssue>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSpikeEventIssue.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -69,6 +69,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteDoubleValue("computed_baseline", ComputedBaseline);
+            writer.WriteIntValue("current_bucket_value", CurrentBucketValue);
+            writer.WriteDateTimeOffsetValue("detected_at", DetectedAt);
+            writer.WriteGuidValue("id", Id);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSpikeEventIssue>("issue", Issue);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -36,8 +36,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Message { get; private set; }
 #endif
-        /// <summary>* `waiting` - Waiting* `issuing` - Issuing* `valid` - Valid* `warning` - Warning* `erroring` - Erroring* `deleting` - Deleting* `timed_out` - Timed Out</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProxyRecordStatusEnum? Status { get; set; }
+        /// <summary>&quot;Current provisioning status. Values: waiting (DNS verification pending), issuing (SSL certificate being issued), valid (proxy is live and working), warning (proxy has issues but is operational), erroring (proxy setup failed), deleting (removal in progress), timed_out (DNS verification timed out).* `waiting` - Waiting* `issuing` - Issuing* `valid` - Valid* `warning` - Warning* `erroring` - Erroring* `deleting` - Deleting* `timed_out` - Timed Out&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProxyRecordStatus? Status { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProxyRecordStatus Status { get; private set; }
+#endif
         /// <summary>The CNAME target to add as a DNS record for your domain. Point your domain&apos;s CNAME to this value.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -78,7 +84,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "domain", n => { Domain = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "message", n => { Message = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ProxyRecordStatusEnum>(); } },
+                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProxyRecordStatus>(global::Soenneker.PostHog.OpenApiClient.Models.ProxyRecordStatus.CreateFromDiscriminatorValue); } },
                 { "target_cname", n => { TargetCname = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
@@ -91,7 +97,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("domain", Domain);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ProxyRecordStatusEnum>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

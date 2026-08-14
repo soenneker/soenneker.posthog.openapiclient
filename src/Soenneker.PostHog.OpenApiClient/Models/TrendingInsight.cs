@@ -20,12 +20,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsight_created_by? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsightCreatedBy? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsight_created_by CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsightCreatedBy CreatedBy { get; private set; }
 #endif
         /// <summary>The dashboards property</summary>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<int?>? Dashboards { get; private set; }
@@ -66,10 +67,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>User who last modified this insight, or null if never modified after creation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsight_last_modified_by? LastModifiedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsightLastModifiedBy? LastModifiedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsight_last_modified_by LastModifiedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsightLastModifiedBy LastModifiedBy { get; private set; }
 #endif
         /// <summary>The last_refresh property</summary>
         public DateTimeOffset? LastRefresh { get; private set; }
@@ -86,13 +87,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The query property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsight_query? Query { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsightQuery? Query { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsight_query Query { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsightQuery Query { get; set; }
 #endif
         /// <summary>The refreshing property</summary>
         public bool? Refreshing { get; private set; }
+        /// <summary>&quot;How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`.&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsightSearchMatchType? SearchMatchType { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsightSearchMatchType SearchMatchType { get; private set; }
+#endif
         /// <summary>The short_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -104,10 +113,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsight_tags>? Tags { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsightTagsItem>? Tags { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsight_tags> Tags { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsightTagsItem> Tags { get; set; }
 #endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
@@ -155,7 +164,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsight_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsight_created_by.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsightCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsightCreatedBy.CreateFromDiscriminatorValue); } },
                 { "dashboard_tiles", n => { DashboardTiles = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DashboardTileBasic>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardTileBasic.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "dashboards", n => { Dashboards = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
                 { "derived_name", n => { DerivedName = n.GetStringValue(); } },
@@ -163,14 +172,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "favorited", n => { Favorited = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetIntValue(); } },
                 { "last_modified_at", n => { LastModifiedAt = n.GetDateTimeOffsetValue(); } },
-                { "last_modified_by", n => { LastModifiedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsight_last_modified_by>(global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsight_last_modified_by.CreateFromDiscriminatorValue); } },
+                { "last_modified_by", n => { LastModifiedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsightLastModifiedBy>(global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsightLastModifiedBy.CreateFromDiscriminatorValue); } },
                 { "last_refresh", n => { LastRefresh = n.GetDateTimeOffsetValue(); } },
                 { "last_viewed_at", n => { LastViewedAt = n.GetDateTimeOffsetValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsight_query>(global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsight_query.CreateFromDiscriminatorValue); } },
+                { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsightQuery>(global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsightQuery.CreateFromDiscriminatorValue); } },
                 { "refreshing", n => { Refreshing = n.GetBoolValue(); } },
+                { "search_match_type", n => { SearchMatchType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsightSearchMatchType>(global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsightSearchMatchType.CreateFromDiscriminatorValue); } },
                 { "short_id", n => { ShortId = n.GetStringValue(); } },
-                { "tags", n => { Tags = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsight_tags>(global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsight_tags.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "tags", n => { Tags = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsightTagsItem>(global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsightTagsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },
                 { "view_count", n => { ViewCount = n.GetIntValue(); } },
@@ -189,8 +199,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("favorited", Favorited);
             writer.WriteDateTimeOffsetValue("last_modified_at", LastModifiedAt);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsight_query>("query", Query);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsight_tags>("tags", Tags);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsightQuery>("query", Query);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TrendingInsightTagsItem>("tags", Tags);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

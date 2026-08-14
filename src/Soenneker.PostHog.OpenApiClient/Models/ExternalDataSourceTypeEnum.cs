@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `Ashby` - Ashby* `Supabase` - Supabase* `CustomerIO` - CustomerIO* `Github` - Github* `Stripe` - Stripe* `Hubspot` - Hubspot* `Postgres` - Postgres* `Zendesk` - Zendesk* `Snowflake` - Snowflake* `Salesforce` - Salesforce* `MySQL` - MySQL* `MongoDB` - MongoDB* `MSSQL` - MSSQL* `Vitally` - Vitally* `BigQuery` - BigQuery* `Chargebee` - Chargebee* `Clerk` - Clerk* `GoogleAds` - GoogleAds* `TemporalIO` - TemporalIO* `DoIt` - DoIt* `GoogleSheets` - GoogleSheets* `MetaAds` - MetaAds* `Klaviyo` - Klaviyo* `Mailchimp` - Mailchimp* `Braze` - Braze* `Mailjet` - Mailjet* `Redshift` - Redshift* `Polar` - Polar* `RevenueCat` - RevenueCat* `LinkedinAds` - LinkedinAds* `RedditAds` - RedditAds* `TikTokAds` - TikTokAds* `BingAds` - BingAds* `Shopify` - Shopify* `Attio` - Attio* `SnapchatAds` - SnapchatAds* `Linear` - Linear* `Intercom` - Intercom* `Amplitude` - Amplitude* `Mixpanel` - Mixpanel* `Jira` - Jira* `ActiveCampaign` - ActiveCampaign* `Marketo` - Marketo* `Adjust` - Adjust* `AppsFlyer` - AppsFlyer* `Freshdesk` - Freshdesk* `GoogleAnalytics` - GoogleAnalytics* `Pipedrive` - Pipedrive* `SendGrid` - SendGrid* `Slack` - Slack* `PagerDuty` - PagerDuty* `Asana` - Asana* `Notion` - Notion* `Airtable` - Airtable* `Greenhouse` - Greenhouse* `BambooHR` - BambooHR* `Lever` - Lever* `GitLab` - GitLab* `Datadog` - Datadog* `Sentry` - Sentry* `Pendo` - Pendo* `FullStory` - FullStory* `AmazonAds` - AmazonAds* `PinterestAds` - PinterestAds* `AppleSearchAds` - AppleSearchAds* `QuickBooks` - QuickBooks* `Xero` - Xero* `NetSuite` - NetSuite* `WooCommerce` - WooCommerce* `BigCommerce` - BigCommerce* `PayPal` - PayPal* `Square` - Square* `Zoom` - Zoom* `Trello` - Trello* `Monday` - Monday* `ClickUp` - ClickUp* `Confluence` - Confluence* `Recurly` - Recurly* `SalesLoft` - SalesLoft* `Outreach` - Outreach* `Gong` - Gong* `Calendly` - Calendly* `Typeform` - Typeform* `Iterable` - Iterable* `ZohoCRM` - ZohoCRM* `Close` - Close* `Oracle` - Oracle* `DynamoDB` - DynamoDB* `Elasticsearch` - Elasticsearch* `Kafka` - Kafka* `LaunchDarkly` - LaunchDarkly* `Braintree` - Braintree* `Recharge` - Recharge* `HelpScout` - HelpScout* `Gorgias` - Gorgias* `Instagram` - Instagram* `YouTubeAnalytics` - YouTubeAnalytics* `FacebookPages` - FacebookPages* `TwitterAds` - TwitterAds* `Workday` - Workday* `ServiceNow` - ServiceNow* `Pardot` - Pardot* `Copper` - Copper* `Front` - Front* `ChartMogul` - ChartMogul* `Zuora` - Zuora* `Paddle` - Paddle* `CircleCI` - CircleCI* `CockroachDB` - CockroachDB* `Firebase` - Firebase* `AzureBlob` - AzureBlob* `GoogleDrive` - GoogleDrive* `OneDrive` - OneDrive* `SharePoint` - SharePoint* `Box` - Box* `SFTP` - SFTP* `MicrosoftTeams` - MicrosoftTeams* `Aircall` - Aircall* `Webflow` - Webflow* `Okta` - Okta* `Auth0` - Auth0* `Productboard` - Productboard* `Smartsheet` - Smartsheet* `Wrike` - Wrike* `Plaid` - Plaid* `SurveyMonkey` - SurveyMonkey* `Eventbrite` - Eventbrite* `RingCentral` - RingCentral* `Twilio` - Twilio* `Freshsales` - Freshsales* `Shortcut` - Shortcut* `ConvertKit` - ConvertKit* `Drip` - Drip* `CampaignMonitor` - CampaignMonitor* `MailerLite` - MailerLite* `Omnisend` - Omnisend* `Brevo` - Brevo* `Postmark` - Postmark* `Granola` - Granola* `BuildBetter` - BuildBetter* `Convex` - Convex* `ClickHouse` - ClickHouse* `Plain` - Plain* `Resend` - Resend* `PgAnalyze` - PgAnalyze* `Custom` - Custom</summary>
+    /// <summary>* `Ashby` - Ashby* `Supabase` - Supabase* `CustomerIO` - CustomerIO* `Github` - Github* `Stripe` - Stripe* `Hubspot` - Hubspot* `Postgres` - Postgres* `Zendesk` - Zendesk* `Snowflake` - Snowflake* `Salesforce` - Salesforce* `MySQL` - MySQL* `MongoDB` - MongoDB* `MSSQL` - MSSQL* `Vitally` - Vitally* `BigQuery` - BigQuery* `Chargebee` - Chargebee* `Clerk` - Clerk* `GoogleAds` - GoogleAds* `GoogleSearchConsole` - GoogleSearchConsole* `TemporalIO` - TemporalIO* `DoIt` - DoIt* `GoogleSheets` - GoogleSheets* `MetaAds` - MetaAds* `Klaviyo` - Klaviyo* `Mailchimp` - Mailchimp* `Braze` - Braze* `Mailjet` - Mailjet* `Redshift` - Redshift* `Polar` - Polar* `RevenueCat` - RevenueCat* `LinkedinAds` - LinkedinAds* `RedditAds` - RedditAds* `TikTokAds` - TikTokAds* `BingAds` - BingAds* `Shopify` - Shopify* `Attio` - Attio* `SnapchatAds` - SnapchatAds* `Linear` - Linear* `Intercom` - Intercom* `Amplitude` - Amplitude* `Mixpanel` - Mixpanel* `Jira` - Jira* `ActiveCampaign` - ActiveCampaign* `Marketo` - Marketo* `Adjust` - Adjust* `AppsFlyer` - AppsFlyer* `Freshdesk` - Freshdesk* `GoogleAnalytics` - GoogleAnalytics* `Pipedrive` - Pipedrive* `SendGrid` - SendGrid* `Slack` - Slack* `PagerDuty` - PagerDuty* `Asana` - Asana* `Notion` - Notion* `Airtable` - Airtable* `Greenhouse` - Greenhouse* `BambooHR` - BambooHR* `Lever` - Lever* `GitLab` - GitLab* `Datadog` - Datadog* `Sentry` - Sentry* `Pendo` - Pendo* `FullStory` - FullStory* `AmazonAds` - AmazonAds* `PinterestAds` - PinterestAds* `AppleSearchAds` - AppleSearchAds* `QuickBooks` - QuickBooks* `Xero` - Xero* `NetSuite` - NetSuite* `WooCommerce` - WooCommerce* `BigCommerce` - BigCommerce* `PayPal` - PayPal* `Square` - Square* `Zoom` - Zoom* `Trello` - Trello* `Monday` - Monday* `ClickUp` - ClickUp* `Confluence` - Confluence* `Recurly` - Recurly* `SalesLoft` - SalesLoft* `Outreach` - Outreach* `Gong` - Gong* `Calendly` - Calendly* `Typeform` - Typeform* `Iterable` - Iterable* `ZohoCRM` - ZohoCRM* `Close` - Close* `Oracle` - Oracle* `DynamoDB` - DynamoDB* `Elasticsearch` - Elasticsearch* `Kafka` - Kafka* `LaunchDarkly` - LaunchDarkly* `Braintree` - Braintree* `Recharge` - Recharge* `HelpScout` - HelpScout* `Gorgias` - Gorgias* `Instagram` - Instagram* `YouTubeAnalytics` - YouTubeAnalytics* `FacebookPages` - FacebookPages* `TwitterAds` - TwitterAds* `Workday` - Workday* `ServiceNow` - ServiceNow* `Pardot` - Pardot* `Copper` - Copper* `Front` - Front* `ChartMogul` - ChartMogul* `Zuora` - Zuora* `Paddle` - Paddle* `CircleCI` - CircleCI* `CockroachDB` - CockroachDB* `Firebase` - Firebase* `AzureBlob` - AzureBlob* `GoogleDrive` - GoogleDrive* `OneDrive` - OneDrive* `SharePoint` - SharePoint* `Box` - Box* `SFTP` - SFTP* `MicrosoftTeams` - MicrosoftTeams* `Aircall` - Aircall* `Webflow` - Webflow* `Okta` - Okta* `Auth0` - Auth0* `Productboard` - Productboard* `Smartsheet` - Smartsheet* `Wrike` - Wrike* `Plaid` - Plaid* `SurveyMonkey` - SurveyMonkey* `Eventbrite` - Eventbrite* `RingCentral` - RingCentral* `Twilio` - Twilio* `Freshsales` - Freshsales* `Shortcut` - Shortcut* `ConvertKit` - ConvertKit* `Drip` - Drip* `CampaignMonitor` - CampaignMonitor* `MailerLite` - MailerLite* `Omnisend` - Omnisend* `Brevo` - Brevo* `Postmark` - Postmark* `Granola` - Granola* `BuildBetter` - BuildBetter* `Convex` - Convex* `ClickHouse` - ClickHouse* `Plain` - Plain* `Resend` - Resend* `PgAnalyze` - PgAnalyze* `WorkOS` - WorkOS* `AmazonS3` - AmazonS3* `GoogleCloudStorage` - GoogleCloudStorage* `Databricks` - Databricks* `Dynamics365` - Dynamics365* `SalesforceMarketingCloud` - SalesforceMarketingCloud* `Db2` - Db2* `Heap` - Heap* `AdobeAnalytics` - AdobeAnalytics* `Matomo` - Matomo* `Optimizely` - Optimizely* `Adyen` - Adyen* `GoCardless` - GoCardless* `Mollie` - Mollie* `CheckoutCom` - CheckoutCom* `Branch` - Branch* `Criteo` - Criteo* `Outbrain` - Outbrain* `Taboola` - Taboola* `AdRoll` - AdRoll* `DisplayVideo360` - DisplayVideo360* `GoogleAdManager` - GoogleAdManager* `CampaignManager360` - CampaignManager360* `SearchAds360` - SearchAds360* `AdobeCommerce` - AdobeCommerce* `AmazonSellingPartner` - AmazonSellingPartner* `Ebay` - Ebay* `Commercetools` - Commercetools* `LightspeedRetail` - LightspeedRetail* `ShipStation` - ShipStation* `ConstantContact` - ConstantContact* `Mailgun` - Mailgun* `Eloqua` - Eloqua* `Sailthru` - Sailthru* `Ortto` - Ortto* `Attentive` - Attentive* `Kustomer` - Kustomer* `Dixa` - Dixa* `Gladly` - Gladly* `Qualtrics` - Qualtrics* `AzureDevOps` - AzureDevOps* `Rollbar` - Rollbar* `Opsgenie` - Opsgenie* `IncidentIo` - IncidentIo* `Pingdom` - Pingdom* `Cloudflare` - Cloudflare* `CosmosDB` - CosmosDB* `PlanetScaleMySQL` - PlanetScaleMySQL* `PlanetScalePostgres` - PlanetScalePostgres* `SapHana` - SapHana* `Rippling` - Rippling* `HiBob` - HiBob* `Personio` - Personio* `Deel` - Deel* `AdpWorkforceNow` - AdpWorkforceNow* `Paylocity` - Paylocity* `Gusto` - Gusto* `CultureAmp` - CultureAmp* `Lattice` - Lattice* `SageIntacct` - SageIntacct* `FreshBooks` - FreshBooks* `Expensify` - Expensify* `Ramp` - Ramp* `Brex` - Brex* `Coupa` - Coupa* `SapConcur` - SapConcur* `Apollo` - Apollo* `Crunchbase` - Crunchbase* `ZoomInfo` - ZoomInfo* `Clari` - Clari* `Chorus` - Chorus* `Coda` - Coda* `Guru` - Guru* `Dropbox` - Dropbox* `Docusign` - Docusign* `PandaDoc` - PandaDoc* `SapErp` - SapErp* `SapSuccessFactors` - SapSuccessFactors* `OracleEbs` - OracleEbs* `OracleFusion` - OracleFusion* `AmazonSNS` - AmazonSNS* `AmazonEventBridge` - AmazonEventBridge* `AmazonSQS` - AmazonSQS* `AmazonKinesis` - AmazonKinesis* `AmazonCloudWatch` - AmazonCloudWatch* `OpenAIAds` - OpenAIAds* `OneHundredMs` - OneHundredMs* `SevenShifts` - SevenShifts* `AcuityScheduling` - AcuityScheduling* `AgileCRM` - AgileCRM* `Aha` - Aha* `Airbyte` - Airbyte* `Akeneo` - Akeneo* `Algolia` - Algolia* `AlpacaBrokerAPI` - AlpacaBrokerAPI* `ApifyDataset` - ApifyDataset* `Appcues` - Appcues* `Appfigures` - Appfigures* `Appfollow` - Appfollow* `Apptivo` - Apptivo* `AssemblyAI` - AssemblyAI* `Awin` - Awin* `AwsCloudTrail` - AwsCloudTrail* `AzureTableStorage` - AzureTableStorage* `Babelforce` - Babelforce* `Basecamp` - Basecamp* `Beamer` - Beamer* `BigMailer` - BigMailer* `Bluetally` - Bluetally* `BoldSign` - BoldSign* `BreezyHR` - BreezyHR* `Bugsnag` - Bugsnag* `Buildkite` - Buildkite* `Bunny` - Bunny* `Buzzsprout` - Buzzsprout* `CalCom` - CalCom* `CallRail` - CallRail* `Campayn` - Campayn* `Canny` - Canny* `CapsuleCRM` - CapsuleCRM* `CaptainData` - CaptainData* `CartCom` - CartCom* `CastorEDC` - CastorEDC* `Chameleon` - Chameleon* `Chargedesk` - Chargedesk* `Chargify` - Chargify* `Chift` - Chift* `Churnkey` - Churnkey* `Cin7` - Cin7* `CiscoMeraki` - CiscoMeraki* `Clazar` - Clazar* `Clockify` - Clockify* `Clockodo` - Clockodo* `Cloudbeds` - Cloudbeds* `Coassemble` - Coassemble* `Codefresh` - Codefresh* `Concord` - Concord* `ConfigCat` - ConfigCat* `Couchbase` - Couchbase* `Curve` - Curve* `Customerly` - Customerly* `Datascope` - Datascope* `Dbt` - Dbt* `Deputy` - Deputy* `DevinAI` - DevinAI* `Docuseal` - Docuseal* `Dolibarr` - Dolibarr* `Dremio` - Dremio* `DropboxSign` - DropboxSign* `Dwolla` - Dwolla* `EConomic` - EConomic* `Easypost` - Easypost* `Easypromos` - Easypromos* `Elasticemail` - Elasticemail* `EmailOctopus` - EmailOctopus* `EmploymentHero` - EmploymentHero* `Encharge` - Encharge* `Eventee` - Eventee* `Eventzilla` - Eventzilla* `Everhour` - Everhour* `EZOfficeInventory` - EZOfficeInventory* `Factorial` - Factorial* `Fastbill` - Fastbill* `Fastly` - Fastly* `Fauna` - Fauna* `Feishu` - Feishu* `Fillout` - Fillout* `Finage` - Finage* `Firebolt` - Firebolt* `FireHydrant` - FireHydrant* `Fleetio` - Fleetio* `Flexmail` - Flexmail* `Flexport` - Flexport* `FloatApp` - FloatApp* `Flowlu` - Flowlu* `Formbricks` - Formbricks* `Framer` - Framer* `FreeAgent` - FreeAgent* `Freightview` - Freightview* `Freshcaller` - Freshcaller* `Freshchat` - Freshchat* `Freshservice` - Freshservice* `Fulcrum` - Fulcrum* `GainsightPx` - GainsightPx* `GitBook` - GitBook* `Glassfrog` - Glassfrog* `Goldcast` - Goldcast* `GoLogin` - GoLogin* `Grafana` - Grafana* `GreytHr` - GreytHr* `Gridly` - Gridly* `Harness` - Harness* `Height` - Height* `Hellobaton` - Hellobaton* `HighLevel` - HighLevel* `HoorayHR` - HoorayHR* `Hubplanner` - Hubplanner* `Humanitix` - Humanitix* `Huntr` - Huntr* `Inflowinventory` - Inflowinventory* `InforNexus` - InforNexus* `Insightful` - Insightful* `Insightly` - Insightly* `Instantly` - Instantly* `Instatus` - Instatus* `Intruder` - Intruder* `Invoiced` - Invoiced* `Invoiceninja` - Invoiceninja* `JamfPro` - JamfPro* `JobNimbus` - JobNimbus* `Jotform` - Jotform* `JudgeMeReviews` - JudgeMeReviews* `JustCall` - JustCall* `JustSift` - JustSift* `K6Cloud` - K6Cloud* `Katana` - Katana* `Keka` - Keka* `Kisi` - Kisi* `Kissmetrics` - Kissmetrics* `Klarna` - Klarna* `Klaus` - Klaus* `Lago` - Lago* `Leadfeeder` - Leadfeeder* `Lemlist` - Lemlist* `LessAnnoyingCRM` - LessAnnoyingCRM* `LinkedinPages` - LinkedinPages* `Linkrunner` - Linkrunner* `Linnworks` - Linnworks* `Lob` - Lob* `Lokalise` - Lokalise* `Looker` - Looker* `Luma` - Luma* `MailerSend` - MailerSend* `Mailosaur` - Mailosaur* `Mailtrap` - Mailtrap* `Mantle` - Mantle* `Mention` - Mention* `MercadoAds` - MercadoAds* `Merge` - Merge* `Metabase` - Metabase* `Metricool` - Metricool* `MicrosoftDataverse` - MicrosoftDataverse* `MicrosoftEntraId` - MicrosoftEntraId* `MicrosoftLists` - MicrosoftLists* `Miro` - Miro* `Missive` - Missive* `MixMax` - MixMax* `Mode` - Mode* `Mux` - Mux* `MyHours` - MyHours* `N8n` - N8n* `Navan` - Navan* `NebiusAI` - NebiusAI* `Nexiopay` - Nexiopay* `NinjaOneRMM` - NinjaOneRMM* `NoCRM` - NoCRM* `NorthpassLMS` - NorthpassLMS* `Nutshell` - Nutshell* `Nylas` - Nylas* `Oncehub` - Oncehub* `Onepagecrm` - Onepagecrm* `OneSignal` - OneSignal* `Onfleet` - Onfleet* `OpinionStage` - OpinionStage* `OPUSWatch` - OPUSWatch* `Orb` - Orb* `Orbit` - Orbit* `Oura` - Oura* `Oveit` - Oveit* `PabblySubscriptionsBilling` - PabblySubscriptionsBilling* `Paperform` - Paperform* `Papersign` - Papersign* `Partnerize` - Partnerize* `PartnerStack` - PartnerStack* `PayFit` - PayFit* `Paystack` - Paystack* `Pennylane` - Pennylane* `Perk` - Perk* `PersistIq` - PersistIq* `Persona` - Persona* `Phyllo` - Phyllo* `Picqer` - Picqer* `Pipeliner` - Pipeliner* `PivotalTracker` - PivotalTracker* `Piwik` - Piwik* `Planhat` - Planhat* `Plausible` - Plausible* `Poplar` - Poplar* `PrestaShop` - PrestaShop* `Pretix` - Pretix* `Primetric` - Primetric* `Printavo` - Printavo* `Printify` - Printify* `Productive` - Productive* `Pylon` - Pylon* `Qonto` - Qonto* `Qualaroo` - Qualaroo* `Railz` - Railz* `RDStationMarketing` - RDStationMarketing* `Recruitee` - Recruitee* `Reddit` - Reddit* `ReferralHero` - ReferralHero* `RentCast` - RentCast* `Repairshopr` - Repairshopr* `ReplyIo` - ReplyIo* `RetailExpress` - RetailExpress* `Retently` - Retently* `RevolutMerchant` - RevolutMerchant* `RocketChat` - RocketChat* `Rocketlane` - Rocketlane* `Rootly` - Rootly* `Ruddr` - Ruddr* `SafetyCulture` - SafetyCulture* `SageHR` - SageHR* `Salesflare` - Salesflare* `SAPFieldglass` - SAPFieldglass* `SavvyCal` - SavvyCal* `Secoda` - Secoda* `Segment` - Segment* `Sendowl` - Sendowl* `SendPulse` - SendPulse* `Senseforce` - Senseforce* `Serpstat` - Serpstat* `Sharetribe` - Sharetribe* `Shippo` - Shippo* `ShopWired` - ShopWired* `Shortio` - Shortio* `Shutterstock` - Shutterstock* `SigmaComputing` - SigmaComputing* `SignNow` - SignNow* `SimpleCast` - SimpleCast* `Simplesat` - Simplesat* `Smaily` - Smaily* `SmartEngage` - SmartEngage* `Smartreach` - Smartreach* `Smartwaiver` - Smartwaiver* `SolarwindsServiceDesk` - SolarwindsServiceDesk* `SonarCloud` - SonarCloud* `SparkPost` - SparkPost* `SplitIo` - SplitIo* `SpotifyAds` - SpotifyAds* `SpotlerCRM` - SpotlerCRM* `Squarespace` - Squarespace* `Statsig` - Statsig* `Statuspage` - Statuspage* `Stigg` - Stigg* `Strava` - Strava* `SurveySparrow` - SurveySparrow* `Survicate` - Survicate* `Svix` - Svix* `Systeme` - Systeme* `Tavus` - Tavus* `Teamtailor` - Teamtailor* `Teamwork` - Teamwork* `Tempo` - Tempo* `Testrail` - Testrail* `Thinkific` - Thinkific* `ThinkificCourses` - ThinkificCourses* `ThriveLearning` - ThriveLearning* `Ticketmaster` - Ticketmaster* `TicketTailor` - TicketTailor* `TickTick` - TickTick* `Timely` - Timely* `Tinyemail` - Tinyemail* `Todoist` - Todoist* `Toggl` - Toggl* `TrackPMS` - TrackPMS* `Tremendous` - Tremendous* `TrustPilot` - TrustPilot* `Twitter` - Twitter* `TyntecSMS` - TyntecSMS* `Unleash` - Unleash* `UpPromote` - UpPromote* `Uptick` - Uptick* `Uservoice` - Uservoice* `Vantage` - Vantage* `Veeqo` - Veeqo* `Vercel` - Vercel* `VismaEconomic` - VismaEconomic* `VWO` - VWO* `Waiteraid` - Waiteraid* `Wasabi` - Wasabi* `WhenIWork` - WhenIWork* `Wordpress` - Wordpress* `Workable` - Workable* `Workflowmax` - Workflowmax* `Workramp` - Workramp* `Wufoo` - Wufoo* `Xsolla` - Xsolla* `YandexMetrica` - YandexMetrica* `Yotpo` - Yotpo* `Ynab` - Ynab* `Younium` - Younium* `YouSign` - YouSign* `YoutubeData` - YoutubeData* `ZapierSupportedStorage` - ZapierSupportedStorage* `ZapSign` - ZapSign* `ZendeskSell` - ZendeskSell* `ZendeskSunshine` - ZendeskSunshine* `Zenefits` - Zenefits* `Zenloop` - Zenloop* `ZohoAnalytics` - ZohoAnalytics* `ZohoBigin` - ZohoBigin* `ZohoBilling` - ZohoBilling* `ZohoBooks` - ZohoBooks* `ZohoCampaign` - ZohoCampaign* `ZohoDesk` - ZohoDesk* `ZohoExpense` - ZohoExpense* `ZohoInventory` - ZohoInventory* `ZohoInvoice` - ZohoInvoice* `ZonkaFeedback` - ZonkaFeedback* `AlphaVantage` - AlphaVantage* `Aviationstack` - Aviationstack* `Bitly` - Bitly* `Blogger` - Blogger* `Breezometer` - Breezometer* `CareQualityCommission` - CareQualityCommission* `Cimis` - Cimis* `CoinApi` - CoinApi* `CoinGecko` - CoinGecko* `CoinMarketCap` - CoinMarketCap* `DingConnect` - DingConnect* `Dockerhub` - Dockerhub* `ExchangeRatesApi` - ExchangeRatesApi* `FinancialModelling` - FinancialModelling* `Finnhub` - Finnhub* `Finnworlds` - Finnworlds* `Giphy` - Giphy* `Gmail` - Gmail* `GNews` - GNews* `GoogleCalendar` - GoogleCalendar* `GoogleClassroom` - GoogleClassroom* `GoogleDirectory` - GoogleDirectory* `GoogleForms` - GoogleForms* `GooglePageSpeedInsights` - GooglePageSpeedInsights* `GoogleTasks` - GoogleTasks* `GoogleWebfonts` - GoogleWebfonts* `GoogleWorkspaceAdminReports` - GoogleWorkspaceAdminReports* `HuggingFace` - HuggingFace* `IlluminaBasespace` - IlluminaBasespace* `Imagga` - Imagga* `Interzoid` - Interzoid* `IP2Whois` - IP2Whois* `KYVE` - KYVE* `Marketstack` - Marketstack* `Mendeley` - Mendeley* `Nasa` - Nasa* `NewYorkTimes` - NewYorkTimes* `NewsApi` - NewsApi* `NewsData` - NewsData* `OpenDataDc` - OpenDataDc* `OpenExchangeRates` - OpenExchangeRates* `OpenAQ` - OpenAQ* `OpenFDA` - OpenFDA* `OpenWeather` - OpenWeather* `Outlook` - Outlook* `Perigon` - Perigon* `Pexels` - Pexels* `Pocket` - Pocket* `Polygon` - Polygon* `PyPI` - PyPI* `Recreation` - Recreation* `RKICovid` - RKICovid* `Rss` - Rss* `SimFin` - SimFin* `StockData` - StockData* `Guardian` - Guardian* `TMDb` - TMDb* `TVMaze` - TVMaze* `TwelveData` - TwelveData* `Ubidots` - Ubidots* `USCensus` - USCensus* `Watchmode` - Watchmode* `WikipediaPageviews` - WikipediaPageviews* `YahooFinance` - YahooFinance* `Clarifai` - Clarifai* `Adapty` - Adapty* `Braintrust` - Braintrust* `StreamElements` - StreamElements* `Streamlabs` - Streamlabs* `Datorama` - Datorama* `Ahrefs` - Ahrefs* `Lightfield` - Lightfield* `Appstack` - Appstack* `Razorpay` - Razorpay* `Neon` - Neon* `NewRelic` - NewRelic* `Custom` - Custom* `Tile38` - Tile38* `Chatwoot` - Chatwoot* `Sanity` - Sanity* `Metronome` - Metronome* `Jobber` - Jobber* `Knock` - Knock* `Leexi` - Leexi* `RB2B` - RB2B* `Superwall` - Superwall* `Liana` - Liana* `TawkTo` - TawkTo* `Hightouch` - Hightouch* `LemonSqueezy` - LemonSqueezy* `Ikas` - Ikas* `Talkwalker` - Talkwalker* `NextdoorAds` - NextdoorAds* `AppLovin` - AppLovin* `Baserow` - Baserow* `Plunk` - Plunk* `Dub` - Dub* `AirOps` - AirOps* `Podium` - Podium* `Loops` - Loops* `Redis` - Redis* `Mercury` - Mercury* `Gojiberry` - Gojiberry* `Teachable` - Teachable* `PeecAI` - PeecAI* `Healthchecks` - Healthchecks* `Impact` - Impact* `AikidoSecurity` - AikidoSecurity* `Alguna` - Alguna* `Anthropic` - Anthropic* `Appwrite` - Appwrite* `BlandAI` - BlandAI* `BrowseAI` - BrowseAI* `BrowserUse` - BrowserUse* `ChartHop` - ChartHop* `Cody` - Cody* `Cursor` - Cursor* `Decagon` - Decagon* `Deepgram` - Deepgram* `ElevenLabs` - ElevenLabs* `Harvey` - Harvey* `Hyperspell` - Hyperspell* `Langfuse` - Langfuse* `LingoDev` - LingoDev* `M3ter` - M3ter* `Maxio` - Maxio* `Metorial` - Metorial* `OpenRouter` - OpenRouter* `TogetherAI` - TogetherAI* `Vapi` - Vapi* `Vespa` - Vespa* `Writesonic` - Writesonic* `Aiven` - Aiven* `Aviator` - Aviator* `Backblaze` - Backblaze* `Baseten` - Baseten* `Browserbase` - Browserbase* `Cohere` - Cohere* `DenoDeploy` - DenoDeploy* `DigitalOcean` - DigitalOcean* `E2B` - E2B* `Fintoc` - Fintoc* `Firecrawl` - Firecrawl* `FireworksAI` - FireworksAI* `FlyIo` - FlyIo* `Groq` - Groq* `GrowthBook` - GrowthBook* `Gumloop` - Gumloop* `Hatchet` - Hatchet* `Helicone` - Helicone* `Heroku` - Heroku* `Hetzner` - Hetzner* `HeyGen` - HeyGen* `Infisical` - Infisical* `Inngest` - Inngest* `KapaAI` - KapaAI* `Kernel` - Kernel* `Koyeb` - Koyeb* `LambdaLabs` - LambdaLabs* `LangSmith` - LangSmith* `Linode` - Linode* `LlamaCloud` - LlamaCloud* `Mem0` - Mem0* `Metriport` - Metriport* `Mintlify` - Mintlify* `MistralAI` - MistralAI* `Mono` - Mono* `Netlify` - Netlify* `Northflank` - Northflank* `OpenAI` - OpenAI* `Pinecone` - Pinecone* `PlatformSh` - PlatformSh* `PromptingCompany` - PromptingCompany* `Qdrant` - Qdrant* `Render` - Render* `Replicate` - Replicate* `RetellAI` - RetellAI* `Roark` - Roark* `RunPod` - RunPod* `ScaleAI` - ScaleAI* `Scaleway` - Scaleway* `SigNoz` - SigNoz* `Sim` - Sim* `Skyvern` - Skyvern* `Slash` - Slash* `Synthesia` - Synthesia* `Telli` - Telli* `TerraApi` - TerraApi* `TriggerDev` - TriggerDev* `Turso` - Turso* `Singular` - Singular* `Swonkie` - Swonkie* `TwelveLabs` - TwelveLabs* `Twenty` - Twenty* `Unstructured` - Unstructured* `Upstash` - Upstash* `Vellum` - Vellum* `Vultr` - Vultr* `Windmill` - Windmill* `Zep` - Zep* `Hex` - Hex* `Sumsub` - Sumsub* `GoogleChat` - GoogleChat* `Kickscale` - Kickscale* `Zellify` - Zellify* `RudderStack` - RudderStack* `DodoPayments` - DodoPayments* `Salestrics` - Salestrics* `Doppler` - Doppler* `Usersnap` - Usersnap* `Asknicely` - Asknicely* `Featurebase` - Featurebase* `Frill` - Frill* `Bettermode` - Bettermode* `Dynatrace` - Dynatrace* `Honeycomb` - Honeycomb* `SumoLogic` - SumoLogic* `LogzIO` - LogzIO* `Coralogix` - Coralogix* `BetterStack` - BetterStack* `Raygun` - Raygun* `Honeybadger` - Honeybadger* `Airbrake` - Airbrake* `Appsignal` - Appsignal* `Appdynamics` - Appdynamics* `Instana` - Instana* `SplunkObservabilityCloud` - SplunkObservabilityCloud* `Uptimerobot` - Uptimerobot* `Statuscake` - Statuscake* `Tailscale` - Tailscale* `Flagsmith` - Flagsmith* `Xmatters` - Xmatters* `Squadcast` - Squadcast* `Zenduty` - Zenduty* `Cronitor` - Cronitor* `Jenkins` - Jenkins* `Bitbucket` - Bitbucket* `Gitea` - Gitea* `Teamcity` - Teamcity* `TravisCI` - TravisCI* `Semaphore` - Semaphore* `CircleciInsights` - CircleciInsights* `OctopusDeploy` - OctopusDeploy* `Sourcegraph` - Sourcegraph* `Bitrise` - Bitrise* `Gerrit` - Gerrit* `TerraformCloud` - TerraformCloud* `PulumiCloud` - PulumiCloud* `Spacelift` - Spacelift* `Railway` - Railway* `Argocd` - Argocd* `PrefectCloud` - PrefectCloud* `DagsterCloud` - DagsterCloud* `Env0` - Env0* `Kubecost` - Kubecost* `Snyk` - Snyk* `Semgrep` - Semgrep* `Veracode` - Veracode* `Checkmarx` - Checkmarx* `Gitguardian` - Gitguardian* `QualysVmdr` - QualysVmdr* `Rapid7Insightvm` - Rapid7Insightvm* `TenableVulnerabilityManagement` - TenableVulnerabilityManagement* `Sentinelone` - Sentinelone* `Lacework` - Lacework* `OrcaSecurity` - OrcaSecurity* `Drata` - Drata* `Secureframe` - Secureframe* `CiscoDuo` - CiscoDuo* `Jumpcloud` - Jumpcloud* `OnePassword` - OnePassword* `Stytch` - Stytch* `Sonarqube` - Sonarqube* `Codecov` - Codecov* `Coveralls` - Coveralls* `Codacy` - Codacy* `Deepsource` - Deepsource* `Linearb` - Linearb* `Jellyfish` - Jellyfish* `Swarmia` - Swarmia* `Packagist` - Packagist* `Nuget` - Nuget* `CratesIO` - CratesIO* `SonatypeNexus` - SonatypeNexus* `JfrogArtifactory` - JfrogArtifactory* `Snowplow` - Snowplow* `WeightsAndBiases` - WeightsAndBiases* `MonteCarlo` - MonteCarlo* `Metaplane` - Metaplane* `Datahub` - Datahub* `ClickhouseCloud` - ClickhouseCloud* `ConfluentCloud` - ConfluentCloud* `KongKonnect` - KongKonnect* `Kandji` - Kandji* `Automox` - Automox* `Autumn` - Autumn* `GetStream` - GetStream* `Octolens` - Octolens* `Kajabi` - Kajabi* `Shopware` - Shopware* `Dubsado` - Dubsado* `Campfire` - Campfire* `PromptWatch` - PromptWatch* `Crisp` - Crisp* `Kommo` - Kommo* `Axiom` - Axiom* `Plivo` - Plivo* `DataForSEO` - DataForSEO* `Sleekplan` - Sleekplan* `AbTasty` - AbTasty* `Ably` - Ably* `AbnormalSecurity` - AbnormalSecurity* `Acast` - Acast* `Acculynx` - Acculynx* `Actionstep` - Actionstep* `Aftership` - Aftership* `AhaIdeas` - AhaIdeas* `AkamaiReporting` - AkamaiReporting* `Alation` - Alation* `Alegra` - Alegra* `Allegro` - Allegro* `AnodotCost` - AnodotCost* `Anomalo` - Anomalo* `Apaleo` - Apaleo* `Apitally` - Apitally* `AppStoreConnect` - AppStoreConnect* `Appdirect` - Appdirect* `Appfolio` - Appfolio* `Arxiv` - Arxiv* `Asaas` - Asaas* `Astronomer` - Astronomer* `Athenahealth` - Athenahealth* `Atlan` - Atlan* `AutodeskConstructionCloud` - AutodeskConstructionCloud* `Avalara` - Avalara* `AwsAthena` - AwsAthena* `AwsBatch` - AwsBatch* `AwsBudgets` - AwsBudgets* `AwsCloudformation` - AwsCloudformation* `AwsComputeOptimizer` - AwsComputeOptimizer* `AwsConfig` - AwsConfig* `AwsConnect` - AwsConnect* `AwsCostAndUsageReport` - AwsCostAndUsageReport* `AwsCostAnomalyDetection` - AwsCostAnomalyDetection* `AwsCostExplorer` - AwsCostExplorer* `AwsGlueDataCatalog` - AwsGlueDataCatalog* `AwsGuardduty` - AwsGuardduty* `AwsHealth` - AwsHealth* `AwsIamAccessAnalyzer` - AwsIamAccessAnalyzer* `AwsInspector` - AwsInspector* `AwsMacie` - AwsMacie* `AwsOrganizations` - AwsOrganizations* `AwsRdsPerformanceInsights` - AwsRdsPerformanceInsights* `AwsSagemaker` - AwsSagemaker* `AwsSavingsPlans` - AwsSavingsPlans* `AwsSecurityHub` - AwsSecurityHub* `AwsSes` - AwsSes* `AwsStepFunctions` - AwsStepFunctions* `AwsSupport` - AwsSupport* `AwsSystemsManager` - AwsSystemsManager* `AwsTrustedAdvisor` - AwsTrustedAdvisor* `AwsWaf` - AwsWaf* `AwsXray` - AwsXray* `AzureActivityLog` - AzureActivityLog* `AzureAdvisor` - AzureAdvisor* `AzureApiManagement` - AzureApiManagement* `AzureApplicationInsights` - AzureApplicationInsights* `AzureCostManagement` - AzureCostManagement* `AzureDataExplorer` - AzureDataExplorer* `AzureDataFactory` - AzureDataFactory* `AzureLogAnalytics` - AzureLogAnalytics* `AzureMonitorAlerts` - AzureMonitorAlerts* `AzureMonitorMetrics` - AzureMonitorMetrics* `AzureOpenaiUsage` - AzureOpenaiUsage* `AzurePolicyInsights` - AzurePolicyInsights* `AzureReservations` - AzureReservations* `AzureResourceGraph` - AzureResourceGraph* `AzureResourceHealth` - AzureResourceHealth* `AzureServiceHealth` - AzureServiceHealth* `AzureSynapse` - AzureSynapse* `BackMarket` - BackMarket* `Beehiiv` - Beehiiv* `Bigeye` - Bigeye* `BillCom` - BillCom* `Billomat` - Billomat* `BingWebmasterTools` - BingWebmasterTools* `Bitwarden` - Bitwarden* `BlackbaudRaisersEdgeNxt` - BlackbaudRaisersEdgeNxt* `BlackboardLearn` - BlackboardLearn* `Bling` - Bling* `Bloomerang` - Bloomerang* `Bluesky` - Bluesky* `BolRetailer` - BolRetailer* `Boulevard` - Boulevard* `Buffer` - Buffer* `Bugherd` - Bugherd* `Buildium` - Buildium* `Buttondown` - Buttondown* `BuyMeACoffee` - BuyMeACoffee* `Calendarific` - Calendarific* `Calibre` - Calibre* `CanvasLms` - CanvasLms* `Captivate` - Captivate* `Cashfree` - Cashfree* `CastAi` - CastAi* `Catchpoint` - Catchpoint* `CdcOpenData` - CdcOpenData* `Census` - Census* `Checkly` - Checkly* `CircleSo` - CircleSo* `Classy` - Classy* `Cleartax` - Cleartax* `Clever` - Clever* `Clevertap` - Clevertap* `Cliniko` - Cliniko* `Clio` - Clio* `Clip` - Clip* `Cloudability` - Cloudability* `Cloudsmith` - Cloudsmith* `Cloudzero` - Cloudzero* `Clover` - Clover* `Codemagic` - Codemagic* `Codescene` - Codescene* `Collibra` - Collibra* `Companycam` - Companycam* `Conekta` - Conekta* `ContaAzul` - ContaAzul* `Contentsquare` - Contentsquare* `Cortex` - Cortex* `Courier` - Courier* `Crossref` - Crossref* `CrowdstrikeFalcon` - CrowdstrikeFalcon* `CubeCloud` - CubeCloud* `D2lBrightspace` - D2lBrightspace* `Dayforce` - Dayforce* `Debugbear` - Debugbear* `Descope` - Descope* `Develocity` - Develocity* `Dialpad` - Dialpad* `Discord` - Discord* `Discourse` - Discourse* `Donorbox` - Donorbox* `Doorloop` - Doorloop* `Dovetail` - Dovetail* `Drchrono` - Drchrono* `Dynamics365BusinessCentral` - Dynamics365BusinessCentral* `EcbDataPortal` - EcbDataPortal* `Emarsys` - Emarsys* `Embrace` - Embrace* `Entsoe` - Entsoe* `Eppo` - Eppo* `Etsy` - Etsy* `Eurostat` - Eurostat* `Faire` - Faire* `FarosAi` - FarosAi* `Fieldpulse` - Fieldpulse* `Fieldwire` - Fieldwire* `Filevine` - Filevine* `Finout` - Finout* `Five9` - Five9* `FlexeraCloudCost` - FlexeraCloudCost* `Flutterwave` - Flutterwave* `Fortnox` - Fortnox* `Fourthwall` - Fourthwall* `Fred` - Fred* `Frontegg` - Frontegg* `FusionAuth` - FusionAuth* `G2` - G2* `Gcore` - Gcore* `GcpApigee` - GcpApigee* `GcpArtifactRegistry` - GcpArtifactRegistry* `GcpBigtable` - GcpBigtable* `GcpChronicle` - GcpChronicle* `GcpCloudAssetInventory` - GcpCloudAssetInventory* `GcpCloudBilling` - GcpCloudBilling* `GcpCloudBuild` - GcpCloudBuild* `GcpCloudDeploy` - GcpCloudDeploy* `GcpCloudDns` - GcpCloudDns* `GcpCloudFunctions` - GcpCloudFunctions* `GcpCloudLogging` - GcpCloudLogging* `GcpCloudMonitoring` - GcpCloudMonitoring* `GcpCloudRun` - GcpCloudRun* `GcpCloudSpanner` - GcpCloudSpanner* `GcpCloudSql` - GcpCloudSql* `GcpCloudTrace` - GcpCloudTrace* `GcpCloudWorkflows` - GcpCloudWorkflows* `GcpComputeEngine` - GcpComputeEngine* `GcpContainerAnalysis` - GcpContainerAnalysis* `GcpDataflow` - GcpDataflow* `GcpDataplex` - GcpDataplex* `GcpDataproc` - GcpDataproc* `GcpErrorReporting` - GcpErrorReporting* `GcpGke` - GcpGke* `GcpPubsub` - GcpPubsub* `GcpRecaptchaEnterprise` - GcpRecaptchaEnterprise* `GcpRecommender` - GcpRecommender* `GcpSecurityCommandCenter` - GcpSecurityCommandCenter* `Gdelt` - Gdelt* `GenesysCloud` - GenesysCloud* `Getdx` - Getdx* `Ghost` - Ghost* `Givebutter` - Givebutter* `Gleif` - Gleif* `GooglePlayConsole` - GooglePlayConsole* `Guesty` - Guesty* `Gumroad` - Gumroad* `HarnessCcm` - HarnessCcm* `HarnessSei` - HarnessSei* `Harvest` - Harvest* `Healthie` - Healthie* `Hitpay` - Hitpay* `Hivebrite` - Hivebrite* `Holded` - Holded* `Hostaway` - Hostaway* `HousecallPro` - HousecallPro* `Humanitec` - Humanitec* `ImfData` - ImfData* `Imperva` - Imperva* `InfluxdbCloud` - InfluxdbCloud* `Iyzico` - Iyzico* `Jobtread` - Jobtread* `Kameleoon` - Kameleoon* `KauflandMarketplace` - KauflandMarketplace* `Kestra` - Kestra* `Kick` - Kick* `Kinde` - Kinde* `Kion` - Kion* `Knowbe4` - Knowbe4* `Komodor` - Komodor* `Labelbox` - Labelbox* `Lawmatics` - Lawmatics* `Learnworlds` - Learnworlds* `LexwareOffice` - LexwareOffice* `Lightdash` - Lightdash* `Lodgify` - Lodgify* `Logicmonitor` - Logicmonitor* `Logrocket` - Logrocket* `LoopReturns` - LoopReturns* `Mastodon` - Mastodon* `Meetup` - Meetup* `Memberful` - Memberful* `MercadoPago` - MercadoPago* `Meteostat` - Meteostat* `Mews` - Mews* `Mezmo` - Mezmo* `Microsoft365UsageReports` - Microsoft365UsageReports* `MicrosoftAdvertising` - MicrosoftAdvertising* `MicrosoftClarity` - MicrosoftClarity* `MicrosoftDefenderCloudApps` - MicrosoftDefenderCloudApps* `MicrosoftDefenderEndpoint` - MicrosoftDefenderEndpoint* `MicrosoftDefenderForCloud` - MicrosoftDefenderForCloud* `MicrosoftIntune` - MicrosoftIntune* `MicrosoftPurview` - MicrosoftPurview* `MicrosoftPurviewAudit` - MicrosoftPurviewAudit* `MicrosoftSentinel` - MicrosoftSentinel* `MicrosoftTeamsCallRecords` - MicrosoftTeamsCallRecords* `Midtrans` - Midtrans* `MightyNetworks` - MightyNetworks* `Mindbody` - Mindbody* `Mirakl` - Mirakl* `Moesif` - Moesif* `Moneybird` - Moneybird* `Moodle` - Moodle* `Motherduck` - Motherduck* `Mycase` - Mycase* `NagerDate` - NagerDate* `NeonCrm` - NeonCrm* `Nexhealth` - Nexhealth* `NoaaCdo` - NoaaCdo* `Nobl9` - Nobl9* `Nolt` - Nolt* `Nops` - Nops* `NpmRegistry` - NpmRegistry* `Oecd` - Oecd* `Okendo` - Okendo* `Omni` - Omni* `Onelogin` - Onelogin* `OpenDental` - OpenDental* `OpenMeteo` - OpenMeteo* `Openalex` - Openalex* `Opencorporates` - Opencorporates* `Openfec` - Openfec* `OpnPayments` - OpnPayments* `Opslevel` - Opslevel* `OttoMarket` - OttoMarket* `Ownerrez` - Ownerrez* `Pagbank` - Pagbank* `Patreon` - Patreon* `Pax8` - Pax8* `Paychex` - Paychex* `Paymob` - Paymob* `Paymongo` - Paymongo* `Phonepe` - Phonepe* `Pike13` - Pike13* `Pingone` - Pingone* `PinterestOrganic` - PinterestOrganic* `PlanningCenter` - PlanningCenter* `PluralsightFlow` - PluralsightFlow* `Podbean` - Podbean* `Postscript` - Postscript* `PowerBiAdmin` - PowerBiAdmin* `Practicepanther` - Practicepanther* `Preset` - Preset* `Procore` - Procore* `Productiv` - Productiv* `ProofpointTap` - ProofpointTap* `Propertyware` - Propertyware* `Pubnub` - Pubnub* `Quay` - Quay* `Raken` - Raken* `RedpandaCloud` - RedpandaCloud* `RentManager` - RentManager* `Reverb` - Reverb* `RocketMatter` - RocketMatter* `Rubygems` - Rubygems* `Scalr` - Scalr* `SecEdgar` - SecEdgar* `SelectStar` - SelectStar* `SemanticScholar` - SemanticScholar* `Semrush` - Semrush* `ServiceFusion` - ServiceFusion* `Servicem8` - Servicem8* `Servicetitan` - Servicetitan* `Servicetrade` - Servicetrade* `Sevdesk` - Sevdesk* `Similarweb` - Similarweb* `Simpro` - Simpro* `Sinch` - Sinch* `Singlestore` - Singlestore* `Site24x7` - Site24x7* `Sleuth` - Sleuth* `Smartlook` - Smartlook* `Smartrecruiters` - Smartrecruiters* `Smokeball` - Smokeball* `SodaCloud` - SodaCloud* `Speedcurve` - Speedcurve* `SpotIo` - SpotIo* `Sprig` - Sprig* `Sprinklr` - Sprinklr* `SproutSocial` - SproutSocial* `StackOverflowForTeams` - StackOverflowForTeams* `Stockx` - Stockx* `TackleIo` - TackleIo* `Talkdesk` - Talkdesk* `TeamupFitness` - TeamupFitness* `Tebra` - Tebra* `Telnyx` - Telnyx* `Ternary` - Ternary* `Thoughtspot` - Thoughtspot* `Thousandeyes` - Thousandeyes* `Threads` - Threads* `TiktokShop` - TiktokShop* `TinyErp` - TinyErp* `Tinybird` - Tinybird* `Tipalti` - Tipalti* `Toast` - Toast* `Torii` - Torii* `Transistor` - Transistor* `TrunkIo` - TrunkIo* `Trustradius` - Trustradius* `Twitch` - Twitch* `TwoC2p` - TwoC2p* `UkCompaniesHouse` - UkCompaniesHouse* `UkOns` - UkOns* `UnComtrade` - UnComtrade* `UsBea` - UsBea* `UsBls` - UsBls* `UsEia` - UsEia* `UsTreasuryFiscalData` - UsTreasuryFiscalData* `Vanta` - Vanta* `Vendr` - Vendr* `Virtuous` - Virtuous* `Vonage` - Vonage* `WalmartMarketplace` - WalmartMarketplace* `Waydev` - Waydev* `Wayfair` - Wayfair* `WhatsappBusinessManagement` - WhatsappBusinessManagement* `WhoGho` - WhoGho* `Whop` - Whop* `Wiz` - Wiz* `Wompi` - Wompi* `Workiz` - Workiz* `WorldBank` - WorldBank* `Xendit` - Xendit* `Yoco` - Yoco* `ZalandoZdirect` - ZalandoZdirect* `Zluri` - Zluri* `Zylo` - Zylo* `Tally` - Tally* `Nuntly` - Nuntly* `Vturb` - Vturb* `Meltwater` - Meltwater* `UserCom` - UserCom* `Latitude` - Latitude* `Workato` - Workato* `SideShift` - SideShift* `DuckLake` - DuckLake* `Starburst` - Starburst* `Easybill` - Easybill* `Bexio` - Bexio* `Umami` - Umami* `Manychat` - Manychat* `Kickstarter` - Kickstarter* `Typesense` - Typesense* `FirstPromoter` - FirstPromoter* `Zero` - Zero* `Inth` - Inth* `BCMS` - BCMS* `Convonite` - Convonite* `Hookdeck` - Hookdeck* `Billit` - Billit* `Moxie` - Moxie* `TripleWhale` - TripleWhale* `Directus` - Directus* `Clay` - Clay* `TradableBits` - TradableBits* `Swan` - Swan* `Hyros` - Hyros* `Odoo` - Odoo* `Airbridge` - Airbridge* `Snovio` - Snovio* `GoogleMerchantCenter` - GoogleMerchantCenter* `Raisely` - Raisely* `RakutenAdvertising` - RakutenAdvertising* `Zitadel` - Zitadel* `DeelFlows` - DeelFlows* `WindsorAi` - WindsorAi* `Wix` - Wix* `Sevalla` - Sevalla* `Motion` - Motion* `ImpactPartner` - ImpactPartner* `Cloudinary` - Cloudinary* `Uploadcare` - Uploadcare* `WHMCS` - WHMCS* `MSG91` - MSG91* `Depot` - Depot* `Schematic` - Schematic* `Dokploy` - Dokploy* `Hootsuite` - Hootsuite* `WisprFlow` - WisprFlow</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ExternalDataSourceTypeEnum
     {
@@ -17,7 +17,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "CustomerIO")]
         #pragma warning disable CS1591
-        CustomerIO,
+        CustomerIo,
         #pragma warning restore CS1591
         [EnumMember(Value = "Github")]
         #pragma warning disable CS1591
@@ -49,15 +49,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "MySQL")]
         #pragma warning disable CS1591
-        MySQL,
+        MySql,
         #pragma warning restore CS1591
         [EnumMember(Value = "MongoDB")]
         #pragma warning disable CS1591
-        MongoDB,
+        MongoDb,
         #pragma warning restore CS1591
         [EnumMember(Value = "MSSQL")]
         #pragma warning disable CS1591
-        MSSQL,
+        Mssql,
         #pragma warning restore CS1591
         [EnumMember(Value = "Vitally")]
         #pragma warning disable CS1591
@@ -79,9 +79,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         GoogleAds,
         #pragma warning restore CS1591
+        [EnumMember(Value = "GoogleSearchConsole")]
+        #pragma warning disable CS1591
+        GoogleSearchConsole,
+        #pragma warning restore CS1591
         [EnumMember(Value = "TemporalIO")]
         #pragma warning disable CS1591
-        TemporalIO,
+        TemporalIo,
         #pragma warning restore CS1591
         [EnumMember(Value = "DoIt")]
         #pragma warning disable CS1591
@@ -229,7 +233,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "BambooHR")]
         #pragma warning disable CS1591
-        BambooHR,
+        BambooHr,
         #pragma warning restore CS1591
         [EnumMember(Value = "Lever")]
         #pragma warning disable CS1591
@@ -345,7 +349,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "ZohoCRM")]
         #pragma warning disable CS1591
-        ZohoCRM,
+        ZohoCrm,
         #pragma warning restore CS1591
         [EnumMember(Value = "Close")]
         #pragma warning disable CS1591
@@ -357,7 +361,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "DynamoDB")]
         #pragma warning disable CS1591
-        DynamoDB,
+        DynamoDb,
         #pragma warning restore CS1591
         [EnumMember(Value = "Elasticsearch")]
         #pragma warning disable CS1591
@@ -437,11 +441,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "CircleCI")]
         #pragma warning disable CS1591
-        CircleCI,
+        CircleCi,
         #pragma warning restore CS1591
         [EnumMember(Value = "CockroachDB")]
         #pragma warning disable CS1591
-        CockroachDB,
+        CockroachDb,
         #pragma warning restore CS1591
         [EnumMember(Value = "Firebase")]
         #pragma warning disable CS1591
@@ -469,7 +473,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "SFTP")]
         #pragma warning disable CS1591
-        SFTP,
+        Sftp,
         #pragma warning restore CS1591
         [EnumMember(Value = "MicrosoftTeams")]
         #pragma warning disable CS1591
@@ -587,9 +591,4609 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         PgAnalyze,
         #pragma warning restore CS1591
+        [EnumMember(Value = "WorkOS")]
+        #pragma warning disable CS1591
+        WorkOs,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AmazonS3")]
+        #pragma warning disable CS1591
+        AmazonS3,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GoogleCloudStorage")]
+        #pragma warning disable CS1591
+        GoogleCloudStorage,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Databricks")]
+        #pragma warning disable CS1591
+        Databricks,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Dynamics365")]
+        #pragma warning disable CS1591
+        Dynamics365,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "SalesforceMarketingCloud")]
+        #pragma warning disable CS1591
+        SalesforceMarketingCloud,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Db2")]
+        #pragma warning disable CS1591
+        Db2,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Heap")]
+        #pragma warning disable CS1591
+        Heap,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AdobeAnalytics")]
+        #pragma warning disable CS1591
+        AdobeAnalytics,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Matomo")]
+        #pragma warning disable CS1591
+        Matomo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Optimizely")]
+        #pragma warning disable CS1591
+        Optimizely,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Adyen")]
+        #pragma warning disable CS1591
+        Adyen,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GoCardless")]
+        #pragma warning disable CS1591
+        GoCardless,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Mollie")]
+        #pragma warning disable CS1591
+        Mollie,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "CheckoutCom")]
+        #pragma warning disable CS1591
+        CheckoutCom,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Branch")]
+        #pragma warning disable CS1591
+        Branch,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Criteo")]
+        #pragma warning disable CS1591
+        Criteo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Outbrain")]
+        #pragma warning disable CS1591
+        Outbrain,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Taboola")]
+        #pragma warning disable CS1591
+        Taboola,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AdRoll")]
+        #pragma warning disable CS1591
+        AdRoll,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "DisplayVideo360")]
+        #pragma warning disable CS1591
+        DisplayVideo360,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GoogleAdManager")]
+        #pragma warning disable CS1591
+        GoogleAdManager,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "CampaignManager360")]
+        #pragma warning disable CS1591
+        CampaignManager360,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "SearchAds360")]
+        #pragma warning disable CS1591
+        SearchAds360,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AdobeCommerce")]
+        #pragma warning disable CS1591
+        AdobeCommerce,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AmazonSellingPartner")]
+        #pragma warning disable CS1591
+        AmazonSellingPartner,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Ebay")]
+        #pragma warning disable CS1591
+        Ebay,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Commercetools")]
+        #pragma warning disable CS1591
+        Commercetools,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "LightspeedRetail")]
+        #pragma warning disable CS1591
+        LightspeedRetail,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ShipStation")]
+        #pragma warning disable CS1591
+        ShipStation,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ConstantContact")]
+        #pragma warning disable CS1591
+        ConstantContact,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Mailgun")]
+        #pragma warning disable CS1591
+        Mailgun,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Eloqua")]
+        #pragma warning disable CS1591
+        Eloqua,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Sailthru")]
+        #pragma warning disable CS1591
+        Sailthru,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Ortto")]
+        #pragma warning disable CS1591
+        Ortto,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Attentive")]
+        #pragma warning disable CS1591
+        Attentive,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Kustomer")]
+        #pragma warning disable CS1591
+        Kustomer,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Dixa")]
+        #pragma warning disable CS1591
+        Dixa,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Gladly")]
+        #pragma warning disable CS1591
+        Gladly,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Qualtrics")]
+        #pragma warning disable CS1591
+        Qualtrics,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AzureDevOps")]
+        #pragma warning disable CS1591
+        AzureDevOps,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Rollbar")]
+        #pragma warning disable CS1591
+        Rollbar,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Opsgenie")]
+        #pragma warning disable CS1591
+        Opsgenie,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "IncidentIo")]
+        #pragma warning disable CS1591
+        IncidentIo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Pingdom")]
+        #pragma warning disable CS1591
+        Pingdom,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Cloudflare")]
+        #pragma warning disable CS1591
+        Cloudflare,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "CosmosDB")]
+        #pragma warning disable CS1591
+        CosmosDb,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "PlanetScaleMySQL")]
+        #pragma warning disable CS1591
+        PlanetScaleMySql,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "PlanetScalePostgres")]
+        #pragma warning disable CS1591
+        PlanetScalePostgres,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "SapHana")]
+        #pragma warning disable CS1591
+        SapHana,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Rippling")]
+        #pragma warning disable CS1591
+        Rippling,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "HiBob")]
+        #pragma warning disable CS1591
+        HiBob,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Personio")]
+        #pragma warning disable CS1591
+        Personio,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Deel")]
+        #pragma warning disable CS1591
+        Deel,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AdpWorkforceNow")]
+        #pragma warning disable CS1591
+        AdpWorkforceNow,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Paylocity")]
+        #pragma warning disable CS1591
+        Paylocity,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Gusto")]
+        #pragma warning disable CS1591
+        Gusto,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "CultureAmp")]
+        #pragma warning disable CS1591
+        CultureAmp,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Lattice")]
+        #pragma warning disable CS1591
+        Lattice,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "SageIntacct")]
+        #pragma warning disable CS1591
+        SageIntacct,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "FreshBooks")]
+        #pragma warning disable CS1591
+        FreshBooks,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Expensify")]
+        #pragma warning disable CS1591
+        Expensify,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Ramp")]
+        #pragma warning disable CS1591
+        Ramp,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Brex")]
+        #pragma warning disable CS1591
+        Brex,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Coupa")]
+        #pragma warning disable CS1591
+        Coupa,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "SapConcur")]
+        #pragma warning disable CS1591
+        SapConcur,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Apollo")]
+        #pragma warning disable CS1591
+        Apollo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Crunchbase")]
+        #pragma warning disable CS1591
+        Crunchbase,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ZoomInfo")]
+        #pragma warning disable CS1591
+        ZoomInfo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Clari")]
+        #pragma warning disable CS1591
+        Clari,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Chorus")]
+        #pragma warning disable CS1591
+        Chorus,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Coda")]
+        #pragma warning disable CS1591
+        Coda,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Guru")]
+        #pragma warning disable CS1591
+        Guru,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Dropbox")]
+        #pragma warning disable CS1591
+        Dropbox,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Docusign")]
+        #pragma warning disable CS1591
+        Docusign,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "PandaDoc")]
+        #pragma warning disable CS1591
+        PandaDoc,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "SapErp")]
+        #pragma warning disable CS1591
+        SapErp,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "SapSuccessFactors")]
+        #pragma warning disable CS1591
+        SapSuccessFactors,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "OracleEbs")]
+        #pragma warning disable CS1591
+        OracleEbs,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "OracleFusion")]
+        #pragma warning disable CS1591
+        OracleFusion,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AmazonSNS")]
+        #pragma warning disable CS1591
+        AmazonSns,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AmazonEventBridge")]
+        #pragma warning disable CS1591
+        AmazonEventBridge,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AmazonSQS")]
+        #pragma warning disable CS1591
+        AmazonSqs,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AmazonKinesis")]
+        #pragma warning disable CS1591
+        AmazonKinesis,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AmazonCloudWatch")]
+        #pragma warning disable CS1591
+        AmazonCloudWatch,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "OpenAIAds")]
+        #pragma warning disable CS1591
+        OpenAiAds,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "OneHundredMs")]
+        #pragma warning disable CS1591
+        OneHundredMs,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "SevenShifts")]
+        #pragma warning disable CS1591
+        SevenShifts,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AcuityScheduling")]
+        #pragma warning disable CS1591
+        AcuityScheduling,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AgileCRM")]
+        #pragma warning disable CS1591
+        AgileCrm,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Aha")]
+        #pragma warning disable CS1591
+        Aha,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Airbyte")]
+        #pragma warning disable CS1591
+        Airbyte,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Akeneo")]
+        #pragma warning disable CS1591
+        Akeneo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Algolia")]
+        #pragma warning disable CS1591
+        Algolia,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AlpacaBrokerAPI")]
+        #pragma warning disable CS1591
+        AlpacaBrokerApi,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ApifyDataset")]
+        #pragma warning disable CS1591
+        ApifyDataset,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Appcues")]
+        #pragma warning disable CS1591
+        Appcues,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Appfigures")]
+        #pragma warning disable CS1591
+        Appfigures,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Appfollow")]
+        #pragma warning disable CS1591
+        Appfollow,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Apptivo")]
+        #pragma warning disable CS1591
+        Apptivo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AssemblyAI")]
+        #pragma warning disable CS1591
+        AssemblyAi,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Awin")]
+        #pragma warning disable CS1591
+        Awin,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AwsCloudTrail")]
+        #pragma warning disable CS1591
+        AwsCloudTrail,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AzureTableStorage")]
+        #pragma warning disable CS1591
+        AzureTableStorage,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Babelforce")]
+        #pragma warning disable CS1591
+        Babelforce,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Basecamp")]
+        #pragma warning disable CS1591
+        Basecamp,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Beamer")]
+        #pragma warning disable CS1591
+        Beamer,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "BigMailer")]
+        #pragma warning disable CS1591
+        BigMailer,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Bluetally")]
+        #pragma warning disable CS1591
+        Bluetally,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "BoldSign")]
+        #pragma warning disable CS1591
+        BoldSign,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "BreezyHR")]
+        #pragma warning disable CS1591
+        BreezyHr,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Bugsnag")]
+        #pragma warning disable CS1591
+        Bugsnag,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Buildkite")]
+        #pragma warning disable CS1591
+        Buildkite,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Bunny")]
+        #pragma warning disable CS1591
+        Bunny,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Buzzsprout")]
+        #pragma warning disable CS1591
+        Buzzsprout,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "CalCom")]
+        #pragma warning disable CS1591
+        CalCom,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "CallRail")]
+        #pragma warning disable CS1591
+        CallRail,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Campayn")]
+        #pragma warning disable CS1591
+        Campayn,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Canny")]
+        #pragma warning disable CS1591
+        Canny,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "CapsuleCRM")]
+        #pragma warning disable CS1591
+        CapsuleCrm,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "CaptainData")]
+        #pragma warning disable CS1591
+        CaptainData,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "CartCom")]
+        #pragma warning disable CS1591
+        CartCom,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "CastorEDC")]
+        #pragma warning disable CS1591
+        CastorEdc,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Chameleon")]
+        #pragma warning disable CS1591
+        Chameleon,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Chargedesk")]
+        #pragma warning disable CS1591
+        Chargedesk,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Chargify")]
+        #pragma warning disable CS1591
+        Chargify,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Chift")]
+        #pragma warning disable CS1591
+        Chift,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Churnkey")]
+        #pragma warning disable CS1591
+        Churnkey,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Cin7")]
+        #pragma warning disable CS1591
+        Cin7,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "CiscoMeraki")]
+        #pragma warning disable CS1591
+        CiscoMeraki,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Clazar")]
+        #pragma warning disable CS1591
+        Clazar,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Clockify")]
+        #pragma warning disable CS1591
+        Clockify,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Clockodo")]
+        #pragma warning disable CS1591
+        Clockodo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Cloudbeds")]
+        #pragma warning disable CS1591
+        Cloudbeds,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Coassemble")]
+        #pragma warning disable CS1591
+        Coassemble,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Codefresh")]
+        #pragma warning disable CS1591
+        Codefresh,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Concord")]
+        #pragma warning disable CS1591
+        Concord,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ConfigCat")]
+        #pragma warning disable CS1591
+        ConfigCat,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Couchbase")]
+        #pragma warning disable CS1591
+        Couchbase,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Curve")]
+        #pragma warning disable CS1591
+        Curve,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Customerly")]
+        #pragma warning disable CS1591
+        Customerly,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Datascope")]
+        #pragma warning disable CS1591
+        Datascope,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Dbt")]
+        #pragma warning disable CS1591
+        Dbt,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Deputy")]
+        #pragma warning disable CS1591
+        Deputy,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "DevinAI")]
+        #pragma warning disable CS1591
+        DevinAi,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Docuseal")]
+        #pragma warning disable CS1591
+        Docuseal,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Dolibarr")]
+        #pragma warning disable CS1591
+        Dolibarr,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Dremio")]
+        #pragma warning disable CS1591
+        Dremio,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "DropboxSign")]
+        #pragma warning disable CS1591
+        DropboxSign,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Dwolla")]
+        #pragma warning disable CS1591
+        Dwolla,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "EConomic")]
+        #pragma warning disable CS1591
+        EConomic,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Easypost")]
+        #pragma warning disable CS1591
+        Easypost,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Easypromos")]
+        #pragma warning disable CS1591
+        Easypromos,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Elasticemail")]
+        #pragma warning disable CS1591
+        Elasticemail,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "EmailOctopus")]
+        #pragma warning disable CS1591
+        EmailOctopus,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "EmploymentHero")]
+        #pragma warning disable CS1591
+        EmploymentHero,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Encharge")]
+        #pragma warning disable CS1591
+        Encharge,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Eventee")]
+        #pragma warning disable CS1591
+        Eventee,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Eventzilla")]
+        #pragma warning disable CS1591
+        Eventzilla,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Everhour")]
+        #pragma warning disable CS1591
+        Everhour,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "EZOfficeInventory")]
+        #pragma warning disable CS1591
+        EzOfficeInventory,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Factorial")]
+        #pragma warning disable CS1591
+        Factorial,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Fastbill")]
+        #pragma warning disable CS1591
+        Fastbill,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Fastly")]
+        #pragma warning disable CS1591
+        Fastly,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Fauna")]
+        #pragma warning disable CS1591
+        Fauna,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Feishu")]
+        #pragma warning disable CS1591
+        Feishu,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Fillout")]
+        #pragma warning disable CS1591
+        Fillout,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Finage")]
+        #pragma warning disable CS1591
+        Finage,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Firebolt")]
+        #pragma warning disable CS1591
+        Firebolt,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "FireHydrant")]
+        #pragma warning disable CS1591
+        FireHydrant,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Fleetio")]
+        #pragma warning disable CS1591
+        Fleetio,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Flexmail")]
+        #pragma warning disable CS1591
+        Flexmail,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Flexport")]
+        #pragma warning disable CS1591
+        Flexport,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "FloatApp")]
+        #pragma warning disable CS1591
+        FloatApp,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Flowlu")]
+        #pragma warning disable CS1591
+        Flowlu,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Formbricks")]
+        #pragma warning disable CS1591
+        Formbricks,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Framer")]
+        #pragma warning disable CS1591
+        Framer,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "FreeAgent")]
+        #pragma warning disable CS1591
+        FreeAgent,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Freightview")]
+        #pragma warning disable CS1591
+        Freightview,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Freshcaller")]
+        #pragma warning disable CS1591
+        Freshcaller,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Freshchat")]
+        #pragma warning disable CS1591
+        Freshchat,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Freshservice")]
+        #pragma warning disable CS1591
+        Freshservice,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Fulcrum")]
+        #pragma warning disable CS1591
+        Fulcrum,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GainsightPx")]
+        #pragma warning disable CS1591
+        GainsightPx,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GitBook")]
+        #pragma warning disable CS1591
+        GitBook,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Glassfrog")]
+        #pragma warning disable CS1591
+        Glassfrog,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Goldcast")]
+        #pragma warning disable CS1591
+        Goldcast,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GoLogin")]
+        #pragma warning disable CS1591
+        GoLogin,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Grafana")]
+        #pragma warning disable CS1591
+        Grafana,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GreytHr")]
+        #pragma warning disable CS1591
+        GreytHr,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Gridly")]
+        #pragma warning disable CS1591
+        Gridly,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Harness")]
+        #pragma warning disable CS1591
+        Harness,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Height")]
+        #pragma warning disable CS1591
+        Height,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Hellobaton")]
+        #pragma warning disable CS1591
+        Hellobaton,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "HighLevel")]
+        #pragma warning disable CS1591
+        HighLevel,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "HoorayHR")]
+        #pragma warning disable CS1591
+        HoorayHr,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Hubplanner")]
+        #pragma warning disable CS1591
+        Hubplanner,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Humanitix")]
+        #pragma warning disable CS1591
+        Humanitix,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Huntr")]
+        #pragma warning disable CS1591
+        Huntr,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Inflowinventory")]
+        #pragma warning disable CS1591
+        Inflowinventory,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "InforNexus")]
+        #pragma warning disable CS1591
+        InforNexus,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Insightful")]
+        #pragma warning disable CS1591
+        Insightful,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Insightly")]
+        #pragma warning disable CS1591
+        Insightly,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Instantly")]
+        #pragma warning disable CS1591
+        Instantly,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Instatus")]
+        #pragma warning disable CS1591
+        Instatus,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Intruder")]
+        #pragma warning disable CS1591
+        Intruder,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Invoiced")]
+        #pragma warning disable CS1591
+        Invoiced,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Invoiceninja")]
+        #pragma warning disable CS1591
+        Invoiceninja,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "JamfPro")]
+        #pragma warning disable CS1591
+        JamfPro,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "JobNimbus")]
+        #pragma warning disable CS1591
+        JobNimbus,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Jotform")]
+        #pragma warning disable CS1591
+        Jotform,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "JudgeMeReviews")]
+        #pragma warning disable CS1591
+        JudgeMeReviews,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "JustCall")]
+        #pragma warning disable CS1591
+        JustCall,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "JustSift")]
+        #pragma warning disable CS1591
+        JustSift,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "K6Cloud")]
+        #pragma warning disable CS1591
+        K6Cloud,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Katana")]
+        #pragma warning disable CS1591
+        Katana,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Keka")]
+        #pragma warning disable CS1591
+        Keka,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Kisi")]
+        #pragma warning disable CS1591
+        Kisi,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Kissmetrics")]
+        #pragma warning disable CS1591
+        Kissmetrics,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Klarna")]
+        #pragma warning disable CS1591
+        Klarna,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Klaus")]
+        #pragma warning disable CS1591
+        Klaus,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Lago")]
+        #pragma warning disable CS1591
+        Lago,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Leadfeeder")]
+        #pragma warning disable CS1591
+        Leadfeeder,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Lemlist")]
+        #pragma warning disable CS1591
+        Lemlist,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "LessAnnoyingCRM")]
+        #pragma warning disable CS1591
+        LessAnnoyingCrm,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "LinkedinPages")]
+        #pragma warning disable CS1591
+        LinkedinPages,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Linkrunner")]
+        #pragma warning disable CS1591
+        Linkrunner,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Linnworks")]
+        #pragma warning disable CS1591
+        Linnworks,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Lob")]
+        #pragma warning disable CS1591
+        Lob,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Lokalise")]
+        #pragma warning disable CS1591
+        Lokalise,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Looker")]
+        #pragma warning disable CS1591
+        Looker,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Luma")]
+        #pragma warning disable CS1591
+        Luma,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "MailerSend")]
+        #pragma warning disable CS1591
+        MailerSend,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Mailosaur")]
+        #pragma warning disable CS1591
+        Mailosaur,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Mailtrap")]
+        #pragma warning disable CS1591
+        Mailtrap,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Mantle")]
+        #pragma warning disable CS1591
+        Mantle,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Mention")]
+        #pragma warning disable CS1591
+        Mention,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "MercadoAds")]
+        #pragma warning disable CS1591
+        MercadoAds,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Merge")]
+        #pragma warning disable CS1591
+        Merge,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Metabase")]
+        #pragma warning disable CS1591
+        Metabase,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Metricool")]
+        #pragma warning disable CS1591
+        Metricool,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "MicrosoftDataverse")]
+        #pragma warning disable CS1591
+        MicrosoftDataverse,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "MicrosoftEntraId")]
+        #pragma warning disable CS1591
+        MicrosoftEntraId,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "MicrosoftLists")]
+        #pragma warning disable CS1591
+        MicrosoftLists,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Miro")]
+        #pragma warning disable CS1591
+        Miro,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Missive")]
+        #pragma warning disable CS1591
+        Missive,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "MixMax")]
+        #pragma warning disable CS1591
+        MixMax,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Mode")]
+        #pragma warning disable CS1591
+        Mode,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Mux")]
+        #pragma warning disable CS1591
+        Mux,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "MyHours")]
+        #pragma warning disable CS1591
+        MyHours,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "N8n")]
+        #pragma warning disable CS1591
+        N8N,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Navan")]
+        #pragma warning disable CS1591
+        Navan,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "NebiusAI")]
+        #pragma warning disable CS1591
+        NebiusAi,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Nexiopay")]
+        #pragma warning disable CS1591
+        Nexiopay,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "NinjaOneRMM")]
+        #pragma warning disable CS1591
+        NinjaOneRmm,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "NoCRM")]
+        #pragma warning disable CS1591
+        NoCrm,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "NorthpassLMS")]
+        #pragma warning disable CS1591
+        NorthpassLms,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Nutshell")]
+        #pragma warning disable CS1591
+        Nutshell,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Nylas")]
+        #pragma warning disable CS1591
+        Nylas,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Oncehub")]
+        #pragma warning disable CS1591
+        Oncehub,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Onepagecrm")]
+        #pragma warning disable CS1591
+        Onepagecrm,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "OneSignal")]
+        #pragma warning disable CS1591
+        OneSignal,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Onfleet")]
+        #pragma warning disable CS1591
+        Onfleet,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "OpinionStage")]
+        #pragma warning disable CS1591
+        OpinionStage,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "OPUSWatch")]
+        #pragma warning disable CS1591
+        OpusWatch,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Orb")]
+        #pragma warning disable CS1591
+        Orb,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Orbit")]
+        #pragma warning disable CS1591
+        Orbit,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Oura")]
+        #pragma warning disable CS1591
+        Oura,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Oveit")]
+        #pragma warning disable CS1591
+        Oveit,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "PabblySubscriptionsBilling")]
+        #pragma warning disable CS1591
+        PabblySubscriptionsBilling,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Paperform")]
+        #pragma warning disable CS1591
+        Paperform,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Papersign")]
+        #pragma warning disable CS1591
+        Papersign,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Partnerize")]
+        #pragma warning disable CS1591
+        Partnerize,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "PartnerStack")]
+        #pragma warning disable CS1591
+        PartnerStack,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "PayFit")]
+        #pragma warning disable CS1591
+        PayFit,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Paystack")]
+        #pragma warning disable CS1591
+        Paystack,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Pennylane")]
+        #pragma warning disable CS1591
+        Pennylane,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Perk")]
+        #pragma warning disable CS1591
+        Perk,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "PersistIq")]
+        #pragma warning disable CS1591
+        PersistIq,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Persona")]
+        #pragma warning disable CS1591
+        Persona,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Phyllo")]
+        #pragma warning disable CS1591
+        Phyllo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Picqer")]
+        #pragma warning disable CS1591
+        Picqer,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Pipeliner")]
+        #pragma warning disable CS1591
+        Pipeliner,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "PivotalTracker")]
+        #pragma warning disable CS1591
+        PivotalTracker,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Piwik")]
+        #pragma warning disable CS1591
+        Piwik,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Planhat")]
+        #pragma warning disable CS1591
+        Planhat,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Plausible")]
+        #pragma warning disable CS1591
+        Plausible,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Poplar")]
+        #pragma warning disable CS1591
+        Poplar,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "PrestaShop")]
+        #pragma warning disable CS1591
+        PrestaShop,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Pretix")]
+        #pragma warning disable CS1591
+        Pretix,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Primetric")]
+        #pragma warning disable CS1591
+        Primetric,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Printavo")]
+        #pragma warning disable CS1591
+        Printavo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Printify")]
+        #pragma warning disable CS1591
+        Printify,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Productive")]
+        #pragma warning disable CS1591
+        Productive,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Pylon")]
+        #pragma warning disable CS1591
+        Pylon,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Qonto")]
+        #pragma warning disable CS1591
+        Qonto,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Qualaroo")]
+        #pragma warning disable CS1591
+        Qualaroo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Railz")]
+        #pragma warning disable CS1591
+        Railz,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "RDStationMarketing")]
+        #pragma warning disable CS1591
+        RdStationMarketing,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Recruitee")]
+        #pragma warning disable CS1591
+        Recruitee,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Reddit")]
+        #pragma warning disable CS1591
+        Reddit,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ReferralHero")]
+        #pragma warning disable CS1591
+        ReferralHero,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "RentCast")]
+        #pragma warning disable CS1591
+        RentCast,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Repairshopr")]
+        #pragma warning disable CS1591
+        Repairshopr,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ReplyIo")]
+        #pragma warning disable CS1591
+        ReplyIo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "RetailExpress")]
+        #pragma warning disable CS1591
+        RetailExpress,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Retently")]
+        #pragma warning disable CS1591
+        Retently,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "RevolutMerchant")]
+        #pragma warning disable CS1591
+        RevolutMerchant,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "RocketChat")]
+        #pragma warning disable CS1591
+        RocketChat,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Rocketlane")]
+        #pragma warning disable CS1591
+        Rocketlane,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Rootly")]
+        #pragma warning disable CS1591
+        Rootly,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Ruddr")]
+        #pragma warning disable CS1591
+        Ruddr,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "SafetyCulture")]
+        #pragma warning disable CS1591
+        SafetyCulture,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "SageHR")]
+        #pragma warning disable CS1591
+        SageHr,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Salesflare")]
+        #pragma warning disable CS1591
+        Salesflare,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "SAPFieldglass")]
+        #pragma warning disable CS1591
+        SapFieldglass,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "SavvyCal")]
+        #pragma warning disable CS1591
+        SavvyCal,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Secoda")]
+        #pragma warning disable CS1591
+        Secoda,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Segment")]
+        #pragma warning disable CS1591
+        Segment,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Sendowl")]
+        #pragma warning disable CS1591
+        Sendowl,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "SendPulse")]
+        #pragma warning disable CS1591
+        SendPulse,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Senseforce")]
+        #pragma warning disable CS1591
+        Senseforce,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Serpstat")]
+        #pragma warning disable CS1591
+        Serpstat,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Sharetribe")]
+        #pragma warning disable CS1591
+        Sharetribe,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Shippo")]
+        #pragma warning disable CS1591
+        Shippo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ShopWired")]
+        #pragma warning disable CS1591
+        ShopWired,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Shortio")]
+        #pragma warning disable CS1591
+        Shortio,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Shutterstock")]
+        #pragma warning disable CS1591
+        Shutterstock,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "SigmaComputing")]
+        #pragma warning disable CS1591
+        SigmaComputing,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "SignNow")]
+        #pragma warning disable CS1591
+        SignNow,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "SimpleCast")]
+        #pragma warning disable CS1591
+        SimpleCast,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Simplesat")]
+        #pragma warning disable CS1591
+        Simplesat,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Smaily")]
+        #pragma warning disable CS1591
+        Smaily,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "SmartEngage")]
+        #pragma warning disable CS1591
+        SmartEngage,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Smartreach")]
+        #pragma warning disable CS1591
+        Smartreach,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Smartwaiver")]
+        #pragma warning disable CS1591
+        Smartwaiver,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "SolarwindsServiceDesk")]
+        #pragma warning disable CS1591
+        SolarwindsServiceDesk,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "SonarCloud")]
+        #pragma warning disable CS1591
+        SonarCloud,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "SparkPost")]
+        #pragma warning disable CS1591
+        SparkPost,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "SplitIo")]
+        #pragma warning disable CS1591
+        SplitIo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "SpotifyAds")]
+        #pragma warning disable CS1591
+        SpotifyAds,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "SpotlerCRM")]
+        #pragma warning disable CS1591
+        SpotlerCrm,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Squarespace")]
+        #pragma warning disable CS1591
+        Squarespace,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Statsig")]
+        #pragma warning disable CS1591
+        Statsig,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Statuspage")]
+        #pragma warning disable CS1591
+        Statuspage,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Stigg")]
+        #pragma warning disable CS1591
+        Stigg,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Strava")]
+        #pragma warning disable CS1591
+        Strava,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "SurveySparrow")]
+        #pragma warning disable CS1591
+        SurveySparrow,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Survicate")]
+        #pragma warning disable CS1591
+        Survicate,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Svix")]
+        #pragma warning disable CS1591
+        Svix,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Systeme")]
+        #pragma warning disable CS1591
+        Systeme,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Tavus")]
+        #pragma warning disable CS1591
+        Tavus,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Teamtailor")]
+        #pragma warning disable CS1591
+        Teamtailor,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Teamwork")]
+        #pragma warning disable CS1591
+        Teamwork,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Tempo")]
+        #pragma warning disable CS1591
+        Tempo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Testrail")]
+        #pragma warning disable CS1591
+        Testrail,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Thinkific")]
+        #pragma warning disable CS1591
+        Thinkific,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ThinkificCourses")]
+        #pragma warning disable CS1591
+        ThinkificCourses,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ThriveLearning")]
+        #pragma warning disable CS1591
+        ThriveLearning,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Ticketmaster")]
+        #pragma warning disable CS1591
+        Ticketmaster,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "TicketTailor")]
+        #pragma warning disable CS1591
+        TicketTailor,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "TickTick")]
+        #pragma warning disable CS1591
+        TickTick,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Timely")]
+        #pragma warning disable CS1591
+        Timely,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Tinyemail")]
+        #pragma warning disable CS1591
+        Tinyemail,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Todoist")]
+        #pragma warning disable CS1591
+        Todoist,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Toggl")]
+        #pragma warning disable CS1591
+        Toggl,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "TrackPMS")]
+        #pragma warning disable CS1591
+        TrackPms,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Tremendous")]
+        #pragma warning disable CS1591
+        Tremendous,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "TrustPilot")]
+        #pragma warning disable CS1591
+        TrustPilot,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Twitter")]
+        #pragma warning disable CS1591
+        Twitter,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "TyntecSMS")]
+        #pragma warning disable CS1591
+        TyntecSms,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Unleash")]
+        #pragma warning disable CS1591
+        Unleash,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "UpPromote")]
+        #pragma warning disable CS1591
+        UpPromote,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Uptick")]
+        #pragma warning disable CS1591
+        Uptick,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Uservoice")]
+        #pragma warning disable CS1591
+        Uservoice,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Vantage")]
+        #pragma warning disable CS1591
+        Vantage,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Veeqo")]
+        #pragma warning disable CS1591
+        Veeqo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Vercel")]
+        #pragma warning disable CS1591
+        Vercel,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "VismaEconomic")]
+        #pragma warning disable CS1591
+        VismaEconomic,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "VWO")]
+        #pragma warning disable CS1591
+        Vwo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Waiteraid")]
+        #pragma warning disable CS1591
+        Waiteraid,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Wasabi")]
+        #pragma warning disable CS1591
+        Wasabi,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "WhenIWork")]
+        #pragma warning disable CS1591
+        WhenIWork,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Wordpress")]
+        #pragma warning disable CS1591
+        Wordpress,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Workable")]
+        #pragma warning disable CS1591
+        Workable,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Workflowmax")]
+        #pragma warning disable CS1591
+        Workflowmax,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Workramp")]
+        #pragma warning disable CS1591
+        Workramp,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Wufoo")]
+        #pragma warning disable CS1591
+        Wufoo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Xsolla")]
+        #pragma warning disable CS1591
+        Xsolla,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "YandexMetrica")]
+        #pragma warning disable CS1591
+        YandexMetrica,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Yotpo")]
+        #pragma warning disable CS1591
+        Yotpo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Ynab")]
+        #pragma warning disable CS1591
+        Ynab,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Younium")]
+        #pragma warning disable CS1591
+        Younium,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "YouSign")]
+        #pragma warning disable CS1591
+        YouSign,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "YoutubeData")]
+        #pragma warning disable CS1591
+        YoutubeData,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ZapierSupportedStorage")]
+        #pragma warning disable CS1591
+        ZapierSupportedStorage,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ZapSign")]
+        #pragma warning disable CS1591
+        ZapSign,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ZendeskSell")]
+        #pragma warning disable CS1591
+        ZendeskSell,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ZendeskSunshine")]
+        #pragma warning disable CS1591
+        ZendeskSunshine,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Zenefits")]
+        #pragma warning disable CS1591
+        Zenefits,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Zenloop")]
+        #pragma warning disable CS1591
+        Zenloop,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ZohoAnalytics")]
+        #pragma warning disable CS1591
+        ZohoAnalytics,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ZohoBigin")]
+        #pragma warning disable CS1591
+        ZohoBigin,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ZohoBilling")]
+        #pragma warning disable CS1591
+        ZohoBilling,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ZohoBooks")]
+        #pragma warning disable CS1591
+        ZohoBooks,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ZohoCampaign")]
+        #pragma warning disable CS1591
+        ZohoCampaign,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ZohoDesk")]
+        #pragma warning disable CS1591
+        ZohoDesk,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ZohoExpense")]
+        #pragma warning disable CS1591
+        ZohoExpense,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ZohoInventory")]
+        #pragma warning disable CS1591
+        ZohoInventory,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ZohoInvoice")]
+        #pragma warning disable CS1591
+        ZohoInvoice,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ZonkaFeedback")]
+        #pragma warning disable CS1591
+        ZonkaFeedback,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AlphaVantage")]
+        #pragma warning disable CS1591
+        AlphaVantage,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Aviationstack")]
+        #pragma warning disable CS1591
+        Aviationstack,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Bitly")]
+        #pragma warning disable CS1591
+        Bitly,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Blogger")]
+        #pragma warning disable CS1591
+        Blogger,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Breezometer")]
+        #pragma warning disable CS1591
+        Breezometer,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "CareQualityCommission")]
+        #pragma warning disable CS1591
+        CareQualityCommission,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Cimis")]
+        #pragma warning disable CS1591
+        Cimis,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "CoinApi")]
+        #pragma warning disable CS1591
+        CoinApi,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "CoinGecko")]
+        #pragma warning disable CS1591
+        CoinGecko,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "CoinMarketCap")]
+        #pragma warning disable CS1591
+        CoinMarketCap,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "DingConnect")]
+        #pragma warning disable CS1591
+        DingConnect,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Dockerhub")]
+        #pragma warning disable CS1591
+        Dockerhub,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ExchangeRatesApi")]
+        #pragma warning disable CS1591
+        ExchangeRatesApi,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "FinancialModelling")]
+        #pragma warning disable CS1591
+        FinancialModelling,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Finnhub")]
+        #pragma warning disable CS1591
+        Finnhub,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Finnworlds")]
+        #pragma warning disable CS1591
+        Finnworlds,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Giphy")]
+        #pragma warning disable CS1591
+        Giphy,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Gmail")]
+        #pragma warning disable CS1591
+        Gmail,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GNews")]
+        #pragma warning disable CS1591
+        GNews,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GoogleCalendar")]
+        #pragma warning disable CS1591
+        GoogleCalendar,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GoogleClassroom")]
+        #pragma warning disable CS1591
+        GoogleClassroom,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GoogleDirectory")]
+        #pragma warning disable CS1591
+        GoogleDirectory,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GoogleForms")]
+        #pragma warning disable CS1591
+        GoogleForms,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GooglePageSpeedInsights")]
+        #pragma warning disable CS1591
+        GooglePageSpeedInsights,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GoogleTasks")]
+        #pragma warning disable CS1591
+        GoogleTasks,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GoogleWebfonts")]
+        #pragma warning disable CS1591
+        GoogleWebfonts,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GoogleWorkspaceAdminReports")]
+        #pragma warning disable CS1591
+        GoogleWorkspaceAdminReports,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "HuggingFace")]
+        #pragma warning disable CS1591
+        HuggingFace,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "IlluminaBasespace")]
+        #pragma warning disable CS1591
+        IlluminaBasespace,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Imagga")]
+        #pragma warning disable CS1591
+        Imagga,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Interzoid")]
+        #pragma warning disable CS1591
+        Interzoid,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "IP2Whois")]
+        #pragma warning disable CS1591
+        Ip2Whois,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "KYVE")]
+        #pragma warning disable CS1591
+        Kyve,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Marketstack")]
+        #pragma warning disable CS1591
+        Marketstack,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Mendeley")]
+        #pragma warning disable CS1591
+        Mendeley,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Nasa")]
+        #pragma warning disable CS1591
+        Nasa,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "NewYorkTimes")]
+        #pragma warning disable CS1591
+        NewYorkTimes,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "NewsApi")]
+        #pragma warning disable CS1591
+        NewsApi,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "NewsData")]
+        #pragma warning disable CS1591
+        NewsData,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "OpenDataDc")]
+        #pragma warning disable CS1591
+        OpenDataDc,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "OpenExchangeRates")]
+        #pragma warning disable CS1591
+        OpenExchangeRates,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "OpenAQ")]
+        #pragma warning disable CS1591
+        OpenAq,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "OpenFDA")]
+        #pragma warning disable CS1591
+        OpenFda,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "OpenWeather")]
+        #pragma warning disable CS1591
+        OpenWeather,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Outlook")]
+        #pragma warning disable CS1591
+        Outlook,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Perigon")]
+        #pragma warning disable CS1591
+        Perigon,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Pexels")]
+        #pragma warning disable CS1591
+        Pexels,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Pocket")]
+        #pragma warning disable CS1591
+        Pocket,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Polygon")]
+        #pragma warning disable CS1591
+        Polygon,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "PyPI")]
+        #pragma warning disable CS1591
+        PyPi,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Recreation")]
+        #pragma warning disable CS1591
+        Recreation,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "RKICovid")]
+        #pragma warning disable CS1591
+        RkiCovid,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Rss")]
+        #pragma warning disable CS1591
+        Rss,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "SimFin")]
+        #pragma warning disable CS1591
+        SimFin,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "StockData")]
+        #pragma warning disable CS1591
+        StockData,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Guardian")]
+        #pragma warning disable CS1591
+        Guardian,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "TMDb")]
+        #pragma warning disable CS1591
+        TmDb,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "TVMaze")]
+        #pragma warning disable CS1591
+        TvMaze,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "TwelveData")]
+        #pragma warning disable CS1591
+        TwelveData,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Ubidots")]
+        #pragma warning disable CS1591
+        Ubidots,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "USCensus")]
+        #pragma warning disable CS1591
+        UsCensus,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Watchmode")]
+        #pragma warning disable CS1591
+        Watchmode,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "WikipediaPageviews")]
+        #pragma warning disable CS1591
+        WikipediaPageviews,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "YahooFinance")]
+        #pragma warning disable CS1591
+        YahooFinance,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Clarifai")]
+        #pragma warning disable CS1591
+        Clarifai,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Adapty")]
+        #pragma warning disable CS1591
+        Adapty,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Braintrust")]
+        #pragma warning disable CS1591
+        Braintrust,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "StreamElements")]
+        #pragma warning disable CS1591
+        StreamElements,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Streamlabs")]
+        #pragma warning disable CS1591
+        Streamlabs,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Datorama")]
+        #pragma warning disable CS1591
+        Datorama,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Ahrefs")]
+        #pragma warning disable CS1591
+        Ahrefs,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Lightfield")]
+        #pragma warning disable CS1591
+        Lightfield,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Appstack")]
+        #pragma warning disable CS1591
+        Appstack,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Razorpay")]
+        #pragma warning disable CS1591
+        Razorpay,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Neon")]
+        #pragma warning disable CS1591
+        Neon,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "NewRelic")]
+        #pragma warning disable CS1591
+        NewRelic,
+        #pragma warning restore CS1591
         [EnumMember(Value = "Custom")]
         #pragma warning disable CS1591
         Custom,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Tile38")]
+        #pragma warning disable CS1591
+        Tile38,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Chatwoot")]
+        #pragma warning disable CS1591
+        Chatwoot,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Sanity")]
+        #pragma warning disable CS1591
+        Sanity,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Metronome")]
+        #pragma warning disable CS1591
+        Metronome,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Jobber")]
+        #pragma warning disable CS1591
+        Jobber,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Knock")]
+        #pragma warning disable CS1591
+        Knock,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Leexi")]
+        #pragma warning disable CS1591
+        Leexi,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "RB2B")]
+        #pragma warning disable CS1591
+        Rb2B,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Superwall")]
+        #pragma warning disable CS1591
+        Superwall,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Liana")]
+        #pragma warning disable CS1591
+        Liana,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "TawkTo")]
+        #pragma warning disable CS1591
+        TawkTo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Hightouch")]
+        #pragma warning disable CS1591
+        Hightouch,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "LemonSqueezy")]
+        #pragma warning disable CS1591
+        LemonSqueezy,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Ikas")]
+        #pragma warning disable CS1591
+        Ikas,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Talkwalker")]
+        #pragma warning disable CS1591
+        Talkwalker,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "NextdoorAds")]
+        #pragma warning disable CS1591
+        NextdoorAds,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AppLovin")]
+        #pragma warning disable CS1591
+        AppLovin,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Baserow")]
+        #pragma warning disable CS1591
+        Baserow,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Plunk")]
+        #pragma warning disable CS1591
+        Plunk,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Dub")]
+        #pragma warning disable CS1591
+        Dub,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AirOps")]
+        #pragma warning disable CS1591
+        AirOps,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Podium")]
+        #pragma warning disable CS1591
+        Podium,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Loops")]
+        #pragma warning disable CS1591
+        Loops,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Redis")]
+        #pragma warning disable CS1591
+        Redis,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Mercury")]
+        #pragma warning disable CS1591
+        Mercury,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Gojiberry")]
+        #pragma warning disable CS1591
+        Gojiberry,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Teachable")]
+        #pragma warning disable CS1591
+        Teachable,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "PeecAI")]
+        #pragma warning disable CS1591
+        PeecAi,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Healthchecks")]
+        #pragma warning disable CS1591
+        Healthchecks,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Impact")]
+        #pragma warning disable CS1591
+        Impact,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AikidoSecurity")]
+        #pragma warning disable CS1591
+        AikidoSecurity,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Alguna")]
+        #pragma warning disable CS1591
+        Alguna,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Anthropic")]
+        #pragma warning disable CS1591
+        Anthropic,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Appwrite")]
+        #pragma warning disable CS1591
+        Appwrite,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "BlandAI")]
+        #pragma warning disable CS1591
+        BlandAi,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "BrowseAI")]
+        #pragma warning disable CS1591
+        BrowseAi,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "BrowserUse")]
+        #pragma warning disable CS1591
+        BrowserUse,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ChartHop")]
+        #pragma warning disable CS1591
+        ChartHop,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Cody")]
+        #pragma warning disable CS1591
+        Cody,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Cursor")]
+        #pragma warning disable CS1591
+        Cursor,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Decagon")]
+        #pragma warning disable CS1591
+        Decagon,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Deepgram")]
+        #pragma warning disable CS1591
+        Deepgram,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ElevenLabs")]
+        #pragma warning disable CS1591
+        ElevenLabs,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Harvey")]
+        #pragma warning disable CS1591
+        Harvey,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Hyperspell")]
+        #pragma warning disable CS1591
+        Hyperspell,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Langfuse")]
+        #pragma warning disable CS1591
+        Langfuse,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "LingoDev")]
+        #pragma warning disable CS1591
+        LingoDev,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "M3ter")]
+        #pragma warning disable CS1591
+        M3Ter,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Maxio")]
+        #pragma warning disable CS1591
+        Maxio,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Metorial")]
+        #pragma warning disable CS1591
+        Metorial,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "OpenRouter")]
+        #pragma warning disable CS1591
+        OpenRouter,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "TogetherAI")]
+        #pragma warning disable CS1591
+        TogetherAi,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Vapi")]
+        #pragma warning disable CS1591
+        Vapi,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Vespa")]
+        #pragma warning disable CS1591
+        Vespa,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Writesonic")]
+        #pragma warning disable CS1591
+        Writesonic,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Aiven")]
+        #pragma warning disable CS1591
+        Aiven,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Aviator")]
+        #pragma warning disable CS1591
+        Aviator,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Backblaze")]
+        #pragma warning disable CS1591
+        Backblaze,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Baseten")]
+        #pragma warning disable CS1591
+        Baseten,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Browserbase")]
+        #pragma warning disable CS1591
+        Browserbase,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Cohere")]
+        #pragma warning disable CS1591
+        Cohere,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "DenoDeploy")]
+        #pragma warning disable CS1591
+        DenoDeploy,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "DigitalOcean")]
+        #pragma warning disable CS1591
+        DigitalOcean,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "E2B")]
+        #pragma warning disable CS1591
+        E2B,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Fintoc")]
+        #pragma warning disable CS1591
+        Fintoc,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Firecrawl")]
+        #pragma warning disable CS1591
+        Firecrawl,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "FireworksAI")]
+        #pragma warning disable CS1591
+        FireworksAi,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "FlyIo")]
+        #pragma warning disable CS1591
+        FlyIo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Groq")]
+        #pragma warning disable CS1591
+        Groq,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GrowthBook")]
+        #pragma warning disable CS1591
+        GrowthBook,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Gumloop")]
+        #pragma warning disable CS1591
+        Gumloop,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Hatchet")]
+        #pragma warning disable CS1591
+        Hatchet,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Helicone")]
+        #pragma warning disable CS1591
+        Helicone,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Heroku")]
+        #pragma warning disable CS1591
+        Heroku,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Hetzner")]
+        #pragma warning disable CS1591
+        Hetzner,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "HeyGen")]
+        #pragma warning disable CS1591
+        HeyGen,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Infisical")]
+        #pragma warning disable CS1591
+        Infisical,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Inngest")]
+        #pragma warning disable CS1591
+        Inngest,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "KapaAI")]
+        #pragma warning disable CS1591
+        KapaAi,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Kernel")]
+        #pragma warning disable CS1591
+        Kernel,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Koyeb")]
+        #pragma warning disable CS1591
+        Koyeb,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "LambdaLabs")]
+        #pragma warning disable CS1591
+        LambdaLabs,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "LangSmith")]
+        #pragma warning disable CS1591
+        LangSmith,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Linode")]
+        #pragma warning disable CS1591
+        Linode,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "LlamaCloud")]
+        #pragma warning disable CS1591
+        LlamaCloud,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Mem0")]
+        #pragma warning disable CS1591
+        Mem0,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Metriport")]
+        #pragma warning disable CS1591
+        Metriport,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Mintlify")]
+        #pragma warning disable CS1591
+        Mintlify,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "MistralAI")]
+        #pragma warning disable CS1591
+        MistralAi,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Mono")]
+        #pragma warning disable CS1591
+        Mono,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Netlify")]
+        #pragma warning disable CS1591
+        Netlify,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Northflank")]
+        #pragma warning disable CS1591
+        Northflank,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "OpenAI")]
+        #pragma warning disable CS1591
+        OpenAi,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Pinecone")]
+        #pragma warning disable CS1591
+        Pinecone,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "PlatformSh")]
+        #pragma warning disable CS1591
+        PlatformSh,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "PromptingCompany")]
+        #pragma warning disable CS1591
+        PromptingCompany,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Qdrant")]
+        #pragma warning disable CS1591
+        Qdrant,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Render")]
+        #pragma warning disable CS1591
+        Render,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Replicate")]
+        #pragma warning disable CS1591
+        Replicate,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "RetellAI")]
+        #pragma warning disable CS1591
+        RetellAi,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Roark")]
+        #pragma warning disable CS1591
+        Roark,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "RunPod")]
+        #pragma warning disable CS1591
+        RunPod,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ScaleAI")]
+        #pragma warning disable CS1591
+        ScaleAi,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Scaleway")]
+        #pragma warning disable CS1591
+        Scaleway,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "SigNoz")]
+        #pragma warning disable CS1591
+        SigNoz,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Sim")]
+        #pragma warning disable CS1591
+        Sim,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Skyvern")]
+        #pragma warning disable CS1591
+        Skyvern,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Slash")]
+        #pragma warning disable CS1591
+        Slash,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Synthesia")]
+        #pragma warning disable CS1591
+        Synthesia,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Telli")]
+        #pragma warning disable CS1591
+        Telli,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "TerraApi")]
+        #pragma warning disable CS1591
+        TerraApi,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "TriggerDev")]
+        #pragma warning disable CS1591
+        TriggerDev,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Turso")]
+        #pragma warning disable CS1591
+        Turso,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Singular")]
+        #pragma warning disable CS1591
+        Singular,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Swonkie")]
+        #pragma warning disable CS1591
+        Swonkie,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "TwelveLabs")]
+        #pragma warning disable CS1591
+        TwelveLabs,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Twenty")]
+        #pragma warning disable CS1591
+        Twenty,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Unstructured")]
+        #pragma warning disable CS1591
+        Unstructured,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Upstash")]
+        #pragma warning disable CS1591
+        Upstash,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Vellum")]
+        #pragma warning disable CS1591
+        Vellum,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Vultr")]
+        #pragma warning disable CS1591
+        Vultr,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Windmill")]
+        #pragma warning disable CS1591
+        Windmill,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Zep")]
+        #pragma warning disable CS1591
+        Zep,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Hex")]
+        #pragma warning disable CS1591
+        Hex,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Sumsub")]
+        #pragma warning disable CS1591
+        Sumsub,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GoogleChat")]
+        #pragma warning disable CS1591
+        GoogleChat,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Kickscale")]
+        #pragma warning disable CS1591
+        Kickscale,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Zellify")]
+        #pragma warning disable CS1591
+        Zellify,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "RudderStack")]
+        #pragma warning disable CS1591
+        RudderStack,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "DodoPayments")]
+        #pragma warning disable CS1591
+        DodoPayments,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Salestrics")]
+        #pragma warning disable CS1591
+        Salestrics,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Doppler")]
+        #pragma warning disable CS1591
+        Doppler,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Usersnap")]
+        #pragma warning disable CS1591
+        Usersnap,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Asknicely")]
+        #pragma warning disable CS1591
+        Asknicely,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Featurebase")]
+        #pragma warning disable CS1591
+        Featurebase,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Frill")]
+        #pragma warning disable CS1591
+        Frill,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Bettermode")]
+        #pragma warning disable CS1591
+        Bettermode,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Dynatrace")]
+        #pragma warning disable CS1591
+        Dynatrace,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Honeycomb")]
+        #pragma warning disable CS1591
+        Honeycomb,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "SumoLogic")]
+        #pragma warning disable CS1591
+        SumoLogic,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "LogzIO")]
+        #pragma warning disable CS1591
+        LogzIo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Coralogix")]
+        #pragma warning disable CS1591
+        Coralogix,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "BetterStack")]
+        #pragma warning disable CS1591
+        BetterStack,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Raygun")]
+        #pragma warning disable CS1591
+        Raygun,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Honeybadger")]
+        #pragma warning disable CS1591
+        Honeybadger,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Airbrake")]
+        #pragma warning disable CS1591
+        Airbrake,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Appsignal")]
+        #pragma warning disable CS1591
+        Appsignal,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Appdynamics")]
+        #pragma warning disable CS1591
+        Appdynamics,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Instana")]
+        #pragma warning disable CS1591
+        Instana,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "SplunkObservabilityCloud")]
+        #pragma warning disable CS1591
+        SplunkObservabilityCloud,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Uptimerobot")]
+        #pragma warning disable CS1591
+        Uptimerobot,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Statuscake")]
+        #pragma warning disable CS1591
+        Statuscake,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Tailscale")]
+        #pragma warning disable CS1591
+        Tailscale,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Flagsmith")]
+        #pragma warning disable CS1591
+        Flagsmith,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Xmatters")]
+        #pragma warning disable CS1591
+        Xmatters,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Squadcast")]
+        #pragma warning disable CS1591
+        Squadcast,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Zenduty")]
+        #pragma warning disable CS1591
+        Zenduty,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Cronitor")]
+        #pragma warning disable CS1591
+        Cronitor,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Jenkins")]
+        #pragma warning disable CS1591
+        Jenkins,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Bitbucket")]
+        #pragma warning disable CS1591
+        Bitbucket,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Gitea")]
+        #pragma warning disable CS1591
+        Gitea,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Teamcity")]
+        #pragma warning disable CS1591
+        Teamcity,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "TravisCI")]
+        #pragma warning disable CS1591
+        TravisCi,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Semaphore")]
+        #pragma warning disable CS1591
+        Semaphore,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "CircleciInsights")]
+        #pragma warning disable CS1591
+        CircleciInsights,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "OctopusDeploy")]
+        #pragma warning disable CS1591
+        OctopusDeploy,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Sourcegraph")]
+        #pragma warning disable CS1591
+        Sourcegraph,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Bitrise")]
+        #pragma warning disable CS1591
+        Bitrise,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Gerrit")]
+        #pragma warning disable CS1591
+        Gerrit,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "TerraformCloud")]
+        #pragma warning disable CS1591
+        TerraformCloud,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "PulumiCloud")]
+        #pragma warning disable CS1591
+        PulumiCloud,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Spacelift")]
+        #pragma warning disable CS1591
+        Spacelift,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Railway")]
+        #pragma warning disable CS1591
+        Railway,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Argocd")]
+        #pragma warning disable CS1591
+        Argocd,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "PrefectCloud")]
+        #pragma warning disable CS1591
+        PrefectCloud,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "DagsterCloud")]
+        #pragma warning disable CS1591
+        DagsterCloud,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Env0")]
+        #pragma warning disable CS1591
+        Env0,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Kubecost")]
+        #pragma warning disable CS1591
+        Kubecost,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Snyk")]
+        #pragma warning disable CS1591
+        Snyk,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Semgrep")]
+        #pragma warning disable CS1591
+        Semgrep,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Veracode")]
+        #pragma warning disable CS1591
+        Veracode,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Checkmarx")]
+        #pragma warning disable CS1591
+        Checkmarx,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Gitguardian")]
+        #pragma warning disable CS1591
+        Gitguardian,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "QualysVmdr")]
+        #pragma warning disable CS1591
+        QualysVmdr,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Rapid7Insightvm")]
+        #pragma warning disable CS1591
+        Rapid7Insightvm,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "TenableVulnerabilityManagement")]
+        #pragma warning disable CS1591
+        TenableVulnerabilityManagement,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Sentinelone")]
+        #pragma warning disable CS1591
+        Sentinelone,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Lacework")]
+        #pragma warning disable CS1591
+        Lacework,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "OrcaSecurity")]
+        #pragma warning disable CS1591
+        OrcaSecurity,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Drata")]
+        #pragma warning disable CS1591
+        Drata,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Secureframe")]
+        #pragma warning disable CS1591
+        Secureframe,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "CiscoDuo")]
+        #pragma warning disable CS1591
+        CiscoDuo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Jumpcloud")]
+        #pragma warning disable CS1591
+        Jumpcloud,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "OnePassword")]
+        #pragma warning disable CS1591
+        OnePassword,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Stytch")]
+        #pragma warning disable CS1591
+        Stytch,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Sonarqube")]
+        #pragma warning disable CS1591
+        Sonarqube,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Codecov")]
+        #pragma warning disable CS1591
+        Codecov,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Coveralls")]
+        #pragma warning disable CS1591
+        Coveralls,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Codacy")]
+        #pragma warning disable CS1591
+        Codacy,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Deepsource")]
+        #pragma warning disable CS1591
+        Deepsource,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Linearb")]
+        #pragma warning disable CS1591
+        Linearb,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Jellyfish")]
+        #pragma warning disable CS1591
+        Jellyfish,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Swarmia")]
+        #pragma warning disable CS1591
+        Swarmia,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Packagist")]
+        #pragma warning disable CS1591
+        Packagist,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Nuget")]
+        #pragma warning disable CS1591
+        Nuget,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "CratesIO")]
+        #pragma warning disable CS1591
+        CratesIo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "SonatypeNexus")]
+        #pragma warning disable CS1591
+        SonatypeNexus,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "JfrogArtifactory")]
+        #pragma warning disable CS1591
+        JfrogArtifactory,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Snowplow")]
+        #pragma warning disable CS1591
+        Snowplow,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "WeightsAndBiases")]
+        #pragma warning disable CS1591
+        WeightsAndBiases,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "MonteCarlo")]
+        #pragma warning disable CS1591
+        MonteCarlo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Metaplane")]
+        #pragma warning disable CS1591
+        Metaplane,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Datahub")]
+        #pragma warning disable CS1591
+        Datahub,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ClickhouseCloud")]
+        #pragma warning disable CS1591
+        ClickhouseCloud,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ConfluentCloud")]
+        #pragma warning disable CS1591
+        ConfluentCloud,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "KongKonnect")]
+        #pragma warning disable CS1591
+        KongKonnect,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Kandji")]
+        #pragma warning disable CS1591
+        Kandji,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Automox")]
+        #pragma warning disable CS1591
+        Automox,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Autumn")]
+        #pragma warning disable CS1591
+        Autumn,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GetStream")]
+        #pragma warning disable CS1591
+        GetStream,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Octolens")]
+        #pragma warning disable CS1591
+        Octolens,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Kajabi")]
+        #pragma warning disable CS1591
+        Kajabi,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Shopware")]
+        #pragma warning disable CS1591
+        Shopware,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Dubsado")]
+        #pragma warning disable CS1591
+        Dubsado,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Campfire")]
+        #pragma warning disable CS1591
+        Campfire,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "PromptWatch")]
+        #pragma warning disable CS1591
+        PromptWatch,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Crisp")]
+        #pragma warning disable CS1591
+        Crisp,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Kommo")]
+        #pragma warning disable CS1591
+        Kommo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Axiom")]
+        #pragma warning disable CS1591
+        Axiom,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Plivo")]
+        #pragma warning disable CS1591
+        Plivo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "DataForSEO")]
+        #pragma warning disable CS1591
+        DataForSeo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Sleekplan")]
+        #pragma warning disable CS1591
+        Sleekplan,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AbTasty")]
+        #pragma warning disable CS1591
+        AbTasty,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Ably")]
+        #pragma warning disable CS1591
+        Ably,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AbnormalSecurity")]
+        #pragma warning disable CS1591
+        AbnormalSecurity,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Acast")]
+        #pragma warning disable CS1591
+        Acast,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Acculynx")]
+        #pragma warning disable CS1591
+        Acculynx,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Actionstep")]
+        #pragma warning disable CS1591
+        Actionstep,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Aftership")]
+        #pragma warning disable CS1591
+        Aftership,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AhaIdeas")]
+        #pragma warning disable CS1591
+        AhaIdeas,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AkamaiReporting")]
+        #pragma warning disable CS1591
+        AkamaiReporting,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Alation")]
+        #pragma warning disable CS1591
+        Alation,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Alegra")]
+        #pragma warning disable CS1591
+        Alegra,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Allegro")]
+        #pragma warning disable CS1591
+        Allegro,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AnodotCost")]
+        #pragma warning disable CS1591
+        AnodotCost,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Anomalo")]
+        #pragma warning disable CS1591
+        Anomalo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Apaleo")]
+        #pragma warning disable CS1591
+        Apaleo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Apitally")]
+        #pragma warning disable CS1591
+        Apitally,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AppStoreConnect")]
+        #pragma warning disable CS1591
+        AppStoreConnect,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Appdirect")]
+        #pragma warning disable CS1591
+        Appdirect,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Appfolio")]
+        #pragma warning disable CS1591
+        Appfolio,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Arxiv")]
+        #pragma warning disable CS1591
+        Arxiv,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Asaas")]
+        #pragma warning disable CS1591
+        Asaas,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Astronomer")]
+        #pragma warning disable CS1591
+        Astronomer,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Athenahealth")]
+        #pragma warning disable CS1591
+        Athenahealth,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Atlan")]
+        #pragma warning disable CS1591
+        Atlan,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AutodeskConstructionCloud")]
+        #pragma warning disable CS1591
+        AutodeskConstructionCloud,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Avalara")]
+        #pragma warning disable CS1591
+        Avalara,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AwsAthena")]
+        #pragma warning disable CS1591
+        AwsAthena,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AwsBatch")]
+        #pragma warning disable CS1591
+        AwsBatch,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AwsBudgets")]
+        #pragma warning disable CS1591
+        AwsBudgets,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AwsCloudformation")]
+        #pragma warning disable CS1591
+        AwsCloudformation,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AwsComputeOptimizer")]
+        #pragma warning disable CS1591
+        AwsComputeOptimizer,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AwsConfig")]
+        #pragma warning disable CS1591
+        AwsConfig,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AwsConnect")]
+        #pragma warning disable CS1591
+        AwsConnect,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AwsCostAndUsageReport")]
+        #pragma warning disable CS1591
+        AwsCostAndUsageReport,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AwsCostAnomalyDetection")]
+        #pragma warning disable CS1591
+        AwsCostAnomalyDetection,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AwsCostExplorer")]
+        #pragma warning disable CS1591
+        AwsCostExplorer,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AwsGlueDataCatalog")]
+        #pragma warning disable CS1591
+        AwsGlueDataCatalog,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AwsGuardduty")]
+        #pragma warning disable CS1591
+        AwsGuardduty,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AwsHealth")]
+        #pragma warning disable CS1591
+        AwsHealth,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AwsIamAccessAnalyzer")]
+        #pragma warning disable CS1591
+        AwsIamAccessAnalyzer,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AwsInspector")]
+        #pragma warning disable CS1591
+        AwsInspector,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AwsMacie")]
+        #pragma warning disable CS1591
+        AwsMacie,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AwsOrganizations")]
+        #pragma warning disable CS1591
+        AwsOrganizations,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AwsRdsPerformanceInsights")]
+        #pragma warning disable CS1591
+        AwsRdsPerformanceInsights,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AwsSagemaker")]
+        #pragma warning disable CS1591
+        AwsSagemaker,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AwsSavingsPlans")]
+        #pragma warning disable CS1591
+        AwsSavingsPlans,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AwsSecurityHub")]
+        #pragma warning disable CS1591
+        AwsSecurityHub,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AwsSes")]
+        #pragma warning disable CS1591
+        AwsSes,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AwsStepFunctions")]
+        #pragma warning disable CS1591
+        AwsStepFunctions,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AwsSupport")]
+        #pragma warning disable CS1591
+        AwsSupport,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AwsSystemsManager")]
+        #pragma warning disable CS1591
+        AwsSystemsManager,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AwsTrustedAdvisor")]
+        #pragma warning disable CS1591
+        AwsTrustedAdvisor,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AwsWaf")]
+        #pragma warning disable CS1591
+        AwsWaf,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AwsXray")]
+        #pragma warning disable CS1591
+        AwsXray,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AzureActivityLog")]
+        #pragma warning disable CS1591
+        AzureActivityLog,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AzureAdvisor")]
+        #pragma warning disable CS1591
+        AzureAdvisor,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AzureApiManagement")]
+        #pragma warning disable CS1591
+        AzureApiManagement,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AzureApplicationInsights")]
+        #pragma warning disable CS1591
+        AzureApplicationInsights,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AzureCostManagement")]
+        #pragma warning disable CS1591
+        AzureCostManagement,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AzureDataExplorer")]
+        #pragma warning disable CS1591
+        AzureDataExplorer,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AzureDataFactory")]
+        #pragma warning disable CS1591
+        AzureDataFactory,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AzureLogAnalytics")]
+        #pragma warning disable CS1591
+        AzureLogAnalytics,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AzureMonitorAlerts")]
+        #pragma warning disable CS1591
+        AzureMonitorAlerts,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AzureMonitorMetrics")]
+        #pragma warning disable CS1591
+        AzureMonitorMetrics,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AzureOpenaiUsage")]
+        #pragma warning disable CS1591
+        AzureOpenaiUsage,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AzurePolicyInsights")]
+        #pragma warning disable CS1591
+        AzurePolicyInsights,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AzureReservations")]
+        #pragma warning disable CS1591
+        AzureReservations,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AzureResourceGraph")]
+        #pragma warning disable CS1591
+        AzureResourceGraph,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AzureResourceHealth")]
+        #pragma warning disable CS1591
+        AzureResourceHealth,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AzureServiceHealth")]
+        #pragma warning disable CS1591
+        AzureServiceHealth,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AzureSynapse")]
+        #pragma warning disable CS1591
+        AzureSynapse,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "BackMarket")]
+        #pragma warning disable CS1591
+        BackMarket,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Beehiiv")]
+        #pragma warning disable CS1591
+        Beehiiv,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Bigeye")]
+        #pragma warning disable CS1591
+        Bigeye,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "BillCom")]
+        #pragma warning disable CS1591
+        BillCom,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Billomat")]
+        #pragma warning disable CS1591
+        Billomat,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "BingWebmasterTools")]
+        #pragma warning disable CS1591
+        BingWebmasterTools,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Bitwarden")]
+        #pragma warning disable CS1591
+        Bitwarden,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "BlackbaudRaisersEdgeNxt")]
+        #pragma warning disable CS1591
+        BlackbaudRaisersEdgeNxt,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "BlackboardLearn")]
+        #pragma warning disable CS1591
+        BlackboardLearn,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Bling")]
+        #pragma warning disable CS1591
+        Bling,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Bloomerang")]
+        #pragma warning disable CS1591
+        Bloomerang,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Bluesky")]
+        #pragma warning disable CS1591
+        Bluesky,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "BolRetailer")]
+        #pragma warning disable CS1591
+        BolRetailer,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Boulevard")]
+        #pragma warning disable CS1591
+        Boulevard,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Buffer")]
+        #pragma warning disable CS1591
+        Buffer,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Bugherd")]
+        #pragma warning disable CS1591
+        Bugherd,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Buildium")]
+        #pragma warning disable CS1591
+        Buildium,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Buttondown")]
+        #pragma warning disable CS1591
+        Buttondown,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "BuyMeACoffee")]
+        #pragma warning disable CS1591
+        BuyMeACoffee,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Calendarific")]
+        #pragma warning disable CS1591
+        Calendarific,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Calibre")]
+        #pragma warning disable CS1591
+        Calibre,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "CanvasLms")]
+        #pragma warning disable CS1591
+        CanvasLms,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Captivate")]
+        #pragma warning disable CS1591
+        Captivate,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Cashfree")]
+        #pragma warning disable CS1591
+        Cashfree,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "CastAi")]
+        #pragma warning disable CS1591
+        CastAi,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Catchpoint")]
+        #pragma warning disable CS1591
+        Catchpoint,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "CdcOpenData")]
+        #pragma warning disable CS1591
+        CdcOpenData,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Census")]
+        #pragma warning disable CS1591
+        Census,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Checkly")]
+        #pragma warning disable CS1591
+        Checkly,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "CircleSo")]
+        #pragma warning disable CS1591
+        CircleSo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Classy")]
+        #pragma warning disable CS1591
+        Classy,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Cleartax")]
+        #pragma warning disable CS1591
+        Cleartax,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Clever")]
+        #pragma warning disable CS1591
+        Clever,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Clevertap")]
+        #pragma warning disable CS1591
+        Clevertap,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Cliniko")]
+        #pragma warning disable CS1591
+        Cliniko,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Clio")]
+        #pragma warning disable CS1591
+        Clio,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Clip")]
+        #pragma warning disable CS1591
+        Clip,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Cloudability")]
+        #pragma warning disable CS1591
+        Cloudability,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Cloudsmith")]
+        #pragma warning disable CS1591
+        Cloudsmith,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Cloudzero")]
+        #pragma warning disable CS1591
+        Cloudzero,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Clover")]
+        #pragma warning disable CS1591
+        Clover,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Codemagic")]
+        #pragma warning disable CS1591
+        Codemagic,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Codescene")]
+        #pragma warning disable CS1591
+        Codescene,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Collibra")]
+        #pragma warning disable CS1591
+        Collibra,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Companycam")]
+        #pragma warning disable CS1591
+        Companycam,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Conekta")]
+        #pragma warning disable CS1591
+        Conekta,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ContaAzul")]
+        #pragma warning disable CS1591
+        ContaAzul,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Contentsquare")]
+        #pragma warning disable CS1591
+        Contentsquare,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Cortex")]
+        #pragma warning disable CS1591
+        Cortex,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Courier")]
+        #pragma warning disable CS1591
+        Courier,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Crossref")]
+        #pragma warning disable CS1591
+        Crossref,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "CrowdstrikeFalcon")]
+        #pragma warning disable CS1591
+        CrowdstrikeFalcon,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "CubeCloud")]
+        #pragma warning disable CS1591
+        CubeCloud,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "D2lBrightspace")]
+        #pragma warning disable CS1591
+        D2LBrightspace,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Dayforce")]
+        #pragma warning disable CS1591
+        Dayforce,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Debugbear")]
+        #pragma warning disable CS1591
+        Debugbear,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Descope")]
+        #pragma warning disable CS1591
+        Descope,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Develocity")]
+        #pragma warning disable CS1591
+        Develocity,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Dialpad")]
+        #pragma warning disable CS1591
+        Dialpad,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Discord")]
+        #pragma warning disable CS1591
+        Discord,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Discourse")]
+        #pragma warning disable CS1591
+        Discourse,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Donorbox")]
+        #pragma warning disable CS1591
+        Donorbox,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Doorloop")]
+        #pragma warning disable CS1591
+        Doorloop,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Dovetail")]
+        #pragma warning disable CS1591
+        Dovetail,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Drchrono")]
+        #pragma warning disable CS1591
+        Drchrono,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Dynamics365BusinessCentral")]
+        #pragma warning disable CS1591
+        Dynamics365BusinessCentral,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "EcbDataPortal")]
+        #pragma warning disable CS1591
+        EcbDataPortal,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Emarsys")]
+        #pragma warning disable CS1591
+        Emarsys,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Embrace")]
+        #pragma warning disable CS1591
+        Embrace,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Entsoe")]
+        #pragma warning disable CS1591
+        Entsoe,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Eppo")]
+        #pragma warning disable CS1591
+        Eppo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Etsy")]
+        #pragma warning disable CS1591
+        Etsy,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Eurostat")]
+        #pragma warning disable CS1591
+        Eurostat,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Faire")]
+        #pragma warning disable CS1591
+        Faire,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "FarosAi")]
+        #pragma warning disable CS1591
+        FarosAi,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Fieldpulse")]
+        #pragma warning disable CS1591
+        Fieldpulse,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Fieldwire")]
+        #pragma warning disable CS1591
+        Fieldwire,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Filevine")]
+        #pragma warning disable CS1591
+        Filevine,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Finout")]
+        #pragma warning disable CS1591
+        Finout,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Five9")]
+        #pragma warning disable CS1591
+        Five9,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "FlexeraCloudCost")]
+        #pragma warning disable CS1591
+        FlexeraCloudCost,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Flutterwave")]
+        #pragma warning disable CS1591
+        Flutterwave,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Fortnox")]
+        #pragma warning disable CS1591
+        Fortnox,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Fourthwall")]
+        #pragma warning disable CS1591
+        Fourthwall,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Fred")]
+        #pragma warning disable CS1591
+        Fred,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Frontegg")]
+        #pragma warning disable CS1591
+        Frontegg,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "FusionAuth")]
+        #pragma warning disable CS1591
+        FusionAuth,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "G2")]
+        #pragma warning disable CS1591
+        G2,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Gcore")]
+        #pragma warning disable CS1591
+        Gcore,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GcpApigee")]
+        #pragma warning disable CS1591
+        GcpApigee,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GcpArtifactRegistry")]
+        #pragma warning disable CS1591
+        GcpArtifactRegistry,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GcpBigtable")]
+        #pragma warning disable CS1591
+        GcpBigtable,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GcpChronicle")]
+        #pragma warning disable CS1591
+        GcpChronicle,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GcpCloudAssetInventory")]
+        #pragma warning disable CS1591
+        GcpCloudAssetInventory,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GcpCloudBilling")]
+        #pragma warning disable CS1591
+        GcpCloudBilling,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GcpCloudBuild")]
+        #pragma warning disable CS1591
+        GcpCloudBuild,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GcpCloudDeploy")]
+        #pragma warning disable CS1591
+        GcpCloudDeploy,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GcpCloudDns")]
+        #pragma warning disable CS1591
+        GcpCloudDns,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GcpCloudFunctions")]
+        #pragma warning disable CS1591
+        GcpCloudFunctions,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GcpCloudLogging")]
+        #pragma warning disable CS1591
+        GcpCloudLogging,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GcpCloudMonitoring")]
+        #pragma warning disable CS1591
+        GcpCloudMonitoring,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GcpCloudRun")]
+        #pragma warning disable CS1591
+        GcpCloudRun,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GcpCloudSpanner")]
+        #pragma warning disable CS1591
+        GcpCloudSpanner,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GcpCloudSql")]
+        #pragma warning disable CS1591
+        GcpCloudSql,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GcpCloudTrace")]
+        #pragma warning disable CS1591
+        GcpCloudTrace,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GcpCloudWorkflows")]
+        #pragma warning disable CS1591
+        GcpCloudWorkflows,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GcpComputeEngine")]
+        #pragma warning disable CS1591
+        GcpComputeEngine,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GcpContainerAnalysis")]
+        #pragma warning disable CS1591
+        GcpContainerAnalysis,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GcpDataflow")]
+        #pragma warning disable CS1591
+        GcpDataflow,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GcpDataplex")]
+        #pragma warning disable CS1591
+        GcpDataplex,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GcpDataproc")]
+        #pragma warning disable CS1591
+        GcpDataproc,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GcpErrorReporting")]
+        #pragma warning disable CS1591
+        GcpErrorReporting,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GcpGke")]
+        #pragma warning disable CS1591
+        GcpGke,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GcpPubsub")]
+        #pragma warning disable CS1591
+        GcpPubsub,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GcpRecaptchaEnterprise")]
+        #pragma warning disable CS1591
+        GcpRecaptchaEnterprise,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GcpRecommender")]
+        #pragma warning disable CS1591
+        GcpRecommender,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GcpSecurityCommandCenter")]
+        #pragma warning disable CS1591
+        GcpSecurityCommandCenter,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Gdelt")]
+        #pragma warning disable CS1591
+        Gdelt,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GenesysCloud")]
+        #pragma warning disable CS1591
+        GenesysCloud,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Getdx")]
+        #pragma warning disable CS1591
+        Getdx,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Ghost")]
+        #pragma warning disable CS1591
+        Ghost,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Givebutter")]
+        #pragma warning disable CS1591
+        Givebutter,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Gleif")]
+        #pragma warning disable CS1591
+        Gleif,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GooglePlayConsole")]
+        #pragma warning disable CS1591
+        GooglePlayConsole,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Guesty")]
+        #pragma warning disable CS1591
+        Guesty,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Gumroad")]
+        #pragma warning disable CS1591
+        Gumroad,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "HarnessCcm")]
+        #pragma warning disable CS1591
+        HarnessCcm,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "HarnessSei")]
+        #pragma warning disable CS1591
+        HarnessSei,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Harvest")]
+        #pragma warning disable CS1591
+        Harvest,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Healthie")]
+        #pragma warning disable CS1591
+        Healthie,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Hitpay")]
+        #pragma warning disable CS1591
+        Hitpay,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Hivebrite")]
+        #pragma warning disable CS1591
+        Hivebrite,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Holded")]
+        #pragma warning disable CS1591
+        Holded,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Hostaway")]
+        #pragma warning disable CS1591
+        Hostaway,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "HousecallPro")]
+        #pragma warning disable CS1591
+        HousecallPro,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Humanitec")]
+        #pragma warning disable CS1591
+        Humanitec,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ImfData")]
+        #pragma warning disable CS1591
+        ImfData,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Imperva")]
+        #pragma warning disable CS1591
+        Imperva,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "InfluxdbCloud")]
+        #pragma warning disable CS1591
+        InfluxdbCloud,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Iyzico")]
+        #pragma warning disable CS1591
+        Iyzico,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Jobtread")]
+        #pragma warning disable CS1591
+        Jobtread,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Kameleoon")]
+        #pragma warning disable CS1591
+        Kameleoon,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "KauflandMarketplace")]
+        #pragma warning disable CS1591
+        KauflandMarketplace,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Kestra")]
+        #pragma warning disable CS1591
+        Kestra,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Kick")]
+        #pragma warning disable CS1591
+        Kick,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Kinde")]
+        #pragma warning disable CS1591
+        Kinde,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Kion")]
+        #pragma warning disable CS1591
+        Kion,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Knowbe4")]
+        #pragma warning disable CS1591
+        Knowbe4,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Komodor")]
+        #pragma warning disable CS1591
+        Komodor,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Labelbox")]
+        #pragma warning disable CS1591
+        Labelbox,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Lawmatics")]
+        #pragma warning disable CS1591
+        Lawmatics,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Learnworlds")]
+        #pragma warning disable CS1591
+        Learnworlds,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "LexwareOffice")]
+        #pragma warning disable CS1591
+        LexwareOffice,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Lightdash")]
+        #pragma warning disable CS1591
+        Lightdash,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Lodgify")]
+        #pragma warning disable CS1591
+        Lodgify,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Logicmonitor")]
+        #pragma warning disable CS1591
+        Logicmonitor,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Logrocket")]
+        #pragma warning disable CS1591
+        Logrocket,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "LoopReturns")]
+        #pragma warning disable CS1591
+        LoopReturns,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Mastodon")]
+        #pragma warning disable CS1591
+        Mastodon,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Meetup")]
+        #pragma warning disable CS1591
+        Meetup,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Memberful")]
+        #pragma warning disable CS1591
+        Memberful,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "MercadoPago")]
+        #pragma warning disable CS1591
+        MercadoPago,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Meteostat")]
+        #pragma warning disable CS1591
+        Meteostat,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Mews")]
+        #pragma warning disable CS1591
+        Mews,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Mezmo")]
+        #pragma warning disable CS1591
+        Mezmo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Microsoft365UsageReports")]
+        #pragma warning disable CS1591
+        Microsoft365UsageReports,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "MicrosoftAdvertising")]
+        #pragma warning disable CS1591
+        MicrosoftAdvertising,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "MicrosoftClarity")]
+        #pragma warning disable CS1591
+        MicrosoftClarity,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "MicrosoftDefenderCloudApps")]
+        #pragma warning disable CS1591
+        MicrosoftDefenderCloudApps,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "MicrosoftDefenderEndpoint")]
+        #pragma warning disable CS1591
+        MicrosoftDefenderEndpoint,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "MicrosoftDefenderForCloud")]
+        #pragma warning disable CS1591
+        MicrosoftDefenderForCloud,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "MicrosoftIntune")]
+        #pragma warning disable CS1591
+        MicrosoftIntune,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "MicrosoftPurview")]
+        #pragma warning disable CS1591
+        MicrosoftPurview,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "MicrosoftPurviewAudit")]
+        #pragma warning disable CS1591
+        MicrosoftPurviewAudit,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "MicrosoftSentinel")]
+        #pragma warning disable CS1591
+        MicrosoftSentinel,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "MicrosoftTeamsCallRecords")]
+        #pragma warning disable CS1591
+        MicrosoftTeamsCallRecords,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Midtrans")]
+        #pragma warning disable CS1591
+        Midtrans,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "MightyNetworks")]
+        #pragma warning disable CS1591
+        MightyNetworks,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Mindbody")]
+        #pragma warning disable CS1591
+        Mindbody,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Mirakl")]
+        #pragma warning disable CS1591
+        Mirakl,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Moesif")]
+        #pragma warning disable CS1591
+        Moesif,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Moneybird")]
+        #pragma warning disable CS1591
+        Moneybird,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Moodle")]
+        #pragma warning disable CS1591
+        Moodle,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Motherduck")]
+        #pragma warning disable CS1591
+        Motherduck,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Mycase")]
+        #pragma warning disable CS1591
+        Mycase,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "NagerDate")]
+        #pragma warning disable CS1591
+        NagerDate,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "NeonCrm")]
+        #pragma warning disable CS1591
+        NeonCrm,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Nexhealth")]
+        #pragma warning disable CS1591
+        Nexhealth,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "NoaaCdo")]
+        #pragma warning disable CS1591
+        NoaaCdo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Nobl9")]
+        #pragma warning disable CS1591
+        Nobl9,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Nolt")]
+        #pragma warning disable CS1591
+        Nolt,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Nops")]
+        #pragma warning disable CS1591
+        Nops,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "NpmRegistry")]
+        #pragma warning disable CS1591
+        NpmRegistry,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Oecd")]
+        #pragma warning disable CS1591
+        Oecd,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Okendo")]
+        #pragma warning disable CS1591
+        Okendo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Omni")]
+        #pragma warning disable CS1591
+        Omni,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Onelogin")]
+        #pragma warning disable CS1591
+        Onelogin,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "OpenDental")]
+        #pragma warning disable CS1591
+        OpenDental,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "OpenMeteo")]
+        #pragma warning disable CS1591
+        OpenMeteo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Openalex")]
+        #pragma warning disable CS1591
+        Openalex,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Opencorporates")]
+        #pragma warning disable CS1591
+        Opencorporates,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Openfec")]
+        #pragma warning disable CS1591
+        Openfec,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "OpnPayments")]
+        #pragma warning disable CS1591
+        OpnPayments,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Opslevel")]
+        #pragma warning disable CS1591
+        Opslevel,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "OttoMarket")]
+        #pragma warning disable CS1591
+        OttoMarket,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Ownerrez")]
+        #pragma warning disable CS1591
+        Ownerrez,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Pagbank")]
+        #pragma warning disable CS1591
+        Pagbank,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Patreon")]
+        #pragma warning disable CS1591
+        Patreon,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Pax8")]
+        #pragma warning disable CS1591
+        Pax8,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Paychex")]
+        #pragma warning disable CS1591
+        Paychex,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Paymob")]
+        #pragma warning disable CS1591
+        Paymob,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Paymongo")]
+        #pragma warning disable CS1591
+        Paymongo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Phonepe")]
+        #pragma warning disable CS1591
+        Phonepe,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Pike13")]
+        #pragma warning disable CS1591
+        Pike13,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Pingone")]
+        #pragma warning disable CS1591
+        Pingone,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "PinterestOrganic")]
+        #pragma warning disable CS1591
+        PinterestOrganic,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "PlanningCenter")]
+        #pragma warning disable CS1591
+        PlanningCenter,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "PluralsightFlow")]
+        #pragma warning disable CS1591
+        PluralsightFlow,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Podbean")]
+        #pragma warning disable CS1591
+        Podbean,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Postscript")]
+        #pragma warning disable CS1591
+        Postscript,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "PowerBiAdmin")]
+        #pragma warning disable CS1591
+        PowerBiAdmin,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Practicepanther")]
+        #pragma warning disable CS1591
+        Practicepanther,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Preset")]
+        #pragma warning disable CS1591
+        Preset,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Procore")]
+        #pragma warning disable CS1591
+        Procore,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Productiv")]
+        #pragma warning disable CS1591
+        Productiv,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ProofpointTap")]
+        #pragma warning disable CS1591
+        ProofpointTap,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Propertyware")]
+        #pragma warning disable CS1591
+        Propertyware,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Pubnub")]
+        #pragma warning disable CS1591
+        Pubnub,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Quay")]
+        #pragma warning disable CS1591
+        Quay,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Raken")]
+        #pragma warning disable CS1591
+        Raken,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "RedpandaCloud")]
+        #pragma warning disable CS1591
+        RedpandaCloud,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "RentManager")]
+        #pragma warning disable CS1591
+        RentManager,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Reverb")]
+        #pragma warning disable CS1591
+        Reverb,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "RocketMatter")]
+        #pragma warning disable CS1591
+        RocketMatter,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Rubygems")]
+        #pragma warning disable CS1591
+        Rubygems,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Scalr")]
+        #pragma warning disable CS1591
+        Scalr,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "SecEdgar")]
+        #pragma warning disable CS1591
+        SecEdgar,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "SelectStar")]
+        #pragma warning disable CS1591
+        SelectStar,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "SemanticScholar")]
+        #pragma warning disable CS1591
+        SemanticScholar,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Semrush")]
+        #pragma warning disable CS1591
+        Semrush,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ServiceFusion")]
+        #pragma warning disable CS1591
+        ServiceFusion,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Servicem8")]
+        #pragma warning disable CS1591
+        Servicem8,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Servicetitan")]
+        #pragma warning disable CS1591
+        Servicetitan,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Servicetrade")]
+        #pragma warning disable CS1591
+        Servicetrade,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Sevdesk")]
+        #pragma warning disable CS1591
+        Sevdesk,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Similarweb")]
+        #pragma warning disable CS1591
+        Similarweb,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Simpro")]
+        #pragma warning disable CS1591
+        Simpro,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Sinch")]
+        #pragma warning disable CS1591
+        Sinch,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Singlestore")]
+        #pragma warning disable CS1591
+        Singlestore,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Site24x7")]
+        #pragma warning disable CS1591
+        Site24X7,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Sleuth")]
+        #pragma warning disable CS1591
+        Sleuth,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Smartlook")]
+        #pragma warning disable CS1591
+        Smartlook,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Smartrecruiters")]
+        #pragma warning disable CS1591
+        Smartrecruiters,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Smokeball")]
+        #pragma warning disable CS1591
+        Smokeball,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "SodaCloud")]
+        #pragma warning disable CS1591
+        SodaCloud,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Speedcurve")]
+        #pragma warning disable CS1591
+        Speedcurve,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "SpotIo")]
+        #pragma warning disable CS1591
+        SpotIo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Sprig")]
+        #pragma warning disable CS1591
+        Sprig,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Sprinklr")]
+        #pragma warning disable CS1591
+        Sprinklr,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "SproutSocial")]
+        #pragma warning disable CS1591
+        SproutSocial,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "StackOverflowForTeams")]
+        #pragma warning disable CS1591
+        StackOverflowForTeams,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Stockx")]
+        #pragma warning disable CS1591
+        Stockx,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "TackleIo")]
+        #pragma warning disable CS1591
+        TackleIo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Talkdesk")]
+        #pragma warning disable CS1591
+        Talkdesk,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "TeamupFitness")]
+        #pragma warning disable CS1591
+        TeamupFitness,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Tebra")]
+        #pragma warning disable CS1591
+        Tebra,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Telnyx")]
+        #pragma warning disable CS1591
+        Telnyx,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Ternary")]
+        #pragma warning disable CS1591
+        Ternary,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Thoughtspot")]
+        #pragma warning disable CS1591
+        Thoughtspot,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Thousandeyes")]
+        #pragma warning disable CS1591
+        Thousandeyes,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Threads")]
+        #pragma warning disable CS1591
+        Threads,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "TiktokShop")]
+        #pragma warning disable CS1591
+        TiktokShop,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "TinyErp")]
+        #pragma warning disable CS1591
+        TinyErp,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Tinybird")]
+        #pragma warning disable CS1591
+        Tinybird,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Tipalti")]
+        #pragma warning disable CS1591
+        Tipalti,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Toast")]
+        #pragma warning disable CS1591
+        Toast,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Torii")]
+        #pragma warning disable CS1591
+        Torii,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Transistor")]
+        #pragma warning disable CS1591
+        Transistor,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "TrunkIo")]
+        #pragma warning disable CS1591
+        TrunkIo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Trustradius")]
+        #pragma warning disable CS1591
+        Trustradius,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Twitch")]
+        #pragma warning disable CS1591
+        Twitch,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "TwoC2p")]
+        #pragma warning disable CS1591
+        TwoC2P,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "UkCompaniesHouse")]
+        #pragma warning disable CS1591
+        UkCompaniesHouse,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "UkOns")]
+        #pragma warning disable CS1591
+        UkOns,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "UnComtrade")]
+        #pragma warning disable CS1591
+        UnComtrade,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "UsBea")]
+        #pragma warning disable CS1591
+        UsBea,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "UsBls")]
+        #pragma warning disable CS1591
+        UsBls,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "UsEia")]
+        #pragma warning disable CS1591
+        UsEia,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "UsTreasuryFiscalData")]
+        #pragma warning disable CS1591
+        UsTreasuryFiscalData,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Vanta")]
+        #pragma warning disable CS1591
+        Vanta,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Vendr")]
+        #pragma warning disable CS1591
+        Vendr,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Virtuous")]
+        #pragma warning disable CS1591
+        Virtuous,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Vonage")]
+        #pragma warning disable CS1591
+        Vonage,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "WalmartMarketplace")]
+        #pragma warning disable CS1591
+        WalmartMarketplace,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Waydev")]
+        #pragma warning disable CS1591
+        Waydev,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Wayfair")]
+        #pragma warning disable CS1591
+        Wayfair,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "WhatsappBusinessManagement")]
+        #pragma warning disable CS1591
+        WhatsappBusinessManagement,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "WhoGho")]
+        #pragma warning disable CS1591
+        WhoGho,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Whop")]
+        #pragma warning disable CS1591
+        Whop,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Wiz")]
+        #pragma warning disable CS1591
+        Wiz,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Wompi")]
+        #pragma warning disable CS1591
+        Wompi,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Workiz")]
+        #pragma warning disable CS1591
+        Workiz,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "WorldBank")]
+        #pragma warning disable CS1591
+        WorldBank,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Xendit")]
+        #pragma warning disable CS1591
+        Xendit,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Yoco")]
+        #pragma warning disable CS1591
+        Yoco,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ZalandoZdirect")]
+        #pragma warning disable CS1591
+        ZalandoZdirect,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Zluri")]
+        #pragma warning disable CS1591
+        Zluri,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Zylo")]
+        #pragma warning disable CS1591
+        Zylo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Tally")]
+        #pragma warning disable CS1591
+        Tally,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Nuntly")]
+        #pragma warning disable CS1591
+        Nuntly,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Vturb")]
+        #pragma warning disable CS1591
+        Vturb,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Meltwater")]
+        #pragma warning disable CS1591
+        Meltwater,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "UserCom")]
+        #pragma warning disable CS1591
+        UserCom,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Latitude")]
+        #pragma warning disable CS1591
+        Latitude,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Workato")]
+        #pragma warning disable CS1591
+        Workato,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "SideShift")]
+        #pragma warning disable CS1591
+        SideShift,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "DuckLake")]
+        #pragma warning disable CS1591
+        DuckLake,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Starburst")]
+        #pragma warning disable CS1591
+        Starburst,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Easybill")]
+        #pragma warning disable CS1591
+        Easybill,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Bexio")]
+        #pragma warning disable CS1591
+        Bexio,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Umami")]
+        #pragma warning disable CS1591
+        Umami,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Manychat")]
+        #pragma warning disable CS1591
+        Manychat,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Kickstarter")]
+        #pragma warning disable CS1591
+        Kickstarter,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Typesense")]
+        #pragma warning disable CS1591
+        Typesense,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "FirstPromoter")]
+        #pragma warning disable CS1591
+        FirstPromoter,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Zero")]
+        #pragma warning disable CS1591
+        Zero,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Inth")]
+        #pragma warning disable CS1591
+        Inth,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "BCMS")]
+        #pragma warning disable CS1591
+        Bcms,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Convonite")]
+        #pragma warning disable CS1591
+        Convonite,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Hookdeck")]
+        #pragma warning disable CS1591
+        Hookdeck,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Billit")]
+        #pragma warning disable CS1591
+        Billit,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Moxie")]
+        #pragma warning disable CS1591
+        Moxie,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "TripleWhale")]
+        #pragma warning disable CS1591
+        TripleWhale,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Directus")]
+        #pragma warning disable CS1591
+        Directus,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Clay")]
+        #pragma warning disable CS1591
+        Clay,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "TradableBits")]
+        #pragma warning disable CS1591
+        TradableBits,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Swan")]
+        #pragma warning disable CS1591
+        Swan,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Hyros")]
+        #pragma warning disable CS1591
+        Hyros,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Odoo")]
+        #pragma warning disable CS1591
+        Odoo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Airbridge")]
+        #pragma warning disable CS1591
+        Airbridge,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Snovio")]
+        #pragma warning disable CS1591
+        Snovio,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "GoogleMerchantCenter")]
+        #pragma warning disable CS1591
+        GoogleMerchantCenter,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Raisely")]
+        #pragma warning disable CS1591
+        Raisely,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "RakutenAdvertising")]
+        #pragma warning disable CS1591
+        RakutenAdvertising,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Zitadel")]
+        #pragma warning disable CS1591
+        Zitadel,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "DeelFlows")]
+        #pragma warning disable CS1591
+        DeelFlows,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "WindsorAi")]
+        #pragma warning disable CS1591
+        WindsorAi,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Wix")]
+        #pragma warning disable CS1591
+        Wix,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Sevalla")]
+        #pragma warning disable CS1591
+        Sevalla,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Motion")]
+        #pragma warning disable CS1591
+        Motion,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ImpactPartner")]
+        #pragma warning disable CS1591
+        ImpactPartner,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Cloudinary")]
+        #pragma warning disable CS1591
+        Cloudinary,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Uploadcare")]
+        #pragma warning disable CS1591
+        Uploadcare,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "WHMCS")]
+        #pragma warning disable CS1591
+        Whmcs,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "MSG91")]
+        #pragma warning disable CS1591
+        Msg91,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Depot")]
+        #pragma warning disable CS1591
+        Depot,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Schematic")]
+        #pragma warning disable CS1591
+        Schematic,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Dokploy")]
+        #pragma warning disable CS1591
+        Dokploy,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Hootsuite")]
+        #pragma warning disable CS1591
+        Hootsuite,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "WisprFlow")]
+        #pragma warning disable CS1591
+        WisprFlow,
         #pragma warning restore CS1591
     }
 }

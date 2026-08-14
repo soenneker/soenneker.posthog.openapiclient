@@ -17,17 +17,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Date range for the query. Defaults to last 24 hours.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracingTraceRequest_dateRange? DateRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TracingTraceRequestDateRange? DateRange { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracingTraceRequest_dateRange DateRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TracingTraceRequestDateRange DateRange { get; set; }
 #endif
+        /// <summary>Omit the per-span attributes and resource attributes maps from results to keep payloads compact. Defaults to false.</summary>
+        public bool? ExcludeAttributes { get; set; }
+        /// <summary>Pagination offset into the trace&apos;s spans (ordered by start time ascending). Each page returns up to 2000 spans; pass the response&apos;s `nextOffset` to load the next page. Defaults to 0.</summary>
+        public int? Offset { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TracingTraceRequest"/> and sets the default values.
         /// </summary>
         public TracingTraceRequest()
         {
             AdditionalData = new Dictionary<string, object>();
+            ExcludeAttributes = false;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -47,7 +52,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingTraceRequest_dateRange>(global::Soenneker.PostHog.OpenApiClient.Models.TracingTraceRequest_dateRange.CreateFromDiscriminatorValue); } },
+                { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingTraceRequestDateRange>(global::Soenneker.PostHog.OpenApiClient.Models.TracingTraceRequestDateRange.CreateFromDiscriminatorValue); } },
+                { "excludeAttributes", n => { ExcludeAttributes = n.GetBoolValue(); } },
+                { "offset", n => { Offset = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -57,7 +64,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingTraceRequest_dateRange>("dateRange", DateRange);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingTraceRequestDateRange>("dateRange", DateRange);
+            writer.WriteBoolValue("excludeAttributes", ExcludeAttributes);
+            writer.WriteIntValue("offset", Offset);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

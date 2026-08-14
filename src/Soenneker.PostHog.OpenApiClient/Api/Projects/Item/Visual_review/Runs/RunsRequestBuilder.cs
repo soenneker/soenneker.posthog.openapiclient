@@ -14,7 +14,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\visual_review\runs
+    /// Builds and executes requests for operations under \api\projects\{projectId}\visual_review\runs
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RunsRequestBuilder : BaseRequestBuilder
@@ -41,7 +41,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RunsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/visual_review/runs{?branch*,commit_sha*,limit*,offset*,pr_number*,review_state*}", pathParameters)
+        public RunsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/visual_review/runs{?branch*,commit_sha*,limit*,offset*,pr_number*,review_state*,search*}", pathParameters)
         {
         }
         /// <summary>
@@ -49,11 +49,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RunsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/visual_review/runs{?branch*,commit_sha*,limit*,offset*,pr_number*,review_state*}", rawUrl)
+        public RunsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/visual_review/runs{?branch*,commit_sha*,limit*,offset*,pr_number*,review_state*,search*}", rawUrl)
         {
         }
         /// <summary>
-        /// List runs for the team, optionally filtered by review state, PR number, commit SHA, or branch.
+        /// List runs for the team, optionally filtered by review state, PR number, commit SHA, branch, or free-text search.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedRunList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -91,7 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.CreateRunResult>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.CreateRunResult.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// List runs for the team, optionally filtered by review state, PR number, commit SHA, or branch.
+        /// List runs for the team, optionally filtered by review state, PR number, commit SHA, branch, or free-text search.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -141,7 +141,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.RunsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// List runs for the team, optionally filtered by review state, PR number, commit SHA, or branch.
+        /// List runs for the team, optionally filtered by review state, PR number, commit SHA, branch, or free-text search.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class RunsRequestBuilderGetQueryParameters 
@@ -184,6 +184,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs
 #else
             [QueryParameter("review_state")]
             public string ReviewState { get; set; }
+#endif
+            /// <summary>Free-text search over branch, commit SHA, run type, and PR number</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("search")]
+            public string? Search { get; set; }
+#nullable restore
+#else
+            [QueryParameter("search")]
+            public string Search { get; set; }
 #endif
         }
     }

@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Create_unlisted_dashboard
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\dashboards\create_unlisted_dashboard
+    /// Builds and executes requests for operations under \api\projects\{projectId}\dashboards\create_unlisted_dashboard
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Create_unlisted_dashboardRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Create_un
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Create_unlisted_dashboardRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/dashboards/create_unlisted_dashboard{?format*}", pathParameters)
+        public Create_unlisted_dashboardRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/dashboards/create_unlisted_dashboard{?format*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,28 +30,28 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Create_un
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Create_unlisted_dashboardRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/dashboards/create_unlisted_dashboard{?format*}", rawUrl)
+        public Create_unlisted_dashboardRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/dashboards/create_unlisted_dashboard{?format*}", rawUrl)
         {
         }
         /// <summary>
         /// Creates an unlisted dashboard from template by tag.Enforces uniqueness (one per tag per team).Returns 409 if unlisted dashboard with this tag already exists.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Create_unlisted_dashboard.Create_unlisted_dashboardPostResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardsCreateUnlistedDashboardCreate201Response"/></returns>
         /// <param name="body">Serializer mixin that handles tags for objects.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Create_unlisted_dashboard.Create_unlisted_dashboardPostResponse?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.Dashboard body, Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Create_unlisted_dashboard.Create_unlisted_dashboardRequestBuilder.Create_unlisted_dashboardRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.DashboardsCreateUnlistedDashboardCreate201Response?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.Dashboard body, Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Create_unlisted_dashboard.Create_unlisted_dashboardRequestBuilder.Create_unlisted_dashboardRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Create_unlisted_dashboard.Create_unlisted_dashboardPostResponse> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.Dashboard body, Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Create_unlisted_dashboard.Create_unlisted_dashboardRequestBuilder.Create_unlisted_dashboardRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.DashboardsCreateUnlistedDashboardCreate201Response> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.Dashboard body, Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Create_unlisted_dashboard.Create_unlisted_dashboardRequestBuilder.Create_unlisted_dashboardRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Create_unlisted_dashboard.Create_unlisted_dashboardPostResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Create_unlisted_dashboard.Create_unlisted_dashboardPostResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.DashboardsCreateUnlistedDashboardCreate201Response>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.DashboardsCreateUnlistedDashboardCreate201Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Creates an unlisted dashboard from template by tag.Enforces uniqueness (one per tag per team).Returns 409 if unlisted dashboard with this tag already exists.
@@ -91,7 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Create_un
         public partial class Create_unlisted_dashboardRequestBuilderPostQueryParameters 
         {
             [QueryParameter("format")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Create_unlisted_dashboard.PostFormatQueryParameterType? Format { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.DashboardsCreateUnlistedDashboardCreateFormatParameter? Format { get; set; }
         }
     }
 }

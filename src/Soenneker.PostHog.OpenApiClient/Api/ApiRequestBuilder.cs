@@ -3,11 +3,13 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Code;
-using Soenneker.PostHog.OpenApiClient.Api.Environments;
+using Soenneker.PostHog.OpenApiClient.Api.Customer_analytics;
 using Soenneker.PostHog.OpenApiClient.Api.Llm_analytics;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations;
 using Soenneker.PostHog.OpenApiClient.Api.Projects;
 using Soenneker.PostHog.OpenApiClient.Api.Public_hog_function_templates;
+using Soenneker.PostHog.OpenApiClient.Api.Reminders;
+using Soenneker.PostHog.OpenApiClient.Api.Revoke_leaked_key;
 using Soenneker.PostHog.OpenApiClient.Api.User_home_settings;
 using Soenneker.PostHog.OpenApiClient.Api.Users;
 using System.Collections.Generic;
@@ -27,10 +29,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Code.CodeRequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>The environments property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Environments.EnvironmentsRequestBuilder Environments
+        /// <summary>The customer_analytics property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Customer_analytics.Customer_analyticsRequestBuilder Customer_analytics
         {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Environments.EnvironmentsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Customer_analytics.Customer_analyticsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The llm_analytics property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Llm_analytics.Llm_analyticsRequestBuilder Llm_analytics
@@ -51,6 +53,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api
         public global::Soenneker.PostHog.OpenApiClient.Api.Public_hog_function_templates.Public_hog_function_templatesRequestBuilder Public_hog_function_templates
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Public_hog_function_templates.Public_hog_function_templatesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The reminders property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Reminders.RemindersRequestBuilder Reminders
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Reminders.RemindersRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The revoke_leaked_key property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Revoke_leaked_key.Revoke_leaked_keyRequestBuilder Revoke_leaked_key
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Revoke_leaked_key.Revoke_leaked_keyRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The user_home_settings property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.User_home_settings.User_home_settingsRequestBuilder User_home_settings

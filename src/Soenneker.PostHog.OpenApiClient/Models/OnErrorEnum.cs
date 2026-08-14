@@ -3,25 +3,17 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `continue` - continue* `abort` - abort* `complete` - complete* `branch` - branch</summary>
+    /// <summary>* `continue` - continue* `abort` - abort</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum OnErrorEnum
     {
         [EnumMember(Value = "continue")]
         #pragma warning disable CS1591
-        Continue,
+        ContinueValue,
         #pragma warning restore CS1591
         [EnumMember(Value = "abort")]
         #pragma warning disable CS1591
         Abort,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "complete")]
-        #pragma warning disable CS1591
-        Complete,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "branch")]
-        #pragma warning disable CS1591
-        Branch,
         #pragma warning restore CS1591
     }
 }

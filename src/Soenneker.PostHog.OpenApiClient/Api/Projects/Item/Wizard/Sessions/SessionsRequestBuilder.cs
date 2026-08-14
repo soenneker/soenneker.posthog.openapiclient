@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Sessions.Item;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Sessions.Latest;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Sessions.StreamNamespace;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -14,11 +15,16 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Sessions
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\wizard\sessions
+    /// Builds and executes requests for operations under \api\projects\{projectId}\wizard\sessions
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SessionsRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The latest property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Sessions.Latest.LatestRequestBuilder Latest
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Sessions.Latest.LatestRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The stream property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Sessions.StreamNamespace.StreamRequestBuilder Stream
         {
@@ -26,14 +32,14 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Sessions
         }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.wizard.sessions.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Sessions.Item.WithSession_ItemRequestBuilder"/></returns>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Sessions.Item.WithSession_ItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Sessions.Item.WithSessionItemRequestBuilder"/></returns>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Sessions.Item.WithSessionItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("session_id", position);
-                return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Sessions.Item.WithSession_ItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("sessionId", position);
+                return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Sessions.Item.WithSessionItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
@@ -41,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Sessions
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SessionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/wizard/sessions{?limit*,offset*,skill_id*,workflow_id*}", pathParameters)
+        public SessionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/wizard/sessions{?limit*,offset*,skill_id*,workflow_id*}", pathParameters)
         {
         }
         /// <summary>
@@ -49,46 +55,46 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Sessions
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SessionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/wizard/sessions{?limit*,offset*,skill_id*,workflow_id*}", rawUrl)
+        public SessionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/wizard/sessions{?limit*,offset*,skill_id*,workflow_id*}", rawUrl)
         {
         }
         /// <summary>
         /// &quot;List wizard sessions for the project, ordered by started_at desc. This should only be called by the PostHog Wizard. Optional filters: ?workflow_id=&lt;id&gt; and ?skill_id=&lt;id&gt;.&quot;
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedWizardSessionDTOList"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedWizardSessionDtoList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedWizardSessionDTOList?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Sessions.SessionsRequestBuilder.SessionsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedWizardSessionDtoList?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Sessions.SessionsRequestBuilder.SessionsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedWizardSessionDTOList> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Sessions.SessionsRequestBuilder.SessionsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedWizardSessionDtoList> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Sessions.SessionsRequestBuilder.SessionsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedWizardSessionDTOList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedWizardSessionDTOList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedWizardSessionDtoList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedWizardSessionDtoList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Upsert a wizard session. The `session_id` key is the idempotency anchor — reposting the same `session_id` replaces the existing row. Returns 201 on create, 200 on update.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WizardSessionDTO"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WizardSessionDto"/></returns>
         /// <param name="body">&quot;Input: validates the JSON the wizard CLI posts. team_id is derived from URL.&quot;</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.WizardSessionDTO?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.WizardSessionDto?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.WizardSessionDTO> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.WizardSessionDto> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.WizardSessionDTO>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.WizardSessionDTO.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.WizardSessionDto>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.WizardSessionDto.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// &quot;List wizard sessions for the project, ordered by started_at desc. This should only be called by the PostHog Wizard. Optional filters: ?workflow_id=&lt;id&gt; and ?skill_id=&lt;id&gt;.&quot;

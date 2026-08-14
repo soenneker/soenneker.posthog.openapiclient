@@ -15,35 +15,54 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The bytecode property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_bytecode? Bytecode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CohortFilterBytecode? Bytecode { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_bytecode Bytecode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CohortFilterBytecode Bytecode { get; set; }
 #endif
         /// <summary>The bytecode_error property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_bytecode_error? BytecodeError { get; set; }
+        public string? BytecodeError { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_bytecode_error BytecodeError { get; set; }
+        public string BytecodeError { get; set; }
 #endif
         /// <summary>The conditionHash property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_conditionHash? ConditionHash { get; set; }
+        public string? ConditionHash { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_conditionHash ConditionHash { get; set; }
+        public string ConditionHash { get; set; }
 #endif
         /// <summary>The key property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_key? Key { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Key { get; set; }
+#nullable restore
+#else
+        public string Key { get; set; }
+#endif
         /// <summary>The negation property</summary>
         public bool? Negation { get; set; }
         /// <summary>The type property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_type? Type { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Type { get; set; }
+#nullable restore
+#else
+        public string Type { get; set; }
+#endif
         /// <summary>The value property</summary>
         public int? Value { get; set; }
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter"/> and sets the default values.
+        /// </summary>
+        public CohortFilter()
+        {
+            Negation = false;
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -62,12 +81,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "bytecode", n => { Bytecode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_bytecode>(global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_bytecode.CreateFromDiscriminatorValue); } },
-                { "bytecode_error", n => { BytecodeError = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_bytecode_error>(global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_bytecode_error.CreateFromDiscriminatorValue); } },
-                { "conditionHash", n => { ConditionHash = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_conditionHash>(global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_conditionHash.CreateFromDiscriminatorValue); } },
-                { "key", n => { Key = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_key>(); } },
+                { "bytecode", n => { Bytecode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilterBytecode>(global::Soenneker.PostHog.OpenApiClient.Models.CohortFilterBytecode.CreateFromDiscriminatorValue); } },
+                { "bytecode_error", n => { BytecodeError = n.GetStringValue(); } },
+                { "conditionHash", n => { ConditionHash = n.GetStringValue(); } },
+                { "key", n => { Key = n.GetStringValue(); } },
                 { "negation", n => { Negation = n.GetBoolValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_type>(); } },
+                { "type", n => { Type = n.GetStringValue(); } },
                 { "value", n => { Value = n.GetIntValue(); } },
             };
         }
@@ -78,12 +97,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_bytecode>("bytecode", Bytecode);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_bytecode_error>("bytecode_error", BytecodeError);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_conditionHash>("conditionHash", ConditionHash);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_key>("key", Key);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilterBytecode>("bytecode", Bytecode);
+            writer.WriteStringValue("bytecode_error", BytecodeError);
+            writer.WriteStringValue("conditionHash", ConditionHash);
+            writer.WriteStringValue("key", Key);
             writer.WriteBoolValue("negation", Negation);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter_type>("type", Type);
+            writer.WriteStringValue("type", Type);
             writer.WriteIntValue("value", Value);
         }
     }

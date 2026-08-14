@@ -13,11 +13,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "log_attribute")]
         #pragma warning disable CS1591
-        Log_attribute,
+        LogAttribute,
         #pragma warning restore CS1591
         [EnumMember(Value = "log_resource_attribute")]
         #pragma warning disable CS1591
-        Log_resource_attribute,
+        LogResourceAttribute,
         #pragma warning restore CS1591
     }
 }

@@ -4,6 +4,8 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Saved.Item;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Saved.Preflight;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Saved.Prewarm;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -13,21 +15,31 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Saved
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\saved
+    /// Builds and executes requests for operations under \api\projects\{projectId}\saved
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SavedRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The preflight property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Saved.Preflight.PreflightRequestBuilder Preflight
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Saved.Preflight.PreflightRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The prewarm property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Saved.Prewarm.PrewarmRequestBuilder Prewarm
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Saved.Prewarm.PrewarmRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.saved.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Saved.Item.WithShort_ItemRequestBuilder"/></returns>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Saved.Item.WithShort_ItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Saved.Item.WithShortItemRequestBuilder"/></returns>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Saved.Item.WithShortItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("short_id", position);
-                return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Saved.Item.WithShort_ItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("shortId", position);
+                return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Saved.Item.WithShortItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
@@ -35,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Saved
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SavedRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/saved{?limit*,offset*}", pathParameters)
+        public SavedRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/saved{?created_by*,limit*,offset*,order*,search*,status*,type*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,41 +55,51 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Saved
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SavedRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/saved{?limit*,offset*}", rawUrl)
+        public SavedRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/saved{?created_by*,limit*,offset*,order*,search*,status*,type*}", rawUrl)
         {
         }
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedHeatmapScreenshotResponseList"/></returns>
+        /// <summary>
+        /// List saved heatmaps for the project. A saved heatmap pins a page URL and a set of viewport widths, and (for type &apos;screenshot&apos;) renders the page so heatmap data can be overlaid on it.
+        /// </summary>
+        /// <returns>A List&lt;global::Soenneker.PostHog.OpenApiClient.Models.SavedHeatmapListResponse&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedHeatmapScreenshotResponseList?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Saved.SavedRequestBuilder.SavedRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<List<global::Soenneker.PostHog.OpenApiClient.Models.SavedHeatmapListResponse>?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Saved.SavedRequestBuilder.SavedRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedHeatmapScreenshotResponseList> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Saved.SavedRequestBuilder.SavedRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<List<global::Soenneker.PostHog.OpenApiClient.Models.SavedHeatmapListResponse>> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Saved.SavedRequestBuilder.SavedRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedHeatmapScreenshotResponseList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedHeatmapScreenshotResponseList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var collectionResult = await RequestAdapter.SendCollectionAsync<global::Soenneker.PostHog.OpenApiClient.Models.SavedHeatmapListResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SavedHeatmapListResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return collectionResult?.AsList();
         }
+        /// <summary>
+        /// Create a saved heatmap for a page URL. For type &apos;screenshot&apos; (the default) this enqueues a headless render of the page at each target width; poll the saved heatmap or its content endpoint until status is &apos;completed&apos;. Provide &apos;widths&apos; to control which viewport widths are rendered.
+        /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponse"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponse?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponse body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponse?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.SavedHeatmapRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponse> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponse body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponse> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.SavedHeatmapRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
+        /// <summary>
+        /// List saved heatmaps for the project. A saved heatmap pins a page URL and a set of viewport widths, and (for type &apos;screenshot&apos;) renders the page so heatmap data can be overlaid on it.
+        /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -94,16 +116,19 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Saved
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
+        /// <summary>
+        /// Create a saved heatmap for a page URL. For type &apos;screenshot&apos; (the default) this enqueues a headless render of the page at each target width; poll the saved heatmap or its content endpoint until status is &apos;completed&apos;. Provide &apos;widths&apos; to control which viewport widths are rendered.
+        /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponse body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.SavedHeatmapRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponse body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.SavedHeatmapRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -122,17 +147,61 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Saved
         {
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Saved.SavedRequestBuilder(rawUrl, RequestAdapter);
         }
+        /// <summary>
+        /// List saved heatmaps for the project. A saved heatmap pins a page URL and a set of viewport widths, and (for type &apos;screenshot&apos;) renders the page so heatmap data can be overlaid on it.
+        /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        #pragma warning disable CS1591
         public partial class SavedRequestBuilderGetQueryParameters 
-        #pragma warning restore CS1591
         {
-            /// <summary>Number of results to return per page.</summary>
+            /// <summary>Filter by the creating user&apos;s ID.</summary>
+            [QueryParameter("created_by")]
+            public int? CreatedBy { get; set; }
+            /// <summary>Maximum saved heatmaps to return.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
-            /// <summary>The initial index from which to return the results.</summary>
+            /// <summary>Number to skip, for pagination.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
+            /// <summary>Field to order by, e.g. &apos;-updated_at&apos; (default) or &apos;created_at&apos;.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("order")]
+            public string? Order { get; set; }
+#nullable restore
+#else
+            [QueryParameter("order")]
+            public string Order { get; set; }
+#endif
+            /// <summary>Case-insensitive substring match on URL or name.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("search")]
+            public string? Search { get; set; }
+#nullable restore
+#else
+            [QueryParameter("search")]
+            public string Search { get; set; }
+#endif
+            /// <summary>&quot;Filter by generation status: &apos;processing&apos;, &apos;completed&apos;, or &apos;failed&apos;.&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("status")]
+            public string? Status { get; set; }
+#nullable restore
+#else
+            [QueryParameter("status")]
+            public string Status { get; set; }
+#endif
+            /// <summary>&quot;Filter by render mode: &apos;screenshot&apos;, &apos;iframe&apos;, or &apos;recording&apos;.&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("type")]
+            public string? Type { get; set; }
+#nullable restore
+#else
+            [QueryParameter("type")]
+            public string Type { get; set; }
+#endif
         }
     }
 }

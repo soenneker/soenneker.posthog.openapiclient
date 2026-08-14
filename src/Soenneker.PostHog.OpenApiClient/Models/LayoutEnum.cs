@@ -13,11 +13,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "two_column")]
         #pragma warning disable CS1591
-        Two_column,
+        TwoColumn,
         #pragma warning restore CS1591
         [EnumMember(Value = "full_width")]
         #pragma warning disable CS1591
-        Full_width,
+        FullWidth,
         #pragma warning restore CS1591
     }
 }

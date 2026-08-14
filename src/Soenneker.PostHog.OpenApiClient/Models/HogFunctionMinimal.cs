@@ -19,10 +19,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimal_created_by? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimalCreatedBy? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimal_created_by CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimalCreatedBy CreatedBy { get; private set; }
 #endif
         /// <summary>The description property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -32,6 +32,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Description { get; private set; }
 #endif
+        /// <summary>When config was last staged for review, or null when nothing is staged.</summary>
+        public DateTimeOffset? DraftUpdatedAt { get; private set; }
         /// <summary>The enabled property</summary>
         public bool? Enabled { get; private set; }
         /// <summary>The execution_order property</summary>
@@ -39,10 +41,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The filters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimal_filters? Filters { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimalFilters? Filters { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimal_filters Filters { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimalFilters Filters { get; private set; }
 #endif
         /// <summary>The hog property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -70,21 +72,29 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; private set; }
 #endif
+        /// <summary>&quot;How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`.&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimalSearchMatchType? SearchMatchType { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimalSearchMatchType SearchMatchType { get; private set; }
+#endif
         /// <summary>The status property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimal_status? Status { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimalStatus? Status { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimal_status Status { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimalStatus Status { get; private set; }
 #endif
         /// <summary>The template property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimal_template? Template { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimalTemplate? Template { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimal_template Template { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimalTemplate Template { get; private set; }
 #endif
         /// <summary>The type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -122,17 +132,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimal_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimal_created_by.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimalCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimalCreatedBy.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
+                { "draft_updated_at", n => { DraftUpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "execution_order", n => { ExecutionOrder = n.GetIntValue(); } },
-                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimal_filters>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimal_filters.CreateFromDiscriminatorValue); } },
+                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimalFilters>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimalFilters.CreateFromDiscriminatorValue); } },
                 { "hog", n => { Hog = n.GetStringValue(); } },
                 { "icon_url", n => { IconUrl = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimal_status>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimal_status.CreateFromDiscriminatorValue); } },
-                { "template", n => { Template = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimal_template>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimal_template.CreateFromDiscriminatorValue); } },
+                { "search_match_type", n => { SearchMatchType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimalSearchMatchType>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimalSearchMatchType.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimalStatus>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimalStatus.CreateFromDiscriminatorValue); } },
+                { "template", n => { Template = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimalTemplate>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimalTemplate.CreateFromDiscriminatorValue); } },
                 { "type", n => { Type = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };

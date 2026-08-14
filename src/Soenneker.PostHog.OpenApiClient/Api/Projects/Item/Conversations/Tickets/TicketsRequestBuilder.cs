@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Bulk_update_status;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Bulk_update_tags;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Compose;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item;
@@ -16,11 +17,16 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\conversations\tickets
+    /// Builds and executes requests for operations under \api\projects\{projectId}\conversations\tickets
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TicketsRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The bulk_update_status property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Bulk_update_status.Bulk_update_statusRequestBuilder Bulk_update_status
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Bulk_update_status.Bulk_update_statusRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The bulk_update_tags property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Bulk_update_tags.Bulk_update_tagsRequestBuilder Bulk_update_tags
         {
@@ -37,9 +43,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Ticket
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Unread_count.Unread_countRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.conversations.tickets.item collection</summary>
-        /// <param name="position">A UUID string identifying this ticket.</param>
+        /// <param name="position">The ticket&apos;s UUID or its numeric ticket number.</param>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item.TicketsItemRequestBuilder"/></returns>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item.TicketsItemRequestBuilder this[Guid position]
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item.TicketsItemRequestBuilder this[string position]
         {
             get
             {
@@ -53,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Ticket
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TicketsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/conversations/tickets{?assignee*,channel_detail*,channel_source*,date_from*,date_to*,distinct_ids*,limit*,offset*,order_by*,priority*,search*,sla*,status*,tags*}", pathParameters)
+        public TicketsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/conversations/tickets{?ai_triage_result*,assignee*,channel_detail*,channel_source*,date_from*,date_to*,distinct_ids*,emails*,limit*,offset*,order_by*,priority*,search*,sla*,snoozed*,status*,tags*,tags_all*,tags_exclude*,view*}", pathParameters)
         {
         }
         /// <summary>
@@ -61,7 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Ticket
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TicketsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/conversations/tickets{?assignee*,channel_detail*,channel_source*,date_from*,date_to*,distinct_ids*,limit*,offset*,order_by*,priority*,search*,sla*,status*,tags*}", rawUrl)
+        public TicketsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/conversations/tickets{?ai_triage_result*,assignee*,channel_detail*,channel_source*,date_from*,date_to*,distinct_ids*,emails*,limit*,offset*,order_by*,priority*,search*,sla*,snoozed*,status*,tags*,tags_all*,tags_exclude*,view*}", rawUrl)
         {
         }
         /// <summary>
@@ -82,23 +88,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Ticket
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedTicketList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedTicketList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Ticket"/></returns>
-        /// <param name="body">Serializer mixin that handles tags for objects.</param>
-        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
-        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.Ticket?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.Ticket body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
-        {
-#nullable restore
-#else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.Ticket> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.Ticket body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
-        {
-#endif
-            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
-            var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.Ticket>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.Ticket.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
-        }
         /// <summary>
         /// List tickets with person data attached.
         /// </summary>
@@ -118,25 +107,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Ticket
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
-        /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">Serializer mixin that handles tags for objects.</param>
-        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.Ticket body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
-        {
-#nullable restore
-#else
-        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.Ticket body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
-        {
-#endif
-            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
-            requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "application/json");
-            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
-            return requestInfo;
-        }
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
@@ -152,7 +122,17 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Ticket
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class TicketsRequestBuilderGetQueryParameters 
         {
-            /// <summary>Filter by assignee. Use `unassigned` for tickets with no assignee, `user:&lt;user_id&gt;` for a specific user, or `role:&lt;role_uuid&gt;` for a role.</summary>
+            /// <summary>&quot;Filter by AI triage outcome. Accepts a single value or a comma-separated list. Valid values: `persisted`, `escalated_with_best`, `escalated_no_reply`, `skipped_unactionable`, `blocked_unsafe`, `blocked_unsafe_reply`, `in_progress`.&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("ai_triage_result")]
+            public string? AiTriageResult { get; set; }
+#nullable restore
+#else
+            [QueryParameter("ai_triage_result")]
+            public string AiTriageResult { get; set; }
+#endif
+            /// <summary>Filter by assignee. Accepts a single value or a comma-separated list (matches any, max 100 entries). Each entry is `unassigned` (no assignee), `me` (the requesting user), `user:&lt;user_id&gt;`, or `role:&lt;role_uuid&gt;`, e.g. `assignee=unassigned,user:123`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("assignee")]
@@ -164,10 +144,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Ticket
 #endif
             /// <summary>Filter by the channel sub-type (e.g. `widget_embedded`, `slack_bot_mention`).</summary>
             [QueryParameter("channel_detail")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.GetChannel_detailQueryParameterType? ChannelDetail { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.ConversationsTicketsListChannelDetailParameter? ChannelDetail { get; set; }
             /// <summary>Filter by the channel the ticket originated from.</summary>
             [QueryParameter("channel_source")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.GetChannel_sourceQueryParameterType? ChannelSource { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.ConversationsTicketsListChannelSourceParameter? ChannelSource { get; set; }
             /// <summary>Only include tickets updated on or after this date. Accepts absolute dates (`2026-01-01`) or relative ones (`-7d`, `-1mStart`). Pass `all` to disable the filter.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -198,6 +178,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Ticket
             [QueryParameter("distinct_ids")]
             public string DistinctIds { get; set; }
 #endif
+            /// <summary>Comma-separated list of email addresses to filter by, matched case-insensitively against `email_from` (max 100). When combined with `distinct_ids`, tickets matching either the distinct_ids or the emails are returned (OR).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("emails")]
+            public string? Emails { get; set; }
+#nullable restore
+#else
+            [QueryParameter("emails")]
+            public string Emails { get; set; }
+#endif
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
@@ -206,8 +196,8 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Ticket
             public int? Offset { get; set; }
             /// <summary>Sort order. Prefix with `-` for descending. Defaults to `-updated_at`.</summary>
             [QueryParameter("order_by")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.GetOrder_byQueryParameterType? OrderBy { get; set; }
-            /// <summary>&quot;Filter by priority. Accepts a single value or a comma-separated list (e.g. `medium,high`). Valid values: `low`, `medium`, `high`.&quot;</summary>
+            public global::Soenneker.PostHog.OpenApiClient.Models.ConversationsTicketsListOrderByParameter? OrderBy { get; set; }
+            /// <summary>&quot;Filter by priority. Accepts a single value or a comma-separated list (e.g. `medium,high`). Valid values: `low`, `medium`, `high`, `critical`.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("priority")]
@@ -217,7 +207,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Ticket
             [QueryParameter("priority")]
             public string Priority { get; set; }
 #endif
-            /// <summary>Free-text search. A numeric value matches a ticket number exactly; otherwise matches against the customer&apos;s name or email (case-insensitive, partial match).</summary>
+            /// <summary>Free-text search. A numeric value (optionally prefixed with `#`) matches a ticket number exactly; otherwise matches against the customer&apos;s name or email, the email subject, or message content (case-insensitive, partial match).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("search")]
@@ -229,7 +219,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Ticket
 #endif
             /// <summary>Filter by SLA state. `breached` = past `sla_due_at`, `at-risk` = due within the next hour, `on-track` = more than an hour remaining.</summary>
             [QueryParameter("sla")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.GetSlaQueryParameterType? Sla { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.ConversationsTicketsListSlaParameter? Sla { get; set; }
+            /// <summary>&quot;Filter by snooze state: `true` returns only snoozed tickets, `false` only non-snoozed.&quot;</summary>
+            [QueryParameter("snoozed")]
+            public bool? Snoozed { get; set; }
             /// <summary>&quot;Filter by status. Accepts a single value or a comma-separated list (e.g. `new,open,pending`). Valid values: `new`, `open`, `pending`, `on_hold`, `resolved`.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -240,7 +233,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Ticket
             [QueryParameter("status")]
             public string Status { get; set; }
 #endif
-            /// <summary>JSON-encoded array of tag names to filter by, e.g. `[&quot;billing&quot;,&quot;urgent&quot;]`.</summary>
+            /// <summary>JSON-encoded array of tag names; returns tickets with ANY of them (OR), e.g. `[&quot;billing&quot;,&quot;urgent&quot;]`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("tags")]
@@ -249,6 +242,36 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Ticket
 #else
             [QueryParameter("tags")]
             public string Tags { get; set; }
+#endif
+            /// <summary>JSON-encoded array of tag names; returns tickets that have ALL of them (AND), e.g. `[&quot;billing&quot;,&quot;urgent&quot;]`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("tags_all")]
+            public string? TagsAll { get; set; }
+#nullable restore
+#else
+            [QueryParameter("tags_all")]
+            public string TagsAll { get; set; }
+#endif
+            /// <summary>JSON-encoded array of tag names; returns tickets that have NONE of them (NOT), e.g. `[&quot;escalated&quot;]`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("tags_exclude")]
+            public string? TagsExclude { get; set; }
+#nullable restore
+#else
+            [QueryParameter("tags_exclude")]
+            public string TagsExclude { get; set; }
+#endif
+            /// <summary>Apply a saved ticket view&apos;s filters by its `short_id` (list views via the `conversations/views` endpoint). Any filter param passed explicitly overrides the view&apos;s saved value for that dimension. Returns 400 if no view matches.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("view")]
+            public string? View { get; set; }
+#nullable restore
+#else
+            [QueryParameter("view")]
+            public string View { get; set; }
 #endif
         }
     }

@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Endpoints.Item.Materialization_preview
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\endpoints\{name}\materialization_preview
+    /// Builds and executes requests for operations under \api\projects\{projectId}\endpoints\{name}\materialization_preview
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Materialization_previewRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Endpoints.Item.Mater
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Materialization_previewRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/endpoints/{name}/materialization_preview", pathParameters)
+        public Materialization_previewRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/endpoints/{name}/materialization_preview", pathParameters)
         {
         }
         /// <summary>
@@ -30,28 +30,28 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Endpoints.Item.Mater
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Materialization_previewRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/endpoints/{name}/materialization_preview", rawUrl)
+        public Materialization_previewRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/endpoints/{name}/materialization_preview", rawUrl)
         {
         }
         /// <summary>
         /// Preview the materialization transform for an endpoint. Shows what the query will look like after materialization, including range pair detection and bucket functions.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Endpoints.Item.Materialization_preview.Materialization_previewPostResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EndpointsMaterializationPreviewCreate201Response"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Endpoints.Item.Materialization_preview.Materialization_previewPostResponse?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.MaterializationPreviewRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.EndpointsMaterializationPreviewCreate201Response?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.MaterializationPreviewRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Endpoints.Item.Materialization_preview.Materialization_previewPostResponse> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.MaterializationPreviewRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.EndpointsMaterializationPreviewCreate201Response> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.MaterializationPreviewRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Endpoints.Item.Materialization_preview.Materialization_previewPostResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Endpoints.Item.Materialization_preview.Materialization_previewPostResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.EndpointsMaterializationPreviewCreate201Response>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.EndpointsMaterializationPreviewCreate201Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Preview the materialization transform for an endpoint. Shows what the query will look like after materialization, including range pair detection and bucket functions.

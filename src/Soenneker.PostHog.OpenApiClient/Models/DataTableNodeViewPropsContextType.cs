@@ -10,11 +10,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "event_definition")]
         #pragma warning disable CS1591
-        Event_definition,
+        EventDefinition,
         #pragma warning restore CS1591
         [EnumMember(Value = "team_columns")]
         #pragma warning disable CS1591
-        Team_columns,
+        TeamColumns,
         #pragma warning restore CS1591
     }
 }

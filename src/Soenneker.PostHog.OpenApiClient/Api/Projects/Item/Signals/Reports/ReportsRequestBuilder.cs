@@ -3,7 +3,9 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.BulkState;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.RefundSummary;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -13,21 +15,31 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\signals\reports
+    /// Builds and executes requests for operations under \api\projects\{projectId}\signals\reports
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ReportsRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The bulkState property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.BulkState.BulkStateRequestBuilder BulkState
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.BulkState.BulkStateRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The refundSummary property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.RefundSummary.RefundSummaryRequestBuilder RefundSummary
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.RefundSummary.RefundSummaryRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.signals.reports.item collection</summary>
         /// <param name="position">A UUID string identifying this signal report.</param>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.ReportsItemRequestBuilder"/></returns>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.ReportsItemRequestBuilder this[Guid position]
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.ItemRequestBuilder"/></returns>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.ItemRequestBuilder this[Guid position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("id", position);
-                return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.ReportsItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("%2Did", position);
+                return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.ItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
@@ -35,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ReportsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/signals/reports{?limit*,offset*,ordering*,search*,source_product*,status*,suggested_reviewers*}", pathParameters)
+        public ReportsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/signals/reports{?has_implementation_pr*,include_all_statuses*,limit*,offset*,ordering*,priority*,scout*,scout_prefix*,search*,source_id*,source_product*,status*,suggested_reviewers*,task_id*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ReportsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/signals/reports{?limit*,offset*,ordering*,search*,source_product*,status*,suggested_reviewers*}", rawUrl)
+        public ReportsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/signals/reports{?has_implementation_pr*,include_all_statuses*,limit*,offset*,ordering*,priority*,scout*,scout_prefix*,search*,source_id*,source_product*,status*,suggested_reviewers*,task_id*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedSignalReportList"/></returns>
@@ -91,6 +103,12 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports
         public partial class ReportsRequestBuilderGetQueryParameters 
         #pragma warning restore CS1591
         {
+            /// <summary>Filter reports by whether a shipped implementation pull request exists. &apos;true&apos; keeps only reports with a PR; &apos;false&apos; keeps only those without. Pair with limit=1 to count PR reports cheaply.</summary>
+            [QueryParameter("has_implementation_pr")]
+            public bool? HasImplementationPr { get; set; }
+            /// <summary>When true, the list includes reports in every status with no default exclusions applied — currently that adds suppressed (dismissed) reports, which are otherwise hidden. Use it to see the full inbox state (e.g. deduplicating before creating a report) and read each row&apos;s status (plus dismissal_reason/dismissal_note on dismissed rows) before acting. Deleted reports are terminal and never returned. Defaults to false, which keeps the existing default exclusions. Ignored when an explicit &apos;status&apos; filter is set — that filter alone decides which statuses are returned.</summary>
+            [QueryParameter("include_all_statuses")]
+            public bool? IncludeAllStatuses { get; set; }
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
@@ -107,6 +125,36 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports
             [QueryParameter("ordering")]
             public string Ordering { get; set; }
 #endif
+            /// <summary>&quot;Comma-separated list of priorities to include. Valid values: P0, P1, P2, P3, P4. Reports without a priority assignment are excluded when this filter is set.&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("priority")]
+            public string? Priority { get; set; }
+#nullable restore
+#else
+            [QueryParameter("priority")]
+            public string Priority { get; set; }
+#endif
+            /// <summary>Comma-separated list of scout skill_name slugs (e.g. signals-scout-error-tracking). Reports are kept if at least one of their contributing signals was authored by one of these scouts. Combines with source_product as an AND.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("scout")]
+            public string? Scout { get; set; }
+#nullable restore
+#else
+            [QueryParameter("scout")]
+            public string Scout { get; set; }
+#endif
+            /// <summary>Scout skill_name prefix (e.g. signals-scout-customer-analytics). Reports are kept if at least one of their contributing signals was authored by a scout whose skill_name starts with this prefix — new scouts in the family match without callers listing every name. Combines with the other filters as an AND.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("scout_prefix")]
+            public string? ScoutPrefix { get; set; }
+#nullable restore
+#else
+            [QueryParameter("scout_prefix")]
+            public string ScoutPrefix { get; set; }
+#endif
             /// <summary>Case-insensitive substring match against report title and summary.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -116,6 +164,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports
 #else
             [QueryParameter("search")]
             public string Search { get; set; }
+#endif
+            /// <summary>Comma-separated list of source record ids. Reports are kept if at least one of their contributing signals came from one of these records — e.g. pass a support ticket&apos;s UUID to see what the inbox already found for that ticket. Requires exactly one source_product, since a source id is only unique within its product.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("source_id")]
+            public string? SourceId { get; set; }
+#nullable restore
+#else
+            [QueryParameter("source_id")]
+            public string SourceId { get; set; }
 #endif
             /// <summary>Comma-separated list of source products to include. Reports are kept if at least one of their contributing signals comes from one of these products (e.g. error_tracking, session_replay).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -127,7 +185,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports
             [QueryParameter("source_product")]
             public string SourceProduct { get; set; }
 #endif
-            /// <summary>&quot;Comma-separated list of statuses to include. Valid values: potential, candidate, in_progress, pending_input, ready, failed, suppressed. Defaults to all statuses except suppressed.&quot;</summary>
+            /// <summary>&quot;Comma-separated list of statuses to include. Valid values: potential, candidate, in_progress, pending_input, ready, resolved, failed, suppressed. Defaults to all statuses except suppressed.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("status")]
@@ -147,6 +205,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports
             [QueryParameter("suggested_reviewers")]
             public string SuggestedReviewers { get; set; }
 #endif
+            /// <summary>Only reports associated with this task (via the report&apos;s task associations).</summary>
+            [QueryParameter("task_id")]
+            public Guid? TaskId { get; set; }
         }
     }
 }

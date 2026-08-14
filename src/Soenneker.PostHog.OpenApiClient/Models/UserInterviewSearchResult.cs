@@ -24,8 +24,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>When the interview row was created.</summary>
         public DateTimeOffset? CreatedAt { get; set; }
-        /// <summary>* `transcript` - transcript* `summary` - summary</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserInterviewSearchDocumentTypeEnum? DocumentType { get; set; }
+        /// <summary>Which document type matched — `transcript` is the raw conversation, `summary` is the AI-generated abstract.* `transcript` - transcript* `summary` - summary</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserInterviewSearchResultDocumentType? DocumentType { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserInterviewSearchResultDocumentType DocumentType { get; set; }
+#endif
         /// <summary>Email or PostHog distinct ID of the interviewee.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -67,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "content_snippet", n => { ContentSnippet = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "document_type", n => { DocumentType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.UserInterviewSearchDocumentTypeEnum>(); } },
+                { "document_type", n => { DocumentType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserInterviewSearchResultDocumentType>(global::Soenneker.PostHog.OpenApiClient.Models.UserInterviewSearchResultDocumentType.CreateFromDiscriminatorValue); } },
                 { "interview_id", n => { InterviewId = n.GetGuidValue(); } },
                 { "interviewee_identifier", n => { IntervieweeIdentifier = n.GetStringValue(); } },
                 { "similarity", n => { Similarity = n.GetDoubleValue(); } },
@@ -83,7 +89,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("content_snippet", ContentSnippet);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.UserInterviewSearchDocumentTypeEnum>("document_type", DocumentType);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserInterviewSearchResultDocumentType>("document_type", DocumentType);
             writer.WriteStringValue("interviewee_identifier", IntervieweeIdentifier);
             writer.WriteGuidValue("interview_id", InterviewId);
             writer.WriteDoubleValue("similarity", Similarity);

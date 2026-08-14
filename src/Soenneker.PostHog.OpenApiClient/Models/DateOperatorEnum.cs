@@ -9,15 +9,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "is_date_exact")]
         #pragma warning disable CS1591
-        Is_date_exact,
+        IsDateExact,
         #pragma warning restore CS1591
         [EnumMember(Value = "is_date_before")]
         #pragma warning disable CS1591
-        Is_date_before,
+        IsDateBefore,
         #pragma warning restore CS1591
         [EnumMember(Value = "is_date_after")]
         #pragma warning disable CS1591
-        Is_date_after,
+        IsDateAfter,
         #pragma warning restore CS1591
     }
 }

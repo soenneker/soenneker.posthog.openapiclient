@@ -15,9 +15,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The data_interval_end property</summary>
+        /// <summary>End of the data interval to export</summary>
         public DateTimeOffset? DataIntervalEnd { get; set; }
-        /// <summary>The data_interval_start property</summary>
+        /// <summary>Start of the data interval to export</summary>
         public DateTimeOffset? DataIntervalStart { get; set; }
         /// <summary>The exclude property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -35,6 +35,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfig File { get; set; }
 #endif
+        /// <summary>HogQL SELECT query whose results are exported. Placeholders are not currently supported, and every column in the SELECT clause must be a field or have an alias. The query runs as of thetime the export starts; events ingested moments before may not be included yet.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? HogqlQuery { get; set; }
+#nullable restore
+#else
+        public string HogqlQuery { get; set; }
+#endif
         /// <summary>The include property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -43,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> Include { get; set; }
 #endif
-        /// <summary>* `events` - events* `persons` - persons* `sessions` - sessions</summary>
+        /// <summary>* `events` - events* `persons` - persons* `sessions` - sessions* `hogql` - hogql</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadBatchExportOnDemandModelEnum? Model { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadBatchExportOnDemand"/> and sets the default values.
@@ -74,6 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "data_interval_start", n => { DataIntervalStart = n.GetDateTimeOffsetValue(); } },
                 { "exclude", n => { Exclude = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "file", n => { File = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfig>(global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfig.CreateFromDiscriminatorValue); } },
+                { "hogql_query", n => { HogqlQuery = n.GetStringValue(); } },
                 { "include", n => { Include = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "model", n => { Model = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadBatchExportOnDemandModelEnum>(); } },
             };
@@ -89,6 +98,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("data_interval_start", DataIntervalStart);
             writer.WriteCollectionOfPrimitiveValues<string>("exclude", Exclude);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfig>("file", File);
+            writer.WriteStringValue("hogql_query", HogqlQuery);
             writer.WriteCollectionOfPrimitiveValues<string>("include", Include);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadBatchExportOnDemandModelEnum>("model", Model);
             writer.WriteAdditionalData(AdditionalData);

@@ -9,11 +9,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "b2b")]
         #pragma warning disable CS1591
-        B2b,
+        B2B,
         #pragma warning restore CS1591
         [EnumMember(Value = "b2c")]
         #pragma warning disable CS1591
-        B2c,
+        B2C,
         #pragma warning restore CS1591
         [EnumMember(Value = "other")]
         #pragma warning disable CS1591

@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Activity_log
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\activity_log
+    /// Builds and executes requests for operations under \api\projects\{projectId}\activity_log
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Activity_logRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Activity_log
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Activity_logRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/activity_log{?item_id*,page*,page_size*,scope*,scopes*,user*}", pathParameters)
+        public Activity_logRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/activity_log{?item_id*,ordering*,page*,page_size*,scope*,scopes*,user*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Activity_log
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Activity_logRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/activity_log{?item_id*,page*,page_size*,scope*,scopes*,user*}", rawUrl)
+        public Activity_logRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/activity_log{?item_id*,ordering*,page*,page_size*,scope*,scopes*,user*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedActivityLogList"/></returns>
@@ -88,24 +88,27 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Activity_log
             [QueryParameter("item_id")]
             public string ItemId { get; set; }
 #endif
+            /// <summary>Sort by when the entry was created. Defaults to newest first. Use created_at for oldest first when polling for new entries, so a saved cursor picks up where the last request stopped.* `-created_at` - -created_at* `created_at` - created_at</summary>
+            [QueryParameter("ordering")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.ActivityLogListOrderingParameter? Ordering { get; set; }
             /// <summary>Page number for pagination. When provided, uses page-based pagination ordered by most recent first.</summary>
             [QueryParameter("page")]
             public int? Page { get; set; }
-            /// <summary>&quot;Number of results per page (default: 100, max: 1000). Only used with page-based pagination.&quot;</summary>
+            /// <summary>&quot;Number of results per page (default: 100, max: 1000).&quot;</summary>
             [QueryParameter("page_size")]
             public int? PageSize { get; set; }
-            /// <summary>Filter by a single activity scope, e.g. &quot;FeatureFlag&quot;, &quot;Insight&quot;, &quot;Dashboard&quot;, &quot;Experiment&quot;.* `Cohort` - Cohort* `FeatureFlag` - FeatureFlag* `Person` - Person* `Group` - Group* `Insight` - Insight* `Plugin` - Plugin* `PluginConfig` - PluginConfig* `HogFunction` - HogFunction* `HogFlow` - HogFlow* `DataManagement` - DataManagement* `EventDefinition` - EventDefinition* `PropertyDefinition` - PropertyDefinition* `Notebook` - Notebook* `Endpoint` - Endpoint* `EndpointVersion` - EndpointVersion* `Dashboard` - Dashboard* `Replay` - Replay* `Experiment` - Experiment* `ExperimentHoldout` - ExperimentHoldout* `ExperimentSavedMetric` - ExperimentSavedMetric* `Survey` - Survey* `EarlyAccessFeature` - EarlyAccessFeature* `SessionRecordingPlaylist` - SessionRecordingPlaylist* `Comment` - Comment* `Team` - Team* `Project` - Project* `ErrorTrackingIssue` - ErrorTrackingIssue* `DataWarehouseSavedQuery` - DataWarehouseSavedQuery* `LegalDocument` - LegalDocument* `Organization` - Organization* `OrganizationDomain` - OrganizationDomain* `OrganizationMembership` - OrganizationMembership* `Role` - Role* `UserGroup` - UserGroup* `BatchExport` - BatchExport* `BatchImport` - BatchImport* `Integration` - Integration* `Annotation` - Annotation* `Tag` - Tag* `TaggedItem` - TaggedItem* `Subscription` - Subscription* `PersonalAPIKey` - PersonalAPIKey* `ProjectSecretAPIKey` - ProjectSecretAPIKey* `User` - User* `Action` - Action* `AlertConfiguration` - AlertConfiguration* `Threshold` - Threshold* `AlertSubscription` - AlertSubscription* `ExternalDataSource` - ExternalDataSource* `ExternalDataSchema` - ExternalDataSchema* `Evaluation` - Evaluation* `LLMTrace` - LLMTrace* `WebAnalyticsFilterPreset` - WebAnalyticsFilterPreset* `CustomerProfileConfig` - CustomerProfileConfig* `Log` - Log* `LogsAlertConfiguration` - LogsAlertConfiguration* `LogsExclusionRule` - LogsExclusionRule* `ProductTour` - ProductTour* `Ticket` - Ticket* `InstanceSetting` - InstanceSetting</summary>
+            /// <summary>Filter by a single activity scope, e.g. &quot;FeatureFlag&quot;, &quot;Insight&quot;, &quot;Dashboard&quot;, &quot;Experiment&quot;.* `Cohort` - Cohort* `FeatureFlag` - FeatureFlag* `Person` - Person* `Group` - Group* `Insight` - Insight* `Plugin` - Plugin* `PluginConfig` - PluginConfig* `HogFunction` - HogFunction* `HogFlow` - HogFlow* `DataManagement` - DataManagement* `EventDefinition` - EventDefinition* `PropertyDefinition` - PropertyDefinition* `Notebook` - Notebook* `Canvas` - Canvas* `Endpoint` - Endpoint* `EndpointVersion` - EndpointVersion* `Dashboard` - Dashboard* `Replay` - Replay* `Experiment` - Experiment* `ExperimentHoldout` - ExperimentHoldout* `ExperimentSavedMetric` - ExperimentSavedMetric* `Survey` - Survey* `EarlyAccessFeature` - EarlyAccessFeature* `SessionRecordingPlaylist` - SessionRecordingPlaylist* `Comment` - Comment* `Team` - Team* `Project` - Project* `ErrorTrackingIssue` - ErrorTrackingIssue* `DataWarehouseExpression` - DataWarehouseExpression* `DataWarehouseSavedQuery` - DataWarehouseSavedQuery* `LegalDocument` - LegalDocument* `Organization` - Organization* `OrganizationDomain` - OrganizationDomain* `IdentityProviderConfig` - IdentityProviderConfig* `OrganizationMembership` - OrganizationMembership* `Role` - Role* `UserGroup` - UserGroup* `BatchExport` - BatchExport* `BatchImport` - BatchImport* `ExportedAsset` - ExportedAsset* `Integration` - Integration* `Annotation` - Annotation* `Tag` - Tag* `TaggedItem` - TaggedItem* `Subscription` - Subscription* `PersonalAPIKey` - PersonalAPIKey* `ProjectSecretAPIKey` - ProjectSecretAPIKey* `OAuthApplication` - OAuthApplication* `User` - User* `Action` - Action* `AlertConfiguration` - AlertConfiguration* `Threshold` - Threshold* `AlertSubscription` - AlertSubscription* `ExternalDataSource` - ExternalDataSource* `ExternalDataSchema` - ExternalDataSchema* `Evaluation` - Evaluation* `EvaluationDirectory` - EvaluationDirectory* `LLMPrompt` - LLMPrompt* `LLMPromptLabel` - LLMPromptLabel* `LLMTrace` - LLMTrace* `AIGatewayCredit` - AIGatewayCredit* `WebAnalyticsFilterPreset` - WebAnalyticsFilterPreset* `CustomerProfileConfig` - CustomerProfileConfig* `Log` - Log* `LogsAlertConfiguration` - LogsAlertConfiguration* `LogsExclusionRule` - LogsExclusionRule* `LogsRetentionRule` - LogsRetentionRule* `DashboardWidget` - DashboardWidget* `ProductTour` - ProductTour* `Ticket` - Ticket* `InstanceSetting` - InstanceSetting* `SignalReport` - SignalReport* `SignalScoutConfig` - SignalScoutConfig* `StreamlitApp` - StreamlitApp* `Metric` - Metric* `TableCertification` - TableCertification* `DataQualityCheck` - DataQualityCheck* `Billing` - Billing* `Loop` - Loop</summary>
             [QueryParameter("scope")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Activity_log.GetScopeQueryParameterType? Scope { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.ActivityLogListScopeParameter? Scope { get; set; }
             /// <summary>Filter by multiple activity scopes, comma-separated. Values must be valid ActivityScope enum values. E.g. &quot;FeatureFlag,Insight&quot;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("scopes")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Activity_log.GetScopesQueryParameterType[]? Scopes { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.ActivityLogListScopesParameterItem[]? Scopes { get; set; }
 #nullable restore
 #else
             [QueryParameter("scopes")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Activity_log.GetScopesQueryParameterType[] Scopes { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.ActivityLogListScopesParameterItem[] Scopes { get; set; }
 #endif
             /// <summary>Filter by user UUID who performed the action.</summary>
             [QueryParameter("user")]

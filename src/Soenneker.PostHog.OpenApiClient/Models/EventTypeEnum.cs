@@ -9,19 +9,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "$ai_generation")]
         #pragma warning disable CS1591
-        Ai_generation,
+        DollarAiGeneration,
         #pragma warning restore CS1591
         [EnumMember(Value = "$ai_span")]
         #pragma warning disable CS1591
-        Ai_span,
+        DollarAiSpan,
         #pragma warning restore CS1591
         [EnumMember(Value = "$ai_embedding")]
         #pragma warning disable CS1591
-        Ai_embedding,
+        DollarAiEmbedding,
         #pragma warning restore CS1591
         [EnumMember(Value = "$ai_trace")]
         #pragma warning disable CS1591
-        Ai_trace,
+        DollarAiTrace,
         #pragma warning restore CS1591
     }
 }

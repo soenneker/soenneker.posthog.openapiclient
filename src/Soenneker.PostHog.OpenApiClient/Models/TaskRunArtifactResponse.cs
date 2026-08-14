@@ -22,6 +22,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ContentType { get; set; }
 #endif
+        /// <summary>Timestamp when a user dismissed the artifact. Absent while the artifact is shown.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? DismissedAt { get; set; }
+#nullable restore
+#else
+        public string DismissedAt { get; set; }
+#endif
         /// <summary>Stable identifier for the artifact within this run</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -29,6 +37,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string Id { get; set; }
+#endif
+        /// <summary>Optional structured metadata for special artifact types, such as skill bundles.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactResponseMetadata? Metadata { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactResponseMetadata Metadata { get; set; }
 #endif
         /// <summary>Artifact file name</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -72,6 +88,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string UploadedAt { get; set; }
 #endif
+        /// <summary>Whether the artifact version was uploaded by the task agent or an interactive user.* `agent` - agent* `user` - user</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactResponseUploadedBy? UploadedBy { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactResponseUploadedBy UploadedBy { get; set; }
+#endif
+        /// <summary>User id for an interactive user upload. Absent for agent uploads and legacy entries.</summary>
+        public int? UploadedByUserId { get; set; }
+        /// <summary>Stable download URL for the artifact. Populated on the finalize-upload response so the caller can link to the file; it redirects to a fresh presigned URL on each request and is not persisted on the manifest.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Url { get; set; }
+#nullable restore
+#else
+        public string Url { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactResponse"/> and sets the default values.
         /// </summary>
@@ -98,13 +132,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "content_type", n => { ContentType = n.GetStringValue(); } },
+                { "dismissed_at", n => { DismissedAt = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactResponseMetadata>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactResponseMetadata.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "size", n => { Size = n.GetIntValue(); } },
                 { "source", n => { Source = n.GetStringValue(); } },
                 { "storage_path", n => { StoragePath = n.GetStringValue(); } },
                 { "type", n => { Type = n.GetStringValue(); } },
                 { "uploaded_at", n => { UploadedAt = n.GetStringValue(); } },
+                { "uploaded_by", n => { UploadedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactResponseUploadedBy>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactResponseUploadedBy.CreateFromDiscriminatorValue); } },
+                { "uploaded_by_user_id", n => { UploadedByUserId = n.GetIntValue(); } },
+                { "url", n => { Url = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -115,13 +154,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("content_type", ContentType);
+            writer.WriteStringValue("dismissed_at", DismissedAt);
             writer.WriteStringValue("id", Id);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactResponseMetadata>("metadata", Metadata);
             writer.WriteStringValue("name", Name);
             writer.WriteIntValue("size", Size);
             writer.WriteStringValue("source", Source);
             writer.WriteStringValue("storage_path", StoragePath);
             writer.WriteStringValue("type", Type);
             writer.WriteStringValue("uploaded_at", UploadedAt);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactResponseUploadedBy>("uploaded_by", UploadedBy);
+            writer.WriteIntValue("uploaded_by_user_id", UploadedByUserId);
+            writer.WriteStringValue("url", Url);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

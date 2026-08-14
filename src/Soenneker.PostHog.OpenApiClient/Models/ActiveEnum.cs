@@ -7,9 +7,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ActiveEnum
     {
+        [EnumMember(Value = "true")]
+        #pragma warning disable CS1591
+        TrueValue,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "false")]
+        #pragma warning disable CS1591
+        FalseValue,
+        #pragma warning restore CS1591
         [EnumMember(Value = "STALE")]
         #pragma warning disable CS1591
-        STALE,
+        Stale,
         #pragma warning restore CS1591
     }
 }

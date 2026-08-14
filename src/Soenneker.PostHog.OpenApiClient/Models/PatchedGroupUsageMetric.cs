@@ -14,24 +14,42 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `number` - number* `sparkline` - sparkline</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupUsageMetricDisplayEnum? Display { get; set; }
+        /// <summary>Visual representation in the UI. One of `number` or `sparkline`.* `number` - number* `sparkline` - sparkline</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedGroupUsageMetricDisplay? Display { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedGroupUsageMetricDisplay Display { get; set; }
+#endif
         /// <summary>&quot;Filter definition for the metric. Two shapes are accepted, discriminated by an optional `source` key.**Events** (default, when `source` is missing or `\&quot;events\&quot;`): HogFunction filter shape — `events: [...]`, optional `actions: [...]`, `properties: [...]`, `filter_test_accounts: bool`.**Data warehouse** (`source: \&quot;data_warehouse\&quot;`): `table_name` (synced DW table), `timestamp_field` (timestamp column or HogQL expression), `key_field` (column whose value matches the entity key). Currently DW metrics only render on group profiles — person profiles are not yet supported.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedGroupUsageMetric_filters? Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedGroupUsageMetricFiltersProperty? Filters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedGroupUsageMetric_filters Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedGroupUsageMetricFiltersProperty Filters { get; set; }
 #endif
-        /// <summary>* `numeric` - numeric* `currency` - currency</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupUsageMetricFormatEnum? Format { get; set; }
+        /// <summary>How the metric value is formatted in the UI. One of `numeric` or `currency`.* `numeric` - numeric* `currency` - currency</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedGroupUsageMetricFormat? Format { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedGroupUsageMetricFormat Format { get; set; }
+#endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>Rolling time window in days used to compute the metric. Defaults to 7.</summary>
         public int? Interval { get; set; }
-        /// <summary>* `count` - count* `sum` - sum</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.MathEnum? Math { get; set; }
+        /// <summary>Aggregation function. `count` counts matching events; `sum` sums the value of `math_property` on matching events.* `count` - count* `sum` - sum</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedGroupUsageMetricMath? Math { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedGroupUsageMetricMath Math { get; set; }
+#endif
         /// <summary>Required when `math` is `sum`; must be empty when `math` is `count`. For events metrics this is an event property name. For data warehouse metrics this is the column name (or HogQL expression) to sum on the DW table.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -54,6 +72,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public PatchedGroupUsageMetric()
         {
             AdditionalData = new Dictionary<string, object>();
+            Interval = 7;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -73,12 +92,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "display", n => { Display = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupUsageMetricDisplayEnum>(); } },
-                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedGroupUsageMetric_filters>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedGroupUsageMetric_filters.CreateFromDiscriminatorValue); } },
-                { "format", n => { Format = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupUsageMetricFormatEnum>(); } },
+                { "display", n => { Display = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedGroupUsageMetricDisplay>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedGroupUsageMetricDisplay.CreateFromDiscriminatorValue); } },
+                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedGroupUsageMetricFiltersProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedGroupUsageMetricFiltersProperty.CreateFromDiscriminatorValue); } },
+                { "format", n => { Format = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedGroupUsageMetricFormat>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedGroupUsageMetricFormat.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "interval", n => { Interval = n.GetIntValue(); } },
-                { "math", n => { Math = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MathEnum>(); } },
+                { "math", n => { Math = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedGroupUsageMetricMath>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedGroupUsageMetricMath.CreateFromDiscriminatorValue); } },
                 { "math_property", n => { MathProperty = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
             };
@@ -90,11 +109,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupUsageMetricDisplayEnum>("display", Display);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedGroupUsageMetric_filters>("filters", Filters);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupUsageMetricFormatEnum>("format", Format);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedGroupUsageMetricDisplay>("display", Display);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedGroupUsageMetricFiltersProperty>("filters", Filters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedGroupUsageMetricFormat>("format", Format);
             writer.WriteIntValue("interval", Interval);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MathEnum>("math", Math);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedGroupUsageMetricMath>("math", Math);
             writer.WriteStringValue("math_property", MathProperty);
             writer.WriteStringValue("name", Name);
             writer.WriteAdditionalData(AdditionalData);

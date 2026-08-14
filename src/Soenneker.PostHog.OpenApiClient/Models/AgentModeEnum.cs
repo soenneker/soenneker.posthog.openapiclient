@@ -3,13 +3,13 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `product_analytics` - product_analytics* `sql` - sql* `session_replay` - session_replay* `error_tracking` - error_tracking* `plan` - plan* `execution` - execution* `survey` - survey* `research` - research* `flags` - flags* `llm_analytics` - llm_analytics* `sandbox` - sandbox* `user_interview` - user_interview</summary>
+    /// <summary>* `product_analytics` - product_analytics* `sql` - sql* `session_replay` - session_replay* `error_tracking` - error_tracking* `plan` - plan* `execution` - execution* `survey` - survey* `research` - research* `flags` - flags* `llm_analytics` - llm_analytics* `sandbox` - sandbox* `user_interview` - user_interview* `customer_analytics` - customer_analytics</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum AgentModeEnum
     {
         [EnumMember(Value = "product_analytics")]
         #pragma warning disable CS1591
-        Product_analytics,
+        ProductAnalytics,
         #pragma warning restore CS1591
         [EnumMember(Value = "sql")]
         #pragma warning disable CS1591
@@ -17,11 +17,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "session_replay")]
         #pragma warning disable CS1591
-        Session_replay,
+        SessionReplay,
         #pragma warning restore CS1591
         [EnumMember(Value = "error_tracking")]
         #pragma warning disable CS1591
-        Error_tracking,
+        ErrorTracking,
         #pragma warning restore CS1591
         [EnumMember(Value = "plan")]
         #pragma warning disable CS1591
@@ -45,7 +45,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "llm_analytics")]
         #pragma warning disable CS1591
-        Llm_analytics,
+        LlmAnalytics,
         #pragma warning restore CS1591
         [EnumMember(Value = "sandbox")]
         #pragma warning disable CS1591
@@ -53,7 +53,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "user_interview")]
         #pragma warning disable CS1591
-        User_interview,
+        UserInterview,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "customer_analytics")]
+        #pragma warning disable CS1591
+        CustomerAnalytics,
         #pragma warning restore CS1591
     }
 }

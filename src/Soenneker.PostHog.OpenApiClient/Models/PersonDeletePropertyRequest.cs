@@ -14,13 +14,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The property key to remove from this person.</summary>
+        /// <summary>A property key, or a list of property keys, to remove from this person.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Unset { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonDeletePropertyRequestUnset? Unset { get; set; }
 #nullable restore
 #else
-        public string Unset { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonDeletePropertyRequestUnset Unset { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PersonDeletePropertyRequest"/> and sets the default values.
@@ -47,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "$unset", n => { Unset = n.GetStringValue(); } },
+                { "$unset", n => { Unset = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonDeletePropertyRequestUnset>(global::Soenneker.PostHog.OpenApiClient.Models.PersonDeletePropertyRequestUnset.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -57,7 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("$unset", Unset);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonDeletePropertyRequestUnset>("$unset", Unset);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

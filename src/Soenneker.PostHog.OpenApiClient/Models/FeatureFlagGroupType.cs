@@ -13,60 +13,46 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning restore CS1591
     {
         /// <summary>The aggregation_group_type_index property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupType_aggregation_group_type_index? AggregationGroupTypeIndex { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupType_aggregation_group_type_index AggregationGroupTypeIndex { get; set; }
-#endif
+        public int? AggregationGroupTypeIndex { get; set; }
         /// <summary>The description property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupType_description? Description { get; set; }
+        public string? Description { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupType_description Description { get; set; }
+        public string Description { get; set; }
 #endif
+        /// <summary>&quot;Stamped by the experiment exposure freeze: the group carries a machine-added snapshot-cohort condition.&quot;</summary>
+        public bool? ExposureFrozen { get; set; }
+        /// <summary>Snapshot cohort the exposure freeze AND&apos;d into this group&apos;s properties.</summary>
+        public double? ExposureFrozenCohort { get; set; }
         /// <summary>The properties property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupType_properties? Properties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupTypePropertiesAnyOf1Item>? Properties { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupType_properties Properties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupTypePropertiesAnyOf1Item> Properties { get; set; }
 #endif
         /// <summary>The rollout_percentage property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupType_rollout_percentage? RolloutPercentage { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupType_rollout_percentage RolloutPercentage { get; set; }
-#endif
+        public double? RolloutPercentage { get; set; }
         /// <summary>The sort_key property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupType_sort_key? SortKey { get; set; }
+        public string? SortKey { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupType_sort_key SortKey { get; set; }
+        public string SortKey { get; set; }
 #endif
         /// <summary>The users_affected property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupType_users_affected? UsersAffected { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupType_users_affected UsersAffected { get; set; }
-#endif
+        public double? UsersAffected { get; set; }
         /// <summary>The variant property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupType_variant? Variant { get; set; }
+        public string? Variant { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupType_variant Variant { get; set; }
+        public string Variant { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -86,13 +72,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "aggregation_group_type_index", n => { AggregationGroupTypeIndex = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupType_aggregation_group_type_index>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupType_aggregation_group_type_index.CreateFromDiscriminatorValue); } },
-                { "description", n => { Description = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupType_description>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupType_description.CreateFromDiscriminatorValue); } },
-                { "properties", n => { Properties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupType_properties>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupType_properties.CreateFromDiscriminatorValue); } },
-                { "rollout_percentage", n => { RolloutPercentage = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupType_rollout_percentage>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupType_rollout_percentage.CreateFromDiscriminatorValue); } },
-                { "sort_key", n => { SortKey = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupType_sort_key>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupType_sort_key.CreateFromDiscriminatorValue); } },
-                { "users_affected", n => { UsersAffected = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupType_users_affected>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupType_users_affected.CreateFromDiscriminatorValue); } },
-                { "variant", n => { Variant = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupType_variant>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupType_variant.CreateFromDiscriminatorValue); } },
+                { "aggregation_group_type_index", n => { AggregationGroupTypeIndex = n.GetIntValue(); } },
+                { "description", n => { Description = n.GetStringValue(); } },
+                { "exposure_frozen", n => { ExposureFrozen = n.GetBoolValue(); } },
+                { "exposure_frozen_cohort", n => { ExposureFrozenCohort = n.GetDoubleValue(); } },
+                { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupTypePropertiesAnyOf1Item>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupTypePropertiesAnyOf1Item.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "rollout_percentage", n => { RolloutPercentage = n.GetDoubleValue(); } },
+                { "sort_key", n => { SortKey = n.GetStringValue(); } },
+                { "users_affected", n => { UsersAffected = n.GetDoubleValue(); } },
+                { "variant", n => { Variant = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -102,13 +90,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupType_aggregation_group_type_index>("aggregation_group_type_index", AggregationGroupTypeIndex);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupType_description>("description", Description);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupType_properties>("properties", Properties);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupType_rollout_percentage>("rollout_percentage", RolloutPercentage);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupType_sort_key>("sort_key", SortKey);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupType_users_affected>("users_affected", UsersAffected);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupType_variant>("variant", Variant);
+            writer.WriteIntValue("aggregation_group_type_index", AggregationGroupTypeIndex);
+            writer.WriteStringValue("description", Description);
+            writer.WriteBoolValue("exposure_frozen", ExposureFrozen);
+            writer.WriteDoubleValue("exposure_frozen_cohort", ExposureFrozenCohort);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupTypePropertiesAnyOf1Item>("properties", Properties);
+            writer.WriteDoubleValue("rollout_percentage", RolloutPercentage);
+            writer.WriteStringValue("sort_key", SortKey);
+            writer.WriteDoubleValue("users_affected", UsersAffected);
+            writer.WriteStringValue("variant", Variant);
         }
     }
 }

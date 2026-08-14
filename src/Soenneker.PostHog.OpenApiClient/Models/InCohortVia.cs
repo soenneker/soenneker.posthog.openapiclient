@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "leftjoin_conjoined")]
         #pragma warning disable CS1591
-        Leftjoin_conjoined,
+        LeftjoinConjoined,
         #pragma warning restore CS1591
     }
 }

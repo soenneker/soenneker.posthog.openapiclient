@@ -16,6 +16,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
+        /// <summary>The created_by property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.FileSystemCreatedBy? CreatedBy { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.FileSystemCreatedBy CreatedBy { get; private set; }
+#endif
         /// <summary>The depth property</summary>
         public int? Depth { get; private set; }
         /// <summary>The href property</summary>
@@ -33,10 +41,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The meta property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FileSystem_meta? Meta { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FileSystemMeta? Meta { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FileSystem_meta Meta { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FileSystemMeta Meta { get; set; }
 #endif
         /// <summary>The path property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -64,6 +72,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Type { get; set; }
 #endif
+        /// <summary>Resolved access level the user has for the object this entry references (&apos;none&apos; means the user can&apos;t open it). Null when access controls don&apos;t apply to the entry type.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? UserAccessLevel { get; private set; }
+#nullable restore
+#else
+        public string UserAccessLevel { get; private set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FileSystem"/> and sets the default values.
         /// </summary>
@@ -90,15 +106,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FileSystemCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.FileSystemCreatedBy.CreateFromDiscriminatorValue); } },
                 { "depth", n => { Depth = n.GetIntValue(); } },
                 { "href", n => { Href = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "last_viewed_at", n => { LastViewedAt = n.GetDateTimeOffsetValue(); } },
-                { "meta", n => { Meta = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FileSystem_meta>(global::Soenneker.PostHog.OpenApiClient.Models.FileSystem_meta.CreateFromDiscriminatorValue); } },
+                { "meta", n => { Meta = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FileSystemMeta>(global::Soenneker.PostHog.OpenApiClient.Models.FileSystemMeta.CreateFromDiscriminatorValue); } },
                 { "path", n => { Path = n.GetStringValue(); } },
                 { "ref", n => { Ref = n.GetStringValue(); } },
                 { "shortcut", n => { Shortcut = n.GetBoolValue(); } },
                 { "type", n => { Type = n.GetStringValue(); } },
+                { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -109,7 +127,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("href", Href);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FileSystem_meta>("meta", Meta);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FileSystemMeta>("meta", Meta);
             writer.WriteStringValue("path", Path);
             writer.WriteStringValue("ref", Ref);
             writer.WriteBoolValue("shortcut", Shortcut);

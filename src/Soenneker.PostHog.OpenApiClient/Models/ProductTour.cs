@@ -22,20 +22,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The content property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProductTour_content? Content { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProductTourContent? Content { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProductTour_content Content { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProductTourContent Content { get; set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProductTour_created_by? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProductTourCreatedBy? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProductTour_created_by CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProductTourCreatedBy CreatedBy { get; private set; }
 #endif
         /// <summary>The description property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -48,10 +48,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The draft_content property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProductTour_draft_content? DraftContent { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProductTourDraftContent? DraftContent { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProductTour_draft_content DraftContent { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProductTourDraftContent DraftContent { get; private set; }
 #endif
         /// <summary>The end_date property</summary>
         public DateTimeOffset? EndDate { get; set; }
@@ -62,18 +62,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The internal_targeting_flag property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProductTour_internal_targeting_flag? InternalTargetingFlag { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProductTourInternalTargetingFlag? InternalTargetingFlag { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProductTour_internal_targeting_flag InternalTargetingFlag { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProductTourInternalTargetingFlag InternalTargetingFlag { get; private set; }
 #endif
         /// <summary>The linked_flag property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProductTour_linked_flag? LinkedFlag { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProductTourLinkedFlag? LinkedFlag { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProductTour_linked_flag LinkedFlag { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProductTourLinkedFlag LinkedFlag { get; private set; }
 #endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -83,15 +83,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
+        /// <summary>&quot;How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`.&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProductTourSearchMatchType? SearchMatchType { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProductTourSearchMatchType SearchMatchType { get; private set; }
+#endif
         /// <summary>The start_date property</summary>
         public DateTimeOffset? StartDate { get; set; }
         /// <summary>Return the targeting flag filters, excluding the base exclusion properties.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProductTour_targeting_flag_filters? TargetingFlagFilters { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProductTourTargetingFlagFilters? TargetingFlagFilters { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProductTour_targeting_flag_filters TargetingFlagFilters { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProductTourTargetingFlagFilters TargetingFlagFilters { get; private set; }
 #endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
@@ -122,19 +130,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "archived", n => { Archived = n.GetBoolValue(); } },
                 { "auto_launch", n => { AutoLaunch = n.GetBoolValue(); } },
-                { "content", n => { Content = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProductTour_content>(global::Soenneker.PostHog.OpenApiClient.Models.ProductTour_content.CreateFromDiscriminatorValue); } },
+                { "content", n => { Content = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProductTourContent>(global::Soenneker.PostHog.OpenApiClient.Models.ProductTourContent.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProductTour_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.ProductTour_created_by.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProductTourCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.ProductTourCreatedBy.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
-                { "draft_content", n => { DraftContent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProductTour_draft_content>(global::Soenneker.PostHog.OpenApiClient.Models.ProductTour_draft_content.CreateFromDiscriminatorValue); } },
+                { "draft_content", n => { DraftContent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProductTourDraftContent>(global::Soenneker.PostHog.OpenApiClient.Models.ProductTourDraftContent.CreateFromDiscriminatorValue); } },
                 { "end_date", n => { EndDate = n.GetDateTimeOffsetValue(); } },
                 { "has_draft", n => { HasDraft = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "internal_targeting_flag", n => { InternalTargetingFlag = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProductTour_internal_targeting_flag>(global::Soenneker.PostHog.OpenApiClient.Models.ProductTour_internal_targeting_flag.CreateFromDiscriminatorValue); } },
-                { "linked_flag", n => { LinkedFlag = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProductTour_linked_flag>(global::Soenneker.PostHog.OpenApiClient.Models.ProductTour_linked_flag.CreateFromDiscriminatorValue); } },
+                { "internal_targeting_flag", n => { InternalTargetingFlag = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProductTourInternalTargetingFlag>(global::Soenneker.PostHog.OpenApiClient.Models.ProductTourInternalTargetingFlag.CreateFromDiscriminatorValue); } },
+                { "linked_flag", n => { LinkedFlag = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProductTourLinkedFlag>(global::Soenneker.PostHog.OpenApiClient.Models.ProductTourLinkedFlag.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "search_match_type", n => { SearchMatchType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProductTourSearchMatchType>(global::Soenneker.PostHog.OpenApiClient.Models.ProductTourSearchMatchType.CreateFromDiscriminatorValue); } },
                 { "start_date", n => { StartDate = n.GetDateTimeOffsetValue(); } },
-                { "targeting_flag_filters", n => { TargetingFlagFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProductTour_targeting_flag_filters>(global::Soenneker.PostHog.OpenApiClient.Models.ProductTour_targeting_flag_filters.CreateFromDiscriminatorValue); } },
+                { "targeting_flag_filters", n => { TargetingFlagFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProductTourTargetingFlagFilters>(global::Soenneker.PostHog.OpenApiClient.Models.ProductTourTargetingFlagFilters.CreateFromDiscriminatorValue); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }
@@ -147,7 +156,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("archived", Archived);
             writer.WriteBoolValue("auto_launch", AutoLaunch);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProductTour_content>("content", Content);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProductTourContent>("content", Content);
             writer.WriteStringValue("description", Description);
             writer.WriteDateTimeOffsetValue("end_date", EndDate);
             writer.WriteStringValue("name", Name);

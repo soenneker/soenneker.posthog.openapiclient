@@ -9,7 +9,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "dashboard_item")]
         #pragma warning disable CS1591
-        Dashboard_item,
+        DashboardItem,
         #pragma warning restore CS1591
         [EnumMember(Value = "dashboard")]
         #pragma warning disable CS1591

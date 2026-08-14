@@ -23,36 +23,35 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The label property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter_label? Label { get; set; }
+        public string? Label { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter_label Label { get; set; }
+        public string Label { get; set; }
 #endif
         /// <summary>The operator property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter_operator? Operator { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperatorWrapper2? Operator { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter_operator Operator { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperatorWrapper2 Operator { get; set; }
 #endif
         /// <summary>Event properties</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter_type? Type { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Type { get; set; }
+#nullable restore
+#else
+        public string Type { get; set; }
+#endif
         /// <summary>The value property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter_value? Value { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilterValue? Value { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter_value Value { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilterValue Value { get; set; }
 #endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter"/> and sets the default values.
-        /// </summary>
-        public EventPropertyFilter()
-        {
-            Type = global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter_type.Event;
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -72,10 +71,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "key", n => { Key = n.GetStringValue(); } },
-                { "label", n => { Label = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter_label>(global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter_label.CreateFromDiscriminatorValue); } },
-                { "operator", n => { Operator = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter_operator>(global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter_operator.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter_type>(); } },
-                { "value", n => { Value = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter_value>(global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter_value.CreateFromDiscriminatorValue); } },
+                { "label", n => { Label = n.GetStringValue(); } },
+                { "operator", n => { Operator = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperatorWrapper2>(global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperatorWrapper2.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetStringValue(); } },
+                { "value", n => { Value = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilterValue>(global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilterValue.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -86,10 +85,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("key", Key);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter_label>("label", Label);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter_operator>("operator", Operator);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter_type>("type", Type);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter_value>("value", Value);
+            writer.WriteStringValue("label", Label);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperatorWrapper2>("operator", Operator);
+            writer.WriteStringValue("type", Type);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilterValue>("value", Value);
         }
     }
 }

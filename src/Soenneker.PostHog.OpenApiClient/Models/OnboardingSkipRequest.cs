@@ -15,8 +15,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `later` - Later* `other` - Other</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReasonEnum? Reason { get; set; }
+        /// <summary>Why the user is leaving onboarding. &apos;later&apos; keeps them able to return; &apos;other&apos; is a catch-all. &apos;delegated&apos; is rejected here — use the delegate endpoint so the delegation invite is created atomically.* `later` - Later* `other` - Other</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.OnboardingSkipRequestReason? Reason { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.OnboardingSkipRequestReason Reason { get; set; }
+#endif
         /// <summary>Onboarding step key the user was on when skipping, for analytics only.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -50,7 +56,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "reason", n => { Reason = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReasonEnum>(); } },
+                { "reason", n => { Reason = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OnboardingSkipRequestReason>(global::Soenneker.PostHog.OpenApiClient.Models.OnboardingSkipRequestReason.CreateFromDiscriminatorValue); } },
                 { "step_at_skip", n => { StepAtSkip = n.GetStringValue(); } },
             };
         }
@@ -61,7 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReasonEnum>("reason", Reason);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OnboardingSkipRequestReason>("reason", Reason);
             writer.WriteStringValue("step_at_skip", StepAtSkip);
             writer.WriteAdditionalData(AdditionalData);
         }

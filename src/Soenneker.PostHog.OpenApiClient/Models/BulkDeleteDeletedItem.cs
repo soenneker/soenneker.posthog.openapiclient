@@ -32,8 +32,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Key { get; set; }
 #endif
-        /// <summary>* `fully_rolled_out` - fully_rolled_out* `not_rolled_out` - not_rolled_out* `partial` - partial</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.RolloutStateEnum? RolloutState { get; set; }
+        /// <summary>Rollout state captured before deletion.* `fully_rolled_out` - fully_rolled_out* `not_rolled_out` - not_rolled_out* `partial` - partial</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteDeletedItemRolloutState? RolloutState { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteDeletedItemRolloutState RolloutState { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteDeletedItem"/> and sets the default values.
         /// </summary>
@@ -62,7 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "active_variant", n => { ActiveVariant = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetIntValue(); } },
                 { "key", n => { Key = n.GetStringValue(); } },
-                { "rollout_state", n => { RolloutState = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RolloutStateEnum>(); } },
+                { "rollout_state", n => { RolloutState = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteDeletedItemRolloutState>(global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteDeletedItemRolloutState.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -75,7 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("active_variant", ActiveVariant);
             writer.WriteIntValue("id", Id);
             writer.WriteStringValue("key", Key);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RolloutStateEnum>("rollout_state", RolloutState);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteDeletedItemRolloutState>("rollout_state", RolloutState);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

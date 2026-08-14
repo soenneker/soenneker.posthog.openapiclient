@@ -9,7 +9,6 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Bulk_keys;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Bulk_update_tags;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Evaluation_reasons;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item;
-using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Local_evaluation;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Matching_ids;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.My_flags;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.User_blast_radius;
@@ -22,7 +21,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\feature_flags
+    /// Builds and executes requests for operations under \api\projects\{projectId}\feature_flags
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Feature_flagsRequestBuilder : BaseRequestBuilder
@@ -51,11 +50,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Evaluation_reasons.Evaluation_reasonsRequestBuilder Evaluation_reasons
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Evaluation_reasons.Evaluation_reasonsRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The local_evaluation property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Local_evaluation.Local_evaluationRequestBuilder Local_evaluation
-        {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Local_evaluation.Local_evaluationRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The matching_ids property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Matching_ids.Matching_idsRequestBuilder Matching_ids
@@ -89,7 +83,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Feature_flagsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/feature_flags{?active*,created_by_id*,evaluation_runtime*,excluded_properties*,has_evaluation_contexts*,limit*,offset*,search*,tags*,type*}", pathParameters)
+        public Feature_flagsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/feature_flags{?active*,archived*,created_by_id*,eligible_for_experiment*,evaluation_runtime*,excluded_properties*,excluded_tags*,has_evaluation_contexts*,key*,limit*,offset*,search*,tags*,type*}", pathParameters)
         {
         }
         /// <summary>
@@ -97,7 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Feature_flagsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/feature_flags{?active*,created_by_id*,evaluation_runtime*,excluded_properties*,has_evaluation_contexts*,limit*,offset*,search*,tags*,type*}", rawUrl)
+        public Feature_flagsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/feature_flags{?active*,archived*,created_by_id*,eligible_for_experiment*,evaluation_runtime*,excluded_properties*,excluded_tags*,has_evaluation_contexts*,key*,limit*,offset*,search*,tags*,type*}", rawUrl)
         {
         }
         /// <summary>
@@ -195,8 +189,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags
         public partial class Feature_flagsRequestBuilderGetQueryParameters 
         {
             [QueryParameter("active")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.GetActiveQueryParameterType? Active { get; set; }
-            /// <summary>The User ID which initially created the feature flag.</summary>
+            public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagsListActiveParameter? Active { get; set; }
+            /// <summary>Filter by archived state. When omitted, archived flags are excluded.</summary>
+            [QueryParameter("archived")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagsListArchivedParameter? Archived { get; set; }
+            /// <summary>Filter by the user(s) who created the feature flag. Accepts a single user ID, or a JSON-encoded / comma-separated list of user IDs to match any of them.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("created_by_id")]
@@ -206,9 +203,12 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags
             [QueryParameter("created_by_id")]
             public string CreatedById { get; set; }
 #endif
+            /// <summary>&quot;When &apos;true&apos;, only return flags that can back an experiment: multivariate with 2-20 variants. Any other value is ignored.&quot;</summary>
+            [QueryParameter("eligible_for_experiment")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagsListEligibleForExperimentParameter? EligibleForExperiment { get; set; }
             /// <summary>Filter feature flags by their evaluation runtime.</summary>
             [QueryParameter("evaluation_runtime")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.GetEvaluation_runtimeQueryParameterType? EvaluationRuntime { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagsListEvaluationRuntimeParameter? EvaluationRuntime { get; set; }
             /// <summary>JSON-encoded list of feature flag keys to exclude from the results.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -219,15 +219,28 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags
             [QueryParameter("excluded_properties")]
             public string ExcludedProperties { get; set; }
 #endif
-            /// <summary>Filter feature flags by presence of evaluation contexts. &apos;true&apos; returns only flags with at least one evaluation context, &apos;false&apos; returns only flags without.</summary>
+            /// <summary>JSON-encoded list of tag names to exclude. Flags carrying any of these tags are filtered out.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            [QueryParameter("has_evaluation_contexts")]
-            public string? HasEvaluationContexts { get; set; }
+            [QueryParameter("excluded_tags")]
+            public string? ExcludedTags { get; set; }
 #nullable restore
 #else
+            [QueryParameter("excluded_tags")]
+            public string ExcludedTags { get; set; }
+#endif
+            /// <summary>Filter feature flags by presence of evaluation contexts. &apos;true&apos; returns only flags with at least one evaluation context, &apos;false&apos; returns only flags without.</summary>
             [QueryParameter("has_evaluation_contexts")]
-            public string HasEvaluationContexts { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagsListHasEvaluationContextsParameter? HasEvaluationContexts { get; set; }
+            /// <summary>Filter by exact feature flag key match. Case insensitive.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("key")]
+            public string? Key { get; set; }
+#nullable restore
+#else
+            [QueryParameter("key")]
+            public string Key { get; set; }
 #endif
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
@@ -256,7 +269,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags
             public string Tags { get; set; }
 #endif
             [QueryParameter("type")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.GetTypeQueryParameterType? Type { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagsListTypeParameter? Type { get; set; }
         }
     }
 }

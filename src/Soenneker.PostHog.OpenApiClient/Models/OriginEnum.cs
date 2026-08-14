@@ -9,7 +9,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "data_warehouse")]
         #pragma warning disable CS1591
-        Data_warehouse,
+        DataWarehouse,
         #pragma warning restore CS1591
         [EnumMember(Value = "endpoint")]
         #pragma warning disable CS1591
@@ -17,7 +17,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "managed_viewset")]
         #pragma warning disable CS1591
-        Managed_viewset,
+        ManagedViewset,
         #pragma warning restore CS1591
     }
 }

@@ -10,7 +10,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "string")]
         #pragma warning disable CS1591
-        String,
+        StringValue,
         #pragma warning restore CS1591
         [EnumMember(Value = "uuid")]
         #pragma warning disable CS1591

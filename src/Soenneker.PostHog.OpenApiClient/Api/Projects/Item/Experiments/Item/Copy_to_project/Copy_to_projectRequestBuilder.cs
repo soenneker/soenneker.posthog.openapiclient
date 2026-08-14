@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Copy_to_project
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\experiments\{id}\copy_to_project
+    /// Builds and executes requests for operations under \api\projects\{projectId}\experiments\{id}\copy_to_project
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Copy_to_projectRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Cop
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Copy_to_projectRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/experiments/{id}/copy_to_project", pathParameters)
+        public Copy_to_projectRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/experiments/{id}/copy_to_project", pathParameters)
         {
         }
         /// <summary>
@@ -30,11 +30,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Cop
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Copy_to_projectRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/experiments/{id}/copy_to_project", rawUrl)
+        public Copy_to_projectRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/experiments/{id}/copy_to_project", rawUrl)
         {
         }
         /// <summary>
-        /// Mixin for ViewSets to handle ApprovalRequired exceptions from decorated serializers.This mixin intercepts ApprovalRequired exceptions raised by the @approval_gate decoratoron serializer methods and converts them into proper HTTP 409 Conflict responses withchange request details.
+        /// Copy an experiment into another project in the same organization as a new draft.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Experiment"/></returns>
         /// <param name="body">The request body</param>
@@ -54,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Cop
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.Experiment>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.Experiment.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Mixin for ViewSets to handle ApprovalRequired exceptions from decorated serializers.This mixin intercepts ApprovalRequired exceptions raised by the @approval_gate decoratoron serializer methods and converts them into proper HTTP 409 Conflict responses withchange request details.
+        /// Copy an experiment into another project in the same organization as a new draft.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

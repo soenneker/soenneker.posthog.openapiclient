@@ -10,7 +10,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "posthog_ai")]
         #pragma warning disable CS1591
-        Posthog_ai,
+        PosthogAi,
         #pragma warning restore CS1591
     }
 }

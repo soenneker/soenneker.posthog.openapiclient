@@ -3,13 +3,17 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `every_15_minutes` - every_15_minutes* `hourly` - hourly* `daily` - daily* `weekly` - weekly* `monthly` - monthly</summary>
+    /// <summary>* `real_time` - real_time* `every_15_minutes` - every_15_minutes* `hourly` - hourly* `daily` - daily* `weekly` - weekly* `monthly` - monthly</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum CalculationIntervalEnum
     {
+        [EnumMember(Value = "real_time")]
+        #pragma warning disable CS1591
+        RealTime,
+        #pragma warning restore CS1591
         [EnumMember(Value = "every_15_minutes")]
         #pragma warning disable CS1591
-        Every_15_minutes,
+        Every15Minutes,
         #pragma warning restore CS1591
         [EnumMember(Value = "hourly")]
         #pragma warning disable CS1591

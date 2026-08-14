@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The baseline_hashes property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CreateRunInput_baseline_hashes? BaselineHashes { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CreateRunInputBaselineHashesProperty? BaselineHashes { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CreateRunInput_baseline_hashes BaselineHashes { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CreateRunInputBaselineHashesProperty BaselineHashes { get; set; }
 #endif
         /// <summary>The branch property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -38,13 +38,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string CommitSha { get; set; }
 #endif
+        /// <summary>The is_partial property</summary>
+        public bool? IsPartial { get; set; }
         /// <summary>The metadata property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CreateRunInput_metadata? Metadata { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CreateRunInputMetadataProperty? Metadata { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CreateRunInput_metadata Metadata { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CreateRunInputMetadataProperty Metadata { get; set; }
 #endif
         /// <summary>The pr_number property</summary>
         public int? PrNumber { get; set; }
@@ -109,10 +111,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "baseline_hashes", n => { BaselineHashes = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateRunInput_baseline_hashes>(global::Soenneker.PostHog.OpenApiClient.Models.CreateRunInput_baseline_hashes.CreateFromDiscriminatorValue); } },
+                { "baseline_hashes", n => { BaselineHashes = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateRunInputBaselineHashesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.CreateRunInputBaselineHashesProperty.CreateFromDiscriminatorValue); } },
                 { "branch", n => { Branch = n.GetStringValue(); } },
                 { "commit_sha", n => { CommitSha = n.GetStringValue(); } },
-                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateRunInput_metadata>(global::Soenneker.PostHog.OpenApiClient.Models.CreateRunInput_metadata.CreateFromDiscriminatorValue); } },
+                { "is_partial", n => { IsPartial = n.GetBoolValue(); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateRunInputMetadataProperty>(global::Soenneker.PostHog.OpenApiClient.Models.CreateRunInputMetadataProperty.CreateFromDiscriminatorValue); } },
                 { "pr_number", n => { PrNumber = n.GetIntValue(); } },
                 { "purpose", n => { Purpose = n.GetStringValue(); } },
                 { "removed_identifiers", n => { RemovedIdentifiers = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -129,10 +132,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateRunInput_baseline_hashes>("baseline_hashes", BaselineHashes);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateRunInputBaselineHashesProperty>("baseline_hashes", BaselineHashes);
             writer.WriteStringValue("branch", Branch);
             writer.WriteStringValue("commit_sha", CommitSha);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateRunInput_metadata>("metadata", Metadata);
+            writer.WriteBoolValue("is_partial", IsPartial);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateRunInputMetadataProperty>("metadata", Metadata);
             writer.WriteIntValue("pr_number", PrNumber);
             writer.WriteStringValue("purpose", Purpose);
             writer.WriteCollectionOfPrimitiveValues<string>("removed_identifiers", RemovedIdentifiers);

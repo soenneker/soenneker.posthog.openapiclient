@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Launch
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\experiments\{id}\launch
+    /// Builds and executes requests for operations under \api\projects\{projectId}\experiments\{id}\launch
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class LaunchRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Lau
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public LaunchRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/experiments/{id}/launch", pathParameters)
+        public LaunchRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/experiments/{id}/launch", pathParameters)
         {
         }
         /// <summary>
@@ -30,11 +30,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Lau
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public LaunchRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/experiments/{id}/launch", rawUrl)
+        public LaunchRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/experiments/{id}/launch", rawUrl)
         {
         }
         /// <summary>
-        /// Launch a draft experiment.Validates the experiment is in draft state, activates its linked feature flag,sets start_date to the current server time, and transitions the experiment to running.Returns 400 if the experiment has already been launched or if the feature flagconfiguration is invalid (e.g. missing &quot;control&quot; variant or fewer than 2 variants).
+        /// Launch a draft experiment.Validates the experiment is in draft state, activates its linked feature flag,sets start_date to the current server time, and transitions the experiment to running.Returns 400 if the experiment has already been launched or if the feature flagconfiguration is invalid (e.g. fewer than 2 variants).
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Experiment"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Lau
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.Experiment>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.Experiment.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Launch a draft experiment.Validates the experiment is in draft state, activates its linked feature flag,sets start_date to the current server time, and transitions the experiment to running.Returns 400 if the experiment has already been launched or if the feature flagconfiguration is invalid (e.g. missing &quot;control&quot; variant or fewer than 2 variants).
+        /// Launch a draft experiment.Validates the experiment is in draft state, activates its linked feature flag,sets start_date to the current server time, and transitions the experiment to running.Returns 400 if the experiment has already been launched or if the feature flagconfiguration is invalid (e.g. fewer than 2 variants).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

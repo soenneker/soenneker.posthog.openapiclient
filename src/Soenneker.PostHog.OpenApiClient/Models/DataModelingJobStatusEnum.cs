@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `Cancelled` - Cancelled* `Completed` - Completed* `Failed` - Failed* `Running` - Running</summary>
+    /// <summary>* `Cancelled` - Cancelled* `Completed` - Completed* `Failed` - Failed* `Running` - Running* `Skipped` - Skipped</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum DataModelingJobStatusEnum
     {
@@ -22,6 +22,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "Running")]
         #pragma warning disable CS1591
         Running,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Skipped")]
+        #pragma warning disable CS1591
+        Skipped,
         #pragma warning restore CS1591
     }
 }

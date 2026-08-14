@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Reset
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\experiments\{id}\reset
+    /// Builds and executes requests for operations under \api\projects\{projectId}\experiments\{id}\reset
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ResetRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Res
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ResetRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/experiments/{id}/reset", pathParameters)
+        public ResetRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/experiments/{id}/reset", pathParameters)
         {
         }
         /// <summary>
@@ -30,11 +30,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Res
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ResetRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/experiments/{id}/reset", rawUrl)
+        public ResetRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/experiments/{id}/reset", rawUrl)
         {
         }
         /// <summary>
-        /// Reset an experiment back to draft state.Clears start/end dates, conclusion, and archived flag. The featureflag is left unchanged — users continue to see their assigned variants.Previously collected events still exist but won&apos;t be included inresults unless the start date is manually adjusted after re-launch.Returns 400 if the experiment is already in draft state.
+        /// Reset an experiment back to draft state.Clears start/end dates, conclusion, archived flag, and any flag-cleanuptask pointer. The feature flag is left unchanged — users continue to seetheir assigned variants.Previously collected events still exist but won&apos;t be included inresults unless the start date is manually adjusted after re-launch.Returns 400 if the experiment is already in draft state.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Experiment"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Res
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.Experiment>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.Experiment.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Reset an experiment back to draft state.Clears start/end dates, conclusion, and archived flag. The featureflag is left unchanged — users continue to see their assigned variants.Previously collected events still exist but won&apos;t be included inresults unless the start date is manually adjusted after re-launch.Returns 400 if the experiment is already in draft state.
+        /// Reset an experiment back to draft state.Clears start/end dates, conclusion, archived flag, and any flag-cleanuptask pointer. The feature flag is left unchanged — users continue to seetheir assigned variants.Previously collected events still exist but won&apos;t be included inresults unless the start date is manually adjusted after re-launch.Returns 400 if the experiment is already in draft state.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

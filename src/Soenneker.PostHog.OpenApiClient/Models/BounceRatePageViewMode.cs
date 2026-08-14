@@ -10,15 +10,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "count_pageviews")]
         #pragma warning disable CS1591
-        Count_pageviews,
+        CountPageviews,
         #pragma warning restore CS1591
         [EnumMember(Value = "uniq_urls")]
         #pragma warning disable CS1591
-        Uniq_urls,
+        UniqUrls,
         #pragma warning restore CS1591
         [EnumMember(Value = "uniq_page_screen_autocaptures")]
         #pragma warning disable CS1591
-        Uniq_page_screen_autocaptures,
+        UniqPageScreenAutocaptures,
         #pragma warning restore CS1591
     }
 }

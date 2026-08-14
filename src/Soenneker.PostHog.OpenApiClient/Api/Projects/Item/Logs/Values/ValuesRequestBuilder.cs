@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Values
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\logs\values
+    /// Builds and executes requests for operations under \api\projects\{projectId}\logs\values
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ValuesRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Values
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ValuesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/logs/values?key={key}{&attribute_type*,dateRange*,filterGroup*,serviceNames*,value*}", pathParameters)
+        public ValuesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/logs/values?key={key}{&attribute_type*,dateRange*,filterGroup*,serviceNames*,value*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Values
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ValuesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/logs/values?key={key}{&attribute_type*,dateRange*,filterGroup*,serviceNames*,value*}", rawUrl)
+        public ValuesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/logs/values?key={key}{&attribute_type*,dateRange*,filterGroup*,serviceNames*,value*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsValuesResponse"/></returns>
@@ -80,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Values
         {
             /// <summary>&quot;Type of attribute: \&quot;log\&quot; or \&quot;resource\&quot;. Defaults to \&quot;log\&quot;.* `log` - log* `resource` - resource&quot;</summary>
             [QueryParameter("attribute_type")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Values.GetAttribute_typeQueryParameterType? AttributeType { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.LogsValuesRetrieveAttributeTypeParameter? AttributeType { get; set; }
             /// <summary>Date range to search within. Defaults to last hour.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

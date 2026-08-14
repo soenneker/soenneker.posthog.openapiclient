@@ -13,7 +13,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Heatmaps
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\heatmaps
+    /// Builds and executes requests for operations under \api\projects\{projectId}\heatmaps
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class HeatmapsRequestBuilder : BaseRequestBuilder
@@ -28,7 +28,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Heatmaps
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public HeatmapsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/heatmaps{?limit*,offset*}", pathParameters)
+        public HeatmapsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/heatmaps{?aggregation*,cohort_ids*,date_from*,date_to*,filter_test_accounts*,hide_zero_coordinates*,limit*,offset*,type*,url_exact*,url_pattern*,viewport_width_max*,viewport_width_min*}", pathParameters)
         {
         }
         /// <summary>
@@ -36,24 +36,31 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Heatmaps
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public HeatmapsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/heatmaps{?limit*,offset*}", rawUrl)
+        public HeatmapsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/heatmaps{?aggregation*,cohort_ids*,date_from*,date_to*,filter_test_accounts*,hide_zero_coordinates*,limit*,offset*,type*,url_exact*,url_pattern*,viewport_width_max*,viewport_width_min*}", rawUrl)
         {
         }
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedHeatmapsResponseList"/></returns>
+        /// <summary>
+        /// Aggregated heatmap interactions for a page. For type &apos;click&apos;/&apos;rageclick&apos;/&apos;mousemove&apos; each result is a point with relative x, absolute client-y, and a count. For type &apos;scrolldepth&apos; the response is scroll-depth buckets instead (cumulative reach down the page).
+        /// </summary>
+        /// <returns>A List&lt;global::Soenneker.PostHog.OpenApiClient.Models.HeatmapsResponse&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedHeatmapsResponseList?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Heatmaps.HeatmapsRequestBuilder.HeatmapsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<List<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapsResponse>?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Heatmaps.HeatmapsRequestBuilder.HeatmapsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedHeatmapsResponseList> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Heatmaps.HeatmapsRequestBuilder.HeatmapsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<List<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapsResponse>> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Heatmaps.HeatmapsRequestBuilder.HeatmapsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedHeatmapsResponseList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedHeatmapsResponseList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var collectionResult = await RequestAdapter.SendCollectionAsync<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapsResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.HeatmapsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return collectionResult?.AsList();
         }
+        /// <summary>
+        /// Aggregated heatmap interactions for a page. For type &apos;click&apos;/&apos;rageclick&apos;/&apos;mousemove&apos; each result is a point with relative x, absolute client-y, and a count. For type &apos;scrolldepth&apos; the response is scroll-depth buckets instead (cumulative reach down the page).
+        /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -79,17 +86,93 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Heatmaps
         {
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Heatmaps.HeatmapsRequestBuilder(rawUrl, RequestAdapter);
         }
+        /// <summary>
+        /// Aggregated heatmap interactions for a page. For type &apos;click&apos;/&apos;rageclick&apos;/&apos;mousemove&apos; each result is a point with relative x, absolute client-y, and a count. For type &apos;scrolldepth&apos; the response is scroll-depth buckets instead (cumulative reach down the page).
+        /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        #pragma warning disable CS1591
         public partial class HeatmapsRequestBuilderGetQueryParameters 
-        #pragma warning restore CS1591
         {
-            /// <summary>Number of results to return per page.</summary>
+            /// <summary>&quot;How to aggregate counts: &apos;total_count&apos; (every interaction, default) or &apos;unique_visitors&apos; (distinct people).* `unique_visitors` - unique_visitors* `total_count` - total_count&quot;</summary>
+            [QueryParameter("aggregation")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapsListAggregationParameter? Aggregation { get; set; }
+            /// <summary>JSON array of cohort IDs (e.g. &apos;[123, 456]&apos;) to restrict results to people in those cohorts. Feature-flagged; ignored when the cohort filter is not enabled for the caller.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("cohort_ids")]
+            public string? CohortIds { get; set; }
+#nullable restore
+#else
+            [QueryParameter("cohort_ids")]
+            public string CohortIds { get; set; }
+#endif
+            /// <summary>Start of the window. Relative (e.g. &apos;-7d&apos;, &apos;-30d&apos;, &apos;-1mStart&apos;) or an absolute &apos;YYYY-MM-DD&apos; date. Defaults to &apos;-7d&apos;. Heatmap data is retained for 90 days.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("date_from")]
+            public string? DateFrom { get; set; }
+#nullable restore
+#else
+            [QueryParameter("date_from")]
+            public string DateFrom { get; set; }
+#endif
+            /// <summary>End of the window, inclusive. Relative or absolute &apos;YYYY-MM-DD&apos;. Defaults to today.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("date_to")]
+            public string? DateTo { get; set; }
+#nullable restore
+#else
+            [QueryParameter("date_to")]
+            public string DateTo { get; set; }
+#endif
+            /// <summary>When true, exclude sessions from internal/test accounts using the project&apos;s test-account filters.</summary>
+            [QueryParameter("filter_test_accounts")]
+            public bool? FilterTestAccounts { get; set; }
+            /// <summary>When true (default), drop interactions recorded at the (0, 0) origin, which are usually noise.</summary>
+            [QueryParameter("hide_zero_coordinates")]
+            public bool? HideZeroCoordinates { get; set; }
+            /// <summary>Maximum number of coordinate points to return, ordered hottest-first by count. Defaults to 500. Pass 0 to fetch the full set (every coordinate) needed to render a complete heatmap overlay. Ignored for the &apos;scrolldepth&apos; type, which always returns every bucket.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
-            /// <summary>The initial index from which to return the results.</summary>
+            /// <summary>Number of hottest-first points to skip, for paging through cooler coordinates. Ignored for the &apos;scrolldepth&apos; type.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
+            /// <summary>&quot;The interaction type to return. One of: &apos;click&apos; (default), &apos;rageclick&apos;, &apos;mousemove&apos;, or &apos;scrolldepth&apos;. Scrolldepth returns scroll buckets instead of x/y coordinates.&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("type")]
+            public string? Type { get; set; }
+#nullable restore
+#else
+            [QueryParameter("type")]
+            public string Type { get; set; }
+#endif
+            /// <summary>Match a single page by exact URL (trailing slash is ignored). Mutually exclusive with url_pattern.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("url_exact")]
+            public string? UrlExact { get; set; }
+#nullable restore
+#else
+            [QueryParameter("url_exact")]
+            public string UrlExact { get; set; }
+#endif
+            /// <summary>Match pages by regex against the full current_url (anchored automatically). Use this to aggregate across query strings or path segments. Mutually exclusive with url_exact.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("url_pattern")]
+            public string? UrlPattern { get; set; }
+#nullable restore
+#else
+            [QueryParameter("url_pattern")]
+            public string UrlPattern { get; set; }
+#endif
+            /// <summary>Only include interactions captured at a viewport at most this wide, in CSS pixels.</summary>
+            [QueryParameter("viewport_width_max")]
+            public int? ViewportWidthMax { get; set; }
+            /// <summary>Only include interactions captured at a viewport at least this wide, in CSS pixels. Use with viewport_width_max to isolate a device class (e.g. 360-768 for mobile).</summary>
+            [QueryParameter("viewport_width_min")]
+            public int? ViewportWidthMin { get; set; }
         }
     }
 }

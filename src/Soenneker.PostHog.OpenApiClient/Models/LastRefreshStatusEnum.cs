@@ -13,7 +13,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "not_modified")]
         #pragma warning disable CS1591
-        Not_modified,
+        NotModified,
         #pragma warning restore CS1591
         [EnumMember(Value = "error")]
         #pragma warning disable CS1591

@@ -3,17 +3,17 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `session_analysis_cluster` - Session analysis cluster* `evaluation` - Evaluation* `issue` - Issue* `ticket` - Ticket* `issue_created` - Issue created* `issue_reopened` - Issue reopened* `issue_spiking` - Issue spiking* `cross_source_issue` - Cross source issue</summary>
+    /// <summary>* `session_analysis_cluster` - Session analysis cluster* `evaluation_report` - Evaluation report* `issue` - Issue* `ticket` - Ticket* `issue_created` - Issue created* `issue_reopened` - Issue reopened* `issue_spiking` - Issue spiking* `cross_source_issue` - Cross source issue* `alert_state_change` - Alert state change* `health_issue` - Health issue* `endpoint_execution_failed` - Endpoint execution failed* `endpoint_breakdown_limit_exceeded` - Endpoint breakdown limit exceeded* `scanner_finding` - Scanner finding* `anomaly_investigation` - Anomaly investigation* `ci_flaky_check` - CI flaky check* `ci_broken_default_branch` - CI broken default branch* `ci_duration_regression` - CI duration regression</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum SignalSourceConfigSourceTypeEnum
     {
         [EnumMember(Value = "session_analysis_cluster")]
         #pragma warning disable CS1591
-        Session_analysis_cluster,
+        SessionAnalysisCluster,
         #pragma warning restore CS1591
-        [EnumMember(Value = "evaluation")]
+        [EnumMember(Value = "evaluation_report")]
         #pragma warning disable CS1591
-        Evaluation,
+        EvaluationReport,
         #pragma warning restore CS1591
         [EnumMember(Value = "issue")]
         #pragma warning disable CS1591
@@ -25,19 +25,55 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "issue_created")]
         #pragma warning disable CS1591
-        Issue_created,
+        IssueCreated,
         #pragma warning restore CS1591
         [EnumMember(Value = "issue_reopened")]
         #pragma warning disable CS1591
-        Issue_reopened,
+        IssueReopened,
         #pragma warning restore CS1591
         [EnumMember(Value = "issue_spiking")]
         #pragma warning disable CS1591
-        Issue_spiking,
+        IssueSpiking,
         #pragma warning restore CS1591
         [EnumMember(Value = "cross_source_issue")]
         #pragma warning disable CS1591
-        Cross_source_issue,
+        CrossSourceIssue,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "alert_state_change")]
+        #pragma warning disable CS1591
+        AlertStateChange,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "health_issue")]
+        #pragma warning disable CS1591
+        HealthIssue,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "endpoint_execution_failed")]
+        #pragma warning disable CS1591
+        EndpointExecutionFailed,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "endpoint_breakdown_limit_exceeded")]
+        #pragma warning disable CS1591
+        EndpointBreakdownLimitExceeded,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "scanner_finding")]
+        #pragma warning disable CS1591
+        ScannerFinding,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "anomaly_investigation")]
+        #pragma warning disable CS1591
+        AnomalyInvestigation,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ci_flaky_check")]
+        #pragma warning disable CS1591
+        CiFlakyCheck,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ci_broken_default_branch")]
+        #pragma warning disable CS1591
+        CiBrokenDefaultBranch,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ci_duration_regression")]
+        #pragma warning disable CS1591
+        CiDurationRegression,
         #pragma warning restore CS1591
     }
 }

@@ -13,21 +13,21 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Session_recording_playlists
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\session_recording_playlists
+    /// Builds and executes requests for operations under \api\projects\{projectId}\session_recording_playlists
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Session_recording_playlistsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.session_recording_playlists.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Session_recording_playlists.Item.WithShort_ItemRequestBuilder"/></returns>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Session_recording_playlists.Item.WithShort_ItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Session_recording_playlists.Item.WithShortItemRequestBuilder"/></returns>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Session_recording_playlists.Item.WithShortItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("short_id", position);
-                return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Session_recording_playlists.Item.WithShort_ItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("shortId", position);
+                return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Session_recording_playlists.Item.WithShortItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
@@ -35,7 +35,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Session_recording_pl
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Session_recording_playlistsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/session_recording_playlists{?created_by*,limit*,offset*,short_id*}", pathParameters)
+        public Session_recording_playlistsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/session_recording_playlists{?created_by*,limit*,offset*,short_id*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,11 +43,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Session_recording_pl
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Session_recording_playlistsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/session_recording_playlists{?created_by*,limit*,offset*,short_id*}", rawUrl)
+        public Session_recording_playlistsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/session_recording_playlists{?created_by*,limit*,offset*,short_id*}", rawUrl)
         {
         }
         /// <summary>
-        /// Override list to include synthetic playlists
+        /// Override list to include synthetic playlists.Synthetics have no DB row, so we compute each one&apos;s position in the mergedsort and split the requested page between synthetics and a DB queryset slice.The merge/rank/sort is all in-memory, so each phase is wrapped in a span andthe input sizes are recorded as span attributes — a slow response on a teamwith many playlists then shows up as a wide span against a large db_count.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedSessionRecordingPlaylistList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -82,7 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Session_recording_pl
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylist>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylist.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Override list to include synthetic playlists
+        /// Override list to include synthetic playlists.Synthetics have no DB row, so we compute each one&apos;s position in the mergedsort and split the requested page between synthetics and a DB queryset slice.The merge/rank/sort is all in-memory, so each phase is wrapped in a span andthe input sizes are recorded as span attributes — a slow response on a teamwith many playlists then shows up as a wide span against a large db_count.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -129,7 +129,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Session_recording_pl
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Session_recording_playlists.Session_recording_playlistsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Override list to include synthetic playlists
+        /// Override list to include synthetic playlists.Synthetics have no DB row, so we compute each one&apos;s position in the mergedsort and split the requested page between synthetics and a DB queryset slice.The merge/rank/sort is all in-memory, so each phase is wrapped in a span andthe input sizes are recorded as span attributes — a slow response on a teamwith many playlists then shows up as a wide span against a large db_count.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Session_recording_playlistsRequestBuilderGetQueryParameters 

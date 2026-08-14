@@ -14,6 +14,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Optional. Restrict results to interviews carrying any of these classifications (OR). Combines with `topic_id` as AND.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ClassificationsEnum?>? Classifications { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ClassificationsEnum?> Classifications { get; set; }
+#endif
         /// <summary>Which document types to search across. Omit to default to both `transcript` and `summary`. Pass a non-empty subset to restrict the search.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -59,6 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "classifications", n => { Classifications = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.ClassificationsEnum>()?.AsList(); } },
                 { "document_types", n => { DocumentTypes = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.UserInterviewSearchDocumentTypeEnum>()?.AsList(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
                 { "query", n => { Query = n.GetStringValue(); } },
@@ -72,6 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.ClassificationsEnum>("classifications", Classifications);
             writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.UserInterviewSearchDocumentTypeEnum>("document_types", DocumentTypes);
             writer.WriteIntValue("limit", Limit);
             writer.WriteStringValue("query", Query);

@@ -7,8 +7,10 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Activity;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.ArchivedResponseUuids;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Duplicate_to_projects;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Generate_translations;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Launch;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Responses;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Stats;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Stop;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Summarize_responses;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Summary_headline;
 using Soenneker.PostHog.OpenApiClient.Models;
@@ -20,7 +22,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\surveys\{id}
+    /// Builds and executes requests for operations under \api\projects\{projectId}\surveys\{id}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SurveysItemRequestBuilder : BaseRequestBuilder
@@ -45,6 +47,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Generate_translations.Generate_translationsRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The launch property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Launch.LaunchRequestBuilder Launch
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Launch.LaunchRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The responses property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Responses.ResponsesRequestBuilder Responses
         {
@@ -54,6 +61,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Stats.StatsRequestBuilder Stats
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Stats.StatsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The stop property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Stop.StopRequestBuilder Stop
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Stop.StopRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The summarize_responses property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Summarize_responses.Summarize_responsesRequestBuilder Summarize_responses
@@ -70,7 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SurveysItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/surveys/{id}", pathParameters)
+        public SurveysItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/surveys/{id}", pathParameters)
         {
         }
         /// <summary>
@@ -78,7 +90,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SurveysItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/surveys/{id}", rawUrl)
+        public SurveysItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/surveys/{id}", rawUrl)
         {
         }
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>

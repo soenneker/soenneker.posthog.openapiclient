@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadEventsRequest"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadPersonsRequest"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadSessionsRequest"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadEventsRequest"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadHogQlRequest"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadPersonsRequest"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadSessionsRequest"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CreateFileDownloadRequest : IComposedTypeWrapper, IParsable
@@ -20,6 +20,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadEventsRequest FileDownloadEventsRequest { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadHogQlRequest"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadHogQlRequest? FileDownloadHogQlRequest { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadHogQlRequest FileDownloadHogQlRequest { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadPersonsRequest"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -51,6 +59,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 result.FileDownloadEventsRequest = new global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadEventsRequest();
             }
+            else if("FileDownloadHogQlRequest".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.FileDownloadHogQlRequest = new global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadHogQlRequest();
+            }
             else if("FileDownloadPersonsRequest".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.FileDownloadPersonsRequest = new global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadPersonsRequest();
@@ -70,6 +82,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(FileDownloadEventsRequest != null)
             {
                 return FileDownloadEventsRequest.GetFieldDeserializers();
+            }
+            else if(FileDownloadHogQlRequest != null)
+            {
+                return FileDownloadHogQlRequest.GetFieldDeserializers();
             }
             else if(FileDownloadPersonsRequest != null)
             {
@@ -91,6 +107,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(FileDownloadEventsRequest != null)
             {
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadEventsRequest>(null, FileDownloadEventsRequest);
+            }
+            else if(FileDownloadHogQlRequest != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadHogQlRequest>(null, FileDownloadHogQlRequest);
             }
             else if(FileDownloadPersonsRequest != null)
             {

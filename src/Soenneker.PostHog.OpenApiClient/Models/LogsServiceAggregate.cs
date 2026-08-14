@@ -39,10 +39,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Counts by coarse severity bucket (debug, info, warn, error+fatal).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregate_severity_breakdown? SeverityBreakdown { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregateSeverityBreakdown? SeverityBreakdown { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregate_severity_breakdown SeverityBreakdown { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregateSeverityBreakdown SeverityBreakdown { get; set; }
 #endif
         /// <summary>Share of total log volume in the window for this service (0–100).</summary>
         public double? VolumeSharePct { get; set; }
@@ -76,7 +76,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "error_rate", n => { ErrorRate = n.GetDoubleValue(); } },
                 { "log_count", n => { LogCount = n.GetIntValue(); } },
                 { "service_name", n => { ServiceName = n.GetStringValue(); } },
-                { "severity_breakdown", n => { SeverityBreakdown = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregate_severity_breakdown>(global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregate_severity_breakdown.CreateFromDiscriminatorValue); } },
+                { "severity_breakdown", n => { SeverityBreakdown = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregateSeverityBreakdown>(global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregateSeverityBreakdown.CreateFromDiscriminatorValue); } },
                 { "volume_share_pct", n => { VolumeSharePct = n.GetDoubleValue(); } },
             };
         }
@@ -92,7 +92,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("error_rate", ErrorRate);
             writer.WriteIntValue("log_count", LogCount);
             writer.WriteStringValue("service_name", ServiceName);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregate_severity_breakdown>("severity_breakdown", SeverityBreakdown);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregateSeverityBreakdown>("severity_breakdown", SeverityBreakdown);
             writer.WriteDoubleValue("volume_share_pct", VolumeSharePct);
             writer.WriteAdditionalData(AdditionalData);
         }

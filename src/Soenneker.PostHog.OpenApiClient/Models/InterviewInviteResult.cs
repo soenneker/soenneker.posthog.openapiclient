@@ -38,7 +38,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string InterviewUrl { get; set; }
 #endif
-        /// <summary>Why the email was skipped (e.g., `not_an_email`, `already_sent`). Empty when sent=true.</summary>
+        /// <summary>Why the email was skipped (e.g., `not_an_email`, `duplicate_recipient`, `already_sent`). Empty when sent=true.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Reason { get; set; }

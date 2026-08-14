@@ -6,6 +6,7 @@ using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item.AddSnapshots;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item.Approve;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item.Complete;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item.Finalize;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item.Recompute;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item.SnapshotHistory;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item.Snapshots;
@@ -20,7 +21,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\visual_review\runs\{id}
+    /// Builds and executes requests for operations under \api\projects\{projectId}\visual_review\runs\{id}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RunsItemRequestBuilder : BaseRequestBuilder
@@ -39,6 +40,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.I
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item.Complete.CompleteRequestBuilder Complete
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item.Complete.CompleteRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The finalize property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item.Finalize.FinalizeRequestBuilder Finalize
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item.Finalize.FinalizeRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The recompute property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item.Recompute.RecomputeRequestBuilder Recompute
@@ -70,7 +76,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.I
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RunsItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/visual_review/runs/{id}", pathParameters)
+        public RunsItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/visual_review/runs/{id}", pathParameters)
         {
         }
         /// <summary>
@@ -78,7 +84,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.I
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RunsItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/visual_review/runs/{id}", rawUrl)
+        public RunsItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/visual_review/runs/{id}", rawUrl)
         {
         }
         /// <summary>

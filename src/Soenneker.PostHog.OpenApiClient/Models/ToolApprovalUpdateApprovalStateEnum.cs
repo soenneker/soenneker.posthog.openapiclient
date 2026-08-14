@@ -13,11 +13,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "needs_approval")]
         #pragma warning disable CS1591
-        Needs_approval,
+        NeedsApproval,
         #pragma warning restore CS1591
         [EnumMember(Value = "do_not_use")]
         #pragma warning disable CS1591
-        Do_not_use,
+        DoNotUse,
         #pragma warning restore CS1591
     }
 }

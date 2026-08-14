@@ -25,10 +25,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Most recent test interview completed by the topic author, or null if none yet.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TestInterviewLink_latest_test_interview? LatestTestInterview { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TestInterviewLinkLatestTestInterview? LatestTestInterview { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TestInterviewLink_latest_test_interview LatestTestInterview { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TestInterviewLinkLatestTestInterview LatestTestInterview { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TestInterviewLink"/> and sets the default values.
@@ -56,7 +56,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "interview_url", n => { InterviewUrl = n.GetStringValue(); } },
-                { "latest_test_interview", n => { LatestTestInterview = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TestInterviewLink_latest_test_interview>(global::Soenneker.PostHog.OpenApiClient.Models.TestInterviewLink_latest_test_interview.CreateFromDiscriminatorValue); } },
+                { "latest_test_interview", n => { LatestTestInterview = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TestInterviewLinkLatestTestInterview>(global::Soenneker.PostHog.OpenApiClient.Models.TestInterviewLinkLatestTestInterview.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -67,7 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("interview_url", InterviewUrl);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TestInterviewLink_latest_test_interview>("latest_test_interview", LatestTestInterview);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TestInterviewLinkLatestTestInterview>("latest_test_interview", LatestTestInterview);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

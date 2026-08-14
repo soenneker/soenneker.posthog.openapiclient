@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_exports.Item.Cancel
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\file_download_batch_exports\{id}\cancel
+    /// Builds and executes requests for operations under \api\projects\{projectId}\file_download_batch_exports\{id}\cancel
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CancelRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public CancelRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/file_download_batch_exports/{id}/cancel", pathParameters)
+        public CancelRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/file_download_batch_exports/{id}/cancel", pathParameters)
         {
         }
         /// <summary>
@@ -30,28 +30,28 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public CancelRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/file_download_batch_exports/{id}/cancel", rawUrl)
+        public CancelRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/file_download_batch_exports/{id}/cancel", rawUrl)
         {
         }
         /// <summary>
         /// Cancel an ongoing file-download batch export.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_exports.Item.Cancel.CancelPostResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadBatchExportsCancelCreate201Response"/></returns>
         /// <param name="body">Request shape for a FileDownload batch export on demand.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_exports.Item.Cancel.CancelPostResponse?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadBatchExportOnDemand body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadBatchExportsCancelCreate201Response?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadBatchExportOnDemand body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_exports.Item.Cancel.CancelPostResponse> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadBatchExportOnDemand body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadBatchExportsCancelCreate201Response> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadBatchExportOnDemand body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_exports.Item.Cancel.CancelPostResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_exports.Item.Cancel.CancelPostResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadBatchExportsCancelCreate201Response>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadBatchExportsCancelCreate201Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Cancel an ongoing file-download batch export.

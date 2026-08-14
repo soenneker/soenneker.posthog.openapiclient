@@ -14,6 +14,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Above/below-the-fold summary for the returned interactions. Present for click/rageclick/mousemove; omitted for scrolldepth.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapsResponseFold? Fold { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapsResponseFold Fold { get; set; }
+#endif
+        /// <summary>True when more coordinate points exist beyond the returned page. Raise &apos;limit&apos; or page with &apos;offset&apos; to fetch them. Always false for scrolldepth, which returns every bucket.</summary>
+        public bool? HasMore { get; set; }
         /// <summary>The results property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -28,6 +38,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public HeatmapsResponse()
         {
             AdditionalData = new Dictionary<string, object>();
+            HasMore = false;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -47,6 +58,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "fold", n => { Fold = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapsResponseFold>(global::Soenneker.PostHog.OpenApiClient.Models.HeatmapsResponseFold.CreateFromDiscriminatorValue); } },
+                { "has_more", n => { HasMore = n.GetBoolValue(); } },
                 { "results", n => { Results = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapResponseItem>(global::Soenneker.PostHog.OpenApiClient.Models.HeatmapResponseItem.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -57,6 +70,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapsResponseFold>("fold", Fold);
+            writer.WriteBoolValue("has_more", HasMore);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapResponseItem>("results", Results);
             writer.WriteAdditionalData(AdditionalData);
         }

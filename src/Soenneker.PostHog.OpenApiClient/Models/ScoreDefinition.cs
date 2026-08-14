@@ -19,20 +19,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Current immutable scorer configuration.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinition_config? Config { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionConfigComposed? Config { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinition_config Config { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionConfigComposed Config { get; private set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>User who created the scorer.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinition_created_by? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreatedBy? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinition_created_by CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreatedBy CreatedBy { get; private set; }
 #endif
         /// <summary>Current immutable configuration version number.</summary>
         public int? CurrentVersion { get; private set; }
@@ -48,8 +48,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
-        /// <summary>* `categorical` - categorical* `numeric` - numeric* `boolean` - boolean</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricKindEnum? Kind { get; set; }
+        /// <summary>The kind property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionKind? Kind { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionKind Kind { get; private set; }
+#endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -88,14 +94,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "archived", n => { Archived = n.GetBoolValue(); } },
-                { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinition_config>(global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinition_config.CreateFromDiscriminatorValue); } },
+                { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionConfigComposed>(global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionConfigComposed.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinition_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinition_created_by.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreatedBy.CreateFromDiscriminatorValue); } },
                 { "current_version", n => { CurrentVersion = n.GetIntValue(); } },
                 { "current_version_id", n => { CurrentVersionId = n.GetGuidValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricKindEnum>(); } },
+                { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionKind>(global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionKind.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "team", n => { Team = n.GetIntValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
@@ -108,7 +114,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricKindEnum>("kind", Kind);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

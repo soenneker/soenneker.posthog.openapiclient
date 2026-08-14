@@ -3,10 +3,14 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions.Item.Discard_draft;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions.Item.Enable_backfills;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions.Item.Invocations;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions.Item.Logs;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions.Item.Metrics;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions.Item.Publish;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions.Item.Rerun;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions.Item.Revisions;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -16,11 +20,16 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\hog_functions\{id}
+    /// Builds and executes requests for operations under \api\projects\{projectId}\hog_functions\{id}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Hog_functionsItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The discard_draft property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions.Item.Discard_draft.Discard_draftRequestBuilder Discard_draft
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions.Item.Discard_draft.Discard_draftRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The enable_backfills property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions.Item.Enable_backfills.Enable_backfillsRequestBuilder Enable_backfills
         {
@@ -41,12 +50,27 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions.Item
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions.Item.Metrics.MetricsRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The publish property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions.Item.Publish.PublishRequestBuilder Publish
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions.Item.Publish.PublishRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The rerun property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions.Item.Rerun.RerunRequestBuilder Rerun
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions.Item.Rerun.RerunRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The revisions property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions.Item.Revisions.RevisionsRequestBuilder Revisions
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions.Item.Revisions.RevisionsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions.Item.Hog_functionsItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Hog_functionsItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/hog_functions/{id}", pathParameters)
+        public Hog_functionsItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/hog_functions/{id}", pathParameters)
         {
         }
         /// <summary>
@@ -54,7 +78,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions.Item
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Hog_functionsItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/hog_functions/{id}", rawUrl)
+        public Hog_functionsItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/hog_functions/{id}", rawUrl)
         {
         }
         /// <summary>

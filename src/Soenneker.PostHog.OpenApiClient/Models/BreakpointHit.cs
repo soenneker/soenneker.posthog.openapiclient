@@ -40,20 +40,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Stack trace at the time of the hit</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.BreakpointHit_stackTrace>? StackTrace { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.BreakpointHitStackTraceItem>? StackTrace { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.BreakpointHit_stackTrace> StackTrace { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.BreakpointHitStackTraceItem> StackTrace { get; set; }
 #endif
         /// <summary>When the breakpoint was hit</summary>
         public DateTimeOffset? Timestamp { get; set; }
         /// <summary>Local variables at the time of the hit</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BreakpointHit_variables? Variables { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BreakpointHitVariablesProperty? Variables { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BreakpointHit_variables Variables { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BreakpointHitVariablesProperty Variables { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BreakpointHit"/> and sets the default values.
@@ -85,9 +85,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "functionName", n => { FunctionName = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "lineNumber", n => { LineNumber = n.GetIntValue(); } },
-                { "stackTrace", n => { StackTrace = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.BreakpointHit_stackTrace>(global::Soenneker.PostHog.OpenApiClient.Models.BreakpointHit_stackTrace.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "stackTrace", n => { StackTrace = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.BreakpointHitStackTraceItem>(global::Soenneker.PostHog.OpenApiClient.Models.BreakpointHitStackTraceItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "timestamp", n => { Timestamp = n.GetDateTimeOffsetValue(); } },
-                { "variables", n => { Variables = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BreakpointHit_variables>(global::Soenneker.PostHog.OpenApiClient.Models.BreakpointHit_variables.CreateFromDiscriminatorValue); } },
+                { "variables", n => { Variables = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BreakpointHitVariablesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.BreakpointHitVariablesProperty.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -102,9 +102,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("functionName", FunctionName);
             writer.WriteGuidValue("id", Id);
             writer.WriteIntValue("lineNumber", LineNumber);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.BreakpointHit_stackTrace>("stackTrace", StackTrace);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.BreakpointHitStackTraceItem>("stackTrace", StackTrace);
             writer.WriteDateTimeOffsetValue("timestamp", Timestamp);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BreakpointHit_variables>("variables", Variables);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BreakpointHitVariablesProperty>("variables", Variables);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

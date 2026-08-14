@@ -17,11 +17,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "in_progress")]
         #pragma warning disable CS1591
-        In_progress,
+        InProgress,
         #pragma warning restore CS1591
         [EnumMember(Value = "pending_input")]
         #pragma warning disable CS1591
-        Pending_input,
+        PendingInput,
         #pragma warning restore CS1591
         [EnumMember(Value = "ready")]
         #pragma warning disable CS1591

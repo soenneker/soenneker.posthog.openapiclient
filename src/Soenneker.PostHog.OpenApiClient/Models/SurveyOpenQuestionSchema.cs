@@ -30,8 +30,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
-        /// <summary>* `html` - html* `text` - text</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.DescriptionContentTypeEnum? DescriptionContentType { get; set; }
+        /// <summary>Format for the description field.* `text` - text* `html` - html</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyOpenQuestionSchemaDescriptionContentType? DescriptionContentType { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyOpenQuestionSchemaDescriptionContentType DescriptionContentType { get; set; }
+#endif
+        /// <summary>Stable question identifier (UUID). When editing an existing question, send back its current id so its responses (keyed by $survey_response_&lt;id&gt;) stay attached; omit it for new questions and the server generates one.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Id { get; set; }
+#nullable restore
+#else
+        public string Id { get; set; }
+#endif
         /// <summary>Whether respondents may skip this question.</summary>
         public bool? Optional { get; set; }
         /// <summary>Question text shown to respondents.</summary>
@@ -71,7 +85,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "buttonText", n => { ButtonText = n.GetStringValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
-                { "descriptionContentType", n => { DescriptionContentType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DescriptionContentTypeEnum>(); } },
+                { "descriptionContentType", n => { DescriptionContentType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyOpenQuestionSchemaDescriptionContentType>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyOpenQuestionSchemaDescriptionContentType.CreateFromDiscriminatorValue); } },
+                { "id", n => { Id = n.GetStringValue(); } },
                 { "optional", n => { Optional = n.GetBoolValue(); } },
                 { "question", n => { Question = n.GetStringValue(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyOpenQuestionSchemaTypeEnum>(); } },
@@ -86,7 +101,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("buttonText", ButtonText);
             writer.WriteStringValue("description", Description);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DescriptionContentTypeEnum>("descriptionContentType", DescriptionContentType);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyOpenQuestionSchemaDescriptionContentType>("descriptionContentType", DescriptionContentType);
+            writer.WriteStringValue("id", Id);
             writer.WriteBoolValue("optional", Optional);
             writer.WriteStringValue("question", Question);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyOpenQuestionSchemaTypeEnum>("type", Type);

@@ -31,8 +31,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string CompanyName { get; set; }
 #endif
-        /// <summary>* `BAA` - BAA* `DPA` - DPA</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.CreateLegalDocumentDocumentTypeEnum? DocumentType { get; set; }
+        /// <summary>Either &apos;BAA&apos; or &apos;DPA&apos;.* `BAA` - BAA* `DPA` - DPA</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.CreateLegalDocumentDocumentType? DocumentType { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.CreateLegalDocumentDocumentType DocumentType { get; set; }
+#endif
         /// <summary>Email the signed PandaDoc envelope is sent to (PandaDoc&apos;s Client.Email).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -68,7 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "company_address", n => { CompanyAddress = n.GetStringValue(); } },
                 { "company_name", n => { CompanyName = n.GetStringValue(); } },
-                { "document_type", n => { DocumentType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateLegalDocumentDocumentTypeEnum>(); } },
+                { "document_type", n => { DocumentType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateLegalDocumentDocumentType>(global::Soenneker.PostHog.OpenApiClient.Models.CreateLegalDocumentDocumentType.CreateFromDiscriminatorValue); } },
                 { "representative_email", n => { RepresentativeEmail = n.GetStringValue(); } },
             };
         }
@@ -81,7 +87,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("company_address", CompanyAddress);
             writer.WriteStringValue("company_name", CompanyName);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateLegalDocumentDocumentTypeEnum>("document_type", DocumentType);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateLegalDocumentDocumentType>("document_type", DocumentType);
             writer.WriteStringValue("representative_email", RepresentativeEmail);
             writer.WriteAdditionalData(AdditionalData);
         }

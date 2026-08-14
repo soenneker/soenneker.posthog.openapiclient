@@ -15,22 +15,41 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Proposed model; determines `credits_per_observation` in the response.* `gemini-3.5-flash-lite` - Gemini 3.5 Flash Lite* `gemini-3-flash-preview` - Gemini 3 Flash* `gemini-3.7-flash` - Gemini 3.7 Flash</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequestModel? Model { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequestModel Model { get; set; }
+#endif
         /// <summary>Proposed `RecordingsQuery` for the candidate filter. `date_from`/`date_to` are ignored — the estimate always uses a fixed 30-day lookback. Omit to estimate against all recordings.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequest_query? Query { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequestQuery? Query { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequest_query Query { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequestQuery Query { get; set; }
+#endif
+        /// <summary>Quality pre-filter applied to the matched-session count, mirroring the sweep&apos;s candidate query. Defaults to comprehensive (no filter).* `focused` - Focused* `balanced` - Balanced* `comprehensive` - Comprehensive</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequestSamplingMode? SamplingMode { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequestSamplingMode SamplingMode { get; set; }
 #endif
         /// <summary>0..1 downsample applied to matched sessions. Defaults to 1.0 (no downsampling).</summary>
         public double? SamplingRate { get; set; }
+        /// <summary>The scanner being edited, excluded from `other_enabled_scanners_monthly_credits` so its stored estimate isn&apos;t double-counted in the forecast. Omit (or null) when estimating a brand-new scanner.</summary>
+        public Guid? ScannerId { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequest"/> and sets the default values.
         /// </summary>
         public EstimateRequest()
         {
             AdditionalData = new Dictionary<string, object>();
+            SamplingRate = 1;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -50,8 +69,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequest_query>(global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequest_query.CreateFromDiscriminatorValue); } },
+                { "model", n => { Model = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequestModel>(global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequestModel.CreateFromDiscriminatorValue); } },
+                { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequestQuery>(global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequestQuery.CreateFromDiscriminatorValue); } },
+                { "sampling_mode", n => { SamplingMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequestSamplingMode>(global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequestSamplingMode.CreateFromDiscriminatorValue); } },
                 { "sampling_rate", n => { SamplingRate = n.GetDoubleValue(); } },
+                { "scanner_id", n => { ScannerId = n.GetGuidValue(); } },
             };
         }
         /// <summary>
@@ -61,8 +83,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequest_query>("query", Query);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequestModel>("model", Model);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequestQuery>("query", Query);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequestSamplingMode>("sampling_mode", SamplingMode);
             writer.WriteDoubleValue("sampling_rate", SamplingRate);
+            writer.WriteGuidValue("scanner_id", ScannerId);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

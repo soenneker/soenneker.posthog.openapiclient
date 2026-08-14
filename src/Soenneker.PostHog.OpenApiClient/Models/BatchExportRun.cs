@@ -57,8 +57,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? RecordsFailed { get; set; }
         /// <summary>The total count of records that should be exported in this BatchExportRun.</summary>
         public int? RecordsTotalCount { get; set; }
-        /// <summary>* `Cancelled` - Cancelled* `Completed` - Completed* `ContinuedAsNew` - Continued As New* `Failed` - Failed* `FailedRetryable` - Failed Retryable* `FailedBilling` - Failed Billing* `Terminated` - Terminated* `TimedOut` - Timedout* `Running` - Running* `Starting` - Starting</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRunStatusEnum? Status { get; set; }
+        /// <summary>The status of this run.* `Cancelled` - Cancelled* `Completed` - Completed* `ContinuedAsNew` - Continued As New* `Failed` - Failed* `FailedRetryable` - Failed Retryable* `FailedBilling` - Failed Billing* `Terminated` - Terminated* `TimedOut` - Timedout* `Running` - Running* `Starting` - Starting</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRunStatus? Status { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRunStatus Status { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRun"/> and sets the default values.
         /// </summary>
@@ -99,7 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "records_completed", n => { RecordsCompleted = n.GetIntValue(); } },
                 { "records_failed", n => { RecordsFailed = n.GetIntValue(); } },
                 { "records_total_count", n => { RecordsTotalCount = n.GetIntValue(); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRunStatusEnum>(); } },
+                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRunStatus>(global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRunStatus.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -120,7 +126,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("records_completed", RecordsCompleted);
             writer.WriteIntValue("records_failed", RecordsFailed);
             writer.WriteIntValue("records_total_count", RecordsTotalCount);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRunStatusEnum>("status", Status);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRunStatus>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

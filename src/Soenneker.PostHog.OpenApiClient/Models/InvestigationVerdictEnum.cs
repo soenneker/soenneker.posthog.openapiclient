@@ -9,11 +9,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "true_positive")]
         #pragma warning disable CS1591
-        True_positive,
+        TruePositive,
         #pragma warning restore CS1591
         [EnumMember(Value = "false_positive")]
         #pragma warning disable CS1591
-        False_positive,
+        FalsePositive,
         #pragma warning restore CS1591
         [EnumMember(Value = "inconclusive")]
         #pragma warning disable CS1591

@@ -15,7 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Prose content for prompt injection.</summary>
+        /// <summary>Prose content for prompt injection. Blank when the search projected it out (`keys_only=true`); truncated to a preview when `content_max_chars` was set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Content { get; set; }
@@ -38,6 +38,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string CreatedByRunId { get; set; }
+#endif
+        /// <summary>Relative Tasks UI deep-link to the run that created this entry, or null if the run linkage isn&apos;t captured.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CreatedByRunUrl { get; set; }
+#nullable restore
+#else
+        public string CreatedByRunUrl { get; set; }
+#endif
+        /// <summary>Canonical skill name of the scout that created this entry (e.g. `signals-scout-apm`), or null if human-authored.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CreatedBySkill { get; set; }
+#nullable restore
+#else
+        public string CreatedBySkill { get; set; }
 #endif
         /// <summary>Agent-chosen semantic key, unique per team.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -83,6 +99,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "content", n => { Content = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetStringValue(); } },
                 { "created_by_run_id", n => { CreatedByRunId = n.GetStringValue(); } },
+                { "created_by_run_url", n => { CreatedByRunUrl = n.GetStringValue(); } },
+                { "created_by_skill", n => { CreatedBySkill = n.GetStringValue(); } },
                 { "key", n => { Key = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetStringValue(); } },
             };
@@ -97,6 +115,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("content", Content);
             writer.WriteStringValue("created_at", CreatedAt);
             writer.WriteStringValue("created_by_run_id", CreatedByRunId);
+            writer.WriteStringValue("created_by_run_url", CreatedByRunUrl);
+            writer.WriteStringValue("created_by_skill", CreatedBySkill);
             writer.WriteStringValue("key", Key);
             writer.WriteStringValue("updated_at", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);

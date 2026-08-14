@@ -17,7 +17,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "external_survey")]
         #pragma warning disable CS1591
-        External_survey,
+        ExternalSurvey,
         #pragma warning restore CS1591
         [EnumMember(Value = "api")]
         #pragma warning disable CS1591

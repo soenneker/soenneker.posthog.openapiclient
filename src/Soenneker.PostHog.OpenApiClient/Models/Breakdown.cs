@@ -9,49 +9,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class Breakdown : IParsable
+    public partial class Breakdown : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>The group_type_index property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.Breakdown_group_type_index? GroupTypeIndex { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.Breakdown_group_type_index GroupTypeIndex { get; set; }
-#endif
-        /// <summary>The histogram_bin_count property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.Breakdown_histogram_bin_count? HistogramBinCount { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.Breakdown_histogram_bin_count HistogramBinCount { get; set; }
-#endif
-        /// <summary>The normalize_url property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.Breakdown_normalize_url? NormalizeUrl { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.Breakdown_normalize_url NormalizeUrl { get; set; }
-#endif
-        /// <summary>The property property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.Property_Wrapper? Property { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.Property_Wrapper Property { get; set; }
-#endif
-        /// <summary>The type property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.Breakdown_type? Type { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.Breakdown_type Type { get; set; }
-#endif
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Breakdown"/> and sets the default values.
+        /// </summary>
+        public Breakdown()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -70,11 +39,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "group_type_index", n => { GroupTypeIndex = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Breakdown_group_type_index>(global::Soenneker.PostHog.OpenApiClient.Models.Breakdown_group_type_index.CreateFromDiscriminatorValue); } },
-                { "histogram_bin_count", n => { HistogramBinCount = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Breakdown_histogram_bin_count>(global::Soenneker.PostHog.OpenApiClient.Models.Breakdown_histogram_bin_count.CreateFromDiscriminatorValue); } },
-                { "normalize_url", n => { NormalizeUrl = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Breakdown_normalize_url>(global::Soenneker.PostHog.OpenApiClient.Models.Breakdown_normalize_url.CreateFromDiscriminatorValue); } },
-                { "property", n => { Property = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Property_Wrapper>(global::Soenneker.PostHog.OpenApiClient.Models.Property_Wrapper.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Breakdown_type>(global::Soenneker.PostHog.OpenApiClient.Models.Breakdown_type.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -84,11 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Breakdown_group_type_index>("group_type_index", GroupTypeIndex);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Breakdown_histogram_bin_count>("histogram_bin_count", HistogramBinCount);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Breakdown_normalize_url>("normalize_url", NormalizeUrl);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Property_Wrapper>("property", Property);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Breakdown_type>("type", Type);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

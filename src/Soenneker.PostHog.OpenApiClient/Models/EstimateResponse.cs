@@ -8,17 +8,25 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Forward-looking observation-volume estimate for a proposed scanner. Pricing-agnostic.
+    /// Forward-looking volume and credit-cost estimate for a proposed scanner.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class EstimateResponse : IAdditionalDataHolder, IParsable
     {
+        /// <summary>Committed-but-unspent credits of the org&apos;s active backfills, the same figure the quota snapshot&apos;s projection carries. A one-off charge rather than a monthly rate, so the forecast shows it as its own segment instead of adding it to a per-month total.</summary>
+        public int? ActiveBackfillCredits { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;Projected monthly observations: matched sessions scaled to 30 days, times sampling_rate.&quot;</summary>
+        /// <summary>Credits one observation costs at the proposed `model` (1 credit = $0.01).</summary>
+        public int? CreditsPerObservation { get; set; }
+        /// <summary>`estimated_observations_per_month` priced at `credits_per_observation`.</summary>
+        public int? EstimatedCreditsPerMonth { get; set; }
+        /// <summary>&quot;Projected monthly observations: quality-filtered matched sessions scaled to 30 days, times sampling_rate.&quot;</summary>
         public int? EstimatedObservationsPerMonth { get; set; }
-        /// <summary>Distinct sessions matching the query within the 30-day lookback, before sampling.</summary>
+        /// <summary>Distinct sessions matching the query within the 30-day lookback, after the sampling_mode quality filter but before random sampling.</summary>
         public int? MatchedSessionsInWindow { get; set; }
+        /// <summary>Credit-weighted projected monthly spend of the org&apos;s other enabled scanners (excluding `scanner_id`), from their cached estimates. Read from the same snapshot as this estimate so the forecast can&apos;t double-count the edited scanner.</summary>
+        public int? OtherEnabledScannersMonthlyCredits { get; set; }
         /// <summary>Sampling rate applied to the projection. Echoed from the request.</summary>
         public double? SamplingRate { get; set; }
         /// <summary>Lookback window the estimate is based on. Normally 30; smaller when the team has fewer days of recordings.</summary>
@@ -48,8 +56,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "active_backfill_credits", n => { ActiveBackfillCredits = n.GetIntValue(); } },
+                { "credits_per_observation", n => { CreditsPerObservation = n.GetIntValue(); } },
+                { "estimated_credits_per_month", n => { EstimatedCreditsPerMonth = n.GetIntValue(); } },
                 { "estimated_observations_per_month", n => { EstimatedObservationsPerMonth = n.GetIntValue(); } },
                 { "matched_sessions_in_window", n => { MatchedSessionsInWindow = n.GetIntValue(); } },
+                { "other_enabled_scanners_monthly_credits", n => { OtherEnabledScannersMonthlyCredits = n.GetIntValue(); } },
                 { "sampling_rate", n => { SamplingRate = n.GetDoubleValue(); } },
                 { "window_days", n => { WindowDays = n.GetIntValue(); } },
             };
@@ -61,8 +73,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteIntValue("active_backfill_credits", ActiveBackfillCredits);
+            writer.WriteIntValue("credits_per_observation", CreditsPerObservation);
+            writer.WriteIntValue("estimated_credits_per_month", EstimatedCreditsPerMonth);
             writer.WriteIntValue("estimated_observations_per_month", EstimatedObservationsPerMonth);
             writer.WriteIntValue("matched_sessions_in_window", MatchedSessionsInWindow);
+            writer.WriteIntValue("other_enabled_scanners_monthly_credits", OtherEnabledScannersMonthlyCredits);
             writer.WriteDoubleValue("sampling_rate", SamplingRate);
             writer.WriteIntValue("window_days", WindowDays);
             writer.WriteAdditionalData(AdditionalData);

@@ -13,68 +13,32 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning restore CS1591
     {
         /// <summary>The active_seconds property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_active_seconds? ActiveSeconds { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_active_seconds ActiveSeconds { get; set; }
-#endif
+        public double? ActiveSeconds { get; set; }
         /// <summary>calculated on the backend so that we can sort by it, definition may change over time</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_activity_score? ActivityScore { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_activity_score ActivityScore { get; set; }
-#endif
+        public double? ActivityScore { get; set; }
         /// <summary>The click_count property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_click_count? ClickCount { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_click_count ClickCount { get; set; }
-#endif
+        public double? ClickCount { get; set; }
         /// <summary>The console_error_count property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_console_error_count? ConsoleErrorCount { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_console_error_count ConsoleErrorCount { get; set; }
-#endif
+        public double? ConsoleErrorCount { get; set; }
         /// <summary>The console_log_count property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_console_log_count? ConsoleLogCount { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_console_log_count ConsoleLogCount { get; set; }
-#endif
+        public double? ConsoleLogCount { get; set; }
         /// <summary>The console_warn_count property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_console_warn_count? ConsoleWarnCount { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_console_warn_count ConsoleWarnCount { get; set; }
-#endif
+        public double? ConsoleWarnCount { get; set; }
         /// <summary>The distinct_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_distinct_id? DistinctId { get; set; }
+        public string? DistinctId { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_distinct_id DistinctId { get; set; }
+        public string DistinctId { get; set; }
 #endif
         /// <summary>The email property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_email? Email { get; set; }
+        public string? Email { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_email Email { get; set; }
+        public string Email { get; set; }
 #endif
         /// <summary>When the recording ends in ISO format.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -87,26 +51,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>When the recording expires, in ISO format.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_expiry_time? ExpiryTime { get; set; }
+        public string? ExpiryTime { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_expiry_time ExpiryTime { get; set; }
+        public string ExpiryTime { get; set; }
 #endif
         /// <summary>External references to third party issues.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_external_references? ExternalReferences { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingExternalReference>? ExternalReferences { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_external_references ExternalReferences { get; set; }
-#endif
-        /// <summary>The has_summary property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_has_summary? HasSummary { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_has_summary HasSummary { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingExternalReference> ExternalReferences { get; set; }
 #endif
         /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -117,78 +73,44 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Id { get; set; }
 #endif
         /// <summary>The inactive_seconds property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_inactive_seconds? InactiveSeconds { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_inactive_seconds InactiveSeconds { get; set; }
-#endif
+        public double? InactiveSeconds { get; set; }
         /// <summary>The keypress_count property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_keypress_count? KeypressCount { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_keypress_count KeypressCount { get; set; }
-#endif
+        public double? KeypressCount { get; set; }
+        /// <summary>False when the recording was included in list results via a direct link despite not matching the filters.</summary>
+        public bool? MatchesFilters { get; set; }
         /// <summary>List of matching events. *</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_matching_events? MatchingEvents { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MatchedRecording>? MatchingEvents { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_matching_events MatchingEvents { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MatchedRecording> MatchingEvents { get; set; }
 #endif
         /// <summary>count of all mouse activity in the recording, not just clicks</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_mouse_activity_count? MouseActivityCount { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_mouse_activity_count MouseActivityCount { get; set; }
-#endif
+        public double? MouseActivityCount { get; set; }
         /// <summary>whether we have received data for this recording in the last 5 minutes (assumes the recording was loaded from ClickHouse)*</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_ongoing? Ongoing { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_ongoing Ongoing { get; set; }
-#endif
+        public bool? Ongoing { get; set; }
         /// <summary>The person property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_person? Person { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonType? Person { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_person Person { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonType Person { get; set; }
 #endif
         /// <summary>Length of recording in seconds.</summary>
         public double? RecordingDuration { get; set; }
         /// <summary>Number of whole days left until the recording expires.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_recording_ttl? RecordingTtl { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_recording_ttl RecordingTtl { get; set; }
-#endif
+        public double? RecordingTtl { get; set; }
         /// <summary>retention period for this recording</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_retention_period_days? RetentionPeriodDays { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_retention_period_days RetentionPeriodDays { get; set; }
-#endif
+        public double? RetentionPeriodDays { get; set; }
         /// <summary>The snapshot_library property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_snapshot_library? SnapshotLibrary { get; set; }
+        public string? SnapshotLibrary { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_snapshot_library SnapshotLibrary { get; set; }
+        public string SnapshotLibrary { get; set; }
 #endif
         /// <summary>The snapshot_source property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SnapshotSource? SnapshotSource { get; set; }
@@ -203,26 +125,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The start_url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_start_url? StartUrl { get; set; }
+        public string? StartUrl { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_start_url StartUrl { get; set; }
+        public string StartUrl { get; set; }
 #endif
         /// <summary>The summary property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_summary? Summary { get; set; }
+        public string? Summary { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_summary Summary { get; set; }
-#endif
-        /// <summary>The summary_outcome property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_summary_outcome? SummaryOutcome { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_summary_outcome SummaryOutcome { get; set; }
+        public string Summary { get; set; }
 #endif
         /// <summary>Whether this recording has been viewed by you already.</summary>
         public bool? Viewed { get; set; }
@@ -252,34 +166,33 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "active_seconds", n => { ActiveSeconds = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_active_seconds>(global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_active_seconds.CreateFromDiscriminatorValue); } },
-                { "activity_score", n => { ActivityScore = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_activity_score>(global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_activity_score.CreateFromDiscriminatorValue); } },
-                { "click_count", n => { ClickCount = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_click_count>(global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_click_count.CreateFromDiscriminatorValue); } },
-                { "console_error_count", n => { ConsoleErrorCount = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_console_error_count>(global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_console_error_count.CreateFromDiscriminatorValue); } },
-                { "console_log_count", n => { ConsoleLogCount = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_console_log_count>(global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_console_log_count.CreateFromDiscriminatorValue); } },
-                { "console_warn_count", n => { ConsoleWarnCount = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_console_warn_count>(global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_console_warn_count.CreateFromDiscriminatorValue); } },
-                { "distinct_id", n => { DistinctId = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_distinct_id>(global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_distinct_id.CreateFromDiscriminatorValue); } },
-                { "email", n => { Email = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_email>(global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_email.CreateFromDiscriminatorValue); } },
+                { "active_seconds", n => { ActiveSeconds = n.GetDoubleValue(); } },
+                { "activity_score", n => { ActivityScore = n.GetDoubleValue(); } },
+                { "click_count", n => { ClickCount = n.GetDoubleValue(); } },
+                { "console_error_count", n => { ConsoleErrorCount = n.GetDoubleValue(); } },
+                { "console_log_count", n => { ConsoleLogCount = n.GetDoubleValue(); } },
+                { "console_warn_count", n => { ConsoleWarnCount = n.GetDoubleValue(); } },
+                { "distinct_id", n => { DistinctId = n.GetStringValue(); } },
+                { "email", n => { Email = n.GetStringValue(); } },
                 { "end_time", n => { EndTime = n.GetStringValue(); } },
-                { "expiry_time", n => { ExpiryTime = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_expiry_time>(global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_expiry_time.CreateFromDiscriminatorValue); } },
-                { "external_references", n => { ExternalReferences = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_external_references>(global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_external_references.CreateFromDiscriminatorValue); } },
-                { "has_summary", n => { HasSummary = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_has_summary>(global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_has_summary.CreateFromDiscriminatorValue); } },
+                { "expiry_time", n => { ExpiryTime = n.GetStringValue(); } },
+                { "external_references", n => { ExternalReferences = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingExternalReference>(global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingExternalReference.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "inactive_seconds", n => { InactiveSeconds = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_inactive_seconds>(global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_inactive_seconds.CreateFromDiscriminatorValue); } },
-                { "keypress_count", n => { KeypressCount = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_keypress_count>(global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_keypress_count.CreateFromDiscriminatorValue); } },
-                { "matching_events", n => { MatchingEvents = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_matching_events>(global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_matching_events.CreateFromDiscriminatorValue); } },
-                { "mouse_activity_count", n => { MouseActivityCount = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_mouse_activity_count>(global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_mouse_activity_count.CreateFromDiscriminatorValue); } },
-                { "ongoing", n => { Ongoing = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_ongoing>(global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_ongoing.CreateFromDiscriminatorValue); } },
-                { "person", n => { Person = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_person>(global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_person.CreateFromDiscriminatorValue); } },
+                { "inactive_seconds", n => { InactiveSeconds = n.GetDoubleValue(); } },
+                { "keypress_count", n => { KeypressCount = n.GetDoubleValue(); } },
+                { "matches_filters", n => { MatchesFilters = n.GetBoolValue(); } },
+                { "matching_events", n => { MatchingEvents = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MatchedRecording>(global::Soenneker.PostHog.OpenApiClient.Models.MatchedRecording.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "mouse_activity_count", n => { MouseActivityCount = n.GetDoubleValue(); } },
+                { "ongoing", n => { Ongoing = n.GetBoolValue(); } },
+                { "person", n => { Person = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonType>(global::Soenneker.PostHog.OpenApiClient.Models.PersonType.CreateFromDiscriminatorValue); } },
                 { "recording_duration", n => { RecordingDuration = n.GetDoubleValue(); } },
-                { "recording_ttl", n => { RecordingTtl = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_recording_ttl>(global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_recording_ttl.CreateFromDiscriminatorValue); } },
-                { "retention_period_days", n => { RetentionPeriodDays = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_retention_period_days>(global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_retention_period_days.CreateFromDiscriminatorValue); } },
-                { "snapshot_library", n => { SnapshotLibrary = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_snapshot_library>(global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_snapshot_library.CreateFromDiscriminatorValue); } },
+                { "recording_ttl", n => { RecordingTtl = n.GetDoubleValue(); } },
+                { "retention_period_days", n => { RetentionPeriodDays = n.GetDoubleValue(); } },
+                { "snapshot_library", n => { SnapshotLibrary = n.GetStringValue(); } },
                 { "snapshot_source", n => { SnapshotSource = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SnapshotSource>(); } },
                 { "start_time", n => { StartTime = n.GetStringValue(); } },
-                { "start_url", n => { StartUrl = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_start_url>(global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_start_url.CreateFromDiscriminatorValue); } },
-                { "summary", n => { Summary = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_summary>(global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_summary.CreateFromDiscriminatorValue); } },
-                { "summary_outcome", n => { SummaryOutcome = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_summary_outcome>(global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_summary_outcome.CreateFromDiscriminatorValue); } },
+                { "start_url", n => { StartUrl = n.GetStringValue(); } },
+                { "summary", n => { Summary = n.GetStringValue(); } },
                 { "viewed", n => { Viewed = n.GetBoolValue(); } },
                 { "viewers", n => { Viewers = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
@@ -291,34 +204,33 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_active_seconds>("active_seconds", ActiveSeconds);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_activity_score>("activity_score", ActivityScore);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_click_count>("click_count", ClickCount);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_console_error_count>("console_error_count", ConsoleErrorCount);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_console_log_count>("console_log_count", ConsoleLogCount);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_console_warn_count>("console_warn_count", ConsoleWarnCount);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_distinct_id>("distinct_id", DistinctId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_email>("email", Email);
+            writer.WriteDoubleValue("active_seconds", ActiveSeconds);
+            writer.WriteDoubleValue("activity_score", ActivityScore);
+            writer.WriteDoubleValue("click_count", ClickCount);
+            writer.WriteDoubleValue("console_error_count", ConsoleErrorCount);
+            writer.WriteDoubleValue("console_log_count", ConsoleLogCount);
+            writer.WriteDoubleValue("console_warn_count", ConsoleWarnCount);
+            writer.WriteStringValue("distinct_id", DistinctId);
+            writer.WriteStringValue("email", Email);
             writer.WriteStringValue("end_time", EndTime);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_expiry_time>("expiry_time", ExpiryTime);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_external_references>("external_references", ExternalReferences);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_has_summary>("has_summary", HasSummary);
+            writer.WriteStringValue("expiry_time", ExpiryTime);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingExternalReference>("external_references", ExternalReferences);
             writer.WriteStringValue("id", Id);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_inactive_seconds>("inactive_seconds", InactiveSeconds);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_keypress_count>("keypress_count", KeypressCount);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_matching_events>("matching_events", MatchingEvents);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_mouse_activity_count>("mouse_activity_count", MouseActivityCount);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_ongoing>("ongoing", Ongoing);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_person>("person", Person);
+            writer.WriteDoubleValue("inactive_seconds", InactiveSeconds);
+            writer.WriteDoubleValue("keypress_count", KeypressCount);
+            writer.WriteBoolValue("matches_filters", MatchesFilters);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MatchedRecording>("matching_events", MatchingEvents);
+            writer.WriteDoubleValue("mouse_activity_count", MouseActivityCount);
+            writer.WriteBoolValue("ongoing", Ongoing);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonType>("person", Person);
             writer.WriteDoubleValue("recording_duration", RecordingDuration);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_recording_ttl>("recording_ttl", RecordingTtl);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_retention_period_days>("retention_period_days", RetentionPeriodDays);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_snapshot_library>("snapshot_library", SnapshotLibrary);
+            writer.WriteDoubleValue("recording_ttl", RecordingTtl);
+            writer.WriteDoubleValue("retention_period_days", RetentionPeriodDays);
+            writer.WriteStringValue("snapshot_library", SnapshotLibrary);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SnapshotSource>("snapshot_source", SnapshotSource);
             writer.WriteStringValue("start_time", StartTime);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_start_url>("start_url", StartUrl);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_summary>("summary", Summary);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType_summary_outcome>("summary_outcome", SummaryOutcome);
+            writer.WriteStringValue("start_url", StartUrl);
+            writer.WriteStringValue("summary", Summary);
             writer.WriteBoolValue("viewed", Viewed);
             writer.WriteCollectionOfPrimitiveValues<string>("viewers", Viewers);
         }

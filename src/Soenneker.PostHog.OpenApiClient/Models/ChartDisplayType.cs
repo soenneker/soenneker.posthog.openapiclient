@@ -40,6 +40,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         BoldNumber,
         #pragma warning restore CS1591
+        [EnumMember(Value = "Metric")]
+        #pragma warning disable CS1591
+        Metric,
+        #pragma warning restore CS1591
         [EnumMember(Value = "ActionsPie")]
         #pragma warning disable CS1591
         ActionsPie,
@@ -67,6 +71,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "BoxPlot")]
         #pragma warning disable CS1591
         BoxPlot,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "SlopeGraph")]
+        #pragma warning disable CS1591
+        SlopeGraph,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ScatterPlot")]
+        #pragma warning disable CS1591
+        ScatterPlot,
         #pragma warning restore CS1591
     }
 }

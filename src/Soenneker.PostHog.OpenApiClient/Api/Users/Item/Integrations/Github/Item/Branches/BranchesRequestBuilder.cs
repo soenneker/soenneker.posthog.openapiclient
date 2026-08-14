@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github.Item.Branches
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\users\{user_-id}\integrations\github\{installation_id}\branches
+    /// Builds and executes requests for operations under \api\users\{user-id}\integrations\github\{installationId}\branches
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class BranchesRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github.Ite
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public BranchesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/users/{user_%2Did}/integrations/github/{installation_id}/branches?repo={repo}{&limit*,offset*,search*}", pathParameters)
+        public BranchesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/users/{user%2Did}/integrations/github/{installationId}/branches?repo={repo}{&limit*,offset*,search*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github.Ite
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public BranchesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/users/{user_%2Did}/integrations/github/{installation_id}/branches?repo={repo}{&limit*,offset*,search*}", rawUrl)
+        public BranchesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/users/{user%2Did}/integrations/github/{installationId}/branches?repo={repo}{&limit*,offset*,search*}", rawUrl)
         {
         }
         /// <summary>

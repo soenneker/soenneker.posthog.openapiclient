@@ -7,11 +7,18 @@ using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Activ
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Add_product_intent;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Change_organization;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Complete_product_onboarding;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Default_evaluation_contexts;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Default_release_conditions;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Delete_secret_token_backup;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Evaluation_context_suggestions;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Event_ingestion_restrictions;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Experiments_config;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Generate_conversations_public_token;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Is_generating_demo_data;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Logs_config;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Reset_token;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Rotate_secret_token;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Settings_as_of;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -46,10 +53,35 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Complete_product_onboarding.Complete_product_onboardingRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The default_evaluation_contexts property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Default_evaluation_contexts.Default_evaluation_contextsRequestBuilder Default_evaluation_contexts
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Default_evaluation_contexts.Default_evaluation_contextsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The default_release_conditions property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Default_release_conditions.Default_release_conditionsRequestBuilder Default_release_conditions
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Default_release_conditions.Default_release_conditionsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The delete_secret_token_backup property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Delete_secret_token_backup.Delete_secret_token_backupRequestBuilder Delete_secret_token_backup
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Delete_secret_token_backup.Delete_secret_token_backupRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The evaluation_context_suggestions property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Evaluation_context_suggestions.Evaluation_context_suggestionsRequestBuilder Evaluation_context_suggestions
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Evaluation_context_suggestions.Evaluation_context_suggestionsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The event_ingestion_restrictions property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Event_ingestion_restrictions.Event_ingestion_restrictionsRequestBuilder Event_ingestion_restrictions
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Event_ingestion_restrictions.Event_ingestion_restrictionsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The experiments_config property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Experiments_config.Experiments_configRequestBuilder Experiments_config
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Experiments_config.Experiments_configRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The generate_conversations_public_token property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Generate_conversations_public_token.Generate_conversations_public_tokenRequestBuilder Generate_conversations_public_token
@@ -61,6 +93,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Is_generating_demo_data.Is_generating_demo_dataRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The logs_config property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Logs_config.Logs_configRequestBuilder Logs_config
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Logs_config.Logs_configRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The reset_token property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Reset_token.Reset_tokenRequestBuilder Reset_token
         {
@@ -70,6 +107,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Rotate_secret_token.Rotate_secret_tokenRequestBuilder Rotate_secret_token
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Rotate_secret_token.Rotate_secret_tokenRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The settings_as_of property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Settings_as_of.Settings_as_ofRequestBuilder Settings_as_of
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Settings_as_of.Settings_as_ofRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.ProjectsItemRequestBuilder"/> and sets the default values.

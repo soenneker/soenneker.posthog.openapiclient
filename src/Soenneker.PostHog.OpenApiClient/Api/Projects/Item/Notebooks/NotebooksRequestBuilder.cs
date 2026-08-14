@@ -15,7 +15,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\notebooks
+    /// Builds and executes requests for operations under \api\projects\{projectId}\notebooks
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class NotebooksRequestBuilder : BaseRequestBuilder
@@ -32,14 +32,14 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks
         }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.notebooks.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Notebook_ItemRequestBuilder"/></returns>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Notebook_ItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.NotebookItemRequestBuilder"/></returns>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.NotebookItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("notebook_%2Did", position);
-                return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Notebook_ItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("notebook%2Did", position);
+                return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.NotebookItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
@@ -47,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public NotebooksRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/notebooks{?contains*,created_by*,date_from*,date_to*,limit*,offset*,user*}", pathParameters)
+        public NotebooksRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/notebooks{?contains*,created_by*,date_from*,date_to*,limit*,offset*,user*}", pathParameters)
         {
         }
         /// <summary>
@@ -55,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public NotebooksRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/notebooks{?contains*,created_by*,date_from*,date_to*,limit*,offset*,user*}", rawUrl)
+        public NotebooksRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/notebooks{?contains*,created_by*,date_from*,date_to*,limit*,offset*,user*}", rawUrl)
         {
         }
         /// <summary>

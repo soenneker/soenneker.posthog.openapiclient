@@ -23,6 +23,64 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string CompletedAt { get; set; }
 #endif
+        /// <summary>ISO-8601 timestamp the bridge row was created — the field `date_from` / `date_to` filter and order on. Use this (not `started_at`) as the `date_to` cursor when walking past the 100-row cap, so runs created in the gap between a boundary run&apos;s TaskRun and its bridge row aren&apos;t skipped.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CreatedAt { get; set; }
+#nullable restore
+#else
+        public string CreatedAt { get; set; }
+#endif
+        /// <summary>&quot;The `SignalReport` ids this run mutated via the `edit_report` channel (rewrote title/summary and/or appended a note), deduped. Distinct from `emitted_report_ids`: edit can target any inbox report, so these are generally not reports the run authored. Empty for runs that edited no report.&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? EditedReportIds { get; set; }
+#nullable restore
+#else
+        public List<string> EditedReportIds { get; set; }
+#endif
+        /// <summary>Number of findings this run actually emitted to the inbox. 0 for runs that investigated but surfaced nothing, or ran dry-run / before AI approval. `&gt; 0` means the run produced at least one `Signal`.</summary>
+        public int? EmittedCount { get; set; }
+        /// <summary>The `finding_id`s behind `emitted_count`, in emit order. Each maps to a `Signal` with `source_id = run:&lt;run_id&gt;:finding:&lt;finding_id&gt;`. Empty for non-emitting runs.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? EmittedFindingIds { get; set; }
+#nullable restore
+#else
+        public List<string> EmittedFindingIds { get; set; }
+#endif
+        /// <summary>The `SignalReport` ids this run authored directly via the `emit_report` channel, in emit order. Separate from `emitted_finding_ids` (weak `emit_signal` findings) — a report-authoring scout writes a full report here instead. Empty for runs that authored no report.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? EmittedReportIds { get; set; }
+#nullable restore
+#else
+        public List<string> EmittedReportIds { get; set; }
+#endif
+        /// <summary>Full `error_message` from the linked TaskRun, surfaced only for failed/cancelled runs (null otherwise, including on success). Use `failure_reason` for a concise scan-friendly summary.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Error { get; set; }
+#nullable restore
+#else
+        public string Error { get; set; }
+#endif
+        /// <summary>Concise derived reason the run didn&apos;t complete cleanly — the first line of `error` (bounded), or a status-derived fallback. Null unless the run terminated failed/cancelled. Read this to see at a glance *why* a run emitted nothing without pulling full stack traces.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? FailureReason { get; set; }
+#nullable restore
+#else
+        public string FailureReason { get; set; }
+#endif
+        /// <summary>&quot;Scout-owned per-run context, in two regions. Top-level keys are stamped by the runner at run start. Always present: `harness_prompt_version` (id of the harness prompt build the run was given), `report_channel` (which report tools the run held: `none`, `emit`, `edit`, or `both`), `skill_origin` (`canonical` or `custom`), and `github_guidance` (whether the run got the GitHub evidence section) — the provenance set that says which instructions the run actually got, so runs are only compared against runs of the same shape. Present only when the run departed from a default: `model`, `runtime_adapter`, and `reasoning_effort` (routing overrode the agent-server default), and `network_access` (`full` when the scout&apos;s config lifted the trusted-domain network restriction for this run). The nested `derived` object is the harness&apos;s own map of boolean run dimensions, computed server-side at finalize: `has_emit_report`, `has_edit_report`, `has_self_improvement`, `has_chart`, and `has_self_validation`. Use `derived` to answer &apos;what kind of run was this?&apos; instead of parsing the `summary` prose. Note the flags describe the reports the run authored as they stand now, so charts attached to someone else&apos;s report via an edit are not counted. A missing `derived` object is unknown, not all-false: the run predates the field, never finalized, or its stamp failed.&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutRunDetailMetadata? Metadata { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutRunDetailMetadata Metadata { get; set; }
+#endif
         /// <summary>UUID of the bridge row.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -49,13 +107,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string StartedAt { get; set; }
 #endif
-        /// <summary>&quot;Status from the linked TaskRun: not_started | queued | in_progress | completed | failed | cancelled.&quot;</summary>
+        /// <summary>Status from the linked TaskRun.* `not_started` - not_started* `queued` - queued* `in_progress` - in_progress* `completed` - completed* `failed` - failed* `cancelled` - cancelled</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Status { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutRunDetailStatus? Status { get; set; }
 #nullable restore
 #else
-        public string Status { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutRunDetailStatus Status { get; set; }
 #endif
         /// <summary>One-paragraph close-out the scout wrote at end-of-run. Empty string for runs that errored before close-out. The dedupe key for non-emitting runs.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -115,11 +173,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "completed_at", n => { CompletedAt = n.GetStringValue(); } },
+                { "created_at", n => { CreatedAt = n.GetStringValue(); } },
+                { "edited_report_ids", n => { EditedReportIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "emitted_count", n => { EmittedCount = n.GetIntValue(); } },
+                { "emitted_finding_ids", n => { EmittedFindingIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "emitted_report_ids", n => { EmittedReportIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "error", n => { Error = n.GetStringValue(); } },
+                { "failure_reason", n => { FailureReason = n.GetStringValue(); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutRunDetailMetadata>(global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutRunDetailMetadata.CreateFromDiscriminatorValue); } },
                 { "run_id", n => { RunId = n.GetStringValue(); } },
                 { "skill_name", n => { SkillName = n.GetStringValue(); } },
                 { "skill_version", n => { SkillVersion = n.GetIntValue(); } },
                 { "started_at", n => { StartedAt = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetStringValue(); } },
+                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutRunDetailStatus>(global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutRunDetailStatus.CreateFromDiscriminatorValue); } },
                 { "summary", n => { Summary = n.GetStringValue(); } },
                 { "task_id", n => { TaskId = n.GetStringValue(); } },
                 { "task_run_id", n => { TaskRunId = n.GetStringValue(); } },
@@ -134,11 +200,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("completed_at", CompletedAt);
+            writer.WriteStringValue("created_at", CreatedAt);
+            writer.WriteCollectionOfPrimitiveValues<string>("edited_report_ids", EditedReportIds);
+            writer.WriteIntValue("emitted_count", EmittedCount);
+            writer.WriteCollectionOfPrimitiveValues<string>("emitted_finding_ids", EmittedFindingIds);
+            writer.WriteCollectionOfPrimitiveValues<string>("emitted_report_ids", EmittedReportIds);
+            writer.WriteStringValue("error", Error);
+            writer.WriteStringValue("failure_reason", FailureReason);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutRunDetailMetadata>("metadata", Metadata);
             writer.WriteStringValue("run_id", RunId);
             writer.WriteStringValue("skill_name", SkillName);
             writer.WriteIntValue("skill_version", SkillVersion);
             writer.WriteStringValue("started_at", StartedAt);
-            writer.WriteStringValue("status", Status);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutRunDetailStatus>("status", Status);
             writer.WriteStringValue("summary", Summary);
             writer.WriteStringValue("task_id", TaskId);
             writer.WriteStringValue("task_run_id", TaskRunId);

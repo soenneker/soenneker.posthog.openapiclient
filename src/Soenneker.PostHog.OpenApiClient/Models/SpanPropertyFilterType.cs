@@ -14,11 +14,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "span_attribute")]
         #pragma warning disable CS1591
-        Span_attribute,
+        SpanAttribute,
         #pragma warning restore CS1591
         [EnumMember(Value = "span_resource_attribute")]
         #pragma warning disable CS1591
-        Span_resource_attribute,
+        SpanResourceAttribute,
         #pragma warning restore CS1591
     }
 }

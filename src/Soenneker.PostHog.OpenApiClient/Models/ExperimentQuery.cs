@@ -13,78 +13,65 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning restore CS1591
     {
         /// <summary>The experiment_id property</summary>
+        public int? ExperimentId { get; set; }
+        /// <summary>The kind property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery_experiment_id? ExperimentId { get; set; }
+        public string? Kind { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery_experiment_id ExperimentId { get; set; }
+        public string Kind { get; set; }
 #endif
-        /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery_kind? Kind { get; set; }
         /// <summary>The metric property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery.ExperimentQuery_metric? Metric { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryMetric? Metric { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery.ExperimentQuery_metric Metric { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryMetric Metric { get; set; }
 #endif
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery_modifiers? Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers? Modifiers { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery_modifiers Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers Modifiers { get; set; }
 #endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery_name? Name { get; set; }
+        public string? Name { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery_name Name { get; set; }
+        public string Name { get; set; }
 #endif
         /// <summary>The precomputation_mode property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery_precomputation_mode? PrecomputationMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PrecomputationModeWrapper? PrecomputationMode { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery_precomputation_mode PrecomputationMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PrecomputationModeWrapper PrecomputationMode { get; set; }
 #endif
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery_response? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponse? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery_response Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponse Response { get; set; }
 #endif
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery_tags? Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags? Tags { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery_tags Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags Tags { get; set; }
 #endif
         /// <summary>version of the node, used for schema migrations</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery_version? Version { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery_version Version { get; set; }
-#endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery"/> and sets the default values.
-        /// </summary>
-        public ExperimentQuery()
-        {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery_kind.ExperimentQuery;
-        }
+        public double? Version { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -103,15 +90,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "experiment_id", n => { ExperimentId = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery_experiment_id>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery_experiment_id.CreateFromDiscriminatorValue); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery_kind>(); } },
-                { "metric", n => { Metric = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery.ExperimentQuery_metric>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery.ExperimentQuery_metric.CreateFromDiscriminatorValue); } },
-                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery_modifiers>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery_modifiers.CreateFromDiscriminatorValue); } },
-                { "name", n => { Name = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery_name>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery_name.CreateFromDiscriminatorValue); } },
-                { "precomputation_mode", n => { PrecomputationMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery_precomputation_mode>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery_precomputation_mode.CreateFromDiscriminatorValue); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery_response>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery_response.CreateFromDiscriminatorValue); } },
-                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery_tags>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery_tags.CreateFromDiscriminatorValue); } },
-                { "version", n => { Version = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery_version>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery_version.CreateFromDiscriminatorValue); } },
+                { "experiment_id", n => { ExperimentId = n.GetIntValue(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
+                { "metric", n => { Metric = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryMetric>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryMetric.CreateFromDiscriminatorValue); } },
+                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
+                { "name", n => { Name = n.GetStringValue(); } },
+                { "precomputation_mode", n => { PrecomputationMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PrecomputationModeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.PrecomputationModeWrapper.CreateFromDiscriminatorValue); } },
+                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponse.CreateFromDiscriminatorValue); } },
+                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
+                { "version", n => { Version = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -121,130 +108,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery_experiment_id>("experiment_id", ExperimentId);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery_kind>("kind", Kind);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery.ExperimentQuery_metric>("metric", Metric);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery_modifiers>("modifiers", Modifiers);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery_name>("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery_precomputation_mode>("precomputation_mode", PrecomputationMode);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery_response>("response", Response);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery_tags>("tags", Tags);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery_version>("version", Version);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetric"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetric"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetric"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class ExperimentQuery_metric : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetric"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetric? ExperimentFunnelMetric { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetric ExperimentFunnelMetric { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetric"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetric? ExperimentMeanMetric { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetric ExperimentMeanMetric { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric? ExperimentRatioMetric { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric ExperimentRatioMetric { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetric"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetric? ExperimentRetentionMetric { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetric ExperimentRetentionMetric { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery.ExperimentQuery_metric"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery.ExperimentQuery_metric CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("metric_type")?.GetStringValue();
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQuery.ExperimentQuery_metric();
-                if("funnel".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.ExperimentFunnelMetric = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetric();
-                }
-                else if("mean".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.ExperimentMeanMetric = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetric();
-                }
-                else if("ratio".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.ExperimentRatioMetric = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric();
-                }
-                else if("retention".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.ExperimentRetentionMetric = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetric();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(ExperimentFunnelMetric != null)
-                {
-                    return ExperimentFunnelMetric.GetFieldDeserializers();
-                }
-                else if(ExperimentMeanMetric != null)
-                {
-                    return ExperimentMeanMetric.GetFieldDeserializers();
-                }
-                else if(ExperimentRatioMetric != null)
-                {
-                    return ExperimentRatioMetric.GetFieldDeserializers();
-                }
-                else if(ExperimentRetentionMetric != null)
-                {
-                    return ExperimentRetentionMetric.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(ExperimentFunnelMetric != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetric>(null, ExperimentFunnelMetric);
-                }
-                else if(ExperimentMeanMetric != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetric>(null, ExperimentMeanMetric);
-                }
-                else if(ExperimentRatioMetric != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric>(null, ExperimentRatioMetric);
-                }
-                else if(ExperimentRetentionMetric != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetric>(null, ExperimentRetentionMetric);
-                }
-            }
+            writer.WriteIntValue("experiment_id", ExperimentId);
+            writer.WriteStringValue("kind", Kind);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryMetric>("metric", Metric);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
+            writer.WriteStringValue("name", Name);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PrecomputationModeWrapper>("precomputation_mode", PrecomputationMode);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponse>("response", Response);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
+            writer.WriteDoubleValue("version", Version);
         }
     }
 }

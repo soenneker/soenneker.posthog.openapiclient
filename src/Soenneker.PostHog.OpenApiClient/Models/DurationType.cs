@@ -14,11 +14,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "active_seconds")]
         #pragma warning disable CS1591
-        Active_seconds,
+        ActiveSeconds,
         #pragma warning restore CS1591
         [EnumMember(Value = "inactive_seconds")]
         #pragma warning disable CS1591
-        Inactive_seconds,
+        InactiveSeconds,
         #pragma warning restore CS1591
     }
 }

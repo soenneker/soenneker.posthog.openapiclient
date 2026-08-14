@@ -5,6 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Cimd_verification_tokens;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Domains;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Identity_provider_configs;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Integrations;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Invites;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Legal_documents;
@@ -12,8 +13,11 @@ using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Members;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Oauth_applications;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Proxy_records;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Remove_blocked_members_and_enforce_verified_domains;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Request_ai_access;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Role_external_references;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Roles;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Teams;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Welcome;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -38,6 +42,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Domains.DomainsRequestBuilder Domains
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Domains.DomainsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The identity_provider_configs property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Identity_provider_configs.Identity_provider_configsRequestBuilder Identity_provider_configs
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Identity_provider_configs.Identity_provider_configsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The integrations property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Integrations.IntegrationsRequestBuilder Integrations
@@ -74,6 +83,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Proxy_records.Proxy_recordsRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The remove_blocked_members_and_enforce_verified_domains property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Remove_blocked_members_and_enforce_verified_domains.Remove_blocked_members_and_enforce_verified_domainsRequestBuilder Remove_blocked_members_and_enforce_verified_domains
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Remove_blocked_members_and_enforce_verified_domains.Remove_blocked_members_and_enforce_verified_domainsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The request_ai_access property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Request_ai_access.Request_ai_accessRequestBuilder Request_ai_access
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Request_ai_access.Request_ai_accessRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The role_external_references property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Role_external_references.Role_external_referencesRequestBuilder Role_external_references
         {
@@ -83,6 +102,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Roles.RolesRequestBuilder Roles
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Roles.RolesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The teams property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Teams.TeamsRequestBuilder Teams
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Teams.TeamsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The welcome property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Welcome.WelcomeRequestBuilder Welcome

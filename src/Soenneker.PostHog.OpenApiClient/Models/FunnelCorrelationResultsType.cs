@@ -18,7 +18,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "event_with_properties")]
         #pragma warning disable CS1591
-        Event_with_properties,
+        EventWithProperties,
         #pragma warning restore CS1591
     }
 }

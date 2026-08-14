@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github.Item;
+using Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github.Prepare_callback;
 using Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github.Start;
 using System.Collections.Generic;
 using System.IO;
@@ -11,11 +12,16 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\users\{user_-id}\integrations\github
+    /// Builds and executes requests for operations under \api\users\{user-id}\integrations\github
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class GithubRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The prepare_callback property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github.Prepare_callback.Prepare_callbackRequestBuilder Prepare_callback
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github.Prepare_callback.Prepare_callbackRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The start property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github.Start.StartRequestBuilder Start
         {
@@ -23,14 +29,14 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github
         }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.users.item.integrations.github.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github.Item.WithInstallation_ItemRequestBuilder"/></returns>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github.Item.WithInstallation_ItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github.Item.WithInstallationItemRequestBuilder"/></returns>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github.Item.WithInstallationItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("installation_id", position);
-                return new global::Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github.Item.WithInstallation_ItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("installationId", position);
+                return new global::Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github.Item.WithInstallationItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
@@ -38,7 +44,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public GithubRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/users/{user_%2Did}/integrations/github", pathParameters)
+        public GithubRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/users/{user%2Did}/integrations/github", pathParameters)
         {
         }
         /// <summary>
@@ -46,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public GithubRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/users/{user_%2Did}/integrations/github", rawUrl)
+        public GithubRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/users/{user%2Did}/integrations/github", rawUrl)
         {
         }
     }

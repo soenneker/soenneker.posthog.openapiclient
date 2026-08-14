@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Code.Invites;
+using Soenneker.PostHog.OpenApiClient.Api.Code.SandboxPricing;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -19,6 +20,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Code
         public global::Soenneker.PostHog.OpenApiClient.Api.Code.Invites.InvitesRequestBuilder Invites
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Code.Invites.InvitesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The sandboxPricing property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Code.SandboxPricing.SandboxPricingRequestBuilder SandboxPricing
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Code.SandboxPricing.SandboxPricingRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Code.CodeRequestBuilder"/> and sets the default values.

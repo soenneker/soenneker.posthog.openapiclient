@@ -12,8 +12,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class BulkUpdateTagsRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>* `add` - add* `remove` - remove* `set` - set</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ActionEnum? Action { get; set; }
+        /// <summary>&apos;add&apos; merges with existing tags, &apos;remove&apos; deletes specific tags, &apos;set&apos; replaces all tags.* `add` - add* `remove` - remove* `set` - set</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateTagsRequestAction? Action { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateTagsRequestAction Action { get; set; }
+#endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>List of object IDs to update tags on.</summary>
@@ -57,7 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "action", n => { Action = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ActionEnum>(); } },
+                { "action", n => { Action = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateTagsRequestAction>(global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateTagsRequestAction.CreateFromDiscriminatorValue); } },
                 { "ids", n => { Ids = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
@@ -69,7 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ActionEnum>("action", Action);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateTagsRequestAction>("action", Action);
             writer.WriteCollectionOfPrimitiveValues<int?>("ids", Ids);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteAdditionalData(AdditionalData);

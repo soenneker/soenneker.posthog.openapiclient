@@ -9,11 +9,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "is_set")]
         #pragma warning disable CS1591
-        Is_set,
+        IsSet,
         #pragma warning restore CS1591
         [EnumMember(Value = "is_not_set")]
         #pragma warning disable CS1591
-        Is_not_set,
+        IsNotSet,
         #pragma warning restore CS1591
     }
 }

@@ -68,21 +68,27 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Optional severity tag — one of P0, P1, P2, P3, P4. Informational only.* `P0` - P0* `P1` - P1* `P2` - P2* `P3` - P3* `P4` - P4</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequest_severity? Severity { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequestSeverity? Severity { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequest_severity Severity { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequestSeverity Severity { get; set; }
+#endif
+        /// <summary>Optional category tags as lowercase kebab-case slugs (e.g. `cost-spike`, `silent-failure`), max 10. Reuse the vocabulary in your `tags:&lt;domain&gt;:taxonomy` scratchpad entry when a tag fits; coin a new slug when a genuinely new category emerges. Near-miss formats are normalized to slugs; persisted in the signal&apos;s `extra.tags` and on the emission row.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Tags { get; set; }
+#nullable restore
+#else
+        public List<string> Tags { get; set; }
 #endif
         /// <summary>Optional time window the finding refers to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequest_time_range? TimeRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequestTimeRange? TimeRange { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequest_time_range TimeRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequestTimeRange TimeRange { get; set; }
 #endif
-        /// <summary>Agent&apos;s weight for the signal in [0, 1]. Drives ranking in the inbox.</summary>
-        public double? Weight { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequest"/> and sets the default values.
         /// </summary>
@@ -115,9 +121,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "finding_id", n => { FindingId = n.GetStringValue(); } },
                 { "hypothesis", n => { Hypothesis = n.GetStringValue(); } },
                 { "mcp_trace_id", n => { McpTraceId = n.GetStringValue(); } },
-                { "severity", n => { Severity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequest_severity>(global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequest_severity.CreateFromDiscriminatorValue); } },
-                { "time_range", n => { TimeRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequest_time_range>(global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequest_time_range.CreateFromDiscriminatorValue); } },
-                { "weight", n => { Weight = n.GetDoubleValue(); } },
+                { "severity", n => { Severity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequestSeverity>(global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequestSeverity.CreateFromDiscriminatorValue); } },
+                { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "time_range", n => { TimeRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequestTimeRange>(global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequestTimeRange.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -134,9 +140,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("finding_id", FindingId);
             writer.WriteStringValue("hypothesis", Hypothesis);
             writer.WriteStringValue("mcp_trace_id", McpTraceId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequest_severity>("severity", Severity);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequest_time_range>("time_range", TimeRange);
-            writer.WriteDoubleValue("weight", Weight);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequestSeverity>("severity", Severity);
+            writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequestTimeRange>("time_range", TimeRange);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

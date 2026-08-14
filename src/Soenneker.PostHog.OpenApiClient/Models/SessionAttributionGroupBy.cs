@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "InitialURL")]
         #pragma warning disable CS1591
-        InitialURL,
+        InitialUrl,
         #pragma warning restore CS1591
     }
 }

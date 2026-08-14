@@ -22,26 +22,36 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? CreatedBy { get; private set; }
         /// <summary>Maximum count-triggered report runs per calendar day (UTC). Min 1, max 24 (one per cooldown window). Defaults to 10.</summary>
         public int? DailyRunCap { get; set; }
-        /// <summary>Set to true to soft-delete this report config.</summary>
-        public bool? Deleted { get; set; }
+        /// <summary>Read-only. Report configs are soft-deleted only when their evaluation is deleted. Use enabled=false to stop deliveries.</summary>
+        public bool? Deleted { get; private set; }
         /// <summary>&quot;List of delivery targets. Each entry is either {type: &apos;email&apos;, value: &apos;user@example.com&apos;} or {type: &apos;slack&apos;, integration_id: &lt;int&gt;, channel: &apos;&lt;channel&gt;&apos;}. Slack integration_id must belong to this team.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReport_delivery_targets? DeliveryTargets { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportDeliveryTargets? DeliveryTargets { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReport_delivery_targets DeliveryTargets { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportDeliveryTargets DeliveryTargets { get; set; }
 #endif
         /// <summary>Whether report delivery is active. Disabled configs do not fire.</summary>
         public bool? Enabled { get; set; }
         /// <summary>UUID of the evaluation this report config belongs to.</summary>
         public Guid? Evaluation { get; set; }
-        /// <summary>* `scheduled` - Scheduled* `every_n` - Every N</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportFrequencyEnum? Frequency { get; set; }
+        /// <summary>How report generation is triggered. &apos;every_n&apos; fires once N new evaluation results have accumulated (subject to cooldown_minutes and daily_run_cap). &apos;scheduled&apos; fires on the cadence defined by rrule.* `scheduled` - Scheduled* `every_n` - Every N</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportFrequency? Frequency { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportFrequency Frequency { get; set; }
+#endif
+        /// <summary>Number of reports generated from this evaluation report config.</summary>
+        public int? GeneratedReportCount { get; private set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>The last_delivered_at property</summary>
         public DateTimeOffset? LastDeliveredAt { get; private set; }
+        /// <summary>When the most recent report was generated, or null if no reports have been generated.</summary>
+        public DateTimeOffset? LastGeneratedAt { get; private set; }
         /// <summary>Maximum number of evaluation runs included in each report. Defaults to 200.</summary>
         public int? MaxSampleSize { get; set; }
         /// <summary>The next_delivery_date property</summary>
@@ -54,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ReportPromptGuidance { get; set; }
 #endif
-        /// <summary>RFC 5545 recurrence rule string (e.g. &apos;FREQ=WEEKLY;BYDAY=MO&apos;). Must not contain DTSTART — the anchor is set via starts_at. Required when frequency is &apos;scheduled&apos;; ignored otherwise.</summary>
+        /// <summary>&quot;RFC 5545 recurrence rule string for scheduled reports. Only daily and weekly cadences are supported: use &apos;FREQ=DAILY&apos; or &apos;FREQ=WEEKLY;BYDAY=MO,FR&apos;. Required when frequency is &apos;scheduled&apos;; ignored otherwise.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Rrule { get; set; }
@@ -62,17 +72,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Rrule { get; set; }
 #endif
-        /// <summary>Anchor datetime for the rrule (ISO 8601, UTC — must end in &apos;Z&apos;). Local-time interpretation is controlled by timezone_name. Required when frequency is &apos;scheduled&apos;; ignored otherwise.</summary>
-        public DateTimeOffset? StartsAt { get; set; }
-        /// <summary>IANA timezone name used to expand the rrule in local time so e.g. &apos;9am&apos; stays at 9am across DST transitions (e.g. &apos;America/New_York&apos;). Defaults to &apos;UTC&apos;.</summary>
+        /// <summary>Read-only anchor datetime used to expand scheduled reports. The server sets this automatically when a report is switched to scheduled mode.</summary>
+        public DateTimeOffset? StartsAt { get; private set; }
+        /// <summary>Read-only timezone used for scheduled reports. Evaluation reports use UTC.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TimezoneName { get; set; }
+        public string? TimezoneName { get; private set; }
 #nullable restore
 #else
-        public string TimezoneName { get; set; }
+        public string TimezoneName { get; private set; }
 #endif
-        /// <summary>Number of new evaluation results that triggers a report (every_n mode only). Min 10, max 10000. Defaults to 100. Required when frequency is &apos;every_n&apos;.</summary>
+        /// <summary>Number of new evaluation results that triggers a report (every_n mode only). Min 100, max 10000. Defaults to 100. Required when frequency is &apos;every_n&apos;.</summary>
         public int? TriggerThreshold { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReport"/> and sets the default values.
@@ -104,12 +114,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_by", n => { CreatedBy = n.GetIntValue(); } },
                 { "daily_run_cap", n => { DailyRunCap = n.GetIntValue(); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
-                { "delivery_targets", n => { DeliveryTargets = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReport_delivery_targets>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReport_delivery_targets.CreateFromDiscriminatorValue); } },
+                { "delivery_targets", n => { DeliveryTargets = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportDeliveryTargets>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportDeliveryTargets.CreateFromDiscriminatorValue); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "evaluation", n => { Evaluation = n.GetGuidValue(); } },
-                { "frequency", n => { Frequency = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportFrequencyEnum>(); } },
+                { "frequency", n => { Frequency = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportFrequency>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportFrequency.CreateFromDiscriminatorValue); } },
+                { "generated_report_count", n => { GeneratedReportCount = n.GetIntValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "last_delivered_at", n => { LastDeliveredAt = n.GetDateTimeOffsetValue(); } },
+                { "last_generated_at", n => { LastGeneratedAt = n.GetDateTimeOffsetValue(); } },
                 { "max_sample_size", n => { MaxSampleSize = n.GetIntValue(); } },
                 { "next_delivery_date", n => { NextDeliveryDate = n.GetDateTimeOffsetValue(); } },
                 { "report_prompt_guidance", n => { ReportPromptGuidance = n.GetStringValue(); } },
@@ -128,16 +140,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("cooldown_minutes", CooldownMinutes);
             writer.WriteIntValue("daily_run_cap", DailyRunCap);
-            writer.WriteBoolValue("deleted", Deleted);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReport_delivery_targets>("delivery_targets", DeliveryTargets);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportDeliveryTargets>("delivery_targets", DeliveryTargets);
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteGuidValue("evaluation", Evaluation);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportFrequencyEnum>("frequency", Frequency);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportFrequency>("frequency", Frequency);
             writer.WriteIntValue("max_sample_size", MaxSampleSize);
             writer.WriteStringValue("report_prompt_guidance", ReportPromptGuidance);
             writer.WriteStringValue("rrule", Rrule);
-            writer.WriteDateTimeOffsetValue("starts_at", StartsAt);
-            writer.WriteStringValue("timezone_name", TimezoneName);
             writer.WriteIntValue("trigger_threshold", TriggerThreshold);
             writer.WriteAdditionalData(AdditionalData);
         }

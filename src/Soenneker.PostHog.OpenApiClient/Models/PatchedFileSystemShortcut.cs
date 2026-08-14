@@ -16,7 +16,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
-        /// <summary>The href property</summary>
+        /// <summary>Destination URL the shortcut opens. Null when the shortcut points at an item by ref.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Href { get; set; }
@@ -26,9 +26,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
-        /// <summary>The order property</summary>
+        /// <summary>Display order within the user&apos;s shortcut list, ascending.</summary>
         public int? Order { get; set; }
-        /// <summary>The path property</summary>
+        /// <summary>Display path of the shortcut in the sidebar.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Path { get; set; }
@@ -36,7 +36,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Path { get; set; }
 #endif
-        /// <summary>The ref property</summary>
+        /// <summary>Reference to the linked item, scoped to its type. Null for href-only shortcuts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Ref { get; set; }
@@ -44,13 +44,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Ref { get; set; }
 #endif
-        /// <summary>The type property</summary>
+        /// <summary>Type of the linked item (e.g. &apos;folder&apos;, &apos;insight&apos;), or blank.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Type { get; set; }
 #nullable restore
 #else
         public string Type { get; set; }
+#endif
+        /// <summary>Resolved access level the user has for the object this entry references (&apos;none&apos; means the user can&apos;t open it). Null when access controls don&apos;t apply to the entry type.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? UserAccessLevel { get; private set; }
+#nullable restore
+#else
+        public string UserAccessLevel { get; private set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedFileSystemShortcut"/> and sets the default values.
@@ -84,6 +92,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "path", n => { Path = n.GetStringValue(); } },
                 { "ref", n => { Ref = n.GetStringValue(); } },
                 { "type", n => { Type = n.GetStringValue(); } },
+                { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },
             };
         }
         /// <summary>

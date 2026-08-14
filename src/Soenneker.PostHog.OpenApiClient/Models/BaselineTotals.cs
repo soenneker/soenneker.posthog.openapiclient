@@ -19,10 +19,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The by_run_type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BaselineTotals_by_run_type? ByRunType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BaselineTotalsByRunTypeProperty? ByRunType { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BaselineTotals_by_run_type ByRunType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BaselineTotalsByRunTypeProperty ByRunType { get; set; }
 #endif
         /// <summary>The currently_quarantined property</summary>
         public int? CurrentlyQuarantined { get; set; }
@@ -56,7 +56,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "all_snapshots", n => { AllSnapshots = n.GetIntValue(); } },
-                { "by_run_type", n => { ByRunType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BaselineTotals_by_run_type>(global::Soenneker.PostHog.OpenApiClient.Models.BaselineTotals_by_run_type.CreateFromDiscriminatorValue); } },
+                { "by_run_type", n => { ByRunType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BaselineTotalsByRunTypeProperty>(global::Soenneker.PostHog.OpenApiClient.Models.BaselineTotalsByRunTypeProperty.CreateFromDiscriminatorValue); } },
                 { "currently_quarantined", n => { CurrentlyQuarantined = n.GetIntValue(); } },
                 { "frequently_tolerated", n => { FrequentlyTolerated = n.GetIntValue(); } },
                 { "recently_tolerated", n => { RecentlyTolerated = n.GetIntValue(); } },
@@ -70,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("all_snapshots", AllSnapshots);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BaselineTotals_by_run_type>("by_run_type", ByRunType);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BaselineTotalsByRunTypeProperty>("by_run_type", ByRunType);
             writer.WriteIntValue("currently_quarantined", CurrentlyQuarantined);
             writer.WriteIntValue("frequently_tolerated", FrequentlyTolerated);
             writer.WriteIntValue("recently_tolerated", RecentlyTolerated);

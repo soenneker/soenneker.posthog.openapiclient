@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Error { get; set; }
 #endif
-        /// <summary>UUID of the $ai_generation event.</summary>
+        /// <summary>UUID of the sampled $ai_generation event, or null for a trace or session sample.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? EventUuid { get; set; }
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string EventUuid { get; set; }
 #endif
-        /// <summary>First 200 chars of the generation input.</summary>
+        /// <summary>First 200 characters of input from the sampled unit.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? InputPreview { get; set; }
@@ -38,7 +38,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string InputPreview { get; set; }
 #endif
-        /// <summary>First 200 chars of the generation output.</summary>
+        /// <summary>First 200 characters of output from the sampled unit.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? OutputPreview { get; set; }
@@ -54,8 +54,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Reasoning { get; set; }
 #endif
-        /// <summary>True = pass, false = fail, null = N/A or error.</summary>
+        /// <summary>True = pass, False = fail, null = N/A or error.</summary>
         public bool? Result { get; set; }
+        /// <summary>Stable identifier for the sampled generation, trace, or session.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SampleId { get; set; }
+#nullable restore
+#else
+        public string SampleId { get; set; }
+#endif
+        /// <summary>&quot;Type of sampled unit: generation, trace, or session.* `generation` - Generation* `trace` - Trace* `session` - Session&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.TestHogResultItemSampleType? SampleType { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.TestHogResultItemSampleType SampleType { get; set; }
+#endif
         /// <summary>Trace ID if available.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -95,6 +111,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "output_preview", n => { OutputPreview = n.GetStringValue(); } },
                 { "reasoning", n => { Reasoning = n.GetStringValue(); } },
                 { "result", n => { Result = n.GetBoolValue(); } },
+                { "sample_id", n => { SampleId = n.GetStringValue(); } },
+                { "sample_type", n => { SampleType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TestHogResultItemSampleType>(global::Soenneker.PostHog.OpenApiClient.Models.TestHogResultItemSampleType.CreateFromDiscriminatorValue); } },
                 { "trace_id", n => { TraceId = n.GetStringValue(); } },
             };
         }
@@ -111,6 +129,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("output_preview", OutputPreview);
             writer.WriteStringValue("reasoning", Reasoning);
             writer.WriteBoolValue("result", Result);
+            writer.WriteStringValue("sample_id", SampleId);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TestHogResultItemSampleType>("sample_type", SampleType);
             writer.WriteStringValue("trace_id", TraceId);
             writer.WriteAdditionalData(AdditionalData);
         }

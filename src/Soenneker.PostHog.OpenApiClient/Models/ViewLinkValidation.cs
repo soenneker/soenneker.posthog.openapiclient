@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The joining_table_key property</summary>
+        /// <summary>Column or HogQL expression on the joining table used as the join key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? JoiningTableKey { get; set; }
@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string JoiningTableKey { get; set; }
 #endif
-        /// <summary>The joining_table_name property</summary>
+        /// <summary>Name of the table or view being joined onto the source table.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? JoiningTableName { get; set; }
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string JoiningTableName { get; set; }
 #endif
-        /// <summary>The source_table_key property</summary>
+        /// <summary>Column or HogQL expression on the source table used as the join key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SourceTableKey { get; set; }
@@ -38,7 +38,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SourceTableKey { get; set; }
 #endif
-        /// <summary>The source_table_name property</summary>
+        /// <summary>Name of the table the join starts from, for example events.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SourceTableName { get; set; }

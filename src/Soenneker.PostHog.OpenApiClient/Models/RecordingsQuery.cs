@@ -15,203 +15,201 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The actions property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_actions? Actions { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryActions? Actions { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_actions Actions { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryActions Actions { get; set; }
 #endif
         /// <summary>Cursor for pagination. Contains the ordering value and session_id from the last record of the previous page.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_after? After { get; set; }
+        public string? After { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_after After { get; set; }
+        public string After { get; set; }
 #endif
         /// <summary>The comment_text property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_comment_text? CommentText { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingPropertyFilter? CommentText { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_comment_text CommentText { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingPropertyFilter CommentText { get; set; }
 #endif
         /// <summary>The console_log_filters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_console_log_filters? ConsoleLogFilters { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogEntryPropertyFilter>? ConsoleLogFilters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_console_log_filters ConsoleLogFilters { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogEntryPropertyFilter> ConsoleLogFilters { get; set; }
 #endif
         /// <summary>The date_from property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_date_from? DateFrom { get; set; }
+        public string? DateFrom { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_date_from DateFrom { get; set; }
+        public string DateFrom { get; set; }
 #endif
         /// <summary>The date_to property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_date_to? DateTo { get; set; }
+        public string? DateTo { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_date_to DateTo { get; set; }
+        public string DateTo { get; set; }
 #endif
         /// <summary>The distinct_ids property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_distinct_ids? DistinctIds { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryDistinctIds? DistinctIds { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_distinct_ids DistinctIds { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryDistinctIds DistinctIds { get; set; }
 #endif
         /// <summary>The events property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_events? Events { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryEvents? Events { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_events Events { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryEvents Events { get; set; }
 #endif
-        /// <summary>The filter_test_accounts property</summary>
+        /// <summary>&quot;Only sessions of persons exposed to this experiment, each ending at or after the person&apos;s first exposure as the experiment&apos;s exposure criteria count it. Resolved server-side from the experiment, so it links sessions even when the exposure events themselves carry no session id (e.g. server-side SDKs). Composes with the query&apos;s date range like any other filter, so set date_from to the experiment&apos;s start (or earlier) to cover the full run: the default window only reaches back a few days.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_filter_test_accounts? FilterTestAccounts { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryExperimentExposureFilter? ExperimentExposure { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_filter_test_accounts FilterTestAccounts { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryExperimentExposureFilter ExperimentExposure { get; set; }
 #endif
+        /// <summary>The filter_test_accounts property</summary>
+        public bool? FilterTestAccounts { get; set; }
         /// <summary>The having_predicates property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_having_predicates? HavingPredicates { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryHavingPredicatesAnyOf1Item>? HavingPredicates { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_having_predicates HavingPredicates { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryHavingPredicatesAnyOf1Item> HavingPredicates { get; set; }
 #endif
-        /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_kind? Kind { get; set; }
-        /// <summary>The limit property</summary>
+        /// <summary>Exclude recordings already viewed by the current user (&apos;current-user&apos;), by any team member (&apos;any-user&apos;), or none (default). Applied server-side so pagination and the result cursor operate on the filtered set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_limit? Limit { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HideViewedRecordingsWrapper? HideViewedRecordings { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_limit Limit { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HideViewedRecordingsWrapper HideViewedRecordings { get; set; }
 #endif
+        /// <summary>The kind property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Kind { get; set; }
+#nullable restore
+#else
+        public string Kind { get; set; }
+#endif
+        /// <summary>The limit property</summary>
+        public int? Limit { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_modifiers? Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers? Modifiers { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_modifiers Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers Modifiers { get; set; }
 #endif
         /// <summary>The offset property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_offset? Offset { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_offset Offset { get; set; }
-#endif
+        public int? Offset { get; set; }
         /// <summary>The operand property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_operand? Operand { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FilterLogicalOperatorWrapper? Operand { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_operand Operand { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FilterLogicalOperatorWrapper Operand { get; set; }
 #endif
         /// <summary>The order property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_order? Order { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingOrderWrapper? Order { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_order Order { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingOrderWrapper Order { get; set; }
 #endif
         /// <summary>Replay originally had all ordering as descending by specifying the field name, this runs counter to Django behavior where the field name specifies ascending sorting (e.g. the_field_name) and -the_field_name would indicate descending order to avoid invalidating or migrating all existing filters we keep DESC as the default or allow specification of an explicit order direction here</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_order_direction? OrderDirection { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingOrderDirectionWrapper? OrderDirection { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_order_direction OrderDirection { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingOrderDirectionWrapper OrderDirection { get; set; }
 #endif
         /// <summary>The person_uuid property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_person_uuid? PersonUuid { get; set; }
+        public string? PersonUuid { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_person_uuid PersonUuid { get; set; }
+        public string PersonUuid { get; set; }
 #endif
         /// <summary>The properties property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_properties? Properties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryPropertiesAnyOf1Item>? Properties { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_properties Properties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryPropertiesAnyOf1Item> Properties { get; set; }
 #endif
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_response? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryResponse? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_response Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryResponse Response { get; set; }
 #endif
         /// <summary>The session_ids property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_session_ids? SessionIds { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuerySessionIds? SessionIds { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_session_ids SessionIds { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuerySessionIds SessionIds { get; set; }
 #endif
         /// <summary>If provided, this recording will be fetched and prepended to the results, even if it doesn&apos;t match the filters</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_session_recording_id? SessionRecordingId { get; set; }
+        public string? SessionRecordingId { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_session_recording_id SessionRecordingId { get; set; }
+        public string SessionRecordingId { get; set; }
 #endif
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_tags? Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags? Tags { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_tags Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags Tags { get; set; }
 #endif
         /// <summary>The user_modified_filters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_user_modified_filters? UserModifiedFilters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryUserModifiedFilters? UserModifiedFilters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_user_modified_filters UserModifiedFilters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryUserModifiedFilters UserModifiedFilters { get; set; }
 #endif
         /// <summary>version of the node, used for schema migrations</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_version? Version { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_version Version { get; set; }
-#endif
+        public double? Version { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery"/> and sets the default values.
         /// </summary>
         public RecordingsQuery()
         {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_kind.RecordingsQuery;
+            DateFrom = "-3d";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -231,31 +229,33 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "actions", n => { Actions = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_actions>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_actions.CreateFromDiscriminatorValue); } },
-                { "after", n => { After = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_after>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_after.CreateFromDiscriminatorValue); } },
-                { "comment_text", n => { CommentText = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_comment_text>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_comment_text.CreateFromDiscriminatorValue); } },
-                { "console_log_filters", n => { ConsoleLogFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_console_log_filters>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_console_log_filters.CreateFromDiscriminatorValue); } },
-                { "date_from", n => { DateFrom = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_date_from>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_date_from.CreateFromDiscriminatorValue); } },
-                { "date_to", n => { DateTo = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_date_to>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_date_to.CreateFromDiscriminatorValue); } },
-                { "distinct_ids", n => { DistinctIds = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_distinct_ids>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_distinct_ids.CreateFromDiscriminatorValue); } },
-                { "events", n => { Events = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_events>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_events.CreateFromDiscriminatorValue); } },
-                { "filter_test_accounts", n => { FilterTestAccounts = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_filter_test_accounts>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_filter_test_accounts.CreateFromDiscriminatorValue); } },
-                { "having_predicates", n => { HavingPredicates = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_having_predicates>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_having_predicates.CreateFromDiscriminatorValue); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_kind>(); } },
-                { "limit", n => { Limit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_limit>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_limit.CreateFromDiscriminatorValue); } },
-                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_modifiers>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_modifiers.CreateFromDiscriminatorValue); } },
-                { "offset", n => { Offset = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_offset>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_offset.CreateFromDiscriminatorValue); } },
-                { "operand", n => { Operand = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_operand>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_operand.CreateFromDiscriminatorValue); } },
-                { "order", n => { Order = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_order>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_order.CreateFromDiscriminatorValue); } },
-                { "order_direction", n => { OrderDirection = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_order_direction>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_order_direction.CreateFromDiscriminatorValue); } },
-                { "person_uuid", n => { PersonUuid = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_person_uuid>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_person_uuid.CreateFromDiscriminatorValue); } },
-                { "properties", n => { Properties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_properties>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_properties.CreateFromDiscriminatorValue); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_response>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_response.CreateFromDiscriminatorValue); } },
-                { "session_ids", n => { SessionIds = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_session_ids>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_session_ids.CreateFromDiscriminatorValue); } },
-                { "session_recording_id", n => { SessionRecordingId = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_session_recording_id>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_session_recording_id.CreateFromDiscriminatorValue); } },
-                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_tags>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_tags.CreateFromDiscriminatorValue); } },
-                { "user_modified_filters", n => { UserModifiedFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_user_modified_filters>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_user_modified_filters.CreateFromDiscriminatorValue); } },
-                { "version", n => { Version = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_version>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_version.CreateFromDiscriminatorValue); } },
+                { "actions", n => { Actions = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryActions>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryActions.CreateFromDiscriminatorValue); } },
+                { "after", n => { After = n.GetStringValue(); } },
+                { "comment_text", n => { CommentText = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingPropertyFilter>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingPropertyFilter.CreateFromDiscriminatorValue); } },
+                { "console_log_filters", n => { ConsoleLogFilters = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogEntryPropertyFilter>(global::Soenneker.PostHog.OpenApiClient.Models.LogEntryPropertyFilter.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "date_from", n => { DateFrom = n.GetStringValue(); } },
+                { "date_to", n => { DateTo = n.GetStringValue(); } },
+                { "distinct_ids", n => { DistinctIds = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryDistinctIds>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryDistinctIds.CreateFromDiscriminatorValue); } },
+                { "events", n => { Events = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryEvents>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryEvents.CreateFromDiscriminatorValue); } },
+                { "experiment_exposure", n => { ExperimentExposure = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryExperimentExposureFilter>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryExperimentExposureFilter.CreateFromDiscriminatorValue); } },
+                { "filter_test_accounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
+                { "having_predicates", n => { HavingPredicates = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryHavingPredicatesAnyOf1Item>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryHavingPredicatesAnyOf1Item.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "hide_viewed_recordings", n => { HideViewedRecordings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HideViewedRecordingsWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.HideViewedRecordingsWrapper.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
+                { "limit", n => { Limit = n.GetIntValue(); } },
+                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
+                { "offset", n => { Offset = n.GetIntValue(); } },
+                { "operand", n => { Operand = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FilterLogicalOperatorWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.FilterLogicalOperatorWrapper.CreateFromDiscriminatorValue); } },
+                { "order", n => { Order = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingOrderWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingOrderWrapper.CreateFromDiscriminatorValue); } },
+                { "order_direction", n => { OrderDirection = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingOrderDirectionWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingOrderDirectionWrapper.CreateFromDiscriminatorValue); } },
+                { "person_uuid", n => { PersonUuid = n.GetStringValue(); } },
+                { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryPropertiesAnyOf1Item>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryPropertiesAnyOf1Item.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryResponse.CreateFromDiscriminatorValue); } },
+                { "session_ids", n => { SessionIds = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuerySessionIds>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuerySessionIds.CreateFromDiscriminatorValue); } },
+                { "session_recording_id", n => { SessionRecordingId = n.GetStringValue(); } },
+                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
+                { "user_modified_filters", n => { UserModifiedFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryUserModifiedFilters>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryUserModifiedFilters.CreateFromDiscriminatorValue); } },
+                { "version", n => { Version = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -265,31 +265,33 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_actions>("actions", Actions);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_after>("after", After);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_comment_text>("comment_text", CommentText);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_console_log_filters>("console_log_filters", ConsoleLogFilters);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_date_from>("date_from", DateFrom);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_date_to>("date_to", DateTo);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_distinct_ids>("distinct_ids", DistinctIds);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_events>("events", Events);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_filter_test_accounts>("filter_test_accounts", FilterTestAccounts);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_having_predicates>("having_predicates", HavingPredicates);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_kind>("kind", Kind);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_limit>("limit", Limit);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_modifiers>("modifiers", Modifiers);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_offset>("offset", Offset);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_operand>("operand", Operand);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_order>("order", Order);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_order_direction>("order_direction", OrderDirection);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_person_uuid>("person_uuid", PersonUuid);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_properties>("properties", Properties);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_response>("response", Response);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_session_ids>("session_ids", SessionIds);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_session_recording_id>("session_recording_id", SessionRecordingId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_tags>("tags", Tags);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_user_modified_filters>("user_modified_filters", UserModifiedFilters);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuery_version>("version", Version);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryActions>("actions", Actions);
+            writer.WriteStringValue("after", After);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingPropertyFilter>("comment_text", CommentText);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogEntryPropertyFilter>("console_log_filters", ConsoleLogFilters);
+            writer.WriteStringValue("date_from", DateFrom);
+            writer.WriteStringValue("date_to", DateTo);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryDistinctIds>("distinct_ids", DistinctIds);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryEvents>("events", Events);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryExperimentExposureFilter>("experiment_exposure", ExperimentExposure);
+            writer.WriteBoolValue("filter_test_accounts", FilterTestAccounts);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryHavingPredicatesAnyOf1Item>("having_predicates", HavingPredicates);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HideViewedRecordingsWrapper>("hide_viewed_recordings", HideViewedRecordings);
+            writer.WriteStringValue("kind", Kind);
+            writer.WriteIntValue("limit", Limit);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
+            writer.WriteIntValue("offset", Offset);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FilterLogicalOperatorWrapper>("operand", Operand);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingOrderWrapper>("order", Order);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingOrderDirectionWrapper>("order_direction", OrderDirection);
+            writer.WriteStringValue("person_uuid", PersonUuid);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryPropertiesAnyOf1Item>("properties", Properties);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryResponse>("response", Response);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuerySessionIds>("session_ids", SessionIds);
+            writer.WriteStringValue("session_recording_id", SessionRecordingId);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryUserModifiedFilters>("user_modified_filters", UserModifiedFilters);
+            writer.WriteDoubleValue("version", Version);
         }
     }
 }

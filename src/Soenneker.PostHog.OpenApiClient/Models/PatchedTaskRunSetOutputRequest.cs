@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Output data from the run. Validated against the task&apos;s json_schema if one is set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskRunSetOutputRequest_output? Output { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskRunSetOutputRequestOutput? Output { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskRunSetOutputRequest_output Output { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskRunSetOutputRequestOutput Output { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskRunSetOutputRequest"/> and sets the default values.
@@ -47,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "output", n => { Output = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskRunSetOutputRequest_output>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskRunSetOutputRequest_output.CreateFromDiscriminatorValue); } },
+                { "output", n => { Output = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskRunSetOutputRequestOutput>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskRunSetOutputRequestOutput.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -57,7 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskRunSetOutputRequest_output>("output", Output);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskRunSetOutputRequestOutput>("output", Output);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

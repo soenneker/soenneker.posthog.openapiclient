@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Trending
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\insights\trending
+    /// Builds and executes requests for operations under \api\projects\{projectId}\insights\trending
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TrendingRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Trending
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TrendingRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/insights/trending{?days*,format*,limit*,offset*}", pathParameters)
+        public TrendingRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/insights/trending{?days*,format*,include_dashboards*,limit*,offset*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Trending
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TrendingRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/insights/trending{?days*,format*,limit*,offset*}", rawUrl)
+        public TrendingRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/insights/trending{?days*,format*,include_dashboards*,limit*,offset*}", rawUrl)
         {
         }
         /// <summary>
@@ -89,7 +89,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Trending
             [QueryParameter("days")]
             public int? Days { get; set; }
             [QueryParameter("format")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Trending.GetFormatQueryParameterType? Format { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.InsightsTrendingRetrieveFormatParameter? Format { get; set; }
+            /// <summary>Opt in to receiving the deprecated `dashboards` field in insight payloads. Once opt-in enforcement is enabled, API-token callers stop receiving it by default; use `dashboard_tiles` instead.</summary>
+            [QueryParameter("include_dashboards")]
+            public bool? IncludeDashboards { get; set; }
             /// <summary>Maximum number of insights to return. Defaults to 10. Capped at 100.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }

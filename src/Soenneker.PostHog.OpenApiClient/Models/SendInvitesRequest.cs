@@ -24,7 +24,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>If true (default), queue delivery via Celery. If false, send synchronously and surface errors immediately.</summary>
         public bool? SendAsync { get; set; }
-        /// <summary>Override the default email subject line. Defaults to a friendly prompt referencing the topic.</summary>
+        /// <summary>Override the email subject line for this send. Plain text only — URLs, angle brackets, and control characters are rejected. Falls back to the topic&apos;s saved subject, then a default.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Subject { get; set; }
@@ -38,6 +38,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public SendInvitesRequest()
         {
             AdditionalData = new Dictionary<string, object>();
+            SendAsync = true;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value

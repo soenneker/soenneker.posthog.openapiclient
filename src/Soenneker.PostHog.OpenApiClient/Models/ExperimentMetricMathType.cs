@@ -18,7 +18,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "unique_session")]
         #pragma warning disable CS1591
-        Unique_session,
+        UniqueSession,
         #pragma warning restore CS1591
         [EnumMember(Value = "min")]
         #pragma warning disable CS1591
@@ -38,7 +38,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "unique_group")]
         #pragma warning disable CS1591
-        Unique_group,
+        UniqueGroup,
         #pragma warning restore CS1591
         [EnumMember(Value = "hogql")]
         #pragma warning disable CS1591

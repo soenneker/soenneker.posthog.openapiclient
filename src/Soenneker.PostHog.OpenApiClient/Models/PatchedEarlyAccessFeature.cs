@@ -7,15 +7,32 @@ using System.IO;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
+    /// <summary>
+    /// Mixin for serializers to add user access control fields
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class PatchedEarlyAccessFeature : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>&quot;The person or role responsible for this feature, e.g. {\&quot;type\&quot;: \&quot;user\&quot;, \&quot;id\&quot;: 123} or {\&quot;type\&quot;: \&quot;role\&quot;, \&quot;id\&quot;: \&quot;&lt;role uuid&gt;\&quot;}. Defaults to the creator. Send null to unassign.&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEarlyAccessFeatureAssignee? Assignee { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEarlyAccessFeatureAssignee Assignee { get; private set; }
+#endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
+        /// <summary>The user who created this early access feature. Null for features created before creator tracking was added.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEarlyAccessFeatureCreatedBy? CreatedBy { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEarlyAccessFeatureCreatedBy CreatedBy { get; private set; }
+#endif
         /// <summary>A longer description of what this early access feature does, shown to users in the opt-in UI.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -35,10 +52,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The feature_flag property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEarlyAccessFeature_feature_flag? FeatureFlag { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEarlyAccessFeatureFeatureFlag? FeatureFlag { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEarlyAccessFeature_feature_flag FeatureFlag { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEarlyAccessFeatureFeatureFlag FeatureFlag { get; private set; }
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
@@ -53,13 +70,27 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Feature flag payload for this early access feature</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEarlyAccessFeature_payload? Payload { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEarlyAccessFeaturePayloadProperty? Payload { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEarlyAccessFeature_payload Payload { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEarlyAccessFeaturePayloadProperty Payload { get; set; }
 #endif
-        /// <summary>* `draft` - draft* `concept` - concept* `alpha` - alpha* `beta` - beta* `general-availability` - general availability* `archived` - archived</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.StageEnum? Stage { get; set; }
+        /// <summary>&quot;Lifecycle stage. Valid values: draft, concept, alpha, beta, general-availability, archived. Moving to an active stage (alpha/beta/general-availability) enables the feature flag for opted-in users.* `draft` - draft* `concept` - concept* `alpha` - alpha* `beta` - beta* `general-availability` - general availability* `archived` - archived&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEarlyAccessFeatureStage? Stage { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEarlyAccessFeatureStage Stage { get; set; }
+#endif
+        /// <summary>The effective access level the user has for this object</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? UserAccessLevel { get; private set; }
+#nullable restore
+#else
+        public string UserAccessLevel { get; private set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedEarlyAccessFeature"/> and sets the default values.
         /// </summary>
@@ -85,14 +116,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "assignee", n => { Assignee = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEarlyAccessFeatureAssignee>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedEarlyAccessFeatureAssignee.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEarlyAccessFeatureCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedEarlyAccessFeatureCreatedBy.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "documentation_url", n => { DocumentationUrl = n.GetStringValue(); } },
-                { "feature_flag", n => { FeatureFlag = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEarlyAccessFeature_feature_flag>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedEarlyAccessFeature_feature_flag.CreateFromDiscriminatorValue); } },
+                { "feature_flag", n => { FeatureFlag = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEarlyAccessFeatureFeatureFlag>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedEarlyAccessFeatureFeatureFlag.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "payload", n => { Payload = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEarlyAccessFeature_payload>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedEarlyAccessFeature_payload.CreateFromDiscriminatorValue); } },
-                { "stage", n => { Stage = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.StageEnum>(); } },
+                { "payload", n => { Payload = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEarlyAccessFeaturePayloadProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedEarlyAccessFeaturePayloadProperty.CreateFromDiscriminatorValue); } },
+                { "stage", n => { Stage = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEarlyAccessFeatureStage>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedEarlyAccessFeatureStage.CreateFromDiscriminatorValue); } },
+                { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -105,7 +139,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("documentation_url", DocumentationUrl);
             writer.WriteStringValue("name", Name);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.StageEnum>("stage", Stage);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEarlyAccessFeaturePayloadProperty>("payload", Payload);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEarlyAccessFeatureStage>("stage", Stage);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

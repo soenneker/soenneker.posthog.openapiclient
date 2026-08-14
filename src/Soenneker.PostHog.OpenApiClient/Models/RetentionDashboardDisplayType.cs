@@ -10,11 +10,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "table_only")]
         #pragma warning disable CS1591
-        Table_only,
+        TableOnly,
         #pragma warning restore CS1591
         [EnumMember(Value = "graph_only")]
         #pragma warning disable CS1591
-        Graph_only,
+        GraphOnly,
         #pragma warning restore CS1591
         [EnumMember(Value = "all")]
         #pragma warning disable CS1591

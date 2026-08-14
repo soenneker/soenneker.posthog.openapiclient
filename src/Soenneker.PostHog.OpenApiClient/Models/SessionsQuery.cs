@@ -13,118 +13,100 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning restore CS1591
     {
         /// <summary>Filter sessions by action - sessions that contain events matching this action</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_actionId? ActionId { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_actionId ActionId { get; set; }
-#endif
+        public int? ActionId { get; set; }
         /// <summary>Only fetch sessions that started after this timestamp</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_after? After { get; set; }
+        public string? After { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_after After { get; set; }
+        public string After { get; set; }
 #endif
         /// <summary>Only fetch sessions that started before this timestamp</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_before? Before { get; set; }
+        public string? Before { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_before Before { get; set; }
+        public string Before { get; set; }
 #endif
         /// <summary>Filter sessions by event name - sessions that contain this event</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_event? Event { get; set; }
+        public string? Event { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_event Event { get; set; }
+        public string Event { get; set; }
 #endif
         /// <summary>Event property filters - filters sessions that contain events matching these properties</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_eventProperties? EventProperties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryEventPropertiesAnyOf1Item>? EventProperties { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_eventProperties EventProperties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryEventPropertiesAnyOf1Item> EventProperties { get; set; }
 #endif
         /// <summary>Filter test accounts</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_filterTestAccounts? FilterTestAccounts { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_filterTestAccounts FilterTestAccounts { get; set; }
-#endif
+        public bool? FilterTestAccounts { get; set; }
         /// <summary>Fixed properties in the query, can&apos;t be edited in the interface (e.g. scoping down by person)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_fixedProperties? FixedProperties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryFixedPropertiesAnyOf1Item>? FixedProperties { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_fixedProperties FixedProperties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryFixedPropertiesAnyOf1Item> FixedProperties { get; set; }
 #endif
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_kind? Kind { get; set; }
-        /// <summary>Number of rows to return</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_limit? Limit { get; set; }
+        public string? Kind { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_limit Limit { get; set; }
+        public string Kind { get; set; }
 #endif
+        /// <summary>Number of rows to return</summary>
+        public int? Limit { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_modifiers? Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers? Modifiers { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_modifiers Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers Modifiers { get; set; }
 #endif
         /// <summary>Number of rows to skip before returning rows</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_offset? Offset { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_offset Offset { get; set; }
-#endif
+        public int? Offset { get; set; }
         /// <summary>Columns to order by</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_orderBy? OrderBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryOrderBy? OrderBy { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_orderBy OrderBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryOrderBy OrderBy { get; set; }
 #endif
         /// <summary>Show sessions for a given person</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_personId? PersonId { get; set; }
+        public string? PersonId { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_personId PersonId { get; set; }
+        public string PersonId { get; set; }
 #endif
         /// <summary>Properties configurable in the interface</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_properties? Properties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryPropertiesAnyOf1Item>? Properties { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_properties Properties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryPropertiesAnyOf1Item> Properties { get; set; }
 #endif
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_response? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryResponse? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_response Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryResponse Response { get; set; }
 #endif
         /// <summary>Return a limited set of data. Required.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -137,34 +119,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_tags? Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags? Tags { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_tags Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags Tags { get; set; }
 #endif
         /// <summary>version of the node, used for schema migrations</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_version? Version { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_version Version { get; set; }
-#endif
+        public double? Version { get; set; }
         /// <summary>HogQL filters to apply on returned data</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_where? Where { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryWhere? Where { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_where Where { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryWhere Where { get; set; }
 #endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery"/> and sets the default values.
-        /// </summary>
-        public SessionsQuery()
-        {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_kind.SessionsQuery;
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -183,25 +152,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "actionId", n => { ActionId = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_actionId>(global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_actionId.CreateFromDiscriminatorValue); } },
-                { "after", n => { After = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_after>(global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_after.CreateFromDiscriminatorValue); } },
-                { "before", n => { Before = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_before>(global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_before.CreateFromDiscriminatorValue); } },
-                { "event", n => { Event = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_event>(global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_event.CreateFromDiscriminatorValue); } },
-                { "eventProperties", n => { EventProperties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_eventProperties>(global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_eventProperties.CreateFromDiscriminatorValue); } },
-                { "filterTestAccounts", n => { FilterTestAccounts = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_filterTestAccounts>(global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_filterTestAccounts.CreateFromDiscriminatorValue); } },
-                { "fixedProperties", n => { FixedProperties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_fixedProperties>(global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_fixedProperties.CreateFromDiscriminatorValue); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_kind>(); } },
-                { "limit", n => { Limit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_limit>(global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_limit.CreateFromDiscriminatorValue); } },
-                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_modifiers>(global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_modifiers.CreateFromDiscriminatorValue); } },
-                { "offset", n => { Offset = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_offset>(global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_offset.CreateFromDiscriminatorValue); } },
-                { "orderBy", n => { OrderBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_orderBy>(global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_orderBy.CreateFromDiscriminatorValue); } },
-                { "personId", n => { PersonId = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_personId>(global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_personId.CreateFromDiscriminatorValue); } },
-                { "properties", n => { Properties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_properties>(global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_properties.CreateFromDiscriminatorValue); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_response>(global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_response.CreateFromDiscriminatorValue); } },
+                { "actionId", n => { ActionId = n.GetIntValue(); } },
+                { "after", n => { After = n.GetStringValue(); } },
+                { "before", n => { Before = n.GetStringValue(); } },
+                { "event", n => { Event = n.GetStringValue(); } },
+                { "eventProperties", n => { EventProperties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryEventPropertiesAnyOf1Item>(global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryEventPropertiesAnyOf1Item.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "filterTestAccounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
+                { "fixedProperties", n => { FixedProperties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryFixedPropertiesAnyOf1Item>(global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryFixedPropertiesAnyOf1Item.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
+                { "limit", n => { Limit = n.GetIntValue(); } },
+                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
+                { "offset", n => { Offset = n.GetIntValue(); } },
+                { "orderBy", n => { OrderBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryOrderBy>(global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryOrderBy.CreateFromDiscriminatorValue); } },
+                { "personId", n => { PersonId = n.GetStringValue(); } },
+                { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryPropertiesAnyOf1Item>(global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryPropertiesAnyOf1Item.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryResponse.CreateFromDiscriminatorValue); } },
                 { "select", n => { Select = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_tags>(global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_tags.CreateFromDiscriminatorValue); } },
-                { "version", n => { Version = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_version>(global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_version.CreateFromDiscriminatorValue); } },
-                { "where", n => { Where = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_where>(global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_where.CreateFromDiscriminatorValue); } },
+                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
+                { "version", n => { Version = n.GetDoubleValue(); } },
+                { "where", n => { Where = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryWhere>(global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryWhere.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -211,25 +180,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_actionId>("actionId", ActionId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_after>("after", After);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_before>("before", Before);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_event>("event", Event);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_eventProperties>("eventProperties", EventProperties);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_filterTestAccounts>("filterTestAccounts", FilterTestAccounts);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_fixedProperties>("fixedProperties", FixedProperties);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_kind>("kind", Kind);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_limit>("limit", Limit);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_modifiers>("modifiers", Modifiers);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_offset>("offset", Offset);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_orderBy>("orderBy", OrderBy);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_personId>("personId", PersonId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_properties>("properties", Properties);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_response>("response", Response);
+            writer.WriteIntValue("actionId", ActionId);
+            writer.WriteStringValue("after", After);
+            writer.WriteStringValue("before", Before);
+            writer.WriteStringValue("event", Event);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryEventPropertiesAnyOf1Item>("eventProperties", EventProperties);
+            writer.WriteBoolValue("filterTestAccounts", FilterTestAccounts);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryFixedPropertiesAnyOf1Item>("fixedProperties", FixedProperties);
+            writer.WriteStringValue("kind", Kind);
+            writer.WriteIntValue("limit", Limit);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
+            writer.WriteIntValue("offset", Offset);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryOrderBy>("orderBy", OrderBy);
+            writer.WriteStringValue("personId", PersonId);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryPropertiesAnyOf1Item>("properties", Properties);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryResponse>("response", Response);
             writer.WriteCollectionOfPrimitiveValues<string>("select", Select);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_tags>("tags", Tags);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_version>("version", Version);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery_where>("where", Where);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
+            writer.WriteDoubleValue("version", Version);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryWhere>("where", Where);
         }
     }
 }

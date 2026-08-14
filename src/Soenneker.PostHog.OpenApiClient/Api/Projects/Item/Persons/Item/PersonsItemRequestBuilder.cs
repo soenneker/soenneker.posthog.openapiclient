@@ -5,7 +5,9 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Item.Activity;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Item.Delete_property;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Item.Emails;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Item.Properties_timeline;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Item.Push_notifications;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Item.Split;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Item.Update_property;
 using Soenneker.PostHog.OpenApiClient.Models;
@@ -17,7 +19,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\persons\{id}
+    /// Builds and executes requests for operations under \api\projects\{projectId}\persons\{id}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PersonsItemRequestBuilder : BaseRequestBuilder
@@ -32,10 +34,20 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Item
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Item.Delete_property.Delete_propertyRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The emails property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Item.Emails.EmailsRequestBuilder Emails
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Item.Emails.EmailsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The properties_timeline property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Item.Properties_timeline.Properties_timelineRequestBuilder Properties_timeline
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Item.Properties_timeline.Properties_timelineRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The push_notifications property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Item.Push_notifications.Push_notificationsRequestBuilder Push_notifications
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Item.Push_notifications.Push_notificationsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The split property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Item.Split.SplitRequestBuilder Split
@@ -52,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Item
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public PersonsItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/persons/{id}{?format*}", pathParameters)
+        public PersonsItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/persons/{id}{?format*}", pathParameters)
         {
         }
         /// <summary>
@@ -60,7 +72,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Item
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public PersonsItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/persons/{id}{?format*}", rawUrl)
+        public PersonsItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/persons/{id}{?format*}", rawUrl)
         {
         }
         /// <summary>
@@ -200,7 +212,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Item
         public partial class PersonsItemRequestBuilderGetQueryParameters 
         {
             [QueryParameter("format")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Item.GetFormatQueryParameterType? Format { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.PersonsRetrieveFormatParameter? Format { get; set; }
         }
         /// <summary>
         /// This endpoint is meant for reading and deleting persons. To create or update persons, we recommend using the [capture API](https://posthog.com/docs/api/capture), the `$set` and `$unset` [properties](https://posthog.com/docs/product-analytics/user-properties), or one of our SDKs.
@@ -209,7 +221,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Item
         public partial class PersonsItemRequestBuilderPatchQueryParameters 
         {
             [QueryParameter("format")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Item.PatchFormatQueryParameterType? Format { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.PersonsPartialUpdateFormatParameter? Format { get; set; }
         }
         /// <summary>
         /// Only for setting properties on the person. &quot;properties&quot; from the request data will be updated via a &quot;$set&quot; event.This means that only the properties listed will be updated, but other properties won&apos;t be removed nor updated.If you would like to remove a property use the `delete_property` endpoint.
@@ -218,7 +230,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Item
         public partial class PersonsItemRequestBuilderPutQueryParameters 
         {
             [QueryParameter("format")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Item.PutFormatQueryParameterType? Format { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.PersonsUpdateFormatParameter? Format { get; set; }
         }
     }
 }

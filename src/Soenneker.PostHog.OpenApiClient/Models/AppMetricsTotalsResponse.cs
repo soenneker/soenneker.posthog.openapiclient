@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The totals property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AppMetricsTotalsResponse_totals? Totals { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AppMetricsTotalsResponseTotalsProperty? Totals { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AppMetricsTotalsResponse_totals Totals { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AppMetricsTotalsResponseTotalsProperty Totals { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AppMetricsTotalsResponse"/> and sets the default values.
@@ -47,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "totals", n => { Totals = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AppMetricsTotalsResponse_totals>(global::Soenneker.PostHog.OpenApiClient.Models.AppMetricsTotalsResponse_totals.CreateFromDiscriminatorValue); } },
+                { "totals", n => { Totals = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AppMetricsTotalsResponseTotalsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.AppMetricsTotalsResponseTotalsProperty.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -57,7 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AppMetricsTotalsResponse_totals>("totals", Totals);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AppMetricsTotalsResponseTotalsProperty>("totals", Totals);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

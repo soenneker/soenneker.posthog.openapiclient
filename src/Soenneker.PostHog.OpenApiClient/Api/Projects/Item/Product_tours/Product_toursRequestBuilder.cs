@@ -13,7 +13,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Product_tours
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\product_tours
+    /// Builds and executes requests for operations under \api\projects\{projectId}\product_tours
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Product_toursRequestBuilder : BaseRequestBuilder
@@ -35,7 +35,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Product_tours
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Product_toursRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/product_tours{?limit*,offset*,search*}", pathParameters)
+        public Product_toursRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/product_tours{?limit*,offset*,search*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,9 +43,12 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Product_tours
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Product_toursRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/product_tours{?limit*,offset*,search*}", rawUrl)
+        public Product_toursRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/product_tours{?limit*,offset*,search*}", rawUrl)
         {
         }
+        /// <summary>
+        /// Create, read, update, and manage product tours and their targeting.
+        /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedProductTourList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -61,6 +64,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Product_tours
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedProductTourList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedProductTourList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
+        /// <summary>
+        /// Create, read, update, and manage product tours and their targeting.
+        /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ProductTourSerializerCreateUpdateOnly"/></returns>
         /// <param name="body">Serializer for creating and updating ProductTour.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -78,6 +84,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Product_tours
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ProductTourSerializerCreateUpdateOnly>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ProductTourSerializerCreateUpdateOnly.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
+        /// <summary>
+        /// Create, read, update, and manage product tours and their targeting.
+        /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -94,6 +103,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Product_tours
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
+        /// <summary>
+        /// Create, read, update, and manage product tours and their targeting.
+        /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">Serializer for creating and updating ProductTour.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -122,10 +134,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Product_tours
         {
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Product_tours.Product_toursRequestBuilder(rawUrl, RequestAdapter);
         }
+        /// <summary>
+        /// Create, read, update, and manage product tours and their targeting.
+        /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        #pragma warning disable CS1591
         public partial class Product_toursRequestBuilderGetQueryParameters 
-        #pragma warning restore CS1591
         {
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
@@ -133,7 +146,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Product_tours
             /// <summary>The initial index from which to return the results.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
-            /// <summary>Fuzzy match against product tour `name` and `description` using Postgres trigram word similarity. Supports typos and prefix-as-you-type.</summary>
+            /// <summary>Match against product tour `name` and `description`. Returns exact (case-insensitive substring) matches only; if no exact match exists, returns similar (fuzzy trigram — typos, prefix-as-you-type) matches instead. Each result&apos;s `search_match_type` is `exact` or `similar`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("search")]

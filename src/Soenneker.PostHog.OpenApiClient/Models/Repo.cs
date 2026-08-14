@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The baseline_file_paths property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.Repo_baseline_file_paths? BaselineFilePaths { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RepoBaselineFilePathsProperty? BaselineFilePaths { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.Repo_baseline_file_paths BaselineFilePaths { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RepoBaselineFilePathsProperty BaselineFilePaths { get; set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; set; }
@@ -65,7 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "baseline_file_paths", n => { BaselineFilePaths = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Repo_baseline_file_paths>(global::Soenneker.PostHog.OpenApiClient.Models.Repo_baseline_file_paths.CreateFromDiscriminatorValue); } },
+                { "baseline_file_paths", n => { BaselineFilePaths = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RepoBaselineFilePathsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.RepoBaselineFilePathsProperty.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "enable_pr_comments", n => { EnablePrComments = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
@@ -81,7 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Repo_baseline_file_paths>("baseline_file_paths", BaselineFilePaths);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RepoBaselineFilePathsProperty>("baseline_file_paths", BaselineFilePaths);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteBoolValue("enable_pr_comments", EnablePrComments);
             writer.WriteGuidValue("id", Id);

@@ -17,20 +17,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The colors property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataColorTheme_colors? Colors { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataColorThemeColors? Colors { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataColorTheme_colors Colors { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataColorThemeColors Colors { get; set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataColorTheme_created_by? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataColorThemeCreatedBy? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataColorTheme_created_by CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataColorThemeCreatedBy CreatedBy { get; private set; }
 #endif
         /// <summary>The id property</summary>
         public int? Id { get; private set; }
@@ -69,9 +69,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "colors", n => { Colors = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataColorTheme_colors>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataColorTheme_colors.CreateFromDiscriminatorValue); } },
+                { "colors", n => { Colors = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataColorThemeColors>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataColorThemeColors.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataColorTheme_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataColorTheme_created_by.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataColorThemeCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataColorThemeCreatedBy.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetIntValue(); } },
                 { "is_global", n => { IsGlobal = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
@@ -84,7 +84,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataColorTheme_colors>("colors", Colors);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataColorThemeColors>("colors", Colors);
             writer.WriteStringValue("name", Name);
             writer.WriteAdditionalData(AdditionalData);
         }

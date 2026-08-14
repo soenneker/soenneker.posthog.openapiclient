@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_definitions.Bulk_update_tags;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_definitions.Bulk_update_verified;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_definitions.By_name;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_definitions.Golang;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_definitions.Item;
@@ -19,7 +20,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_definitions
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\event_definitions
+    /// Builds and executes requests for operations under \api\projects\{projectId}\event_definitions
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Event_definitionsRequestBuilder : BaseRequestBuilder
@@ -28,6 +29,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_definitions
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_definitions.Bulk_update_tags.Bulk_update_tagsRequestBuilder Bulk_update_tags
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_definitions.Bulk_update_tags.Bulk_update_tagsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The bulk_update_verified property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_definitions.Bulk_update_verified.Bulk_update_verifiedRequestBuilder Bulk_update_verified
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_definitions.Bulk_update_verified.Bulk_update_verifiedRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The by_name property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_definitions.By_name.By_nameRequestBuilder By_name
@@ -71,7 +77,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_definitions
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Event_definitionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/event_definitions{?exclude_hidden*,exclude_stale*,limit*,offset*}", pathParameters)
+        public Event_definitionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/event_definitions{?exclude_hidden*,exclude_stale*,limit*,names*,offset*}", pathParameters)
         {
         }
         /// <summary>
@@ -79,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_definitions
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Event_definitionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/event_definitions{?exclude_hidden*,exclude_stale*,limit*,offset*}", rawUrl)
+        public Event_definitionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/event_definitions{?exclude_hidden*,exclude_stale*,limit*,names*,offset*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedEnterpriseEventDefinitionList"/></returns>
@@ -172,6 +178,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_definitions
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
+            /// <summary>Return exact matches for these event names. Pass names as repeated or comma-separated values.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("names")]
+            public string[]? Names { get; set; }
+#nullable restore
+#else
+            [QueryParameter("names")]
+            public string[] Names { get; set; }
+#endif
             /// <summary>The initial index from which to return the results.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }

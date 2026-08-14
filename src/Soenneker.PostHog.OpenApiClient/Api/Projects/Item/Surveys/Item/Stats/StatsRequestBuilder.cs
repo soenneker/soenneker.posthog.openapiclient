@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Stats
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\surveys\{id}\stats
+    /// Builds and executes requests for operations under \api\projects\{projectId}\surveys\{id}\stats
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class StatsRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Stats
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public StatsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/surveys/{id}/stats{?date_from*,date_to*}", pathParameters)
+        public StatsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/surveys/{id}/stats{?date_from*,date_to*,include_per_question_stats*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,11 +30,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Stats
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public StatsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/surveys/{id}/stats{?date_from*,date_to*}", rawUrl)
+        public StatsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/surveys/{id}/stats{?date_from*,date_to*,include_per_question_stats*}", rawUrl)
         {
         }
         /// <summary>
-        /// &quot;Get survey response statistics for a specific survey.Args:    date_from: Optional ISO timestamp for start date (e.g. 2024-01-01T00:00:00Z)    date_to: Optional ISO timestamp for end date (e.g. 2024-01-31T23:59:59Z)    exclude_archived: Optional boolean to exclude archived responses (default: false, includes archived)Returns:    Survey statistics including event counts, unique respondents, and conversion rates&quot;
+        /// &quot;Get survey response statistics for a specific survey.Args:    date_from: Optional ISO timestamp for start date (e.g. 2024-01-01T00:00:00Z)    date_to: Optional ISO timestamp for end date (e.g. 2024-01-31T23:59:59Z)    exclude_archived: Optional boolean to exclude archived responses (default: false, includes archived)    include_per_question_stats: Optional boolean to include per-question response counts and distributionsReturns:    Survey statistics including event counts, unique respondents, and conversion rates&quot;
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SurveyStatsResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Stats
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SurveyStatsResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SurveyStatsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Get survey response statistics for a specific survey.Args:    date_from: Optional ISO timestamp for start date (e.g. 2024-01-01T00:00:00Z)    date_to: Optional ISO timestamp for end date (e.g. 2024-01-31T23:59:59Z)    exclude_archived: Optional boolean to exclude archived responses (default: false, includes archived)Returns:    Survey statistics including event counts, unique respondents, and conversion rates&quot;
+        /// &quot;Get survey response statistics for a specific survey.Args:    date_from: Optional ISO timestamp for start date (e.g. 2024-01-01T00:00:00Z)    date_to: Optional ISO timestamp for end date (e.g. 2024-01-31T23:59:59Z)    exclude_archived: Optional boolean to exclude archived responses (default: false, includes archived)    include_per_question_stats: Optional boolean to include per-question response counts and distributionsReturns:    Survey statistics including event counts, unique respondents, and conversion rates&quot;
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -80,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Stats
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Stats.StatsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// &quot;Get survey response statistics for a specific survey.Args:    date_from: Optional ISO timestamp for start date (e.g. 2024-01-01T00:00:00Z)    date_to: Optional ISO timestamp for end date (e.g. 2024-01-31T23:59:59Z)    exclude_archived: Optional boolean to exclude archived responses (default: false, includes archived)Returns:    Survey statistics including event counts, unique respondents, and conversion rates&quot;
+        /// &quot;Get survey response statistics for a specific survey.Args:    date_from: Optional ISO timestamp for start date (e.g. 2024-01-01T00:00:00Z)    date_to: Optional ISO timestamp for end date (e.g. 2024-01-31T23:59:59Z)    exclude_archived: Optional boolean to exclude archived responses (default: false, includes archived)    include_per_question_stats: Optional boolean to include per-question response counts and distributionsReturns:    Survey statistics including event counts, unique respondents, and conversion rates&quot;
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class StatsRequestBuilderGetQueryParameters 
@@ -91,6 +91,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Stats
             /// <summary>Optional ISO timestamp for end date (e.g. 2024-01-31T23:59:59Z)</summary>
             [QueryParameter("date_to")]
             public DateTimeOffset? DateTo { get; set; }
+            /// <summary>When true, also return per-question response counts and answer distributions. Adds one extra HogQL query per question, so leave off unless you need the breakdown.</summary>
+            [QueryParameter("include_per_question_stats")]
+            public bool? IncludePerQuestionStats { get; set; }
         }
     }
 }

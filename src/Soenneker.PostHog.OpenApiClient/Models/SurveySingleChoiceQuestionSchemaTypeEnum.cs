@@ -9,7 +9,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "single_choice")]
         #pragma warning disable CS1591
-        Single_choice,
+        SingleChoice,
         #pragma warning restore CS1591
     }
 }

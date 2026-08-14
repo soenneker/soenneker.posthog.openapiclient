@@ -57,10 +57,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The events_column_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_events_column_config? EventsColumnConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserEventsColumnConfig? EventsColumnConfig { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_events_column_config EventsColumnConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserEventsColumnConfig EventsColumnConfig { get; set; }
 #endif
         /// <summary>The first_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -75,10 +75,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The has_seen_product_intro_for property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_has_seen_product_intro_for? HasSeenProductIntroFor { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserHasSeenProductIntroFor? HasSeenProductIntroFor { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_has_seen_product_intro_for HasSeenProductIntroFor { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserHasSeenProductIntroFor HasSeenProductIntroFor { get; set; }
 #endif
         /// <summary>The has_social_auth property</summary>
         public bool? HasSocialAuth { get; private set; }
@@ -87,10 +87,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The hedgehog_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_hedgehog_config? HedgehogConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserHedgehogConfig? HedgehogConfig { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_hedgehog_config HedgehogConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserHedgehogConfig HedgehogConfig { get; set; }
 #endif
         /// <summary>When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions.</summary>
         public bool? HideMcpHints { get; set; }
@@ -104,6 +104,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? IsImpersonated { get; private set; }
         /// <summary>The is_impersonated_read_only property</summary>
         public bool? IsImpersonatedReadOnly { get; private set; }
+        /// <summary>The reason the operator gave when the current impersonation session started (or was last up/downgraded). Null when not impersonating.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? IsImpersonatedReason { get; private set; }
+#nullable restore
+#else
+        public string IsImpersonatedReason { get; private set; }
+#endif
         /// <summary>The is_impersonated_until property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -127,10 +135,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_notification_settings? NotificationSettings { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserNotificationSettingsProperty? NotificationSettings { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_notification_settings NotificationSettings { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserNotificationSettingsProperty NotificationSettings { get; set; }
 #endif
         /// <summary>The onboarding_delegated_to_invite property</summary>
         public Guid? OnboardingDelegatedToInvite { get; private set; }
@@ -145,18 +153,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The onboarding_skipped_reason property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_onboarding_skipped_reason? OnboardingSkippedReason { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserOnboardingSkippedReason? OnboardingSkippedReason { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_onboarding_skipped_reason OnboardingSkippedReason { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserOnboardingSkippedReason OnboardingSkippedReason { get; private set; }
 #endif
         /// <summary>The organization property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_organization? Organization { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserOrganization? Organization { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_organization Organization { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserOrganization Organization { get; private set; }
 #endif
         /// <summary>The organizations property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -192,9 +200,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.PendingInvite> PendingInvites { get; private set; }
 #endif
-        /// <summary>True if the user has at least one Personal API Key and has not yet acknowledged their existing credentials. Used to gate a one-shot review screen on first post-provisioning login. Becomes False once the user POSTs to `/api/users/@me/credentials_review_complete/`. Read-only.</summary>
+        /// <summary>True if the user has at least one Personal API Key or passkey and has not yet acknowledged their existing credentials. Used to gate a one-shot review screen on first post-provisioning login. Becomes False once the user POSTs to `/api/users/@me/credentials_review_complete/`. Read-only.</summary>
         public bool? RequiresCredentialReview { get; private set; }
-        /// <summary>* `engineering` - Engineering* `data` - Data* `product` - Product Management* `founder` - Founder* `leadership` - Leadership* `marketing` - Marketing* `sales` - Sales / Success* `other` - Other</summary>
+        /// <summary>* `engineering` - Engineering* `data` - Data* `product` - Product Management* `founder` - Founder* `leadership` - Leadership* `marketing` - Marketing* `sales` - Sales / Success* `student` - Student* `other` - Other</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.RoleAtOrganizationEnum? RoleAtOrganization { get; set; }
         /// <summary>The scene_personalisation property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -231,34 +239,42 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The shortcut_position property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser.PatchedUser_shortcut_position? ShortcutPosition { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserShortcutPosition? ShortcutPosition { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser.PatchedUser_shortcut_position ShortcutPosition { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserShortcutPosition ShortcutPosition { get; set; }
 #endif
         /// <summary>The team property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_team? Team { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserTeam? Team { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_team Team { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserTeam Team { get; private set; }
 #endif
         /// <summary>The theme_mode property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser.PatchedUser_theme_mode? ThemeMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserThemeMode? ThemeMode { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser.PatchedUser_theme_mode ThemeMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserThemeMode ThemeMode { get; set; }
 #endif
         /// <summary>The toolbar_mode property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser.PatchedUser_toolbar_mode? ToolbarMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserToolbarMode? ToolbarMode { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser.PatchedUser_toolbar_mode ToolbarMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserToolbarMode ToolbarMode { get; set; }
+#endif
+        /// <summary>&quot;Per-user UI customization, validated against the `UserUIConfiguration` schema. Currently covers sidebar section and item visibility. Send the complete object: it replaces the stored value wholesale. Null means no customization; absent keys mean the element is shown.&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserUiConfiguration? UiConfiguration { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserUiConfiguration UiConfiguration { get; set; }
 #endif
         /// <summary>The uuid property</summary>
         public Guid? Uuid { get; private set; }
@@ -295,31 +311,32 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "date_joined", n => { DateJoined = n.GetDateTimeOffsetValue(); } },
                 { "distinct_id", n => { DistinctId = n.GetStringValue(); } },
                 { "email", n => { Email = n.GetStringValue(); } },
-                { "events_column_config", n => { EventsColumnConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_events_column_config>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_events_column_config.CreateFromDiscriminatorValue); } },
+                { "events_column_config", n => { EventsColumnConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserEventsColumnConfig>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserEventsColumnConfig.CreateFromDiscriminatorValue); } },
                 { "first_name", n => { FirstName = n.GetStringValue(); } },
                 { "has_password", n => { HasPassword = n.GetBoolValue(); } },
-                { "has_seen_product_intro_for", n => { HasSeenProductIntroFor = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_has_seen_product_intro_for>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_has_seen_product_intro_for.CreateFromDiscriminatorValue); } },
+                { "has_seen_product_intro_for", n => { HasSeenProductIntroFor = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserHasSeenProductIntroFor>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserHasSeenProductIntroFor.CreateFromDiscriminatorValue); } },
                 { "has_social_auth", n => { HasSocialAuth = n.GetBoolValue(); } },
                 { "has_sso_enforcement", n => { HasSsoEnforcement = n.GetBoolValue(); } },
-                { "hedgehog_config", n => { HedgehogConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_hedgehog_config>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_hedgehog_config.CreateFromDiscriminatorValue); } },
+                { "hedgehog_config", n => { HedgehogConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserHedgehogConfig>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserHedgehogConfig.CreateFromDiscriminatorValue); } },
                 { "hide_mcp_hints", n => { HideMcpHints = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetIntValue(); } },
                 { "is_2fa_enabled", n => { Is2faEnabled = n.GetBoolValue(); } },
                 { "is_email_verified", n => { IsEmailVerified = n.GetBoolValue(); } },
                 { "is_impersonated", n => { IsImpersonated = n.GetBoolValue(); } },
                 { "is_impersonated_read_only", n => { IsImpersonatedReadOnly = n.GetBoolValue(); } },
+                { "is_impersonated_reason", n => { IsImpersonatedReason = n.GetStringValue(); } },
                 { "is_impersonated_until", n => { IsImpersonatedUntil = n.GetStringValue(); } },
                 { "is_organization_first_user", n => { IsOrganizationFirstUser = n.GetBoolValue(); } },
                 { "is_staff", n => { IsStaff = n.GetBoolValue(); } },
                 { "last_name", n => { LastName = n.GetStringValue(); } },
-                { "notification_settings", n => { NotificationSettings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_notification_settings>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_notification_settings.CreateFromDiscriminatorValue); } },
+                { "notification_settings", n => { NotificationSettings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserNotificationSettingsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserNotificationSettingsProperty.CreateFromDiscriminatorValue); } },
                 { "onboarding_delegated_to_invite", n => { OnboardingDelegatedToInvite = n.GetGuidValue(); } },
                 { "onboarding_delegated_to_organization_id", n => { OnboardingDelegatedToOrganizationId = n.GetGuidValue(); } },
                 { "onboarding_delegation_accepted_at", n => { OnboardingDelegationAcceptedAt = n.GetDateTimeOffsetValue(); } },
                 { "onboarding_skipped_at", n => { OnboardingSkippedAt = n.GetDateTimeOffsetValue(); } },
                 { "onboarding_skipped_organization_id", n => { OnboardingSkippedOrganizationId = n.GetGuidValue(); } },
-                { "onboarding_skipped_reason", n => { OnboardingSkippedReason = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_onboarding_skipped_reason>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_onboarding_skipped_reason.CreateFromDiscriminatorValue); } },
-                { "organization", n => { Organization = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_organization>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_organization.CreateFromDiscriminatorValue); } },
+                { "onboarding_skipped_reason", n => { OnboardingSkippedReason = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserOnboardingSkippedReason>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserOnboardingSkippedReason.CreateFromDiscriminatorValue); } },
+                { "organization", n => { Organization = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserOrganization>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserOrganization.CreateFromDiscriminatorValue); } },
                 { "organizations", n => { Organizations = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationBasic>(global::Soenneker.PostHog.OpenApiClient.Models.OrganizationBasic.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "passkeys_enabled_for_2fa", n => { PasskeysEnabledFor2fa = n.GetBoolValue(); } },
                 { "password", n => { Password = n.GetStringValue(); } },
@@ -331,10 +348,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "sensitive_session_expires_at", n => { SensitiveSessionExpiresAt = n.GetStringValue(); } },
                 { "set_current_organization", n => { SetCurrentOrganization = n.GetStringValue(); } },
                 { "set_current_team", n => { SetCurrentTeam = n.GetStringValue(); } },
-                { "shortcut_position", n => { ShortcutPosition = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser.PatchedUser_shortcut_position>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser.PatchedUser_shortcut_position.CreateFromDiscriminatorValue); } },
-                { "team", n => { Team = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_team>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_team.CreateFromDiscriminatorValue); } },
-                { "theme_mode", n => { ThemeMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser.PatchedUser_theme_mode>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser.PatchedUser_theme_mode.CreateFromDiscriminatorValue); } },
-                { "toolbar_mode", n => { ToolbarMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser.PatchedUser_toolbar_mode>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser.PatchedUser_toolbar_mode.CreateFromDiscriminatorValue); } },
+                { "shortcut_position", n => { ShortcutPosition = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserShortcutPosition>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserShortcutPosition.CreateFromDiscriminatorValue); } },
+                { "team", n => { Team = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserTeam>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserTeam.CreateFromDiscriminatorValue); } },
+                { "theme_mode", n => { ThemeMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserThemeMode>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserThemeMode.CreateFromDiscriminatorValue); } },
+                { "toolbar_mode", n => { ToolbarMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserToolbarMode>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserToolbarMode.CreateFromDiscriminatorValue); } },
+                { "ui_configuration", n => { UiConfiguration = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserUiConfiguration>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserUiConfiguration.CreateFromDiscriminatorValue); } },
                 { "uuid", n => { Uuid = n.GetGuidValue(); } },
             };
         }
@@ -350,308 +368,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("anonymize_data", AnonymizeData);
             writer.WriteStringValue("current_password", CurrentPassword);
             writer.WriteStringValue("email", Email);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_events_column_config>("events_column_config", EventsColumnConfig);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserEventsColumnConfig>("events_column_config", EventsColumnConfig);
             writer.WriteStringValue("first_name", FirstName);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_has_seen_product_intro_for>("has_seen_product_intro_for", HasSeenProductIntroFor);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_hedgehog_config>("hedgehog_config", HedgehogConfig);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserHasSeenProductIntroFor>("has_seen_product_intro_for", HasSeenProductIntroFor);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserHedgehogConfig>("hedgehog_config", HedgehogConfig);
             writer.WriteBoolValue("hide_mcp_hints", HideMcpHints);
             writer.WriteBoolValue("is_staff", IsStaff);
             writer.WriteStringValue("last_name", LastName);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_notification_settings>("notification_settings", NotificationSettings);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserNotificationSettingsProperty>("notification_settings", NotificationSettings);
             writer.WriteBoolValue("passkeys_enabled_for_2fa", PasskeysEnabledFor2fa);
             writer.WriteStringValue("password", Password);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RoleAtOrganizationEnum>("role_at_organization", RoleAtOrganization);
             writer.WriteStringValue("set_current_organization", SetCurrentOrganization);
             writer.WriteStringValue("set_current_team", SetCurrentTeam);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser.PatchedUser_shortcut_position>("shortcut_position", ShortcutPosition);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser.PatchedUser_theme_mode>("theme_mode", ThemeMode);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser.PatchedUser_toolbar_mode>("toolbar_mode", ToolbarMode);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserShortcutPosition>("shortcut_position", ShortcutPosition);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserThemeMode>("theme_mode", ThemeMode);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserToolbarMode>("toolbar_mode", ToolbarMode);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserUiConfiguration>("ui_configuration", UiConfiguration);
             writer.WriteAdditionalData(AdditionalData);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_shortcut_positionMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ShortcutPositionEnum_Wrapper"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class PatchedUser_shortcut_position : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper? BlankEnumWrapper { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper BlankEnumWrapper { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_shortcut_positionMember1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_shortcut_positionMember1? PatchedUserShortcutPositionMember1 { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_shortcut_positionMember1 PatchedUserShortcutPositionMember1 { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ShortcutPositionEnum_Wrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.ShortcutPositionEnum_Wrapper? ShortcutPositionEnumWrapper { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.ShortcutPositionEnum_Wrapper ShortcutPositionEnumWrapper { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser.PatchedUser_shortcut_position"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser.PatchedUser_shortcut_position CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser.PatchedUser_shortcut_position();
-                if("BlankEnum_Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.BlankEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper();
-                }
-                else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.PatchedUserShortcutPositionMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_shortcut_positionMember1();
-                }
-                else if("ShortcutPositionEnum_Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.ShortcutPositionEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.ShortcutPositionEnum_Wrapper();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(BlankEnumWrapper != null)
-                {
-                    return BlankEnumWrapper.GetFieldDeserializers();
-                }
-                else if(PatchedUserShortcutPositionMember1 != null)
-                {
-                    return PatchedUserShortcutPositionMember1.GetFieldDeserializers();
-                }
-                else if(ShortcutPositionEnumWrapper != null)
-                {
-                    return ShortcutPositionEnumWrapper.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(BlankEnumWrapper != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper>(null, BlankEnumWrapper);
-                }
-                else if(PatchedUserShortcutPositionMember1 != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_shortcut_positionMember1>(null, PatchedUserShortcutPositionMember1);
-                }
-                else if(ShortcutPositionEnumWrapper != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ShortcutPositionEnum_Wrapper>(null, ShortcutPositionEnumWrapper);
-                }
-            }
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_theme_modeMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ThemeModeEnum_Wrapper"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class PatchedUser_theme_mode : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper? BlankEnumWrapper { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper BlankEnumWrapper { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_theme_modeMember1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_theme_modeMember1? PatchedUserThemeModeMember1 { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_theme_modeMember1 PatchedUserThemeModeMember1 { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ThemeModeEnum_Wrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.ThemeModeEnum_Wrapper? ThemeModeEnumWrapper { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.ThemeModeEnum_Wrapper ThemeModeEnumWrapper { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser.PatchedUser_theme_mode"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser.PatchedUser_theme_mode CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser.PatchedUser_theme_mode();
-                if("BlankEnum_Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.BlankEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper();
-                }
-                else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.PatchedUserThemeModeMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_theme_modeMember1();
-                }
-                else if("ThemeModeEnum_Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.ThemeModeEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.ThemeModeEnum_Wrapper();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(BlankEnumWrapper != null)
-                {
-                    return BlankEnumWrapper.GetFieldDeserializers();
-                }
-                else if(PatchedUserThemeModeMember1 != null)
-                {
-                    return PatchedUserThemeModeMember1.GetFieldDeserializers();
-                }
-                else if(ThemeModeEnumWrapper != null)
-                {
-                    return ThemeModeEnumWrapper.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(BlankEnumWrapper != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper>(null, BlankEnumWrapper);
-                }
-                else if(PatchedUserThemeModeMember1 != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_theme_modeMember1>(null, PatchedUserThemeModeMember1);
-                }
-                else if(ThemeModeEnumWrapper != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ThemeModeEnum_Wrapper>(null, ThemeModeEnumWrapper);
-                }
-            }
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_toolbar_modeMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ToolbarModeEnum_Wrapper"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class PatchedUser_toolbar_mode : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper? BlankEnumWrapper { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper BlankEnumWrapper { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_toolbar_modeMember1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_toolbar_modeMember1? PatchedUserToolbarModeMember1 { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_toolbar_modeMember1 PatchedUserToolbarModeMember1 { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ToolbarModeEnum_Wrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.ToolbarModeEnum_Wrapper? ToolbarModeEnumWrapper { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.ToolbarModeEnum_Wrapper ToolbarModeEnumWrapper { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser.PatchedUser_toolbar_mode"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser.PatchedUser_toolbar_mode CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser.PatchedUser_toolbar_mode();
-                if("BlankEnum_Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.BlankEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper();
-                }
-                else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.PatchedUserToolbarModeMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_toolbar_modeMember1();
-                }
-                else if("ToolbarModeEnum_Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.ToolbarModeEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.ToolbarModeEnum_Wrapper();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(BlankEnumWrapper != null)
-                {
-                    return BlankEnumWrapper.GetFieldDeserializers();
-                }
-                else if(PatchedUserToolbarModeMember1 != null)
-                {
-                    return PatchedUserToolbarModeMember1.GetFieldDeserializers();
-                }
-                else if(ToolbarModeEnumWrapper != null)
-                {
-                    return ToolbarModeEnumWrapper.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(BlankEnumWrapper != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper>(null, BlankEnumWrapper);
-                }
-                else if(PatchedUserToolbarModeMember1 != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser_toolbar_modeMember1>(null, PatchedUserToolbarModeMember1);
-                }
-                else if(ToolbarModeEnumWrapper != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ToolbarModeEnum_Wrapper>(null, ToolbarModeEnumWrapper);
-                }
-            }
         }
     }
 }

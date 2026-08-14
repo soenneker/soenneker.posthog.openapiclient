@@ -13,53 +13,31 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning restore CS1591
     {
         /// <summary>Whether the query is still running. Will be true if the query is complete, even if it errored. Either result or error will be set.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_complete? Complete { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_complete Complete { get; set; }
-#endif
+        public bool? Complete { get; set; }
         /// <summary>The dashboard_id property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_dashboard_id? DashboardId { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_dashboard_id DashboardId { get; set; }
-#endif
+        public int? DashboardId { get; set; }
         /// <summary>When did the query execution task finish (whether successfully or not).</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_end_time? EndTime { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_end_time EndTime { get; set; }
-#endif
+        public DateTimeOffset? EndTime { get; set; }
         /// <summary>If the query failed, this will be set to true. More information can be found in the error_message field.</summary>
+        public bool? Error { get; set; }
+        /// <summary>Stable machine-readable code for the error (the DRF exception code), when known.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_error? Error { get; set; }
+        public string? ErrorCode { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_error Error { get; set; }
+        public string ErrorCode { get; set; }
 #endif
         /// <summary>The error_message property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_error_message? ErrorMessage { get; set; }
+        public string? ErrorMessage { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_error_message ErrorMessage { get; set; }
+        public string ErrorMessage { get; set; }
 #endif
         /// <summary>The expiration_time property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_expiration_time? ExpirationTime { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_expiration_time ExpirationTime { get; set; }
-#endif
+        public DateTimeOffset? ExpirationTime { get; set; }
         /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -69,65 +47,56 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Id { get; set; }
 #endif
         /// <summary>The insight_id property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_insight_id? InsightId { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_insight_id InsightId { get; set; }
-#endif
+        public int? InsightId { get; set; }
         /// <summary>The labels property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_labels? Labels { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatusLabels? Labels { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_labels Labels { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatusLabels Labels { get; set; }
 #endif
         /// <summary>When was the query execution task picked up by a worker.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_pickup_time? PickupTime { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_pickup_time PickupTime { get; set; }
-#endif
+        public DateTimeOffset? PickupTime { get; set; }
         /// <summary>ONLY async queries use QueryStatus.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_query_async? QueryAsync { get; set; }
+        public bool? QueryAsync { get; set; }
         /// <summary>The query_progress property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_query_progress? QueryProgress { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ClickhouseQueryProgress? QueryProgress { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_query_progress QueryProgress { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ClickhouseQueryProgress QueryProgress { get; set; }
 #endif
         /// <summary>The results property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_results? Results { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatusResults? Results { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_results Results { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatusResults Results { get; set; }
 #endif
         /// <summary>When was query execution task enqueued.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_start_time? StartTime { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_start_time StartTime { get; set; }
-#endif
+        public DateTimeOffset? StartTime { get; set; }
         /// <summary>The task_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_task_id? TaskId { get; set; }
+        public string? TaskId { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_task_id TaskId { get; set; }
+        public string TaskId { get; set; }
 #endif
         /// <summary>The team_id property</summary>
         public int? TeamId { get; set; }
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus"/> and sets the default values.
+        /// </summary>
+        public QueryStatus()
+        {
+            Complete = false;
+            Error = false;
+            QueryAsync = true;
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -146,21 +115,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "complete", n => { Complete = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_complete>(global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_complete.CreateFromDiscriminatorValue); } },
-                { "dashboard_id", n => { DashboardId = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_dashboard_id>(global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_dashboard_id.CreateFromDiscriminatorValue); } },
-                { "end_time", n => { EndTime = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_end_time>(global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_end_time.CreateFromDiscriminatorValue); } },
-                { "error", n => { Error = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_error>(global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_error.CreateFromDiscriminatorValue); } },
-                { "error_message", n => { ErrorMessage = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_error_message>(global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_error_message.CreateFromDiscriminatorValue); } },
-                { "expiration_time", n => { ExpirationTime = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_expiration_time>(global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_expiration_time.CreateFromDiscriminatorValue); } },
+                { "complete", n => { Complete = n.GetBoolValue(); } },
+                { "dashboard_id", n => { DashboardId = n.GetIntValue(); } },
+                { "end_time", n => { EndTime = n.GetDateTimeOffsetValue(); } },
+                { "error", n => { Error = n.GetBoolValue(); } },
+                { "error_code", n => { ErrorCode = n.GetStringValue(); } },
+                { "error_message", n => { ErrorMessage = n.GetStringValue(); } },
+                { "expiration_time", n => { ExpirationTime = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "insight_id", n => { InsightId = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_insight_id>(global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_insight_id.CreateFromDiscriminatorValue); } },
-                { "labels", n => { Labels = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_labels>(global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_labels.CreateFromDiscriminatorValue); } },
-                { "pickup_time", n => { PickupTime = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_pickup_time>(global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_pickup_time.CreateFromDiscriminatorValue); } },
-                { "query_async", n => { QueryAsync = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_query_async>(); } },
-                { "query_progress", n => { QueryProgress = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_query_progress>(global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_query_progress.CreateFromDiscriminatorValue); } },
-                { "results", n => { Results = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_results>(global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_results.CreateFromDiscriminatorValue); } },
-                { "start_time", n => { StartTime = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_start_time>(global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_start_time.CreateFromDiscriminatorValue); } },
-                { "task_id", n => { TaskId = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_task_id>(global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_task_id.CreateFromDiscriminatorValue); } },
+                { "insight_id", n => { InsightId = n.GetIntValue(); } },
+                { "labels", n => { Labels = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatusLabels>(global::Soenneker.PostHog.OpenApiClient.Models.QueryStatusLabels.CreateFromDiscriminatorValue); } },
+                { "pickup_time", n => { PickupTime = n.GetDateTimeOffsetValue(); } },
+                { "query_async", n => { QueryAsync = n.GetBoolValue(); } },
+                { "query_progress", n => { QueryProgress = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ClickhouseQueryProgress>(global::Soenneker.PostHog.OpenApiClient.Models.ClickhouseQueryProgress.CreateFromDiscriminatorValue); } },
+                { "results", n => { Results = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatusResults>(global::Soenneker.PostHog.OpenApiClient.Models.QueryStatusResults.CreateFromDiscriminatorValue); } },
+                { "start_time", n => { StartTime = n.GetDateTimeOffsetValue(); } },
+                { "task_id", n => { TaskId = n.GetStringValue(); } },
                 { "team_id", n => { TeamId = n.GetIntValue(); } },
             };
         }
@@ -171,21 +141,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_complete>("complete", Complete);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_dashboard_id>("dashboard_id", DashboardId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_end_time>("end_time", EndTime);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_error>("error", Error);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_error_message>("error_message", ErrorMessage);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_expiration_time>("expiration_time", ExpirationTime);
+            writer.WriteBoolValue("complete", Complete);
+            writer.WriteIntValue("dashboard_id", DashboardId);
+            writer.WriteDateTimeOffsetValue("end_time", EndTime);
+            writer.WriteBoolValue("error", Error);
+            writer.WriteStringValue("error_code", ErrorCode);
+            writer.WriteStringValue("error_message", ErrorMessage);
+            writer.WriteDateTimeOffsetValue("expiration_time", ExpirationTime);
             writer.WriteStringValue("id", Id);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_insight_id>("insight_id", InsightId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_labels>("labels", Labels);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_pickup_time>("pickup_time", PickupTime);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_query_async>("query_async", QueryAsync);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_query_progress>("query_progress", QueryProgress);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_results>("results", Results);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_start_time>("start_time", StartTime);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus_task_id>("task_id", TaskId);
+            writer.WriteIntValue("insight_id", InsightId);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatusLabels>("labels", Labels);
+            writer.WriteDateTimeOffsetValue("pickup_time", PickupTime);
+            writer.WriteBoolValue("query_async", QueryAsync);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ClickhouseQueryProgress>("query_progress", QueryProgress);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatusResults>("results", Results);
+            writer.WriteDateTimeOffsetValue("start_time", StartTime);
+            writer.WriteStringValue("task_id", TaskId);
             writer.WriteIntValue("team_id", TeamId);
         }
     }

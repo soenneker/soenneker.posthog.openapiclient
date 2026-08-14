@@ -9,35 +9,35 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "slack_channel_message")]
         #pragma warning disable CS1591
-        Slack_channel_message,
+        SlackChannelMessage,
         #pragma warning restore CS1591
         [EnumMember(Value = "slack_bot_mention")]
         #pragma warning disable CS1591
-        Slack_bot_mention,
+        SlackBotMention,
         #pragma warning restore CS1591
         [EnumMember(Value = "slack_emoji_reaction")]
         #pragma warning disable CS1591
-        Slack_emoji_reaction,
+        SlackEmojiReaction,
         #pragma warning restore CS1591
         [EnumMember(Value = "teams_channel_message")]
         #pragma warning disable CS1591
-        Teams_channel_message,
+        TeamsChannelMessage,
         #pragma warning restore CS1591
         [EnumMember(Value = "teams_bot_mention")]
         #pragma warning disable CS1591
-        Teams_bot_mention,
+        TeamsBotMention,
         #pragma warning restore CS1591
         [EnumMember(Value = "widget_embedded")]
         #pragma warning disable CS1591
-        Widget_embedded,
+        WidgetEmbedded,
         #pragma warning restore CS1591
         [EnumMember(Value = "widget_api")]
         #pragma warning disable CS1591
-        Widget_api,
+        WidgetApi,
         #pragma warning restore CS1591
         [EnumMember(Value = "github_issue")]
         #pragma warning disable CS1591
-        Github_issue,
+        GithubIssue,
         #pragma warning restore CS1591
     }
 }

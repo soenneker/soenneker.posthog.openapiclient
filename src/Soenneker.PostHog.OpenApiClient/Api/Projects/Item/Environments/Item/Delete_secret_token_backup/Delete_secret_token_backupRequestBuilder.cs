@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Delete_secret_token_backup
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\environments\{id}\delete_secret_token_backup
+    /// Builds and executes requests for operations under \api\projects\{projectId}\environments\{id}\delete_secret_token_backup
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Delete_secret_token_backupRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.De
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Delete_secret_token_backupRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/environments/{id}/delete_secret_token_backup", pathParameters)
+        public Delete_secret_token_backupRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/environments/{id}/delete_secret_token_backup", pathParameters)
         {
         }
         /// <summary>
@@ -30,28 +30,28 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.De
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Delete_secret_token_backupRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/environments/{id}/delete_secret_token_backup", rawUrl)
+        public Delete_secret_token_backupRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/environments/{id}/delete_secret_token_backup", rawUrl)
         {
         }
         /// <summary>
         /// &quot;Deprecated: use /api/environments/{id}/ instead.&quot;
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Delete_secret_token_backup.Delete_secret_token_backupPatchResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EnvironmentsDeleteSecretTokenBackupPartialUpdate200Response"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Delete_secret_token_backup.Delete_secret_token_backupPatchResponse?> PatchAsync(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.EnvironmentsDeleteSecretTokenBackupPartialUpdate200Response?> PatchAsync(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Delete_secret_token_backup.Delete_secret_token_backupPatchResponse> PatchAsync(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.EnvironmentsDeleteSecretTokenBackupPartialUpdate200Response> PatchAsync(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeam body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Delete_secret_token_backup.Delete_secret_token_backupPatchResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Environments.Item.Delete_secret_token_backup.Delete_secret_token_backupPatchResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.EnvironmentsDeleteSecretTokenBackupPartialUpdate200Response>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.EnvironmentsDeleteSecretTokenBackupPartialUpdate200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// &quot;Deprecated: use /api/environments/{id}/ instead.&quot;

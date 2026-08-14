@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative10"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative11"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative14"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative15"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative16"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative17"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative18"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative19"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative2"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative21"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative22"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative23"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative24"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative25"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative26"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative27"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative28"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative29"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative3"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative30"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative31"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative32"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative33"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative34"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative35"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative36"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative37"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative38"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative39"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative4"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative40"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative41"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative42"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative43"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative44"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative45"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative46"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative47"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative48"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative49"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative50"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative51"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative53"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative54"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative55"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative57"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative58"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative59"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative6"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative60"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative62"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative63"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative64"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative65"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative66"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative67"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative68"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative69"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative70"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative71"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative73"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative74"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative75"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative76"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative77"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative78"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative79"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative8"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative80"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative81"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative82"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative83"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative84"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative85"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative86"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative88"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative89"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative9"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative90"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative91"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative92"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative93"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative94"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative95"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternativeMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternativeMember2"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative10"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative100"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative101"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative102"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative103"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative104"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative105"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative106"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative107"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative11"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative12"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative13"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative14"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative15"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative16"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative17"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative18"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative19"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative2"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative21"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative22"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative23"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative24"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative25"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative26"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative27"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative28"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative29"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative3"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative30"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative31"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative32"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative33"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative34"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative35"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative36"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative37"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative38"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative39"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative4"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative40"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative41"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative42"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative43"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative44"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative45"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative46"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative47"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative48"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative49"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative50"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative53"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative54"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative56"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative57"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative58"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative59"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative6"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative60"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative61"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative62"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative63"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative64"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative66"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative67"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative68"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative69"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative70"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative71"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative72"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative73"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative74"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative75"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative76"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative77"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative78"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative79"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative8"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative80"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative81"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative84"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative85"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative86"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative87"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative88"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative89"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative9"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative90"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative91"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative92"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative93"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative94"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative95"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative96"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative97"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative98"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative99"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternativeMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternativeMember2"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class QueryResponseAlternative : IComposedTypeWrapper, IParsable
@@ -29,6 +29,70 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative10 QueryResponseAlternative10 { get; set; }
 #endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative100"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative100? QueryResponseAlternative100 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative100 QueryResponseAlternative100 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative101"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative101? QueryResponseAlternative101 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative101 QueryResponseAlternative101 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative102"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative102? QueryResponseAlternative102 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative102 QueryResponseAlternative102 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative103"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative103? QueryResponseAlternative103 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative103 QueryResponseAlternative103 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative104"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative104? QueryResponseAlternative104 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative104 QueryResponseAlternative104 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative105"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative105? QueryResponseAlternative105 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative105 QueryResponseAlternative105 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative106"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative106? QueryResponseAlternative106 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative106 QueryResponseAlternative106 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative107"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative107? QueryResponseAlternative107 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative107 QueryResponseAlternative107 { get; set; }
+#endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative11"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -36,6 +100,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative11 QueryResponseAlternative11 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative12"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative12? QueryResponseAlternative12 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative12 QueryResponseAlternative12 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative13"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative13? QueryResponseAlternative13 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative13 QueryResponseAlternative13 { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative14"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -365,14 +445,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative50 QueryResponseAlternative50 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative51"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative51? QueryResponseAlternative51 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative51 QueryResponseAlternative51 { get; set; }
-#endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -397,13 +469,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative54 QueryResponseAlternative54 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative55"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative56"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative55? QueryResponseAlternative55 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative56? QueryResponseAlternative56 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative55 QueryResponseAlternative55 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative56 QueryResponseAlternative56 { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative57"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -445,6 +517,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative60 QueryResponseAlternative60 { get; set; }
 #endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative61"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative61? QueryResponseAlternative61 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative61 QueryResponseAlternative61 { get; set; }
+#endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative62"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -468,14 +548,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative64 QueryResponseAlternative64 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative65"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative65? QueryResponseAlternative65 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative65 QueryResponseAlternative65 { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative66"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -532,6 +604,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative71 QueryResponseAlternative71 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative72"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative72? QueryResponseAlternative72 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative72 QueryResponseAlternative72 { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative73"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -613,22 +693,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative81 QueryResponseAlternative81 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative82"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative82? QueryResponseAlternative82 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative82 QueryResponseAlternative82 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative83"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative83? QueryResponseAlternative83 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative83 QueryResponseAlternative83 { get; set; }
-#endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative84"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -652,6 +716,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative86 QueryResponseAlternative86 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative87"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative87? QueryResponseAlternative87 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative87 QueryResponseAlternative87 { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative88"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -725,6 +797,38 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative95 QueryResponseAlternative95 { get; set; }
 #endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative96"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative96? QueryResponseAlternative96 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative96 QueryResponseAlternative96 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative97"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative97? QueryResponseAlternative97 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative97 QueryResponseAlternative97 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative98"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative98? QueryResponseAlternative98 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative98 QueryResponseAlternative98 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative99"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative99? QueryResponseAlternative99 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative99 QueryResponseAlternative99 { get; set; }
+#endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternativeMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -752,7 +856,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative();
             result.QueryResponseAlternative1 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative1();
             result.QueryResponseAlternative10 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative10();
+            result.QueryResponseAlternative100 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative100();
+            result.QueryResponseAlternative101 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative101();
+            result.QueryResponseAlternative102 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative102();
+            result.QueryResponseAlternative103 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative103();
+            result.QueryResponseAlternative104 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative104();
+            result.QueryResponseAlternative105 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative105();
+            result.QueryResponseAlternative106 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative106();
+            result.QueryResponseAlternative107 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative107();
             result.QueryResponseAlternative11 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative11();
+            result.QueryResponseAlternative12 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative12();
+            result.QueryResponseAlternative13 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative13();
             result.QueryResponseAlternative14 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative14();
             result.QueryResponseAlternative15 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative15();
             result.QueryResponseAlternative16 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative16();
@@ -794,20 +908,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             result.QueryResponseAlternative49 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative49();
             result.QueryResponseAlternative5 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative5();
             result.QueryResponseAlternative50 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative50();
-            result.QueryResponseAlternative51 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative51();
             result.QueryResponseAlternative52 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative52();
             result.QueryResponseAlternative53 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative53();
             result.QueryResponseAlternative54 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative54();
-            result.QueryResponseAlternative55 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative55();
+            result.QueryResponseAlternative56 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative56();
             result.QueryResponseAlternative57 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative57();
             result.QueryResponseAlternative58 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative58();
             result.QueryResponseAlternative59 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative59();
             result.QueryResponseAlternative6 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative6();
             result.QueryResponseAlternative60 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative60();
+            result.QueryResponseAlternative61 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative61();
             result.QueryResponseAlternative62 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative62();
             result.QueryResponseAlternative63 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative63();
             result.QueryResponseAlternative64 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative64();
-            result.QueryResponseAlternative65 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative65();
             result.QueryResponseAlternative66 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative66();
             result.QueryResponseAlternative67 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative67();
             result.QueryResponseAlternative68 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative68();
@@ -815,6 +928,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             result.QueryResponseAlternative7 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative7();
             result.QueryResponseAlternative70 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative70();
             result.QueryResponseAlternative71 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative71();
+            result.QueryResponseAlternative72 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative72();
             result.QueryResponseAlternative73 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative73();
             result.QueryResponseAlternative74 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative74();
             result.QueryResponseAlternative75 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative75();
@@ -825,11 +939,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             result.QueryResponseAlternative8 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative8();
             result.QueryResponseAlternative80 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative80();
             result.QueryResponseAlternative81 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative81();
-            result.QueryResponseAlternative82 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative82();
-            result.QueryResponseAlternative83 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative83();
             result.QueryResponseAlternative84 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative84();
             result.QueryResponseAlternative85 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative85();
             result.QueryResponseAlternative86 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative86();
+            result.QueryResponseAlternative87 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative87();
             result.QueryResponseAlternative88 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative88();
             result.QueryResponseAlternative89 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative89();
             result.QueryResponseAlternative9 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative9();
@@ -839,6 +952,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             result.QueryResponseAlternative93 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative93();
             result.QueryResponseAlternative94 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative94();
             result.QueryResponseAlternative95 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative95();
+            result.QueryResponseAlternative96 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative96();
+            result.QueryResponseAlternative97 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative97();
+            result.QueryResponseAlternative98 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative98();
+            result.QueryResponseAlternative99 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative99();
             result.QueryResponseAlternativeMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternativeMember1();
             result.QueryResponseAlternativeMember2 = new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternativeMember2();
             return result;
@@ -849,9 +966,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(QueryResponseAlternative1 != null || QueryResponseAlternative10 != null || QueryResponseAlternative11 != null || QueryResponseAlternative14 != null || QueryResponseAlternative15 != null || QueryResponseAlternative16 != null || QueryResponseAlternative17 != null || QueryResponseAlternative18 != null || QueryResponseAlternative19 != null || QueryResponseAlternative2 != null || QueryResponseAlternative20 != null || QueryResponseAlternative21 != null || QueryResponseAlternative22 != null || QueryResponseAlternative23 != null || QueryResponseAlternative24 != null || QueryResponseAlternative25 != null || QueryResponseAlternative26 != null || QueryResponseAlternative27 != null || QueryResponseAlternative28 != null || QueryResponseAlternative29 != null || QueryResponseAlternative3 != null || QueryResponseAlternative30 != null || QueryResponseAlternative31 != null || QueryResponseAlternative32 != null || QueryResponseAlternative33 != null || QueryResponseAlternative34 != null || QueryResponseAlternative35 != null || QueryResponseAlternative36 != null || QueryResponseAlternative37 != null || QueryResponseAlternative38 != null || QueryResponseAlternative39 != null || QueryResponseAlternative4 != null || QueryResponseAlternative40 != null || QueryResponseAlternative41 != null || QueryResponseAlternative42 != null || QueryResponseAlternative43 != null || QueryResponseAlternative44 != null || QueryResponseAlternative45 != null || QueryResponseAlternative46 != null || QueryResponseAlternative47 != null || QueryResponseAlternative48 != null || QueryResponseAlternative49 != null || QueryResponseAlternative5 != null || QueryResponseAlternative50 != null || QueryResponseAlternative51 != null || QueryResponseAlternative52 != null || QueryResponseAlternative53 != null || QueryResponseAlternative54 != null || QueryResponseAlternative55 != null || QueryResponseAlternative57 != null || QueryResponseAlternative58 != null || QueryResponseAlternative59 != null || QueryResponseAlternative6 != null || QueryResponseAlternative60 != null || QueryResponseAlternative62 != null || QueryResponseAlternative63 != null || QueryResponseAlternative64 != null || QueryResponseAlternative65 != null || QueryResponseAlternative66 != null || QueryResponseAlternative67 != null || QueryResponseAlternative68 != null || QueryResponseAlternative69 != null || QueryResponseAlternative7 != null || QueryResponseAlternative70 != null || QueryResponseAlternative71 != null || QueryResponseAlternative73 != null || QueryResponseAlternative74 != null || QueryResponseAlternative75 != null || QueryResponseAlternative76 != null || QueryResponseAlternative77 != null || QueryResponseAlternative78 != null || QueryResponseAlternative79 != null || QueryResponseAlternative8 != null || QueryResponseAlternative80 != null || QueryResponseAlternative81 != null || QueryResponseAlternative82 != null || QueryResponseAlternative83 != null || QueryResponseAlternative84 != null || QueryResponseAlternative85 != null || QueryResponseAlternative86 != null || QueryResponseAlternative88 != null || QueryResponseAlternative89 != null || QueryResponseAlternative9 != null || QueryResponseAlternative90 != null || QueryResponseAlternative91 != null || QueryResponseAlternative92 != null || QueryResponseAlternative93 != null || QueryResponseAlternative94 != null || QueryResponseAlternative95 != null || QueryResponseAlternativeMember1 != null || QueryResponseAlternativeMember2 != null)
+            if(QueryResponseAlternative1 != null || QueryResponseAlternative10 != null || QueryResponseAlternative100 != null || QueryResponseAlternative101 != null || QueryResponseAlternative102 != null || QueryResponseAlternative103 != null || QueryResponseAlternative104 != null || QueryResponseAlternative105 != null || QueryResponseAlternative106 != null || QueryResponseAlternative107 != null || QueryResponseAlternative11 != null || QueryResponseAlternative12 != null || QueryResponseAlternative13 != null || QueryResponseAlternative14 != null || QueryResponseAlternative15 != null || QueryResponseAlternative16 != null || QueryResponseAlternative17 != null || QueryResponseAlternative18 != null || QueryResponseAlternative19 != null || QueryResponseAlternative2 != null || QueryResponseAlternative20 != null || QueryResponseAlternative21 != null || QueryResponseAlternative22 != null || QueryResponseAlternative23 != null || QueryResponseAlternative24 != null || QueryResponseAlternative25 != null || QueryResponseAlternative26 != null || QueryResponseAlternative27 != null || QueryResponseAlternative28 != null || QueryResponseAlternative29 != null || QueryResponseAlternative3 != null || QueryResponseAlternative30 != null || QueryResponseAlternative31 != null || QueryResponseAlternative32 != null || QueryResponseAlternative33 != null || QueryResponseAlternative34 != null || QueryResponseAlternative35 != null || QueryResponseAlternative36 != null || QueryResponseAlternative37 != null || QueryResponseAlternative38 != null || QueryResponseAlternative39 != null || QueryResponseAlternative4 != null || QueryResponseAlternative40 != null || QueryResponseAlternative41 != null || QueryResponseAlternative42 != null || QueryResponseAlternative43 != null || QueryResponseAlternative44 != null || QueryResponseAlternative45 != null || QueryResponseAlternative46 != null || QueryResponseAlternative47 != null || QueryResponseAlternative48 != null || QueryResponseAlternative49 != null || QueryResponseAlternative5 != null || QueryResponseAlternative50 != null || QueryResponseAlternative52 != null || QueryResponseAlternative53 != null || QueryResponseAlternative54 != null || QueryResponseAlternative56 != null || QueryResponseAlternative57 != null || QueryResponseAlternative58 != null || QueryResponseAlternative59 != null || QueryResponseAlternative6 != null || QueryResponseAlternative60 != null || QueryResponseAlternative61 != null || QueryResponseAlternative62 != null || QueryResponseAlternative63 != null || QueryResponseAlternative64 != null || QueryResponseAlternative66 != null || QueryResponseAlternative67 != null || QueryResponseAlternative68 != null || QueryResponseAlternative69 != null || QueryResponseAlternative7 != null || QueryResponseAlternative70 != null || QueryResponseAlternative71 != null || QueryResponseAlternative72 != null || QueryResponseAlternative73 != null || QueryResponseAlternative74 != null || QueryResponseAlternative75 != null || QueryResponseAlternative76 != null || QueryResponseAlternative77 != null || QueryResponseAlternative78 != null || QueryResponseAlternative79 != null || QueryResponseAlternative8 != null || QueryResponseAlternative80 != null || QueryResponseAlternative81 != null || QueryResponseAlternative84 != null || QueryResponseAlternative85 != null || QueryResponseAlternative86 != null || QueryResponseAlternative87 != null || QueryResponseAlternative88 != null || QueryResponseAlternative89 != null || QueryResponseAlternative9 != null || QueryResponseAlternative90 != null || QueryResponseAlternative91 != null || QueryResponseAlternative92 != null || QueryResponseAlternative93 != null || QueryResponseAlternative94 != null || QueryResponseAlternative95 != null || QueryResponseAlternative96 != null || QueryResponseAlternative97 != null || QueryResponseAlternative98 != null || QueryResponseAlternative99 != null || QueryResponseAlternativeMember1 != null || QueryResponseAlternativeMember2 != null)
             {
-                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(QueryResponseAlternative1, QueryResponseAlternative10, QueryResponseAlternative11, QueryResponseAlternative14, QueryResponseAlternative15, QueryResponseAlternative16, QueryResponseAlternative17, QueryResponseAlternative18, QueryResponseAlternative19, QueryResponseAlternative2, QueryResponseAlternative20, QueryResponseAlternative21, QueryResponseAlternative22, QueryResponseAlternative23, QueryResponseAlternative24, QueryResponseAlternative25, QueryResponseAlternative26, QueryResponseAlternative27, QueryResponseAlternative28, QueryResponseAlternative29, QueryResponseAlternative3, QueryResponseAlternative30, QueryResponseAlternative31, QueryResponseAlternative32, QueryResponseAlternative33, QueryResponseAlternative34, QueryResponseAlternative35, QueryResponseAlternative36, QueryResponseAlternative37, QueryResponseAlternative38, QueryResponseAlternative39, QueryResponseAlternative4, QueryResponseAlternative40, QueryResponseAlternative41, QueryResponseAlternative42, QueryResponseAlternative43, QueryResponseAlternative44, QueryResponseAlternative45, QueryResponseAlternative46, QueryResponseAlternative47, QueryResponseAlternative48, QueryResponseAlternative49, QueryResponseAlternative5, QueryResponseAlternative50, QueryResponseAlternative51, QueryResponseAlternative52, QueryResponseAlternative53, QueryResponseAlternative54, QueryResponseAlternative55, QueryResponseAlternative57, QueryResponseAlternative58, QueryResponseAlternative59, QueryResponseAlternative6, QueryResponseAlternative60, QueryResponseAlternative62, QueryResponseAlternative63, QueryResponseAlternative64, QueryResponseAlternative65, QueryResponseAlternative66, QueryResponseAlternative67, QueryResponseAlternative68, QueryResponseAlternative69, QueryResponseAlternative7, QueryResponseAlternative70, QueryResponseAlternative71, QueryResponseAlternative73, QueryResponseAlternative74, QueryResponseAlternative75, QueryResponseAlternative76, QueryResponseAlternative77, QueryResponseAlternative78, QueryResponseAlternative79, QueryResponseAlternative8, QueryResponseAlternative80, QueryResponseAlternative81, QueryResponseAlternative82, QueryResponseAlternative83, QueryResponseAlternative84, QueryResponseAlternative85, QueryResponseAlternative86, QueryResponseAlternative88, QueryResponseAlternative89, QueryResponseAlternative9, QueryResponseAlternative90, QueryResponseAlternative91, QueryResponseAlternative92, QueryResponseAlternative93, QueryResponseAlternative94, QueryResponseAlternative95, QueryResponseAlternativeMember1, QueryResponseAlternativeMember2);
+                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(QueryResponseAlternative1, QueryResponseAlternative10, QueryResponseAlternative100, QueryResponseAlternative101, QueryResponseAlternative102, QueryResponseAlternative103, QueryResponseAlternative104, QueryResponseAlternative105, QueryResponseAlternative106, QueryResponseAlternative107, QueryResponseAlternative11, QueryResponseAlternative12, QueryResponseAlternative13, QueryResponseAlternative14, QueryResponseAlternative15, QueryResponseAlternative16, QueryResponseAlternative17, QueryResponseAlternative18, QueryResponseAlternative19, QueryResponseAlternative2, QueryResponseAlternative20, QueryResponseAlternative21, QueryResponseAlternative22, QueryResponseAlternative23, QueryResponseAlternative24, QueryResponseAlternative25, QueryResponseAlternative26, QueryResponseAlternative27, QueryResponseAlternative28, QueryResponseAlternative29, QueryResponseAlternative3, QueryResponseAlternative30, QueryResponseAlternative31, QueryResponseAlternative32, QueryResponseAlternative33, QueryResponseAlternative34, QueryResponseAlternative35, QueryResponseAlternative36, QueryResponseAlternative37, QueryResponseAlternative38, QueryResponseAlternative39, QueryResponseAlternative4, QueryResponseAlternative40, QueryResponseAlternative41, QueryResponseAlternative42, QueryResponseAlternative43, QueryResponseAlternative44, QueryResponseAlternative45, QueryResponseAlternative46, QueryResponseAlternative47, QueryResponseAlternative48, QueryResponseAlternative49, QueryResponseAlternative5, QueryResponseAlternative50, QueryResponseAlternative52, QueryResponseAlternative53, QueryResponseAlternative54, QueryResponseAlternative56, QueryResponseAlternative57, QueryResponseAlternative58, QueryResponseAlternative59, QueryResponseAlternative6, QueryResponseAlternative60, QueryResponseAlternative61, QueryResponseAlternative62, QueryResponseAlternative63, QueryResponseAlternative64, QueryResponseAlternative66, QueryResponseAlternative67, QueryResponseAlternative68, QueryResponseAlternative69, QueryResponseAlternative7, QueryResponseAlternative70, QueryResponseAlternative71, QueryResponseAlternative72, QueryResponseAlternative73, QueryResponseAlternative74, QueryResponseAlternative75, QueryResponseAlternative76, QueryResponseAlternative77, QueryResponseAlternative78, QueryResponseAlternative79, QueryResponseAlternative8, QueryResponseAlternative80, QueryResponseAlternative81, QueryResponseAlternative84, QueryResponseAlternative85, QueryResponseAlternative86, QueryResponseAlternative87, QueryResponseAlternative88, QueryResponseAlternative89, QueryResponseAlternative9, QueryResponseAlternative90, QueryResponseAlternative91, QueryResponseAlternative92, QueryResponseAlternative93, QueryResponseAlternative94, QueryResponseAlternative95, QueryResponseAlternative96, QueryResponseAlternative97, QueryResponseAlternative98, QueryResponseAlternative99, QueryResponseAlternativeMember1, QueryResponseAlternativeMember2);
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -862,7 +979,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative1>(null, QueryResponseAlternative1, QueryResponseAlternative10, QueryResponseAlternative11, QueryResponseAlternative14, QueryResponseAlternative15, QueryResponseAlternative16, QueryResponseAlternative17, QueryResponseAlternative18, QueryResponseAlternative19, QueryResponseAlternative2, QueryResponseAlternative20, QueryResponseAlternative21, QueryResponseAlternative22, QueryResponseAlternative23, QueryResponseAlternative24, QueryResponseAlternative25, QueryResponseAlternative26, QueryResponseAlternative27, QueryResponseAlternative28, QueryResponseAlternative29, QueryResponseAlternative3, QueryResponseAlternative30, QueryResponseAlternative31, QueryResponseAlternative32, QueryResponseAlternative33, QueryResponseAlternative34, QueryResponseAlternative35, QueryResponseAlternative36, QueryResponseAlternative37, QueryResponseAlternative38, QueryResponseAlternative39, QueryResponseAlternative4, QueryResponseAlternative40, QueryResponseAlternative41, QueryResponseAlternative42, QueryResponseAlternative43, QueryResponseAlternative44, QueryResponseAlternative45, QueryResponseAlternative46, QueryResponseAlternative47, QueryResponseAlternative48, QueryResponseAlternative49, QueryResponseAlternative5, QueryResponseAlternative50, QueryResponseAlternative51, QueryResponseAlternative52, QueryResponseAlternative53, QueryResponseAlternative54, QueryResponseAlternative55, QueryResponseAlternative57, QueryResponseAlternative58, QueryResponseAlternative59, QueryResponseAlternative6, QueryResponseAlternative60, QueryResponseAlternative62, QueryResponseAlternative63, QueryResponseAlternative64, QueryResponseAlternative65, QueryResponseAlternative66, QueryResponseAlternative67, QueryResponseAlternative68, QueryResponseAlternative69, QueryResponseAlternative7, QueryResponseAlternative70, QueryResponseAlternative71, QueryResponseAlternative73, QueryResponseAlternative74, QueryResponseAlternative75, QueryResponseAlternative76, QueryResponseAlternative77, QueryResponseAlternative78, QueryResponseAlternative79, QueryResponseAlternative8, QueryResponseAlternative80, QueryResponseAlternative81, QueryResponseAlternative82, QueryResponseAlternative83, QueryResponseAlternative84, QueryResponseAlternative85, QueryResponseAlternative86, QueryResponseAlternative88, QueryResponseAlternative89, QueryResponseAlternative9, QueryResponseAlternative90, QueryResponseAlternative91, QueryResponseAlternative92, QueryResponseAlternative93, QueryResponseAlternative94, QueryResponseAlternative95, QueryResponseAlternativeMember1, QueryResponseAlternativeMember2);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative1>(null, QueryResponseAlternative1, QueryResponseAlternative10, QueryResponseAlternative100, QueryResponseAlternative101, QueryResponseAlternative102, QueryResponseAlternative103, QueryResponseAlternative104, QueryResponseAlternative105, QueryResponseAlternative106, QueryResponseAlternative107, QueryResponseAlternative11, QueryResponseAlternative12, QueryResponseAlternative13, QueryResponseAlternative14, QueryResponseAlternative15, QueryResponseAlternative16, QueryResponseAlternative17, QueryResponseAlternative18, QueryResponseAlternative19, QueryResponseAlternative2, QueryResponseAlternative20, QueryResponseAlternative21, QueryResponseAlternative22, QueryResponseAlternative23, QueryResponseAlternative24, QueryResponseAlternative25, QueryResponseAlternative26, QueryResponseAlternative27, QueryResponseAlternative28, QueryResponseAlternative29, QueryResponseAlternative3, QueryResponseAlternative30, QueryResponseAlternative31, QueryResponseAlternative32, QueryResponseAlternative33, QueryResponseAlternative34, QueryResponseAlternative35, QueryResponseAlternative36, QueryResponseAlternative37, QueryResponseAlternative38, QueryResponseAlternative39, QueryResponseAlternative4, QueryResponseAlternative40, QueryResponseAlternative41, QueryResponseAlternative42, QueryResponseAlternative43, QueryResponseAlternative44, QueryResponseAlternative45, QueryResponseAlternative46, QueryResponseAlternative47, QueryResponseAlternative48, QueryResponseAlternative49, QueryResponseAlternative5, QueryResponseAlternative50, QueryResponseAlternative52, QueryResponseAlternative53, QueryResponseAlternative54, QueryResponseAlternative56, QueryResponseAlternative57, QueryResponseAlternative58, QueryResponseAlternative59, QueryResponseAlternative6, QueryResponseAlternative60, QueryResponseAlternative61, QueryResponseAlternative62, QueryResponseAlternative63, QueryResponseAlternative64, QueryResponseAlternative66, QueryResponseAlternative67, QueryResponseAlternative68, QueryResponseAlternative69, QueryResponseAlternative7, QueryResponseAlternative70, QueryResponseAlternative71, QueryResponseAlternative72, QueryResponseAlternative73, QueryResponseAlternative74, QueryResponseAlternative75, QueryResponseAlternative76, QueryResponseAlternative77, QueryResponseAlternative78, QueryResponseAlternative79, QueryResponseAlternative8, QueryResponseAlternative80, QueryResponseAlternative81, QueryResponseAlternative84, QueryResponseAlternative85, QueryResponseAlternative86, QueryResponseAlternative87, QueryResponseAlternative88, QueryResponseAlternative89, QueryResponseAlternative9, QueryResponseAlternative90, QueryResponseAlternative91, QueryResponseAlternative92, QueryResponseAlternative93, QueryResponseAlternative94, QueryResponseAlternative95, QueryResponseAlternative96, QueryResponseAlternative97, QueryResponseAlternative98, QueryResponseAlternative99, QueryResponseAlternativeMember1, QueryResponseAlternativeMember2);
         }
     }
 }

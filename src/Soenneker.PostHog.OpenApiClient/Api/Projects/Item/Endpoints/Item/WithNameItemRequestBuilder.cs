@@ -3,8 +3,10 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Endpoints.Item.Logs;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Endpoints.Item.Materialization_preview;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Endpoints.Item.Materialization_status;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Endpoints.Item.Materialization_suggestion;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Endpoints.Item.OpenapiJson;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Endpoints.Item.Run;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Endpoints.Item.Versions;
@@ -17,11 +19,16 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Endpoints.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\endpoints\{name}
+    /// Builds and executes requests for operations under \api\projects\{projectId}\endpoints\{name}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WithNameItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The logs property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Endpoints.Item.Logs.LogsRequestBuilder Logs
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Endpoints.Item.Logs.LogsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The materialization_preview property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Endpoints.Item.Materialization_preview.Materialization_previewRequestBuilder Materialization_preview
         {
@@ -31,6 +38,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Endpoints.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Endpoints.Item.Materialization_status.Materialization_statusRequestBuilder Materialization_status
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Endpoints.Item.Materialization_status.Materialization_statusRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The materialization_suggestion property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Endpoints.Item.Materialization_suggestion.Materialization_suggestionRequestBuilder Materialization_suggestion
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Endpoints.Item.Materialization_suggestion.Materialization_suggestionRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The openapiJson property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Endpoints.Item.OpenapiJson.OpenapiJsonRequestBuilder OpenapiJson
@@ -52,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Endpoints.Item
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithNameItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/endpoints/{name}", pathParameters)
+        public WithNameItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/endpoints/{name}", pathParameters)
         {
         }
         /// <summary>
@@ -60,7 +72,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Endpoints.Item
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithNameItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/endpoints/{name}", rawUrl)
+        public WithNameItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/endpoints/{name}", rawUrl)
         {
         }
         /// <summary>

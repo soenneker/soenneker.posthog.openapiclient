@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Move_tile
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\dashboards\{dashboard_-id}\move_tile
+    /// Builds and executes requests for operations under \api\projects\{projectId}\dashboards\{dashboard-id}\move_tile
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Move_tileRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Move
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Move_tileRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/dashboards/{dashboard_%2Did}/move_tile{?format*}", pathParameters)
+        public Move_tileRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/dashboards/{dashboard%2Did}/move_tile{?format*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,40 +30,76 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Move
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Move_tileRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/dashboards/{dashboard_%2Did}/move_tile{?format*}", rawUrl)
+        public Move_tileRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/dashboards/{dashboard%2Did}/move_tile{?format*}", rawUrl)
         {
         }
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Move_tile.Move_tilePatchResponse"/></returns>
-        /// <param name="body">Serializer mixin that handles tags for objects.</param>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Dashboard"/></returns>
+        /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Move_tile.Move_tilePatchResponse?> PatchAsync(global::Soenneker.PostHog.OpenApiClient.Models.PatchedDashboard body, Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Move_tile.Move_tileRequestBuilder.Move_tileRequestBuilderPatchQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.Dashboard?> PatchAsync(global::Soenneker.PostHog.OpenApiClient.Models.PatchedMoveTileRequest body, Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Move_tile.Move_tileRequestBuilder.Move_tileRequestBuilderPatchQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Move_tile.Move_tilePatchResponse> PatchAsync(global::Soenneker.PostHog.OpenApiClient.Models.PatchedDashboard body, Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Move_tile.Move_tileRequestBuilder.Move_tileRequestBuilderPatchQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.Dashboard> PatchAsync(global::Soenneker.PostHog.OpenApiClient.Models.PatchedMoveTileRequest body, Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Move_tile.Move_tileRequestBuilder.Move_tileRequestBuilderPatchQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Move_tile.Move_tilePatchResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Move_tile.Move_tilePatchResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.Dashboard>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.Dashboard.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
-        /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">Serializer mixin that handles tags for objects.</param>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Dashboard"/></returns>
+        /// <param name="body">The request body</param>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPatchRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.PatchedDashboard body, Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Move_tile.Move_tileRequestBuilder.Move_tileRequestBuilderPatchQueryParameters>>? requestConfiguration = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.Dashboard?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.MoveTileRequest body, Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Move_tile.Move_tileRequestBuilder.Move_tileRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPatchRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.PatchedDashboard body, Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Move_tile.Move_tileRequestBuilder.Move_tileRequestBuilderPatchQueryParameters>> requestConfiguration = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.Dashboard> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.MoveTileRequest body, Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Move_tile.Move_tileRequestBuilder.Move_tileRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToPostRequestInformation(body, requestConfiguration);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.Dashboard>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.Dashboard.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+        }
+        /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="body">The request body</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public RequestInformation ToPatchRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.PatchedMoveTileRequest body, Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Move_tile.Move_tileRequestBuilder.Move_tileRequestBuilderPatchQueryParameters>>? requestConfiguration = default)
+        {
+#nullable restore
+#else
+        public RequestInformation ToPatchRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.PatchedMoveTileRequest body, Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Move_tile.Move_tileRequestBuilder.Move_tileRequestBuilderPatchQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.PATCH, UrlTemplate, PathParameters);
+            requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
+            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
+            return requestInfo;
+        }
+        /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="body">The request body</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.MoveTileRequest body, Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Move_tile.Move_tileRequestBuilder.Move_tileRequestBuilderPostQueryParameters>>? requestConfiguration = default)
+        {
+#nullable restore
+#else
+        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.MoveTileRequest body, Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Move_tile.Move_tileRequestBuilder.Move_tileRequestBuilderPostQueryParameters>> requestConfiguration = default)
+        {
+#endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
@@ -84,7 +120,15 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Move
         #pragma warning restore CS1591
         {
             [QueryParameter("format")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Move_tile.PatchFormatQueryParameterType? Format { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.DashboardsMoveTilePartialUpdateFormatParameter? Format { get; set; }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        #pragma warning disable CS1591
+        public partial class Move_tileRequestBuilderPostQueryParameters 
+        #pragma warning restore CS1591
+        {
+            [QueryParameter("format")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.DashboardsMoveTileCreateFormatParameter? Format { get; set; }
         }
     }
 }

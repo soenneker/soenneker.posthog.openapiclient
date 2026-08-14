@@ -7,6 +7,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Bulk_update_t
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Create_from_template_json;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Create_unlisted_dashboard;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Widget_catalog;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -16,7 +17,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\dashboards
+    /// Builds and executes requests for operations under \api\projects\{projectId}\dashboards
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DashboardsRequestBuilder : BaseRequestBuilder
@@ -36,16 +37,21 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Create_unlisted_dashboard.Create_unlisted_dashboardRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The widget_catalog property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Widget_catalog.Widget_catalogRequestBuilder Widget_catalog
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Widget_catalog.Widget_catalogRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.dashboards.item collection</summary>
         /// <param name="position">A unique integer value identifying this dashboard.</param>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Dashboard_ItemRequestBuilder"/></returns>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Dashboard_ItemRequestBuilder this[int position]
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.DashboardItemRequestBuilder"/></returns>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.DashboardItemRequestBuilder this[int position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("dashboard_%2Did", position);
-                return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Dashboard_ItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("dashboard%2Did", position);
+                return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.DashboardItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
@@ -53,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public DashboardsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/dashboards{?format*,limit*,offset*,search*}", pathParameters)
+        public DashboardsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/dashboards{?folder*,format*,include_dashboards*,limit*,offset*,search*}", pathParameters)
         {
         }
         /// <summary>
@@ -61,7 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public DashboardsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/dashboards{?format*,limit*,offset*,search*}", rawUrl)
+        public DashboardsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/dashboards{?folder*,format*,include_dashboards*,limit*,offset*,search*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedDashboardBasicList"/></returns>
@@ -145,15 +151,25 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards
         public partial class DashboardsRequestBuilderGetQueryParameters 
         #pragma warning restore CS1591
         {
+            /// <summary>Optional. Return only dashboards filed directly in this project-tree folder, e.g. &apos;Unfiled/Dashboards&apos;. An empty string matches dashboards at the project root. Nested sub-folders are not included.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("folder")]
+            public string? Folder { get; set; }
+#nullable restore
+#else
+            [QueryParameter("folder")]
+            public string Folder { get; set; }
+#endif
             [QueryParameter("format")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.GetFormatQueryParameterType? Format { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.DashboardsListFormatParameter? Format { get; set; }
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
             /// <summary>The initial index from which to return the results.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
-            /// <summary>Optional. Fuzzy match against dashboard `name` and `description` using Postgres trigram word similarity (handles typos, transpositions, and prefix-as-you-type). `name` matches rank above `description` matches. Results are ordered by relevance, then pinned status, then name. When omitted, dashboards are ordered by pinned status then alphabetical name. Capped at 200 characters; longer queries return a 400 error.</summary>
+            /// <summary>Optional. Match against dashboard `name`, `description`, and tag names. Returns exact (case-insensitive substring) matches only; if no exact match exists, returns similar (fuzzy trigram — typos, transpositions, prefix-as-you-type) matches instead. Results are then ordered by relevance, then pinned status, then name; each result&apos;s `search_match_type` is `exact` or `similar`. When omitted, dashboards are ordered by pinned status then alphabetical name. Capped at 200 characters; longer queries return a 400 error.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("search")]
@@ -170,7 +186,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards
         #pragma warning restore CS1591
         {
             [QueryParameter("format")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.PostFormatQueryParameterType? Format { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.DashboardsCreateFormatParameter? Format { get; set; }
+            /// <summary>Opt in to receiving the deprecated `dashboards` field in insight payloads. Once opt-in enforcement is enabled, API-token callers stop receiving it by default; use `dashboard_tiles` instead.</summary>
+            [QueryParameter("include_dashboards")]
+            public bool? IncludeDashboards { get; set; }
         }
     }
 }

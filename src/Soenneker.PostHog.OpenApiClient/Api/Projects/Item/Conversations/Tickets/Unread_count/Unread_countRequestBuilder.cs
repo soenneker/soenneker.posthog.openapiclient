@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Unread_count
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\conversations\tickets\unread_count
+    /// Builds and executes requests for operations under \api\projects\{projectId}\conversations\tickets\unread_count
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Unread_countRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Ticket
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Unread_countRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/conversations/tickets/unread_count", pathParameters)
+        public Unread_countRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/conversations/tickets/unread_count", pathParameters)
         {
         }
         /// <summary>
@@ -30,11 +30,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Ticket
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Unread_countRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/conversations/tickets/unread_count", rawUrl)
+        public Unread_countRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/conversations/tickets/unread_count", rawUrl)
         {
         }
         /// <summary>
-        /// Get total unread ticket count for the team.Returns the sum of unread_team_count for all non-resolved tickets.Cached in Redis for 30 seconds, invalidated on changes.
+        /// Get total unread ticket count for the team.Returns the sum of unread_team_count for all non-resolved tickets visible to thecaller. The team-wide Redis cache (30s TTL, invalidated on changes) is only used forcallers without object-level ticket restrictions, since it holds one unscoped totalper team - serving it to a restricted member would leak counts for tickets they can&apos;tsee.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Ticket"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Ticket
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.Ticket>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.Ticket.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Get total unread ticket count for the team.Returns the sum of unread_team_count for all non-resolved tickets.Cached in Redis for 30 seconds, invalidated on changes.
+        /// Get total unread ticket count for the team.Returns the sum of unread_team_count for all non-resolved tickets visible to thecaller. The team-wide Redis cache (30s TTL, invalidated on changes) is only used forcallers without object-level ticket restrictions, since it holds one unscoped totalper team - serving it to a restricted member would leak counts for tickets they can&apos;tsee.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

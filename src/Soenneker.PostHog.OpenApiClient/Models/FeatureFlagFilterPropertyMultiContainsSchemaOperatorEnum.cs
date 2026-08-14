@@ -9,11 +9,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "icontains_multi")]
         #pragma warning disable CS1591
-        Icontains_multi,
+        IcontainsMulti,
         #pragma warning restore CS1591
         [EnumMember(Value = "not_icontains_multi")]
         #pragma warning disable CS1591
-        Not_icontains_multi,
+        NotIcontainsMulti,
         #pragma warning restore CS1591
     }
 }

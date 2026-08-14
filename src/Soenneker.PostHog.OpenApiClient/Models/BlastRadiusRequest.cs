@@ -14,13 +14,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>When &apos;email&apos;, count unique email addresses instead of persons, matching how batch email sends deduplicate recipients.* `email` - email</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRequestDedupeKey? DedupeKey { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRequestDedupeKey DedupeKey { get; set; }
+#endif
         /// <summary>Property filters to apply</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRequest_filters? Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRequestFiltersProperty? Filters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRequest_filters Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRequestFiltersProperty Filters { get; set; }
 #endif
         /// <summary>Group type index for group-based targeting</summary>
         public int? GroupTypeIndex { get; set; }
@@ -49,7 +57,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRequest_filters>(global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRequest_filters.CreateFromDiscriminatorValue); } },
+                { "dedupe_key", n => { DedupeKey = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRequestDedupeKey>(global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRequestDedupeKey.CreateFromDiscriminatorValue); } },
+                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRequestFiltersProperty>(global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRequestFiltersProperty.CreateFromDiscriminatorValue); } },
                 { "group_type_index", n => { GroupTypeIndex = n.GetIntValue(); } },
             };
         }
@@ -60,7 +69,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRequest_filters>("filters", Filters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRequestDedupeKey>("dedupe_key", DedupeKey);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRequestFiltersProperty>("filters", Filters);
             writer.WriteIntValue("group_type_index", GroupTypeIndex);
             writer.WriteAdditionalData(AdditionalData);
         }

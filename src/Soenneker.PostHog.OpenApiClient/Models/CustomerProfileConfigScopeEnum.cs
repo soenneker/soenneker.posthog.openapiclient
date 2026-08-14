@@ -13,23 +13,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "group_0")]
         #pragma warning disable CS1591
-        Group_0,
+        Group0,
         #pragma warning restore CS1591
         [EnumMember(Value = "group_1")]
         #pragma warning disable CS1591
-        Group_1,
+        Group1,
         #pragma warning restore CS1591
         [EnumMember(Value = "group_2")]
         #pragma warning disable CS1591
-        Group_2,
+        Group2,
         #pragma warning restore CS1591
         [EnumMember(Value = "group_3")]
         #pragma warning disable CS1591
-        Group_3,
+        Group3,
         #pragma warning restore CS1591
         [EnumMember(Value = "group_4")]
         #pragma warning disable CS1591
-        Group_4,
+        Group4,
         #pragma warning restore CS1591
     }
 }

@@ -15,18 +15,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>A human-readable string with additional information about this item, like type or symbol information.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AutocompleteCompletionItem_detail? Detail { get; set; }
+        public string? Detail { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AutocompleteCompletionItem_detail Detail { get; set; }
+        public string Detail { get; set; }
 #endif
         /// <summary>A human-readable string that represents a doc-comment.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AutocompleteCompletionItem_documentation? Documentation { get; set; }
+        public string? Documentation { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AutocompleteCompletionItem_documentation Documentation { get; set; }
+        public string Documentation { get; set; }
 #endif
         /// <summary>A string or snippet that should be inserted in a document when selecting this completion.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -36,7 +36,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string InsertText { get; set; }
 #endif
-        /// <summary>The kind property</summary>
+        /// <summary>The kind of this completion item. Based on the kind an icon is chosen by the editor.</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.AutocompleteCompletionItemKind? Kind { get; set; }
         /// <summary>The label of this completion item. By default this is also the text that is inserted when selecting this completion.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -64,8 +64,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "detail", n => { Detail = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutocompleteCompletionItem_detail>(global::Soenneker.PostHog.OpenApiClient.Models.AutocompleteCompletionItem_detail.CreateFromDiscriminatorValue); } },
-                { "documentation", n => { Documentation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutocompleteCompletionItem_documentation>(global::Soenneker.PostHog.OpenApiClient.Models.AutocompleteCompletionItem_documentation.CreateFromDiscriminatorValue); } },
+                { "detail", n => { Detail = n.GetStringValue(); } },
+                { "documentation", n => { Documentation = n.GetStringValue(); } },
                 { "insertText", n => { InsertText = n.GetStringValue(); } },
                 { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AutocompleteCompletionItemKind>(); } },
                 { "label", n => { Label = n.GetStringValue(); } },
@@ -78,8 +78,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutocompleteCompletionItem_detail>("detail", Detail);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutocompleteCompletionItem_documentation>("documentation", Documentation);
+            writer.WriteStringValue("detail", Detail);
+            writer.WriteStringValue("documentation", Documentation);
             writer.WriteStringValue("insertText", InsertText);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AutocompleteCompletionItemKind>("kind", Kind);
             writer.WriteStringValue("label", Label);

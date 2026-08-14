@@ -14,8 +14,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `minimal` - minimal* `detailed` - detailed</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.DetailModeValueEnum? Mode { get; set; }
+        /// <summary>Summary detail level to check for* `minimal` - minimal* `detailed` - detailed</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchCheckRequestMode? Mode { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchCheckRequestMode Mode { get; set; }
+#endif
         /// <summary>LLM model used for cached summaries</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -57,7 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "mode", n => { Mode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DetailModeValueEnum>(); } },
+                { "mode", n => { Mode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchCheckRequestMode>(global::Soenneker.PostHog.OpenApiClient.Models.BatchCheckRequestMode.CreateFromDiscriminatorValue); } },
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "trace_ids", n => { TraceIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
@@ -69,7 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DetailModeValueEnum>("mode", Mode);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchCheckRequestMode>("mode", Mode);
             writer.WriteStringValue("model", Model);
             writer.WriteCollectionOfPrimitiveValues<string>("trace_ids", TraceIds);
             writer.WriteAdditionalData(AdditionalData);

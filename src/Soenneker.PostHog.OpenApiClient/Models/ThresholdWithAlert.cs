@@ -22,13 +22,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.Alert> Alerts { get; private set; }
 #endif
-        /// <summary>Threshold bounds and type. Includes bounds (lower/upper floats) and type (absolute or percentage).</summary>
+        /// <summary>Threshold bounds and type. Includes bounds (lower/upper floats) and type (absolute or percentage). For threshold-based alerts (no detector_config), at least one of lower or upper must be set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ThresholdWithAlert_configuration? Configuration { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ThresholdWithAlertConfiguration? Configuration { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ThresholdWithAlert_configuration Configuration { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ThresholdWithAlertConfiguration Configuration { get; set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
@@ -68,7 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "alerts", n => { Alerts = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.Alert>(global::Soenneker.PostHog.OpenApiClient.Models.Alert.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "configuration", n => { Configuration = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ThresholdWithAlert_configuration>(global::Soenneker.PostHog.OpenApiClient.Models.ThresholdWithAlert_configuration.CreateFromDiscriminatorValue); } },
+                { "configuration", n => { Configuration = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ThresholdWithAlertConfiguration>(global::Soenneker.PostHog.OpenApiClient.Models.ThresholdWithAlertConfiguration.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
@@ -81,7 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ThresholdWithAlert_configuration>("configuration", Configuration);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ThresholdWithAlertConfiguration>("configuration", Configuration);
             writer.WriteStringValue("name", Name);
             writer.WriteAdditionalData(AdditionalData);
         }

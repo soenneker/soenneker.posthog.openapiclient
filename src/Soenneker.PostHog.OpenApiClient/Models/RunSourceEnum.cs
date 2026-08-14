@@ -13,7 +13,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "signal_report")]
         #pragma warning disable CS1591
-        Signal_report,
+        SignalReport,
         #pragma warning restore CS1591
     }
 }

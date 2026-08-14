@@ -10,7 +10,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "non_cumulative")]
         #pragma warning disable CS1591
-        Non_cumulative,
+        NonCumulative,
         #pragma warning restore CS1591
         [EnumMember(Value = "cumulative")]
         #pragma warning disable CS1591

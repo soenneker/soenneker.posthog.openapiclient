@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Deletion_status
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\persons\deletion_status
+    /// Builds and executes requests for operations under \api\projects\{projectId}\persons\deletion_status
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Deletion_statusRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Deletion_sta
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Deletion_statusRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/persons/deletion_status{?format*,limit*,offset*,person_uuid*,status*}", pathParameters)
+        public Deletion_statusRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/persons/deletion_status{?format*,limit*,offset*,person_uuid*,status*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Deletion_sta
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Deletion_statusRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/persons/deletion_status{?format*,limit*,offset*,person_uuid*,status*}", rawUrl)
+        public Deletion_statusRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/persons/deletion_status{?format*,limit*,offset*,person_uuid*,status*}", rawUrl)
         {
         }
         /// <summary>
@@ -86,7 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Deletion_sta
         public partial class Deletion_statusRequestBuilderGetQueryParameters 
         {
             [QueryParameter("format")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Deletion_status.GetFormatQueryParameterType? Format { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.PersonsDeletionStatusListFormatParameter? Format { get; set; }
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
@@ -98,7 +98,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Deletion_sta
             public Guid? PersonUuid { get; set; }
             /// <summary>&quot;Filter by deletion status: &apos;pending&apos;, &apos;completed&apos;, or &apos;all&apos;.&quot;</summary>
             [QueryParameter("status")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Deletion_status.GetStatusQueryParameterType? Status { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.PersonsDeletionStatusListStatusParameter? Status { get; set; }
         }
     }
 }

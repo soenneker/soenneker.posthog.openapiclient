@@ -13,7 +13,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "this_week")]
         #pragma warning disable CS1591
-        This_week,
+        ThisWeek,
         #pragma warning restore CS1591
         [EnumMember(Value = "inactive")]
         #pragma warning disable CS1591

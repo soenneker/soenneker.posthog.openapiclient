@@ -9,15 +9,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "severity_sampling")]
         #pragma warning disable CS1591
-        Severity_sampling,
+        SeveritySampling,
         #pragma warning restore CS1591
         [EnumMember(Value = "path_drop")]
         #pragma warning disable CS1591
-        Path_drop,
+        PathDrop,
         #pragma warning restore CS1591
         [EnumMember(Value = "rate_limit")]
         #pragma warning disable CS1591
-        Rate_limit,
+        RateLimit,
         #pragma warning restore CS1591
     }
 }

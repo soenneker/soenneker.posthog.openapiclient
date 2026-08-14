@@ -10,21 +10,21 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Plugin_configs
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\plugin_configs
+    /// Builds and executes requests for operations under \api\projects\{projectId}\plugin_configs
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Plugin_configsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.plugin_configs.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Plugin_configs.Item.WithPlugin_config_ItemRequestBuilder"/></returns>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Plugin_configs.Item.WithPlugin_config_ItemRequestBuilder this[int position]
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Plugin_configs.Item.WithPluginConfigItemRequestBuilder"/></returns>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Plugin_configs.Item.WithPluginConfigItemRequestBuilder this[int position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("plugin_config_id", position);
-                return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Plugin_configs.Item.WithPlugin_config_ItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("pluginConfigId", position);
+                return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Plugin_configs.Item.WithPluginConfigItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
@@ -32,7 +32,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Plugin_configs
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Plugin_configsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/plugin_configs", pathParameters)
+        public Plugin_configsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/plugin_configs", pathParameters)
         {
         }
         /// <summary>
@@ -40,7 +40,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Plugin_configs
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Plugin_configsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/plugin_configs", rawUrl)
+        public Plugin_configsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/plugin_configs", rawUrl)
         {
         }
     }

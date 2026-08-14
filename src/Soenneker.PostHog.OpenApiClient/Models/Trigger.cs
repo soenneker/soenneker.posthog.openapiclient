@@ -33,10 +33,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The payload property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.Trigger_payload? Payload { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TriggerPayload? Payload { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.Trigger_payload Payload { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TriggerPayload Payload { get; private set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Trigger"/> and sets the default values.
@@ -65,7 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "job_id", n => { JobId = n.GetStringValue(); } },
                 { "job_type", n => { JobType = n.GetStringValue(); } },
-                { "payload", n => { Payload = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Trigger_payload>(global::Soenneker.PostHog.OpenApiClient.Models.Trigger_payload.CreateFromDiscriminatorValue); } },
+                { "payload", n => { Payload = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TriggerPayload>(global::Soenneker.PostHog.OpenApiClient.Models.TriggerPayload.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>

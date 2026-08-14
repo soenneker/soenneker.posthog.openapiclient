@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_definitions.Bulk_update_tags
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\event_definitions\bulk_update_tags
+    /// Builds and executes requests for operations under \api\projects\{projectId}\event_definitions\bulk_update_tags
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Bulk_update_tagsRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_definitions.Bu
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Bulk_update_tagsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/event_definitions/bulk_update_tags", pathParameters)
+        public Bulk_update_tagsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/event_definitions/bulk_update_tags", pathParameters)
         {
         }
         /// <summary>
@@ -30,42 +30,42 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_definitions.Bu
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Bulk_update_tagsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/event_definitions/bulk_update_tags", rawUrl)
+        public Bulk_update_tagsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/event_definitions/bulk_update_tags", rawUrl)
         {
         }
         /// <summary>
-        /// &quot;Bulk update tags on multiple objects.PAT access: this action has no ``required_scopes=`` on the decorator —inheriting viewsets must add ``\&quot;bulk_update_tags\&quot;`` to their``scope_object_write_actions`` list to accept personal API keys.Without that opt-in, ``APIScopePermission`` rejects PAT requests with\&quot;This action does not support personal API key access\&quot;. Done per-viewsetso granting ``&lt;scope&gt;:write`` for one resource doesn&apos;t leak access tosibling resources that share this mixin.Accepts:- {\&quot;ids\&quot;: [...], \&quot;action\&quot;: \&quot;add\&quot;|\&quot;remove\&quot;|\&quot;set\&quot;, \&quot;tags\&quot;: [\&quot;tag1\&quot;, \&quot;tag2\&quot;]}Actions:- \&quot;add\&quot;: Add tags to existing tags on each object- \&quot;remove\&quot;: Remove specific tags from each object- \&quot;set\&quot;: Replace all tags on each object with the provided list&quot;
+        /// Add, remove, or replace tags across multiple event definitions in one request.Overrides ``TaggedItemViewSetMixin.bulk_update_tags``, which assumes integer PKs and runsobject-level access-control filtering. Event definitions use UUID PKs and are not anobject-level access-controlled resource — project membership (enforced by the viewset) isthe only boundary, matching the single-object update path — so this scopes by project andskips the per-object editor check. Tags live on the base ``EventDefinition`` row, so itoperates there regardless of the enterprise extension.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateTagsResponse"/></returns>
-        /// <param name="body">The request body</param>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateTagsUuidResponse"/></returns>
+        /// <param name="body">Variant of ``BulkUpdateTagsRequestSerializer`` for resources keyed by UUID (e.g. event definitions).</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateTagsResponse?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateTagsRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateTagsUuidResponse?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateTagsUuidRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateTagsResponse> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateTagsRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateTagsUuidResponse> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateTagsUuidRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateTagsResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateTagsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateTagsUuidResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateTagsUuidResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Bulk update tags on multiple objects.PAT access: this action has no ``required_scopes=`` on the decorator —inheriting viewsets must add ``\&quot;bulk_update_tags\&quot;`` to their``scope_object_write_actions`` list to accept personal API keys.Without that opt-in, ``APIScopePermission`` rejects PAT requests with\&quot;This action does not support personal API key access\&quot;. Done per-viewsetso granting ``&lt;scope&gt;:write`` for one resource doesn&apos;t leak access tosibling resources that share this mixin.Accepts:- {\&quot;ids\&quot;: [...], \&quot;action\&quot;: \&quot;add\&quot;|\&quot;remove\&quot;|\&quot;set\&quot;, \&quot;tags\&quot;: [\&quot;tag1\&quot;, \&quot;tag2\&quot;]}Actions:- \&quot;add\&quot;: Add tags to existing tags on each object- \&quot;remove\&quot;: Remove specific tags from each object- \&quot;set\&quot;: Replace all tags on each object with the provided list&quot;
+        /// Add, remove, or replace tags across multiple event definitions in one request.Overrides ``TaggedItemViewSetMixin.bulk_update_tags``, which assumes integer PKs and runsobject-level access-control filtering. Event definitions use UUID PKs and are not anobject-level access-controlled resource — project membership (enforced by the viewset) isthe only boundary, matching the single-object update path — so this scopes by project andskips the per-object editor check. Tags live on the base ``EventDefinition`` row, so itoperates there regardless of the enterprise extension.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Variant of ``BulkUpdateTagsRequestSerializer`` for resources keyed by UUID (e.g. event definitions).</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateTagsRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateTagsUuidRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateTagsRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateTagsUuidRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));

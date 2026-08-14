@@ -3,13 +3,17 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `boolean` - Boolean (Pass/Fail)</summary>
+    /// <summary>* `boolean` - Boolean (Pass/Fail)* `sentiment` - Sentiment</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum OutputTypeEnum
     {
         [EnumMember(Value = "boolean")]
         #pragma warning disable CS1591
         Boolean,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "sentiment")]
+        #pragma warning disable CS1591
+        Sentiment,
         #pragma warning restore CS1591
     }
 }

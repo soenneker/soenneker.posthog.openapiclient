@@ -10,21 +10,21 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Versions
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\feature_flags\{id}\versions
+    /// Builds and executes requests for operations under \api\projects\{projectId}\feature_flags\{id}\versions
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class VersionsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.feature_flags.item.versions.item collection</summary>
         /// <param name="position">The version number to reconstruct.</param>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Versions.Item.WithVersion_numberItemRequestBuilder"/></returns>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Versions.Item.WithVersion_numberItemRequestBuilder this[int position]
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Versions.Item.WithVersionNumberItemRequestBuilder"/></returns>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Versions.Item.WithVersionNumberItemRequestBuilder this[int position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("version_number", position);
-                return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Versions.Item.WithVersion_numberItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("versionNumber", position);
+                return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Versions.Item.WithVersionNumberItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
@@ -32,7 +32,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.V
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public VersionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/feature_flags/{id}/versions", pathParameters)
+        public VersionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/feature_flags/{id}/versions", pathParameters)
         {
         }
         /// <summary>
@@ -40,7 +40,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.V
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public VersionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/feature_flags/{id}/versions", rawUrl)
+        public VersionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/feature_flags/{id}/versions", rawUrl)
         {
         }
     }

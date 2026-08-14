@@ -19,10 +19,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylist_created_by? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylistCreatedBy? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylist_created_by CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylistCreatedBy CreatedBy { get; private set; }
 #endif
         /// <summary>The create_in_folder property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -53,10 +53,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>JSON object with recording filter criteria. Only used when type is &apos;filters&apos;. Defines which recordings match this saved filter view. When updating a filters-type playlist, you must include the existing filters alongside any other changes — omitting filters will be treated as removing them.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylist_filters? Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylistFilters? Filters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylist_filters Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylistFilters Filters { get; set; }
 #endif
         /// <summary>The id property</summary>
         public int? Id { get; private set; }
@@ -67,10 +67,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The last_modified_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylist_last_modified_by? LastModifiedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylistLastModifiedBy? LastModifiedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylist_last_modified_by LastModifiedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylistLastModifiedBy LastModifiedBy { get; private set; }
 #endif
         /// <summary>Human-readable name for the playlist.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -85,10 +85,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The recordings_counts property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylist_recordings_counts? RecordingsCounts { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylistRecordingsCountsProperty? RecordingsCounts { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylist_recordings_counts RecordingsCounts { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylistRecordingsCountsProperty RecordingsCounts { get; set; }
 #endif
         /// <summary>The short_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -101,10 +101,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>&quot;Playlist type: &apos;collection&apos; for manually curated recordings, &apos;filters&apos; for saved filter views. Required on create, cannot be changed after.* `collection` - Collection* `filters` - Filters&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylist_type? Type { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylistType? Type { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylist_type Type { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylistType Type { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylist"/> and sets the default values.
@@ -133,20 +133,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "_create_in_folder", n => { CreateInFolder = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylist_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylist_created_by.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylistCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylistCreatedBy.CreateFromDiscriminatorValue); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "derived_name", n => { DerivedName = n.GetStringValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
-                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylist_filters>(global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylist_filters.CreateFromDiscriminatorValue); } },
+                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylistFilters>(global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylistFilters.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetIntValue(); } },
                 { "is_synthetic", n => { IsSynthetic = n.GetBoolValue(); } },
                 { "last_modified_at", n => { LastModifiedAt = n.GetDateTimeOffsetValue(); } },
-                { "last_modified_by", n => { LastModifiedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylist_last_modified_by>(global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylist_last_modified_by.CreateFromDiscriminatorValue); } },
+                { "last_modified_by", n => { LastModifiedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylistLastModifiedBy>(global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylistLastModifiedBy.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "pinned", n => { Pinned = n.GetBoolValue(); } },
-                { "recordings_counts", n => { RecordingsCounts = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylist_recordings_counts>(global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylist_recordings_counts.CreateFromDiscriminatorValue); } },
+                { "recordings_counts", n => { RecordingsCounts = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylistRecordingsCountsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylistRecordingsCountsProperty.CreateFromDiscriminatorValue); } },
                 { "short_id", n => { ShortId = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylist_type>(global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylist_type.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylistType>(global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylistType.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -160,11 +160,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("deleted", Deleted);
             writer.WriteStringValue("derived_name", DerivedName);
             writer.WriteStringValue("description", Description);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylist_filters>("filters", Filters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylistFilters>("filters", Filters);
             writer.WriteStringValue("name", Name);
             writer.WriteBoolValue("pinned", Pinned);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylist_recordings_counts>("recordings_counts", RecordingsCounts);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylist_type>("type", Type);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylistRecordingsCountsProperty>("recordings_counts", RecordingsCounts);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylistType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

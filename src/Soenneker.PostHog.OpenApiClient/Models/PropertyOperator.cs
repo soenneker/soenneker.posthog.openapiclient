@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "is_not")]
         #pragma warning disable CS1591
-        Is_not,
+        IsNot,
         #pragma warning restore CS1591
         [EnumMember(Value = "icontains")]
         #pragma warning disable CS1591
@@ -22,7 +22,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "not_icontains")]
         #pragma warning disable CS1591
-        Not_icontains,
+        NotIcontains,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "starts_with")]
+        #pragma warning disable CS1591
+        StartsWith,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "not_starts_with")]
+        #pragma warning disable CS1591
+        NotStartsWith,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ends_with")]
+        #pragma warning disable CS1591
+        EndsWith,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "not_ends_with")]
+        #pragma warning disable CS1591
+        NotEndsWith,
         #pragma warning restore CS1591
         [EnumMember(Value = "regex")]
         #pragma warning disable CS1591
@@ -30,7 +46,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "not_regex")]
         #pragma warning disable CS1591
-        Not_regex,
+        NotRegex,
         #pragma warning restore CS1591
         [EnumMember(Value = "gt")]
         #pragma warning disable CS1591
@@ -50,23 +66,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "is_set")]
         #pragma warning disable CS1591
-        Is_set,
+        IsSet,
         #pragma warning restore CS1591
         [EnumMember(Value = "is_not_set")]
         #pragma warning disable CS1591
-        Is_not_set,
+        IsNotSet,
         #pragma warning restore CS1591
         [EnumMember(Value = "is_date_exact")]
         #pragma warning disable CS1591
-        Is_date_exact,
+        IsDateExact,
         #pragma warning restore CS1591
         [EnumMember(Value = "is_date_before")]
         #pragma warning disable CS1591
-        Is_date_before,
+        IsDateBefore,
         #pragma warning restore CS1591
         [EnumMember(Value = "is_date_after")]
         #pragma warning disable CS1591
-        Is_date_after,
+        IsDateAfter,
         #pragma warning restore CS1591
         [EnumMember(Value = "between")]
         #pragma warning disable CS1591
@@ -74,7 +90,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "not_between")]
         #pragma warning disable CS1591
-        Not_between,
+        NotBetween,
         #pragma warning restore CS1591
         [EnumMember(Value = "min")]
         #pragma warning disable CS1591
@@ -86,63 +102,63 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "in")]
         #pragma warning disable CS1591
-        In,
+        InValue,
         #pragma warning restore CS1591
         [EnumMember(Value = "not_in")]
         #pragma warning disable CS1591
-        Not_in,
+        NotIn,
         #pragma warning restore CS1591
         [EnumMember(Value = "is_cleaned_path_exact")]
         #pragma warning disable CS1591
-        Is_cleaned_path_exact,
+        IsCleanedPathExact,
         #pragma warning restore CS1591
         [EnumMember(Value = "flag_evaluates_to")]
         #pragma warning disable CS1591
-        Flag_evaluates_to,
+        FlagEvaluatesTo,
         #pragma warning restore CS1591
         [EnumMember(Value = "semver_eq")]
         #pragma warning disable CS1591
-        Semver_eq,
+        SemverEq,
         #pragma warning restore CS1591
         [EnumMember(Value = "semver_neq")]
         #pragma warning disable CS1591
-        Semver_neq,
+        SemverNeq,
         #pragma warning restore CS1591
         [EnumMember(Value = "semver_gt")]
         #pragma warning disable CS1591
-        Semver_gt,
+        SemverGt,
         #pragma warning restore CS1591
         [EnumMember(Value = "semver_gte")]
         #pragma warning disable CS1591
-        Semver_gte,
+        SemverGte,
         #pragma warning restore CS1591
         [EnumMember(Value = "semver_lt")]
         #pragma warning disable CS1591
-        Semver_lt,
+        SemverLt,
         #pragma warning restore CS1591
         [EnumMember(Value = "semver_lte")]
         #pragma warning disable CS1591
-        Semver_lte,
+        SemverLte,
         #pragma warning restore CS1591
         [EnumMember(Value = "semver_tilde")]
         #pragma warning disable CS1591
-        Semver_tilde,
+        SemverTilde,
         #pragma warning restore CS1591
         [EnumMember(Value = "semver_caret")]
         #pragma warning disable CS1591
-        Semver_caret,
+        SemverCaret,
         #pragma warning restore CS1591
         [EnumMember(Value = "semver_wildcard")]
         #pragma warning disable CS1591
-        Semver_wildcard,
+        SemverWildcard,
         #pragma warning restore CS1591
         [EnumMember(Value = "icontains_multi")]
         #pragma warning disable CS1591
-        Icontains_multi,
+        IcontainsMulti,
         #pragma warning restore CS1591
         [EnumMember(Value = "not_icontains_multi")]
         #pragma warning disable CS1591
-        Not_icontains_multi,
+        NotIcontainsMulti,
         #pragma warning restore CS1591
     }
 }

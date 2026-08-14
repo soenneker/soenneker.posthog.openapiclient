@@ -9,39 +9,39 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "semver_gt")]
         #pragma warning disable CS1591
-        Semver_gt,
+        SemverGt,
         #pragma warning restore CS1591
         [EnumMember(Value = "semver_gte")]
         #pragma warning disable CS1591
-        Semver_gte,
+        SemverGte,
         #pragma warning restore CS1591
         [EnumMember(Value = "semver_lt")]
         #pragma warning disable CS1591
-        Semver_lt,
+        SemverLt,
         #pragma warning restore CS1591
         [EnumMember(Value = "semver_lte")]
         #pragma warning disable CS1591
-        Semver_lte,
+        SemverLte,
         #pragma warning restore CS1591
         [EnumMember(Value = "semver_eq")]
         #pragma warning disable CS1591
-        Semver_eq,
+        SemverEq,
         #pragma warning restore CS1591
         [EnumMember(Value = "semver_neq")]
         #pragma warning disable CS1591
-        Semver_neq,
+        SemverNeq,
         #pragma warning restore CS1591
         [EnumMember(Value = "semver_tilde")]
         #pragma warning disable CS1591
-        Semver_tilde,
+        SemverTilde,
         #pragma warning restore CS1591
         [EnumMember(Value = "semver_caret")]
         #pragma warning disable CS1591
-        Semver_caret,
+        SemverCaret,
         #pragma warning restore CS1591
         [EnumMember(Value = "semver_wildcard")]
         #pragma warning disable CS1591
-        Semver_wildcard,
+        SemverWildcard,
         #pragma warning restore CS1591
     }
 }

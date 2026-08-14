@@ -8,26 +8,34 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigMember2"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigHogConfig"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigLlmJudgeConfig"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigSentimentConfig"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class EvaluationEvaluationConfig : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigMember1"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigHogConfig"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigMember1? EvaluationEvaluationConfigMember1 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigHogConfig? EvaluationEvaluationConfigHogConfig { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigMember1 EvaluationEvaluationConfigMember1 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigHogConfig EvaluationEvaluationConfigHogConfig { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigMember2"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigLlmJudgeConfig"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigMember2? EvaluationEvaluationConfigMember2 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigLlmJudgeConfig? EvaluationEvaluationConfigLlmJudgeConfig { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigMember2 EvaluationEvaluationConfigMember2 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigLlmJudgeConfig EvaluationEvaluationConfigLlmJudgeConfig { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigSentimentConfig"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigSentimentConfig? EvaluationEvaluationConfigSentimentConfig { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigSentimentConfig EvaluationEvaluationConfigSentimentConfig { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -39,13 +47,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfig();
-            if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("EvaluationEvaluationConfigHogConfig".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.EvaluationEvaluationConfigMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigMember1();
+                result.EvaluationEvaluationConfigHogConfig = new global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigHogConfig();
             }
-            else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("EvaluationEvaluationConfigLlmJudgeConfig".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.EvaluationEvaluationConfigMember2 = new global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigMember2();
+                result.EvaluationEvaluationConfigLlmJudgeConfig = new global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigLlmJudgeConfig();
+            }
+            else if("EvaluationEvaluationConfigSentimentConfig".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.EvaluationEvaluationConfigSentimentConfig = new global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigSentimentConfig();
             }
             return result;
         }
@@ -55,13 +67,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(EvaluationEvaluationConfigMember1 != null)
+            if(EvaluationEvaluationConfigHogConfig != null)
             {
-                return EvaluationEvaluationConfigMember1.GetFieldDeserializers();
+                return EvaluationEvaluationConfigHogConfig.GetFieldDeserializers();
             }
-            else if(EvaluationEvaluationConfigMember2 != null)
+            else if(EvaluationEvaluationConfigLlmJudgeConfig != null)
             {
-                return EvaluationEvaluationConfigMember2.GetFieldDeserializers();
+                return EvaluationEvaluationConfigLlmJudgeConfig.GetFieldDeserializers();
+            }
+            else if(EvaluationEvaluationConfigSentimentConfig != null)
+            {
+                return EvaluationEvaluationConfigSentimentConfig.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -72,13 +88,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(EvaluationEvaluationConfigMember1 != null)
+            if(EvaluationEvaluationConfigHogConfig != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigMember1>(null, EvaluationEvaluationConfigMember1);
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigHogConfig>(null, EvaluationEvaluationConfigHogConfig);
             }
-            else if(EvaluationEvaluationConfigMember2 != null)
+            else if(EvaluationEvaluationConfigLlmJudgeConfig != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigMember2>(null, EvaluationEvaluationConfigMember2);
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigLlmJudgeConfig>(null, EvaluationEvaluationConfigLlmJudgeConfig);
+            }
+            else if(EvaluationEvaluationConfigSentimentConfig != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigSentimentConfig>(null, EvaluationEvaluationConfigSentimentConfig);
             }
         }
     }

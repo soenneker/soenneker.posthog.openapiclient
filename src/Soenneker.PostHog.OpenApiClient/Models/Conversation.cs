@@ -22,6 +22,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string AgentMode { get; private set; }
 #endif
+        /// <summary>Runtime that owns this conversation. &apos;langgraph&apos; conversations return their messages in the `messages` field; born-&apos;sandbox&apos; conversations return an empty `messages` array and load history from the products/tasks logs endpoint. A converted conversation is &apos;sandbox&apos; but still returns its legacy thread in `messages`.* `langgraph` - LangGraph* `sandbox` - Sandbox</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationAgentRuntime? AgentRuntime { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationAgentRuntime AgentRuntime { get; private set; }
+#endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>The has_unsupported_content property</summary>
@@ -35,18 +43,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The messages property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.Conversation_messages>? Messages { get; private set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ConversationMessagesItemProperty>? Messages { get; private set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.Conversation_messages> Messages { get; private set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ConversationMessagesItemProperty> Messages { get; private set; }
 #endif
         /// <summary>Return pending approval cards as structured data.Combines metadata from conversation.approval_decisions with payload from checkpointinterrupts (single source of truth for payload data).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.Conversation_pending_approvals>? PendingApprovals { get; private set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ConversationPendingApprovalsItemProperty>? PendingApprovals { get; private set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.Conversation_pending_approvals> PendingApprovals { get; private set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ConversationPendingApprovalsItemProperty> PendingApprovals { get; private set; }
 #endif
         /// <summary>&quot;Unique key for Slack thread: &apos;{workspace_id}:{channel}:{thread_ts}&apos;&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -64,8 +72,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SlackWorkspaceDomain { get; private set; }
 #endif
-        /// <summary>* `idle` - Idle* `in_progress` - In progress* `canceling` - Canceling</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationStatus? Status { get; set; }
+        /// <summary>The status property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationStatusComposed? Status { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationStatusComposed Status { get; private set; }
+#endif
+        /// <summary>The task property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationTaskComposed? Task { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationTaskComposed Task { get; private set; }
+#endif
         /// <summary>Title of the conversation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -74,17 +96,31 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Title { get; private set; }
 #endif
-        /// <summary>* `assistant` - Assistant* `tool_call` - Tool call* `deep_research` - Deep research* `slack` - Slack</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationType? Type { get; set; }
+        /// <summary>Product domain the conversation is about, classified from the first question.* `web_analytics` - Web analytics* `product_analytics` - Product analytics* `session_replay` - Session replay* `surveys` - Surveys* `feature_flags` - Feature flags* `experiments` - Experiments* `error_tracking` - Error tracking* `data_warehouse` - Data warehouse* `other` - Other</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationTopic? Topic { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationTopic Topic { get; private set; }
+#endif
+        /// <summary>The type property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationTypeComposed? Type { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationTypeComposed Type { get; private set; }
+#endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>The user property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.Conversation_user? User { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationUser? User { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.Conversation_user User { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationUser User { get; private set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Conversation"/> and sets the default values.
@@ -112,20 +148,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "agent_mode", n => { AgentMode = n.GetStringValue(); } },
+                { "agent_runtime", n => { AgentRuntime = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationAgentRuntime>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationAgentRuntime.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "has_unsupported_content", n => { HasUnsupportedContent = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "is_internal", n => { IsInternal = n.GetBoolValue(); } },
                 { "is_sandbox", n => { IsSandbox = n.GetBoolValue(); } },
-                { "messages", n => { Messages = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.Conversation_messages>(global::Soenneker.PostHog.OpenApiClient.Models.Conversation_messages.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "pending_approvals", n => { PendingApprovals = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.Conversation_pending_approvals>(global::Soenneker.PostHog.OpenApiClient.Models.Conversation_pending_approvals.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "messages", n => { Messages = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ConversationMessagesItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationMessagesItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "pending_approvals", n => { PendingApprovals = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ConversationPendingApprovalsItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationPendingApprovalsItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "slack_thread_key", n => { SlackThreadKey = n.GetStringValue(); } },
                 { "slack_workspace_domain", n => { SlackWorkspaceDomain = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationStatus>(); } },
+                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationStatusComposed>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationStatusComposed.CreateFromDiscriminatorValue); } },
+                { "task", n => { Task = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationTaskComposed>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationTaskComposed.CreateFromDiscriminatorValue); } },
                 { "title", n => { Title = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationType>(); } },
+                { "topic", n => { Topic = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationTopic>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationTopic.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationTypeComposed>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationTypeComposed.CreateFromDiscriminatorValue); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
-                { "user", n => { User = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Conversation_user>(global::Soenneker.PostHog.OpenApiClient.Models.Conversation_user.CreateFromDiscriminatorValue); } },
+                { "user", n => { User = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationUser>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationUser.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -135,8 +174,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationStatus>("status", Status);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

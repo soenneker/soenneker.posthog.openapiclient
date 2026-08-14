@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `integer` - integer* `numeric` - numeric* `datetime` - datetime* `date` - date* `timestamp` - timestamp* `objectid` - objectid</summary>
+    /// <summary>* `integer` - integer* `numeric` - numeric* `datetime` - datetime* `date` - date* `timestamp` - timestamp* `objectid` - objectid* `xid` - xid</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum IncrementalFieldTypeEnum
     {
@@ -30,6 +30,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "objectid")]
         #pragma warning disable CS1591
         Objectid,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "xid")]
+        #pragma warning disable CS1591
+        Xid,
         #pragma warning restore CS1591
     }
 }

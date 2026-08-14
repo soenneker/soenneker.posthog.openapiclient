@@ -15,36 +15,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Preprocessing transforms applied before detection</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ZScoreDetectorConfig_preprocessing? Preprocessing { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig? Preprocessing { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ZScoreDetectorConfig_preprocessing Preprocessing { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig Preprocessing { get; set; }
 #endif
         /// <summary>&quot;Anomaly probability threshold [0-1]. Points above this probability are flagged (default: 0.9)&quot;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ZScoreDetectorConfig_threshold? Threshold { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ZScoreDetectorConfig_threshold Threshold { get; set; }
-#endif
+        public double? Threshold { get; set; }
         /// <summary>The type property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ZScoreDetectorConfig_type? Type { get; set; }
-        /// <summary>&quot;Rolling window size for calculating mean/std (default: 30)&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ZScoreDetectorConfig_window? Window { get; set; }
+        public string? Type { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ZScoreDetectorConfig_window Window { get; set; }
+        public string Type { get; set; }
 #endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ZScoreDetectorConfig"/> and sets the default values.
-        /// </summary>
-        public ZScoreDetectorConfig()
-        {
-            Type = global::Soenneker.PostHog.OpenApiClient.Models.ZScoreDetectorConfig_type.Zscore;
-        }
+        /// <summary>&quot;Rolling window size for calculating mean/std (default: 30)&quot;</summary>
+        public int? Window { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -63,10 +50,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "preprocessing", n => { Preprocessing = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ZScoreDetectorConfig_preprocessing>(global::Soenneker.PostHog.OpenApiClient.Models.ZScoreDetectorConfig_preprocessing.CreateFromDiscriminatorValue); } },
-                { "threshold", n => { Threshold = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ZScoreDetectorConfig_threshold>(global::Soenneker.PostHog.OpenApiClient.Models.ZScoreDetectorConfig_threshold.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ZScoreDetectorConfig_type>(); } },
-                { "window", n => { Window = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ZScoreDetectorConfig_window>(global::Soenneker.PostHog.OpenApiClient.Models.ZScoreDetectorConfig_window.CreateFromDiscriminatorValue); } },
+                { "preprocessing", n => { Preprocessing = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig>(global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig.CreateFromDiscriminatorValue); } },
+                { "threshold", n => { Threshold = n.GetDoubleValue(); } },
+                { "type", n => { Type = n.GetStringValue(); } },
+                { "window", n => { Window = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -76,10 +63,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ZScoreDetectorConfig_preprocessing>("preprocessing", Preprocessing);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ZScoreDetectorConfig_threshold>("threshold", Threshold);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ZScoreDetectorConfig_type>("type", Type);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ZScoreDetectorConfig_window>("window", Window);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig>("preprocessing", Preprocessing);
+            writer.WriteDoubleValue("threshold", Threshold);
+            writer.WriteStringValue("type", Type);
+            writer.WriteIntValue("window", Window);
         }
     }
 }

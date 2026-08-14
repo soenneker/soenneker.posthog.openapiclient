@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Persons that could not be deleted. Each entry contains &apos;person_uuid&apos;. Contact support if this persists.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PersonBulkDeleteResponse_deletion_errors>? DeletionErrors { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PersonBulkDeleteResponseDeletionErrorsItemProperty>? DeletionErrors { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PersonBulkDeleteResponse_deletion_errors> DeletionErrors { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PersonBulkDeleteResponseDeletionErrorsItemProperty> DeletionErrors { get; set; }
 #endif
         /// <summary>Whether event deletion was requested for the matched persons. If a deletion was already queued for a person, it will not be duplicated.</summary>
         public bool? EventsQueuedForDeletion { get; set; }
@@ -55,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "deletion_errors", n => { DeletionErrors = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PersonBulkDeleteResponse_deletion_errors>(global::Soenneker.PostHog.OpenApiClient.Models.PersonBulkDeleteResponse_deletion_errors.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "deletion_errors", n => { DeletionErrors = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PersonBulkDeleteResponseDeletionErrorsItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PersonBulkDeleteResponseDeletionErrorsItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "events_queued_for_deletion", n => { EventsQueuedForDeletion = n.GetBoolValue(); } },
                 { "persons_deleted", n => { PersonsDeleted = n.GetIntValue(); } },
                 { "persons_found", n => { PersonsFound = n.GetIntValue(); } },
@@ -69,7 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PersonBulkDeleteResponse_deletion_errors>("deletion_errors", DeletionErrors);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PersonBulkDeleteResponseDeletionErrorsItemProperty>("deletion_errors", DeletionErrors);
             writer.WriteBoolValue("events_queued_for_deletion", EventsQueuedForDeletion);
             writer.WriteIntValue("persons_deleted", PersonsDeleted);
             writer.WriteIntValue("persons_found", PersonsFound);

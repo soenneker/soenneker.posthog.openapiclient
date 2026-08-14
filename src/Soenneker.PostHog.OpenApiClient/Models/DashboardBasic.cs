@@ -28,13 +28,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasic_created_by? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasicCreatedBy? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasic_created_by CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasicCreatedBy CreatedBy { get; private set; }
 #endif
-        /// <summary>* `default` - Default* `template` - Template* `duplicate` - Duplicate* `unlisted` - Unlisted (product-embedded)</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.CreationModeEnum? CreationMode { get; set; }
+        /// <summary>The creation_mode property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasicCreationMode? CreationMode { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasicCreationMode CreationMode { get; private set; }
+#endif
         /// <summary>The deleted property</summary>
         public bool? Deleted { get; private set; }
         /// <summary>Description of the dashboard.</summary>
@@ -46,9 +52,39 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Description { get; private set; }
 #endif
         /// <summary>The effective_privilege_level property</summary>
-        public int? EffectivePrivilegeLevel { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasicEffectivePrivilegeLevel? EffectivePrivilegeLevel { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasicEffectivePrivilegeLevel EffectivePrivilegeLevel { get; private set; }
+#endif
         /// <summary>The effective_restriction_level property</summary>
-        public int? EffectiveRestrictionLevel { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasicEffectiveRestrictionLevel? EffectiveRestrictionLevel { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasicEffectiveRestrictionLevel EffectiveRestrictionLevel { get; private set; }
+#endif
+        /// <summary>Id of this dashboard&apos;s file system entry, or null when it has none. Together with `file_system_path` this is everything a caller needs to move the dashboard between folders, so a list page does not have to look the entry up separately.</summary>
+        public Guid? FileSystemId { get; private set; }
+        /// <summary>Full path of this dashboard&apos;s file system entry, e.g. &apos;Unfiled/Dashboards/Revenue&apos;. Unlike `folder` this keeps the dashboard&apos;s own name as the last segment, which is what a move needs in order to compute the destination path. Null when it has no entry.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? FileSystemPath { get; private set; }
+#nullable restore
+#else
+        public string FileSystemPath { get; private set; }
+#endif
+        /// <summary>Path of the project-tree folder this dashboard is filed under in the file system, e.g. &apos;Unfiled/Dashboards&apos;. An empty string means the project root; null means the dashboard has no file system entry. The dashboard&apos;s own name is not part of the path.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Folder { get; private set; }
+#nullable restore
+#else
+        public string Folder { get; private set; }
+#endif
         /// <summary>The id property</summary>
         public int? Id { get; private set; }
         /// <summary>The is_shared property</summary>
@@ -69,15 +105,29 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Whether the dashboard is pinned to the top of the list.</summary>
         public bool? Pinned { get; private set; }
-        /// <summary>* `21` - Everyone in the project can edit* `37` - Only those invited to this dashboard can edit</summary>
-        public int? RestrictionLevel { get; set; }
+        /// <summary>Controls who can edit the dashboard.* `21` - Everyone in the project can edit* `37` - Only those invited to this dashboard can edit</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasicRestrictionLevel? RestrictionLevel { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasicRestrictionLevel RestrictionLevel { get; private set; }
+#endif
+        /// <summary>&quot;How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`.&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasicSearchMatchType? SearchMatchType { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasicSearchMatchType SearchMatchType { get; private set; }
+#endif
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasic_tags>? Tags { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasicTagsItem>? Tags { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasic_tags> Tags { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasicTagsItem> Tags { get; set; }
 #endif
         /// <summary>The team_id property</summary>
         public int? TeamId { get; private set; }
@@ -116,12 +166,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "access_control_version", n => { AccessControlVersion = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasic_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasic_created_by.CreateFromDiscriminatorValue); } },
-                { "creation_mode", n => { CreationMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CreationModeEnum>(); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasicCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasicCreatedBy.CreateFromDiscriminatorValue); } },
+                { "creation_mode", n => { CreationMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasicCreationMode>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasicCreationMode.CreateFromDiscriminatorValue); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
-                { "effective_privilege_level", n => { EffectivePrivilegeLevel = n.GetIntValue(); } },
-                { "effective_restriction_level", n => { EffectiveRestrictionLevel = n.GetIntValue(); } },
+                { "effective_privilege_level", n => { EffectivePrivilegeLevel = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasicEffectivePrivilegeLevel>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasicEffectivePrivilegeLevel.CreateFromDiscriminatorValue); } },
+                { "effective_restriction_level", n => { EffectiveRestrictionLevel = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasicEffectiveRestrictionLevel>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasicEffectiveRestrictionLevel.CreateFromDiscriminatorValue); } },
+                { "file_system_id", n => { FileSystemId = n.GetGuidValue(); } },
+                { "file_system_path", n => { FileSystemPath = n.GetStringValue(); } },
+                { "folder", n => { Folder = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetIntValue(); } },
                 { "is_shared", n => { IsShared = n.GetBoolValue(); } },
                 { "last_accessed_at", n => { LastAccessedAt = n.GetDateTimeOffsetValue(); } },
@@ -129,8 +182,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "last_viewed_at", n => { LastViewedAt = n.GetDateTimeOffsetValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "pinned", n => { Pinned = n.GetBoolValue(); } },
-                { "restriction_level", n => { RestrictionLevel = n.GetIntValue(); } },
-                { "tags", n => { Tags = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasic_tags>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasic_tags.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "restriction_level", n => { RestrictionLevel = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasicRestrictionLevel>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasicRestrictionLevel.CreateFromDiscriminatorValue); } },
+                { "search_match_type", n => { SearchMatchType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasicSearchMatchType>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasicSearchMatchType.CreateFromDiscriminatorValue); } },
+                { "tags", n => { Tags = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasicTagsItem>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasicTagsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "team_id", n => { TeamId = n.GetIntValue(); } },
                 { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },
             };
@@ -142,11 +196,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CreationModeEnum>("creation_mode", CreationMode);
-            writer.WriteIntValue("effective_privilege_level", EffectivePrivilegeLevel);
-            writer.WriteIntValue("effective_restriction_level", EffectiveRestrictionLevel);
-            writer.WriteIntValue("restriction_level", RestrictionLevel);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasic_tags>("tags", Tags);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DashboardBasicTagsItem>("tags", Tags);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

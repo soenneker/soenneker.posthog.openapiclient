@@ -14,7 +14,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The status property</summary>
+        /// <summary>duckgres org identifier (the PostHog organization id)</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Org { get; set; }
+#nullable restore
+#else
+        public string Org { get; set; }
+#endif
+        /// <summary>Root database password — returned only here at provision time and on reset-password</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Password { get; set; }
+#nullable restore
+#else
+        public string Password { get; set; }
+#endif
+        /// <summary>Provisioning lifecycle message, e.g. &apos;provisioning started&apos;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Status { get; set; }
@@ -22,13 +38,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Status { get; set; }
 #endif
-        /// <summary>The team property</summary>
+        /// <summary>Root database username</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Team { get; set; }
+        public string? Username { get; set; }
 #nullable restore
 #else
-        public string Team { get; set; }
+        public string Username { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ProvisionWarehouseResponse"/> and sets the default values.
@@ -55,8 +71,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "org", n => { Org = n.GetStringValue(); } },
+                { "password", n => { Password = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
-                { "team", n => { Team = n.GetStringValue(); } },
+                { "username", n => { Username = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -66,8 +84,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("org", Org);
+            writer.WriteStringValue("password", Password);
             writer.WriteStringValue("status", Status);
-            writer.WriteStringValue("team", Team);
+            writer.WriteStringValue("username", Username);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

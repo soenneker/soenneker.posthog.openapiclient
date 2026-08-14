@@ -32,6 +32,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Previous { get; set; }
 #endif
+        /// <summary>Count of this run&apos;s snapshots whose identifier is currently quarantined. Excluded from results unless include_quarantined=true is passed.</summary>
+        public int? QuarantinedCount { get; set; }
         /// <summary>The results property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -68,6 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "count", n => { Count = n.GetIntValue(); } },
                 { "next", n => { Next = n.GetStringValue(); } },
                 { "previous", n => { Previous = n.GetStringValue(); } },
+                { "quarantined_count", n => { QuarantinedCount = n.GetIntValue(); } },
                 { "results", n => { Results = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.Snapshot>(global::Soenneker.PostHog.OpenApiClient.Models.Snapshot.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -81,6 +84,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("count", Count);
             writer.WriteStringValue("next", Next);
             writer.WriteStringValue("previous", Previous);
+            writer.WriteIntValue("quarantined_count", QuarantinedCount);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.Snapshot>("results", Results);
             writer.WriteAdditionalData(AdditionalData);
         }

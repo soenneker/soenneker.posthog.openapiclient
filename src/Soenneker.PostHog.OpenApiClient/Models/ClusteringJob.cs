@@ -15,7 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `trace` - trace* `generation` - generation* `evaluation` - evaluation</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ClusteringJobAnalysisLevelEnum? AnalysisLevel { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AnalysisLevelEnum? AnalysisLevel { get; set; }
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>The enabled property</summary>
@@ -23,10 +23,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The event_filters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ClusteringJob_event_filters? EventFilters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ClusteringJobEventFilters? EventFilters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ClusteringJob_event_filters EventFilters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ClusteringJobEventFilters EventFilters { get; set; }
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
@@ -65,10 +65,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "analysis_level", n => { AnalysisLevel = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringJobAnalysisLevelEnum>(); } },
+                { "analysis_level", n => { AnalysisLevel = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AnalysisLevelEnum>(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
-                { "event_filters", n => { EventFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringJob_event_filters>(global::Soenneker.PostHog.OpenApiClient.Models.ClusteringJob_event_filters.CreateFromDiscriminatorValue); } },
+                { "event_filters", n => { EventFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringJobEventFilters>(global::Soenneker.PostHog.OpenApiClient.Models.ClusteringJobEventFilters.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
@@ -81,9 +81,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringJobAnalysisLevelEnum>("analysis_level", AnalysisLevel);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AnalysisLevelEnum>("analysis_level", AnalysisLevel);
             writer.WriteBoolValue("enabled", Enabled);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringJob_event_filters>("event_filters", EventFilters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringJobEventFilters>("event_filters", EventFilters);
             writer.WriteStringValue("name", Name);
             writer.WriteAdditionalData(AdditionalData);
         }

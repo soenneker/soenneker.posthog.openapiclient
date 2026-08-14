@@ -33,22 +33,22 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Users.Cancel_email_change_request
         public Cancel_email_change_requestRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/users/cancel_email_change_request", rawUrl)
         {
         }
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Users.Cancel_email_change_request.Cancel_email_change_requestPatchResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.UsersCancelEmailChangeRequestPartialUpdate200Response"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Api.Users.Cancel_email_change_request.Cancel_email_change_requestPatchResponse?> PatchAsync(global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.UsersCancelEmailChangeRequestPartialUpdate200Response?> PatchAsync(global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Api.Users.Cancel_email_change_request.Cancel_email_change_requestPatchResponse> PatchAsync(global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.UsersCancelEmailChangeRequestPartialUpdate200Response> PatchAsync(global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Api.Users.Cancel_email_change_request.Cancel_email_change_requestPatchResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Api.Users.Cancel_email_change_request.Cancel_email_change_requestPatchResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.UsersCancelEmailChangeRequestPartialUpdate200Response>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.UsersCancelEmailChangeRequestPartialUpdate200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

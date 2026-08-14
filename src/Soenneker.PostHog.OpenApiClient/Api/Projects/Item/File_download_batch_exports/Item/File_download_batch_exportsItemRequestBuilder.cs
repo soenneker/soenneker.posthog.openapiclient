@@ -15,7 +15,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_exports.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\file_download_batch_exports\{id}
+    /// Builds and executes requests for operations under \api\projects\{projectId}\file_download_batch_exports\{id}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class File_download_batch_exportsItemRequestBuilder : BaseRequestBuilder
@@ -40,7 +40,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public File_download_batch_exportsItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/file_download_batch_exports/{id}", pathParameters)
+        public File_download_batch_exportsItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/file_download_batch_exports/{id}", pathParameters)
         {
         }
         /// <summary>
@@ -48,7 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public File_download_batch_exportsItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/file_download_batch_exports/{id}", rawUrl)
+        public File_download_batch_exportsItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/file_download_batch_exports/{id}", rawUrl)
         {
         }
         /// <summary>

@@ -32,9 +32,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Integration ID for the Slack workspace. Required when type=slack.</summary>
         public int? SlackWorkspaceId { get; set; }
-        /// <summary>* `slack` - slack* `webhook` - webhook</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.NotificationDestinationTypeEnum? Type { get; set; }
-        /// <summary>HTTPS endpoint to POST to. Required when type=webhook.</summary>
+        /// <summary>Notification destination type.* `slack` - slack* `webhook` - webhook* `teams` - teams</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertCreateDestinationType? Type { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertCreateDestinationType Type { get; set; }
+#endif
+        /// <summary>HTTPS endpoint to post to. Required for webhook and teams.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? WebhookUrl { get; set; }
@@ -70,7 +76,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "slack_channel_id", n => { SlackChannelId = n.GetStringValue(); } },
                 { "slack_channel_name", n => { SlackChannelName = n.GetStringValue(); } },
                 { "slack_workspace_id", n => { SlackWorkspaceId = n.GetIntValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.NotificationDestinationTypeEnum>(); } },
+                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertCreateDestinationType>(global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertCreateDestinationType.CreateFromDiscriminatorValue); } },
                 { "webhook_url", n => { WebhookUrl = n.GetStringValue(); } },
             };
         }
@@ -84,7 +90,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("slack_channel_id", SlackChannelId);
             writer.WriteStringValue("slack_channel_name", SlackChannelName);
             writer.WriteIntValue("slack_workspace_id", SlackWorkspaceId);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.NotificationDestinationTypeEnum>("type", Type);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertCreateDestinationType>("type", Type);
             writer.WriteStringValue("webhook_url", WebhookUrl);
             writer.WriteAdditionalData(AdditionalData);
         }

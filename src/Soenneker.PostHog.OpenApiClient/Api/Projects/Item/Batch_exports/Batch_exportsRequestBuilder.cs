@@ -15,7 +15,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Batch_exports
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\batch_exports
+    /// Builds and executes requests for operations under \api\projects\{projectId}\batch_exports
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Batch_exportsRequestBuilder : BaseRequestBuilder
@@ -32,14 +32,14 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Batch_exports
         }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.batch_exports.item collection</summary>
         /// <param name="position">A UUID string identifying this batch export.</param>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Batch_exports.Item.Batch_export_ItemRequestBuilder"/></returns>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Batch_exports.Item.Batch_export_ItemRequestBuilder this[Guid position]
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Batch_exports.Item.BatchExportItemRequestBuilder"/></returns>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Batch_exports.Item.BatchExportItemRequestBuilder this[Guid position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("batch_export_%2Did", position);
-                return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Batch_exports.Item.Batch_export_ItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("batchExport%2Did", position);
+                return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Batch_exports.Item.BatchExportItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
@@ -47,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Batch_exports
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Batch_exportsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/batch_exports{?limit*,offset*}", pathParameters)
+        public Batch_exportsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/batch_exports{?limit*,offset*}", pathParameters)
         {
         }
         /// <summary>
@@ -55,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Batch_exports
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Batch_exportsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/batch_exports{?limit*,offset*}", rawUrl)
+        public Batch_exportsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/batch_exports{?limit*,offset*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedBatchExportList"/></returns>

@@ -13,7 +13,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "String")]
         #pragma warning disable CS1591
-        String,
+        StringValue,
         #pragma warning restore CS1591
         [EnumMember(Value = "Numeric")]
         #pragma warning disable CS1591
@@ -25,7 +25,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "Object")]
         #pragma warning disable CS1591
-        Object,
+        ObjectValue,
         #pragma warning restore CS1591
     }
 }

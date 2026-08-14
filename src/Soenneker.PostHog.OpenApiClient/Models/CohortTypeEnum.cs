@@ -9,11 +9,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "static")]
         #pragma warning disable CS1591
-        Static,
+        StaticValue,
         #pragma warning restore CS1591
         [EnumMember(Value = "person_property")]
         #pragma warning disable CS1591
-        Person_property,
+        PersonProperty,
         #pragma warning restore CS1591
         [EnumMember(Value = "behavioral")]
         #pragma warning disable CS1591

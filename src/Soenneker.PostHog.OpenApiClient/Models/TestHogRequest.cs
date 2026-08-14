@@ -19,10 +19,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Optional trigger conditions to filter which events are sampled.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequest_conditions>? Conditions { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestConditionsItemProperty>? Conditions { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequest_conditions> Conditions { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestConditionsItemProperty> Conditions { get; set; }
 #endif
         /// <summary>Number of recent $ai_generation events to test against (1–10, default 5).</summary>
         public int? SampleCount { get; set; }
@@ -34,12 +34,30 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Source { get; set; }
 #endif
+        /// <summary>&quot;What the evaluation runs against: &apos;generation&apos; samples individual generations, &apos;trace&apos; samples whole traces, and &apos;session&apos; samples whole sessions that have gone quiet. Each target runs against the same globals it would run against online.* `generation` - Generation* `trace` - Trace* `session` - Session&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestTarget? Target { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestTarget Target { get; set; }
+#endif
+        /// <summary>Target-specific preview settings. For a trace target, set window_seconds between 10 and 7200.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestTargetConfig? TargetConfig { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestTargetConfig TargetConfig { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequest"/> and sets the default values.
         /// </summary>
         public TestHogRequest()
         {
             AdditionalData = new Dictionary<string, object>();
+            AllowsNa = false;
+            SampleCount = 5;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -60,9 +78,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "allows_na", n => { AllowsNa = n.GetBoolValue(); } },
-                { "conditions", n => { Conditions = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequest_conditions>(global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequest_conditions.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "conditions", n => { Conditions = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestConditionsItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestConditionsItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "sample_count", n => { SampleCount = n.GetIntValue(); } },
                 { "source", n => { Source = n.GetStringValue(); } },
+                { "target", n => { Target = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestTarget>(global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestTarget.CreateFromDiscriminatorValue); } },
+                { "target_config", n => { TargetConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestTargetConfig>(global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestTargetConfig.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -73,9 +93,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("allows_na", AllowsNa);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequest_conditions>("conditions", Conditions);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestConditionsItemProperty>("conditions", Conditions);
             writer.WriteIntValue("sample_count", SampleCount);
             writer.WriteStringValue("source", Source);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestTarget>("target", Target);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestTargetConfig>("target_config", TargetConfig);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

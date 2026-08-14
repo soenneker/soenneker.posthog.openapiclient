@@ -21,7 +21,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "stopped_early")]
         #pragma warning disable CS1591
-        Stopped_early,
+        StoppedEarly,
         #pragma warning restore CS1591
         [EnumMember(Value = "invalid")]
         #pragma warning disable CS1591

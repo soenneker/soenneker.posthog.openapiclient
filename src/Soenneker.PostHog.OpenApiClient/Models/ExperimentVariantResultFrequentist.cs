@@ -9,127 +9,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class ExperimentVariantResultFrequentist : IParsable
+    public partial class ExperimentVariantResultFrequentist : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>The confidence_interval property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_confidence_interval? ConfidenceInterval { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_confidence_interval ConfidenceInterval { get; set; }
-#endif
-        /// <summary>The covariate_sum property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_covariate_sum? CovariateSum { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_covariate_sum CovariateSum { get; set; }
-#endif
-        /// <summary>The covariate_sum_product property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_covariate_sum_product? CovariateSumProduct { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_covariate_sum_product CovariateSumProduct { get; set; }
-#endif
-        /// <summary>The covariate_sum_squares property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_covariate_sum_squares? CovariateSumSquares { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_covariate_sum_squares CovariateSumSquares { get; set; }
-#endif
-        /// <summary>The denominator_sum property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_denominator_sum? DenominatorSum { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_denominator_sum DenominatorSum { get; set; }
-#endif
-        /// <summary>The denominator_sum_squares property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_denominator_sum_squares? DenominatorSumSquares { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_denominator_sum_squares DenominatorSumSquares { get; set; }
-#endif
-        /// <summary>The key property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Key { get; set; }
-#nullable restore
-#else
-        public string Key { get; set; }
-#endif
-        /// <summary>The method property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_method? Method { get; set; }
-        /// <summary>The number_of_samples property</summary>
-        public int? NumberOfSamples { get; set; }
-        /// <summary>The numerator_denominator_sum_product property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_numerator_denominator_sum_product? NumeratorDenominatorSumProduct { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_numerator_denominator_sum_product NumeratorDenominatorSumProduct { get; set; }
-#endif
-        /// <summary>The p_value property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_p_value? PValue { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_p_value PValue { get; set; }
-#endif
-        /// <summary>The significant property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_significant? Significant { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_significant Significant { get; set; }
-#endif
-        /// <summary>The step_counts property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_step_counts? StepCounts { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_step_counts StepCounts { get; set; }
-#endif
-        /// <summary>The step_sessions property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_step_sessions? StepSessions { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_step_sessions StepSessions { get; set; }
-#endif
-        /// <summary>The sum property</summary>
-        public double? Sum { get; set; }
-        /// <summary>The sum_squares property</summary>
-        public double? SumSquares { get; set; }
-        /// <summary>The validation_failures property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_validation_failures? ValidationFailures { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_validation_failures ValidationFailures { get; set; }
-#endif
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist"/> and sets the default values.
         /// </summary>
         public ExperimentVariantResultFrequentist()
         {
-            Method = global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_method.Frequentist;
+            AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -149,23 +39,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "confidence_interval", n => { ConfidenceInterval = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_confidence_interval>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_confidence_interval.CreateFromDiscriminatorValue); } },
-                { "covariate_sum", n => { CovariateSum = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_covariate_sum>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_covariate_sum.CreateFromDiscriminatorValue); } },
-                { "covariate_sum_product", n => { CovariateSumProduct = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_covariate_sum_product>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_covariate_sum_product.CreateFromDiscriminatorValue); } },
-                { "covariate_sum_squares", n => { CovariateSumSquares = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_covariate_sum_squares>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_covariate_sum_squares.CreateFromDiscriminatorValue); } },
-                { "denominator_sum", n => { DenominatorSum = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_denominator_sum>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_denominator_sum.CreateFromDiscriminatorValue); } },
-                { "denominator_sum_squares", n => { DenominatorSumSquares = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_denominator_sum_squares>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_denominator_sum_squares.CreateFromDiscriminatorValue); } },
-                { "key", n => { Key = n.GetStringValue(); } },
-                { "method", n => { Method = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_method>(); } },
-                { "number_of_samples", n => { NumberOfSamples = n.GetIntValue(); } },
-                { "numerator_denominator_sum_product", n => { NumeratorDenominatorSumProduct = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_numerator_denominator_sum_product>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_numerator_denominator_sum_product.CreateFromDiscriminatorValue); } },
-                { "p_value", n => { PValue = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_p_value>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_p_value.CreateFromDiscriminatorValue); } },
-                { "significant", n => { Significant = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_significant>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_significant.CreateFromDiscriminatorValue); } },
-                { "step_counts", n => { StepCounts = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_step_counts>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_step_counts.CreateFromDiscriminatorValue); } },
-                { "step_sessions", n => { StepSessions = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_step_sessions>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_step_sessions.CreateFromDiscriminatorValue); } },
-                { "sum", n => { Sum = n.GetDoubleValue(); } },
-                { "sum_squares", n => { SumSquares = n.GetDoubleValue(); } },
-                { "validation_failures", n => { ValidationFailures = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_validation_failures>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_validation_failures.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -175,23 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_confidence_interval>("confidence_interval", ConfidenceInterval);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_covariate_sum>("covariate_sum", CovariateSum);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_covariate_sum_product>("covariate_sum_product", CovariateSumProduct);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_covariate_sum_squares>("covariate_sum_squares", CovariateSumSquares);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_denominator_sum>("denominator_sum", DenominatorSum);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_denominator_sum_squares>("denominator_sum_squares", DenominatorSumSquares);
-            writer.WriteStringValue("key", Key);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_method>("method", Method);
-            writer.WriteIntValue("number_of_samples", NumberOfSamples);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_numerator_denominator_sum_product>("numerator_denominator_sum_product", NumeratorDenominatorSumProduct);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_p_value>("p_value", PValue);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_significant>("significant", Significant);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_step_counts>("step_counts", StepCounts);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_step_sessions>("step_sessions", StepSessions);
-            writer.WriteDoubleValue("sum", Sum);
-            writer.WriteDoubleValue("sum_squares", SumSquares);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantResultFrequentist_validation_failures>("validation_failures", ValidationFailures);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

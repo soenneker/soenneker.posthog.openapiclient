@@ -17,7 +17,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\insights\{-id}
+    /// Builds and executes requests for operations under \api\projects\{projectId}\insights\{-id}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ItemRequestBuilder : BaseRequestBuilder
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/insights/{%2Did}{?filters_override*,format*,from_dashboard*,refresh*,variables_override*}", pathParameters)
+        public ItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/insights/{%2Did}{?filters_override*,format*,from_dashboard*,include_dashboards*,refresh*,variables_override*}", pathParameters)
         {
         }
         /// <summary>
@@ -60,7 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/insights/{%2Did}{?filters_override*,format*,from_dashboard*,refresh*,variables_override*}", rawUrl)
+        public ItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/insights/{%2Did}{?filters_override*,format*,from_dashboard*,include_dashboards*,refresh*,variables_override*}", rawUrl)
         {
         }
         /// <summary>
@@ -236,7 +236,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item
         public partial class ItemRequestBuilderDeleteQueryParameters 
         {
             [QueryParameter("format")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item.DeleteFormatQueryParameterType? Format { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.InsightsDestroyFormatParameter? Format { get; set; }
         }
         /// <summary>
         /// DRF ViewSet mixin that gates coalesced responses behind permission checks.The QueryCoalescingMiddleware attaches cached response data torequest.META[&quot;_coalesced_response&quot;] for followers. This mixin runs DRF&apos;sinitial() (auth + permissions + throttling) before returning thecached response, ensuring the request is authorized.
@@ -255,13 +255,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item
             public string FiltersOverride { get; set; }
 #endif
             [QueryParameter("format")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item.GetFormatQueryParameterType? Format { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.InsightsRetrieveFormatParameter? Format { get; set; }
             /// <summary>&quot;Only if loading an insight in the context of a dashboard: The relevant dashboard&apos;s ID.When set, the specified dashboard&apos;s filters and date range override will be applied.&quot;</summary>
             [QueryParameter("from_dashboard")]
             public int? FromDashboard { get; set; }
+            /// <summary>Opt in to receiving the deprecated `dashboards` field in insight payloads. Once opt-in enforcement is enabled, API-token callers stop receiving it by default; use `dashboard_tiles` instead.</summary>
+            [QueryParameter("include_dashboards")]
+            public bool? IncludeDashboards { get; set; }
             /// <summary>Whether to refresh the insight, how aggresively, and if sync or async:- `&apos;force_cache&apos;` - return cached data or a cache miss; always completes immediately as it never calculates- `&apos;blocking&apos;` - calculate synchronously (returning only when the query is done), UNLESS there are very fresh results in the cache- `&apos;async&apos;` - kick off background calculation (returning immediately with a query status), UNLESS there are very fresh results in the cache- `&apos;lazy_async&apos;` - kick off background calculation, UNLESS there are somewhat fresh results in the cache- `&apos;force_blocking&apos;` - calculate synchronously, even if fresh results are already cached- `&apos;force_async&apos;` - kick off background calculation, even if fresh results are already cachedBackground calculation can be tracked using the `query_status` response field.</summary>
             [QueryParameter("refresh")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item.GetRefreshQueryParameterType? Refresh { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.InsightsRetrieveRefreshParameter? Refresh { get; set; }
             /// <summary>&quot;Object (or pre-encoded JSON string) to override the insight&apos;s HogQL variables for this request only (not persisted). Format: {\&quot;&lt;variable_id&gt;\&quot;: {\&quot;code_name\&quot;: \&quot;&lt;code_name&gt;\&quot;, \&quot;variableId\&quot;: \&quot;&lt;variable_id&gt;\&quot;, \&quot;value\&quot;: &lt;new_value&gt;}}. Each entry must include `code_name` — partial entries are silently dropped. The simplest workflow is to call `insight-get` first, copy the matching entry from the response, and mutate `value`. Top-level keys replace; nested values are not deep-merged. Ignored when accessed via a sharing token.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -280,7 +283,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item
         public partial class ItemRequestBuilderPatchQueryParameters 
         {
             [QueryParameter("format")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item.PatchFormatQueryParameterType? Format { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.InsightsPartialUpdateFormatParameter? Format { get; set; }
+            /// <summary>Opt in to receiving the deprecated `dashboards` field in insight payloads. Once opt-in enforcement is enabled, API-token callers stop receiving it by default; use `dashboard_tiles` instead.</summary>
+            [QueryParameter("include_dashboards")]
+            public bool? IncludeDashboards { get; set; }
         }
         /// <summary>
         /// DRF ViewSet mixin that gates coalesced responses behind permission checks.The QueryCoalescingMiddleware attaches cached response data torequest.META[&quot;_coalesced_response&quot;] for followers. This mixin runs DRF&apos;sinitial() (auth + permissions + throttling) before returning thecached response, ensuring the request is authorized.
@@ -289,7 +295,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item
         public partial class ItemRequestBuilderPutQueryParameters 
         {
             [QueryParameter("format")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item.PutFormatQueryParameterType? Format { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.InsightsUpdateFormatParameter? Format { get; set; }
+            /// <summary>Opt in to receiving the deprecated `dashboards` field in insight payloads. Once opt-in enforcement is enabled, API-token callers stop receiving it by default; use `dashboard_tiles` instead.</summary>
+            [QueryParameter("include_dashboards")]
+            public bool? IncludeDashboards { get; set; }
         }
     }
 }

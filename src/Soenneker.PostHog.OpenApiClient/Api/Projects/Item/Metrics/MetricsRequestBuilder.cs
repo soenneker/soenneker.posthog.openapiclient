@@ -2,8 +2,12 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Attribute_values;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Attributes;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Characterize;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Has_metrics;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Query;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Samples;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Values;
 using System.Collections.Generic;
 using System.IO;
@@ -12,11 +16,26 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\metrics
+    /// Builds and executes requests for operations under \api\projects\{projectId}\metrics
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class MetricsRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The attribute_values property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Attribute_values.Attribute_valuesRequestBuilder Attribute_values
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Attribute_values.Attribute_valuesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The attributes property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Attributes.AttributesRequestBuilder Attributes
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Attributes.AttributesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The characterize property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Characterize.CharacterizeRequestBuilder Characterize
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Characterize.CharacterizeRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The has_metrics property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Has_metrics.Has_metricsRequestBuilder Has_metrics
         {
@@ -26,6 +45,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Query.QueryRequestBuilder Query
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Query.QueryRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The samples property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Samples.SamplesRequestBuilder Samples
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Samples.SamplesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The values property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Values.ValuesRequestBuilder Values
@@ -37,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public MetricsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/metrics", pathParameters)
+        public MetricsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/metrics", pathParameters)
         {
         }
         /// <summary>
@@ -45,7 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public MetricsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/metrics", rawUrl)
+        public MetricsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/metrics", rawUrl)
         {
         }
     }

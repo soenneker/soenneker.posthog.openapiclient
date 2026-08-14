@@ -18,18 +18,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Error details on failure</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponse_error? Error { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponseErrorProperty? Error { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponse_error Error { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponseErrorProperty Error { get; set; }
 #endif
         /// <summary>Request ID echoed back (string or number)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponse_id? Id { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponseId? Id { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponse_id Id { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponseId Id { get; set; }
 #endif
         /// <summary>JSON-RPC version</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -42,10 +42,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Command result on success</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponse_result? Result { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponseResult? Result { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponse_result Result { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponseResult Result { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponse"/> and sets the default values.
@@ -72,10 +72,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "error", n => { Error = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponse_error>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponse_error.CreateFromDiscriminatorValue); } },
-                { "id", n => { Id = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponse_id>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponse_id.CreateFromDiscriminatorValue); } },
+                { "error", n => { Error = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponseErrorProperty>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponseErrorProperty.CreateFromDiscriminatorValue); } },
+                { "id", n => { Id = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponseId>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponseId.CreateFromDiscriminatorValue); } },
                 { "jsonrpc", n => { Jsonrpc = n.GetStringValue(); } },
-                { "result", n => { Result = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponse_result>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponse_result.CreateFromDiscriminatorValue); } },
+                { "result", n => { Result = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponseResult>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponseResult.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -85,10 +85,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponse_error>("error", Error);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponse_id>("id", Id);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponseErrorProperty>("error", Error);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponseId>("id", Id);
             writer.WriteStringValue("jsonrpc", Jsonrpc);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponse_result>("result", Result);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponseResult>("result", Result);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

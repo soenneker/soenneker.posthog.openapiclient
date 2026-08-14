@@ -15,67 +15,50 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Client provided query ID. Can be used to retrieve the status or cancel the query.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest_client_query_id? ClientQueryId { get; set; }
+        public string? ClientQueryId { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest_client_query_id ClientQueryId { get; set; }
+        public string ClientQueryId { get; set; }
 #endif
         /// <summary>Whether to include debug information (such as the executed HogQL) in the response.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest_debug? Debug { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest_debug Debug { get; set; }
-#endif
+        public bool? Debug { get; set; }
         /// <summary>The filters_override property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest_filters_override? FiltersOverride { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter? FiltersOverride { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest_filters_override FiltersOverride { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter FiltersOverride { get; set; }
 #endif
         /// <summary>Maximum number of results to return. If not provided, returns all results.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest_limit? Limit { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest_limit Limit { get; set; }
-#endif
+        public int? Limit { get; set; }
         /// <summary>Number of results to skip. Must be used together with limit. Only supported for HogQL endpoints.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest_offset? Offset { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest_offset Offset { get; set; }
-#endif
+        public int? Offset { get; set; }
         /// <summary>The refresh property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest_refresh? Refresh { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointRefreshModeWrapper? Refresh { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest_refresh Refresh { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointRefreshModeWrapper Refresh { get; set; }
 #endif
         /// <summary>&quot;Variables to parameterize the endpoint query. The key is the variable name and the value is the variable value.For HogQL endpoints:   Keys must match a variable `code_name` defined in the query (referenced as `{variables.code_name}`).   Example: `{\&quot;event_name\&quot;: \&quot;$pageview\&quot;}`For non-materialized insight endpoints (e.g. TrendsQuery):   - `date_from` and `date_to` are built-in variables that filter the date range.     Example: `{\&quot;date_from\&quot;: \&quot;2024-01-01\&quot;, \&quot;date_to\&quot;: \&quot;2024-01-31\&quot;}`For materialized insight endpoints:   - Use the breakdown property name as the key to filter by breakdown value.     Example: `{\&quot;$browser\&quot;: \&quot;Chrome\&quot;}`   - `date_from`/`date_to` are not supported on materialized insight endpoints.Unknown variable names will return a 400 error.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest_variables? Variables { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequestVariables? Variables { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest_variables Variables { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequestVariables Variables { get; set; }
 #endif
         /// <summary>Specific endpoint version to execute. If not provided, the latest version is used.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest_version? Version { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest_version Version { get; set; }
-#endif
+        public int? Version { get; set; }
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest"/> and sets the default values.
+        /// </summary>
+        public EndpointRunRequest()
+        {
+            Debug = false;
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -94,14 +77,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "client_query_id", n => { ClientQueryId = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest_client_query_id>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest_client_query_id.CreateFromDiscriminatorValue); } },
-                { "debug", n => { Debug = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest_debug>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest_debug.CreateFromDiscriminatorValue); } },
-                { "filters_override", n => { FiltersOverride = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest_filters_override>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest_filters_override.CreateFromDiscriminatorValue); } },
-                { "limit", n => { Limit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest_limit>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest_limit.CreateFromDiscriminatorValue); } },
-                { "offset", n => { Offset = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest_offset>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest_offset.CreateFromDiscriminatorValue); } },
-                { "refresh", n => { Refresh = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest_refresh>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest_refresh.CreateFromDiscriminatorValue); } },
-                { "variables", n => { Variables = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest_variables>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest_variables.CreateFromDiscriminatorValue); } },
-                { "version", n => { Version = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest_version>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest_version.CreateFromDiscriminatorValue); } },
+                { "client_query_id", n => { ClientQueryId = n.GetStringValue(); } },
+                { "debug", n => { Debug = n.GetBoolValue(); } },
+                { "filters_override", n => { FiltersOverride = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter.CreateFromDiscriminatorValue); } },
+                { "limit", n => { Limit = n.GetIntValue(); } },
+                { "offset", n => { Offset = n.GetIntValue(); } },
+                { "refresh", n => { Refresh = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointRefreshModeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointRefreshModeWrapper.CreateFromDiscriminatorValue); } },
+                { "variables", n => { Variables = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequestVariables>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequestVariables.CreateFromDiscriminatorValue); } },
+                { "version", n => { Version = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -111,14 +94,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest_client_query_id>("client_query_id", ClientQueryId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest_debug>("debug", Debug);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest_filters_override>("filters_override", FiltersOverride);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest_limit>("limit", Limit);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest_offset>("offset", Offset);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest_refresh>("refresh", Refresh);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest_variables>("variables", Variables);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest_version>("version", Version);
+            writer.WriteStringValue("client_query_id", ClientQueryId);
+            writer.WriteBoolValue("debug", Debug);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter>("filters_override", FiltersOverride);
+            writer.WriteIntValue("limit", Limit);
+            writer.WriteIntValue("offset", Offset);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointRefreshModeWrapper>("refresh", Refresh);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequestVariables>("variables", Variables);
+            writer.WriteIntValue("version", Version);
         }
     }
 }

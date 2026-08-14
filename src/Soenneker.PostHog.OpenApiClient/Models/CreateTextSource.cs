@@ -14,6 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>When true, this source&apos;s content is injected into every support reply prompt as general context (tone, policies, direction).</summary>
+        public bool? AlwaysInclude { get; set; }
         /// <summary>Short human label for the source. Shown in the settings list and in agent citations.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -36,6 +38,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public CreateTextSource()
         {
             AdditionalData = new Dictionary<string, object>();
+            AlwaysInclude = false;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -55,6 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "always_include", n => { AlwaysInclude = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "text", n => { Text = n.GetStringValue(); } },
             };
@@ -66,6 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteBoolValue("always_include", AlwaysInclude);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("text", Text);
             writer.WriteAdditionalData(AdditionalData);

@@ -25,10 +25,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Property filters that scope when this condition fires</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TaggerCondition_properties>? Properties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TaggerConditionPropertiesItemProperty>? Properties { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TaggerCondition_properties> Properties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TaggerConditionPropertiesItemProperty> Properties { get; set; }
 #endif
         /// <summary>Percentage of matching events to apply this condition to</summary>
         public double? RolloutPercentage { get; set; }
@@ -38,6 +38,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public TaggerCondition()
         {
             AdditionalData = new Dictionary<string, object>();
+            RolloutPercentage = 100;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -58,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TaggerCondition_properties>(global::Soenneker.PostHog.OpenApiClient.Models.TaggerCondition_properties.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TaggerConditionPropertiesItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.TaggerConditionPropertiesItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "rollout_percentage", n => { RolloutPercentage = n.GetDoubleValue(); } },
             };
         }
@@ -70,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("id", Id);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TaggerCondition_properties>("properties", Properties);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TaggerConditionPropertiesItemProperty>("properties", Properties);
             writer.WriteDoubleValue("rollout_percentage", RolloutPercentage);
             writer.WriteAdditionalData(AdditionalData);
         }

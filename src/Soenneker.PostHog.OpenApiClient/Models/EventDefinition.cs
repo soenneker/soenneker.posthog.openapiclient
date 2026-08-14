@@ -15,10 +15,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The elements property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.EventDefinition_elements>? Elements { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.EventDefinitionElementsItem>? Elements { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.EventDefinition_elements> Elements { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.EventDefinitionElementsItem> Elements { get; set; }
 #endif
         /// <summary>The event property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -31,10 +31,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The properties property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EventDefinition_properties? Properties { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EventDefinitionPropertiesProperty? Properties { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EventDefinition_properties Properties { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EventDefinitionPropertiesProperty Properties { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -54,9 +54,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "elements", n => { Elements = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EventDefinition_elements>(global::Soenneker.PostHog.OpenApiClient.Models.EventDefinition_elements.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "elements", n => { Elements = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EventDefinitionElementsItem>(global::Soenneker.PostHog.OpenApiClient.Models.EventDefinitionElementsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "event", n => { Event = n.GetStringValue(); } },
-                { "properties", n => { Properties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventDefinition_properties>(global::Soenneker.PostHog.OpenApiClient.Models.EventDefinition_properties.CreateFromDiscriminatorValue); } },
+                { "properties", n => { Properties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventDefinitionPropertiesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.EventDefinitionPropertiesProperty.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -66,9 +66,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EventDefinition_elements>("elements", Elements);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EventDefinitionElementsItem>("elements", Elements);
             writer.WriteStringValue("event", Event);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventDefinition_properties>("properties", Properties);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventDefinitionPropertiesProperty>("properties", Properties);
         }
     }
 }

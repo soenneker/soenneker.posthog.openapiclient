@@ -20,14 +20,14 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Members
     {
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.organizations.item.members.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Members.Item.WithUser__uuItemRequestBuilder"/></returns>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Members.Item.WithUser__uuItemRequestBuilder this[Guid position]
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Members.Item.WithUserUuItemRequestBuilder"/></returns>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Members.Item.WithUserUuItemRequestBuilder this[Guid position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("user__uuid", position);
-                return new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Members.Item.WithUser__uuItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("userUuid", position);
+                return new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Members.Item.WithUserUuItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
@@ -35,7 +35,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Members
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public MembersRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/organizations/{%2Did}/members{?limit*,offset*,order*,search*}", pathParameters)
+        public MembersRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/organizations/{%2Did}/members{?email_domain*,levels*,limit*,offset*,order*,outside_verified_domains*,search*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Members
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public MembersRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/organizations/{%2Did}/members{?limit*,offset*,order*,search*}", rawUrl)
+        public MembersRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/organizations/{%2Did}/members{?email_domain*,levels*,limit*,offset*,order*,outside_verified_domains*,search*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedOrganizationMemberList"/></returns>
@@ -91,6 +91,26 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Members
         public partial class MembersRequestBuilderGetQueryParameters 
         #pragma warning restore CS1591
         {
+            /// <summary>Only return members whose email address is on this domain (case-insensitive).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("email_domain")]
+            public string? EmailDomain { get; set; }
+#nullable restore
+#else
+            [QueryParameter("email_domain")]
+            public string EmailDomain { get; set; }
+#endif
+            /// <summary>Comma-separated membership levels to return, e.g. `1,8`. Levels are 1 member, 8 admin, 15 owner.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("levels")]
+            public string? Levels { get; set; }
+#nullable restore
+#else
+            [QueryParameter("levels")]
+            public string Levels { get; set; }
+#endif
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
@@ -99,8 +119,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Members
             public int? Offset { get; set; }
             /// <summary>Sort order. Defaults to `-joined_at`.</summary>
             [QueryParameter("order")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Members.GetOrderQueryParameterType? Order { get; set; }
-            /// <summary>Fuzzy match against member `first_name`, `last_name`, and `email` using Postgres trigram word similarity. Supports typos and prefix-as-you-type. Capped at 200 characters.</summary>
+            public global::Soenneker.PostHog.OpenApiClient.Models.MembersListOrderParameter? Order { get; set; }
+            /// <summary>When `true`, only return members whose email domain is not one of the organization&apos;s verified domains — the members who would lose access under verified-domain enforcement.</summary>
+            [QueryParameter("outside_verified_domains")]
+            public bool? OutsideVerifiedDomains { get; set; }
+            /// <summary>Match against member `first_name`, `last_name`, and `email`. Returns exact (case-insensitive substring) matches only; if no exact match exists, returns similar (fuzzy trigram — typos, prefix-as-you-type) matches instead. Each result&apos;s `search_match_type` is `exact` or `similar`. Capped at 200 characters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("search")]

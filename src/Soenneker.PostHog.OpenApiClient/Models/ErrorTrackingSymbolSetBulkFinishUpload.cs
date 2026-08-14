@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Map of symbol set ID to uploaded content hash.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetBulkFinishUpload_content_hashes? ContentHashes { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetBulkFinishUploadContentHashesProperty? ContentHashes { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetBulkFinishUpload_content_hashes ContentHashes { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetBulkFinishUploadContentHashesProperty ContentHashes { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetBulkFinishUpload"/> and sets the default values.
@@ -47,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "content_hashes", n => { ContentHashes = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetBulkFinishUpload_content_hashes>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetBulkFinishUpload_content_hashes.CreateFromDiscriminatorValue); } },
+                { "content_hashes", n => { ContentHashes = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetBulkFinishUploadContentHashesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetBulkFinishUploadContentHashesProperty.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -57,7 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetBulkFinishUpload_content_hashes>("content_hashes", ContentHashes);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetBulkFinishUploadContentHashesProperty>("content_hashes", ContentHashes);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

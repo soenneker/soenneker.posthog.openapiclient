@@ -14,7 +14,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Relative date string for how far back to simulate (e.g. &apos;-24h&apos;, &apos;-30d&apos;, &apos;-4w&apos;). If not provided, uses the detector&apos;s minimum required samples.</summary>
+        /// <summary>Per-insight-kind alert config. For SQL insights, selects the evaluated column and read direction (last_row/first_row) so the preview matches the alert; ignored for trends.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateConfig? Config { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateConfig Config { get; set; }
+#endif
+        /// <summary>Relative date string for how far back to simulate (e.g. &apos;-24h&apos;, &apos;-30d&apos;, &apos;-4w&apos;). If not provided, uses the detector&apos;s minimum required samples. Trends insights only — a SQL query&apos;s own rows are the series.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? DateFrom { get; set; }
@@ -25,14 +33,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Detector configuration to simulate.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulate_detector_config? DetectorConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateDetectorConfig? DetectorConfig { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulate_detector_config DetectorConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateDetectorConfig DetectorConfig { get; set; }
 #endif
         /// <summary>Insight ID to simulate the detector on.</summary>
         public int? Insight { get; set; }
-        /// <summary>Zero-based index of the series to analyze.</summary>
+        /// <summary>Zero-based index of the series to analyze (trends insights only).</summary>
         public int? SeriesIndex { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulate"/> and sets the default values.
@@ -40,6 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public AlertSimulate()
         {
             AdditionalData = new Dictionary<string, object>();
+            SeriesIndex = 0;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -59,8 +68,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateConfig>(global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateConfig.CreateFromDiscriminatorValue); } },
                 { "date_from", n => { DateFrom = n.GetStringValue(); } },
-                { "detector_config", n => { DetectorConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulate_detector_config>(global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulate_detector_config.CreateFromDiscriminatorValue); } },
+                { "detector_config", n => { DetectorConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateDetectorConfig>(global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateDetectorConfig.CreateFromDiscriminatorValue); } },
                 { "insight", n => { Insight = n.GetIntValue(); } },
                 { "series_index", n => { SeriesIndex = n.GetIntValue(); } },
             };
@@ -72,8 +82,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateConfig>("config", Config);
             writer.WriteStringValue("date_from", DateFrom);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulate_detector_config>("detector_config", DetectorConfig);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateDetectorConfig>("detector_config", DetectorConfig);
             writer.WriteIntValue("insight", Insight);
             writer.WriteIntValue("series_index", SeriesIndex);
             writer.WriteAdditionalData(AdditionalData);

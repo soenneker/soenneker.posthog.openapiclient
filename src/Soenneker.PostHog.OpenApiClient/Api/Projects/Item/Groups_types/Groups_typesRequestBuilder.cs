@@ -16,7 +16,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups_types
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\groups_types
+    /// Builds and executes requests for operations under \api\projects\{projectId}\groups_types
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Groups_typesRequestBuilder : BaseRequestBuilder
@@ -38,14 +38,14 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups_types
         }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.groups_types.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups_types.Item.WithGroup_type_indexItemRequestBuilder"/></returns>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups_types.Item.WithGroup_type_indexItemRequestBuilder this[int position]
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups_types.Item.WithGroupTypeIndexItemRequestBuilder"/></returns>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups_types.Item.WithGroupTypeIndexItemRequestBuilder this[int position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("group_type_index", position);
-                return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups_types.Item.WithGroup_type_indexItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("groupTypeIndex", position);
+                return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups_types.Item.WithGroupTypeIndexItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
@@ -53,7 +53,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups_types
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Groups_typesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/groups_types", pathParameters)
+        public Groups_typesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/groups_types", pathParameters)
         {
         }
         /// <summary>
@@ -61,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups_types
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Groups_typesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/groups_types", rawUrl)
+        public Groups_typesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/groups_types", rawUrl)
         {
         }
         /// <returns>A List&lt;global::Soenneker.PostHog.OpenApiClient.Models.GroupType&gt;</returns>

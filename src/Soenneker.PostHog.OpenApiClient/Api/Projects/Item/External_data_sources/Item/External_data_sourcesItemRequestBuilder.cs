@@ -4,12 +4,19 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Bulk_update_schemas;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Cdc_status;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Check_cdc_prerequisites_for_source;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Create_webhook;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Delete_webhook;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Disable_cdc;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Enable_cdc;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Jobs;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Refresh_schemas;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Reload;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Repair_cdc;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Resume_cdc;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Revenue_analytics_config;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Update_cdc_settings;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Update_webhook_inputs;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Webhook_info;
 using Soenneker.PostHog.OpenApiClient.Models;
@@ -21,7 +28,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\external_data_sources\{id}
+    /// Builds and executes requests for operations under \api\projects\{projectId}\external_data_sources\{id}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class External_data_sourcesItemRequestBuilder : BaseRequestBuilder
@@ -30,6 +37,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_source
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Bulk_update_schemas.Bulk_update_schemasRequestBuilder Bulk_update_schemas
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Bulk_update_schemas.Bulk_update_schemasRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The cdc_status property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Cdc_status.Cdc_statusRequestBuilder Cdc_status
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Cdc_status.Cdc_statusRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The check_cdc_prerequisites_for_source property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Check_cdc_prerequisites_for_source.Check_cdc_prerequisites_for_sourceRequestBuilder Check_cdc_prerequisites_for_source
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Check_cdc_prerequisites_for_source.Check_cdc_prerequisites_for_sourceRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The create_webhook property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Create_webhook.Create_webhookRequestBuilder Create_webhook
@@ -40,6 +57,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_source
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Delete_webhook.Delete_webhookRequestBuilder Delete_webhook
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Delete_webhook.Delete_webhookRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The disable_cdc property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Disable_cdc.Disable_cdcRequestBuilder Disable_cdc
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Disable_cdc.Disable_cdcRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The enable_cdc property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Enable_cdc.Enable_cdcRequestBuilder Enable_cdc
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Enable_cdc.Enable_cdcRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The jobs property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Jobs.JobsRequestBuilder Jobs
@@ -56,10 +83,25 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_source
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Reload.ReloadRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The repair_cdc property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Repair_cdc.Repair_cdcRequestBuilder Repair_cdc
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Repair_cdc.Repair_cdcRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The resume_cdc property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Resume_cdc.Resume_cdcRequestBuilder Resume_cdc
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Resume_cdc.Resume_cdcRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The revenue_analytics_config property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Revenue_analytics_config.Revenue_analytics_configRequestBuilder Revenue_analytics_config
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Revenue_analytics_config.Revenue_analytics_configRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The update_cdc_settings property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Update_cdc_settings.Update_cdc_settingsRequestBuilder Update_cdc_settings
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Update_cdc_settings.Update_cdc_settingsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The update_webhook_inputs property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Update_webhook_inputs.Update_webhook_inputsRequestBuilder Update_webhook_inputs
@@ -76,7 +118,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_source
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public External_data_sourcesItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/external_data_sources/{id}", pathParameters)
+        public External_data_sourcesItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/external_data_sources/{id}", pathParameters)
         {
         }
         /// <summary>
@@ -84,7 +126,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_source
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public External_data_sourcesItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/external_data_sources/{id}", rawUrl)
+        public External_data_sourcesItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/external_data_sources/{id}", rawUrl)
         {
         }
         /// <summary>

@@ -14,7 +14,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Subscriptions
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\subscriptions
+    /// Builds and executes requests for operations under \api\projects\{projectId}\subscriptions
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SubscriptionsRequestBuilder : BaseRequestBuilder
@@ -26,14 +26,14 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Subscriptions
         }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.subscriptions.item collection</summary>
         /// <param name="position">A unique integer value identifying this subscription.</param>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Subscriptions.Item.SubscriptionsItemRequestBuilder"/></returns>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Subscriptions.Item.SubscriptionsItemRequestBuilder this[int position]
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Subscriptions.Item.ItemRequestBuilder"/></returns>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Subscriptions.Item.ItemRequestBuilder this[int position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("id", position);
-                return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Subscriptions.Item.SubscriptionsItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("%2Did", position);
+                return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Subscriptions.Item.ItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
@@ -41,7 +41,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Subscriptions
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SubscriptionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/subscriptions{?created_by*,dashboard*,insight*,limit*,offset*,ordering*,resource_type*,search*,target_type*}", pathParameters)
+        public SubscriptionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/subscriptions{?created_by*,dashboard*,dashboard_tiles*,insight*,insights*,limit*,offset*,ordering*,resource_type*,search*,target_type*}", pathParameters)
         {
         }
         /// <summary>
@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Subscriptions
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SubscriptionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/subscriptions{?created_by*,dashboard*,insight*,limit*,offset*,ordering*,resource_type*,search*,target_type*}", rawUrl)
+        public SubscriptionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/subscriptions{?created_by*,dashboard*,dashboard_tiles*,insight*,insights*,limit*,offset*,ordering*,resource_type*,search*,target_type*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedSubscriptionList"/></returns>
@@ -146,9 +146,22 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Subscriptions
             /// <summary>Filter by dashboard ID.</summary>
             [QueryParameter("dashboard")]
             public int? Dashboard { get; set; }
+            /// <summary>Filter to subscriptions on insights that are tiles of the given dashboard ID.</summary>
+            [QueryParameter("dashboard_tiles")]
+            public int? DashboardTiles { get; set; }
             /// <summary>Filter by insight ID.</summary>
             [QueryParameter("insight")]
             public int? Insight { get; set; }
+            /// <summary>Filter by a comma-separated list of insight IDs.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("insights")]
+            public string? Insights { get; set; }
+#nullable restore
+#else
+            [QueryParameter("insights")]
+            public string Insights { get; set; }
+#endif
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
@@ -165,9 +178,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Subscriptions
             [QueryParameter("ordering")]
             public string Ordering { get; set; }
 #endif
-            /// <summary>&quot;Filter by subscription resource: insight vs dashboard export.&quot;</summary>
+            /// <summary>&quot;Filter by subscription resource: insight, dashboard export, or AI report.&quot;</summary>
             [QueryParameter("resource_type")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Subscriptions.GetResource_typeQueryParameterType? ResourceType { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionsListResourceTypeParameter? ResourceType { get; set; }
             /// <summary>A search term.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -178,9 +191,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Subscriptions
             [QueryParameter("search")]
             public string Search { get; set; }
 #endif
-            /// <summary>Filter by delivery channel (email, Slack, or webhook).</summary>
+            /// <summary>Filter by delivery channel (email or Slack).</summary>
             [QueryParameter("target_type")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Subscriptions.GetTarget_typeQueryParameterType? TargetType { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionsListTargetTypeParameter? TargetType { get; set; }
         }
     }
 }

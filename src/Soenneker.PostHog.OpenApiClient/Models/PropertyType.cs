@@ -10,7 +10,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "event")]
         #pragma warning disable CS1591
-        Event,
+        EventValue,
         #pragma warning restore CS1591
         [EnumMember(Value = "person")]
         #pragma warning disable CS1591

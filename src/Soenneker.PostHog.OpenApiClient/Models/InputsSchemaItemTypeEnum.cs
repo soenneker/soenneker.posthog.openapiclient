@@ -3,13 +3,13 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `string` - string* `number` - number* `boolean` - boolean* `dictionary` - dictionary* `choice` - choice* `json` - json* `integration` - integration* `integration_field` - integration_field* `email` - email* `native_email` - native_email* `posthog_assignee` - posthog_assignee* `posthog_ticket_tags` - posthog_ticket_tags* `posthog_business_hours` - posthog_business_hours</summary>
+    /// <summary>* `string` - string* `number` - number* `boolean` - boolean* `dictionary` - dictionary* `choice` - choice* `json` - json* `integration` - integration* `integration_multi` - integration_multi* `integration_field` - integration_field* `email` - email* `native_email` - native_email* `posthog_assignee` - posthog_assignee* `posthog_ticket_tags` - posthog_ticket_tags* `posthog_business_hours` - posthog_business_hours* `non_failure_status_codes` - non_failure_status_codes* `customer_analytics_account_properties` - customer_analytics_account_properties* `customer_analytics_account_relationships` - customer_analytics_account_relationships</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum InputsSchemaItemTypeEnum
     {
         [EnumMember(Value = "string")]
         #pragma warning disable CS1591
-        String,
+        StringValue,
         #pragma warning restore CS1591
         [EnumMember(Value = "number")]
         #pragma warning disable CS1591
@@ -35,9 +35,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         Integration,
         #pragma warning restore CS1591
+        [EnumMember(Value = "integration_multi")]
+        #pragma warning disable CS1591
+        IntegrationMulti,
+        #pragma warning restore CS1591
         [EnumMember(Value = "integration_field")]
         #pragma warning disable CS1591
-        Integration_field,
+        IntegrationField,
         #pragma warning restore CS1591
         [EnumMember(Value = "email")]
         #pragma warning disable CS1591
@@ -45,19 +49,31 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "native_email")]
         #pragma warning disable CS1591
-        Native_email,
+        NativeEmail,
         #pragma warning restore CS1591
         [EnumMember(Value = "posthog_assignee")]
         #pragma warning disable CS1591
-        Posthog_assignee,
+        PosthogAssignee,
         #pragma warning restore CS1591
         [EnumMember(Value = "posthog_ticket_tags")]
         #pragma warning disable CS1591
-        Posthog_ticket_tags,
+        PosthogTicketTags,
         #pragma warning restore CS1591
         [EnumMember(Value = "posthog_business_hours")]
         #pragma warning disable CS1591
-        Posthog_business_hours,
+        PosthogBusinessHours,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "non_failure_status_codes")]
+        #pragma warning disable CS1591
+        NonFailureStatusCodes,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "customer_analytics_account_properties")]
+        #pragma warning disable CS1591
+        CustomerAnalyticsAccountProperties,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "customer_analytics_account_relationships")]
+        #pragma warning disable CS1591
+        CustomerAnalyticsAccountRelationships,
         #pragma warning restore CS1591
     }
 }

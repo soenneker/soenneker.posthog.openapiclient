@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;HogQL query definition as a JSON object with a \&quot;query\&quot; key containing the SQL string and a \&quot;kind\&quot; key (always \&quot;HogQLQuery\&quot;). Example: {\&quot;kind\&quot;: \&quot;HogQLQuery\&quot;, \&quot;query\&quot;: \&quot;SELECT * FROM events LIMIT 100\&quot;}&quot;
+    /// &quot;HogQL query definition as a JSON object with a \&quot;query\&quot; key containing the SQL string and a \&quot;kind\&quot; key (always \&quot;HogQLQuery\&quot;). Format the SQL string multi-line with indentation and inline `--` comments for non-obvious logic — the SQL editor renders it verbatim, so avoid minified single-line SQL. Example: {\&quot;kind\&quot;: \&quot;HogQLQuery\&quot;, \&quot;query\&quot;: \&quot;SELECT\n    event,\n    count() AS cnt\nFROM events\nGROUP BY event\nLIMIT 100\&quot;}&quot;
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DataWarehouseSavedQueryQuery : IAdditionalDataHolder, IParsable
@@ -16,7 +16,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryQuery_kind? Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryQueryKind? Kind { get; set; }
         /// <summary>The query property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -31,7 +31,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DataWarehouseSavedQueryQuery()
         {
             AdditionalData = new Dictionary<string, object>();
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryQuery_kind.HogQLQuery;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -51,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryQuery_kind>(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryQueryKind>(); } },
                 { "query", n => { Query = n.GetStringValue(); } },
             };
         }
@@ -62,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryQuery_kind>("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryQueryKind>("kind", Kind);
             writer.WriteStringValue("query", Query);
             writer.WriteAdditionalData(AdditionalData);
         }

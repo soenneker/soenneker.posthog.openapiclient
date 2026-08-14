@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The baseline_hashes property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AddSnapshotsInput_baseline_hashes? BaselineHashes { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AddSnapshotsInputBaselineHashesProperty? BaselineHashes { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AddSnapshotsInput_baseline_hashes BaselineHashes { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AddSnapshotsInputBaselineHashesProperty BaselineHashes { get; set; }
 #endif
         /// <summary>The snapshots property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -55,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "baseline_hashes", n => { BaselineHashes = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AddSnapshotsInput_baseline_hashes>(global::Soenneker.PostHog.OpenApiClient.Models.AddSnapshotsInput_baseline_hashes.CreateFromDiscriminatorValue); } },
+                { "baseline_hashes", n => { BaselineHashes = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AddSnapshotsInputBaselineHashesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.AddSnapshotsInputBaselineHashesProperty.CreateFromDiscriminatorValue); } },
                 { "snapshots", n => { Snapshots = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SnapshotManifestItem>(global::Soenneker.PostHog.OpenApiClient.Models.SnapshotManifestItem.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -66,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AddSnapshotsInput_baseline_hashes>("baseline_hashes", BaselineHashes);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AddSnapshotsInputBaselineHashesProperty>("baseline_hashes", BaselineHashes);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SnapshotManifestItem>("snapshots", Snapshots);
             writer.WriteAdditionalData(AdditionalData);
         }

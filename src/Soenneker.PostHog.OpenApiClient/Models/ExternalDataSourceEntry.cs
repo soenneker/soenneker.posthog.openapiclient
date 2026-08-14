@@ -23,6 +23,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string CreatedAt { get; set; }
 #endif
+        /// <summary>ISO-8601 timestamp of the most recent completed sync job, or null if this source has never completed a sync. Use this to tell a healthy source apart from one stuck in `Running` that has imported zero rows — `status` alone conflates the two.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? LastRunAt { get; set; }
+#nullable restore
+#else
+        public string LastRunAt { get; set; }
+#endif
+        /// <summary>Newest schema-level sync error for this source, or null if no schema is erroring.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? LatestError { get; set; }
+#nullable restore
+#else
+        public string LatestError { get; set; }
+#endif
         /// <summary>Schema prefix used by this source, if any.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -73,6 +89,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "created_at", n => { CreatedAt = n.GetStringValue(); } },
+                { "last_run_at", n => { LastRunAt = n.GetStringValue(); } },
+                { "latest_error", n => { LatestError = n.GetStringValue(); } },
                 { "prefix", n => { Prefix = n.GetStringValue(); } },
                 { "source_type", n => { SourceType = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
@@ -86,6 +104,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("created_at", CreatedAt);
+            writer.WriteStringValue("last_run_at", LastRunAt);
+            writer.WriteStringValue("latest_error", LatestError);
             writer.WriteStringValue("prefix", Prefix);
             writer.WriteStringValue("source_type", SourceType);
             writer.WriteStringValue("status", Status);

@@ -9,65 +9,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class ConditionalFormattingRule : IParsable
+    public partial class ConditionalFormattingRule : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>The bytecode property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ConditionalFormattingRule_bytecode>? Bytecode { get; set; }
-#nullable restore
-#else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ConditionalFormattingRule_bytecode> Bytecode { get; set; }
-#endif
-        /// <summary>The color property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Color { get; set; }
-#nullable restore
-#else
-        public string Color { get; set; }
-#endif
-        /// <summary>The colorMode property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConditionalFormattingRule_colorMode? ColorMode { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConditionalFormattingRule_colorMode ColorMode { get; set; }
-#endif
-        /// <summary>The columnName property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? ColumnName { get; set; }
-#nullable restore
-#else
-        public string ColumnName { get; set; }
-#endif
-        /// <summary>The id property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Id { get; set; }
-#nullable restore
-#else
-        public string Id { get; set; }
-#endif
-        /// <summary>The input property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Input { get; set; }
-#nullable restore
-#else
-        public string Input { get; set; }
-#endif
-        /// <summary>The templateId property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? TemplateId { get; set; }
-#nullable restore
-#else
-        public string TemplateId { get; set; }
-#endif
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConditionalFormattingRule"/> and sets the default values.
+        /// </summary>
+        public ConditionalFormattingRule()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -86,13 +39,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "bytecode", n => { Bytecode = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ConditionalFormattingRule_bytecode>(global::Soenneker.PostHog.OpenApiClient.Models.ConditionalFormattingRule_bytecode.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "color", n => { Color = n.GetStringValue(); } },
-                { "colorMode", n => { ColorMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConditionalFormattingRule_colorMode>(global::Soenneker.PostHog.OpenApiClient.Models.ConditionalFormattingRule_colorMode.CreateFromDiscriminatorValue); } },
-                { "columnName", n => { ColumnName = n.GetStringValue(); } },
-                { "id", n => { Id = n.GetStringValue(); } },
-                { "input", n => { Input = n.GetStringValue(); } },
-                { "templateId", n => { TemplateId = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -102,13 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ConditionalFormattingRule_bytecode>("bytecode", Bytecode);
-            writer.WriteStringValue("color", Color);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConditionalFormattingRule_colorMode>("colorMode", ColorMode);
-            writer.WriteStringValue("columnName", ColumnName);
-            writer.WriteStringValue("id", Id);
-            writer.WriteStringValue("input", Input);
-            writer.WriteStringValue("templateId", TemplateId);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

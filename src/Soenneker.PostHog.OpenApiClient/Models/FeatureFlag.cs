@@ -25,13 +25,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<int?> AnalyticsDashboards { get; set; }
 #endif
+        /// <summary>&quot;Whether the flag is archived. Archived flags are hidden from the flag list by default and must be disabled (`active: false`).&quot;</summary>
+        public bool? Archived { get; set; }
         /// <summary>Identifier used for bucketing users into rollout and variants* `distinct_id` - User ID (default)* `device_id` - Device ID</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag.FeatureFlag_bucketing_identifier? BucketingIdentifier { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagBucketingIdentifier? BucketingIdentifier { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag.FeatureFlag_bucketing_identifier BucketingIdentifier { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagBucketingIdentifier BucketingIdentifier { get; set; }
 #endif
         /// <summary>The can_edit property</summary>
         public bool? CanEdit { get; private set; }
@@ -40,10 +42,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_created_by? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagCreatedBy? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_created_by CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagCreatedBy CreatedBy { get; private set; }
 #endif
         /// <summary>The create_in_folder property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -53,8 +55,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string CreateInFolder { get; set; }
 #endif
-        /// <summary>* `feature_flags` - feature_flags* `experiments` - experiments* `surveys` - surveys* `early_access_features` - early_access_features* `web_experiments` - web_experiments* `product_tours` - product_tours</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagCreationContextEnum? CreationContext { get; set; }
+        /// <summary>&quot;Indicates the origin product of the feature flag. Choices: &apos;feature_flags&apos;, &apos;experiments&apos;, &apos;surveys&apos;, &apos;early_access_features&apos;, &apos;web_experiments&apos;, &apos;product_tours&apos;.* `feature_flags` - feature_flags* `experiments` - experiments* `surveys` - surveys* `early_access_features` - early_access_features* `web_experiments` - web_experiments* `product_tours` - product_tours&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagCreationContext? CreationContext { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagCreationContext CreationContext { get; set; }
+#endif
         /// <summary>The deleted property</summary>
         public bool? Deleted { get; set; }
         /// <summary>The ensure_experience_continuity property</summary>
@@ -62,18 +70,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The evaluation_contexts property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_evaluation_contexts>? EvaluationContexts { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagEvaluationContextsItem>? EvaluationContexts { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_evaluation_contexts> EvaluationContexts { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagEvaluationContextsItem> EvaluationContexts { get; set; }
 #endif
         /// <summary>Specifies where this feature flag should be evaluated* `server` - Server* `client` - Client* `all` - All</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag.FeatureFlag_evaluation_runtime? EvaluationRuntime { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagEvaluationRuntime? EvaluationRuntime { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag.FeatureFlag_evaluation_runtime EvaluationRuntime { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagEvaluationRuntime EvaluationRuntime { get; set; }
 #endif
         /// <summary>The experiment_set property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -86,26 +94,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The experiment_set_metadata property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_experiment_set_metadata>? ExperimentSetMetadata { get; private set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagExperimentSetMetadata>? ExperimentSetMetadata { get; private set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_experiment_set_metadata> ExperimentSetMetadata { get; private set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagExperimentSetMetadata> ExperimentSetMetadata { get; private set; }
 #endif
         /// <summary>The features property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_features? Features { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFeaturesProperty? Features { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_features Features { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFeaturesProperty Features { get; set; }
 #endif
         /// <summary>The filters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_filters? Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFiltersProperty? Filters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_filters Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFiltersProperty Filters { get; set; }
 #endif
         /// <summary>The has_encrypted_payloads property</summary>
         public bool? HasEncryptedPayloads { get; set; }
@@ -113,6 +121,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? HasEnrichedAnalytics { get; set; }
         /// <summary>The id property</summary>
         public int? Id { get; private set; }
+        /// <summary>&quot;Whether this flag can back an experiment: multivariate with 2 to 20 variants.&quot;</summary>
+        public bool? IsEligibleForExperiment { get; private set; }
         /// <summary>The is_remote_configuration property</summary>
         public bool? IsRemoteConfiguration { get; set; }
         /// <summary>Check if this feature flag is used in any team&apos;s session recording linked flag setting.</summary>
@@ -130,10 +140,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The last_modified_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_last_modified_by? LastModifiedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagLastModifiedBy? LastModifiedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_last_modified_by LastModifiedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagLastModifiedBy LastModifiedBy { get; private set; }
 #endif
         /// <summary>contains the description for the flag (field name `name` is kept for backwards-compatibility)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -143,18 +153,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>The performed_rollback property</summary>
-        public bool? PerformedRollback { get; set; }
-        /// <summary>The rollback_conditions property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_rollback_conditions? RollbackConditions { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_rollback_conditions RollbackConditions { get; set; }
-#endif
-        /// <summary>The should_create_usage_dashboard property</summary>
-        public bool? ShouldCreateUsageDashboard { get; set; }
         /// <summary>The status property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -166,22 +164,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The surveys property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_surveys? Surveys { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagSurveysProperty? Surveys { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_surveys Surveys { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagSurveysProperty Surveys { get; set; }
 #endif
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_tags>? Tags { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTagsItem>? Tags { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_tags> Tags { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTagsItem> Tags { get; set; }
 #endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
-        /// <summary>The usage_dashboard property</summary>
+        /// <summary>Dashboard of saved usage insights for this flag, or null if it has none. Flags do not get one on creation; create it with POST /api/projects/{project_id}/feature_flags/{id}/dashboard/.</summary>
         public int? UsageDashboard { get; private set; }
         /// <summary>The effective access level the user has for this object</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -199,6 +197,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public FeatureFlag()
         {
             AdditionalData = new Dictionary<string, object>();
+            Version = 0;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -220,35 +219,34 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "active", n => { Active = n.GetBoolValue(); } },
                 { "analytics_dashboards", n => { AnalyticsDashboards = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
-                { "bucketing_identifier", n => { BucketingIdentifier = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag.FeatureFlag_bucketing_identifier>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag.FeatureFlag_bucketing_identifier.CreateFromDiscriminatorValue); } },
+                { "archived", n => { Archived = n.GetBoolValue(); } },
+                { "bucketing_identifier", n => { BucketingIdentifier = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagBucketingIdentifier>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagBucketingIdentifier.CreateFromDiscriminatorValue); } },
                 { "can_edit", n => { CanEdit = n.GetBoolValue(); } },
                 { "_create_in_folder", n => { CreateInFolder = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_created_by.CreateFromDiscriminatorValue); } },
-                { "creation_context", n => { CreationContext = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagCreationContextEnum>(); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagCreatedBy.CreateFromDiscriminatorValue); } },
+                { "creation_context", n => { CreationContext = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagCreationContext>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagCreationContext.CreateFromDiscriminatorValue); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "ensure_experience_continuity", n => { EnsureExperienceContinuity = n.GetBoolValue(); } },
-                { "evaluation_contexts", n => { EvaluationContexts = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_evaluation_contexts>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_evaluation_contexts.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "evaluation_runtime", n => { EvaluationRuntime = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag.FeatureFlag_evaluation_runtime>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag.FeatureFlag_evaluation_runtime.CreateFromDiscriminatorValue); } },
+                { "evaluation_contexts", n => { EvaluationContexts = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagEvaluationContextsItem>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagEvaluationContextsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "evaluation_runtime", n => { EvaluationRuntime = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagEvaluationRuntime>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagEvaluationRuntime.CreateFromDiscriminatorValue); } },
                 { "experiment_set", n => { ExperimentSet = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
-                { "experiment_set_metadata", n => { ExperimentSetMetadata = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_experiment_set_metadata>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_experiment_set_metadata.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "features", n => { Features = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_features>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_features.CreateFromDiscriminatorValue); } },
-                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_filters>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_filters.CreateFromDiscriminatorValue); } },
+                { "experiment_set_metadata", n => { ExperimentSetMetadata = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagExperimentSetMetadata>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagExperimentSetMetadata.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "features", n => { Features = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFeaturesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFeaturesProperty.CreateFromDiscriminatorValue); } },
+                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFiltersProperty>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFiltersProperty.CreateFromDiscriminatorValue); } },
                 { "has_encrypted_payloads", n => { HasEncryptedPayloads = n.GetBoolValue(); } },
                 { "has_enriched_analytics", n => { HasEnrichedAnalytics = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetIntValue(); } },
+                { "is_eligible_for_experiment", n => { IsEligibleForExperiment = n.GetBoolValue(); } },
                 { "is_remote_configuration", n => { IsRemoteConfiguration = n.GetBoolValue(); } },
                 { "is_used_in_replay_settings", n => { IsUsedInReplaySettings = n.GetBoolValue(); } },
                 { "key", n => { Key = n.GetStringValue(); } },
                 { "last_called_at", n => { LastCalledAt = n.GetDateTimeOffsetValue(); } },
-                { "last_modified_by", n => { LastModifiedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_last_modified_by>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_last_modified_by.CreateFromDiscriminatorValue); } },
+                { "last_modified_by", n => { LastModifiedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagLastModifiedBy>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagLastModifiedBy.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "performed_rollback", n => { PerformedRollback = n.GetBoolValue(); } },
-                { "rollback_conditions", n => { RollbackConditions = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_rollback_conditions>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_rollback_conditions.CreateFromDiscriminatorValue); } },
-                { "_should_create_usage_dashboard", n => { ShouldCreateUsageDashboard = n.GetBoolValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
-                { "surveys", n => { Surveys = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_surveys>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_surveys.CreateFromDiscriminatorValue); } },
-                { "tags", n => { Tags = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_tags>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_tags.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "surveys", n => { Surveys = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagSurveysProperty>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagSurveysProperty.CreateFromDiscriminatorValue); } },
+                { "tags", n => { Tags = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTagsItem>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTagsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "usage_dashboard", n => { UsageDashboard = n.GetIntValue(); } },
                 { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },
@@ -264,217 +262,27 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("active", Active);
             writer.WriteCollectionOfPrimitiveValues<int?>("analytics_dashboards", AnalyticsDashboards);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag.FeatureFlag_bucketing_identifier>("bucketing_identifier", BucketingIdentifier);
+            writer.WriteBoolValue("archived", Archived);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagBucketingIdentifier>("bucketing_identifier", BucketingIdentifier);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("_create_in_folder", CreateInFolder);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagCreationContextEnum>("creation_context", CreationContext);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagCreationContext>("creation_context", CreationContext);
             writer.WriteBoolValue("deleted", Deleted);
             writer.WriteBoolValue("ensure_experience_continuity", EnsureExperienceContinuity);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_evaluation_contexts>("evaluation_contexts", EvaluationContexts);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag.FeatureFlag_evaluation_runtime>("evaluation_runtime", EvaluationRuntime);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_filters>("filters", Filters);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagEvaluationContextsItem>("evaluation_contexts", EvaluationContexts);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagEvaluationRuntime>("evaluation_runtime", EvaluationRuntime);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFeaturesProperty>("features", Features);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFiltersProperty>("filters", Filters);
             writer.WriteBoolValue("has_encrypted_payloads", HasEncryptedPayloads);
             writer.WriteBoolValue("has_enriched_analytics", HasEnrichedAnalytics);
             writer.WriteBoolValue("is_remote_configuration", IsRemoteConfiguration);
             writer.WriteStringValue("key", Key);
             writer.WriteDateTimeOffsetValue("last_called_at", LastCalledAt);
             writer.WriteStringValue("name", Name);
-            writer.WriteBoolValue("performed_rollback", PerformedRollback);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_rollback_conditions>("rollback_conditions", RollbackConditions);
-            writer.WriteBoolValue("_should_create_usage_dashboard", ShouldCreateUsageDashboard);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_tags>("tags", Tags);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagSurveysProperty>("surveys", Surveys);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTagsItem>("tags", Tags);
             writer.WriteIntValue("version", Version);
             writer.WriteAdditionalData(AdditionalData);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BucketingIdentifierEnum_Wrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_bucketing_identifierMember1"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class FeatureFlag_bucketing_identifier : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper? BlankEnumWrapper { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper BlankEnumWrapper { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BucketingIdentifierEnum_Wrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.BucketingIdentifierEnum_Wrapper? BucketingIdentifierEnumWrapper { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.BucketingIdentifierEnum_Wrapper BucketingIdentifierEnumWrapper { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_bucketing_identifierMember1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_bucketing_identifierMember1? FeatureFlagBucketingIdentifierMember1 { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_bucketing_identifierMember1 FeatureFlagBucketingIdentifierMember1 { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag.FeatureFlag_bucketing_identifier"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag.FeatureFlag_bucketing_identifier CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag.FeatureFlag_bucketing_identifier();
-                if("BlankEnum_Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.BlankEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper();
-                }
-                else if("BucketingIdentifierEnum_Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.BucketingIdentifierEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.BucketingIdentifierEnum_Wrapper();
-                }
-                else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.FeatureFlagBucketingIdentifierMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_bucketing_identifierMember1();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(BlankEnumWrapper != null)
-                {
-                    return BlankEnumWrapper.GetFieldDeserializers();
-                }
-                else if(BucketingIdentifierEnumWrapper != null)
-                {
-                    return BucketingIdentifierEnumWrapper.GetFieldDeserializers();
-                }
-                else if(FeatureFlagBucketingIdentifierMember1 != null)
-                {
-                    return FeatureFlagBucketingIdentifierMember1.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(BlankEnumWrapper != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper>(null, BlankEnumWrapper);
-                }
-                else if(BucketingIdentifierEnumWrapper != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BucketingIdentifierEnum_Wrapper>(null, BucketingIdentifierEnumWrapper);
-                }
-                else if(FeatureFlagBucketingIdentifierMember1 != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_bucketing_identifierMember1>(null, FeatureFlagBucketingIdentifierMember1);
-                }
-            }
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EvaluationRuntimeEnum_Wrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_evaluation_runtimeMember1"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class FeatureFlag_evaluation_runtime : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper? BlankEnumWrapper { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper BlankEnumWrapper { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EvaluationRuntimeEnum_Wrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationRuntimeEnum_Wrapper? EvaluationRuntimeEnumWrapper { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationRuntimeEnum_Wrapper EvaluationRuntimeEnumWrapper { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_evaluation_runtimeMember1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_evaluation_runtimeMember1? FeatureFlagEvaluationRuntimeMember1 { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_evaluation_runtimeMember1 FeatureFlagEvaluationRuntimeMember1 { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag.FeatureFlag_evaluation_runtime"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag.FeatureFlag_evaluation_runtime CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag.FeatureFlag_evaluation_runtime();
-                if("BlankEnum_Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.BlankEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper();
-                }
-                else if("EvaluationRuntimeEnum_Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.EvaluationRuntimeEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.EvaluationRuntimeEnum_Wrapper();
-                }
-                else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.FeatureFlagEvaluationRuntimeMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_evaluation_runtimeMember1();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(BlankEnumWrapper != null)
-                {
-                    return BlankEnumWrapper.GetFieldDeserializers();
-                }
-                else if(EvaluationRuntimeEnumWrapper != null)
-                {
-                    return EvaluationRuntimeEnumWrapper.GetFieldDeserializers();
-                }
-                else if(FeatureFlagEvaluationRuntimeMember1 != null)
-                {
-                    return FeatureFlagEvaluationRuntimeMember1.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(BlankEnumWrapper != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper>(null, BlankEnumWrapper);
-                }
-                else if(EvaluationRuntimeEnumWrapper != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationRuntimeEnum_Wrapper>(null, EvaluationRuntimeEnumWrapper);
-                }
-                else if(FeatureFlagEvaluationRuntimeMember1 != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag_evaluation_runtimeMember1>(null, FeatureFlagEvaluationRuntimeMember1);
-                }
-            }
         }
     }
 }

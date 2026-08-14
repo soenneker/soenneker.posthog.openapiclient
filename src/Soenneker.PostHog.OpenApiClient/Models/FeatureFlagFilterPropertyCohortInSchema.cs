@@ -32,17 +32,29 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Key { get; set; }
 #endif
-        /// <summary>* `in` - in* `not_in` - not_in</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchemaOperatorEnum? Operator { get; set; }
-        /// <summary>* `cohort` - cohort</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchemaTypeEnum? Type { get; set; }
+        /// <summary>Membership operator for cohort properties.* `in` - in* `not_in` - not_in</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchemaOperator? Operator { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchemaOperator Operator { get; set; }
+#endif
+        /// <summary>Cohort property type required for in/not_in operators.* `cohort` - cohort</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchemaType? Type { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchemaType Type { get; set; }
+#endif
         /// <summary>Cohort comparison value (single or list, depending on usage).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchema_value? Value { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchemaValue? Value { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchema_value Value { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchemaValue Value { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchema"/> and sets the default values.
@@ -72,9 +84,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "cohort_name", n => { CohortName = n.GetStringValue(); } },
                 { "group_type_index", n => { GroupTypeIndex = n.GetIntValue(); } },
                 { "key", n => { Key = n.GetStringValue(); } },
-                { "operator", n => { Operator = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchemaOperatorEnum>(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchemaTypeEnum>(); } },
-                { "value", n => { Value = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchema_value>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchema_value.CreateFromDiscriminatorValue); } },
+                { "operator", n => { Operator = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchemaOperator>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchemaOperator.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchemaType>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchemaType.CreateFromDiscriminatorValue); } },
+                { "value", n => { Value = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchemaValue>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchemaValue.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -87,9 +99,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("cohort_name", CohortName);
             writer.WriteIntValue("group_type_index", GroupTypeIndex);
             writer.WriteStringValue("key", Key);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchemaOperatorEnum>("operator", Operator);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchemaTypeEnum>("type", Type);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchema_value>("value", Value);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchemaOperator>("operator", Operator);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchemaType>("type", Type);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchemaValue>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

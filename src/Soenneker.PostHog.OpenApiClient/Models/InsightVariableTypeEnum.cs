@@ -9,7 +9,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "String")]
         #pragma warning disable CS1591
-        String,
+        StringValue,
         #pragma warning restore CS1591
         [EnumMember(Value = "Number")]
         #pragma warning disable CS1591

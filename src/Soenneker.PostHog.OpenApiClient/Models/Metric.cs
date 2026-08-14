@@ -3,18 +3,17 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
+    /// <summary>Metric to trend</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public enum Metric
-    #pragma warning restore CS1591
     {
         [EnumMember(Value = "bytes_read")]
         #pragma warning disable CS1591
-        Bytes_read,
+        BytesRead,
         #pragma warning restore CS1591
         [EnumMember(Value = "cpu_seconds")]
         #pragma warning disable CS1591
-        Cpu_seconds,
+        CpuSeconds,
         #pragma warning restore CS1591
         [EnumMember(Value = "requests")]
         #pragma warning disable CS1591
@@ -22,11 +21,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "query_duration")]
         #pragma warning disable CS1591
-        Query_duration,
+        QueryDuration,
         #pragma warning restore CS1591
         [EnumMember(Value = "error_rate")]
         #pragma warning disable CS1591
-        Error_rate,
+        ErrorRate,
         #pragma warning restore CS1591
     }
 }

@@ -18,23 +18,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "weekly_active")]
         #pragma warning disable CS1591
-        Weekly_active,
+        WeeklyActive,
         #pragma warning restore CS1591
         [EnumMember(Value = "monthly_active")]
         #pragma warning disable CS1591
-        Monthly_active,
+        MonthlyActive,
         #pragma warning restore CS1591
         [EnumMember(Value = "unique_session")]
         #pragma warning disable CS1591
-        Unique_session,
+        UniqueSession,
         #pragma warning restore CS1591
         [EnumMember(Value = "first_time_for_user")]
         #pragma warning disable CS1591
-        First_time_for_user,
+        FirstTimeForUser,
         #pragma warning restore CS1591
         [EnumMember(Value = "first_matching_event_for_user")]
         #pragma warning disable CS1591
-        First_matching_event_for_user,
+        FirstMatchingEventForUser,
         #pragma warning restore CS1591
     }
 }

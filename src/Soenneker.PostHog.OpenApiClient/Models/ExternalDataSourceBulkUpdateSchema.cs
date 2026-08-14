@@ -15,13 +15,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>&quot;When true and the schema has no sync method configured yet (and this update does not set one), discover the table on the source and fill in default sync settings: incremental sync with an auto-selected tracking column where supported, otherwise append, otherwise full refresh. Ignored for schemas that already have a sync method.&quot;</summary>
+        public bool? ApplySyncDefaults { get; set; }
         /// <summary>How CDC-backed tables should be exposed.* `consolidated` - consolidated* `cdc_only` - cdc_only* `both` - both</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchema_cdc_table_mode? CdcTableMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaCdcTableMode? CdcTableMode { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchema_cdc_table_mode CdcTableMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaCdcTableMode CdcTableMode { get; set; }
 #endif
         /// <summary>Columns to sync. Null means sync all columns.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -49,6 +51,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string IncrementalFieldType { get; set; }
 #endif
+        /// <summary>Row-filter predicates ANDed onto the source query. Null/empty means sync all rows.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaRowFiltersItem>? RowFilters { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaRowFiltersItem> RowFilters { get; set; }
+#endif
         /// <summary>Whether the schema should be queryable/synced.</summary>
         public bool? ShouldSync { get; set; }
         /// <summary>Human-readable sync frequency value.</summary>
@@ -61,13 +71,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>UTC anchor time for scheduled syncs.</summary>
         public Time? SyncTimeOfDay { get; set; }
-        /// <summary>Requested sync mode for the schema.* `full_refresh` - full_refresh* `incremental` - incremental* `append` - append* `webhook` - webhook* `cdc` - cdc</summary>
+        /// <summary>Requested sync mode for the schema (incremental, full_refresh, append, cdc, or xmin).* `full_refresh` - full_refresh* `incremental` - incremental* `append` - append* `webhook` - webhook* `cdc` - cdc* `xmin` - xmin</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchema_sync_type? SyncType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaSyncType? SyncType { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchema_sync_type SyncType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaSyncType SyncType { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchema"/> and sets the default values.
@@ -94,15 +104,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "cdc_table_mode", n => { CdcTableMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchema_cdc_table_mode>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchema_cdc_table_mode.CreateFromDiscriminatorValue); } },
+                { "apply_sync_defaults", n => { ApplySyncDefaults = n.GetBoolValue(); } },
+                { "cdc_table_mode", n => { CdcTableMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaCdcTableMode>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaCdcTableMode.CreateFromDiscriminatorValue); } },
                 { "enabled_columns", n => { EnabledColumns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "incremental_field", n => { IncrementalField = n.GetStringValue(); } },
                 { "incremental_field_type", n => { IncrementalFieldType = n.GetStringValue(); } },
+                { "row_filters", n => { RowFilters = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaRowFiltersItem>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaRowFiltersItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "should_sync", n => { ShouldSync = n.GetBoolValue(); } },
                 { "sync_frequency", n => { SyncFrequency = n.GetStringValue(); } },
                 { "sync_time_of_day", n => { SyncTimeOfDay = n.GetTimeValue(); } },
-                { "sync_type", n => { SyncType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchema_sync_type>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchema_sync_type.CreateFromDiscriminatorValue); } },
+                { "sync_type", n => { SyncType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaSyncType>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaSyncType.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -112,15 +124,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchema_cdc_table_mode>("cdc_table_mode", CdcTableMode);
+            writer.WriteBoolValue("apply_sync_defaults", ApplySyncDefaults);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaCdcTableMode>("cdc_table_mode", CdcTableMode);
             writer.WriteCollectionOfPrimitiveValues<string>("enabled_columns", EnabledColumns);
             writer.WriteGuidValue("id", Id);
             writer.WriteStringValue("incremental_field", IncrementalField);
             writer.WriteStringValue("incremental_field_type", IncrementalFieldType);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaRowFiltersItem>("row_filters", RowFilters);
             writer.WriteBoolValue("should_sync", ShouldSync);
             writer.WriteStringValue("sync_frequency", SyncFrequency);
             writer.WriteTimeValue("sync_time_of_day", SyncTimeOfDay);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchema_sync_type>("sync_type", SyncType);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaSyncType>("sync_type", SyncType);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

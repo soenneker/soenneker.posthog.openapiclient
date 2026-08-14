@@ -75,10 +75,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Free-form scene parameters captured at pin time, used by the frontend to rehydrate the destination.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PinnedSceneTab_sceneParams? SceneParams { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PinnedSceneTabSceneParams? SceneParams { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PinnedSceneTab_sceneParams SceneParams { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PinnedSceneTabSceneParams SceneParams { get; set; }
 #endif
         /// <summary>Query string portion of the URL, including the leading `?`. Empty string when there is no query.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -129,7 +129,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "pinned", n => { Pinned = n.GetBoolValue(); } },
                 { "sceneId", n => { SceneId = n.GetStringValue(); } },
                 { "sceneKey", n => { SceneKey = n.GetStringValue(); } },
-                { "sceneParams", n => { SceneParams = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PinnedSceneTab_sceneParams>(global::Soenneker.PostHog.OpenApiClient.Models.PinnedSceneTab_sceneParams.CreateFromDiscriminatorValue); } },
+                { "sceneParams", n => { SceneParams = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PinnedSceneTabSceneParams>(global::Soenneker.PostHog.OpenApiClient.Models.PinnedSceneTabSceneParams.CreateFromDiscriminatorValue); } },
                 { "search", n => { Search = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
             };
@@ -149,7 +149,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("pinned", Pinned);
             writer.WriteStringValue("sceneId", SceneId);
             writer.WriteStringValue("sceneKey", SceneKey);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PinnedSceneTab_sceneParams>("sceneParams", SceneParams);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PinnedSceneTabSceneParams>("sceneParams", SceneParams);
             writer.WriteStringValue("search", Search);
             writer.WriteStringValue("title", Title);
             writer.WriteAdditionalData(AdditionalData);

@@ -16,6 +16,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Whether the evaluation can return N/A for non-applicable generations.</summary>
         public bool? AllowsNa { get; set; }
         /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EvaluationOutputConfig"/> and sets the default values.
+        /// </summary>
+        public EvaluationOutputConfig()
+        {
+            AllowsNa = false;
+        }
+        /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EvaluationOutputConfig"/></returns>

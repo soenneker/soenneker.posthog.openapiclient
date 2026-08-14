@@ -13,8 +13,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ExternalDataSourceSerializers : IAdditionalDataHolder, IParsable
     {
-        /// <summary>* `warehouse` - warehouse* `direct` - direct</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccessMethodEnum? AccessMethod { get; set; }
+        /// <summary>The access_method property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersAccessMethod? AccessMethod { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersAccessMethod AccessMethod { get; private set; }
+#endif
         /// <summary>The account_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -25,6 +31,32 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Vendor API version this source is pinned to (an opaque vendor label, e.g. a Stripe date version). Null resolves to the source type&apos;s default version at sync time.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ApiVersion { get; private set; }
+#nullable restore
+#else
+        public string ApiVersion { get; private set; }
+#endif
+        /// <summary>Set when the vendor has deprecated the API version this source is pinned to; null otherwise. Drives the in-product deprecation warning.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersApiVersionDeprecation? ApiVersionDeprecation { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersApiVersionDeprecation ApiVersionDeprecation { get; private set; }
+#endif
+        /// <summary>Automatically enable syncing for schemas discovered on this source after creation, on both the scheduled discovery pass and manual schema refreshes. Defaults to false. Not supported for direct-query sources.</summary>
+        public bool? AutoSyncNewSchemas { get; set; }
+        /// <summary>Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? AutoSyncSchemaPatterns { get; set; }
+#nullable restore
+#else
+        public List<string> AutoSyncSchemaPatterns { get; set; }
+#endif
         /// <summary>The client_secret property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -43,13 +75,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string CreatedBy { get; private set; }
 #endif
-        /// <summary>How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent/MCP tool calls. Ignored on update.* `web` - web* `api` - api* `mcp` - mcp</summary>
+        /// <summary>How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent/MCP tool calls, `wizard` for the setup wizard and `self_driving` for the PostHog Desktop app (both derived server-side from the caller&apos;s user agent). Ignored on update.* `web` - web* `api` - api* `mcp` - mcp* `wizard` - wizard* `self_driving` - self_driving</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers_created_via? CreatedVia { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersCreatedVia? CreatedVia { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers_created_via CreatedVia { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersCreatedVia CreatedVia { get; set; }
 #endif
         /// <summary>The description property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -59,23 +91,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
-        /// <summary>Backend engine detected for the direct connection.* `duckdb` - duckdb* `postgres` - postgres</summary>
+        /// <summary>Whether this synced source is also live-queryable via direct connection. Defaults to false for new sources; ignored for pure direct-query sources.</summary>
+        public bool? DirectQueryEnabled { get; set; }
+        /// <summary>Backend engine detected for the direct connection.* `duckdb` - duckdb* `postgres` - postgres* `mysql` - mysql* `snowflake` - snowflake* `redshift` - redshift* `clickhouse` - clickhouse* `motherduck` - motherduck</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers_engine? Engine { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersEngine? Engine { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers_engine Engine { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersEngine Engine { get; private set; }
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>The job_inputs property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers_job_inputs? JobInputs { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersJobInputs? JobInputs { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers_job_inputs JobInputs { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersJobInputs JobInputs { get; set; }
 #endif
         /// <summary>The last_run_at property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -104,21 +138,27 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The revenue_analytics_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers_revenue_analytics_config? RevenueAnalyticsConfig { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersRevenueAnalyticsConfig? RevenueAnalyticsConfig { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers_revenue_analytics_config RevenueAnalyticsConfig { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersRevenueAnalyticsConfig RevenueAnalyticsConfig { get; private set; }
 #endif
         /// <summary>The schemas property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers_schemas>? Schemas { get; private set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersSchemasItemProperty>? Schemas { get; private set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers_schemas> Schemas { get; private set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersSchemasItemProperty> Schemas { get; private set; }
 #endif
-        /// <summary>* `Ashby` - Ashby* `Supabase` - Supabase* `CustomerIO` - CustomerIO* `Github` - Github* `Stripe` - Stripe* `Hubspot` - Hubspot* `Postgres` - Postgres* `Zendesk` - Zendesk* `Snowflake` - Snowflake* `Salesforce` - Salesforce* `MySQL` - MySQL* `MongoDB` - MongoDB* `MSSQL` - MSSQL* `Vitally` - Vitally* `BigQuery` - BigQuery* `Chargebee` - Chargebee* `Clerk` - Clerk* `GoogleAds` - GoogleAds* `TemporalIO` - TemporalIO* `DoIt` - DoIt* `GoogleSheets` - GoogleSheets* `MetaAds` - MetaAds* `Klaviyo` - Klaviyo* `Mailchimp` - Mailchimp* `Braze` - Braze* `Mailjet` - Mailjet* `Redshift` - Redshift* `Polar` - Polar* `RevenueCat` - RevenueCat* `LinkedinAds` - LinkedinAds* `RedditAds` - RedditAds* `TikTokAds` - TikTokAds* `BingAds` - BingAds* `Shopify` - Shopify* `Attio` - Attio* `SnapchatAds` - SnapchatAds* `Linear` - Linear* `Intercom` - Intercom* `Amplitude` - Amplitude* `Mixpanel` - Mixpanel* `Jira` - Jira* `ActiveCampaign` - ActiveCampaign* `Marketo` - Marketo* `Adjust` - Adjust* `AppsFlyer` - AppsFlyer* `Freshdesk` - Freshdesk* `GoogleAnalytics` - GoogleAnalytics* `Pipedrive` - Pipedrive* `SendGrid` - SendGrid* `Slack` - Slack* `PagerDuty` - PagerDuty* `Asana` - Asana* `Notion` - Notion* `Airtable` - Airtable* `Greenhouse` - Greenhouse* `BambooHR` - BambooHR* `Lever` - Lever* `GitLab` - GitLab* `Datadog` - Datadog* `Sentry` - Sentry* `Pendo` - Pendo* `FullStory` - FullStory* `AmazonAds` - AmazonAds* `PinterestAds` - PinterestAds* `AppleSearchAds` - AppleSearchAds* `QuickBooks` - QuickBooks* `Xero` - Xero* `NetSuite` - NetSuite* `WooCommerce` - WooCommerce* `BigCommerce` - BigCommerce* `PayPal` - PayPal* `Square` - Square* `Zoom` - Zoom* `Trello` - Trello* `Monday` - Monday* `ClickUp` - ClickUp* `Confluence` - Confluence* `Recurly` - Recurly* `SalesLoft` - SalesLoft* `Outreach` - Outreach* `Gong` - Gong* `Calendly` - Calendly* `Typeform` - Typeform* `Iterable` - Iterable* `ZohoCRM` - ZohoCRM* `Close` - Close* `Oracle` - Oracle* `DynamoDB` - DynamoDB* `Elasticsearch` - Elasticsearch* `Kafka` - Kafka* `LaunchDarkly` - LaunchDarkly* `Braintree` - Braintree* `Recharge` - Recharge* `HelpScout` - HelpScout* `Gorgias` - Gorgias* `Instagram` - Instagram* `YouTubeAnalytics` - YouTubeAnalytics* `FacebookPages` - FacebookPages* `TwitterAds` - TwitterAds* `Workday` - Workday* `ServiceNow` - ServiceNow* `Pardot` - Pardot* `Copper` - Copper* `Front` - Front* `ChartMogul` - ChartMogul* `Zuora` - Zuora* `Paddle` - Paddle* `CircleCI` - CircleCI* `CockroachDB` - CockroachDB* `Firebase` - Firebase* `AzureBlob` - AzureBlob* `GoogleDrive` - GoogleDrive* `OneDrive` - OneDrive* `SharePoint` - SharePoint* `Box` - Box* `SFTP` - SFTP* `MicrosoftTeams` - MicrosoftTeams* `Aircall` - Aircall* `Webflow` - Webflow* `Okta` - Okta* `Auth0` - Auth0* `Productboard` - Productboard* `Smartsheet` - Smartsheet* `Wrike` - Wrike* `Plaid` - Plaid* `SurveyMonkey` - SurveyMonkey* `Eventbrite` - Eventbrite* `RingCentral` - RingCentral* `Twilio` - Twilio* `Freshsales` - Freshsales* `Shortcut` - Shortcut* `ConvertKit` - ConvertKit* `Drip` - Drip* `CampaignMonitor` - CampaignMonitor* `MailerLite` - MailerLite* `Omnisend` - Omnisend* `Brevo` - Brevo* `Postmark` - Postmark* `Granola` - Granola* `BuildBetter` - BuildBetter* `Convex` - Convex* `ClickHouse` - ClickHouse* `Plain` - Plain* `Resend` - Resend* `PgAnalyze` - PgAnalyze* `Custom` - Custom</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceTypeEnum? SourceType { get; set; }
+        /// <summary>The source_type property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersSourceType? SourceType { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersSourceType SourceType { get; private set; }
+#endif
         /// <summary>The status property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -164,22 +204,27 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "access_method", n => { AccessMethod = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccessMethodEnum>(); } },
+                { "access_method", n => { AccessMethod = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersAccessMethod>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersAccessMethod.CreateFromDiscriminatorValue); } },
                 { "account_id", n => { AccountId = n.GetStringValue(); } },
+                { "api_version", n => { ApiVersion = n.GetStringValue(); } },
+                { "api_version_deprecation", n => { ApiVersionDeprecation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersApiVersionDeprecation>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersApiVersionDeprecation.CreateFromDiscriminatorValue); } },
+                { "auto_sync_new_schemas", n => { AutoSyncNewSchemas = n.GetBoolValue(); } },
+                { "auto_sync_schema_patterns", n => { AutoSyncSchemaPatterns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "client_secret", n => { ClientSecret = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetStringValue(); } },
-                { "created_via", n => { CreatedVia = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers_created_via>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers_created_via.CreateFromDiscriminatorValue); } },
+                { "created_via", n => { CreatedVia = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersCreatedVia>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersCreatedVia.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
-                { "engine", n => { Engine = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers_engine>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers_engine.CreateFromDiscriminatorValue); } },
+                { "direct_query_enabled", n => { DirectQueryEnabled = n.GetBoolValue(); } },
+                { "engine", n => { Engine = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersEngine>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersEngine.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "job_inputs", n => { JobInputs = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers_job_inputs>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers_job_inputs.CreateFromDiscriminatorValue); } },
+                { "job_inputs", n => { JobInputs = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersJobInputs>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersJobInputs.CreateFromDiscriminatorValue); } },
                 { "last_run_at", n => { LastRunAt = n.GetStringValue(); } },
                 { "latest_error", n => { LatestError = n.GetStringValue(); } },
                 { "prefix", n => { Prefix = n.GetStringValue(); } },
-                { "revenue_analytics_config", n => { RevenueAnalyticsConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers_revenue_analytics_config>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers_revenue_analytics_config.CreateFromDiscriminatorValue); } },
-                { "schemas", n => { Schemas = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers_schemas>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers_schemas.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "source_type", n => { SourceType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceTypeEnum>(); } },
+                { "revenue_analytics_config", n => { RevenueAnalyticsConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersRevenueAnalyticsConfig>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersRevenueAnalyticsConfig.CreateFromDiscriminatorValue); } },
+                { "schemas", n => { Schemas = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersSchemasItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersSchemasItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "source_type", n => { SourceType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersSourceType>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersSourceType.CreateFromDiscriminatorValue); } },
                 { "status", n => { Status = n.GetStringValue(); } },
                 { "supports_column_selection", n => { SupportsColumnSelection = n.GetBoolValue(); } },
                 { "supports_webhooks", n => { SupportsWebhooks = n.GetBoolValue(); } },
@@ -193,14 +238,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccessMethodEnum>("access_method", AccessMethod);
             writer.WriteStringValue("account_id", AccountId);
+            writer.WriteBoolValue("auto_sync_new_schemas", AutoSyncNewSchemas);
+            writer.WriteCollectionOfPrimitiveValues<string>("auto_sync_schema_patterns", AutoSyncSchemaPatterns);
             writer.WriteStringValue("client_secret", ClientSecret);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers_created_via>("created_via", CreatedVia);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersCreatedVia>("created_via", CreatedVia);
             writer.WriteStringValue("description", Description);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers_job_inputs>("job_inputs", JobInputs);
+            writer.WriteBoolValue("direct_query_enabled", DirectQueryEnabled);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersJobInputs>("job_inputs", JobInputs);
             writer.WriteStringValue("prefix", Prefix);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceTypeEnum>("source_type", SourceType);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

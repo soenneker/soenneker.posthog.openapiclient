@@ -17,7 +17,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "eval_pass_rate")]
         #pragma warning disable CS1591
-        Eval_pass_rate,
+        EvalPassRate,
         #pragma warning restore CS1591
     }
 }

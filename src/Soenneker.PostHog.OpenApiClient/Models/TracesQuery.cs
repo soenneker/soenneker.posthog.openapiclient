@@ -15,132 +15,93 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The dateRange property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_dateRange? DateRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DateRange? DateRange { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_dateRange DateRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DateRange DateRange { get; set; }
 #endif
         /// <summary>The filterSupportTraces property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_filterSupportTraces? FilterSupportTraces { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_filterSupportTraces FilterSupportTraces { get; set; }
-#endif
+        public bool? FilterSupportTraces { get; set; }
         /// <summary>The filterTestAccounts property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_filterTestAccounts? FilterTestAccounts { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_filterTestAccounts FilterTestAccounts { get; set; }
-#endif
+        public bool? FilterTestAccounts { get; set; }
         /// <summary>The groupKey property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_groupKey? GroupKey { get; set; }
+        public string? GroupKey { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_groupKey GroupKey { get; set; }
+        public string GroupKey { get; set; }
 #endif
         /// <summary>The groupTypeIndex property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_groupTypeIndex? GroupTypeIndex { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_groupTypeIndex GroupTypeIndex { get; set; }
-#endif
+        public int? GroupTypeIndex { get; set; }
+        /// <summary>Include stored sentiment evaluation results for returned traces and direct generation events.</summary>
+        public bool? IncludeSentiment { get; set; }
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_kind? Kind { get; set; }
-        /// <summary>The limit property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_limit? Limit { get; set; }
+        public string? Kind { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_limit Limit { get; set; }
+        public string Kind { get; set; }
 #endif
+        /// <summary>The limit property</summary>
+        public int? Limit { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_modifiers? Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers? Modifiers { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_modifiers Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers Modifiers { get; set; }
 #endif
         /// <summary>The offset property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_offset? Offset { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_offset Offset { get; set; }
-#endif
+        public int? Offset { get; set; }
         /// <summary>Person who performed the event</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_personId? PersonId { get; set; }
+        public string? PersonId { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_personId PersonId { get; set; }
+        public string PersonId { get; set; }
 #endif
         /// <summary>Properties configurable in the interface</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_properties? Properties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TracesQueryPropertiesAnyOf1Item>? Properties { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_properties Properties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TracesQueryPropertiesAnyOf1Item> Properties { get; set; }
 #endif
         /// <summary>Use random ordering instead of timestamp DESC. Useful for representative sampling to avoid recency bias.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_randomOrder? RandomOrder { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_randomOrder RandomOrder { get; set; }
-#endif
+        public bool? RandomOrder { get; set; }
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_response? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TracesQueryResponse? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_response Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TracesQueryResponse Response { get; set; }
 #endif
-        /// <summary>The showColumnConfigurator property</summary>
+        /// <summary>The searchTerm property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_showColumnConfigurator? ShowColumnConfigurator { get; set; }
+        public string? SearchTerm { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_showColumnConfigurator ShowColumnConfigurator { get; set; }
+        public string SearchTerm { get; set; }
 #endif
+        /// <summary>The showColumnConfigurator property</summary>
+        public bool? ShowColumnConfigurator { get; set; }
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_tags? Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags? Tags { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_tags Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags Tags { get; set; }
 #endif
         /// <summary>version of the node, used for schema migrations</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_version? Version { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_version Version { get; set; }
-#endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery"/> and sets the default values.
-        /// </summary>
-        public TracesQuery()
-        {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_kind.TracesQuery;
-        }
+        public double? Version { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -159,22 +120,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_dateRange>(global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_dateRange.CreateFromDiscriminatorValue); } },
-                { "filterSupportTraces", n => { FilterSupportTraces = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_filterSupportTraces>(global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_filterSupportTraces.CreateFromDiscriminatorValue); } },
-                { "filterTestAccounts", n => { FilterTestAccounts = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_filterTestAccounts>(global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_filterTestAccounts.CreateFromDiscriminatorValue); } },
-                { "groupKey", n => { GroupKey = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_groupKey>(global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_groupKey.CreateFromDiscriminatorValue); } },
-                { "groupTypeIndex", n => { GroupTypeIndex = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_groupTypeIndex>(global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_groupTypeIndex.CreateFromDiscriminatorValue); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_kind>(); } },
-                { "limit", n => { Limit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_limit>(global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_limit.CreateFromDiscriminatorValue); } },
-                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_modifiers>(global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_modifiers.CreateFromDiscriminatorValue); } },
-                { "offset", n => { Offset = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_offset>(global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_offset.CreateFromDiscriminatorValue); } },
-                { "personId", n => { PersonId = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_personId>(global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_personId.CreateFromDiscriminatorValue); } },
-                { "properties", n => { Properties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_properties>(global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_properties.CreateFromDiscriminatorValue); } },
-                { "randomOrder", n => { RandomOrder = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_randomOrder>(global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_randomOrder.CreateFromDiscriminatorValue); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_response>(global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_response.CreateFromDiscriminatorValue); } },
-                { "showColumnConfigurator", n => { ShowColumnConfigurator = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_showColumnConfigurator>(global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_showColumnConfigurator.CreateFromDiscriminatorValue); } },
-                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_tags>(global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_tags.CreateFromDiscriminatorValue); } },
-                { "version", n => { Version = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_version>(global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_version.CreateFromDiscriminatorValue); } },
+                { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>(global::Soenneker.PostHog.OpenApiClient.Models.DateRange.CreateFromDiscriminatorValue); } },
+                { "filterSupportTraces", n => { FilterSupportTraces = n.GetBoolValue(); } },
+                { "filterTestAccounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
+                { "groupKey", n => { GroupKey = n.GetStringValue(); } },
+                { "groupTypeIndex", n => { GroupTypeIndex = n.GetIntValue(); } },
+                { "includeSentiment", n => { IncludeSentiment = n.GetBoolValue(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
+                { "limit", n => { Limit = n.GetIntValue(); } },
+                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
+                { "offset", n => { Offset = n.GetIntValue(); } },
+                { "personId", n => { PersonId = n.GetStringValue(); } },
+                { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TracesQueryPropertiesAnyOf1Item>(global::Soenneker.PostHog.OpenApiClient.Models.TracesQueryPropertiesAnyOf1Item.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "randomOrder", n => { RandomOrder = n.GetBoolValue(); } },
+                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracesQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.TracesQueryResponse.CreateFromDiscriminatorValue); } },
+                { "searchTerm", n => { SearchTerm = n.GetStringValue(); } },
+                { "showColumnConfigurator", n => { ShowColumnConfigurator = n.GetBoolValue(); } },
+                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
+                { "version", n => { Version = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -184,22 +147,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_dateRange>("dateRange", DateRange);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_filterSupportTraces>("filterSupportTraces", FilterSupportTraces);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_filterTestAccounts>("filterTestAccounts", FilterTestAccounts);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_groupKey>("groupKey", GroupKey);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_groupTypeIndex>("groupTypeIndex", GroupTypeIndex);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_kind>("kind", Kind);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_limit>("limit", Limit);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_modifiers>("modifiers", Modifiers);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_offset>("offset", Offset);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_personId>("personId", PersonId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_properties>("properties", Properties);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_randomOrder>("randomOrder", RandomOrder);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_response>("response", Response);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_showColumnConfigurator>("showColumnConfigurator", ShowColumnConfigurator);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_tags>("tags", Tags);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery_version>("version", Version);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>("dateRange", DateRange);
+            writer.WriteBoolValue("filterSupportTraces", FilterSupportTraces);
+            writer.WriteBoolValue("filterTestAccounts", FilterTestAccounts);
+            writer.WriteStringValue("groupKey", GroupKey);
+            writer.WriteIntValue("groupTypeIndex", GroupTypeIndex);
+            writer.WriteBoolValue("includeSentiment", IncludeSentiment);
+            writer.WriteStringValue("kind", Kind);
+            writer.WriteIntValue("limit", Limit);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
+            writer.WriteIntValue("offset", Offset);
+            writer.WriteStringValue("personId", PersonId);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TracesQueryPropertiesAnyOf1Item>("properties", Properties);
+            writer.WriteBoolValue("randomOrder", RandomOrder);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracesQueryResponse>("response", Response);
+            writer.WriteStringValue("searchTerm", SearchTerm);
+            writer.WriteBoolValue("showColumnConfigurator", ShowColumnConfigurator);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
+            writer.WriteDoubleValue("version", Version);
         }
     }
 }

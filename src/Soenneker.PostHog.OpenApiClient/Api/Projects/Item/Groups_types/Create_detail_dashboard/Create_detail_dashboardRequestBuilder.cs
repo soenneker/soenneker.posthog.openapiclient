@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups_types.Create_detail_dashboard
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\groups_types\create_detail_dashboard
+    /// Builds and executes requests for operations under \api\projects\{projectId}\groups_types\create_detail_dashboard
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Create_detail_dashboardRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups_types.Create_
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Create_detail_dashboardRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/groups_types/create_detail_dashboard", pathParameters)
+        public Create_detail_dashboardRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/groups_types/create_detail_dashboard", pathParameters)
         {
         }
         /// <summary>
@@ -30,25 +30,25 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups_types.Create_
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Create_detail_dashboardRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/groups_types/create_detail_dashboard", rawUrl)
+        public Create_detail_dashboardRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/groups_types/create_detail_dashboard", rawUrl)
         {
         }
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups_types.Create_detail_dashboard.Create_detail_dashboardPutResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.GroupsTypesCreateDetailDashboardUpdate200Response"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups_types.Create_detail_dashboard.Create_detail_dashboardPutResponse?> PutAsync(global::Soenneker.PostHog.OpenApiClient.Models.GroupType body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.GroupsTypesCreateDetailDashboardUpdate200Response?> PutAsync(global::Soenneker.PostHog.OpenApiClient.Models.GroupType body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups_types.Create_detail_dashboard.Create_detail_dashboardPutResponse> PutAsync(global::Soenneker.PostHog.OpenApiClient.Models.GroupType body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.GroupsTypesCreateDetailDashboardUpdate200Response> PutAsync(global::Soenneker.PostHog.OpenApiClient.Models.GroupType body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups_types.Create_detail_dashboard.Create_detail_dashboardPutResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Groups_types.Create_detail_dashboard.Create_detail_dashboardPutResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.GroupsTypesCreateDetailDashboardUpdate200Response>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.GroupsTypesCreateDetailDashboardUpdate200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

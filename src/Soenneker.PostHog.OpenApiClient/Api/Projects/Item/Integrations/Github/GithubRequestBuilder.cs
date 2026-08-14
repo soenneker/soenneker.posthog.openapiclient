@@ -2,8 +2,10 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Github.Available_installations;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Github.Link_existing;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Github.Oauth_authorize;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Github.Prepare_callback;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -11,11 +13,16 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Github
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\integrations\github
+    /// Builds and executes requests for operations under \api\projects\{projectId}\integrations\github
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class GithubRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The available_installations property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Github.Available_installations.Available_installationsRequestBuilder Available_installations
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Github.Available_installations.Available_installationsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The link_existing property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Github.Link_existing.Link_existingRequestBuilder Link_existing
         {
@@ -26,12 +33,17 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Github
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Github.Oauth_authorize.Oauth_authorizeRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The prepare_callback property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Github.Prepare_callback.Prepare_callbackRequestBuilder Prepare_callback
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Github.Prepare_callback.Prepare_callbackRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Github.GithubRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public GithubRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/integrations/github", pathParameters)
+        public GithubRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/integrations/github", pathParameters)
         {
         }
         /// <summary>
@@ -39,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Github
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public GithubRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/integrations/github", rawUrl)
+        public GithubRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/integrations/github", rawUrl)
         {
         }
     }

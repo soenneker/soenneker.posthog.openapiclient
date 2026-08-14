@@ -48,6 +48,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public ErrorTrackingSymbolSetBulkStartUpload()
         {
             AdditionalData = new Dictionary<string, object>();
+            Force = false;
+            SkipOnConflict = false;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value

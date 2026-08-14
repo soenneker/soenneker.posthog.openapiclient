@@ -14,7 +14,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Events
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\events
+    /// Builds and executes requests for operations under \api\projects\{projectId}\events
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class EventsRequestBuilder : BaseRequestBuilder
@@ -41,7 +41,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Events
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EventsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/events{?after*,before*,distinct_id*,event*,format*,include_person*,limit*,offset*,person_id*,properties*,select*,where*}", pathParameters)
+        public EventsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/events{?after*,before*,distinct_id*,event*,format*,include_person*,limit*,offset*,person_id*,properties*,select*,where*}", pathParameters)
         {
         }
         /// <summary>
@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Events
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EventsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/events{?after*,before*,distinct_id*,event*,format*,include_person*,limit*,offset*,person_id*,properties*,select*,where*}", rawUrl)
+        public EventsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/events{?after*,before*,distinct_id*,event*,format*,include_person*,limit*,offset*,person_id*,properties*,select*,where*}", rawUrl)
         {
         }
         /// <summary>
@@ -124,7 +124,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Events
             public string Event { get; set; }
 #endif
             [QueryParameter("format")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Events.GetFormatQueryParameterType? Format { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.EventsListFormatParameter? Format { get; set; }
             /// <summary>&quot;Include person details for each event. Default: false.&quot;</summary>
             [QueryParameter("include_person")]
             public bool? IncludePerson { get; set; }

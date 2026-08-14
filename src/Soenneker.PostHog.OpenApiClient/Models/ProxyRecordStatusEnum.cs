@@ -33,7 +33,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "timed_out")]
         #pragma warning disable CS1591
-        Timed_out,
+        TimedOut,
         #pragma warning restore CS1591
     }
 }

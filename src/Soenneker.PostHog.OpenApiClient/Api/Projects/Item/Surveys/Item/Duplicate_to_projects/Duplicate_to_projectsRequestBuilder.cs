@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Duplicate_to_projects
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\surveys\{id}\duplicate_to_projects
+    /// Builds and executes requests for operations under \api\projects\{projectId}\surveys\{id}\duplicate_to_projects
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Duplicate_to_projectsRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Duplica
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Duplicate_to_projectsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/surveys/{id}/duplicate_to_projects", pathParameters)
+        public Duplicate_to_projectsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/surveys/{id}/duplicate_to_projects", pathParameters)
         {
         }
         /// <summary>
@@ -30,28 +30,28 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Duplica
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Duplicate_to_projectsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/surveys/{id}/duplicate_to_projects", rawUrl)
+        public Duplicate_to_projectsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/surveys/{id}/duplicate_to_projects", rawUrl)
         {
         }
         /// <summary>
         /// Duplicate a survey to multiple projects in a single transaction.Accepts a list of target team IDs and creates a copy of the survey in each project.Uses an all-or-nothing approach - if any duplication fails, all changes are rolled back.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Duplicate_to_projects.Duplicate_to_projectsPostResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SurveysDuplicateToProjectsCreate201Response"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Duplicate_to_projects.Duplicate_to_projectsPostResponse?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnly body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.SurveysDuplicateToProjectsCreate201Response?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnly body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Duplicate_to_projects.Duplicate_to_projectsPostResponse> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnly body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.SurveysDuplicateToProjectsCreate201Response> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnly body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Duplicate_to_projects.Duplicate_to_projectsPostResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Duplicate_to_projects.Duplicate_to_projectsPostResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SurveysDuplicateToProjectsCreate201Response>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SurveysDuplicateToProjectsCreate201Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Duplicate a survey to multiple projects in a single transaction.Accepts a list of target team IDs and creates a copy of the survey in each project.Uses an all-or-nothing approach - if any duplication fails, all changes are rolled back.

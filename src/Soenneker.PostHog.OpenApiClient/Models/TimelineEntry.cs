@@ -21,20 +21,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public List<global::Soenneker.PostHog.OpenApiClient.Models.EventType> Events { get; set; }
 #endif
         /// <summary>Duration of the recording in seconds.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TimelineEntry_recording_duration_s? RecordingDurationS { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TimelineEntry_recording_duration_s RecordingDurationS { get; set; }
-#endif
+        public double? RecordingDurationS { get; set; }
         /// <summary>Session ID. None means out-of-session events</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TimelineEntry_sessionId? SessionId { get; set; }
+        public string? SessionId { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TimelineEntry_sessionId SessionId { get; set; }
+        public string SessionId { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -55,8 +49,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "events", n => { Events = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EventType>(global::Soenneker.PostHog.OpenApiClient.Models.EventType.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "recording_duration_s", n => { RecordingDurationS = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TimelineEntry_recording_duration_s>(global::Soenneker.PostHog.OpenApiClient.Models.TimelineEntry_recording_duration_s.CreateFromDiscriminatorValue); } },
-                { "sessionId", n => { SessionId = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TimelineEntry_sessionId>(global::Soenneker.PostHog.OpenApiClient.Models.TimelineEntry_sessionId.CreateFromDiscriminatorValue); } },
+                { "recording_duration_s", n => { RecordingDurationS = n.GetDoubleValue(); } },
+                { "sessionId", n => { SessionId = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -67,8 +61,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EventType>("events", Events);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TimelineEntry_recording_duration_s>("recording_duration_s", RecordingDurationS);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TimelineEntry_sessionId>("sessionId", SessionId);
+            writer.WriteDoubleValue("recording_duration_s", RecordingDurationS);
+            writer.WriteStringValue("sessionId", SessionId);
         }
     }
 }

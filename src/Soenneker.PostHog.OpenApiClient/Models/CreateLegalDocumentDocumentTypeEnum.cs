@@ -9,11 +9,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "BAA")]
         #pragma warning disable CS1591
-        BAA,
+        Baa,
         #pragma warning restore CS1591
         [EnumMember(Value = "DPA")]
         #pragma warning disable CS1591
-        DPA,
+        Dpa,
         #pragma warning restore CS1591
     }
 }

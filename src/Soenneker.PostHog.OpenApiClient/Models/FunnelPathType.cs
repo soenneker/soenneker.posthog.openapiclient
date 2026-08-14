@@ -10,15 +10,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "funnel_path_before_step")]
         #pragma warning disable CS1591
-        Funnel_path_before_step,
+        FunnelPathBeforeStep,
         #pragma warning restore CS1591
         [EnumMember(Value = "funnel_path_between_steps")]
         #pragma warning disable CS1591
-        Funnel_path_between_steps,
+        FunnelPathBetweenSteps,
         #pragma warning restore CS1591
         [EnumMember(Value = "funnel_path_after_step")]
         #pragma warning disable CS1591
-        Funnel_path_after_step,
+        FunnelPathAfterStep,
         #pragma warning restore CS1591
     }
 }

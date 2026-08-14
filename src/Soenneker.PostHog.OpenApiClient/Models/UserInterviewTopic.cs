@@ -27,10 +27,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserInterviewTopic_created_by? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserInterviewTopicCreatedBy? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserInterviewTopic_created_by CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserInterviewTopicCreatedBy CreatedBy { get; private set; }
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
@@ -49,6 +49,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public List<string> IntervieweeEmails { get; set; }
+#endif
+        /// <summary>Intro message shown in the invitation email body, above the interview link. Plain prose only — URLs, angle brackets, and control characters are rejected (line breaks are allowed). Leave blank to use the default copy.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? InviteMessage { get; set; }
+#nullable restore
+#else
+        public string InviteMessage { get; set; }
+#endif
+        /// <summary>Subject line for the invitation email. Plain text only — URLs, angle brackets, and control characters are rejected. Leave blank to use the default subject. Personalization is handled by the email template, so do not include placeholders.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? InviteSubject { get; set; }
+#nullable restore
+#else
+        public string InviteSubject { get; set; }
 #endif
         /// <summary>Ordered list of questions the voice agent should work through during the interview.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -93,10 +109,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "agent_context", n => { AgentContext = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserInterviewTopic_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.UserInterviewTopic_created_by.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserInterviewTopicCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.UserInterviewTopicCreatedBy.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "interviewee_distinct_ids", n => { IntervieweeDistinctIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "interviewee_emails", n => { IntervieweeEmails = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "invite_message", n => { InviteMessage = n.GetStringValue(); } },
+                { "invite_subject", n => { InviteSubject = n.GetStringValue(); } },
                 { "questions", n => { Questions = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "topic", n => { Topic = n.GetStringValue(); } },
             };
@@ -111,6 +129,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("agent_context", AgentContext);
             writer.WriteCollectionOfPrimitiveValues<string>("interviewee_distinct_ids", IntervieweeDistinctIds);
             writer.WriteCollectionOfPrimitiveValues<string>("interviewee_emails", IntervieweeEmails);
+            writer.WriteStringValue("invite_message", InviteMessage);
+            writer.WriteStringValue("invite_subject", InviteSubject);
             writer.WriteCollectionOfPrimitiveValues<string>("questions", Questions);
             writer.WriteStringValue("topic", Topic);
             writer.WriteAdditionalData(AdditionalData);

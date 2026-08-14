@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Feature flag ID — integer for valid inputs; the original raw value for invalid inputs.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteErrorItem_id? Id { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteErrorItemId? Id { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteErrorItem_id Id { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteErrorItemId Id { get; set; }
 #endif
         /// <summary>The flag key, when known.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -63,7 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "id", n => { Id = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteErrorItem_id>(global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteErrorItem_id.CreateFromDiscriminatorValue); } },
+                { "id", n => { Id = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteErrorItemId>(global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteErrorItemId.CreateFromDiscriminatorValue); } },
                 { "key", n => { Key = n.GetStringValue(); } },
                 { "reason", n => { Reason = n.GetStringValue(); } },
             };
@@ -75,7 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteErrorItem_id>("id", Id);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteErrorItemId>("id", Id);
             writer.WriteStringValue("key", Key);
             writer.WriteStringValue("reason", Reason);
             writer.WriteAdditionalData(AdditionalData);

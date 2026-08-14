@@ -3,18 +3,17 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
+    /// <summary>Field to sort results by.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public enum ErrorTrackingOrderBy
-    #pragma warning restore CS1591
     {
         [EnumMember(Value = "last_seen")]
         #pragma warning disable CS1591
-        Last_seen,
+        LastSeen,
         #pragma warning restore CS1591
         [EnumMember(Value = "first_seen")]
         #pragma warning disable CS1591
-        First_seen,
+        FirstSeen,
         #pragma warning restore CS1591
         [EnumMember(Value = "occurrences")]
         #pragma warning disable CS1591

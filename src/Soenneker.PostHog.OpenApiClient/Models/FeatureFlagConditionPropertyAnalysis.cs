@@ -15,10 +15,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Actual property value from user</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionPropertyAnalysis_actual_value? ActualValue { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionPropertyAnalysisActualValue? ActualValue { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionPropertyAnalysis_actual_value ActualValue { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionPropertyAnalysisActualValue ActualValue { get; set; }
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -59,10 +59,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Expected property value</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionPropertyAnalysis_value? Value { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionPropertyAnalysisValue? Value { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionPropertyAnalysis_value Value { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionPropertyAnalysisValue Value { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionPropertyAnalysis"/> and sets the default values.
@@ -89,13 +89,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "actual_value", n => { ActualValue = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionPropertyAnalysis_actual_value>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionPropertyAnalysis_actual_value.CreateFromDiscriminatorValue); } },
+                { "actual_value", n => { ActualValue = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionPropertyAnalysisActualValue>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionPropertyAnalysisActualValue.CreateFromDiscriminatorValue); } },
                 { "explanation", n => { Explanation = n.GetStringValue(); } },
                 { "key", n => { Key = n.GetStringValue(); } },
                 { "matched", n => { Matched = n.GetBoolValue(); } },
                 { "operator", n => { Operator = n.GetStringValue(); } },
                 { "type", n => { Type = n.GetStringValue(); } },
-                { "value", n => { Value = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionPropertyAnalysis_value>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionPropertyAnalysis_value.CreateFromDiscriminatorValue); } },
+                { "value", n => { Value = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionPropertyAnalysisValue>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionPropertyAnalysisValue.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -105,13 +105,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionPropertyAnalysis_actual_value>("actual_value", ActualValue);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionPropertyAnalysisActualValue>("actual_value", ActualValue);
             writer.WriteStringValue("explanation", Explanation);
             writer.WriteStringValue("key", Key);
             writer.WriteBoolValue("matched", Matched);
             writer.WriteStringValue("operator", Operator);
             writer.WriteStringValue("type", Type);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionPropertyAnalysis_value>("value", Value);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionPropertyAnalysisValue>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

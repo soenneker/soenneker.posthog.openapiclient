@@ -13,216 +13,125 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning restore CS1591
     {
         /// <summary>Groups aggregation - not used in Web Analytics but required for type compatibility</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_aggregation_group_type_index? AggregationGroupTypeIndex { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_aggregation_group_type_index AggregationGroupTypeIndex { get; set; }
-#endif
+        public int? AggregationGroupTypeIndex { get; set; }
         /// <summary>The breakdownBy property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsBreakdown? BreakdownBy { get; set; }
         /// <summary>The compareFilter property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_compareFilter? CompareFilter { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter? CompareFilter { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_compareFilter CompareFilter { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter CompareFilter { get; set; }
 #endif
         /// <summary>The conversionGoal property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery.WebStatsTableQuery_conversionGoal? ConversionGoal { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQueryConversionGoal? ConversionGoal { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery.WebStatsTableQuery_conversionGoal ConversionGoal { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQueryConversionGoal ConversionGoal { get; set; }
 #endif
         /// <summary>Colors used in the insight&apos;s visualization - not used in Web Analytics but required for type compatibility</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_dataColorTheme? DataColorTheme { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_dataColorTheme DataColorTheme { get; set; }
-#endif
+        public double? DataColorTheme { get; set; }
         /// <summary>The dateRange property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_dateRange? DateRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DateRange? DateRange { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_dateRange DateRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DateRange DateRange { get; set; }
 #endif
         /// <summary>The doPathCleaning property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_doPathCleaning? DoPathCleaning { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_doPathCleaning DoPathCleaning { get; set; }
-#endif
+        public bool? DoPathCleaning { get; set; }
         /// <summary>The filterTestAccounts property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_filterTestAccounts? FilterTestAccounts { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_filterTestAccounts FilterTestAccounts { get; set; }
-#endif
+        public bool? FilterTestAccounts { get; set; }
         /// <summary>The includeAvgTimeOnPage property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_includeAvgTimeOnPage? IncludeAvgTimeOnPage { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_includeAvgTimeOnPage IncludeAvgTimeOnPage { get; set; }
-#endif
+        public bool? IncludeAvgTimeOnPage { get; set; }
         /// <summary>The includeBounceRate property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_includeBounceRate? IncludeBounceRate { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_includeBounceRate IncludeBounceRate { get; set; }
-#endif
+        public bool? IncludeBounceRate { get; set; }
         /// <summary>The includeHost property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_includeHost? IncludeHost { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_includeHost IncludeHost { get; set; }
-#endif
+        public bool? IncludeHost { get; set; }
         /// <summary>The includeRevenue property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_includeRevenue? IncludeRevenue { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_includeRevenue IncludeRevenue { get; set; }
-#endif
+        public bool? IncludeRevenue { get; set; }
         /// <summary>The includeScrollDepth property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_includeScrollDepth? IncludeScrollDepth { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_includeScrollDepth IncludeScrollDepth { get; set; }
-#endif
+        public bool? IncludeScrollDepth { get; set; }
         /// <summary>Interval for date range calculation (affects date_to rounding for hour vs day ranges)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_interval? Interval { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper25? Interval { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_interval Interval { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper25 Interval { get; set; }
 #endif
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_kind? Kind { get; set; }
-        /// <summary>The limit property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_limit? Limit { get; set; }
+        public string? Kind { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_limit Limit { get; set; }
+        public string Kind { get; set; }
 #endif
+        /// <summary>The limit property</summary>
+        public int? Limit { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_modifiers? Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers? Modifiers { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_modifiers Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers Modifiers { get; set; }
 #endif
         /// <summary>The offset property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_offset? Offset { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_offset Offset { get; set; }
-#endif
+        public int? Offset { get; set; }
         /// <summary>The orderBy property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_orderBy? OrderBy { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQueryOrderByAnyOf1Item>? OrderBy { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_orderBy OrderBy { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQueryOrderByAnyOf1Item> OrderBy { get; set; }
 #endif
         /// <summary>The properties property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery.WebStatsTableQuery_properties>? Properties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQueryPropertiesItem>? Properties { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery.WebStatsTableQuery_properties> Properties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQueryPropertiesItem> Properties { get; set; }
 #endif
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_response? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQueryResponse? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_response Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQueryResponse Response { get; set; }
 #endif
         /// <summary>The sampling property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_sampling? Sampling { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsSampling? Sampling { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_sampling Sampling { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsSampling Sampling { get; set; }
 #endif
         /// <summary>Sampling rate</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_samplingFactor? SamplingFactor { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_samplingFactor SamplingFactor { get; set; }
-#endif
+        public double? SamplingFactor { get; set; }
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_tags? Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags? Tags { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_tags Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags Tags { get; set; }
 #endif
         /// <summary>The useSessionsTable property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_useSessionsTable? UseSessionsTable { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_useSessionsTable UseSessionsTable { get; set; }
-#endif
+        public bool? UseSessionsTable { get; set; }
         /// <summary>Opt this specific query into the web stats table precompute path. Requires the `web-analytics-precompute-toggle` PostHog feature flag to be on for the team&apos;s organization for the gate to pass. *</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_useWebAnalyticsPrecompute? UseWebAnalyticsPrecompute { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_useWebAnalyticsPrecompute UseWebAnalyticsPrecompute { get; set; }
-#endif
+        public bool? UseWebAnalyticsPrecompute { get; set; }
         /// <summary>version of the node, used for schema migrations</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_version? Version { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_version Version { get; set; }
-#endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery"/> and sets the default values.
-        /// </summary>
-        public WebStatsTableQuery()
-        {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_kind.WebStatsTableQuery;
-        }
+        public double? Version { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -241,33 +150,33 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "aggregation_group_type_index", n => { AggregationGroupTypeIndex = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_aggregation_group_type_index>(global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_aggregation_group_type_index.CreateFromDiscriminatorValue); } },
+                { "aggregation_group_type_index", n => { AggregationGroupTypeIndex = n.GetIntValue(); } },
                 { "breakdownBy", n => { BreakdownBy = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsBreakdown>(); } },
-                { "compareFilter", n => { CompareFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_compareFilter>(global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_compareFilter.CreateFromDiscriminatorValue); } },
-                { "conversionGoal", n => { ConversionGoal = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery.WebStatsTableQuery_conversionGoal>(global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery.WebStatsTableQuery_conversionGoal.CreateFromDiscriminatorValue); } },
-                { "dataColorTheme", n => { DataColorTheme = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_dataColorTheme>(global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_dataColorTheme.CreateFromDiscriminatorValue); } },
-                { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_dateRange>(global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_dateRange.CreateFromDiscriminatorValue); } },
-                { "doPathCleaning", n => { DoPathCleaning = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_doPathCleaning>(global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_doPathCleaning.CreateFromDiscriminatorValue); } },
-                { "filterTestAccounts", n => { FilterTestAccounts = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_filterTestAccounts>(global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_filterTestAccounts.CreateFromDiscriminatorValue); } },
-                { "includeAvgTimeOnPage", n => { IncludeAvgTimeOnPage = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_includeAvgTimeOnPage>(global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_includeAvgTimeOnPage.CreateFromDiscriminatorValue); } },
-                { "includeBounceRate", n => { IncludeBounceRate = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_includeBounceRate>(global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_includeBounceRate.CreateFromDiscriminatorValue); } },
-                { "includeHost", n => { IncludeHost = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_includeHost>(global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_includeHost.CreateFromDiscriminatorValue); } },
-                { "includeRevenue", n => { IncludeRevenue = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_includeRevenue>(global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_includeRevenue.CreateFromDiscriminatorValue); } },
-                { "includeScrollDepth", n => { IncludeScrollDepth = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_includeScrollDepth>(global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_includeScrollDepth.CreateFromDiscriminatorValue); } },
-                { "interval", n => { Interval = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_interval>(global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_interval.CreateFromDiscriminatorValue); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_kind>(); } },
-                { "limit", n => { Limit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_limit>(global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_limit.CreateFromDiscriminatorValue); } },
-                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_modifiers>(global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_modifiers.CreateFromDiscriminatorValue); } },
-                { "offset", n => { Offset = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_offset>(global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_offset.CreateFromDiscriminatorValue); } },
-                { "orderBy", n => { OrderBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_orderBy>(global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_orderBy.CreateFromDiscriminatorValue); } },
-                { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery.WebStatsTableQuery_properties>(global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery.WebStatsTableQuery_properties.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_response>(global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_response.CreateFromDiscriminatorValue); } },
-                { "sampling", n => { Sampling = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_sampling>(global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_sampling.CreateFromDiscriminatorValue); } },
-                { "samplingFactor", n => { SamplingFactor = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_samplingFactor>(global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_samplingFactor.CreateFromDiscriminatorValue); } },
-                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_tags>(global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_tags.CreateFromDiscriminatorValue); } },
-                { "useSessionsTable", n => { UseSessionsTable = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_useSessionsTable>(global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_useSessionsTable.CreateFromDiscriminatorValue); } },
-                { "useWebAnalyticsPrecompute", n => { UseWebAnalyticsPrecompute = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_useWebAnalyticsPrecompute>(global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_useWebAnalyticsPrecompute.CreateFromDiscriminatorValue); } },
-                { "version", n => { Version = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_version>(global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_version.CreateFromDiscriminatorValue); } },
+                { "compareFilter", n => { CompareFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter>(global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter.CreateFromDiscriminatorValue); } },
+                { "conversionGoal", n => { ConversionGoal = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQueryConversionGoal>(global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQueryConversionGoal.CreateFromDiscriminatorValue); } },
+                { "dataColorTheme", n => { DataColorTheme = n.GetDoubleValue(); } },
+                { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>(global::Soenneker.PostHog.OpenApiClient.Models.DateRange.CreateFromDiscriminatorValue); } },
+                { "doPathCleaning", n => { DoPathCleaning = n.GetBoolValue(); } },
+                { "filterTestAccounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
+                { "includeAvgTimeOnPage", n => { IncludeAvgTimeOnPage = n.GetBoolValue(); } },
+                { "includeBounceRate", n => { IncludeBounceRate = n.GetBoolValue(); } },
+                { "includeHost", n => { IncludeHost = n.GetBoolValue(); } },
+                { "includeRevenue", n => { IncludeRevenue = n.GetBoolValue(); } },
+                { "includeScrollDepth", n => { IncludeScrollDepth = n.GetBoolValue(); } },
+                { "interval", n => { Interval = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper25>(global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper25.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
+                { "limit", n => { Limit = n.GetIntValue(); } },
+                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
+                { "offset", n => { Offset = n.GetIntValue(); } },
+                { "orderBy", n => { OrderBy = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQueryOrderByAnyOf1Item>(global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQueryOrderByAnyOf1Item.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQueryPropertiesItem>(global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQueryPropertiesItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQueryResponse.CreateFromDiscriminatorValue); } },
+                { "sampling", n => { Sampling = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsSampling>(global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsSampling.CreateFromDiscriminatorValue); } },
+                { "samplingFactor", n => { SamplingFactor = n.GetDoubleValue(); } },
+                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
+                { "useSessionsTable", n => { UseSessionsTable = n.GetBoolValue(); } },
+                { "useWebAnalyticsPrecompute", n => { UseWebAnalyticsPrecompute = n.GetBoolValue(); } },
+                { "version", n => { Version = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -277,174 +186,33 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_aggregation_group_type_index>("aggregation_group_type_index", AggregationGroupTypeIndex);
+            writer.WriteIntValue("aggregation_group_type_index", AggregationGroupTypeIndex);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsBreakdown>("breakdownBy", BreakdownBy);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_compareFilter>("compareFilter", CompareFilter);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery.WebStatsTableQuery_conversionGoal>("conversionGoal", ConversionGoal);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_dataColorTheme>("dataColorTheme", DataColorTheme);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_dateRange>("dateRange", DateRange);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_doPathCleaning>("doPathCleaning", DoPathCleaning);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_filterTestAccounts>("filterTestAccounts", FilterTestAccounts);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_includeAvgTimeOnPage>("includeAvgTimeOnPage", IncludeAvgTimeOnPage);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_includeBounceRate>("includeBounceRate", IncludeBounceRate);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_includeHost>("includeHost", IncludeHost);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_includeRevenue>("includeRevenue", IncludeRevenue);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_includeScrollDepth>("includeScrollDepth", IncludeScrollDepth);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_interval>("interval", Interval);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_kind>("kind", Kind);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_limit>("limit", Limit);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_modifiers>("modifiers", Modifiers);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_offset>("offset", Offset);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_orderBy>("orderBy", OrderBy);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery.WebStatsTableQuery_properties>("properties", Properties);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_response>("response", Response);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_sampling>("sampling", Sampling);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_samplingFactor>("samplingFactor", SamplingFactor);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_tags>("tags", Tags);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_useSessionsTable>("useSessionsTable", UseSessionsTable);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_useWebAnalyticsPrecompute>("useWebAnalyticsPrecompute", UseWebAnalyticsPrecompute);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_version>("version", Version);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActionConversionGoal"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CustomEventConversionGoal"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_conversionGoalMember1"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class WebStatsTableQuery_conversionGoal : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActionConversionGoal"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.ActionConversionGoal? ActionConversionGoal { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.ActionConversionGoal ActionConversionGoal { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CustomEventConversionGoal"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.CustomEventConversionGoal? CustomEventConversionGoal { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.CustomEventConversionGoal CustomEventConversionGoal { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_conversionGoalMember1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_conversionGoalMember1? WebStatsTableQueryConversionGoalMember1 { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_conversionGoalMember1 WebStatsTableQueryConversionGoalMember1 { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery.WebStatsTableQuery_conversionGoal"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery.WebStatsTableQuery_conversionGoal CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery.WebStatsTableQuery_conversionGoal();
-                result.ActionConversionGoal = new global::Soenneker.PostHog.OpenApiClient.Models.ActionConversionGoal();
-                result.CustomEventConversionGoal = new global::Soenneker.PostHog.OpenApiClient.Models.CustomEventConversionGoal();
-                result.WebStatsTableQueryConversionGoalMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery_conversionGoalMember1();
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(ActionConversionGoal != null || CustomEventConversionGoal != null || WebStatsTableQueryConversionGoalMember1 != null)
-                {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ActionConversionGoal, CustomEventConversionGoal, WebStatsTableQueryConversionGoalMember1);
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActionConversionGoal>(null, ActionConversionGoal, CustomEventConversionGoal, WebStatsTableQueryConversionGoalMember1);
-            }
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertyFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SessionPropertyFilter"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class WebStatsTableQuery_properties : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilter"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilter? CohortPropertyFilter { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilter CohortPropertyFilter { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter? EventPropertyFilter { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter EventPropertyFilter { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertyFilter"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertyFilter? PersonPropertyFilter { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertyFilter PersonPropertyFilter { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SessionPropertyFilter"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.SessionPropertyFilter? SessionPropertyFilter { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.SessionPropertyFilter SessionPropertyFilter { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery.WebStatsTableQuery_properties"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery.WebStatsTableQuery_properties CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery.WebStatsTableQuery_properties();
-                result.CohortPropertyFilter = new global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilter();
-                result.EventPropertyFilter = new global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter();
-                result.PersonPropertyFilter = new global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertyFilter();
-                result.SessionPropertyFilter = new global::Soenneker.PostHog.OpenApiClient.Models.SessionPropertyFilter();
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(CohortPropertyFilter != null || EventPropertyFilter != null || PersonPropertyFilter != null || SessionPropertyFilter != null)
-                {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(CohortPropertyFilter, EventPropertyFilter, PersonPropertyFilter, SessionPropertyFilter);
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortPropertyFilter>(null, CohortPropertyFilter, EventPropertyFilter, PersonPropertyFilter, SessionPropertyFilter);
-            }
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter>("compareFilter", CompareFilter);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQueryConversionGoal>("conversionGoal", ConversionGoal);
+            writer.WriteDoubleValue("dataColorTheme", DataColorTheme);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>("dateRange", DateRange);
+            writer.WriteBoolValue("doPathCleaning", DoPathCleaning);
+            writer.WriteBoolValue("filterTestAccounts", FilterTestAccounts);
+            writer.WriteBoolValue("includeAvgTimeOnPage", IncludeAvgTimeOnPage);
+            writer.WriteBoolValue("includeBounceRate", IncludeBounceRate);
+            writer.WriteBoolValue("includeHost", IncludeHost);
+            writer.WriteBoolValue("includeRevenue", IncludeRevenue);
+            writer.WriteBoolValue("includeScrollDepth", IncludeScrollDepth);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper25>("interval", Interval);
+            writer.WriteStringValue("kind", Kind);
+            writer.WriteIntValue("limit", Limit);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
+            writer.WriteIntValue("offset", Offset);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQueryOrderByAnyOf1Item>("orderBy", OrderBy);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQueryPropertiesItem>("properties", Properties);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQueryResponse>("response", Response);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsSampling>("sampling", Sampling);
+            writer.WriteDoubleValue("samplingFactor", SamplingFactor);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
+            writer.WriteBoolValue("useSessionsTable", UseSessionsTable);
+            writer.WriteBoolValue("useWebAnalyticsPrecompute", UseWebAnalyticsPrecompute);
+            writer.WriteDoubleValue("version", Version);
         }
     }
 }

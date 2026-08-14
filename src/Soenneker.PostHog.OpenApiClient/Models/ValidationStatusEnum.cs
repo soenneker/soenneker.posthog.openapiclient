@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `valid` - Valid* `invalid` - Invalid* `expired` - Expired* `stale` - Stale (resource changed)</summary>
+    /// <summary>* `valid` - Valid* `invalid` - Invalid* `stale` - Stale (resource changed)</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ValidationStatusEnum
     {
@@ -14,10 +14,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "invalid")]
         #pragma warning disable CS1591
         Invalid,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "expired")]
-        #pragma warning disable CS1591
-        Expired,
         #pragma warning restore CS1591
         [EnumMember(Value = "stale")]
         #pragma warning disable CS1591

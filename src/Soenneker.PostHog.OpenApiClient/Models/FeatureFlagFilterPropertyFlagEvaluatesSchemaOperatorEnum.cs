@@ -9,7 +9,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "flag_evaluates_to")]
         #pragma warning disable CS1591
-        Flag_evaluates_to,
+        FlagEvaluatesTo,
         #pragma warning restore CS1591
     }
 }

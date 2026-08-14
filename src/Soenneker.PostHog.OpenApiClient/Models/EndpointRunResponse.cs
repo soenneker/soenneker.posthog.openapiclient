@@ -25,6 +25,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Version number of the endpoint that was executed.</summary>
         public int? EndpointVersion { get; set; }
+        /// <summary>Unique identifier for this execution. Use it to find the matching entry in the endpoint&apos;s logs.</summary>
+        public Guid? ExecutionId { get; set; }
         /// <summary>Whether more results are available beyond the limit.</summary>
         public bool? HasMore { get; set; }
         /// <summary>URL-safe endpoint name that was executed.</summary>
@@ -38,10 +40,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Query result rows. Each row is a list of values matching the columns order.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunResponse_results>? Results { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunResponseResultsItem>? Results { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunResponse_results> Results { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunResponseResultsItem> Results { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunResponse"/> and sets the default values.
@@ -70,9 +72,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "columns", n => { Columns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "endpoint_version", n => { EndpointVersion = n.GetIntValue(); } },
+                { "execution_id", n => { ExecutionId = n.GetGuidValue(); } },
                 { "hasMore", n => { HasMore = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "results", n => { Results = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunResponse_results>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunResponse_results.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "results", n => { Results = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunResponseResultsItem>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunResponseResultsItem.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -84,9 +87,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("columns", Columns);
             writer.WriteIntValue("endpoint_version", EndpointVersion);
+            writer.WriteGuidValue("execution_id", ExecutionId);
             writer.WriteBoolValue("hasMore", HasMore);
             writer.WriteStringValue("name", Name);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunResponse_results>("results", Results);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunResponseResultsItem>("results", Results);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

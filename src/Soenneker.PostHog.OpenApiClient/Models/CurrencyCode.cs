@@ -10,611 +10,611 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "AED")]
         #pragma warning disable CS1591
-        AED,
+        Aed,
         #pragma warning restore CS1591
         [EnumMember(Value = "AFN")]
         #pragma warning disable CS1591
-        AFN,
+        Afn,
         #pragma warning restore CS1591
         [EnumMember(Value = "ALL")]
         #pragma warning disable CS1591
-        ALL,
+        All,
         #pragma warning restore CS1591
         [EnumMember(Value = "AMD")]
         #pragma warning disable CS1591
-        AMD,
+        Amd,
         #pragma warning restore CS1591
         [EnumMember(Value = "ANG")]
         #pragma warning disable CS1591
-        ANG,
+        Ang,
         #pragma warning restore CS1591
         [EnumMember(Value = "AOA")]
         #pragma warning disable CS1591
-        AOA,
+        Aoa,
         #pragma warning restore CS1591
         [EnumMember(Value = "ARS")]
         #pragma warning disable CS1591
-        ARS,
+        Ars,
         #pragma warning restore CS1591
         [EnumMember(Value = "AUD")]
         #pragma warning disable CS1591
-        AUD,
+        Aud,
         #pragma warning restore CS1591
         [EnumMember(Value = "AWG")]
         #pragma warning disable CS1591
-        AWG,
+        Awg,
         #pragma warning restore CS1591
         [EnumMember(Value = "AZN")]
         #pragma warning disable CS1591
-        AZN,
+        Azn,
         #pragma warning restore CS1591
         [EnumMember(Value = "BAM")]
         #pragma warning disable CS1591
-        BAM,
+        Bam,
         #pragma warning restore CS1591
         [EnumMember(Value = "BBD")]
         #pragma warning disable CS1591
-        BBD,
+        Bbd,
         #pragma warning restore CS1591
         [EnumMember(Value = "BDT")]
         #pragma warning disable CS1591
-        BDT,
+        Bdt,
         #pragma warning restore CS1591
         [EnumMember(Value = "BGN")]
         #pragma warning disable CS1591
-        BGN,
+        Bgn,
         #pragma warning restore CS1591
         [EnumMember(Value = "BHD")]
         #pragma warning disable CS1591
-        BHD,
+        Bhd,
         #pragma warning restore CS1591
         [EnumMember(Value = "BIF")]
         #pragma warning disable CS1591
-        BIF,
+        Bif,
         #pragma warning restore CS1591
         [EnumMember(Value = "BMD")]
         #pragma warning disable CS1591
-        BMD,
+        Bmd,
         #pragma warning restore CS1591
         [EnumMember(Value = "BND")]
         #pragma warning disable CS1591
-        BND,
+        Bnd,
         #pragma warning restore CS1591
         [EnumMember(Value = "BOB")]
         #pragma warning disable CS1591
-        BOB,
+        Bob,
         #pragma warning restore CS1591
         [EnumMember(Value = "BRL")]
         #pragma warning disable CS1591
-        BRL,
+        Brl,
         #pragma warning restore CS1591
         [EnumMember(Value = "BSD")]
         #pragma warning disable CS1591
-        BSD,
+        Bsd,
         #pragma warning restore CS1591
         [EnumMember(Value = "BTC")]
         #pragma warning disable CS1591
-        BTC,
+        Btc,
         #pragma warning restore CS1591
         [EnumMember(Value = "BTN")]
         #pragma warning disable CS1591
-        BTN,
+        Btn,
         #pragma warning restore CS1591
         [EnumMember(Value = "BWP")]
         #pragma warning disable CS1591
-        BWP,
+        Bwp,
         #pragma warning restore CS1591
         [EnumMember(Value = "BYN")]
         #pragma warning disable CS1591
-        BYN,
+        Byn,
         #pragma warning restore CS1591
         [EnumMember(Value = "BZD")]
         #pragma warning disable CS1591
-        BZD,
+        Bzd,
         #pragma warning restore CS1591
         [EnumMember(Value = "CAD")]
         #pragma warning disable CS1591
-        CAD,
+        Cad,
         #pragma warning restore CS1591
         [EnumMember(Value = "CDF")]
         #pragma warning disable CS1591
-        CDF,
+        Cdf,
         #pragma warning restore CS1591
         [EnumMember(Value = "CHF")]
         #pragma warning disable CS1591
-        CHF,
+        Chf,
         #pragma warning restore CS1591
         [EnumMember(Value = "CLP")]
         #pragma warning disable CS1591
-        CLP,
+        Clp,
         #pragma warning restore CS1591
         [EnumMember(Value = "CNY")]
         #pragma warning disable CS1591
-        CNY,
+        Cny,
         #pragma warning restore CS1591
         [EnumMember(Value = "COP")]
         #pragma warning disable CS1591
-        COP,
+        Cop,
         #pragma warning restore CS1591
         [EnumMember(Value = "CRC")]
         #pragma warning disable CS1591
-        CRC,
+        Crc,
         #pragma warning restore CS1591
         [EnumMember(Value = "CVE")]
         #pragma warning disable CS1591
-        CVE,
+        Cve,
         #pragma warning restore CS1591
         [EnumMember(Value = "CZK")]
         #pragma warning disable CS1591
-        CZK,
+        Czk,
         #pragma warning restore CS1591
         [EnumMember(Value = "DJF")]
         #pragma warning disable CS1591
-        DJF,
+        Djf,
         #pragma warning restore CS1591
         [EnumMember(Value = "DKK")]
         #pragma warning disable CS1591
-        DKK,
+        Dkk,
         #pragma warning restore CS1591
         [EnumMember(Value = "DOP")]
         #pragma warning disable CS1591
-        DOP,
+        Dop,
         #pragma warning restore CS1591
         [EnumMember(Value = "DZD")]
         #pragma warning disable CS1591
-        DZD,
+        Dzd,
         #pragma warning restore CS1591
         [EnumMember(Value = "EGP")]
         #pragma warning disable CS1591
-        EGP,
+        Egp,
         #pragma warning restore CS1591
         [EnumMember(Value = "ERN")]
         #pragma warning disable CS1591
-        ERN,
+        Ern,
         #pragma warning restore CS1591
         [EnumMember(Value = "ETB")]
         #pragma warning disable CS1591
-        ETB,
+        Etb,
         #pragma warning restore CS1591
         [EnumMember(Value = "EUR")]
         #pragma warning disable CS1591
-        EUR,
+        Eur,
         #pragma warning restore CS1591
         [EnumMember(Value = "FJD")]
         #pragma warning disable CS1591
-        FJD,
+        Fjd,
         #pragma warning restore CS1591
         [EnumMember(Value = "GBP")]
         #pragma warning disable CS1591
-        GBP,
+        Gbp,
         #pragma warning restore CS1591
         [EnumMember(Value = "GEL")]
         #pragma warning disable CS1591
-        GEL,
+        Gel,
         #pragma warning restore CS1591
         [EnumMember(Value = "GHS")]
         #pragma warning disable CS1591
-        GHS,
+        Ghs,
         #pragma warning restore CS1591
         [EnumMember(Value = "GIP")]
         #pragma warning disable CS1591
-        GIP,
+        Gip,
         #pragma warning restore CS1591
         [EnumMember(Value = "GMD")]
         #pragma warning disable CS1591
-        GMD,
+        Gmd,
         #pragma warning restore CS1591
         [EnumMember(Value = "GNF")]
         #pragma warning disable CS1591
-        GNF,
+        Gnf,
         #pragma warning restore CS1591
         [EnumMember(Value = "GTQ")]
         #pragma warning disable CS1591
-        GTQ,
+        Gtq,
         #pragma warning restore CS1591
         [EnumMember(Value = "GYD")]
         #pragma warning disable CS1591
-        GYD,
+        Gyd,
         #pragma warning restore CS1591
         [EnumMember(Value = "HKD")]
         #pragma warning disable CS1591
-        HKD,
+        Hkd,
         #pragma warning restore CS1591
         [EnumMember(Value = "HNL")]
         #pragma warning disable CS1591
-        HNL,
+        Hnl,
         #pragma warning restore CS1591
         [EnumMember(Value = "HRK")]
         #pragma warning disable CS1591
-        HRK,
+        Hrk,
         #pragma warning restore CS1591
         [EnumMember(Value = "HTG")]
         #pragma warning disable CS1591
-        HTG,
+        Htg,
         #pragma warning restore CS1591
         [EnumMember(Value = "HUF")]
         #pragma warning disable CS1591
-        HUF,
+        Huf,
         #pragma warning restore CS1591
         [EnumMember(Value = "IDR")]
         #pragma warning disable CS1591
-        IDR,
+        Idr,
         #pragma warning restore CS1591
         [EnumMember(Value = "ILS")]
         #pragma warning disable CS1591
-        ILS,
+        Ils,
         #pragma warning restore CS1591
         [EnumMember(Value = "INR")]
         #pragma warning disable CS1591
-        INR,
+        Inr,
         #pragma warning restore CS1591
         [EnumMember(Value = "IQD")]
         #pragma warning disable CS1591
-        IQD,
+        Iqd,
         #pragma warning restore CS1591
         [EnumMember(Value = "IRR")]
         #pragma warning disable CS1591
-        IRR,
+        Irr,
         #pragma warning restore CS1591
         [EnumMember(Value = "ISK")]
         #pragma warning disable CS1591
-        ISK,
+        Isk,
         #pragma warning restore CS1591
         [EnumMember(Value = "JMD")]
         #pragma warning disable CS1591
-        JMD,
+        Jmd,
         #pragma warning restore CS1591
         [EnumMember(Value = "JOD")]
         #pragma warning disable CS1591
-        JOD,
+        Jod,
         #pragma warning restore CS1591
         [EnumMember(Value = "JPY")]
         #pragma warning disable CS1591
-        JPY,
+        Jpy,
         #pragma warning restore CS1591
         [EnumMember(Value = "KES")]
         #pragma warning disable CS1591
-        KES,
+        Kes,
         #pragma warning restore CS1591
         [EnumMember(Value = "KGS")]
         #pragma warning disable CS1591
-        KGS,
+        Kgs,
         #pragma warning restore CS1591
         [EnumMember(Value = "KHR")]
         #pragma warning disable CS1591
-        KHR,
+        Khr,
         #pragma warning restore CS1591
         [EnumMember(Value = "KMF")]
         #pragma warning disable CS1591
-        KMF,
+        Kmf,
         #pragma warning restore CS1591
         [EnumMember(Value = "KRW")]
         #pragma warning disable CS1591
-        KRW,
+        Krw,
         #pragma warning restore CS1591
         [EnumMember(Value = "KWD")]
         #pragma warning disable CS1591
-        KWD,
+        Kwd,
         #pragma warning restore CS1591
         [EnumMember(Value = "KYD")]
         #pragma warning disable CS1591
-        KYD,
+        Kyd,
         #pragma warning restore CS1591
         [EnumMember(Value = "KZT")]
         #pragma warning disable CS1591
-        KZT,
+        Kzt,
         #pragma warning restore CS1591
         [EnumMember(Value = "LAK")]
         #pragma warning disable CS1591
-        LAK,
+        Lak,
         #pragma warning restore CS1591
         [EnumMember(Value = "LBP")]
         #pragma warning disable CS1591
-        LBP,
+        Lbp,
         #pragma warning restore CS1591
         [EnumMember(Value = "LKR")]
         #pragma warning disable CS1591
-        LKR,
+        Lkr,
         #pragma warning restore CS1591
         [EnumMember(Value = "LRD")]
         #pragma warning disable CS1591
-        LRD,
+        Lrd,
         #pragma warning restore CS1591
         [EnumMember(Value = "LTL")]
         #pragma warning disable CS1591
-        LTL,
+        Ltl,
         #pragma warning restore CS1591
         [EnumMember(Value = "LVL")]
         #pragma warning disable CS1591
-        LVL,
+        Lvl,
         #pragma warning restore CS1591
         [EnumMember(Value = "LSL")]
         #pragma warning disable CS1591
-        LSL,
+        Lsl,
         #pragma warning restore CS1591
         [EnumMember(Value = "LYD")]
         #pragma warning disable CS1591
-        LYD,
+        Lyd,
         #pragma warning restore CS1591
         [EnumMember(Value = "MAD")]
         #pragma warning disable CS1591
-        MAD,
+        Mad,
         #pragma warning restore CS1591
         [EnumMember(Value = "MDL")]
         #pragma warning disable CS1591
-        MDL,
+        Mdl,
         #pragma warning restore CS1591
         [EnumMember(Value = "MGA")]
         #pragma warning disable CS1591
-        MGA,
+        Mga,
         #pragma warning restore CS1591
         [EnumMember(Value = "MKD")]
         #pragma warning disable CS1591
-        MKD,
+        Mkd,
         #pragma warning restore CS1591
         [EnumMember(Value = "MMK")]
         #pragma warning disable CS1591
-        MMK,
+        Mmk,
         #pragma warning restore CS1591
         [EnumMember(Value = "MNT")]
         #pragma warning disable CS1591
-        MNT,
+        Mnt,
         #pragma warning restore CS1591
         [EnumMember(Value = "MOP")]
         #pragma warning disable CS1591
-        MOP,
+        Mop,
         #pragma warning restore CS1591
         [EnumMember(Value = "MRU")]
         #pragma warning disable CS1591
-        MRU,
+        Mru,
         #pragma warning restore CS1591
         [EnumMember(Value = "MTL")]
         #pragma warning disable CS1591
-        MTL,
+        Mtl,
         #pragma warning restore CS1591
         [EnumMember(Value = "MUR")]
         #pragma warning disable CS1591
-        MUR,
+        Mur,
         #pragma warning restore CS1591
         [EnumMember(Value = "MVR")]
         #pragma warning disable CS1591
-        MVR,
+        Mvr,
         #pragma warning restore CS1591
         [EnumMember(Value = "MWK")]
         #pragma warning disable CS1591
-        MWK,
+        Mwk,
         #pragma warning restore CS1591
         [EnumMember(Value = "MXN")]
         #pragma warning disable CS1591
-        MXN,
+        Mxn,
         #pragma warning restore CS1591
         [EnumMember(Value = "MYR")]
         #pragma warning disable CS1591
-        MYR,
+        Myr,
         #pragma warning restore CS1591
         [EnumMember(Value = "MZN")]
         #pragma warning disable CS1591
-        MZN,
+        Mzn,
         #pragma warning restore CS1591
         [EnumMember(Value = "NAD")]
         #pragma warning disable CS1591
-        NAD,
+        Nad,
         #pragma warning restore CS1591
         [EnumMember(Value = "NGN")]
         #pragma warning disable CS1591
-        NGN,
+        Ngn,
         #pragma warning restore CS1591
         [EnumMember(Value = "NIO")]
         #pragma warning disable CS1591
-        NIO,
+        Nio,
         #pragma warning restore CS1591
         [EnumMember(Value = "NOK")]
         #pragma warning disable CS1591
-        NOK,
+        Nok,
         #pragma warning restore CS1591
         [EnumMember(Value = "NPR")]
         #pragma warning disable CS1591
-        NPR,
+        Npr,
         #pragma warning restore CS1591
         [EnumMember(Value = "NZD")]
         #pragma warning disable CS1591
-        NZD,
+        Nzd,
         #pragma warning restore CS1591
         [EnumMember(Value = "OMR")]
         #pragma warning disable CS1591
-        OMR,
+        Omr,
         #pragma warning restore CS1591
         [EnumMember(Value = "PAB")]
         #pragma warning disable CS1591
-        PAB,
+        Pab,
         #pragma warning restore CS1591
         [EnumMember(Value = "PEN")]
         #pragma warning disable CS1591
-        PEN,
+        Pen,
         #pragma warning restore CS1591
         [EnumMember(Value = "PGK")]
         #pragma warning disable CS1591
-        PGK,
+        Pgk,
         #pragma warning restore CS1591
         [EnumMember(Value = "PHP")]
         #pragma warning disable CS1591
-        PHP,
+        Php,
         #pragma warning restore CS1591
         [EnumMember(Value = "PKR")]
         #pragma warning disable CS1591
-        PKR,
+        Pkr,
         #pragma warning restore CS1591
         [EnumMember(Value = "PLN")]
         #pragma warning disable CS1591
-        PLN,
+        Pln,
         #pragma warning restore CS1591
         [EnumMember(Value = "PYG")]
         #pragma warning disable CS1591
-        PYG,
+        Pyg,
         #pragma warning restore CS1591
         [EnumMember(Value = "QAR")]
         #pragma warning disable CS1591
-        QAR,
+        Qar,
         #pragma warning restore CS1591
         [EnumMember(Value = "RON")]
         #pragma warning disable CS1591
-        RON,
+        Ron,
         #pragma warning restore CS1591
         [EnumMember(Value = "RSD")]
         #pragma warning disable CS1591
-        RSD,
+        Rsd,
         #pragma warning restore CS1591
         [EnumMember(Value = "RUB")]
         #pragma warning disable CS1591
-        RUB,
+        Rub,
         #pragma warning restore CS1591
         [EnumMember(Value = "RWF")]
         #pragma warning disable CS1591
-        RWF,
+        Rwf,
         #pragma warning restore CS1591
         [EnumMember(Value = "SAR")]
         #pragma warning disable CS1591
-        SAR,
+        Sar,
         #pragma warning restore CS1591
         [EnumMember(Value = "SBD")]
         #pragma warning disable CS1591
-        SBD,
+        Sbd,
         #pragma warning restore CS1591
         [EnumMember(Value = "SCR")]
         #pragma warning disable CS1591
-        SCR,
+        Scr,
         #pragma warning restore CS1591
         [EnumMember(Value = "SDG")]
         #pragma warning disable CS1591
-        SDG,
+        Sdg,
         #pragma warning restore CS1591
         [EnumMember(Value = "SEK")]
         #pragma warning disable CS1591
-        SEK,
+        Sek,
         #pragma warning restore CS1591
         [EnumMember(Value = "SGD")]
         #pragma warning disable CS1591
-        SGD,
+        Sgd,
         #pragma warning restore CS1591
         [EnumMember(Value = "SRD")]
         #pragma warning disable CS1591
-        SRD,
+        Srd,
         #pragma warning restore CS1591
         [EnumMember(Value = "SSP")]
         #pragma warning disable CS1591
-        SSP,
+        Ssp,
         #pragma warning restore CS1591
         [EnumMember(Value = "STN")]
         #pragma warning disable CS1591
-        STN,
+        Stn,
         #pragma warning restore CS1591
         [EnumMember(Value = "SYP")]
         #pragma warning disable CS1591
-        SYP,
+        Syp,
         #pragma warning restore CS1591
         [EnumMember(Value = "SZL")]
         #pragma warning disable CS1591
-        SZL,
+        Szl,
         #pragma warning restore CS1591
         [EnumMember(Value = "THB")]
         #pragma warning disable CS1591
-        THB,
+        Thb,
         #pragma warning restore CS1591
         [EnumMember(Value = "TJS")]
         #pragma warning disable CS1591
-        TJS,
+        Tjs,
         #pragma warning restore CS1591
         [EnumMember(Value = "TMT")]
         #pragma warning disable CS1591
-        TMT,
+        Tmt,
         #pragma warning restore CS1591
         [EnumMember(Value = "TND")]
         #pragma warning disable CS1591
-        TND,
+        Tnd,
         #pragma warning restore CS1591
         [EnumMember(Value = "TOP")]
         #pragma warning disable CS1591
-        TOP,
+        Top,
         #pragma warning restore CS1591
         [EnumMember(Value = "TRY")]
         #pragma warning disable CS1591
-        TRY,
+        TryValue,
         #pragma warning restore CS1591
         [EnumMember(Value = "TTD")]
         #pragma warning disable CS1591
-        TTD,
+        Ttd,
         #pragma warning restore CS1591
         [EnumMember(Value = "TWD")]
         #pragma warning disable CS1591
-        TWD,
+        Twd,
         #pragma warning restore CS1591
         [EnumMember(Value = "TZS")]
         #pragma warning disable CS1591
-        TZS,
+        Tzs,
         #pragma warning restore CS1591
         [EnumMember(Value = "UAH")]
         #pragma warning disable CS1591
-        UAH,
+        Uah,
         #pragma warning restore CS1591
         [EnumMember(Value = "UGX")]
         #pragma warning disable CS1591
-        UGX,
+        Ugx,
         #pragma warning restore CS1591
         [EnumMember(Value = "USD")]
         #pragma warning disable CS1591
-        USD,
+        Usd,
         #pragma warning restore CS1591
         [EnumMember(Value = "UYU")]
         #pragma warning disable CS1591
-        UYU,
+        Uyu,
         #pragma warning restore CS1591
         [EnumMember(Value = "UZS")]
         #pragma warning disable CS1591
-        UZS,
+        Uzs,
         #pragma warning restore CS1591
         [EnumMember(Value = "VES")]
         #pragma warning disable CS1591
-        VES,
+        Ves,
         #pragma warning restore CS1591
         [EnumMember(Value = "VND")]
         #pragma warning disable CS1591
-        VND,
+        Vnd,
         #pragma warning restore CS1591
         [EnumMember(Value = "VUV")]
         #pragma warning disable CS1591
-        VUV,
+        Vuv,
         #pragma warning restore CS1591
         [EnumMember(Value = "WST")]
         #pragma warning disable CS1591
-        WST,
+        Wst,
         #pragma warning restore CS1591
         [EnumMember(Value = "XAF")]
         #pragma warning disable CS1591
-        XAF,
+        Xaf,
         #pragma warning restore CS1591
         [EnumMember(Value = "XCD")]
         #pragma warning disable CS1591
-        XCD,
+        Xcd,
         #pragma warning restore CS1591
         [EnumMember(Value = "XOF")]
         #pragma warning disable CS1591
-        XOF,
+        Xof,
         #pragma warning restore CS1591
         [EnumMember(Value = "XPF")]
         #pragma warning disable CS1591
-        XPF,
+        Xpf,
         #pragma warning restore CS1591
         [EnumMember(Value = "YER")]
         #pragma warning disable CS1591
-        YER,
+        Yer,
         #pragma warning restore CS1591
         [EnumMember(Value = "ZAR")]
         #pragma warning disable CS1591
-        ZAR,
+        Zar,
         #pragma warning restore CS1591
         [EnumMember(Value = "ZMW")]
         #pragma warning disable CS1591
-        ZMW,
+        Zmw,
         #pragma warning restore CS1591
     }
 }

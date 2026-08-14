@@ -3,17 +3,17 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `event` - event* `event_metadata` - event_metadata* `feature` - feature* `person` - person* `cohort` - cohort* `element` - element* `static-cohort` - static-cohort* `dynamic-cohort` - dynamic-cohort* `precalculated-cohort` - precalculated-cohort* `group` - group* `recording` - recording* `log_entry` - log_entry* `behavioral` - behavioral* `session` - session* `hogql` - hogql* `data_warehouse` - data_warehouse* `data_warehouse_person_property` - data_warehouse_person_property* `error_tracking_issue` - error_tracking_issue* `log` - log* `log_attribute` - log_attribute* `log_resource_attribute` - log_resource_attribute* `span` - span* `span_attribute` - span_attribute* `span_resource_attribute` - span_resource_attribute* `revenue_analytics` - revenue_analytics* `flag` - flag* `workflow_variable` - workflow_variable</summary>
+    /// <summary>* `event` - event* `event_metadata` - event_metadata* `feature` - feature* `person` - person* `person_metadata` - person_metadata* `cohort` - cohort* `element` - element* `static-cohort` - static-cohort* `dynamic-cohort` - dynamic-cohort* `precalculated-cohort` - precalculated-cohort* `group` - group* `recording` - recording* `log_entry` - log_entry* `behavioral` - behavioral* `session` - session* `hogql` - hogql* `data_warehouse` - data_warehouse* `data_warehouse_person_property` - data_warehouse_person_property* `error_tracking_issue` - error_tracking_issue* `log` - log* `log_attribute` - log_attribute* `log_resource_attribute` - log_resource_attribute* `metric_attribute` - metric_attribute* `span` - span* `span_attribute` - span_attribute* `span_resource_attribute` - span_resource_attribute* `revenue_analytics` - revenue_analytics* `account_custom_property` - account_custom_property* `flag` - flag* `workflow_variable` - workflow_variable</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum PropertyFilterTypeEnum
     {
         [EnumMember(Value = "event")]
         #pragma warning disable CS1591
-        Event,
+        EventValue,
         #pragma warning restore CS1591
         [EnumMember(Value = "event_metadata")]
         #pragma warning disable CS1591
-        Event_metadata,
+        EventMetadata,
         #pragma warning restore CS1591
         [EnumMember(Value = "feature")]
         #pragma warning disable CS1591
@@ -22,6 +22,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "person")]
         #pragma warning disable CS1591
         Person,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "person_metadata")]
+        #pragma warning disable CS1591
+        PersonMetadata,
         #pragma warning restore CS1591
         [EnumMember(Value = "cohort")]
         #pragma warning disable CS1591
@@ -53,7 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "log_entry")]
         #pragma warning disable CS1591
-        Log_entry,
+        LogEntry,
         #pragma warning restore CS1591
         [EnumMember(Value = "behavioral")]
         #pragma warning disable CS1591
@@ -69,15 +73,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "data_warehouse")]
         #pragma warning disable CS1591
-        Data_warehouse,
+        DataWarehouse,
         #pragma warning restore CS1591
         [EnumMember(Value = "data_warehouse_person_property")]
         #pragma warning disable CS1591
-        Data_warehouse_person_property,
+        DataWarehousePersonProperty,
         #pragma warning restore CS1591
         [EnumMember(Value = "error_tracking_issue")]
         #pragma warning disable CS1591
-        Error_tracking_issue,
+        ErrorTrackingIssue,
         #pragma warning restore CS1591
         [EnumMember(Value = "log")]
         #pragma warning disable CS1591
@@ -85,11 +89,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "log_attribute")]
         #pragma warning disable CS1591
-        Log_attribute,
+        LogAttribute,
         #pragma warning restore CS1591
         [EnumMember(Value = "log_resource_attribute")]
         #pragma warning disable CS1591
-        Log_resource_attribute,
+        LogResourceAttribute,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "metric_attribute")]
+        #pragma warning disable CS1591
+        MetricAttribute,
         #pragma warning restore CS1591
         [EnumMember(Value = "span")]
         #pragma warning disable CS1591
@@ -97,15 +105,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "span_attribute")]
         #pragma warning disable CS1591
-        Span_attribute,
+        SpanAttribute,
         #pragma warning restore CS1591
         [EnumMember(Value = "span_resource_attribute")]
         #pragma warning disable CS1591
-        Span_resource_attribute,
+        SpanResourceAttribute,
         #pragma warning restore CS1591
         [EnumMember(Value = "revenue_analytics")]
         #pragma warning disable CS1591
-        Revenue_analytics,
+        RevenueAnalytics,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "account_custom_property")]
+        #pragma warning disable CS1591
+        AccountCustomProperty,
         #pragma warning restore CS1591
         [EnumMember(Value = "flag")]
         #pragma warning disable CS1591
@@ -113,7 +125,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "workflow_variable")]
         #pragma warning disable CS1591
-        Workflow_variable,
+        WorkflowVariable,
         #pragma warning restore CS1591
     }
 }

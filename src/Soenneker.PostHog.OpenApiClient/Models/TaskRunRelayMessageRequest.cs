@@ -14,13 +14,29 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The text property</summary>
+        /// <summary>Id of the user message this turn answers, when the agent-server echoes it.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? MessageId { get; set; }
+#nullable restore
+#else
+        public string MessageId { get; set; }
+#endif
+        /// <summary>Joined message body. Used when text_parts is absent.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Text { get; set; }
 #nullable restore
 #else
         public string Text { get; set; }
+#endif
+        /// <summary>Ordered assistant text blocks. When present, the last non-empty entry is posted instead of text.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? TextParts { get; set; }
+#nullable restore
+#else
+        public List<string> TextParts { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunRelayMessageRequest"/> and sets the default values.
@@ -47,7 +63,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "message_id", n => { MessageId = n.GetStringValue(); } },
                 { "text", n => { Text = n.GetStringValue(); } },
+                { "text_parts", n => { TextParts = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
         /// <summary>
@@ -57,7 +75,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("message_id", MessageId);
             writer.WriteStringValue("text", Text);
+            writer.WriteCollectionOfPrimitiveValues<string>("text_parts", TextParts);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

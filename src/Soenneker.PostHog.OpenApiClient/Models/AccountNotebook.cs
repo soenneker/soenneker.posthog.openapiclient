@@ -17,20 +17,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Notebook content as a ProseMirror JSON document structure.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountNotebook_content? Content { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountNotebookContent? Content { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountNotebook_content Content { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountNotebookContent Content { get; set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountNotebook_created_by? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountNotebookCreatedBy? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountNotebook_created_by CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountNotebookCreatedBy CreatedBy { get; private set; }
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
@@ -39,10 +39,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The last_modified_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountNotebook_last_modified_by? LastModifiedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountNotebookLastModifiedBy? LastModifiedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountNotebook_last_modified_by LastModifiedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountNotebookLastModifiedBy LastModifiedBy { get; private set; }
 #endif
         /// <summary>The short_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -93,12 +93,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "content", n => { Content = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountNotebook_content>(global::Soenneker.PostHog.OpenApiClient.Models.AccountNotebook_content.CreateFromDiscriminatorValue); } },
+                { "content", n => { Content = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountNotebookContent>(global::Soenneker.PostHog.OpenApiClient.Models.AccountNotebookContent.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountNotebook_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.AccountNotebook_created_by.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountNotebookCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.AccountNotebookCreatedBy.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "last_modified_at", n => { LastModifiedAt = n.GetDateTimeOffsetValue(); } },
-                { "last_modified_by", n => { LastModifiedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountNotebook_last_modified_by>(global::Soenneker.PostHog.OpenApiClient.Models.AccountNotebook_last_modified_by.CreateFromDiscriminatorValue); } },
+                { "last_modified_by", n => { LastModifiedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountNotebookLastModifiedBy>(global::Soenneker.PostHog.OpenApiClient.Models.AccountNotebookLastModifiedBy.CreateFromDiscriminatorValue); } },
                 { "short_id", n => { ShortId = n.GetStringValue(); } },
                 { "text_content", n => { TextContent = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
@@ -111,7 +111,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountNotebook_content>("content", Content);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountNotebookContent>("content", Content);
             writer.WriteStringValue("text_content", TextContent);
             writer.WriteStringValue("title", Title);
             writer.WriteAdditionalData(AdditionalData);

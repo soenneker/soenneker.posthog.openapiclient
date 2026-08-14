@@ -10,15 +10,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "first_touch")]
         #pragma warning disable CS1591
-        First_touch,
+        FirstTouch,
         #pragma warning restore CS1591
         [EnumMember(Value = "last_touch")]
         #pragma warning disable CS1591
-        Last_touch,
+        LastTouch,
         #pragma warning restore CS1591
         [EnumMember(Value = "all_events")]
         #pragma warning disable CS1591
-        All_events,
+        AllEvents,
         #pragma warning restore CS1591
         [EnumMember(Value = "step")]
         #pragma warning disable CS1591

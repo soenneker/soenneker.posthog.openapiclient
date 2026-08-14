@@ -12,6 +12,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         Channel,
         #pragma warning restore CS1591
+        [EnumMember(Value = "channel_source")]
+        #pragma warning disable CS1591
+        ChannelSource,
+        #pragma warning restore CS1591
         [EnumMember(Value = "source")]
         #pragma warning disable CS1591
         Source,
@@ -22,7 +26,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "ad_group")]
         #pragma warning disable CS1591
-        Ad_group,
+        AdGroup,
         #pragma warning restore CS1591
         [EnumMember(Value = "ad")]
         #pragma warning disable CS1591

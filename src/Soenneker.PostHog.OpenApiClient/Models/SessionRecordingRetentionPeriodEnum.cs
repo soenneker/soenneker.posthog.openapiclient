@@ -9,19 +9,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "30d")]
         #pragma warning disable CS1591
-        ThreeZerod,
+        Value30D,
         #pragma warning restore CS1591
         [EnumMember(Value = "90d")]
         #pragma warning disable CS1591
-        NineZerod,
+        Value90D,
         #pragma warning restore CS1591
         [EnumMember(Value = "1y")]
         #pragma warning disable CS1591
-        Oney,
+        Value1Y,
         #pragma warning restore CS1591
         [EnumMember(Value = "5y")]
         #pragma warning disable CS1591
-        Fivey,
+        Value5Y,
         #pragma warning restore CS1591
     }
 }

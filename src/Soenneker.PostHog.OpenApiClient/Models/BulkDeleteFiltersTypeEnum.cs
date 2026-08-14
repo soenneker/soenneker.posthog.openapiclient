@@ -21,7 +21,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "remote_config")]
         #pragma warning disable CS1591
-        Remote_config,
+        RemoteConfig,
         #pragma warning restore CS1591
     }
 }

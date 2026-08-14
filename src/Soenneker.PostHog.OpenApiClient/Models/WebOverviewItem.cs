@@ -13,21 +13,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning restore CS1591
     {
         /// <summary>The changeFromPreviousPct property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebOverviewItem_changeFromPreviousPct? ChangeFromPreviousPct { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebOverviewItem_changeFromPreviousPct ChangeFromPreviousPct { get; set; }
-#endif
+        public double? ChangeFromPreviousPct { get; set; }
         /// <summary>The isIncreaseBad property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebOverviewItem_isIncreaseBad? IsIncreaseBad { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebOverviewItem_isIncreaseBad IsIncreaseBad { get; set; }
-#endif
+        public bool? IsIncreaseBad { get; set; }
         /// <summary>The key property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -39,29 +27,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The kind property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsItemKind? Kind { get; set; }
         /// <summary>The previous property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebOverviewItem_previous? Previous { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebOverviewItem_previous Previous { get; set; }
-#endif
-        /// <summary>The usedPreAggregatedTables property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebOverviewItem_usedPreAggregatedTables? UsedPreAggregatedTables { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebOverviewItem_usedPreAggregatedTables UsedPreAggregatedTables { get; set; }
-#endif
+        public double? Previous { get; set; }
         /// <summary>The value property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebOverviewItem_value? Value { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebOverviewItem_value Value { get; set; }
-#endif
+        public double? Value { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -80,13 +48,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "changeFromPreviousPct", n => { ChangeFromPreviousPct = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebOverviewItem_changeFromPreviousPct>(global::Soenneker.PostHog.OpenApiClient.Models.WebOverviewItem_changeFromPreviousPct.CreateFromDiscriminatorValue); } },
-                { "isIncreaseBad", n => { IsIncreaseBad = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebOverviewItem_isIncreaseBad>(global::Soenneker.PostHog.OpenApiClient.Models.WebOverviewItem_isIncreaseBad.CreateFromDiscriminatorValue); } },
+                { "changeFromPreviousPct", n => { ChangeFromPreviousPct = n.GetDoubleValue(); } },
+                { "isIncreaseBad", n => { IsIncreaseBad = n.GetBoolValue(); } },
                 { "key", n => { Key = n.GetStringValue(); } },
                 { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsItemKind>(); } },
-                { "previous", n => { Previous = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebOverviewItem_previous>(global::Soenneker.PostHog.OpenApiClient.Models.WebOverviewItem_previous.CreateFromDiscriminatorValue); } },
-                { "usedPreAggregatedTables", n => { UsedPreAggregatedTables = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebOverviewItem_usedPreAggregatedTables>(global::Soenneker.PostHog.OpenApiClient.Models.WebOverviewItem_usedPreAggregatedTables.CreateFromDiscriminatorValue); } },
-                { "value", n => { Value = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebOverviewItem_value>(global::Soenneker.PostHog.OpenApiClient.Models.WebOverviewItem_value.CreateFromDiscriminatorValue); } },
+                { "previous", n => { Previous = n.GetDoubleValue(); } },
+                { "value", n => { Value = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -96,13 +63,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebOverviewItem_changeFromPreviousPct>("changeFromPreviousPct", ChangeFromPreviousPct);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebOverviewItem_isIncreaseBad>("isIncreaseBad", IsIncreaseBad);
+            writer.WriteDoubleValue("changeFromPreviousPct", ChangeFromPreviousPct);
+            writer.WriteBoolValue("isIncreaseBad", IsIncreaseBad);
             writer.WriteStringValue("key", Key);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsItemKind>("kind", Kind);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebOverviewItem_previous>("previous", Previous);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebOverviewItem_usedPreAggregatedTables>("usedPreAggregatedTables", UsedPreAggregatedTables);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebOverviewItem_value>("value", Value);
+            writer.WriteDoubleValue("previous", Previous);
+            writer.WriteDoubleValue("value", Value);
         }
     }
 }

@@ -25,10 +25,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The value property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MyFlagsResponse_value? Value { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MyFlagsResponseValue? Value { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MyFlagsResponse_value Value { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MyFlagsResponseValue Value { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MyFlagsResponse"/> and sets the default values.
@@ -56,7 +56,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "feature_flag", n => { FeatureFlag = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag>(global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag.CreateFromDiscriminatorValue); } },
-                { "value", n => { Value = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MyFlagsResponse_value>(global::Soenneker.PostHog.OpenApiClient.Models.MyFlagsResponse_value.CreateFromDiscriminatorValue); } },
+                { "value", n => { Value = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MyFlagsResponseValue>(global::Soenneker.PostHog.OpenApiClient.Models.MyFlagsResponseValue.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -67,7 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag>("feature_flag", FeatureFlag);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MyFlagsResponse_value>("value", Value);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MyFlagsResponseValue>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

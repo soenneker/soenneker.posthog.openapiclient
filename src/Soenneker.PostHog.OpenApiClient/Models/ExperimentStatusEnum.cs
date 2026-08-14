@@ -20,6 +20,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         Paused,
         #pragma warning restore CS1591
+        [EnumMember(Value = "exposure_frozen")]
+        #pragma warning disable CS1591
+        ExposureFrozen,
+        #pragma warning restore CS1591
         [EnumMember(Value = "stopped")]
         #pragma warning disable CS1591
         Stopped,

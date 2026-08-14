@@ -14,11 +14,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "first_time_for_user")]
         #pragma warning disable CS1591
-        First_time_for_user,
+        FirstTimeForUser,
         #pragma warning restore CS1591
         [EnumMember(Value = "first_time_for_user_with_filters")]
         #pragma warning disable CS1591
-        First_time_for_user_with_filters,
+        FirstTimeForUserWithFilters,
         #pragma warning restore CS1591
     }
 }

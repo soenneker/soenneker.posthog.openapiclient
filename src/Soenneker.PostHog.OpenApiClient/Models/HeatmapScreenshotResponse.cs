@@ -7,24 +7,27 @@ using System.IO;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
+    /// <summary>
+    /// Mixin for serializers to add user access control fields
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class HeatmapScreenshotResponse : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Whether the headless browser dismisses cookie/consent banners before capturing the screenshot. Only applies to &apos;screenshot&apos; heatmaps.</summary>
+        public bool? BlockConsentModals { get; set; }
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponse_created_by? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseCreatedBy? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponse_created_by CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseCreatedBy CreatedBy { get; private set; }
 #endif
-        /// <summary>URL for fetching heatmap data</summary>
+        /// <summary>URL whose heatmap data is overlaid on the screenshot (defaults to &apos;url&apos;).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? DataUrl { get; set; }
@@ -32,9 +35,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string DataUrl { get; set; }
 #endif
-        /// <summary>The deleted property</summary>
+        /// <summary>Soft-delete flag; deleted heatmaps are hidden from the list.</summary>
         public bool? Deleted { get; set; }
-        /// <summary>The exception property</summary>
+        /// <summary>Error detail when screenshot generation failed, otherwise null.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Exception { get; private set; }
@@ -42,11 +45,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Exception { get; private set; }
 #endif
-        /// <summary>The has_content property</summary>
+        /// <summary>Whether at least one rendered image is ready to fetch.</summary>
         public bool? HasContent { get; private set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
-        /// <summary>The name property</summary>
+        /// <summary>Human-readable label for the saved heatmap.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
@@ -54,7 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>The short_id property</summary>
+        /// <summary>Short, URL-safe identifier used as the lookup key for saved-heatmap routes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ShortId { get; private set; }
@@ -62,35 +65,55 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ShortId { get; private set; }
 #endif
-        /// <summary>The snapshots property</summary>
+        /// <summary>Per-width render metadata. Fetch the actual image bytes for a width from the content endpoint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponse_snapshots>? Snapshots { get; private set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapSnapshotMetadata>? Snapshots { get; private set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponse_snapshots> Snapshots { get; private set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapSnapshotMetadata> Snapshots { get; private set; }
 #endif
-        /// <summary>* `processing` - Processing* `completed` - Completed* `failed` - Failed</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseStatusEnum? Status { get; set; }
-        /// <summary>The target_widths property</summary>
+        /// <summary>&quot;Screenshot generation status: &apos;processing&apos;, &apos;completed&apos;, or &apos;failed&apos;.* `processing` - Processing* `completed` - Completed* `failed` - Failed&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponse_target_widths? TargetWidths { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseStatus? Status { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponse_target_widths TargetWidths { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseStatus Status { get; private set; }
 #endif
-        /// <summary>* `screenshot` - Screenshot* `iframe` - Iframe* `recording` - Recording</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseTypeEnum? Type { get; set; }
+        /// <summary>Viewport widths (CSS pixels) the screenshot is rendered at.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseTargetWidths? TargetWidths { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseTargetWidths TargetWidths { get; set; }
+#endif
+        /// <summary>&quot;Render mode: &apos;screenshot&apos;, &apos;iframe&apos;, or &apos;recording&apos;.* `screenshot` - Screenshot* `iframe` - Iframe* `recording` - Recording&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseType? Type { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseType Type { get; set; }
+#endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
-        /// <summary>The url property</summary>
+        /// <summary>The page URL this saved heatmap renders and overlays data on.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Url { get; set; }
 #nullable restore
 #else
         public string Url { get; set; }
+#endif
+        /// <summary>The effective access level the user has for this object</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? UserAccessLevel { get; private set; }
+#nullable restore
+#else
+        public string UserAccessLevel { get; private set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponse"/> and sets the default values.
@@ -117,8 +140,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "block_consent_modals", n => { BlockConsentModals = n.GetBoolValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponse_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponse_created_by.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseCreatedBy.CreateFromDiscriminatorValue); } },
                 { "data_url", n => { DataUrl = n.GetStringValue(); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "exception", n => { Exception = n.GetStringValue(); } },
@@ -126,12 +150,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "short_id", n => { ShortId = n.GetStringValue(); } },
-                { "snapshots", n => { Snapshots = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponse_snapshots>(global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponse_snapshots.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseStatusEnum>(); } },
-                { "target_widths", n => { TargetWidths = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponse_target_widths>(global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponse_target_widths.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseTypeEnum>(); } },
+                { "snapshots", n => { Snapshots = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapSnapshotMetadata>(global::Soenneker.PostHog.OpenApiClient.Models.HeatmapSnapshotMetadata.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseStatus>(global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseStatus.CreateFromDiscriminatorValue); } },
+                { "target_widths", n => { TargetWidths = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseTargetWidths>(global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseTargetWidths.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseType>(global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseType.CreateFromDiscriminatorValue); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
+                { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -141,12 +166,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteBoolValue("block_consent_modals", BlockConsentModals);
             writer.WriteStringValue("data_url", DataUrl);
             writer.WriteBoolValue("deleted", Deleted);
             writer.WriteStringValue("name", Name);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseStatusEnum>("status", Status);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponse_target_widths>("target_widths", TargetWidths);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseTypeEnum>("type", Type);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseTargetWidths>("target_widths", TargetWidths);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseType>("type", Type);
             writer.WriteStringValue("url", Url);
             writer.WriteAdditionalData(AdditionalData);
         }

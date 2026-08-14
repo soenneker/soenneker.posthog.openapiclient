@@ -14,7 +14,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The full_name property</summary>
+        /// <summary>Whether the repository is archived.</summary>
+        public bool? Archived { get; set; }
+        /// <summary>Whether the PostHog GitHub App has write access — required to open pull requests.</summary>
+        public bool? CanPush { get; set; }
+        /// <summary>The repository&apos;s default branch (e.g. &apos;main&apos;).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? DefaultBranch { get; set; }
+#nullable restore
+#else
+        public string DefaultBranch { get; set; }
+#endif
+        /// <summary>Fully-qualified repository name as &apos;owner/repo&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? FullName { get; set; }
@@ -22,15 +34,33 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string FullName { get; set; }
 #endif
-        /// <summary>The id property</summary>
+        /// <summary>GitHub repository numeric identifier.</summary>
         public int? Id { get; set; }
-        /// <summary>The name property</summary>
+        /// <summary>Primary programming language GitHub detected for the repository.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Language { get; set; }
+#nullable restore
+#else
+        public string Language { get; set; }
+#endif
+        /// <summary>Repository short name (without the owner prefix).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
 #nullable restore
 #else
         public string Name { get; set; }
+#endif
+        /// <summary>Whether the repository is private.</summary>
+        public bool? Private { get; set; }
+        /// <summary>ISO 8601 timestamp of the most recent push, useful for sorting by recent activity.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? PushedAt { get; set; }
+#nullable restore
+#else
+        public string PushedAt { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.GitHubRepo"/> and sets the default values.
@@ -57,9 +87,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "archived", n => { Archived = n.GetBoolValue(); } },
+                { "can_push", n => { CanPush = n.GetBoolValue(); } },
+                { "default_branch", n => { DefaultBranch = n.GetStringValue(); } },
                 { "full_name", n => { FullName = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetIntValue(); } },
+                { "language", n => { Language = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "private", n => { Private = n.GetBoolValue(); } },
+                { "pushed_at", n => { PushedAt = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -69,9 +105,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteBoolValue("archived", Archived);
+            writer.WriteBoolValue("can_push", CanPush);
+            writer.WriteStringValue("default_branch", DefaultBranch);
             writer.WriteStringValue("full_name", FullName);
             writer.WriteIntValue("id", Id);
+            writer.WriteStringValue("language", Language);
             writer.WriteStringValue("name", Name);
+            writer.WriteBoolValue("private", Private);
+            writer.WriteStringValue("pushed_at", PushedAt);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

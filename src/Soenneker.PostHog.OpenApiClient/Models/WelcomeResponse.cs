@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The inviter property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WelcomeResponse_inviter? Inviter { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WelcomeResponseInviter? Inviter { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WelcomeResponse_inviter Inviter { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WelcomeResponseInviter Inviter { get; set; }
 #endif
         /// <summary>The is_organization_first_user property</summary>
         public bool? IsOrganizationFirstUser { get; set; }
@@ -97,7 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "inviter", n => { Inviter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WelcomeResponse_inviter>(global::Soenneker.PostHog.OpenApiClient.Models.WelcomeResponse_inviter.CreateFromDiscriminatorValue); } },
+                { "inviter", n => { Inviter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WelcomeResponseInviter>(global::Soenneker.PostHog.OpenApiClient.Models.WelcomeResponseInviter.CreateFromDiscriminatorValue); } },
                 { "is_organization_first_user", n => { IsOrganizationFirstUser = n.GetBoolValue(); } },
                 { "organization_name", n => { OrganizationName = n.GetStringValue(); } },
                 { "popular_dashboards", n => { PopularDashboards = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WelcomePopularDashboard>(global::Soenneker.PostHog.OpenApiClient.Models.WelcomePopularDashboard.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -114,7 +114,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WelcomeResponse_inviter>("inviter", Inviter);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WelcomeResponseInviter>("inviter", Inviter);
             writer.WriteBoolValue("is_organization_first_user", IsOrganizationFirstUser);
             writer.WriteStringValue("organization_name", OrganizationName);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WelcomePopularDashboard>("popular_dashboards", PopularDashboards);

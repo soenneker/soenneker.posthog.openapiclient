@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Timeseries_results
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\experiments\{id}\timeseries_results
+    /// Builds and executes requests for operations under \api\projects\{projectId}\experiments\{id}\timeseries_results
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Timeseries_resultsRequestBuilder : BaseRequestBuilder
@@ -21,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Tim
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Timeseries_resultsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/experiments/{id}/timeseries_results?fingerprint={fingerprint}&metric_uuid={metric_uuid}", pathParameters)
+        public Timeseries_resultsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/experiments/{id}/timeseries_results?fingerprint={fingerprint}&metric_uuid={metric_uuid}", pathParameters)
         {
         }
         /// <summary>
@@ -29,29 +30,29 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Tim
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Timeseries_resultsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/experiments/{id}/timeseries_results?fingerprint={fingerprint}&metric_uuid={metric_uuid}", rawUrl)
+        public Timeseries_resultsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/experiments/{id}/timeseries_results?fingerprint={fingerprint}&metric_uuid={metric_uuid}", rawUrl)
         {
         }
         /// <summary>
-        /// Mixin for ViewSets to handle ApprovalRequired exceptions from decorated serializers.This mixin intercepts ApprovalRequired exceptions raised by the @approval_gate decoratoron serializer methods and converts them into proper HTTP 409 Conflict responses withchange request details.
+        /// Mixin for ViewSets to handle approval-gate exceptions raised from decorated serializers.Intercepts ApprovalRequired (409) and PolicyConflict (400) raised by the @approval_gatedecorator on serializer methods and converts them into the same responses the viewset pathproduces (see decorators._result_to_response), so both paths share one contract.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Timeseries_results.Timeseries_resultsGetResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentsTimeseriesResultsRetrieve200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Timeseries_results.Timeseries_resultsGetResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Timeseries_results.Timeseries_resultsRequestBuilder.Timeseries_resultsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentsTimeseriesResultsRetrieve200Response?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Timeseries_results.Timeseries_resultsRequestBuilder.Timeseries_resultsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Timeseries_results.Timeseries_resultsGetResponse> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Timeseries_results.Timeseries_resultsRequestBuilder.Timeseries_resultsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentsTimeseriesResultsRetrieve200Response> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Timeseries_results.Timeseries_resultsRequestBuilder.Timeseries_resultsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Timeseries_results.Timeseries_resultsGetResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Timeseries_results.Timeseries_resultsGetResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentsTimeseriesResultsRetrieve200Response>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ExperimentsTimeseriesResultsRetrieve200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Mixin for ViewSets to handle ApprovalRequired exceptions from decorated serializers.This mixin intercepts ApprovalRequired exceptions raised by the @approval_gate decoratoron serializer methods and converts them into proper HTTP 409 Conflict responses withchange request details.
+        /// Mixin for ViewSets to handle approval-gate exceptions raised from decorated serializers.Intercepts ApprovalRequired (409) and PolicyConflict (400) raised by the @approval_gatedecorator on serializer methods and converts them into the same responses the viewset pathproduces (see decorators._result_to_response), so both paths share one contract.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -79,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Tim
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Timeseries_results.Timeseries_resultsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Mixin for ViewSets to handle ApprovalRequired exceptions from decorated serializers.This mixin intercepts ApprovalRequired exceptions raised by the @approval_gate decoratoron serializer methods and converts them into proper HTTP 409 Conflict responses withchange request details.
+        /// Mixin for ViewSets to handle approval-gate exceptions raised from decorated serializers.Intercepts ApprovalRequired (409) and PolicyConflict (400) raised by the @approval_gatedecorator on serializer methods and converts them into the same responses the viewset pathproduces (see decorators._result_to_response), so both paths share one contract.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Timeseries_resultsRequestBuilderGetQueryParameters 

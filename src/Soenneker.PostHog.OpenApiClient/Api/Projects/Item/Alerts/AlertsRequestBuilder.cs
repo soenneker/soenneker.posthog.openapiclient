@@ -14,7 +14,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Alerts
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\alerts
+    /// Builds and executes requests for operations under \api\projects\{projectId}\alerts
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AlertsRequestBuilder : BaseRequestBuilder
@@ -41,7 +41,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Alerts
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AlertsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/alerts{?limit*,offset*}", pathParameters)
+        public AlertsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/alerts{?created_by*,has_detector*,insight_id*,insight_tag*,limit*,offset*,search*}", pathParameters)
         {
         }
         /// <summary>
@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Alerts
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AlertsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/alerts{?limit*,offset*}", rawUrl)
+        public AlertsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/alerts{?created_by*,has_detector*,insight_id*,insight_tag*,limit*,offset*,search*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedAlertList"/></returns>
@@ -133,12 +133,41 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Alerts
         public partial class AlertsRequestBuilderGetQueryParameters 
         #pragma warning restore CS1591
         {
+            /// <summary>Optional. Restrict results to alerts created by the user with this UUID.</summary>
+            [QueryParameter("created_by")]
+            public Guid? CreatedBy { get; set; }
+            /// <summary>Optional. Restrict results by whether the alert uses anomaly detection.</summary>
+            [QueryParameter("has_detector")]
+            public bool? HasDetector { get; set; }
+            /// <summary>Optional. Restrict results to alerts on this insight ID.</summary>
+            [QueryParameter("insight_id")]
+            public int? InsightId { get; set; }
+            /// <summary>Optional. Restrict results to alerts whose insight has this tag.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("insight_tag")]
+            public string? InsightTag { get; set; }
+#nullable restore
+#else
+            [QueryParameter("insight_tag")]
+            public string InsightTag { get; set; }
+#endif
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
             /// <summary>The initial index from which to return the results.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
+            /// <summary>Optional. Fuzzy match against alert `name` using Postgres trigram word similarity (handles typos, transpositions, and prefix-as-you-type). Results are ordered by relevance, then creation time. Capped at 200 characters; longer queries return a 400 error.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("search")]
+            public string? Search { get; set; }
+#nullable restore
+#else
+            [QueryParameter("search")]
+            public string Search { get; set; }
+#endif
         }
     }
 }

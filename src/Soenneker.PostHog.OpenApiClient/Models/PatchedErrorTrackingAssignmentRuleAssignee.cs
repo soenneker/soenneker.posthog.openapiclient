@@ -17,13 +17,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UnionBranch? Id { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingAssignmentRuleAssigneeId? Id { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UnionBranch Id { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingAssignmentRuleAssigneeId Id { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingAssignmentRuleAssignee_type? Type { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingAssignmentRuleAssigneeType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingAssignmentRuleAssignee"/> and sets the default values.
         /// </summary>
@@ -49,8 +49,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "id", n => { Id = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UnionBranch>(global::Soenneker.PostHog.OpenApiClient.Models.UnionBranch.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingAssignmentRuleAssignee_type>(); } },
+                { "id", n => { Id = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingAssignmentRuleAssigneeId>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingAssignmentRuleAssigneeId.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingAssignmentRuleAssigneeType>(); } },
             };
         }
         /// <summary>
@@ -60,8 +60,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UnionBranch>("id", Id);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingAssignmentRuleAssignee_type>("type", Type);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingAssignmentRuleAssigneeId>("id", Id);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingAssignmentRuleAssigneeType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

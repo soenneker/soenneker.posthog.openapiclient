@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_saved_queries.Item.Materialize
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\warehouse_saved_queries\{id}\materialize
+    /// Builds and executes requests for operations under \api\projects\{projectId}\warehouse_saved_queries\{id}\materialize
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class MaterializeRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_saved_quer
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public MaterializeRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/warehouse_saved_queries/{id}/materialize", pathParameters)
+        public MaterializeRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/warehouse_saved_queries/{id}/materialize", pathParameters)
         {
         }
         /// <summary>
@@ -30,42 +30,42 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_saved_quer
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public MaterializeRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/warehouse_saved_queries/{id}/materialize", rawUrl)
+        public MaterializeRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/warehouse_saved_queries/{id}/materialize", rawUrl)
         {
         }
         /// <summary>
-        /// Enable materialization for this saved query with a 24-hour sync frequency.
+        /// Enable materialization for this saved query, at the requested sync frequency or daily.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQuery"/></returns>
-        /// <param name="body">Shared methods for DataWarehouseSavedQuery serializers.This mixin is intended to be used with serializers.ModelSerializer subclasses.</param>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSavedQueriesMaterializeCreate201Response"/></returns>
+        /// <param name="body">&quot;Body of the `materialize` action: which cadence to enable materialization at.&quot;</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQuery?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQuery body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSavedQueriesMaterializeCreate201Response?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryMaterialize body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQuery> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQuery body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSavedQueriesMaterializeCreate201Response> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryMaterialize body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQuery>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQuery.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSavedQueriesMaterializeCreate201Response>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSavedQueriesMaterializeCreate201Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Enable materialization for this saved query with a 24-hour sync frequency.
+        /// Enable materialization for this saved query, at the requested sync frequency or daily.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">Shared methods for DataWarehouseSavedQuery serializers.This mixin is intended to be used with serializers.ModelSerializer subclasses.</param>
+        /// <param name="body">&quot;Body of the `materialize` action: which cadence to enable materialization at.&quot;</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQuery body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryMaterialize body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQuery body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryMaterialize body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));

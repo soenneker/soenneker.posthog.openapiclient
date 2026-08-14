@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The release condition to evaluate</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBlastRadiusRequest_condition? Condition { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBlastRadiusRequestConditionProperty? Condition { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBlastRadiusRequest_condition Condition { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBlastRadiusRequestConditionProperty Condition { get; set; }
 #endif
         /// <summary>Group type index for group-based flags (null for person-based flags)</summary>
         public int? GroupTypeIndex { get; set; }
@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "condition", n => { Condition = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBlastRadiusRequest_condition>(global::Soenneker.PostHog.OpenApiClient.Models.UserBlastRadiusRequest_condition.CreateFromDiscriminatorValue); } },
+                { "condition", n => { Condition = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBlastRadiusRequestConditionProperty>(global::Soenneker.PostHog.OpenApiClient.Models.UserBlastRadiusRequestConditionProperty.CreateFromDiscriminatorValue); } },
                 { "group_type_index", n => { GroupTypeIndex = n.GetIntValue(); } },
             };
         }
@@ -60,7 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBlastRadiusRequest_condition>("condition", Condition);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBlastRadiusRequestConditionProperty>("condition", Condition);
             writer.WriteIntValue("group_type_index", GroupTypeIndex);
             writer.WriteAdditionalData(AdditionalData);
         }

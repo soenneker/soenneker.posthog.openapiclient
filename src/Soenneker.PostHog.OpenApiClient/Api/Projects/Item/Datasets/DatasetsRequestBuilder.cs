@@ -13,7 +13,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Datasets
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\datasets
+    /// Builds and executes requests for operations under \api\projects\{projectId}\datasets
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DatasetsRequestBuilder : BaseRequestBuilder
@@ -35,7 +35,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Datasets
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public DatasetsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/datasets{?id__in,limit*,offset*,order_by,search*}", pathParameters)
+        public DatasetsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/datasets{?archived*,id__in,limit*,offset*,order_by*,search*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,41 +43,55 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Datasets
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public DatasetsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/datasets{?id__in,limit*,offset*,order_by,search*}", rawUrl)
+        public DatasetsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/datasets{?archived*,id__in,limit*,offset*,order_by*,search*}", rawUrl)
         {
         }
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedDatasetList"/></returns>
+        /// <summary>
+        /// List active datasets by default, or archived datasets when requested.
+        /// </summary>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedDatasetReadList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedDatasetList?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Datasets.DatasetsRequestBuilder.DatasetsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedDatasetReadList?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Datasets.DatasetsRequestBuilder.DatasetsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedDatasetList> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Datasets.DatasetsRequestBuilder.DatasetsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedDatasetReadList> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Datasets.DatasetsRequestBuilder.DatasetsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedDatasetList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedDatasetList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedDatasetReadList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedDatasetReadList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Dataset"/></returns>
+        /// <summary>
+        /// Create an empty dataset. Its first revision is created with its first item.
+        /// </summary>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DatasetRead"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.DatasetConflictResponse">When receiving a 409 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.Dataset?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.Dataset body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.DatasetRead?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.DatasetCreate body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.Dataset> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.Dataset body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.DatasetRead> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.DatasetCreate body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.Dataset>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.Dataset.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "409", global::Soenneker.PostHog.OpenApiClient.Models.DatasetConflictResponse.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.DatasetRead>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.DatasetRead.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
+        /// <summary>
+        /// List active datasets by default, or archived datasets when requested.
+        /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -94,16 +108,19 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Datasets
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
+        /// <summary>
+        /// Create an empty dataset. Its first revision is created with its first item.
+        /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.Dataset body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.DatasetCreate body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.Dataset body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.DatasetCreate body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -122,12 +139,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Datasets
         {
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Datasets.DatasetsRequestBuilder(rawUrl, RequestAdapter);
         }
+        /// <summary>
+        /// List active datasets by default, or archived datasets when requested.
+        /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        #pragma warning disable CS1591
         public partial class DatasetsRequestBuilderGetQueryParameters 
-        #pragma warning restore CS1591
         {
-            /// <summary>Multiple values may be separated by commas.</summary>
+            /// <summary>Return archived datasets instead of active datasets.</summary>
+            [QueryParameter("archived")]
+            public bool? Archived { get; set; }
+            /// <summary>Filter to these dataset IDs. Repeat the parameter or pass one comma-separated list, up to 100 IDs.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("id__in")]
@@ -143,17 +164,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Datasets
             /// <summary>The initial index from which to return the results.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
-            /// <summary>Ordering* `created_at` - Created At* `-created_at` - Created At (descending)* `updated_at` - Updated At* `-updated_at` - Updated At (descending)</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
+            /// <summary>Field and direction used to order results.* `created_at` - created_at* `-created_at` - -created_at* `updated_at` - updated_at* `-updated_at` - -updated_at</summary>
             [QueryParameter("order_by")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Datasets.GetOrder_byQueryParameterType[]? OrderBy { get; set; }
-#nullable restore
-#else
-            [QueryParameter("order_by")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Datasets.GetOrder_byQueryParameterType[] OrderBy { get; set; }
-#endif
-            /// <summary>Search in name, description, or metadata</summary>
+            public global::Soenneker.PostHog.OpenApiClient.Models.DatasetsListOrderByParameter? OrderBy { get; set; }
+            /// <summary>Search dataset names, descriptions, and metadata.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("search")]

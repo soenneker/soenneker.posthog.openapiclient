@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `team` - Only team* `global` - Global* `feature_flag` - Feature Flag</summary>
+    /// <summary>* `team` - Only team* `organization` - Organization* `global` - Global* `feature_flag` - Feature Flag</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum DashboardTemplateScopeEnum
     {
@@ -11,13 +11,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         Team,
         #pragma warning restore CS1591
+        [EnumMember(Value = "organization")]
+        #pragma warning disable CS1591
+        Organization,
+        #pragma warning restore CS1591
         [EnumMember(Value = "global")]
         #pragma warning disable CS1591
         Global,
         #pragma warning restore CS1591
         [EnumMember(Value = "feature_flag")]
         #pragma warning disable CS1591
-        Feature_flag,
+        FeatureFlag,
         #pragma warning restore CS1591
     }
 }

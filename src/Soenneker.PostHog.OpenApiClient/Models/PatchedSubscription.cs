@@ -15,15 +15,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Position within byweekday set for monthly frequency (e.g. 1 for first, -1 for last).</summary>
-        public int? Bysetpos { get; set; }
-        /// <summary>&quot;Days of week for weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday.&quot;</summary>
+        /// <summary>Configuration for AI report subscriptions (analysis window, future knobs). Only valid when resource_type is &apos;ai_prompt&apos;. Replaced wholesale on writes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscription_byweekday?>? Byweekday { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionAiPromptConfig? AiPromptConfig { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscription_byweekday?> Byweekday { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionAiPromptConfig AiPromptConfig { get; set; }
+#endif
+        /// <summary>Position within byweekday set for monthly frequency (e.g. 1 for first, -1 for last).</summary>
+        public int? Bysetpos { get; set; }
+        /// <summary>&quot;Days of week for daily or weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday.&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionByweekdayItem?>? Byweekday { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionByweekdayItem?> Byweekday { get; set; }
 #endif
         /// <summary>Total number of deliveries before the subscription stops. Null for unlimited.</summary>
         public int? Count { get; set; }
@@ -32,14 +40,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscription_created_by? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionCreatedBy? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscription_created_by CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionCreatedBy CreatedBy { get; private set; }
 #endif
         /// <summary>Dashboard ID to subscribe to (mutually exclusive with insight on create).</summary>
         public int? Dashboard { get; set; }
-        /// <summary>List of insight IDs from the dashboard to include. Required for dashboard subscriptions, max 6.</summary>
+        /// <summary>List of insight IDs from the dashboard to include. Required for dashboard subscriptions, max 10.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<int?>? DashboardExportInsights { get; set; }
@@ -51,8 +59,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? Deleted { get; set; }
         /// <summary>Whether the subscription is active. Set to false to pause delivery without deleting. Auto-set to false when the delivery integration becomes invalid.</summary>
         public bool? Enabled { get; set; }
-        /// <summary>* `daily` - Daily* `weekly` - Weekly* `monthly` - Monthly* `yearly` - Yearly</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionFrequencyEnum? Frequency { get; set; }
+        /// <summary>&quot;How often to deliver: daily, weekly, monthly, or yearly.* `daily` - Daily* `weekly` - Weekly* `monthly` - Monthly* `yearly` - Yearly&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionFrequency? Frequency { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionFrequency Frequency { get; set; }
+#endif
         /// <summary>The id property</summary>
         public int? Id { get; private set; }
         /// <summary>Insight ID to subscribe to (mutually exclusive with dashboard on create).</summary>
@@ -67,7 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>ID of a connected Slack integration. Required when target_type is slack.</summary>
         public int? IntegrationId { get; set; }
-        /// <summary>Interval multiplier (e.g. 2 with weekly frequency means every 2 weeks). Default 1.</summary>
+        /// <summary>Interval multiplier (e.g. 2 with weekly frequency means every 2 weeks). Required on create; must be 1 or greater.</summary>
         public int? Interval { get; set; }
         /// <summary>Optional message included in the invitation email when adding new recipients.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -79,6 +93,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The next_delivery_date property</summary>
         public DateTimeOffset? NextDeliveryDate { get; private set; }
+        /// <summary>Free-text prompt that drives the AI-generated report. Required when resource_type is &apos;ai_prompt&apos;. Max 4000 characters.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Prompt { get; set; }
+#nullable restore
+#else
+        public string Prompt { get; set; }
+#endif
         /// <summary>The resource_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -87,6 +109,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ResourceName { get; private set; }
 #endif
+        /// <summary>&quot;What the subscription delivers: &apos;insight&apos; (snapshot of one insight), &apos;dashboard&apos; (snapshot of one dashboard), or &apos;ai_prompt&apos; (LLM-generated report). Read-only — derived from the populated target (insight → insight, dashboard → dashboard, prompt → ai_prompt).* `insight` - Insight* `dashboard` - Dashboard* `ai_prompt` - AI prompt&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionResourceType? ResourceType { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionResourceType ResourceType { get; private set; }
+#endif
+        /// <summary>Whether to immediately deliver the subscription once on save so the editor can confirm it looks right. Defaults to true on create. When omitted on update, a delivery is sent only if the edit changed what gets delivered (recipient, channel, source) or re-enabled the subscription. The recurring schedule is unaffected.</summary>
+        public bool? SendTestNow { get; set; }
         /// <summary>When to start delivering (ISO 8601 datetime).</summary>
         public DateTimeOffset? StartDate { get; set; }
         /// <summary>Human-readable schedule summary, e.g. &apos;sent daily&apos;.</summary>
@@ -97,9 +129,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Summary { get; private set; }
 #endif
-        /// <summary>The summary_enabled property</summary>
+        /// <summary>Whether to attach an AI-generated summary to each delivery (insight and dashboard subscriptions only). Requires the organization to have approved AI data processing, and is subject to the org&apos;s active-summary cap and AI credit budget; otherwise the write is rejected. Not applicable to prompt subscriptions, which are themselves AI-generated.</summary>
         public bool? SummaryEnabled { get; set; }
-        /// <summary>The summary_prompt_guide property</summary>
+        /// <summary>Optional free-text guidance (max 500 chars) steering the AI summary, e.g. which metrics to emphasize. Only settable when AI summary context is enabled for the organization; clearing it (empty string) is always allowed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SummaryPromptGuide { get; set; }
@@ -107,9 +139,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SummaryPromptGuide { get; set; }
 #endif
-        /// <summary>* `email` - Email* `slack` - Slack* `webhook` - Webhook</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.TargetTypeEnum? TargetType { get; set; }
-        /// <summary>&quot;Recipient(s): comma-separated email addresses for email, Slack channel name/ID for slack, or full URL for webhook.&quot;</summary>
+        /// <summary>&quot;Delivery channel: email or slack.* `email` - Email* `slack` - Slack&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionTargetType? TargetType { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionTargetType TargetType { get; set; }
+#endif
+        /// <summary>&quot;Recipient(s): comma-separated email addresses for email, or Slack channel name/ID for slack.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? TargetValue { get; set; }
@@ -152,16 +190,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "ai_prompt_config", n => { AiPromptConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionAiPromptConfig>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionAiPromptConfig.CreateFromDiscriminatorValue); } },
                 { "bysetpos", n => { Bysetpos = n.GetIntValue(); } },
-                { "byweekday", n => { Byweekday = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscription_byweekday>()?.AsList(); } },
+                { "byweekday", n => { Byweekday = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionByweekdayItem>()?.AsList(); } },
                 { "count", n => { Count = n.GetIntValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscription_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscription_created_by.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionCreatedBy.CreateFromDiscriminatorValue); } },
                 { "dashboard", n => { Dashboard = n.GetIntValue(); } },
                 { "dashboard_export_insights", n => { DashboardExportInsights = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
-                { "frequency", n => { Frequency = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionFrequencyEnum>(); } },
+                { "frequency", n => { Frequency = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionFrequency>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionFrequency.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetIntValue(); } },
                 { "insight", n => { Insight = n.GetIntValue(); } },
                 { "insight_short_id", n => { InsightShortId = n.GetStringValue(); } },
@@ -169,12 +208,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "interval", n => { Interval = n.GetIntValue(); } },
                 { "invite_message", n => { InviteMessage = n.GetStringValue(); } },
                 { "next_delivery_date", n => { NextDeliveryDate = n.GetDateTimeOffsetValue(); } },
+                { "prompt", n => { Prompt = n.GetStringValue(); } },
                 { "resource_name", n => { ResourceName = n.GetStringValue(); } },
+                { "resource_type", n => { ResourceType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionResourceType>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionResourceType.CreateFromDiscriminatorValue); } },
+                { "send_test_now", n => { SendTestNow = n.GetBoolValue(); } },
                 { "start_date", n => { StartDate = n.GetDateTimeOffsetValue(); } },
                 { "summary", n => { Summary = n.GetStringValue(); } },
                 { "summary_enabled", n => { SummaryEnabled = n.GetBoolValue(); } },
                 { "summary_prompt_guide", n => { SummaryPromptGuide = n.GetStringValue(); } },
-                { "target_type", n => { TargetType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TargetTypeEnum>(); } },
+                { "target_type", n => { TargetType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionTargetType>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionTargetType.CreateFromDiscriminatorValue); } },
                 { "target_value", n => { TargetValue = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
                 { "until_date", n => { UntilDate = n.GetDateTimeOffsetValue(); } },
@@ -187,22 +229,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionAiPromptConfig>("ai_prompt_config", AiPromptConfig);
             writer.WriteIntValue("bysetpos", Bysetpos);
-            writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscription_byweekday>("byweekday", Byweekday);
+            writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionByweekdayItem>("byweekday", Byweekday);
             writer.WriteIntValue("count", Count);
             writer.WriteIntValue("dashboard", Dashboard);
             writer.WriteCollectionOfPrimitiveValues<int?>("dashboard_export_insights", DashboardExportInsights);
             writer.WriteBoolValue("deleted", Deleted);
             writer.WriteBoolValue("enabled", Enabled);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionFrequencyEnum>("frequency", Frequency);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionFrequency>("frequency", Frequency);
             writer.WriteIntValue("insight", Insight);
             writer.WriteIntValue("integration_id", IntegrationId);
             writer.WriteIntValue("interval", Interval);
             writer.WriteStringValue("invite_message", InviteMessage);
+            writer.WriteStringValue("prompt", Prompt);
+            writer.WriteBoolValue("send_test_now", SendTestNow);
             writer.WriteDateTimeOffsetValue("start_date", StartDate);
             writer.WriteBoolValue("summary_enabled", SummaryEnabled);
             writer.WriteStringValue("summary_prompt_guide", SummaryPromptGuide);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TargetTypeEnum>("target_type", TargetType);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionTargetType>("target_type", TargetType);
             writer.WriteStringValue("target_value", TargetValue);
             writer.WriteStringValue("title", Title);
             writer.WriteDateTimeOffsetValue("until_date", UntilDate);

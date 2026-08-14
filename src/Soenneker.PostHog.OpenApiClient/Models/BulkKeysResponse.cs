@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Mapping of feature flag ID (as a string) to flag key, for IDs that exist in this project.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BulkKeysResponse_keys? Keys { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BulkKeysResponseKeysProperty? Keys { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BulkKeysResponse_keys Keys { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BulkKeysResponseKeysProperty Keys { get; set; }
 #endif
         /// <summary>Present when some submitted IDs were not numeric and were ignored.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -55,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "keys", n => { Keys = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BulkKeysResponse_keys>(global::Soenneker.PostHog.OpenApiClient.Models.BulkKeysResponse_keys.CreateFromDiscriminatorValue); } },
+                { "keys", n => { Keys = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BulkKeysResponseKeysProperty>(global::Soenneker.PostHog.OpenApiClient.Models.BulkKeysResponseKeysProperty.CreateFromDiscriminatorValue); } },
                 { "warning", n => { Warning = n.GetStringValue(); } },
             };
         }
@@ -66,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BulkKeysResponse_keys>("keys", Keys);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BulkKeysResponseKeysProperty>("keys", Keys);
             writer.WriteStringValue("warning", Warning);
             writer.WriteAdditionalData(AdditionalData);
         }

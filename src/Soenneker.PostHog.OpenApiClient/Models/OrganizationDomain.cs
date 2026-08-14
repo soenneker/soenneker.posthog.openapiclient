@@ -22,40 +22,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Domain { get; set; }
 #endif
+        /// <summary>Returns whether ID-JAG (XAA) is configured for this domain.</summary>
+        public bool? HasIdJag { get; private set; }
         /// <summary>Returns whether SAML is configured for the instance. Does not validate the user has the required license (that check is performed in other places).</summary>
         public bool? HasSaml { get; private set; }
         /// <summary>Returns whether SCIM is configured and enabled for this domain.</summary>
         public bool? HasScim { get; private set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
+        /// <summary>Linked IdP configuration (SAML/SCIM/XAA) that backs this domain. Must belong to the same organization.</summary>
+        public Guid? IdentityProviderConfig { get; set; }
         /// <summary>Determines whether a domain is verified or not.</summary>
         public bool? IsVerified { get; private set; }
         /// <summary>The jit_provisioning_enabled property</summary>
         public bool? JitProvisioningEnabled { get; set; }
-        /// <summary>The saml_acs_url property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? SamlAcsUrl { get; set; }
-#nullable restore
-#else
-        public string SamlAcsUrl { get; set; }
-#endif
-        /// <summary>The saml_entity_id property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? SamlEntityId { get; set; }
-#nullable restore
-#else
-        public string SamlEntityId { get; set; }
-#endif
-        /// <summary>The saml_x509_cert property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? SamlX509Cert { get; set; }
-#nullable restore
-#else
-        public string SamlX509Cert { get; set; }
-#endif
         /// <summary>The scim_base_url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -64,16 +44,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ScimBaseUrl { get; private set; }
 #endif
-        /// <summary>The scim_bearer_token property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? ScimBearerToken { get; private set; }
-#nullable restore
-#else
-        public string ScimBearerToken { get; private set; }
-#endif
-        /// <summary>The scim_enabled property</summary>
-        public bool? ScimEnabled { get; set; }
         /// <summary>The sso_enforcement property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -118,17 +88,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "domain", n => { Domain = n.GetStringValue(); } },
+                { "has_id_jag", n => { HasIdJag = n.GetBoolValue(); } },
                 { "has_saml", n => { HasSaml = n.GetBoolValue(); } },
                 { "has_scim", n => { HasScim = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
+                { "identity_provider_config", n => { IdentityProviderConfig = n.GetGuidValue(); } },
                 { "is_verified", n => { IsVerified = n.GetBoolValue(); } },
                 { "jit_provisioning_enabled", n => { JitProvisioningEnabled = n.GetBoolValue(); } },
-                { "saml_acs_url", n => { SamlAcsUrl = n.GetStringValue(); } },
-                { "saml_entity_id", n => { SamlEntityId = n.GetStringValue(); } },
-                { "saml_x509_cert", n => { SamlX509Cert = n.GetStringValue(); } },
                 { "scim_base_url", n => { ScimBaseUrl = n.GetStringValue(); } },
-                { "scim_bearer_token", n => { ScimBearerToken = n.GetStringValue(); } },
-                { "scim_enabled", n => { ScimEnabled = n.GetBoolValue(); } },
                 { "sso_enforcement", n => { SsoEnforcement = n.GetStringValue(); } },
                 { "verification_challenge", n => { VerificationChallenge = n.GetStringValue(); } },
                 { "verified_at", n => { VerifiedAt = n.GetDateTimeOffsetValue(); } },
@@ -142,11 +109,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("domain", Domain);
+            writer.WriteGuidValue("identity_provider_config", IdentityProviderConfig);
             writer.WriteBoolValue("jit_provisioning_enabled", JitProvisioningEnabled);
-            writer.WriteStringValue("saml_acs_url", SamlAcsUrl);
-            writer.WriteStringValue("saml_entity_id", SamlEntityId);
-            writer.WriteStringValue("saml_x509_cert", SamlX509Cert);
-            writer.WriteBoolValue("scim_enabled", ScimEnabled);
             writer.WriteStringValue("sso_enforcement", SsoEnforcement);
             writer.WriteAdditionalData(AdditionalData);
         }

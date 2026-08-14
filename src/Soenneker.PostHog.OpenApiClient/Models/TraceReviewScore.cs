@@ -31,10 +31,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Immutable scorer configuration snapshot used to validate this score.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TraceReviewScore_definition_config? DefinitionConfig { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TraceReviewScoreDefinitionConfig? DefinitionConfig { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TraceReviewScore_definition_config DefinitionConfig { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TraceReviewScoreDefinitionConfig DefinitionConfig { get; private set; }
 #endif
         /// <summary>Stable scorer definition ID.</summary>
         public Guid? DefinitionId { get; private set; }
@@ -99,7 +99,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "categorical_values", n => { CategoricalValues = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "definition_archived", n => { DefinitionArchived = n.GetBoolValue(); } },
-                { "definition_config", n => { DefinitionConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceReviewScore_definition_config>(global::Soenneker.PostHog.OpenApiClient.Models.TraceReviewScore_definition_config.CreateFromDiscriminatorValue); } },
+                { "definition_config", n => { DefinitionConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceReviewScoreDefinitionConfig>(global::Soenneker.PostHog.OpenApiClient.Models.TraceReviewScoreDefinitionConfig.CreateFromDiscriminatorValue); } },
                 { "definition_id", n => { DefinitionId = n.GetGuidValue(); } },
                 { "definition_kind", n => { DefinitionKind = n.GetStringValue(); } },
                 { "definition_name", n => { DefinitionName = n.GetStringValue(); } },

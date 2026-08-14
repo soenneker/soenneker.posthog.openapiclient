@@ -18,10 +18,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Per-column bucket overrides for range variable materialization. Keys are column names, values are bucket keys.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEndpointRequest_bucket_overrides? BucketOverrides { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEndpointRequestBucketOverrides? BucketOverrides { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEndpointRequest_bucket_overrides BucketOverrides { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEndpointRequestBucketOverrides BucketOverrides { get; set; }
 #endif
         /// <summary>&quot;How fresh the data should be, in seconds. Must be one of: 900 (15 min), 1800 (30 min), 3600 (1 h), 21600 (6 h), 43200 (12 h), 86400 (24 h, default), 604800 (7 d). Controls cache TTL and materialization sync frequency.&quot;</summary>
         public int? DataFreshnessSeconds { get; set; }
@@ -55,13 +55,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
+        /// <summary>Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. Defaults to [] — every breakdown variable is required.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? OptionalBreakdownProperties { get; set; }
+#nullable restore
+#else
+        public List<string> OptionalBreakdownProperties { get; set; }
+#endif
         /// <summary>HogQL or insight query this endpoint executes. Changing this auto-creates a new version.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEndpointRequest_query? Query { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEndpointRequestQuery? Query { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEndpointRequest_query Query { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEndpointRequestQuery Query { get; set; }
 #endif
         /// <summary>List of tag names to associate with this endpoint. Replaces any existing tags.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -98,7 +106,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "bucket_overrides", n => { BucketOverrides = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEndpointRequest_bucket_overrides>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedEndpointRequest_bucket_overrides.CreateFromDiscriminatorValue); } },
+                { "bucket_overrides", n => { BucketOverrides = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEndpointRequestBucketOverrides>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedEndpointRequestBucketOverrides.CreateFromDiscriminatorValue); } },
                 { "data_freshness_seconds", n => { DataFreshnessSeconds = n.GetIntValue(); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "derived_from_insight", n => { DerivedFromInsight = n.GetStringValue(); } },
@@ -106,7 +114,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "is_active", n => { IsActive = n.GetBoolValue(); } },
                 { "is_materialized", n => { IsMaterialized = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEndpointRequest_query>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedEndpointRequest_query.CreateFromDiscriminatorValue); } },
+                { "optional_breakdown_properties", n => { OptionalBreakdownProperties = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEndpointRequestQuery>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedEndpointRequestQuery.CreateFromDiscriminatorValue); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "version", n => { Version = n.GetIntValue(); } },
             };
@@ -118,7 +127,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEndpointRequest_bucket_overrides>("bucket_overrides", BucketOverrides);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEndpointRequestBucketOverrides>("bucket_overrides", BucketOverrides);
             writer.WriteIntValue("data_freshness_seconds", DataFreshnessSeconds);
             writer.WriteBoolValue("deleted", Deleted);
             writer.WriteStringValue("derived_from_insight", DerivedFromInsight);
@@ -126,7 +135,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("is_active", IsActive);
             writer.WriteBoolValue("is_materialized", IsMaterialized);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEndpointRequest_query>("query", Query);
+            writer.WriteCollectionOfPrimitiveValues<string>("optional_breakdown_properties", OptionalBreakdownProperties);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEndpointRequestQuery>("query", Query);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteIntValue("version", Version);
             writer.WriteAdditionalData(AdditionalData);

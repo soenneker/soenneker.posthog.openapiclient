@@ -10,35 +10,35 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "total_requests")]
         #pragma warning disable CS1591
-        Total_requests,
+        TotalRequests,
         #pragma warning restore CS1591
         [EnumMember(Value = "total_bytes_read")]
         #pragma warning disable CS1591
-        Total_bytes_read,
+        TotalBytesRead,
         #pragma warning restore CS1591
         [EnumMember(Value = "total_cpu_seconds")]
         #pragma warning disable CS1591
-        Total_cpu_seconds,
+        TotalCpuSeconds,
         #pragma warning restore CS1591
         [EnumMember(Value = "avg_query_duration_ms")]
         #pragma warning disable CS1591
-        Avg_query_duration_ms,
+        AvgQueryDurationMs,
         #pragma warning restore CS1591
         [EnumMember(Value = "p95_query_duration_ms")]
         #pragma warning disable CS1591
-        P95_query_duration_ms,
+        P95QueryDurationMs,
         #pragma warning restore CS1591
         [EnumMember(Value = "error_rate")]
         #pragma warning disable CS1591
-        Error_rate,
+        ErrorRate,
         #pragma warning restore CS1591
         [EnumMember(Value = "materialized_requests")]
         #pragma warning disable CS1591
-        Materialized_requests,
+        MaterializedRequests,
         #pragma warning restore CS1591
         [EnumMember(Value = "inline_requests")]
         #pragma warning disable CS1591
-        Inline_requests,
+        InlineRequests,
         #pragma warning restore CS1591
     }
 }

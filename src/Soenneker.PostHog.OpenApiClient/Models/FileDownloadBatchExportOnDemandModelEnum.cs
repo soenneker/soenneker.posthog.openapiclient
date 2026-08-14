@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `events` - events* `persons` - persons* `sessions` - sessions</summary>
+    /// <summary>* `events` - events* `persons` - persons* `sessions` - sessions* `hogql` - hogql</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum FileDownloadBatchExportOnDemandModelEnum
     {
@@ -18,6 +18,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "sessions")]
         #pragma warning disable CS1591
         Sessions,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "hogql")]
+        #pragma warning disable CS1591
+        Hogql,
         #pragma warning restore CS1591
     }
 }

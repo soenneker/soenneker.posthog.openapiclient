@@ -9,15 +9,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "SYSTEM")]
         #pragma warning disable CS1591
-        SYSTEM,
+        System,
         #pragma warning restore CS1591
         [EnumMember(Value = "PLUGIN")]
         #pragma warning disable CS1591
-        PLUGIN,
+        Plugin,
         #pragma warning restore CS1591
         [EnumMember(Value = "CONSOLE")]
         #pragma warning disable CS1591
-        CONSOLE,
+        Console,
         #pragma warning restore CS1591
     }
 }

@@ -2,6 +2,8 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Collab.Markdown_save;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Collab.Presence;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Collab.Save;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Collab.StreamNamespace;
 using System.Collections.Generic;
@@ -11,11 +13,21 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Collab
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\notebooks\{notebook_-id}\collab
+    /// Builds and executes requests for operations under \api\projects\{projectId}\notebooks\{notebook-id}\collab
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CollabRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The markdown_save property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Collab.Markdown_save.Markdown_saveRequestBuilder Markdown_save
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Collab.Markdown_save.Markdown_saveRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The presence property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Collab.Presence.PresenceRequestBuilder Presence
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Collab.Presence.PresenceRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The save property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Collab.Save.SaveRequestBuilder Save
         {
@@ -31,7 +43,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Colla
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public CollabRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/notebooks/{notebook_%2Did}/collab", pathParameters)
+        public CollabRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/notebooks/{notebook%2Did}/collab", pathParameters)
         {
         }
         /// <summary>
@@ -39,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Colla
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public CollabRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/notebooks/{notebook_%2Did}/collab", rawUrl)
+        public CollabRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/notebooks/{notebook%2Did}/collab", rawUrl)
         {
         }
     }

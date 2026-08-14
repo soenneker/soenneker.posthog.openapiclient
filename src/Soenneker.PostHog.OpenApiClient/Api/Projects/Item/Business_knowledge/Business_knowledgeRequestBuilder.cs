@@ -2,6 +2,8 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Documents;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Gap_suggestions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Sources;
 using System.Collections.Generic;
 using System.IO;
@@ -10,11 +12,21 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\business_knowledge
+    /// Builds and executes requests for operations under \api\projects\{projectId}\business_knowledge
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Business_knowledgeRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The documents property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Documents.DocumentsRequestBuilder Documents
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Documents.DocumentsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The gap_suggestions property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Gap_suggestions.Gap_suggestionsRequestBuilder Gap_suggestions
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Gap_suggestions.Gap_suggestionsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The sources property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Sources.SourcesRequestBuilder Sources
         {
@@ -25,7 +37,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Business_knowledgeRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/business_knowledge", pathParameters)
+        public Business_knowledgeRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/business_knowledge", pathParameters)
         {
         }
         /// <summary>
@@ -33,7 +45,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Business_knowledgeRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/business_knowledge", rawUrl)
+        public Business_knowledgeRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/business_knowledge", rawUrl)
         {
         }
     }

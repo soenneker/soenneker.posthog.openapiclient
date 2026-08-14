@@ -14,7 +14,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Actions
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\actions
+    /// Builds and executes requests for operations under \api\projects\{projectId}\actions
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ActionsRequestBuilder : BaseRequestBuilder
@@ -41,7 +41,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Actions
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ActionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/actions{?format*,limit*,offset*}", pathParameters)
+        public ActionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/actions{?created_by*,format*,limit*,offset*,ordering*,search*,tags*}", pathParameters)
         {
         }
         /// <summary>
@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Actions
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ActionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/actions{?format*,limit*,offset*}", rawUrl)
+        public ActionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/actions{?created_by*,format*,limit*,offset*,ordering*,search*,tags*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedActionList"/></returns>
@@ -133,14 +133,54 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Actions
         public partial class ActionsRequestBuilderGetQueryParameters 
         #pragma warning restore CS1591
         {
+            /// <summary>Comma-separated list of creator user ids. Returns only actions created by these users.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("created_by")]
+            public string? CreatedBy { get; set; }
+#nullable restore
+#else
+            [QueryParameter("created_by")]
+            public string CreatedBy { get; set; }
+#endif
             [QueryParameter("format")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Actions.GetFormatQueryParameterType? Format { get; set; }
-            /// <summary>Number of results to return per page.</summary>
+            public global::Soenneker.PostHog.OpenApiClient.Models.ActionsListFormatParameter? Format { get; set; }
+            /// <summary>Maximum number of actions to return. Omit to return all.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
-            /// <summary>The initial index from which to return the results.</summary>
+            /// <summary>Number of actions to skip before returning results.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
+            /// <summary>Field to order by (name, created_at, pinned_at, created_by). Prefix with &apos;-&apos; for descending.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("ordering")]
+            public string? Ordering { get; set; }
+#nullable restore
+#else
+            [QueryParameter("ordering")]
+            public string Ordering { get; set; }
+#endif
+            /// <summary>Case-insensitive substring match on the action name.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("search")]
+            public string? Search { get; set; }
+#nullable restore
+#else
+            [QueryParameter("search")]
+            public string Search { get; set; }
+#endif
+            /// <summary>JSON-encoded array of tag names, e.g. [&quot;billing&quot;,&quot;beta&quot;]. Returns actions having any of these tags.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("tags")]
+            public string? Tags { get; set; }
+#nullable restore
+#else
+            [QueryParameter("tags")]
+            public string Tags { get; set; }
+#endif
         }
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         #pragma warning disable CS1591
@@ -148,7 +188,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Actions
         #pragma warning restore CS1591
         {
             [QueryParameter("format")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Actions.PostFormatQueryParameterType? Format { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.ActionsCreateFormatParameter? Format { get; set; }
         }
     }
 }

@@ -15,150 +15,125 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The custom_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_custom_name? CustomName { get; set; }
+        public string? CustomName { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_custom_name CustomName { get; set; }
+        public string CustomName { get; set; }
 #endif
         /// <summary>Fixed properties in the query, can&apos;t be edited in the interface (e.g. scoping down by person)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_fixedProperties? FixedProperties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeFixedPropertiesAnyOf1Item>? FixedProperties { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_fixedProperties FixedProperties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeFixedPropertiesAnyOf1Item> FixedProperties { get; set; }
 #endif
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_kind? Kind { get; set; }
-        /// <summary>The limit property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_limit? Limit { get; set; }
+        public string? Kind { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_limit Limit { get; set; }
+        public string Kind { get; set; }
 #endif
+        /// <summary>The limit property</summary>
+        public int? Limit { get; set; }
         /// <summary>The math property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNode.GroupNode_math? Math { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeMath? Math { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNode.GroupNode_math Math { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeMath Math { get; set; }
 #endif
         /// <summary>The math_group_type_index property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_math_group_type_index? MathGroupTypeIndex { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper12? MathGroupTypeIndex { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_math_group_type_index MathGroupTypeIndex { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper12 MathGroupTypeIndex { get; set; }
 #endif
         /// <summary>The math_hogql property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_math_hogql? MathHogql { get; set; }
+        public string? MathHogql { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_math_hogql MathHogql { get; set; }
+        public string MathHogql { get; set; }
 #endif
         /// <summary>The math_multiplier property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_math_multiplier? MathMultiplier { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_math_multiplier MathMultiplier { get; set; }
-#endif
+        public double? MathMultiplier { get; set; }
         /// <summary>The math_property property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_math_property? MathProperty { get; set; }
+        public string? MathProperty { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_math_property MathProperty { get; set; }
+        public string MathProperty { get; set; }
 #endif
         /// <summary>The math_property_revenue_currency property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_math_property_revenue_currency? MathPropertyRevenueCurrency { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueCurrencyPropertyConfig? MathPropertyRevenueCurrency { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_math_property_revenue_currency MathPropertyRevenueCurrency { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueCurrencyPropertyConfig MathPropertyRevenueCurrency { get; set; }
 #endif
         /// <summary>The math_property_type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_math_property_type? MathPropertyType { get; set; }
+        public string? MathPropertyType { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_math_property_type MathPropertyType { get; set; }
+        public string MathPropertyType { get; set; }
 #endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_name? Name { get; set; }
+        public string? Name { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_name Name { get; set; }
+        public string Name { get; set; }
 #endif
         /// <summary>Entities to combine in this group</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.GroupNode.GroupNode_nodes>? Nodes { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeNodesItem>? Nodes { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.GroupNode.GroupNode_nodes> Nodes { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeNodesItem> Nodes { get; set; }
 #endif
-        /// <summary>The operator property</summary>
+        /// <summary>Group of entities combined with AND/OR operator</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.FilterLogicalOperator? Operator { get; set; }
         /// <summary>The optionalInFunnel property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_optionalInFunnel? OptionalInFunnel { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_optionalInFunnel OptionalInFunnel { get; set; }
-#endif
+        public bool? OptionalInFunnel { get; set; }
         /// <summary>Columns to order by</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_orderBy? OrderBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeOrderBy? OrderBy { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_orderBy OrderBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeOrderBy OrderBy { get; set; }
 #endif
         /// <summary>Properties configurable in the interface</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_properties? Properties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodePropertiesAnyOf1Item>? Properties { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_properties Properties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodePropertiesAnyOf1Item> Properties { get; set; }
 #endif
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_response? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeResponse? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_response Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeResponse Response { get; set; }
 #endif
         /// <summary>version of the node, used for schema migrations</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_version? Version { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_version Version { get; set; }
-#endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.GroupNode"/> and sets the default values.
-        /// </summary>
-        public GroupNode()
-        {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_kind.GroupNode;
-        }
+        public double? Version { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -177,25 +152,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "custom_name", n => { CustomName = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_custom_name>(global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_custom_name.CreateFromDiscriminatorValue); } },
-                { "fixedProperties", n => { FixedProperties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_fixedProperties>(global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_fixedProperties.CreateFromDiscriminatorValue); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_kind>(); } },
-                { "limit", n => { Limit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_limit>(global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_limit.CreateFromDiscriminatorValue); } },
-                { "math", n => { Math = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNode.GroupNode_math>(global::Soenneker.PostHog.OpenApiClient.Models.GroupNode.GroupNode_math.CreateFromDiscriminatorValue); } },
-                { "math_group_type_index", n => { MathGroupTypeIndex = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_math_group_type_index>(global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_math_group_type_index.CreateFromDiscriminatorValue); } },
-                { "math_hogql", n => { MathHogql = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_math_hogql>(global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_math_hogql.CreateFromDiscriminatorValue); } },
-                { "math_multiplier", n => { MathMultiplier = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_math_multiplier>(global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_math_multiplier.CreateFromDiscriminatorValue); } },
-                { "math_property", n => { MathProperty = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_math_property>(global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_math_property.CreateFromDiscriminatorValue); } },
-                { "math_property_revenue_currency", n => { MathPropertyRevenueCurrency = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_math_property_revenue_currency>(global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_math_property_revenue_currency.CreateFromDiscriminatorValue); } },
-                { "math_property_type", n => { MathPropertyType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_math_property_type>(global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_math_property_type.CreateFromDiscriminatorValue); } },
-                { "name", n => { Name = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_name>(global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_name.CreateFromDiscriminatorValue); } },
-                { "nodes", n => { Nodes = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GroupNode.GroupNode_nodes>(global::Soenneker.PostHog.OpenApiClient.Models.GroupNode.GroupNode_nodes.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "custom_name", n => { CustomName = n.GetStringValue(); } },
+                { "fixedProperties", n => { FixedProperties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeFixedPropertiesAnyOf1Item>(global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeFixedPropertiesAnyOf1Item.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "kind", n => { Kind = n.GetStringValue(); } },
+                { "limit", n => { Limit = n.GetIntValue(); } },
+                { "math", n => { Math = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeMath>(global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeMath.CreateFromDiscriminatorValue); } },
+                { "math_group_type_index", n => { MathGroupTypeIndex = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper12>(global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper12.CreateFromDiscriminatorValue); } },
+                { "math_hogql", n => { MathHogql = n.GetStringValue(); } },
+                { "math_multiplier", n => { MathMultiplier = n.GetDoubleValue(); } },
+                { "math_property", n => { MathProperty = n.GetStringValue(); } },
+                { "math_property_revenue_currency", n => { MathPropertyRevenueCurrency = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueCurrencyPropertyConfig>(global::Soenneker.PostHog.OpenApiClient.Models.RevenueCurrencyPropertyConfig.CreateFromDiscriminatorValue); } },
+                { "math_property_type", n => { MathPropertyType = n.GetStringValue(); } },
+                { "name", n => { Name = n.GetStringValue(); } },
+                { "nodes", n => { Nodes = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeNodesItem>(global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeNodesItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "operator", n => { Operator = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FilterLogicalOperator>(); } },
-                { "optionalInFunnel", n => { OptionalInFunnel = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_optionalInFunnel>(global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_optionalInFunnel.CreateFromDiscriminatorValue); } },
-                { "orderBy", n => { OrderBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_orderBy>(global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_orderBy.CreateFromDiscriminatorValue); } },
-                { "properties", n => { Properties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_properties>(global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_properties.CreateFromDiscriminatorValue); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_response>(global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_response.CreateFromDiscriminatorValue); } },
-                { "version", n => { Version = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_version>(global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_version.CreateFromDiscriminatorValue); } },
+                { "optionalInFunnel", n => { OptionalInFunnel = n.GetBoolValue(); } },
+                { "orderBy", n => { OrderBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeOrderBy>(global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeOrderBy.CreateFromDiscriminatorValue); } },
+                { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodePropertiesAnyOf1Item>(global::Soenneker.PostHog.OpenApiClient.Models.GroupNodePropertiesAnyOf1Item.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeResponse>(global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeResponse.CreateFromDiscriminatorValue); } },
+                { "version", n => { Version = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -205,202 +180,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_custom_name>("custom_name", CustomName);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_fixedProperties>("fixedProperties", FixedProperties);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_kind>("kind", Kind);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_limit>("limit", Limit);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNode.GroupNode_math>("math", Math);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_math_group_type_index>("math_group_type_index", MathGroupTypeIndex);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_math_hogql>("math_hogql", MathHogql);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_math_multiplier>("math_multiplier", MathMultiplier);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_math_property>("math_property", MathProperty);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_math_property_revenue_currency>("math_property_revenue_currency", MathPropertyRevenueCurrency);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_math_property_type>("math_property_type", MathPropertyType);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_name>("name", Name);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GroupNode.GroupNode_nodes>("nodes", Nodes);
+            writer.WriteStringValue("custom_name", CustomName);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeFixedPropertiesAnyOf1Item>("fixedProperties", FixedProperties);
+            writer.WriteStringValue("kind", Kind);
+            writer.WriteIntValue("limit", Limit);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeMath>("math", Math);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper12>("math_group_type_index", MathGroupTypeIndex);
+            writer.WriteStringValue("math_hogql", MathHogql);
+            writer.WriteDoubleValue("math_multiplier", MathMultiplier);
+            writer.WriteStringValue("math_property", MathProperty);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueCurrencyPropertyConfig>("math_property_revenue_currency", MathPropertyRevenueCurrency);
+            writer.WriteStringValue("math_property_type", MathPropertyType);
+            writer.WriteStringValue("name", Name);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeNodesItem>("nodes", Nodes);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FilterLogicalOperator>("operator", Operator);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_optionalInFunnel>("optionalInFunnel", OptionalInFunnel);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_orderBy>("orderBy", OrderBy);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_properties>("properties", Properties);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_response>("response", Response);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_version>("version", Version);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BaseMathType_Wrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapMathType_Wrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CountPerActorMathType_Wrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricMathType_Wrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelMathType_Wrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_mathMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MathObject"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyMathType_Wrapper"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class GroupNode_math : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BaseMathType_Wrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.BaseMathType_Wrapper? BaseMathTypeWrapper { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.BaseMathType_Wrapper BaseMathTypeWrapper { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapMathType_Wrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapMathType_Wrapper? CalendarHeatmapMathTypeWrapper { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapMathType_Wrapper CalendarHeatmapMathTypeWrapper { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CountPerActorMathType_Wrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.CountPerActorMathType_Wrapper? CountPerActorMathTypeWrapper { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.CountPerActorMathType_Wrapper CountPerActorMathTypeWrapper { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricMathType_Wrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricMathType_Wrapper? ExperimentMetricMathTypeWrapper { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricMathType_Wrapper ExperimentMetricMathTypeWrapper { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelMathType_Wrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.FunnelMathType_Wrapper? FunnelMathTypeWrapper { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.FunnelMathType_Wrapper FunnelMathTypeWrapper { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_mathMember1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_mathMember1? GroupNodeMathMember1 { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_mathMember1 GroupNodeMathMember1 { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MathObject"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.MathObject? Math { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.MathObject Math { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyMathType_Wrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.PropertyMathType_Wrapper? PropertyMathTypeWrapper { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.PropertyMathType_Wrapper PropertyMathTypeWrapper { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.GroupNode.GroupNode_math"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.GroupNode.GroupNode_math CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.GroupNode.GroupNode_math();
-                result.BaseMathTypeWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.BaseMathType_Wrapper();
-                result.CalendarHeatmapMathTypeWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapMathType_Wrapper();
-                result.CountPerActorMathTypeWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.CountPerActorMathType_Wrapper();
-                result.ExperimentMetricMathTypeWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricMathType_Wrapper();
-                result.FunnelMathTypeWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.FunnelMathType_Wrapper();
-                result.GroupNodeMathMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.GroupNode_mathMember1();
-                result.Math = new global::Soenneker.PostHog.OpenApiClient.Models.MathObject();
-                result.PropertyMathTypeWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.PropertyMathType_Wrapper();
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(BaseMathTypeWrapper != null || CalendarHeatmapMathTypeWrapper != null || CountPerActorMathTypeWrapper != null || ExperimentMetricMathTypeWrapper != null || FunnelMathTypeWrapper != null || GroupNodeMathMember1 != null || Math != null || PropertyMathTypeWrapper != null)
-                {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(BaseMathTypeWrapper, CalendarHeatmapMathTypeWrapper, CountPerActorMathTypeWrapper, ExperimentMetricMathTypeWrapper, FunnelMathTypeWrapper, GroupNodeMathMember1, Math, PropertyMathTypeWrapper);
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BaseMathType_Wrapper>(null, BaseMathTypeWrapper, CalendarHeatmapMathTypeWrapper, CountPerActorMathTypeWrapper, ExperimentMetricMathTypeWrapper, FunnelMathTypeWrapper, GroupNodeMathMember1, Math, PropertyMathTypeWrapper);
-            }
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActionsNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EventsNode"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class GroupNode_nodes : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActionsNode"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.ActionsNode? ActionsNode { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.ActionsNode ActionsNode { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseNode"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseNode? DataWarehouseNode { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseNode DataWarehouseNode { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EventsNode"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.EventsNode? EventsNode { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.EventsNode EventsNode { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.GroupNode.GroupNode_nodes"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.GroupNode.GroupNode_nodes CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.GroupNode.GroupNode_nodes();
-                result.ActionsNode = new global::Soenneker.PostHog.OpenApiClient.Models.ActionsNode();
-                result.DataWarehouseNode = new global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseNode();
-                result.EventsNode = new global::Soenneker.PostHog.OpenApiClient.Models.EventsNode();
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(ActionsNode != null || DataWarehouseNode != null || EventsNode != null)
-                {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ActionsNode, DataWarehouseNode, EventsNode);
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActionsNode>(null, ActionsNode, DataWarehouseNode, EventsNode);
-            }
+            writer.WriteBoolValue("optionalInFunnel", OptionalInFunnel);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeOrderBy>("orderBy", OrderBy);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodePropertiesAnyOf1Item>("properties", Properties);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeResponse>("response", Response);
+            writer.WriteDoubleValue("version", Version);
         }
     }
 }

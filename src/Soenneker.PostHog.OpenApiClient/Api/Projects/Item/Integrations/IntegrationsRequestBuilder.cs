@@ -7,6 +7,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Authorize;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.DomainConnect;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Github;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Request_access;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -16,7 +17,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\integrations
+    /// Builds and executes requests for operations under \api\projects\{projectId}\integrations
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class IntegrationsRequestBuilder : BaseRequestBuilder
@@ -36,6 +37,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Github.GithubRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The request_access property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Request_access.Request_accessRequestBuilder Request_access
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Request_access.Request_accessRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.integrations.item collection</summary>
         /// <param name="position">A unique integer value identifying this integration.</param>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item.IntegrationsItemRequestBuilder"/></returns>
@@ -53,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public IntegrationsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/integrations{?kind*,limit*,offset*}", pathParameters)
+        public IntegrationsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/integrations{?kind*,limit*,offset*}", pathParameters)
         {
         }
         /// <summary>
@@ -61,7 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public IntegrationsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/integrations{?kind*,limit*,offset*}", rawUrl)
+        public IntegrationsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/integrations{?kind*,limit*,offset*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedIntegrationConfigList"/></returns>
@@ -145,9 +151,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations
         public partial class IntegrationsRequestBuilderGetQueryParameters 
         #pragma warning restore CS1591
         {
-            /// <summary>* `anthropic` - Anthropic* `apns` - Apple Push* `azure-blob` - Azure Blob* `bing-ads` - Bing Ads* `clickup` - Clickup* `customerio-app` - Customerio App* `customerio-track` - Customerio Track* `customerio-webhook` - Customerio Webhook* `databricks` - Databricks* `email` - Email* `firebase` - Firebase* `github` - Github* `gitlab` - Gitlab* `google-ads` - Google Ads* `google-cloud-service-account` - Google Cloud Service Account* `google-cloud-storage` - Google Cloud Storage* `google-pubsub` - Google Pubsub* `google-sheets` - Google Sheets* `hubspot` - Hubspot* `intercom` - Intercom* `jira` - Jira* `linear` - Linear* `linkedin-ads` - Linkedin Ads* `meta-ads` - Meta Ads* `pinterest-ads` - Pinterest Ads* `postgresql` - Postgresql* `reddit-ads` - Reddit Ads* `salesforce` - Salesforce* `slack` - Slack* `slack-posthog-code` - Slack Posthog Code* `snapchat` - Snapchat* `stripe` - Stripe* `tiktok-ads` - Tiktok Ads* `twilio` - Twilio* `vercel` - Vercel</summary>
+            /// <summary>* `anthropic` - Anthropic* `apns` - Apple Push* `aws-redshift` - Aws Redshift* `aws-s3` - Aws S3* `azure-blob` - Azure Blob* `bing-ads` - Bing Ads* `clickup` - Clickup* `customerio-app` - Customerio App* `customerio-track` - Customerio Track* `customerio-webhook` - Customerio Webhook* `databricks` - Databricks* `email` - Email* `firebase` - Firebase* `github` - Github* `gitlab` - Gitlab* `google-ads` - Google Ads* `google-analytics` - Google Analytics* `google-calendar` - Google Calendar* `google-cloud-service-account` - Google Cloud Service Account* `google-cloud-storage` - Google Cloud Storage* `google-pubsub` - Google Pubsub* `google-search-console` - Google Search Console* `google-sheets` - Google Sheets* `hubspot` - Hubspot* `instagram` - Instagram* `intercom` - Intercom* `jira` - Jira* `linear` - Linear* `linkedin-ads` - Linkedin Ads* `meta-ads` - Meta Ads* `pardot` - Pardot* `pinterest-ads` - Pinterest Ads* `postgresql` - Postgresql* `posthog` - Posthog* `reddit-ads` - Reddit Ads* `resend` - Resend* `s3-compatible` - S3 Compatible* `salesforce` - Salesforce* `slack` - Slack* `slack-posthog-code` - Slack Posthog Code* `snapchat` - Snapchat* `snowflake` - Snowflake* `stripe` - Stripe* `tiktok-ads` - Tiktok Ads* `twilio` - Twilio* `vercel` - Vercel</summary>
             [QueryParameter("kind")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.GetKindQueryParameterType? Kind { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.IntegrationsListKindParameter? Kind { get; set; }
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }

@@ -13,7 +13,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "cdc_only")]
         #pragma warning disable CS1591
-        Cdc_only,
+        CdcOnly,
         #pragma warning restore CS1591
         [EnumMember(Value = "both")]
         #pragma warning disable CS1591

@@ -14,7 +14,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\comments
+    /// Builds and executes requests for operations under \api\projects\{projectId}\comments
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CommentsRequestBuilder : BaseRequestBuilder
@@ -41,7 +41,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public CommentsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/comments{?completed*,cursor*,item_id*,kind*,scope*,search*,source_comment*}", pathParameters)
+        public CommentsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/comments{?completed*,cursor*,item_id*,kind*,scope*,search*,source_comment*,task_id*}", pathParameters)
         {
         }
         /// <summary>
@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public CommentsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/comments{?completed*,cursor*,item_id*,kind*,scope*,search*,source_comment*}", rawUrl)
+        public CommentsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/comments{?completed*,cursor*,item_id*,kind*,scope*,search*,source_comment*,task_id*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedCommentList"/></returns>
@@ -67,10 +67,14 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedCommentList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedCommentList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
+        /// <summary>
+        /// &quot;Create a comment.Support messages are deduplicated: an identical message from the same author on the sameticket within a short window returns the original comment with a 200 instead of creating asecond one, and a 409 while a concurrent request is still creating it.&quot;
+        /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Comment"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.CommentError">When receiving a 409 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.PostHog.OpenApiClient.Models.Comment?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.Comment body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -82,7 +86,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.Comment>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.Comment.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "409", global::Soenneker.PostHog.OpenApiClient.Models.CommentError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.Comment>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.Comment.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -100,6 +108,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
+        /// <summary>
+        /// &quot;Create a comment.Support messages are deduplicated: an identical message from the same author on the sameticket within a short window returns the original comment with a 200 instead of creating asecond one, and a 409 while a concurrent request is still creating it.&quot;
+        /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -135,7 +146,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments
         {
             /// <summary>When kind=task, restrict to open (incomplete) or completed tasks. Ignored when kind is not &apos;task&apos;. Defaults to &apos;any&apos; (no filter).* `any` - any* `open` - open* `completed` - completed</summary>
             [QueryParameter("completed")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments.GetCompletedQueryParameterType? Completed { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.CommentsListCompletedParameter? Completed { get; set; }
             /// <summary>The pagination cursor value.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -158,8 +169,8 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments
 #endif
             /// <summary>Filter by comment kind. &apos;task&apos; returns only items intentionally created as actionable. &apos;comment&apos; excludes tasks. Defaults to &apos;any&apos; (no filter).* `any` - any* `comment` - comment* `task` - task</summary>
             [QueryParameter("kind")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments.GetKindQueryParameterType? Kind { get; set; }
-            /// <summary>Filter by resource type (e.g. Dashboard, FeatureFlag, Insight, Replay).</summary>
+            public global::Soenneker.PostHog.OpenApiClient.Models.CommentsListKindParameter? Kind { get; set; }
+            /// <summary>Filter by resource type (e.g. Dashboard, FeatureFlag, Insight, Replay). Support-ticket scopes (Ticket, conversations_ticket) additionally require ticket API scope access.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("scope")]
@@ -189,6 +200,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments
             [QueryParameter("source_comment")]
             public string SourceComment { get; set; }
 #endif
+            /// <summary>Owning task for task, task_artifact, and desktop_canvas comment scopes.</summary>
+            [QueryParameter("task_id")]
+            public Guid? TaskId { get; set; }
         }
     }
 }

@@ -9,11 +9,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "USR")]
         #pragma warning disable CS1591
-        USR,
+        Usr,
         #pragma warning restore CS1591
         [EnumMember(Value = "GIT")]
         #pragma warning disable CS1591
-        GIT,
+        Git,
         #pragma warning restore CS1591
     }
 }

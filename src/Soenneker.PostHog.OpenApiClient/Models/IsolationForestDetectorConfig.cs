@@ -13,46 +13,27 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning restore CS1591
     {
         /// <summary>&quot;Number of trees in the forest (default: 100)&quot;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.IsolationForestDetectorConfig_n_estimators? NEstimators { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.IsolationForestDetectorConfig_n_estimators NEstimators { get; set; }
-#endif
+        public int? NEstimators { get; set; }
         /// <summary>Preprocessing transforms applied before detection</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.IsolationForestDetectorConfig_preprocessing? Preprocessing { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig? Preprocessing { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.IsolationForestDetectorConfig_preprocessing Preprocessing { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig Preprocessing { get; set; }
 #endif
         /// <summary>&quot;Anomaly probability threshold (default: 0.9)&quot;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.IsolationForestDetectorConfig_threshold? Threshold { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.IsolationForestDetectorConfig_threshold Threshold { get; set; }
-#endif
+        public double? Threshold { get; set; }
         /// <summary>The type property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.IsolationForestDetectorConfig_type? Type { get; set; }
-        /// <summary>&quot;Rolling window size — how many historical data points to train on (default: based on calculation interval)&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.IsolationForestDetectorConfig_window? Window { get; set; }
+        public string? Type { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.IsolationForestDetectorConfig_window Window { get; set; }
+        public string Type { get; set; }
 #endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.IsolationForestDetectorConfig"/> and sets the default values.
-        /// </summary>
-        public IsolationForestDetectorConfig()
-        {
-            Type = global::Soenneker.PostHog.OpenApiClient.Models.IsolationForestDetectorConfig_type.Isolation_forest;
-        }
+        /// <summary>&quot;Rolling window size — how many historical data points to train on (default: based on calculation interval)&quot;</summary>
+        public int? Window { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -71,11 +52,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "n_estimators", n => { NEstimators = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IsolationForestDetectorConfig_n_estimators>(global::Soenneker.PostHog.OpenApiClient.Models.IsolationForestDetectorConfig_n_estimators.CreateFromDiscriminatorValue); } },
-                { "preprocessing", n => { Preprocessing = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IsolationForestDetectorConfig_preprocessing>(global::Soenneker.PostHog.OpenApiClient.Models.IsolationForestDetectorConfig_preprocessing.CreateFromDiscriminatorValue); } },
-                { "threshold", n => { Threshold = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IsolationForestDetectorConfig_threshold>(global::Soenneker.PostHog.OpenApiClient.Models.IsolationForestDetectorConfig_threshold.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IsolationForestDetectorConfig_type>(); } },
-                { "window", n => { Window = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IsolationForestDetectorConfig_window>(global::Soenneker.PostHog.OpenApiClient.Models.IsolationForestDetectorConfig_window.CreateFromDiscriminatorValue); } },
+                { "n_estimators", n => { NEstimators = n.GetIntValue(); } },
+                { "preprocessing", n => { Preprocessing = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig>(global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig.CreateFromDiscriminatorValue); } },
+                { "threshold", n => { Threshold = n.GetDoubleValue(); } },
+                { "type", n => { Type = n.GetStringValue(); } },
+                { "window", n => { Window = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -85,11 +66,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IsolationForestDetectorConfig_n_estimators>("n_estimators", NEstimators);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IsolationForestDetectorConfig_preprocessing>("preprocessing", Preprocessing);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IsolationForestDetectorConfig_threshold>("threshold", Threshold);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IsolationForestDetectorConfig_type>("type", Type);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IsolationForestDetectorConfig_window>("window", Window);
+            writer.WriteIntValue("n_estimators", NEstimators);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig>("preprocessing", Preprocessing);
+            writer.WriteDoubleValue("threshold", Threshold);
+            writer.WriteStringValue("type", Type);
+            writer.WriteIntValue("window", Window);
         }
     }
 }

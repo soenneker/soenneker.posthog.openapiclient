@@ -3,21 +3,25 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `error_tracking` - Error Tracking* `eval_clusters` - Eval Clusters* `user_created` - User Created* `automation` - Automation* `slack` - Slack* `support_queue` - Support Queue* `session_summaries` - Session Summaries* `signal_report` - Signal Report* `signals_scout` - Signals Scout</summary>
+    /// <summary>* `onboarding` - Onboarding* `error_tracking` - Error Tracking* `eval_clusters` - Eval Clusters* `user_created` - User Created* `automation` - Automation* `slack` - Slack* `support_queue` - Support Queue* `session_summaries` - Session Summaries* `posthog_ai` - PostHog AI* `experiments` - Experiments* `signal_report` - Signal Report* `signals_scout` - Signals Scout* `support_reply` - Support Reply* `hogdesk` - HogDesk* `review_hog` - ReviewHog* `image_builder` - Image Builder* `loop` - Loop* `mcp_analytics` - MCP Analytics* `signals_chat` - Signals Chat</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum OriginProductEnum
     {
+        [EnumMember(Value = "onboarding")]
+        #pragma warning disable CS1591
+        Onboarding,
+        #pragma warning restore CS1591
         [EnumMember(Value = "error_tracking")]
         #pragma warning disable CS1591
-        Error_tracking,
+        ErrorTracking,
         #pragma warning restore CS1591
         [EnumMember(Value = "eval_clusters")]
         #pragma warning disable CS1591
-        Eval_clusters,
+        EvalClusters,
         #pragma warning restore CS1591
         [EnumMember(Value = "user_created")]
         #pragma warning disable CS1591
-        User_created,
+        UserCreated,
         #pragma warning restore CS1591
         [EnumMember(Value = "automation")]
         #pragma warning disable CS1591
@@ -29,19 +33,55 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "support_queue")]
         #pragma warning disable CS1591
-        Support_queue,
+        SupportQueue,
         #pragma warning restore CS1591
         [EnumMember(Value = "session_summaries")]
         #pragma warning disable CS1591
-        Session_summaries,
+        SessionSummaries,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "posthog_ai")]
+        #pragma warning disable CS1591
+        PosthogAi,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "experiments")]
+        #pragma warning disable CS1591
+        Experiments,
         #pragma warning restore CS1591
         [EnumMember(Value = "signal_report")]
         #pragma warning disable CS1591
-        Signal_report,
+        SignalReport,
         #pragma warning restore CS1591
         [EnumMember(Value = "signals_scout")]
         #pragma warning disable CS1591
-        Signals_scout,
+        SignalsScout,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "support_reply")]
+        #pragma warning disable CS1591
+        SupportReply,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "hogdesk")]
+        #pragma warning disable CS1591
+        Hogdesk,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "review_hog")]
+        #pragma warning disable CS1591
+        ReviewHog,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "image_builder")]
+        #pragma warning disable CS1591
+        ImageBuilder,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "loop")]
+        #pragma warning disable CS1591
+        Loop,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "mcp_analytics")]
+        #pragma warning disable CS1591
+        McpAnalytics,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "signals_chat")]
+        #pragma warning disable CS1591
+        SignalsChat,
         #pragma warning restore CS1591
     }
 }

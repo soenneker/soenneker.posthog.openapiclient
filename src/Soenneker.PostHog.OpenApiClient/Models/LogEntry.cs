@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Log-level attributes as a string-keyed map. Values are strings (numeric/datetime attributes are also accessible via materialized columns).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogEntry_attributes? Attributes { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogEntryAttributesProperty? Attributes { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogEntry_attributes Attributes { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogEntryAttributesProperty Attributes { get; set; }
 #endif
         /// <summary>The body property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -57,10 +57,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Resource-level attributes (service.name, k8s.*, host.hostname, etc.) as a string-keyed map. Repeats across all logs from the same pod/host.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogEntry_resource_attributes? ResourceAttributes { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogEntryResourceAttributesProperty? ResourceAttributes { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogEntry_resource_attributes ResourceAttributes { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogEntryResourceAttributesProperty ResourceAttributes { get; set; }
 #endif
         /// <summary>Log severity as a numeric code. Redundant with severity_text; kept for OpenTelemetry compatibility.</summary>
         public int? SeverityNumber { get; set; }
@@ -131,12 +131,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "attributes", n => { Attributes = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogEntry_attributes>(global::Soenneker.PostHog.OpenApiClient.Models.LogEntry_attributes.CreateFromDiscriminatorValue); } },
+                { "attributes", n => { Attributes = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogEntryAttributesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.LogEntryAttributesProperty.CreateFromDiscriminatorValue); } },
                 { "body", n => { Body = n.GetStringValue(); } },
                 { "event_name", n => { EventName = n.GetStringValue(); } },
                 { "level", n => { Level = n.GetStringValue(); } },
                 { "observed_timestamp", n => { ObservedTimestamp = n.GetStringValue(); } },
-                { "resource_attributes", n => { ResourceAttributes = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogEntry_resource_attributes>(global::Soenneker.PostHog.OpenApiClient.Models.LogEntry_resource_attributes.CreateFromDiscriminatorValue); } },
+                { "resource_attributes", n => { ResourceAttributes = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogEntryResourceAttributesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.LogEntryResourceAttributesProperty.CreateFromDiscriminatorValue); } },
                 { "severity_number", n => { SeverityNumber = n.GetIntValue(); } },
                 { "severity_text", n => { SeverityText = n.GetStringValue(); } },
                 { "span_id", n => { SpanId = n.GetStringValue(); } },
@@ -153,12 +153,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogEntry_attributes>("attributes", Attributes);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogEntryAttributesProperty>("attributes", Attributes);
             writer.WriteStringValue("body", Body);
             writer.WriteStringValue("event_name", EventName);
             writer.WriteStringValue("level", Level);
             writer.WriteStringValue("observed_timestamp", ObservedTimestamp);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogEntry_resource_attributes>("resource_attributes", ResourceAttributes);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogEntryResourceAttributesProperty>("resource_attributes", ResourceAttributes);
             writer.WriteIntValue("severity_number", SeverityNumber);
             writer.WriteStringValue("severity_text", SeverityText);
             writer.WriteStringValue("span_id", SpanId);

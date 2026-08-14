@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Elements.Stats
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\elements\stats
+    /// Builds and executes requests for operations under \api\projects\{projectId}\elements\stats
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class StatsRequestBuilder : BaseRequestBuilder
@@ -21,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Elements.Stats
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public StatsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/elements/stats", pathParameters)
+        public StatsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/elements/stats{?data_attributes*,date_from*,date_to*,filter_test_accounts*,include*,limit*,offset*,properties*,sampling_factor*}", pathParameters)
         {
         }
         /// <summary>
@@ -29,39 +30,39 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Elements.Stats
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public StatsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/elements/stats", rawUrl)
+        public StatsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/elements/stats{?data_attributes*,date_from*,date_to*,filter_test_accounts*,include*,limit*,offset*,properties*,sampling_factor*}", rawUrl)
         {
         }
         /// <summary>
-        /// The original version of this API always and only returned $autocapture elementsIf no include query parameter is sent this remains true.Now, you can pass a combination of include query parameters to get different types of elementsCurrently only $autocapture and $rageclick and $dead_click are supported
+        /// Counts of $autocapture, $rageclick, and $dead_click events grouped by the element chainthey occurred on, ordered by count. Defaults to all three event types; narrow with theinclude parameter.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Elements.Stats.StatsGetResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ElementStatsResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Elements.Stats.StatsGetResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ElementStatsResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Elements.Stats.StatsRequestBuilder.StatsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Elements.Stats.StatsGetResponse> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ElementStatsResponse> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Elements.Stats.StatsRequestBuilder.StatsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Elements.Stats.StatsGetResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Elements.Stats.StatsGetResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ElementStatsResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ElementStatsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// The original version of this API always and only returned $autocapture elementsIf no include query parameter is sent this remains true.Now, you can pass a combination of include query parameters to get different types of elementsCurrently only $autocapture and $rageclick and $dead_click are supported
+        /// Counts of $autocapture, $rageclick, and $dead_click events grouped by the element chainthey occurred on, ordered by count. Defaults to all three event types; narrow with theinclude parameter.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Elements.Stats.StatsRequestBuilder.StatsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Elements.Stats.StatsRequestBuilder.StatsRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -77,6 +78,75 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Elements.Stats
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Elements.Stats.StatsRequestBuilder WithUrl(string rawUrl)
         {
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Elements.Stats.StatsRequestBuilder(rawUrl, RequestAdapter);
+        }
+        /// <summary>
+        /// Counts of $autocapture, $rageclick, and $dead_click events grouped by the element chainthey occurred on, ordered by count. Defaults to all three event types; narrow with theinclude parameter.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class StatsRequestBuilderGetQueryParameters 
+        {
+            /// <summary>Comma-separated data attribute names (wildcards allowed, e.g. data-*). When provided, each element&apos;s attributes map is filtered to matching attr__* keys, shrinking the response.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("data_attributes")]
+            public string? DataAttributes { get; set; }
+#nullable restore
+#else
+            [QueryParameter("data_attributes")]
+            public string DataAttributes { get; set; }
+#endif
+            /// <summary>Start of the date range (e.g. -7d, 2024-01-01). Defaults to last 7 days.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("date_from")]
+            public string? DateFrom { get; set; }
+#nullable restore
+#else
+            [QueryParameter("date_from")]
+            public string DateFrom { get; set; }
+#endif
+            /// <summary>End of the date range (e.g. 2024-01-31). Defaults to now.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("date_to")]
+            public string? DateTo { get; set; }
+#nullable restore
+#else
+            [QueryParameter("date_to")]
+            public string DateTo { get; set; }
+#endif
+            /// <summary>When true, applies the project&apos;s internal-and-test-account filters to the underlying events. Pass the lowercase string true; other truthy spellings are ignored.</summary>
+            [QueryParameter("filter_test_accounts")]
+            public bool? FilterTestAccounts { get; set; }
+            /// <summary>&quot;Event types to include: $autocapture, $rageclick, $dead_click. Defaults to all three. Accepts repeated parameters, a JSON array, or a comma-separated list.&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("include")]
+            public string[]? Include { get; set; }
+#nullable restore
+#else
+            [QueryParameter("include")]
+            public string[] Include { get; set; }
+#endif
+            /// <summary>Maximum rows per page</summary>
+            [QueryParameter("limit")]
+            public int? Limit { get; set; }
+            /// <summary>Pagination offset</summary>
+            [QueryParameter("offset")]
+            public int? Offset { get; set; }
+            /// <summary>&quot;JSON-encoded list of property filters to apply to the underlying events, e.g. [{\&quot;key\&quot;: \&quot;$current_url\&quot;, \&quot;value\&quot;: \&quot;https://example.com/page\&quot;}] or [{\&quot;key\&quot;: \&quot;email\&quot;, \&quot;value\&quot;: \&quot;@posthog.com\&quot;, \&quot;operator\&quot;: \&quot;icontains\&quot;, \&quot;type\&quot;: \&quot;person\&quot;}]. Supports event, person, cohort, element, and HogQL property filter types.&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("properties")]
+            public string? Properties { get; set; }
+#nullable restore
+#else
+            [QueryParameter("properties")]
+            public string Properties { get; set; }
+#endif
+            /// <summary>Sampling factor between 0 and 1</summary>
+            [QueryParameter("sampling_factor")]
+            public double? SamplingFactor { get; set; }
         }
     }
 }

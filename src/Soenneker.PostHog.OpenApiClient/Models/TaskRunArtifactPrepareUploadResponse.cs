@@ -32,6 +32,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Id { get; set; }
 #endif
+        /// <summary>Optional structured metadata for special artifact types, such as skill bundles.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactPrepareUploadResponseMetadata? Metadata { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactPrepareUploadResponseMetadata Metadata { get; set; }
+#endif
         /// <summary>Artifact file name</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -43,10 +51,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Presigned S3 POST configuration for uploading the file</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactPrepareUploadResponse_presigned_post? PresignedPost { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactPrepareUploadResponsePresignedPost? PresignedPost { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactPrepareUploadResponse_presigned_post PresignedPost { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactPrepareUploadResponsePresignedPost PresignedPost { get; set; }
 #endif
         /// <summary>Expected upload size in bytes</summary>
         public int? Size { get; set; }
@@ -102,8 +110,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "content_type", n => { ContentType = n.GetStringValue(); } },
                 { "expires_in", n => { ExpiresIn = n.GetIntValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactPrepareUploadResponseMetadata>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactPrepareUploadResponseMetadata.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "presigned_post", n => { PresignedPost = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactPrepareUploadResponse_presigned_post>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactPrepareUploadResponse_presigned_post.CreateFromDiscriminatorValue); } },
+                { "presigned_post", n => { PresignedPost = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactPrepareUploadResponsePresignedPost>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactPrepareUploadResponsePresignedPost.CreateFromDiscriminatorValue); } },
                 { "size", n => { Size = n.GetIntValue(); } },
                 { "source", n => { Source = n.GetStringValue(); } },
                 { "storage_path", n => { StoragePath = n.GetStringValue(); } },
@@ -120,8 +129,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("content_type", ContentType);
             writer.WriteIntValue("expires_in", ExpiresIn);
             writer.WriteStringValue("id", Id);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactPrepareUploadResponseMetadata>("metadata", Metadata);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactPrepareUploadResponse_presigned_post>("presigned_post", PresignedPost);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactPrepareUploadResponsePresignedPost>("presigned_post", PresignedPost);
             writer.WriteIntValue("size", Size);
             writer.WriteStringValue("source", Source);
             writer.WriteStringValue("storage_path", StoragePath);

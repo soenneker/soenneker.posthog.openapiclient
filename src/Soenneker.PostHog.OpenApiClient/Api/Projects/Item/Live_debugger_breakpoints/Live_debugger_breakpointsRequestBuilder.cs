@@ -15,7 +15,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Live_debugger_breakpoints
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\live_debugger_breakpoints
+    /// Builds and executes requests for operations under \api\projects\{projectId}\live_debugger_breakpoints
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Live_debugger_breakpointsRequestBuilder : BaseRequestBuilder
@@ -47,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Live_debugger_breakp
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Live_debugger_breakpointsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/live_debugger_breakpoints{?filename*,limit*,offset*,repository*}", pathParameters)
+        public Live_debugger_breakpointsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/live_debugger_breakpoints{?filename*,limit*,offset*,repository*}", pathParameters)
         {
         }
         /// <summary>
@@ -55,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Live_debugger_breakp
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Live_debugger_breakpointsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/live_debugger_breakpoints{?filename*,limit*,offset*,repository*}", rawUrl)
+        public Live_debugger_breakpointsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/live_debugger_breakpoints{?filename*,limit*,offset*,repository*}", rawUrl)
         {
         }
         /// <summary>

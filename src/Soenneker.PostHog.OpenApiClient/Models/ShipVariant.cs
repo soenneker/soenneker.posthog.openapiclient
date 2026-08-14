@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The conclusion of the experiment.* `won` - won* `lost` - lost* `inconclusive` - inconclusive* `stopped_early` - stopped_early* `invalid` - invalid</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ShipVariant_conclusion? Conclusion { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ShipVariantConclusion? Conclusion { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ShipVariant_conclusion Conclusion { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ShipVariantConclusion Conclusion { get; set; }
 #endif
         /// <summary>Optional comment about the experiment conclusion.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -30,8 +30,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ConclusionComment { get; set; }
 #endif
+        /// <summary>When true, open a draft pull request that removes the experiment&apos;s feature-flag code from the linked repository. Requires the requesting user to have access to PostHog Desktop (403 otherwise). Only acts for allowlisted teams; ignored otherwise.</summary>
+        public bool? OpenCleanupPr { get; set; }
         /// <summary>If true, prepend a release condition to the feature flag that rolls the variant out to 100% of users, overriding any existing release conditions on the flag. If false (default), only update the variant distribution — existing release conditions are preserved and the variant is served only to users who already match them.</summary>
         public bool? ReleaseToEveryone { get; set; }
+        /// <summary>GitHub repository to open the cleanup pull request in, in `organization/repository` format. Only used when open_cleanup_pr is true. It must be one of the team&apos;s connected repositories (see the flag_cleanup_target action); it is then saved as the experiment&apos;s repository. When omitted, the experiment&apos;s saved repository, the team&apos;s default cleanup repository, or the team&apos;s only connected repository is used.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Repository { get; set; }
+#nullable restore
+#else
+        public string Repository { get; set; }
+#endif
+        /// <summary>When true, also save `repository` as this environment&apos;s default cleanup repository, used for experiments that have no repository of their own. Only acts when open_cleanup_pr is true and `repository` is provided and belongs to the team&apos;s GitHub installation. Requires project admin access (403 otherwise).</summary>
+        public bool? SetRepositoryAsTeamDefault { get; set; }
         /// <summary>The key of the variant to ship.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -46,6 +58,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public ShipVariant()
         {
             AdditionalData = new Dictionary<string, object>();
+            OpenCleanupPr = false;
+            ReleaseToEveryone = false;
+            SetRepositoryAsTeamDefault = false;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -65,9 +80,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "conclusion", n => { Conclusion = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ShipVariant_conclusion>(global::Soenneker.PostHog.OpenApiClient.Models.ShipVariant_conclusion.CreateFromDiscriminatorValue); } },
+                { "conclusion", n => { Conclusion = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ShipVariantConclusion>(global::Soenneker.PostHog.OpenApiClient.Models.ShipVariantConclusion.CreateFromDiscriminatorValue); } },
                 { "conclusion_comment", n => { ConclusionComment = n.GetStringValue(); } },
+                { "open_cleanup_pr", n => { OpenCleanupPr = n.GetBoolValue(); } },
                 { "release_to_everyone", n => { ReleaseToEveryone = n.GetBoolValue(); } },
+                { "repository", n => { Repository = n.GetStringValue(); } },
+                { "set_repository_as_team_default", n => { SetRepositoryAsTeamDefault = n.GetBoolValue(); } },
                 { "variant_key", n => { VariantKey = n.GetStringValue(); } },
             };
         }
@@ -78,9 +96,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ShipVariant_conclusion>("conclusion", Conclusion);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ShipVariantConclusion>("conclusion", Conclusion);
             writer.WriteStringValue("conclusion_comment", ConclusionComment);
+            writer.WriteBoolValue("open_cleanup_pr", OpenCleanupPr);
             writer.WriteBoolValue("release_to_everyone", ReleaseToEveryone);
+            writer.WriteStringValue("repository", Repository);
+            writer.WriteBoolValue("set_repository_as_team_default", SetRepositoryAsTeamDefault);
             writer.WriteStringValue("variant_key", VariantKey);
             writer.WriteAdditionalData(AdditionalData);
         }

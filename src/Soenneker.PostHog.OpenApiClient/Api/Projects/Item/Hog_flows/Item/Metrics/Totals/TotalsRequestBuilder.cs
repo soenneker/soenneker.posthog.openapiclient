@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Metrics.Totals
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\hog_flows\{id}\metrics\totals
+    /// Builds and executes requests for operations under \api\projects\{projectId}\hog_flows\{id}\metrics\totals
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TotalsRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Metri
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TotalsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/hog_flows/{id}/metrics/totals{?after*,before*,breakdown_by*,instance_id*,interval*,kind*,name*}", pathParameters)
+        public TotalsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/hog_flows/{id}/metrics/totals{?after*,before*,breakdown_by*,instance_id*,interval*,kind*,name*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Metri
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TotalsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/hog_flows/{id}/metrics/totals{?after*,before*,breakdown_by*,instance_id*,interval*,kind*,name*}", rawUrl)
+        public TotalsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/hog_flows/{id}/metrics/totals{?after*,before*,breakdown_by*,instance_id*,interval*,kind*,name*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AppMetricsTotalsResponse"/></returns>
@@ -100,7 +100,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Metri
 #endif
             /// <summary>Group the series by metric &apos;name&apos; or &apos;kind&apos;. Defaults to &apos;kind&apos;.* `name` - name* `kind` - kind</summary>
             [QueryParameter("breakdown_by")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Metrics.Totals.GetBreakdown_byQueryParameterType? BreakdownBy { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowsMetricsTotalsRetrieveBreakdownByParameter? BreakdownBy { get; set; }
             /// <summary>Filter metrics to a specific execution instance.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -113,7 +113,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Metri
 #endif
             /// <summary>&quot;Time bucket size for the series. One of: hour, day, week. Defaults to &apos;day&apos;.* `hour` - hour* `day` - day* `week` - week&quot;</summary>
             [QueryParameter("interval")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Metrics.Totals.GetIntervalQueryParameterType? Interval { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowsMetricsTotalsRetrieveIntervalParameter? Interval { get; set; }
             /// <summary>Comma-separated metric kinds to filter by, e.g. &apos;success,failure&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

@@ -22,14 +22,48 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Whether the issue appears already fixed, from the actionability judgment artefact.</summary>
+        /// <summary>Whether the issue is already being handled — fixed in recent changes, or with a fix in flight (an open PR, a recently active branch, an assigned / in-progress issue or agent task) — from the actionability judgment artefact.</summary>
         public bool? AlreadyAddressed { get; private set; }
         /// <summary>The artefact_count property</summary>
         public int? ArtefactCount { get; private set; }
+        /// <summary>Non-null when this report is system-marked never-billable (PostHog-system origin, e.g. a health-check scout finding) — its implementation PRs are free and cannot be refunded because nothing was charged.* `posthog_health_check` - PostHog health check* `posthog_onboarding` - PostHog onboarding* `posthog_system` - PostHog system</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportBillingExemptReason? BillingExemptReason { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportBillingExemptReason BillingExemptReason { get; private set; }
+#endif
+        /// <summary>Charts the report shows, in the order they were written. The summary places one with a `[label](chart:&lt;chart_id&gt;)` link; the rest render below it.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReportChart>? Charts { get; private set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReportChart> Charts { get; private set; }
+#endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
+        /// <summary>Free-form note captured alongside the dismissal reason (when present).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? DismissalNote { get; private set; }
+#nullable restore
+#else
+        public string DismissalNote { get; private set; }
+#endif
+        /// <summary>Reason code from the latest dismissal artefact, set when the report was suppressed (when present).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? DismissalReason { get; private set; }
+#nullable restore
+#else
+        public string DismissalReason { get; private set; }
+#endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
+        /// <summary>&quot;Whether that implementation PR is merged, per the GitHub webhook. False when there is no PR or it hasn&apos;t merged. Report status doesn&apos;t imply this: a resolved report may have been resolved directly, without a merged PR.&quot;</summary>
+        public bool? ImplementationPrMerged { get; private set; }
         /// <summary>PR URL from the latest implementation task run, if available.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -48,6 +82,30 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Priority { get; private set; }
 #endif
+        /// <summary>The report&apos;s PR refund, when one exists. One refund per report, ever.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundComposed? Refund { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundComposed Refund { get; private set; }
+#endif
+        /// <summary>Why refunding this report&apos;s PR would be rejected right now, or null when a refund would be accepted (see the field&apos;s schema for the reason values).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundIneligibilityReason? RefundIneligibilityReason { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundIneligibilityReason RefundIneligibilityReason { get; private set; }
+#endif
+        /// <summary>skill_name slug of the scout that authored this report, when scout-authored (from ClickHouse); null otherwise.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ScoutName { get; private set; }
+#nullable restore
+#else
+        public string ScoutName { get; private set; }
+#endif
         /// <summary>The signal_count property</summary>
         public int? SignalCount { get; private set; }
         /// <summary>The signals_at_run property</summary>
@@ -60,8 +118,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> SourceProducts { get; private set; }
 #endif
-        /// <summary>* `potential` - Potential* `candidate` - Candidate* `in_progress` - In Progress* `pending_input` - Pending Input* `ready` - Ready* `resolved` - Resolved* `failed` - Failed* `deleted` - Deleted* `suppressed` - Suppressed</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportStatusEnum? Status { get; set; }
+        /// <summary>The status property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportStatus? Status { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportStatus Status { get; private set; }
+#endif
         /// <summary>The summary property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -88,6 +152,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public SignalReport()
         {
             AdditionalData = new Dictionary<string, object>();
+            IsSuggestedReviewer = false;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -110,15 +175,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "actionability", n => { Actionability = n.GetStringValue(); } },
                 { "already_addressed", n => { AlreadyAddressed = n.GetBoolValue(); } },
                 { "artefact_count", n => { ArtefactCount = n.GetIntValue(); } },
+                { "billing_exempt_reason", n => { BillingExemptReason = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportBillingExemptReason>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportBillingExemptReason.CreateFromDiscriminatorValue); } },
+                { "charts", n => { Charts = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReportChart>(global::Soenneker.PostHog.OpenApiClient.Models.ReportChart.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
+                { "dismissal_note", n => { DismissalNote = n.GetStringValue(); } },
+                { "dismissal_reason", n => { DismissalReason = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
+                { "implementation_pr_merged", n => { ImplementationPrMerged = n.GetBoolValue(); } },
                 { "implementation_pr_url", n => { ImplementationPrUrl = n.GetStringValue(); } },
                 { "is_suggested_reviewer", n => { IsSuggestedReviewer = n.GetBoolValue(); } },
                 { "priority", n => { Priority = n.GetStringValue(); } },
+                { "refund", n => { Refund = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundComposed>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundComposed.CreateFromDiscriminatorValue); } },
+                { "refund_ineligibility_reason", n => { RefundIneligibilityReason = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundIneligibilityReason>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundIneligibilityReason.CreateFromDiscriminatorValue); } },
+                { "scout_name", n => { ScoutName = n.GetStringValue(); } },
                 { "signal_count", n => { SignalCount = n.GetIntValue(); } },
                 { "signals_at_run", n => { SignalsAtRun = n.GetIntValue(); } },
                 { "source_products", n => { SourceProducts = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportStatusEnum>(); } },
+                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportStatus>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportStatus.CreateFromDiscriminatorValue); } },
                 { "summary", n => { Summary = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
                 { "total_weight", n => { TotalWeight = n.GetDoubleValue(); } },
@@ -132,7 +205,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportStatusEnum>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

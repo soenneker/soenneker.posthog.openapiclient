@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `low` - low* `medium` - medium* `high` - high* `xhigh` - xhigh* `max` - max</summary>
+    /// <summary>* `low` - low* `medium` - medium* `high` - high* `xhigh` - xhigh* `max` - max* `ultracode` - ultracode</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ReasoningEffortEnum
     {
@@ -26,6 +26,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "max")]
         #pragma warning disable CS1591
         Max,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ultracode")]
+        #pragma warning disable CS1591
+        Ultracode,
         #pragma warning restore CS1591
     }
 }

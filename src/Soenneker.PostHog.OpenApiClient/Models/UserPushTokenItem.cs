@@ -20,8 +20,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public Guid? Id { get; set; }
         /// <summary>Last time the mobile app re-registered this token.</summary>
         public DateTimeOffset? LastSeenAt { get; set; }
-        /// <summary>* `ios` - iOS* `android` - Android* `web` - Web</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.PushTokenPlatformEnum? Platform { get; set; }
+        /// <summary>Device platform the token was issued for.* `ios` - iOS* `android` - Android* `web` - Web</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserPushTokenItemPlatform? Platform { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserPushTokenItemPlatform Platform { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.UserPushTokenItem"/> and sets the default values.
         /// </summary>
@@ -50,7 +56,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "last_seen_at", n => { LastSeenAt = n.GetDateTimeOffsetValue(); } },
-                { "platform", n => { Platform = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PushTokenPlatformEnum>(); } },
+                { "platform", n => { Platform = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserPushTokenItemPlatform>(global::Soenneker.PostHog.OpenApiClient.Models.UserPushTokenItemPlatform.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -63,7 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteGuidValue("id", Id);
             writer.WriteDateTimeOffsetValue("last_seen_at", LastSeenAt);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PushTokenPlatformEnum>("platform", Platform);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserPushTokenItemPlatform>("platform", Platform);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

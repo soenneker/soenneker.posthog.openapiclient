@@ -17,8 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>UUID of the evaluation config to summarize</summary>
         public Guid? EvaluationId { get; set; }
-        /// <summary>* `all` - all* `pass` - pass* `fail` - fail* `na` - na</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.FilterEnum? Filter { get; set; }
+        /// <summary>Filter type to apply (&apos;all&apos;, &apos;pass&apos;, &apos;fail&apos;, or &apos;na&apos;)* `all` - all* `pass` - pass* `fail` - fail* `na` - na</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationSummaryRequestFilter? Filter { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationSummaryRequestFilter Filter { get; set; }
+#endif
         /// <summary>If true, bypass cache and generate a fresh summary</summary>
         public bool? ForceRefresh { get; set; }
         /// <summary>&quot;Optional: specific generation IDs to include in summary (max 250)&quot;</summary>
@@ -35,6 +41,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public EvaluationSummaryRequest()
         {
             AdditionalData = new Dictionary<string, object>();
+            ForceRefresh = false;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -55,7 +62,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "evaluation_id", n => { EvaluationId = n.GetGuidValue(); } },
-                { "filter", n => { Filter = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FilterEnum>(); } },
+                { "filter", n => { Filter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationSummaryRequestFilter>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationSummaryRequestFilter.CreateFromDiscriminatorValue); } },
                 { "force_refresh", n => { ForceRefresh = n.GetBoolValue(); } },
                 { "generation_ids", n => { GenerationIds = n.GetCollectionOfPrimitiveValues<Guid?>()?.AsList(); } },
             };
@@ -68,7 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteGuidValue("evaluation_id", EvaluationId);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FilterEnum>("filter", Filter);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationSummaryRequestFilter>("filter", Filter);
             writer.WriteBoolValue("force_refresh", ForceRefresh);
             writer.WriteCollectionOfPrimitiveValues<Guid?>("generation_ids", GenerationIds);
             writer.WriteAdditionalData(AdditionalData);

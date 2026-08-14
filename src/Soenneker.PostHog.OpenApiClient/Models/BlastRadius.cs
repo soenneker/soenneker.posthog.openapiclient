@@ -16,6 +16,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of users matching the filters</summary>
         public int? Affected { get; set; }
+        /// <summary>&quot;Proof this audience was previewed: pass it to the batch dispatch (confirm_token) after echoing &apos;affected&apos; to the user. Signs these exact filters; expires in 15 minutes.&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ConfirmToken { get; set; }
+#nullable restore
+#else
+        public string ConfirmToken { get; set; }
+#endif
+        /// <summary>The dedupe key that was actually applied to &apos;affected&apos;. &apos;email&apos; means it counts unique email addresses; null means it counts persons.* `email` - email</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusDedupeKey? DedupeKey { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusDedupeKey DedupeKey { get; set; }
+#endif
+        /// <summary>Maximum allowed audience size for batch triggers for this team.</summary>
+        public int? Limit { get; set; }
         /// <summary>Total number of users</summary>
         public int? Total { get; set; }
         /// <summary>
@@ -44,6 +62,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "affected", n => { Affected = n.GetIntValue(); } },
+                { "confirm_token", n => { ConfirmToken = n.GetStringValue(); } },
+                { "dedupe_key", n => { DedupeKey = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusDedupeKey>(global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusDedupeKey.CreateFromDiscriminatorValue); } },
+                { "limit", n => { Limit = n.GetIntValue(); } },
                 { "total", n => { Total = n.GetIntValue(); } },
             };
         }
@@ -55,6 +76,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("affected", Affected);
+            writer.WriteStringValue("confirm_token", ConfirmToken);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusDedupeKey>("dedupe_key", DedupeKey);
+            writer.WriteIntValue("limit", Limit);
             writer.WriteIntValue("total", Total);
             writer.WriteAdditionalData(AdditionalData);
         }

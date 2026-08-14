@@ -3,16 +3,25 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Alerts;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Anomalies;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Attributes;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Count;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.CountRanges;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.ExplainLogWithAI;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Export;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Facet_values;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.GroupBy;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Has_logs;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Metric_rules;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Patterns;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Patterns_diff;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Query;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Retention_rules;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Sampling_rules;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Services;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Sparkline;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Values;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Views;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -20,7 +29,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\logs
+    /// Builds and executes requests for operations under \api\projects\{projectId}\logs
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class LogsRequestBuilder : BaseRequestBuilder
@@ -29,6 +38,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Alerts.AlertsRequestBuilder Alerts
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Alerts.AlertsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The anomalies property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Anomalies.AnomaliesRequestBuilder Anomalies
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Anomalies.AnomaliesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The attributes property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Attributes.AttributesRequestBuilder Attributes
@@ -45,20 +59,55 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.CountRanges.CountRangesRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The explainLogWithAI property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.ExplainLogWithAI.ExplainLogWithAIRequestBuilder ExplainLogWithAI
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.ExplainLogWithAI.ExplainLogWithAIRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The export property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Export.ExportRequestBuilder Export
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Export.ExportRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The facet_values property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Facet_values.Facet_valuesRequestBuilder Facet_values
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Facet_values.Facet_valuesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The groupBy property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.GroupBy.GroupByRequestBuilder GroupBy
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.GroupBy.GroupByRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The has_logs property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Has_logs.Has_logsRequestBuilder Has_logs
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Has_logs.Has_logsRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The metric_rules property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Metric_rules.Metric_rulesRequestBuilder Metric_rules
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Metric_rules.Metric_rulesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The patterns property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Patterns.PatternsRequestBuilder Patterns
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Patterns.PatternsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The patterns_diff property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Patterns_diff.Patterns_diffRequestBuilder Patterns_diff
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Patterns_diff.Patterns_diffRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The query property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Query.QueryRequestBuilder Query
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Query.QueryRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The retention_rules property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Retention_rules.Retention_rulesRequestBuilder Retention_rules
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Retention_rules.Retention_rulesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The sampling_rules property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Sampling_rules.Sampling_rulesRequestBuilder Sampling_rules
@@ -80,12 +129,17 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Values.ValuesRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The views property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Views.ViewsRequestBuilder Views
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Views.ViewsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.LogsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public LogsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/logs", pathParameters)
+        public LogsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/logs", pathParameters)
         {
         }
         /// <summary>
@@ -93,7 +147,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public LogsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/logs", rawUrl)
+        public LogsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/logs", rawUrl)
         {
         }
     }

@@ -15,7 +15,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_modeling_jobs
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\data_modeling_jobs
+    /// Builds and executes requests for operations under \api\projects\{projectId}\data_modeling_jobs
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Data_modeling_jobsRequestBuilder : BaseRequestBuilder
@@ -47,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_modeling_jobs
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Data_modeling_jobsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/data_modeling_jobs{?cursor*,limit*,saved_query_id*}", pathParameters)
+        public Data_modeling_jobsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_modeling_jobs{?limit*,offset*,saved_query_id*}", pathParameters)
         {
         }
         /// <summary>
@@ -55,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_modeling_jobs
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Data_modeling_jobsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/data_modeling_jobs{?cursor*,limit*,saved_query_id*}", rawUrl)
+        public Data_modeling_jobsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_modeling_jobs{?limit*,offset*,saved_query_id*}", rawUrl)
         {
         }
         /// <summary>
@@ -110,19 +110,12 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_modeling_jobs
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Data_modeling_jobsRequestBuilderGetQueryParameters 
         {
-            /// <summary>The pagination cursor value.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            [QueryParameter("cursor")]
-            public string? Cursor { get; set; }
-#nullable restore
-#else
-            [QueryParameter("cursor")]
-            public string Cursor { get; set; }
-#endif
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
+            /// <summary>The initial index from which to return the results.</summary>
+            [QueryParameter("offset")]
+            public int? Offset { get; set; }
             [QueryParameter("saved_query_id")]
             public Guid? SavedQueryId { get; set; }
         }

@@ -9,12 +9,9 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Batch_by_uuids;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Bulk_delete;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Cohorts;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Deletion_status;
-using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Funnel;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Item;
-using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Lifecycle;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Properties_at_time;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Reset_person_distinct_id;
-using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Trends;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Values;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -25,7 +22,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\persons
+    /// Builds and executes requests for operations under \api\projects\{projectId}\persons
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PersonsRequestBuilder : BaseRequestBuilder
@@ -60,16 +57,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Deletion_status.Deletion_statusRequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>The funnel property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Funnel.FunnelRequestBuilder Funnel
-        {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Funnel.FunnelRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The lifecycle property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Lifecycle.LifecycleRequestBuilder Lifecycle
-        {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Lifecycle.LifecycleRequestBuilder(PathParameters, RequestAdapter);
-        }
         /// <summary>The properties_at_time property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Properties_at_time.Properties_at_timeRequestBuilder Properties_at_time
         {
@@ -79,11 +66,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Reset_person_distinct_id.Reset_person_distinct_idRequestBuilder Reset_person_distinct_id
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Reset_person_distinct_id.Reset_person_distinct_idRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The trends property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Trends.TrendsRequestBuilder Trends
-        {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Trends.TrendsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The values property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Values.ValuesRequestBuilder Values
@@ -107,7 +89,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public PersonsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/persons{?distinct_id*,email*,format*,limit*,offset*,properties*,search*}", pathParameters)
+        public PersonsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/persons{?distinct_id*,email*,format*,limit*,offset*,properties*,search*}", pathParameters)
         {
         }
         /// <summary>
@@ -115,7 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public PersonsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/persons{?distinct_id*,email*,format*,limit*,offset*,properties*,search*}", rawUrl)
+        public PersonsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/persons{?distinct_id*,email*,format*,limit*,offset*,properties*,search*}", rawUrl)
         {
         }
         /// <summary>
@@ -191,7 +173,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons
             public string Email { get; set; }
 #endif
             [QueryParameter("format")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.GetFormatQueryParameterType? Format { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.PersonsListFormatParameter? Format { get; set; }
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }

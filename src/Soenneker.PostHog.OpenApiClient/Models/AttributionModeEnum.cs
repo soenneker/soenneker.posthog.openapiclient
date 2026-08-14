@@ -9,11 +9,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "first_touch")]
         #pragma warning disable CS1591
-        First_touch,
+        FirstTouch,
         #pragma warning restore CS1591
         [EnumMember(Value = "last_touch")]
         #pragma warning disable CS1591
-        Last_touch,
+        LastTouch,
         #pragma warning restore CS1591
         [EnumMember(Value = "linear")]
         #pragma warning disable CS1591
@@ -21,11 +21,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "time_decay")]
         #pragma warning disable CS1591
-        Time_decay,
+        TimeDecay,
         #pragma warning restore CS1591
         [EnumMember(Value = "position_based")]
         #pragma warning disable CS1591
-        Position_based,
+        PositionBased,
         #pragma warning restore CS1591
     }
 }

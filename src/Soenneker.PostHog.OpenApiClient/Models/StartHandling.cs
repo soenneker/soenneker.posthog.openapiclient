@@ -10,11 +10,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "first_seen")]
         #pragma warning disable CS1591
-        First_seen,
+        FirstSeen,
         #pragma warning restore CS1591
         [EnumMember(Value = "last_seen")]
         #pragma warning disable CS1591
-        Last_seen,
+        LastSeen,
         #pragma warning restore CS1591
     }
 }

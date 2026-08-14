@@ -25,10 +25,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Normalized sampled exception event properties.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingEvent_properties? Properties { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingEventPropertiesProperty? Properties { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingEvent_properties Properties { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingEventPropertiesProperty Properties { get; set; }
 #endif
         /// <summary>Event timestamp.</summary>
         public DateTimeOffset? Timestamp { get; set; }
@@ -66,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "distinct_id", n => { DistinctId = n.GetStringValue(); } },
-                { "properties", n => { Properties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingEvent_properties>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingEvent_properties.CreateFromDiscriminatorValue); } },
+                { "properties", n => { Properties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingEventPropertiesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingEventPropertiesProperty.CreateFromDiscriminatorValue); } },
                 { "timestamp", n => { Timestamp = n.GetDateTimeOffsetValue(); } },
                 { "uuid", n => { Uuid = n.GetStringValue(); } },
             };
@@ -79,7 +79,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("distinct_id", DistinctId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingEvent_properties>("properties", Properties);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingEventPropertiesProperty>("properties", Properties);
             writer.WriteDateTimeOffsetValue("timestamp", Timestamp);
             writer.WriteStringValue("uuid", Uuid);
             writer.WriteAdditionalData(AdditionalData);

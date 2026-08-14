@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Per-service aggregates, ordered by log_count descending. Capped at 25 services.</summary>
+        /// <summary>Per-service aggregates, ordered by log_count descending. Capped at 1000 services.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregate>? Services { get; set; }
@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregate> Services { get; set; }
 #endif
-        /// <summary>Time-bucketed counts broken down by service, for plotting volume over time.</summary>
+        /// <summary>Time-bucketed counts broken down by service, for plotting volume over time. Covers only the top 25 services in this response; re-request with `serviceNames` to get sparklines for specific services.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesSparklineBucket>? Sparkline { get; set; }
@@ -33,11 +33,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Roll-up stats for the Services tab header.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponse_summary? Summary { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseSummary? Summary { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponse_summary Summary { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseSummary Summary { get; set; }
 #endif
+        /// <summary>True distinct service count for the window and filters, unaffected by the 1000-service cap on `services`. Greater than the length of `services` when the response is truncated.</summary>
+        public int? TotalServices { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponse"/> and sets the default values.
         /// </summary>
@@ -65,7 +67,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "services", n => { Services = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregate>(global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregate.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "sparkline", n => { Sparkline = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesSparklineBucket>(global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesSparklineBucket.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "summary", n => { Summary = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponse_summary>(global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponse_summary.CreateFromDiscriminatorValue); } },
+                { "summary", n => { Summary = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseSummary>(global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseSummary.CreateFromDiscriminatorValue); } },
+                { "total_services", n => { TotalServices = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -77,7 +80,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregate>("services", Services);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesSparklineBucket>("sparkline", Sparkline);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponse_summary>("summary", Summary);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseSummary>("summary", Summary);
+            writer.WriteIntValue("total_services", TotalServices);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

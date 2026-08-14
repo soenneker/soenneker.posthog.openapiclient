@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `anthropic` - Anthropic* `apns` - Apple Push* `azure-blob` - Azure Blob* `bing-ads` - Bing Ads* `clickup` - Clickup* `customerio-app` - Customerio App* `customerio-track` - Customerio Track* `customerio-webhook` - Customerio Webhook* `databricks` - Databricks* `email` - Email* `firebase` - Firebase* `github` - Github* `gitlab` - Gitlab* `google-ads` - Google Ads* `google-cloud-service-account` - Google Cloud Service Account* `google-cloud-storage` - Google Cloud Storage* `google-pubsub` - Google Pubsub* `google-sheets` - Google Sheets* `hubspot` - Hubspot* `intercom` - Intercom* `jira` - Jira* `linear` - Linear* `linkedin-ads` - Linkedin Ads* `meta-ads` - Meta Ads* `pinterest-ads` - Pinterest Ads* `postgresql` - Postgresql* `reddit-ads` - Reddit Ads* `salesforce` - Salesforce* `slack` - Slack* `slack-posthog-code` - Slack Posthog Code* `snapchat` - Snapchat* `stripe` - Stripe* `tiktok-ads` - Tiktok Ads* `twilio` - Twilio* `vercel` - Vercel</summary>
+    /// <summary>* `anthropic` - Anthropic* `apns` - Apple Push* `aws-redshift` - Aws Redshift* `aws-s3` - Aws S3* `azure-blob` - Azure Blob* `bing-ads` - Bing Ads* `clickup` - Clickup* `customerio-app` - Customerio App* `customerio-track` - Customerio Track* `customerio-webhook` - Customerio Webhook* `databricks` - Databricks* `email` - Email* `firebase` - Firebase* `github` - Github* `gitlab` - Gitlab* `google-ads` - Google Ads* `google-analytics` - Google Analytics* `google-calendar` - Google Calendar* `google-cloud-service-account` - Google Cloud Service Account* `google-cloud-storage` - Google Cloud Storage* `google-pubsub` - Google Pubsub* `google-search-console` - Google Search Console* `google-sheets` - Google Sheets* `hubspot` - Hubspot* `instagram` - Instagram* `intercom` - Intercom* `jira` - Jira* `linear` - Linear* `linkedin-ads` - Linkedin Ads* `meta-ads` - Meta Ads* `pardot` - Pardot* `pinterest-ads` - Pinterest Ads* `postgresql` - Postgresql* `posthog` - Posthog* `reddit-ads` - Reddit Ads* `resend` - Resend* `s3-compatible` - S3 Compatible* `salesforce` - Salesforce* `slack` - Slack* `slack-posthog-code` - Slack Posthog Code* `snapchat` - Snapchat* `snowflake` - Snowflake* `stripe` - Stripe* `tiktok-ads` - Tiktok Ads* `twilio` - Twilio* `vercel` - Vercel</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum IntegrationKindEnum
     {
@@ -14,6 +14,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "apns")]
         #pragma warning disable CS1591
         Apns,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "aws-redshift")]
+        #pragma warning disable CS1591
+        AwsRedshift,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "aws-s3")]
+        #pragma warning disable CS1591
+        AwsS3,
         #pragma warning restore CS1591
         [EnumMember(Value = "azure-blob")]
         #pragma warning disable CS1591
@@ -63,6 +71,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         GoogleAds,
         #pragma warning restore CS1591
+        [EnumMember(Value = "google-analytics")]
+        #pragma warning disable CS1591
+        GoogleAnalytics,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "google-calendar")]
+        #pragma warning disable CS1591
+        GoogleCalendar,
+        #pragma warning restore CS1591
         [EnumMember(Value = "google-cloud-service-account")]
         #pragma warning disable CS1591
         GoogleCloudServiceAccount,
@@ -75,6 +91,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         GooglePubsub,
         #pragma warning restore CS1591
+        [EnumMember(Value = "google-search-console")]
+        #pragma warning disable CS1591
+        GoogleSearchConsole,
+        #pragma warning restore CS1591
         [EnumMember(Value = "google-sheets")]
         #pragma warning disable CS1591
         GoogleSheets,
@@ -82,6 +102,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "hubspot")]
         #pragma warning disable CS1591
         Hubspot,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "instagram")]
+        #pragma warning disable CS1591
+        Instagram,
         #pragma warning restore CS1591
         [EnumMember(Value = "intercom")]
         #pragma warning disable CS1591
@@ -103,6 +127,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         MetaAds,
         #pragma warning restore CS1591
+        [EnumMember(Value = "pardot")]
+        #pragma warning disable CS1591
+        Pardot,
+        #pragma warning restore CS1591
         [EnumMember(Value = "pinterest-ads")]
         #pragma warning disable CS1591
         PinterestAds,
@@ -111,9 +139,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         Postgresql,
         #pragma warning restore CS1591
+        [EnumMember(Value = "posthog")]
+        #pragma warning disable CS1591
+        Posthog,
+        #pragma warning restore CS1591
         [EnumMember(Value = "reddit-ads")]
         #pragma warning disable CS1591
         RedditAds,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "resend")]
+        #pragma warning disable CS1591
+        Resend,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "s3-compatible")]
+        #pragma warning disable CS1591
+        S3Compatible,
         #pragma warning restore CS1591
         [EnumMember(Value = "salesforce")]
         #pragma warning disable CS1591
@@ -130,6 +170,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "snapchat")]
         #pragma warning disable CS1591
         Snapchat,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "snowflake")]
+        #pragma warning disable CS1591
+        Snowflake,
         #pragma warning restore CS1591
         [EnumMember(Value = "stripe")]
         #pragma warning disable CS1591

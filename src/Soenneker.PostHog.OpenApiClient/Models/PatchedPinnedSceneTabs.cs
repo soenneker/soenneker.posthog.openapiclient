@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Tab descriptor for the user&apos;s chosen home page — the destination opened when they click the PostHog logo or hit `/`. Set to a tab descriptor to pick a homepage, send `null` or `{}` to clear it and fall back to the project default.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPinnedSceneTabs_homepage? Homepage { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPinnedSceneTabsHomepage? Homepage { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPinnedSceneTabs_homepage Homepage { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPinnedSceneTabsHomepage Homepage { get; set; }
 #endif
         /// <summary>Ordered list of pinned navigation tabs shown in the sidebar for the authenticated user within the current team. Send the full list to replace the existing pins; omit to leave them unchanged.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -55,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "homepage", n => { Homepage = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPinnedSceneTabs_homepage>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedPinnedSceneTabs_homepage.CreateFromDiscriminatorValue); } },
+                { "homepage", n => { Homepage = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPinnedSceneTabsHomepage>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedPinnedSceneTabsHomepage.CreateFromDiscriminatorValue); } },
                 { "tabs", n => { Tabs = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PinnedSceneTab>(global::Soenneker.PostHog.OpenApiClient.Models.PinnedSceneTab.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -66,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPinnedSceneTabs_homepage>("homepage", Homepage);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPinnedSceneTabsHomepage>("homepage", Homepage);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PinnedSceneTab>("tabs", Tabs);
             writer.WriteAdditionalData(AdditionalData);
         }

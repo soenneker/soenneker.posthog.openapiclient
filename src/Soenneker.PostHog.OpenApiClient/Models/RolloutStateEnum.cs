@@ -9,11 +9,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "fully_rolled_out")]
         #pragma warning disable CS1591
-        Fully_rolled_out,
+        FullyRolledOut,
         #pragma warning restore CS1591
         [EnumMember(Value = "not_rolled_out")]
         #pragma warning disable CS1591
-        Not_rolled_out,
+        NotRolledOut,
         #pragma warning restore CS1591
         [EnumMember(Value = "partial")]
         #pragma warning disable CS1591

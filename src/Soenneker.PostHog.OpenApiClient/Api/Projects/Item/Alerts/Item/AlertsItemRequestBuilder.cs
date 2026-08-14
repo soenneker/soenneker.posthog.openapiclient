@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Alerts.Item.TestDelivery;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -12,17 +13,22 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Alerts.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\alerts\{id}
+    /// Builds and executes requests for operations under \api\projects\{projectId}\alerts\{id}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AlertsItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The testDelivery property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Alerts.Item.TestDelivery.TestDeliveryRequestBuilder TestDelivery
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Alerts.Item.TestDelivery.TestDeliveryRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Alerts.Item.AlertsItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AlertsItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/alerts/{id}{?checks_date_from*,checks_date_to*,checks_limit*,checks_offset*}", pathParameters)
+        public AlertsItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/alerts/{id}{?checks_date_from*,checks_date_to*,checks_limit*,checks_offset*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +36,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Alerts.Item
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AlertsItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/alerts/{id}{?checks_date_from*,checks_date_to*,checks_limit*,checks_offset*}", rawUrl)
+        public AlertsItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/alerts/{id}{?checks_date_from*,checks_date_to*,checks_limit*,checks_offset*}", rawUrl)
         {
         }
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>

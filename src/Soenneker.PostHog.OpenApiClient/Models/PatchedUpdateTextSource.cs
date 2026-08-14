@@ -8,13 +8,15 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// PATCH payload for text sources. Both fields optional, at least onerequired. `text` triggers a re-chunk; `name` alone does not.
+    /// PATCH payload for text sources. All fields optional, at least onerequired. `text` triggers a re-chunk; `name` or `always_include` alone does not.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedUpdateTextSource : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>When true, this source&apos;s content is injected into every support reply prompt as general context.</summary>
+        public bool? AlwaysInclude { get; set; }
         /// <summary>New human label for the source.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -56,6 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "always_include", n => { AlwaysInclude = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "text", n => { Text = n.GetStringValue(); } },
             };
@@ -67,6 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteBoolValue("always_include", AlwaysInclude);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("text", Text);
             writer.WriteAdditionalData(AdditionalData);

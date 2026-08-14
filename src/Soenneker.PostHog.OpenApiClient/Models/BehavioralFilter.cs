@@ -15,34 +15,34 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The bytecode property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_bytecode? Bytecode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterBytecode? Bytecode { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_bytecode Bytecode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterBytecode Bytecode { get; set; }
 #endif
         /// <summary>The bytecode_error property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_bytecode_error? BytecodeError { get; set; }
+        public string? BytecodeError { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_bytecode_error BytecodeError { get; set; }
+        public string BytecodeError { get; set; }
 #endif
         /// <summary>The conditionHash property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_conditionHash? ConditionHash { get; set; }
+        public string? ConditionHash { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_conditionHash ConditionHash { get; set; }
+        public string ConditionHash { get; set; }
 #endif
         /// <summary>The event_filters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_event_filters? EventFilters { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterEventFiltersAnyOf1Item>? EventFilters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_event_filters EventFilters { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterEventFiltersAnyOf1Item> EventFilters { get; set; }
 #endif
         /// <summary>The event_type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -55,111 +55,87 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The explicit_datetime property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_explicit_datetime? ExplicitDatetime { get; set; }
+        public string? ExplicitDatetime { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_explicit_datetime ExplicitDatetime { get; set; }
+        public string ExplicitDatetime { get; set; }
 #endif
         /// <summary>The explicit_datetime_to property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_explicit_datetime_to? ExplicitDatetimeTo { get; set; }
+        public string? ExplicitDatetimeTo { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_explicit_datetime_to ExplicitDatetimeTo { get; set; }
+        public string ExplicitDatetimeTo { get; set; }
 #endif
         /// <summary>The key property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.Key? Key { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterKey? Key { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.Key Key { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterKey Key { get; set; }
 #endif
         /// <summary>The min_periods property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_min_periods? MinPeriods { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_min_periods MinPeriods { get; set; }
-#endif
+        public int? MinPeriods { get; set; }
         /// <summary>The negation property</summary>
         public bool? Negation { get; set; }
         /// <summary>The operator property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_operator? Operator { get; set; }
+        public string? Operator { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_operator Operator { get; set; }
+        public string Operator { get; set; }
 #endif
         /// <summary>The operator_value property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_operator_value? OperatorValue { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_operator_value OperatorValue { get; set; }
-#endif
+        public int? OperatorValue { get; set; }
         /// <summary>The seq_event property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_seq_event? SeqEvent { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterSeqEvent? SeqEvent { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_seq_event SeqEvent { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterSeqEvent SeqEvent { get; set; }
 #endif
         /// <summary>The seq_event_type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_seq_event_type? SeqEventType { get; set; }
+        public string? SeqEventType { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_seq_event_type SeqEventType { get; set; }
+        public string SeqEventType { get; set; }
 #endif
         /// <summary>The seq_time_interval property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_seq_time_interval? SeqTimeInterval { get; set; }
+        public string? SeqTimeInterval { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_seq_time_interval SeqTimeInterval { get; set; }
+        public string SeqTimeInterval { get; set; }
 #endif
         /// <summary>The seq_time_value property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_seq_time_value? SeqTimeValue { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_seq_time_value SeqTimeValue { get; set; }
-#endif
+        public int? SeqTimeValue { get; set; }
         /// <summary>The time_interval property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_time_interval? TimeInterval { get; set; }
+        public string? TimeInterval { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_time_interval TimeInterval { get; set; }
+        public string TimeInterval { get; set; }
 #endif
         /// <summary>The time_value property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_time_value? TimeValue { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_time_value TimeValue { get; set; }
-#endif
+        public int? TimeValue { get; set; }
         /// <summary>The total_periods property</summary>
+        public int? TotalPeriods { get; set; }
+        /// <summary>The type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_total_periods? TotalPeriods { get; set; }
+        public string? Type { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_total_periods TotalPeriods { get; set; }
+        public string Type { get; set; }
 #endif
-        /// <summary>The type property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_type? Type { get; set; }
         /// <summary>The value property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -168,6 +144,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Value { get; set; }
 #endif
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter"/> and sets the default values.
+        /// </summary>
+        public BehavioralFilter()
+        {
+            Negation = false;
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -186,26 +169,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "bytecode", n => { Bytecode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_bytecode>(global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_bytecode.CreateFromDiscriminatorValue); } },
-                { "bytecode_error", n => { BytecodeError = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_bytecode_error>(global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_bytecode_error.CreateFromDiscriminatorValue); } },
-                { "conditionHash", n => { ConditionHash = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_conditionHash>(global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_conditionHash.CreateFromDiscriminatorValue); } },
-                { "event_filters", n => { EventFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_event_filters>(global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_event_filters.CreateFromDiscriminatorValue); } },
+                { "bytecode", n => { Bytecode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterBytecode>(global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterBytecode.CreateFromDiscriminatorValue); } },
+                { "bytecode_error", n => { BytecodeError = n.GetStringValue(); } },
+                { "conditionHash", n => { ConditionHash = n.GetStringValue(); } },
+                { "event_filters", n => { EventFilters = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterEventFiltersAnyOf1Item>(global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterEventFiltersAnyOf1Item.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "event_type", n => { EventType = n.GetStringValue(); } },
-                { "explicit_datetime", n => { ExplicitDatetime = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_explicit_datetime>(global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_explicit_datetime.CreateFromDiscriminatorValue); } },
-                { "explicit_datetime_to", n => { ExplicitDatetimeTo = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_explicit_datetime_to>(global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_explicit_datetime_to.CreateFromDiscriminatorValue); } },
-                { "key", n => { Key = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Key>(global::Soenneker.PostHog.OpenApiClient.Models.Key.CreateFromDiscriminatorValue); } },
-                { "min_periods", n => { MinPeriods = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_min_periods>(global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_min_periods.CreateFromDiscriminatorValue); } },
+                { "explicit_datetime", n => { ExplicitDatetime = n.GetStringValue(); } },
+                { "explicit_datetime_to", n => { ExplicitDatetimeTo = n.GetStringValue(); } },
+                { "key", n => { Key = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterKey>(global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterKey.CreateFromDiscriminatorValue); } },
+                { "min_periods", n => { MinPeriods = n.GetIntValue(); } },
                 { "negation", n => { Negation = n.GetBoolValue(); } },
-                { "operator", n => { Operator = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_operator>(global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_operator.CreateFromDiscriminatorValue); } },
-                { "operator_value", n => { OperatorValue = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_operator_value>(global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_operator_value.CreateFromDiscriminatorValue); } },
-                { "seq_event", n => { SeqEvent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_seq_event>(global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_seq_event.CreateFromDiscriminatorValue); } },
-                { "seq_event_type", n => { SeqEventType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_seq_event_type>(global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_seq_event_type.CreateFromDiscriminatorValue); } },
-                { "seq_time_interval", n => { SeqTimeInterval = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_seq_time_interval>(global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_seq_time_interval.CreateFromDiscriminatorValue); } },
-                { "seq_time_value", n => { SeqTimeValue = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_seq_time_value>(global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_seq_time_value.CreateFromDiscriminatorValue); } },
-                { "time_interval", n => { TimeInterval = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_time_interval>(global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_time_interval.CreateFromDiscriminatorValue); } },
-                { "time_value", n => { TimeValue = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_time_value>(global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_time_value.CreateFromDiscriminatorValue); } },
-                { "total_periods", n => { TotalPeriods = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_total_periods>(global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_total_periods.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_type>(); } },
+                { "operator", n => { Operator = n.GetStringValue(); } },
+                { "operator_value", n => { OperatorValue = n.GetIntValue(); } },
+                { "seq_event", n => { SeqEvent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterSeqEvent>(global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterSeqEvent.CreateFromDiscriminatorValue); } },
+                { "seq_event_type", n => { SeqEventType = n.GetStringValue(); } },
+                { "seq_time_interval", n => { SeqTimeInterval = n.GetStringValue(); } },
+                { "seq_time_value", n => { SeqTimeValue = n.GetIntValue(); } },
+                { "time_interval", n => { TimeInterval = n.GetStringValue(); } },
+                { "time_value", n => { TimeValue = n.GetIntValue(); } },
+                { "total_periods", n => { TotalPeriods = n.GetIntValue(); } },
+                { "type", n => { Type = n.GetStringValue(); } },
                 { "value", n => { Value = n.GetStringValue(); } },
             };
         }
@@ -216,26 +199,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_bytecode>("bytecode", Bytecode);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_bytecode_error>("bytecode_error", BytecodeError);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_conditionHash>("conditionHash", ConditionHash);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_event_filters>("event_filters", EventFilters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterBytecode>("bytecode", Bytecode);
+            writer.WriteStringValue("bytecode_error", BytecodeError);
+            writer.WriteStringValue("conditionHash", ConditionHash);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterEventFiltersAnyOf1Item>("event_filters", EventFilters);
             writer.WriteStringValue("event_type", EventType);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_explicit_datetime>("explicit_datetime", ExplicitDatetime);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_explicit_datetime_to>("explicit_datetime_to", ExplicitDatetimeTo);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Key>("key", Key);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_min_periods>("min_periods", MinPeriods);
+            writer.WriteStringValue("explicit_datetime", ExplicitDatetime);
+            writer.WriteStringValue("explicit_datetime_to", ExplicitDatetimeTo);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterKey>("key", Key);
+            writer.WriteIntValue("min_periods", MinPeriods);
             writer.WriteBoolValue("negation", Negation);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_operator>("operator", Operator);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_operator_value>("operator_value", OperatorValue);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_seq_event>("seq_event", SeqEvent);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_seq_event_type>("seq_event_type", SeqEventType);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_seq_time_interval>("seq_time_interval", SeqTimeInterval);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_seq_time_value>("seq_time_value", SeqTimeValue);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_time_interval>("time_interval", TimeInterval);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_time_value>("time_value", TimeValue);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_total_periods>("total_periods", TotalPeriods);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter_type>("type", Type);
+            writer.WriteStringValue("operator", Operator);
+            writer.WriteIntValue("operator_value", OperatorValue);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterSeqEvent>("seq_event", SeqEvent);
+            writer.WriteStringValue("seq_event_type", SeqEventType);
+            writer.WriteStringValue("seq_time_interval", SeqTimeInterval);
+            writer.WriteIntValue("seq_time_value", SeqTimeValue);
+            writer.WriteStringValue("time_interval", TimeInterval);
+            writer.WriteIntValue("time_value", TimeValue);
+            writer.WriteIntValue("total_periods", TotalPeriods);
+            writer.WriteStringValue("type", Type);
             writer.WriteStringValue("value", Value);
         }
     }

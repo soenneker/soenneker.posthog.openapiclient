@@ -41,10 +41,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Survey-level translation patch keyed by language.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.GenerateSurveyTranslationsResponse_translations? Translations { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.GenerateSurveyTranslationsResponseTranslationsProperty? Translations { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.GenerateSurveyTranslationsResponse_translations Translations { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.GenerateSurveyTranslationsResponseTranslationsProperty Translations { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.GenerateSurveyTranslationsResponse"/> and sets the default values.
@@ -74,7 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "generated_field_paths", n => { GeneratedFieldPaths = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "questions", n => { Questions = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GeneratedSurveyQuestionTranslationPatch>(global::Soenneker.PostHog.OpenApiClient.Models.GeneratedSurveyQuestionTranslationPatch.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "trace_id", n => { TraceId = n.GetStringValue(); } },
-                { "translations", n => { Translations = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GenerateSurveyTranslationsResponse_translations>(global::Soenneker.PostHog.OpenApiClient.Models.GenerateSurveyTranslationsResponse_translations.CreateFromDiscriminatorValue); } },
+                { "translations", n => { Translations = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GenerateSurveyTranslationsResponseTranslationsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.GenerateSurveyTranslationsResponseTranslationsProperty.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -87,7 +87,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("generated_field_paths", GeneratedFieldPaths);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GeneratedSurveyQuestionTranslationPatch>("questions", Questions);
             writer.WriteStringValue("trace_id", TraceId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GenerateSurveyTranslationsResponse_translations>("translations", Translations);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GenerateSurveyTranslationsResponseTranslationsProperty>("translations", Translations);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

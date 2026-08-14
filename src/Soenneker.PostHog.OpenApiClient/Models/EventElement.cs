@@ -25,10 +25,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The attributes property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EventElement_attributes? Attributes { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EventElementAttributes? Attributes { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EventElement_attributes Attributes { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EventElementAttributes Attributes { get; set; }
 #endif
         /// <summary>The attr_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -103,7 +103,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "attr_class", n => { AttrClass = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "attr_id", n => { AttrId = n.GetStringValue(); } },
-                { "attributes", n => { Attributes = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventElement_attributes>(global::Soenneker.PostHog.OpenApiClient.Models.EventElement_attributes.CreateFromDiscriminatorValue); } },
+                { "attributes", n => { Attributes = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventElementAttributes>(global::Soenneker.PostHog.OpenApiClient.Models.EventElementAttributes.CreateFromDiscriminatorValue); } },
                 { "event", n => { Event = n.GetStringValue(); } },
                 { "href", n => { Href = n.GetStringValue(); } },
                 { "nth_child", n => { NthChild = n.GetIntValue(); } },
@@ -121,7 +121,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("attr_class", AttrClass);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventElement_attributes>("attributes", Attributes);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventElementAttributes>("attributes", Attributes);
             writer.WriteStringValue("attr_id", AttrId);
             writer.WriteStringValue("event", Event);
             writer.WriteStringValue("href", Href);

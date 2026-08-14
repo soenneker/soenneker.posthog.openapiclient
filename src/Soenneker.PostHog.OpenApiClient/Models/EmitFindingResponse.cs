@@ -24,6 +24,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string FindingId { get; set; }
 #endif
+        /// <summary>One-line, actionable next step when `skipped_reason` is set and the block is fixable (e.g. an org admin must approve AI data processing). Null when emitted normally or the skip isn&apos;t something the scout can act on.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Remediation { get; set; }
+#nullable restore
+#else
+        public string Remediation { get; set; }
+#endif
         /// <summary>`ai_processing_not_approved` | `source_disabled` | null when emitted normally.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -59,6 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "emitted", n => { Emitted = n.GetBoolValue(); } },
                 { "finding_id", n => { FindingId = n.GetStringValue(); } },
+                { "remediation", n => { Remediation = n.GetStringValue(); } },
                 { "skipped_reason", n => { SkippedReason = n.GetStringValue(); } },
             };
         }
@@ -71,6 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("emitted", Emitted);
             writer.WriteStringValue("finding_id", FindingId);
+            writer.WriteStringValue("remediation", Remediation);
             writer.WriteStringValue("skipped_reason", SkippedReason);
             writer.WriteAdditionalData(AdditionalData);
         }

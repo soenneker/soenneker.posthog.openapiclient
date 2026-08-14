@@ -14,6 +14,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Service accounts to share the server with at install time. Available to members when team settings allow member-managed agent access.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<Guid?>? AgentIds { get; set; }
+#nullable restore
+#else
+        public List<Guid?> AgentIds { get; set; }
+#endif
         /// <summary>The api_key property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -48,8 +56,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
-        /// <summary>* `posthog` - posthog* `posthog-code` - posthog-code</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.InstallSourceEnum? InstallSource { get; set; }
+        /// <summary>The install_source property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.InstallCustomInstallSource? InstallSource { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.InstallCustomInstallSource InstallSource { get; set; }
+#endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -66,6 +80,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string PosthogCodeCallbackUrl { get; set; }
 #endif
+        /// <summary>In-app path to land back on after the OAuth round-trip. Must be a same-app relative path.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ReturnPath { get; set; }
+#nullable restore
+#else
+        public string ReturnPath { get; set; }
+#endif
+        /// <summary>&apos;personal&apos; is per-user; &apos;shared&apos; makes the credential available to project members. Agent access is granted separately.* `personal` - personal* `shared` - shared</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.InstallCustomScope? Scope { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.InstallCustomScope Scope { get; set; }
+#endif
+        /// <summary>Whether the server starts enabled for the whole team. Non-default values are admin-only.</summary>
+        public bool? TeamEnabled { get; set; }
         /// <summary>The url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -80,6 +112,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public InstallCustom()
         {
             AdditionalData = new Dictionary<string, object>();
+            TeamEnabled = true;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -99,14 +132,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "agent_ids", n => { AgentIds = n.GetCollectionOfPrimitiveValues<Guid?>()?.AsList(); } },
                 { "api_key", n => { ApiKey = n.GetStringValue(); } },
                 { "auth_type", n => { AuthType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InstallCustomAuthTypeEnum>(); } },
                 { "client_id", n => { ClientId = n.GetStringValue(); } },
                 { "client_secret", n => { ClientSecret = n.GetStringValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
-                { "install_source", n => { InstallSource = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InstallSourceEnum>(); } },
+                { "install_source", n => { InstallSource = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InstallCustomInstallSource>(global::Soenneker.PostHog.OpenApiClient.Models.InstallCustomInstallSource.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "posthog_code_callback_url", n => { PosthogCodeCallbackUrl = n.GetStringValue(); } },
+                { "return_path", n => { ReturnPath = n.GetStringValue(); } },
+                { "scope", n => { Scope = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InstallCustomScope>(global::Soenneker.PostHog.OpenApiClient.Models.InstallCustomScope.CreateFromDiscriminatorValue); } },
+                { "team_enabled", n => { TeamEnabled = n.GetBoolValue(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
             };
         }
@@ -117,14 +154,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteCollectionOfPrimitiveValues<Guid?>("agent_ids", AgentIds);
             writer.WriteStringValue("api_key", ApiKey);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InstallCustomAuthTypeEnum>("auth_type", AuthType);
             writer.WriteStringValue("client_id", ClientId);
             writer.WriteStringValue("client_secret", ClientSecret);
             writer.WriteStringValue("description", Description);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InstallSourceEnum>("install_source", InstallSource);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InstallCustomInstallSource>("install_source", InstallSource);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("posthog_code_callback_url", PosthogCodeCallbackUrl);
+            writer.WriteStringValue("return_path", ReturnPath);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InstallCustomScope>("scope", Scope);
+            writer.WriteBoolValue("team_enabled", TeamEnabled);
             writer.WriteStringValue("url", Url);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -14,22 +14,38 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The always_include property</summary>
+        public bool? AlwaysInclude { get; private set; }
         /// <summary>Number of chunks belonging to this source.</summary>
         public int? ChunkCount { get; private set; }
         /// <summary>The crawl_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSource_crawl_config? CrawlConfig { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceCrawlConfig? CrawlConfig { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSource_crawl_config CrawlConfig { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceCrawlConfig CrawlConfig { get; private set; }
 #endif
-        /// <summary>* `single` - Single page* `sitemap` - Sitemap* `same_origin` - Same origin crawl* `github_repo` - GitHub repository</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.CrawlModeEnum? CrawlMode { get; set; }
+        /// <summary>The crawl_mode property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceCrawlMode? CrawlMode { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceCrawlMode CrawlMode { get; private set; }
+#endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>Number of documents belonging to this source.</summary>
         public int? DocumentCount { get; private set; }
+        /// <summary>Semantic-index state of this source. A `ready` source serves keyword (full-text) search immediately, but semantic search needs a background job to classify and embed its documents, which can take up to an hour. `pending` — at least one document is still awaiting classification or embedding. `completed` — every eligible document has been submitted to the embedding pipeline. `disabled` — the organization has not approved AI data processing, so embeddings never run and search stays keyword-only. Only meaningful while `status` is `ready`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceEmbeddingStatus? EmbeddingStatus { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceEmbeddingStatus EmbeddingStatus { get; private set; }
+#endif
         /// <summary>The error_message property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -48,6 +64,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The file_size_bytes property</summary>
         public int? FileSizeBytes { get; private set; }
+        /// <summary>True when at least one document in this source was flagged unsafe by the content classifier and is therefore excluded from agent search.</summary>
+        public bool? HasUnsafeDocuments { get; private set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>The last_refresh_at property</summary>
@@ -60,8 +78,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string LastRefreshError { get; private set; }
 #endif
-        /// <summary>* `success` - Success* `not_modified` - Not modified* `error` - Error</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.LastRefreshStatusEnum? LastRefreshStatus { get; set; }
+        /// <summary>The last_refresh_status property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceLastRefreshStatus? LastRefreshStatus { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceLastRefreshStatus LastRefreshStatus { get; private set; }
+#endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -69,6 +93,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string Name { get; private set; }
+#endif
+        /// <summary>When the background coordinator will next auto-refresh this source. Null for manual sources or sources never refreshed.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? NextRefreshAt { get; private set; }
+#nullable restore
+#else
+        public string NextRefreshAt { get; private set; }
 #endif
         /// <summary>The original_filename property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -78,8 +110,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string OriginalFilename { get; private set; }
 #endif
-        /// <summary>* `text` - Text* `url` - URL* `file` - File</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceSourceTypeEnum? SourceType { get; set; }
+        /// <summary>The refresh_interval property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceRefreshInterval? RefreshInterval { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceRefreshInterval RefreshInterval { get; private set; }
+#endif
+        /// <summary>The source_type property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceSourceType? SourceType { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceSourceType SourceType { get; private set; }
+#endif
         /// <summary>The source_url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -88,8 +134,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SourceUrl { get; private set; }
 #endif
-        /// <summary>* `pending` - Pending* `processing` - Processing* `ready` - Ready* `error` - Error</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceStatusEnum? Status { get; set; }
+        /// <summary>The status property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceStatus? Status { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceStatus Status { get; private set; }
+#endif
         /// <summary>The team_id property</summary>
         public int? TeamId { get; private set; }
         /// <summary>The updated_at property</summary>
@@ -100,6 +152,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public KnowledgeSource()
         {
             AdditionalData = new Dictionary<string, object>();
+            ChunkCount = 0;
+            DocumentCount = 0;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -119,23 +173,28 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "always_include", n => { AlwaysInclude = n.GetBoolValue(); } },
                 { "chunk_count", n => { ChunkCount = n.GetIntValue(); } },
-                { "crawl_config", n => { CrawlConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSource_crawl_config>(global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSource_crawl_config.CreateFromDiscriminatorValue); } },
-                { "crawl_mode", n => { CrawlMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CrawlModeEnum>(); } },
+                { "crawl_config", n => { CrawlConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceCrawlConfig>(global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceCrawlConfig.CreateFromDiscriminatorValue); } },
+                { "crawl_mode", n => { CrawlMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceCrawlMode>(global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceCrawlMode.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "document_count", n => { DocumentCount = n.GetIntValue(); } },
+                { "embedding_status", n => { EmbeddingStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceEmbeddingStatus>(global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceEmbeddingStatus.CreateFromDiscriminatorValue); } },
                 { "error_message", n => { ErrorMessage = n.GetStringValue(); } },
                 { "file_content_type", n => { FileContentType = n.GetStringValue(); } },
                 { "file_size_bytes", n => { FileSizeBytes = n.GetIntValue(); } },
+                { "has_unsafe_documents", n => { HasUnsafeDocuments = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "last_refresh_at", n => { LastRefreshAt = n.GetDateTimeOffsetValue(); } },
                 { "last_refresh_error", n => { LastRefreshError = n.GetStringValue(); } },
-                { "last_refresh_status", n => { LastRefreshStatus = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LastRefreshStatusEnum>(); } },
+                { "last_refresh_status", n => { LastRefreshStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceLastRefreshStatus>(global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceLastRefreshStatus.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "next_refresh_at", n => { NextRefreshAt = n.GetStringValue(); } },
                 { "original_filename", n => { OriginalFilename = n.GetStringValue(); } },
-                { "source_type", n => { SourceType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceSourceTypeEnum>(); } },
+                { "refresh_interval", n => { RefreshInterval = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceRefreshInterval>(global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceRefreshInterval.CreateFromDiscriminatorValue); } },
+                { "source_type", n => { SourceType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceSourceType>(global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceSourceType.CreateFromDiscriminatorValue); } },
                 { "source_url", n => { SourceUrl = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceStatusEnum>(); } },
+                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceStatus>(global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceStatus.CreateFromDiscriminatorValue); } },
                 { "team_id", n => { TeamId = n.GetIntValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
@@ -147,10 +206,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CrawlModeEnum>("crawl_mode", CrawlMode);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LastRefreshStatusEnum>("last_refresh_status", LastRefreshStatus);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceSourceTypeEnum>("source_type", SourceType);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceStatusEnum>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

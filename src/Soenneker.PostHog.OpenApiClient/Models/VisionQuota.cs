@@ -14,18 +14,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>True when `usage_this_month &gt;= monthly_quota`; further observations are skipped until next period.</summary>
+        /// <summary>Committed-but-unspent credits of the organization&apos;s active backfills. A one-off charge rather than a rate, so it lands in full regardless of how much of the period is left.</summary>
+        public int? BackfillsCommittedCredits { get; private set; }
+        /// <summary>&quot;Credits the org may spend per billing period (1 credit = $0.01). Null when billing has synced the product with no spend limit: uncapped.&quot;</summary>
+        public int? CreditLimit { get; private set; }
+        /// <summary>&quot;Credits spent this period: succeeded observations from the receipt ledger plus reserved in-flight observations.&quot;</summary>
+        public int? CreditsUsed { get; private set; }
+        /// <summary>True when `credits_used &gt;= credit_limit`; further observations are skipped until next period. Always false when uncapped.</summary>
         public bool? Exhausted { get; private set; }
-        /// <summary>Total observations the org may complete per calendar month.</summary>
-        public int? MonthlyQuota { get; private set; }
+        /// <summary>Credits per period included for free. Already counted inside `credit_limit`; only credits beyond this number are billed.</summary>
+        public int? FreeMonthlyCredits { get; private set; }
         /// <summary>First moment of the next quota period (UTC); the current period&apos;s exclusive upper bound.</summary>
         public DateTimeOffset? PeriodEnd { get; private set; }
         /// <summary>First moment of the current quota period (UTC).</summary>
         public DateTimeOffset? PeriodStart { get; private set; }
-        /// <summary>`monthly_quota - usage_this_month`, floored at 0.</summary>
+        /// <summary>`scanners_monthly_credits` plus `backfills_committed_credits`. Kept as the single headline number; prefer the two components when pro-rating, since only the scanner half is a monthly rate.</summary>
+        public int? ProjectedMonthlyCredits { get; private set; }
+        /// <summary>`credit_limit - credits_used`, floored at 0. Null when uncapped.</summary>
         public int? Remaining { get; private set; }
-        /// <summary>Observations created this month that are in flight or have succeeded, counted against the quota.</summary>
-        public int? UsageThisMonth { get; private set; }
+        /// <summary>&quot;Credit-weighted sum of enabled scanners&apos; projected observations/month across the organization. A monthly rate: only the part falling in the days left of the period lands this period. Scanners without a computed estimate contribute 0.&quot;</summary>
+        public int? ScannersMonthlyCredits { get; private set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.VisionQuota"/> and sets the default values.
         /// </summary>
@@ -51,12 +59,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "backfills_committed_credits", n => { BackfillsCommittedCredits = n.GetIntValue(); } },
+                { "credit_limit", n => { CreditLimit = n.GetIntValue(); } },
+                { "credits_used", n => { CreditsUsed = n.GetIntValue(); } },
                 { "exhausted", n => { Exhausted = n.GetBoolValue(); } },
-                { "monthly_quota", n => { MonthlyQuota = n.GetIntValue(); } },
+                { "free_monthly_credits", n => { FreeMonthlyCredits = n.GetIntValue(); } },
                 { "period_end", n => { PeriodEnd = n.GetDateTimeOffsetValue(); } },
                 { "period_start", n => { PeriodStart = n.GetDateTimeOffsetValue(); } },
+                { "projected_monthly_credits", n => { ProjectedMonthlyCredits = n.GetIntValue(); } },
                 { "remaining", n => { Remaining = n.GetIntValue(); } },
-                { "usage_this_month", n => { UsageThisMonth = n.GetIntValue(); } },
+                { "scanners_monthly_credits", n => { ScannersMonthlyCredits = n.GetIntValue(); } },
             };
         }
         /// <summary>

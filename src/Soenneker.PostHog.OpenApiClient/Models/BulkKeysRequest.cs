@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Feature flag IDs to look up keys for. Strings of digits are also accepted; any other value is reported in the response `warning` field and otherwise ignored.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.BulkKeysRequest_ids>? Ids { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.BulkKeysRequestIdsItem>? Ids { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.BulkKeysRequest_ids> Ids { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.BulkKeysRequestIdsItem> Ids { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BulkKeysRequest"/> and sets the default values.
@@ -47,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "ids", n => { Ids = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.BulkKeysRequest_ids>(global::Soenneker.PostHog.OpenApiClient.Models.BulkKeysRequest_ids.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "ids", n => { Ids = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.BulkKeysRequestIdsItem>(global::Soenneker.PostHog.OpenApiClient.Models.BulkKeysRequestIdsItem.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -57,7 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.BulkKeysRequest_ids>("ids", Ids);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.BulkKeysRequestIdsItem>("ids", Ids);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

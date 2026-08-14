@@ -7,139 +7,112 @@ using System.IO;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
+    /// <summary>
+    /// Properties specific to the paths insight
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class PathsFilter : IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>The edgeLimit property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_edgeLimit? EdgeLimit { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_edgeLimit EdgeLimit { get; set; }
-#endif
+        public int? EdgeLimit { get; set; }
         /// <summary>The endPoint property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_endPoint? EndPoint { get; set; }
+        public string? EndPoint { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_endPoint EndPoint { get; set; }
+        public string EndPoint { get; set; }
 #endif
         /// <summary>The excludeEvents property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_excludeEvents? ExcludeEvents { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathsFilterExcludeEvents? ExcludeEvents { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_excludeEvents ExcludeEvents { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathsFilterExcludeEvents ExcludeEvents { get; set; }
 #endif
         /// <summary>The includeEventTypes property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_includeEventTypes? IncludeEventTypes { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PathType>? IncludeEventTypes { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_includeEventTypes IncludeEventTypes { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PathType> IncludeEventTypes { get; set; }
 #endif
         /// <summary>The localPathCleaningFilters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_localPathCleaningFilters? LocalPathCleaningFilters { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningFilter>? LocalPathCleaningFilters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_localPathCleaningFilters LocalPathCleaningFilters { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningFilter> LocalPathCleaningFilters { get; set; }
 #endif
         /// <summary>The maxEdgeWeight property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_maxEdgeWeight? MaxEdgeWeight { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_maxEdgeWeight MaxEdgeWeight { get; set; }
-#endif
+        public int? MaxEdgeWeight { get; set; }
         /// <summary>The minEdgeWeight property</summary>
+        public int? MinEdgeWeight { get; set; }
+        /// <summary>Relevant only within actors query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_minEdgeWeight? MinEdgeWeight { get; set; }
+        public string? PathDropoffKey { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_minEdgeWeight MinEdgeWeight { get; set; }
+        public string PathDropoffKey { get; set; }
 #endif
         /// <summary>Relevant only within actors query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_pathDropoffKey? PathDropoffKey { get; set; }
+        public string? PathEndKey { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_pathDropoffKey PathDropoffKey { get; set; }
-#endif
-        /// <summary>Relevant only within actors query</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_pathEndKey? PathEndKey { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_pathEndKey PathEndKey { get; set; }
+        public string PathEndKey { get; set; }
 #endif
         /// <summary>The pathGroupings property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_pathGroupings? PathGroupings { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathsFilterPathGroupings? PathGroupings { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_pathGroupings PathGroupings { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathsFilterPathGroupings PathGroupings { get; set; }
 #endif
         /// <summary>The pathReplacements property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_pathReplacements? PathReplacements { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_pathReplacements PathReplacements { get; set; }
-#endif
+        public bool? PathReplacements { get; set; }
         /// <summary>The pathsHogQLExpression property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_pathsHogQLExpression? PathsHogQLExpression { get; set; }
+        public string? PathsHogQLExpression { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_pathsHogQLExpression PathsHogQLExpression { get; set; }
+        public string PathsHogQLExpression { get; set; }
 #endif
         /// <summary>Relevant only within actors query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_pathStartKey? PathStartKey { get; set; }
+        public string? PathStartKey { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_pathStartKey PathStartKey { get; set; }
+        public string PathStartKey { get; set; }
 #endif
         /// <summary>The showFullUrls property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_showFullUrls? ShowFullUrls { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_showFullUrls ShowFullUrls { get; set; }
-#endif
+        public bool? ShowFullUrls { get; set; }
         /// <summary>The startPoint property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_startPoint? StartPoint { get; set; }
+        public string? StartPoint { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_startPoint StartPoint { get; set; }
+        public string StartPoint { get; set; }
 #endif
         /// <summary>The stepLimit property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_stepLimit? StepLimit { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_stepLimit StepLimit { get; set; }
-#endif
+        public int? StepLimit { get; set; }
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter"/> and sets the default values.
+        /// </summary>
+        public PathsFilter()
+        {
+            EdgeLimit = 50;
+            StepLimit = 5;
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -158,22 +131,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "edgeLimit", n => { EdgeLimit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_edgeLimit>(global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_edgeLimit.CreateFromDiscriminatorValue); } },
-                { "endPoint", n => { EndPoint = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_endPoint>(global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_endPoint.CreateFromDiscriminatorValue); } },
-                { "excludeEvents", n => { ExcludeEvents = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_excludeEvents>(global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_excludeEvents.CreateFromDiscriminatorValue); } },
-                { "includeEventTypes", n => { IncludeEventTypes = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_includeEventTypes>(global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_includeEventTypes.CreateFromDiscriminatorValue); } },
-                { "localPathCleaningFilters", n => { LocalPathCleaningFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_localPathCleaningFilters>(global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_localPathCleaningFilters.CreateFromDiscriminatorValue); } },
-                { "maxEdgeWeight", n => { MaxEdgeWeight = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_maxEdgeWeight>(global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_maxEdgeWeight.CreateFromDiscriminatorValue); } },
-                { "minEdgeWeight", n => { MinEdgeWeight = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_minEdgeWeight>(global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_minEdgeWeight.CreateFromDiscriminatorValue); } },
-                { "pathDropoffKey", n => { PathDropoffKey = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_pathDropoffKey>(global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_pathDropoffKey.CreateFromDiscriminatorValue); } },
-                { "pathEndKey", n => { PathEndKey = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_pathEndKey>(global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_pathEndKey.CreateFromDiscriminatorValue); } },
-                { "pathGroupings", n => { PathGroupings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_pathGroupings>(global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_pathGroupings.CreateFromDiscriminatorValue); } },
-                { "pathReplacements", n => { PathReplacements = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_pathReplacements>(global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_pathReplacements.CreateFromDiscriminatorValue); } },
-                { "pathStartKey", n => { PathStartKey = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_pathStartKey>(global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_pathStartKey.CreateFromDiscriminatorValue); } },
-                { "pathsHogQLExpression", n => { PathsHogQLExpression = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_pathsHogQLExpression>(global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_pathsHogQLExpression.CreateFromDiscriminatorValue); } },
-                { "showFullUrls", n => { ShowFullUrls = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_showFullUrls>(global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_showFullUrls.CreateFromDiscriminatorValue); } },
-                { "startPoint", n => { StartPoint = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_startPoint>(global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_startPoint.CreateFromDiscriminatorValue); } },
-                { "stepLimit", n => { StepLimit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_stepLimit>(global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_stepLimit.CreateFromDiscriminatorValue); } },
+                { "edgeLimit", n => { EdgeLimit = n.GetIntValue(); } },
+                { "endPoint", n => { EndPoint = n.GetStringValue(); } },
+                { "excludeEvents", n => { ExcludeEvents = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsFilterExcludeEvents>(global::Soenneker.PostHog.OpenApiClient.Models.PathsFilterExcludeEvents.CreateFromDiscriminatorValue); } },
+                { "includeEventTypes", n => { IncludeEventTypes = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PathType>(global::Soenneker.PostHog.OpenApiClient.Models.PathType.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "localPathCleaningFilters", n => { LocalPathCleaningFilters = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningFilter>(global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningFilter.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "maxEdgeWeight", n => { MaxEdgeWeight = n.GetIntValue(); } },
+                { "minEdgeWeight", n => { MinEdgeWeight = n.GetIntValue(); } },
+                { "pathDropoffKey", n => { PathDropoffKey = n.GetStringValue(); } },
+                { "pathEndKey", n => { PathEndKey = n.GetStringValue(); } },
+                { "pathGroupings", n => { PathGroupings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsFilterPathGroupings>(global::Soenneker.PostHog.OpenApiClient.Models.PathsFilterPathGroupings.CreateFromDiscriminatorValue); } },
+                { "pathReplacements", n => { PathReplacements = n.GetBoolValue(); } },
+                { "pathStartKey", n => { PathStartKey = n.GetStringValue(); } },
+                { "pathsHogQLExpression", n => { PathsHogQLExpression = n.GetStringValue(); } },
+                { "showFullUrls", n => { ShowFullUrls = n.GetBoolValue(); } },
+                { "startPoint", n => { StartPoint = n.GetStringValue(); } },
+                { "stepLimit", n => { StepLimit = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -183,22 +156,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_edgeLimit>("edgeLimit", EdgeLimit);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_endPoint>("endPoint", EndPoint);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_excludeEvents>("excludeEvents", ExcludeEvents);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_includeEventTypes>("includeEventTypes", IncludeEventTypes);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_localPathCleaningFilters>("localPathCleaningFilters", LocalPathCleaningFilters);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_maxEdgeWeight>("maxEdgeWeight", MaxEdgeWeight);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_minEdgeWeight>("minEdgeWeight", MinEdgeWeight);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_pathDropoffKey>("pathDropoffKey", PathDropoffKey);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_pathEndKey>("pathEndKey", PathEndKey);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_pathGroupings>("pathGroupings", PathGroupings);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_pathReplacements>("pathReplacements", PathReplacements);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_pathsHogQLExpression>("pathsHogQLExpression", PathsHogQLExpression);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_pathStartKey>("pathStartKey", PathStartKey);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_showFullUrls>("showFullUrls", ShowFullUrls);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_startPoint>("startPoint", StartPoint);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter_stepLimit>("stepLimit", StepLimit);
+            writer.WriteIntValue("edgeLimit", EdgeLimit);
+            writer.WriteStringValue("endPoint", EndPoint);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsFilterExcludeEvents>("excludeEvents", ExcludeEvents);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PathType>("includeEventTypes", IncludeEventTypes);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningFilter>("localPathCleaningFilters", LocalPathCleaningFilters);
+            writer.WriteIntValue("maxEdgeWeight", MaxEdgeWeight);
+            writer.WriteIntValue("minEdgeWeight", MinEdgeWeight);
+            writer.WriteStringValue("pathDropoffKey", PathDropoffKey);
+            writer.WriteStringValue("pathEndKey", PathEndKey);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsFilterPathGroupings>("pathGroupings", PathGroupings);
+            writer.WriteBoolValue("pathReplacements", PathReplacements);
+            writer.WriteStringValue("pathsHogQLExpression", PathsHogQLExpression);
+            writer.WriteStringValue("pathStartKey", PathStartKey);
+            writer.WriteBoolValue("showFullUrls", ShowFullUrls);
+            writer.WriteStringValue("startPoint", StartPoint);
+            writer.WriteIntValue("stepLimit", StepLimit);
         }
     }
 }

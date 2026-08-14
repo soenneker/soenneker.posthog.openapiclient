@@ -14,9 +14,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The created_at property</summary>
+        /// <summary>When the fingerprint record was created.</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
-        /// <summary>The fingerprint property</summary>
+        /// <summary>The fingerprint value.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Fingerprint { get; private set; }
@@ -24,9 +24,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Fingerprint { get; private set; }
 #endif
-        /// <summary>The id property</summary>
+        /// <summary>Unique ID of the fingerprint record.</summary>
         public Guid? Id { get; private set; }
-        /// <summary>The issue_id property</summary>
+        /// <summary>ID of the issue this fingerprint currently belongs to.</summary>
         public Guid? IssueId { get; private set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingFingerprint"/> and sets the default values.

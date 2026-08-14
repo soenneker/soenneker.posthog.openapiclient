@@ -32,10 +32,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? RowsExpected { get; private set; }
         /// <summary>The rows_materialized property</summary>
         public int? RowsMaterialized { get; private set; }
+        /// <summary>&quot;What this run wrote: full_refresh rebuilt the whole table, so rows_materialized is the table&apos;s size; incremental wrote only its window, so rows_materialized counts just the rows synced. Null for runs from before modes were recorded, or that failed before the plan resolved.* `full_refresh` - Full refresh* `incremental` - Incremental&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataModelingJobRunMode? RunMode { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataModelingJobRunMode RunMode { get; private set; }
+#endif
         /// <summary>The saved_query_id property</summary>
         public Guid? SavedQueryId { get; private set; }
-        /// <summary>* `Cancelled` - Cancelled* `Completed` - Completed* `Failed` - Failed* `Running` - Running</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataModelingJobStatusEnum? Status { get; set; }
+        /// <summary>The status property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataModelingJobStatus? Status { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataModelingJobStatus Status { get; private set; }
+#endif
+        /// <summary>When the job row last changed. For finished jobs this is when the run reached its terminal status.</summary>
+        public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>The workflow_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -83,8 +99,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "last_run_at", n => { LastRunAt = n.GetDateTimeOffsetValue(); } },
                 { "rows_expected", n => { RowsExpected = n.GetIntValue(); } },
                 { "rows_materialized", n => { RowsMaterialized = n.GetIntValue(); } },
+                { "run_mode", n => { RunMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataModelingJobRunMode>(global::Soenneker.PostHog.OpenApiClient.Models.DataModelingJobRunMode.CreateFromDiscriminatorValue); } },
                 { "saved_query_id", n => { SavedQueryId = n.GetGuidValue(); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DataModelingJobStatusEnum>(); } },
+                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataModelingJobStatus>(global::Soenneker.PostHog.OpenApiClient.Models.DataModelingJobStatus.CreateFromDiscriminatorValue); } },
+                { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "workflow_id", n => { WorkflowId = n.GetStringValue(); } },
                 { "workflow_run_id", n => { WorkflowRunId = n.GetStringValue(); } },
             };
@@ -96,7 +114,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DataModelingJobStatusEnum>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

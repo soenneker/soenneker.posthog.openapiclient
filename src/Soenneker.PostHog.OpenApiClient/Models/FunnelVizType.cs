@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "time_to_convert")]
         #pragma warning disable CS1591
-        Time_to_convert,
+        TimeToConvert,
         #pragma warning restore CS1591
         [EnumMember(Value = "trends")]
         #pragma warning disable CS1591

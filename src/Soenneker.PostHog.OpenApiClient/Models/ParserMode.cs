@@ -10,31 +10,31 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "cpp_only")]
         #pragma warning disable CS1591
-        Cpp_only,
+        CppOnly,
         #pragma warning restore CS1591
         [EnumMember(Value = "cpp_with_rust_shadow")]
         #pragma warning disable CS1591
-        Cpp_with_rust_shadow,
+        CppWithRustShadow,
         #pragma warning restore CS1591
         [EnumMember(Value = "cpp_with_rust_py_shadow")]
         #pragma warning disable CS1591
-        Cpp_with_rust_py_shadow,
+        CppWithRustPyShadow,
         #pragma warning restore CS1591
         [EnumMember(Value = "rust_with_cpp_shadow")]
         #pragma warning disable CS1591
-        Rust_with_cpp_shadow,
+        RustWithCppShadow,
         #pragma warning restore CS1591
         [EnumMember(Value = "rust_only")]
         #pragma warning disable CS1591
-        Rust_only,
+        RustOnly,
         #pragma warning restore CS1591
         [EnumMember(Value = "rust_py_only")]
         #pragma warning disable CS1591
-        Rust_py_only,
+        RustPyOnly,
         #pragma warning restore CS1591
         [EnumMember(Value = "rust_py_with_cpp_shadow")]
         #pragma warning disable CS1591
-        Rust_py_with_cpp_shadow,
+        RustPyWithCppShadow,
         #pragma warning restore CS1591
     }
 }

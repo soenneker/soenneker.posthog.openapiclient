@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.DomainConnect.ApplyUrl
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\integrations\domain-connect\apply-url
+    /// Builds and executes requests for operations under \api\projects\{projectId}\integrations\domain-connect\apply-url
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ApplyUrlRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.DomainC
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ApplyUrlRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/integrations/domain-connect/apply-url", pathParameters)
+        public ApplyUrlRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/integrations/domain-connect/apply-url", pathParameters)
         {
         }
         /// <summary>
@@ -30,28 +30,28 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.DomainC
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ApplyUrlRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/integrations/domain-connect/apply-url", rawUrl)
+        public ApplyUrlRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/integrations/domain-connect/apply-url", rawUrl)
         {
         }
         /// <summary>
         /// Unified endpoint for generating Domain Connect apply URLs.Accepts a context (&quot;email&quot; or &quot;proxy&quot;) and the relevant resource ID.The backend resolves the domain, template variables, and service IDbased on context, then builds the signed apply URL.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.DomainConnect.ApplyUrl.ApplyUrlPostResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.IntegrationsDomainConnectApplyUrlCreate201Response"/></returns>
         /// <param name="body">Standard Integration serializer.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.DomainConnect.ApplyUrl.ApplyUrlPostResponse?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.IntegrationConfig body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationsDomainConnectApplyUrlCreate201Response?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.IntegrationConfig body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.DomainConnect.ApplyUrl.ApplyUrlPostResponse> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.IntegrationConfig body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationsDomainConnectApplyUrlCreate201Response> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.IntegrationConfig body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.DomainConnect.ApplyUrl.ApplyUrlPostResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.DomainConnect.ApplyUrl.ApplyUrlPostResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationsDomainConnectApplyUrlCreate201Response>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.IntegrationsDomainConnectApplyUrlCreate201Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Unified endpoint for generating Domain Connect apply URLs.Accepts a context (&quot;email&quot; or &quot;proxy&quot;) and the relevant resource ID.The backend resolves the domain, template variables, and service IDbased on context, then builds the signed apply URL.

@@ -12,24 +12,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class EvaluationConfig : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Provider key currently used to run llm_judge evaluations. Null when the team is on trial credits.</summary>
+        /// <summary>Provider key used to run llm_judge evals; null if none configured yet.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationConfig_active_provider_key? ActiveProviderKey { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationConfigActiveProviderKey? ActiveProviderKey { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationConfig_active_provider_key ActiveProviderKey { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationConfigActiveProviderKey ActiveProviderKey { get; private set; }
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Timestamp when the evaluation config row was created.</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
-        /// <summary>Maximum number of llm_judge runs the team may execute on PostHog trial credits.</summary>
-        public int? TrialEvalLimit { get; private set; }
-        /// <summary>Number of trial evaluation runs remaining before the team must supply its own provider key.</summary>
-        public int? TrialEvalsRemaining { get; private set; }
-        /// <summary>Number of llm_judge runs already consumed against the trial credit pool.</summary>
-        public int? TrialEvalsUsed { get; private set; }
         /// <summary>Timestamp when the evaluation config row was last modified.</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>
@@ -57,11 +51,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "active_provider_key", n => { ActiveProviderKey = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationConfig_active_provider_key>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationConfig_active_provider_key.CreateFromDiscriminatorValue); } },
+                { "active_provider_key", n => { ActiveProviderKey = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationConfigActiveProviderKey>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationConfigActiveProviderKey.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "trial_eval_limit", n => { TrialEvalLimit = n.GetIntValue(); } },
-                { "trial_evals_remaining", n => { TrialEvalsRemaining = n.GetIntValue(); } },
-                { "trial_evals_used", n => { TrialEvalsUsed = n.GetIntValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }

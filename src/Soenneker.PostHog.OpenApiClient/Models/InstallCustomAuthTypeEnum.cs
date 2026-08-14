@@ -9,11 +9,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "api_key")]
         #pragma warning disable CS1591
-        Api_key,
+        ApiKey,
         #pragma warning restore CS1591
         [EnumMember(Value = "oauth")]
         #pragma warning disable CS1591
-        Oauth,
+        OAuth,
         #pragma warning restore CS1591
     }
 }

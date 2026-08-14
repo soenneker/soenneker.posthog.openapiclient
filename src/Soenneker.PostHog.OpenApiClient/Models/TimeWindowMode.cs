@@ -10,11 +10,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "strict_calendar_dates")]
         #pragma warning disable CS1591
-        Strict_calendar_dates,
+        StrictCalendarDates,
         #pragma warning restore CS1591
         [EnumMember(Value = "24_hour_windows")]
         #pragma warning disable CS1591
-        TwoFour_hour_windows,
+        Value24HourWindows,
         #pragma warning restore CS1591
     }
 }

@@ -14,40 +14,40 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>When this symbol set row was created.</summary>
-        public DateTimeOffset? CreatedAt { get; private set; }
-        /// <summary>Reason symbol lookup failed, if the source map is missing or invalid.</summary>
+        /// <summary>The created_at property</summary>
+        public DateTimeOffset? CreatedAt { get; set; }
+        /// <summary>The failure_reason property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FailureReason { get; private set; }
+        public string? FailureReason { get; set; }
 #nullable restore
 #else
-        public string FailureReason { get; private set; }
+        public string FailureReason { get; set; }
 #endif
-        /// <summary>Whether this symbol set has an uploaded source map file available to download.</summary>
-        public bool? HasUploadedFile { get; private set; }
-        /// <summary>Unique symbol set ID.</summary>
-        public Guid? Id { get; private set; }
-        /// <summary>When this symbol set was last used to resolve a stack frame.</summary>
-        public DateTimeOffset? LastUsed { get; private set; }
-        /// <summary>Reference used to match stack frames to this symbol set.</summary>
+        /// <summary>The has_uploaded_file property</summary>
+        public bool? HasUploadedFile { get; set; }
+        /// <summary>The id property</summary>
+        public Guid? Id { get; set; }
+        /// <summary>The last_used property</summary>
+        public DateTimeOffset? LastUsed { get; set; }
+        /// <summary>The ref property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Ref { get; private set; }
+        public string? Ref { get; set; }
 #nullable restore
 #else
-        public string Ref { get; private set; }
+        public string Ref { get; set; }
 #endif
-        /// <summary>Release associated with this symbol set, if any.</summary>
+        /// <summary>The release property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSet_release? Release { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetRelease? Release { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSet_release Release { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetRelease Release { get; set; }
 #endif
-        /// <summary>Project/team ID that owns this symbol set.</summary>
-        public int? TeamId { get; private set; }
+        /// <summary>The team_id property</summary>
+        public int? TeamId { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSet"/> and sets the default values.
         /// </summary>
@@ -79,7 +79,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "last_used", n => { LastUsed = n.GetDateTimeOffsetValue(); } },
                 { "ref", n => { Ref = n.GetStringValue(); } },
-                { "release", n => { Release = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSet_release>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSet_release.CreateFromDiscriminatorValue); } },
+                { "release", n => { Release = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetRelease>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetRelease.CreateFromDiscriminatorValue); } },
                 { "team_id", n => { TeamId = n.GetIntValue(); } },
             };
         }
@@ -90,6 +90,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
+            writer.WriteStringValue("failure_reason", FailureReason);
+            writer.WriteBoolValue("has_uploaded_file", HasUploadedFile);
+            writer.WriteGuidValue("id", Id);
+            writer.WriteDateTimeOffsetValue("last_used", LastUsed);
+            writer.WriteStringValue("ref", Ref);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetRelease>("release", Release);
+            writer.WriteIntValue("team_id", TeamId);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

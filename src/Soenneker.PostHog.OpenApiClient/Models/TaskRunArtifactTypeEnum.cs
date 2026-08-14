@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `plan` - plan* `context` - context* `reference` - reference* `output` - output* `artifact` - artifact* `tree_snapshot` - tree_snapshot* `user_attachment` - user_attachment</summary>
+    /// <summary>* `plan` - plan* `context` - context* `reference` - reference* `output` - output* `artifact` - artifact* `tree_snapshot` - tree_snapshot* `user_attachment` - user_attachment* `skill_bundle` - skill_bundle</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum TaskRunArtifactTypeEnum
     {
@@ -29,11 +29,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "tree_snapshot")]
         #pragma warning disable CS1591
-        Tree_snapshot,
+        TreeSnapshot,
         #pragma warning restore CS1591
         [EnumMember(Value = "user_attachment")]
         #pragma warning disable CS1591
-        User_attachment,
+        UserAttachment,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "skill_bundle")]
+        #pragma warning disable CS1591
+        SkillBundle,
         #pragma warning restore CS1591
     }
 }

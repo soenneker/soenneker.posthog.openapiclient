@@ -18,93 +18,51 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Sub-detector configurations (minimum 2)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig.DetectorConfig_detectors>? Detectors { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfigDetectorsItem>? Detectors { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig.DetectorConfig_detectors> Detectors { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfigDetectorsItem> Detectors { get; set; }
 #endif
         /// <summary>&quot;SVM kernel type (default: \&quot;rbf\&quot;)&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_kernel? Kernel { get; set; }
+        public string? Kernel { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_kernel Kernel { get; set; }
+        public string Kernel { get; set; }
 #endif
         /// <summary>Lower bound - values below this are anomalies</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_lower_bound? LowerBound { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_lower_bound LowerBound { get; set; }
-#endif
+        public double? LowerBound { get; set; }
         /// <summary>&quot;Distance method: &apos;largest&apos;, &apos;mean&apos;, &apos;median&apos; (default: &apos;largest&apos;)&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_method? Method { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MethodWrapper? Method { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_method Method { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MethodWrapper Method { get; set; }
 #endif
         /// <summary>&quot;IQR multiplier for fence calculation (default: 1.5, use 3.0 for far outliers)&quot;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_multiplier? Multiplier { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_multiplier Multiplier { get; set; }
-#endif
+        public double? Multiplier { get; set; }
         /// <summary>&quot;Number of histogram bins (default: 10)&quot;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_n_bins? NBins { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_n_bins NBins { get; set; }
-#endif
+        public int? NBins { get; set; }
         /// <summary>&quot;Number of trees in the forest (default: 100)&quot;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_n_estimators? NEstimators { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_n_estimators NEstimators { get; set; }
-#endif
+        public int? NEstimators { get; set; }
         /// <summary>&quot;Number of neighbors to consider (default: 5)&quot;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_n_neighbors? NNeighbors { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_n_neighbors NNeighbors { get; set; }
-#endif
+        public int? NNeighbors { get; set; }
         /// <summary>&quot;Upper bound on training errors fraction (default: 0.1)&quot;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_nu? Nu { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_nu Nu { get; set; }
-#endif
-        /// <summary>The operator property</summary>
+        public double? Nu { get; set; }
+        /// <summary>How to combine sub-detector results</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.EnsembleOperator? Operator { get; set; }
         /// <summary>Preprocessing transforms applied before detection</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_preprocessing? Preprocessing { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig? Preprocessing { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_preprocessing Preprocessing { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig Preprocessing { get; set; }
 #endif
         /// <summary>&quot;Anomaly probability threshold [0-1]. Points above this probability are flagged (default: 0.9)&quot;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_threshold? Threshold { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_threshold Threshold { get; set; }
-#endif
+        public double? Threshold { get; set; }
         /// <summary>Union discriminator</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -114,21 +72,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Type { get; set; }
 #endif
         /// <summary>Upper bound - values above this are anomalies</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_upper_bound? UpperBound { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_upper_bound UpperBound { get; set; }
-#endif
+        public double? UpperBound { get; set; }
         /// <summary>&quot;Rolling window size for calculating mean/std (default: 30)&quot;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_window? Window { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_window Window { get; set; }
-#endif
+        public int? Window { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig"/> and sets the default values.
         /// </summary>
@@ -154,21 +100,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "detectors", n => { Detectors = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig.DetectorConfig_detectors>(global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig.DetectorConfig_detectors.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "kernel", n => { Kernel = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_kernel>(global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_kernel.CreateFromDiscriminatorValue); } },
-                { "lower_bound", n => { LowerBound = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_lower_bound>(global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_lower_bound.CreateFromDiscriminatorValue); } },
-                { "method", n => { Method = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_method>(global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_method.CreateFromDiscriminatorValue); } },
-                { "multiplier", n => { Multiplier = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_multiplier>(global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_multiplier.CreateFromDiscriminatorValue); } },
-                { "n_bins", n => { NBins = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_n_bins>(global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_n_bins.CreateFromDiscriminatorValue); } },
-                { "n_estimators", n => { NEstimators = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_n_estimators>(global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_n_estimators.CreateFromDiscriminatorValue); } },
-                { "n_neighbors", n => { NNeighbors = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_n_neighbors>(global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_n_neighbors.CreateFromDiscriminatorValue); } },
-                { "nu", n => { Nu = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_nu>(global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_nu.CreateFromDiscriminatorValue); } },
+                { "detectors", n => { Detectors = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfigDetectorsItem>(global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfigDetectorsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "kernel", n => { Kernel = n.GetStringValue(); } },
+                { "lower_bound", n => { LowerBound = n.GetDoubleValue(); } },
+                { "method", n => { Method = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MethodWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.MethodWrapper.CreateFromDiscriminatorValue); } },
+                { "multiplier", n => { Multiplier = n.GetDoubleValue(); } },
+                { "n_bins", n => { NBins = n.GetIntValue(); } },
+                { "n_estimators", n => { NEstimators = n.GetIntValue(); } },
+                { "n_neighbors", n => { NNeighbors = n.GetIntValue(); } },
+                { "nu", n => { Nu = n.GetDoubleValue(); } },
                 { "operator", n => { Operator = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EnsembleOperator>(); } },
-                { "preprocessing", n => { Preprocessing = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_preprocessing>(global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_preprocessing.CreateFromDiscriminatorValue); } },
-                { "threshold", n => { Threshold = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_threshold>(global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_threshold.CreateFromDiscriminatorValue); } },
+                { "preprocessing", n => { Preprocessing = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig>(global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig.CreateFromDiscriminatorValue); } },
+                { "threshold", n => { Threshold = n.GetDoubleValue(); } },
                 { "type", n => { Type = n.GetStringValue(); } },
-                { "upper_bound", n => { UpperBound = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_upper_bound>(global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_upper_bound.CreateFromDiscriminatorValue); } },
-                { "window", n => { Window = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_window>(global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_window.CreateFromDiscriminatorValue); } },
+                { "upper_bound", n => { UpperBound = n.GetDoubleValue(); } },
+                { "window", n => { Window = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -178,169 +124,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig.DetectorConfig_detectors>("detectors", Detectors);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_kernel>("kernel", Kernel);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_lower_bound>("lower_bound", LowerBound);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_method>("method", Method);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_multiplier>("multiplier", Multiplier);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_n_bins>("n_bins", NBins);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_n_estimators>("n_estimators", NEstimators);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_n_neighbors>("n_neighbors", NNeighbors);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_nu>("nu", Nu);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfigDetectorsItem>("detectors", Detectors);
+            writer.WriteStringValue("kernel", Kernel);
+            writer.WriteDoubleValue("lower_bound", LowerBound);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MethodWrapper>("method", Method);
+            writer.WriteDoubleValue("multiplier", Multiplier);
+            writer.WriteIntValue("n_bins", NBins);
+            writer.WriteIntValue("n_estimators", NEstimators);
+            writer.WriteIntValue("n_neighbors", NNeighbors);
+            writer.WriteDoubleValue("nu", Nu);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EnsembleOperator>("operator", Operator);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_preprocessing>("preprocessing", Preprocessing);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_threshold>("threshold", Threshold);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig>("preprocessing", Preprocessing);
+            writer.WriteDoubleValue("threshold", Threshold);
             writer.WriteStringValue("type", Type);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_upper_bound>("upper_bound", UpperBound);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig_window>("window", Window);
+            writer.WriteDoubleValue("upper_bound", UpperBound);
+            writer.WriteIntValue("window", Window);
             writer.WriteAdditionalData(AdditionalData);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.COPODDetectorConfig"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ECODDetectorConfig"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HBOSDetectorConfig"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.IQRDetectorConfig"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.IsolationForestDetectorConfig"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.KNNDetectorConfig"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LOFDetectorConfig"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MADDetectorConfig"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OCSVMDetectorConfig"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PCADetectorConfig"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ThresholdDetectorConfig"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ZScoreDetectorConfig"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class DetectorConfig_detectors : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.COPODDetectorConfig"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.COPODDetectorConfig? COPODDetectorConfig { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.COPODDetectorConfig COPODDetectorConfig { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ECODDetectorConfig"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.ECODDetectorConfig? ECODDetectorConfig { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.ECODDetectorConfig ECODDetectorConfig { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HBOSDetectorConfig"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.HBOSDetectorConfig? HBOSDetectorConfig { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.HBOSDetectorConfig HBOSDetectorConfig { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.IQRDetectorConfig"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.IQRDetectorConfig? IQRDetectorConfig { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.IQRDetectorConfig IQRDetectorConfig { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.IsolationForestDetectorConfig"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.IsolationForestDetectorConfig? IsolationForestDetectorConfig { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.IsolationForestDetectorConfig IsolationForestDetectorConfig { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.KNNDetectorConfig"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.KNNDetectorConfig? KNNDetectorConfig { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.KNNDetectorConfig KNNDetectorConfig { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LOFDetectorConfig"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.LOFDetectorConfig? LOFDetectorConfig { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.LOFDetectorConfig LOFDetectorConfig { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MADDetectorConfig"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.MADDetectorConfig? MADDetectorConfig { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.MADDetectorConfig MADDetectorConfig { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OCSVMDetectorConfig"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.OCSVMDetectorConfig? OCSVMDetectorConfig { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.OCSVMDetectorConfig OCSVMDetectorConfig { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PCADetectorConfig"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.PCADetectorConfig? PCADetectorConfig { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.PCADetectorConfig PCADetectorConfig { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ThresholdDetectorConfig"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.ThresholdDetectorConfig? ThresholdDetectorConfig { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.ThresholdDetectorConfig ThresholdDetectorConfig { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ZScoreDetectorConfig"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.ZScoreDetectorConfig? ZScoreDetectorConfig { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.ZScoreDetectorConfig ZScoreDetectorConfig { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig.DetectorConfig_detectors"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig.DetectorConfig_detectors CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig.DetectorConfig_detectors();
-                result.COPODDetectorConfig = new global::Soenneker.PostHog.OpenApiClient.Models.COPODDetectorConfig();
-                result.ECODDetectorConfig = new global::Soenneker.PostHog.OpenApiClient.Models.ECODDetectorConfig();
-                result.HBOSDetectorConfig = new global::Soenneker.PostHog.OpenApiClient.Models.HBOSDetectorConfig();
-                result.IQRDetectorConfig = new global::Soenneker.PostHog.OpenApiClient.Models.IQRDetectorConfig();
-                result.IsolationForestDetectorConfig = new global::Soenneker.PostHog.OpenApiClient.Models.IsolationForestDetectorConfig();
-                result.KNNDetectorConfig = new global::Soenneker.PostHog.OpenApiClient.Models.KNNDetectorConfig();
-                result.LOFDetectorConfig = new global::Soenneker.PostHog.OpenApiClient.Models.LOFDetectorConfig();
-                result.MADDetectorConfig = new global::Soenneker.PostHog.OpenApiClient.Models.MADDetectorConfig();
-                result.OCSVMDetectorConfig = new global::Soenneker.PostHog.OpenApiClient.Models.OCSVMDetectorConfig();
-                result.PCADetectorConfig = new global::Soenneker.PostHog.OpenApiClient.Models.PCADetectorConfig();
-                result.ThresholdDetectorConfig = new global::Soenneker.PostHog.OpenApiClient.Models.ThresholdDetectorConfig();
-                result.ZScoreDetectorConfig = new global::Soenneker.PostHog.OpenApiClient.Models.ZScoreDetectorConfig();
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(COPODDetectorConfig != null || ECODDetectorConfig != null || HBOSDetectorConfig != null || IQRDetectorConfig != null || IsolationForestDetectorConfig != null || KNNDetectorConfig != null || LOFDetectorConfig != null || MADDetectorConfig != null || OCSVMDetectorConfig != null || PCADetectorConfig != null || ThresholdDetectorConfig != null || ZScoreDetectorConfig != null)
-                {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(COPODDetectorConfig, ECODDetectorConfig, HBOSDetectorConfig, IQRDetectorConfig, IsolationForestDetectorConfig, KNNDetectorConfig, LOFDetectorConfig, MADDetectorConfig, OCSVMDetectorConfig, PCADetectorConfig, ThresholdDetectorConfig, ZScoreDetectorConfig);
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.COPODDetectorConfig>(null, COPODDetectorConfig, ECODDetectorConfig, HBOSDetectorConfig, IQRDetectorConfig, IsolationForestDetectorConfig, KNNDetectorConfig, LOFDetectorConfig, MADDetectorConfig, OCSVMDetectorConfig, PCADetectorConfig, ThresholdDetectorConfig, ZScoreDetectorConfig);
-            }
         }
     }
 }

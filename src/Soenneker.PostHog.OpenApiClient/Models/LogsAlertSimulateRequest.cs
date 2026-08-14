@@ -33,15 +33,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Filter criteria — same format as LogsAlertConfiguration.filters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertSimulateRequest_filters? Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertSimulateRequestFilters? Filters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertSimulateRequest_filters Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertSimulateRequestFilters Filters { get; set; }
 #endif
         /// <summary>Threshold count to evaluate against.</summary>
         public int? ThresholdCount { get; set; }
-        /// <summary>* `above` - Above* `below` - Below</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ThresholdOperatorEnum? ThresholdOperator { get; set; }
+        /// <summary>Whether the alert fires when the count is above or below the threshold.* `above` - Above* `below` - Below</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertSimulateRequestThresholdOperator? ThresholdOperator { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertSimulateRequestThresholdOperator ThresholdOperator { get; set; }
+#endif
         /// <summary>Window size in minutes — determines bucket interval.</summary>
         public int? WindowMinutes { get; set; }
         /// <summary>
@@ -50,6 +56,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public LogsAlertSimulateRequest()
         {
             AdditionalData = new Dictionary<string, object>();
+            CheckIntervalMinutes = 5;
+            CooldownMinutes = 0;
+            DatapointsToAlarm = 1;
+            EvaluationPeriods = 1;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -74,9 +84,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "datapoints_to_alarm", n => { DatapointsToAlarm = n.GetIntValue(); } },
                 { "date_from", n => { DateFrom = n.GetStringValue(); } },
                 { "evaluation_periods", n => { EvaluationPeriods = n.GetIntValue(); } },
-                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertSimulateRequest_filters>(global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertSimulateRequest_filters.CreateFromDiscriminatorValue); } },
+                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertSimulateRequestFilters>(global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertSimulateRequestFilters.CreateFromDiscriminatorValue); } },
                 { "threshold_count", n => { ThresholdCount = n.GetIntValue(); } },
-                { "threshold_operator", n => { ThresholdOperator = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ThresholdOperatorEnum>(); } },
+                { "threshold_operator", n => { ThresholdOperator = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertSimulateRequestThresholdOperator>(global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertSimulateRequestThresholdOperator.CreateFromDiscriminatorValue); } },
                 { "window_minutes", n => { WindowMinutes = n.GetIntValue(); } },
             };
         }
@@ -92,9 +102,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("datapoints_to_alarm", DatapointsToAlarm);
             writer.WriteStringValue("date_from", DateFrom);
             writer.WriteIntValue("evaluation_periods", EvaluationPeriods);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertSimulateRequest_filters>("filters", Filters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertSimulateRequestFilters>("filters", Filters);
             writer.WriteIntValue("threshold_count", ThresholdCount);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ThresholdOperatorEnum>("threshold_operator", ThresholdOperator);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertSimulateRequestThresholdOperator>("threshold_operator", ThresholdOperator);
             writer.WriteIntValue("window_minutes", WindowMinutes);
             writer.WriteAdditionalData(AdditionalData);
         }

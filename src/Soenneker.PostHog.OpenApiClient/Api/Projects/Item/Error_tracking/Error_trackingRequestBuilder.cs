@@ -2,7 +2,21 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Assignment_rules;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Bypass_rules;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.External_references;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Fingerprints;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.GitProviderFileLinks;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Grouping_rules;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Issues;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Query;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Recommendations;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Releases;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Settings;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Spike_detection_config;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Spike_events;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Stack_frames;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Suppression_rules;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Symbol_sets;
 using System.Collections.Generic;
 using System.IO;
@@ -11,15 +25,85 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\error_tracking
+    /// Builds and executes requests for operations under \api\projects\{projectId}\error_tracking
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Error_trackingRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The assignment_rules property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Assignment_rules.Assignment_rulesRequestBuilder Assignment_rules
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Assignment_rules.Assignment_rulesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The bypass_rules property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Bypass_rules.Bypass_rulesRequestBuilder Bypass_rules
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Bypass_rules.Bypass_rulesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The external_references property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.External_references.External_referencesRequestBuilder External_references
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.External_references.External_referencesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The fingerprints property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Fingerprints.FingerprintsRequestBuilder Fingerprints
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Fingerprints.FingerprintsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The gitProviderFileLinks property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.GitProviderFileLinks.GitProviderFileLinksRequestBuilder GitProviderFileLinks
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.GitProviderFileLinks.GitProviderFileLinksRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The grouping_rules property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Grouping_rules.Grouping_rulesRequestBuilder Grouping_rules
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Grouping_rules.Grouping_rulesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The issues property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Issues.IssuesRequestBuilder Issues
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Issues.IssuesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The query property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Query.QueryRequestBuilder Query
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Query.QueryRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The recommendations property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Recommendations.RecommendationsRequestBuilder Recommendations
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Recommendations.RecommendationsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The releases property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Releases.ReleasesRequestBuilder Releases
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Releases.ReleasesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The settings property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Settings.SettingsRequestBuilder Settings
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Settings.SettingsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The spike_detection_config property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Spike_detection_config.Spike_detection_configRequestBuilder Spike_detection_config
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Spike_detection_config.Spike_detection_configRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The spike_events property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Spike_events.Spike_eventsRequestBuilder Spike_events
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Spike_events.Spike_eventsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The stack_frames property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Stack_frames.Stack_framesRequestBuilder Stack_frames
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Stack_frames.Stack_framesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The suppression_rules property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Suppression_rules.Suppression_rulesRequestBuilder Suppression_rules
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Suppression_rules.Suppression_rulesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The symbol_sets property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Symbol_sets.Symbol_setsRequestBuilder Symbol_sets
@@ -31,7 +115,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Error_trackingRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/error_tracking", pathParameters)
+        public Error_trackingRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/error_tracking", pathParameters)
         {
         }
         /// <summary>
@@ -39,7 +123,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Error_trackingRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/error_tracking", rawUrl)
+        public Error_trackingRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/error_tracking", rawUrl)
         {
         }
     }

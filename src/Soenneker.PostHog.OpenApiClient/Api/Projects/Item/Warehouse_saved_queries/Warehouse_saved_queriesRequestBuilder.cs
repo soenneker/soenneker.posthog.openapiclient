@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_saved_queries.Check_incremental;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_saved_queries.Item;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_saved_queries.Resume_schedules;
 using Soenneker.PostHog.OpenApiClient.Models;
@@ -14,11 +15,16 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_saved_queries
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\warehouse_saved_queries
+    /// Builds and executes requests for operations under \api\projects\{projectId}\warehouse_saved_queries
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Warehouse_saved_queriesRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The check_incremental property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_saved_queries.Check_incremental.Check_incrementalRequestBuilder Check_incremental
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_saved_queries.Check_incremental.Check_incrementalRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The resume_schedules property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_saved_queries.Resume_schedules.Resume_schedulesRequestBuilder Resume_schedules
         {
@@ -41,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_saved_quer
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Warehouse_saved_queriesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/warehouse_saved_queries{?page*,search*}", pathParameters)
+        public Warehouse_saved_queriesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/warehouse_saved_queries{?page*,search*}", pathParameters)
         {
         }
         /// <summary>
@@ -49,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_saved_quer
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Warehouse_saved_queriesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/warehouse_saved_queries{?page*,search*}", rawUrl)
+        public Warehouse_saved_queriesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/warehouse_saved_queries{?page*,search*}", rawUrl)
         {
         }
         /// <summary>

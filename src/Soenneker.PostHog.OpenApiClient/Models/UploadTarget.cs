@@ -25,10 +25,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The fields property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UploadTarget_fields? Fields { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UploadTargetFieldsProperty? Fields { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UploadTarget_fields Fields { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UploadTargetFieldsProperty Fields { get; set; }
 #endif
         /// <summary>The url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -64,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "content_hash", n => { ContentHash = n.GetStringValue(); } },
-                { "fields", n => { Fields = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UploadTarget_fields>(global::Soenneker.PostHog.OpenApiClient.Models.UploadTarget_fields.CreateFromDiscriminatorValue); } },
+                { "fields", n => { Fields = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UploadTargetFieldsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.UploadTargetFieldsProperty.CreateFromDiscriminatorValue); } },
                 { "url", n => { Url = n.GetStringValue(); } },
             };
         }
@@ -76,7 +76,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("content_hash", ContentHash);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UploadTarget_fields>("fields", Fields);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UploadTargetFieldsProperty>("fields", Fields);
             writer.WriteStringValue("url", Url);
             writer.WriteAdditionalData(AdditionalData);
         }

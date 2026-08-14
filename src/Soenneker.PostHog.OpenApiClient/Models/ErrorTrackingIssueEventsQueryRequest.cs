@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Date range for sampled exception events. Defaults to the last 7 days.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueEventsQueryRequest_dateRange? DateRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueEventsQueryRequestDateRange? DateRange { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueEventsQueryRequest_dateRange DateRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueEventsQueryRequestDateRange DateRange { get; set; }
 #endif
         /// <summary>Advanced flat AND property filters applied to sampled events. HogQL filters are rejected.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -32,6 +32,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>When true, exclude internal/test account data from results. Defaults to true.</summary>
         public bool? FilterTestAccounts { get; set; }
+        /// <summary>Context groups to return. Defaults to exception, environment, navigation, and correlation. Request stacktrace for frames, code_variables for captured and SDK-masked frame variables, release for release metadata, or diagnostics for ingestion errors. code_variables implies stacktrace.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.IncludeEnum?>? Include { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.IncludeEnum?> Include { get; set; }
+#endif
         /// <summary>Error tracking issue ID.</summary>
         public Guid? IssueId { get; set; }
         /// <summary>Page size.</summary>
@@ -40,8 +48,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? Offset { get; set; }
         /// <summary>When true, include only stack frames marked in_app. Defaults to true.</summary>
         public bool? OnlyAppFrames { get; set; }
-        /// <summary>* `ASC` - ASC* `DESC` - DESC</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.OrderDirectionEnum? OrderDirection { get; set; }
+        /// <summary>Timestamp sort direction. Defaults to DESC.* `ASC` - ASC* `DESC` - DESC</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueEventsQueryRequestOrderDirection? OrderDirection { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueEventsQueryRequestOrderDirection OrderDirection { get; set; }
+#endif
         /// <summary>Search exception types, exception values, and current URL among sampled events.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -50,14 +64,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SearchQuery { get; set; }
 #endif
-        /// <summary>* `summary` - summary* `stack` - stack* `raw` - raw</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.VerbosityEnum? Verbosity { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueEventsQueryRequest"/> and sets the default values.
         /// </summary>
         public ErrorTrackingIssueEventsQueryRequest()
         {
             AdditionalData = new Dictionary<string, object>();
+            FilterTestAccounts = true;
+            Limit = 1;
+            Offset = 0;
+            OnlyAppFrames = true;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -77,16 +93,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueEventsQueryRequest_dateRange>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueEventsQueryRequest_dateRange.CreateFromDiscriminatorValue); } },
+                { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueEventsQueryRequestDateRange>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueEventsQueryRequestDateRange.CreateFromDiscriminatorValue); } },
                 { "filterGroup", n => { FilterGroup = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PropertyItem>(global::Soenneker.PostHog.OpenApiClient.Models.PropertyItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "filterTestAccounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
+                { "include", n => { Include = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.IncludeEnum>()?.AsList(); } },
                 { "issueId", n => { IssueId = n.GetGuidValue(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
                 { "offset", n => { Offset = n.GetIntValue(); } },
                 { "onlyAppFrames", n => { OnlyAppFrames = n.GetBoolValue(); } },
-                { "orderDirection", n => { OrderDirection = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OrderDirectionEnum>(); } },
+                { "orderDirection", n => { OrderDirection = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueEventsQueryRequestOrderDirection>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueEventsQueryRequestOrderDirection.CreateFromDiscriminatorValue); } },
                 { "searchQuery", n => { SearchQuery = n.GetStringValue(); } },
-                { "verbosity", n => { Verbosity = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.VerbosityEnum>(); } },
             };
         }
         /// <summary>
@@ -96,16 +112,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueEventsQueryRequest_dateRange>("dateRange", DateRange);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueEventsQueryRequestDateRange>("dateRange", DateRange);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PropertyItem>("filterGroup", FilterGroup);
             writer.WriteBoolValue("filterTestAccounts", FilterTestAccounts);
+            writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.IncludeEnum>("include", Include);
             writer.WriteGuidValue("issueId", IssueId);
             writer.WriteIntValue("limit", Limit);
             writer.WriteIntValue("offset", Offset);
             writer.WriteBoolValue("onlyAppFrames", OnlyAppFrames);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OrderDirectionEnum>("orderDirection", OrderDirection);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueEventsQueryRequestOrderDirection>("orderDirection", OrderDirection);
             writer.WriteStringValue("searchQuery", SearchQuery);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.VerbosityEnum>("verbosity", Verbosity);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

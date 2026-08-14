@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `exact` - exact* `is_not` - is_not* `icontains` - icontains* `not_icontains` - not_icontains* `regex` - regex* `not_regex` - not_regex* `gt` - gt* `gte` - gte* `lt` - lt* `lte` - lte</summary>
+    /// <summary>* `exact` - exact* `is_not` - is_not* `icontains` - icontains* `not_icontains` - not_icontains* `starts_with` - starts_with* `not_starts_with` - not_starts_with* `ends_with` - ends_with* `not_ends_with` - not_ends_with* `regex` - regex* `not_regex` - not_regex* `gt` - gt* `gte` - gte* `lt` - lt* `lte` - lte</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum FeatureFlagFilterPropertyGenericSchemaOperatorEnum
     {
@@ -13,7 +13,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "is_not")]
         #pragma warning disable CS1591
-        Is_not,
+        IsNot,
         #pragma warning restore CS1591
         [EnumMember(Value = "icontains")]
         #pragma warning disable CS1591
@@ -21,7 +21,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "not_icontains")]
         #pragma warning disable CS1591
-        Not_icontains,
+        NotIcontains,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "starts_with")]
+        #pragma warning disable CS1591
+        StartsWith,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "not_starts_with")]
+        #pragma warning disable CS1591
+        NotStartsWith,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ends_with")]
+        #pragma warning disable CS1591
+        EndsWith,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "not_ends_with")]
+        #pragma warning disable CS1591
+        NotEndsWith,
         #pragma warning restore CS1591
         [EnumMember(Value = "regex")]
         #pragma warning disable CS1591
@@ -29,7 +45,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "not_regex")]
         #pragma warning disable CS1591
-        Not_regex,
+        NotRegex,
         #pragma warning restore CS1591
         [EnumMember(Value = "gt")]
         #pragma warning disable CS1591

@@ -10,35 +10,35 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "avg_count_per_actor")]
         #pragma warning disable CS1591
-        Avg_count_per_actor,
+        AvgCountPerActor,
         #pragma warning restore CS1591
         [EnumMember(Value = "min_count_per_actor")]
         #pragma warning disable CS1591
-        Min_count_per_actor,
+        MinCountPerActor,
         #pragma warning restore CS1591
         [EnumMember(Value = "max_count_per_actor")]
         #pragma warning disable CS1591
-        Max_count_per_actor,
+        MaxCountPerActor,
         #pragma warning restore CS1591
         [EnumMember(Value = "median_count_per_actor")]
         #pragma warning disable CS1591
-        Median_count_per_actor,
+        MedianCountPerActor,
         #pragma warning restore CS1591
         [EnumMember(Value = "p75_count_per_actor")]
         #pragma warning disable CS1591
-        P75_count_per_actor,
+        P75CountPerActor,
         #pragma warning restore CS1591
         [EnumMember(Value = "p90_count_per_actor")]
         #pragma warning disable CS1591
-        P90_count_per_actor,
+        P90CountPerActor,
         #pragma warning restore CS1591
         [EnumMember(Value = "p95_count_per_actor")]
         #pragma warning disable CS1591
-        P95_count_per_actor,
+        P95CountPerActor,
         #pragma warning restore CS1591
         [EnumMember(Value = "p99_count_per_actor")]
         #pragma warning disable CS1591
-        P99_count_per_actor,
+        P99CountPerActor,
         #pragma warning restore CS1591
     }
 }

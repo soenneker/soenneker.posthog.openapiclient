@@ -9,7 +9,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "needs_setup")]
         #pragma warning disable CS1591
-        Needs_setup,
+        NeedsSetup,
         #pragma warning restore CS1591
         [EnumMember(Value = "detected")]
         #pragma warning disable CS1591
@@ -17,7 +17,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "waiting_for_data")]
         #pragma warning disable CS1591
-        Waiting_for_data,
+        WaitingForData,
         #pragma warning restore CS1591
         [EnumMember(Value = "ready")]
         #pragma warning disable CS1591
@@ -25,7 +25,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "not_applicable")]
         #pragma warning disable CS1591
-        Not_applicable,
+        NotApplicable,
         #pragma warning restore CS1591
         [EnumMember(Value = "unknown")]
         #pragma warning disable CS1591

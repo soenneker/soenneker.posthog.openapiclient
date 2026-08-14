@@ -70,10 +70,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The discovery-agent sandbox that picked this run&apos;s repo, when the mention was ambiguous.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextRun_repo_research? RepoResearch { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextRunRepoResearch? RepoResearch { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextRun_repo_research RepoResearch { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextRunRepoResearch RepoResearch { get; set; }
 #endif
         /// <summary>Live sandbox tunnel URL, when one was attached.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -91,7 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Status { get; set; }
 #endif
-        /// <summary>Temporal workflow id for the sandbox/agent run (`task-processing-&lt;task_id&gt;-&lt;run_id&gt;`).</summary>
+        /// <summary>Temporal workflow id for the sandbox/agent run (`task-processing-&lt;task_id&gt;-&lt;run_id&gt;`, or a caller-prefixed variant).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? TaskProcessingWorkflowId { get; set; }
@@ -148,7 +148,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "mention_workflow_id", n => { MentionWorkflowId = n.GetStringValue(); } },
                 { "mention_workflow_url", n => { MentionWorkflowUrl = n.GetStringValue(); } },
                 { "pr_url", n => { PrUrl = n.GetStringValue(); } },
-                { "repo_research", n => { RepoResearch = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextRun_repo_research>(global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextRun_repo_research.CreateFromDiscriminatorValue); } },
+                { "repo_research", n => { RepoResearch = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextRunRepoResearch>(global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextRunRepoResearch.CreateFromDiscriminatorValue); } },
                 { "sandbox_url", n => { SandboxUrl = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
                 { "task_processing_workflow_id", n => { TaskProcessingWorkflowId = n.GetStringValue(); } },
@@ -171,7 +171,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("mention_workflow_id", MentionWorkflowId);
             writer.WriteStringValue("mention_workflow_url", MentionWorkflowUrl);
             writer.WriteStringValue("pr_url", PrUrl);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextRun_repo_research>("repo_research", RepoResearch);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextRunRepoResearch>("repo_research", RepoResearch);
             writer.WriteStringValue("sandbox_url", SandboxUrl);
             writer.WriteStringValue("status", Status);
             writer.WriteStringValue("task_processing_workflow_id", TaskProcessingWorkflowId);

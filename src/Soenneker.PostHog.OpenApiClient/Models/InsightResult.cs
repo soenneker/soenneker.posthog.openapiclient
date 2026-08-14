@@ -36,10 +36,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The result property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightResult_result? Result { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightResultResult? Result { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightResult_result Result { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightResultResult Result { get; private set; }
 #endif
         /// <summary>The short_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -77,7 +77,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "derived_name", n => { DerivedName = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetIntValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "result", n => { Result = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightResult_result>(global::Soenneker.PostHog.OpenApiClient.Models.InsightResult_result.CreateFromDiscriminatorValue); } },
+                { "result", n => { Result = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightResultResult>(global::Soenneker.PostHog.OpenApiClient.Models.InsightResultResult.CreateFromDiscriminatorValue); } },
                 { "short_id", n => { ShortId = n.GetStringValue(); } },
             };
         }

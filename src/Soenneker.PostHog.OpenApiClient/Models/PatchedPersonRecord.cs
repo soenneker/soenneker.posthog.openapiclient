@@ -39,10 +39,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Key-value map of person properties set via $set and $set_once operations.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPersonRecord_properties? Properties { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPersonRecordProperties? Properties { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPersonRecord_properties Properties { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPersonRecordProperties Properties { get; set; }
 #endif
         /// <summary>Unique identifier (UUID) for this person.</summary>
         public Guid? Uuid { get; private set; }
@@ -76,7 +76,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetIntValue(); } },
                 { "last_seen_at", n => { LastSeenAt = n.GetDateTimeOffsetValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "properties", n => { Properties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPersonRecord_properties>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedPersonRecord_properties.CreateFromDiscriminatorValue); } },
+                { "properties", n => { Properties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPersonRecordProperties>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedPersonRecordProperties.CreateFromDiscriminatorValue); } },
                 { "uuid", n => { Uuid = n.GetGuidValue(); } },
             };
         }
@@ -87,7 +87,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPersonRecord_properties>("properties", Properties);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPersonRecordProperties>("properties", Properties);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

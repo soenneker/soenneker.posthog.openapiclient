@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Map of hog function UUIDs to their new execution_order values.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunctionRearrange_orders? Orders { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunctionRearrangeOrdersProperty? Orders { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunctionRearrange_orders Orders { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunctionRearrangeOrdersProperty Orders { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunctionRearrange"/> and sets the default values.
@@ -47,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "orders", n => { Orders = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunctionRearrange_orders>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunctionRearrange_orders.CreateFromDiscriminatorValue); } },
+                { "orders", n => { Orders = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunctionRearrangeOrdersProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunctionRearrangeOrdersProperty.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -57,7 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunctionRearrange_orders>("orders", Orders);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunctionRearrangeOrdersProperty>("orders", Orders);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

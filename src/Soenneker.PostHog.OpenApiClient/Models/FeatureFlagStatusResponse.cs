@@ -22,7 +22,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Reason { get; set; }
 #endif
-        /// <summary>&quot;Flag status: active, stale, deleted, or unknown&quot;</summary>
+        /// <summary>Summary of the flag&apos;s rollout configuration, for determining whether it is fully rolled out.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagStatusResponseRollout? Rollout { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagStatusResponseRollout Rollout { get; set; }
+#endif
+        /// <summary>&quot;Flag staleness/evaluation status: active, stale, archived, deleted, or unknown. &apos;active&apos; means the flag was recently evaluated (or has no usage data yet) — it does NOT mean the flag is fully rolled out. Use the `rollout` object to determine rollout completeness.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Status { get; set; }
@@ -56,6 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "reason", n => { Reason = n.GetStringValue(); } },
+                { "rollout", n => { Rollout = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagStatusResponseRollout>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagStatusResponseRollout.CreateFromDiscriminatorValue); } },
                 { "status", n => { Status = n.GetStringValue(); } },
             };
         }
@@ -67,6 +76,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("reason", Reason);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagStatusResponseRollout>("rollout", Rollout);
             writer.WriteStringValue("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }

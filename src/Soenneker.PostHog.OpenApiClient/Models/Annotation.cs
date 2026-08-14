@@ -27,13 +27,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.Annotation_created_by? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AnnotationCreatedBy? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.Annotation_created_by CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AnnotationCreatedBy CreatedBy { get; private set; }
 #endif
-        /// <summary>* `USR` - user* `GIT` - GitHub</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.CreationTypeEnum? CreationType { get; set; }
+        /// <summary>Who created this annotation. Use `USR` for user-created notes and `GIT` for bot/deployment notes.* `USR` - user* `GIT` - GitHub</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.AnnotationCreationType? CreationType { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.AnnotationCreationType CreationType { get; set; }
+#endif
         /// <summary>The dashboard_id property</summary>
         public int? DashboardId { get; set; }
         /// <summary>The dashboard_item property</summary>
@@ -50,6 +56,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? DateMarker { get; set; }
         /// <summary>Soft-delete flag. Set to true to hide the annotation, or false to restore it.</summary>
         public bool? Deleted { get; set; }
+        /// <summary>Optional emoji shown in place of the default badge when this annotation is surfaced on a chart.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Emoji { get; set; }
+#nullable restore
+#else
+        public string Emoji { get; set; }
+#endif
+        /// <summary>When true, the annotation is hidden from the PostHog UI (charts and the annotations list) but still readable over the API and MCP. Use for high-frequency markers like deployments that would otherwise crowd the UI. Null (the default) means the annotation is shown.</summary>
+        public bool? HiddenInUserInterface { get; set; }
         /// <summary>The id property</summary>
         public int? Id { get; private set; }
         /// <summary>The insight_derived_name property</summary>
@@ -76,8 +92,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string InsightShortId { get; private set; }
 #endif
-        /// <summary>* `dashboard_item` - insight* `dashboard` - dashboard* `project` - project* `organization` - organization* `recording` - recording</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScopeEnum? Scope { get; set; }
+        /// <summary>&quot;Annotation visibility scope: `project`, `organization`, `dashboard`, or `dashboard_item`. `recording` is deprecated and rejected.* `dashboard_item` - insight* `dashboard` - dashboard* `project` - project* `organization` - organization* `recording` - recording&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScope? Scope { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScope Scope { get; set; }
+#endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>
@@ -107,18 +129,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "content", n => { Content = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Annotation_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.Annotation_created_by.CreateFromDiscriminatorValue); } },
-                { "creation_type", n => { CreationType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CreationTypeEnum>(); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AnnotationCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.AnnotationCreatedBy.CreateFromDiscriminatorValue); } },
+                { "creation_type", n => { CreationType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AnnotationCreationType>(global::Soenneker.PostHog.OpenApiClient.Models.AnnotationCreationType.CreateFromDiscriminatorValue); } },
                 { "dashboard_id", n => { DashboardId = n.GetIntValue(); } },
                 { "dashboard_item", n => { DashboardItem = n.GetIntValue(); } },
                 { "dashboard_name", n => { DashboardName = n.GetStringValue(); } },
                 { "date_marker", n => { DateMarker = n.GetDateTimeOffsetValue(); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
+                { "emoji", n => { Emoji = n.GetStringValue(); } },
+                { "hidden_in_user_interface", n => { HiddenInUserInterface = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetIntValue(); } },
                 { "insight_derived_name", n => { InsightDerivedName = n.GetStringValue(); } },
                 { "insight_name", n => { InsightName = n.GetStringValue(); } },
                 { "insight_short_id", n => { InsightShortId = n.GetStringValue(); } },
-                { "scope", n => { Scope = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScopeEnum>(); } },
+                { "scope", n => { Scope = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScope>(global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScope.CreateFromDiscriminatorValue); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }
@@ -130,12 +154,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("content", Content);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CreationTypeEnum>("creation_type", CreationType);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AnnotationCreationType>("creation_type", CreationType);
             writer.WriteIntValue("dashboard_id", DashboardId);
             writer.WriteIntValue("dashboard_item", DashboardItem);
             writer.WriteDateTimeOffsetValue("date_marker", DateMarker);
             writer.WriteBoolValue("deleted", Deleted);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScopeEnum>("scope", Scope);
+            writer.WriteStringValue("emoji", Emoji);
+            writer.WriteBoolValue("hidden_in_user_interface", HiddenInUserInterface);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScope>("scope", Scope);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

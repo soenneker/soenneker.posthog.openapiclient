@@ -9,7 +9,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "not_firing")]
         #pragma warning disable CS1591
-        Not_firing,
+        NotFiring,
         #pragma warning restore CS1591
         [EnumMember(Value = "firing")]
         #pragma warning disable CS1591
@@ -17,7 +17,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "pending_resolve")]
         #pragma warning disable CS1591
-        Pending_resolve,
+        PendingResolve,
         #pragma warning restore CS1591
         [EnumMember(Value = "errored")]
         #pragma warning disable CS1591

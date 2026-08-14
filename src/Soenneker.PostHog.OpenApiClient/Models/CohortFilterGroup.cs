@@ -14,14 +14,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class CohortFilterGroup : IParsable
     {
         /// <summary>The type property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupOperator? Type { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.CohortFilterGroupType? Type { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.CohortFilterGroupType Type { get; set; }
+#endif
         /// <summary>The values property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilterGroup.CohortFilterGroup_values>? Values { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilterGroupValuesItem>? Values { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilterGroup.CohortFilterGroup_values> Values { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilterGroupValuesItem> Values { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -41,8 +47,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupOperator>(); } },
-                { "values", n => { Values = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilterGroup.CohortFilterGroup_values>(global::Soenneker.PostHog.OpenApiClient.Models.CohortFilterGroup.CohortFilterGroup_values.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilterGroupType>(global::Soenneker.PostHog.OpenApiClient.Models.CohortFilterGroupType.CreateFromDiscriminatorValue); } },
+                { "values", n => { Values = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilterGroupValuesItem>(global::Soenneker.PostHog.OpenApiClient.Models.CohortFilterGroupValuesItem.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -52,123 +58,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupOperator>("type", Type);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilterGroup.CohortFilterGroup_values>("values", Values);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CohortFilterGroup"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PersonFilter"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class CohortFilterGroup_values : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter? BehavioralFilter { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter BehavioralFilter { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter? CohortFilter { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter CohortFilter { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CohortFilterGroup"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.CohortFilterGroup? CohortFilterGroup { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.CohortFilterGroup CohortFilterGroup { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PersonFilter"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.PersonFilter? PersonFilter { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.PersonFilter PersonFilter { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CohortFilterGroup.CohortFilterGroup_values"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.CohortFilterGroup.CohortFilterGroup_values CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.CohortFilterGroup.CohortFilterGroup_values();
-                if("behavioral".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.BehavioralFilter = new global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter();
-                }
-                else if("cohort".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.CohortFilter = new global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter();
-                }
-                else if("AND".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.CohortFilterGroup = new global::Soenneker.PostHog.OpenApiClient.Models.CohortFilterGroup();
-                }
-                else if("person".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.PersonFilter = new global::Soenneker.PostHog.OpenApiClient.Models.PersonFilter();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(BehavioralFilter != null)
-                {
-                    return BehavioralFilter.GetFieldDeserializers();
-                }
-                else if(CohortFilter != null)
-                {
-                    return CohortFilter.GetFieldDeserializers();
-                }
-                else if(CohortFilterGroup != null)
-                {
-                    return CohortFilterGroup.GetFieldDeserializers();
-                }
-                else if(PersonFilter != null)
-                {
-                    return PersonFilter.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(BehavioralFilter != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter>(null, BehavioralFilter);
-                }
-                else if(CohortFilter != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilter>(null, CohortFilter);
-                }
-                else if(CohortFilterGroup != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilterGroup>(null, CohortFilterGroup);
-                }
-                else if(PersonFilter != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonFilter>(null, PersonFilter);
-                }
-            }
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilterGroupType>("type", Type);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilterGroupValuesItem>("values", Values);
         }
     }
 }

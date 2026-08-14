@@ -9,7 +9,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "default")]
         #pragma warning disable CS1591
-        Default,
+        DefaultValue,
         #pragma warning restore CS1591
         [EnumMember(Value = "acceptEdits")]
         #pragma warning disable CS1591
@@ -29,7 +29,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "read-only")]
         #pragma warning disable CS1591
-        ReadOnly,
+        ReadOnlyValue,
         #pragma warning restore CS1591
         [EnumMember(Value = "full-access")]
         #pragma warning disable CS1591

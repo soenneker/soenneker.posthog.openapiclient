@@ -27,20 +27,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TraceReview_created_by? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TraceReviewCreatedBy? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TraceReview_created_by CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TraceReviewCreatedBy CreatedBy { get; private set; }
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>User who last saved this review.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TraceReview_reviewed_by? ReviewedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TraceReviewReviewedBy? ReviewedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TraceReview_reviewed_by ReviewedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TraceReviewReviewedBy ReviewedBy { get; private set; }
 #endif
         /// <summary>Saved scorer values for this review.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -97,9 +97,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "comment", n => { Comment = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceReview_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.TraceReview_created_by.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceReviewCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.TraceReviewCreatedBy.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "reviewed_by", n => { ReviewedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceReview_reviewed_by>(global::Soenneker.PostHog.OpenApiClient.Models.TraceReview_reviewed_by.CreateFromDiscriminatorValue); } },
+                { "reviewed_by", n => { ReviewedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceReviewReviewedBy>(global::Soenneker.PostHog.OpenApiClient.Models.TraceReviewReviewedBy.CreateFromDiscriminatorValue); } },
                 { "scores", n => { Scores = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TraceReviewScore>(global::Soenneker.PostHog.OpenApiClient.Models.TraceReviewScore.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "team", n => { Team = n.GetIntValue(); } },
                 { "trace_id", n => { TraceId = n.GetStringValue(); } },

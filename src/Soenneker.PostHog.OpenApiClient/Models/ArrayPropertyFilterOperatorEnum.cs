@@ -13,15 +13,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "is_not")]
         #pragma warning disable CS1591
-        Is_not,
+        IsNot,
         #pragma warning restore CS1591
         [EnumMember(Value = "in")]
         #pragma warning disable CS1591
-        In,
+        InValue,
         #pragma warning restore CS1591
         [EnumMember(Value = "not_in")]
         #pragma warning disable CS1591
-        Not_in,
+        NotIn,
         #pragma warning restore CS1591
     }
 }

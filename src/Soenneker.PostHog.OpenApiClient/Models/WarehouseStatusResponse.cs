@@ -14,13 +14,77 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The failed_at property</summary>
+        /// <summary>The connection property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponseConnection? Connection { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponseConnection Connection { get; set; }
+#endif
+        /// <summary>When provisioning failed</summary>
         public DateTimeOffset? FailedAt { get; set; }
-        /// <summary>The ready_at property</summary>
+        /// <summary>Whether this project already has a warehouse backfill configured. When true, its table name is fixed and the enable form should not be shown.</summary>
+        public bool? HasBackfill { get; set; }
+        /// <summary>Worker identity sub-resource provisioning state</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? IdentityState { get; set; }
+#nullable restore
+#else
+        public string IdentityState { get; set; }
+#endif
+        /// <summary>Metadata-store sub-resource provisioning state</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? MetadataStoreState { get; set; }
+#nullable restore
+#else
+        public string MetadataStoreState { get; set; }
+#endif
+        /// <summary>duckgres org identifier (the PostHog organization id)</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? OrgId { get; set; }
+#nullable restore
+#else
+        public string OrgId { get; set; }
+#endif
+        /// <summary>When the warehouse became ready</summary>
         public DateTimeOffset? ReadyAt { get; set; }
-        /// <summary>* `pending` - pending* `provisioning` - provisioning* `ready` - ready* `failed` - failed* `deleting` - deleting* `deleted` - deleted</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponseStateEnum? State { get; set; }
-        /// <summary>The status_message property</summary>
+        /// <summary>Object-store sub-resource provisioning state</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? S3State { get; set; }
+#nullable restore
+#else
+        public string S3State { get; set; }
+#endif
+        /// <summary>Schema this project&apos;s data lands in. Null when the project is not onboarded.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SchemaName { get; set; }
+#nullable restore
+#else
+        public string SchemaName { get; set; }
+#endif
+        /// <summary>Credentials sub-resource provisioning state</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SecretsState { get; set; }
+#nullable restore
+#else
+        public string SecretsState { get; set; }
+#endif
+        /// <summary>Overall provisioning lifecycle state* `pending` - pending* `provisioning` - provisioning* `ready` - ready* `failed` - failed* `deleting` - deleting* `deleted` - deleted</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponseState? State { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponseState State { get; set; }
+#endif
+        /// <summary>Human-readable detail for the current state</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? StatusMessage { get; set; }
@@ -28,14 +92,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string StatusMessage { get; set; }
 #endif
-        /// <summary>The team_name property</summary>
+        /// <summary>This project&apos;s per-environment table suffix (events_&lt;suffix&gt;). Null when the project still writes to the shared tables.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TeamName { get; set; }
+        public string? TableSuffix { get; set; }
 #nullable restore
 #else
-        public string TeamName { get; set; }
+        public string TableSuffix { get; set; }
 #endif
+        /// <summary>Whether this project is onboarded onto the managed warehouse. False when the warehouse exists but this project has not picked a schema yet — show the onboarding screen in that case.</summary>
+        public bool? TeamOnboarded { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponse"/> and sets the default values.
         /// </summary>
@@ -61,11 +127,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "connection", n => { Connection = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponseConnection>(global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponseConnection.CreateFromDiscriminatorValue); } },
                 { "failed_at", n => { FailedAt = n.GetDateTimeOffsetValue(); } },
+                { "has_backfill", n => { HasBackfill = n.GetBoolValue(); } },
+                { "identity_state", n => { IdentityState = n.GetStringValue(); } },
+                { "metadata_store_state", n => { MetadataStoreState = n.GetStringValue(); } },
+                { "org_id", n => { OrgId = n.GetStringValue(); } },
                 { "ready_at", n => { ReadyAt = n.GetDateTimeOffsetValue(); } },
-                { "state", n => { State = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponseStateEnum>(); } },
+                { "s3_state", n => { S3State = n.GetStringValue(); } },
+                { "schema_name", n => { SchemaName = n.GetStringValue(); } },
+                { "secrets_state", n => { SecretsState = n.GetStringValue(); } },
+                { "state", n => { State = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponseState>(global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponseState.CreateFromDiscriminatorValue); } },
                 { "status_message", n => { StatusMessage = n.GetStringValue(); } },
-                { "team_name", n => { TeamName = n.GetStringValue(); } },
+                { "table_suffix", n => { TableSuffix = n.GetStringValue(); } },
+                { "team_onboarded", n => { TeamOnboarded = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -75,11 +150,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponseConnection>("connection", Connection);
             writer.WriteDateTimeOffsetValue("failed_at", FailedAt);
+            writer.WriteBoolValue("has_backfill", HasBackfill);
+            writer.WriteStringValue("identity_state", IdentityState);
+            writer.WriteStringValue("metadata_store_state", MetadataStoreState);
+            writer.WriteStringValue("org_id", OrgId);
             writer.WriteDateTimeOffsetValue("ready_at", ReadyAt);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponseStateEnum>("state", State);
+            writer.WriteStringValue("s3_state", S3State);
+            writer.WriteStringValue("schema_name", SchemaName);
+            writer.WriteStringValue("secrets_state", SecretsState);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponseState>("state", State);
             writer.WriteStringValue("status_message", StatusMessage);
-            writer.WriteStringValue("team_name", TeamName);
+            writer.WriteStringValue("table_suffix", TableSuffix);
+            writer.WriteBoolValue("team_onboarded", TeamOnboarded);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

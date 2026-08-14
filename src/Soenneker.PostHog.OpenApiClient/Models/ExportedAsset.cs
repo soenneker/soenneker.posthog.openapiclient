@@ -32,13 +32,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The export_context property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExportedAsset_export_context? ExportContext { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExportedAssetExportContext? ExportContext { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExportedAsset_export_context ExportContext { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExportedAssetExportContext ExportContext { get; set; }
 #endif
-        /// <summary>* `image/png` - image/png* `application/pdf` - application/pdf* `text/csv` - text/csv* `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet` - application/vnd.openxmlformats-officedocument.spreadsheetml.sheet* `video/webm` - video/webm* `video/mp4` - video/mp4* `image/gif` - image/gif* `application/json` - application/json</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExportFormatEnum? ExportFormat { get; set; }
+        /// <summary>File format of the generated export.* `image/png` - image/png* `application/pdf` - application/pdf* `text/csv` - text/csv* `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet` - application/vnd.openxmlformats-officedocument.spreadsheetml.sheet* `video/webm` - video/webm* `video/mp4` - video/mp4* `image/gif` - image/gif* `application/json` - application/json* `application/x-ndjson` - application/x-ndjson</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExportedAssetExportFormat? ExportFormat { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExportedAssetExportFormat ExportFormat { get; private set; }
+#endif
         /// <summary>The filename property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -53,6 +59,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? Id { get; private set; }
         /// <summary>The insight property</summary>
         public int? Insight { get; set; }
+        /// <summary>The effective access level the user has for this object</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? UserAccessLevel { get; private set; }
+#nullable restore
+#else
+        public string UserAccessLevel { get; private set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExportedAsset"/> and sets the default values.
         /// </summary>
@@ -82,12 +96,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "dashboard", n => { Dashboard = n.GetIntValue(); } },
                 { "exception", n => { Exception = n.GetStringValue(); } },
                 { "expires_after", n => { ExpiresAfter = n.GetDateTimeOffsetValue(); } },
-                { "export_context", n => { ExportContext = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExportedAsset_export_context>(global::Soenneker.PostHog.OpenApiClient.Models.ExportedAsset_export_context.CreateFromDiscriminatorValue); } },
-                { "export_format", n => { ExportFormat = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExportFormatEnum>(); } },
+                { "export_context", n => { ExportContext = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExportedAssetExportContext>(global::Soenneker.PostHog.OpenApiClient.Models.ExportedAssetExportContext.CreateFromDiscriminatorValue); } },
+                { "export_format", n => { ExportFormat = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExportedAssetExportFormat>(global::Soenneker.PostHog.OpenApiClient.Models.ExportedAssetExportFormat.CreateFromDiscriminatorValue); } },
                 { "filename", n => { Filename = n.GetStringValue(); } },
                 { "has_content", n => { HasContent = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetIntValue(); } },
                 { "insight", n => { Insight = n.GetIntValue(); } },
+                { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -98,8 +113,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("dashboard", Dashboard);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExportedAsset_export_context>("export_context", ExportContext);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExportFormatEnum>("export_format", ExportFormat);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExportedAssetExportContext>("export_context", ExportContext);
             writer.WriteIntValue("insight", Insight);
             writer.WriteAdditionalData(AdditionalData);
         }

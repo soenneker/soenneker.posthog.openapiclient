@@ -3,10 +3,9 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
+    /// <summary>Language to validate</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public enum HogLanguage
-    #pragma warning restore CS1591
     {
         [EnumMember(Value = "hog")]
         #pragma warning disable CS1591
@@ -18,11 +17,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "hogQL")]
         #pragma warning disable CS1591
-        HogQL,
+        HogQl,
         #pragma warning restore CS1591
         [EnumMember(Value = "hogQLExpr")]
         #pragma warning disable CS1591
-        HogQLExpr,
+        HogQlExpr,
         #pragma warning restore CS1591
         [EnumMember(Value = "hogTemplate")]
         #pragma warning disable CS1591

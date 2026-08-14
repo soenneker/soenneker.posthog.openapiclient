@@ -18,10 +18,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Per-column bucket overrides for range variable materialization.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointResponse_bucket_overrides? BucketOverrides { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointResponseBucketOverrides? BucketOverrides { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointResponse_bucket_overrides BucketOverrides { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointResponseBucketOverrides BucketOverrides { get; set; }
 #endif
         /// <summary>Column names and types from the query&apos;s SELECT clause.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -36,10 +36,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>User who created the endpoint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointResponse_created_by? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointResponseCreatedBy? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointResponse_created_by CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointResponseCreatedBy CreatedBy { get; private set; }
 #endif
         /// <summary>Latest version number.</summary>
         public int? CurrentVersion { get; set; }
@@ -63,7 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
-        /// <summary>Relative API path to execute this endpoint (e.g. /api/environments/{team_id}/endpoints/{name}/run).</summary>
+        /// <summary>Relative API path to execute this endpoint (e.g. /api/projects/{team_id}/endpoints/{name}/run).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? EndpointPath { get; set; }
@@ -82,10 +82,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Materialization status and configuration for the current version.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointResponse_materialization? Materialization { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointResponseMaterialization? Materialization { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointResponse_materialization Materialization { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointResponseMaterialization Materialization { get; set; }
 #endif
         /// <summary>URL-safe endpoint name, unique per team.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -95,13 +95,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
+        /// <summary>Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? OptionalBreakdownProperties { get; set; }
+#nullable restore
+#else
+        public List<string> OptionalBreakdownProperties { get; set; }
+#endif
         /// <summary>The HogQL or insight query definition (JSON object with &apos;kind&apos; key).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointResponse_query? Query { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointResponseQuery? Query { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointResponse_query Query { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointResponseQuery Query { get; set; }
 #endif
         /// <summary>Tag names associated with this endpoint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -156,10 +164,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "bucket_overrides", n => { BucketOverrides = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointResponse_bucket_overrides>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointResponse_bucket_overrides.CreateFromDiscriminatorValue); } },
+                { "bucket_overrides", n => { BucketOverrides = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointResponseBucketOverrides>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointResponseBucketOverrides.CreateFromDiscriminatorValue); } },
                 { "columns", n => { Columns = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EndpointColumn>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointColumn.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointResponse_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointResponse_created_by.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointResponseCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointResponseCreatedBy.CreateFromDiscriminatorValue); } },
                 { "current_version", n => { CurrentVersion = n.GetIntValue(); } },
                 { "current_version_id", n => { CurrentVersionId = n.GetGuidValue(); } },
                 { "data_freshness_seconds", n => { DataFreshnessSeconds = n.GetIntValue(); } },
@@ -170,9 +178,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "is_active", n => { IsActive = n.GetBoolValue(); } },
                 { "is_materialized", n => { IsMaterialized = n.GetBoolValue(); } },
                 { "last_executed_at", n => { LastExecutedAt = n.GetDateTimeOffsetValue(); } },
-                { "materialization", n => { Materialization = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointResponse_materialization>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointResponse_materialization.CreateFromDiscriminatorValue); } },
+                { "materialization", n => { Materialization = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointResponseMaterialization>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointResponseMaterialization.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointResponse_query>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointResponse_query.CreateFromDiscriminatorValue); } },
+                { "optional_breakdown_properties", n => { OptionalBreakdownProperties = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointResponseQuery>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointResponseQuery.CreateFromDiscriminatorValue); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "ui_url", n => { UiUrl = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
@@ -187,7 +196,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointResponse_bucket_overrides>("bucket_overrides", BucketOverrides);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointResponseBucketOverrides>("bucket_overrides", BucketOverrides);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EndpointColumn>("columns", Columns);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteIntValue("current_version", CurrentVersion);
@@ -200,9 +209,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("is_active", IsActive);
             writer.WriteBoolValue("is_materialized", IsMaterialized);
             writer.WriteDateTimeOffsetValue("last_executed_at", LastExecutedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointResponse_materialization>("materialization", Materialization);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointResponseMaterialization>("materialization", Materialization);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointResponse_query>("query", Query);
+            writer.WriteCollectionOfPrimitiveValues<string>("optional_breakdown_properties", OptionalBreakdownProperties);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointResponseQuery>("query", Query);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteStringValue("ui_url", UiUrl);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);

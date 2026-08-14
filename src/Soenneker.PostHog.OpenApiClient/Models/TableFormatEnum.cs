@@ -9,11 +9,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "CSV")]
         #pragma warning disable CS1591
-        CSV,
+        Csv,
         #pragma warning restore CS1591
         [EnumMember(Value = "CSVWithNames")]
         #pragma warning disable CS1591
-        CSVWithNames,
+        CsvWithNames,
         #pragma warning restore CS1591
         [EnumMember(Value = "Parquet")]
         #pragma warning disable CS1591
@@ -21,7 +21,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "JSONEachRow")]
         #pragma warning disable CS1591
-        JSONEachRow,
+        JsonEachRow,
         #pragma warning restore CS1591
         [EnumMember(Value = "Delta")]
         #pragma warning disable CS1591

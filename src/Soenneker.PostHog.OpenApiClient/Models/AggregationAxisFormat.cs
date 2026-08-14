@@ -18,7 +18,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "duration_ms")]
         #pragma warning disable CS1591
-        Duration_ms,
+        DurationMs,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "duration_ns")]
+        #pragma warning disable CS1591
+        DurationNs,
         #pragma warning restore CS1591
         [EnumMember(Value = "percentage")]
         #pragma warning disable CS1591
@@ -26,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "percentage_scaled")]
         #pragma warning disable CS1591
-        Percentage_scaled,
+        PercentageScaled,
         #pragma warning restore CS1591
         [EnumMember(Value = "currency")]
         #pragma warning disable CS1591
@@ -34,7 +38,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "short")]
         #pragma warning disable CS1591
-        Short,
+        ShortValue,
         #pragma warning restore CS1591
     }
 }

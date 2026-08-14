@@ -25,10 +25,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Groups for feature flag evaluation (JSON object, defaults to empty dict)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTestEvaluationRequest_groups? Groups { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTestEvaluationRequestGroups? Groups { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTestEvaluationRequest_groups Groups { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTestEvaluationRequestGroups Groups { get; set; }
 #endif
         /// <summary>Person ID to test against (mutually exclusive with distinct_id)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -66,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "distinct_id", n => { DistinctId = n.GetStringValue(); } },
-                { "groups", n => { Groups = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTestEvaluationRequest_groups>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTestEvaluationRequest_groups.CreateFromDiscriminatorValue); } },
+                { "groups", n => { Groups = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTestEvaluationRequestGroups>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTestEvaluationRequestGroups.CreateFromDiscriminatorValue); } },
                 { "person_id", n => { PersonId = n.GetStringValue(); } },
                 { "timestamp", n => { Timestamp = n.GetDateTimeOffsetValue(); } },
             };
@@ -79,7 +79,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("distinct_id", DistinctId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTestEvaluationRequest_groups>("groups", Groups);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTestEvaluationRequestGroups>("groups", Groups);
             writer.WriteStringValue("person_id", PersonId);
             writer.WriteDateTimeOffsetValue("timestamp", Timestamp);
             writer.WriteAdditionalData(AdditionalData);

@@ -9,51 +9,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class GoalLine : IParsable
+    public partial class GoalLine : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>The borderColor property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.GoalLine_borderColor? BorderColor { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.GoalLine_borderColor BorderColor { get; set; }
-#endif
-        /// <summary>The displayIfCrossed property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.GoalLine_displayIfCrossed? DisplayIfCrossed { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.GoalLine_displayIfCrossed DisplayIfCrossed { get; set; }
-#endif
-        /// <summary>The displayLabel property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.GoalLine_displayLabel? DisplayLabel { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.GoalLine_displayLabel DisplayLabel { get; set; }
-#endif
-        /// <summary>The label property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Label { get; set; }
-#nullable restore
-#else
-        public string Label { get; set; }
-#endif
-        /// <summary>The position property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.GoalLine_position? Position { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.GoalLine_position Position { get; set; }
-#endif
-        /// <summary>The value property</summary>
-        public double? Value { get; set; }
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.GoalLine"/> and sets the default values.
+        /// </summary>
+        public GoalLine()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -72,12 +39,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "borderColor", n => { BorderColor = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine_borderColor>(global::Soenneker.PostHog.OpenApiClient.Models.GoalLine_borderColor.CreateFromDiscriminatorValue); } },
-                { "displayIfCrossed", n => { DisplayIfCrossed = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine_displayIfCrossed>(global::Soenneker.PostHog.OpenApiClient.Models.GoalLine_displayIfCrossed.CreateFromDiscriminatorValue); } },
-                { "displayLabel", n => { DisplayLabel = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine_displayLabel>(global::Soenneker.PostHog.OpenApiClient.Models.GoalLine_displayLabel.CreateFromDiscriminatorValue); } },
-                { "label", n => { Label = n.GetStringValue(); } },
-                { "position", n => { Position = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine_position>(global::Soenneker.PostHog.OpenApiClient.Models.GoalLine_position.CreateFromDiscriminatorValue); } },
-                { "value", n => { Value = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -87,12 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine_borderColor>("borderColor", BorderColor);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine_displayIfCrossed>("displayIfCrossed", DisplayIfCrossed);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine_displayLabel>("displayLabel", DisplayLabel);
-            writer.WriteStringValue("label", Label);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine_position>("position", Position);
-            writer.WriteDoubleValue("value", Value);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

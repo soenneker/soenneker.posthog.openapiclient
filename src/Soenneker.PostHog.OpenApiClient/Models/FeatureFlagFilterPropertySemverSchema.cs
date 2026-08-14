@@ -32,10 +32,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Key { get; set; }
 #endif
-        /// <summary>* `semver_gt` - semver_gt* `semver_gte` - semver_gte* `semver_lt` - semver_lt* `semver_lte` - semver_lte* `semver_eq` - semver_eq* `semver_neq` - semver_neq* `semver_tilde` - semver_tilde* `semver_caret` - semver_caret* `semver_wildcard` - semver_wildcard</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySemverSchemaOperatorEnum? Operator { get; set; }
-        /// <summary>* `cohort` - cohort* `person` - person* `group` - group</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupTypeEnum? Type { get; set; }
+        /// <summary>Semantic version comparison operator.* `semver_gt` - semver_gt* `semver_gte` - semver_gte* `semver_lt` - semver_lt* `semver_lte` - semver_lte* `semver_eq` - semver_eq* `semver_neq` - semver_neq* `semver_tilde` - semver_tilde* `semver_caret` - semver_caret* `semver_wildcard` - semver_wildcard</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySemverSchemaOperator? Operator { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySemverSchemaOperator Operator { get; set; }
+#endif
+        /// <summary>Property filter type. Common values are &apos;person&apos; and &apos;cohort&apos;.* `cohort` - cohort* `person` - person* `group` - group</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySemverSchemaType? Type { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySemverSchemaType Type { get; set; }
+#endif
         /// <summary>Semantic version string.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -72,8 +84,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "cohort_name", n => { CohortName = n.GetStringValue(); } },
                 { "group_type_index", n => { GroupTypeIndex = n.GetIntValue(); } },
                 { "key", n => { Key = n.GetStringValue(); } },
-                { "operator", n => { Operator = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySemverSchemaOperatorEnum>(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupTypeEnum>(); } },
+                { "operator", n => { Operator = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySemverSchemaOperator>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySemverSchemaOperator.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySemverSchemaType>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySemverSchemaType.CreateFromDiscriminatorValue); } },
                 { "value", n => { Value = n.GetStringValue(); } },
             };
         }
@@ -87,8 +99,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("cohort_name", CohortName);
             writer.WriteIntValue("group_type_index", GroupTypeIndex);
             writer.WriteStringValue("key", Key);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySemverSchemaOperatorEnum>("operator", Operator);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupTypeEnum>("type", Type);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySemverSchemaOperator>("operator", Operator);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySemverSchemaType>("type", Type);
             writer.WriteStringValue("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }

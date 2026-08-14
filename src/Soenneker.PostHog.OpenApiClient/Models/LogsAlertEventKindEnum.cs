@@ -33,11 +33,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "threshold_change")]
         #pragma warning disable CS1591
-        Threshold_change,
+        ThresholdChange,
         #pragma warning restore CS1591
         [EnumMember(Value = "broken_config")]
         #pragma warning disable CS1591
-        Broken_config,
+        BrokenConfig,
         #pragma warning restore CS1591
     }
 }

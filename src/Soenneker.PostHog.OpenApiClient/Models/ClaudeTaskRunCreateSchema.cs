@@ -15,6 +15,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>When true, the cloud run agent pushes its work and opens a draft pull request on completion without waiting for an explicit ask.</summary>
+        public bool? AutoPublish { get; set; }
         /// <summary>Git branch to checkout in the sandbox</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -23,7 +25,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Branch { get; set; }
 #endif
-        /// <summary>Optional GitHub user token from PostHog Code for user-authored cloud pull requests. Prefer linking GitHub from Settings → Linked accounts so the server can manage tokens; this field remains supported for callers that still manage their own tokens.</summary>
+        /// <summary>Context window size for models that support the 1M window.* `200k` - 200k* `1m` - 1m</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ClaudeTaskRunCreateSchemaContextWindow? ContextWindow { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ClaudeTaskRunCreateSchemaContextWindow ContextWindow { get; set; }
+#endif
+        /// <summary>Optional custom base image for this cloud run&apos;s sandbox (Modal VM runtime only); takes precedence over the environment&apos;s image.</summary>
+        public Guid? CustomImageId { get; set; }
+        /// <summary>Enable fast mode for models that support it.</summary>
+        public bool? FastMode { get; set; }
+        /// <summary>Optional GitHub user token from PostHog Desktop for user-authored cloud pull requests. Prefer linking GitHub from Settings → Linked accounts so the server can manage tokens; this field remains supported for callers that still manage their own tokens.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? GithubUserToken { get; set; }
@@ -31,10 +45,30 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string GithubUserToken { get; set; }
 #endif
-        /// <summary>* `default` - default* `acceptEdits` - acceptEdits* `plan` - plan* `bypassPermissions` - bypassPermissions* `auto` - auto</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ClaudeTaskRunCreateSchemaInitialPermissionModeEnum? InitialPermissionMode { get; set; }
-        /// <summary>* `interactive` - interactive* `background` - background</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskExecutionModeEnum? Mode { get; set; }
+        /// <summary>&quot;Local url-based MCP servers from the creating client (PostHog Desktop) to make available inside the cloud sandbox. Header values are treated as credentials: stored encrypted and never returned by the API.&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ImportedMcpServer>? ImportedMcpServers { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ImportedMcpServer> ImportedMcpServers { get; set; }
+#endif
+        /// <summary>Initial permission mode for Claude runtimes.* `default` - default* `acceptEdits` - acceptEdits* `plan` - plan* `bypassPermissions` - bypassPermissions* `auto` - auto</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ClaudeTaskRunCreateSchemaInitialPermissionMode? InitialPermissionMode { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ClaudeTaskRunCreateSchemaInitialPermissionMode InitialPermissionMode { get; set; }
+#endif
+        /// <summary>&quot;Execution mode: &apos;interactive&apos; for user-connected runs, &apos;background&apos; for autonomous runs* `interactive` - interactive* `background` - background&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ClaudeTaskRunCreateSchemaMode? Mode { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ClaudeTaskRunCreateSchemaMode Mode { get; set; }
+#endif
         /// <summary>LLM model identifier to run in the Claude runtime.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -59,16 +93,50 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string PendingUserMessage { get; set; }
 #endif
-        /// <summary>* `user` - user* `bot` - bot</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.PrAuthorshipModeEnum? PrAuthorshipMode { get; set; }
-        /// <summary>* `low` - low* `medium` - medium* `high` - high* `xhigh` - xhigh* `max` - max</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReasoningEffortEnum? ReasoningEffort { get; set; }
+        /// <summary>Whether pull requests for this run should be authored by the user or the bot.* `user` - user* `bot` - bot</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ClaudeTaskRunCreateSchemaPrAuthorshipMode? PrAuthorshipMode { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ClaudeTaskRunCreateSchemaPrAuthorshipMode PrAuthorshipMode { get; set; }
+#endif
+        /// <summary>Reasoning effort to request for models that expose an effort control.* `low` - low* `medium` - medium* `high` - high* `xhigh` - xhigh* `max` - max* `ultracode` - ultracode</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ClaudeTaskRunCreateSchemaReasoningEffort? ReasoningEffort { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ClaudeTaskRunCreateSchemaReasoningEffort ReasoningEffort { get; set; }
+#endif
+        /// <summary>Names of desktop-only MCP servers the creating client (PostHog Desktop) relays into the cloud sandbox over the durable event/command channel. Names only — the server configuration (command, env, URL, headers) never crosses the wire.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.RelayedMcpServer>? RelayedMcpServers { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.RelayedMcpServer> RelayedMcpServers { get; set; }
+#endif
         /// <summary>ID of a previous run to resume from. Must belong to the same task.</summary>
         public Guid? ResumeFromRunId { get; set; }
-        /// <summary>* `manual` - manual* `signal_report` - signal_report</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.RunSourceEnum? RunSource { get; set; }
-        /// <summary>* `claude` - claude</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ClaudeRuntimeAdapterEnum? RuntimeAdapter { get; set; }
+        /// <summary>Whether rtk command-output compression is enabled for this run. Omitted or null follows the server-side default (enabled); false opts this run out.</summary>
+        public bool? RtkEnabled { get; set; }
+        /// <summary>High-level source that triggered this run, used to distinguish manual and signal-based cloud runs.* `manual` - manual* `signal_report` - signal_report</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ClaudeTaskRunCreateSchemaRunSource? RunSource { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ClaudeTaskRunCreateSchemaRunSource RunSource { get; set; }
+#endif
+        /// <summary>Agent runtime adapter to launch for this run. Must be &apos;claude&apos; for Claude runtimes.* `claude` - claude</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ClaudeTaskRunCreateSchemaRuntimeAdapter? RuntimeAdapter { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ClaudeTaskRunCreateSchemaRuntimeAdapter RuntimeAdapter { get; set; }
+#endif
         /// <summary>Optional sandbox environment to apply for this cloud run.</summary>
         public Guid? SandboxEnvironmentId { get; set; }
         /// <summary>Optional signal report identifier when this run was started from Inbox.</summary>
@@ -104,18 +172,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "auto_publish", n => { AutoPublish = n.GetBoolValue(); } },
                 { "branch", n => { Branch = n.GetStringValue(); } },
+                { "context_window", n => { ContextWindow = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ClaudeTaskRunCreateSchemaContextWindow>(global::Soenneker.PostHog.OpenApiClient.Models.ClaudeTaskRunCreateSchemaContextWindow.CreateFromDiscriminatorValue); } },
+                { "custom_image_id", n => { CustomImageId = n.GetGuidValue(); } },
+                { "fast_mode", n => { FastMode = n.GetBoolValue(); } },
                 { "github_user_token", n => { GithubUserToken = n.GetStringValue(); } },
-                { "initial_permission_mode", n => { InitialPermissionMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ClaudeTaskRunCreateSchemaInitialPermissionModeEnum>(); } },
-                { "mode", n => { Mode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskExecutionModeEnum>(); } },
+                { "imported_mcp_servers", n => { ImportedMcpServers = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ImportedMcpServer>(global::Soenneker.PostHog.OpenApiClient.Models.ImportedMcpServer.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "initial_permission_mode", n => { InitialPermissionMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ClaudeTaskRunCreateSchemaInitialPermissionMode>(global::Soenneker.PostHog.OpenApiClient.Models.ClaudeTaskRunCreateSchemaInitialPermissionMode.CreateFromDiscriminatorValue); } },
+                { "mode", n => { Mode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ClaudeTaskRunCreateSchemaMode>(global::Soenneker.PostHog.OpenApiClient.Models.ClaudeTaskRunCreateSchemaMode.CreateFromDiscriminatorValue); } },
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "pending_user_artifact_ids", n => { PendingUserArtifactIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "pending_user_message", n => { PendingUserMessage = n.GetStringValue(); } },
-                { "pr_authorship_mode", n => { PrAuthorshipMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PrAuthorshipModeEnum>(); } },
-                { "reasoning_effort", n => { ReasoningEffort = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReasoningEffortEnum>(); } },
+                { "pr_authorship_mode", n => { PrAuthorshipMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ClaudeTaskRunCreateSchemaPrAuthorshipMode>(global::Soenneker.PostHog.OpenApiClient.Models.ClaudeTaskRunCreateSchemaPrAuthorshipMode.CreateFromDiscriminatorValue); } },
+                { "reasoning_effort", n => { ReasoningEffort = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ClaudeTaskRunCreateSchemaReasoningEffort>(global::Soenneker.PostHog.OpenApiClient.Models.ClaudeTaskRunCreateSchemaReasoningEffort.CreateFromDiscriminatorValue); } },
+                { "relayed_mcp_servers", n => { RelayedMcpServers = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RelayedMcpServer>(global::Soenneker.PostHog.OpenApiClient.Models.RelayedMcpServer.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "resume_from_run_id", n => { ResumeFromRunId = n.GetGuidValue(); } },
-                { "run_source", n => { RunSource = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RunSourceEnum>(); } },
-                { "runtime_adapter", n => { RuntimeAdapter = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ClaudeRuntimeAdapterEnum>(); } },
+                { "rtk_enabled", n => { RtkEnabled = n.GetBoolValue(); } },
+                { "run_source", n => { RunSource = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ClaudeTaskRunCreateSchemaRunSource>(global::Soenneker.PostHog.OpenApiClient.Models.ClaudeTaskRunCreateSchemaRunSource.CreateFromDiscriminatorValue); } },
+                { "runtime_adapter", n => { RuntimeAdapter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ClaudeTaskRunCreateSchemaRuntimeAdapter>(global::Soenneker.PostHog.OpenApiClient.Models.ClaudeTaskRunCreateSchemaRuntimeAdapter.CreateFromDiscriminatorValue); } },
                 { "sandbox_environment_id", n => { SandboxEnvironmentId = n.GetGuidValue(); } },
                 { "signal_report_id", n => { SignalReportId = n.GetStringValue(); } },
             };
@@ -127,18 +202,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteBoolValue("auto_publish", AutoPublish);
             writer.WriteStringValue("branch", Branch);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ClaudeTaskRunCreateSchemaContextWindow>("context_window", ContextWindow);
+            writer.WriteGuidValue("custom_image_id", CustomImageId);
+            writer.WriteBoolValue("fast_mode", FastMode);
             writer.WriteStringValue("github_user_token", GithubUserToken);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ClaudeTaskRunCreateSchemaInitialPermissionModeEnum>("initial_permission_mode", InitialPermissionMode);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskExecutionModeEnum>("mode", Mode);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ImportedMcpServer>("imported_mcp_servers", ImportedMcpServers);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ClaudeTaskRunCreateSchemaInitialPermissionMode>("initial_permission_mode", InitialPermissionMode);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ClaudeTaskRunCreateSchemaMode>("mode", Mode);
             writer.WriteStringValue("model", Model);
             writer.WriteCollectionOfPrimitiveValues<string>("pending_user_artifact_ids", PendingUserArtifactIds);
             writer.WriteStringValue("pending_user_message", PendingUserMessage);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PrAuthorshipModeEnum>("pr_authorship_mode", PrAuthorshipMode);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReasoningEffortEnum>("reasoning_effort", ReasoningEffort);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ClaudeTaskRunCreateSchemaPrAuthorshipMode>("pr_authorship_mode", PrAuthorshipMode);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ClaudeTaskRunCreateSchemaReasoningEffort>("reasoning_effort", ReasoningEffort);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RelayedMcpServer>("relayed_mcp_servers", RelayedMcpServers);
             writer.WriteGuidValue("resume_from_run_id", ResumeFromRunId);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RunSourceEnum>("run_source", RunSource);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ClaudeRuntimeAdapterEnum>("runtime_adapter", RuntimeAdapter);
+            writer.WriteBoolValue("rtk_enabled", RtkEnabled);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ClaudeTaskRunCreateSchemaRunSource>("run_source", RunSource);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ClaudeTaskRunCreateSchemaRuntimeAdapter>("runtime_adapter", RuntimeAdapter);
             writer.WriteGuidValue("sandbox_environment_id", SandboxEnvironmentId);
             writer.WriteStringValue("signal_report_id", SignalReportId);
             writer.WriteAdditionalData(AdditionalData);

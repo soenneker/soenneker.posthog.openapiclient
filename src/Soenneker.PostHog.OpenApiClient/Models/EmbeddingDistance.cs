@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The origin property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingDistance_origin? Origin { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingRecord? Origin { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingDistance_origin Origin { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingRecord Origin { get; set; }
 #endif
         /// <summary>The result property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "distance", n => { Distance = n.GetDoubleValue(); } },
-                { "origin", n => { Origin = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingDistance_origin>(global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingDistance_origin.CreateFromDiscriminatorValue); } },
+                { "origin", n => { Origin = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingRecord>(global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingRecord.CreateFromDiscriminatorValue); } },
                 { "result", n => { Result = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingRecord>(global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingRecord.CreateFromDiscriminatorValue); } },
             };
         }
@@ -61,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("distance", Distance);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingDistance_origin>("origin", Origin);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingRecord>("origin", Origin);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingRecord>("result", Result);
         }
     }

@@ -18,13 +18,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Compress the file with a supported compression format* `zstd` - zstd* `gzip` - gzip* `brotli` - brotli* `lz4` - lz4* `snappy` - snappy</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfig_compression? Compression { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfigCompression? Compression { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfig_compression Compression { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfigCompression Compression { get; set; }
 #endif
-        /// <summary>* `JSONLines` - JSONLines* `Parquet` - Parquet</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.FileFormatEnum? Format { get; set; }
+        /// <summary>File format* `Parquet` - Parquet* `JSONLines` - JSONLines</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfigFormat? Format { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfigFormat Format { get; set; }
+#endif
         /// <summary>Split download into multiple files of at most this size in MB</summary>
         public int? MaxSizeMb { get; set; }
         /// <summary>
@@ -52,8 +58,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "compression", n => { Compression = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfig_compression>(global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfig_compression.CreateFromDiscriminatorValue); } },
-                { "format", n => { Format = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FileFormatEnum>(); } },
+                { "compression", n => { Compression = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfigCompression>(global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfigCompression.CreateFromDiscriminatorValue); } },
+                { "format", n => { Format = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfigFormat>(global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfigFormat.CreateFromDiscriminatorValue); } },
                 { "max_size_mb", n => { MaxSizeMb = n.GetIntValue(); } },
             };
         }
@@ -64,8 +70,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfig_compression>("compression", Compression);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FileFormatEnum>("format", Format);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfigCompression>("compression", Compression);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfigFormat>("format", Format);
             writer.WriteIntValue("max_size_mb", MaxSizeMb);
             writer.WriteAdditionalData(AdditionalData);
         }

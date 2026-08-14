@@ -13,7 +13,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "needs_attention")]
         #pragma warning disable CS1591
-        Needs_attention,
+        NeedsAttention,
         #pragma warning restore CS1591
     }
 }

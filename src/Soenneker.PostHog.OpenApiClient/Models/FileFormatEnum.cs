@@ -3,17 +3,17 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `JSONLines` - JSONLines* `Parquet` - Parquet</summary>
+    /// <summary>* `Parquet` - Parquet* `JSONLines` - JSONLines</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum FileFormatEnum
     {
-        [EnumMember(Value = "JSONLines")]
-        #pragma warning disable CS1591
-        JSONLines,
-        #pragma warning restore CS1591
         [EnumMember(Value = "Parquet")]
         #pragma warning disable CS1591
         Parquet,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "JSONLines")]
+        #pragma warning disable CS1591
+        JsonLines,
         #pragma warning restore CS1591
     }
 }

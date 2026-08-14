@@ -17,38 +17,38 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The contents property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrame_contents? Contents { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrameContentsProperty? Contents { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrame_contents Contents { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrameContentsProperty Contents { get; set; }
 #endif
         /// <summary>The context property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrame_context? Context { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrameContext? Context { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrame_context Context { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrameContext Context { get; set; }
 #endif
         /// <summary>The created_at property</summary>
-        public DateTimeOffset? CreatedAt { get; private set; }
+        public DateTimeOffset? CreatedAt { get; set; }
         /// <summary>The id property</summary>
-        public Guid? Id { get; private set; }
-        /// <summary>Raw frame ID in &apos;hash/part&apos; format</summary>
+        public Guid? Id { get; set; }
+        /// <summary>The raw_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RawId { get; private set; }
+        public string? RawId { get; set; }
 #nullable restore
 #else
-        public string RawId { get; private set; }
+        public string RawId { get; set; }
 #endif
         /// <summary>The release property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrame_release? Release { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrameRelease? Release { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrame_release Release { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrameRelease Release { get; set; }
 #endif
         /// <summary>The resolved property</summary>
         public bool? Resolved { get; set; }
@@ -85,12 +85,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "contents", n => { Contents = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrame_contents>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrame_contents.CreateFromDiscriminatorValue); } },
-                { "context", n => { Context = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrame_context>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrame_context.CreateFromDiscriminatorValue); } },
+                { "contents", n => { Contents = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrameContentsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrameContentsProperty.CreateFromDiscriminatorValue); } },
+                { "context", n => { Context = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrameContext>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrameContext.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "raw_id", n => { RawId = n.GetStringValue(); } },
-                { "release", n => { Release = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrame_release>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrame_release.CreateFromDiscriminatorValue); } },
+                { "release", n => { Release = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrameRelease>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrameRelease.CreateFromDiscriminatorValue); } },
                 { "resolved", n => { Resolved = n.GetBoolValue(); } },
                 { "symbol_set_ref", n => { SymbolSetRef = n.GetStringValue(); } },
             };
@@ -102,8 +102,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrame_contents>("contents", Contents);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrame_context>("context", Context);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrameContentsProperty>("contents", Contents);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrameContext>("context", Context);
+            writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
+            writer.WriteGuidValue("id", Id);
+            writer.WriteStringValue("raw_id", RawId);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrameRelease>("release", Release);
             writer.WriteBoolValue("resolved", Resolved);
             writer.WriteStringValue("symbol_set_ref", SymbolSetRef);
             writer.WriteAdditionalData(AdditionalData);

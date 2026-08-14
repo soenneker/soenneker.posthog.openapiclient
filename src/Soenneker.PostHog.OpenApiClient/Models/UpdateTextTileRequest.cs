@@ -33,10 +33,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>New grid layout per breakpoint. Omit to leave the layout unchanged.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UpdateTextTileRequest_layouts? Layouts { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UpdateTextTileRequestLayouts? Layouts { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UpdateTextTileRequest_layouts Layouts { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UpdateTextTileRequestLayouts Layouts { get; set; }
 #endif
         /// <summary>ID of the dashboard tile to update. Use dashboard-get to look up tile IDs.</summary>
         public int? TileId { get; set; }
@@ -67,7 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "body", n => { Body = n.GetStringValue(); } },
                 { "color", n => { Color = n.GetStringValue(); } },
-                { "layouts", n => { Layouts = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpdateTextTileRequest_layouts>(global::Soenneker.PostHog.OpenApiClient.Models.UpdateTextTileRequest_layouts.CreateFromDiscriminatorValue); } },
+                { "layouts", n => { Layouts = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpdateTextTileRequestLayouts>(global::Soenneker.PostHog.OpenApiClient.Models.UpdateTextTileRequestLayouts.CreateFromDiscriminatorValue); } },
                 { "tile_id", n => { TileId = n.GetIntValue(); } },
             };
         }
@@ -80,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("body", Body);
             writer.WriteStringValue("color", Color);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpdateTextTileRequest_layouts>("layouts", Layouts);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpdateTextTileRequestLayouts>("layouts", Layouts);
             writer.WriteIntValue("tile_id", TileId);
             writer.WriteAdditionalData(AdditionalData);
         }

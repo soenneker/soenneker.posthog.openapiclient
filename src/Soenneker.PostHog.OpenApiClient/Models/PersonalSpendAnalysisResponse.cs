@@ -15,45 +15,69 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Spend grouped by UTC time bucket with per-bucket cost/token components, ordered ascending. Scoped to `product`. Only present when the request set `bucket_minutes`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByBucket? ByBucket { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByBucket ByBucket { get; set; }
+#endif
+        /// <summary>Spend grouped by UTC day, ordered ascending. Scoped to `product`. Not subject to `limit`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByDay? ByDay { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByDay ByDay { get; set; }
+#endif
+        /// <summary>Daily model spend for the scoped product, ordered by day and cost. Includes the six highest-cost models in the selected window plus a null-model row for the remaining models.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DayModelBreakdownRow>? ByDayModel { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DayModelBreakdownRow> ByDayModel { get; set; }
+#endif
         /// <summary>Spend grouped by `$ai_model`. Scoped to `product` when set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponse_by_model? ByModel { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByModel? ByModel { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponse_by_model ByModel { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByModel ByModel { get; set; }
 #endif
         /// <summary>Spend grouped by the `ai_product` property — always across all products, never filtered.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponse_by_product? ByProduct { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByProduct? ByProduct { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponse_by_product ByProduct { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByProduct ByProduct { get; set; }
 #endif
         /// <summary>Spend grouped by tool. Scoped to `product` when set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponse_by_tool? ByTool { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByTool? ByTool { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponse_by_tool ByTool { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByTool ByTool { get; set; }
 #endif
         /// <summary>High-level totals for the lookback window.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponse_summary? Summary { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseSummary? Summary { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponse_summary Summary { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseSummary Summary { get; set; }
 #endif
         /// <summary>&quot;Deprecated — always returns `{items: [], truncated: false}`. Trace IDs are opaque strings that aren&apos;t actionable in the UI. Kept in the response shape so existing consumers don&apos;t crash; remove your rendering of this field and we&apos;ll drop it from the response entirely in a follow-up.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponse_top_traces? TopTraces { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseTopTraces? TopTraces { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponse_top_traces TopTraces { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseTopTraces TopTraces { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponse"/> and sets the default values.
@@ -80,11 +104,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "by_model", n => { ByModel = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponse_by_model>(global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponse_by_model.CreateFromDiscriminatorValue); } },
-                { "by_product", n => { ByProduct = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponse_by_product>(global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponse_by_product.CreateFromDiscriminatorValue); } },
-                { "by_tool", n => { ByTool = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponse_by_tool>(global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponse_by_tool.CreateFromDiscriminatorValue); } },
-                { "summary", n => { Summary = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponse_summary>(global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponse_summary.CreateFromDiscriminatorValue); } },
-                { "top_traces", n => { TopTraces = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponse_top_traces>(global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponse_top_traces.CreateFromDiscriminatorValue); } },
+                { "by_bucket", n => { ByBucket = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByBucket>(global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByBucket.CreateFromDiscriminatorValue); } },
+                { "by_day", n => { ByDay = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByDay>(global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByDay.CreateFromDiscriminatorValue); } },
+                { "by_day_model", n => { ByDayModel = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DayModelBreakdownRow>(global::Soenneker.PostHog.OpenApiClient.Models.DayModelBreakdownRow.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "by_model", n => { ByModel = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByModel>(global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByModel.CreateFromDiscriminatorValue); } },
+                { "by_product", n => { ByProduct = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByProduct>(global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByProduct.CreateFromDiscriminatorValue); } },
+                { "by_tool", n => { ByTool = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByTool>(global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByTool.CreateFromDiscriminatorValue); } },
+                { "summary", n => { Summary = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseSummary>(global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseSummary.CreateFromDiscriminatorValue); } },
+                { "top_traces", n => { TopTraces = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseTopTraces>(global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseTopTraces.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -94,11 +121,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponse_by_model>("by_model", ByModel);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponse_by_product>("by_product", ByProduct);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponse_by_tool>("by_tool", ByTool);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponse_summary>("summary", Summary);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponse_top_traces>("top_traces", TopTraces);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByBucket>("by_bucket", ByBucket);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByDay>("by_day", ByDay);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DayModelBreakdownRow>("by_day_model", ByDayModel);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByModel>("by_model", ByModel);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByProduct>("by_product", ByProduct);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByTool>("by_tool", ByTool);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseSummary>("summary", Summary);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseTopTraces>("top_traces", TopTraces);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

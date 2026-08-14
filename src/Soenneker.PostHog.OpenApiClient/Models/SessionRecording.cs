@@ -41,13 +41,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Load external references (linked issues) for this recording</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecording_external_references>? ExternalReferences { get; private set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingExternalReferencesItemProperty>? ExternalReferences { get; private set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecording_external_references> ExternalReferences { get; private set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingExternalReferencesItemProperty> ExternalReferences { get; private set; }
 #endif
-        /// <summary>The has_summary property</summary>
-        public bool? HasSummary { get; private set; }
         /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -60,6 +58,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? InactiveSeconds { get; private set; }
         /// <summary>The keypress_count property</summary>
         public int? KeypressCount { get; private set; }
+        /// <summary>Whether this recording matched the filters of the listing query that returned it. False only when a recording requested via session_recording_id was included despite not matching the filters.</summary>
+        public bool? MatchesFilters { get; private set; }
         /// <summary>The mouse_activity_count property</summary>
         public int? MouseActivityCount { get; private set; }
         /// <summary>The ongoing property</summary>
@@ -103,14 +103,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string StartUrl { get; private set; }
-#endif
-        /// <summary>The summary_outcome property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecording_summary_outcome? SummaryOutcome { get; private set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecording_summary_outcome SummaryOutcome { get; private set; }
 #endif
         /// <summary>The viewed property</summary>
         public bool? Viewed { get; private set; }
@@ -156,11 +148,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "distinct_id", n => { DistinctId = n.GetStringValue(); } },
                 { "end_time", n => { EndTime = n.GetDateTimeOffsetValue(); } },
                 { "expiry_time", n => { ExpiryTime = n.GetDateTimeOffsetValue(); } },
-                { "external_references", n => { ExternalReferences = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecording_external_references>(global::Soenneker.PostHog.OpenApiClient.Models.SessionRecording_external_references.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "has_summary", n => { HasSummary = n.GetBoolValue(); } },
+                { "external_references", n => { ExternalReferences = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingExternalReferencesItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingExternalReferencesItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "inactive_seconds", n => { InactiveSeconds = n.GetIntValue(); } },
                 { "keypress_count", n => { KeypressCount = n.GetIntValue(); } },
+                { "matches_filters", n => { MatchesFilters = n.GetBoolValue(); } },
                 { "mouse_activity_count", n => { MouseActivityCount = n.GetIntValue(); } },
                 { "ongoing", n => { Ongoing = n.GetBoolValue(); } },
                 { "person", n => { Person = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MinimalPerson>(global::Soenneker.PostHog.OpenApiClient.Models.MinimalPerson.CreateFromDiscriminatorValue); } },
@@ -171,7 +163,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "snapshot_source", n => { SnapshotSource = n.GetStringValue(); } },
                 { "start_time", n => { StartTime = n.GetDateTimeOffsetValue(); } },
                 { "start_url", n => { StartUrl = n.GetStringValue(); } },
-                { "summary_outcome", n => { SummaryOutcome = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecording_summary_outcome>(global::Soenneker.PostHog.OpenApiClient.Models.SessionRecording_summary_outcome.CreateFromDiscriminatorValue); } },
                 { "viewed", n => { Viewed = n.GetBoolValue(); } },
                 { "viewers", n => { Viewers = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };

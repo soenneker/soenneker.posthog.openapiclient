@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The autostart_priority property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfig.SignalUserAutonomyConfig_autostart_priority? AutostartPriority { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfigAutostartPriority? AutostartPriority { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfig.SignalUserAutonomyConfig_autostart_priority AutostartPriority { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfigAutostartPriority AutostartPriority { get; set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
@@ -39,20 +39,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Minimum report priority that triggers a Slack notification. P0 is highest. Null means notify on every priority (and reports without a priority judgment).* `P0` - P0* `P1` - P1* `P2` - P2* `P3` - P3* `P4` - P4</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfig.SignalUserAutonomyConfig_slack_notification_min_priority? SlackNotificationMinPriority { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfigSlackNotificationMinPriority? SlackNotificationMinPriority { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfig.SignalUserAutonomyConfig_slack_notification_min_priority SlackNotificationMinPriority { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfigSlackNotificationMinPriority SlackNotificationMinPriority { get; set; }
 #endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>The user property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfig_user? User { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfigUser? User { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfig_user User { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfigUser User { get; private set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfig"/> and sets the default values.
@@ -79,14 +79,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "autostart_priority", n => { AutostartPriority = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfig.SignalUserAutonomyConfig_autostart_priority>(global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfig.SignalUserAutonomyConfig_autostart_priority.CreateFromDiscriminatorValue); } },
+                { "autostart_priority", n => { AutostartPriority = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfigAutostartPriority>(global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfigAutostartPriority.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "slack_notification_channel", n => { SlackNotificationChannel = n.GetStringValue(); } },
                 { "slack_notification_integration_id", n => { SlackNotificationIntegrationId = n.GetIntValue(); } },
-                { "slack_notification_min_priority", n => { SlackNotificationMinPriority = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfig.SignalUserAutonomyConfig_slack_notification_min_priority>(global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfig.SignalUserAutonomyConfig_slack_notification_min_priority.CreateFromDiscriminatorValue); } },
+                { "slack_notification_min_priority", n => { SlackNotificationMinPriority = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfigSlackNotificationMinPriority>(global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfigSlackNotificationMinPriority.CreateFromDiscriminatorValue); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
-                { "user", n => { User = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfig_user>(global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfig_user.CreateFromDiscriminatorValue); } },
+                { "user", n => { User = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfigUser>(global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfigUser.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -96,200 +96,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfig.SignalUserAutonomyConfig_autostart_priority>("autostart_priority", AutostartPriority);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfigAutostartPriority>("autostart_priority", AutostartPriority);
             writer.WriteStringValue("slack_notification_channel", SlackNotificationChannel);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfig.SignalUserAutonomyConfig_slack_notification_min_priority>("slack_notification_min_priority", SlackNotificationMinPriority);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfigSlackNotificationMinPriority>("slack_notification_min_priority", SlackNotificationMinPriority);
             writer.WriteAdditionalData(AdditionalData);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AutonomyPriorityEnum_Wrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfig_autostart_priorityMember1"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class SignalUserAutonomyConfig_autostart_priority : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AutonomyPriorityEnum_Wrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.AutonomyPriorityEnum_Wrapper? AutonomyPriorityEnumWrapper { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.AutonomyPriorityEnum_Wrapper AutonomyPriorityEnumWrapper { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper? BlankEnumWrapper { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper BlankEnumWrapper { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfig_autostart_priorityMember1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfig_autostart_priorityMember1? SignalUserAutonomyConfigAutostartPriorityMember1 { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfig_autostart_priorityMember1 SignalUserAutonomyConfigAutostartPriorityMember1 { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfig.SignalUserAutonomyConfig_autostart_priority"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfig.SignalUserAutonomyConfig_autostart_priority CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfig.SignalUserAutonomyConfig_autostart_priority();
-                if("AutonomyPriorityEnum_Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.AutonomyPriorityEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.AutonomyPriorityEnum_Wrapper();
-                }
-                else if("BlankEnum_Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.BlankEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper();
-                }
-                else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.SignalUserAutonomyConfigAutostartPriorityMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfig_autostart_priorityMember1();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(AutonomyPriorityEnumWrapper != null)
-                {
-                    return AutonomyPriorityEnumWrapper.GetFieldDeserializers();
-                }
-                else if(BlankEnumWrapper != null)
-                {
-                    return BlankEnumWrapper.GetFieldDeserializers();
-                }
-                else if(SignalUserAutonomyConfigAutostartPriorityMember1 != null)
-                {
-                    return SignalUserAutonomyConfigAutostartPriorityMember1.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(AutonomyPriorityEnumWrapper != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutonomyPriorityEnum_Wrapper>(null, AutonomyPriorityEnumWrapper);
-                }
-                else if(BlankEnumWrapper != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper>(null, BlankEnumWrapper);
-                }
-                else if(SignalUserAutonomyConfigAutostartPriorityMember1 != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfig_autostart_priorityMember1>(null, SignalUserAutonomyConfigAutostartPriorityMember1);
-                }
-            }
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AutonomyPriorityEnum_Wrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfig_slack_notification_min_priorityMember1"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class SignalUserAutonomyConfig_slack_notification_min_priority : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AutonomyPriorityEnum_Wrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.AutonomyPriorityEnum_Wrapper? AutonomyPriorityEnumWrapper { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.AutonomyPriorityEnum_Wrapper AutonomyPriorityEnumWrapper { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper? BlankEnumWrapper { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper BlankEnumWrapper { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfig_slack_notification_min_priorityMember1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfig_slack_notification_min_priorityMember1? SignalUserAutonomyConfigSlackNotificationMinPriorityMember1 { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfig_slack_notification_min_priorityMember1 SignalUserAutonomyConfigSlackNotificationMinPriorityMember1 { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfig.SignalUserAutonomyConfig_slack_notification_min_priority"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfig.SignalUserAutonomyConfig_slack_notification_min_priority CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfig.SignalUserAutonomyConfig_slack_notification_min_priority();
-                if("AutonomyPriorityEnum_Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.AutonomyPriorityEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.AutonomyPriorityEnum_Wrapper();
-                }
-                else if("BlankEnum_Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.BlankEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper();
-                }
-                else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.SignalUserAutonomyConfigSlackNotificationMinPriorityMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfig_slack_notification_min_priorityMember1();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(AutonomyPriorityEnumWrapper != null)
-                {
-                    return AutonomyPriorityEnumWrapper.GetFieldDeserializers();
-                }
-                else if(BlankEnumWrapper != null)
-                {
-                    return BlankEnumWrapper.GetFieldDeserializers();
-                }
-                else if(SignalUserAutonomyConfigSlackNotificationMinPriorityMember1 != null)
-                {
-                    return SignalUserAutonomyConfigSlackNotificationMinPriorityMember1.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(AutonomyPriorityEnumWrapper != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutonomyPriorityEnum_Wrapper>(null, AutonomyPriorityEnumWrapper);
-                }
-                else if(BlankEnumWrapper != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper>(null, BlankEnumWrapper);
-                }
-                else if(SignalUserAutonomyConfigSlackNotificationMinPriorityMember1 != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfig_slack_notification_min_priorityMember1>(null, SignalUserAutonomyConfigSlackNotificationMinPriorityMember1);
-                }
-            }
         }
     }
 }

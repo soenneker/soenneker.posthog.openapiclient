@@ -5,6 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Endpoints.Item;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Endpoints.Last_execution_times;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Endpoints.Materialization_conditions;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -14,7 +15,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Endpoints
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\endpoints
+    /// Builds and executes requests for operations under \api\projects\{projectId}\endpoints
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class EndpointsRequestBuilder : BaseRequestBuilder
@@ -23,6 +24,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Endpoints
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Endpoints.Last_execution_times.Last_execution_timesRequestBuilder Last_execution_times
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Endpoints.Last_execution_times.Last_execution_timesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The materialization_conditions property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Endpoints.Materialization_conditions.Materialization_conditionsRequestBuilder Materialization_conditions
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Endpoints.Materialization_conditions.Materialization_conditionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.endpoints.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>
@@ -41,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Endpoints
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EndpointsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/endpoints{?created_by*,is_active*,limit*,offset*}", pathParameters)
+        public EndpointsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/endpoints{?created_by*,is_active*,limit*,offset*}", pathParameters)
         {
         }
         /// <summary>
@@ -49,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Endpoints
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EndpointsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/endpoints{?created_by*,is_active*,limit*,offset*}", rawUrl)
+        public EndpointsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/endpoints{?created_by*,is_active*,limit*,offset*}", rawUrl)
         {
         }
         /// <summary>

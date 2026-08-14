@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `slack` - slack* `webhook` - webhook</summary>
+    /// <summary>* `slack` - slack* `webhook` - webhook* `teams` - teams</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum NotificationDestinationTypeEnum
     {
@@ -14,6 +14,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "webhook")]
         #pragma warning disable CS1591
         Webhook,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "teams")]
+        #pragma warning disable CS1591
+        Teams,
         #pragma warning restore CS1591
     }
 }

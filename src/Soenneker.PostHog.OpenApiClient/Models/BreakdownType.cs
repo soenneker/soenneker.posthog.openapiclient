@@ -18,11 +18,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "event")]
         #pragma warning disable CS1591
-        Event,
+        EventValue,
         #pragma warning restore CS1591
         [EnumMember(Value = "event_metadata")]
         #pragma warning disable CS1591
-        Event_metadata,
+        EventMetadata,
         #pragma warning restore CS1591
         [EnumMember(Value = "group")]
         #pragma warning disable CS1591
@@ -38,15 +38,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "data_warehouse")]
         #pragma warning disable CS1591
-        Data_warehouse,
+        DataWarehouse,
         #pragma warning restore CS1591
         [EnumMember(Value = "data_warehouse_person_property")]
         #pragma warning disable CS1591
-        Data_warehouse_person_property,
+        DataWarehousePersonProperty,
         #pragma warning restore CS1591
         [EnumMember(Value = "revenue_analytics")]
         #pragma warning disable CS1591
-        Revenue_analytics,
+        RevenueAnalytics,
         #pragma warning restore CS1591
     }
 }

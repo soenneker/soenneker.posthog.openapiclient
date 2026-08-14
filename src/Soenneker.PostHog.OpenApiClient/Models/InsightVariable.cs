@@ -29,13 +29,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Default value used when a query references this variable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVariable_default_value? DefaultValue { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVariableDefaultValue? DefaultValue { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVariable_default_value DefaultValue { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVariableDefaultValue DefaultValue { get; set; }
 #endif
         /// <summary>UUID of the SQL variable.</summary>
         public Guid? Id { get; private set; }
+        /// <summary>Whether a List variable accepts multiple selected values.</summary>
+        public bool? IsMulti { get; set; }
         /// <summary>Human-readable name for the SQL variable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -44,15 +46,37 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>* `String` - String* `Number` - Number* `Boolean` - Boolean* `List` - List* `Date` - Date</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVariableTypeEnum? Type { get; set; }
+        /// <summary>Variable type. Controls how the value is rendered and substituted in HogQL.* `String` - String* `Number` - Number* `Boolean` - Boolean* `List` - List* `Date` - Date</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVariableType? Type { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVariableType Type { get; set; }
+#endif
         /// <summary>Allowed values for List variables. Null for other variable types.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVariable_values? Values { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVariableValues? Values { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVariable_values Values { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVariableValues Values { get; set; }
+#endif
+        /// <summary>HogQL query whose first result column supplies the allowed values for a List variable. An optional second column supplies display labels.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ValuesQuery { get; set; }
+#nullable restore
+#else
+        public string ValuesQuery { get; set; }
+#endif
+        /// <summary>ID of the external data source connection values_query runs against. Null runs it against PostHog.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ValuesQueryConnectionId { get; set; }
+#nullable restore
+#else
+        public string ValuesQueryConnectionId { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightVariable"/> and sets the default values.
@@ -82,11 +106,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "code_name", n => { CodeName = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetIntValue(); } },
-                { "default_value", n => { DefaultValue = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVariable_default_value>(global::Soenneker.PostHog.OpenApiClient.Models.InsightVariable_default_value.CreateFromDiscriminatorValue); } },
+                { "default_value", n => { DefaultValue = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVariableDefaultValue>(global::Soenneker.PostHog.OpenApiClient.Models.InsightVariableDefaultValue.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
+                { "is_multi", n => { IsMulti = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVariableTypeEnum>(); } },
-                { "values", n => { Values = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVariable_values>(global::Soenneker.PostHog.OpenApiClient.Models.InsightVariable_values.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVariableType>(global::Soenneker.PostHog.OpenApiClient.Models.InsightVariableType.CreateFromDiscriminatorValue); } },
+                { "values", n => { Values = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVariableValues>(global::Soenneker.PostHog.OpenApiClient.Models.InsightVariableValues.CreateFromDiscriminatorValue); } },
+                { "values_query", n => { ValuesQuery = n.GetStringValue(); } },
+                { "values_query_connection_id", n => { ValuesQueryConnectionId = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -96,10 +123,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVariable_default_value>("default_value", DefaultValue);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVariableDefaultValue>("default_value", DefaultValue);
+            writer.WriteBoolValue("is_multi", IsMulti);
             writer.WriteStringValue("name", Name);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVariableTypeEnum>("type", Type);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVariable_values>("values", Values);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVariableType>("type", Type);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVariableValues>("values", Values);
+            writer.WriteStringValue("values_query", ValuesQuery);
+            writer.WriteStringValue("values_query_connection_id", ValuesQueryConnectionId);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -3,7 +3,6 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Domains.Item.Scim.Logs;
-using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Domains.Item.Scim.Token;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -20,11 +19,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Domains.Item.Sc
         public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Domains.Item.Scim.Logs.LogsRequestBuilder Logs
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Domains.Item.Scim.Logs.LogsRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The token property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Domains.Item.Scim.Token.TokenRequestBuilder Token
-        {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Domains.Item.Scim.Token.TokenRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Domains.Item.Scim.ScimRequestBuilder"/> and sets the default values.

@@ -26,15 +26,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? LastLogin { get; private set; }
         /// <summary>* `1` - member* `8` - administrator* `15` - owner</summary>
         public int? Level { get; set; }
+        /// <summary>&quot;How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`.&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationMemberSearchMatchType? SearchMatchType { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationMemberSearchMatchType SearchMatchType { get; private set; }
+#endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>The user property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationMember_user? User { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationMemberUser? User { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationMember_user User { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationMemberUser User { get; private set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationMember"/> and sets the default values.
@@ -67,8 +75,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "joined_at", n => { JoinedAt = n.GetDateTimeOffsetValue(); } },
                 { "last_login", n => { LastLogin = n.GetDateTimeOffsetValue(); } },
                 { "level", n => { Level = n.GetIntValue(); } },
+                { "search_match_type", n => { SearchMatchType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationMemberSearchMatchType>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationMemberSearchMatchType.CreateFromDiscriminatorValue); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
-                { "user", n => { User = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationMember_user>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationMember_user.CreateFromDiscriminatorValue); } },
+                { "user", n => { User = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationMemberUser>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationMemberUser.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>

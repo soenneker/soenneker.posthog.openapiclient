@@ -19,21 +19,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TicketView_created_by? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TicketViewCreatedBy? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TicketView_created_by CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TicketViewCreatedBy CreatedBy { get; private set; }
 #endif
-        /// <summary>Saved ticket filter criteria. May contain status, priority, channel, sla, assignee, tags, dateFrom, dateTo, and sorting keys.</summary>
+        /// <summary>&quot;Saved ticket filter criteria: status, priority, channel, sla, aiTriageResult, assignee, tags, tagsMatch, tagsExclude, dateFrom, dateTo, sorting, and search.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TicketView_filters? Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TicketViewFiltersComposed? Filters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TicketView_filters Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TicketViewFiltersComposed Filters { get; set; }
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
+        /// <summary>Whether the current user has favorited this view. Favorited views sort to the top of the list. Favorites are personal to each user.</summary>
+        public bool? IsFavorited { get; set; }
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -76,9 +78,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TicketView_created_by>(global::Soenneker.PostHog.OpenApiClient.Models.TicketView_created_by.CreateFromDiscriminatorValue); } },
-                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TicketView_filters>(global::Soenneker.PostHog.OpenApiClient.Models.TicketView_filters.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TicketViewCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.TicketViewCreatedBy.CreateFromDiscriminatorValue); } },
+                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TicketViewFiltersComposed>(global::Soenneker.PostHog.OpenApiClient.Models.TicketViewFiltersComposed.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
+                { "is_favorited", n => { IsFavorited = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "short_id", n => { ShortId = n.GetStringValue(); } },
             };
@@ -90,7 +93,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TicketView_filters>("filters", Filters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TicketViewFiltersComposed>("filters", Filters);
+            writer.WriteBoolValue("is_favorited", IsFavorited);
             writer.WriteStringValue("name", Name);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -7,173 +7,20 @@ using System.IO;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
+    /// <summary>
+    /// List wrapper for OpenAPI schema generation — the field stores an array of metrics.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public partial class ExperimentApiMetric : IParsable
-    #pragma warning restore CS1591
+    public partial class ExperimentApiMetric : IAdditionalDataHolder, IParsable
     {
-        /// <summary>&quot;For retention metrics: completion event.&quot;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_completion_event? CompletionEvent { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_completion_event CompletionEvent { get; set; }
-#endif
-        /// <summary>Conversion window duration.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_conversion_window? ConversionWindow { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_conversion_window ConversionWindow { get; set; }
-#endif
-        /// <summary>&quot;For ratio metrics: denominator source.&quot;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_denominator? Denominator { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_denominator Denominator { get; set; }
-#endif
-        /// <summary>&quot;For ratio metrics: winsorization applied to the denominator aggregate. Leave unset for a binomial-style denominator, which is never clamped.&quot;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_denominator_outlier_handling? DenominatorOutlierHandling { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_denominator_outlier_handling DenominatorOutlierHandling { get; set; }
-#endif
-        /// <summary>Whether higher or lower values indicate success.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_goal? Goal { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_goal Goal { get; set; }
-#endif
-        /// <summary>&quot;For mean metrics: exclude zero values when computing the winsorization percentile thresholds.&quot;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_ignore_zeros? IgnoreZeros { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_ignore_zeros IgnoreZeros { get; set; }
-#endif
-        /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_kind? Kind { get; set; }
-        /// <summary>&quot;For mean metrics: winsorization lower percentile bound, as a fraction in [0, 1] (e.g. 0.01 for the 1st percentile). Per-user values below this percentile are clamped to it before aggregation.&quot;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_lower_bound_percentile? LowerBoundPercentile { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_lower_bound_percentile LowerBoundPercentile { get; set; }
-#endif
-        /// <summary>The metric_type property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricType? MetricType { get; set; }
-        /// <summary>Human-readable metric name.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_name? Name { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_name Name { get; set; }
-#endif
-        /// <summary>&quot;For ratio metrics: numerator source.&quot;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_numerator? Numerator { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_numerator Numerator { get; set; }
-#endif
-        /// <summary>&quot;For ratio metrics: winsorization applied to the numerator aggregate, independently of the denominator and each with its own percentile thresholds.&quot;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_numerator_outlier_handling? NumeratorOutlierHandling { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_numerator_outlier_handling NumeratorOutlierHandling { get; set; }
-#endif
-        /// <summary>The retention_window_end property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_retention_window_end? RetentionWindowEnd { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_retention_window_end RetentionWindowEnd { get; set; }
-#endif
-        /// <summary>The retention_window_start property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_retention_window_start? RetentionWindowStart { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_retention_window_start RetentionWindowStart { get; set; }
-#endif
-        /// <summary>The retention_window_unit property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_retention_window_unit? RetentionWindowUnit { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_retention_window_unit RetentionWindowUnit { get; set; }
-#endif
-        /// <summary>&quot;For funnel metrics: array of EventsNode/ActionsNode steps.&quot;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_series? Series { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_series Series { get; set; }
-#endif
-        /// <summary>&quot;For mean metrics: event source.&quot;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_source? Source { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_source Source { get; set; }
-#endif
-        /// <summary>&quot;For retention metrics: start event.&quot;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_start_event? StartEvent { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_start_event StartEvent { get; set; }
-#endif
-        /// <summary>The start_handling property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_start_handling? StartHandling { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_start_handling StartHandling { get; set; }
-#endif
-        /// <summary>&quot;For mean metrics: winsorization upper percentile bound, as a fraction in [0, 1] (e.g. 0.99 for the 99th percentile). Per-user values above this percentile are clamped to it before aggregation.&quot;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_upper_bound_percentile? UpperBoundPercentile { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_upper_bound_percentile UpperBoundPercentile { get; set; }
-#endif
-        /// <summary>Unique identifier. Auto-generated if omitted.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_uuid? Uuid { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_uuid Uuid { get; set; }
-#endif
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric"/> and sets the default values.
         /// </summary>
         public ExperimentApiMetric()
         {
-            Kind = global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_kind.ExperimentMetric;
+            AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -193,27 +40,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "completion_event", n => { CompletionEvent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_completion_event>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_completion_event.CreateFromDiscriminatorValue); } },
-                { "conversion_window", n => { ConversionWindow = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_conversion_window>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_conversion_window.CreateFromDiscriminatorValue); } },
-                { "denominator", n => { Denominator = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_denominator>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_denominator.CreateFromDiscriminatorValue); } },
-                { "denominator_outlier_handling", n => { DenominatorOutlierHandling = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_denominator_outlier_handling>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_denominator_outlier_handling.CreateFromDiscriminatorValue); } },
-                { "goal", n => { Goal = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_goal>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_goal.CreateFromDiscriminatorValue); } },
-                { "ignore_zeros", n => { IgnoreZeros = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_ignore_zeros>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_ignore_zeros.CreateFromDiscriminatorValue); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_kind>(); } },
-                { "lower_bound_percentile", n => { LowerBoundPercentile = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_lower_bound_percentile>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_lower_bound_percentile.CreateFromDiscriminatorValue); } },
-                { "metric_type", n => { MetricType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricType>(); } },
-                { "name", n => { Name = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_name>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_name.CreateFromDiscriminatorValue); } },
-                { "numerator", n => { Numerator = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_numerator>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_numerator.CreateFromDiscriminatorValue); } },
-                { "numerator_outlier_handling", n => { NumeratorOutlierHandling = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_numerator_outlier_handling>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_numerator_outlier_handling.CreateFromDiscriminatorValue); } },
-                { "retention_window_end", n => { RetentionWindowEnd = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_retention_window_end>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_retention_window_end.CreateFromDiscriminatorValue); } },
-                { "retention_window_start", n => { RetentionWindowStart = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_retention_window_start>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_retention_window_start.CreateFromDiscriminatorValue); } },
-                { "retention_window_unit", n => { RetentionWindowUnit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_retention_window_unit>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_retention_window_unit.CreateFromDiscriminatorValue); } },
-                { "series", n => { Series = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_series>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_series.CreateFromDiscriminatorValue); } },
-                { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_source>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_source.CreateFromDiscriminatorValue); } },
-                { "start_event", n => { StartEvent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_start_event>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_start_event.CreateFromDiscriminatorValue); } },
-                { "start_handling", n => { StartHandling = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_start_handling>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_start_handling.CreateFromDiscriminatorValue); } },
-                { "upper_bound_percentile", n => { UpperBoundPercentile = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_upper_bound_percentile>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_upper_bound_percentile.CreateFromDiscriminatorValue); } },
-                { "uuid", n => { Uuid = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_uuid>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_uuid.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -223,27 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_completion_event>("completion_event", CompletionEvent);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_conversion_window>("conversion_window", ConversionWindow);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_denominator>("denominator", Denominator);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_denominator_outlier_handling>("denominator_outlier_handling", DenominatorOutlierHandling);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_goal>("goal", Goal);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_ignore_zeros>("ignore_zeros", IgnoreZeros);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_kind>("kind", Kind);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_lower_bound_percentile>("lower_bound_percentile", LowerBoundPercentile);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricType>("metric_type", MetricType);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_name>("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_numerator>("numerator", Numerator);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_numerator_outlier_handling>("numerator_outlier_handling", NumeratorOutlierHandling);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_retention_window_end>("retention_window_end", RetentionWindowEnd);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_retention_window_start>("retention_window_start", RetentionWindowStart);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_retention_window_unit>("retention_window_unit", RetentionWindowUnit);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_series>("series", Series);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_source>("source", Source);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_start_event>("start_event", StartEvent);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_start_handling>("start_handling", StartHandling);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_upper_bound_percentile>("upper_bound_percentile", UpperBoundPercentile);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetric_uuid>("uuid", Uuid);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

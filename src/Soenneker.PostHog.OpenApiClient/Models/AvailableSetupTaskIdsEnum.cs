@@ -3,269 +3,273 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `ingest_first_event` - ingest_first_event* `set_up_reverse_proxy` - set_up_reverse_proxy* `create_first_insight` - create_first_insight* `create_first_dashboard` - create_first_dashboard* `track_custom_events` - track_custom_events* `define_actions` - define_actions* `set_up_cohorts` - set_up_cohorts* `explore_trends_insight` - explore_trends_insight* `create_funnel` - create_funnel* `explore_retention_insight` - explore_retention_insight* `explore_paths_insight` - explore_paths_insight* `explore_stickiness_insight` - explore_stickiness_insight* `explore_lifecycle_insight` - explore_lifecycle_insight* `add_authorized_domain` - add_authorized_domain* `set_up_web_vitals` - set_up_web_vitals* `review_web_analytics_dashboard` - review_web_analytics_dashboard* `filter_web_analytics` - filter_web_analytics* `set_up_web_analytics_conversion_goals` - set_up_web_analytics_conversion_goals* `visit_web_vitals_dashboard` - visit_web_vitals_dashboard* `setup_session_recordings` - setup_session_recordings* `watch_session_recording` - watch_session_recording* `configure_recording_settings` - configure_recording_settings* `create_recording_playlist` - create_recording_playlist* `enable_console_logs` - enable_console_logs* `create_feature_flag` - create_feature_flag* `implement_flag_in_code` - implement_flag_in_code* `update_feature_flag_release_conditions` - update_feature_flag_release_conditions* `create_multivariate_flag` - create_multivariate_flag* `set_up_flag_payloads` - set_up_flag_payloads* `set_up_flag_evaluation_runtimes` - set_up_flag_evaluation_runtimes* `create_experiment` - create_experiment* `implement_experiment_variants` - implement_experiment_variants* `launch_experiment` - launch_experiment* `review_experiment_results` - review_experiment_results* `create_survey` - create_survey* `launch_survey` - launch_survey* `collect_survey_responses` - collect_survey_responses* `connect_source` - connect_source* `run_first_query` - run_first_query* `join_external_data` - join_external_data* `create_saved_view` - create_saved_view* `enable_error_tracking` - enable_error_tracking* `upload_source_maps` - upload_source_maps* `view_first_error` - view_first_error* `resolve_first_error` - resolve_first_error* `ingest_first_llm_event` - ingest_first_llm_event* `view_first_trace` - view_first_trace* `track_costs` - track_costs* `set_up_llm_evaluation` - set_up_llm_evaluation* `run_ai_playground` - run_ai_playground* `enable_revenue_analytics_viewset` - enable_revenue_analytics_viewset* `connect_revenue_source` - connect_revenue_source* `set_up_revenue_goal` - set_up_revenue_goal* `enable_log_capture` - enable_log_capture* `view_first_logs` - view_first_logs* `create_first_workflow` - create_first_workflow* `set_up_first_workflow_channel` - set_up_first_workflow_channel* `configure_workflow_trigger` - configure_workflow_trigger* `add_workflow_action` - add_workflow_action* `launch_workflow` - launch_workflow* `create_first_endpoint` - create_first_endpoint* `configure_endpoint` - configure_endpoint* `test_endpoint` - test_endpoint* `create_early_access_feature` - create_early_access_feature* `update_feature_stage` - update_feature_stage</summary>
+    /// <summary>* `ingest_first_event` - ingest_first_event* `set_up_reverse_proxy` - set_up_reverse_proxy* `create_first_insight` - create_first_insight* `create_first_dashboard` - create_first_dashboard* `track_custom_events` - track_custom_events* `define_actions` - define_actions* `set_up_cohorts` - set_up_cohorts* `explore_trends_insight` - explore_trends_insight* `create_funnel` - create_funnel* `explore_retention_insight` - explore_retention_insight* `explore_paths_insight` - explore_paths_insight* `explore_stickiness_insight` - explore_stickiness_insight* `explore_lifecycle_insight` - explore_lifecycle_insight* `add_authorized_domain` - add_authorized_domain* `set_up_web_vitals` - set_up_web_vitals* `review_web_analytics_dashboard` - review_web_analytics_dashboard* `filter_web_analytics` - filter_web_analytics* `set_up_web_analytics_conversion_goals` - set_up_web_analytics_conversion_goals* `visit_web_vitals_dashboard` - visit_web_vitals_dashboard* `setup_session_recordings` - setup_session_recordings* `watch_session_recording` - watch_session_recording* `configure_recording_settings` - configure_recording_settings* `create_recording_playlist` - create_recording_playlist* `enable_console_logs` - enable_console_logs* `create_feature_flag` - create_feature_flag* `implement_flag_in_code` - implement_flag_in_code* `update_feature_flag_release_conditions` - update_feature_flag_release_conditions* `create_multivariate_flag` - create_multivariate_flag* `set_up_flag_payloads` - set_up_flag_payloads* `set_up_flag_evaluation_runtimes` - set_up_flag_evaluation_runtimes* `create_experiment` - create_experiment* `implement_experiment_variants` - implement_experiment_variants* `launch_experiment` - launch_experiment* `review_experiment_results` - review_experiment_results* `create_survey` - create_survey* `launch_survey` - launch_survey* `collect_survey_responses` - collect_survey_responses* `connect_source` - connect_source* `run_first_query` - run_first_query* `join_external_data` - join_external_data* `create_saved_view` - create_saved_view* `enable_error_tracking` - enable_error_tracking* `upload_source_maps` - upload_source_maps* `view_first_error` - view_first_error* `resolve_first_error` - resolve_first_error* `ingest_first_llm_event` - ingest_first_llm_event* `view_first_trace` - view_first_trace* `track_costs` - track_costs* `set_up_llm_evaluation` - set_up_llm_evaluation* `run_ai_playground` - run_ai_playground* `enable_log_capture` - enable_log_capture* `view_first_logs` - view_first_logs* `create_first_workflow` - create_first_workflow* `set_up_first_workflow_channel` - set_up_first_workflow_channel* `configure_workflow_trigger` - configure_workflow_trigger* `add_workflow_action` - add_workflow_action* `launch_workflow` - launch_workflow* `create_first_endpoint` - create_first_endpoint* `configure_endpoint` - configure_endpoint* `test_endpoint` - test_endpoint* `create_early_access_feature` - create_early_access_feature* `update_feature_stage` - update_feature_stage* `use_posthog_ai` - use_posthog_ai* `use_posthog_code` - use_posthog_code* `use_posthog_mcp` - use_posthog_mcp* `use_posthog_in_slack` - use_posthog_in_slack</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum AvailableSetupTaskIdsEnum
     {
         [EnumMember(Value = "ingest_first_event")]
         #pragma warning disable CS1591
-        Ingest_first_event,
+        IngestFirstEvent,
         #pragma warning restore CS1591
         [EnumMember(Value = "set_up_reverse_proxy")]
         #pragma warning disable CS1591
-        Set_up_reverse_proxy,
+        SetUpReverseProxy,
         #pragma warning restore CS1591
         [EnumMember(Value = "create_first_insight")]
         #pragma warning disable CS1591
-        Create_first_insight,
+        CreateFirstInsight,
         #pragma warning restore CS1591
         [EnumMember(Value = "create_first_dashboard")]
         #pragma warning disable CS1591
-        Create_first_dashboard,
+        CreateFirstDashboard,
         #pragma warning restore CS1591
         [EnumMember(Value = "track_custom_events")]
         #pragma warning disable CS1591
-        Track_custom_events,
+        TrackCustomEvents,
         #pragma warning restore CS1591
         [EnumMember(Value = "define_actions")]
         #pragma warning disable CS1591
-        Define_actions,
+        DefineActions,
         #pragma warning restore CS1591
         [EnumMember(Value = "set_up_cohorts")]
         #pragma warning disable CS1591
-        Set_up_cohorts,
+        SetUpCohorts,
         #pragma warning restore CS1591
         [EnumMember(Value = "explore_trends_insight")]
         #pragma warning disable CS1591
-        Explore_trends_insight,
+        ExploreTrendsInsight,
         #pragma warning restore CS1591
         [EnumMember(Value = "create_funnel")]
         #pragma warning disable CS1591
-        Create_funnel,
+        CreateFunnel,
         #pragma warning restore CS1591
         [EnumMember(Value = "explore_retention_insight")]
         #pragma warning disable CS1591
-        Explore_retention_insight,
+        ExploreRetentionInsight,
         #pragma warning restore CS1591
         [EnumMember(Value = "explore_paths_insight")]
         #pragma warning disable CS1591
-        Explore_paths_insight,
+        ExplorePathsInsight,
         #pragma warning restore CS1591
         [EnumMember(Value = "explore_stickiness_insight")]
         #pragma warning disable CS1591
-        Explore_stickiness_insight,
+        ExploreStickinessInsight,
         #pragma warning restore CS1591
         [EnumMember(Value = "explore_lifecycle_insight")]
         #pragma warning disable CS1591
-        Explore_lifecycle_insight,
+        ExploreLifecycleInsight,
         #pragma warning restore CS1591
         [EnumMember(Value = "add_authorized_domain")]
         #pragma warning disable CS1591
-        Add_authorized_domain,
+        AddAuthorizedDomain,
         #pragma warning restore CS1591
         [EnumMember(Value = "set_up_web_vitals")]
         #pragma warning disable CS1591
-        Set_up_web_vitals,
+        SetUpWebVitals,
         #pragma warning restore CS1591
         [EnumMember(Value = "review_web_analytics_dashboard")]
         #pragma warning disable CS1591
-        Review_web_analytics_dashboard,
+        ReviewWebAnalyticsDashboard,
         #pragma warning restore CS1591
         [EnumMember(Value = "filter_web_analytics")]
         #pragma warning disable CS1591
-        Filter_web_analytics,
+        FilterWebAnalytics,
         #pragma warning restore CS1591
         [EnumMember(Value = "set_up_web_analytics_conversion_goals")]
         #pragma warning disable CS1591
-        Set_up_web_analytics_conversion_goals,
+        SetUpWebAnalyticsConversionGoals,
         #pragma warning restore CS1591
         [EnumMember(Value = "visit_web_vitals_dashboard")]
         #pragma warning disable CS1591
-        Visit_web_vitals_dashboard,
+        VisitWebVitalsDashboard,
         #pragma warning restore CS1591
         [EnumMember(Value = "setup_session_recordings")]
         #pragma warning disable CS1591
-        Setup_session_recordings,
+        SetupSessionRecordings,
         #pragma warning restore CS1591
         [EnumMember(Value = "watch_session_recording")]
         #pragma warning disable CS1591
-        Watch_session_recording,
+        WatchSessionRecording,
         #pragma warning restore CS1591
         [EnumMember(Value = "configure_recording_settings")]
         #pragma warning disable CS1591
-        Configure_recording_settings,
+        ConfigureRecordingSettings,
         #pragma warning restore CS1591
         [EnumMember(Value = "create_recording_playlist")]
         #pragma warning disable CS1591
-        Create_recording_playlist,
+        CreateRecordingPlaylist,
         #pragma warning restore CS1591
         [EnumMember(Value = "enable_console_logs")]
         #pragma warning disable CS1591
-        Enable_console_logs,
+        EnableConsoleLogs,
         #pragma warning restore CS1591
         [EnumMember(Value = "create_feature_flag")]
         #pragma warning disable CS1591
-        Create_feature_flag,
+        CreateFeatureFlag,
         #pragma warning restore CS1591
         [EnumMember(Value = "implement_flag_in_code")]
         #pragma warning disable CS1591
-        Implement_flag_in_code,
+        ImplementFlagInCode,
         #pragma warning restore CS1591
         [EnumMember(Value = "update_feature_flag_release_conditions")]
         #pragma warning disable CS1591
-        Update_feature_flag_release_conditions,
+        UpdateFeatureFlagReleaseConditions,
         #pragma warning restore CS1591
         [EnumMember(Value = "create_multivariate_flag")]
         #pragma warning disable CS1591
-        Create_multivariate_flag,
+        CreateMultivariateFlag,
         #pragma warning restore CS1591
         [EnumMember(Value = "set_up_flag_payloads")]
         #pragma warning disable CS1591
-        Set_up_flag_payloads,
+        SetUpFlagPayloads,
         #pragma warning restore CS1591
         [EnumMember(Value = "set_up_flag_evaluation_runtimes")]
         #pragma warning disable CS1591
-        Set_up_flag_evaluation_runtimes,
+        SetUpFlagEvaluationRuntimes,
         #pragma warning restore CS1591
         [EnumMember(Value = "create_experiment")]
         #pragma warning disable CS1591
-        Create_experiment,
+        CreateExperiment,
         #pragma warning restore CS1591
         [EnumMember(Value = "implement_experiment_variants")]
         #pragma warning disable CS1591
-        Implement_experiment_variants,
+        ImplementExperimentVariants,
         #pragma warning restore CS1591
         [EnumMember(Value = "launch_experiment")]
         #pragma warning disable CS1591
-        Launch_experiment,
+        LaunchExperiment,
         #pragma warning restore CS1591
         [EnumMember(Value = "review_experiment_results")]
         #pragma warning disable CS1591
-        Review_experiment_results,
+        ReviewExperimentResults,
         #pragma warning restore CS1591
         [EnumMember(Value = "create_survey")]
         #pragma warning disable CS1591
-        Create_survey,
+        CreateSurvey,
         #pragma warning restore CS1591
         [EnumMember(Value = "launch_survey")]
         #pragma warning disable CS1591
-        Launch_survey,
+        LaunchSurvey,
         #pragma warning restore CS1591
         [EnumMember(Value = "collect_survey_responses")]
         #pragma warning disable CS1591
-        Collect_survey_responses,
+        CollectSurveyResponses,
         #pragma warning restore CS1591
         [EnumMember(Value = "connect_source")]
         #pragma warning disable CS1591
-        Connect_source,
+        ConnectSource,
         #pragma warning restore CS1591
         [EnumMember(Value = "run_first_query")]
         #pragma warning disable CS1591
-        Run_first_query,
+        RunFirstQuery,
         #pragma warning restore CS1591
         [EnumMember(Value = "join_external_data")]
         #pragma warning disable CS1591
-        Join_external_data,
+        JoinExternalData,
         #pragma warning restore CS1591
         [EnumMember(Value = "create_saved_view")]
         #pragma warning disable CS1591
-        Create_saved_view,
+        CreateSavedView,
         #pragma warning restore CS1591
         [EnumMember(Value = "enable_error_tracking")]
         #pragma warning disable CS1591
-        Enable_error_tracking,
+        EnableErrorTracking,
         #pragma warning restore CS1591
         [EnumMember(Value = "upload_source_maps")]
         #pragma warning disable CS1591
-        Upload_source_maps,
+        UploadSourceMaps,
         #pragma warning restore CS1591
         [EnumMember(Value = "view_first_error")]
         #pragma warning disable CS1591
-        View_first_error,
+        ViewFirstError,
         #pragma warning restore CS1591
         [EnumMember(Value = "resolve_first_error")]
         #pragma warning disable CS1591
-        Resolve_first_error,
+        ResolveFirstError,
         #pragma warning restore CS1591
         [EnumMember(Value = "ingest_first_llm_event")]
         #pragma warning disable CS1591
-        Ingest_first_llm_event,
+        IngestFirstLlmEvent,
         #pragma warning restore CS1591
         [EnumMember(Value = "view_first_trace")]
         #pragma warning disable CS1591
-        View_first_trace,
+        ViewFirstTrace,
         #pragma warning restore CS1591
         [EnumMember(Value = "track_costs")]
         #pragma warning disable CS1591
-        Track_costs,
+        TrackCosts,
         #pragma warning restore CS1591
         [EnumMember(Value = "set_up_llm_evaluation")]
         #pragma warning disable CS1591
-        Set_up_llm_evaluation,
+        SetUpLlmEvaluation,
         #pragma warning restore CS1591
         [EnumMember(Value = "run_ai_playground")]
         #pragma warning disable CS1591
-        Run_ai_playground,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "enable_revenue_analytics_viewset")]
-        #pragma warning disable CS1591
-        Enable_revenue_analytics_viewset,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "connect_revenue_source")]
-        #pragma warning disable CS1591
-        Connect_revenue_source,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "set_up_revenue_goal")]
-        #pragma warning disable CS1591
-        Set_up_revenue_goal,
+        RunAiPlayground,
         #pragma warning restore CS1591
         [EnumMember(Value = "enable_log_capture")]
         #pragma warning disable CS1591
-        Enable_log_capture,
+        EnableLogCapture,
         #pragma warning restore CS1591
         [EnumMember(Value = "view_first_logs")]
         #pragma warning disable CS1591
-        View_first_logs,
+        ViewFirstLogs,
         #pragma warning restore CS1591
         [EnumMember(Value = "create_first_workflow")]
         #pragma warning disable CS1591
-        Create_first_workflow,
+        CreateFirstWorkflow,
         #pragma warning restore CS1591
         [EnumMember(Value = "set_up_first_workflow_channel")]
         #pragma warning disable CS1591
-        Set_up_first_workflow_channel,
+        SetUpFirstWorkflowChannel,
         #pragma warning restore CS1591
         [EnumMember(Value = "configure_workflow_trigger")]
         #pragma warning disable CS1591
-        Configure_workflow_trigger,
+        ConfigureWorkflowTrigger,
         #pragma warning restore CS1591
         [EnumMember(Value = "add_workflow_action")]
         #pragma warning disable CS1591
-        Add_workflow_action,
+        AddWorkflowAction,
         #pragma warning restore CS1591
         [EnumMember(Value = "launch_workflow")]
         #pragma warning disable CS1591
-        Launch_workflow,
+        LaunchWorkflow,
         #pragma warning restore CS1591
         [EnumMember(Value = "create_first_endpoint")]
         #pragma warning disable CS1591
-        Create_first_endpoint,
+        CreateFirstEndpoint,
         #pragma warning restore CS1591
         [EnumMember(Value = "configure_endpoint")]
         #pragma warning disable CS1591
-        Configure_endpoint,
+        ConfigureEndpoint,
         #pragma warning restore CS1591
         [EnumMember(Value = "test_endpoint")]
         #pragma warning disable CS1591
-        Test_endpoint,
+        TestEndpoint,
         #pragma warning restore CS1591
         [EnumMember(Value = "create_early_access_feature")]
         #pragma warning disable CS1591
-        Create_early_access_feature,
+        CreateEarlyAccessFeature,
         #pragma warning restore CS1591
         [EnumMember(Value = "update_feature_stage")]
         #pragma warning disable CS1591
-        Update_feature_stage,
+        UpdateFeatureStage,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "use_posthog_ai")]
+        #pragma warning disable CS1591
+        UsePosthogAi,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "use_posthog_code")]
+        #pragma warning disable CS1591
+        UsePosthogCode,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "use_posthog_mcp")]
+        #pragma warning disable CS1591
+        UsePosthogMcp,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "use_posthog_in_slack")]
+        #pragma warning disable CS1591
+        UsePosthogInSlack,
         #pragma warning restore CS1591
     }
 }

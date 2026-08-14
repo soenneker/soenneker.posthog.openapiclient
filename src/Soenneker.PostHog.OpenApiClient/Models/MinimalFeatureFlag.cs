@@ -19,10 +19,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Identifier used for bucketing users into rollout and variants* `distinct_id` - User ID (default)* `device_id` - Device ID</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag.MinimalFeatureFlag_bucketing_identifier? BucketingIdentifier { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlagBucketingIdentifier? BucketingIdentifier { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag.MinimalFeatureFlag_bucketing_identifier BucketingIdentifier { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlagBucketingIdentifier BucketingIdentifier { get; set; }
 #endif
         /// <summary>The deleted property</summary>
         public bool? Deleted { get; set; }
@@ -39,18 +39,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Specifies where this feature flag should be evaluated* `server` - Server* `client` - Client* `all` - All</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag.MinimalFeatureFlag_evaluation_runtime? EvaluationRuntime { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlagEvaluationRuntime? EvaluationRuntime { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag.MinimalFeatureFlag_evaluation_runtime EvaluationRuntime { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlagEvaluationRuntime EvaluationRuntime { get; set; }
 #endif
         /// <summary>The filters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag_filters? Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlagFiltersProperty? Filters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag_filters Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlagFiltersProperty Filters { get; set; }
 #endif
         /// <summary>The id property</summary>
         public int? Id { get; private set; }
@@ -100,12 +100,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "active", n => { Active = n.GetBoolValue(); } },
-                { "bucketing_identifier", n => { BucketingIdentifier = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag.MinimalFeatureFlag_bucketing_identifier>(global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag.MinimalFeatureFlag_bucketing_identifier.CreateFromDiscriminatorValue); } },
+                { "bucketing_identifier", n => { BucketingIdentifier = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlagBucketingIdentifier>(global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlagBucketingIdentifier.CreateFromDiscriminatorValue); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "ensure_experience_continuity", n => { EnsureExperienceContinuity = n.GetBoolValue(); } },
                 { "evaluation_contexts", n => { EvaluationContexts = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "evaluation_runtime", n => { EvaluationRuntime = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag.MinimalFeatureFlag_evaluation_runtime>(global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag.MinimalFeatureFlag_evaluation_runtime.CreateFromDiscriminatorValue); } },
-                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag_filters>(global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag_filters.CreateFromDiscriminatorValue); } },
+                { "evaluation_runtime", n => { EvaluationRuntime = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlagEvaluationRuntime>(global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlagEvaluationRuntime.CreateFromDiscriminatorValue); } },
+                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlagFiltersProperty>(global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlagFiltersProperty.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetIntValue(); } },
                 { "key", n => { Key = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
@@ -121,205 +121,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("active", Active);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag.MinimalFeatureFlag_bucketing_identifier>("bucketing_identifier", BucketingIdentifier);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlagBucketingIdentifier>("bucketing_identifier", BucketingIdentifier);
             writer.WriteBoolValue("deleted", Deleted);
             writer.WriteBoolValue("ensure_experience_continuity", EnsureExperienceContinuity);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag.MinimalFeatureFlag_evaluation_runtime>("evaluation_runtime", EvaluationRuntime);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag_filters>("filters", Filters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlagEvaluationRuntime>("evaluation_runtime", EvaluationRuntime);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlagFiltersProperty>("filters", Filters);
             writer.WriteStringValue("key", Key);
             writer.WriteStringValue("name", Name);
             writer.WriteIntValue("version", Version);
             writer.WriteAdditionalData(AdditionalData);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BucketingIdentifierEnum_Wrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag_bucketing_identifierMember1"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class MinimalFeatureFlag_bucketing_identifier : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper? BlankEnumWrapper { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper BlankEnumWrapper { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BucketingIdentifierEnum_Wrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.BucketingIdentifierEnum_Wrapper? BucketingIdentifierEnumWrapper { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.BucketingIdentifierEnum_Wrapper BucketingIdentifierEnumWrapper { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag_bucketing_identifierMember1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag_bucketing_identifierMember1? MinimalFeatureFlagBucketingIdentifierMember1 { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag_bucketing_identifierMember1 MinimalFeatureFlagBucketingIdentifierMember1 { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag.MinimalFeatureFlag_bucketing_identifier"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag.MinimalFeatureFlag_bucketing_identifier CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag.MinimalFeatureFlag_bucketing_identifier();
-                if("BlankEnum_Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.BlankEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper();
-                }
-                else if("BucketingIdentifierEnum_Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.BucketingIdentifierEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.BucketingIdentifierEnum_Wrapper();
-                }
-                else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.MinimalFeatureFlagBucketingIdentifierMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag_bucketing_identifierMember1();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(BlankEnumWrapper != null)
-                {
-                    return BlankEnumWrapper.GetFieldDeserializers();
-                }
-                else if(BucketingIdentifierEnumWrapper != null)
-                {
-                    return BucketingIdentifierEnumWrapper.GetFieldDeserializers();
-                }
-                else if(MinimalFeatureFlagBucketingIdentifierMember1 != null)
-                {
-                    return MinimalFeatureFlagBucketingIdentifierMember1.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(BlankEnumWrapper != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper>(null, BlankEnumWrapper);
-                }
-                else if(BucketingIdentifierEnumWrapper != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BucketingIdentifierEnum_Wrapper>(null, BucketingIdentifierEnumWrapper);
-                }
-                else if(MinimalFeatureFlagBucketingIdentifierMember1 != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag_bucketing_identifierMember1>(null, MinimalFeatureFlagBucketingIdentifierMember1);
-                }
-            }
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EvaluationRuntimeEnum_Wrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag_evaluation_runtimeMember1"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class MinimalFeatureFlag_evaluation_runtime : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper? BlankEnumWrapper { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper BlankEnumWrapper { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EvaluationRuntimeEnum_Wrapper"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationRuntimeEnum_Wrapper? EvaluationRuntimeEnumWrapper { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationRuntimeEnum_Wrapper EvaluationRuntimeEnumWrapper { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag_evaluation_runtimeMember1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag_evaluation_runtimeMember1? MinimalFeatureFlagEvaluationRuntimeMember1 { get; set; }
-#nullable restore
-#else
-            public global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag_evaluation_runtimeMember1 MinimalFeatureFlagEvaluationRuntimeMember1 { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag.MinimalFeatureFlag_evaluation_runtime"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag.MinimalFeatureFlag_evaluation_runtime CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag.MinimalFeatureFlag_evaluation_runtime();
-                if("BlankEnum_Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.BlankEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper();
-                }
-                else if("EvaluationRuntimeEnum_Wrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.EvaluationRuntimeEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.EvaluationRuntimeEnum_Wrapper();
-                }
-                else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    result.MinimalFeatureFlagEvaluationRuntimeMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag_evaluation_runtimeMember1();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(BlankEnumWrapper != null)
-                {
-                    return BlankEnumWrapper.GetFieldDeserializers();
-                }
-                else if(EvaluationRuntimeEnumWrapper != null)
-                {
-                    return EvaluationRuntimeEnumWrapper.GetFieldDeserializers();
-                }
-                else if(MinimalFeatureFlagEvaluationRuntimeMember1 != null)
-                {
-                    return MinimalFeatureFlagEvaluationRuntimeMember1.GetFieldDeserializers();
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(BlankEnumWrapper != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnum_Wrapper>(null, BlankEnumWrapper);
-                }
-                else if(EvaluationRuntimeEnumWrapper != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationRuntimeEnum_Wrapper>(null, EvaluationRuntimeEnumWrapper);
-                }
-                else if(MinimalFeatureFlagEvaluationRuntimeMember1 != null)
-                {
-                    writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MinimalFeatureFlag_evaluation_runtimeMember1>(null, MinimalFeatureFlagEvaluationRuntimeMember1);
-                }
-            }
         }
     }
 }

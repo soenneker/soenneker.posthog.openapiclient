@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Time { get; set; }
 #endif
-        /// <summary>Aggregated value for the bucket.</summary>
+        /// <summary>Aggregated value for the bucket. Null when the aggregate isn&apos;t representable (e.g. float overflow) — render as a gap.</summary>
         public double? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryPoint"/> and sets the default values.

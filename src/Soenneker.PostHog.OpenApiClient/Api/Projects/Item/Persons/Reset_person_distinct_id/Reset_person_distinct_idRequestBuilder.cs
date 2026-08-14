@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Reset_person_distinct_id
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{project_id}\persons\reset_person_distinct_id
+    /// Builds and executes requests for operations under \api\projects\{projectId}\persons\reset_person_distinct_id
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Reset_person_distinct_idRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Reset_person
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Reset_person_distinct_idRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/persons/reset_person_distinct_id{?format*}", pathParameters)
+        public Reset_person_distinct_idRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/persons/reset_person_distinct_id{?format*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,28 +30,28 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Reset_person
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Reset_person_distinct_idRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{project_id}/persons/reset_person_distinct_id{?format*}", rawUrl)
+        public Reset_person_distinct_idRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/persons/reset_person_distinct_id{?format*}", rawUrl)
         {
         }
         /// <summary>
         /// Reset a distinct_id for a deleted person. This allows the distinct_id to be used again.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Reset_person_distinct_id.Reset_person_distinct_idPostResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PersonsResetPersonDistinctIdCreate201Response"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Reset_person_distinct_id.Reset_person_distinct_idPostResponse?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.PersonRecord body, Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Reset_person_distinct_id.Reset_person_distinct_idRequestBuilder.Reset_person_distinct_idRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.PersonsResetPersonDistinctIdCreate201Response?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.PersonRecord body, Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Reset_person_distinct_id.Reset_person_distinct_idRequestBuilder.Reset_person_distinct_idRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Reset_person_distinct_id.Reset_person_distinct_idPostResponse> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.PersonRecord body, Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Reset_person_distinct_id.Reset_person_distinct_idRequestBuilder.Reset_person_distinct_idRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.PersonsResetPersonDistinctIdCreate201Response> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.PersonRecord body, Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Reset_person_distinct_id.Reset_person_distinct_idRequestBuilder.Reset_person_distinct_idRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Reset_person_distinct_id.Reset_person_distinct_idPostResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Reset_person_distinct_id.Reset_person_distinct_idPostResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PersonsResetPersonDistinctIdCreate201Response>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PersonsResetPersonDistinctIdCreate201Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Reset a distinct_id for a deleted person. This allows the distinct_id to be used again.
@@ -91,7 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Reset_person
         public partial class Reset_person_distinct_idRequestBuilderPostQueryParameters 
         {
             [QueryParameter("format")]
-            public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Reset_person_distinct_id.PostFormatQueryParameterType? Format { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.PersonsResetPersonDistinctIdCreateFormatParameter? Format { get; set; }
         }
     }
 }

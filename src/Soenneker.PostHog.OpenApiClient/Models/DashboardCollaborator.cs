@@ -27,10 +27,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The user property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardCollaborator_user? User { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardCollaboratorUser? User { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardCollaborator_user User { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardCollaboratorUser User { get; private set; }
 #endif
         /// <summary>The user_uuid property</summary>
         public Guid? UserUuid { get; set; }
@@ -64,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "level", n => { Level = n.GetIntValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
-                { "user", n => { User = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardCollaborator_user>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardCollaborator_user.CreateFromDiscriminatorValue); } },
+                { "user", n => { User = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardCollaboratorUser>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardCollaboratorUser.CreateFromDiscriminatorValue); } },
                 { "user_uuid", n => { UserUuid = n.GetGuidValue(); } },
             };
         }

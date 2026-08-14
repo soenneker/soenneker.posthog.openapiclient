@@ -10,19 +10,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         [EnumMember(Value = "INP")]
         #pragma warning disable CS1591
-        INP,
+        Inp,
         #pragma warning restore CS1591
         [EnumMember(Value = "LCP")]
         #pragma warning disable CS1591
-        LCP,
+        Lcp,
         #pragma warning restore CS1591
         [EnumMember(Value = "CLS")]
         #pragma warning disable CS1591
-        CLS,
+        Cls,
         #pragma warning restore CS1591
         [EnumMember(Value = "FCP")]
         #pragma warning disable CS1591
-        FCP,
+        Fcp,
         #pragma warning restore CS1591
     }
 }

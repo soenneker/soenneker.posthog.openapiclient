@@ -17,18 +17,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Metadata about the summarization</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SummarizeResponse_metadata? Metadata { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SummarizeResponseMetadata? Metadata { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SummarizeResponse_metadata Metadata { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SummarizeResponseMetadata Metadata { get; set; }
 #endif
         /// <summary>Structured AI-generated summary with flow, bullets, and optional notes</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SummarizeResponse_summary? Summary { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SummarizeResponseSummary? Summary { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SummarizeResponse_summary Summary { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SummarizeResponseSummary Summary { get; set; }
 #endif
         /// <summary>Line-numbered text representation that the summary references</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -63,8 +63,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SummarizeResponse_metadata>(global::Soenneker.PostHog.OpenApiClient.Models.SummarizeResponse_metadata.CreateFromDiscriminatorValue); } },
-                { "summary", n => { Summary = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SummarizeResponse_summary>(global::Soenneker.PostHog.OpenApiClient.Models.SummarizeResponse_summary.CreateFromDiscriminatorValue); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SummarizeResponseMetadata>(global::Soenneker.PostHog.OpenApiClient.Models.SummarizeResponseMetadata.CreateFromDiscriminatorValue); } },
+                { "summary", n => { Summary = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SummarizeResponseSummary>(global::Soenneker.PostHog.OpenApiClient.Models.SummarizeResponseSummary.CreateFromDiscriminatorValue); } },
                 { "text_repr", n => { TextRepr = n.GetStringValue(); } },
             };
         }
@@ -75,8 +75,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SummarizeResponse_metadata>("metadata", Metadata);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SummarizeResponse_summary>("summary", Summary);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SummarizeResponseMetadata>("metadata", Metadata);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SummarizeResponseSummary>("summary", Summary);
             writer.WriteStringValue("text_repr", TextRepr);
             writer.WriteAdditionalData(AdditionalData);
         }

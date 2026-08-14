@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "duration_s")]
         #pragma warning disable CS1591
-        Duration_s,
+        DurationS,
         #pragma warning restore CS1591
         [EnumMember(Value = "percentage")]
         #pragma warning disable CS1591
