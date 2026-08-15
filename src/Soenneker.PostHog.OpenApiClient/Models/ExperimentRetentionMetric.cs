@@ -83,10 +83,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricResponse? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricResponseProperty? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricResponse Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricResponseProperty Response { get; set; }
 #endif
         /// <summary>The retention_window_end property</summary>
         public int? RetentionWindowEnd { get; set; }
@@ -144,7 +144,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "kind", n => { Kind = n.GetStringValue(); } },
                 { "metric_type", n => { MetricType = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricResponse.CreateFromDiscriminatorValue); } },
+                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricResponseProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricResponseProperty.CreateFromDiscriminatorValue); } },
                 { "retention_window_end", n => { RetentionWindowEnd = n.GetIntValue(); } },
                 { "retention_window_start", n => { RetentionWindowStart = n.GetIntValue(); } },
                 { "retention_window_unit", n => { RetentionWindowUnit = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnit>(); } },
@@ -172,7 +172,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("kind", Kind);
             writer.WriteStringValue("metric_type", MetricType);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricResponse>("response", Response);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricResponseProperty>("response", Response);
             writer.WriteIntValue("retention_window_end", RetentionWindowEnd);
             writer.WriteIntValue("retention_window_start", RetentionWindowStart);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnit>("retention_window_unit", RetentionWindowUnit);

@@ -3,6 +3,10 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Archive;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.History;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Restore;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Status_history;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -17,6 +21,26 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Ite
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Feature_requestsItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The archive property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Archive.ArchiveRequestBuilder Archive
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Archive.ArchiveRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The history property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.History.HistoryRequestBuilder History
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.History.HistoryRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The restore property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Restore.RestoreRequestBuilder Restore
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Restore.RestoreRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The status_history property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Status_history.Status_historyRequestBuilder Status_history
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Status_history.Status_historyRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Feature_requestsItemRequestBuilder"/> and sets the default values.
         /// </summary>
@@ -48,6 +72,40 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Ite
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequest>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequest.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequest"/></returns>
+        /// <param name="body">The request body</param>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequest?> PatchAsync(global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureRequestUpdate body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#nullable restore
+#else
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequest> PatchAsync(global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureRequestUpdate body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequest>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequest.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+        }
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequest"/></returns>
+        /// <param name="body">The request body</param>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequest?> PutAsync(global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestUpdate body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#nullable restore
+#else
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequest> PutAsync(global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestUpdate body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToPutRequestInformation(body, requestConfiguration);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequest>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequest.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+        }
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -62,6 +120,44 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Ite
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
+            return requestInfo;
+        }
+        /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="body">The request body</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public RequestInformation ToPatchRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureRequestUpdate body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
+#nullable restore
+#else
+        public RequestInformation ToPatchRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureRequestUpdate body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
+#endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = new RequestInformation(Method.PATCH, UrlTemplate, PathParameters);
+            requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
+            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
+            return requestInfo;
+        }
+        /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="body">The request body</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public RequestInformation ToPutRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestUpdate body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
+#nullable restore
+#else
+        public RequestInformation ToPutRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestUpdate body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
+#endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = new RequestInformation(Method.PUT, UrlTemplate, PathParameters);
+            requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
+            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }
         /// <summary>

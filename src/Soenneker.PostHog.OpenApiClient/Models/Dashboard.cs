@@ -134,18 +134,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The persisted_filters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardPersistedFilters? PersistedFilters { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardPersistedFiltersProperty? PersistedFilters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardPersistedFilters PersistedFilters { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardPersistedFiltersProperty PersistedFilters { get; set; }
 #endif
         /// <summary>The persisted_variables property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardPersistedVariables? PersistedVariables { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardPersistedVariablesProperty? PersistedVariables { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardPersistedVariables PersistedVariables { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardPersistedVariablesProperty PersistedVariables { get; set; }
 #endif
         /// <summary>The pinned property</summary>
         public bool? Pinned { get; set; }
@@ -198,10 +198,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The variables property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardVariables? Variables { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardVariablesProperty? Variables { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardVariables Variables { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardVariablesProperty Variables { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Dashboard"/> and sets the default values.
@@ -251,8 +251,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "last_refresh", n => { LastRefresh = n.GetDateTimeOffsetValue(); } },
                 { "last_viewed_at", n => { LastViewedAt = n.GetDateTimeOffsetValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "persisted_filters", n => { PersistedFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardPersistedFilters>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardPersistedFilters.CreateFromDiscriminatorValue); } },
-                { "persisted_variables", n => { PersistedVariables = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardPersistedVariables>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardPersistedVariables.CreateFromDiscriminatorValue); } },
+                { "persisted_filters", n => { PersistedFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardPersistedFiltersProperty>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardPersistedFiltersProperty.CreateFromDiscriminatorValue); } },
+                { "persisted_variables", n => { PersistedVariables = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardPersistedVariablesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardPersistedVariablesProperty.CreateFromDiscriminatorValue); } },
                 { "pinned", n => { Pinned = n.GetBoolValue(); } },
                 { "quick_filter_ids", n => { QuickFilterIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "restriction_level", n => { RestrictionLevel = n.GetIntValue(); } },
@@ -262,7 +262,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "use_dashboard", n => { UseDashboard = n.GetIntValue(); } },
                 { "use_template", n => { UseTemplate = n.GetStringValue(); } },
                 { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },
-                { "variables", n => { Variables = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardVariables>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardVariables.CreateFromDiscriminatorValue); } },
+                { "variables", n => { Variables = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardVariablesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardVariablesProperty.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -282,12 +282,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("last_accessed_at", LastAccessedAt);
             writer.WriteDateTimeOffsetValue("last_refresh", LastRefresh);
             writer.WriteStringValue("name", Name);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardPersistedFiltersProperty>("persisted_filters", PersistedFilters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardPersistedVariablesProperty>("persisted_variables", PersistedVariables);
             writer.WriteBoolValue("pinned", Pinned);
             writer.WriteCollectionOfPrimitiveValues<string>("quick_filter_ids", QuickFilterIds);
             writer.WriteIntValue("restriction_level", RestrictionLevel);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DashboardTagsItem>("tags", Tags);
             writer.WriteIntValue("use_dashboard", UseDashboard);
             writer.WriteStringValue("use_template", UseTemplate);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardVariablesProperty>("variables", Variables);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

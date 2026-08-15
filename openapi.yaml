@@ -75,8 +75,8 @@ paths:
   /api/customer_analytics/external/accounts:
     get:
       operationId: customer_analytics_external_accounts_retrieve
-      description: List accounts with external IDs and their active relationship assignments.
-        Requires a project secret API key with the `account:read` scope.
+      description: List accounts with external IDs, churn timestamps, and active relationship
+        assignments. Requires a project secret API key with the `account:read` scope.
       summary: List external customer analytics accounts
       parameters:
       - in: query
@@ -4436,6 +4436,12 @@ paths:
           type: boolean
         description: When true, returns only accounts where no user actively holds
           any relationship.
+      - in: query
+        name: include_churned
+        schema:
+          type: boolean
+          default: false
+        description: Include churned accounts. Churned accounts are hidden by default.
       - name: limit
         required: false
         in: query
@@ -4951,6 +4957,87 @@ paths:
       responses:
         '204':
           description: No response body
+      x-product:
+      - customer_analytics
+  /api/projects/{project_id}/accounts/{id}/email_threads/:
+    get:
+      operationId: accounts_email_threads_list
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A UUID string identifying this account.
+        required: true
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - accounts
+      security:
+      - PersonalAPIKeyAuth:
+        - account:read
+        - ticket:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedAccountEmailThreadList'
+          description: ''
+      x-product:
+      - customer_analytics
+  /api/projects/{project_id}/accounts/{id}/email_threads/{thread_id}/:
+    get:
+      operationId: accounts_email_thread_messages_list
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A UUID string identifying this account.
+        required: true
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: path
+        name: thread_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - accounts
+      security:
+      - PersonalAPIKeyAuth:
+        - account:read
+        - ticket:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedAccountEmailThreadMessageList'
+          description: ''
       x-product:
       - customer_analytics
   /api/projects/{project_id}/accounts/{id}/meetings/:
@@ -8306,6 +8393,55 @@ paths:
           description: No response body
       x-product:
       - canvas
+  /api/projects/{project_id}/canvases/{id}/actions/invoke/:
+    post:
+      operationId: canvases_actions_invoke
+      description: |-
+        Invoke one registered action verb as the viewer.
+
+        The canvas must declare the verb in capabilities.posthog.actions (the
+        reviewed permission boundary); the write itself runs with the viewer's
+        own permissions, exactly as if they acted in the app.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this canvas.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - canvases
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CanvasActionInvoke'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CanvasActionInvoke'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CanvasActionInvoke'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - canvas:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CanvasActionResult'
+          description: ''
+        '400':
+          description: Unknown verb, or the payload failed the verb's schema.
+        '403':
+          description: The verb is not declared in the canvas's capabilities, actions
+            are disabled for the team, or the caller is a sandbox.
+      x-product:
+      - canvas
   /api/projects/{project_id}/canvases/{id}/builds/:
     get:
       operationId: canvases_builds_retrieve
@@ -8890,6 +9026,95 @@ paths:
           description: ''
       x-product:
       - canvas
+  /api/projects/{project_id}/canvases/{id}/state/:
+    get:
+      operationId: canvases_state_retrieve
+      description: |-
+        Read the canvas's runtime key-value state (the ph.state store).
+
+        Returns the canvas's shared entries plus the caller's own user-scoped
+        entries — never another viewer's.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this canvas.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: scope
+        schema:
+          type: string
+          enum:
+          - shared
+          - user
+        description: Only return entries in this scope.
+      tags:
+      - canvases
+      security:
+      - PersonalAPIKeyAuth:
+        - canvas:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CanvasStateResponse'
+          description: ''
+        '403':
+          description: Canvas state is a viewer surface; sandbox tokens cannot use
+            it.
+      x-product:
+      - canvas
+  /api/projects/{project_id}/canvases/{id}/state/set/:
+    post:
+      operationId: canvases_state_set
+      description: Write one key of the canvas's runtime state, or delete it with
+        a null value.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this canvas.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - canvases
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CanvasStateSet'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CanvasStateSet'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CanvasStateSet'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - canvas:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CanvasStateEntry'
+          description: ''
+        '204':
+          description: The key was deleted (value was null).
+        '400':
+          description: The value or the scope's key count exceeds the state bounds.
+        '403':
+          description: The scope is not declared in the canvas's capabilities, or
+            the caller is a sandbox.
+      x-product:
+      - canvas
   /api/projects/{project_id}/canvases/{id}/validate/:
     post:
       operationId: canvases_validate_create
@@ -8971,6 +9196,24 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedCanvasVersionList'
+          description: ''
+      x-product:
+      - canvas
+  /api/projects/{project_id}/canvases/actions/:
+    get:
+      operationId: canvases_actions_retrieve
+      description: 'List the action registry: every verb a canvas may declare and
+        invoke.'
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - canvases
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CanvasActionsResponse'
           description: ''
       x-product:
       - canvas
@@ -27208,6 +27451,30 @@ paths:
     get:
       operationId: feature_requests_list
       parameters:
+      - in: query
+        name: account_ids
+        schema:
+          type: array
+          items:
+            type: string
+            format: uuid
+        description: Accessible account IDs to include. Multiple values use OR semantics.
+      - in: query
+        name: archive_state
+        schema:
+          enum:
+          - active
+          - archived
+          - all
+          type: string
+          default: active
+          minLength: 1
+        description: |-
+          Whether to return active requests, archived requests, or all requests.
+
+          * `active` - Active
+          * `archived` - Archived
+          * `all` - All
       - name: limit
         required: false
         in: query
@@ -27220,7 +27487,82 @@ paths:
         description: The initial index from which to return the results.
         schema:
           type: integer
+      - in: query
+        name: priorities
+        schema:
+          type: array
+          items:
+            enum:
+            - high
+            - medium
+            - low
+            - none
+            type: string
+            description: |-
+              * `high` - High
+              * `medium` - Medium
+              * `low` - Low
+              * `none` - No priority
+        description: Priorities to include. Use none for requests without a priority.
+      - in: query
+        name: product_area_ids
+        schema:
+          type: array
+          items:
+            type: string
+            format: uuid
+        description: Product area IDs to include. Multiple values use OR semantics.
       - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: request_ordering
+        schema:
+          enum:
+          - -updated_at
+          - updated_at
+          - -created_at
+          - created_at
+          - -priority
+          - priority
+          - title
+          - -title
+          type: string
+          default: -updated_at
+          minLength: 1
+        description: |-
+          Stable ordering for the result list.
+
+          * `-updated_at` - Last updated: newest
+          * `updated_at` - Last updated: oldest
+          * `-created_at` - Date created: newest
+          * `created_at` - Date created: oldest
+          * `-priority` - Priority: high to low
+          * `priority` - Priority: low to high
+          * `title` - Title: A to Z
+          * `-title` - Title: Z to A
+      - in: query
+        name: search
+        schema:
+          type: string
+        description: Case-insensitive text to find in request titles and descriptions.
+      - in: query
+        name: statuses
+        schema:
+          type: array
+          items:
+            enum:
+            - requested
+            - planned
+            - completed
+            - wont_fix
+            - duplicate
+            type: string
+            description: |-
+              * `requested` - Requested
+              * `planned` - Planned
+              * `completed` - Completed
+              * `wont_fix` - Won't fix
+              * `duplicate` - Duplicate
+        description: Lifecycle statuses to include. Multiple values use OR semantics.
       tags:
       - feature_requests
       security:
@@ -27292,6 +27634,187 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/FeatureRequest'
+          description: ''
+      x-product:
+      - customer_analytics
+    put:
+      operationId: feature_requests_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - feature_requests
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FeatureRequestUpdate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FeatureRequestUpdate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FeatureRequestUpdate'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - customer_analytics:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeatureRequest'
+          description: ''
+      x-product:
+      - customer_analytics
+    patch:
+      operationId: feature_requests_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - feature_requests
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedFeatureRequestUpdate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedFeatureRequestUpdate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedFeatureRequestUpdate'
+      security:
+      - PersonalAPIKeyAuth:
+        - customer_analytics:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeatureRequest'
+          description: ''
+      x-product:
+      - customer_analytics
+  /api/projects/{project_id}/feature_requests/{id}/archive/:
+    post:
+      operationId: feature_requests_archive_create
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - feature_requests
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FeatureRequestVersion'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FeatureRequestVersion'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FeatureRequestVersion'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeatureRequest'
+          description: ''
+      x-product:
+      - customer_analytics
+  /api/projects/{project_id}/feature_requests/{id}/history/:
+    get:
+      operationId: feature_requests_history_list
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - feature_requests
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FeatureRequestHistory'
+          description: ''
+      x-product:
+      - customer_analytics
+  /api/projects/{project_id}/feature_requests/{id}/restore/:
+    post:
+      operationId: feature_requests_restore_create
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - feature_requests
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FeatureRequestVersion'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FeatureRequestVersion'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FeatureRequestVersion'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeatureRequest'
+          description: ''
+      x-product:
+      - customer_analytics
+  /api/projects/{project_id}/feature_requests/{id}/status_history/:
+    get:
+      operationId: feature_requests_status_history_list
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - feature_requests
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FeatureRequestStatusHistory'
           description: ''
       x-product:
       - customer_analytics
@@ -68258,6 +68781,12 @@ components:
           oneOf:
           - $ref: '#/components/schemas/SlackSummaryCadenceEnum'
           - $ref: '#/components/schemas/NullEnum'
+        churned_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: When the account churned. Null means the account has not churned.
         created_at:
           type: string
           format: date-time
@@ -68401,6 +68930,150 @@ components:
       - operator
       title: AccountCustomPropertyFilter
       type: object
+    AccountEmailThread:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: UUID of the captured email thread.
+        subject:
+          type: string
+          readOnly: true
+          description: Email thread subject.
+        preview:
+          type: string
+          readOnly: true
+          description: Plain-text preview of the latest captured message.
+        first_message_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+          description: Source timestamp of the first captured message.
+        last_message_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+          description: Source timestamp of the latest captured message.
+        message_count:
+          type: integer
+          readOnly: true
+          description: Number of captured messages in the thread.
+        participants:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccountEmailThreadParticipant'
+          readOnly: true
+          description: Participants included in the email thread.
+      required:
+      - first_message_at
+      - id
+      - last_message_at
+      - message_count
+      - participants
+      - preview
+      - subject
+    AccountEmailThreadAddress:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+          description: Name from the email header.
+        email:
+          type: string
+          format: email
+          readOnly: true
+          description: Email address from the email header.
+      required:
+      - email
+      - name
+    AccountEmailThreadMessage:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: UUID of the captured email message.
+        sent_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Timestamp from the source email.
+        sender:
+          allOf:
+          - $ref: '#/components/schemas/AccountEmailThreadAddress'
+          readOnly: true
+          description: Sender from the email From header.
+        to_recipients:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccountEmailThreadAddress'
+          readOnly: true
+          description: Recipients from the email To header.
+        cc_recipients:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccountEmailThreadAddress'
+          readOnly: true
+          description: Recipients from the email Cc header.
+        sender_authenticated:
+          type: boolean
+          readOnly: true
+          description: Whether Mailgun authentication verified the sender domain.
+        direction:
+          allOf:
+          - $ref: '#/components/schemas/EmailThreadMessageDirectionEnum'
+          readOnly: true
+          description: |-
+            Whether PostHog received or sent the message.
+
+            * `inbound` - Inbound
+            * `outbound` - Outbound
+        content:
+          type: string
+          readOnly: true
+          description: Plain-text email content.
+      required:
+      - cc_recipients
+      - content
+      - direction
+      - id
+      - sender
+      - sender_authenticated
+      - sent_at
+      - to_recipients
+    AccountEmailThreadParticipant:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+          readOnly: true
+          description: Email address of the thread participant.
+        display_name:
+          type: string
+          readOnly: true
+          description: Display name from the captured email headers.
+        kind:
+          allOf:
+          - $ref: '#/components/schemas/EmailThreadParticipantKindEnum'
+          readOnly: true
+          description: |-
+            Whether the participant belongs to the PostHog organization or the customer.
+
+            * `internal` - Internal
+            * `customer` - Customer
+      required:
+      - display_name
+      - email
+      - kind
     AccountNote:
       type: object
       description: A team-wide account note — an internal notebook linked to a Customer
@@ -68830,6 +69503,7 @@ components:
       - external_id
       - created_at
       - updated_at
+      - churned_at
       - stripe_customer_id
       - hubspot_deal_id
       - billing_id
@@ -69101,6 +69775,13 @@ components:
           description: Filters are combined with AND. Values within tag and assignment
             filters use OR.
           title: Filters
+        includeChurned:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          description: Include churned accounts. Churned accounts are hidden by default.
+          title: Includechurned
         kind:
           const: AccountsTableQuery
           default: AccountsTableQuery
@@ -77805,6 +78486,69 @@ components:
       - template_id
       - updated_at
       - url
+    CanvasActionDefinition:
+      type: object
+      description: One registered action verb, as the host renders it before invoking.
+      properties:
+        verb:
+          type: string
+          description: The verb's registry name, e.g. 'annotations.create'.
+        summary:
+          type: string
+          description: One line naming what invoking the verb does.
+        destructive:
+          type: boolean
+          description: True when the verb deletes or disables something; the host
+            must confirm with the viewer first.
+        usage:
+          type: string
+          description: 'Authoring docs for the verb: payload and result shape, behavior,
+            and the confirmation copy it warrants.'
+      required:
+      - destructive
+      - summary
+      - usage
+      - verb
+    CanvasActionInvoke:
+      type: object
+      description: Payload for invoking one action verb.
+      properties:
+        verb:
+          type: string
+          description: Registered verb to invoke, e.g. 'tasks.create'.
+          maxLength: 64
+        payload:
+          type: object
+          additionalProperties: true
+          description: Verb-specific arguments, validated against the verb's payload
+            schema.
+      required:
+      - verb
+    CanvasActionResult:
+      type: object
+      description: Result of one action invocation.
+      properties:
+        verb:
+          type: string
+          description: The verb that executed.
+        result:
+          type: object
+          additionalProperties: true
+          description: 'Verb-specific result, e.g. {''task_id'': ...} for tasks.create.'
+      required:
+      - result
+      - verb
+    CanvasActionsResponse:
+      type: object
+      description: 'The action registry: every verb a canvas may declare and invoke.'
+      properties:
+        actions:
+          type: array
+          items:
+            $ref: '#/components/schemas/CanvasActionDefinition'
+          description: Registered verbs, sorted by name.
+      required:
+      - actions
     CanvasArtifactAsset:
       type: object
       description: One emitted file of a built canvas artifact.
@@ -78022,11 +78766,23 @@ components:
           items:
             type: string
           description: Network origins the draft newly declares it may reach.
+        state_scopes_added:
+          type: array
+          items:
+            type: string
+          description: State scopes (user, shared) the draft newly declares for ph.state.
+        actions_added:
+          type: array
+          items:
+            type: string
+          description: Action verbs the draft newly declares it may invoke via ph.actions.
       required:
+      - actions_added
       - capture_events_added
       - inline_queries_enabled
       - insights_added
       - network_origins_added
+      - state_scopes_added
       - widens
     CanvasCreate:
       type: object
@@ -78192,6 +78948,22 @@ components:
             type: string
             maxLength: 200
           maxItems: 100
+        state:
+          type: array
+          items:
+            $ref: '#/components/schemas/CanvasStateScopeEnum'
+          description: 'State scopes the canvas may use via ph.state: ''user'' (private
+            to each viewer) and/or ''shared'' (one value per canvas, team-visible).'
+          maxItems: 2
+        actions:
+          type: array
+          items:
+            type: string
+            maxLength: 64
+          description: Registered action verbs the canvas may invoke via ph.actions
+            (e.g. 'annotations.create', 'tasks.create'). Each executes as the viewer;
+            declaring one shows it in the promote review.
+          maxItems: 32
       required:
       - captureEvents
       - inlineQueries
@@ -78531,6 +79303,77 @@ components:
       - canvas
       - current_version_id
       - project
+    CanvasStateEntry:
+      type: object
+      description: One key of a canvas's runtime key-value state (the ph.state store).
+      properties:
+        scope:
+          allOf:
+          - $ref: '#/components/schemas/CanvasStateScopeEnum'
+          description: |-
+            user: private to the viewer who wrote it. shared: one value per canvas, visible to every viewer.
+
+            * `user` - user
+            * `shared` - shared
+        key:
+          type: string
+          description: The entry's key, unique within its scope.
+          maxLength: 200
+        value:
+          description: The stored JSON value.
+        updated_at:
+          type: string
+          format: date-time
+          description: When the entry was last written.
+      required:
+      - key
+      - scope
+      - updated_at
+      - value
+    CanvasStateResponse:
+      type: object
+      description: The canvas state readable by the caller.
+      properties:
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/CanvasStateEntry'
+          description: The canvas's shared entries plus the caller's own user-scoped
+            entries.
+      required:
+      - entries
+    CanvasStateScopeEnum:
+      enum:
+      - user
+      - shared
+      type: string
+      description: |-
+        * `user` - user
+        * `shared` - shared
+    CanvasStateSet:
+      type: object
+      description: Payload for writing (or deleting) one key of a canvas's runtime
+        state.
+      properties:
+        scope:
+          allOf:
+          - $ref: '#/components/schemas/CanvasStateScopeEnum'
+          description: |-
+            Scope to write into; the canvas must declare it in capabilities.posthog.state.
+
+            * `user` - user
+            * `shared` - shared
+        key:
+          type: string
+          description: Key to write, unique within its scope.
+          maxLength: 200
+        value:
+          description: JSON value to store (at most 64 KB serialized), or null to
+            delete the key.
+      required:
+      - key
+      - scope
+      - value
     CanvasSummary:
       type: object
       description: Identity and version pointers for one canvas.
@@ -79038,6 +79881,11 @@ components:
         * `rejected` - Rejected
         * `expired` - Expired
         * `failed` - Failed to apply
+    ChangeSourceEnum:
+      enum:
+      - manual
+      type: string
+      description: '* `manual` - Manual'
     ChannelContextGeneration:
       type: object
       description: The task currently generating this channel's CONTEXT.md, or null.
@@ -92652,6 +93500,22 @@ components:
         * `move_content` - move_content
         * `add_row` - add_row
         * `remove_row` - remove_row
+    EmailThreadMessageDirectionEnum:
+      enum:
+      - inbound
+      - outbound
+      type: string
+      description: |-
+        * `inbound` - Inbound
+        * `outbound` - Outbound
+    EmailThreadParticipantKindEnum:
+      enum:
+      - internal
+      - customer
+      type: string
+      description: |-
+        * `internal` - Internal
+        * `customer` - Customer
     EmailTrackingConsentModeEnum:
       enum:
       - 'off'
@@ -104964,6 +105828,12 @@ components:
         name:
           type: string
           description: Human-readable account name.
+        churned_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: When the account churned, or null if it has not churned.
         relationships:
           type: object
           additionalProperties:
@@ -104974,6 +105844,7 @@ components:
             keyed by relationship definition name (e.g. 'CSM', 'Account executive').
             Definitions with no active assignment are omitted.
       required:
+      - churned_at
       - external_id
       - name
       - relationships
@@ -112194,12 +113065,49 @@ components:
           description: Customer-facing request description in Markdown.
         request_status:
           allOf:
-          - $ref: '#/components/schemas/RequestStatusEnum'
+          - $ref: '#/components/schemas/FeatureRequestStatusEnum'
           readOnly: true
           description: |-
-            Current customer-facing status. The first release always creates requests as requested.
+            Current customer-facing lifecycle status.
 
             * `requested` - Requested
+            * `planned` - Planned
+            * `completed` - Completed
+            * `wont_fix` - Won't fix
+            * `duplicate` - Duplicate
+        request_priority:
+          readOnly: true
+          description: |-
+            Manual request priority. Null means no priority.
+
+            * `high` - High
+            * `medium` - Medium
+            * `low` - Low
+          oneOf:
+          - $ref: '#/components/schemas/RequestPriorityEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        is_archived:
+          type: boolean
+          readOnly: true
+          description: Whether the request is archived.
+        archived_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+          description: When the request was archived, or null while active.
+        archived_by:
+          type:
+          - integer
+          - 'null'
+          readOnly: true
+          description: ID of the user who archived the request, or null while active.
+        version:
+          type: integer
+          minimum: 1
+          readOnly: true
+          description: Version required for optimistic concurrency on mutations.
         account:
           allOf:
           - $ref: '#/components/schemas/FeatureRequestAccount'
@@ -112235,15 +113143,20 @@ components:
           description: When the request was last updated.
       required:
       - account
+      - archived_at
+      - archived_by
       - created_at
       - created_by
       - description
       - id
+      - is_archived
       - product_areas
+      - request_priority
       - request_status
       - title
       - updated_at
       - updated_by
+      - version
     FeatureRequestAccount:
       type: object
       properties:
@@ -112290,6 +113203,137 @@ components:
       - idempotency_key
       - product_area_ids
       - title
+    FeatureRequestHistory:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Stable request history entry ID.
+        changes:
+          type: array
+          items:
+            $ref: '#/components/schemas/FeatureRequestHistoryChange'
+          readOnly: true
+          description: Tracked fields changed together in one successful save.
+        is_initial:
+          type: boolean
+          readOnly: true
+          description: Whether this entry records the request's initial values.
+        change_source:
+          allOf:
+          - $ref: '#/components/schemas/ChangeSourceEnum'
+          readOnly: true
+          description: |-
+            System that recorded the request change.
+
+            * `manual` - Manual
+        actor_id:
+          type:
+          - integer
+          - 'null'
+          readOnly: true
+          description: ID of the user who changed the request, if known.
+        actor_name:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          description: Display name of the user who changed the request, if known.
+        changed_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: When the request changed.
+      required:
+      - actor_id
+      - actor_name
+      - change_source
+      - changed_at
+      - changes
+      - id
+      - is_initial
+    FeatureRequestHistoryChange:
+      type: object
+      properties:
+        field:
+          allOf:
+          - $ref: '#/components/schemas/FieldEnum'
+          readOnly: true
+          description: |-
+            Request field represented by this change.
+
+            * `status` - Status
+            * `priority` - Priority
+            * `account` - Account
+            * `product_areas` - Product areas
+        before:
+          oneOf:
+          - type: string
+          - type: object
+            required:
+            - id
+            - name
+            properties:
+              id:
+                type:
+                - string
+                - 'null'
+                format: uuid
+              name:
+                type: string
+          - type: array
+            items:
+              type: object
+              required:
+              - id
+              - name
+              properties:
+                id:
+                  type: string
+                  format: uuid
+                name:
+                  type: string
+          - type: 'null'
+          - type: 'null'
+          readOnly: true
+          description: Value before the update, including relation snapshots.
+        after:
+          oneOf:
+          - type: string
+          - type: object
+            required:
+            - id
+            - name
+            properties:
+              id:
+                type:
+                - string
+                - 'null'
+                format: uuid
+              name:
+                type: string
+          - type: array
+            items:
+              type: object
+              required:
+              - id
+              - name
+              properties:
+                id:
+                  type: string
+                  format: uuid
+                name:
+                  type: string
+          - type: 'null'
+          - type: 'null'
+          readOnly: true
+          description: Value after the update, including relation snapshots.
+      required:
+      - after
+      - before
+      - field
     FeatureRequestProductArea:
       type: object
       properties:
@@ -112326,6 +113370,145 @@ components:
       - id
       - name
       - updated_at
+    FeatureRequestStatusEnum:
+      enum:
+      - requested
+      - planned
+      - completed
+      - wont_fix
+      - duplicate
+      type: string
+      description: |-
+        * `requested` - Requested
+        * `planned` - Planned
+        * `completed` - Completed
+        * `wont_fix` - Won't fix
+        * `duplicate` - Duplicate
+    FeatureRequestStatusHistory:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Stable status history entry ID.
+        previous_status:
+          readOnly: true
+          description: |-
+            Status before this change. Null identifies the initial status.
+
+            * `requested` - Requested
+            * `planned` - Planned
+            * `completed` - Completed
+            * `wont_fix` - Won't fix
+            * `duplicate` - Duplicate
+          oneOf:
+          - $ref: '#/components/schemas/FeatureRequestStatusEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        request_status:
+          allOf:
+          - $ref: '#/components/schemas/FeatureRequestStatusEnum'
+          readOnly: true
+          description: |-
+            Status after this change.
+
+            * `requested` - Requested
+            * `planned` - Planned
+            * `completed` - Completed
+            * `wont_fix` - Won't fix
+            * `duplicate` - Duplicate
+        change_source:
+          allOf:
+          - $ref: '#/components/schemas/ChangeSourceEnum'
+          readOnly: true
+          description: |-
+            System that recorded the status change.
+
+            * `manual` - Manual
+        actor_id:
+          type:
+          - integer
+          - 'null'
+          readOnly: true
+          description: ID of the user who changed the status, if known.
+        actor_name:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          description: Display name of the user who changed the status, if known.
+        changed_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: When the status changed.
+      required:
+      - actor_id
+      - actor_name
+      - change_source
+      - changed_at
+      - id
+      - previous_status
+      - request_status
+    FeatureRequestUpdate:
+      type: object
+      properties:
+        expected_version:
+          type: integer
+          minimum: 1
+          description: Request version loaded by the editor. Stale versions return
+            409 Conflict.
+        title:
+          type: string
+          description: Updated customer-facing request title.
+          maxLength: 400
+        description:
+          type: string
+          description: Updated customer-facing request description in Markdown.
+        account_id:
+          type: string
+          format: uuid
+          description: Updated affected Customer Analytics account ID.
+        product_area_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          description: One or more product area IDs. Existing inactive areas can remain
+            linked.
+        request_status:
+          allOf:
+          - $ref: '#/components/schemas/FeatureRequestStatusEnum'
+          description: |-
+            Updated customer-facing lifecycle status.
+
+            * `requested` - Requested
+            * `planned` - Planned
+            * `completed` - Completed
+            * `wont_fix` - Won't fix
+            * `duplicate` - Duplicate
+        request_priority:
+          description: |-
+            Updated manual priority. Pass null to remove the priority.
+
+            * `high` - High
+            * `medium` - Medium
+            * `low` - Low
+          oneOf:
+          - $ref: '#/components/schemas/RequestPriorityEnum'
+          - $ref: '#/components/schemas/NullEnum'
+      required:
+      - expected_version
+    FeatureRequestVersion:
+      type: object
+      properties:
+        expected_version:
+          type: integer
+          minimum: 1
+          description: Request version loaded by the editor. Stale versions return
+            409 Conflict.
+      required:
+      - expected_version
     FeaturebaseFeedbackSignalExtra:
       additionalProperties: false
       properties:
@@ -112413,6 +113596,18 @@ components:
       - feedback_count
       - generated_at
       - themes
+    FieldEnum:
+      enum:
+      - status
+      - priority
+      - account
+      - product_areas
+      type: string
+      description: |-
+        * `status` - Status
+        * `priority` - Priority
+        * `account` - Account
+        * `product_areas` - Product areas
     FieldNote:
       type: object
       properties:
@@ -139593,6 +140788,56 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AccountChannelSummary'
+    PaginatedAccountEmailThreadList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccountEmailThread'
+    PaginatedAccountEmailThreadMessageList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccountEmailThreadMessage'
     PaginatedAccountList:
       type: object
       required:
@@ -145411,6 +146656,12 @@ components:
           oneOf:
           - $ref: '#/components/schemas/SlackSummaryCadenceEnum'
           - $ref: '#/components/schemas/NullEnum'
+        churned_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: When the account churned. Null means the account has not churned.
         created_at:
           type: string
           format: date-time
@@ -149232,6 +150483,53 @@ components:
           format: date-time
           readOnly: true
           description: When the product area was last updated.
+    PatchedFeatureRequestUpdate:
+      type: object
+      properties:
+        expected_version:
+          type: integer
+          minimum: 1
+          description: Request version loaded by the editor. Stale versions return
+            409 Conflict.
+        title:
+          type: string
+          description: Updated customer-facing request title.
+          maxLength: 400
+        description:
+          type: string
+          description: Updated customer-facing request description in Markdown.
+        account_id:
+          type: string
+          format: uuid
+          description: Updated affected Customer Analytics account ID.
+        product_area_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          description: One or more product area IDs. Existing inactive areas can remain
+            linked.
+        request_status:
+          allOf:
+          - $ref: '#/components/schemas/FeatureRequestStatusEnum'
+          description: |-
+            Updated customer-facing lifecycle status.
+
+            * `requested` - Requested
+            * `planned` - Planned
+            * `completed` - Completed
+            * `wont_fix` - Won't fix
+            * `duplicate` - Duplicate
+        request_priority:
+          description: |-
+            Updated manual priority. Pass null to remove the priority.
+
+            * `high` - High
+            * `medium` - Medium
+            * `low` - Low
+          oneOf:
+          - $ref: '#/components/schemas/RequestPriorityEnum'
+          - $ref: '#/components/schemas/NullEnum'
     PatchedFieldNote:
       type: object
       properties:
@@ -153103,7 +154401,7 @@ components:
             type: string
             maxLength: 255
           description: Organizational tags for this scanner. Distinct from a classifier's
-            tag vocabulary in scanner_config. Tags cannot contain commas.
+            categories in scanner_config. Tags cannot contain commas.
           maxItems: 32
         scanner_type:
           allOf:
@@ -153379,6 +154677,7 @@ components:
             type: string
             maxLength: 255
           description: Allowed domains for custom network access.
+          maxItems: 100
         include_default_domains:
           type: boolean
           default: false
@@ -175240,7 +176539,7 @@ components:
             type: string
             maxLength: 255
           description: Organizational tags for this scanner. Distinct from a classifier's
-            tag vocabulary in scanner_config. Tags cannot contain commas.
+            categories in scanner_config. Tags cannot contain commas.
           maxItems: 32
         scanner_type:
           allOf:
@@ -176125,11 +177424,16 @@ components:
       - replayInsights
       - repository
       - windowDays
-    RequestStatusEnum:
+    RequestPriorityEnum:
       enum:
-      - requested
+      - high
+      - medium
+      - low
       type: string
-      description: '* `requested` - Requested'
+      description: |-
+        * `high` - High
+        * `medium` - Medium
+        * `low` - Low
     RequiredTableStatus:
       type: object
       properties:
@@ -181891,6 +183195,7 @@ components:
             type: string
             maxLength: 255
           description: Allowed domains for custom network access.
+          maxItems: 100
         include_default_domains:
           type: boolean
           default: false
@@ -194960,8 +196265,8 @@ components:
           items:
             type: string
             maxLength: 200
-          description: The current tag vocabulary, so suggestions never duplicate
-            a tag the user already has.
+          description: The categories already configured, so suggestions never duplicate
+            one the user has.
           maxItems: 200
         multi_label:
           type: boolean

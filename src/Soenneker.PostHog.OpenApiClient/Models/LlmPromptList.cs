@@ -33,10 +33,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>&quot;Optional JSON object with model parameters or any agent configuration (e.g. model, temperature, tools). Versioned with the prompt and returned as-is when fetching it. Don&apos;t store secrets here: config is returned to anyone who can read the prompt.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptListConfig? Config { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptListConfigProperty? Config { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptListConfig Config { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptListConfigProperty Config { get; set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
@@ -147,7 +147,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "activity_item_id", n => { ActivityItemId = n.GetStringValue(); } },
                 { "all_labels", n => { AllLabels = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptLabelSummary>(global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptLabelSummary.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptListConfig>(global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptListConfig.CreateFromDiscriminatorValue); } },
+                { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptListConfigProperty>(global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptListConfigProperty.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptListCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptListCreatedBy.CreateFromDiscriminatorValue); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
@@ -174,7 +174,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptListConfig>("config", Config);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptListConfigProperty>("config", Config);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -24,6 +24,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         UpdatedAt,
         #pragma warning restore CS1591
+        [EnumMember(Value = "churned_at")]
+        #pragma warning disable CS1591
+        ChurnedAt,
+        #pragma warning restore CS1591
         [EnumMember(Value = "stripe_customer_id")]
         #pragma warning disable CS1591
         StripeCustomerId,

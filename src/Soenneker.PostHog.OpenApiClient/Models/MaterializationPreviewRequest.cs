@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>&quot;Per-column bucket function overrides, e.g. {\&quot;timestamp\&quot;: \&quot;hour\&quot;}&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MaterializationPreviewRequestBucketOverrides? BucketOverrides { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MaterializationPreviewRequestBucketOverridesProperty? BucketOverrides { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MaterializationPreviewRequestBucketOverrides BucketOverrides { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MaterializationPreviewRequestBucketOverridesProperty BucketOverrides { get; set; }
 #endif
         /// <summary>The version property</summary>
         public int? Version { get; set; }
@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "bucket_overrides", n => { BucketOverrides = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MaterializationPreviewRequestBucketOverrides>(global::Soenneker.PostHog.OpenApiClient.Models.MaterializationPreviewRequestBucketOverrides.CreateFromDiscriminatorValue); } },
+                { "bucket_overrides", n => { BucketOverrides = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MaterializationPreviewRequestBucketOverridesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.MaterializationPreviewRequestBucketOverridesProperty.CreateFromDiscriminatorValue); } },
                 { "version", n => { Version = n.GetIntValue(); } },
             };
         }
@@ -60,7 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MaterializationPreviewRequestBucketOverrides>("bucket_overrides", BucketOverrides);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MaterializationPreviewRequestBucketOverridesProperty>("bucket_overrides", BucketOverrides);
             writer.WriteIntValue("version", Version);
             writer.WriteAdditionalData(AdditionalData);
         }

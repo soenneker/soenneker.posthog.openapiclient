@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Free-text notes per variant, keyed by variant key. Use to document what each variant does or its reroute URL.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParametersVariantNotes? VariantNotes { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParametersVariantNotesProperty? VariantNotes { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParametersVariantNotes VariantNotes { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParametersVariantNotesProperty VariantNotes { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -41,7 +41,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "minimum_detectable_effect", n => { MinimumDetectableEffect = n.GetDoubleValue(); } },
-                { "variant_notes", n => { VariantNotes = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParametersVariantNotes>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParametersVariantNotes.CreateFromDiscriminatorValue); } },
+                { "variant_notes", n => { VariantNotes = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParametersVariantNotesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParametersVariantNotesProperty.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("minimum_detectable_effect", MinimumDetectableEffect);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParametersVariantNotes>("variant_notes", VariantNotes);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParametersVariantNotesProperty>("variant_notes", VariantNotes);
         }
     }
 }

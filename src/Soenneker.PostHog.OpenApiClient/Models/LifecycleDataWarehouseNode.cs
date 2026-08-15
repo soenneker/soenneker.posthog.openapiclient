@@ -131,10 +131,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LifecycleDataWarehouseNodeResponse? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LifecycleDataWarehouseNodeResponseProperty? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LifecycleDataWarehouseNodeResponse Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LifecycleDataWarehouseNodeResponseProperty Response { get; set; }
 #endif
         /// <summary>The table_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -188,7 +188,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "optionalInFunnel", n => { OptionalInFunnel = n.GetBoolValue(); } },
                 { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LifecycleDataWarehouseNodePropertiesAnyOf1Item>(global::Soenneker.PostHog.OpenApiClient.Models.LifecycleDataWarehouseNodePropertiesAnyOf1Item.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LifecycleDataWarehouseNodeResponse>(global::Soenneker.PostHog.OpenApiClient.Models.LifecycleDataWarehouseNodeResponse.CreateFromDiscriminatorValue); } },
+                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LifecycleDataWarehouseNodeResponseProperty>(global::Soenneker.PostHog.OpenApiClient.Models.LifecycleDataWarehouseNodeResponseProperty.CreateFromDiscriminatorValue); } },
                 { "table_name", n => { TableName = n.GetStringValue(); } },
                 { "timestamp_field", n => { TimestampField = n.GetStringValue(); } },
                 { "version", n => { Version = n.GetDoubleValue(); } },
@@ -217,7 +217,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteBoolValue("optionalInFunnel", OptionalInFunnel);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LifecycleDataWarehouseNodePropertiesAnyOf1Item>("properties", Properties);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LifecycleDataWarehouseNodeResponse>("response", Response);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LifecycleDataWarehouseNodeResponseProperty>("response", Response);
             writer.WriteStringValue("table_name", TableName);
             writer.WriteStringValue("timestamp_field", TimestampField);
             writer.WriteDoubleValue("version", Version);

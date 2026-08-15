@@ -154,10 +154,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>&quot;The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value — and, without this object, any version mismatch — fail with HTTP 409.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentOriginalExperiment? OriginalExperiment { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentOriginalExperimentProperty? OriginalExperiment { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentOriginalExperiment OriginalExperiment { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentOriginalExperimentProperty OriginalExperiment { get; set; }
 #endif
         /// <summary>Experiment parameters JSON. Supported keys include `custom_exposure_filter` and `variant_notes` (free-text notes per variant, keyed by variant key). Flag config (variants, rollout, aggregation, payloads, experience continuity) belongs on the `feature_flag` object; send it there. For backward compatibility, config still sent through these deprecated keys is copied onto the linked flag rather than rejected, and reads project the flag&apos;s current config back into this field. Excluded variants live on the top-level `excluded_variants` field, not here.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -333,7 +333,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "metrics_secondary", n => { MetricsSecondary = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsSecondary>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsSecondary.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "only_count_matured_users", n => { OnlyCountMaturedUsers = n.GetBoolValue(); } },
-                { "original_experiment", n => { OriginalExperiment = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentOriginalExperiment>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentOriginalExperiment.CreateFromDiscriminatorValue); } },
+                { "original_experiment", n => { OriginalExperiment = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentOriginalExperimentProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentOriginalExperimentProperty.CreateFromDiscriminatorValue); } },
                 { "parameters", n => { Parameters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParametersComposed>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParametersComposed.CreateFromDiscriminatorValue); } },
                 { "primary_metrics_ordered_uuids", n => { PrimaryMetricsOrderedUuids = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentPrimaryMetricsOrderedUuids>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentPrimaryMetricsOrderedUuids.CreateFromDiscriminatorValue); } },
                 { "repository", n => { Repository = n.GetStringValue(); } },
@@ -378,7 +378,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsSecondary>("metrics_secondary", MetricsSecondary);
             writer.WriteStringValue("name", Name);
             writer.WriteBoolValue("only_count_matured_users", OnlyCountMaturedUsers);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentOriginalExperiment>("original_experiment", OriginalExperiment);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentOriginalExperimentProperty>("original_experiment", OriginalExperiment);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParametersComposed>("parameters", Parameters);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentPrimaryMetricsOrderedUuids>("primary_metrics_ordered_uuids", PrimaryMetricsOrderedUuids);
             writer.WriteStringValue("repository", Repository);

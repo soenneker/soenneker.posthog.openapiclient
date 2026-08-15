@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Customer_analytics.External.Accoun
         {
         }
         /// <summary>
-        /// List accounts with external IDs and their active relationship assignments. Requires a project secret API key with the `account:read` scope.
+        /// List accounts with external IDs, churn timestamps, and active relationship assignments. Requires a project secret API key with the `account:read` scope.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountListPage"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -61,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Customer_analytics.External.Accoun
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountListPage>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountListPage.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// List accounts with external IDs and their active relationship assignments. Requires a project secret API key with the `account:read` scope.
+        /// List accounts with external IDs, churn timestamps, and active relationship assignments. Requires a project secret API key with the `account:read` scope.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -89,7 +89,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Customer_analytics.External.Accoun
             return new global::Soenneker.PostHog.OpenApiClient.Api.Customer_analytics.External.Accounts.AccountsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// List accounts with external IDs and their active relationship assignments. Requires a project secret API key with the `account:read` scope.
+        /// List accounts with external IDs, churn timestamps, and active relationship assignments. Requires a project secret API key with the `account:read` scope.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class AccountsRequestBuilderGetQueryParameters 

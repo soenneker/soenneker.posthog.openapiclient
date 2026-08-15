@@ -61,10 +61,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonsNodeResponse? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonsNodeResponseProperty? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonsNodeResponse Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonsNodeResponseProperty Response { get; set; }
 #endif
         /// <summary>The search property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -110,7 +110,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "offset", n => { Offset = n.GetIntValue(); } },
                 { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PersonsNodePropertiesAnyOf1Item>(global::Soenneker.PostHog.OpenApiClient.Models.PersonsNodePropertiesAnyOf1Item.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonsNodeResponse>(global::Soenneker.PostHog.OpenApiClient.Models.PersonsNodeResponse.CreateFromDiscriminatorValue); } },
+                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonsNodeResponseProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PersonsNodeResponseProperty.CreateFromDiscriminatorValue); } },
                 { "search", n => { Search = n.GetStringValue(); } },
                 { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
                 { "version", n => { Version = n.GetDoubleValue(); } },
@@ -131,7 +131,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
             writer.WriteIntValue("offset", Offset);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PersonsNodePropertiesAnyOf1Item>("properties", Properties);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonsNodeResponse>("response", Response);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonsNodeResponseProperty>("response", Response);
             writer.WriteStringValue("search", Search);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
             writer.WriteDoubleValue("version", Version);

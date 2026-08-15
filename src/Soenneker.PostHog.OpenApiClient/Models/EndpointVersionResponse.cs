@@ -18,10 +18,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Per-column bucket overrides for range variable materialization.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponseBucketOverrides? BucketOverrides { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponseBucketOverridesProperty? BucketOverrides { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponseBucketOverrides BucketOverrides { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponseBucketOverridesProperty BucketOverrides { get; set; }
 #endif
         /// <summary>Column names and types from the query&apos;s SELECT clause.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -194,7 +194,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "bucket_overrides", n => { BucketOverrides = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponseBucketOverrides>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponseBucketOverrides.CreateFromDiscriminatorValue); } },
+                { "bucket_overrides", n => { BucketOverrides = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponseBucketOverridesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponseBucketOverridesProperty.CreateFromDiscriminatorValue); } },
                 { "columns", n => { Columns = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EndpointColumn>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointColumn.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponseCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponseCreatedBy.CreateFromDiscriminatorValue); } },
@@ -232,7 +232,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponseBucketOverrides>("bucket_overrides", BucketOverrides);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponseBucketOverridesProperty>("bucket_overrides", BucketOverrides);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EndpointColumn>("columns", Columns);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteIntValue("current_version", CurrentVersion);

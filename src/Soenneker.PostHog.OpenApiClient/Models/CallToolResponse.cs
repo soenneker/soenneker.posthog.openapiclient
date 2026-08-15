@@ -27,10 +27,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Structured result the tool returned alongside `content`, when it provides one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CallToolResponseStructuredContent? StructuredContent { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CallToolResponseStructuredContentProperty? StructuredContent { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CallToolResponseStructuredContent StructuredContent { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CallToolResponseStructuredContentProperty StructuredContent { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CallToolResponse"/> and sets the default values.
@@ -59,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "content", n => { Content = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CallToolResponseContentItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.CallToolResponseContentItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "is_error", n => { IsError = n.GetBoolValue(); } },
-                { "structured_content", n => { StructuredContent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CallToolResponseStructuredContent>(global::Soenneker.PostHog.OpenApiClient.Models.CallToolResponseStructuredContent.CreateFromDiscriminatorValue); } },
+                { "structured_content", n => { StructuredContent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CallToolResponseStructuredContentProperty>(global::Soenneker.PostHog.OpenApiClient.Models.CallToolResponseStructuredContentProperty.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -71,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CallToolResponseContentItemProperty>("content", Content);
             writer.WriteBoolValue("is_error", IsError);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CallToolResponseStructuredContent>("structured_content", StructuredContent);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CallToolResponseStructuredContentProperty>("structured_content", StructuredContent);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

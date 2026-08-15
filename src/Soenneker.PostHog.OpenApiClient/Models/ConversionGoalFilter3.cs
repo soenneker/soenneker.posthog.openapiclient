@@ -159,10 +159,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter3Response? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter3ResponseProperty? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter3Response Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter3ResponseProperty Response { get; set; }
 #endif
         /// <summary>The schema_map property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -229,7 +229,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "optionalInFunnel", n => { OptionalInFunnel = n.GetBoolValue(); } },
                 { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter3PropertiesAnyOf1Item>(global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter3PropertiesAnyOf1Item.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter3Response>(global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter3Response.CreateFromDiscriminatorValue); } },
+                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter3ResponseProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter3ResponseProperty.CreateFromDiscriminatorValue); } },
                 { "schema_map", n => { SchemaMap = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter3SchemaMapProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter3SchemaMapProperty.CreateFromDiscriminatorValue); } },
                 { "table_name", n => { TableName = n.GetStringValue(); } },
                 { "timestamp_field", n => { TimestampField = n.GetStringValue(); } },
@@ -264,7 +264,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteBoolValue("optionalInFunnel", OptionalInFunnel);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter3PropertiesAnyOf1Item>("properties", Properties);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter3Response>("response", Response);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter3ResponseProperty>("response", Response);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter3SchemaMapProperty>("schema_map", SchemaMap);
             writer.WriteStringValue("table_name", TableName);
             writer.WriteStringValue("timestamp_field", TimestampField);

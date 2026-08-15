@@ -42,10 +42,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The hedgehog_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasicHedgehogConfig? HedgehogConfig { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewQueueCreatedByHedgehogConfig? HedgehogConfig { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasicHedgehogConfig HedgehogConfig { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewQueueCreatedByHedgehogConfig HedgehogConfig { get; set; }
 #endif
         /// <summary>The id property</summary>
         public int? Id { get; private set; }
@@ -97,7 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "distinct_id", n => { DistinctId = n.GetStringValue(); } },
                 { "email", n => { Email = n.GetStringValue(); } },
                 { "first_name", n => { FirstName = n.GetStringValue(); } },
-                { "hedgehog_config", n => { HedgehogConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasicHedgehogConfig>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasicHedgehogConfig.CreateFromDiscriminatorValue); } },
+                { "hedgehog_config", n => { HedgehogConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewQueueCreatedByHedgehogConfig>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewQueueCreatedByHedgehogConfig.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetIntValue(); } },
                 { "is_email_verified", n => { IsEmailVerified = n.GetBoolValue(); } },
                 { "last_name", n => { LastName = n.GetStringValue(); } },
@@ -115,6 +115,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("distinct_id", DistinctId);
             writer.WriteStringValue("email", Email);
             writer.WriteStringValue("first_name", FirstName);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewQueueCreatedByHedgehogConfig>("hedgehog_config", HedgehogConfig);
             writer.WriteBoolValue("is_email_verified", IsEmailVerified);
             writer.WriteStringValue("last_name", LastName);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasicRoleAtOrganization>("role_at_organization", RoleAtOrganization);

@@ -109,10 +109,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ActionsNodeResponse? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActionsNodeResponseProperty? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ActionsNodeResponse Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActionsNodeResponseProperty Response { get; set; }
 #endif
         /// <summary>version of the node, used for schema migrations</summary>
         public double? Version { get; set; }
@@ -148,7 +148,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "optionalInFunnel", n => { OptionalInFunnel = n.GetBoolValue(); } },
                 { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ActionsNodePropertiesAnyOf1Item>(global::Soenneker.PostHog.OpenApiClient.Models.ActionsNodePropertiesAnyOf1Item.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActionsNodeResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ActionsNodeResponse.CreateFromDiscriminatorValue); } },
+                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActionsNodeResponseProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ActionsNodeResponseProperty.CreateFromDiscriminatorValue); } },
                 { "version", n => { Version = n.GetDoubleValue(); } },
             };
         }
@@ -173,7 +173,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteBoolValue("optionalInFunnel", OptionalInFunnel);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ActionsNodePropertiesAnyOf1Item>("properties", Properties);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActionsNodeResponse>("response", Response);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActionsNodeResponseProperty>("response", Response);
             writer.WriteDoubleValue("version", Version);
         }
     }

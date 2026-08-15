@@ -167,10 +167,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The table property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchemaTable? Table { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchemaTableProperty? Table { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchemaTable Table { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchemaTableProperty Table { get; set; }
 #endif
         /// <summary>The effective access level the user has for this object</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -228,7 +228,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "sync_frequency", n => { SyncFrequency = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchemaSyncFrequency>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchemaSyncFrequency.CreateFromDiscriminatorValue); } },
                 { "sync_time_of_day", n => { SyncTimeOfDay = n.GetTimeValue(); } },
                 { "sync_type", n => { SyncType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchemaSyncType>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchemaSyncType.CreateFromDiscriminatorValue); } },
-                { "table", n => { Table = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchemaTable>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchemaTable.CreateFromDiscriminatorValue); } },
+                { "table", n => { Table = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchemaTableProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchemaTableProperty.CreateFromDiscriminatorValue); } },
                 { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },
             };
         }
@@ -251,6 +251,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchemaSyncFrequency>("sync_frequency", SyncFrequency);
             writer.WriteTimeValue("sync_time_of_day", SyncTimeOfDay);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchemaSyncType>("sync_type", SyncType);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchemaTableProperty>("table", Table);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

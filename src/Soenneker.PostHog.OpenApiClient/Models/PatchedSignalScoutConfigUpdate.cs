@@ -66,10 +66,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>&quot;Optional JSON Schema (draft 2020-12) describing ONE structured record this scout produces via `scout-record-output` — e.g. a per-report quality judgment (`{\&quot;type\&quot;: \&quot;object\&quot;, \&quot;properties\&quot;: {\&quot;verdict\&quot;: {\&quot;enum\&quot;: [\&quot;good\&quot;, \&quot;bad\&quot;, \&quot;unsure\&quot;]}, \&quot;reason\&quot;: {\&quot;type\&quot;: \&quot;string\&quot;}}, \&quot;required\&quot;: [\&quot;verdict\&quot;, \&quot;reason\&quot;]}`). The root must be `\&quot;type\&quot;: \&quot;object\&quot;`. Setting a schema turns the structured-output channel on: the run prompt renders the schema and every submitted record is validated against it and recorded in the project as a `$scout_structured_output` event, queryable like any event. The channel also requires emit — a dry-run scout has nowhere to record to. Cardinality is the scout&apos;s call (one record per run, one per judged entity, ...). Null = channel off. Setting a schema requires skill-authoring authorization (the `llm_skill:write` scope and skill editor access) since the scout reads it verbatim in its prompt; clearing it needs only the config write. Records validate against the schema in force when the run was dispatched.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateStructuredOutputSchema? StructuredOutputSchema { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateStructuredOutputSchemaProperty? StructuredOutputSchema { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateStructuredOutputSchema StructuredOutputSchema { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateStructuredOutputSchemaProperty StructuredOutputSchema { get; set; }
 #endif
         /// <summary>Free-form labels for grouping the fleet, e.g. `[&quot;revenue&quot;, &quot;on-call&quot;]`. Normalized to lowercase kebab-case (`On Call` and `on_call` both become `on-call`), deduped, and stored sorted; at most 10 tags, each at most 50 characters once normalized. Pass the full desired set — a write replaces the existing tags rather than merging into them. Filter the config list with the `tags` query parameter.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -113,7 +113,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "output_destinations", n => { OutputDestinations = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateOutputDestinations>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateOutputDestinations.CreateFromDiscriminatorValue); } },
                 { "run_cron_schedule", n => { RunCronSchedule = n.GetStringValue(); } },
                 { "run_interval_minutes", n => { RunIntervalMinutes = n.GetIntValue(); } },
-                { "structured_output_schema", n => { StructuredOutputSchema = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateStructuredOutputSchema>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateStructuredOutputSchema.CreateFromDiscriminatorValue); } },
+                { "structured_output_schema", n => { StructuredOutputSchema = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateStructuredOutputSchemaProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateStructuredOutputSchemaProperty.CreateFromDiscriminatorValue); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
@@ -133,7 +133,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateOutputDestinations>("output_destinations", OutputDestinations);
             writer.WriteStringValue("run_cron_schedule", RunCronSchedule);
             writer.WriteIntValue("run_interval_minutes", RunIntervalMinutes);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateStructuredOutputSchema>("structured_output_schema", StructuredOutputSchema);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateStructuredOutputSchemaProperty>("structured_output_schema", StructuredOutputSchema);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteAdditionalData(AdditionalData);
         }

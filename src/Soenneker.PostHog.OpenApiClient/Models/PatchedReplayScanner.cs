@@ -133,7 +133,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Increments on every config-changing save. Observations snapshot this value.</summary>
         public int? ScannerVersion { get; private set; }
-        /// <summary>Organizational tags for this scanner. Distinct from a classifier&apos;s tag vocabulary in scanner_config. Tags cannot contain commas.</summary>
+        /// <summary>Organizational tags for this scanner. Distinct from a classifier&apos;s categories in scanner_config. Tags cannot contain commas.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? Tags { get; set; }

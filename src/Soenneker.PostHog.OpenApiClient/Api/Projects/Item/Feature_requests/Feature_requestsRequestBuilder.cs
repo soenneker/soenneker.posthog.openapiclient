@@ -35,7 +35,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Feature_requestsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/feature_requests{?limit*,offset*}", pathParameters)
+        public Feature_requestsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/feature_requests{?account_ids*,archive_state*,limit*,offset*,priorities*,product_area_ids*,request_ordering*,search*,statuses*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Feature_requestsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/feature_requests{?limit*,offset*}", rawUrl)
+        public Feature_requestsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/feature_requests{?account_ids*,archive_state*,limit*,offset*,priorities*,product_area_ids*,request_ordering*,search*,statuses*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedFeatureRequestList"/></returns>
@@ -127,12 +127,68 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests
         public partial class Feature_requestsRequestBuilderGetQueryParameters 
         #pragma warning restore CS1591
         {
+            /// <summary>Accessible account IDs to include. Multiple values use OR semantics.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("account_ids")]
+            public Guid?[]? AccountIds { get; set; }
+#nullable restore
+#else
+            [QueryParameter("account_ids")]
+            public Guid?[] AccountIds { get; set; }
+#endif
+            /// <summary>Whether to return active requests, archived requests, or all requests.* `active` - Active* `archived` - Archived* `all` - All</summary>
+            [QueryParameter("archive_state")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestsListArchiveStateParameter? ArchiveState { get; set; }
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
             /// <summary>The initial index from which to return the results.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
+            /// <summary>Priorities to include. Use none for requests without a priority.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("priorities")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestsListPrioritiesParameterItem[]? Priorities { get; set; }
+#nullable restore
+#else
+            [QueryParameter("priorities")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestsListPrioritiesParameterItem[] Priorities { get; set; }
+#endif
+            /// <summary>Product area IDs to include. Multiple values use OR semantics.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("product_area_ids")]
+            public Guid?[]? ProductAreaIds { get; set; }
+#nullable restore
+#else
+            [QueryParameter("product_area_ids")]
+            public Guid?[] ProductAreaIds { get; set; }
+#endif
+            /// <summary>&quot;Stable ordering for the result list.* `-updated_at` - Last updated: newest* `updated_at` - Last updated: oldest* `-created_at` - Date created: newest* `created_at` - Date created: oldest* `-priority` - Priority: high to low* `priority` - Priority: low to high* `title` - Title: A to Z* `-title` - Title: Z to A&quot;</summary>
+            [QueryParameter("request_ordering")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestsListRequestOrderingParameter? RequestOrdering { get; set; }
+            /// <summary>Case-insensitive text to find in request titles and descriptions.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("search")]
+            public string? Search { get; set; }
+#nullable restore
+#else
+            [QueryParameter("search")]
+            public string Search { get; set; }
+#endif
+            /// <summary>Lifecycle statuses to include. Multiple values use OR semantics.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("statuses")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestsListStatusesParameterItem[]? Statuses { get; set; }
+#nullable restore
+#else
+            [QueryParameter("statuses")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestsListStatusesParameterItem[] Statuses { get; set; }
+#endif
         }
     }
 }

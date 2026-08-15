@@ -25,10 +25,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The role property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TicketAssignmentRole? Role { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TicketAssigneeRole? Role { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TicketAssignmentRole Role { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TicketAssigneeRole Role { get; set; }
 #endif
         /// <summary>The type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -41,10 +41,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The user property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TicketAssignmentUser? User { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TicketAssigneeUser? User { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TicketAssignmentUser User { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TicketAssigneeUser User { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TicketAssignee"/> and sets the default values.
@@ -72,9 +72,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "role", n => { Role = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TicketAssignmentRole>(global::Soenneker.PostHog.OpenApiClient.Models.TicketAssignmentRole.CreateFromDiscriminatorValue); } },
+                { "role", n => { Role = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TicketAssigneeRole>(global::Soenneker.PostHog.OpenApiClient.Models.TicketAssigneeRole.CreateFromDiscriminatorValue); } },
                 { "type", n => { Type = n.GetStringValue(); } },
-                { "user", n => { User = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TicketAssignmentUser>(global::Soenneker.PostHog.OpenApiClient.Models.TicketAssignmentUser.CreateFromDiscriminatorValue); } },
+                { "user", n => { User = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TicketAssigneeUser>(global::Soenneker.PostHog.OpenApiClient.Models.TicketAssigneeUser.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -84,6 +84,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TicketAssigneeRole>("role", Role);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TicketAssigneeUser>("user", User);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

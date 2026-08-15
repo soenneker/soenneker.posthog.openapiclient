@@ -475,10 +475,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Extra globals for the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataGlobals? Globals { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataGlobalsProperty? Globals { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataGlobals Globals { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataGlobalsProperty Globals { get; set; }
 #endif
         /// <summary>Group key. Required with group_type_index for group queries.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -530,6 +530,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? IncludeAvgTimeOnPage { get; set; }
         /// <summary>The includeBounceRate property</summary>
         public bool? IncludeBounceRate { get; set; }
+        /// <summary>Include churned accounts. Churned accounts are hidden by default.</summary>
+        public bool? IncludeChurned { get; set; }
         /// <summary>The includeHost property</summary>
         public bool? IncludeHost { get; set; }
         /// <summary>The includeRecordings property</summary>
@@ -799,10 +801,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EventsNodeResponse? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EventsNodeResponseProperty? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EventsNodeResponse Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EventsNodeResponseProperty Response { get; set; }
 #endif
         /// <summary>The rootSpans property</summary>
         public bool? RootSpans { get; set; }
@@ -1027,10 +1029,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The user_modified_filters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryUserModifiedFilters? UserModifiedFilters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryUserModifiedFiltersProperty? UserModifiedFilters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryUserModifiedFilters UserModifiedFilters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryUserModifiedFiltersProperty UserModifiedFilters { get; set; }
 #endif
         /// <summary>The useSessionsTable property</summary>
         public bool? UseSessionsTable { get; set; }
@@ -1047,18 +1049,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Constant values that can be referenced with the {placeholder} syntax in the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryValues? Values { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryValuesProperty? Values { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryValues Values { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryValuesProperty Values { get; set; }
 #endif
         /// <summary>Variables to be substituted into the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryVariables? Variables { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryVariablesProperty? Variables { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryVariables Variables { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryVariablesProperty Variables { get; set; }
 #endif
         /// <summary>version of the node, used for schema migrations</summary>
         public double? Version { get; set; }
@@ -1176,7 +1178,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "flatSpans", n => { FlatSpans = n.GetBoolValue(); } },
                 { "formula", n => { Formula = n.GetStringValue(); } },
                 { "funnels_query", n => { FunnelsQuery = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery.CreateFromDiscriminatorValue); } },
-                { "globals", n => { Globals = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataGlobals>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataGlobals.CreateFromDiscriminatorValue); } },
+                { "globals", n => { Globals = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataGlobalsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataGlobalsProperty.CreateFromDiscriminatorValue); } },
                 { "groupBy", n => { GroupBy = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.SessionAttributionGroupBy>()?.AsList(); } },
                 { "groupKey", n => { GroupKey = n.GetStringValue(); } },
                 { "groupTypeIndex", n => { GroupTypeIndex = n.GetIntValue(); } },
@@ -1185,6 +1187,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetIntValue(); } },
                 { "includeAvgTimeOnPage", n => { IncludeAvgTimeOnPage = n.GetBoolValue(); } },
                 { "includeBounceRate", n => { IncludeBounceRate = n.GetBoolValue(); } },
+                { "includeChurned", n => { IncludeChurned = n.GetBoolValue(); } },
                 { "includeHost", n => { IncludeHost = n.GetBoolValue(); } },
                 { "includeRecordings", n => { IncludeRecordings = n.GetBoolValue(); } },
                 { "includeRevenue", n => { IncludeRevenue = n.GetBoolValue(); } },
@@ -1232,7 +1235,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "randomOrder", n => { RandomOrder = n.GetBoolValue(); } },
                 { "rendering", n => { Rendering = n.GetStringValue(); } },
                 { "resourceFingerprint", n => { ResourceFingerprint = n.GetStringValue(); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventsNodeResponse>(global::Soenneker.PostHog.OpenApiClient.Models.EventsNodeResponse.CreateFromDiscriminatorValue); } },
+                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventsNodeResponseProperty>(global::Soenneker.PostHog.OpenApiClient.Models.EventsNodeResponseProperty.CreateFromDiscriminatorValue); } },
                 { "rootSpans", n => { RootSpans = n.GetBoolValue(); } },
                 { "sampling", n => { Sampling = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsSampling>(global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsSampling.CreateFromDiscriminatorValue); } },
                 { "samplingFactor", n => { SamplingFactor = n.GetDoubleValue(); } },
@@ -1270,10 +1273,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "useQueryV3", n => { UseQueryV3 = n.GetBoolValue(); } },
                 { "useSessionsTable", n => { UseSessionsTable = n.GetBoolValue(); } },
                 { "useWebAnalyticsPrecompute", n => { UseWebAnalyticsPrecompute = n.GetBoolValue(); } },
-                { "user_modified_filters", n => { UserModifiedFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryUserModifiedFilters>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryUserModifiedFilters.CreateFromDiscriminatorValue); } },
+                { "user_modified_filters", n => { UserModifiedFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryUserModifiedFiltersProperty>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryUserModifiedFiltersProperty.CreateFromDiscriminatorValue); } },
                 { "uuid", n => { Uuid = n.GetStringValue(); } },
-                { "values", n => { Values = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryValues>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryValues.CreateFromDiscriminatorValue); } },
-                { "variables", n => { Variables = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryVariables>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryVariables.CreateFromDiscriminatorValue); } },
+                { "values", n => { Values = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryValuesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryValuesProperty.CreateFromDiscriminatorValue); } },
+                { "variables", n => { Variables = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryVariablesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryVariablesProperty.CreateFromDiscriminatorValue); } },
                 { "version", n => { Version = n.GetDoubleValue(); } },
                 { "volumeResolution", n => { VolumeResolution = n.GetIntValue(); } },
                 { "where", n => { Where = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventsQueryWhere>(global::Soenneker.PostHog.OpenApiClient.Models.EventsQueryWhere.CreateFromDiscriminatorValue); } },
@@ -1367,7 +1370,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("flatSpans", FlatSpans);
             writer.WriteStringValue("formula", Formula);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery>("funnels_query", FunnelsQuery);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataGlobals>("globals", Globals);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataGlobalsProperty>("globals", Globals);
             writer.WriteStringValue("group_key", Group_key);
             writer.WriteIntValue("group_type_index", Group_type_index);
             writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.SessionAttributionGroupBy>("groupBy", GroupBy);
@@ -1378,6 +1381,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("id", Id);
             writer.WriteBoolValue("includeAvgTimeOnPage", IncludeAvgTimeOnPage);
             writer.WriteBoolValue("includeBounceRate", IncludeBounceRate);
+            writer.WriteBoolValue("includeChurned", IncludeChurned);
             writer.WriteBoolValue("includeHost", IncludeHost);
             writer.WriteBoolValue("includeRecordings", IncludeRecordings);
             writer.WriteBoolValue("includeRevenue", IncludeRevenue);
@@ -1427,7 +1431,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("randomOrder", RandomOrder);
             writer.WriteStringValue("rendering", Rendering);
             writer.WriteStringValue("resourceFingerprint", ResourceFingerprint);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventsNodeResponse>("response", Response);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventsNodeResponseProperty>("response", Response);
             writer.WriteBoolValue("rootSpans", RootSpans);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsSampling>("sampling", Sampling);
             writer.WriteDoubleValue("samplingFactor", SamplingFactor);
@@ -1463,12 +1467,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("traceId", TraceId);
             writer.WriteBoolValue("useQueryV2", UseQueryV2);
             writer.WriteBoolValue("useQueryV3", UseQueryV3);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryUserModifiedFilters>("user_modified_filters", UserModifiedFilters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryUserModifiedFiltersProperty>("user_modified_filters", UserModifiedFilters);
             writer.WriteBoolValue("useSessionsTable", UseSessionsTable);
             writer.WriteBoolValue("useWebAnalyticsPrecompute", UseWebAnalyticsPrecompute);
             writer.WriteStringValue("uuid", Uuid);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryValues>("values", Values);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryVariables>("variables", Variables);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryValuesProperty>("values", Values);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryVariablesProperty>("variables", Variables);
             writer.WriteDoubleValue("version", Version);
             writer.WriteIntValue("volumeResolution", VolumeResolution);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventsQueryWhere>("where", Where);

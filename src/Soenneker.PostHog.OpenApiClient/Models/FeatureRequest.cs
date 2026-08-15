@@ -22,6 +22,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>When the request was archived, or null while active.</summary>
+        public DateTimeOffset? ArchivedAt { get; private set; }
+        /// <summary>ID of the user who archived the request, or null while active.</summary>
+        public int? ArchivedBy { get; private set; }
         /// <summary>When the request was created.</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>ID of the user who created the request.</summary>
@@ -36,6 +40,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Stable feature request ID.</summary>
         public Guid? Id { get; private set; }
+        /// <summary>Whether the request is archived.</summary>
+        public bool? IsArchived { get; private set; }
         /// <summary>Product areas affected by this request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -44,7 +50,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestProductArea> ProductAreas { get; private set; }
 #endif
-        /// <summary>Current customer-facing status. The first release always creates requests as requested.* `requested` - Requested</summary>
+        /// <summary>Manual request priority. Null means no priority.* `high` - High* `medium` - Medium* `low` - Low</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestRequestPriority? RequestPriority { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestRequestPriority RequestPriority { get; private set; }
+#endif
+        /// <summary>Current customer-facing lifecycle status.* `requested` - Requested* `planned` - Planned* `completed` - Completed* `wont_fix` - Won&apos;t fix* `duplicate` - Duplicate</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestRequestStatus? RequestStatus { get; private set; }
@@ -64,6 +78,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>ID of the last user to update the request.</summary>
         public int? UpdatedBy { get; private set; }
+        /// <summary>Version required for optimistic concurrency on mutations.</summary>
+        public int? Version { get; private set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequest"/> and sets the default values.
         /// </summary>
@@ -90,15 +106,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "account", n => { Account = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestAccountComposed>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestAccountComposed.CreateFromDiscriminatorValue); } },
+                { "archived_at", n => { ArchivedAt = n.GetDateTimeOffsetValue(); } },
+                { "archived_by", n => { ArchivedBy = n.GetIntValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetIntValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
+                { "is_archived", n => { IsArchived = n.GetBoolValue(); } },
                 { "product_areas", n => { ProductAreas = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestProductArea>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestProductArea.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "request_priority", n => { RequestPriority = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestRequestPriority>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestRequestPriority.CreateFromDiscriminatorValue); } },
                 { "request_status", n => { RequestStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestRequestStatus>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestRequestStatus.CreateFromDiscriminatorValue); } },
                 { "title", n => { Title = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "updated_by", n => { UpdatedBy = n.GetIntValue(); } },
+                { "version", n => { Version = n.GetIntValue(); } },
             };
         }
         /// <summary>

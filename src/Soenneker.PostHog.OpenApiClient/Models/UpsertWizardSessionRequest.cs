@@ -18,18 +18,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>&quot;Populated when run_phase=&apos;error&apos;. Shape: { type: string, message: string }.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestError? Error { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestErrorProperty? Error { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestError Error { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestErrorProperty Error { get; set; }
 #endif
         /// <summary>Optional structured plan of events the wizard intends to instrument. Schema is workflow-specific.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestEventPlan? EventPlan { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestEventPlanProperty? EventPlan { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestEventPlan EventPlan { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestEventPlanProperty EventPlan { get; set; }
 #endif
         /// <summary>Markdown handoff doc for the run (the wizard&apos;s setup report). Send it once the run has produced one; omitting it on later pushes keeps the stored value.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -114,8 +114,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "error", n => { Error = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestError>(global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestError.CreateFromDiscriminatorValue); } },
-                { "event_plan", n => { EventPlan = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestEventPlan>(global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestEventPlan.CreateFromDiscriminatorValue); } },
+                { "error", n => { Error = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestErrorProperty>(global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestErrorProperty.CreateFromDiscriminatorValue); } },
+                { "event_plan", n => { EventPlan = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestEventPlanProperty>(global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestEventPlanProperty.CreateFromDiscriminatorValue); } },
                 { "handoff_text", n => { HandoffText = n.GetStringValue(); } },
                 { "pending_input", n => { PendingInput = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestPendingInput>(global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestPendingInput.CreateFromDiscriminatorValue); } },
                 { "run_phase", n => { RunPhase = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestRunPhase>(global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestRunPhase.CreateFromDiscriminatorValue); } },
@@ -133,8 +133,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestError>("error", Error);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestEventPlan>("event_plan", EventPlan);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestErrorProperty>("error", Error);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestEventPlanProperty>("event_plan", EventPlan);
             writer.WriteStringValue("handoff_text", HandoffText);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestPendingInput>("pending_input", PendingInput);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestRunPhase>("run_phase", RunPhase);

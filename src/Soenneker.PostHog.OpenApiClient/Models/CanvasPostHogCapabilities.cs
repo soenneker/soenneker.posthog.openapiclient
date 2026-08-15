@@ -12,6 +12,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class CanvasPostHogCapabilities : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>Registered action verbs the canvas may invoke via ph.actions (e.g. &apos;annotations.create&apos;, &apos;tasks.create&apos;). Each executes as the viewer; declaring one shows it in the promote review.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Actions { get; set; }
+#nullable restore
+#else
+        public List<string> Actions { get; set; }
+#endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The captureEvents property</summary>
@@ -31,6 +39,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public List<string> Insights { get; set; }
+#endif
+        /// <summary>&quot;State scopes the canvas may use via ph.state: &apos;user&apos; (private to each viewer) and/or &apos;shared&apos; (one value per canvas, team-visible).&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateScopeEnum?>? State { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateScopeEnum?> State { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CanvasPostHogCapabilities"/> and sets the default values.
@@ -57,9 +73,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "actions", n => { Actions = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "captureEvents", n => { CaptureEvents = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "inlineQueries", n => { InlineQueries = n.GetBoolValue(); } },
                 { "insights", n => { Insights = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "state", n => { State = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateScopeEnum>()?.AsList(); } },
             };
         }
         /// <summary>
@@ -69,9 +87,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteCollectionOfPrimitiveValues<string>("actions", Actions);
             writer.WriteCollectionOfPrimitiveValues<string>("captureEvents", CaptureEvents);
             writer.WriteBoolValue("inlineQueries", InlineQueries);
             writer.WriteCollectionOfPrimitiveValues<string>("insights", Insights);
+            writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateScopeEnum>("state", State);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -25,10 +25,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Free-form metadata object. Omit to preserve the current value.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleaseUpdateRequestMetadata? Metadata { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleaseUpdateRequestMetadataProperty? Metadata { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleaseUpdateRequestMetadata Metadata { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleaseUpdateRequestMetadataProperty Metadata { get; set; }
 #endif
         /// <summary>Project identifier. Omit to preserve the current value.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -72,7 +72,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "hash_id", n => { HashId = n.GetStringValue(); } },
-                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleaseUpdateRequestMetadata>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleaseUpdateRequestMetadata.CreateFromDiscriminatorValue); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleaseUpdateRequestMetadataProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleaseUpdateRequestMetadataProperty.CreateFromDiscriminatorValue); } },
                 { "project", n => { Project = n.GetStringValue(); } },
                 { "version", n => { Version = n.GetStringValue(); } },
             };
@@ -85,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("hash_id", HashId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleaseUpdateRequestMetadata>("metadata", Metadata);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleaseUpdateRequestMetadataProperty>("metadata", Metadata);
             writer.WriteStringValue("project", Project);
             writer.WriteStringValue("version", Version);
             writer.WriteAdditionalData(AdditionalData);

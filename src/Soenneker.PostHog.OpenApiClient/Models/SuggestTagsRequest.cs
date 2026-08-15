@@ -29,7 +29,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Existing scanner to ground suggestions in its own observations (the tags and reasoning it has already produced on real recordings). Omit for an unsaved scanner.</summary>
         public Guid? ScannerId { get; set; }
-        /// <summary>The current tag vocabulary, so suggestions never duplicate a tag the user already has.</summary>
+        /// <summary>The categories already configured, so suggestions never duplicate one the user has.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? Tags { get; set; }

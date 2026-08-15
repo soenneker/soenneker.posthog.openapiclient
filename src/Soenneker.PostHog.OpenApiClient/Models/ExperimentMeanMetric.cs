@@ -79,10 +79,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetricResponse? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetricResponseProperty? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetricResponse Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetricResponseProperty Response { get; set; }
 #endif
         /// <summary>The sharedMetricId property</summary>
         public double? SharedMetricId { get; set; }
@@ -137,7 +137,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "lower_bound_percentile", n => { LowerBoundPercentile = n.GetDoubleValue(); } },
                 { "metric_type", n => { MetricType = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetricResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetricResponse.CreateFromDiscriminatorValue); } },
+                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetricResponseProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetricResponseProperty.CreateFromDiscriminatorValue); } },
                 { "sharedMetricId", n => { SharedMetricId = n.GetDoubleValue(); } },
                 { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetricSource>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetricSource.CreateFromDiscriminatorValue); } },
                 { "threshold", n => { Threshold = n.GetDoubleValue(); } },
@@ -164,7 +164,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("lower_bound_percentile", LowerBoundPercentile);
             writer.WriteStringValue("metric_type", MetricType);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetricResponse>("response", Response);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetricResponseProperty>("response", Response);
             writer.WriteDoubleValue("sharedMetricId", SharedMetricId);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetricSource>("source", Source);
             writer.WriteDoubleValue("threshold", Threshold);

@@ -25,10 +25,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The context property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrameContext? Context { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrameContextProperty? Context { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrameContext Context { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrameContextProperty Context { get; set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; set; }
@@ -86,7 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "contents", n => { Contents = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrameContentsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrameContentsProperty.CreateFromDiscriminatorValue); } },
-                { "context", n => { Context = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrameContext>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrameContext.CreateFromDiscriminatorValue); } },
+                { "context", n => { Context = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrameContextProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrameContextProperty.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "raw_id", n => { RawId = n.GetStringValue(); } },
@@ -103,7 +103,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrameContentsProperty>("contents", Contents);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrameContext>("context", Context);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrameContextProperty>("context", Context);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteGuidValue("id", Id);
             writer.WriteStringValue("raw_id", RawId);

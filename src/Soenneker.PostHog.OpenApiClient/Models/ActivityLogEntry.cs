@@ -63,10 +63,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The user property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ActivityLogEntryUser? User { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActivityLogEntryUserProperty? User { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ActivityLogEntryUser User { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActivityLogEntryUserProperty User { get; set; }
 #endif
         /// <summary>Whether the acting user was being impersonated by PostHog staff.</summary>
         public bool? WasImpersonated { get; private set; }
@@ -103,7 +103,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "is_system", n => { IsSystem = n.GetBoolValue(); } },
                 { "item_id", n => { ItemId = n.GetStringValue(); } },
                 { "scope", n => { Scope = n.GetStringValue(); } },
-                { "user", n => { User = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActivityLogEntryUser>(global::Soenneker.PostHog.OpenApiClient.Models.ActivityLogEntryUser.CreateFromDiscriminatorValue); } },
+                { "user", n => { User = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActivityLogEntryUserProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ActivityLogEntryUserProperty.CreateFromDiscriminatorValue); } },
                 { "was_impersonated", n => { WasImpersonated = n.GetBoolValue(); } },
             };
         }
@@ -115,6 +115,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Detail>("detail", Detail);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActivityLogEntryUserProperty>("user", User);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

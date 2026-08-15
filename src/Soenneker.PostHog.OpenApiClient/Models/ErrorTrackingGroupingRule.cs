@@ -53,10 +53,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Issue linked to this rule</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRuleIssue? Issue { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRuleIssueProperty? Issue { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRuleIssue Issue { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRuleIssueProperty Issue { get; set; }
 #endif
         /// <summary>The order_key property</summary>
         public int? OrderKey { get; set; }
@@ -93,7 +93,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "disabled_data", n => { DisabledData = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRuleDisabledData>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRuleDisabledData.CreateFromDiscriminatorValue); } },
                 { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRuleFilters>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRuleFilters.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "issue", n => { Issue = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRuleIssue>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRuleIssue.CreateFromDiscriminatorValue); } },
+                { "issue", n => { Issue = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRuleIssueProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRuleIssueProperty.CreateFromDiscriminatorValue); } },
                 { "order_key", n => { OrderKey = n.GetIntValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
@@ -108,6 +108,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("description", Description);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRuleDisabledData>("disabled_data", DisabledData);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRuleFilters>("filters", Filters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRuleIssueProperty>("issue", Issue);
             writer.WriteIntValue("order_key", OrderKey);
             writer.WriteAdditionalData(AdditionalData);
         }

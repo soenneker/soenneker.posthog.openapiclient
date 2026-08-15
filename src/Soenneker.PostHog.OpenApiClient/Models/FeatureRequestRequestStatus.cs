@@ -8,15 +8,15 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Current customer-facing status. The first release always creates requests as requested.* `requested` - Requested
+    /// Current customer-facing lifecycle status.* `requested` - Requested* `planned` - Planned* `completed` - Completed* `wont_fix` - Won&apos;t fix* `duplicate` - Duplicate
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class FeatureRequestRequestStatus : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `requested` - Requested</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.RequestStatusEnum? Value { get; set; }
+        /// <summary>* `requested` - Requested* `planned` - Planned* `completed` - Completed* `wont_fix` - Won&apos;t fix* `duplicate` - Duplicate</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestStatusEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestRequestStatus"/> and sets the default values.
         /// </summary>
@@ -42,7 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "value", n => { Value = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RequestStatusEnum>(); } },
+                { "value", n => { Value = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestStatusEnum>(); } },
             };
         }
         /// <summary>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RequestStatusEnum>("value", Value);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestStatusEnum>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

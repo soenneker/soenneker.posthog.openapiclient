@@ -56,10 +56,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The json_schema property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationTaskJsonSchema? JsonSchema { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationTaskJsonSchemaProperty? JsonSchema { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationTaskJsonSchema JsonSchema { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationTaskJsonSchemaProperty JsonSchema { get; set; }
 #endif
         /// <summary>Id of the latest TaskRun; null when the task has no runs.</summary>
         public Guid? LatestRun { get; private set; }
@@ -146,7 +146,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "github_user_integration", n => { GithubUserIntegration = n.GetGuidValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "internal", n => { Internal = n.GetBoolValue(); } },
-                { "json_schema", n => { JsonSchema = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationTaskJsonSchema>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationTaskJsonSchema.CreateFromDiscriminatorValue); } },
+                { "json_schema", n => { JsonSchema = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationTaskJsonSchemaProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationTaskJsonSchemaProperty.CreateFromDiscriminatorValue); } },
                 { "latest_run", n => { LatestRun = n.GetGuidValue(); } },
                 { "origin_product", n => { OriginProduct = n.GetStringValue(); } },
                 { "repository", n => { Repository = n.GetStringValue(); } },
@@ -176,7 +176,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteGuidValue("github_user_integration", GithubUserIntegration);
             writer.WriteGuidValue("id", Id);
             writer.WriteBoolValue("internal", Internal);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationTaskJsonSchema>("json_schema", JsonSchema);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationTaskJsonSchemaProperty>("json_schema", JsonSchema);
             writer.WriteStringValue("origin_product", OriginProduct);
             writer.WriteStringValue("repository", Repository);
             writer.WriteGuidValue("signal_report", SignalReport);

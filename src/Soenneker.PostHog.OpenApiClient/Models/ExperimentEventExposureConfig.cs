@@ -39,10 +39,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfigResponse? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfigResponseProperty? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfigResponse Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfigResponseProperty Response { get; set; }
 #endif
         /// <summary>version of the node, used for schema migrations</summary>
         public double? Version { get; set; }
@@ -67,7 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "event", n => { Event = n.GetStringValue(); } },
                 { "kind", n => { Kind = n.GetStringValue(); } },
                 { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfigPropertiesItem>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfigPropertiesItem.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfigResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfigResponse.CreateFromDiscriminatorValue); } },
+                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfigResponseProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfigResponseProperty.CreateFromDiscriminatorValue); } },
                 { "version", n => { Version = n.GetDoubleValue(); } },
             };
         }
@@ -81,7 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("event", Event);
             writer.WriteStringValue("kind", Kind);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfigPropertiesItem>("properties", Properties);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfigResponse>("response", Response);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentEventExposureConfigResponseProperty>("response", Response);
             writer.WriteDoubleValue("version", Version);
         }
     }

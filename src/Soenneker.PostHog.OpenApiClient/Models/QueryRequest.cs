@@ -65,10 +65,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The variables_override property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryRequestVariablesOverride? VariablesOverride { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryRequestVariablesOverrideProperty? VariablesOverride { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryRequestVariablesOverride VariablesOverride { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryRequestVariablesOverrideProperty VariablesOverride { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -95,7 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryRequestQuery>(global::Soenneker.PostHog.OpenApiClient.Models.QueryRequestQuery.CreateFromDiscriminatorValue); } },
                 { "refresh", n => { Refresh = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RefreshTypeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.RefreshTypeWrapper.CreateFromDiscriminatorValue); } },
-                { "variables_override", n => { VariablesOverride = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryRequestVariablesOverride>(global::Soenneker.PostHog.OpenApiClient.Models.QueryRequestVariablesOverride.CreateFromDiscriminatorValue); } },
+                { "variables_override", n => { VariablesOverride = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryRequestVariablesOverrideProperty>(global::Soenneker.PostHog.OpenApiClient.Models.QueryRequestVariablesOverrideProperty.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -112,7 +112,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryRequestQuery>("query", Query);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RefreshTypeWrapper>("refresh", Refresh);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryRequestVariablesOverride>("variables_override", VariablesOverride);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryRequestVariablesOverrideProperty>("variables_override", VariablesOverride);
         }
     }
 }

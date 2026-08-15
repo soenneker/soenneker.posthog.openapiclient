@@ -133,10 +133,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Customizations for the appearance of result datasets.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilterResultCustomizations? ResultCustomizations { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilterResultCustomizationsProperty? ResultCustomizations { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilterResultCustomizations ResultCustomizations { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilterResultCustomizationsProperty ResultCustomizations { get; set; }
 #endif
         /// <summary>Whether to render annotations on the chart. Only applies to historical-trends funnels.</summary>
         public bool? ShowAnnotations { get; set; }
@@ -197,7 +197,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "hideIncompleteConversionWindowPeriods", n => { HideIncompleteConversionWindowPeriods = n.GetBoolValue(); } },
                 { "layout", n => { Layout = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelLayoutWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelLayoutWrapper.CreateFromDiscriminatorValue); } },
                 { "legendPosition", n => { LegendPosition = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper.CreateFromDiscriminatorValue); } },
-                { "resultCustomizations", n => { ResultCustomizations = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilterResultCustomizations>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilterResultCustomizations.CreateFromDiscriminatorValue); } },
+                { "resultCustomizations", n => { ResultCustomizations = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilterResultCustomizationsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilterResultCustomizationsProperty.CreateFromDiscriminatorValue); } },
                 { "showAnnotations", n => { ShowAnnotations = n.GetBoolValue(); } },
                 { "showLegend", n => { ShowLegend = n.GetBoolValue(); } },
                 { "showTrendLines", n => { ShowTrendLines = n.GetBoolValue(); } },
@@ -232,7 +232,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("hideIncompleteConversionWindowPeriods", HideIncompleteConversionWindowPeriods);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelLayoutWrapper>("layout", Layout);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper>("legendPosition", LegendPosition);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilterResultCustomizations>("resultCustomizations", ResultCustomizations);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilterResultCustomizationsProperty>("resultCustomizations", ResultCustomizations);
             writer.WriteBoolValue("showAnnotations", ShowAnnotations);
             writer.WriteBoolValue("showLegend", ShowLegend);
             writer.WriteBoolValue("showTrendLines", ShowTrendLines);

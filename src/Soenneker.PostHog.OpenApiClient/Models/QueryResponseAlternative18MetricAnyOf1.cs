@@ -129,10 +129,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetricResponse? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetricResponseProperty? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetricResponse Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetricResponseProperty Response { get; set; }
 #endif
         /// <summary>The retention_window_end property</summary>
         public int? RetentionWindowEnd { get; set; }
@@ -224,7 +224,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "numerator", n => { Numerator = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetricNumerator>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetricNumerator.CreateFromDiscriminatorValue); } },
                 { "numerator_outlier_handling", n => { NumeratorOutlierHandling = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricOutlierHandling>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricOutlierHandling.CreateFromDiscriminatorValue); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetricResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetricResponse.CreateFromDiscriminatorValue); } },
+                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetricResponseProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetricResponseProperty.CreateFromDiscriminatorValue); } },
                 { "retention_window_end", n => { RetentionWindowEnd = n.GetIntValue(); } },
                 { "retention_window_start", n => { RetentionWindowStart = n.GetIntValue(); } },
                 { "retention_window_unit", n => { RetentionWindowUnit = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnit>(); } },
@@ -263,7 +263,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetricNumerator>("numerator", Numerator);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricOutlierHandling>("numerator_outlier_handling", NumeratorOutlierHandling);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetricResponse>("response", Response);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetricResponseProperty>("response", Response);
             writer.WriteIntValue("retention_window_end", RetentionWindowEnd);
             writer.WriteIntValue("retention_window_start", RetentionWindowStart);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnit>("retention_window_unit", RetentionWindowUnit);

@@ -127,10 +127,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeResponse? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeResponseProperty? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeResponse Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeResponseProperty Response { get; set; }
 #endif
         /// <summary>version of the node, used for schema migrations</summary>
         public double? Version { get; set; }
@@ -169,7 +169,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "optionalInFunnel", n => { OptionalInFunnel = n.GetBoolValue(); } },
                 { "orderBy", n => { OrderBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeOrderBy>(global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeOrderBy.CreateFromDiscriminatorValue); } },
                 { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodePropertiesAnyOf1Item>(global::Soenneker.PostHog.OpenApiClient.Models.GroupNodePropertiesAnyOf1Item.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeResponse>(global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeResponse.CreateFromDiscriminatorValue); } },
+                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeResponseProperty>(global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeResponseProperty.CreateFromDiscriminatorValue); } },
                 { "version", n => { Version = n.GetDoubleValue(); } },
             };
         }
@@ -197,7 +197,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("optionalInFunnel", OptionalInFunnel);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeOrderBy>("orderBy", OrderBy);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodePropertiesAnyOf1Item>("properties", Properties);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeResponse>("response", Response);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeResponseProperty>("response", Response);
             writer.WriteDoubleValue("version", Version);
         }
     }

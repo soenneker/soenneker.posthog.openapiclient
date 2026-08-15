@@ -55,10 +55,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Machine-readable query. Omit for a name+description-only stub. Stored upgrade-canonical.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricDefinition? Definition { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricDefinitionProperty? Definition { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricDefinition Definition { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricDefinitionProperty Definition { get; set; }
 #endif
         /// <summary>Query kind of the definition (HogQLQuery, TrendsQuery, ...), or null for a stub.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -180,7 +180,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricCreatedBy.CreateFromDiscriminatorValue); } },
                 { "created_source", n => { CreatedSource = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricCreatedSource>(global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricCreatedSource.CreateFromDiscriminatorValue); } },
-                { "definition", n => { Definition = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricDefinition>(global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricDefinition.CreateFromDiscriminatorValue); } },
+                { "definition", n => { Definition = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricDefinitionProperty>(global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricDefinitionProperty.CreateFromDiscriminatorValue); } },
                 { "definition_kind", n => { DefinitionKind = n.GetStringValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "display_name", n => { DisplayName = n.GetStringValue(); } },
@@ -207,7 +207,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("ai_model", AiModel);
             writer.WriteDoubleValue("confidence", Confidence);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricCreatedSource>("created_source", CreatedSource);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricDefinition>("definition", Definition);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricDefinitionProperty>("definition", Definition);
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("display_name", DisplayName);
             writer.WriteStringValue("name", Name);

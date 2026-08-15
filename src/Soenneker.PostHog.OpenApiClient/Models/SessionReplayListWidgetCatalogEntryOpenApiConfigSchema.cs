@@ -50,10 +50,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The widgetFilters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionReplayListWidgetConfigWidgetFilters? WidgetFilters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SessionReplayListWidgetCatalogEntryOpenApiConfigSchemaWidgetFilters? WidgetFilters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionReplayListWidgetConfigWidgetFilters WidgetFilters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SessionReplayListWidgetCatalogEntryOpenApiConfigSchemaWidgetFilters WidgetFilters { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SessionReplayListWidgetCatalogEntryOpenApiConfigSchema"/> and sets the default values.
@@ -88,7 +88,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "orderBy", n => { OrderBy = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionReplayListWidgetConfigOrderBy>(); } },
                 { "orderDirection", n => { OrderDirection = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionReplayListWidgetConfigOrderDirection>(); } },
                 { "savedFilterId", n => { SavedFilterId = n.GetStringValue(); } },
-                { "widgetFilters", n => { WidgetFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionReplayListWidgetConfigWidgetFilters>(global::Soenneker.PostHog.OpenApiClient.Models.SessionReplayListWidgetConfigWidgetFilters.CreateFromDiscriminatorValue); } },
+                { "widgetFilters", n => { WidgetFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionReplayListWidgetCatalogEntryOpenApiConfigSchemaWidgetFilters>(global::Soenneker.PostHog.OpenApiClient.Models.SessionReplayListWidgetCatalogEntryOpenApiConfigSchemaWidgetFilters.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -105,7 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionReplayListWidgetConfigOrderBy>("orderBy", OrderBy);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionReplayListWidgetConfigOrderDirection>("orderDirection", OrderDirection);
             writer.WriteStringValue("savedFilterId", SavedFilterId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionReplayListWidgetConfigWidgetFilters>("widgetFilters", WidgetFilters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionReplayListWidgetCatalogEntryOpenApiConfigSchemaWidgetFilters>("widgetFilters", WidgetFilters);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

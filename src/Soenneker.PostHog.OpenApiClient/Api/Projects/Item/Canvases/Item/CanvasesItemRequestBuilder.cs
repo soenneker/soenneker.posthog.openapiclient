@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Actions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Builds;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Draft;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Drafts;
@@ -14,6 +15,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Report_err
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Request_fix;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Revert;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Source;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.State;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Validate;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Versions;
 using Soenneker.PostHog.OpenApiClient.Models;
@@ -30,6 +32,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CanvasesItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The actions property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Actions.ActionsRequestBuilder Actions
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Actions.ActionsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The builds property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Builds.BuildsRequestBuilder Builds
         {
@@ -84,6 +91,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Source.SourceRequestBuilder Source
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Source.SourceRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The state property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.State.StateRequestBuilder State
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.State.StateRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The validate property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Validate.ValidateRequestBuilder Validate

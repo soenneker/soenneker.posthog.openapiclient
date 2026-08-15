@@ -96,10 +96,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Return the targeting flag filters, excluding the base exclusion properties.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProductTourTargetingFlagFilters? TargetingFlagFilters { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProductTourTargetingFlagFiltersProperty? TargetingFlagFilters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProductTourTargetingFlagFilters TargetingFlagFilters { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProductTourTargetingFlagFiltersProperty TargetingFlagFilters { get; set; }
 #endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
@@ -143,7 +143,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "search_match_type", n => { SearchMatchType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProductTourSearchMatchType>(global::Soenneker.PostHog.OpenApiClient.Models.ProductTourSearchMatchType.CreateFromDiscriminatorValue); } },
                 { "start_date", n => { StartDate = n.GetDateTimeOffsetValue(); } },
-                { "targeting_flag_filters", n => { TargetingFlagFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProductTourTargetingFlagFilters>(global::Soenneker.PostHog.OpenApiClient.Models.ProductTourTargetingFlagFilters.CreateFromDiscriminatorValue); } },
+                { "targeting_flag_filters", n => { TargetingFlagFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProductTourTargetingFlagFiltersProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ProductTourTargetingFlagFiltersProperty.CreateFromDiscriminatorValue); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }
@@ -161,6 +161,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("end_date", EndDate);
             writer.WriteStringValue("name", Name);
             writer.WriteDateTimeOffsetValue("start_date", StartDate);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProductTourTargetingFlagFiltersProperty>("targeting_flag_filters", TargetingFlagFilters);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -45,18 +45,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Count by result label for the previous period, or null when unavailable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsPreviousResultCounts? PreviousResultCounts { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsPreviousResultCountsProperty? PreviousResultCounts { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsPreviousResultCounts PreviousResultCounts { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsPreviousResultCountsProperty PreviousResultCounts { get; set; }
 #endif
         /// <summary>Percentage by result label for the previous period, or null when unavailable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsPreviousResultRates? PreviousResultRates { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsPreviousResultRatesProperty? PreviousResultRates { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsPreviousResultRates PreviousResultRates { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsPreviousResultRatesProperty PreviousResultRates { get; set; }
 #endif
         /// <summary>Number of evaluation results in the previous comparison period, or null when unavailable.</summary>
         public int? PreviousTotalRuns { get; set; }
@@ -108,8 +108,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "period_end", n => { PeriodEnd = n.GetStringValue(); } },
                 { "period_start", n => { PeriodStart = n.GetStringValue(); } },
                 { "previous_pass_rate", n => { PreviousPassRate = n.GetDoubleValue(); } },
-                { "previous_result_counts", n => { PreviousResultCounts = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsPreviousResultCounts>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsPreviousResultCounts.CreateFromDiscriminatorValue); } },
-                { "previous_result_rates", n => { PreviousResultRates = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsPreviousResultRates>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsPreviousResultRates.CreateFromDiscriminatorValue); } },
+                { "previous_result_counts", n => { PreviousResultCounts = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsPreviousResultCountsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsPreviousResultCountsProperty.CreateFromDiscriminatorValue); } },
+                { "previous_result_rates", n => { PreviousResultRates = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsPreviousResultRatesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsPreviousResultRatesProperty.CreateFromDiscriminatorValue); } },
                 { "previous_total_runs", n => { PreviousTotalRuns = n.GetIntValue(); } },
                 { "result_counts", n => { ResultCounts = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsResultCountsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsResultCountsProperty.CreateFromDiscriminatorValue); } },
                 { "result_rates", n => { ResultRates = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsResultRatesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsResultRatesProperty.CreateFromDiscriminatorValue); } },
@@ -128,8 +128,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("period_end", PeriodEnd);
             writer.WriteStringValue("period_start", PeriodStart);
             writer.WriteDoubleValue("previous_pass_rate", PreviousPassRate);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsPreviousResultCounts>("previous_result_counts", PreviousResultCounts);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsPreviousResultRates>("previous_result_rates", PreviousResultRates);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsPreviousResultCountsProperty>("previous_result_counts", PreviousResultCounts);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsPreviousResultRatesProperty>("previous_result_rates", PreviousResultRates);
             writer.WriteIntValue("previous_total_runs", PreviousTotalRuns);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsResultCountsProperty>("result_counts", ResultCounts);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsResultRatesProperty>("result_rates", ResultRates);

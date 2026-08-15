@@ -36,10 +36,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The conditions property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditions? Conditions { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsProperty? Conditions { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditions Conditions { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsProperty Conditions { get; set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
@@ -231,7 +231,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "appearance", n => { Appearance = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearance>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearance.CreateFromDiscriminatorValue); } },
                 { "archived", n => { Archived = n.GetBoolValue(); } },
                 { "base_language", n => { BaseLanguage = n.GetStringValue(); } },
-                { "conditions", n => { Conditions = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditions>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditions.CreateFromDiscriminatorValue); } },
+                { "conditions", n => { Conditions = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsProperty.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyCreatedBy.CreateFromDiscriminatorValue); } },
                 { "current_iteration", n => { CurrentIteration = n.GetIntValue(); } },
@@ -277,6 +277,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearance>("appearance", Appearance);
             writer.WriteBoolValue("archived", Archived);
             writer.WriteStringValue("base_language", BaseLanguage);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsProperty>("conditions", Conditions);
             writer.WriteIntValue("current_iteration", CurrentIteration);
             writer.WriteDateTimeOffsetValue("current_iteration_start_date", CurrentIterationStartDate);
             writer.WriteStringValue("description", Description);

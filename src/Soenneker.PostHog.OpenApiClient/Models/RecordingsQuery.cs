@@ -197,10 +197,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The user_modified_filters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryUserModifiedFilters? UserModifiedFilters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryUserModifiedFiltersProperty? UserModifiedFilters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryUserModifiedFilters UserModifiedFilters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryUserModifiedFiltersProperty UserModifiedFilters { get; set; }
 #endif
         /// <summary>version of the node, used for schema migrations</summary>
         public double? Version { get; set; }
@@ -254,7 +254,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "session_ids", n => { SessionIds = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuerySessionIds>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuerySessionIds.CreateFromDiscriminatorValue); } },
                 { "session_recording_id", n => { SessionRecordingId = n.GetStringValue(); } },
                 { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
-                { "user_modified_filters", n => { UserModifiedFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryUserModifiedFilters>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryUserModifiedFilters.CreateFromDiscriminatorValue); } },
+                { "user_modified_filters", n => { UserModifiedFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryUserModifiedFiltersProperty>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryUserModifiedFiltersProperty.CreateFromDiscriminatorValue); } },
                 { "version", n => { Version = n.GetDoubleValue(); } },
             };
         }
@@ -290,7 +290,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQuerySessionIds>("session_ids", SessionIds);
             writer.WriteStringValue("session_recording_id", SessionRecordingId);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryUserModifiedFilters>("user_modified_filters", UserModifiedFilters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingsQueryUserModifiedFiltersProperty>("user_modified_filters", UserModifiedFilters);
             writer.WriteDoubleValue("version", Version);
         }
     }

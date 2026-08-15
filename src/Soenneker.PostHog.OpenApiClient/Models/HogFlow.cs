@@ -24,10 +24,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>&quot;Skip-forward map for deleted steps: {deleted_action_id: next surviving action_id}. Maintained automatically when a live graph edit deletes actions, so in-flight runs parked on a deleted step continue at its surviving successor instead of exiting. Null when no live deletions have occurred.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowActionRedirects? ActionRedirects { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowActionRedirectsProperty? ActionRedirects { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowActionRedirects ActionRedirects { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowActionRedirectsProperty ActionRedirects { get; set; }
 #endif
         /// <summary>Ordered action nodes. Exactly one type=&apos;trigger&apos; required. Typically one type=&apos;exit&apos; too.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -163,7 +163,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "abort_action", n => { AbortAction = n.GetStringValue(); } },
-                { "action_redirects", n => { ActionRedirects = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowActionRedirects>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowActionRedirects.CreateFromDiscriminatorValue); } },
+                { "action_redirects", n => { ActionRedirects = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowActionRedirectsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowActionRedirectsProperty.CreateFromDiscriminatorValue); } },
                 { "actions", n => { Actions = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "conversion", n => { Conversion = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversionComposed>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversionComposed.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
@@ -190,6 +190,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowActionRedirectsProperty>("action_redirects", ActionRedirects);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction>("actions", Actions);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversionComposed>("conversion", Conversion);
             writer.WriteStringValue("description", Description);

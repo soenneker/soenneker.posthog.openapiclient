@@ -25,20 +25,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The messages property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LlmSentimentResultMessages? Messages { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LlmSentimentResultMessagesProperty? Messages { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LlmSentimentResultMessages Messages { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LlmSentimentResultMessagesProperty Messages { get; set; }
 #endif
         /// <summary>The score property</summary>
         public double? Score { get; set; }
         /// <summary>The scores property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LlmSentimentResultScores? Scores { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LlmSentimentResultScoresProperty? Scores { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LlmSentimentResultScores Scores { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LlmSentimentResultScoresProperty Scores { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -60,9 +60,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "label", n => { Label = n.GetStringValue(); } },
                 { "message_count", n => { MessageCount = n.GetDoubleValue(); } },
-                { "messages", n => { Messages = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmSentimentResultMessages>(global::Soenneker.PostHog.OpenApiClient.Models.LlmSentimentResultMessages.CreateFromDiscriminatorValue); } },
+                { "messages", n => { Messages = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmSentimentResultMessagesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.LlmSentimentResultMessagesProperty.CreateFromDiscriminatorValue); } },
                 { "score", n => { Score = n.GetDoubleValue(); } },
-                { "scores", n => { Scores = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmSentimentResultScores>(global::Soenneker.PostHog.OpenApiClient.Models.LlmSentimentResultScores.CreateFromDiscriminatorValue); } },
+                { "scores", n => { Scores = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmSentimentResultScoresProperty>(global::Soenneker.PostHog.OpenApiClient.Models.LlmSentimentResultScoresProperty.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -74,9 +74,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("label", Label);
             writer.WriteDoubleValue("message_count", MessageCount);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmSentimentResultMessages>("messages", Messages);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmSentimentResultMessagesProperty>("messages", Messages);
             writer.WriteDoubleValue("score", Score);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmSentimentResultScores>("scores", Scores);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmSentimentResultScoresProperty>("scores", Scores);
         }
     }
 }

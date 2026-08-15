@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>JSON object with model parameters or any agent configuration stored with this version, or null when the version has none. Omitted when &apos;content=preview&apos; or &apos;content=none&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptPublicConfig? Config { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptPublicConfigProperty? Config { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptPublicConfig Config { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptPublicConfigProperty Config { get; set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; set; }
@@ -105,7 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptPublicConfig>(global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptPublicConfig.CreateFromDiscriminatorValue); } },
+                { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptPublicConfigProperty>(global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptPublicConfigProperty.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "first_version_created_at", n => { FirstVersionCreatedAt = n.GetDateTimeOffsetValue(); } },
@@ -129,7 +129,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptPublicConfig>("config", Config);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptPublicConfigProperty>("config", Config);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteBoolValue("deleted", Deleted);
             writer.WriteDateTimeOffsetValue("first_version_created_at", FirstVersionCreatedAt);

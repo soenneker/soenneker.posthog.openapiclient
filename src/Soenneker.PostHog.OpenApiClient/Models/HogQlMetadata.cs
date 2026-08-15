@@ -33,10 +33,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Extra globals for the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataGlobals? Globals { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataGlobalsProperty? Globals { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataGlobals Globals { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataGlobalsProperty Globals { get; set; }
 #endif
         /// <summary>The kind property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -91,10 +91,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Variables to be subsituted into the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataVariables? Variables { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataVariablesProperty? Variables { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataVariables Variables { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataVariablesProperty Variables { get; set; }
 #endif
         /// <summary>version of the node, used for schema migrations</summary>
         public double? Version { get; set; }
@@ -119,7 +119,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "connectionId", n => { ConnectionId = n.GetStringValue(); } },
                 { "debug", n => { Debug = n.GetBoolValue(); } },
                 { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlFilters>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlFilters.CreateFromDiscriminatorValue); } },
-                { "globals", n => { Globals = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataGlobals>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataGlobals.CreateFromDiscriminatorValue); } },
+                { "globals", n => { Globals = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataGlobalsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataGlobalsProperty.CreateFromDiscriminatorValue); } },
                 { "kind", n => { Kind = n.GetStringValue(); } },
                 { "language", n => { Language = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogLanguage>(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
@@ -127,7 +127,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataResponse>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataResponse.CreateFromDiscriminatorValue); } },
                 { "sourceQuery", n => { SourceQuery = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataSourceQueryAnyOf1>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataSourceQueryAnyOf1.CreateFromDiscriminatorValue); } },
                 { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
-                { "variables", n => { Variables = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataVariables>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataVariables.CreateFromDiscriminatorValue); } },
+                { "variables", n => { Variables = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataVariablesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataVariablesProperty.CreateFromDiscriminatorValue); } },
                 { "version", n => { Version = n.GetDoubleValue(); } },
             };
         }
@@ -141,7 +141,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("connectionId", ConnectionId);
             writer.WriteBoolValue("debug", Debug);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlFilters>("filters", Filters);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataGlobals>("globals", Globals);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataGlobalsProperty>("globals", Globals);
             writer.WriteStringValue("kind", Kind);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogLanguage>("language", Language);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
@@ -149,7 +149,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataResponse>("response", Response);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataSourceQueryAnyOf1>("sourceQuery", SourceQuery);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataVariables>("variables", Variables);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataVariablesProperty>("variables", Variables);
             writer.WriteDoubleValue("version", Version);
         }
     }

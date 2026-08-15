@@ -19,10 +19,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>&quot;JSON object with model parameters or any agent configuration to store with this version. If omitted, the current version&apos;s config is carried forward; pass null to clear it. Can be combined with either prompt or edits. Don&apos;t store secrets here: config is returned to anyone who can read the prompt.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedLlmPromptPublishConfig? Config { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedLlmPromptPublishConfigProperty? Config { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedLlmPromptPublishConfig Config { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedLlmPromptPublishConfigProperty Config { get; set; }
 #endif
         /// <summary>List of find/replace operations to apply to the current prompt version. Each edit&apos;s &apos;old&apos; text must match exactly once. Edits are applied sequentially. Mutually exclusive with prompt.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -74,7 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "base_version", n => { BaseVersion = n.GetIntValue(); } },
-                { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLlmPromptPublishConfig>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedLlmPromptPublishConfig.CreateFromDiscriminatorValue); } },
+                { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLlmPromptPublishConfigProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedLlmPromptPublishConfigProperty.CreateFromDiscriminatorValue); } },
                 { "edits", n => { Edits = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptEditOperation>(global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptEditOperation.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "prompt", n => { Prompt = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLlmPromptPublishPrompt>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedLlmPromptPublishPrompt.CreateFromDiscriminatorValue); } },
                 { "version_description", n => { VersionDescription = n.GetStringValue(); } },
@@ -88,7 +88,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("base_version", BaseVersion);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLlmPromptPublishConfig>("config", Config);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLlmPromptPublishConfigProperty>("config", Config);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LlmPromptEditOperation>("edits", Edits);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLlmPromptPublishPrompt>("prompt", Prompt);
             writer.WriteStringValue("version_description", VersionDescription);

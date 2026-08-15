@@ -18,10 +18,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Per-column bucket overrides for range variable materialization. Keys are column names, values are bucket keys.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointRequestBucketOverrides? BucketOverrides { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointRequestBucketOverridesProperty? BucketOverrides { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointRequestBucketOverrides BucketOverrides { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointRequestBucketOverridesProperty BucketOverrides { get; set; }
 #endif
         /// <summary>&quot;How fresh the data should be, in seconds. Must be one of: 900 (15 min), 1800 (30 min), 3600 (1 h), 21600 (6 h), 43200 (12 h), 86400 (24 h, default), 604800 (7 d). Controls cache TTL and materialization sync frequency.&quot;</summary>
         public int? DataFreshnessSeconds { get; set; }
@@ -106,7 +106,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "bucket_overrides", n => { BucketOverrides = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointRequestBucketOverrides>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointRequestBucketOverrides.CreateFromDiscriminatorValue); } },
+                { "bucket_overrides", n => { BucketOverrides = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointRequestBucketOverridesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointRequestBucketOverridesProperty.CreateFromDiscriminatorValue); } },
                 { "data_freshness_seconds", n => { DataFreshnessSeconds = n.GetIntValue(); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "derived_from_insight", n => { DerivedFromInsight = n.GetStringValue(); } },
@@ -127,7 +127,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointRequestBucketOverrides>("bucket_overrides", BucketOverrides);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointRequestBucketOverridesProperty>("bucket_overrides", BucketOverrides);
             writer.WriteIntValue("data_freshness_seconds", DataFreshnessSeconds);
             writer.WriteBoolValue("deleted", Deleted);
             writer.WriteStringValue("derived_from_insight", DerivedFromInsight);

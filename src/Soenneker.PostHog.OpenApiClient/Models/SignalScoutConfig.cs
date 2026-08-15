@@ -116,10 +116,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>&quot;Optional JSON Schema (draft 2020-12) describing ONE structured record this scout produces via `scout-record-output` — e.g. a per-report quality judgment (`{\&quot;type\&quot;: \&quot;object\&quot;, \&quot;properties\&quot;: {\&quot;verdict\&quot;: {\&quot;enum\&quot;: [\&quot;good\&quot;, \&quot;bad\&quot;, \&quot;unsure\&quot;]}, \&quot;reason\&quot;: {\&quot;type\&quot;: \&quot;string\&quot;}}, \&quot;required\&quot;: [\&quot;verdict\&quot;, \&quot;reason\&quot;]}`). The root must be `\&quot;type\&quot;: \&quot;object\&quot;`. Setting a schema turns the structured-output channel on: the run prompt renders the schema and every submitted record is validated against it and recorded in the project as a `$scout_structured_output` event, queryable like any event. The channel also requires emit — a dry-run scout has nowhere to record to. Cardinality is the scout&apos;s call (one record per run, one per judged entity, ...). Null = channel off. Setting a schema requires skill-authoring authorization (the `llm_skill:write` scope and skill editor access) since the scout reads it verbatim in its prompt; clearing it needs only the config write. Records validate against the schema in force when the run was dispatched.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigStructuredOutputSchema? StructuredOutputSchema { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigStructuredOutputSchemaProperty? StructuredOutputSchema { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigStructuredOutputSchema StructuredOutputSchema { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigStructuredOutputSchemaProperty StructuredOutputSchema { get; set; }
 #endif
         /// <summary>Free-form labels for grouping the fleet, e.g. `[&quot;revenue&quot;, &quot;on-call&quot;]`. Normalized to lowercase kebab-case (`On Call` and `on_call` both become `on-call`), deduped, and stored sorted; at most 10 tags, each at most 50 characters once normalized. Pass the full desired set — a write replaces the existing tags rather than merging into them. Filter the config list with the `tags` query parameter.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -173,7 +173,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "skill_name", n => { SkillName = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigStatus>(global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigStatus.CreateFromDiscriminatorValue); } },
                 { "status_changed_at", n => { StatusChangedAt = n.GetDateTimeOffsetValue(); } },
-                { "structured_output_schema", n => { StructuredOutputSchema = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigStructuredOutputSchema>(global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigStructuredOutputSchema.CreateFromDiscriminatorValue); } },
+                { "structured_output_schema", n => { StructuredOutputSchema = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigStructuredOutputSchemaProperty>(global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigStructuredOutputSchemaProperty.CreateFromDiscriminatorValue); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
@@ -184,6 +184,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigStructuredOutputSchemaProperty>("structured_output_schema", StructuredOutputSchema);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteAdditionalData(AdditionalData);
         }

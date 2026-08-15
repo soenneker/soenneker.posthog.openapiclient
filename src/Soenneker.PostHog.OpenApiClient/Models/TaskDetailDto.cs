@@ -58,10 +58,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The json_schema property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskDetailDtoJsonSchema? JsonSchema { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskDetailDtoJsonSchemaProperty? JsonSchema { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskDetailDtoJsonSchema JsonSchema { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskDetailDtoJsonSchemaProperty JsonSchema { get; set; }
 #endif
         /// <summary>Latest run details for this task</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -171,7 +171,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "github_user_integration", n => { GithubUserIntegration = n.GetGuidValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "internal", n => { Internal = n.GetBoolValue(); } },
-                { "json_schema", n => { JsonSchema = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskDetailDtoJsonSchema>(global::Soenneker.PostHog.OpenApiClient.Models.TaskDetailDtoJsonSchema.CreateFromDiscriminatorValue); } },
+                { "json_schema", n => { JsonSchema = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskDetailDtoJsonSchemaProperty>(global::Soenneker.PostHog.OpenApiClient.Models.TaskDetailDtoJsonSchemaProperty.CreateFromDiscriminatorValue); } },
                 { "latest_run", n => { LatestRun = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskDetailDtoLatestRun>(global::Soenneker.PostHog.OpenApiClient.Models.TaskDetailDtoLatestRun.CreateFromDiscriminatorValue); } },
                 { "origin_product", n => { OriginProduct = n.GetStringValue(); } },
                 { "repositories", n => { Repositories = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -204,7 +204,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteGuidValue("github_user_integration", GithubUserIntegration);
             writer.WriteGuidValue("id", Id);
             writer.WriteBoolValue("internal", Internal);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskDetailDtoJsonSchema>("json_schema", JsonSchema);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskDetailDtoJsonSchemaProperty>("json_schema", JsonSchema);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskDetailDtoLatestRun>("latest_run", LatestRun);
             writer.WriteStringValue("origin_product", OriginProduct);
             writer.WriteCollectionOfPrimitiveValues<string>("repositories", Repositories);

@@ -55,10 +55,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Per-breakdown-value color customizations. Keyed by the raw breakdown column value.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChartSettingsResultCustomizations? ResultCustomizations { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChartSettingsResultCustomizationsProperty? ResultCustomizations { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChartSettingsResultCustomizations ResultCustomizations { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChartSettingsResultCustomizationsProperty ResultCustomizations { get; set; }
 #endif
         /// <summary>The rightYAxisSettings property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -151,7 +151,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "heatmap", n => { Heatmap = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapSettings>(global::Soenneker.PostHog.OpenApiClient.Models.HeatmapSettings.CreateFromDiscriminatorValue); } },
                 { "leftYAxisSettings", n => { LeftYAxisSettings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.YAxisSettings>(global::Soenneker.PostHog.OpenApiClient.Models.YAxisSettings.CreateFromDiscriminatorValue); } },
                 { "pie", n => { Pie = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PieChartSettings>(global::Soenneker.PostHog.OpenApiClient.Models.PieChartSettings.CreateFromDiscriminatorValue); } },
-                { "resultCustomizations", n => { ResultCustomizations = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartSettingsResultCustomizations>(global::Soenneker.PostHog.OpenApiClient.Models.ChartSettingsResultCustomizations.CreateFromDiscriminatorValue); } },
+                { "resultCustomizations", n => { ResultCustomizations = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartSettingsResultCustomizationsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ChartSettingsResultCustomizationsProperty.CreateFromDiscriminatorValue); } },
                 { "rightYAxisSettings", n => { RightYAxisSettings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.YAxisSettings>(global::Soenneker.PostHog.OpenApiClient.Models.YAxisSettings.CreateFromDiscriminatorValue); } },
                 { "scatter", n => { Scatter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScatterChartSettings>(global::Soenneker.PostHog.OpenApiClient.Models.ScatterChartSettings.CreateFromDiscriminatorValue); } },
                 { "seriesBreakdownColumn", n => { SeriesBreakdownColumn = n.GetStringValue(); } },
@@ -182,7 +182,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapSettings>("heatmap", Heatmap);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.YAxisSettings>("leftYAxisSettings", LeftYAxisSettings);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PieChartSettings>("pie", Pie);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartSettingsResultCustomizations>("resultCustomizations", ResultCustomizations);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartSettingsResultCustomizationsProperty>("resultCustomizations", ResultCustomizations);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.YAxisSettings>("rightYAxisSettings", RightYAxisSettings);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScatterChartSettings>("scatter", Scatter);
             writer.WriteStringValue("seriesBreakdownColumn", SeriesBreakdownColumn);

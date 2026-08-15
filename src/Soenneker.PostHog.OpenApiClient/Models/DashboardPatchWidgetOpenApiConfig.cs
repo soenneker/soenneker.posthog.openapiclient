@@ -148,10 +148,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The widgetFilters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetConfigWidgetFilters? WidgetFilters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetConfigWidgetFiltersProperty? WidgetFilters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetConfigWidgetFilters WidgetFilters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetConfigWidgetFiltersProperty WidgetFilters { get; set; }
 #endif
         /// <summary>Wrap long log lines instead of truncating them to a single row.</summary>
         public bool? WrapLines { get; set; }
@@ -205,7 +205,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "surveyId", n => { SurveyId = n.GetStringValue(); } },
                 { "timezone", n => { Timezone = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsListWidgetConfigTimezone>(); } },
                 { "type", n => { Type = n.GetStringValue(); } },
-                { "widgetFilters", n => { WidgetFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetConfigWidgetFilters>(global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetConfigWidgetFilters.CreateFromDiscriminatorValue); } },
+                { "widgetFilters", n => { WidgetFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetConfigWidgetFiltersProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetConfigWidgetFiltersProperty.CreateFromDiscriminatorValue); } },
                 { "wrapLines", n => { WrapLines = n.GetBoolValue(); } },
             };
         }
@@ -239,7 +239,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("surveyId", SurveyId);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsListWidgetConfigTimezone>("timezone", Timezone);
             writer.WriteStringValue("type", Type);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetConfigWidgetFilters>("widgetFilters", WidgetFilters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetConfigWidgetFiltersProperty>("widgetFilters", WidgetFilters);
             writer.WriteBoolValue("wrapLines", WrapLines);
             writer.WriteAdditionalData(AdditionalData);
         }

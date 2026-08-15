@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Actions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -18,6 +19,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CanvasesRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The actions property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Actions.ActionsRequestBuilder Actions
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Actions.ActionsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.canvases.item collection</summary>
         /// <param name="position">A UUID string identifying this canvas.</param>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.CanvasesItemRequestBuilder"/></returns>

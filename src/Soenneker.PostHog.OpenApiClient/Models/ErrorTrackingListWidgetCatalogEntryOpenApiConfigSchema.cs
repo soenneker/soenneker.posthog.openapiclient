@@ -44,10 +44,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The widgetFilters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetConfigWidgetFilters? WidgetFilters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetCatalogEntryOpenApiConfigSchemaWidgetFilters? WidgetFilters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetConfigWidgetFilters WidgetFilters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetCatalogEntryOpenApiConfigSchemaWidgetFilters WidgetFilters { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetCatalogEntryOpenApiConfigSchema"/> and sets the default values.
@@ -82,7 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "orderBy", n => { OrderBy = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetConfigOrderBy>(); } },
                 { "orderDirection", n => { OrderDirection = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetConfigOrderDirection>(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetConfigStatus>(); } },
-                { "widgetFilters", n => { WidgetFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetConfigWidgetFilters>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetConfigWidgetFilters.CreateFromDiscriminatorValue); } },
+                { "widgetFilters", n => { WidgetFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetCatalogEntryOpenApiConfigSchemaWidgetFilters>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetCatalogEntryOpenApiConfigSchemaWidgetFilters.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -99,7 +99,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetConfigOrderBy>("orderBy", OrderBy);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetConfigOrderDirection>("orderDirection", OrderDirection);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetConfigStatus>("status", Status);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetConfigWidgetFilters>("widgetFilters", WidgetFilters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetCatalogEntryOpenApiConfigSchemaWidgetFilters>("widgetFilters", WidgetFilters);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

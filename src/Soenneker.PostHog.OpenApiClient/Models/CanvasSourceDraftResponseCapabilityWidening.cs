@@ -13,6 +13,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CanvasSourceDraftResponseCapabilityWidening : IAdditionalDataHolder, IParsable
     {
+        /// <summary>Action verbs the draft newly declares it may invoke via ph.actions.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? ActionsAdded { get; set; }
+#nullable restore
+#else
+        public List<string> ActionsAdded { get; set; }
+#endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Event names the draft newly declares it may capture.</summary>
@@ -41,6 +49,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> NetworkOriginsAdded { get; set; }
 #endif
+        /// <summary>State scopes (user, shared) the draft newly declares for ph.state.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? StateScopesAdded { get; set; }
+#nullable restore
+#else
+        public List<string> StateScopesAdded { get; set; }
+#endif
         /// <summary>True when the draft declares any capability the current head does not.</summary>
         public bool? Widens { get; set; }
         /// <summary>
@@ -68,10 +84,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "actions_added", n => { ActionsAdded = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "capture_events_added", n => { CaptureEventsAdded = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "inline_queries_enabled", n => { InlineQueriesEnabled = n.GetBoolValue(); } },
                 { "insights_added", n => { InsightsAdded = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "network_origins_added", n => { NetworkOriginsAdded = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "state_scopes_added", n => { StateScopesAdded = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "widens", n => { Widens = n.GetBoolValue(); } },
             };
         }
@@ -82,10 +100,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteCollectionOfPrimitiveValues<string>("actions_added", ActionsAdded);
             writer.WriteCollectionOfPrimitiveValues<string>("capture_events_added", CaptureEventsAdded);
             writer.WriteBoolValue("inline_queries_enabled", InlineQueriesEnabled);
             writer.WriteCollectionOfPrimitiveValues<string>("insights_added", InsightsAdded);
             writer.WriteCollectionOfPrimitiveValues<string>("network_origins_added", NetworkOriginsAdded);
+            writer.WriteCollectionOfPrimitiveValues<string>("state_scopes_added", StateScopesAdded);
             writer.WriteBoolValue("widens", Widens);
             writer.WriteAdditionalData(AdditionalData);
         }

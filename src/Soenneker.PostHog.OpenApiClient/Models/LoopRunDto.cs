@@ -50,10 +50,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The output property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LoopRunDtoOutput? Output { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LoopRunDtoOutputProperty? Output { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LoopRunDtoOutput Output { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LoopRunDtoOutputProperty Output { get; set; }
 #endif
         /// <summary>The status property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -97,7 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "error_message", n => { ErrorMessage = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "loop_trigger_id", n => { LoopTriggerId = n.GetGuidValue(); } },
-                { "output", n => { Output = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LoopRunDtoOutput>(global::Soenneker.PostHog.OpenApiClient.Models.LoopRunDtoOutput.CreateFromDiscriminatorValue); } },
+                { "output", n => { Output = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LoopRunDtoOutputProperty>(global::Soenneker.PostHog.OpenApiClient.Models.LoopRunDtoOutputProperty.CreateFromDiscriminatorValue); } },
                 { "status", n => { Status = n.GetStringValue(); } },
                 { "task_id", n => { TaskId = n.GetGuidValue(); } },
             };
@@ -116,7 +116,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("error_message", ErrorMessage);
             writer.WriteGuidValue("id", Id);
             writer.WriteGuidValue("loop_trigger_id", LoopTriggerId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LoopRunDtoOutput>("output", Output);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LoopRunDtoOutputProperty>("output", Output);
             writer.WriteStringValue("status", Status);
             writer.WriteGuidValue("task_id", TaskId);
             writer.WriteAdditionalData(AdditionalData);

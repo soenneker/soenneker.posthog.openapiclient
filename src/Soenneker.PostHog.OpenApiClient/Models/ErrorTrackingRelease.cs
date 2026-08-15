@@ -29,10 +29,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The metadata property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleaseMetadata? Metadata { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleaseMetadataProperty? Metadata { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleaseMetadata Metadata { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleaseMetadataProperty Metadata { get; set; }
 #endif
         /// <summary>The project property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -80,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "hash_id", n => { HashId = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleaseMetadata>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleaseMetadata.CreateFromDiscriminatorValue); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleaseMetadataProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleaseMetadataProperty.CreateFromDiscriminatorValue); } },
                 { "project", n => { Project = n.GetStringValue(); } },
                 { "team_id", n => { TeamId = n.GetIntValue(); } },
                 { "version", n => { Version = n.GetStringValue(); } },
@@ -96,7 +96,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("hash_id", HashId);
             writer.WriteGuidValue("id", Id);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleaseMetadata>("metadata", Metadata);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleaseMetadataProperty>("metadata", Metadata);
             writer.WriteStringValue("project", Project);
             writer.WriteIntValue("team_id", TeamId);
             writer.WriteStringValue("version", Version);

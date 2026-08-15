@@ -35,7 +35,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AccountsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/accounts{?all_roles_unassigned*,limit*,offset*,ordering*,search*,tags*}", pathParameters)
+        public AccountsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/accounts{?all_roles_unassigned*,include_churned*,limit*,offset*,ordering*,search*,tags*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AccountsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/accounts{?all_roles_unassigned*,limit*,offset*,ordering*,search*,tags*}", rawUrl)
+        public AccountsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/accounts{?all_roles_unassigned*,include_churned*,limit*,offset*,ordering*,search*,tags*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedAccountList"/></returns>
@@ -130,6 +130,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts
             /// <summary>When true, returns only accounts where no user actively holds any relationship.</summary>
             [QueryParameter("all_roles_unassigned")]
             public bool? AllRolesUnassigned { get; set; }
+            /// <summary>Include churned accounts. Churned accounts are hidden by default.</summary>
+            [QueryParameter("include_churned")]
+            public bool? IncludeChurned { get; set; }
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }

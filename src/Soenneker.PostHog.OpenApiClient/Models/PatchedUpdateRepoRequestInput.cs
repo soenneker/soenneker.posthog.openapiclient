@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The baseline_file_paths property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUpdateRepoRequestInputBaselineFilePaths? BaselineFilePaths { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUpdateRepoRequestInputBaselineFilePathsProperty? BaselineFilePaths { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUpdateRepoRequestInputBaselineFilePaths BaselineFilePaths { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUpdateRepoRequestInputBaselineFilePathsProperty BaselineFilePaths { get; set; }
 #endif
         /// <summary>The enable_pr_comments property</summary>
         public bool? EnablePrComments { get; set; }
@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "baseline_file_paths", n => { BaselineFilePaths = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUpdateRepoRequestInputBaselineFilePaths>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedUpdateRepoRequestInputBaselineFilePaths.CreateFromDiscriminatorValue); } },
+                { "baseline_file_paths", n => { BaselineFilePaths = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUpdateRepoRequestInputBaselineFilePathsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedUpdateRepoRequestInputBaselineFilePathsProperty.CreateFromDiscriminatorValue); } },
                 { "enable_pr_comments", n => { EnablePrComments = n.GetBoolValue(); } },
             };
         }
@@ -60,7 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUpdateRepoRequestInputBaselineFilePaths>("baseline_file_paths", BaselineFilePaths);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUpdateRepoRequestInputBaselineFilePathsProperty>("baseline_file_paths", BaselineFilePaths);
             writer.WriteBoolValue("enable_pr_comments", EnablePrComments);
             writer.WriteAdditionalData(AdditionalData);
         }

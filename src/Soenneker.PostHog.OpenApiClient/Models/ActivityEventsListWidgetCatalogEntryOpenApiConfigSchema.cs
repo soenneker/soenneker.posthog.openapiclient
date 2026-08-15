@@ -46,10 +46,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The widgetFilters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetConfigWidgetFilters? WidgetFilters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetCatalogEntryOpenApiConfigSchemaWidgetFilters? WidgetFilters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetConfigWidgetFilters WidgetFilters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetCatalogEntryOpenApiConfigSchemaWidgetFilters WidgetFilters { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetCatalogEntryOpenApiConfigSchema"/> and sets the default values.
@@ -82,7 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "filterTestAccounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
                 { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsPropertyFilter>(global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsPropertyFilter.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "widgetFilters", n => { WidgetFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetConfigWidgetFilters>(global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetConfigWidgetFilters.CreateFromDiscriminatorValue); } },
+                { "widgetFilters", n => { WidgetFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetCatalogEntryOpenApiConfigSchemaWidgetFilters>(global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetCatalogEntryOpenApiConfigSchemaWidgetFilters.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -97,7 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("filterTestAccounts", FilterTestAccounts);
             writer.WriteIntValue("limit", Limit);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsPropertyFilter>("properties", Properties);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetConfigWidgetFilters>("widgetFilters", WidgetFilters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetCatalogEntryOpenApiConfigSchemaWidgetFilters>("widgetFilters", WidgetFilters);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

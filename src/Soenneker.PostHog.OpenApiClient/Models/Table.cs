@@ -54,10 +54,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The external_schema property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TableExternalSchema? ExternalSchema { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TableExternalSchemaProperty? ExternalSchema { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TableExternalSchema ExternalSchema { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TableExternalSchemaProperty ExternalSchema { get; set; }
 #endif
         /// <summary>* `CSV` - CSV* `CSVWithNames` - CSVWithNames* `Parquet` - Parquet* `JSONEachRow` - JSON* `Delta` - Delta* `DeltaS3Wrapper` - DeltaS3Wrapper</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TableFormatEnum? Format { get; set; }
@@ -134,7 +134,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "credential", n => { Credential = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Credential>(global::Soenneker.PostHog.OpenApiClient.Models.Credential.CreateFromDiscriminatorValue); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "external_data_source", n => { ExternalDataSource = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TableExternalDataSource>(global::Soenneker.PostHog.OpenApiClient.Models.TableExternalDataSource.CreateFromDiscriminatorValue); } },
-                { "external_schema", n => { ExternalSchema = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TableExternalSchema>(global::Soenneker.PostHog.OpenApiClient.Models.TableExternalSchema.CreateFromDiscriminatorValue); } },
+                { "external_schema", n => { ExternalSchema = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TableExternalSchemaProperty>(global::Soenneker.PostHog.OpenApiClient.Models.TableExternalSchemaProperty.CreateFromDiscriminatorValue); } },
                 { "format", n => { Format = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TableFormatEnum>(); } },
                 { "hogql_name", n => { HogqlName = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
@@ -153,6 +153,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Credential>("credential", Credential);
             writer.WriteBoolValue("deleted", Deleted);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TableExternalSchemaProperty>("external_schema", ExternalSchema);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TableFormatEnum>("format", Format);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TableOptionsProperty>("options", Options);

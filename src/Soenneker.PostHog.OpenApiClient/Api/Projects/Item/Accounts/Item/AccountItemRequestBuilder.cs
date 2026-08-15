@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Custom_property_values;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Email_threads;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Meetings;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Notebooks;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Relationships;
@@ -27,6 +28,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Custom_property_values.Custom_property_valuesRequestBuilder Custom_property_values
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Custom_property_values.Custom_property_valuesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The email_threads property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Email_threads.Email_threadsRequestBuilder Email_threads
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Email_threads.Email_threadsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The meetings property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Meetings.MeetingsRequestBuilder Meetings

@@ -28,6 +28,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryFiltersAnyOf1Item> Filters { get; set; }
 #endif
+        /// <summary>Include churned accounts. Churned accounts are hidden by default.</summary>
+        public bool? IncludeChurned { get; set; }
         /// <summary>The kind property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -102,6 +104,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "columns", n => { Columns = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItem>(global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "filters", n => { Filters = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryFiltersAnyOf1Item>(global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryFiltersAnyOf1Item.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "includeChurned", n => { IncludeChurned = n.GetBoolValue(); } },
                 { "kind", n => { Kind = n.GetStringValue(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
                 { "metrics", n => { Metrics = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryMetricsAnyOf1Item>(global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryMetricsAnyOf1Item.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -122,6 +125,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItem>("columns", Columns);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryFiltersAnyOf1Item>("filters", Filters);
+            writer.WriteBoolValue("includeChurned", IncludeChurned);
             writer.WriteStringValue("kind", Kind);
             writer.WriteIntValue("limit", Limit);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryMetricsAnyOf1Item>("metrics", Metrics);

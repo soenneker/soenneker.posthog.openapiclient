@@ -15,10 +15,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The group_key_names property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupPropertyFilterGroupKeyNames? GroupKeyNames { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.GroupPropertyFilterGroupKeyNamesProperty? GroupKeyNames { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupPropertyFilterGroupKeyNames GroupKeyNames { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.GroupPropertyFilterGroupKeyNamesProperty GroupKeyNames { get; set; }
 #endif
         /// <summary>The group_type_index property</summary>
         public int? GroupTypeIndex { get; set; }
@@ -74,7 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "group_key_names", n => { GroupKeyNames = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupPropertyFilterGroupKeyNames>(global::Soenneker.PostHog.OpenApiClient.Models.GroupPropertyFilterGroupKeyNames.CreateFromDiscriminatorValue); } },
+                { "group_key_names", n => { GroupKeyNames = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupPropertyFilterGroupKeyNamesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.GroupPropertyFilterGroupKeyNamesProperty.CreateFromDiscriminatorValue); } },
                 { "group_type_index", n => { GroupTypeIndex = n.GetIntValue(); } },
                 { "key", n => { Key = n.GetStringValue(); } },
                 { "label", n => { Label = n.GetStringValue(); } },
@@ -90,7 +90,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupPropertyFilterGroupKeyNames>("group_key_names", GroupKeyNames);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupPropertyFilterGroupKeyNamesProperty>("group_key_names", GroupKeyNames);
             writer.WriteIntValue("group_type_index", GroupTypeIndex);
             writer.WriteStringValue("key", Key);
             writer.WriteStringValue("label", Label);

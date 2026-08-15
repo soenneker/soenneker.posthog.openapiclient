@@ -138,10 +138,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsEventConversionGoalResponse? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsEventConversionGoalResponseProperty? Response { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsEventConversionGoalResponse Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsEventConversionGoalResponseProperty Response { get; set; }
 #endif
         /// <summary>The schema_map property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -190,7 +190,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "optionalInFunnel", n => { OptionalInFunnel = n.GetBoolValue(); } },
                 { "orderBy", n => { OrderBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsEventConversionGoalOrderBy>(global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsEventConversionGoalOrderBy.CreateFromDiscriminatorValue); } },
                 { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsEventConversionGoalPropertiesAnyOf1Item>(global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsEventConversionGoalPropertiesAnyOf1Item.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsEventConversionGoalResponse>(global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsEventConversionGoalResponse.CreateFromDiscriminatorValue); } },
+                { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsEventConversionGoalResponseProperty>(global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsEventConversionGoalResponseProperty.CreateFromDiscriminatorValue); } },
                 { "schema_map", n => { SchemaMap = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsEventConversionGoalSchemaMapProperty>(global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsEventConversionGoalSchemaMapProperty.CreateFromDiscriminatorValue); } },
                 { "version", n => { Version = n.GetDoubleValue(); } },
             };
@@ -221,7 +221,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("optionalInFunnel", OptionalInFunnel);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsEventConversionGoalOrderBy>("orderBy", OrderBy);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsEventConversionGoalPropertiesAnyOf1Item>("properties", Properties);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsEventConversionGoalResponse>("response", Response);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsEventConversionGoalResponseProperty>("response", Response);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsEventConversionGoalSchemaMapProperty>("schema_map", SchemaMap);
             writer.WriteDoubleValue("version", Version);
         }

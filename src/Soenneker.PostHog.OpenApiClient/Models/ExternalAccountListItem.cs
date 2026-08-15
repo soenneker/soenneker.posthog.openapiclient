@@ -14,6 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>When the account churned, or null if it has not churned.</summary>
+        public DateTimeOffset? ChurnedAt { get; set; }
         /// <summary>External account key used by downstream systems.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -63,6 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "churned_at", n => { ChurnedAt = n.GetDateTimeOffsetValue(); } },
                 { "external_id", n => { ExternalId = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "relationships", n => { Relationships = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountListItemRelationshipsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountListItemRelationshipsProperty.CreateFromDiscriminatorValue); } },
@@ -75,6 +78,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteDateTimeOffsetValue("churned_at", ChurnedAt);
             writer.WriteStringValue("external_id", ExternalId);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountListItemRelationshipsProperty>("relationships", Relationships);
