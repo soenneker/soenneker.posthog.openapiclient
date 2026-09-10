@@ -14,6 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>When the newest datapoint for this metric arrived, ISO 8601.</summary>
+        public DateTimeOffset? LastSeen { get; set; }
         /// <summary>OTel metric type (gauge, sum, histogram, summary, exponential_histogram).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -29,6 +31,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string Name { get; set; }
+#endif
+        /// <summary>A small downsampled series of the metric&apos;s recent shape, for a sparkline.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<double?>? Sparkline { get; set; }
+#nullable restore
+#else
+        public List<double?> Sparkline { get; set; }
+#endif
+        /// <summary>Unit of the metric value, if any (e.g. &apos;ms&apos;, &apos;By&apos;).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Unit { get; set; }
+#nullable restore
+#else
+        public string Unit { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MetricName"/> and sets the default values.
@@ -55,8 +73,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "last_seen", n => { LastSeen = n.GetDateTimeOffsetValue(); } },
                 { "metric_type", n => { MetricType = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "sparkline", n => { Sparkline = n.GetCollectionOfPrimitiveValues<double?>()?.AsList(); } },
+                { "unit", n => { Unit = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -66,8 +87,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteDateTimeOffsetValue("last_seen", LastSeen);
             writer.WriteStringValue("metric_type", MetricType);
             writer.WriteStringValue("name", Name);
+            writer.WriteCollectionOfPrimitiveValues<double?>("sparkline", Sparkline);
+            writer.WriteStringValue("unit", Unit);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

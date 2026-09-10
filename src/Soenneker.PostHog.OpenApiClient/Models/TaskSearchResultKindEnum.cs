@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `task` - task* `pull_request` - pull_request* `artifact` - artifact* `channel` - channel</summary>
+    /// <summary>* `task` - task* `pull_request` - pull_request* `artifact` - artifact* `channel` - channel* `canvas` - canvas</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum TaskSearchResultKindEnum
     {
@@ -22,6 +22,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "channel")]
         #pragma warning disable CS1591
         Channel,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "canvas")]
+        #pragma warning disable CS1591
+        Canvas,
         #pragma warning restore CS1591
     }
 }

@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Which interaction counter to increment: &apos;data&apos; (slicing/filtering the dashboard) or &apos;recording&apos; (opening a session recording).* `data` - data* `recording` - recording&quot;
+    /// Which interaction counter to increment: &apos;data&apos; (slicing/filtering the dashboard) or &apos;recording&apos; (opening a session recording).* `data` - data* `recording` - recording
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RecordInteractionRequestInteractionKind : IAdditionalDataHolder, IParsable

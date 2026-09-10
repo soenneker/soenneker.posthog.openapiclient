@@ -8,15 +8,15 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// What triggered this recalculation* `manual` - Manual* `agent_mcp` - Agent (MCP)* `cold_run` - Cold Run* `stale_refresh` - Stale Refresh* `auto_refresh` - Auto Refresh* `config_change` - Config Change* `experiment_launch` - Experiment Launch* `experiment_stop` - Experiment Stop* `experiment_update` - Experiment Update
+    /// What triggered this recalculation* `manual` - Manual* `agent_mcp` - Agent (MCP)* `cold_run` - Cold Run* `stale_refresh` - Stale Refresh* `auto_refresh` - Auto Refresh* `experiment_config_change` - Experiment Config Change* `metric_config_change` - Metric Config Change* `config_change` - Config Change* `experiment_launch` - Experiment Launch* `experiment_stop` - Experiment Stop* `experiment_update` - Experiment Update
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ExperimentMetricsRecalculationTrigger : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `manual` - Manual* `agent_mcp` - Agent (MCP)* `cold_run` - Cold Run* `stale_refresh` - Stale Refresh* `auto_refresh` - Auto Refresh* `config_change` - Config Change* `experiment_launch` - Experiment Launch* `experiment_stop` - Experiment Stop* `experiment_update` - Experiment Update</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.TriggerEnum? Value { get; set; }
+        /// <summary>* `manual` - Manual* `agent_mcp` - Agent (MCP)* `cold_run` - Cold Run* `stale_refresh` - Stale Refresh* `auto_refresh` - Auto Refresh* `experiment_config_change` - Experiment Config Change* `metric_config_change` - Metric Config Change* `config_change` - Config Change* `experiment_launch` - Experiment Launch* `experiment_stop` - Experiment Stop* `experiment_update` - Experiment Update</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationTriggerEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationTrigger"/> and sets the default values.
         /// </summary>
@@ -42,7 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "value", n => { Value = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TriggerEnum>(); } },
+                { "value", n => { Value = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationTriggerEnum>(); } },
             };
         }
         /// <summary>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TriggerEnum>("value", Value);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationTriggerEnum>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

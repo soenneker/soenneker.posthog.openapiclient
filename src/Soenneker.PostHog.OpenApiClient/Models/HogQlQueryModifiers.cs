@@ -24,6 +24,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The convertToProjectTimezone property</summary>
         public bool? ConvertToProjectTimezone { get; set; }
+        /// <summary>The customBotDefinitions property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CustomBotRule>? CustomBotDefinitions { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CustomBotRule> CustomBotDefinitions { get; set; }
+#endif
         /// <summary>The customChannelTypeRules property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -45,10 +53,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>If these are provided, the query will fail if these skip indexes are not used</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiersForceClickhouseDataSkippingIndexes? ForceClickhouseDataSkippingIndexes { get; set; }
+        public List<string>? ForceClickhouseDataSkippingIndexes { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiersForceClickhouseDataSkippingIndexes ForceClickhouseDataSkippingIndexes { get; set; }
+        public List<string> ForceClickhouseDataSkippingIndexes { get; set; }
 #endif
         /// <summary>The formatCsvAllowDoubleQuotes property</summary>
         public bool? FormatCsvAllowDoubleQuotes { get; set; }
@@ -189,10 +197,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "bounceRateDurationSeconds", n => { BounceRateDurationSeconds = n.GetDoubleValue(); } },
                 { "bounceRatePageViewMode", n => { BounceRatePageViewMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BounceRatePageViewModeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.BounceRatePageViewModeWrapper.CreateFromDiscriminatorValue); } },
                 { "convertToProjectTimezone", n => { ConvertToProjectTimezone = n.GetBoolValue(); } },
+                { "customBotDefinitions", n => { CustomBotDefinitions = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CustomBotRule>(global::Soenneker.PostHog.OpenApiClient.Models.CustomBotRule.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "customChannelTypeRules", n => { CustomChannelTypeRules = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CustomChannelRule>(global::Soenneker.PostHog.OpenApiClient.Models.CustomChannelRule.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "dataWarehouseEventsModifiers", n => { DataWarehouseEventsModifiers = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseEventsModifier>(global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseEventsModifier.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "debug", n => { Debug = n.GetBoolValue(); } },
-                { "forceClickhouseDataSkippingIndexes", n => { ForceClickhouseDataSkippingIndexes = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiersForceClickhouseDataSkippingIndexes>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiersForceClickhouseDataSkippingIndexes.CreateFromDiscriminatorValue); } },
+                { "forceClickhouseDataSkippingIndexes", n => { ForceClickhouseDataSkippingIndexes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "formatCsvAllowDoubleQuotes", n => { FormatCsvAllowDoubleQuotes = n.GetBoolValue(); } },
                 { "inCohortVia", n => { InCohortVia = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InCohortViaWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.InCohortViaWrapper.CreateFromDiscriminatorValue); } },
                 { "inlineCohortCalculation", n => { InlineCohortCalculation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InlineCohortCalculationWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.InlineCohortCalculationWrapper.CreateFromDiscriminatorValue); } },
@@ -231,10 +240,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("bounceRateDurationSeconds", BounceRateDurationSeconds);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BounceRatePageViewModeWrapper>("bounceRatePageViewMode", BounceRatePageViewMode);
             writer.WriteBoolValue("convertToProjectTimezone", ConvertToProjectTimezone);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CustomBotRule>("customBotDefinitions", CustomBotDefinitions);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CustomChannelRule>("customChannelTypeRules", CustomChannelTypeRules);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseEventsModifier>("dataWarehouseEventsModifiers", DataWarehouseEventsModifiers);
             writer.WriteBoolValue("debug", Debug);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiersForceClickhouseDataSkippingIndexes>("forceClickhouseDataSkippingIndexes", ForceClickhouseDataSkippingIndexes);
+            writer.WriteCollectionOfPrimitiveValues<string>("forceClickhouseDataSkippingIndexes", ForceClickhouseDataSkippingIndexes);
             writer.WriteBoolValue("formatCsvAllowDoubleQuotes", FormatCsvAllowDoubleQuotes);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InCohortViaWrapper>("inCohortVia", InCohortVia);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InlineCohortCalculationWrapper>("inlineCohortCalculation", InlineCohortCalculation);

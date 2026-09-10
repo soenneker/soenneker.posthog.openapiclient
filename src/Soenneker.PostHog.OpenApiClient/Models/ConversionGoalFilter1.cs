@@ -28,9 +28,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ConversionGoalName { get; set; }
 #endif
-        /// <summary>&quot;Marks this goal as customer-defining: a conversion here means the person became a customer (e.g. a payment or subscription), not an intermediate step like a sign up. It gates customer-based metrics such as CAC and LTV:CAC, whose denominator is new customers (counted once per person via first_time_for_user) rather than every conversion. Defaults to false.&quot;</summary>
+        /// <summary>Marks this goal as customer-defining: a conversion here means the person became a customer (e.g. a payment or subscription), not an intermediate step like a sign up. It gates customer-based metrics such as CAC, whose denominator is this goal&apos;s conversions — its count, or its unique converters under dau math. That equals new customers only for a once-per-person moment: a repeatable event such as a monthly payment counts every time and understates cost per customer, and dedup under dau is per result row, so someone converting under two sources counts twice at channel level. Defaults to false.</summary>
         public bool? CountsAsCustomer { get; set; }
-        /// <summary>&quot;Marks this goal as revenue-bearing: the value of a conversion is a monetary amount, not a count or an arbitrary numeric property. It gates revenue metrics such as ROAS and LTV:CAC. The amount itself comes from math_property, and its currency from math_property_revenue_currency, the same shape Revenue analytics uses for revenue events. Independent of counts_as_customer: a purchase is usually both, a trial signup neither. Defaults to false.&quot;</summary>
+        /// <summary>Marks this goal as revenue-bearing: the value of a conversion is a monetary amount, not a count or an arbitrary numeric property. It gates revenue metrics such as ROAS and LTV:CAC. The amount itself comes from math_property, and its currency from math_property_revenue_currency, the same shape Revenue analytics uses for revenue events. Independent of counts_as_customer: a purchase is usually both, a trial signup neither. Defaults to false.</summary>
         public bool? CountsAsRevenue { get; set; }
         /// <summary>The custom_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -51,19 +51,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Fixed properties in the query, can&apos;t be edited in the interface (e.g. scoping down by person)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1FixedPropertiesAnyOf1Item>? FixedProperties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1FixedPropertiesItem>? FixedProperties { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1FixedPropertiesAnyOf1Item> FixedProperties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1FixedPropertiesItem> FixedProperties { get; set; }
 #endif
         /// <summary>The kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Kind { get; set; }
-#nullable restore
-#else
-        public string Kind { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.EventsNodeKind? Kind { get; set; }
         /// <summary>The limit property</summary>
         public int? Limit { get; set; }
         /// <summary>The math property</summary>
@@ -129,18 +123,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Columns to order by</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1OrderBy? OrderBy { get; set; }
+        public List<string>? OrderBy { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1OrderBy OrderBy { get; set; }
+        public List<string> OrderBy { get; set; }
 #endif
         /// <summary>Properties configurable in the interface</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1PropertiesAnyOf1Item>? Properties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1PropertiesItem>? Properties { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1PropertiesAnyOf1Item> Properties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1PropertiesItem> Properties { get; set; }
 #endif
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -184,8 +178,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "counts_as_revenue", n => { CountsAsRevenue = n.GetBoolValue(); } },
                 { "custom_name", n => { CustomName = n.GetStringValue(); } },
                 { "event", n => { Event = n.GetStringValue(); } },
-                { "fixedProperties", n => { FixedProperties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1FixedPropertiesAnyOf1Item>(global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1FixedPropertiesAnyOf1Item.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
+                { "fixedProperties", n => { FixedProperties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1FixedPropertiesItem>(global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1FixedPropertiesItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EventsNodeKind>(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
                 { "math", n => { Math = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1Math>(global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1Math.CreateFromDiscriminatorValue); } },
                 { "math_group_type_index", n => { MathGroupTypeIndex = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper2>(global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper2.CreateFromDiscriminatorValue); } },
@@ -196,8 +190,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "math_property_type", n => { MathPropertyType = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "optionalInFunnel", n => { OptionalInFunnel = n.GetBoolValue(); } },
-                { "orderBy", n => { OrderBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1OrderBy>(global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1OrderBy.CreateFromDiscriminatorValue); } },
-                { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1PropertiesAnyOf1Item>(global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1PropertiesAnyOf1Item.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "orderBy", n => { OrderBy = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1PropertiesItem>(global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1PropertiesItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1ResponseProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1ResponseProperty.CreateFromDiscriminatorValue); } },
                 { "schema_map", n => { SchemaMap = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1SchemaMapProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1SchemaMapProperty.CreateFromDiscriminatorValue); } },
                 { "version", n => { Version = n.GetDoubleValue(); } },
@@ -216,8 +210,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("counts_as_revenue", CountsAsRevenue);
             writer.WriteStringValue("custom_name", CustomName);
             writer.WriteStringValue("event", Event);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1FixedPropertiesAnyOf1Item>("fixedProperties", FixedProperties);
-            writer.WriteStringValue("kind", Kind);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1FixedPropertiesItem>("fixedProperties", FixedProperties);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EventsNodeKind>("kind", Kind);
             writer.WriteIntValue("limit", Limit);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1Math>("math", Math);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper2>("math_group_type_index", MathGroupTypeIndex);
@@ -228,8 +222,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("math_property_type", MathPropertyType);
             writer.WriteStringValue("name", Name);
             writer.WriteBoolValue("optionalInFunnel", OptionalInFunnel);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1OrderBy>("orderBy", OrderBy);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1PropertiesAnyOf1Item>("properties", Properties);
+            writer.WriteCollectionOfPrimitiveValues<string>("orderBy", OrderBy);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1PropertiesItem>("properties", Properties);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1ResponseProperty>("response", Response);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalFilter1SchemaMapProperty>("schema_map", SchemaMap);
             writer.WriteDoubleValue("version", Version);

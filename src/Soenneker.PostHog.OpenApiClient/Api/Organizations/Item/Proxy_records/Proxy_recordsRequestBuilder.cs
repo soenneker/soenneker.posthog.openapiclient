@@ -49,21 +49,20 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Proxy_records
         /// <summary>
         /// List all reverse proxies configured for the organization. Returns proxy records along with the maximum number allowed by the current plan.
         /// </summary>
-        /// <returns>A List&lt;global::Soenneker.PostHog.OpenApiClient.Models.ProxyRecordListResponse&gt;</returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ProxyRecordListResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<List<global::Soenneker.PostHog.OpenApiClient.Models.ProxyRecordListResponse>?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ProxyRecordListResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<List<global::Soenneker.PostHog.OpenApiClient.Models.ProxyRecordListResponse>> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ProxyRecordListResponse> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            var collectionResult = await RequestAdapter.SendCollectionAsync<global::Soenneker.PostHog.OpenApiClient.Models.ProxyRecordListResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ProxyRecordListResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
-            return collectionResult?.AsList();
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ProxyRecordListResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ProxyRecordListResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Create a new managed reverse proxy. Provide the domain you want to proxy through. The response includes the CNAME target you need to add as a DNS record. Once the CNAME is configured, the proxy will be automatically verified and provisioned.

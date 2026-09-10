@@ -36,7 +36,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Knowledge source created to fill this gap.</summary>
         public Guid? ResolvedSourceId { get; private set; }
-        /// <summary>&quot;Current status: pending, accepted, or dismissed.&quot;</summary>
+        /// <summary>Current status: pending, accepted, or dismissed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Status { get; private set; }

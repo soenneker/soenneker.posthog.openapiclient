@@ -22,6 +22,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Reason { get; set; }
 #endif
+        /// <summary>True when `reason` already describes the flag&apos;s rollout, which happens when the status was reached from the configuration rather than from evaluation data. A caller that narrates the rollout separately should stay quiet rather than repeat it.</summary>
+        public bool? ReasonStatesRollout { get; set; }
         /// <summary>Summary of the flag&apos;s rollout configuration, for determining whether it is fully rolled out.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -30,7 +32,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagStatusResponseRollout Rollout { get; set; }
 #endif
-        /// <summary>&quot;Flag staleness/evaluation status: active, stale, archived, deleted, or unknown. &apos;active&apos; means the flag was recently evaluated (or has no usage data yet) — it does NOT mean the flag is fully rolled out. Use the `rollout` object to determine rollout completeness.&quot;</summary>
+        /// <summary>Flag staleness/evaluation status: active, stale, archived, deleted, or unknown. &apos;active&apos; means the flag was recently evaluated (or has no usage data yet) — it does NOT mean the flag is fully rolled out. Use the `rollout` object to determine rollout completeness.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Status { get; set; }
@@ -64,6 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "reason", n => { Reason = n.GetStringValue(); } },
+                { "reason_states_rollout", n => { ReasonStatesRollout = n.GetBoolValue(); } },
                 { "rollout", n => { Rollout = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagStatusResponseRollout>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagStatusResponseRollout.CreateFromDiscriminatorValue); } },
                 { "status", n => { Status = n.GetStringValue(); } },
             };
@@ -76,6 +79,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("reason", Reason);
+            writer.WriteBoolValue("reason_states_rollout", ReasonStatesRollout);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagStatusResponseRollout>("rollout", Rollout);
             writer.WriteStringValue("status", Status);
             writer.WriteAdditionalData(AdditionalData);

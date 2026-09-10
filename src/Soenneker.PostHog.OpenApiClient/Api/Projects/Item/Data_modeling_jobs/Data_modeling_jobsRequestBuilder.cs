@@ -116,8 +116,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_modeling_jobs
             /// <summary>The initial index from which to return the results.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
+            #pragma warning disable CS1591
             [QueryParameter("saved_query_id")]
             public Guid? SavedQueryId { get; set; }
+            #pragma warning restore CS1591
         }
     }
 }

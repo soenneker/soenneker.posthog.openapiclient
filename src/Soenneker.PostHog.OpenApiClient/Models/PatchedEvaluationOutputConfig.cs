@@ -8,20 +8,15 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Output config. For &apos;boolean&apos; output_type: {allows_na} to permit N/A results.&quot;
+    /// Output config. For &apos;boolean&apos; output_type: {allows_na} to permit N/A results, and {true_is_failure} to declare that a true result means the evaluation found a problem.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedEvaluationOutputConfig : IParsable
     {
         /// <summary>Whether the evaluation can return N/A for non-applicable generations.</summary>
         public bool? AllowsNa { get; set; }
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationOutputConfig"/> and sets the default values.
-        /// </summary>
-        public PatchedEvaluationOutputConfig()
-        {
-            AllowsNa = false;
-        }
+        /// <summary>Whether a true result means the evaluation found a problem. False (the default) suits pass/fail evaluations, where a true result satisfied the criteria. Set it to true for detector-style evaluations, so a true result is counted and labeled as a fail.</summary>
+        public bool? TrueIsFailure { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -41,6 +36,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "allows_na", n => { AllowsNa = n.GetBoolValue(); } },
+                { "true_is_failure", n => { TrueIsFailure = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -51,6 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("allows_na", AllowsNa);
+            writer.WriteBoolValue("true_is_failure", TrueIsFailure);
         }
     }
 }

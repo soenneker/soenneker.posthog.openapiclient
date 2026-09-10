@@ -37,7 +37,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Marketing_analytics.
         /// Change one conversion goal in place. Fields you send are merged into the stored goal, the rest are kept, and the goal keeps its position in the list. Sending a different `kind` replaces the goal instead, since the shapes don&apos;t share their fields.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponse"/></returns>
-        /// <param name="body">&quot;Separate from create: the body is a patch, so the documented partial has to type-check.&quot;</param>
+        /// <param name="body">Separate from create: the body is a patch, so the documented partial has to type-check.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -57,7 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Marketing_analytics.
         /// Change one conversion goal in place. Fields you send are merged into the stored goal, the rest are kept, and the goal keeps its position in the list. Sending a different `kind` replaces the goal instead, since the shapes don&apos;t share their fields.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">&quot;Separate from create: the body is a patch, so the documented partial has to type-check.&quot;</param>
+        /// <param name="body">Separate from create: the body is a patch, so the documented partial has to type-check.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Variable: {key, type: string|number|boolean, default}.&quot;
+    /// Variable: {key, type: string|number|boolean, default}.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class HogFlowVariablesItemProperty : IAdditionalDataHolder, IParsable

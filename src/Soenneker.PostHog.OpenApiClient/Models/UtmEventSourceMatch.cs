@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;How utm_source matched: none, auto (default source), or mapped (custom mapping)* `none` - none* `auto` - auto* `mapped` - mapped&quot;
+    /// How utm_source matched: none, auto (default source), or mapped (custom mapping)* `none` - none* `auto` - auto* `mapped` - mapped
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class UtmEventSourceMatch : IAdditionalDataHolder, IParsable

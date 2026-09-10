@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellState> Cells { get; set; }
 #endif
-        /// <summary>&quot;Legacy rich-text notebooks only: the raw ProseMirror document. Omitted for markdown notebooks — their document is the `markdown` field.&quot;</summary>
+        /// <summary>Legacy rich-text notebooks only: the raw ProseMirror document. Omitted for markdown notebooks — their document is the `markdown` field.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2StateResponseContent? Content { get; set; }
@@ -62,6 +62,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Title { get; set; }
 #endif
+        /// <summary>The notebook&apos;s declared variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global; a cell that reads an undeclared name fails to run.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.NotebookVariable>? Variables { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.NotebookVariable> Variables { get; set; }
+#endif
         /// <summary>Document version, the optimistic-concurrency baseline for edits.</summary>
         public int? Version { get; set; }
         /// <summary>
@@ -95,6 +103,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "markdown", n => { Markdown = n.GetStringValue(); } },
                 { "notebook_id", n => { NotebookId = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
+                { "variables", n => { Variables = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.NotebookVariable>(global::Soenneker.PostHog.OpenApiClient.Models.NotebookVariable.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "version", n => { Version = n.GetIntValue(); } },
             };
         }
@@ -111,6 +120,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("markdown", Markdown);
             writer.WriteStringValue("notebook_id", NotebookId);
             writer.WriteStringValue("title", Title);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.NotebookVariable>("variables", Variables);
             writer.WriteIntValue("version", Version);
             writer.WriteAdditionalData(AdditionalData);
         }

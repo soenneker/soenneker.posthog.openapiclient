@@ -15,7 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>What triggered this recalculation (manual is the default for user-initiated runs)* `manual` - Manual* `agent_mcp` - Agent (MCP)* `cold_run` - Cold Run* `stale_refresh` - Stale Refresh* `auto_refresh` - Auto Refresh* `config_change` - Config Change* `experiment_launch` - Experiment Launch* `experiment_stop` - Experiment Stop* `experiment_update` - Experiment Update</summary>
+        /// <summary>What triggered this recalculation (manual is the default for user-initiated runs)* `manual` - Manual* `agent_mcp` - Agent (MCP)* `cold_run` - Cold Run* `stale_refresh` - Stale Refresh* `auto_refresh` - Auto Refresh* `experiment_config_change` - Experiment Config Change* `metric_config_change` - Metric Config Change* `config_change` - Config Change* `experiment_launch` - Experiment Launch* `experiment_stop` - Experiment Stop* `experiment_update` - Experiment Update</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.RecalculateMetricsRequestTrigger? Trigger { get; set; }

@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Bulk_delete
         {
         }
         /// <summary>
-        /// &quot;Soft-delete insights in bulk by ID. Mirrors the single-insight delete: sets deleted=True, soft-deletes the insights&apos; dashboard tiles, and removes their linked alerts. Insights the requester cannot edit are skipped and reported in `skipped`. Reversible via the bulk_restore endpoint.&quot;
+        /// Soft-delete insights in bulk by ID. Mirrors the single-insight delete: sets deleted=True, soft-deletes the insights&apos; dashboard tiles, and removes their linked alerts. Insights the requester cannot edit are skipped and reported in `skipped`. Reversible via the bulk_restore endpoint.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightBulkDeleteResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -54,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Bulk_delete
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.InsightBulkDeleteResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.InsightBulkDeleteResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Soft-delete insights in bulk by ID. Mirrors the single-insight delete: sets deleted=True, soft-deletes the insights&apos; dashboard tiles, and removes their linked alerts. Insights the requester cannot edit are skipped and reported in `skipped`. Reversible via the bulk_restore endpoint.&quot;
+        /// Soft-delete insights in bulk by ID. Mirrors the single-insight delete: sets deleted=True, soft-deletes the insights&apos; dashboard tiles, and removes their linked alerts. Insights the requester cannot edit are skipped and reported in `skipped`. Reversible via the bulk_restore endpoint.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
@@ -85,13 +85,15 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Bulk_delete
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Bulk_delete.Bulk_deleteRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// &quot;Soft-delete insights in bulk by ID. Mirrors the single-insight delete: sets deleted=True, soft-deletes the insights&apos; dashboard tiles, and removes their linked alerts. Insights the requester cannot edit are skipped and reported in `skipped`. Reversible via the bulk_restore endpoint.&quot;
+        /// Soft-delete insights in bulk by ID. Mirrors the single-insight delete: sets deleted=True, soft-deletes the insights&apos; dashboard tiles, and removes their linked alerts. Insights the requester cannot edit are skipped and reported in `skipped`. Reversible via the bulk_restore endpoint.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Bulk_deleteRequestBuilderPostQueryParameters 
         {
+            #pragma warning disable CS1591
             [QueryParameter("format")]
             public global::Soenneker.PostHog.OpenApiClient.Models.InsightsBulkDeleteCreateFormatParameter? Format { get; set; }
+            #pragma warning restore CS1591
         }
     }
 }

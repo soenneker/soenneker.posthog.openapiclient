@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Digest_runs
         {
         }
         /// <summary>
-        /// Read-only history of posted (or attempted) digests, filterable by digest channel.
+        /// Read-only history of posted (or attempted) digests, filterable by Slack channel.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DigestRun"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Digest_runs
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.DigestRun>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.DigestRun.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Read-only history of posted (or attempted) digests, filterable by digest channel.
+        /// Read-only history of posted (or attempted) digests, filterable by Slack channel.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

@@ -8,18 +8,18 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryIntervalEnumWrapper"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryIntervalEnumWrapper2"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class MetricQueryBodyInterval : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryIntervalEnumWrapper"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryIntervalEnumWrapper2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryIntervalEnumWrapper? MetricQueryIntervalEnumWrapper { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryIntervalEnumWrapper2? MetricQueryIntervalEnumWrapper2 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryIntervalEnumWrapper MetricQueryIntervalEnumWrapper { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryIntervalEnumWrapper2 MetricQueryIntervalEnumWrapper2 { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -39,9 +39,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyInterval();
-            if("MetricQueryIntervalEnumWrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("MetricQueryIntervalEnumWrapper2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.MetricQueryIntervalEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryIntervalEnumWrapper();
+                result.MetricQueryIntervalEnumWrapper2 = new global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryIntervalEnumWrapper2();
             }
             return result;
         }
@@ -51,9 +51,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(MetricQueryIntervalEnumWrapper != null)
+            if(MetricQueryIntervalEnumWrapper2 != null)
             {
-                return MetricQueryIntervalEnumWrapper.GetFieldDeserializers();
+                return MetricQueryIntervalEnumWrapper2.GetFieldDeserializers();
             }
             else if(NullEnum != null)
             {
@@ -68,9 +68,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(MetricQueryIntervalEnumWrapper != null)
+            if(MetricQueryIntervalEnumWrapper2 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryIntervalEnumWrapper>(null, MetricQueryIntervalEnumWrapper);
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryIntervalEnumWrapper2>(null, MetricQueryIntervalEnumWrapper2);
             }
             else if(NullEnum != null)
             {

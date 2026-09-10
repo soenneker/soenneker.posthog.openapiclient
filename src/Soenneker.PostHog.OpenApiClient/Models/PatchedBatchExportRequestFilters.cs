@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Optional list of property filters to restrict which events are exported. Each filter is a serialized HogQL property filter object with a &apos;type&apos; of one of: &apos;event&apos;, &apos;hogql&apos;, &apos;person&apos; (e.g. {\&quot;key\&quot;: \&quot;$browser\&quot;, \&quot;operator\&quot;: \&quot;exact\&quot;, \&quot;type\&quot;: \&quot;event\&quot;, \&quot;value\&quot;: [\&quot;Firefox\&quot;]}).&quot;
+    /// Optional list of property filters to restrict which events are exported. Each filter is a serialized HogQL property filter object with a &apos;type&apos; of one of: &apos;event&apos;, &apos;hogql&apos;, &apos;person&apos; (e.g. {&quot;key&quot;: &quot;$browser&quot;, &quot;operator&quot;: &quot;exact&quot;, &quot;type&quot;: &quot;event&quot;, &quot;value&quot;: [&quot;Firefox&quot;]}).
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedBatchExportRequestFilters : IAdditionalDataHolder, IParsable

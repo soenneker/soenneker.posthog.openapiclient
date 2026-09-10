@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ClientId { get; set; }
 #endif
-        /// <summary>&quot;The full markdown notebook document: a ProseMirror doc wrapping a single markdown node.&quot;</summary>
+        /// <summary>The full markdown notebook document: a ProseMirror doc wrapping a single markdown node.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.NotebookMarkdownSaveContent? Content { get; set; }

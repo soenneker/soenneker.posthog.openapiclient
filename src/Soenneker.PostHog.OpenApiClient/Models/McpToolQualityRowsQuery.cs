@@ -15,10 +15,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Restrict to these $mcp_tool_category values; empty or omitted means all categories.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityRowsQueryCategories? Categories { get; set; }
+        public List<string>? Categories { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityRowsQueryCategories Categories { get; set; }
+        public List<string> Categories { get; set; }
 #endif
         /// <summary>The dateRange property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -29,13 +29,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.DateRange DateRange { get; set; }
 #endif
         /// <summary>The kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Kind { get; set; }
-#nullable restore
-#else
-        public string Kind { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityRowsQueryKind? Kind { get; set; }
+        /// <summary>Page size. The server defaults to 50 and caps this at 100.</summary>
+        public int? Limit { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -44,6 +40,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers Modifiers { get; set; }
 #endif
+        /// <summary>Number of matching tools to skip.</summary>
+        public int? Offset { get; set; }
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -51,6 +49,30 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityRowsQueryResponse Response { get; set; }
+#endif
+        /// <summary>Case-insensitive substring search on the effective tool name.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Search { get; set; }
+#nullable restore
+#else
+        public string Search { get; set; }
+#endif
+        /// <summary>Aggregate column used to order tools. Defaults to total_calls.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualitySortColumnWrapper? SortColumn { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualitySortColumnWrapper SortColumn { get; set; }
+#endif
+        /// <summary>Sort direction. Defaults to DESC.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualitySortDirectionWrapper? SortDirection { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualitySortDirectionWrapper SortDirection { get; set; }
 #endif
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -80,11 +102,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "categories", n => { Categories = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityRowsQueryCategories>(global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityRowsQueryCategories.CreateFromDiscriminatorValue); } },
+                { "categories", n => { Categories = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>(global::Soenneker.PostHog.OpenApiClient.Models.DateRange.CreateFromDiscriminatorValue); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityRowsQueryKind>(); } },
+                { "limit", n => { Limit = n.GetIntValue(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
+                { "offset", n => { Offset = n.GetIntValue(); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityRowsQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityRowsQueryResponse.CreateFromDiscriminatorValue); } },
+                { "search", n => { Search = n.GetStringValue(); } },
+                { "sortColumn", n => { SortColumn = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualitySortColumnWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualitySortColumnWrapper.CreateFromDiscriminatorValue); } },
+                { "sortDirection", n => { SortDirection = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualitySortDirectionWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualitySortDirectionWrapper.CreateFromDiscriminatorValue); } },
                 { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
                 { "version", n => { Version = n.GetDoubleValue(); } },
             };
@@ -96,11 +123,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityRowsQueryCategories>("categories", Categories);
+            writer.WriteCollectionOfPrimitiveValues<string>("categories", Categories);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>("dateRange", DateRange);
-            writer.WriteStringValue("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityRowsQueryKind>("kind", Kind);
+            writer.WriteIntValue("limit", Limit);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
+            writer.WriteIntValue("offset", Offset);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityRowsQueryResponse>("response", Response);
+            writer.WriteStringValue("search", Search);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualitySortColumnWrapper>("sortColumn", SortColumn);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualitySortDirectionWrapper>("sortDirection", SortDirection);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
             writer.WriteDoubleValue("version", Version);
         }

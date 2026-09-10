@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;What happens when a trigger fires while a run is already active: &apos;skip&apos;, &apos;allow&apos;, or &apos;cancel_previous&apos;.* `skip` - skip* `allow` - allow* `cancel_previous` - cancel_previous&quot;
+    /// What happens when a trigger fires while a run is already active: &apos;skip&apos;, &apos;allow&apos;, or &apos;cancel_previous&apos;.* `skip` - skip* `allow` - allow* `cancel_previous` - cancel_previous
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedLoopWriteOverlapPolicy : IAdditionalDataHolder, IParsable

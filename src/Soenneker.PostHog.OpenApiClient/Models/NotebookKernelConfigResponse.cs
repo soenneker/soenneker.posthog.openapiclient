@@ -16,11 +16,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Configured CPU cores; null means the default applies.</summary>
         public double? CpuCores { get; set; }
+        /// <summary>What this sandbox shape costs per hour in USD while it is alive, at this region&apos;s rates. It tracks the running sandbox while a kernel is live, otherwise the configured shape. After a failed resize this stays the running sandbox&apos;s rate, not the size that failed to apply.</summary>
+        public double? HourlyPrice { get; set; }
         /// <summary>Configured idle timeout in seconds; null means the default.</summary>
         public int? IdleTimeoutSeconds { get; set; }
         /// <summary>Configured memory in GB; null means the default applies.</summary>
         public double? MemoryGb { get; set; }
-        /// <summary>&quot;True when a kernel is currently active: config applies at sandbox provision time, so the running kernel keeps its old resources until restarted (restarting loses materialized dataframes).&quot;</summary>
+        /// <summary>Compute preset the configured shape matches, or null when it was tuned by hand.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? PresetKey { get; set; }
+#nullable restore
+#else
+        public string PresetKey { get; set; }
+#endif
+        /// <summary>True when this call restarted a live kernel to apply a new size. Restarting discards every materialized dataframe, so cells that referenced one must run again.</summary>
+        public bool? Restarted { get; set; }
+        /// <summary>True when a kernel is live and this call did not restart it, so the running sandbox may not match the saved config. A resize restarts the kernel and reports False on success, or True if that restart fails. An idle-timeout change and a no-op on a live kernel also report True.</summary>
         public bool? RestartRequired { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NotebookKernelConfigResponse"/> and sets the default values.
@@ -48,9 +60,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "cpu_cores", n => { CpuCores = n.GetDoubleValue(); } },
+                { "hourly_price", n => { HourlyPrice = n.GetDoubleValue(); } },
                 { "idle_timeout_seconds", n => { IdleTimeoutSeconds = n.GetIntValue(); } },
                 { "memory_gb", n => { MemoryGb = n.GetDoubleValue(); } },
+                { "preset_key", n => { PresetKey = n.GetStringValue(); } },
                 { "restart_required", n => { RestartRequired = n.GetBoolValue(); } },
+                { "restarted", n => { Restarted = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -61,8 +76,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("cpu_cores", CpuCores);
+            writer.WriteDoubleValue("hourly_price", HourlyPrice);
             writer.WriteIntValue("idle_timeout_seconds", IdleTimeoutSeconds);
             writer.WriteDoubleValue("memory_gb", MemoryGb);
+            writer.WriteStringValue("preset_key", PresetKey);
+            writer.WriteBoolValue("restarted", Restarted);
             writer.WriteBoolValue("restart_required", RestartRequired);
             writer.WriteAdditionalData(AdditionalData);
         }

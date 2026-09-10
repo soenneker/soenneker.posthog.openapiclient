@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item
         {
         }
         /// <summary>
-        /// Fetch the CI status (GitHub Actions check runs and legacy commit statuses) of the pull request the report&apos;s implementation task opened, via the team&apos;s GitHub integration.
+        /// Fetch the CI status (GitHub Actions check runs and legacy commit statuses) of the pull request attached to the report, via the team&apos;s GitHub integration.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PullRequestChecksResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PullRequestChecksResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PullRequestChecksResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Fetch the CI status (GitHub Actions check runs and legacy commit statuses) of the pull request the report&apos;s implementation task opened, via the team&apos;s GitHub integration.
+        /// Fetch the CI status (GitHub Actions check runs and legacy commit statuses) of the pull request attached to the report, via the team&apos;s GitHub integration.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

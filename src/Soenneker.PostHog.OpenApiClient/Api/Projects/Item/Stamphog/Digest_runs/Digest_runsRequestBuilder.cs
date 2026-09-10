@@ -19,9 +19,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Digest_runs
     public partial class Digest_runsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.stamphog.digest_runs.item collection</summary>
-        /// <param name="position">A UUID string identifying this digest run.</param>
+        /// <param name="position">Unique identifier of the item</param>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Digest_runs.Item.Digest_runsItemRequestBuilder"/></returns>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Digest_runs.Item.Digest_runsItemRequestBuilder this[Guid position]
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Digest_runs.Item.Digest_runsItemRequestBuilder this[string position]
         {
             get
             {
@@ -35,7 +35,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Digest_runs
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Digest_runsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/stamphog/digest_runs{?digest_channel*,limit*,offset*}", pathParameters)
+        public Digest_runsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/stamphog/digest_runs{?limit*,offset*,slack_channel_id*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,11 +43,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Digest_runs
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Digest_runsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/stamphog/digest_runs{?digest_channel*,limit*,offset*}", rawUrl)
+        public Digest_runsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/stamphog/digest_runs{?limit*,offset*,slack_channel_id*}", rawUrl)
         {
         }
         /// <summary>
-        /// Read-only history of posted (or attempted) digests, filterable by digest channel.
+        /// Read-only history of posted (or attempted) digests, filterable by Slack channel.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedDigestRunList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -65,7 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Digest_runs
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedDigestRunList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedDigestRunList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Read-only history of posted (or attempted) digests, filterable by digest channel.
+        /// Read-only history of posted (or attempted) digests, filterable by Slack channel.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -93,20 +93,27 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Digest_runs
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Digest_runs.Digest_runsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Read-only history of posted (or attempted) digests, filterable by digest channel.
+        /// Read-only history of posted (or attempted) digests, filterable by Slack channel.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Digest_runsRequestBuilderGetQueryParameters 
         {
-            /// <summary>Filter by digest channel ID.</summary>
-            [QueryParameter("digest_channel")]
-            public Guid? DigestChannel { get; set; }
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
             /// <summary>The initial index from which to return the results.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
+            /// <summary>Filter by the Slack channel the digest was posted to, e.g. &apos;C012AB3CD&apos;.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("slack_channel_id")]
+            public string? SlackChannelId { get; set; }
+#nullable restore
+#else
+            [QueryParameter("slack_channel_id")]
+            public string SlackChannelId { get; set; }
+#endif
         }
     }
 }

@@ -44,7 +44,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Reason { get; private set; }
 #endif
-        /// <summary>&quot;How the entry landed on the list: `BOUNCE` for automatic (bounce-driven), `MANUAL` for user-added via the UI/API.* `BOUNCE` - Bounce* `MANUAL` - Manual&quot;</summary>
+        /// <summary>How the entry landed on the list: `BOUNCE` for automatic (bounce-driven), `COMPLAINT` for automatic (the recipient reported a message as spam), `MANUAL` for user-added via the UI/API.* `BOUNCE` - Bounce* `MANUAL` - Manual* `COMPLAINT` - Complaint</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.MessageSuppressionSource? Source { get; private set; }

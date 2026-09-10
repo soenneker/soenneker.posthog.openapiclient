@@ -50,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SlackMessageTs { get; private set; }
 #endif
-        /// <summary>&quot;Per-channel delivery status: pending, sent, or failed.* `pending` - Pending* `sent` - Sent* `failed` - Failed&quot;</summary>
+        /// <summary>Per-channel delivery status: pending, sent, or failed.* `pending` - Pending* `sent` - Sent* `failed` - Failed</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.AnnouncementDeliveryStatus? Status { get; private set; }

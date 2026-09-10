@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Email_send
         {
         }
         /// <summary>
-        /// &quot;Cheap read for the scene-wide suspension banner: single-row `TeamWorkflowsConfig` lookupwith no reputation computation. Every project member sees this — a suspension stopseveryone&apos;s email, so hiding it would leave silent send failures unexplained.&quot;
+        /// Cheap read for the scene-wide suspension banner: single-row `TeamWorkflowsConfig` lookupwith no reputation computation. Every project member sees this — a suspension stopseveryone&apos;s email, so hiding it would leave silent send failures unexplained.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EmailSendingSuspensionStatus"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Email_send
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.EmailSendingSuspensionStatus>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.EmailSendingSuspensionStatus.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Cheap read for the scene-wide suspension banner: single-row `TeamWorkflowsConfig` lookupwith no reputation computation. Every project member sees this — a suspension stopseveryone&apos;s email, so hiding it would leave silent send failures unexplained.&quot;
+        /// Cheap read for the scene-wide suspension banner: single-row `TeamWorkflowsConfig` lookupwith no reputation computation. Every project member sees this — a suspension stopseveryone&apos;s email, so hiding it would leave silent send failures unexplained.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

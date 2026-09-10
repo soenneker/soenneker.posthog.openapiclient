@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;Ordered edits applied atomically to a template&apos;s Unlayer design: the stored design is read, the ops are applied in order, the result is validated and re-rendered to HTML, and it&apos;s saved only if valid — otherwise the template is unchanged. Reference blocks by id so you never resend the whole design.&quot;</summary>
+        /// <summary>Ordered edits applied atomically to a template&apos;s Unlayer design: the stored design is read, the ops are applied in order, the result is validated and re-rendered to HTML, and it&apos;s saved only if valid — otherwise the template is unchanged. Reference blocks by id so you never resend the whole design.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.DesignOperation>? Operations { get; set; }

@@ -63,7 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The deleted property</summary>
         public bool? Deleted { get; private set; }
-        /// <summary>What this skill does and when to use it. Max 4096 characters.</summary>
+        /// <summary>What this skill does and when to use it. Max 1024 characters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Description { get; set; }

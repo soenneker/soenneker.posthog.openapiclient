@@ -55,28 +55,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The insight property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseInsight? Insight { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseInsightItemProperty>? Insight { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseInsight Insight { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseInsightItemProperty> Insight { get; set; }
 #endif
         /// <summary>Whether exposures were served from the precomputation system</summary>
         public bool? IsPrecomputed { get; set; }
         /// <summary>The kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Kind { get; set; }
-#nullable restore
-#else
-        public string Kind { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryKind? Kind { get; set; }
         /// <summary>The metric property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseMetricAnyOf1? Metric { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseMetric? Metric { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseMetricAnyOf1 Metric { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseMetric Metric { get; set; }
 #endif
         /// <summary>The probability property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -147,10 +141,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "clickhouse_sql", n => { ClickhouseSql = n.GetStringValue(); } },
                 { "credible_intervals", n => { CredibleIntervals = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseCredibleIntervalsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseCredibleIntervalsProperty.CreateFromDiscriminatorValue); } },
                 { "hogql", n => { Hogql = n.GetStringValue(); } },
-                { "insight", n => { Insight = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseInsight>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseInsight.CreateFromDiscriminatorValue); } },
+                { "insight", n => { Insight = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseInsightItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseInsightItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "is_precomputed", n => { IsPrecomputed = n.GetBoolValue(); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
-                { "metric", n => { Metric = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseMetricAnyOf1>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseMetricAnyOf1.CreateFromDiscriminatorValue); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryKind>(); } },
+                { "metric", n => { Metric = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseMetric>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseMetric.CreateFromDiscriminatorValue); } },
                 { "p_value", n => { PValue = n.GetDoubleValue(); } },
                 { "probability", n => { Probability = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseProbabilityProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseProbabilityProperty.CreateFromDiscriminatorValue); } },
                 { "significance_code", n => { SignificanceCode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSignificanceCodeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSignificanceCodeWrapper.CreateFromDiscriminatorValue); } },
@@ -173,10 +167,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("clickhouse_sql", ClickhouseSql);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseCredibleIntervalsProperty>("credible_intervals", CredibleIntervals);
             writer.WriteStringValue("hogql", Hogql);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseInsight>("insight", Insight);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseInsightItemProperty>("insight", Insight);
             writer.WriteBoolValue("is_precomputed", IsPrecomputed);
-            writer.WriteStringValue("kind", Kind);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseMetricAnyOf1>("metric", Metric);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryKind>("kind", Kind);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseMetric>("metric", Metric);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseProbabilityProperty>("probability", Probability);
             writer.WriteDoubleValue("p_value", PValue);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSignificanceCodeWrapper>("significance_code", SignificanceCode);

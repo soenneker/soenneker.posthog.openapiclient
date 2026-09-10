@@ -6,6 +6,7 @@ using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.Item.Create_task;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.Item.Label;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.Item.Retry;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.Item.Viewed;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -34,6 +35,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.Item.Retry.RetryRequestBuilder Retry
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.Item.Retry.RetryRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The viewed property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.Item.Viewed.ViewedRequestBuilder Viewed
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.Item.Viewed.ViewedRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.Item.ObservationsItemRequestBuilder"/> and sets the default values.
@@ -113,7 +119,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.
             [QueryParameter("backfill_id")]
             public string BackfillId { get; set; }
 #endif
-            /// <summary>Only observations created at or after this time. Accepts ISO 8601 or a relative date like `-7d`; values without an explicit offset are interpreted in the project&apos;s timezone.</summary>
+            /// <summary>Only observations created at or after this time. Accepts ISO 8601, a relative date like `-7d`, or `now`; values without an explicit offset are interpreted in the project&apos;s timezone.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("date_from")]
@@ -123,7 +129,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.
             [QueryParameter("date_from")]
             public string DateFrom { get; set; }
 #endif
-            /// <summary>Only observations created at or before this time. Accepts ISO 8601 or a relative date like `-1d`; date-only values include the whole day, interpreted in the project&apos;s timezone.</summary>
+            /// <summary>Only observations created at or before this time. Accepts ISO 8601, a relative date like `-1d`, or `now` for the current time; omit it to query through the current time. Date-only values include the whole day, interpreted in the project&apos;s timezone.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("date_to")]
@@ -149,7 +155,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.
             /// <summary>Filter scorer observations to those scoring at or above this value. Rows with no numeric score (other scanner types, failed or in-flight runs) are excluded.</summary>
             [QueryParameter("min_score")]
             public double? MinScore { get; set; }
-            /// <summary>&quot;Sort observations. Plain keys: created_at, started_at, completed_at, status, recording_subject_email. JSONB keys: result_score (scorer), result_verdict (monitor), result_confidence, scanner_version. Prefix with `-` for descending; nullable keys sort nulls last either way.&quot;</summary>
+            /// <summary>Sort observations. Plain keys: created_at, started_at, completed_at, status, recording_subject_email. JSONB keys: result_score (scorer), result_verdict (monitor), result_confidence, scanner_version. Prefix with `-` for descending; nullable keys sort nulls last either way.</summary>
             [QueryParameter("order_by")]
             public global::Soenneker.PostHog.OpenApiClient.Models.VisionObservationsRetrieveOrderByParameter? OrderBy { get; set; }
             /// <summary>Filter to observations whose person email contains this value (case-insensitive).</summary>

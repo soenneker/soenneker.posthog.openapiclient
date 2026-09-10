@@ -106,8 +106,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Item.Push_no
             [QueryParameter("before")]
             public string Before { get; set; }
 #endif
+            #pragma warning disable CS1591
             [QueryParameter("format")]
             public global::Soenneker.PostHog.OpenApiClient.Models.PersonsPushNotificationsListFormatParameter? Format { get; set; }
+            #pragma warning restore CS1591
             /// <summary>Maximum number of assets to return (1-500, default 50).</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }

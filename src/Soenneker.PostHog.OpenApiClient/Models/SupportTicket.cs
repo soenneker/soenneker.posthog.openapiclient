@@ -15,6 +15,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>When the ticket conversation started.</summary>
+        public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>Absolute URL to open this ticket in the app.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -23,6 +25,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string DeepLink { get; private set; }
 #endif
+        /// <summary>Distinct ID of the customer who started the ticket.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? DistinctId { get; private set; }
+#nullable restore
+#else
+        public string DistinctId { get; private set; }
+#endif
         /// <summary>UUID of the support ticket.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -30,6 +40,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string Id { get; private set; }
+#endif
+        /// <summary>Sender, timestamp, and direction of the latest public message, when available.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationMessageSummary? LastMessage { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationMessageSummary LastMessage { get; private set; }
 #endif
         /// <summary>When the most recent message was sent on this ticket.</summary>
         public DateTimeOffset? LastMessageAt { get; private set; }
@@ -40,6 +58,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string LastMessageText { get; private set; }
+#endif
+        /// <summary>Display name of the customer who started the ticket.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? StartedBy { get; private set; }
+#nullable restore
+#else
+        public string StartedBy { get; private set; }
 #endif
         /// <summary>Current status of the ticket (e.g. &apos;new&apos;, &apos;open&apos;).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -76,10 +102,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "deep_link", n => { DeepLink = n.GetStringValue(); } },
+                { "distinct_id", n => { DistinctId = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
+                { "last_message", n => { LastMessage = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationMessageSummary>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationMessageSummary.CreateFromDiscriminatorValue); } },
                 { "last_message_at", n => { LastMessageAt = n.GetDateTimeOffsetValue(); } },
                 { "last_message_text", n => { LastMessageText = n.GetStringValue(); } },
+                { "started_by", n => { StartedBy = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
                 { "ticket_number", n => { TicketNumber = n.GetIntValue(); } },
             };

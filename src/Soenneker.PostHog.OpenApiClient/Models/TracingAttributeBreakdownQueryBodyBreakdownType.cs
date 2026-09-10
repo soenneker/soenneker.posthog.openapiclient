@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Where the key lives: \&quot;span\&quot; for allowlisted top-level span columns, \&quot;span_attribute\&quot; for span-level attributes, \&quot;span_resource_attribute\&quot; for resource-level attributes.* `span` - span* `span_attribute` - span_attribute* `span_resource_attribute` - span_resource_attribute&quot;
+    /// Where the key lives: &quot;span&quot; for allowlisted top-level span columns, &quot;span_attribute&quot; for span-level attributes, &quot;span_resource_attribute&quot; for resource-level attributes.* `span` - span* `span_attribute` - span_attribute* `span_resource_attribute` - span_resource_attribute
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TracingAttributeBreakdownQueryBodyBreakdownType : IAdditionalDataHolder, IParsable

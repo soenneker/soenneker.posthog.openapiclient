@@ -24,6 +24,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ExternalId { get; set; }
 #endif
+        /// <summary>When Track Rules ignored the account, or null if it is tracked.</summary>
+        public DateTimeOffset? IgnoredAt { get; set; }
         /// <summary>Human-readable account name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -67,6 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "churned_at", n => { ChurnedAt = n.GetDateTimeOffsetValue(); } },
                 { "external_id", n => { ExternalId = n.GetStringValue(); } },
+                { "ignored_at", n => { IgnoredAt = n.GetDateTimeOffsetValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "relationships", n => { Relationships = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountListItemRelationshipsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountListItemRelationshipsProperty.CreateFromDiscriminatorValue); } },
             };
@@ -80,6 +83,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("churned_at", ChurnedAt);
             writer.WriteStringValue("external_id", ExternalId);
+            writer.WriteDateTimeOffsetValue("ignored_at", IgnoredAt);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountListItemRelationshipsProperty>("relationships", Relationships);
             writer.WriteAdditionalData(AdditionalData);

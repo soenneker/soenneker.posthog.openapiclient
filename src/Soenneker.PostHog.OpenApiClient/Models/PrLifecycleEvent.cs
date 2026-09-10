@@ -16,7 +16,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When the event occurred.</summary>
         public DateTimeOffset? At { get; set; }
-        /// <summary>&quot;Optional detail: workflow name and conclusion for CI events, the acting user&apos;s login for draft/ready transitions.&quot;</summary>
+        /// <summary>Optional detail: workflow name and conclusion for CI events, the acting user&apos;s login for draft/ready transitions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Detail { get; set; }
@@ -24,7 +24,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Detail { get; set; }
 #endif
-        /// <summary>&quot;Event kind: opened, ready_for_review, converted_to_draft, ci_started, ci_finished, merged, or closed.* `opened` - OPENED* `ready_for_review` - READY_FOR_REVIEW* `converted_to_draft` - CONVERTED_TO_DRAFT* `ci_started` - CI_STARTED* `ci_finished` - CI_FINISHED* `merged` - MERGED* `closed` - CLOSED&quot;</summary>
+        /// <summary>Event kind: opened, ready_for_review, converted_to_draft, ci_started, ci_finished, merged, or closed.* `opened` - OPENED* `ready_for_review` - READY_FOR_REVIEW* `converted_to_draft` - CONVERTED_TO_DRAFT* `ci_started` - CI_STARTED* `ci_finished` - CI_FINISHED* `merged` - MERGED* `closed` - CLOSED</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PrLifecycleEventKind? Kind { get; set; }

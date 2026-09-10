@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Request body for warming a full idling Run while composing a Code-app cloud task.Collection-level: no task exists yet at typing time. The warmer births a draft Task and aninteractive Run that boots and starts the agent, optionally cloning and checking out a repository,then idles awaiting the first message. `github_integration` is a plain integration PK (an integer);the view re-scopes it to the caller&apos;s team before use.&quot;
+    /// Request body for warming a full idling Run while composing a Code-app cloud task.Collection-level: no task exists yet at typing time. The warmer births a draft Task and aninteractive Run that boots and starts the agent, optionally cloning and checking out a repository,then idles awaiting the first message. `github_integration` is a plain integration PK (an integer);the view re-scopes it to the caller&apos;s team before use.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WarmTaskRequest : IAdditionalDataHolder, IParsable
@@ -25,8 +25,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Optional custom base image to provision before the task is submitted; takes precedence over the environment&apos;s image.</summary>
         public Guid? CustomImageId { get; set; }
-        /// <summary>Primary key of the team&apos;s GitHub integration to clone with when a repository is selected.</summary>
+        /// <summary>Primary key of the team&apos;s GitHub integration. Required when a repository is selected (it is what the sandbox clones with). Accepted without a repository too: the warm Run then boots with that integration&apos;s GitHub credentials, matching a repo-less create that carries it.</summary>
         public int? GithubIntegration { get; set; }
+        /// <summary>Permission mode to boot the agent session on. Read at session construction, so it cannot be changed once the sandbox is warm — a submit selecting a different mode falls through to a cold Run. Omit to take the runtime&apos;s default.* `default` - default* `acceptEdits` - acceptEdits* `plan` - plan* `bypassPermissions` - bypassPermissions* `auto` - auto* `read-only` - read-only* `full-access` - full-access</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestInitialPermissionMode? InitialPermissionMode { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestInitialPermissionMode InitialPermissionMode { get; set; }
+#endif
         /// <summary>LLM model identifier to warm the sandbox on. A submit selecting a different model won&apos;t reuse this warm Run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -34,6 +42,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string Model { get; set; }
+#endif
+        /// <summary>Product the warm Run is for. Fixed when the sandbox boots — it selects the OAuth app, the quota gate, the warm-pool budget, and PR authorship — so a submit only reuses a warm born under the same origin. Defaults to the Code app.* `user_created` - user_created* `posthog_ai` - posthog_ai</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestOriginProduct? OriginProduct { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestOriginProduct OriginProduct { get; set; }
 #endif
         /// <summary>Reasoning effort to warm the sandbox on for models that expose an effort control.* `low` - low* `medium` - medium* `high` - high* `xhigh` - xhigh* `max` - max* `ultracode` - ultracode</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -97,7 +113,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "branch", n => { Branch = n.GetStringValue(); } },
                 { "custom_image_id", n => { CustomImageId = n.GetGuidValue(); } },
                 { "github_integration", n => { GithubIntegration = n.GetIntValue(); } },
+                { "initial_permission_mode", n => { InitialPermissionMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestInitialPermissionMode>(global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestInitialPermissionMode.CreateFromDiscriminatorValue); } },
                 { "model", n => { Model = n.GetStringValue(); } },
+                { "origin_product", n => { OriginProduct = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestOriginProduct>(global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestOriginProduct.CreateFromDiscriminatorValue); } },
                 { "reasoning_effort", n => { ReasoningEffort = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestReasoningEffort>(global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestReasoningEffort.CreateFromDiscriminatorValue); } },
                 { "repositories", n => { Repositories = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "repository", n => { Repository = n.GetStringValue(); } },
@@ -115,7 +133,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("branch", Branch);
             writer.WriteGuidValue("custom_image_id", CustomImageId);
             writer.WriteIntValue("github_integration", GithubIntegration);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestInitialPermissionMode>("initial_permission_mode", InitialPermissionMode);
             writer.WriteStringValue("model", Model);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestOriginProduct>("origin_product", OriginProduct);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestReasoningEffort>("reasoning_effort", ReasoningEffort);
             writer.WriteCollectionOfPrimitiveValues<string>("repositories", Repositories);
             writer.WriteStringValue("repository", Repository);

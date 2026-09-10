@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;How utm_campaign matched: none, auto (direct name/id), or mapped (manual mapping)* `none` - none* `auto` - auto* `mapped` - mapped&quot;
+    /// How utm_campaign matched: none, auto (direct name/id), or mapped (manual mapping)* `none` - none* `auto` - auto* `mapped` - mapped
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class UtmEventCampaignMatch : IAdditionalDataHolder, IParsable

@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_gateway.Config.S
         {
         }
         /// <summary>
-        /// &quot;Enable or disable every MCP server for the team (admin-only): flipseach registered server and the default for untouched catalog servers,so newly published templates follow the same posture.&quot;
+        /// Enable or disable every MCP server for the team (admin-only): flipseach registered server and the default for untouched catalog servers,so newly published templates follow the same posture.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TeamMcpGatewayConfig"/></returns>
         /// <param name="body">The request body</param>
@@ -54,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_gateway.Config.S
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.TeamMcpGatewayConfig>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.TeamMcpGatewayConfig.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Enable or disable every MCP server for the team (admin-only): flipseach registered server and the default for untouched catalog servers,so newly published templates follow the same posture.&quot;
+        /// Enable or disable every MCP server for the team (admin-only): flipseach registered server and the default for untouched catalog servers,so newly published templates follow the same posture.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

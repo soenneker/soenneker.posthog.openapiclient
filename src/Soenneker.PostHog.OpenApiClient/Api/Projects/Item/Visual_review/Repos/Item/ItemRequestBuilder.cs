@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.Item.Baselines;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.Item.Flakiness;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.Item.Quarantine;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.Item.Runs;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.Item.Snapshots;
@@ -26,6 +27,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.Item.Baselines.BaselinesRequestBuilder Baselines
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.Item.Baselines.BaselinesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The flakiness property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.Item.Flakiness.FlakinessRequestBuilder Flakiness
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.Item.Flakiness.FlakinessRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The quarantine property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.Item.Quarantine.QuarantineRequestBuilder Quarantine

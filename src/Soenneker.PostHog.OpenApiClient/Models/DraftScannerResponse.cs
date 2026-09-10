@@ -15,6 +15,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Goal-based flow only: the monthly credit cap, set to `monthly_credit_budget` so a mis-estimate stops the scanner at the credits the user agreed to. Null on the legacy flow.</summary>
+        public int? CreditLimit { get; set; }
         /// <summary>Drafted one-sentence description.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -22,6 +24,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string Description { get; set; }
+#endif
+        /// <summary>Goal-based flow only: recordings a month the drafted scanner is projected to watch under the solved dials. Its credit cost lands at or under `monthly_credit_budget`, except when the budget is below what the minimum sampling rate can reach, where this is the floor and exceeds the budget. Null whenever `sampling_mode` is.</summary>
+        public int? EstimatedMonthlyObservations { get; set; }
+        /// <summary>Goal-based flow only: the experiment whose participants the draft watches, when the goal named one of the project&apos;s launched experiments. Null when it named none. Carried separately from `query`, which never holds an exposure filter.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseExperimentTargeting? ExperimentTargeting { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseExperimentTargeting ExperimentTargeting { get; set; }
+#endif
+        /// <summary>Goal-based flow only: the observation model the draft chose for the goal, by how much judgment it needs. Null on the legacy flow, where the wizard keeps its default model.* `gemini-3.5-flash-lite` - Gemini 3.5 Flash Lite* `gemini-3-flash-preview` - Gemini 3 Flash* `gemini-3.8-flash` - Gemini 3.8 Flash</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseModel? Model { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseModel Model { get; set; }
 #endif
         /// <summary>Drafted scanner name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -31,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>Drafted `RecordingsQuery` narrowing which sessions get scanned, holding one event filter picked from the team&apos;s real events; null when no event clearly matched the goal.</summary>
+        /// <summary>`RecordingsQuery` narrowing which sessions get scanned; null when the draft targets every session.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseQuery? Query { get; set; }
@@ -47,6 +67,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Rationale { get; set; }
 #endif
+        /// <summary>Goal-based flow only: the quality pre-filter the draft chose for the goal. Null on the legacy flow, and null when the costing estimate failed — the wizard keeps its defaults.* `focused` - Focused* `balanced` - Balanced* `comprehensive` - Comprehensive</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseSamplingMode? SamplingMode { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseSamplingMode SamplingMode { get; set; }
+#endif
+        /// <summary>Goal-based flow only: the random sampling rate solved from `monthly_credit_budget`, 0..1. 1.0 when the budget covers every matching recording. Floored at the minimum rate, so a budget below that floor keeps the minimum. Null whenever `sampling_mode` is.</summary>
+        public double? SamplingRate { get; set; }
         /// <summary>Type-specific config for the drafted `scanner_type`; always includes `prompt`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -88,10 +118,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "credit_limit", n => { CreditLimit = n.GetIntValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
+                { "estimated_monthly_observations", n => { EstimatedMonthlyObservations = n.GetIntValue(); } },
+                { "experiment_targeting", n => { ExperimentTargeting = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseExperimentTargeting>(global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseExperimentTargeting.CreateFromDiscriminatorValue); } },
+                { "model", n => { Model = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseModel>(global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseModel.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseQuery>(global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseQuery.CreateFromDiscriminatorValue); } },
                 { "rationale", n => { Rationale = n.GetStringValue(); } },
+                { "sampling_mode", n => { SamplingMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseSamplingMode>(global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseSamplingMode.CreateFromDiscriminatorValue); } },
+                { "sampling_rate", n => { SamplingRate = n.GetDoubleValue(); } },
                 { "scanner_config", n => { ScannerConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseScannerConfig>(global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseScannerConfig.CreateFromDiscriminatorValue); } },
                 { "scanner_type", n => { ScannerType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseScannerType>(global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseScannerType.CreateFromDiscriminatorValue); } },
             };
@@ -103,10 +139,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteIntValue("credit_limit", CreditLimit);
             writer.WriteStringValue("description", Description);
+            writer.WriteIntValue("estimated_monthly_observations", EstimatedMonthlyObservations);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseExperimentTargeting>("experiment_targeting", ExperimentTargeting);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseModel>("model", Model);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseQuery>("query", Query);
             writer.WriteStringValue("rationale", Rationale);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseSamplingMode>("sampling_mode", SamplingMode);
+            writer.WriteDoubleValue("sampling_rate", SamplingRate);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseScannerConfig>("scanner_config", ScannerConfig);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseScannerType>("scanner_type", ScannerType);
             writer.WriteAdditionalData(AdditionalData);

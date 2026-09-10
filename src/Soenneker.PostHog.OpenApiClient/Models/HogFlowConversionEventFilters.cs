@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Event/action filters for this conversion event, same shape as trigger filters: {events: [{id, name, type: &apos;events&apos;, properties?: [&lt;cond&gt;]}], actions?: [...], properties?: [&lt;cond&gt;]}. bytecode is compiled server-side.&quot;
+    /// Event/action filters for this conversion event, same shape as trigger filters: {events: [{id, name, type: &apos;events&apos;, properties?: [&lt;cond&gt;]}], actions?: [...], properties?: [&lt;cond&gt;]}. bytecode is compiled server-side.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class HogFlowConversionEventFilters : IAdditionalDataHolder, IParsable

@@ -18,10 +18,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The author property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChannelFeedMessageDtoAuthor? Author { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo? Author { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChannelFeedMessageDtoAuthor Author { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo Author { get; set; }
 #endif
         /// <summary>The author_kind property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -86,7 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "author", n => { Author = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChannelFeedMessageDtoAuthor>(global::Soenneker.PostHog.OpenApiClient.Models.ChannelFeedMessageDtoAuthor.CreateFromDiscriminatorValue); } },
+                { "author", n => { Author = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo>(global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo.CreateFromDiscriminatorValue); } },
                 { "author_kind", n => { AuthorKind = n.GetStringValue(); } },
                 { "channel", n => { Channel = n.GetGuidValue(); } },
                 { "content", n => { Content = n.GetStringValue(); } },
@@ -103,7 +103,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChannelFeedMessageDtoAuthor>("author", Author);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo>("author", Author);
             writer.WriteStringValue("author_kind", AuthorKind);
             writer.WriteGuidValue("channel", Channel);
             writer.WriteStringValue("content", Content);

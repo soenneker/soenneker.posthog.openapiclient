@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Boolean expression tree. Nodes: {\&quot;type\&quot;: \&quot;and\&quot;|\&quot;or\&quot;, \&quot;children\&quot;: [...]}, {\&quot;type\&quot;: \&quot;not\&quot;, \&quot;child\&quot;: {...}}, {\&quot;type\&quot;: \&quot;condition\&quot;, \&quot;field\&quot;: \&quot;event_name\&quot;|\&quot;distinct_id\&quot;, \&quot;operator\&quot;: \&quot;exact\&quot;|\&quot;contains\&quot;, \&quot;value\&quot;: \&quot;&lt;string&gt;\&quot;}&quot;
+    /// Boolean expression tree. Nodes: {&quot;type&quot;: &quot;and&quot;|&quot;or&quot;, &quot;children&quot;: [...]}, {&quot;type&quot;: &quot;not&quot;, &quot;child&quot;: {...}}, {&quot;type&quot;: &quot;condition&quot;, &quot;field&quot;: &quot;event_name&quot;|&quot;distinct_id&quot;, &quot;operator&quot;: &quot;exact&quot;|&quot;contains&quot;, &quot;value&quot;: &quot;&lt;string&gt;&quot;}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class EventFilterConfigFilterTree : IAdditionalDataHolder, IParsable

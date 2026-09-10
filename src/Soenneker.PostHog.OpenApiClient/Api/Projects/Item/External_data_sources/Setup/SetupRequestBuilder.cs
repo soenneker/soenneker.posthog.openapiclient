@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_source
         {
         }
         /// <summary>
-        /// &quot;One-shot data warehouse source setup.Validate credentials, discover available tables, enable them all with sensible sync defaults(incremental where supported, else append, else full refresh), and create the source in a singlecall — the caller never has to assemble a `schemas` array. For sources that support webhooks(e.g. Stripe), a webhook is auto-registered after creation: on success webhook-capable tablesswitch to real-time webhook sync (unlocking webhook-only tables); on failure the pollingdefaults stay in place. For fine-grained table/sync control, use the lower-level`database_schema` + `create` flow instead.&quot;
+        /// One-shot data warehouse source setup.Validate credentials, discover available tables, enable them all with sensible sync defaults(incremental where supported, else append, else full refresh), and create the source in a singlecall — the caller never has to assemble a `schemas` array. For sources that support webhooks(e.g. Stripe), a webhook is auto-registered after creation: on success webhook-capable tablesswitch to real-time webhook sync (unlocking webhook-only tables); on failure the pollingdefaults stay in place. For fine-grained table/sync control, use the lower-level`database_schema` + `create` flow instead.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SourceSetupResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -54,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_source
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SourceSetupResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SourceSetupResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;One-shot data warehouse source setup.Validate credentials, discover available tables, enable them all with sensible sync defaults(incremental where supported, else append, else full refresh), and create the source in a singlecall — the caller never has to assemble a `schemas` array. For sources that support webhooks(e.g. Stripe), a webhook is auto-registered after creation: on success webhook-capable tablesswitch to real-time webhook sync (unlocking webhook-only tables); on failure the pollingdefaults stay in place. For fine-grained table/sync control, use the lower-level`database_schema` + `create` flow instead.&quot;
+        /// One-shot data warehouse source setup.Validate credentials, discover available tables, enable them all with sensible sync defaults(incremental where supported, else append, else full refresh), and create the source in a singlecall — the caller never has to assemble a `schemas` array. For sources that support webhooks(e.g. Stripe), a webhook is auto-registered after creation: on success webhook-capable tablesswitch to real-time webhook sync (unlocking webhook-only tables); on failure the pollingdefaults stay in place. For fine-grained table/sync control, use the lower-level`database_schema` + `create` flow instead.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

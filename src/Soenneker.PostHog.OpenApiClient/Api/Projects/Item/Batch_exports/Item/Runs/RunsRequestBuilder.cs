@@ -35,7 +35,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Batch_exports.Item.R
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RunsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/batch_exports/{batchExport%2Did}/runs{?cursor*,ordering*}", pathParameters)
+        public RunsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/batch_exports/{batchExport%2Did}/runs{?after*,before*,cursor*,end*,ordering*,start*,status*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Batch_exports.Item.R
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RunsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/batch_exports/{batchExport%2Did}/runs{?cursor*,ordering*}", rawUrl)
+        public RunsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/batch_exports/{batchExport%2Did}/runs{?after*,before*,cursor*,end*,ordering*,start*,status*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedBatchExportRunList"/></returns>
@@ -91,6 +91,26 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Batch_exports.Item.R
         public partial class RunsRequestBuilderGetQueryParameters 
         #pragma warning restore CS1591
         {
+            /// <summary>Only return runs created at or after this point. Accepts an ISO-8601 datetime or a relative value like `-7d`. Defaults to `-7d`. Ignored when ordering by `data_interval_start`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("after")]
+            public string? After { get; set; }
+#nullable restore
+#else
+            [QueryParameter("after")]
+            public string After { get; set; }
+#endif
+            /// <summary>Only return runs created at or before this point. Accepts an ISO-8601 datetime or a relative value like `-1d`. Defaults to now. Ignored when ordering by `data_interval_start`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("before")]
+            public string? Before { get; set; }
+#nullable restore
+#else
+            [QueryParameter("before")]
+            public string Before { get; set; }
+#endif
             /// <summary>The pagination cursor value.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -101,6 +121,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Batch_exports.Item.R
             [QueryParameter("cursor")]
             public string Cursor { get; set; }
 #endif
+            /// <summary>Only return runs whose data interval ends at or before this point. Accepts an ISO-8601 datetime or a relative value like `-1d`. Defaults to now. Only applies when ordering by `data_interval_start`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("end")]
+            public string? End { get; set; }
+#nullable restore
+#else
+            [QueryParameter("end")]
+            public string End { get; set; }
+#endif
             /// <summary>Which field to use when ordering the results.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -110,6 +140,26 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Batch_exports.Item.R
 #else
             [QueryParameter("ordering")]
             public string Ordering { get; set; }
+#endif
+            /// <summary>Only return runs whose data interval starts at or after this point. Accepts an ISO-8601 datetime or a relative value like `-7d`. Defaults to `-7d`. Only applies when ordering by `data_interval_start`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("start")]
+            public string? Start { get; set; }
+#nullable restore
+#else
+            [QueryParameter("start")]
+            public string Start { get; set; }
+#endif
+            /// <summary>Only return runs in these statuses. Repeat the parameter to pass more than one status.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("status")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportsRunsListStatusParameterItem[]? Status { get; set; }
+#nullable restore
+#else
+            [QueryParameter("status")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportsRunsListStatusParameterItem[] Status { get; set; }
 #endif
         }
     }

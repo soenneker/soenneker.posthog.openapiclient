@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.I
         {
         }
         /// <summary>
-        /// &quot;Rewrite a report&apos;s title/summary, append a note, and/or set its suggested reviewers. Can target ANY of the project&apos;s inbox reports, not just scout-authored ones — so the edit is attributed to this scout. Setting reviewers is how you rescue a report that surfaced routed to no one: it replaces the reviewer list and re-runs autostart, so a report missing a qualifying reviewer can open a draft PR. Title/summary edits are best-effort: the pipeline may later re-research them.&quot;
+        /// Rewrite a report&apos;s title/summary, append a note or fresh evidence, and/or set its suggested reviewers. Can target ANY of the project&apos;s inbox reports, not just scout-authored ones — so the edit is attributed to this scout. Setting reviewers is how you rescue a report that surfaced routed to no one: it replaces the reviewer list and re-runs autostart, so a report missing a qualifying reviewer can open a draft PR. Title/summary edits are best-effort: the pipeline may later re-research them.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EditReportResponse"/></returns>
         /// <param name="body">Request body for `edit-report`. Can target ANY of the team&apos;s inbox reports, not just scout-authored ones.</param>
@@ -54,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.I
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.EditReportResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.EditReportResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Rewrite a report&apos;s title/summary, append a note, and/or set its suggested reviewers. Can target ANY of the project&apos;s inbox reports, not just scout-authored ones — so the edit is attributed to this scout. Setting reviewers is how you rescue a report that surfaced routed to no one: it replaces the reviewer list and re-runs autostart, so a report missing a qualifying reviewer can open a draft PR. Title/summary edits are best-effort: the pipeline may later re-research them.&quot;
+        /// Rewrite a report&apos;s title/summary, append a note or fresh evidence, and/or set its suggested reviewers. Can target ANY of the project&apos;s inbox reports, not just scout-authored ones — so the edit is attributed to this scout. Setting reviewers is how you rescue a report that surfaced routed to no one: it replaces the reviewer list and re-runs autostart, so a report missing a qualifying reviewer can open a draft PR. Title/summary edits are best-effort: the pipeline may later re-research them.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">Request body for `edit-report`. Can target ANY of the team&apos;s inbox reports, not just scout-authored ones.</param>

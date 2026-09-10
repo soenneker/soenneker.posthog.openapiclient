@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;How the search query matched this row: \&quot;key\&quot; if the attribute key matched, \&quot;value\&quot; if a value matched.* `key` - key* `value` - value&quot;
+    /// How the search query matched this row: &quot;key&quot; if the attribute key matched, &quot;value&quot; if a value matched.* `key` - key* `value` - value
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TracingAttributeEntryMatchedOn : IAdditionalDataHolder, IParsable

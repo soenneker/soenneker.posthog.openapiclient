@@ -14,8 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `video_segment` - Video Segment* `safety_judgment` - Safety Judgment* `actionability_judgment` - Actionability Judgment* `priority_judgment` - Priority Judgment* `signal_finding` - Signal Finding* `repo_selection` - Repo Selection* `suggested_reviewers` - Suggested Reviewers* `dismissal` - Dismissal* `code_reference` - Code Reference* `commit` - Commit* `task_run` - Task Run* `note` - Note* `title_change` - Title Change* `summary_change` - Summary Change* `code_review` - Code Review* `related_to` - Related To</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactTypeEnum? Value { get; set; }
+        /// <summary>* `video_segment` - Video Segment* `safety_judgment` - Safety Judgment* `actionability_judgment` - Actionability Judgment* `priority_judgment` - Priority Judgment* `signal_finding` - Signal Finding* `repo_selection` - Repo Selection* `suggested_reviewers` - Suggested Reviewers* `channel_assignment` - Channel Assignment* `dismissal` - Dismissal* `code_reference` - Code Reference* `commit` - Commit* `task_run` - Task Run* `note` - Note* `title_change` - Title Change* `summary_change` - Summary Change* `code_review` - Code Review* `related_to` - Related To</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactArtefactTypeEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactType"/> and sets the default values.
         /// </summary>
@@ -41,7 +41,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "value", n => { Value = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactTypeEnum>(); } },
+                { "value", n => { Value = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactArtefactTypeEnum>(); } },
             };
         }
         /// <summary>
@@ -51,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactTypeEnum>("value", Value);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactArtefactTypeEnum>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;What the evaluation runs against: &apos;generation&apos; samples individual generations, &apos;trace&apos; samples whole traces, and &apos;session&apos; samples whole sessions that have gone quiet. Each target runs against the same globals it would run against online.* `generation` - Generation* `trace` - Trace* `session` - Session&quot;
+    /// What the evaluation runs against: &apos;generation&apos; samples individual generations, &apos;trace&apos; samples whole traces, and &apos;session&apos; samples whole sessions that have gone quiet. Each target runs against the same globals it would run against online.* `generation` - Generation* `trace` - Trace* `session` - Session
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TestHogRequestTarget : IAdditionalDataHolder, IParsable

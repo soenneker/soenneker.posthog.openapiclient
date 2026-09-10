@@ -40,7 +40,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Users.Item.Push_tokens
         {
         }
         /// <summary>
-        /// &quot;Idempotent upsert: if the (user, token) pair already exists, `platform` and `last_seen_at` are refreshed. Otherwise a new row is created.&quot;
+        /// Idempotent upsert: if the (user, token) pair already exists, `platform` and `last_seen_at` are refreshed. Otherwise a new row is created.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.UserPushTokenItem"/></returns>
         /// <param name="body">The request body</param>
@@ -60,7 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Users.Item.Push_tokens
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.UserPushTokenItem>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.UserPushTokenItem.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Idempotent upsert: if the (user, token) pair already exists, `platform` and `last_seen_at` are refreshed. Otherwise a new row is created.&quot;
+        /// Idempotent upsert: if the (user, token) pair already exists, `platform` and `last_seen_at` are refreshed. Otherwise a new row is created.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

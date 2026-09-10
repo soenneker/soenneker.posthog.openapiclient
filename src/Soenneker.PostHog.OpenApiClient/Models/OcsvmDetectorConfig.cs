@@ -12,7 +12,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class OcsvmDetectorConfig : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>&quot;SVM kernel type (default: \&quot;rbf\&quot;)&quot;</summary>
+        /// <summary>SVM kernel type (default: &quot;rbf&quot;)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Kernel { get; set; }
@@ -20,7 +20,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Kernel { get; set; }
 #endif
-        /// <summary>&quot;Upper bound on training errors fraction (default: 0.1)&quot;</summary>
+        /// <summary>Upper bound on training errors fraction (default: 0.1)</summary>
         public double? Nu { get; set; }
         /// <summary>Preprocessing transforms applied before detection</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -30,17 +30,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig Preprocessing { get; set; }
 #endif
-        /// <summary>&quot;Anomaly probability threshold (default: 0.9)&quot;</summary>
+        /// <summary>Anomaly probability threshold (default: 0.9)</summary>
         public double? Threshold { get; set; }
         /// <summary>The type property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Type { get; set; }
-#nullable restore
-#else
-        public string Type { get; set; }
-#endif
-        /// <summary>&quot;Rolling window size — how many historical data points to train on (default: based on calculation interval)&quot;</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.OcsvmType? Type { get; set; }
+        /// <summary>Rolling window size — how many historical data points to train on (default: based on calculation interval)</summary>
         public int? Window { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -64,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "nu", n => { Nu = n.GetDoubleValue(); } },
                 { "preprocessing", n => { Preprocessing = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig>(global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig.CreateFromDiscriminatorValue); } },
                 { "threshold", n => { Threshold = n.GetDoubleValue(); } },
-                { "type", n => { Type = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OcsvmType>(); } },
                 { "window", n => { Window = n.GetIntValue(); } },
             };
         }
@@ -79,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("nu", Nu);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig>("preprocessing", Preprocessing);
             writer.WriteDoubleValue("threshold", Threshold);
-            writer.WriteStringValue("type", Type);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OcsvmType>("type", Type);
             writer.WriteIntValue("window", Window);
         }
     }

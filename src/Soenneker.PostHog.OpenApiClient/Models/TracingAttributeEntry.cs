@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;How the search query matched this row: \&quot;key\&quot; if the attribute key matched, \&quot;value\&quot; if a value matched.* `key` - key* `value` - value&quot;</summary>
+        /// <summary>How the search query matched this row: &quot;key&quot; if the attribute key matched, &quot;value&quot; if a value matched.* `key` - key* `value` - value</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeEntryMatchedOn? MatchedOn { get; set; }
@@ -38,7 +38,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>&quot;Property filter type: \&quot;span_attribute\&quot; or \&quot;span_resource_attribute\&quot;. Use this as the `type` field when filtering.&quot;</summary>
+        /// <summary>Property filter type: &quot;span_attribute&quot; or &quot;span_resource_attribute&quot;. Use this as the `type` field when filtering.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? PropertyFilterType { get; set; }

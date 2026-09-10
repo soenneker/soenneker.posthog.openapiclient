@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Event kind: opened, ready_for_review, converted_to_draft, ci_started, ci_finished, merged, or closed.* `opened` - OPENED* `ready_for_review` - READY_FOR_REVIEW* `converted_to_draft` - CONVERTED_TO_DRAFT* `ci_started` - CI_STARTED* `ci_finished` - CI_FINISHED* `merged` - MERGED* `closed` - CLOSED&quot;
+    /// Event kind: opened, ready_for_review, converted_to_draft, ci_started, ci_finished, merged, or closed.* `opened` - OPENED* `ready_for_review` - READY_FOR_REVIEW* `converted_to_draft` - CONVERTED_TO_DRAFT* `ci_started` - CI_STARTED* `ci_finished` - CI_FINISHED* `merged` - MERGED* `closed` - CLOSED
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PrLifecycleEventKind : IAdditionalDataHolder, IParsable

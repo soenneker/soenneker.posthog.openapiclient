@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;A canvas&apos;s build lifecycle: live pointers plus its most recent builds.&quot;
+    /// A canvas&apos;s build lifecycle: live pointers plus its most recent builds.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CanvasBuildsResponse : IAdditionalDataHolder, IParsable

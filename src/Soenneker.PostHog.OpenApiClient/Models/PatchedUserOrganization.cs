@@ -45,17 +45,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.OrganizationDefaultExperimentStatsMethod DefaultExperimentStatsMethod { get; set; }
 #endif
         /// <summary>ID of the role to automatically assign to new members joining the organization</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? DefaultRoleId { get; set; }
-#nullable restore
-#else
-        public string DefaultRoleId { get; set; }
-#endif
+        public Guid? DefaultRoleId { get; set; }
         /// <summary>The enforce_2fa property</summary>
         public bool? Enforce2fa { get; set; }
         /// <summary>When True, logins, signups, and invites for this organization are restricted to email addresses on its verified domains.</summary>
         public bool? EnforceVerifiedDomains { get; set; }
+        /// <summary>Whether the organization has a countersigned Business Associate Agreement on file. When true, AI training stays opted out and cannot be changed.</summary>
+        public bool? HasSignedBaa { get; private set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>Set this to &apos;No&apos; to temporarily disable an organization.</summary>
@@ -68,8 +64,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? IsAiTrainingLocked { get; private set; }
         /// <summary>When True, this organization allows its data to be used to train PostHog AI models.</summary>
         public bool? IsAiTrainingOptedIn { get; set; }
-        /// <summary>The is_hipaa property</summary>
-        public bool? IsHipaa { get; private set; }
         /// <summary>Legacy field; member-join emails are controlled per user in account notification settings.</summary>
         public bool? IsMemberJoinEmailEnabled { get; private set; }
         /// <summary>(optional) reason for why the organization has been de-activated. This will be displayed to users on the web app.</summary>
@@ -134,6 +128,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationProjectsItemProperty> Projects { get; private set; }
 #endif
+        /// <summary>When True, requests through the PostHog MCP server can read but not change this organization&apos;s data.</summary>
+        public bool? ReadOnlyMcpAccess { get; set; }
         /// <summary>The slug property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -183,16 +179,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "customer_id", n => { CustomerId = n.GetStringValue(); } },
                 { "default_anonymize_ips", n => { DefaultAnonymizeIps = n.GetBoolValue(); } },
                 { "default_experiment_stats_method", n => { DefaultExperimentStatsMethod = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationDefaultExperimentStatsMethod>(global::Soenneker.PostHog.OpenApiClient.Models.OrganizationDefaultExperimentStatsMethod.CreateFromDiscriminatorValue); } },
-                { "default_role_id", n => { DefaultRoleId = n.GetStringValue(); } },
+                { "default_role_id", n => { DefaultRoleId = n.GetGuidValue(); } },
                 { "enforce_2fa", n => { Enforce2fa = n.GetBoolValue(); } },
                 { "enforce_verified_domains", n => { EnforceVerifiedDomains = n.GetBoolValue(); } },
+                { "has_signed_baa", n => { HasSignedBaa = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "is_active", n => { IsActive = n.GetBoolValue(); } },
                 { "is_ai_data_processing_approved", n => { IsAiDataProcessingApproved = n.GetBoolValue(); } },
                 { "is_ai_training_cta_shown", n => { IsAiTrainingCtaShown = n.GetBoolValue(); } },
                 { "is_ai_training_locked", n => { IsAiTrainingLocked = n.GetBoolValue(); } },
                 { "is_ai_training_opted_in", n => { IsAiTrainingOptedIn = n.GetBoolValue(); } },
-                { "is_hipaa", n => { IsHipaa = n.GetBoolValue(); } },
                 { "is_member_join_email_enabled", n => { IsMemberJoinEmailEnabled = n.GetBoolValue(); } },
                 { "is_not_active_reason", n => { IsNotActiveReason = n.GetStringValue(); } },
                 { "is_pending_deletion", n => { IsPendingDeletion = n.GetBoolValue(); } },
@@ -207,6 +203,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "plugins_access_level", n => { PluginsAccessLevel = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationPluginsAccessLevel>(global::Soenneker.PostHog.OpenApiClient.Models.OrganizationPluginsAccessLevel.CreateFromDiscriminatorValue); } },
                 { "projects", n => { Projects = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationProjectsItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.OrganizationProjectsItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "read_only_mcp_access", n => { ReadOnlyMcpAccess = n.GetBoolValue(); } },
                 { "slug", n => { Slug = n.GetStringValue(); } },
                 { "teams", n => { Teams = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationTeamsItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.OrganizationTeamsItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
@@ -222,7 +219,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("allow_publicly_shared_resources", AllowPubliclySharedResources);
             writer.WriteBoolValue("default_anonymize_ips", DefaultAnonymizeIps);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationDefaultExperimentStatsMethod>("default_experiment_stats_method", DefaultExperimentStatsMethod);
-            writer.WriteStringValue("default_role_id", DefaultRoleId);
+            writer.WriteGuidValue("default_role_id", DefaultRoleId);
             writer.WriteBoolValue("enforce_2fa", Enforce2fa);
             writer.WriteBoolValue("enforce_verified_domains", EnforceVerifiedDomains);
             writer.WriteBoolValue("is_ai_data_processing_approved", IsAiDataProcessingApproved);
@@ -234,6 +231,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("members_can_use_personal_api_keys", MembersCanUsePersonalApiKeys);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserOrganizationMetadata>("metadata", Metadata);
             writer.WriteStringValue("name", Name);
+            writer.WriteBoolValue("read_only_mcp_access", ReadOnlyMcpAccess);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

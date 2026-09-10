@@ -118,7 +118,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Elements.Stats
             /// <summary>When true, applies the project&apos;s internal-and-test-account filters to the underlying events. Pass the lowercase string true; other truthy spellings are ignored.</summary>
             [QueryParameter("filter_test_accounts")]
             public bool? FilterTestAccounts { get; set; }
-            /// <summary>&quot;Event types to include: $autocapture, $rageclick, $dead_click. Defaults to all three. Accepts repeated parameters, a JSON array, or a comma-separated list.&quot;</summary>
+            /// <summary>Event types to include: $autocapture, $rageclick, $dead_click. Defaults to all three. Accepts repeated parameters, a JSON array, or a comma-separated list.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("include")]
@@ -134,7 +134,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Elements.Stats
             /// <summary>Pagination offset</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
-            /// <summary>&quot;JSON-encoded list of property filters to apply to the underlying events, e.g. [{\&quot;key\&quot;: \&quot;$current_url\&quot;, \&quot;value\&quot;: \&quot;https://example.com/page\&quot;}] or [{\&quot;key\&quot;: \&quot;email\&quot;, \&quot;value\&quot;: \&quot;@posthog.com\&quot;, \&quot;operator\&quot;: \&quot;icontains\&quot;, \&quot;type\&quot;: \&quot;person\&quot;}]. Supports event, person, cohort, element, and HogQL property filter types.&quot;</summary>
+            /// <summary>JSON-encoded list of property filters to apply to the underlying events, e.g. [{&quot;key&quot;: &quot;$current_url&quot;, &quot;value&quot;: &quot;https://example.com/page&quot;}] or [{&quot;key&quot;: &quot;email&quot;, &quot;value&quot;: &quot;@posthog.com&quot;, &quot;operator&quot;: &quot;icontains&quot;, &quot;type&quot;: &quot;person&quot;}]. Supports event, person, cohort, element, and HogQL property filter types.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("properties")]

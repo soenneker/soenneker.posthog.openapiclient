@@ -3,7 +3,6 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
-using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -34,25 +33,25 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_
         {
         }
         /// <summary>
-        /// &quot;Download a file (or a part) from this batch export run.Users can provide a part component with an id or index, or no part component atall:* If part id is included: The file download matching the id is downloaded.* If part index is included: The file download matching the index (as ordered    by key) is downloaded.* If no part component is present: If there is only one file downloaded, that    is downloaded. Otherwise the first one as sorted by key is downloaded.&quot;
+        /// Download a file (or a part) from this batch export run.Users can provide a part component with an id or index, or no part component atall:* If part id is included: The file download matching the id is downloaded.* If part index is included: The file download matching the index (as ordered    by key) is downloaded.* If no part component is present: If there is only one file downloaded, that    is downloaded. Otherwise the first one as sorted by key is downloaded.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadBatchExportsDownloadRetrieve200Response"/></returns>
+        /// <returns>A <see cref="Stream"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadBatchExportsDownloadRetrieve200Response?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Stream?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadBatchExportsDownloadRetrieve200Response> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Stream> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadBatchExportsDownloadRetrieve200Response>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadBatchExportsDownloadRetrieve200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Download a file (or a part) from this batch export run.Users can provide a part component with an id or index, or no part component atall:* If part id is included: The file download matching the id is downloaded.* If part index is included: The file download matching the index (as ordered    by key) is downloaded.* If no part component is present: If there is only one file downloaded, that    is downloaded. Otherwise the first one as sorted by key is downloaded.&quot;
+        /// Download a file (or a part) from this batch export run.Users can provide a part component with an id or index, or no part component atall:* If part id is included: The file download matching the id is downloaded.* If part index is included: The file download matching the index (as ordered    by key) is downloaded.* If no part component is present: If there is only one file downloaded, that    is downloaded. Otherwise the first one as sorted by key is downloaded.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -67,7 +66,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <summary>

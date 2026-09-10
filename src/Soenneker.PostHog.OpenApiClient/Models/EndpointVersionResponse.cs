@@ -45,7 +45,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? CurrentVersion { get; set; }
         /// <summary>UUID of the current EndpointVersion row.</summary>
         public Guid? CurrentVersionId { get; set; }
-        /// <summary>&quot;How fresh the data is, in seconds. One of: 900, 1800, 3600, 21600, 43200, 86400, 604800.&quot;</summary>
+        /// <summary>How fresh the data is, in seconds. One of: 900, 1800, 3600, 21600, 43200, 86400, 604800.</summary>
         public int? DataFreshnessSeconds { get; set; }
         /// <summary>Short ID of the source insight, if derived from one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -152,10 +152,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>User who created this version.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponseVersionCreatedBy? VersionCreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? VersionCreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponseVersionCreatedBy VersionCreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic VersionCreatedBy { get; private set; }
 #endif
         /// <summary>Version unique identifier (UUID).</summary>
         public Guid? VersionId { get; set; }
@@ -219,7 +219,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "url", n => { Url = n.GetStringValue(); } },
                 { "version", n => { Version = n.GetIntValue(); } },
                 { "version_created_at", n => { VersionCreatedAt = n.GetStringValue(); } },
-                { "version_created_by", n => { VersionCreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponseVersionCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponseVersionCreatedBy.CreateFromDiscriminatorValue); } },
+                { "version_created_by", n => { VersionCreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
                 { "version_id", n => { VersionId = n.GetGuidValue(); } },
                 { "version_updated_at", n => { VersionUpdatedAt = n.GetStringValue(); } },
                 { "versions_count", n => { VersionsCount = n.GetIntValue(); } },

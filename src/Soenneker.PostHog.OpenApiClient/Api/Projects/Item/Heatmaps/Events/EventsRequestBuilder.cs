@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Heatmaps.Events
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EventsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/heatmaps/events?points={points}{&aggregation*,cohort_ids*,date_from*,date_to*,filter_test_accounts*,hide_zero_coordinates*,limit*,offset*,type*,url_exact*,url_pattern*,viewport_width_max*,viewport_width_min*}", pathParameters)
+        public EventsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/heatmaps/events?points={points}{&aggregation*,cohort_ids*,date_from*,date_to*,events*,filter_test_accounts*,hide_zero_coordinates*,limit*,offset*,type*,url_exact*,url_pattern*,viewport_width_max*,viewport_width_min*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Heatmaps.Events
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EventsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/heatmaps/events?points={points}{&aggregation*,cohort_ids*,date_from*,date_to*,filter_test_accounts*,hide_zero_coordinates*,limit*,offset*,type*,url_exact*,url_pattern*,viewport_width_max*,viewport_width_min*}", rawUrl)
+        public EventsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/heatmaps/events?points={points}{&aggregation*,cohort_ids*,date_from*,date_to*,events*,filter_test_accounts*,hide_zero_coordinates*,limit*,offset*,type*,url_exact*,url_pattern*,viewport_width_max*,viewport_width_min*}", rawUrl)
         {
         }
         /// <summary>
@@ -85,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Heatmaps.Events
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EventsRequestBuilderGetQueryParameters 
         {
-            /// <summary>&quot;How to aggregate counts: &apos;total_count&apos; (every interaction, default) or &apos;unique_visitors&apos; (distinct people).* `unique_visitors` - unique_visitors* `total_count` - total_count&quot;</summary>
+            /// <summary>How to aggregate counts: &apos;total_count&apos; (every interaction, default) or &apos;unique_visitors&apos; (distinct people).* `unique_visitors` - unique_visitors* `total_count` - total_count</summary>
             [QueryParameter("aggregation")]
             public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapsEventsRetrieveAggregationParameter? Aggregation { get; set; }
             /// <summary>JSON array of cohort IDs (e.g. &apos;[123, 456]&apos;) to restrict results to people in those cohorts. Feature-flagged; ignored when the cohort filter is not enabled for the caller.</summary>
@@ -118,6 +118,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Heatmaps.Events
             [QueryParameter("date_to")]
             public string DateTo { get; set; }
 #endif
+            /// <summary>JSON array of event filters (e.g. &apos;[{&quot;id&quot;: &quot;purchase&quot;, &quot;properties&quot;: []}]&apos;) to restrict results to sessions in which those events occurred. Each entry needs a string &apos;id&apos; (the event name) and may carry a &apos;properties&apos; array of property filters applied to that event, each of type &apos;event&apos; or &apos;element&apos;. Several entries are combined with AND: the session must contain a matching event for every entry. At most 10 entries, each with at most 20 property filters. Requires project-wide heatmap access, since the filter reads the project&apos;s events rather than one saved heatmap. Feature-flagged; ignored when the event filter is not enabled for the caller.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("events")]
+            public string? Events { get; set; }
+#nullable restore
+#else
+            [QueryParameter("events")]
+            public string Events { get; set; }
+#endif
             /// <summary>When true, exclude sessions from internal/test accounts using the project&apos;s test-account filters.</summary>
             [QueryParameter("filter_test_accounts")]
             public bool? FilterTestAccounts { get; set; }
@@ -130,7 +140,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Heatmaps.Events
             /// <summary>Number of interactions to skip, for pagination.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
-            /// <summary>&quot;JSON array of the heatmap coordinates to drill into, e.g. &apos;[{\&quot;x\&quot;: 0.5, \&quot;y\&quot;: 100}]&apos;. Each point needs &apos;x&apos; (relative x, 0..1) and &apos;y&apos; (absolute client-y pixels) matching values returned by the heatmaps list endpoint; an optional &apos;target_fixed&apos; boolean matches fixed-position elements. Returns the individual session interactions behind those spots.&quot;</summary>
+            /// <summary>JSON array of the heatmap coordinates to drill into, e.g. &apos;[{&quot;x&quot;: 0.5, &quot;y&quot;: 100}]&apos;. Each point needs &apos;x&apos; (relative x, 0..1) and &apos;y&apos; (absolute client-y pixels) matching values returned by the heatmaps list endpoint; an optional &apos;target_fixed&apos; boolean matches fixed-position elements. Returns the individual session interactions behind those spots.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("points")]
@@ -140,7 +150,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Heatmaps.Events
             [QueryParameter("points")]
             public string Points { get; set; }
 #endif
-            /// <summary>&quot;The interaction type to return. One of: &apos;click&apos; (default), &apos;rageclick&apos;, &apos;mousemove&apos;, or &apos;scrolldepth&apos;. Scrolldepth returns scroll buckets instead of x/y coordinates.&quot;</summary>
+            /// <summary>The interaction type to return. One of: &apos;click&apos; (default), &apos;rageclick&apos;, &apos;mousemove&apos;, or &apos;scrolldepth&apos;. Scrolldepth returns scroll buckets instead of x/y coordinates.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("type")]

@@ -25,12 +25,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The result envelope once the run is &apos;done&apos; or &apos;interrupted&apos; (an interrupted run keeps the stdout/stderr captured before the stop); null while running and for failed runs.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunStatusResponseResult? Result { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2Envelope? Result { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunStatusResponseResult Result { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2Envelope Result { get; set; }
 #endif
-        /// <summary>&quot;SQL (hogql) runs only: the full capped row set for client-side paging, present while the query manager&apos;s transient result is alive (~20 minutes). Absent afterwards and for kernel (python/duckdb) runs, which keep only the envelope&apos;s first_page preview.&quot;</summary>
+        /// <summary>SQL (hogql) runs only: the full capped row set for client-side paging, present while the query manager&apos;s transient result is alive (~20 minutes). Absent afterwards and for kernel (python/duckdb) runs, which keep only the envelope&apos;s first_page preview.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public UntypedNode? Rows { get; set; }
@@ -38,7 +38,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public UntypedNode Rows { get; set; }
 #endif
-        /// <summary>&quot;Run state: &apos;running&apos; (keep polling), or terminal — &apos;done&apos;, &apos;failed&apos;, or &apos;interrupted&apos;.&quot;</summary>
+        /// <summary>Run state: &apos;running&apos; (keep polling), or terminal — &apos;done&apos;, &apos;failed&apos;, or &apos;interrupted&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Status { get; set; }
@@ -72,7 +72,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "error", n => { Error = n.GetStringValue(); } },
-                { "result", n => { Result = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunStatusResponseResult>(global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunStatusResponseResult.CreateFromDiscriminatorValue); } },
+                { "result", n => { Result = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2Envelope>(global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2Envelope.CreateFromDiscriminatorValue); } },
                 { "rows", n => { Rows = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "status", n => { Status = n.GetStringValue(); } },
             };
@@ -85,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("error", Error);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunStatusResponseResult>("result", Result);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2Envelope>("result", Result);
             writer.WriteObjectValue<UntypedNode>("rows", Rows);
             writer.WriteStringValue("status", Status);
             writer.WriteAdditionalData(AdditionalData);

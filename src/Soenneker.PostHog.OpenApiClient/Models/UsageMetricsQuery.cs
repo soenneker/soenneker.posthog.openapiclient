@@ -23,13 +23,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Group type index. Required with group_key for group queries.</summary>
         public int? GroupTypeIndex { get; set; }
         /// <summary>The kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Kind { get; set; }
-#nullable restore
-#else
-        public string Kind { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQueryKind? Kind { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -84,7 +78,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "group_key", n => { GroupKey = n.GetStringValue(); } },
                 { "group_type_index", n => { GroupTypeIndex = n.GetIntValue(); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQueryKind>(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "person_id", n => { PersonId = n.GetStringValue(); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQueryResponse.CreateFromDiscriminatorValue); } },
@@ -101,7 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("group_key", GroupKey);
             writer.WriteIntValue("group_type_index", GroupTypeIndex);
-            writer.WriteStringValue("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQueryKind>("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
             writer.WriteStringValue("person_id", PersonId);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UsageMetricsQueryResponse>("response", Response);

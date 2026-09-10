@@ -47,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.
         {
         }
         /// <summary>
-        /// &quot;List quarantined identifiers. Without filter: active only. With identifier: full history.&quot;
+        /// List quarantined identifiers. Without filter: active only. With identifier: full history.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedQuarantinedIdentifierEntryList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -65,7 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedQuarantinedIdentifierEntryList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedQuarantinedIdentifierEntryList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;List quarantined identifiers. Without filter: active only. With identifier: full history.&quot;
+        /// List quarantined identifiers. Without filter: active only. With identifier: full history.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -93,7 +93,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.Item.Quarantine.QuarantineRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// &quot;List quarantined identifiers. Without filter: active only. With identifier: full history.&quot;
+        /// List quarantined identifiers. Without filter: active only. With identifier: full history.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class QuarantineRequestBuilderGetQueryParameters 

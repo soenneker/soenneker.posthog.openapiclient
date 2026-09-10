@@ -32,7 +32,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> IssuesSummary { get; set; }
 #endif
-        /// <summary>&quot;Overall: healthy/degraded/broken/no_sources&quot;</summary>
+        /// <summary>Overall: healthy/degraded/broken/no_sources</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? OverallStatus { get; set; }

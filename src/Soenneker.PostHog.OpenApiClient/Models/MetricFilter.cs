@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.MetricFilterOp Op { get; set; }
 #endif
-        /// <summary>&quot;Where the attribute lives: &apos;resource&apos; = per-target resource attributes (k8s.pod.name, service.version), &apos;attribute&apos; = per-datapoint attributes (http.method, path), &apos;auto&apos; = resource first with per-datapoint fallback. Use &apos;auto&apos; unless you know the exact scope.* `resource` - resource* `attribute` - attribute* `auto` - auto&quot;</summary>
+        /// <summary>Where the attribute lives: &apos;resource&apos; = per-target resource attributes (k8s.pod.name, service.version), &apos;attribute&apos; = per-datapoint attributes (http.method, path), &apos;auto&apos; = resource first with per-datapoint fallback. Use &apos;auto&apos; unless you know the exact scope.* `resource` - resource* `attribute` - attribute* `auto` - auto</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.MetricFilterScope? Scope { get; set; }

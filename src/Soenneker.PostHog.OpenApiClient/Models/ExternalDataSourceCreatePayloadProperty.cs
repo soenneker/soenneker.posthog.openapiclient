@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Connection credentials and a &apos;schemas&apos; array. Keys depend on source_type.
+    /// Connection credentials. Keys depend on source_type. Add a &apos;schemas&apos; array to pick which tables sync; omit it and every discovered table syncs with default settings.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ExternalDataSourceCreatePayloadProperty : IAdditionalDataHolder, IParsable

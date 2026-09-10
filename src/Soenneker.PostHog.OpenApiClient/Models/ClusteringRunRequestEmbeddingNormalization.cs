@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Embedding normalization method: &apos;none&apos; (raw embeddings) or &apos;l2&apos; (L2 normalize before clustering)* `none` - none* `l2` - l2&quot;
+    /// Embedding normalization method: &apos;none&apos; (raw embeddings) or &apos;l2&apos; (L2 normalize before clustering)* `none` - none* `l2` - l2
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ClusteringRunRequestEmbeddingNormalization : IAdditionalDataHolder, IParsable

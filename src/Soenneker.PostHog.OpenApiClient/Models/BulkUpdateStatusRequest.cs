@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<Guid?> Ids { get; set; }
 #endif
-        /// <summary>&quot;New status to apply to all selected tickets: new, open, pending, on_hold, or resolved.* `new` - New* `open` - Open* `pending` - Pending* `on_hold` - On hold* `resolved` - Resolved&quot;</summary>
+        /// <summary>New status to apply to all selected tickets: new, open, pending, on_hold, or resolved.* `new` - New* `open` - Open* `pending` - Pending* `on_hold` - On hold* `resolved` - Resolved</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateStatusRequestStatus? Status { get; set; }

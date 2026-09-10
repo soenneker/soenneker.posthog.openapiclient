@@ -3,6 +3,8 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Uploaded_media.Item;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Uploaded_media.Start_upload;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -17,12 +19,29 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Uploaded_media
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Uploaded_mediaRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The start_upload property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Uploaded_media.Start_upload.Start_uploadRequestBuilder Start_upload
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Uploaded_media.Start_upload.Start_uploadRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.uploaded_media.item collection</summary>
+        /// <param name="position">A UUID string identifying this uploaded media.</param>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Uploaded_media.Item.Uploaded_mediaItemRequestBuilder"/></returns>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Uploaded_media.Item.Uploaded_mediaItemRequestBuilder this[Guid position]
+        {
+            get
+            {
+                var urlTplParams = new Dictionary<string, object>(PathParameters);
+                urlTplParams.Add("id", position);
+                return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Uploaded_media.Item.Uploaded_mediaItemRequestBuilder(urlTplParams, RequestAdapter);
+            }
+        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Uploaded_media.Uploaded_mediaRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Uploaded_mediaRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/uploaded_media", pathParameters)
+        public Uploaded_mediaRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/uploaded_media{?limit*,offset*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,44 +49,86 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Uploaded_media
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Uploaded_mediaRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/uploaded_media", rawUrl)
+        public Uploaded_mediaRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/uploaded_media{?limit*,offset*}", rawUrl)
         {
         }
         /// <summary>
-        ///     When object storage is available this API allows upload of media which can be used, for example, in text cards on dashboards.    Uploaded media must have a content type beginning with &apos;image/&apos; and be less than 4MB.    
+        /// List images in the media library. Requires a `purpose` filter — the library is scoped per consumer (e.g. `email`), so browsing without one would mix in unrelated uploads (dashboard images, toolbar screenshots, ...).
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.UploadedMediaCreate201ResponseSchema"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedUploadedMediaList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.UploadedMediaCreate201ResponseSchema?> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedUploadedMediaList?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Uploaded_media.Uploaded_mediaRequestBuilder.Uploaded_mediaRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.UploadedMediaCreate201ResponseSchema> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedUploadedMediaList> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Uploaded_media.Uploaded_mediaRequestBuilder.Uploaded_mediaRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
-            var requestInfo = ToPostRequestInformation(requestConfiguration);
+            var requestInfo = ToGetRequestInformation(requestConfiguration);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedUploadedMediaList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedUploadedMediaList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+        }
+        /// <summary>
+        ///     When object storage is available this API allows upload of media which can be used, for example, in text cards on dashboards.    Uploaded media must be less than 4MB and decode as a PNG, JPEG, GIF, WebP, AVIF or BMP image — the formats    the download route will serve inline. Pass `purpose` to also add the image to a library, making it visible    to `GET ?purpose=...`.    
+        /// </summary>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.UploadedMediaCreate201ResponseSchema"/></returns>
+        /// <param name="body">The request body</param>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.UploadedMediaCreate201ResponseSchema?> PostAsync(MultipartBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#nullable restore
+#else
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.UploadedMediaCreate201ResponseSchema> PostAsync(MultipartBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.UploadedMediaCreate201ResponseSchema>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.UploadedMediaCreate201ResponseSchema.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        ///     When object storage is available this API allows upload of media which can be used, for example, in text cards on dashboards.    Uploaded media must have a content type beginning with &apos;image/&apos; and be less than 4MB.    
+        /// List images in the media library. Requires a `purpose` filter — the library is scoped per consumer (e.g. `email`), so browsing without one would mix in unrelated uploads (dashboard images, toolbar screenshots, ...).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Uploaded_media.Uploaded_mediaRequestBuilder.Uploaded_mediaRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Uploaded_media.Uploaded_mediaRequestBuilder.Uploaded_mediaRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
+            var requestInfo = new RequestInformation(Method.GET, "{+baseurl}/api/projects/{projectId}/uploaded_media?purpose={purpose}{&limit*,offset*}", PathParameters);
+            requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
+            return requestInfo;
+        }
+        /// <summary>
+        ///     When object storage is available this API allows upload of media which can be used, for example, in text cards on dashboards.    Uploaded media must be less than 4MB and decode as a PNG, JPEG, GIF, WebP, AVIF or BMP image — the formats    the download route will serve inline. Pass `purpose` to also add the image to a library, making it visible    to `GET ?purpose=...`.    
+        /// </summary>
+        /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="body">The request body</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public RequestInformation ToPostRequestInformation(MultipartBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
+#nullable restore
+#else
+        public RequestInformation ToPostRequestInformation(MultipartBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
+#endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
+            requestInfo.SetContentFromParsable(RequestAdapter, "multipart/form-data", body);
             return requestInfo;
         }
         /// <summary>
@@ -78,6 +139,22 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Uploaded_media
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Uploaded_media.Uploaded_mediaRequestBuilder WithUrl(string rawUrl)
         {
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Uploaded_media.Uploaded_mediaRequestBuilder(rawUrl, RequestAdapter);
+        }
+        /// <summary>
+        /// List images in the media library. Requires a `purpose` filter — the library is scoped per consumer (e.g. `email`), so browsing without one would mix in unrelated uploads (dashboard images, toolbar screenshots, ...).
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class Uploaded_mediaRequestBuilderGetQueryParameters 
+        {
+            /// <summary>Number of results to return per page.</summary>
+            [QueryParameter("limit")]
+            public int? Limit { get; set; }
+            /// <summary>The initial index from which to return the results.</summary>
+            [QueryParameter("offset")]
+            public int? Offset { get; set; }
+            /// <summary>The library to list.</summary>
+            [QueryParameter("purpose")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.UploadedMediaListPurposeParameter? Purpose { get; set; }
         }
     }
 }

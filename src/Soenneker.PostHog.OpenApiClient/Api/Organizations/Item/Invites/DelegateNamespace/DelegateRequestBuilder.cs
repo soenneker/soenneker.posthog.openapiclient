@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Invites.Delegat
         {
         }
         /// <summary>
-        /// &quot;Create an onboarding delegation invite: an admin-level invite flagged as a setup delegation.Sends a single dedicated delegation email and records the inviting user as having delegated.&quot;
+        /// Create an onboarding delegation invite: an admin-level invite flagged as a setup delegation.Sends a single dedicated delegation email and records the inviting user as having delegated.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OrganizationInvite"/></returns>
         /// <param name="body">The request body</param>
@@ -54,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Invites.Delegat
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationInvite>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.OrganizationInvite.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Create an onboarding delegation invite: an admin-level invite flagged as a setup delegation.Sends a single dedicated delegation email and records the inviting user as having delegated.&quot;
+        /// Create an onboarding delegation invite: an admin-level invite flagged as a setup delegation.Sends a single dedicated delegation email and records the inviting user as having delegated.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

@@ -13,7 +13,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class EmitReportRequest : IAdditionalDataHolder, IParsable
     {
-        /// <summary>&quot;The scout&apos;s actionability call: `immediately_actionable` -&gt; the report surfaces READY; `requires_human_input` -&gt; PENDING_INPUT; `not_actionable` -&gt; suppressed. A safety-judge failure suppresses the report regardless.* `immediately_actionable` - immediately_actionable* `requires_human_input` - requires_human_input* `not_actionable` - not_actionable&quot;</summary>
+        /// <summary>The scout&apos;s actionability call: `immediately_actionable` -&gt; the report surfaces READY; `requires_human_input` -&gt; PENDING_INPUT; `not_actionable` -&gt; suppressed. A safety-judge failure suppresses the report regardless.* `immediately_actionable` - immediately_actionable* `requires_human_input` - requires_human_input* `not_actionable` - not_actionable</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.EmitReportRequestActionability? Actionability { get; set; }
@@ -49,6 +49,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ReportEvidence> Evidence { get; set; }
 #endif
+        /// <summary>Optional name for this emission, unique within the run. Reuse it verbatim to retry a call whose outcome you don&apos;t know (a timeout, a dropped connection): the retry returns the report the first call authored, with `idempotent_replay` true, instead of a second report. Omit it and the report&apos;s own content is the key, which covers a retry of the identical call — pass one when a retry might reword the report.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? IdempotencyKey { get; set; }
+#nullable restore
+#else
+        public string IdempotencyKey { get; set; }
+#endif
         /// <summary>Optional priority (`P0`-`P4`). Required for autostart; pair with `priority_explanation`.* `P0` - P0* `P1` - P1* `P2` - P2* `P3` - P3* `P4` - P4</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -65,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string PriorityExplanation { get; set; }
 #endif
-        /// <summary>&quot;Optional repo for autostart (opening a draft PR): `owner/repo` targets that repo, the `NO_REPO` sentinel opts out (report lands without a PR), and omitting it triggers free-form selection across the team&apos;s repos — the slow path on a many-repo team, so pass `owner/repo` when you know it.&quot;</summary>
+        /// <summary>Optional repo for opening a draft PR, by autostart or by a person from the inbox. Pass `owner/repo` whenever you can say where a fix would land. Omit the field when you can&apos;t, which triggers free-form selection across the team&apos;s repos (the slow path on a many-repo team). Keep the `NO_REPO` sentinel for the rare report where nothing under version control could change, since a skill body, a config file, or a doc still lives in a repo.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Repository { get; set; }
@@ -73,7 +81,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Repository { get; set; }
 #endif
-        /// <summary>&quot;Optional reviewers to route the report to (each a `github_login` and/or `user_uuid`). This is the primary way a report reaches a human — the inbox floats a reviewer&apos;s own reports to the top of their inbox even when no PR is involved — so set it whenever you can name a plausible owner. It also gates autostart: a PR opens only if at least one reviewer clears their autonomy threshold.&quot;</summary>
+        /// <summary>Optional follow-up prompts to offer above the report&apos;s `Ask AI` box: questions to ask, or next-step actions to request (e.g. carrying out the report&apos;s recommendation). The reader clicks one to fill the box with it, then sends or edits it. Write the prompts your own research left open, phrased as the reader would send them.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? SuggestedPrompts { get; set; }
+#nullable restore
+#else
+        public List<string> SuggestedPrompts { get; set; }
+#endif
+        /// <summary>Optional reviewers to route the report to (each a `github_login` and/or `user_uuid`). This is the primary way a report reaches a human — the inbox floats a reviewer&apos;s own reports to the top of their inbox even when no PR is involved — so set it whenever you can name a plausible owner. It also gates autostart: a PR opens only if at least one reviewer clears their autonomy threshold.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewer>? SuggestedReviewers { get; set; }
@@ -81,7 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewer> SuggestedReviewers { get; set; }
 #endif
-        /// <summary>The report body the inbox shows. Markdown is supported (headings, lists, code, links; images are not rendered). Lead with one plain declarative sentence — the inbox card uses your first line verbatim as the headline (~140 chars, emphasis stripped), then renders the full markdown in the detail view.</summary>
+        /// <summary>The report body the inbox shows. Markdown is supported (headings, lists, code, links; images are not rendered). Lead with one plain declarative sentence — the inbox card uses your first line verbatim as the headline (~140 chars, emphasis stripped), then renders the full markdown in the detail view. A heading, or a bold label on a line of its own with a blank line above it, marks a section that a threaded Slack delivery splits into its own reply.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Summary { get; set; }
@@ -89,7 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Summary { get; set; }
 #endif
-        /// <summary>&quot;One-line report title the inbox shows. Conventional-commit style (`type(scope): description`, e.g. `fix(insights): missing series color`) renders with type/scope styling.&quot;</summary>
+        /// <summary>One-line report title the inbox shows. Conventional-commit style (`type(scope): description`, e.g. `fix(insights): missing series color`) renders with type/scope styling.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Title { get; set; }
@@ -128,9 +144,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "already_addressed", n => { AlreadyAddressed = n.GetBoolValue(); } },
                 { "charts", n => { Charts = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReportChart>(global::Soenneker.PostHog.OpenApiClient.Models.ReportChart.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "evidence", n => { Evidence = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReportEvidence>(global::Soenneker.PostHog.OpenApiClient.Models.ReportEvidence.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "idempotency_key", n => { IdempotencyKey = n.GetStringValue(); } },
                 { "priority", n => { Priority = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmitReportRequestPriority>(global::Soenneker.PostHog.OpenApiClient.Models.EmitReportRequestPriority.CreateFromDiscriminatorValue); } },
                 { "priority_explanation", n => { PriorityExplanation = n.GetStringValue(); } },
                 { "repository", n => { Repository = n.GetStringValue(); } },
+                { "suggested_prompts", n => { SuggestedPrompts = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "suggested_reviewers", n => { SuggestedReviewers = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewer>(global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewer.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "summary", n => { Summary = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
@@ -148,9 +166,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("already_addressed", AlreadyAddressed);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReportChart>("charts", Charts);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReportEvidence>("evidence", Evidence);
+            writer.WriteStringValue("idempotency_key", IdempotencyKey);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmitReportRequestPriority>("priority", Priority);
             writer.WriteStringValue("priority_explanation", PriorityExplanation);
             writer.WriteStringValue("repository", Repository);
+            writer.WriteCollectionOfPrimitiveValues<string>("suggested_prompts", SuggestedPrompts);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewer>("suggested_reviewers", SuggestedReviewers);
             writer.WriteStringValue("summary", Summary);
             writer.WriteStringValue("title", Title);

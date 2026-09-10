@@ -104,10 +104,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Events
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EventsRequestBuilderGetQueryParameters 
         {
-            /// <summary>&quot;Only return events with a timestamp after this time. Default: now() - 24 hours.&quot;</summary>
+            /// <summary>Only return events with a timestamp after this time. Default: now() - 24 hours.</summary>
             [QueryParameter("after")]
             public DateTimeOffset? After { get; set; }
-            /// <summary>&quot;Only return events with a timestamp before this time. Default: now() + 5 seconds.&quot;</summary>
+            /// <summary>Only return events with a timestamp before this time. Default: now() + 5 seconds.</summary>
             [QueryParameter("before")]
             public DateTimeOffset? Before { get; set; }
             /// <summary>Filter list by distinct id.</summary>
@@ -123,15 +123,17 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Events
             [QueryParameter("event")]
             public string Event { get; set; }
 #endif
+            #pragma warning disable CS1591
             [QueryParameter("format")]
             public global::Soenneker.PostHog.OpenApiClient.Models.EventsListFormatParameter? Format { get; set; }
-            /// <summary>&quot;Include person details for each event. Default: false.&quot;</summary>
+            #pragma warning restore CS1591
+            /// <summary>Include person details for each event. Default: false.</summary>
             [QueryParameter("include_person")]
             public bool? IncludePerson { get; set; }
             /// <summary>The maximum number of results to return</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
-            /// <summary>&quot;Allows to skip first offset rows. Will fail for value larger than 100000. Read about proper way of paginating: https://posthog.com/docs/api/queries#5-use-timestamp-based-pagination-instead-of-offset&quot;</summary>
+            /// <summary>Allows to skip first offset rows. Will fail for value larger than 100000. Read about proper way of paginating: https://posthog.com/docs/api/queries#5-use-timestamp-based-pagination-instead-of-offset</summary>
             [Obsolete("")]
             [QueryParameter("offset")]
             public int? Offset { get; set; }

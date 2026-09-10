@@ -78,8 +78,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Cohorts.Item.Persons
         public partial class PersonsRequestBuilderGetQueryParameters 
         #pragma warning restore CS1591
         {
+            #pragma warning disable CS1591
             [QueryParameter("format")]
             public global::Soenneker.PostHog.OpenApiClient.Models.CohortsPersonsRetrieveFormatParameter? Format { get; set; }
+            #pragma warning restore CS1591
             /// <summary>Maximum number of persons to return per page (defaults to 100).</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }

@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Command result on success
+    /// Command result. Permission responses confirm acceptance only with resolved=true.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TaskRunCommandResponseResult : IAdditionalDataHolder, IParsable

@@ -39,7 +39,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Name { get; set; }
 #endif
         /// <summary>* `DateTime` - DateTime* `String` - String* `Numeric` - Numeric* `Boolean` - Boolean* `Object` - Object</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SchemaPropertyGroupPropertyPropertyTypeEnum? PropertyType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SchemaPropertyTypeEnum? PropertyType { get; set; }
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>
@@ -73,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "is_optional_in_types", n => { IsOptionalInTypes = n.GetBoolValue(); } },
                 { "is_required", n => { IsRequired = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "property_type", n => { PropertyType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SchemaPropertyGroupPropertyPropertyTypeEnum>(); } },
+                { "property_type", n => { PropertyType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SchemaPropertyTypeEnum>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }
@@ -88,7 +88,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("is_optional_in_types", IsOptionalInTypes);
             writer.WriteBoolValue("is_required", IsRequired);
             writer.WriteStringValue("name", Name);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SchemaPropertyGroupPropertyPropertyTypeEnum>("property_type", PropertyType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SchemaPropertyTypeEnum>("property_type", PropertyType);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

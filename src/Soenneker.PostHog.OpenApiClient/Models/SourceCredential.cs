@@ -16,7 +16,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When the credentials were stored.</summary>
         public DateTimeOffset? CreatedAt { get; set; }
-        /// <summary>&quot;Stored credential id. Pass to the setup endpoint as {&apos;credential_id&apos;: &lt;id&gt;} to create the source.&quot;</summary>
+        /// <summary>Stored credential id. Pass to the setup endpoint as {&apos;credential_id&apos;: &lt;id&gt;} to create the source.</summary>
         public Guid? CredentialId { get; set; }
         /// <summary>When the stored credentials expire. Unconsumed credentials are unusable past this time.</summary>
         public DateTimeOffset? ExpiresAt { get; set; }

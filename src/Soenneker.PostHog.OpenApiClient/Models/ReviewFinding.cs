@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Body { get; set; }
 #endif
-        /// <summary>&quot;The priority that gates publishing: the validator&apos;s override when set, else the reviewer&apos;s.* `must_fix` - must_fix* `should_fix` - should_fix* `consider` - consider&quot;</summary>
+        /// <summary>The priority that gates publishing: the validator&apos;s override when set, else the reviewer&apos;s.* `must_fix` - must_fix* `should_fix` - should_fix* `consider` - consider</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ReviewFindingEffectivePriority? EffectivePriority { get; set; }

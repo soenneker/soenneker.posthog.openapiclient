@@ -85,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Sdk_health.Report
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class ReportRequestBuilderGetQueryParameters 
         {
-            /// <summary>When true, bypasses the Redis cache and re-queries ClickHouse for SDK usage. Use sparingly — data is refreshed every 12 hours by a background job.</summary>
+            /// <summary>When true, bypasses the Redis cache and re-queries ClickHouse for SDK usage. A background job refreshes this data once a day, so the cached answer is usually current. Use sparingly.</summary>
             [QueryParameter("force_refresh")]
             public bool? ForceRefresh { get; set; }
         }

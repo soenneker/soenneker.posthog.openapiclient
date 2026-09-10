@@ -17,15 +17,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; set; }
+        /// <summary>ID of the user who created the task, or null for system-created tasks.</summary>
+        public int? CreatedById { get; set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; set; }
         /// <summary>The latest_run property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskSummaryDtoLatestRun? LatestRun { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummary? LatestRun { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskSummaryDtoLatestRun LatestRun { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummary LatestRun { get; set; }
 #endif
         /// <summary>The origin_product property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -79,8 +81,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
+                { "created_by_id", n => { CreatedById = n.GetIntValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "latest_run", n => { LatestRun = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskSummaryDtoLatestRun>(global::Soenneker.PostHog.OpenApiClient.Models.TaskSummaryDtoLatestRun.CreateFromDiscriminatorValue); } },
+                { "latest_run", n => { LatestRun = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummary>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummary.CreateFromDiscriminatorValue); } },
                 { "origin_product", n => { OriginProduct = n.GetStringValue(); } },
                 { "repository", n => { Repository = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
@@ -95,8 +98,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
+            writer.WriteIntValue("created_by_id", CreatedById);
             writer.WriteGuidValue("id", Id);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskSummaryDtoLatestRun>("latest_run", LatestRun);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummary>("latest_run", LatestRun);
             writer.WriteStringValue("origin_product", OriginProduct);
             writer.WriteStringValue("repository", Repository);
             writer.WriteStringValue("title", Title);

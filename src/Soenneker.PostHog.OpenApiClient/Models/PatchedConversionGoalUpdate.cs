@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Separate from create: the body is a patch, so the documented partial has to type-check.&quot;
+    /// Separate from create: the body is a patch, so the documented partial has to type-check.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedConversionGoalUpdate : IAdditionalDataHolder, IParsable

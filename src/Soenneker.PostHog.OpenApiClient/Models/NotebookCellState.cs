@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;Cell kind: &apos;sql&apos;, &apos;python&apos;, or &apos;saved_insight&apos; (embedded insight, never runs).&quot;</summary>
+        /// <summary>Cell kind: &apos;sql&apos;, &apos;python&apos;, or &apos;saved_insight&apos; (embedded insight, never runs).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CellType { get; set; }
@@ -57,10 +57,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Summary of the most recent run; null when never run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellStateLastRun? LastRun { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellLastRun? LastRun { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellStateLastRun LastRun { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellLastRun LastRun { get; set; }
 #endif
         /// <summary>Durable cell identity, used by the cell run and edit endpoints.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -70,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string NodeId { get; set; }
 #endif
-        /// <summary>&quot;Derived cell state: &apos;never_run&apos;, &apos;running&apos;, &apos;done&apos;, &apos;failed&apos;, &apos;interrupted&apos;, or &apos;stale&apos; — stale means re-running now would execute different code than the last completed run (the cell or an upstream dependency changed).&quot;</summary>
+        /// <summary>Derived cell state: &apos;never_run&apos;, &apos;running&apos;, &apos;done&apos;, &apos;failed&apos;, &apos;interrupted&apos;, or &apos;stale&apos; — stale means re-running now would execute different code than the last completed run (the cell or an upstream dependency changed).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Status { get; set; }
@@ -108,7 +108,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "dataframe_name", n => { DataframeName = n.GetStringValue(); } },
                 { "dependents", n => { Dependents = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "depends_on", n => { DependsOn = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "last_run", n => { LastRun = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellStateLastRun>(global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellStateLastRun.CreateFromDiscriminatorValue); } },
+                { "last_run", n => { LastRun = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellLastRun>(global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellLastRun.CreateFromDiscriminatorValue); } },
                 { "node_id", n => { NodeId = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
             };
@@ -125,7 +125,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("dataframe_name", DataframeName);
             writer.WriteCollectionOfPrimitiveValues<string>("dependents", Dependents);
             writer.WriteCollectionOfPrimitiveValues<string>("depends_on", DependsOn);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellStateLastRun>("last_run", LastRun);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellLastRun>("last_run", LastRun);
             writer.WriteStringValue("node_id", NodeId);
             writer.WriteStringValue("status", Status);
             writer.WriteAdditionalData(AdditionalData);

@@ -40,5 +40,45 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         Title1,
         #pragma warning restore CS1591
+        [EnumMember(Value = "account")]
+        #pragma warning disable CS1591
+        Account,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "-account")]
+        #pragma warning disable CS1591
+        Account1,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "product_area")]
+        #pragma warning disable CS1591
+        ProductArea,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "-product_area")]
+        #pragma warning disable CS1591
+        ProductArea1,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "status")]
+        #pragma warning disable CS1591
+        Status,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "-status")]
+        #pragma warning disable CS1591
+        Status1,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "created_by")]
+        #pragma warning disable CS1591
+        CreatedBy,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "-created_by")]
+        #pragma warning disable CS1591
+        CreatedBy1,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "evidence_count")]
+        #pragma warning disable CS1591
+        EvidenceCount,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "-evidence_count")]
+        #pragma warning disable CS1591
+        EvidenceCount1,
+        #pragma warning restore CS1591
     }
 }

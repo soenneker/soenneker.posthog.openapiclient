@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Act
         {
         }
         /// <summary>
-        /// &quot;Change history for this experiment.Returns a paginated audit trail of changes to the experiment and its holdoutsand shared metrics: who made each change, what changed (field-level before/aftervalues), and when. Ordered newest first.&quot;
+        /// Change history for this experiment.Returns a paginated audit trail of changes to the experiment, its holdouts andshared metrics, and its linked feature flag: who made each change, what changed(field-level before/after values), and when. Ordered newest first.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActivityLogPaginatedResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Act
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ActivityLogPaginatedResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ActivityLogPaginatedResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Change history for this experiment.Returns a paginated audit trail of changes to the experiment and its holdoutsand shared metrics: who made each change, what changed (field-level before/aftervalues), and when. Ordered newest first.&quot;
+        /// Change history for this experiment.Returns a paginated audit trail of changes to the experiment, its holdouts andshared metrics, and its linked feature flag: who made each change, what changed(field-level before/after values), and when. Ordered newest first.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -80,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Act
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Activity.ActivityRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// &quot;Change history for this experiment.Returns a paginated audit trail of changes to the experiment and its holdoutsand shared metrics: who made each change, what changed (field-level before/aftervalues), and when. Ordered newest first.&quot;
+        /// Change history for this experiment.Returns a paginated audit trail of changes to the experiment, its holdouts andshared metrics, and its linked feature flag: who made each change, what changed(field-level before/after values), and when. Ordered newest first.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class ActivityRequestBuilderGetQueryParameters 

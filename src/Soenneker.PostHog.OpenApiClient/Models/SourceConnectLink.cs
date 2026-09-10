@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;What the user will do on the connect page: &apos;oauth&apos; = authorize an account in their browser; &apos;credentials&apos; = enter connection details (or pick OAuth where the source offers both). Either way secrets never pass through the agent, and the result is always a stored credential id.* `oauth` - oauth* `credentials` - credentials&quot;</summary>
+        /// <summary>What the user will do on the connect page: &apos;oauth&apos; = authorize an account in their browser; &apos;credentials&apos; = enter connection details (or pick OAuth where the source offers both). Either way secrets never pass through the agent, and the result is always a stored credential id.* `oauth` - oauth* `credentials` - credentials</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.SourceConnectLinkAuthMethod? AuthMethod { get; set; }

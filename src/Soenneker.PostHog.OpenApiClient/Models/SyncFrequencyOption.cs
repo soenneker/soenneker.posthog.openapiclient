@@ -16,7 +16,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>False when writing this cadence would be rejected.</summary>
         public bool? Allowed { get; set; }
-        /// <summary>&quot;Which side withholds this cadence: &apos;source&apos; when no upstream source syncs that often, &apos;consumer&apos; when a downstream view or endpoint refreshes more often than this. Null when the cadence is allowed.* `source` - source* `consumer` - consumer&quot;</summary>
+        /// <summary>Which side withholds this cadence: &apos;source&apos; when no upstream source syncs that often, &apos;consumer&apos; when a downstream view or endpoint refreshes more often than this. Null when the cadence is allowed.* `source` - source* `consumer` - consumer</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyOptionBlockedBy? BlockedBy { get; set; }
@@ -27,10 +27,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The source or consumer named in `blocked_by`. Null when allowed, and also when the blocker sits outside the caller&apos;s access grants, where `blocked_by` still gives the direction.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyOptionBlocker? Blocker { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBlocker? Blocker { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyOptionBlocker Blocker { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBlocker Blocker { get; set; }
 #endif
         /// <summary>A `sync_frequency` value.* `15min` - 15min* `30min` - 30min* `1hour` - 1hour* `6hour` - 6hour* `12hour` - 12hour* `24hour` - 24hour* `7day` - 7day* `30day` - 30day</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -67,7 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "allowed", n => { Allowed = n.GetBoolValue(); } },
                 { "blocked_by", n => { BlockedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyOptionBlockedBy>(global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyOptionBlockedBy.CreateFromDiscriminatorValue); } },
-                { "blocker", n => { Blocker = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyOptionBlocker>(global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyOptionBlocker.CreateFromDiscriminatorValue); } },
+                { "blocker", n => { Blocker = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBlocker>(global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBlocker.CreateFromDiscriminatorValue); } },
                 { "cadence", n => { Cadence = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyOptionCadence>(global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyOptionCadence.CreateFromDiscriminatorValue); } },
             };
         }
@@ -80,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("allowed", Allowed);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyOptionBlockedBy>("blocked_by", BlockedBy);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyOptionBlocker>("blocker", Blocker);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBlocker>("blocker", Blocker);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyOptionCadence>("cadence", Cadence);
             writer.WriteAdditionalData(AdditionalData);
         }

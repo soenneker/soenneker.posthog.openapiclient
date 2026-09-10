@@ -50,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQueryDraftConversionGoal DraftConversionGoal { get; set; }
 #endif
-        /// <summary>&quot;Drill-down hierarchy level: channel, source, or campaign (default)&quot;</summary>
+        /// <summary>Drill-down hierarchy level: channel, source, or campaign (default)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsDrillDownLevelWrapper2? DrillDownLevel { get; set; }
@@ -79,13 +79,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper14 Interval { get; set; }
 #endif
         /// <summary>The kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Kind { get; set; }
-#nullable restore
-#else
-        public string Kind { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQueryKind? Kind { get; set; }
         /// <summary>Number of rows to return</summary>
         public int? Limit { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
@@ -101,10 +95,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Columns to order by - similar to EventsQuery format</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQueryOrderByAnyOf1ItemItem>? OrderBy { get; set; }
+        public UntypedNode? OrderBy { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQueryOrderByAnyOf1ItemItem> OrderBy { get; set; }
+        public UntypedNode OrderBy { get; set; }
 #endif
         /// <summary>The properties property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -135,10 +129,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Return a limited set of data. Will use default columns if empty.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQuerySelect? Select { get; set; }
+        public List<string>? Select { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQuerySelect Select { get; set; }
+        public List<string> Select { get; set; }
 #endif
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -182,16 +176,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "includeRevenue", n => { IncludeRevenue = n.GetBoolValue(); } },
                 { "integrationFilter", n => { IntegrationFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationFilter>(global::Soenneker.PostHog.OpenApiClient.Models.IntegrationFilter.CreateFromDiscriminatorValue); } },
                 { "interval", n => { Interval = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper14>(global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper14.CreateFromDiscriminatorValue); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQueryKind>(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "offset", n => { Offset = n.GetIntValue(); } },
-                { "orderBy", n => { OrderBy = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQueryOrderByAnyOf1ItemItem>(global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQueryOrderByAnyOf1ItemItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "orderBy", n => { OrderBy = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQueryPropertiesItem>(global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQueryPropertiesItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQueryResponse.CreateFromDiscriminatorValue); } },
                 { "sampling", n => { Sampling = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsSampling>(global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsSampling.CreateFromDiscriminatorValue); } },
                 { "samplingFactor", n => { SamplingFactor = n.GetDoubleValue(); } },
-                { "select", n => { Select = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQuerySelect>(global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQuerySelect.CreateFromDiscriminatorValue); } },
+                { "select", n => { Select = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
                 { "useSessionsTable", n => { UseSessionsTable = n.GetBoolValue(); } },
                 { "version", n => { Version = n.GetDoubleValue(); } },
@@ -216,16 +210,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("includeRevenue", IncludeRevenue);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationFilter>("integrationFilter", IntegrationFilter);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper14>("interval", Interval);
-            writer.WriteStringValue("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQueryKind>("kind", Kind);
             writer.WriteIntValue("limit", Limit);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
             writer.WriteIntValue("offset", Offset);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQueryOrderByAnyOf1ItemItem>("orderBy", OrderBy);
+            writer.WriteObjectValue<UntypedNode>("orderBy", OrderBy);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQueryPropertiesItem>("properties", Properties);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQueryResponse>("response", Response);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebAnalyticsSampling>("sampling", Sampling);
             writer.WriteDoubleValue("samplingFactor", SamplingFactor);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQuerySelect>("select", Select);
+            writer.WriteCollectionOfPrimitiveValues<string>("select", Select);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
             writer.WriteBoolValue("useSessionsTable", UseSessionsTable);
             writer.WriteDoubleValue("version", Version);

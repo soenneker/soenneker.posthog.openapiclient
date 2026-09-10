@@ -29,7 +29,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>When the experiment was launched.</summary>
         public DateTimeOffset? ExperimentStartDate { get; set; }
-        /// <summary>&quot;Timestamp of the first event in the session matching the experiment&apos;s exposure criteria — the default exposure event ($feature_flag_called), or the configured custom event/action. Null when no event in the session matched the criteria; the variant is then known from flag evaluations or stamped $feature/&lt;key&gt; properties. Session-scoped: the experiment analysis counts exposure per person across the whole run window, so the person&apos;s counted first exposure may lie in an earlier session.&quot;</summary>
+        /// <summary>Timestamp of the first event in the session matching the experiment&apos;s exposure criteria — the default exposure event ($feature_flag_called), or the configured custom event/action. Null when no event in the session matched the criteria; the variant is then known from flag evaluations or stamped $feature/&lt;key&gt; properties. Session-scoped: the experiment analysis counts exposure per person across the whole run window, so the person&apos;s counted first exposure may lie in an earlier session.</summary>
         public DateTimeOffset? FirstExposureTimestamp { get; set; }
         /// <summary>Key of the experiment&apos;s feature flag.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

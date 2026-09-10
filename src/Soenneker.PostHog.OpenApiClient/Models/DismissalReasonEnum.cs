@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `already_fixed` - Already fixed* `report_unclear` - Report is unclear to me* `analysis_wrong` - Agent&apos;s analysis is wrong* `wontfix_intentional` - Won&apos;t fix - intentional behavior* `wontfix_irrelevant` - Won&apos;t fix - issue is real but insignificant* `other` - Something else…</summary>
+    /// <summary>* `already_fixed` - Already fixed* `report_unclear` - Report is unclear to me* `analysis_wrong` - Agent&apos;s analysis is wrong* `wrong_repo` - Agent picked the wrong repository* `wontfix_intentional` - Won&apos;t fix - intentional behavior* `wontfix_irrelevant` - Won&apos;t fix - issue is real but insignificant* `fixed_outside_posthog` - Fixed outside PostHog* `pr_merged` - PR was merged* `other` - Something else…</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum DismissalReasonEnum
     {
@@ -19,6 +19,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         AnalysisWrong,
         #pragma warning restore CS1591
+        [EnumMember(Value = "wrong_repo")]
+        #pragma warning disable CS1591
+        WrongRepo,
+        #pragma warning restore CS1591
         [EnumMember(Value = "wontfix_intentional")]
         #pragma warning disable CS1591
         WontfixIntentional,
@@ -26,6 +30,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "wontfix_irrelevant")]
         #pragma warning disable CS1591
         WontfixIrrelevant,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "fixed_outside_posthog")]
+        #pragma warning disable CS1591
+        FixedOutsidePosthog,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "pr_merged")]
+        #pragma warning disable CS1591
+        PrMerged,
         #pragma warning restore CS1591
         [EnumMember(Value = "other")]
         #pragma warning disable CS1591

@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssigneeId Id { get; set; }
 #endif
-        /// <summary>&quot;Assignee target type: user or role.* `user` - user* `role` - role&quot;</summary>
+        /// <summary>Assignee target type: user or role.* `user` - user* `role` - role</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssigneeType? Type { get; set; }

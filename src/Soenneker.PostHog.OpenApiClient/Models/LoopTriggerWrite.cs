@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;Trigger configuration, shape validated per `type`: schedule takes `{cron_expression, timezone}` or `{run_at}` for a one-time run; github takes `{github_integration_id, repository, events, filters}` where `events` is one or more of `issues`, `issue_comment`, `pull_request`, `push` (`event.action` shorthand like `issues.opened` is folded into an `actions` filter, one event per trigger) and `filters` takes `{actions, branches, labels, payload}`. Use `actions` for the event action; `payload` is for anything else in the webhook body, as a list of `{path, equals}` conditions where `path` is a dot-path of object keys and `equals` is a string or list of strings, e.g. `[{\&quot;path\&quot;: \&quot;requested_team.slug\&quot;, \&quot;equals\&quot;: \&quot;team-security\&quot;}]` to run only when that team is asked to review. All filters must match. API triggers take no config.&quot;</summary>
+        /// <summary>Trigger configuration, shape validated per `type`: schedule takes `{cron_expression, timezone}` or `{run_at}` for a one-time run; github takes `{github_integration_id, repository, events, filters}` where `events` is one or more of `issues`, `issue_comment`, `pull_request`, `push` (`event.action` shorthand like `issues.opened` is folded into an `actions` filter, one event per trigger) and `filters` takes `{actions, branches, labels, payload}`. Use `actions` for the event action; `payload` is for anything else in the webhook body, as a list of `{path, equals}` conditions where `path` is a dot-path of object keys and `equals` is a string or list of strings, e.g. `[{&quot;path&quot;: &quot;requested_team.slug&quot;, &quot;equals&quot;: &quot;team-security&quot;}]` to run only when that team is asked to review. All filters must match. API triggers take no config.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.LoopTriggerWriteConfig? Config { get; set; }
@@ -26,7 +26,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? Enabled { get; set; }
         /// <summary>Existing trigger id to update in place. Omit to create a new trigger.</summary>
         public Guid? Id { get; set; }
-        /// <summary>&quot;Trigger type: `schedule` (cron or one-time), `github` (repo webhook events), or `api` (POST to `trigger/`).* `schedule` - schedule* `github` - github* `api` - api&quot;</summary>
+        /// <summary>Trigger type: `schedule` (cron or one-time), `github` (repo webhook events), or `api` (POST to `trigger/`).* `schedule` - schedule* `github` - github* `api` - api</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.LoopTriggerWriteType? Type { get; set; }

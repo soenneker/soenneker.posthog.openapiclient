@@ -7,10 +7,13 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.CheckSche
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.Completed_activity;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.Data_health_issues;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.Data_ops_dashboard;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.Data_quality_gate;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.DeleteOrg;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.Deprovision;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.Job_stats;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.ManagedWarehouseDataStatus;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.ManagedWarehouseMonitoring;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.ManagedWarehouseMonitoringTimeseries;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.ManagedWarehouseSourceSchemas;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.OnboardTeam;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.Property_values;
@@ -56,6 +59,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.Data_ops_dashboard.Data_ops_dashboardRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The data_quality_gate property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.Data_quality_gate.Data_quality_gateRequestBuilder Data_quality_gate
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.Data_quality_gate.Data_quality_gateRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The deleteOrg property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.DeleteOrg.DeleteOrgRequestBuilder DeleteOrg
         {
@@ -75,6 +83,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.ManagedWarehouseDataStatus.ManagedWarehouseDataStatusRequestBuilder ManagedWarehouseDataStatus
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.ManagedWarehouseDataStatus.ManagedWarehouseDataStatusRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The managedWarehouseMonitoring property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.ManagedWarehouseMonitoring.ManagedWarehouseMonitoringRequestBuilder ManagedWarehouseMonitoring
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.ManagedWarehouseMonitoring.ManagedWarehouseMonitoringRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The managedWarehouseMonitoringTimeseries property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.ManagedWarehouseMonitoringTimeseries.ManagedWarehouseMonitoringTimeseriesRequestBuilder ManagedWarehouseMonitoringTimeseries
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.ManagedWarehouseMonitoringTimeseries.ManagedWarehouseMonitoringTimeseriesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The managedWarehouseSourceSchemas property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.ManagedWarehouseSourceSchemas.ManagedWarehouseSourceSchemasRequestBuilder ManagedWarehouseSourceSchemas

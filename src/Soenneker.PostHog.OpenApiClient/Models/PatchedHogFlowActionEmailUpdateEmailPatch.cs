@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Partial email fields deep-merged into the step&apos;s email (a null leaf deletes the key): subject, preheader, text, to, from, replyTo, cc, bcc. The design is edited via operations, and html is always re-rendered from it.&quot;
+    /// Partial email fields deep-merged into the step&apos;s email (a null leaf deletes the key): subject, preheader, text, to, from, replyTo, cc, bcc. The sender is from: {integrationId, email?, name?}, where email and name are optional templated overrides resolved per invocation; the address must resolve to the selected sender&apos;s verified domain or the send fails. The design is edited via operations, and html is always re-rendered from it.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedHogFlowActionEmailUpdateEmailPatch : IAdditionalDataHolder, IParsable

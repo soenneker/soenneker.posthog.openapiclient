@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `timestamp` - timestamp* `level` - level* `source` - source* `trace_id` - trace_id* `span_id` - span_id* `message` - message* `custom` - custom</summary>
+    /// <summary>* `timestamp` - timestamp* `level` - level* `source` - source* `trace_id` - trace_id* `span_id` - span_id* `person` - person* `session` - session* `pattern` - pattern* `message` - message* `custom` - custom</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum LogsViewColumnTypeEnum
     {
@@ -26,6 +26,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "span_id")]
         #pragma warning disable CS1591
         SpanId,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "person")]
+        #pragma warning disable CS1591
+        Person,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "session")]
+        #pragma warning disable CS1591
+        Session,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "pattern")]
+        #pragma warning disable CS1591
+        Pattern,
         #pragma warning restore CS1591
         [EnumMember(Value = "message")]
         #pragma warning disable CS1591

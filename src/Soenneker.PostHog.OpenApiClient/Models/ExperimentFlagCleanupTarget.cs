@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Repository { get; set; }
 #endif
-        /// <summary>&quot;How the repository was determined: `explicit` (saved on the experiment), `team_default` (the environment&apos;s default cleanup repository), `single_repo` (the team&apos;s only connected repository), `ambiguous` (several connected repositories and none saved — pass one via repository on end/ship_variant), or `no_integration` (no GitHub integration or no connected repositories, so no cleanup PR can be opened).* `explicit` - explicit* `team_default` - team_default* `single_repo` - single_repo* `ambiguous` - ambiguous* `no_integration` - no_integration&quot;</summary>
+        /// <summary>How the repository was determined: `explicit` (saved on the experiment), `team_default` (the environment&apos;s default cleanup repository), `single_repo` (the team&apos;s only connected repository), `ambiguous` (several connected repositories and none saved — pass one via repository on end/ship_variant), or `no_integration` (no GitHub integration or no connected repositories, so no cleanup PR can be opened).* `explicit` - explicit* `team_default` - team_default* `single_repo` - single_repo* `ambiguous` - ambiguous* `no_integration` - no_integration</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagCleanupTargetSource? Source { get; set; }

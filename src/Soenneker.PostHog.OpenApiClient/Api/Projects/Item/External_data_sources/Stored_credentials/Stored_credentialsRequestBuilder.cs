@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_source
         {
         }
         /// <summary>
-        /// &quot;List credentials the requesting user stored via the source connect page that haven&apos;t been consumed yet.Returns metadata only (id, source type, timestamps) — never the secrets themselves. Storedcredentials are scoped to their creator: only the user who filled the connect page can listor consume them. They are temporary too: they disappear once consumed by `setup` or whenthey expire. Newest first, so after a user confirms they&apos;ve finished the connect page, thefirst entry for the source type is the one to pass to `setup`.&quot;
+        /// List credentials the requesting user stored via the source connect page that haven&apos;t been consumed yet.Returns metadata only (id, source type, timestamps) — never the secrets themselves. Storedcredentials are scoped to their creator: only the user who filled the connect page can listor consume them. They are temporary too: they disappear once consumed by `setup` or whenthey expire. Newest first, so after a user confirms they&apos;ve finished the connect page, thefirst entry for the source type is the one to pass to `setup`.
         /// </summary>
         /// <returns>A List&lt;global::Soenneker.PostHog.OpenApiClient.Models.SourceCredential&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -53,7 +53,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_source
             return collectionResult?.AsList();
         }
         /// <summary>
-        /// &quot;List credentials the requesting user stored via the source connect page that haven&apos;t been consumed yet.Returns metadata only (id, source type, timestamps) — never the secrets themselves. Storedcredentials are scoped to their creator: only the user who filled the connect page can listor consume them. They are temporary too: they disappear once consumed by `setup` or whenthey expire. Newest first, so after a user confirms they&apos;ve finished the connect page, thefirst entry for the source type is the one to pass to `setup`.&quot;
+        /// List credentials the requesting user stored via the source connect page that haven&apos;t been consumed yet.Returns metadata only (id, source type, timestamps) — never the secrets themselves. Storedcredentials are scoped to their creator: only the user who filled the connect page can listor consume them. They are temporary too: they disappear once consumed by `setup` or whenthey expire. Newest first, so after a user confirms they&apos;ve finished the connect page, thefirst entry for the source type is the one to pass to `setup`.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -81,7 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_source
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Stored_credentials.Stored_credentialsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// &quot;List credentials the requesting user stored via the source connect page that haven&apos;t been consumed yet.Returns metadata only (id, source type, timestamps) — never the secrets themselves. Storedcredentials are scoped to their creator: only the user who filled the connect page can listor consume them. They are temporary too: they disappear once consumed by `setup` or whenthey expire. Newest first, so after a user confirms they&apos;ve finished the connect page, thefirst entry for the source type is the one to pass to `setup`.&quot;
+        /// List credentials the requesting user stored via the source connect page that haven&apos;t been consumed yet.Returns metadata only (id, source type, timestamps) — never the secrets themselves. Storedcredentials are scoped to their creator: only the user who filled the connect page can listor consume them. They are temporary too: they disappear once consumed by `setup` or whenthey expire. Newest first, so after a user confirms they&apos;ve finished the connect page, thefirst entry for the source type is the one to pass to `setup`.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Stored_credentialsRequestBuilderGetQueryParameters 

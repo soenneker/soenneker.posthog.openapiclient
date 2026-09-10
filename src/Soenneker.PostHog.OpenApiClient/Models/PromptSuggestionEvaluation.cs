@@ -45,10 +45,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Outcome counts. Null while the evaluation is running.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PromptSuggestionEvaluationSummary? Summary { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PromptEvaluationSummary? Summary { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PromptSuggestionEvaluationSummary Summary { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PromptEvaluationSummary Summary { get; set; }
 #endif
         /// <summary>How many rated sessions are being re-run.</summary>
         public int? Total { get; set; }
@@ -82,7 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "results", n => { Results = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PromptEvaluationResult>(global::Soenneker.PostHog.OpenApiClient.Models.PromptEvaluationResult.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "started_at", n => { StartedAt = n.GetDateTimeOffsetValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
-                { "summary", n => { Summary = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PromptSuggestionEvaluationSummary>(global::Soenneker.PostHog.OpenApiClient.Models.PromptSuggestionEvaluationSummary.CreateFromDiscriminatorValue); } },
+                { "summary", n => { Summary = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PromptEvaluationSummary>(global::Soenneker.PostHog.OpenApiClient.Models.PromptEvaluationSummary.CreateFromDiscriminatorValue); } },
                 { "total", n => { Total = n.GetIntValue(); } },
             };
         }
@@ -98,7 +98,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PromptEvaluationResult>("results", Results);
             writer.WriteDateTimeOffsetValue("started_at", StartedAt);
             writer.WriteStringValue("status", Status);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PromptSuggestionEvaluationSummary>("summary", Summary);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PromptEvaluationSummary>("summary", Summary);
             writer.WriteIntValue("total", Total);
             writer.WriteAdditionalData(AdditionalData);
         }

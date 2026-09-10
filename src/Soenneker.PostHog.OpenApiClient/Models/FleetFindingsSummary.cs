@@ -23,6 +23,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? EditedReportCount { get; set; }
         /// <summary>ISO-8601 timestamp of the most recent output run (TaskRun completion, falling back to run creation), or null when nothing was produced in the window.</summary>
         public DateTimeOffset? LatestAt { get; set; }
+        /// <summary>Number of scout runs created in the window, whether or not they produced output. Unlike the report tallies it is not capped, so it is the fleet&apos;s activity over the same span the output counts describe.</summary>
+        public int? RunCount { get; set; }
         /// <summary>Number of distinct scouts (skills) that produced output in the window — emitted a finding, or authored/edited an inbox report that survives the 50-report cap (a report-only scout whose touched reports all fell outside the cap is not counted, matching the findings page&apos;s scout filter).</summary>
         public int? ScoutCount { get; set; }
         /// <summary>
@@ -54,6 +56,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "count", n => { Count = n.GetIntValue(); } },
                 { "edited_report_count", n => { EditedReportCount = n.GetIntValue(); } },
                 { "latest_at", n => { LatestAt = n.GetDateTimeOffsetValue(); } },
+                { "run_count", n => { RunCount = n.GetIntValue(); } },
                 { "scout_count", n => { ScoutCount = n.GetIntValue(); } },
             };
         }
@@ -68,6 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("count", Count);
             writer.WriteIntValue("edited_report_count", EditedReportCount);
             writer.WriteDateTimeOffsetValue("latest_at", LatestAt);
+            writer.WriteIntValue("run_count", RunCount);
             writer.WriteIntValue("scout_count", ScoutCount);
             writer.WriteAdditionalData(AdditionalData);
         }

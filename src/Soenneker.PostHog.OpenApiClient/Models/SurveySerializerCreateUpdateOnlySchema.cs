@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Survey appearance customization.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaAppearance? Appearance { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearanceSchema? Appearance { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaAppearance Appearance { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearanceSchema Appearance { get; set; }
 #endif
         /// <summary>Archive state for the survey.</summary>
         public bool? Archived { get; set; }
@@ -35,10 +35,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Display and targeting conditions for the survey.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaConditions? Conditions { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsSchema? Conditions { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaConditions Conditions { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsSchema Conditions { get; set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
@@ -62,7 +62,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? CurrentIteration { get; set; }
         /// <summary>The current_iteration_start_date property</summary>
         public DateTimeOffset? CurrentIterationStartDate { get; set; }
-        /// <summary>&quot;Survey description. Internal only: unlike the name and questions, it is never delivered to visitors.&quot;</summary>
+        /// <summary>Survey description. Internal only: unlike the name and questions, it is never delivered to visitors.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Description { get; set; }
@@ -126,7 +126,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>&quot;        The `array` of questions included in the survey. Each question must conform to one of the defined question types: Basic, Link, Rating, or Multiple Choice.        Basic (open-ended question)        - `id`: The question ID        - `type`: `open`        - `question`: The text of the question.        - `description`: Optional description of the question.        - `descriptionContentType`: Content type of the description (`html` or `text`).        - `optional`: Whether the question is optional (`boolean`).        - `buttonText`: Text displayed on the submit button.        - `branching`: Branching logic for the question. See branching types below for details.        Link (a question with a link)        - `id`: The question ID        - `type`: `link`        - `question`: The text of the question.        - `description`: Optional description of the question.        - `descriptionContentType`: Content type of the description (`html` or `text`).        - `optional`: Whether the question is optional (`boolean`).        - `buttonText`: Text displayed on the submit button.        - `link`: The URL associated with the question.        - `branching`: Branching logic for the question. See branching types below for details.        Rating (a question with a rating scale)        - `id`: The question ID        - `type`: `rating`        - `question`: The text of the question.        - `description`: Optional description of the question.        - `descriptionContentType`: Content type of the description (`html` or `text`).        - `optional`: Whether the question is optional (`boolean`).        - `buttonText`: Text displayed on the submit button.        - `display`: Display style of the rating (`number` or `emoji`).        - `scale`: The scale of the rating (`number`).        - `lowerBoundLabel`: Label for the lower bound of the scale.        - `upperBoundLabel`: Label for the upper bound of the scale.        - `isNpsQuestion`: Whether the question is an NPS rating.        - `branching`: Branching logic for the question. See branching types below for details.        Multiple choice        - `id`: The question ID        - `type`: `single_choice` or `multiple_choice`        - `question`: The text of the question.        - `description`: Optional description of the question.        - `descriptionContentType`: Content type of the description (`html` or `text`).        - `optional`: Whether the question is optional (`boolean`).        - `buttonText`: Text displayed on the submit button.        - `choices`: An array of choices for the question.        - `shuffleOptions`: Whether to shuffle the order of the choices (`boolean`).        - `hasOpenChoice`: Whether the question allows an open-ended response (`boolean`).        - `branching`: Branching logic for the question. See branching types below for details.        Branching logic can be one of the following types:        Next question: Proceeds to the next question        ```json        {            \&quot;type\&quot;: \&quot;next_question\&quot;        }        ```        End: Ends the survey, optionally displaying a confirmation message.        ```json        {            \&quot;type\&quot;: \&quot;end\&quot;        }        ```        Response-based: Branches based on the response values. Available for the `rating` and `single_choice` question types.        ```json        {            \&quot;type\&quot;: \&quot;response_based\&quot;,            \&quot;responseValues\&quot;: {                \&quot;responseKey\&quot;: \&quot;value\&quot;            }        }        ```        Specific question: Proceeds to a specific question by index.        ```json        {            \&quot;type\&quot;: \&quot;specific_question\&quot;,            \&quot;index\&quot;: 2        }        ```        Translations: Each question can include inline translations.        - `translations`: Object mapping language codes to translated fields.        - Language codes: Canonical BCP-47-ish strings (e.g., \&quot;es\&quot;, \&quot;es-MX\&quot;, \&quot;zh-CN\&quot;). Aliases like \&quot;english\&quot; or \&quot;default\&quot; are rejected. The survey&apos;s `base_language` (default \&quot;en\&quot;) declares the language of the untranslated text and cannot also appear as a translation key.        - Translatable fields: `question`, `description`, `buttonText`, `choices`, `lowerBoundLabel`, `upperBoundLabel`, `link`        Example with translations:        ```json        {            \&quot;id\&quot;: \&quot;uuid\&quot;,            \&quot;type\&quot;: \&quot;rating\&quot;,            \&quot;question\&quot;: \&quot;How satisfied are you?\&quot;,            \&quot;lowerBoundLabel\&quot;: \&quot;Not satisfied\&quot;,            \&quot;upperBoundLabel\&quot;: \&quot;Very satisfied\&quot;,            \&quot;translations\&quot;: {                \&quot;es\&quot;: {                    \&quot;question\&quot;: \&quot;¿Qué tan satisfecho estás?\&quot;,                    \&quot;lowerBoundLabel\&quot;: \&quot;No satisfecho\&quot;,                    \&quot;upperBoundLabel\&quot;: \&quot;Muy satisfecho\&quot;                },                \&quot;fr\&quot;: {                    \&quot;question\&quot;: \&quot;Dans quelle mesure êtes-vous satisfait?\&quot;                }            }        }        ```        &quot;</summary>
+        /// <summary>        The `array` of questions included in the survey. Each question must conform to one of the defined question types: Basic, Link, Rating, or Multiple Choice.        Basic (open-ended question)        - `id`: The question ID        - `type`: `open`        - `question`: The text of the question.        - `description`: Optional description of the question.        - `descriptionContentType`: Content type of the description (`html` or `text`).        - `optional`: Whether the question is optional (`boolean`).        - `buttonText`: Text displayed on the submit button.        - `branching`: Branching logic for the question. See branching types below for details.        Link (a question with a link)        - `id`: The question ID        - `type`: `link`        - `question`: The text of the question.        - `description`: Optional description of the question.        - `descriptionContentType`: Content type of the description (`html` or `text`).        - `optional`: Whether the question is optional (`boolean`).        - `buttonText`: Text displayed on the submit button.        - `link`: The URL associated with the question.        - `branching`: Branching logic for the question. See branching types below for details.        Rating (a question with a rating scale)        - `id`: The question ID        - `type`: `rating`        - `question`: The text of the question.        - `description`: Optional description of the question.        - `descriptionContentType`: Content type of the description (`html` or `text`).        - `optional`: Whether the question is optional (`boolean`).        - `buttonText`: Text displayed on the submit button.        - `display`: Display style of the rating (`number` or `emoji`).        - `scale`: The scale of the rating (`number`).        - `lowerBoundLabel`: Label for the lower bound of the scale.        - `upperBoundLabel`: Label for the upper bound of the scale.        - `isNpsQuestion`: Whether the question is an NPS rating.        - `branching`: Branching logic for the question. See branching types below for details.        Multiple choice        - `id`: The question ID        - `type`: `single_choice` or `multiple_choice`        - `question`: The text of the question.        - `description`: Optional description of the question.        - `descriptionContentType`: Content type of the description (`html` or `text`).        - `optional`: Whether the question is optional (`boolean`).        - `buttonText`: Text displayed on the submit button.        - `choices`: An array of choices for the question.        - `shuffleOptions`: Whether to shuffle the order of the choices (`boolean`).        - `hasOpenChoice`: Whether the question allows an open-ended response (`boolean`).        - `branching`: Branching logic for the question. See branching types below for details.        Branching logic can be one of the following types:        Next question: Proceeds to the next question        ```json        {            &quot;type&quot;: &quot;next_question&quot;        }        ```        End: Ends the survey, optionally displaying a confirmation message.        ```json        {            &quot;type&quot;: &quot;end&quot;        }        ```        Response-based: Branches based on the response values. Available for the `rating` and `single_choice` question types.        ```json        {            &quot;type&quot;: &quot;response_based&quot;,            &quot;responseValues&quot;: {                &quot;responseKey&quot;: &quot;value&quot;            }        }        ```        Specific question: Proceeds to a specific question by index.        ```json        {            &quot;type&quot;: &quot;specific_question&quot;,            &quot;index&quot;: 2        }        ```        Translations: Each question can include inline translations.        - `translations`: Object mapping language codes to translated fields.        - Language codes: Canonical BCP-47-ish strings (e.g., &quot;es&quot;, &quot;es-MX&quot;, &quot;zh-CN&quot;). Aliases like &quot;english&quot; or &quot;default&quot; are rejected. The survey&apos;s `base_language` (default &quot;en&quot;) declares the language of the untranslated text and cannot also appear as a translation key.        - Translatable fields: `question`, `description`, `buttonText`, `choices`, `lowerBoundLabel`, `upperBoundLabel`, `link`        Example with translations:        ```json        {            &quot;id&quot;: &quot;uuid&quot;,            &quot;type&quot;: &quot;rating&quot;,            &quot;question&quot;: &quot;How satisfied are you?&quot;,            &quot;lowerBoundLabel&quot;: &quot;Not satisfied&quot;,            &quot;upperBoundLabel&quot;: &quot;Very satisfied&quot;,            &quot;translations&quot;: {                &quot;es&quot;: {                    &quot;question&quot;: &quot;¿Qué tan satisfecho estás?&quot;,                    &quot;lowerBoundLabel&quot;: &quot;No satisfecho&quot;,                    &quot;upperBoundLabel&quot;: &quot;Muy satisfecho&quot;                },                &quot;fr&quot;: {                    &quot;question&quot;: &quot;Dans quelle mesure êtes-vous satisfait?&quot;                }            }        }        ```        </summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.SurveyQuestionInputSchema>? Questions { get; set; }
@@ -160,7 +160,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? ResponseSamplingStartDate { get; set; }
         /// <summary>The maximum number of responses before automatically stopping the survey.</summary>
         public int? ResponsesLimit { get; set; }
-        /// <summary>&quot;Survey scheduling behavior: &apos;once&apos; = show once per user (default), &apos;recurring&apos; = repeat based on iteration_count and iteration_frequency_days settings, &apos;always&apos; = show every time conditions are met (mainly for widget surveys)* `once` - once* `recurring` - recurring* `always` - always&quot;</summary>
+        /// <summary>Survey scheduling behavior: &apos;once&apos; = show once per user (default), &apos;recurring&apos; = repeat based on iteration_count and iteration_frequency_days settings, &apos;always&apos; = show every time conditions are met (mainly for widget surveys)* `once` - once* `recurring` - recurring* `always` - always</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaSchedule? Schedule { get; set; }
@@ -178,13 +178,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaTargetingFlag TargetingFlag { get; private set; }
 #endif
-        /// <summary>&quot;Target specific users based on their properties. Example: {groups: [{properties: [{key: &apos;email&apos;, value: [&apos;@company.com&apos;], operator: &apos;icontains&apos;}], rollout_percentage: 100}]}&quot;</summary>
+        /// <summary>Target specific users based on their properties. Example: {groups: [{properties: [{key: &apos;email&apos;, value: [&apos;@company.com&apos;], operator: &apos;icontains&apos;}], rollout_percentage: 100}]}</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaTargetingFlagFilters? TargetingFlagFilters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFiltersSchema? TargetingFlagFilters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaTargetingFlagFilters TargetingFlagFilters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFiltersSchema TargetingFlagFilters { get; set; }
 #endif
         /// <summary>An existing targeting flag to use for this survey.</summary>
         public int? TargetingFlagId { get; set; }
@@ -229,10 +229,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "appearance", n => { Appearance = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaAppearance>(global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaAppearance.CreateFromDiscriminatorValue); } },
+                { "appearance", n => { Appearance = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearanceSchema>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearanceSchema.CreateFromDiscriminatorValue); } },
                 { "archived", n => { Archived = n.GetBoolValue(); } },
                 { "base_language", n => { BaseLanguage = n.GetStringValue(); } },
-                { "conditions", n => { Conditions = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaConditions>(global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaConditions.CreateFromDiscriminatorValue); } },
+                { "conditions", n => { Conditions = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsSchema>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsSchema.CreateFromDiscriminatorValue); } },
                 { "_create_in_folder", n => { CreateInFolder = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaCreatedBy.CreateFromDiscriminatorValue); } },
@@ -263,7 +263,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "schedule", n => { Schedule = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaSchedule>(global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaSchedule.CreateFromDiscriminatorValue); } },
                 { "start_date", n => { StartDate = n.GetDateTimeOffsetValue(); } },
                 { "targeting_flag", n => { TargetingFlag = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaTargetingFlag>(global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaTargetingFlag.CreateFromDiscriminatorValue); } },
-                { "targeting_flag_filters", n => { TargetingFlagFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaTargetingFlagFilters>(global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaTargetingFlagFilters.CreateFromDiscriminatorValue); } },
+                { "targeting_flag_filters", n => { TargetingFlagFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFiltersSchema>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFiltersSchema.CreateFromDiscriminatorValue); } },
                 { "targeting_flag_id", n => { TargetingFlagId = n.GetIntValue(); } },
                 { "translations", n => { Translations = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaTranslations>(global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaTranslations.CreateFromDiscriminatorValue); } },
                 { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaType>(global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaType.CreateFromDiscriminatorValue); } },
@@ -276,10 +276,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaAppearance>("appearance", Appearance);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearanceSchema>("appearance", Appearance);
             writer.WriteBoolValue("archived", Archived);
             writer.WriteStringValue("base_language", BaseLanguage);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaConditions>("conditions", Conditions);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsSchema>("conditions", Conditions);
             writer.WriteStringValue("_create_in_folder", CreateInFolder);
             writer.WriteIntValue("current_iteration", CurrentIteration);
             writer.WriteDateTimeOffsetValue("current_iteration_start_date", CurrentIterationStartDate);
@@ -304,7 +304,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("responses_limit", ResponsesLimit);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaSchedule>("schedule", Schedule);
             writer.WriteDateTimeOffsetValue("start_date", StartDate);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaTargetingFlagFilters>("targeting_flag_filters", TargetingFlagFilters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFiltersSchema>("targeting_flag_filters", TargetingFlagFilters);
             writer.WriteIntValue("targeting_flag_id", TargetingFlagId);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaTranslations>("translations", Translations);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnlySchemaType>("type", Type);

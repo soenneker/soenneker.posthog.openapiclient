@@ -21,7 +21,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? DaysUntilExpiry { get; set; }
         /// <summary>ISO date the quarantine expires; past it the test blocks CI normally again.</summary>
         public Date? Expires { get; set; }
-        /// <summary>&quot;Test selector: an exact test id, a file, a directory, a class prefix, or &apos;product:&lt;dashed-name&gt;&apos;.&quot;</summary>
+        /// <summary>Test selector: an exact test id, a file, a directory, a class prefix, or &apos;product:&lt;dashed-name&gt;&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Id { get; set; }
@@ -37,7 +37,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Issue { get; set; }
 #endif
-        /// <summary>&quot;Expiry classification: &apos;active&apos; (&gt;7 days left), &apos;expiring_soon&apos; (0-7 days left), &apos;in_grace&apos; (expired up to 7 days ago), &apos;overdue&apos; (expired beyond the grace period).* `active` - ACTIVE* `expiring_soon` - EXPIRING_SOON* `in_grace` - IN_GRACE* `overdue` - OVERDUE&quot;</summary>
+        /// <summary>Expiry classification: &apos;active&apos; (&gt;7 days left), &apos;expiring_soon&apos; (0-7 days left), &apos;in_grace&apos; (expired up to 7 days ago), &apos;overdue&apos; (expired beyond the grace period).* `active` - ACTIVE* `expiring_soon` - EXPIRING_SOON* `in_grace` - IN_GRACE* `overdue` - OVERDUE</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.QuarantineEntryLifecycle? Lifecycle { get; set; }
@@ -77,7 +77,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Runner { get; set; }
 #endif
-        /// <summary>&quot;What the selector covers: &apos;test&apos; (contains &apos;::&apos;), &apos;file&apos;, &apos;directory&apos;, or &apos;product&apos;.* `product` - PRODUCT* `file` - FILE* `directory` - DIRECTORY* `test` - TEST&quot;</summary>
+        /// <summary>What the selector covers: &apos;test&apos; (contains &apos;::&apos;), &apos;file&apos;, &apos;directory&apos;, or &apos;product&apos;.* `product` - PRODUCT* `file` - FILE* `directory` - DIRECTORY* `test` - TEST</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.QuarantineEntrySelectorKind? SelectorKind { get; set; }

@@ -7,7 +7,6 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_analytics.Clustering
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_analytics.Clustering_runs;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_analytics.Evaluation_config;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_analytics.Evaluation_reports;
-using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_analytics.Evaluation_summary;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_analytics.ModelsRequests;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_analytics.Offline_evaluations;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_analytics.Parser_recipes;
@@ -56,11 +55,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_analytics
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_analytics.Evaluation_reports.Evaluation_reportsRequestBuilder Evaluation_reports
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_analytics.Evaluation_reports.Evaluation_reportsRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The evaluation_summary property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_analytics.Evaluation_summary.Evaluation_summaryRequestBuilder Evaluation_summary
-        {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_analytics.Evaluation_summary.Evaluation_summaryRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The models property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_analytics.ModelsRequests.ModelsRequestBuilder Models

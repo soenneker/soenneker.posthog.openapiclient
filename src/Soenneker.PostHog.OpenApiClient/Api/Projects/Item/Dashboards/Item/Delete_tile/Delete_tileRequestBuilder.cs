@@ -36,22 +36,21 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Dele
         /// <summary>
         /// Soft-delete a single tile from a dashboard.Works for text, insight, and button tiles. The underlying Insight, Text, or ButtonTileobject is preserved — only the dashboard tile is hidden. To delete the entire dashboard,use the dashboard delete endpoint instead.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardsDeleteTile201Response"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.DashboardsDeleteTile201Response?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.DeleteTileRequest body, Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Delete_tile.Delete_tileRequestBuilder.Delete_tileRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.DeleteTileRequest body, Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Delete_tile.Delete_tileRequestBuilder.Delete_tileRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.DashboardsDeleteTile201Response> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.DeleteTileRequest body, Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Delete_tile.Delete_tileRequestBuilder.Delete_tileRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.DeleteTileRequest body, Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Delete_tile.Delete_tileRequestBuilder.Delete_tileRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.DashboardsDeleteTile201Response>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.DashboardsDeleteTile201Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Soft-delete a single tile from a dashboard.Works for text, insight, and button tiles. The underlying Insight, Text, or ButtonTileobject is preserved — only the dashboard tile is hidden. To delete the entire dashboard,use the dashboard delete endpoint instead.
@@ -71,7 +70,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Dele
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }
@@ -90,8 +88,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Dele
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Delete_tileRequestBuilderPostQueryParameters 
         {
+            #pragma warning disable CS1591
             [QueryParameter("format")]
             public global::Soenneker.PostHog.OpenApiClient.Models.DashboardsDeleteTileFormatParameter? Format { get; set; }
+            #pragma warning restore CS1591
         }
     }
 }

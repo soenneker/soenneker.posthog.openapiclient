@@ -77,6 +77,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDtoOutputProperty Output { get; set; }
 #endif
+        /// <summary>True when this run&apos;s sandbox serves a dev stack preview, so clients can offer the preview link. Open it through the run&apos;s `preview/` endpoint, which mints a fresh access token on every request.</summary>
+        public bool? PreviewAvailable { get; set; }
         /// <summary>Configured LLM provider for this run, such as &apos;anthropic&apos; or &apos;openai&apos;.* `anthropic` - anthropic* `openai` - openai</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -164,6 +166,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "log_url", n => { LogUrl = n.GetStringValue(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "output", n => { Output = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDtoOutputProperty>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDtoOutputProperty.CreateFromDiscriminatorValue); } },
+                { "preview_available", n => { PreviewAvailable = n.GetBoolValue(); } },
                 { "provider", n => { Provider = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDtoProvider>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDtoProvider.CreateFromDiscriminatorValue); } },
                 { "reasoning_effort", n => { ReasoningEffort = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDtoReasoningEffort>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDtoReasoningEffort.CreateFromDiscriminatorValue); } },
                 { "runtime_adapter", n => { RuntimeAdapter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDtoRuntimeAdapter>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDtoRuntimeAdapter.CreateFromDiscriminatorValue); } },
@@ -190,6 +193,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("log_url", LogUrl);
             writer.WriteStringValue("model", Model);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDtoOutputProperty>("output", Output);
+            writer.WriteBoolValue("preview_available", PreviewAvailable);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDtoProvider>("provider", Provider);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDtoReasoningEffort>("reasoning_effort", ReasoningEffort);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDtoRuntimeAdapter>("runtime_adapter", RuntimeAdapter);

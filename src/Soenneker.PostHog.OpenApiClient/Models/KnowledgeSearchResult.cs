@@ -55,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SourceName { get; private set; }
 #endif
-        /// <summary>Source type (text, url, or file).</summary>
+        /// <summary>Source type: text, URL, or file.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SourceType { get; private set; }

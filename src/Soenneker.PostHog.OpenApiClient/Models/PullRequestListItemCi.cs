@@ -15,7 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Latest runs that completed with conclusion &apos;failure&apos; or &apos;timed_out&apos;.</summary>
+        /// <summary>Latest runs that ended in failure, timeout, startup failure, or staleness.</summary>
         public int? Failing { get; set; }
         /// <summary>The workflow names behind `failing`, sorted - names what is failing instead of leaving a bare count.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

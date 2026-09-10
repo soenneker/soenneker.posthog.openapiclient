@@ -24,7 +24,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? EndLine { get; set; }
         /// <summary>Spans whose OTel status is Error (status_code = 2).</summary>
         public int? ErrorCount { get; set; }
-        /// <summary>&quot;Bucket anchor: the source line (line mode) or the symbol&apos;s startLine (symbol mode).&quot;</summary>
+        /// <summary>Bucket anchor: the source line (line mode) or the symbol&apos;s startLine (symbol mode).</summary>
         public int? Line { get; set; }
         /// <summary>Echoed name from the requested symbol (symbol mode only).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

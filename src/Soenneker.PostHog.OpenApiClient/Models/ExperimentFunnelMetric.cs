@@ -12,6 +12,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class ExperimentFunnelMetric : IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>How to attribute the breakdown value across funnel steps.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.BreakdownAttributionTypeWrapper? BreakdownAttributionType { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.BreakdownAttributionTypeWrapper BreakdownAttributionType { get; set; }
+#endif
+        /// <summary>When breakdownAttributionType is `step`, the 0-indexed step to attribute from.</summary>
+        public int? BreakdownAttributionValue { get; set; }
         /// <summary>The breakdownFilter property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -57,21 +67,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The isSharedMetric property</summary>
         public bool? IsSharedMetric { get; set; }
         /// <summary>The kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Kind { get; set; }
-#nullable restore
-#else
-        public string Kind { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricKind? Kind { get; set; }
         /// <summary>The metric_type property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? MetricType { get; set; }
-#nullable restore
-#else
-        public string MetricType { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelMetricType? MetricType { get; set; }
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -126,6 +124,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "breakdownAttributionType", n => { BreakdownAttributionType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownAttributionTypeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.BreakdownAttributionTypeWrapper.CreateFromDiscriminatorValue); } },
+                { "breakdownAttributionValue", n => { BreakdownAttributionValue = n.GetIntValue(); } },
                 { "breakdownFilter", n => { BreakdownFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter>(global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter.CreateFromDiscriminatorValue); } },
                 { "conversion_window", n => { ConversionWindow = n.GetIntValue(); } },
                 { "conversion_window_unit", n => { ConversionWindowUnit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper2>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper2.CreateFromDiscriminatorValue); } },
@@ -133,8 +133,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "funnel_order_type", n => { FunnelOrderType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StepOrderValueWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.StepOrderValueWrapper.CreateFromDiscriminatorValue); } },
                 { "goal", n => { Goal = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricGoalWrapper2>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricGoalWrapper2.CreateFromDiscriminatorValue); } },
                 { "isSharedMetric", n => { IsSharedMetric = n.GetBoolValue(); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
-                { "metric_type", n => { MetricType = n.GetStringValue(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricKind>(); } },
+                { "metric_type", n => { MetricType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelMetricType>(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetricResponseProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetricResponseProperty.CreateFromDiscriminatorValue); } },
                 { "series", n => { Series = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetricSeriesItem>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetricSeriesItem.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -150,6 +150,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownAttributionTypeWrapper>("breakdownAttributionType", BreakdownAttributionType);
+            writer.WriteIntValue("breakdownAttributionValue", BreakdownAttributionValue);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter>("breakdownFilter", BreakdownFilter);
             writer.WriteIntValue("conversion_window", ConversionWindow);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper2>("conversion_window_unit", ConversionWindowUnit);
@@ -157,8 +159,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StepOrderValueWrapper>("funnel_order_type", FunnelOrderType);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricGoalWrapper2>("goal", Goal);
             writer.WriteBoolValue("isSharedMetric", IsSharedMetric);
-            writer.WriteStringValue("kind", Kind);
-            writer.WriteStringValue("metric_type", MetricType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricKind>("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelMetricType>("metric_type", MetricType);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetricResponseProperty>("response", Response);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetricSeriesItem>("series", Series);

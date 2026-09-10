@@ -41,7 +41,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public CommentsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/comments{?completed*,cursor*,item_id*,kind*,scope*,search*,source_comment*,task_id*}", pathParameters)
+        public CommentsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/comments{?completed*,created_by*,cursor*,item_id*,kind*,scope*,search*,source_comment*,task_id*}", pathParameters)
         {
         }
         /// <summary>
@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public CommentsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/comments{?completed*,cursor*,item_id*,kind*,scope*,search*,source_comment*,task_id*}", rawUrl)
+        public CommentsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/comments{?completed*,created_by*,cursor*,item_id*,kind*,scope*,search*,source_comment*,task_id*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedCommentList"/></returns>
@@ -68,7 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedCommentList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedCommentList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Create a comment.Support messages are deduplicated: an identical message from the same author on the sameticket within a short window returns the original comment with a 200 instead of creating asecond one, and a 409 while a concurrent request is still creating it.&quot;
+        /// Create a comment.Support messages are deduplicated: an identical message from the same author on the sameticket within a short window returns the original comment with a 200 instead of creating asecond one, and a 409 while a concurrent request is still creating it.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Comment"/></returns>
         /// <param name="body">The request body</param>
@@ -109,7 +109,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments
             return requestInfo;
         }
         /// <summary>
-        /// &quot;Create a comment.Support messages are deduplicated: an identical message from the same author on the sameticket within a short window returns the original comment with a 200 instead of creating asecond one, and a 409 while a concurrent request is still creating it.&quot;
+        /// Create a comment.Support messages are deduplicated: an identical message from the same author on the sameticket within a short window returns the original comment with a 200 instead of creating asecond one, and a 409 while a concurrent request is still creating it.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
@@ -147,6 +147,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Comments
             /// <summary>When kind=task, restrict to open (incomplete) or completed tasks. Ignored when kind is not &apos;task&apos;. Defaults to &apos;any&apos; (no filter).* `any` - any* `open` - open* `completed` - completed</summary>
             [QueryParameter("completed")]
             public global::Soenneker.PostHog.OpenApiClient.Models.CommentsListCompletedParameter? Completed { get; set; }
+            /// <summary>Filter by the numeric ID of the user who wrote the comment.</summary>
+            [QueryParameter("created_by")]
+            public int? CreatedBy { get; set; }
             /// <summary>The pagination cursor value.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

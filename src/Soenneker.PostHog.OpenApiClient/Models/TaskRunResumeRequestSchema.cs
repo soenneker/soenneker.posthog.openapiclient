@@ -32,7 +32,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string GithubUserToken { get; set; }
 #endif
-        /// <summary>&quot;Execution mode: &apos;interactive&apos; for user-connected runs, &apos;background&apos; for autonomous runs* `interactive` - interactive* `background` - background&quot;</summary>
+        /// <summary>Execution mode: &apos;interactive&apos; for user-connected runs, &apos;background&apos; for autonomous runs* `interactive` - interactive* `background` - background</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunResumeRequestSchemaMode? Mode { get; set; }

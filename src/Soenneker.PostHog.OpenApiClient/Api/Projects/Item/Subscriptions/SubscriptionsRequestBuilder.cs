@@ -178,7 +178,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Subscriptions
             [QueryParameter("ordering")]
             public string Ordering { get; set; }
 #endif
-            /// <summary>&quot;Filter by subscription resource: insight, dashboard export, or AI report.&quot;</summary>
+            /// <summary>Filter by subscription resource: insight, dashboard export, or AI report.</summary>
             [QueryParameter("resource_type")]
             public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionsListResourceTypeParameter? ResourceType { get; set; }
             /// <summary>A search term.</summary>
@@ -191,7 +191,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Subscriptions
             [QueryParameter("search")]
             public string Search { get; set; }
 #endif
-            /// <summary>Filter by delivery channel (email or Slack).</summary>
+            /// <summary>Filter by delivery channel: email, Slack, or Microsoft Teams.</summary>
             [QueryParameter("target_type")]
             public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionsListTargetTypeParameter? TargetType { get; set; }
         }

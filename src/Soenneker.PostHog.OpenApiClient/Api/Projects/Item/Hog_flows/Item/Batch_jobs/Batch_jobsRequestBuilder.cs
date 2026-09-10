@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Batch_jobs.Item;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -17,6 +18,18 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Batch
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Batch_jobsRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.hog_flows.item.batch_jobs.item collection</summary>
+        /// <param name="position">ID of the batch run to stop.</param>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Batch_jobs.Item.WithBatchJobItemRequestBuilder"/></returns>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Batch_jobs.Item.WithBatchJobItemRequestBuilder this[Guid position]
+        {
+            get
+            {
+                var urlTplParams = new Dictionary<string, object>(PathParameters);
+                urlTplParams.Add("batchJobId", position);
+                return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Batch_jobs.Item.WithBatchJobItemRequestBuilder(urlTplParams, RequestAdapter);
+            }
+        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Batch_jobs.Batch_jobsRequestBuilder"/> and sets the default values.
         /// </summary>

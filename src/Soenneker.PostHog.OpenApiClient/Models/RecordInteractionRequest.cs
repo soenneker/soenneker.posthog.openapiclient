@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;Which interaction counter to increment: &apos;data&apos; (slicing/filtering the dashboard) or &apos;recording&apos; (opening a session recording).* `data` - data* `recording` - recording&quot;</summary>
+        /// <summary>Which interaction counter to increment: &apos;data&apos; (slicing/filtering the dashboard) or &apos;recording&apos; (opening a session recording).* `data` - data* `recording` - recording</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.RecordInteractionRequestInteractionKind? InteractionKind { get; set; }

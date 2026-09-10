@@ -9,18 +9,31 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class Breakdown : IAdditionalDataHolder, IParsable
+    public partial class Breakdown : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Breakdown"/> and sets the default values.
-        /// </summary>
-        public Breakdown()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
+        /// <summary>The group_type_index property</summary>
+        public int? GroupTypeIndex { get; set; }
+        /// <summary>The histogram_bin_count property</summary>
+        public int? HistogramBinCount { get; set; }
+        /// <summary>The normalize_url property</summary>
+        public bool? NormalizeUrl { get; set; }
+        /// <summary>The property property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.BreakdownProperty? Property { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.BreakdownProperty Property { get; set; }
+#endif
+        /// <summary>The type property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.MultipleBreakdownTypeWrapper? Type { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.MultipleBreakdownTypeWrapper Type { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -39,6 +52,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "group_type_index", n => { GroupTypeIndex = n.GetIntValue(); } },
+                { "histogram_bin_count", n => { HistogramBinCount = n.GetIntValue(); } },
+                { "normalize_url", n => { NormalizeUrl = n.GetBoolValue(); } },
+                { "property", n => { Property = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownProperty>(global::Soenneker.PostHog.OpenApiClient.Models.BreakdownProperty.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MultipleBreakdownTypeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.MultipleBreakdownTypeWrapper.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -48,7 +66,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteAdditionalData(AdditionalData);
+            writer.WriteIntValue("group_type_index", GroupTypeIndex);
+            writer.WriteIntValue("histogram_bin_count", HistogramBinCount);
+            writer.WriteBoolValue("normalize_url", NormalizeUrl);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownProperty>("property", Property);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MultipleBreakdownTypeWrapper>("type", Type);
         }
     }
 }

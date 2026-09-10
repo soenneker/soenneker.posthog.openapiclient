@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_streams.Item
         {
         }
         /// <summary>
-        /// &quot;The caller&apos;s event stream: a live feed of selected accounts&apos; events posted to aSlack channel of their choice. Per-user — each team member owns at most one stream, andevery endpoint is scoped to the caller&apos;s own. Delivery runs through a managed CDPdestination that is re-provisioned inside the same transaction as every write, soconfig and delivery can&apos;t drift apart.&quot;
+        /// The caller&apos;s event stream: a live feed of selected accounts&apos; events posted to aSlack channel of their choice. Per-user — each team member owns at most one stream, andevery endpoint is scoped to the caller&apos;s own. Delivery runs through a managed CDPdestination that is re-provisioned inside the same transaction as every write, soconfig and delivery can&apos;t drift apart.
         /// </summary>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -69,7 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_streams.Item
             await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;The caller&apos;s event stream: a live feed of selected accounts&apos; events posted to aSlack channel of their choice. Per-user — each team member owns at most one stream, andevery endpoint is scoped to the caller&apos;s own. Delivery runs through a managed CDPdestination that is re-provisioned inside the same transaction as every write, soconfig and delivery can&apos;t drift apart.&quot;
+        /// The caller&apos;s event stream: a live feed of selected accounts&apos; events posted to aSlack channel of their choice. Per-user — each team member owns at most one stream, andevery endpoint is scoped to the caller&apos;s own. Delivery runs through a managed CDPdestination that is re-provisioned inside the same transaction as every write, soconfig and delivery can&apos;t drift apart.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EventStream"/></returns>
         /// <param name="body">The caller&apos;s event stream — a live feed of selected accounts&apos; events posted to aSlack channel of their choice. One stream per user per project.</param>
@@ -89,7 +89,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_streams.Item
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.EventStream>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.EventStream.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;The caller&apos;s event stream: a live feed of selected accounts&apos; events posted to aSlack channel of their choice. Per-user — each team member owns at most one stream, andevery endpoint is scoped to the caller&apos;s own. Delivery runs through a managed CDPdestination that is re-provisioned inside the same transaction as every write, soconfig and delivery can&apos;t drift apart.&quot;
+        /// The caller&apos;s event stream: a live feed of selected accounts&apos; events posted to aSlack channel of their choice. Per-user — each team member owns at most one stream, andevery endpoint is scoped to the caller&apos;s own. Delivery runs through a managed CDPdestination that is re-provisioned inside the same transaction as every write, soconfig and delivery can&apos;t drift apart.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EventStream"/></returns>
         /// <param name="body">The caller&apos;s event stream — a live feed of selected accounts&apos; events posted to aSlack channel of their choice. One stream per user per project.</param>
@@ -109,7 +109,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_streams.Item
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.EventStream>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.EventStream.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;The caller&apos;s event stream: a live feed of selected accounts&apos; events posted to aSlack channel of their choice. Per-user — each team member owns at most one stream, andevery endpoint is scoped to the caller&apos;s own. Delivery runs through a managed CDPdestination that is re-provisioned inside the same transaction as every write, soconfig and delivery can&apos;t drift apart.&quot;
+        /// The caller&apos;s event stream: a live feed of selected accounts&apos; events posted to aSlack channel of their choice. Per-user — each team member owns at most one stream, andevery endpoint is scoped to the caller&apos;s own. Delivery runs through a managed CDPdestination that is re-provisioned inside the same transaction as every write, soconfig and delivery can&apos;t drift apart.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -124,11 +124,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_streams.Item
 #endif
             var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <summary>
-        /// &quot;The caller&apos;s event stream: a live feed of selected accounts&apos; events posted to aSlack channel of their choice. Per-user — each team member owns at most one stream, andevery endpoint is scoped to the caller&apos;s own. Delivery runs through a managed CDPdestination that is re-provisioned inside the same transaction as every write, soconfig and delivery can&apos;t drift apart.&quot;
+        /// The caller&apos;s event stream: a live feed of selected accounts&apos; events posted to aSlack channel of their choice. Per-user — each team member owns at most one stream, andevery endpoint is scoped to the caller&apos;s own. Delivery runs through a managed CDPdestination that is re-provisioned inside the same transaction as every write, soconfig and delivery can&apos;t drift apart.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The caller&apos;s event stream — a live feed of selected accounts&apos; events posted to aSlack channel of their choice. One stream per user per project.</param>
@@ -150,7 +149,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_streams.Item
             return requestInfo;
         }
         /// <summary>
-        /// &quot;The caller&apos;s event stream: a live feed of selected accounts&apos; events posted to aSlack channel of their choice. Per-user — each team member owns at most one stream, andevery endpoint is scoped to the caller&apos;s own. Delivery runs through a managed CDPdestination that is re-provisioned inside the same transaction as every write, soconfig and delivery can&apos;t drift apart.&quot;
+        /// The caller&apos;s event stream: a live feed of selected accounts&apos; events posted to aSlack channel of their choice. Per-user — each team member owns at most one stream, andevery endpoint is scoped to the caller&apos;s own. Delivery runs through a managed CDPdestination that is re-provisioned inside the same transaction as every write, soconfig and delivery can&apos;t drift apart.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The caller&apos;s event stream — a live feed of selected accounts&apos; events posted to aSlack channel of their choice. One stream per user per project.</param>

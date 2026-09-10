@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Experiment lifecycle state: &apos;draft&apos; (not yet launched), &apos;running&apos; (launched with active feature flag), &apos;paused&apos; (running with feature flag deactivated — virtual state derived from feature_flag.active, not stored), &apos;exposure_frozen&apos; (running with enrollment frozen to the already-exposed cohort while metrics keep flowing — virtual state derived from the flag&apos;s release groups, not stored), &apos;stopped&apos; (ended).&quot;
+    /// Experiment lifecycle state: &apos;draft&apos; (not yet launched), &apos;running&apos; (launched with active feature flag), &apos;paused&apos; (running with feature flag deactivated — virtual state derived from feature_flag.active, not stored), &apos;exposure_frozen&apos; (running with enrollment frozen to the already-exposed cohort while metrics keep flowing — virtual state derived from the flag&apos;s release groups, not stored), &apos;stopped&apos; (ended).
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedExperimentWriteStatus : IAdditionalDataHolder, IParsable

@@ -23,13 +23,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig Preprocessing { get; set; }
 #endif
         /// <summary>The type property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Type { get; set; }
-#nullable restore
-#else
-        public string Type { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.ThresholdType? Type { get; set; }
         /// <summary>Upper bound - values above this are anomalies</summary>
         public double? UpperBound { get; set; }
         /// <summary>
@@ -52,7 +46,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "lower_bound", n => { LowerBound = n.GetDoubleValue(); } },
                 { "preprocessing", n => { Preprocessing = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig>(global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ThresholdType>(); } },
                 { "upper_bound", n => { UpperBound = n.GetDoubleValue(); } },
             };
         }
@@ -65,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("lower_bound", LowerBound);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig>("preprocessing", Preprocessing);
-            writer.WriteStringValue("type", Type);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ThresholdType>("type", Type);
             writer.WriteDoubleValue("upper_bound", UpperBound);
         }
     }

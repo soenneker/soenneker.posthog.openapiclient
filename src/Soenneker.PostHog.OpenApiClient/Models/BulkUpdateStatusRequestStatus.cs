@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;New status to apply to all selected tickets: new, open, pending, on_hold, or resolved.* `new` - New* `open` - Open* `pending` - Pending* `on_hold` - On hold* `resolved` - Resolved&quot;
+    /// New status to apply to all selected tickets: new, open, pending, on_hold, or resolved.* `new` - New* `open` - Open* `pending` - Pending* `on_hold` - On hold* `resolved` - Resolved
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class BulkUpdateStatusRequestStatus : IAdditionalDataHolder, IParsable

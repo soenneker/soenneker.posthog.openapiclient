@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Summary detail level: &apos;minimal&apos; for 3-5 points, &apos;detailed&apos; for 5-10 points* `minimal` - minimal* `detailed` - detailed&quot;
+    /// Summary detail level: &apos;minimal&apos; for 3-5 points, &apos;detailed&apos; for 5-10 points* `minimal` - minimal* `detailed` - detailed
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SummarizeRequestMode : IAdditionalDataHolder, IParsable

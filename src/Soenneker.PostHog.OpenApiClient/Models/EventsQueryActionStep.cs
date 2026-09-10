@@ -9,18 +9,89 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class EventsQueryActionStep : IAdditionalDataHolder, IParsable
+    public partial class EventsQueryActionStep : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EventsQueryActionStep"/> and sets the default values.
-        /// </summary>
-        public EventsQueryActionStep()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
+        /// <summary>The event property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Event { get; set; }
+#nullable restore
+#else
+        public string Event { get; set; }
+#endif
+        /// <summary>The href property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Href { get; set; }
+#nullable restore
+#else
+        public string Href { get; set; }
+#endif
+        /// <summary>The href_matching property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.HrefMatchingWrapper? HrefMatching { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.HrefMatchingWrapper HrefMatching { get; set; }
+#endif
+        /// <summary>The properties property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.EventsQueryActionStepPropertiesItem>? Properties { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.EventsQueryActionStepPropertiesItem> Properties { get; set; }
+#endif
+        /// <summary>The selector property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Selector { get; set; }
+#nullable restore
+#else
+        public string Selector { get; set; }
+#endif
+        /// <summary>The tag_name property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? TagName { get; set; }
+#nullable restore
+#else
+        public string TagName { get; set; }
+#endif
+        /// <summary>The text property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Text { get; set; }
+#nullable restore
+#else
+        public string Text { get; set; }
+#endif
+        /// <summary>The text_matching property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.TextMatchingWrapper? TextMatching { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.TextMatchingWrapper TextMatching { get; set; }
+#endif
+        /// <summary>The url property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Url { get; set; }
+#nullable restore
+#else
+        public string Url { get; set; }
+#endif
+        /// <summary>The url_matching property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.UrlMatchingWrapper? UrlMatching { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.UrlMatchingWrapper UrlMatching { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -39,6 +110,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "event", n => { Event = n.GetStringValue(); } },
+                { "href", n => { Href = n.GetStringValue(); } },
+                { "href_matching", n => { HrefMatching = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HrefMatchingWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.HrefMatchingWrapper.CreateFromDiscriminatorValue); } },
+                { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EventsQueryActionStepPropertiesItem>(global::Soenneker.PostHog.OpenApiClient.Models.EventsQueryActionStepPropertiesItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "selector", n => { Selector = n.GetStringValue(); } },
+                { "tag_name", n => { TagName = n.GetStringValue(); } },
+                { "text", n => { Text = n.GetStringValue(); } },
+                { "text_matching", n => { TextMatching = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TextMatchingWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.TextMatchingWrapper.CreateFromDiscriminatorValue); } },
+                { "url", n => { Url = n.GetStringValue(); } },
+                { "url_matching", n => { UrlMatching = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UrlMatchingWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.UrlMatchingWrapper.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -48,7 +129,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteAdditionalData(AdditionalData);
+            writer.WriteStringValue("event", Event);
+            writer.WriteStringValue("href", Href);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HrefMatchingWrapper>("href_matching", HrefMatching);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EventsQueryActionStepPropertiesItem>("properties", Properties);
+            writer.WriteStringValue("selector", Selector);
+            writer.WriteStringValue("tag_name", TagName);
+            writer.WriteStringValue("text", Text);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TextMatchingWrapper>("text_matching", TextMatching);
+            writer.WriteStringValue("url", Url);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UrlMatchingWrapper>("url_matching", UrlMatching);
         }
     }
 }

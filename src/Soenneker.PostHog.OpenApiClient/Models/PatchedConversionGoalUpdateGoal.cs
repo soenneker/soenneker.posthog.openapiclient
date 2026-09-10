@@ -70,10 +70,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The fixedProperties property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PartialConversionGoalFilter1FixedPropertiesAnyOf1Item>? FixedProperties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PartialConversionGoalFilter1FixedPropertiesItem>? FixedProperties { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PartialConversionGoalFilter1FixedPropertiesAnyOf1Item> FixedProperties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PartialConversionGoalFilter1FixedPropertiesItem> FixedProperties { get; set; }
 #endif
         /// <summary>The id property</summary>
         public int? Id { get; set; }
@@ -158,18 +158,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The orderBy property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PartialConversionGoalFilter1OrderBy? OrderBy { get; set; }
+        public List<string>? OrderBy { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PartialConversionGoalFilter1OrderBy OrderBy { get; set; }
+        public List<string> OrderBy { get; set; }
 #endif
         /// <summary>The properties property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PartialConversionGoalFilter1PropertiesAnyOf1Item>? Properties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PartialConversionGoalFilter1PropertiesItem>? Properties { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PartialConversionGoalFilter1PropertiesAnyOf1Item> Properties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PartialConversionGoalFilter1PropertiesItem> Properties { get; set; }
 #endif
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -202,14 +202,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string TimestampField { get; set; }
-#endif
-        /// <summary>Union discriminator</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Type { get; set; }
-#nullable restore
-#else
-        public string Type { get; set; }
 #endif
         /// <summary>The version property</summary>
         public double? Version { get; set; }
@@ -247,7 +239,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "distinct_id_field", n => { DistinctIdField = n.GetStringValue(); } },
                 { "dw_source_type", n => { DwSourceType = n.GetStringValue(); } },
                 { "event", n => { Event = n.GetStringValue(); } },
-                { "fixedProperties", n => { FixedProperties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PartialConversionGoalFilter1FixedPropertiesAnyOf1Item>(global::Soenneker.PostHog.OpenApiClient.Models.PartialConversionGoalFilter1FixedPropertiesAnyOf1Item.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "fixedProperties", n => { FixedProperties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PartialConversionGoalFilter1FixedPropertiesItem>(global::Soenneker.PostHog.OpenApiClient.Models.PartialConversionGoalFilter1FixedPropertiesItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "id", n => { Id = n.GetIntValue(); } },
                 { "id_field", n => { IdField = n.GetStringValue(); } },
                 { "kind", n => { Kind = n.GetStringValue(); } },
@@ -261,13 +253,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "math_property_type", n => { MathPropertyType = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "optionalInFunnel", n => { OptionalInFunnel = n.GetBoolValue(); } },
-                { "orderBy", n => { OrderBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PartialConversionGoalFilter1OrderBy>(global::Soenneker.PostHog.OpenApiClient.Models.PartialConversionGoalFilter1OrderBy.CreateFromDiscriminatorValue); } },
-                { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PartialConversionGoalFilter1PropertiesAnyOf1Item>(global::Soenneker.PostHog.OpenApiClient.Models.PartialConversionGoalFilter1PropertiesAnyOf1Item.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "orderBy", n => { OrderBy = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PartialConversionGoalFilter1PropertiesItem>(global::Soenneker.PostHog.OpenApiClient.Models.PartialConversionGoalFilter1PropertiesItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PartialConversionGoalFilter1ResponseProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PartialConversionGoalFilter1ResponseProperty.CreateFromDiscriminatorValue); } },
                 { "schema_map", n => { SchemaMap = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PartialConversionGoalFilter1SchemaMapProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PartialConversionGoalFilter1SchemaMapProperty.CreateFromDiscriminatorValue); } },
                 { "table_name", n => { TableName = n.GetStringValue(); } },
                 { "timestamp_field", n => { TimestampField = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetStringValue(); } },
                 { "version", n => { Version = n.GetDoubleValue(); } },
             };
         }
@@ -286,7 +277,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("distinct_id_field", DistinctIdField);
             writer.WriteStringValue("dw_source_type", DwSourceType);
             writer.WriteStringValue("event", Event);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PartialConversionGoalFilter1FixedPropertiesAnyOf1Item>("fixedProperties", FixedProperties);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PartialConversionGoalFilter1FixedPropertiesItem>("fixedProperties", FixedProperties);
             writer.WriteIntValue("id", Id);
             writer.WriteStringValue("id_field", IdField);
             writer.WriteStringValue("kind", Kind);
@@ -300,13 +291,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("math_property_type", MathPropertyType);
             writer.WriteStringValue("name", Name);
             writer.WriteBoolValue("optionalInFunnel", OptionalInFunnel);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PartialConversionGoalFilter1OrderBy>("orderBy", OrderBy);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PartialConversionGoalFilter1PropertiesAnyOf1Item>("properties", Properties);
+            writer.WriteCollectionOfPrimitiveValues<string>("orderBy", OrderBy);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PartialConversionGoalFilter1PropertiesItem>("properties", Properties);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PartialConversionGoalFilter1ResponseProperty>("response", Response);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PartialConversionGoalFilter1SchemaMapProperty>("schema_map", SchemaMap);
             writer.WriteStringValue("table_name", TableName);
             writer.WriteStringValue("timestamp_field", TimestampField);
-            writer.WriteStringValue("type", Type);
             writer.WriteDoubleValue("version", Version);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -8,26 +8,26 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper27"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BusinessModelEnumWrapper3"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper30"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BusinessModelEnumWrapper2"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ProjectBackwardCompatBusinessModel : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper27"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper30"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper27? BlankEnumWrapper27 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper30? BlankEnumWrapper30 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper27 BlankEnumWrapper27 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper30 BlankEnumWrapper30 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BusinessModelEnumWrapper3"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BusinessModelEnumWrapper2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BusinessModelEnumWrapper3? BusinessModelEnumWrapper3 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BusinessModelEnumWrapper2? BusinessModelEnumWrapper2 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BusinessModelEnumWrapper3 BusinessModelEnumWrapper3 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BusinessModelEnumWrapper2 BusinessModelEnumWrapper2 { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -47,13 +47,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.ProjectBackwardCompatBusinessModel();
-            if("BlankEnumWrapper27".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("BlankEnumWrapper30".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.BlankEnumWrapper27 = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper27();
+                result.BlankEnumWrapper30 = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper30();
             }
-            else if("BusinessModelEnumWrapper3".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("BusinessModelEnumWrapper2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.BusinessModelEnumWrapper3 = new global::Soenneker.PostHog.OpenApiClient.Models.BusinessModelEnumWrapper3();
+                result.BusinessModelEnumWrapper2 = new global::Soenneker.PostHog.OpenApiClient.Models.BusinessModelEnumWrapper2();
             }
             return result;
         }
@@ -63,13 +63,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(BlankEnumWrapper27 != null)
+            if(BlankEnumWrapper30 != null)
             {
-                return BlankEnumWrapper27.GetFieldDeserializers();
+                return BlankEnumWrapper30.GetFieldDeserializers();
             }
-            else if(BusinessModelEnumWrapper3 != null)
+            else if(BusinessModelEnumWrapper2 != null)
             {
-                return BusinessModelEnumWrapper3.GetFieldDeserializers();
+                return BusinessModelEnumWrapper2.GetFieldDeserializers();
             }
             else if(NullEnum != null)
             {
@@ -84,13 +84,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(BlankEnumWrapper27 != null)
+            if(BlankEnumWrapper30 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper27>(null, BlankEnumWrapper27);
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper30>(null, BlankEnumWrapper30);
             }
-            else if(BusinessModelEnumWrapper3 != null)
+            else if(BusinessModelEnumWrapper2 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BusinessModelEnumWrapper3>(null, BusinessModelEnumWrapper3);
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BusinessModelEnumWrapper2>(null, BusinessModelEnumWrapper2);
             }
             else if(NullEnum != null)
             {

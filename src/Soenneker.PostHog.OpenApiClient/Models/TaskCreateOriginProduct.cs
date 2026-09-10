@@ -8,15 +8,15 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// PostHog product or surface that created this task (e.g. error_tracking, slack, user_created). Origins reserved for server-created agents cannot be set through this API.* `onboarding` - Onboarding* `error_tracking` - Error Tracking* `eval_clusters` - Eval Clusters* `user_created` - User Created* `automation` - Automation* `slack` - Slack* `support_queue` - Support Queue* `session_summaries` - Session Summaries* `posthog_ai` - PostHog AI* `experiments` - Experiments* `signal_report` - Signal Report* `signals_scout` - Signals Scout* `support_reply` - Support Reply* `hogdesk` - HogDesk* `review_hog` - ReviewHog* `image_builder` - Image Builder* `loop` - Loop* `mcp_analytics` - MCP Analytics* `signals_chat` - Signals Chat
+    /// PostHog product or surface that created this task (e.g. error_tracking, slack, user_created). Origins reserved for server-created agents cannot be set through this API.* `onboarding` - Onboarding* `error_tracking` - Error Tracking* `eval_clusters` - Eval Clusters* `user_created` - User Created* `slack` - Slack* `support_queue` - Support Queue* `session_summaries` - Session Summaries* `posthog_ai` - PostHog AI* `experiments` - Experiments* `signal_report` - Signal Report* `signals_scout` - Signals Scout* `scout_suggestions` - Signals Scout Suggestions* `support_reply` - Support Reply* `hogdesk` - HogDesk* `review_hog` - ReviewHog* `image_builder` - Image Builder* `loop` - Loop* `mcp_analytics` - MCP Analytics* `signals_chat` - Signals Chat* `task_analysis` - Task Analysis* `workflow` - Workflow
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TaskCreateOriginProduct : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `onboarding` - Onboarding* `error_tracking` - Error Tracking* `eval_clusters` - Eval Clusters* `user_created` - User Created* `automation` - Automation* `slack` - Slack* `support_queue` - Support Queue* `session_summaries` - Session Summaries* `posthog_ai` - PostHog AI* `experiments` - Experiments* `signal_report` - Signal Report* `signals_scout` - Signals Scout* `support_reply` - Support Reply* `hogdesk` - HogDesk* `review_hog` - ReviewHog* `image_builder` - Image Builder* `loop` - Loop* `mcp_analytics` - MCP Analytics* `signals_chat` - Signals Chat</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.OriginProductEnum? Value { get; set; }
+        /// <summary>* `onboarding` - Onboarding* `error_tracking` - Error Tracking* `eval_clusters` - Eval Clusters* `user_created` - User Created* `slack` - Slack* `support_queue` - Support Queue* `session_summaries` - Session Summaries* `posthog_ai` - PostHog AI* `experiments` - Experiments* `signal_report` - Signal Report* `signals_scout` - Signals Scout* `scout_suggestions` - Signals Scout Suggestions* `support_reply` - Support Reply* `hogdesk` - HogDesk* `review_hog` - ReviewHog* `image_builder` - Image Builder* `loop` - Loop* `mcp_analytics` - MCP Analytics* `signals_chat` - Signals Chat* `task_analysis` - Task Analysis* `workflow` - Workflow</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskOriginProductEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskCreateOriginProduct"/> and sets the default values.
         /// </summary>
@@ -42,7 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "value", n => { Value = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OriginProductEnum>(); } },
+                { "value", n => { Value = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskOriginProductEnum>(); } },
             };
         }
         /// <summary>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OriginProductEnum>("value", Value);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskOriginProductEnum>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

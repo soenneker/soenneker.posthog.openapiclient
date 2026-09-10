@@ -2,6 +2,8 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Registry;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Runs;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Sessions;
 using System.Collections.Generic;
 using System.IO;
@@ -15,6 +17,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WizardRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The registry property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Registry.RegistryRequestBuilder Registry
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Registry.RegistryRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The runs property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Runs.RunsRequestBuilder Runs
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Runs.RunsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The sessions property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Sessions.SessionsRequestBuilder Sessions
         {

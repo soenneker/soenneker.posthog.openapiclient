@@ -56,6 +56,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigCustomSourceMappings CustomSourceMappings { get; set; }
 #endif
+        /// <summary>Whether marketing analytics drops traffic matching the project&apos;s test-account filters. Off by default.</summary>
+        public bool? FilterTestAccounts { get; set; }
         /// <summary>Column mapping per external data source, keyed by source id. Tells marketing analytics which column holds campaign, source, cost, clicks and impressions for that source.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -95,6 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "campaign_name_mappings", n => { CampaignNameMappings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigCampaignNameMappings>(global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigCampaignNameMappings.CreateFromDiscriminatorValue); } },
                 { "conversion_goals", n => { ConversionGoals = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsConversionGoalListItem>(global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsConversionGoalListItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "custom_source_mappings", n => { CustomSourceMappings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigCustomSourceMappings>(global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigCustomSourceMappings.CreateFromDiscriminatorValue); } },
+                { "filter_test_accounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
                 { "sources_map", n => { SourcesMap = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigSourcesMap>(global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigSourcesMap.CreateFromDiscriminatorValue); } },
             };
         }
@@ -111,6 +114,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigCampaignNameMappings>("campaign_name_mappings", CampaignNameMappings);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsConversionGoalListItem>("conversion_goals", ConversionGoals);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigCustomSourceMappings>("custom_source_mappings", CustomSourceMappings);
+            writer.WriteBoolValue("filter_test_accounts", FilterTestAccounts);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigSourcesMap>("sources_map", SourcesMap);
             writer.WriteAdditionalData(AdditionalData);
         }

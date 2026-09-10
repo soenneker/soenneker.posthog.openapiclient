@@ -8,18 +8,18 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper40"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ToolbarModeEnumWrapper2"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper43"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ToolbarModeEnumWrapper2"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class UserToolbarMode : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper40"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper43"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper40? BlankEnumWrapper40 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper43? BlankEnumWrapper43 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper40 BlankEnumWrapper40 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper43 BlankEnumWrapper43 { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -47,9 +47,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.UserToolbarMode();
-            if("BlankEnumWrapper40".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("BlankEnumWrapper43".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.BlankEnumWrapper40 = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper40();
+                result.BlankEnumWrapper43 = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper43();
             }
             else if("ToolbarModeEnumWrapper2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
@@ -63,9 +63,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(BlankEnumWrapper40 != null)
+            if(BlankEnumWrapper43 != null)
             {
-                return BlankEnumWrapper40.GetFieldDeserializers();
+                return BlankEnumWrapper43.GetFieldDeserializers();
             }
             else if(NullEnum != null)
             {
@@ -84,9 +84,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(BlankEnumWrapper40 != null)
+            if(BlankEnumWrapper43 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper40>(null, BlankEnumWrapper40);
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper43>(null, BlankEnumWrapper43);
             }
             else if(NullEnum != null)
             {

@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Hog flow orientation: total + non-archived count, plus the 5 most recently updated automation flows.&quot;
+    /// Hog flow orientation: total + non-archived count, plus the 5 most recently updated automation flows.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ProjectProfileInventoryRecentHogFlows : IAdditionalDataHolder, IParsable

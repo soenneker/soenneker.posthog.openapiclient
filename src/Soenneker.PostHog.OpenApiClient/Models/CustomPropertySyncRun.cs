@@ -8,13 +8,23 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;One person- or group-property sync or backfill run. Read-only: runs are created by thesync/backfill pipeline, never through the API.&quot;
+    /// One warehouse-backed custom property sync run.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CustomPropertySyncRun : IAdditionalDataHolder, IParsable
     {
+        /// <summary>Account segment processed by this run. Person and group property runs return null.* `tracked` - tracked* `ignored` - ignored</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySyncRunAccountSegment? AccountSegment { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySyncRunAccountSegment AccountSegment { get; private set; }
+#endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Latest Temporal activity attempt for the current account sync phase.</summary>
+        public int? Attempt { get; private set; }
         /// <summary>Rows whose mapped values changed since the last run.</summary>
         public int? Changed { get; private set; }
         /// <summary>When the run row was recorded.</summary>
@@ -27,21 +37,29 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Error { get; private set; }
 #endif
-        /// <summary>Person or group profiles updated (changed rows that matched an existing person/group).</summary>
+        /// <summary>Changed rows that matched an existing account, person, or group.</summary>
         public int? Existing { get; private set; }
         /// <summary>When the run ended, or null while running.</summary>
         public DateTimeOffset? FinishedAt { get; private set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
-        /// <summary>Property-update intents produced to the ingestion pipeline.</summary>
+        /// <summary>Warehouse import or materialization job associated with the run, if any.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? JobId { get; private set; }
+#nullable restore
+#else
+        public string JobId { get; private set; }
+#endif
+        /// <summary>Property updates written or produced to the ingestion pipeline.</summary>
         public int? Produced { get; private set; }
         /// <summary>Warehouse rows scanned this run.</summary>
         public int? RowsRead { get; private set; }
-        /// <summary>Changed rows dropped because no existing person/group matched the key column value.</summary>
+        /// <summary>Changed rows skipped because no existing account, person, or group matched the key column value.</summary>
         public int? SkippedMissingPerson { get; private set; }
         /// <summary>When the run began.</summary>
         public DateTimeOffset? StartedAt { get; private set; }
-        /// <summary>&quot;Run status: &apos;running&apos;, &apos;completed&apos;, or &apos;failed&apos;.&quot;</summary>
+        /// <summary>Run status: &apos;running&apos;, &apos;completed&apos;, or &apos;failed&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Status { get; private set; }
@@ -49,7 +67,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Status { get; private set; }
 #endif
-        /// <summary>&quot;What started the run: &apos;scheduled&apos; (rode a warehouse sync), &apos;sync&apos; (a warehouse sync started from the UI), &apos;manual&apos; (a backfill started from the UI), or &apos;backfill&apos; (the automatic backfill run when a mapping is created or re-enabled).&quot;</summary>
+        /// <summary>Current account sync phase. Person and group property runs return null.* `staging` - staging* `dispatching` - dispatching* `syncing` - syncing* `completed` - completed</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySyncRunSyncPhase? SyncPhase { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySyncRunSyncPhase SyncPhase { get; private set; }
+#endif
+        /// <summary>Staff-only link to this run in Temporal. Null for non-staff users and runs without a Temporal ID.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? TemporalUrl { get; private set; }
+#nullable restore
+#else
+        public string TemporalUrl { get; private set; }
+#endif
+        /// <summary>What started the run: &apos;scheduled&apos; (rode a warehouse sync), &apos;sync&apos; (a warehouse sync started from the UI), &apos;manual&apos; (a backfill started from the UI), or &apos;backfill&apos; (the automatic backfill run when a mapping is created or re-enabled).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Trigger { get; private set; }
@@ -57,6 +91,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Trigger { get; private set; }
 #endif
+        /// <summary>Temporal workflow identifier associated with the current account sync phase.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? WorkflowId { get; private set; }
+#nullable restore
+#else
+        public string WorkflowId { get; private set; }
+#endif
+        /// <summary>Temporal run identifier associated with the current account sync phase.</summary>
+        public Guid? WorkflowRunId { get; private set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySyncRun"/> and sets the default values.
         /// </summary>
@@ -82,18 +126,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "account_segment", n => { AccountSegment = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySyncRunAccountSegment>(global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySyncRunAccountSegment.CreateFromDiscriminatorValue); } },
+                { "attempt", n => { Attempt = n.GetIntValue(); } },
                 { "changed", n => { Changed = n.GetIntValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "error", n => { Error = n.GetStringValue(); } },
                 { "existing", n => { Existing = n.GetIntValue(); } },
                 { "finished_at", n => { FinishedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
+                { "job_id", n => { JobId = n.GetStringValue(); } },
                 { "produced", n => { Produced = n.GetIntValue(); } },
                 { "rows_read", n => { RowsRead = n.GetIntValue(); } },
                 { "skipped_missing_person", n => { SkippedMissingPerson = n.GetIntValue(); } },
                 { "started_at", n => { StartedAt = n.GetDateTimeOffsetValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
+                { "sync_phase", n => { SyncPhase = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySyncRunSyncPhase>(global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySyncRunSyncPhase.CreateFromDiscriminatorValue); } },
+                { "temporal_url", n => { TemporalUrl = n.GetStringValue(); } },
                 { "trigger", n => { Trigger = n.GetStringValue(); } },
+                { "workflow_id", n => { WorkflowId = n.GetStringValue(); } },
+                { "workflow_run_id", n => { WorkflowRunId = n.GetGuidValue(); } },
             };
         }
         /// <summary>

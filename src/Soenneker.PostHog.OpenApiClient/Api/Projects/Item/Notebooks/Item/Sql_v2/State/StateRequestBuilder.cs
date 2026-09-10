@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Sql_v
         {
         }
         /// <summary>
-        /// &quot;The full notebook view for agents: title, document source (markdown, or raw content for legacy rich-text notebooks), every cell with its dependency edges and derived run status (including staleness), and the kernel&apos;s runtime state and compute config. Flag-gated (revamped-py-notebooks).&quot;
+        /// The full notebook view for agents: title, document source (markdown, or raw content for legacy rich-text notebooks), the notebook&apos;s declared variables, every cell with its dependency edges and derived run status (including staleness), and the kernel&apos;s runtime state and compute config. Flag-gated (revamped-py-notebooks).
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2StateResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Sql_v
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2StateResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2StateResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;The full notebook view for agents: title, document source (markdown, or raw content for legacy rich-text notebooks), every cell with its dependency edges and derived run status (including staleness), and the kernel&apos;s runtime state and compute config. Flag-gated (revamped-py-notebooks).&quot;
+        /// The full notebook view for agents: title, document source (markdown, or raw content for legacy rich-text notebooks), the notebook&apos;s declared variables, every cell with its dependency edges and derived run status (including staleness), and the kernel&apos;s runtime state and compute config. Flag-gated (revamped-py-notebooks).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

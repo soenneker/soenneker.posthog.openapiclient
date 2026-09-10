@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Output: serialises a WizardSessionDTO returned by the facade.&quot;
+    /// Output: serialises a WizardSessionDTO returned by the facade.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WizardSessionDto : IAdditionalDataHolder, IParsable
@@ -17,13 +17,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; set; }
-        /// <summary>The user who initiated this wizard run (null for runs created before attribution existed). Lets the UI name whose run it is.</summary>
+        /// <summary>The user who initiated this wizard run (null for runs created before attribution existed).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WizardSessionDtoCreatedBy? CreatedBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WizardSessionUserDto? CreatedBy { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WizardSessionDtoCreatedBy CreatedBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WizardSessionUserDto CreatedBy { get; set; }
 #endif
         /// <summary>The error property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -41,7 +41,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.WizardSessionDtoEventPlanProperty EventPlan { get; set; }
 #endif
-        /// <summary>Markdown handoff doc the wizard produced for this run (its setup report), or null while the run hasn&apos;t written one. Sticky once set.</summary>
+        /// <summary>Markdown handoff doc the wizard produced for this run (its setup report), or null while the run hasn&apos;t written one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? HandoffText { get; set; }
@@ -54,10 +54,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The question the wizard is currently blocked on, or null when nothing is pending.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WizardSessionDtoPendingInput? PendingInput { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PendingInput? PendingInput { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WizardSessionDtoPendingInput PendingInput { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PendingInput PendingInput { get; set; }
 #endif
         /// <summary>* `idle` - IDLE* `running` - RUNNING* `completed` - COMPLETED* `error` - ERROR</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.RunPhaseEnum? RunPhase { get; set; }
@@ -125,12 +125,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WizardSessionDtoCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.WizardSessionDtoCreatedBy.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WizardSessionUserDto>(global::Soenneker.PostHog.OpenApiClient.Models.WizardSessionUserDto.CreateFromDiscriminatorValue); } },
                 { "error", n => { Error = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WizardSessionDtoErrorProperty>(global::Soenneker.PostHog.OpenApiClient.Models.WizardSessionDtoErrorProperty.CreateFromDiscriminatorValue); } },
                 { "event_plan", n => { EventPlan = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WizardSessionDtoEventPlanProperty>(global::Soenneker.PostHog.OpenApiClient.Models.WizardSessionDtoEventPlanProperty.CreateFromDiscriminatorValue); } },
                 { "handoff_text", n => { HandoffText = n.GetStringValue(); } },
                 { "is_stale", n => { IsStale = n.GetBoolValue(); } },
-                { "pending_input", n => { PendingInput = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WizardSessionDtoPendingInput>(global::Soenneker.PostHog.OpenApiClient.Models.WizardSessionDtoPendingInput.CreateFromDiscriminatorValue); } },
+                { "pending_input", n => { PendingInput = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PendingInput>(global::Soenneker.PostHog.OpenApiClient.Models.PendingInput.CreateFromDiscriminatorValue); } },
                 { "run_phase", n => { RunPhase = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RunPhaseEnum>(); } },
                 { "session_id", n => { SessionId = n.GetStringValue(); } },
                 { "skill_id", n => { SkillId = n.GetStringValue(); } },
@@ -149,12 +149,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WizardSessionDtoCreatedBy>("created_by", CreatedBy);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WizardSessionUserDto>("created_by", CreatedBy);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WizardSessionDtoErrorProperty>("error", Error);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WizardSessionDtoEventPlanProperty>("event_plan", EventPlan);
             writer.WriteStringValue("handoff_text", HandoffText);
             writer.WriteBoolValue("is_stale", IsStale);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WizardSessionDtoPendingInput>("pending_input", PendingInput);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PendingInput>("pending_input", PendingInput);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RunPhaseEnum>("run_phase", RunPhase);
             writer.WriteStringValue("session_id", SessionId);
             writer.WriteStringValue("skill_id", SkillId);

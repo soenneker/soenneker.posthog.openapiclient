@@ -31,7 +31,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string CreatedAt { get; set; }
 #endif
-        /// <summary>Run that wrote this entry, or null if human-authored.</summary>
+        /// <summary>Scout run that wrote this entry, or null when a report-pipeline stage or a human wrote it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CreatedByRunId { get; set; }
@@ -47,13 +47,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string CreatedByRunUrl { get; set; }
 #endif
-        /// <summary>Canonical skill name of the scout that created this entry (e.g. `signals-scout-apm`), or null if human-authored.</summary>
+        /// <summary>Who created this entry: the canonical skill name of the scout that wrote it (e.g. `signals-scout-apm`), or the report-pipeline stage that did (`pipeline:report-research`, `pipeline:implementation`). Null if human-authored.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CreatedBySkill { get; set; }
 #nullable restore
 #else
         public string CreatedBySkill { get; set; }
+#endif
+        /// <summary>ISO-8601 expiry, or null for a durable memory that stays until it&apos;s forgotten.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ExpiresAt { get; set; }
+#nullable restore
+#else
+        public string ExpiresAt { get; set; }
 #endif
         /// <summary>Agent-chosen semantic key, unique per team.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -101,6 +109,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_by_run_id", n => { CreatedByRunId = n.GetStringValue(); } },
                 { "created_by_run_url", n => { CreatedByRunUrl = n.GetStringValue(); } },
                 { "created_by_skill", n => { CreatedBySkill = n.GetStringValue(); } },
+                { "expires_at", n => { ExpiresAt = n.GetStringValue(); } },
                 { "key", n => { Key = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetStringValue(); } },
             };
@@ -117,6 +126,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("created_by_run_id", CreatedByRunId);
             writer.WriteStringValue("created_by_run_url", CreatedByRunUrl);
             writer.WriteStringValue("created_by_skill", CreatedBySkill);
+            writer.WriteStringValue("expires_at", ExpiresAt);
             writer.WriteStringValue("key", Key);
             writer.WriteStringValue("updated_at", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);

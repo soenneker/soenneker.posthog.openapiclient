@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Revoke_leaked_key
         {
         }
         /// <summary>
-        /// &quot;Public, unauthenticated endpoint for self-service revocation of a leaked PostHog personal API key, project secret API key, or OAuth access/refresh token. If the token matches a real credential, it is revoked immediately and the owner is notified by email. This includes an expired OAuth access token: the paired refresh token it protects may still be live.This endpoint only checks the region it is running on. `\&quot;found\&quot;: false` does not guarantee the token is safe. If you&apos;re not sure which region issued it, check both: https://app.posthog.com/api/revoke_leaked_key and https://eu.posthog.com/api/revoke_leaked_key.&quot;
+        /// Public, unauthenticated endpoint for self-service revocation of a leaked PostHog personal API key, project secret API key, or OAuth access/refresh token. If the token matches a real credential, it is revoked immediately and the owner is notified by email. This includes an expired OAuth access token: the paired refresh token it protects may still be live.This endpoint only checks the region it is running on. `&quot;found&quot;: false` does not guarantee the token is safe. If you&apos;re not sure which region issued it, check both: https://app.posthog.com/api/revoke_leaked_key and https://eu.posthog.com/api/revoke_leaked_key.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LeakedKeyReportResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -54,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Revoke_leaked_key
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.LeakedKeyReportResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.LeakedKeyReportResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Public, unauthenticated endpoint for self-service revocation of a leaked PostHog personal API key, project secret API key, or OAuth access/refresh token. If the token matches a real credential, it is revoked immediately and the owner is notified by email. This includes an expired OAuth access token: the paired refresh token it protects may still be live.This endpoint only checks the region it is running on. `\&quot;found\&quot;: false` does not guarantee the token is safe. If you&apos;re not sure which region issued it, check both: https://app.posthog.com/api/revoke_leaked_key and https://eu.posthog.com/api/revoke_leaked_key.&quot;
+        /// Public, unauthenticated endpoint for self-service revocation of a leaked PostHog personal API key, project secret API key, or OAuth access/refresh token. If the token matches a real credential, it is revoked immediately and the owner is notified by email. This includes an expired OAuth access token: the paired refresh token it protects may still be live.This endpoint only checks the region it is running on. `&quot;found&quot;: false` does not guarantee the token is safe. If you&apos;re not sure which region issued it, check both: https://app.posthog.com/api/revoke_leaked_key and https://eu.posthog.com/api/revoke_leaked_key.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

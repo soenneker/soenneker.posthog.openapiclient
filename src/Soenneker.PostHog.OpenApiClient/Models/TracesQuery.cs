@@ -37,13 +37,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Include stored sentiment evaluation results for returned traces and direct generation events.</summary>
         public bool? IncludeSentiment { get; set; }
         /// <summary>The kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Kind { get; set; }
-#nullable restore
-#else
-        public string Kind { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.TracesQueryKind? Kind { get; set; }
         /// <summary>The limit property</summary>
         public int? Limit { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
@@ -67,10 +61,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Properties configurable in the interface</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TracesQueryPropertiesAnyOf1Item>? Properties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TracesQueryPropertiesItem>? Properties { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TracesQueryPropertiesAnyOf1Item> Properties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TracesQueryPropertiesItem> Properties { get; set; }
 #endif
         /// <summary>Use random ordering instead of timestamp DESC. Useful for representative sampling to avoid recency bias.</summary>
         public bool? RandomOrder { get; set; }
@@ -126,12 +120,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "groupKey", n => { GroupKey = n.GetStringValue(); } },
                 { "groupTypeIndex", n => { GroupTypeIndex = n.GetIntValue(); } },
                 { "includeSentiment", n => { IncludeSentiment = n.GetBoolValue(); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TracesQueryKind>(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "offset", n => { Offset = n.GetIntValue(); } },
                 { "personId", n => { PersonId = n.GetStringValue(); } },
-                { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TracesQueryPropertiesAnyOf1Item>(global::Soenneker.PostHog.OpenApiClient.Models.TracesQueryPropertiesAnyOf1Item.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TracesQueryPropertiesItem>(global::Soenneker.PostHog.OpenApiClient.Models.TracesQueryPropertiesItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "randomOrder", n => { RandomOrder = n.GetBoolValue(); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracesQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.TracesQueryResponse.CreateFromDiscriminatorValue); } },
                 { "searchTerm", n => { SearchTerm = n.GetStringValue(); } },
@@ -153,12 +147,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("groupKey", GroupKey);
             writer.WriteIntValue("groupTypeIndex", GroupTypeIndex);
             writer.WriteBoolValue("includeSentiment", IncludeSentiment);
-            writer.WriteStringValue("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TracesQueryKind>("kind", Kind);
             writer.WriteIntValue("limit", Limit);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
             writer.WriteIntValue("offset", Offset);
             writer.WriteStringValue("personId", PersonId);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TracesQueryPropertiesAnyOf1Item>("properties", Properties);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TracesQueryPropertiesItem>("properties", Properties);
             writer.WriteBoolValue("randomOrder", RandomOrder);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracesQueryResponse>("response", Response);
             writer.WriteStringValue("searchTerm", SearchTerm);

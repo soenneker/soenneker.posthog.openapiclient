@@ -38,7 +38,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Export ID used to check status and download the file.</summary>
         public int? Id { get; private set; }
-        /// <summary>&quot;Current export state: pending, complete, or failed.&quot;</summary>
+        /// <summary>Current export state: pending, complete, or failed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.DatasetExportReadStatus? Status { get; private set; }

@@ -34,10 +34,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.E
         {
         }
         /// <summary>
-        /// &quot;Batched form of the per-run emissions endpoint: return the findings every requested `SignalScoutRun` emitted, flattened newest-first, in a single request. Each row carries its `run_id`, so the caller can regroup by run. The findings UI uses this to load the whole recent window in one round-trip instead of one request per run. Strictly team-scoped — run ids belonging to another team contribute no rows (no per-run 404; one stale id never fails the batch).&quot;
+        /// Batched form of the per-run emissions endpoint: return the findings every requested `SignalScoutRun` emitted, flattened newest-first, in a single request. Each row carries its `run_id`, so the caller can regroup by run. The findings UI uses this to load the whole recent window in one round-trip instead of one request per run. Strictly team-scoped — run ids belonging to another team contribute no rows (no per-run 404; one stale id never fails the batch).
         /// </summary>
         /// <returns>A List&lt;global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutEmission&gt;</returns>
-        /// <param name="body">&quot;Request body for the batched emissions / emission-reports lookups: the set of run UUIDs toresolve in one call. Collapses the findings UI&apos;s old per-run fan-out (one request — and for thereports lookup, one ClickHouse round-trip — per emitted run) into a single request.&quot;</param>
+        /// <param name="body">Request body for the batched emissions / emission-reports lookups: the set of run UUIDs toresolve in one call. Collapses the findings UI&apos;s old per-run fan-out (one request — and for thereports lookup, one ClickHouse round-trip — per emitted run) into a single request.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -55,10 +55,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.E
             return collectionResult?.AsList();
         }
         /// <summary>
-        /// &quot;Batched form of the per-run emissions endpoint: return the findings every requested `SignalScoutRun` emitted, flattened newest-first, in a single request. Each row carries its `run_id`, so the caller can regroup by run. The findings UI uses this to load the whole recent window in one round-trip instead of one request per run. Strictly team-scoped — run ids belonging to another team contribute no rows (no per-run 404; one stale id never fails the batch).&quot;
+        /// Batched form of the per-run emissions endpoint: return the findings every requested `SignalScoutRun` emitted, flattened newest-first, in a single request. Each row carries its `run_id`, so the caller can regroup by run. The findings UI uses this to load the whole recent window in one round-trip instead of one request per run. Strictly team-scoped — run ids belonging to another team contribute no rows (no per-run 404; one stale id never fails the batch).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">&quot;Request body for the batched emissions / emission-reports lookups: the set of run UUIDs toresolve in one call. Collapses the findings UI&apos;s old per-run fan-out (one request — and for thereports lookup, one ClickHouse round-trip — per emitted run) into a single request.&quot;</param>
+        /// <param name="body">Request body for the batched emissions / emission-reports lookups: the set of run UUIDs toresolve in one call. Collapses the findings UI&apos;s old per-run fan-out (one request — and for thereports lookup, one ClickHouse round-trip — per emitted run) into a single request.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

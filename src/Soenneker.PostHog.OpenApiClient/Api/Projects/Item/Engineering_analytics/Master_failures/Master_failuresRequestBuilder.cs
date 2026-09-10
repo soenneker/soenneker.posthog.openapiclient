@@ -96,7 +96,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
             [QueryParameter("branch")]
             public string Branch { get; set; }
 #endif
-            /// <summary>&quot;Window start: relative (&apos;-24h&apos;, &apos;-7d&apos;) or ISO8601. Defaults to -24h.&quot;</summary>
+            /// <summary>Window start: relative (&apos;-24h&apos;, &apos;-7d&apos;) or ISO8601. Defaults to -24h.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("date_from")]
@@ -106,7 +106,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
             [QueryParameter("date_from")]
             public string DateFrom { get; set; }
 #endif
-            /// <summary>&quot;Window end: relative or ISO8601. Defaults to now.&quot;</summary>
+            /// <summary>Window end: relative or ISO8601. Defaults to now.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("date_to")]

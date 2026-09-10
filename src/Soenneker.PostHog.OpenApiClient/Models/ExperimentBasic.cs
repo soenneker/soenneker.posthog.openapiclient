@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Lightweight, read-only serializer for the experiment list endpoint.The list view (and the MCP list tool) render only the scalar and feature-flag fieldsshared via ``ExperimentBaseSerializer`` — never the metric definitions. Omitting``metrics``/``metrics_secondary``/``saved_metrics`` lets the list query defer the largeJSON columns and skip the saved-metric prefetch plus per-row fingerprinting; that workbelongs to the detail response served by ``ExperimentSerializer``.Because the metric fields, the write-side machinery, and the action-name-refreshing``to_representation`` all live on ``ExperimentSerializer`` rather than the shared base,this serializer needs no overrides: it gets DRF&apos;s default ``get_fields`` (no write-only``holdout_id`` to configure), default ``to_representation`` (no metrics to normalize), anda plain ``ListSerializer`` that never touches the deferred columns. See``EnterpriseExperimentsViewSet.safely_get_queryset``.&quot;
+    /// Lightweight, read-only serializer for the experiment list endpoint.The list view (and the MCP list tool) render only the scalar and feature-flag fieldsshared via ``ExperimentBaseSerializer`` — never the metric definitions. Omitting``metrics``/``metrics_secondary``/``saved_metrics`` lets the list query defer the largeJSON columns and skip the saved-metric prefetch plus per-row fingerprinting; that workbelongs to the detail response served by ``ExperimentSerializer``.Because the metric fields, the write-side machinery, and the action-name-refreshing``to_representation`` all live on ``ExperimentSerializer`` rather than the shared base,this serializer needs no overrides: it gets DRF&apos;s default ``get_fields`` (no write-only``holdout_id`` to configure), default ``to_representation`` (no metrics to normalize), anda plain ``ListSerializer`` that never touches the deferred columns. See``EnterpriseExperimentsViewSet.safely_get_queryset``.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ExperimentBasic : IAdditionalDataHolder, IParsable
@@ -17,7 +17,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether the experiment is archived.</summary>
         public bool? Archived { get; set; }
-        /// <summary>&quot;Experiment conclusion: won, lost, inconclusive, stopped_early, or invalid.* `won` - won* `lost` - lost* `inconclusive` - inconclusive* `stopped_early` - stopped_early* `invalid` - invalid&quot;</summary>
+        /// <summary>Experiment conclusion: won, lost, inconclusive, stopped_early, or invalid.* `won` - won* `lost` - lost* `inconclusive` - inconclusive* `stopped_early` - stopped_early* `invalid` - invalid</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBasicConclusion? Conclusion { get; set; }
@@ -104,22 +104,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Experiment parameters JSON. Supported keys include `custom_exposure_filter` and `variant_notes` (free-text notes per variant, keyed by variant key). Flag config (variants, rollout, aggregation, payloads, experience continuity) belongs on the `feature_flag` object; send it there. For backward compatibility, config still sent through these deprecated keys is copied onto the linked flag rather than rejected, and reads project the flag&apos;s current config back into this field. Excluded variants live on the top-level `excluded_variants` field, not here.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBasicParameters? Parameters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParameters? Parameters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBasicParameters Parameters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParameters Parameters { get; set; }
 #endif
-        /// <summary>&quot;Running-time calculator state: `minimum_detectable_effect`, `recommended_running_time`, `recommended_sample_size`, and `exposure_estimate_config`. Canonical home for these keys, which historically lived in `parameters`.&quot;</summary>
+        /// <summary>Running-time calculator state: `minimum_detectable_effect`, `recommended_running_time`, `recommended_sample_size`, and `exposure_estimate_config`. Canonical home for these keys, which historically lived in `parameters`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBasicRunningTimeCalculation? RunningTimeCalculation { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRunningTimeCalculation? RunningTimeCalculation { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBasicRunningTimeCalculation RunningTimeCalculation { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRunningTimeCalculation RunningTimeCalculation { get; set; }
 #endif
         /// <summary>The start_date property</summary>
         public DateTimeOffset? StartDate { get; set; }
-        /// <summary>&quot;Experiment lifecycle state: &apos;draft&apos; (not yet launched), &apos;running&apos; (launched with active feature flag), &apos;paused&apos; (running with feature flag deactivated — virtual state derived from feature_flag.active, not stored), &apos;exposure_frozen&apos; (running with enrollment frozen to the already-exposed cohort while metrics keep flowing — virtual state derived from the flag&apos;s release groups, not stored), &apos;stopped&apos; (ended).&quot;</summary>
+        /// <summary>Experiment lifecycle state: &apos;draft&apos; (not yet launched), &apos;running&apos; (launched with active feature flag), &apos;paused&apos; (running with feature flag deactivated — virtual state derived from feature_flag.active, not stored), &apos;exposure_frozen&apos; (running with enrollment frozen to the already-exposed cohort while metrics keep flowing — virtual state derived from the flag&apos;s release groups, not stored), &apos;stopped&apos; (ended).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBasicStatus? Status { get; private set; }
@@ -127,7 +127,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBasicStatus Status { get; private set; }
 #endif
-        /// <summary>&quot;Experiment type: web for frontend UI changes, product for backend/API changes.* `web` - web* `product` - product&quot;</summary>
+        /// <summary>Experiment type: web for frontend UI changes, product for backend/API changes.* `web` - web* `product` - product</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBasicType? Type { get; set; }
@@ -187,8 +187,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetIntValue(); } },
                 { "is_legacy", n => { IsLegacy = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "parameters", n => { Parameters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBasicParameters>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBasicParameters.CreateFromDiscriminatorValue); } },
-                { "running_time_calculation", n => { RunningTimeCalculation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBasicRunningTimeCalculation>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBasicRunningTimeCalculation.CreateFromDiscriminatorValue); } },
+                { "parameters", n => { Parameters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParameters>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParameters.CreateFromDiscriminatorValue); } },
+                { "running_time_calculation", n => { RunningTimeCalculation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRunningTimeCalculation>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRunningTimeCalculation.CreateFromDiscriminatorValue); } },
                 { "start_date", n => { StartDate = n.GetDateTimeOffsetValue(); } },
                 { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBasicStatus>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBasicStatus.CreateFromDiscriminatorValue); } },
                 { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBasicType>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBasicType.CreateFromDiscriminatorValue); } },
@@ -212,8 +212,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("excluded_variants", ExcludedVariants);
             writer.WriteStringValue("feature_flag_key", FeatureFlagKey);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBasicParameters>("parameters", Parameters);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBasicRunningTimeCalculation>("running_time_calculation", RunningTimeCalculation);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParameters>("parameters", Parameters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRunningTimeCalculation>("running_time_calculation", RunningTimeCalculation);
             writer.WriteDateTimeOffsetValue("start_date", StartDate);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBasicType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);

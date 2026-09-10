@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `destination` - Destination* `site_destination` - Site Destination* `internal_destination` - Internal Destination* `source_webhook` - Source Webhook* `warehouse_source_webhook` - Warehouse Source Webhook* `site_app` - Site App* `transformation` - Transformation* `transformation_log` - Transformation Log</summary>
+    /// <summary>* `destination` - Destination* `site_destination` - Site Destination* `internal_destination` - Internal Destination* `source_webhook` - Source Webhook* `warehouse_source_webhook` - Warehouse Source Webhook* `site_app` - Site App* `transformation` - Transformation* `transformation_log` - Transformation Log* `legacy_destination` - Legacy Destination</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum HogFunctionTypeEnum
     {
@@ -38,6 +38,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "transformation_log")]
         #pragma warning disable CS1591
         TransformationLog,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "legacy_destination")]
+        #pragma warning disable CS1591
+        LegacyDestination,
         #pragma warning restore CS1591
     }
 }

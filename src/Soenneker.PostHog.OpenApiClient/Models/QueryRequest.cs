@@ -33,10 +33,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Limit context for the query. Only &apos;posthog_ai&apos; is allowed as a client-provided value.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LimitContextWrapper? LimitContext { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LimitContextWrapper2? LimitContext { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LimitContextWrapper LimitContext { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LimitContextWrapper2 LimitContext { get; set; }
 #endif
         /// <summary>Name given to a query. It&apos;s used to identify the query in the UI. Up to 128 characters for a name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -46,7 +46,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>&quot;Submit a JSON string representing a query for PostHog data analysis, for example a HogQL query.Example payload:```{\&quot;query\&quot;: {\&quot;kind\&quot;: \&quot;HogQLQuery\&quot;, \&quot;query\&quot;: \&quot;select * from events limit 100\&quot;}}```For more details on HogQL queries, see the [PostHog HogQL documentation](/docs/hogql#api-access).&quot;</summary>
+        /// <summary>Submit a JSON string representing a query for PostHog data analysis, for example a HogQL query.Example payload:```{&quot;query&quot;: {&quot;kind&quot;: &quot;HogQLQuery&quot;, &quot;query&quot;: &quot;select * from events limit 100&quot;}}```For more details on HogQL queries, see the [PostHog HogQL documentation](/docs/hogql#api-access).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.QueryRequestQuery? Query { get; set; }
@@ -91,7 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "async", n => { Async = n.GetBoolValue(); } },
                 { "client_query_id", n => { ClientQueryId = n.GetStringValue(); } },
                 { "filters_override", n => { FiltersOverride = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter.CreateFromDiscriminatorValue); } },
-                { "limit_context", n => { LimitContext = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LimitContextWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.LimitContextWrapper.CreateFromDiscriminatorValue); } },
+                { "limit_context", n => { LimitContext = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LimitContextWrapper2>(global::Soenneker.PostHog.OpenApiClient.Models.LimitContextWrapper2.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryRequestQuery>(global::Soenneker.PostHog.OpenApiClient.Models.QueryRequestQuery.CreateFromDiscriminatorValue); } },
                 { "refresh", n => { Refresh = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RefreshTypeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.RefreshTypeWrapper.CreateFromDiscriminatorValue); } },
@@ -108,7 +108,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("async", Async);
             writer.WriteStringValue("client_query_id", ClientQueryId);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter>("filters_override", FiltersOverride);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LimitContextWrapper>("limit_context", LimitContext);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LimitContextWrapper2>("limit_context", LimitContext);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryRequestQuery>("query", Query);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RefreshTypeWrapper>("refresh", Refresh);

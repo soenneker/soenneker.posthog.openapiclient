@@ -21,10 +21,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The approved_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RunApprovedBy? ApprovedBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasicInfo? ApprovedBy { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RunApprovedBy ApprovedBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasicInfo ApprovedBy { get; set; }
 #endif
         /// <summary>The branch property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -78,7 +78,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string RunType { get; set; }
 #endif
-        /// <summary>&quot;How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of branch/run type, a commit SHA prefix, or an exact PR number) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`.* `exact` - exact* `similar` - similar&quot;</summary>
+        /// <summary>How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of branch/run type, a commit SHA prefix, or an exact PR number) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`.* `exact` - exact* `similar` - similar</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.RunSearchMatchType? SearchMatchType { get; private set; }
@@ -131,7 +131,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "approved", n => { Approved = n.GetBoolValue(); } },
                 { "approved_at", n => { ApprovedAt = n.GetDateTimeOffsetValue(); } },
-                { "approved_by", n => { ApprovedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RunApprovedBy>(global::Soenneker.PostHog.OpenApiClient.Models.RunApprovedBy.CreateFromDiscriminatorValue); } },
+                { "approved_by", n => { ApprovedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasicInfo>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasicInfo.CreateFromDiscriminatorValue); } },
                 { "branch", n => { Branch = n.GetStringValue(); } },
                 { "commit_sha", n => { CommitSha = n.GetStringValue(); } },
                 { "completed_at", n => { CompletedAt = n.GetDateTimeOffsetValue(); } },
@@ -158,7 +158,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("approved", Approved);
             writer.WriteDateTimeOffsetValue("approved_at", ApprovedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RunApprovedBy>("approved_by", ApprovedBy);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasicInfo>("approved_by", ApprovedBy);
             writer.WriteStringValue("branch", Branch);
             writer.WriteStringValue("commit_sha", CommitSha);
             writer.WriteDateTimeOffsetValue("completed_at", CompletedAt);

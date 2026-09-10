@@ -44,7 +44,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? Enabled { get; set; }
         /// <summary>Total number of check periods in the sliding evaluation window for firing (M in N-of-M).</summary>
         public int? EvaluationPeriods { get; set; }
-        /// <summary>&quot;Filter criteria — subset of LogsViewerFilters. Must contain at least one of: severityLevels (list of severity strings), serviceNames (list of service name strings), or filterGroup (property filter group object). May be empty on draft alerts (enabled=false).&quot;</summary>
+        /// <summary>Filter criteria — subset of LogsViewerFilters. Must contain at least one of: severityLevels (list of severity strings), serviceNames (list of service name strings), or filterGroup (property filter group object). May be empty on draft alerts (enabled=false).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsAlertConfigurationFilters? Filters { get; set; }
@@ -81,14 +81,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Blocked local time windows when the alert must not run. Times use the project timezone. Null disables quiet hours.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsAlertConfigurationScheduleRestriction? ScheduleRestriction { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction? ScheduleRestriction { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsAlertConfigurationScheduleRestriction ScheduleRestriction { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction ScheduleRestriction { get; set; }
 #endif
         /// <summary>ISO 8601 timestamp until which the alert is snoozed. Set to null to unsnooze.</summary>
         public DateTimeOffset? SnoozeUntil { get; set; }
-        /// <summary>&quot;Current alert state: not_firing, firing, pending_resolve, errored, or snoozed. Server-managed.* `not_firing` - Not firing* `firing` - Firing* `pending_resolve` - Pending resolve* `errored` - Errored* `snoozed` - Snoozed* `broken` - Broken&quot;</summary>
+        /// <summary>Current alert state: not_firing, firing, pending_resolve, errored, or snoozed. Server-managed.* `not_firing` - Not firing* `firing` - Firing* `pending_resolve` - Pending resolve* `errored` - Errored* `snoozed` - Snoozed* `broken` - Broken</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsAlertConfigurationState? State { get; private set; }
@@ -116,7 +116,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>When the alert was last modified.</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
-        /// <summary>&quot;Time window in minutes over which log entries are counted. Allowed values: 5, 10, 15, 30, 60.&quot;</summary>
+        /// <summary>Time window in minutes over which log entries are counted. Allowed values: 5, 10, 15, 30, 60.</summary>
         public int? WindowMinutes { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsAlertConfiguration"/> and sets the default values.
@@ -166,7 +166,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "last_notified_at", n => { LastNotifiedAt = n.GetDateTimeOffsetValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "next_check_at", n => { NextCheckAt = n.GetDateTimeOffsetValue(); } },
-                { "schedule_restriction", n => { ScheduleRestriction = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsAlertConfigurationScheduleRestriction>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsAlertConfigurationScheduleRestriction.CreateFromDiscriminatorValue); } },
+                { "schedule_restriction", n => { ScheduleRestriction = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction>(global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction.CreateFromDiscriminatorValue); } },
                 { "snooze_until", n => { SnoozeUntil = n.GetDateTimeOffsetValue(); } },
                 { "state", n => { State = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsAlertConfigurationState>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsAlertConfigurationState.CreateFromDiscriminatorValue); } },
                 { "state_timeline", n => { StateTimeline = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateInterval>(global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateInterval.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -189,7 +189,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("evaluation_periods", EvaluationPeriods);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsAlertConfigurationFilters>("filters", Filters);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsAlertConfigurationScheduleRestriction>("schedule_restriction", ScheduleRestriction);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction>("schedule_restriction", ScheduleRestriction);
             writer.WriteDateTimeOffsetValue("snooze_until", SnoozeUntil);
             writer.WriteIntValue("threshold_count", ThresholdCount);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsAlertConfigurationThresholdOperator>("threshold_operator", ThresholdOperator);

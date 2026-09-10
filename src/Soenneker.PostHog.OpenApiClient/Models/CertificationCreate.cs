@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Input for proposing a certification: address the target by id or (convenience) by name.&quot;
+    /// Input for proposing a certification: address the target by id or (convenience) by name.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CertificationCreate : IAdditionalDataHolder, IParsable
@@ -23,7 +23,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Notes { get; set; }
 #endif
-        /// <summary>&quot;Intent of the proposal: &apos;certified&apos; to propose trusting this source, &apos;deprecated&apos; to propose avoiding it (e.g. a stale or wrong source).* `certified` - certified* `deprecated` - deprecated&quot;</summary>
+        /// <summary>Intent of the proposal: &apos;certified&apos; to propose trusting this source, &apos;deprecated&apos; to propose avoiding it (e.g. a stale or wrong source).* `certified` - certified* `deprecated` - deprecated</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.CertificationCreateProposedStatus? ProposedStatus { get; set; }
@@ -35,7 +35,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public Guid? SavedQueryId { get; set; }
         /// <summary>Warehouse table id to certify (XOR the other targets).</summary>
         public Guid? TableId { get; set; }
-        /// <summary>Table name; 409 with candidates if ambiguous.</summary>
+        /// <summary>Queryable HogQL table name; 409 with candidates if ambiguous.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? TableName { get; set; }
@@ -43,7 +43,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string TableName { get; set; }
 #endif
-        /// <summary>View name; 409 with candidates if ambiguous.</summary>
+        /// <summary>Queryable HogQL view name; 409 with candidates if ambiguous.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ViewName { get; set; }

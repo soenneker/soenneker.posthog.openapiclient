@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;How often the alert is checked: real time (Scale+), every 15 minutes (Boost+), hourly, daily, weekly, or monthly.* `real_time` - real_time* `every_15_minutes` - every_15_minutes* `hourly` - hourly* `daily` - daily* `weekly` - weekly* `monthly` - monthly&quot;
+    /// How often the alert is checked: real time (Scale+), every 15 minutes (Boost+), hourly, daily, weekly, or monthly.* `real_time` - real_time* `every_15_minutes` - every_15_minutes* `hourly` - hourly* `daily` - daily* `weekly` - weekly* `monthly` - monthly
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedAlertCalculationInterval : IAdditionalDataHolder, IParsable

@@ -3,17 +3,13 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `tiered` - tiered* `dag_schedule` - dag_schedule* `managed_viewset` - managed_viewset* `legacy` - legacy* `no_node` - no_node</summary>
+    /// <summary>* `tiered` - tiered* `managed_viewset` - managed_viewset* `legacy` - legacy* `no_node` - no_node</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum FrequencyModeEnum
     {
         [EnumMember(Value = "tiered")]
         #pragma warning disable CS1591
         Tiered,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "dag_schedule")]
-        #pragma warning disable CS1591
-        DagSchedule,
         #pragma warning restore CS1591
         [EnumMember(Value = "managed_viewset")]
         #pragma warning disable CS1591

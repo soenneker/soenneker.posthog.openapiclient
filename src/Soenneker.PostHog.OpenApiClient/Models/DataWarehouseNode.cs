@@ -39,10 +39,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Fixed properties in the query, can&apos;t be edited in the interface (e.g. scoping down by person)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseNodeFixedPropertiesAnyOf1Item>? FixedProperties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseNodeFixedPropertiesItem>? FixedProperties { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseNodeFixedPropertiesAnyOf1Item> FixedProperties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseNodeFixedPropertiesItem> FixedProperties { get; set; }
 #endif
         /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -61,13 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string IdField { get; set; }
 #endif
         /// <summary>The kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Kind { get; set; }
-#nullable restore
-#else
-        public string Kind { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseNodeKind? Kind { get; set; }
         /// <summary>The math property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -131,10 +125,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Properties configurable in the interface</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseNodePropertiesAnyOf1Item>? Properties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseNodePropertiesItem>? Properties { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseNodePropertiesAnyOf1Item> Properties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseNodePropertiesItem> Properties { get; set; }
 #endif
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -183,10 +177,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "custom_name", n => { CustomName = n.GetStringValue(); } },
                 { "distinct_id_field", n => { DistinctIdField = n.GetStringValue(); } },
                 { "dw_source_type", n => { DwSourceType = n.GetStringValue(); } },
-                { "fixedProperties", n => { FixedProperties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseNodeFixedPropertiesAnyOf1Item>(global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseNodeFixedPropertiesAnyOf1Item.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "fixedProperties", n => { FixedProperties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseNodeFixedPropertiesItem>(global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseNodeFixedPropertiesItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "id_field", n => { IdField = n.GetStringValue(); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseNodeKind>(); } },
                 { "math", n => { Math = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseNodeMath>(global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseNodeMath.CreateFromDiscriminatorValue); } },
                 { "math_group_type_index", n => { MathGroupTypeIndex = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper5>(global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper5.CreateFromDiscriminatorValue); } },
                 { "math_hogql", n => { MathHogql = n.GetStringValue(); } },
@@ -196,7 +190,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "math_property_type", n => { MathPropertyType = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "optionalInFunnel", n => { OptionalInFunnel = n.GetBoolValue(); } },
-                { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseNodePropertiesAnyOf1Item>(global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseNodePropertiesAnyOf1Item.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseNodePropertiesItem>(global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseNodePropertiesItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseNodeResponseProperty>(global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseNodeResponseProperty.CreateFromDiscriminatorValue); } },
                 { "table_name", n => { TableName = n.GetStringValue(); } },
                 { "timestamp_field", n => { TimestampField = n.GetStringValue(); } },
@@ -213,10 +207,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("custom_name", CustomName);
             writer.WriteStringValue("distinct_id_field", DistinctIdField);
             writer.WriteStringValue("dw_source_type", DwSourceType);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseNodeFixedPropertiesAnyOf1Item>("fixedProperties", FixedProperties);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseNodeFixedPropertiesItem>("fixedProperties", FixedProperties);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("id_field", IdField);
-            writer.WriteStringValue("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseNodeKind>("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseNodeMath>("math", Math);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper5>("math_group_type_index", MathGroupTypeIndex);
             writer.WriteStringValue("math_hogql", MathHogql);
@@ -226,7 +220,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("math_property_type", MathPropertyType);
             writer.WriteStringValue("name", Name);
             writer.WriteBoolValue("optionalInFunnel", OptionalInFunnel);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseNodePropertiesAnyOf1Item>("properties", Properties);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseNodePropertiesItem>("properties", Properties);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseNodeResponseProperty>("response", Response);
             writer.WriteStringValue("table_name", TableName);
             writer.WriteStringValue("timestamp_field", TimestampField);

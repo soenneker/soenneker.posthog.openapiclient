@@ -15,6 +15,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Names of the result columns, in the order of the values in each positional result row. Null when the results are already labeled, or the query kind returns no column names.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Columns { get; set; }
+#nullable restore
+#else
+        public List<string> Columns { get; set; }
+#endif
         /// <summary>The compiled HogQL, when available.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -106,6 +114,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "columns", n => { Columns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "compiled_query", n => { CompiledQuery = n.GetStringValue(); } },
                 { "instructions", n => { Instructions = n.GetStringValue(); } },
                 { "is_drifted", n => { IsDrifted = n.GetBoolValue(); } },
@@ -124,6 +133,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteCollectionOfPrimitiveValues<string>("columns", Columns);
             writer.WriteStringValue("compiled_query", CompiledQuery);
             writer.WriteStringValue("instructions", Instructions);
             writer.WriteBoolValue("is_drifted", IsDrifted);

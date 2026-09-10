@@ -23,6 +23,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Channel { get; set; }
 #endif
+        /// <summary>Absolute URL to the SlackThreadTaskMapping row in Django admin. Null when no mapping exists.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? MappingAdminUrl { get; set; }
+#nullable restore
+#else
+        public string MappingAdminUrl { get; set; }
+#endif
         /// <summary>The Slack user who triggered the task. Null when no mapping exists yet.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -30,6 +38,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string MentioningSlackUserId { get; set; }
+#endif
+        /// <summary>Temporal workflow id of the per-conversation mention queue (`slack-app-mention-&lt;workspace&gt;:&lt;channel&gt;:&lt;thread_ts&gt;`) that serializes the thread&apos;s messages before any run exists. Null when the workspace id cannot be resolved.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? QueueWorkflowId { get; set; }
+#nullable restore
+#else
+        public string QueueWorkflowId { get; set; }
+#endif
+        /// <summary>Full Temporal Web UI URL for the mention queue workflow; null when `TEMPORAL_UI_HOST` is unset.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? QueueWorkflowUrl { get; set; }
+#nullable restore
+#else
+        public string QueueWorkflowUrl { get; set; }
 #endif
         /// <summary>Slack workspace id (e.g. T…). Null when no mapping exists yet.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -81,7 +105,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "channel", n => { Channel = n.GetStringValue(); } },
+                { "mapping_admin_url", n => { MappingAdminUrl = n.GetStringValue(); } },
                 { "mentioning_slack_user_id", n => { MentioningSlackUserId = n.GetStringValue(); } },
+                { "queue_workflow_id", n => { QueueWorkflowId = n.GetStringValue(); } },
+                { "queue_workflow_url", n => { QueueWorkflowUrl = n.GetStringValue(); } },
                 { "slack_workspace_id", n => { SlackWorkspaceId = n.GetStringValue(); } },
                 { "thread_ts", n => { ThreadTs = n.GetStringValue(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
@@ -95,7 +122,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("channel", Channel);
+            writer.WriteStringValue("mapping_admin_url", MappingAdminUrl);
             writer.WriteStringValue("mentioning_slack_user_id", MentioningSlackUserId);
+            writer.WriteStringValue("queue_workflow_id", QueueWorkflowId);
+            writer.WriteStringValue("queue_workflow_url", QueueWorkflowUrl);
             writer.WriteStringValue("slack_workspace_id", SlackWorkspaceId);
             writer.WriteStringValue("thread_ts", ThreadTs);
             writer.WriteStringValue("url", Url);

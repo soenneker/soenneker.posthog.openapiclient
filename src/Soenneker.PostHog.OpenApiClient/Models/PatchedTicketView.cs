@@ -14,9 +14,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The created_at property</summary>
+        /// <summary>When the view was created.</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
-        /// <summary>The created_by property</summary>
+        /// <summary>The user who created this view.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicketViewCreatedBy? CreatedBy { get; private set; }
@@ -24,7 +24,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicketViewCreatedBy CreatedBy { get; private set; }
 #endif
-        /// <summary>&quot;Saved ticket filter criteria: status, priority, channel, sla, aiTriageResult, assignee, tags, tagsMatch, tagsExclude, dateFrom, dateTo, sorting, and search.&quot;</summary>
+        /// <summary>Saved ticket filter criteria: status, priority, channel, sla, aiTriageResult, assignee, tags, tagsMatch, tagsExclude, dateFrom, dateTo, sorting, and search.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicketViewFilters? Filters { get; set; }
@@ -32,11 +32,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTicketViewFilters Filters { get; set; }
 #endif
-        /// <summary>The id property</summary>
+        /// <summary>Internal UUID of the view.</summary>
         public Guid? Id { get; private set; }
         /// <summary>Whether the current user has favorited this view. Favorited views sort to the top of the list. Favorites are personal to each user.</summary>
         public bool? IsFavorited { get; set; }
-        /// <summary>The name property</summary>
+        /// <summary>Display name of the view, as it appears in the ticket views list.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
@@ -44,7 +44,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>The short_id property</summary>
+        /// <summary>Stable short identifier for the view. Use it to address the view in this API, to open it at /support/tickets?view=&lt;short_id&gt;, and as the `view` parameter when listing tickets.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ShortId { get; private set; }

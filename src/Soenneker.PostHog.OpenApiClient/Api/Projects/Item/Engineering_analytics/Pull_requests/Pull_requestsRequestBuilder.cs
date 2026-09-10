@@ -95,7 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
             [QueryParameter("author")]
             public string Author { get; set; }
 #endif
-            /// <summary>&quot;Window start: relative (&apos;-30d&apos;, &apos;-8w&apos;) or ISO8601. Defaults to -30d.&quot;</summary>
+            /// <summary>Window start: relative (&apos;-30d&apos;, &apos;-8w&apos;) or ISO8601. Defaults to -30d.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("date_from")]

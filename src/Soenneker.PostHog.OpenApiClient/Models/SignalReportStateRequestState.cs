@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Target state for the report. Use &apos;suppressed&apos; to dismiss the report from the inbox, &apos;potential&apos; to snooze/reopen it for later review, or &apos;resolved&apos; when the work this report asked for has been done. Resolving is only allowed from a researched status (ready or pending_input) or a suppressed report; other statuses return 409 (skipped in bulk).* `suppressed` - suppressed* `potential` - potential* `resolved` - resolved
+    /// Target state for the report. Use &apos;suppressed&apos; to dismiss the report from the inbox, &apos;potential&apos; to snooze/reopen it for later review, or &apos;resolved&apos; when the work this report asked for has been done. Resolving is only allowed from a researched status (ready or pending_input) or a suppressed report; other statuses return 409 (skipped in bulk). Dismissing or resolving closes the report&apos;s open implementation PR, if it has one.* `suppressed` - suppressed* `potential` - potential* `resolved` - resolved
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SignalReportStateRequestState : IAdditionalDataHolder, IParsable

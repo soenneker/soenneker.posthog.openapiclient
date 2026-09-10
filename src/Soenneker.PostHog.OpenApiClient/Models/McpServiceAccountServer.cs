@@ -57,6 +57,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
+        /// <summary>Whether agent runs can use this grant: the server is enabled for the project and an admin has not revoked the sharing member&apos;s access. Independent of connection_state, which reports credential health.</summary>
+        public bool? Reachable { get; set; }
         /// <summary>&apos;personal&apos; lets the agent use this connection only when working for the member who shared it. &apos;team&apos; lets it use the connection for the whole project&apos;s agent runs.* `personal` - Personal* `team` - Team</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -72,6 +74,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServerSharedBy SharedBy { get; set; }
+#endif
+        /// <summary>MCP server URL. Clients derive a brand icon from it when icon_domain is empty.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Url { get; set; }
+#nullable restore
+#else
+        public string Url { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServer"/> and sets the default values.
@@ -104,8 +114,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "icon_key", n => { IconKey = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "reachable", n => { Reachable = n.GetBoolValue(); } },
                 { "scope", n => { Scope = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServerScope>(global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServerScope.CreateFromDiscriminatorValue); } },
                 { "shared_by", n => { SharedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServerSharedBy>(global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServerSharedBy.CreateFromDiscriminatorValue); } },
+                { "url", n => { Url = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -121,8 +133,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("icon_key", IconKey);
             writer.WriteGuidValue("id", Id);
             writer.WriteStringValue("name", Name);
+            writer.WriteBoolValue("reachable", Reachable);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServerScope>("scope", Scope);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServerSharedBy>("shared_by", SharedBy);
+            writer.WriteStringValue("url", Url);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Column { get; set; }
 #endif
-        /// <summary>&quot;One of: &gt; &gt;= &lt; &lt;= = != IN \&quot;NOT IN\&quot;.&quot;</summary>
+        /// <summary>One of: &gt; &gt;= &lt; &lt;= = != IN &quot;NOT IN&quot;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Operator { get; set; }

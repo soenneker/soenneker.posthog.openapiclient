@@ -2,6 +2,7 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Identity_provider_configs.Item.Scim.Logs;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Identity_provider_configs.Item.Scim.Token;
 using System.Collections.Generic;
 using System.IO;
@@ -15,6 +16,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Identity_provid
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ScimRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The logs property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Identity_provider_configs.Item.Scim.Logs.LogsRequestBuilder Logs
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Identity_provider_configs.Item.Scim.Logs.LogsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The token property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Identity_provider_configs.Item.Scim.Token.TokenRequestBuilder Token
         {

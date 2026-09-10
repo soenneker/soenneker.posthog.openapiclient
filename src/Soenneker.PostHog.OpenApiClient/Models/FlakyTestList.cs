@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;Tests worth acting on now, ranked by blast radius: master failures, then PRs hit, then runs.&quot;</summary>
+        /// <summary>Tests worth acting on now, ranked by blast radius: master failures, then PRs hit, then runs.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.FlakyTestItem>? Items { get; set; }

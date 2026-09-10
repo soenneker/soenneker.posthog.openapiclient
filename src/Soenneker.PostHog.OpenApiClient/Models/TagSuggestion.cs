@@ -23,7 +23,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Rationale { get; set; }
 #endif
-        /// <summary>&quot;Primary grounding: observed=a category this scanner already emitted on recordings; product=the org&apos;s events/screens; prompt=the scanner&apos;s stated goal.* `observed` - observed* `product` - product* `prompt` - prompt&quot;</summary>
+        /// <summary>Primary grounding: observed=a category this scanner already emitted on recordings; product=the org&apos;s events/screens; prompt=the scanner&apos;s stated goal.* `observed` - observed* `product` - product* `prompt` - prompt</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.TagSuggestionSource? Source { get; set; }

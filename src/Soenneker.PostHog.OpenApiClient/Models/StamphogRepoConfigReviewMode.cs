@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;When reviews run: &apos;all&apos; reviews every pull request (the default); &apos;label&apos; reviews only pull requests carrying the trigger label, mirroring the Action&apos;s opt-in flow.* `all` - all* `label` - label&quot;
+    /// When reviews run: &apos;all&apos; reviews every pull request (the default); &apos;label&apos; reviews only pull requests carrying the trigger label, mirroring the Action&apos;s opt-in flow.* `all` - all* `label` - label
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class StamphogRepoConfigReviewMode : IAdditionalDataHolder, IParsable

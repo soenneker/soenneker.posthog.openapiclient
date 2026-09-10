@@ -14,13 +14,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Models supported for the requested provider.</summary>
+        /// <summary>Models supported for the requested provider, or for every supported provider when `provider` is omitted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.LlmModelInfo>? Models { get; set; }
 #nullable restore
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.LlmModelInfo> Models { get; set; }
+#endif
+        /// <summary>One entry per provider covered by this response. Read it to tell an unsupported provider apart from a provider whose models need a team key before they can be listed.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LlmProviderModelsSummary>? Providers { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LlmProviderModelsSummary> Providers { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LlmModelsListResponse"/> and sets the default values.
@@ -48,6 +56,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "models", n => { Models = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LlmModelInfo>(global::Soenneker.PostHog.OpenApiClient.Models.LlmModelInfo.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "providers", n => { Providers = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LlmProviderModelsSummary>(global::Soenneker.PostHog.OpenApiClient.Models.LlmProviderModelsSummary.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -58,6 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LlmModelInfo>("models", Models);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LlmProviderModelsSummary>("providers", Providers);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

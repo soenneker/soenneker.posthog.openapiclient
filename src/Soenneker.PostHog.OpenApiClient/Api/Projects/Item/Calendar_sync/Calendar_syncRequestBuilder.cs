@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Calendar_sync.Backfill;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Calendar_sync.Sync_now;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -18,6 +19,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Calendar_sync
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Calendar_syncRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The backfill property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Calendar_sync.Backfill.BackfillRequestBuilder Backfill
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Calendar_sync.Backfill.BackfillRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The sync_now property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Calendar_sync.Sync_now.Sync_nowRequestBuilder Sync_now
         {

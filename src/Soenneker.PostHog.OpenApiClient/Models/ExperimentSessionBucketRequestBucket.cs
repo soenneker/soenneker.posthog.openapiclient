@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Which question the returned session set answers. &apos;fired_any&apos;: the session fired at least one event of any listed metric (an OR the recordings query itself can&apos;t express). &apos;no_metric_activity&apos;: the session fired none of them. &apos;funnel_dropoff&apos;: the session saw an exposure event but never fired the funnel metric&apos;s last step; the exposure is the funnel&apos;s implicit first step, the same as in the experiment analysis. All three are session-scoped and goal-free: they say what happened in the session, not whether it helped or hurt the metric.* `fired_any` - fired_any* `no_metric_activity` - no_metric_activity* `funnel_dropoff` - funnel_dropoff&quot;
+    /// Which question the returned session set answers. &apos;fired_any&apos;: the session fired at least one event of any listed metric (an OR the recordings query itself can&apos;t express). &apos;no_metric_activity&apos;: the session fired none of them. &apos;funnel_dropoff&apos;: the session saw an exposure event but never fired the funnel metric&apos;s last step; the exposure is the funnel&apos;s implicit first step, the same as in the experiment analysis. All three are session-scoped and goal-free: they say what happened in the session, not whether it helped or hurt the metric.* `fired_any` - fired_any* `no_metric_activity` - no_metric_activity* `funnel_dropoff` - funnel_dropoff
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ExperimentSessionBucketRequestBucket : IAdditionalDataHolder, IParsable

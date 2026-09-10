@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;The action registry: every verb a canvas may declare and invoke.&quot;
+    /// The action registry: every verb a canvas may declare and invoke.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CanvasActionsResponse : IAdditionalDataHolder, IParsable

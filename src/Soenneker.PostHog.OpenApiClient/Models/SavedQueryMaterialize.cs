@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Body of the `materialize` action: which cadence to enable materialization at.&quot;
+    /// Body of the `materialize` action: which cadence to enable materialization at.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SavedQueryMaterialize : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;How often to refresh the materialized table, defaulting to daily. Rejected with a 400 when it falls outside what the query&apos;s lineage allows: no more often than its sources deliver new data, and no less often than a downstream view or endpoint needs.* `15min` - 15min* `30min` - 30min* `1hour` - 1hour* `6hour` - 6hour* `12hour` - 12hour* `24hour` - 24hour* `7day` - 7day* `30day` - 30day&quot;</summary>
+        /// <summary>How often to refresh the materialized table, defaulting to daily. Rejected with a 400 when it falls outside what the query&apos;s lineage allows: no more often than its sources deliver new data, and no less often than a downstream view or endpoint needs.* `15min` - 15min* `30min` - 30min* `1hour` - 1hour* `6hour` - 6hour* `12hour` - 12hour* `24hour` - 24hour* `7day` - 7day* `30day` - 30day</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryMaterializeSyncFrequency? SyncFrequency { get; set; }

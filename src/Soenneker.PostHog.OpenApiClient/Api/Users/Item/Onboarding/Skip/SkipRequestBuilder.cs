@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Users.Item.Onboarding.Skip
         {
         }
         /// <summary>
-        /// &quot;Mark the current user as having exited onboarding with a non-delegated reason.Idempotent: the skip timestamp is only set on the first successful call.Callers wanting to delegate setup to a teammate must use the dedicated/organizations/{id}/invites/delegate/ endpoint, which atomically creates theinvite and sets reason=\&quot;delegated\&quot;. This endpoint rejects that reason so statecan&apos;t be faked without a real invite.&quot;
+        /// Mark the current user as having exited onboarding with a non-delegated reason.Idempotent: the skip timestamp is only set on the first successful call.Callers wanting to delegate setup to a teammate must use the dedicated/organizations/{id}/invites/delegate/ endpoint, which atomically creates theinvite and sets reason=&quot;delegated&quot;. This endpoint rejects that reason so statecan&apos;t be faked without a real invite.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.User"/></returns>
         /// <param name="body">Request body for POST /api/users/{id}/onboarding/skip/.Source of truth for OpenAPI / generated TS / zod / MCP — bind this serializer atruntime so the contract clients believe is enforced (length cap, choice validation,no extra fields) is actually enforced server-side.</param>
@@ -54,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Users.Item.Onboarding.Skip
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.User>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.User.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Mark the current user as having exited onboarding with a non-delegated reason.Idempotent: the skip timestamp is only set on the first successful call.Callers wanting to delegate setup to a teammate must use the dedicated/organizations/{id}/invites/delegate/ endpoint, which atomically creates theinvite and sets reason=\&quot;delegated\&quot;. This endpoint rejects that reason so statecan&apos;t be faked without a real invite.&quot;
+        /// Mark the current user as having exited onboarding with a non-delegated reason.Idempotent: the skip timestamp is only set on the first successful call.Callers wanting to delegate setup to a teammate must use the dedicated/organizations/{id}/invites/delegate/ endpoint, which atomically creates theinvite and sets reason=&quot;delegated&quot;. This endpoint rejects that reason so statecan&apos;t be faked without a real invite.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">Request body for POST /api/users/{id}/onboarding/skip/.Source of truth for OpenAPI / generated TS / zod / MCP — bind this serializer atruntime so the contract clients believe is enforced (length cap, choice validation,no extra fields) is actually enforced server-side.</param>

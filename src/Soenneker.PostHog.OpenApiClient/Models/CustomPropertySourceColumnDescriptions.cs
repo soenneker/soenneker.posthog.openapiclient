@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Person sources only: {warehouse_column: description} giving each mapped column a human-facing description, seeded from the warehouse column&apos;s information_schema description. Optional per column. Create-only.&quot;
+    /// Person and group sources only: {warehouse_column: description} giving each mapped column a human-facing description, seeded from the warehouse column&apos;s information_schema description. Optional per column. Create-only.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CustomPropertySourceColumnDescriptions : IAdditionalDataHolder, IParsable

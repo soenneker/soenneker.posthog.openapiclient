@@ -85,13 +85,13 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class ImpactRequestBuilderGetQueryParameters 
         {
-            /// <summary>&quot;Scorer scanners only: count sessions scoring at or below this value.&quot;</summary>
+            /// <summary>Scorer scanners only: count sessions scoring at or below this value.</summary>
             [QueryParameter("max_score")]
             public double? MaxScore { get; set; }
-            /// <summary>&quot;Scorer scanners only: count sessions scoring at or above this value. Scorers require `min_score` and/or `max_score`. Not applicable to other scanner types.&quot;</summary>
+            /// <summary>Scorer scanners only: count sessions scoring at or above this value. Scorers require `min_score` and/or `max_score`. Not applicable to other scanner types.</summary>
             [QueryParameter("min_score")]
             public double? MinScore { get; set; }
-            /// <summary>&quot;Classifier scanners only, required for them: count sessions carrying this tag (fixed or freeform). Not applicable to other scanner types.&quot;</summary>
+            /// <summary>Classifier scanners only, required for them: count sessions carrying this tag (fixed or freeform). Not applicable to other scanner types.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("tag")]

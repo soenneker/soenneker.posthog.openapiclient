@@ -24,11 +24,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowHealthBucket> Buckets { get; set; }
 #endif
-        /// <summary>The conclusive_run_count property</summary>
+        /// <summary>Completed runs that succeeded or ended in failure, timeout, startup failure, or staleness. This is the success_rate denominator.</summary>
         public int? ConclusiveRunCount { get; set; }
         /// <summary>Estimated cost in USD over this workflow&apos;s jobs in the window. Null when nothing was costable or the job source isn&apos;t synced.</summary>
         public double? EstimatedCostUsd { get; set; }
-        /// <summary>&quot;Bucket width of the `buckets` series, chosen to fit the window: &apos;hour&apos;, &apos;day&apos;, or &apos;week&apos;.&quot;</summary>
+        /// <summary>Bucket width of the `buckets` series, chosen to fit the window: &apos;hour&apos;, &apos;day&apos;, or &apos;week&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Granularity { get; set; }
@@ -36,7 +36,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Granularity { get; set; }
 #endif
-        /// <summary>When the most recent failing run (conclusion &apos;failure&apos; or &apos;timed_out&apos;) started, or null.</summary>
+        /// <summary>When the most recent decisive failure started, or null.</summary>
         public DateTimeOffset? LastFailureAt { get; set; }
         /// <summary>The latest_run_attempt property</summary>
         public int? LatestRunAttempt { get; set; }
@@ -48,15 +48,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string LatestRunConclusion { get; set; }
 #endif
-        /// <summary>Whether the most recent completed run was a decisive failure (conclusion &apos;failure&apos; or &apos;timed_out&apos;). Null when no run has completed in the window. Powers the OK/RED status badge.</summary>
+        /// <summary>Whether the most recent completed run ended in failure, timeout, startup failure, or staleness. Null when no run has completed in the window. Powers the OK/RED status badge.</summary>
         public bool? LatestRunFailed { get; set; }
         /// <summary>The latest_run_id property</summary>
         public int? LatestRunId { get; set; }
+        /// <summary>Runs on merge-queue gate branches (trunk-merge/**) in the window, counted regardless of branch or run_scope. Non-zero marks a workflow the queue runs before a merge lands, the closest available proxy for a required check.</summary>
+        public int? MergeQueueRunCount { get; set; }
         /// <summary>Median duration in seconds over successful runs only — cancelled (superseded) and failed runs end early and would bias the percentile. Null if no run succeeded in the window.</summary>
         public double? P50Seconds { get; set; }
         /// <summary>95th-percentile duration in seconds over successful runs only — cancelled (superseded) and failed runs end early and would bias the percentile. Null if no run succeeded in the window.</summary>
         public double? P95Seconds { get; set; }
-        /// <summary>The percentile_run_count property</summary>
+        /// <summary>Successful runs that did real CI work. This is the p50/p95 sample count.</summary>
         public int? PercentileRunCount { get; set; }
         /// <summary>Repository the workflow runs in.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -70,11 +72,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? RerunCycles { get; set; }
         /// <summary>Total runs started in the window.</summary>
         public int? RunCount { get; set; }
-        /// <summary>The successful_run_count property</summary>
+        /// <summary>Completed runs with conclusion &apos;success&apos;.</summary>
         public int? SuccessfulRunCount { get; set; }
-        /// <summary>Fraction of completed runs that succeeded (0-1). Null if no completed runs.</summary>
+        /// <summary>Fraction of conclusive runs that succeeded (0-1). Failures include failure, timed_out, startup_failure, and stale. Skipped, cancelled, neutral, and action_required runs are excluded. Null if no run reached a verdict.</summary>
         public double? SuccessRate { get; set; }
-        /// <summary>Success rate over the equal-length window before date_from - the delta baseline. Null when that window had no completed runs.</summary>
+        /// <summary>Conclusive-run success rate over the equal-length window before date_from - the delta baseline. Null when that window had no conclusive runs.</summary>
         public double? SuccessRatePrev { get; set; }
         /// <summary>GitHub Actions workflow name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -119,6 +121,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "latest_run_conclusion", n => { LatestRunConclusion = n.GetStringValue(); } },
                 { "latest_run_failed", n => { LatestRunFailed = n.GetBoolValue(); } },
                 { "latest_run_id", n => { LatestRunId = n.GetIntValue(); } },
+                { "merge_queue_run_count", n => { MergeQueueRunCount = n.GetIntValue(); } },
                 { "p50_seconds", n => { P50Seconds = n.GetDoubleValue(); } },
                 { "p95_seconds", n => { P95Seconds = n.GetDoubleValue(); } },
                 { "percentile_run_count", n => { PercentileRunCount = n.GetIntValue(); } },
@@ -148,6 +151,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("latest_run_conclusion", LatestRunConclusion);
             writer.WriteBoolValue("latest_run_failed", LatestRunFailed);
             writer.WriteIntValue("latest_run_id", LatestRunId);
+            writer.WriteIntValue("merge_queue_run_count", MergeQueueRunCount);
             writer.WriteDoubleValue("p50_seconds", P50Seconds);
             writer.WriteDoubleValue("p95_seconds", P95Seconds);
             writer.WriteIntValue("percentile_run_count", PercentileRunCount);

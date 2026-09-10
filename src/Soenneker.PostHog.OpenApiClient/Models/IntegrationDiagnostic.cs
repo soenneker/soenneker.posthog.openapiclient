@@ -17,18 +17,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Attribution (UTM events) side health, or null if no data</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.IntegrationDiagnosticAttribution? Attribution { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AttributionHealthEntry? Attribution { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.IntegrationDiagnosticAttribution Attribution { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AttributionHealthEntry Attribution { get; set; }
 #endif
         /// <summary>Data-source (sync) side health, or null if not connected</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.IntegrationDiagnosticDataSource? DataSource { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataSourceHealthEntry? DataSource { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.IntegrationDiagnosticDataSource DataSource { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataSourceHealthEntry DataSource { get; set; }
 #endif
         /// <summary>Human-readable cross-domain diagnosis</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -103,8 +103,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "attribution", n => { Attribution = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationDiagnosticAttribution>(global::Soenneker.PostHog.OpenApiClient.Models.IntegrationDiagnosticAttribution.CreateFromDiscriminatorValue); } },
-                { "data_source", n => { DataSource = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationDiagnosticDataSource>(global::Soenneker.PostHog.OpenApiClient.Models.IntegrationDiagnosticDataSource.CreateFromDiscriminatorValue); } },
+                { "attribution", n => { Attribution = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AttributionHealthEntry>(global::Soenneker.PostHog.OpenApiClient.Models.AttributionHealthEntry.CreateFromDiscriminatorValue); } },
+                { "data_source", n => { DataSource = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataSourceHealthEntry>(global::Soenneker.PostHog.OpenApiClient.Models.DataSourceHealthEntry.CreateFromDiscriminatorValue); } },
                 { "diagnosis", n => { Diagnosis = n.GetStringValue(); } },
                 { "display_name", n => { DisplayName = n.GetStringValue(); } },
                 { "integration_key", n => { IntegrationKey = n.GetStringValue(); } },
@@ -120,8 +120,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationDiagnosticAttribution>("attribution", Attribution);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationDiagnosticDataSource>("data_source", DataSource);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AttributionHealthEntry>("attribution", Attribution);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataSourceHealthEntry>("data_source", DataSource);
             writer.WriteStringValue("diagnosis", Diagnosis);
             writer.WriteStringValue("display_name", DisplayName);
             writer.WriteStringValue("integration_key", IntegrationKey);

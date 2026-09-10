@@ -23,6 +23,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>True when the draft enables requests to the canvas&apos;s authoring agent and the current head does not.</summary>
+        public bool? AgentRequestsEnabled { get; set; }
         /// <summary>Event names the draft newly declares it may capture.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -30,6 +32,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public List<string> CaptureEventsAdded { get; set; }
+#endif
+        /// <summary>Connector providers and tools the draft newly declares it may call via ph.connectors.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorDeclaration>? ConnectorsAdded { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorDeclaration> ConnectorsAdded { get; set; }
 #endif
         /// <summary>True when the draft enables inline queries and the current head does not.</summary>
         public bool? InlineQueriesEnabled { get; set; }
@@ -85,7 +95,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "actions_added", n => { ActionsAdded = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "agent_requests_enabled", n => { AgentRequestsEnabled = n.GetBoolValue(); } },
                 { "capture_events_added", n => { CaptureEventsAdded = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "connectors_added", n => { ConnectorsAdded = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorDeclaration>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorDeclaration.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "inline_queries_enabled", n => { InlineQueriesEnabled = n.GetBoolValue(); } },
                 { "insights_added", n => { InsightsAdded = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "network_origins_added", n => { NetworkOriginsAdded = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -101,7 +113,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("actions_added", ActionsAdded);
+            writer.WriteBoolValue("agent_requests_enabled", AgentRequestsEnabled);
             writer.WriteCollectionOfPrimitiveValues<string>("capture_events_added", CaptureEventsAdded);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorDeclaration>("connectors_added", ConnectorsAdded);
             writer.WriteBoolValue("inline_queries_enabled", InlineQueriesEnabled);
             writer.WriteCollectionOfPrimitiveValues<string>("insights_added", InsightsAdded);
             writer.WriteCollectionOfPrimitiveValues<string>("network_origins_added", NetworkOriginsAdded);

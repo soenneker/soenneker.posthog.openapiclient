@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;How often the alert is checked: real time (Scale+), every 15 minutes (Boost+), hourly, daily, weekly, or monthly.* `real_time` - real_time* `every_15_minutes` - every_15_minutes* `hourly` - hourly* `daily` - daily* `weekly` - weekly* `monthly` - monthly&quot;</summary>
+        /// <summary>How often the alert is checked: real time (Scale+), every 15 minutes (Boost+), hourly, daily, weekly, or monthly.* `real_time` - real_time* `every_15_minutes` - every_15_minutes* `hourly` - hourly* `daily` - daily* `weekly` - weekly* `monthly` - monthly</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.AlertCalculationInterval? CalculationInterval { get; set; }
@@ -32,21 +32,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Total alert checks matching the retrieve filters (date window). Only set on alert retrieve; omitted otherwise.</summary>
         public int? ChecksTotal { get; private set; }
-        /// <summary>&quot;Alert condition type. Determines how the value is evaluated: absolute_value, relative_increase, or relative_decrease.&quot;</summary>
+        /// <summary>Alert condition type. Determines how the value is evaluated: absolute_value, relative_increase, or relative_decrease.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertConditionComposed? Condition { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertCondition? Condition { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertConditionComposed Condition { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertCondition Condition { get; set; }
 #endif
-        /// <summary>&quot;Per-insight-kind alert configuration, discriminated by `type`. TrendsAlertConfig: series_index (which series to monitor) and check_ongoing_interval (whether to check the current incomplete interval). HogQLAlertConfig (SQL insights): column (which result column to evaluate, defaults to the single numeric column), evaluation (&apos;last_row&apos; checks the latest value of an oldest-&gt;newest query, &apos;first_row&apos; checks the first value of a newest-&gt;oldest query, &apos;any_row&apos; fires if any row breaches), and label_column (names the evaluated row(s) in breach messages, in every evaluation mode). FunnelsAlertConfig (funnel insights): funnel_step (the step to monitor, null for the overall last step), metric (&apos;conversion_from_start&apos; or &apos;conversion_from_previous&apos;), and check_ongoing_interval (historical-trend funnels: also evaluate the current in-progress period). Steps funnels support only absolute_value conditions; historical-trend funnels also support relative_increase/relative_decrease (compared against the prior period).&quot;</summary>
+        /// <summary>Per-insight-kind alert configuration, discriminated by `type`. TrendsAlertConfig: series_index (which series to monitor) and check_ongoing_interval (whether to check the current incomplete interval). HogQLAlertConfig (SQL insights): column (which result column to evaluate, defaults to the single numeric column), evaluation (&apos;last_row&apos; checks the latest value of an oldest-&gt;newest query, &apos;first_row&apos; checks the first value of a newest-&gt;oldest query, &apos;any_row&apos; fires if any row breaches), and label_column (names the evaluated row(s) in breach messages, in every evaluation mode). FunnelsAlertConfig (funnel insights): funnel_step (the step to monitor, null for the overall last step), metric (&apos;conversion_from_start&apos; or &apos;conversion_from_previous&apos;), and check_ongoing_interval (historical-trend funnels: also evaluate the current in-progress period). Steps funnels support only absolute_value conditions; historical-trend funnels also support relative_increase/relative_decrease (compared against the prior period).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertConfigComposed? Config { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertConfigUnion? Config { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertConfigComposed Config { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertConfigUnion Config { get; set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
@@ -61,16 +61,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The detector_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertDetectorConfig? DetectorConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig? DetectorConfig { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertDetectorConfig DetectorConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig DetectorConfig { get; set; }
 #endif
         /// <summary>Whether the alert is actively being evaluated.</summary>
         public bool? Enabled { get; set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
-        /// <summary>&quot;Insight ID monitored by this alert. Note: Response returns full InsightBasicSerializer object.&quot;</summary>
+        /// <summary>Insight ID monitored by this alert. Note: Response returns full InsightBasicSerializer object.</summary>
         public int? Insight { get; set; }
         /// <summary>Display name of the insight monitored by this alert.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -88,11 +88,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string InsightShortId { get; private set; }
 #endif
-        /// <summary>When enabled, an investigation agent runs on the state transition to firing and writes findings to a Notebook linked from the alert check. Only effective for detector-based (anomaly) alerts.</summary>
+        /// <summary>When enabled, an investigation agent runs on each check where the alert fires, up to three times per firing episode, and writes findings to a Notebook linked from the alert check. An episode is the run of consecutive firing checks since the last check that did not fire. A later investigation of the same episode that reaches a different verdict sends one follow-up notification, unless investigation_inconclusive_action suppresses it. Only effective for detector-based (anomaly) alerts.</summary>
         public bool? InvestigationAgentEnabled { get; set; }
-        /// <summary>When enabled (and investigation_agent_enabled is on), notification dispatch is held until the investigation agent produces a verdict. Notifications are suppressed when the verdict is false_positive (and optionally when inconclusive). A safety-net task force-fires after a few minutes if the investigation stalls.</summary>
+        /// <summary>When enabled (and investigation_agent_enabled is on), the first fire of an episode is held until the investigation agent produces a verdict, and that notification is suppressed when the verdict is false_positive (and optionally when inconclusive). Later fires of the same episode notify without waiting. A safety-net task force-fires after a few minutes if the investigation stalls.</summary>
         public bool? InvestigationGatesNotifications { get; set; }
-        /// <summary>&quot;How to handle an &apos;inconclusive&apos; verdict: whether gated notifications fire and whether the investigation surfaces in the Signals inbox. &apos;notify&apos; is the safe default — an agent that can&apos;t be sure is itself useful signal. False positives never reach the inbox regardless of this setting.* `notify` - Notify* `suppress` - Suppress&quot;</summary>
+        /// <summary>How to handle an &apos;inconclusive&apos; verdict: whether gated notifications fire and whether the investigation surfaces in the Signals inbox. &apos;notify&apos; is the safe default — an agent that can&apos;t be sure is itself useful signal. False positives never reach the inbox regardless of this setting.* `notify` - Notify* `suppress` - Suppress</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.AlertInvestigationInconclusiveAction? InvestigationInconclusiveAction { get; set; }
@@ -116,15 +116,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The next_check_at property</summary>
         public DateTimeOffset? NextCheckAt { get; private set; }
-        /// <summary>&quot;Blocked local time windows (HH:MM in the project timezone). Interval is half-open [start, end): start inclusive, end exclusive. Use blocked_windows array of {start, end}. Null disables.&quot;</summary>
+        /// <summary>Blocked local time windows (HH:MM in the project timezone). Interval is half-open [start, end): start inclusive, end exclusive. Use blocked_windows array of {start, end}. Null disables.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestrictionComposed? ScheduleRestriction { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction? ScheduleRestriction { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestrictionComposed ScheduleRestriction { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction ScheduleRestriction { get; set; }
 #endif
-        /// <summary>&quot;How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`.&quot;</summary>
+        /// <summary>Local time that starts alert checks in HH:MM format. Updating this value changes checks after the already scheduled next_check_at. Set null to remove the custom start time. The current next_check_at stays unchanged. Future checks use the alert interval&apos;s existing scheduling behavior.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ScheduleStartTime { get; set; }
+#nullable restore
+#else
+        public string ScheduleStartTime { get; set; }
+#endif
+        /// <summary>How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.AlertSearchMatchType? SearchMatchType { get; private set; }
@@ -142,7 +150,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SnoozedUntil { get; set; }
 #endif
-        /// <summary>&quot;Current alert state: Firing, Not firing, Errored, or Snoozed.&quot;</summary>
+        /// <summary>Current alert state: Firing, Not firing, Errored, or Snoozed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? State { get; private set; }
@@ -150,7 +158,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string State { get; private set; }
 #endif
-        /// <summary>&quot;User IDs to subscribe to this alert. Note: Response returns full UserBasicSerializer object.&quot;</summary>
+        /// <summary>User IDs to subscribe to this alert. Note: Response returns full UserBasicSerializer object.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<int?>? SubscribedUsers { get; set; }
@@ -194,11 +202,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "calculation_interval", n => { CalculationInterval = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertCalculationInterval>(global::Soenneker.PostHog.OpenApiClient.Models.AlertCalculationInterval.CreateFromDiscriminatorValue); } },
                 { "checks", n => { Checks = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AlertCheck>(global::Soenneker.PostHog.OpenApiClient.Models.AlertCheck.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "checks_total", n => { ChecksTotal = n.GetIntValue(); } },
-                { "condition", n => { Condition = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertConditionComposed>(global::Soenneker.PostHog.OpenApiClient.Models.AlertConditionComposed.CreateFromDiscriminatorValue); } },
-                { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertConfigComposed>(global::Soenneker.PostHog.OpenApiClient.Models.AlertConfigComposed.CreateFromDiscriminatorValue); } },
+                { "condition", n => { Condition = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertCondition>(global::Soenneker.PostHog.OpenApiClient.Models.AlertCondition.CreateFromDiscriminatorValue); } },
+                { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertConfigUnion>(global::Soenneker.PostHog.OpenApiClient.Models.AlertConfigUnion.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.AlertCreatedBy.CreateFromDiscriminatorValue); } },
-                { "detector_config", n => { DetectorConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertDetectorConfig>(global::Soenneker.PostHog.OpenApiClient.Models.AlertDetectorConfig.CreateFromDiscriminatorValue); } },
+                { "detector_config", n => { DetectorConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig>(global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig.CreateFromDiscriminatorValue); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "insight", n => { Insight = n.GetIntValue(); } },
@@ -212,7 +220,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "last_value", n => { LastValue = n.GetDoubleValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "next_check_at", n => { NextCheckAt = n.GetDateTimeOffsetValue(); } },
-                { "schedule_restriction", n => { ScheduleRestriction = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestrictionComposed>(global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestrictionComposed.CreateFromDiscriminatorValue); } },
+                { "schedule_restriction", n => { ScheduleRestriction = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction>(global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction.CreateFromDiscriminatorValue); } },
+                { "schedule_start_time", n => { ScheduleStartTime = n.GetStringValue(); } },
                 { "search_match_type", n => { SearchMatchType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertSearchMatchType>(global::Soenneker.PostHog.OpenApiClient.Models.AlertSearchMatchType.CreateFromDiscriminatorValue); } },
                 { "skip_weekend", n => { SkipWeekend = n.GetBoolValue(); } },
                 { "snoozed_until", n => { SnoozedUntil = n.GetStringValue(); } },
@@ -229,16 +238,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertCalculationInterval>("calculation_interval", CalculationInterval);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertConditionComposed>("condition", Condition);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertConfigComposed>("config", Config);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertDetectorConfig>("detector_config", DetectorConfig);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertCondition>("condition", Condition);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertConfigUnion>("config", Config);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig>("detector_config", DetectorConfig);
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteIntValue("insight", Insight);
             writer.WriteBoolValue("investigation_agent_enabled", InvestigationAgentEnabled);
             writer.WriteBoolValue("investigation_gates_notifications", InvestigationGatesNotifications);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertInvestigationInconclusiveAction>("investigation_inconclusive_action", InvestigationInconclusiveAction);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestrictionComposed>("schedule_restriction", ScheduleRestriction);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction>("schedule_restriction", ScheduleRestriction);
+            writer.WriteStringValue("schedule_start_time", ScheduleStartTime);
             writer.WriteBoolValue("skip_weekend", SkipWeekend);
             writer.WriteStringValue("snoozed_until", SnoozedUntil);
             writer.WriteCollectionOfPrimitiveValues<int?>("subscribed_users", SubscribedUsers);

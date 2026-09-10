@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Parent resource this notebook is attached to, or `null`. Returns `{type: &apos;account&apos;, id: &lt;uuid&gt;}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource&apos;s list.&quot;
+    /// Parent resource this notebook is attached to, or `null`. Returns `{type: &apos;account&apos;, id: &lt;uuid&gt;}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource&apos;s list.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class NotebookParentResource : IAdditionalDataHolder, IParsable
@@ -18,7 +18,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The id property</summary>
         public Guid? Id { get; set; }
         /// <summary>The type property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookParentResourceType? Type { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NotebookParentResource"/> and sets the default values.
         /// </summary>
@@ -45,7 +45,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookParentResourceType>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountType>(); } },
             };
         }
         /// <summary>
@@ -56,7 +56,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteGuidValue("id", Id);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookParentResourceType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

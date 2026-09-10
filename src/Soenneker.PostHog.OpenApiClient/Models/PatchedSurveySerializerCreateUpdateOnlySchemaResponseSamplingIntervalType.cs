@@ -8,18 +8,18 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper21"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ResponseSamplingIntervalTypeEnumWrapper"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper25"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SurveySamplingIntervalTypeEnumWrapper"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedSurveySerializerCreateUpdateOnlySchemaResponseSamplingIntervalType : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper21"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper25"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper21? BlankEnumWrapper21 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper25? BlankEnumWrapper25 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper21 BlankEnumWrapper21 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper25 BlankEnumWrapper25 { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -29,13 +29,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum NullEnum { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ResponseSamplingIntervalTypeEnumWrapper"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SurveySamplingIntervalTypeEnumWrapper"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ResponseSamplingIntervalTypeEnumWrapper? ResponseSamplingIntervalTypeEnumWrapper { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveySamplingIntervalTypeEnumWrapper? SurveySamplingIntervalTypeEnumWrapper { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ResponseSamplingIntervalTypeEnumWrapper ResponseSamplingIntervalTypeEnumWrapper { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveySamplingIntervalTypeEnumWrapper SurveySamplingIntervalTypeEnumWrapper { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -47,13 +47,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaResponseSamplingIntervalType();
-            if("BlankEnumWrapper21".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("BlankEnumWrapper25".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.BlankEnumWrapper21 = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper21();
+                result.BlankEnumWrapper25 = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper25();
             }
-            else if("ResponseSamplingIntervalTypeEnumWrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("SurveySamplingIntervalTypeEnumWrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.ResponseSamplingIntervalTypeEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.ResponseSamplingIntervalTypeEnumWrapper();
+                result.SurveySamplingIntervalTypeEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.SurveySamplingIntervalTypeEnumWrapper();
             }
             return result;
         }
@@ -63,17 +63,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(BlankEnumWrapper21 != null)
+            if(BlankEnumWrapper25 != null)
             {
-                return BlankEnumWrapper21.GetFieldDeserializers();
+                return BlankEnumWrapper25.GetFieldDeserializers();
             }
             else if(NullEnum != null)
             {
                 return NullEnum.GetFieldDeserializers();
             }
-            else if(ResponseSamplingIntervalTypeEnumWrapper != null)
+            else if(SurveySamplingIntervalTypeEnumWrapper != null)
             {
-                return ResponseSamplingIntervalTypeEnumWrapper.GetFieldDeserializers();
+                return SurveySamplingIntervalTypeEnumWrapper.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -84,17 +84,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(BlankEnumWrapper21 != null)
+            if(BlankEnumWrapper25 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper21>(null, BlankEnumWrapper21);
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper25>(null, BlankEnumWrapper25);
             }
             else if(NullEnum != null)
             {
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NullEnum>(null, NullEnum);
             }
-            else if(ResponseSamplingIntervalTypeEnumWrapper != null)
+            else if(SurveySamplingIntervalTypeEnumWrapper != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResponseSamplingIntervalTypeEnumWrapper>(null, ResponseSamplingIntervalTypeEnumWrapper);
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveySamplingIntervalTypeEnumWrapper>(null, SurveySamplingIntervalTypeEnumWrapper);
             }
         }
     }

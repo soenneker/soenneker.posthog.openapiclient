@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>When the source last completed a sync</summary>
         public DateTimeOffset? LastSyncAt { get; set; }
-        /// <summary>&quot;Sync status: ok/error/stale/tables_failed/not_connected/never&quot;</summary>
+        /// <summary>Sync status: ok/error/stale/tables_failed/not_connected/never</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? LastSyncStatus { get; set; }

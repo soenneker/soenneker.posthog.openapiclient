@@ -71,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseSummary Summary { get; set; }
 #endif
-        /// <summary>&quot;Deprecated — always returns `{items: [], truncated: false}`. Trace IDs are opaque strings that aren&apos;t actionable in the UI. Kept in the response shape so existing consumers don&apos;t crash; remove your rendering of this field and we&apos;ll drop it from the response entirely in a follow-up.&quot;</summary>
+        /// <summary>Deprecated — always returns `{items: [], truncated: false}`. Trace IDs are opaque strings that aren&apos;t actionable in the UI. Kept in the response shape so existing consumers don&apos;t crash; remove your rendering of this field and we&apos;ll drop it from the response entirely in a follow-up.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseTopTraces? TopTraces { get; set; }

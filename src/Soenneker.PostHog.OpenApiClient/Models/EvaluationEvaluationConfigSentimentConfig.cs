@@ -13,7 +13,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning restore CS1591
     {
         /// <summary>Classify sentiment from user messages in the generation input. The classifier is trained on English, so labels are unreliable for other languages; use an &apos;llm_judge&apos; evaluation for multilingual agents.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigSentimentConfigSource? Source { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserMessagesSource? Source { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -32,7 +32,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "source", n => { Source = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigSentimentConfigSource>(); } },
+                { "source", n => { Source = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.UserMessagesSource>(); } },
             };
         }
         /// <summary>
@@ -42,7 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigSentimentConfigSource>("source", Source);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.UserMessagesSource>("source", Source);
         }
     }
 }

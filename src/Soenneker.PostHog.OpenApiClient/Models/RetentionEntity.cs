@@ -57,10 +57,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>filters on the event</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntityPropertiesAnyOf1Item>? Properties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntityPropertiesItem>? Properties { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntityPropertiesAnyOf1Item> Properties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntityPropertiesItem> Properties { get; set; }
 #endif
         /// <summary>Data warehouse table name</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -118,7 +118,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntityKindWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntityKindWrapper.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "order", n => { Order = n.GetIntValue(); } },
-                { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntityPropertiesAnyOf1Item>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntityPropertiesAnyOf1Item.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntityPropertiesItem>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntityPropertiesItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "table_name", n => { TableName = n.GetStringValue(); } },
                 { "timestamp_field", n => { TimestampField = n.GetStringValue(); } },
                 { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EntityTypeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.EntityTypeWrapper.CreateFromDiscriminatorValue); } },
@@ -138,7 +138,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntityKindWrapper>("kind", Kind);
             writer.WriteStringValue("name", Name);
             writer.WriteIntValue("order", Order);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntityPropertiesAnyOf1Item>("properties", Properties);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntityPropertiesItem>("properties", Properties);
             writer.WriteStringValue("table_name", TableName);
             writer.WriteStringValue("timestamp_field", TimestampField);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EntityTypeWrapper>("type", Type);

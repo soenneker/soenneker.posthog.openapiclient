@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;How utm_campaign matched: none, auto (direct name/id), or mapped (manual mapping)* `none` - none* `auto` - auto* `mapped` - mapped&quot;</summary>
+        /// <summary>How utm_campaign matched: none, auto (direct name/id), or mapped (manual mapping)* `none` - none* `auto` - auto* `mapped` - mapped</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.UtmEventCampaignMatch? CampaignMatch { get; set; }
@@ -32,7 +32,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string MatchedCampaign { get; set; }
 #endif
-        /// <summary>&quot;How utm_source matched: none, auto (default source), or mapped (custom mapping)* `none` - none* `auto` - auto* `mapped` - mapped&quot;</summary>
+        /// <summary>How utm_source matched: none, auto (default source), or mapped (custom mapping)* `none` - none* `auto` - auto* `mapped` - mapped</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.UtmEventSourceMatch? SourceMatch { get; set; }

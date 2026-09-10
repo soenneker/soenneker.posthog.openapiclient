@@ -17,6 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When true, the cloud run agent pushes its work and opens a draft pull request on completion without waiting for an explicit ask.</summary>
         public bool? AutoPublish { get; set; }
+        /// <summary>Whether the Benjamin-Plus token-efficiency instruction applies to this run. Omitted or null lets the server decide from the feature flag; true or false pins the choice for this run.</summary>
+        public bool? BenjaminEnabled { get; set; }
         /// <summary>Git branch to checkout in the sandbox</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -24,6 +26,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string Branch { get; set; }
+#endif
+        /// <summary>How the Claude runtime pays for model use. &apos;own-subscription&apos; makes the sandbox request a Claude token from the creating PostHog Desktop at run start; the token is sent in flight and never stored on PostHog servers. If omitted or null, resumed runs keep their billing choice and new runs use the PostHog gateway.* `posthog-gateway` - posthog-gateway* `own-subscription` - own-subscription</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.CodexTaskRunCreateSchemaClaudeModelAccess? ClaudeModelAccess { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.CodexTaskRunCreateSchemaClaudeModelAccess ClaudeModelAccess { get; set; }
 #endif
         /// <summary>Context window size for models that support the 1M window.* `200k` - 200k* `1m` - 1m</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -45,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string GithubUserToken { get; set; }
 #endif
-        /// <summary>&quot;Local url-based MCP servers from the creating client (PostHog Desktop) to make available inside the cloud sandbox. Header values are treated as credentials: stored encrypted and never returned by the API.&quot;</summary>
+        /// <summary>Local url-based MCP servers from the creating client (PostHog Desktop) to make available inside the cloud sandbox. Header values are treated as credentials: stored encrypted and never returned by the API.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ImportedMcpServer>? ImportedMcpServers { get; set; }
@@ -61,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.CodexTaskRunCreateSchemaInitialPermissionMode InitialPermissionMode { get; set; }
 #endif
-        /// <summary>&quot;Execution mode: &apos;interactive&apos; for user-connected runs, &apos;background&apos; for autonomous runs* `interactive` - interactive* `background` - background&quot;</summary>
+        /// <summary>Execution mode: &apos;interactive&apos; for user-connected runs, &apos;background&apos; for autonomous runs* `interactive` - interactive* `background` - background</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.CodexTaskRunCreateSchemaMode? Mode { get; set; }
@@ -173,7 +183,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "auto_publish", n => { AutoPublish = n.GetBoolValue(); } },
+                { "benjamin_enabled", n => { BenjaminEnabled = n.GetBoolValue(); } },
                 { "branch", n => { Branch = n.GetStringValue(); } },
+                { "claude_model_access", n => { ClaudeModelAccess = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CodexTaskRunCreateSchemaClaudeModelAccess>(global::Soenneker.PostHog.OpenApiClient.Models.CodexTaskRunCreateSchemaClaudeModelAccess.CreateFromDiscriminatorValue); } },
                 { "context_window", n => { ContextWindow = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CodexTaskRunCreateSchemaContextWindow>(global::Soenneker.PostHog.OpenApiClient.Models.CodexTaskRunCreateSchemaContextWindow.CreateFromDiscriminatorValue); } },
                 { "custom_image_id", n => { CustomImageId = n.GetGuidValue(); } },
                 { "fast_mode", n => { FastMode = n.GetBoolValue(); } },
@@ -203,7 +215,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("auto_publish", AutoPublish);
+            writer.WriteBoolValue("benjamin_enabled", BenjaminEnabled);
             writer.WriteStringValue("branch", Branch);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CodexTaskRunCreateSchemaClaudeModelAccess>("claude_model_access", ClaudeModelAccess);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CodexTaskRunCreateSchemaContextWindow>("context_window", ContextWindow);
             writer.WriteGuidValue("custom_image_id", CustomImageId);
             writer.WriteBoolValue("fast_mode", FastMode);

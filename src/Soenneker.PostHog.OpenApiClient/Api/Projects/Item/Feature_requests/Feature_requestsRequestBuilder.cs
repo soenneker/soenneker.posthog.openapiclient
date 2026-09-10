@@ -35,7 +35,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Feature_requestsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/feature_requests{?account_ids*,archive_state*,limit*,offset*,priorities*,product_area_ids*,request_ordering*,search*,statuses*}", pathParameters)
+        public Feature_requestsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/feature_requests{?account_ids*,archive_state*,created_by_ids*,limit*,offset*,priorities*,product_area_ids*,request_ordering*,search*,statuses*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Feature_requestsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/feature_requests{?account_ids*,archive_state*,limit*,offset*,priorities*,product_area_ids*,request_ordering*,search*,statuses*}", rawUrl)
+        public Feature_requestsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/feature_requests{?account_ids*,archive_state*,created_by_ids*,limit*,offset*,priorities*,product_area_ids*,request_ordering*,search*,statuses*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedFeatureRequestList"/></returns>
@@ -140,6 +140,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests
             /// <summary>Whether to return active requests, archived requests, or all requests.* `active` - Active* `archived` - Archived* `all` - All</summary>
             [QueryParameter("archive_state")]
             public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestsListArchiveStateParameter? ArchiveState { get; set; }
+            /// <summary>Creator user IDs to include. Multiple values use OR semantics.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("created_by_ids")]
+            public int?[]? CreatedByIds { get; set; }
+#nullable restore
+#else
+            [QueryParameter("created_by_ids")]
+            public int?[] CreatedByIds { get; set; }
+#endif
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
@@ -166,7 +176,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests
             [QueryParameter("product_area_ids")]
             public Guid?[] ProductAreaIds { get; set; }
 #endif
-            /// <summary>&quot;Stable ordering for the result list.* `-updated_at` - Last updated: newest* `updated_at` - Last updated: oldest* `-created_at` - Date created: newest* `created_at` - Date created: oldest* `-priority` - Priority: high to low* `priority` - Priority: low to high* `title` - Title: A to Z* `-title` - Title: Z to A&quot;</summary>
+            /// <summary>Stable ordering for the result list.* `-updated_at` - Last updated: newest* `updated_at` - Last updated: oldest* `-created_at` - Date created: newest* `created_at` - Date created: oldest* `-priority` - Priority: high to low* `priority` - Priority: low to high* `title` - Title: A to Z* `-title` - Title: Z to A* `account` - Accounts: A to Z* `-account` - Accounts: Z to A* `product_area` - Product areas: A to Z* `-product_area` - Product areas: Z to A* `status` - Status: A to Z* `-status` - Status: Z to A* `created_by` - Created by: A to Z* `-created_by` - Created by: Z to A* `evidence_count` - Evidence: low to high* `-evidence_count` - Evidence: high to low</summary>
             [QueryParameter("request_ordering")]
             public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestsListRequestOrderingParameter? RequestOrdering { get; set; }
             /// <summary>Case-insensitive text to find in request titles and descriptions.</summary>

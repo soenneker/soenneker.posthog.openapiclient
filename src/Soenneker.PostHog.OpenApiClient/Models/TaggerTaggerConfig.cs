@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Tagger configuration. For tagger_type &apos;llm&apos;: {prompt, tags, min_tags?, max_tags?}. For tagger_type &apos;hog&apos;: {source, tags?}.&quot;
+    /// Tagger configuration. For tagger_type &apos;llm&apos;: {prompt, tags, min_tags?, max_tags?}. For tagger_type &apos;hog&apos;: {source, tags?}.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TaggerTaggerConfig : IAdditionalDataHolder, IParsable
@@ -43,14 +43,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.TagDefinition> Tags { get; set; }
 #endif
-        /// <summary>Union discriminator</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Type { get; set; }
-#nullable restore
-#else
-        public string Type { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaggerTaggerConfig"/> and sets the default values.
         /// </summary>
@@ -82,7 +74,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "prompt", n => { Prompt = n.GetStringValue(); } },
                 { "source", n => { Source = n.GetStringValue(); } },
                 { "tags", n => { Tags = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TagDefinition>(global::Soenneker.PostHog.OpenApiClient.Models.TagDefinition.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "type", n => { Type = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -97,7 +88,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("prompt", Prompt);
             writer.WriteStringValue("source", Source);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TagDefinition>("tags", Tags);
-            writer.WriteStringValue("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

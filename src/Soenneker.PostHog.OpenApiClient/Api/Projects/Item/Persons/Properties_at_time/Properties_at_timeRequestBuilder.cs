@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Properties_a
         {
         }
         /// <summary>
-        /// &quot;Get person properties as they existed at a specific point in time.This endpoint reconstructs person properties by querying ClickHouse eventsfor $set and $set_once operations up to the specified timestamp.Query parameters:- distinct_id: The distinct_id of the person- timestamp: ISO datetime string for the point in time (e.g., \&quot;2023-06-15T14:30:00Z\&quot;)- include_set_once: Whether to handle $set_once operations (default: false)&quot;
+        /// Get person properties as they existed at a specific point in time.This endpoint reconstructs person properties by querying ClickHouse eventsfor $set and $set_once operations up to the specified timestamp.Query parameters:- distinct_id: The distinct_id of the person- timestamp: ISO datetime string for the point in time (e.g., &quot;2023-06-15T14:30:00Z&quot;)- include_set_once: Whether to handle $set_once operations (default: false)
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertiesAtTimeResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -61,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Properties_a
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertiesAtTimeResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertiesAtTimeResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Get person properties as they existed at a specific point in time.This endpoint reconstructs person properties by querying ClickHouse eventsfor $set and $set_once operations up to the specified timestamp.Query parameters:- distinct_id: The distinct_id of the person- timestamp: ISO datetime string for the point in time (e.g., \&quot;2023-06-15T14:30:00Z\&quot;)- include_set_once: Whether to handle $set_once operations (default: false)&quot;
+        /// Get person properties as they existed at a specific point in time.This endpoint reconstructs person properties by querying ClickHouse eventsfor $set and $set_once operations up to the specified timestamp.Query parameters:- distinct_id: The distinct_id of the person- timestamp: ISO datetime string for the point in time (e.g., &quot;2023-06-15T14:30:00Z&quot;)- include_set_once: Whether to handle $set_once operations (default: false)
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -89,7 +89,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Properties_a
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Properties_at_time.Properties_at_timeRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// &quot;Get person properties as they existed at a specific point in time.This endpoint reconstructs person properties by querying ClickHouse eventsfor $set and $set_once operations up to the specified timestamp.Query parameters:- distinct_id: The distinct_id of the person- timestamp: ISO datetime string for the point in time (e.g., \&quot;2023-06-15T14:30:00Z\&quot;)- include_set_once: Whether to handle $set_once operations (default: false)&quot;
+        /// Get person properties as they existed at a specific point in time.This endpoint reconstructs person properties by querying ClickHouse eventsfor $set and $set_once operations up to the specified timestamp.Query parameters:- distinct_id: The distinct_id of the person- timestamp: ISO datetime string for the point in time (e.g., &quot;2023-06-15T14:30:00Z&quot;)- include_set_once: Whether to handle $set_once operations (default: false)
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Properties_at_timeRequestBuilderGetQueryParameters 
@@ -104,9 +104,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Properties_a
             [QueryParameter("distinct_id")]
             public string DistinctId { get; set; }
 #endif
+            #pragma warning disable CS1591
             [QueryParameter("format")]
             public global::Soenneker.PostHog.OpenApiClient.Models.PersonsPropertiesAtTimeRetrieveFormatParameter? Format { get; set; }
-            /// <summary>&quot;Whether to handle $set_once operations (default: false)&quot;</summary>
+            #pragma warning restore CS1591
+            /// <summary>Whether to handle $set_once operations (default: false)</summary>
             [QueryParameter("include_set_once")]
             public bool? IncludeSetOnce { get; set; }
             /// <summary>The person_id (UUID) to build properties for (mutually exclusive with distinct_id)</summary>

@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Result of syncing an installation: rows created/kept for this team, plus conflicting repos skipped.&quot;
+    /// Result of syncing an installation: rows created/kept for this team, plus conflicting repos skipped.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class StamphogSyncInstallationResponse : IAdditionalDataHolder, IParsable
@@ -17,7 +17,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>True only on the discovery path (no installation_id) when the caller can reach no installation of this App — it isn&apos;t installed anywhere they can see. The frontend should route the user to the GitHub install page (install_url). Always false on the explicit installation_id path.</summary>
         public bool? AppNotInstalled { get; private set; }
-        /// <summary>&quot;Populated only on the discovery path when the caller can reach MORE than one installation of this App: nothing was bound, and the user must pick which installation to connect. The frontend re-runs the authorize flow and calls back with the chosen installation_id, which the explicit path verifies. Empty whenever a bind happened (or nothing was found).&quot;</summary>
+        /// <summary>Populated only on the discovery path when the caller can reach MORE than one installation of this App: nothing was bound, and the user must pick which installation to connect. The frontend re-runs the authorize flow and calls back with the chosen installation_id, which the explicit path verifies. Empty whenever a bind happened (or nothing was found).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.StamphogDiscoveredInstallation>? Installations { get; private set; }

@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;False when the GitHub source has no team_members snapshot synced: the trend then has no honest team attribution and `points` is empty.&quot;</summary>
+        /// <summary>False when the GitHub source has no team_members snapshot synced: the trend then has no honest team attribution and `points` is empty.</summary>
         public bool? HasMembershipData { get; set; }
         /// <summary>The team slug this trend is scoped to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

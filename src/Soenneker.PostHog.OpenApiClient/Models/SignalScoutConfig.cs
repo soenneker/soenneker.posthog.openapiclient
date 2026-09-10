@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Read shape for a per-(team, skill) scout config.One row per `signals-scout-*` skill on the team. The coordinator auto-creates a rowwhen it discovers a scout skill; this serializer lets agents tune the row.
+    /// Read shape for a per-(team, skill) scout config.One row per scout skill on the team. The coordinator auto-creates a rowwhen it discovers a scout skill; this serializer lets agents tune the row.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SignalScoutConfig : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Whether this scout is exempt from the inactivity sweep, meaning both the `ignored` pause and the `no_output` quiet warning. Set it on watchdog scouts whose value is staying quiet. Also set automatically when someone re-enables a scout the inactivity sweep paused, so the sweep never overrules a person twice.</summary>
+        /// <summary>Whether this scout is exempt from the inactivity sweep, meaning both the `ignored` pause and the `no_output` quiet warning. Set it on watchdog scouts whose value is staying quiet. Only ever set explicitly: re-enabling a swept scout instead grants a fresh grace window before the sweep may judge it again.</summary>
         public bool? AutoPauseExempt { get; private set; }
         /// <summary>How many of this scout&apos;s runs have failed in a row. Back to 0 after a successful run or any config edit. At the failure limit the scout pauses itself (`status` becomes `paused_by_system` with `pause_reason` `repeated_failures`) and retries about once a day; a successful retry resumes it, and so does setting `enabled=true`.</summary>
         public int? ConsecutiveFailureCount { get; private set; }
@@ -29,15 +29,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Description { get; private set; }
 #endif
-        /// <summary>&quot;Whether the scout writes findings to the inbox. False = dry-run: it runs and logs but emits nothing.&quot;</summary>
+        /// <summary>Name shown in the UI. Does not change the skill name. Leave blank to use the default name.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? DisplayName { get; set; }
+#nullable restore
+#else
+        public string DisplayName { get; set; }
+#endif
+        /// <summary>Whether the scout writes findings to the inbox. False = dry-run: it runs and logs but emits nothing.</summary>
         public bool? Emit { get; private set; }
-        /// <summary>&quot;Whether this scout runs on its schedule. Disabled scouts are skipped by the coordinator. Derived from `status`: true for `active` and `pending_pause`, false for the paused statuses.&quot;</summary>
+        /// <summary>Whether this scout runs on its schedule. Disabled scouts are skipped by the coordinator. Derived from `status`: true for `active` and `pending_pause`, false for the paused statuses.</summary>
         public bool? Enabled { get; private set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>When the coordinator last dispatched this scout. Null if it has never run.</summary>
         public DateTimeOffset? LastRunAt { get; private set; }
-        /// <summary>&quot;MCP gateway servers (by id) this scout&apos;s runs may use, chosen from the connections members shared to the whole team. Selection is per scout: an empty list gives the scout no MCP servers. Applies from the scout&apos;s next run.&quot;</summary>
+        /// <summary>MCP gateway servers (by id) this scout&apos;s runs may use, chosen from the connections members shared to the whole team. Selection is per scout: an empty list gives the scout no MCP servers. Applies from the scout&apos;s next run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<Guid?>? McpGatewayServerIds { get; private set; }
@@ -45,7 +53,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<Guid?> McpGatewayServerIds { get; private set; }
 #endif
-        /// <summary>&quot;Optional model id this scout&apos;s runs are pinned to, e.g. `claude-opus-4-5`. Must be one of the platform&apos;s agent models; an invalid id is rejected with the available ones listed. Null keeps the default model, chosen by the platform. Early access: the pin can only be set on projects enrolled in the scout model preview, and only takes effect there. Set null to clear it.&quot;</summary>
+        /// <summary>Optional model id this scout&apos;s runs are pinned to, e.g. `claude-opus-4-5`. Must be one of the platform&apos;s agent models; an invalid id is rejected with the available ones listed. Null keeps the default model, chosen by the platform. Early access: the pin can only be set on projects enrolled in the scout model preview, and only takes effect there. Set null to clear it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Model { get; private set; }
@@ -69,7 +77,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigOutputDestinations OutputDestinations { get; private set; }
 #endif
-        /// <summary>&quot;Why the system paused (or warned) this scout: `no_output` (it emitted nothing over the evaluation window), `ignored` (no person engaged with its reports — no view, rating, note, dismissal, or resolution), or `repeated_failures` (consecutive failed runs). Null unless `status` is `pending_pause` or `paused_by_system`.* `no_output` - No output* `ignored` - Ignored* `repeated_failures` - Repeated failures&quot;</summary>
+        /// <summary>Who answers for this scout, seed-creator first. Ownership is recorded on the scout&apos;s skill rather than on this config, so editing the skill or toggling the scout leaves it unchanged. Reports the scout files suggest these people as reviewers. Prefer this over `created_by`-style fields, which only say who last flipped a switch. Empty when nobody owns the scout, when the owners are no longer members with access to the project, or when the caller is a scout sandbox token: owners are member PII, and a scout reads them through the skill API instead.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>? Owners { get; private set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic> Owners { get; private set; }
+#endif
+        /// <summary>Why the system paused (or warned) this scout: `no_output` (it emitted nothing over the evaluation window), `ignored` (no person engaged with its reports — no view, rating, note, dismissal, or resolution), or `repeated_failures` (consecutive failed runs). Null unless `status` is `pending_pause` or `paused_by_system`.* `no_output` - No output* `ignored` - Ignored* `repeated_failures` - Repeated failures</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigPauseReason? PauseReason { get; private set; }
@@ -87,7 +103,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Minutes between runs (30–43200). The scout runs once this interval has elapsed since its last run.</summary>
         public int? RunIntervalMinutes { get; private set; }
-        /// <summary>&quot;Where this scout came from: `canonical` for a scout PostHog ships and maintains (seeded from `products/signals/skills/`), or `custom` for one a team hand-authored on this project. Use it to badge built-in vs custom scouts instead of a hardcoded name list. Defaults to `custom` if the skill is not currently present on the team.&quot;</summary>
+        /// <summary>Where this scout came from: `canonical` for a scout PostHog ships and maintains (seeded from `products/signals/skills/`), or `custom` for one a team hand-authored on this project. Use it to badge built-in vs custom scouts instead of a hardcoded name list. Defaults to `custom` if the skill is not currently present on the team.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigScoutOrigin? ScoutOrigin { get; private set; }
@@ -95,7 +111,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigScoutOrigin ScoutOrigin { get; private set; }
 #endif
-        /// <summary>The `signals-scout-*` skill this config controls. Set at creation, not editable.</summary>
+        /// <summary>The skill this config controls as a scout. Set at creation, not editable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SkillName { get; private set; }
@@ -103,7 +119,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SkillName { get; private set; }
 #endif
-        /// <summary>&quot;Lifecycle status. `active`: runs on its schedule. `pending_pause`: still running, but flagged by the system to pause soon unless something changes (any config edit clears it). `paused_by_system`: paused automatically, see `pause_reason`; set `enabled=true` to resume. `paused_by_user`: switched off by a person and never resumed automatically.* `active` - Active* `pending_pause` - Pending pause* `paused_by_system` - Paused by system* `paused_by_user` - Paused by user&quot;</summary>
+        /// <summary>Id of the owning object in `source_product`, e.g. a Replay Vision scanner id.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SourceId { get; private set; }
+#nullable restore
+#else
+        public string SourceId { get; private set; }
+#endif
+        /// <summary>The product that stood this scout up for one of its own objects. Null when a person created it.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SourceProduct { get; private set; }
+#nullable restore
+#else
+        public string SourceProduct { get; private set; }
+#endif
+        /// <summary>Lifecycle status. `active`: runs on its schedule. `pending_pause`: still running, but flagged by the system to pause soon unless something changes (any config edit clears it). `paused_by_system`: paused automatically, see `pause_reason`; set `enabled=true` to resume. `paused_by_user`: switched off by a person and never resumed automatically.* `active` - Active* `pending_pause` - Pending pause* `paused_by_system` - Paused by system* `paused_by_user` - Paused by user</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigStatus? Status { get; private set; }
@@ -113,7 +145,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>When `status` last changed. For `pending_pause` this is when the warning was issued (an `ignored` warning pauses about a week later unless someone engages with the scout&apos;s reports — opening one counts; a `no_output` warning only flags the scout); for the paused statuses it is when the scout was paused. Null if the status never changed.</summary>
         public DateTimeOffset? StatusChangedAt { get; private set; }
-        /// <summary>&quot;Optional JSON Schema (draft 2020-12) describing ONE structured record this scout produces via `scout-record-output` — e.g. a per-report quality judgment (`{\&quot;type\&quot;: \&quot;object\&quot;, \&quot;properties\&quot;: {\&quot;verdict\&quot;: {\&quot;enum\&quot;: [\&quot;good\&quot;, \&quot;bad\&quot;, \&quot;unsure\&quot;]}, \&quot;reason\&quot;: {\&quot;type\&quot;: \&quot;string\&quot;}}, \&quot;required\&quot;: [\&quot;verdict\&quot;, \&quot;reason\&quot;]}`). The root must be `\&quot;type\&quot;: \&quot;object\&quot;`. Setting a schema turns the structured-output channel on: the run prompt renders the schema and every submitted record is validated against it and recorded in the project as a `$scout_structured_output` event, queryable like any event. The channel also requires emit — a dry-run scout has nowhere to record to. Cardinality is the scout&apos;s call (one record per run, one per judged entity, ...). Null = channel off. Setting a schema requires skill-authoring authorization (the `llm_skill:write` scope and skill editor access) since the scout reads it verbatim in its prompt; clearing it needs only the config write. Records validate against the schema in force when the run was dispatched.&quot;</summary>
+        /// <summary>Optional JSON Schema (draft 2020-12) describing ONE structured record this scout produces via `scout-record-output` — e.g. a per-report quality judgment (`{&quot;type&quot;: &quot;object&quot;, &quot;properties&quot;: {&quot;verdict&quot;: {&quot;enum&quot;: [&quot;good&quot;, &quot;bad&quot;, &quot;unsure&quot;]}, &quot;reason&quot;: {&quot;type&quot;: &quot;string&quot;}}, &quot;required&quot;: [&quot;verdict&quot;, &quot;reason&quot;]}`). The root must be `&quot;type&quot;: &quot;object&quot;`. Setting a schema turns the structured-output channel on: the run prompt renders the schema and every submitted record is validated against it and recorded in the project as a `$scout_structured_output` event, queryable like any event. The channel also requires emit — a dry-run scout has nowhere to record to. Cardinality is the scout&apos;s call (one record per run, one per judged entity, ...). Null = channel off. Setting a schema requires skill-authoring authorization (the `llm_skill:write` scope and skill editor access) since the scout reads it verbatim in its prompt; clearing it needs only the config write. Records validate against the schema in force when the run was dispatched.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigStructuredOutputSchemaProperty? StructuredOutputSchema { get; set; }
@@ -128,6 +160,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public List<string> Tags { get; set; }
+#endif
+        /// <summary>Extra write access granted to this one scout, as scope strings. The grantable set is `alert:write`, `annotation:write`, `dashboard:write`, `insight:write`, `llm_skill:write`, `warehouse_table:write`, `warehouse_view:write`. Empty (the default) means the scout reads the project and writes only what every scout may write: notebooks, its findings, and its own memory. Each scope is project-wide and object-level, so a scout holding `dashboard:write` can update or delete any dashboard in the project, not only ones it made. Grant only what this scout maintains. Only the person the scout&apos;s runs act as (whoever authored it) or a project admin can set it, and a scoped API key must itself carry each scope it grants. A dry run (`emit=false`) never holds the grant. Applies from the scout&apos;s next run.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? WriteScopes { get; private set; }
+#nullable restore
+#else
+        public List<string> WriteScopes { get; private set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfig"/> and sets the default values.
@@ -158,6 +198,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "consecutive_failure_count", n => { ConsecutiveFailureCount = n.GetIntValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
+                { "display_name", n => { DisplayName = n.GetStringValue(); } },
                 { "emit", n => { Emit = n.GetBoolValue(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
@@ -166,15 +207,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "network_access", n => { NetworkAccess = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigNetworkAccess>(global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigNetworkAccess.CreateFromDiscriminatorValue); } },
                 { "output_destinations", n => { OutputDestinations = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigOutputDestinations>(global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigOutputDestinations.CreateFromDiscriminatorValue); } },
+                { "owners", n => { Owners = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "pause_reason", n => { PauseReason = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigPauseReason>(global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigPauseReason.CreateFromDiscriminatorValue); } },
                 { "run_cron_schedule", n => { RunCronSchedule = n.GetStringValue(); } },
                 { "run_interval_minutes", n => { RunIntervalMinutes = n.GetIntValue(); } },
                 { "scout_origin", n => { ScoutOrigin = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigScoutOrigin>(global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigScoutOrigin.CreateFromDiscriminatorValue); } },
                 { "skill_name", n => { SkillName = n.GetStringValue(); } },
+                { "source_id", n => { SourceId = n.GetStringValue(); } },
+                { "source_product", n => { SourceProduct = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigStatus>(global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigStatus.CreateFromDiscriminatorValue); } },
                 { "status_changed_at", n => { StatusChangedAt = n.GetDateTimeOffsetValue(); } },
                 { "structured_output_schema", n => { StructuredOutputSchema = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigStructuredOutputSchemaProperty>(global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigStructuredOutputSchemaProperty.CreateFromDiscriminatorValue); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "write_scopes", n => { WriteScopes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
         /// <summary>
@@ -184,6 +229,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("display_name", DisplayName);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigStructuredOutputSchemaProperty>("structured_output_schema", StructuredOutputSchema);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteAdditionalData(AdditionalData);

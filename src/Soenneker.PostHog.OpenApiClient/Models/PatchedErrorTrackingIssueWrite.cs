@@ -33,10 +33,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Issue severity to set, or null to remove the assigned severity.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingIssueWriteSeverity? Severity { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueSeverityWrapper5? Severity { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingIssueWriteSeverity Severity { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueSeverityWrapper5 Severity { get; set; }
 #endif
         /// <summary>Issue status to set. Deprecated archived and pending_release values are rejected.* `active` - active* `resolved` - resolved* `suppressed` - suppressed</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -73,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "severity", n => { Severity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingIssueWriteSeverity>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingIssueWriteSeverity.CreateFromDiscriminatorValue); } },
+                { "severity", n => { Severity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueSeverityWrapper5>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueSeverityWrapper5.CreateFromDiscriminatorValue); } },
                 { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingIssueWriteStatus>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingIssueWriteStatus.CreateFromDiscriminatorValue); } },
             };
         }
@@ -86,7 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingIssueWriteSeverity>("severity", Severity);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueSeverityWrapper5>("severity", Severity);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingIssueWriteStatus>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }

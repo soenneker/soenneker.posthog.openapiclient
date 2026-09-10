@@ -23,7 +23,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ObservationLabelDayCount> ByDay { get; set; }
 #endif
-        /// <summary>&quot;Daily label counts over the last `recent_days` days, bucketed by the day the rating was last set or changed: the team&apos;s rating activity. Days without rating changes are omitted.&quot;</summary>
+        /// <summary>Daily label counts over the last `recent_days` days, bucketed by the day the rating was last set or changed: the team&apos;s rating activity. Days without rating changes are omitted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ObservationLabelDayCount>? ByRatingDay { get; set; }

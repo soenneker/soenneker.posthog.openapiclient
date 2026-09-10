@@ -55,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string MatchLiteral { get; set; }
 #endif
-        /// <summary>RE2-safe regex over raw log bodies that matches lines of this pattern, compiled from the template and validated against the pattern&apos;s own examples before being offered. Null when the template lacks literal content or validation failed — never trust an unvalidated predicate. Use with the message/regex log property filter.</summary>
+        /// <summary>RE2-safe regex over raw log bodies that matches lines of this pattern, compiled from the template and validated against the raw bodies of the pattern&apos;s own sampled rows before being offered. Null when the template lacks literal content or validation failed. Never trust an unvalidated predicate. Use with the message/regex log property filter.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? MatchRegex { get; set; }
@@ -63,7 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string MatchRegex { get; set; }
 #endif
-        /// <summary>&quot;Mined log template with variable tokens masked, e.g. \&quot;Connected to &lt;ip&gt; in &lt;num&gt;ms\&quot;. Tokens: &lt;timestamp&gt;, &lt;uuid&gt;, &lt;ip&gt;, &lt;hex&gt;, &lt;num&gt;, plus &lt;*&gt; for word positions Drain found to vary.&quot;</summary>
+        /// <summary>Mined log template with variable tokens masked, e.g. &quot;Connected to &lt;ip&gt; in &lt;num&gt;ms&quot;. Tokens: &lt;timestamp&gt;, &lt;uuid&gt;, &lt;ip&gt;, &lt;hex&gt;, &lt;num&gt;, plus &lt;*&gt; for word positions Drain found to vary.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Pattern { get; set; }

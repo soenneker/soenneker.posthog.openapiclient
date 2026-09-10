@@ -16,14 +16,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Lines added, recorded when the pull request merges.</summary>
         public int? Additions { get; private set; }
-        /// <summary>Digest bucket this merged PR belongs to; blank unless it was digest-eligible.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? AudienceKey { get; private set; }
-#nullable restore
-#else
-        public string AudienceKey { get; private set; }
-#endif
         /// <summary>GitHub login of the pull request author.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -38,8 +30,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>Lines deleted, recorded when the pull request merges.</summary>
         public int? Deletions { get; private set; }
-        /// <summary>ID of the digest run that reported this merged PR, if any.</summary>
-        public Guid? DigestRun { get; private set; }
         /// <summary>Branch name of the PR head.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -116,12 +106,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "additions", n => { Additions = n.GetIntValue(); } },
-                { "audience_key", n => { AudienceKey = n.GetStringValue(); } },
                 { "author_login", n => { AuthorLogin = n.GetStringValue(); } },
                 { "changed_files", n => { ChangedFiles = n.GetIntValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "deletions", n => { Deletions = n.GetIntValue(); } },
-                { "digest_run", n => { DigestRun = n.GetGuidValue(); } },
                 { "head_branch", n => { HeadBranch = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "merge_commit_sha", n => { MergeCommitSha = n.GetStringValue(); } },

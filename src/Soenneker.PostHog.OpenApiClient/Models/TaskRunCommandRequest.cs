@@ -31,7 +31,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequestJsonrpc Jsonrpc { get; set; }
 #endif
-        /// <summary>Command method to execute on the agent server* `user_message` - user_message* `cancel` - cancel* `close` - close* `permission_response` - permission_response* `set_config_option` - set_config_option* `mcp_response` - mcp_response* `pi/rpc` - pi/rpc* `queue_get` - queue_get* `queue_clear` - queue_clear</summary>
+        /// <summary>Command method to execute on the agent server* `user_message` - user_message* `cancel` - cancel* `close` - close* `permission_response` - permission_response* `set_config_option` - set_config_option* `mcp_response` - mcp_response* `credential_response` - credential_response* `pi/rpc` - pi/rpc* `queue_get` - queue_get* `queue_clear` - queue_clear* `side_question` - side_question</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequestMethod? Method { get; set; }

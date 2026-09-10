@@ -29,13 +29,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayTypeWrapper Display { get; set; }
 #endif
         /// <summary>The kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Kind { get; set; }
-#nullable restore
-#else
-        public string Kind { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataVisualizationNodeKind? Kind { get; set; }
         /// <summary>The source property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -74,7 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "chartSettings", n => { ChartSettings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartSettings>(global::Soenneker.PostHog.OpenApiClient.Models.ChartSettings.CreateFromDiscriminatorValue); } },
                 { "display", n => { Display = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayTypeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayTypeWrapper.CreateFromDiscriminatorValue); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DataVisualizationNodeKind>(); } },
                 { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQuery>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQuery.CreateFromDiscriminatorValue); } },
                 { "tableSettings", n => { TableSettings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TableSettings>(global::Soenneker.PostHog.OpenApiClient.Models.TableSettings.CreateFromDiscriminatorValue); } },
                 { "version", n => { Version = n.GetDoubleValue(); } },
@@ -89,7 +83,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartSettings>("chartSettings", ChartSettings);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayTypeWrapper>("display", Display);
-            writer.WriteStringValue("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DataVisualizationNodeKind>("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQuery>("source", Source);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TableSettings>("tableSettings", TableSettings);
             writer.WriteDoubleValue("version", Version);

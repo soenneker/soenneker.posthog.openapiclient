@@ -3,10 +3,14 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Add_account;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Add_evidence;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Archive;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.History;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Remove_evidence;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Restore;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Status_history;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Update_evidence;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -21,6 +25,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Ite
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Feature_requestsItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The add_account property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Add_account.Add_accountRequestBuilder Add_account
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Add_account.Add_accountRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The add_evidence property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Add_evidence.Add_evidenceRequestBuilder Add_evidence
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Add_evidence.Add_evidenceRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The archive property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Archive.ArchiveRequestBuilder Archive
         {
@@ -31,6 +45,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Ite
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.History.HistoryRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The remove_evidence property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Remove_evidence.Remove_evidenceRequestBuilder Remove_evidence
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Remove_evidence.Remove_evidenceRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The restore property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Restore.RestoreRequestBuilder Restore
         {
@@ -40,6 +59,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Ite
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Status_history.Status_historyRequestBuilder Status_history
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Status_history.Status_historyRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The update_evidence property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Update_evidence.Update_evidenceRequestBuilder Update_evidence
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Update_evidence.Update_evidenceRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_requests.Item.Feature_requestsItemRequestBuilder"/> and sets the default values.

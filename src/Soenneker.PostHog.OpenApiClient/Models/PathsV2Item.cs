@@ -7,11 +7,10 @@ using System.IO;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>
-    /// The path item the chart anchors on. Its event must be one of the step sources.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class PathsV2Item : IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Event of the step source this item belongs to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

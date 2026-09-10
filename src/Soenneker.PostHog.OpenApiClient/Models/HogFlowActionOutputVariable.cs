@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Output variable for downstream actions: {key, result_path?, spread?, label?} or a list of those.&quot;
+    /// Output variable for downstream actions: {key, result_path?, spread?, label?} or a list of those.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class HogFlowActionOutputVariable : IAdditionalDataHolder, IParsable

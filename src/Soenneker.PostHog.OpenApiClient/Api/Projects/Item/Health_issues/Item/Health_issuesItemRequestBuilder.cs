@@ -40,7 +40,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Health_issues.Item
         {
         }
         /// <summary>
-        /// &quot;Fetches a single health issue, enriched with the owning check&apos;s rendered explanation: a title, a one-line summary of what&apos;s wrong, a deep link to the relevant page, and remediation guidance for how to fix it.&quot;
+        /// Fetches a single health issue, enriched with the owning check&apos;s rendered explanation: a title, a one-line summary of what&apos;s wrong, a deep link to the relevant page, and remediation guidance for how to fix it.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueDetail"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -75,7 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Health_issues.Item
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.HealthIssue>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.HealthIssue.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Fetches a single health issue, enriched with the owning check&apos;s rendered explanation: a title, a one-line summary of what&apos;s wrong, a deep link to the relevant page, and remediation guidance for how to fix it.&quot;
+        /// Fetches a single health issue, enriched with the owning check&apos;s rendered explanation: a title, a one-line summary of what&apos;s wrong, a deep link to the relevant page, and remediation guidance for how to fix it.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

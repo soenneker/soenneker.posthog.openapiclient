@@ -51,10 +51,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The properties property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilterPropertiesAnyOf1Item>? Properties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilterPropertiesItem>? Properties { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilterPropertiesAnyOf1Item> Properties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilterPropertiesItem> Properties { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -80,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "explicitDate", n => { ExplicitDate = n.GetBoolValue(); } },
                 { "filterTestAccounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
                 { "interval", n => { Interval = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper2>(global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper2.CreateFromDiscriminatorValue); } },
-                { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilterPropertiesAnyOf1Item>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilterPropertiesAnyOf1Item.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilterPropertiesItem>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilterPropertiesItem.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -96,7 +96,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("explicitDate", ExplicitDate);
             writer.WriteBoolValue("filterTestAccounts", FilterTestAccounts);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper2>("interval", Interval);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilterPropertiesAnyOf1Item>("properties", Properties);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilterPropertiesItem>("properties", Properties);
         }
     }
 }

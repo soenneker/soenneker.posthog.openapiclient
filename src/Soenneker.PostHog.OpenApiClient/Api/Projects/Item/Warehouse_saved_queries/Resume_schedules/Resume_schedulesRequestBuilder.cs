@@ -34,44 +34,42 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_saved_quer
         {
         }
         /// <summary>
-        /// &quot;Resume paused materialization schedules for multiple matviews.Accepts a list of view IDs in the request body: {\&quot;view_ids\&quot;: [\&quot;id1\&quot;, \&quot;id2\&quot;, ...]}This endpoint is idempotent - calling it on already running or non-existent schedules is safe.&quot;
+        /// Resume materialization for several models that were suspended after repeated failures.Accepts a list of view IDs in the request body: {&quot;view_ids&quot;: [&quot;id1&quot;, &quot;id2&quot;, ...]}This endpoint is idempotent - calling it on models that are already running is safe.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQuery"/></returns>
-        /// <param name="body">Shared methods for DataWarehouseSavedQuery serializers.This mixin is intended to be used with serializers.ModelSerializer subclasses.</param>
+        /// <param name="body">Body of the `resume_schedules` action.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQuery?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQuery body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryResumeSchedulesRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQuery> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQuery body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryResumeSchedulesRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQuery>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQuery.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Resume paused materialization schedules for multiple matviews.Accepts a list of view IDs in the request body: {\&quot;view_ids\&quot;: [\&quot;id1\&quot;, \&quot;id2\&quot;, ...]}This endpoint is idempotent - calling it on already running or non-existent schedules is safe.&quot;
+        /// Resume materialization for several models that were suspended after repeated failures.Accepts a list of view IDs in the request body: {&quot;view_ids&quot;: [&quot;id1&quot;, &quot;id2&quot;, ...]}This endpoint is idempotent - calling it on models that are already running is safe.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">Shared methods for DataWarehouseSavedQuery serializers.This mixin is intended to be used with serializers.ModelSerializer subclasses.</param>
+        /// <param name="body">Body of the `resume_schedules` action.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQuery body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryResumeSchedulesRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQuery body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryResumeSchedulesRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }

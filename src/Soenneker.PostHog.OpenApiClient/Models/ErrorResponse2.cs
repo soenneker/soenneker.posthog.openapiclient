@@ -9,7 +9,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;DRF&apos;s default error envelope — `{ \&quot;detail\&quot;: str }` — typed for the OpenAPI schema.&quot;
+    /// DRF&apos;s default error envelope — `{ &quot;detail&quot;: str }` — typed for the OpenAPI schema.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ErrorResponse2 : ApiException, IAdditionalDataHolder, IParsable

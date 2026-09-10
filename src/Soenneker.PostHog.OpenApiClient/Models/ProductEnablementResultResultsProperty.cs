@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Per requested product: \&quot;enabled\&quot; (just turned on) or \&quot;already_enabled\&quot;.&quot;
+    /// Per requested product: &quot;enabled&quot; (just turned on) or &quot;already_enabled&quot;.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ProductEnablementResultResultsProperty : IAdditionalDataHolder, IParsable

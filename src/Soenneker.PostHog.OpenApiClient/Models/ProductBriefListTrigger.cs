@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;What started the generation: on_demand or scheduled.* `on_demand` - On Demand* `scheduled` - Scheduled&quot;
+    /// What started the generation: on_demand or scheduled.* `on_demand` - On Demand* `scheduled` - Scheduled
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ProductBriefListTrigger : IAdditionalDataHolder, IParsable

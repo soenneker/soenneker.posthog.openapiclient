@@ -104,6 +104,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
+        /// <summary>The severity property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQueryIssueSeverityWrapper2? Severity { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQueryIssueSeverityWrapper2 Severity { get; set; }
+#endif
         /// <summary>The source property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -145,6 +153,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "last_seen", n => { LastSeen = n.GetDateTimeOffsetValue(); } },
                 { "library", n => { Library = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "severity", n => { Severity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQueryIssueSeverityWrapper2>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQueryIssueSeverityWrapper2.CreateFromDiscriminatorValue); } },
                 { "source", n => { Source = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueStatus>(); } },
             };
@@ -169,6 +178,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("last_seen", LastSeen);
             writer.WriteStringValue("library", Library);
             writer.WriteStringValue("name", Name);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQueryIssueSeverityWrapper2>("severity", Severity);
             writer.WriteStringValue("source", Source);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueStatus>("status", Status);
         }

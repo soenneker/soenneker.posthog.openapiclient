@@ -14,17 +14,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;CI runs (not spans) where an owned test&apos;s recorded outcome was failed or error. An absolute count, not a rate: fast passing runs are not emitted.&quot;</summary>
+        /// <summary>CI runs (not spans) where an owned test&apos;s recorded outcome was failed or error. An absolute count, not a rate: fast passing runs are not emitted.</summary>
         public int? FailedRunCount { get; set; }
         /// <summary>Same count over the prior window.</summary>
         public int? FailedRunCountPrior { get; set; }
-        /// <summary>&quot;Owned tests one commit was seen both failing and passing in the window: the same proof, and the same word, that flaky_tests calls a confirmed_flake. Compare with flaky_test_count_prior for the delta.&quot;</summary>
+        /// <summary>Owned tests one commit was seen both failing and passing in the window: the same proof, and the same word, that flaky_tests calls a confirmed_flake. Compare with flaky_test_count_prior for the delta.</summary>
         public int? FlakyTestCount { get; set; }
         /// <summary>Same count over the equal-length window immediately before date_from.</summary>
         public int? FlakyTestCountPrior { get; set; }
-        /// <summary>Most recent failure, recovery, or quarantined-failure run across the team&apos;s owned tests, either window.</summary>
+        /// <summary>Most recent failure, recovery, or quarantined-failure run across the team&apos;s owned tests, either window. Null for a team present only through the census (no CI signal recorded).</summary>
         public DateTimeOffset? LastSeenAt { get; set; }
-        /// <summary>Owning team slug (the CODEOWNERS handle minus &apos;@PostHog/&apos;, e.g. &apos;team-replay&apos;), or the literal &apos;unowned&apos; for tests whose spans carry no ownership stamp.</summary>
+        /// <summary>Merged PRs authored by the team&apos;s members in the window, bots excluded. Null when the team_members snapshot isn&apos;t synced, or for &apos;unowned&apos;.</summary>
+        public int? MergedPrCount { get; set; }
+        /// <summary>Same count over the prior window.</summary>
+        public int? MergedPrCountPrior { get; set; }
+        /// <summary>Owning team slug from the repo&apos;s owners.yaml map (e.g. &apos;team-replay&apos;), or the literal &apos;unowned&apos; for tests whose spans carry no ownership stamp.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? OwnerTeam { get; set; }
@@ -32,18 +36,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string OwnerTeam { get; set; }
 #endif
-        /// <summary>&quot;Runs where an owned test recorded a tolerated failure while quarantined: masked in CI, still failing.&quot;</summary>
+        /// <summary>Runs where an owned test recorded a tolerated failure while quarantined: masked in CI, still failing.</summary>
         public int? QuarantinedFailedRunCount { get; set; }
         /// <summary>Same count over the prior window.</summary>
         public int? QuarantinedFailedRunCountPrior { get; set; }
-        /// <summary>&quot;Owned tests that failed with no recorded same-commit recovery and still hit the blast-radius bar (a master/main failure, or min_failed_prs distinct PRs). Not flakes: absence of proof, not proof.&quot;</summary>
+        /// <summary>Owned tests that failed with no recorded same-commit recovery and still hit the blast-radius bar (a master/main failure, or min_failed_prs distinct PRs). Not flakes: absence of proof, not proof.</summary>
         public int? RegressionTestCount { get; set; }
         /// <summary>Same count over the prior window.</summary>
         public int? RegressionTestCountPrior { get; set; }
-        /// <summary>&quot;Runs where one commit both failed and passed an owned test: a re-run attempt went green, or an in-job retry recovered it.&quot;</summary>
+        /// <summary>Runs where one commit both failed and passed an owned test: a re-run attempt went green, or an in-job retry recovered it.</summary>
         public int? SameCommitRecoveryRunCount { get; set; }
         /// <summary>Same count over the prior window.</summary>
         public int? SameCommitRecoveryRunCountPrior { get; set; }
+        /// <summary>Test files the team owns per the daily owners.yaml census. Null until a census event exists for the repository.</summary>
+        public int? TestFileCount { get; set; }
+        /// <summary>The latest census value at or before the window start, for the trend.</summary>
+        public int? TestFileCountPrior { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TeamCiHealthItem"/> and sets the default values.
         /// </summary>
@@ -74,6 +82,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "flaky_test_count", n => { FlakyTestCount = n.GetIntValue(); } },
                 { "flaky_test_count_prior", n => { FlakyTestCountPrior = n.GetIntValue(); } },
                 { "last_seen_at", n => { LastSeenAt = n.GetDateTimeOffsetValue(); } },
+                { "merged_pr_count", n => { MergedPrCount = n.GetIntValue(); } },
+                { "merged_pr_count_prior", n => { MergedPrCountPrior = n.GetIntValue(); } },
                 { "owner_team", n => { OwnerTeam = n.GetStringValue(); } },
                 { "quarantined_failed_run_count", n => { QuarantinedFailedRunCount = n.GetIntValue(); } },
                 { "quarantined_failed_run_count_prior", n => { QuarantinedFailedRunCountPrior = n.GetIntValue(); } },
@@ -81,6 +91,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "regression_test_count_prior", n => { RegressionTestCountPrior = n.GetIntValue(); } },
                 { "same_commit_recovery_run_count", n => { SameCommitRecoveryRunCount = n.GetIntValue(); } },
                 { "same_commit_recovery_run_count_prior", n => { SameCommitRecoveryRunCountPrior = n.GetIntValue(); } },
+                { "test_file_count", n => { TestFileCount = n.GetIntValue(); } },
+                { "test_file_count_prior", n => { TestFileCountPrior = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -95,6 +107,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("flaky_test_count", FlakyTestCount);
             writer.WriteIntValue("flaky_test_count_prior", FlakyTestCountPrior);
             writer.WriteDateTimeOffsetValue("last_seen_at", LastSeenAt);
+            writer.WriteIntValue("merged_pr_count", MergedPrCount);
+            writer.WriteIntValue("merged_pr_count_prior", MergedPrCountPrior);
             writer.WriteStringValue("owner_team", OwnerTeam);
             writer.WriteIntValue("quarantined_failed_run_count", QuarantinedFailedRunCount);
             writer.WriteIntValue("quarantined_failed_run_count_prior", QuarantinedFailedRunCountPrior);
@@ -102,6 +116,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("regression_test_count_prior", RegressionTestCountPrior);
             writer.WriteIntValue("same_commit_recovery_run_count", SameCommitRecoveryRunCount);
             writer.WriteIntValue("same_commit_recovery_run_count_prior", SameCommitRecoveryRunCountPrior);
+            writer.WriteIntValue("test_file_count", TestFileCount);
+            writer.WriteIntValue("test_file_count_prior", TestFileCountPrior);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

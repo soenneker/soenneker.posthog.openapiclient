@@ -4,13 +4,17 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Activity;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Archive;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Create_static_cohort_for_flag;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Dashboard;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Dependent_flags;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Disable;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Enable;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Enrich_usage_dashboard;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Remote_config;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Status;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Test_evaluation;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Unarchive;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Versions;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -31,6 +35,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Activity.ActivityRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The archive property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Archive.ArchiveRequestBuilder Archive
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Archive.ArchiveRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The create_static_cohort_for_flag property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Create_static_cohort_for_flag.Create_static_cohort_for_flagRequestBuilder Create_static_cohort_for_flag
         {
@@ -45,6 +54,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Dependent_flags.Dependent_flagsRequestBuilder Dependent_flags
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Dependent_flags.Dependent_flagsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The disable property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Disable.DisableRequestBuilder Disable
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Disable.DisableRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The enable property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Enable.EnableRequestBuilder Enable
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Enable.EnableRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The enrich_usage_dashboard property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Enrich_usage_dashboard.Enrich_usage_dashboardRequestBuilder Enrich_usage_dashboard
@@ -65,6 +84,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Test_evaluation.Test_evaluationRequestBuilder Test_evaluation
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Test_evaluation.Test_evaluationRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The unarchive property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Unarchive.UnarchiveRequestBuilder Unarchive
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Unarchive.UnarchiveRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The versions property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.Versions.VersionsRequestBuilder Versions
@@ -90,19 +114,20 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item
         /// <summary>
         /// Hard delete of this model is not allowed. Use a patch API call to set &quot;deleted&quot; to true
         /// </summary>
+        /// <returns>A <see cref="Stream"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Stream?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Stream> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Create, read, update and delete feature flags. [See docs](https://posthog.com/docs/feature-flags) for more information on feature flags.If you&apos;re looking to use feature flags on your application, you can either use our JavaScript Library or our dedicated endpoint to check if feature flags are enabled for a given user.
@@ -178,7 +203,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item
 #endif
             var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <summary>

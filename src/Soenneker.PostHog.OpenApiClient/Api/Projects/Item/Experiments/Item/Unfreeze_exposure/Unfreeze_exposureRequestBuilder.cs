@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Unf
         {
         }
         /// <summary>
-        /// &quot;Reopen enrollment on an exposure-frozen experiment.Removes the snapshot-cohort condition and freeze markers from every releasegroup, restoring the flag&apos;s original targeting: new users can enroll againand already-enrolled users keep their assigned variant. The snapshot cohortis soft-deleted. The serialized status returns to &apos;running&apos;.Returns 400 if the experiment is not running or its exposure is not frozen.&quot;
+        /// Reopen enrollment on an exposure-frozen experiment.Removes the snapshot-cohort condition and freeze markers from every releasegroup, restoring the flag&apos;s original targeting: new users can enroll againand already-enrolled users keep their assigned variant. The snapshot cohortis soft-deleted. The serialized status returns to &apos;running&apos;.Returns 400 if the experiment is not running or its exposure is not frozen.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Experiment"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Unf
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.Experiment>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.Experiment.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Reopen enrollment on an exposure-frozen experiment.Removes the snapshot-cohort condition and freeze markers from every releasegroup, restoring the flag&apos;s original targeting: new users can enroll againand already-enrolled users keep their assigned variant. The snapshot cohortis soft-deleted. The serialized status returns to &apos;running&apos;.Returns 400 if the experiment is not running or its exposure is not frozen.&quot;
+        /// Reopen enrollment on an exposure-frozen experiment.Removes the snapshot-cohort condition and freeze markers from every releasegroup, restoring the flag&apos;s original targeting: new users can enroll againand already-enrolled users keep their assigned variant. The snapshot cohortis soft-deleted. The serialized status returns to &apos;running&apos;.Returns 400 if the experiment is not running or its exposure is not frozen.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

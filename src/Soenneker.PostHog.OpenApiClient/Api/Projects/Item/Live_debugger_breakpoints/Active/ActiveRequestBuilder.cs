@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Live_debugger_breakp
         {
         }
         /// <summary>
-        /// &quot;External API endpoint for client applications to fetch active breakpoints using Project API key. This endpoint allows external client applications (like Python scripts, Node.js apps, etc.) to fetch the list of active breakpoints so they can instrument their code accordingly. Authentication: Requires a Project API Key in the Authorization header: `Authorization: Bearer phs_&lt;your-project-api-key&gt;`. You can find your Project API Key in PostHog at: Settings → Project → Project API Key&quot;
+        /// External API endpoint for client applications to fetch active breakpoints using Project API key. This endpoint allows external client applications (like Python scripts, Node.js apps, etc.) to fetch the list of active breakpoints so they can instrument their code accordingly. Authentication: Requires a Project API Key in the Authorization header: `Authorization: Bearer phs_&lt;your-project-api-key&gt;`. You can find your Project API Key in PostHog at: Settings → Project → Project API Key
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActiveBreakpointsResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Live_debugger_breakp
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ActiveBreakpointsResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ActiveBreakpointsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;External API endpoint for client applications to fetch active breakpoints using Project API key. This endpoint allows external client applications (like Python scripts, Node.js apps, etc.) to fetch the list of active breakpoints so they can instrument their code accordingly. Authentication: Requires a Project API Key in the Authorization header: `Authorization: Bearer phs_&lt;your-project-api-key&gt;`. You can find your Project API Key in PostHog at: Settings → Project → Project API Key&quot;
+        /// External API endpoint for client applications to fetch active breakpoints using Project API key. This endpoint allows external client applications (like Python scripts, Node.js apps, etc.) to fetch the list of active breakpoints so they can instrument their code accordingly. Authentication: Requires a Project API Key in the Authorization header: `Authorization: Bearer phs_&lt;your-project-api-key&gt;`. You can find your Project API Key in PostHog at: Settings → Project → Project API Key
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -80,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Live_debugger_breakp
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Live_debugger_breakpoints.Active.ActiveRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// &quot;External API endpoint for client applications to fetch active breakpoints using Project API key. This endpoint allows external client applications (like Python scripts, Node.js apps, etc.) to fetch the list of active breakpoints so they can instrument their code accordingly. Authentication: Requires a Project API Key in the Authorization header: `Authorization: Bearer phs_&lt;your-project-api-key&gt;`. You can find your Project API Key in PostHog at: Settings → Project → Project API Key&quot;
+        /// External API endpoint for client applications to fetch active breakpoints using Project API key. This endpoint allows external client applications (like Python scripts, Node.js apps, etc.) to fetch the list of active breakpoints so they can instrument their code accordingly. Authentication: Requires a Project API Key in the Authorization header: `Authorization: Bearer phs_&lt;your-project-api-key&gt;`. You can find your Project API Key in PostHog at: Settings → Project → Project API Key
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class ActiveRequestBuilderGetQueryParameters 

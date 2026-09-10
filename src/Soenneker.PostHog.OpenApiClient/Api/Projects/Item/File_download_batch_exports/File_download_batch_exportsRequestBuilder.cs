@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_exports.Count_rows;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_exports.Item;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -18,6 +19,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class File_download_batch_exportsRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The count_rows property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_exports.Count_rows.Count_rowsRequestBuilder Count_rows
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_exports.Count_rows.Count_rowsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.file_download_batch_exports.item collection</summary>
         /// <param name="position">A UUID string identifying this batch export run.</param>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.File_download_batch_exports.Item.File_download_batch_exportsItemRequestBuilder"/></returns>

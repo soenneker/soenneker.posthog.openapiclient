@@ -48,6 +48,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         ActionsPie,
         #pragma warning restore CS1591
+        [EnumMember(Value = "ActionsDonut")]
+        #pragma warning disable CS1591
+        ActionsDonut,
+        #pragma warning restore CS1591
         [EnumMember(Value = "ActionsBarValue")]
         #pragma warning disable CS1591
         ActionsBarValue,

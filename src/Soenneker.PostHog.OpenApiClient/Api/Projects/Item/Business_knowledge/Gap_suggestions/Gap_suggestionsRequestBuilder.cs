@@ -59,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.G
         {
         }
         /// <summary>
-        /// &quot;Surfaces topics the support AI couldn&apos;t answer from the knowledge base.Two list shapes controlled by the ``ticket_id`` query param:- **per-ticket** (``?ticket_id=&lt;uuid&gt;``): individual gap rows for that ticket.- **aggregated** (no ``ticket_id``): gaps grouped by normalized topic with counts,  for the Business knowledge suggestions panel.&quot;
+        /// Surfaces topics the support AI couldn&apos;t answer from the knowledge base.Two list shapes controlled by the ``ticket_id`` query param:- **per-ticket** (``?ticket_id=&lt;uuid&gt;``): individual gap rows for that ticket.- **aggregated** (no ``ticket_id``): gaps grouped by normalized topic with counts,  for the Business knowledge suggestions panel.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedKnowledgeGapSuggestionList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -77,7 +77,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.G
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedKnowledgeGapSuggestionList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedKnowledgeGapSuggestionList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Surfaces topics the support AI couldn&apos;t answer from the knowledge base.Two list shapes controlled by the ``ticket_id`` query param:- **per-ticket** (``?ticket_id=&lt;uuid&gt;``): individual gap rows for that ticket.- **aggregated** (no ``ticket_id``): gaps grouped by normalized topic with counts,  for the Business knowledge suggestions panel.&quot;
+        /// Surfaces topics the support AI couldn&apos;t answer from the knowledge base.Two list shapes controlled by the ``ticket_id`` query param:- **per-ticket** (``?ticket_id=&lt;uuid&gt;``): individual gap rows for that ticket.- **aggregated** (no ``ticket_id``): gaps grouped by normalized topic with counts,  for the Business knowledge suggestions panel.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -105,7 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.G
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Gap_suggestions.Gap_suggestionsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// &quot;Surfaces topics the support AI couldn&apos;t answer from the knowledge base.Two list shapes controlled by the ``ticket_id`` query param:- **per-ticket** (``?ticket_id=&lt;uuid&gt;``): individual gap rows for that ticket.- **aggregated** (no ``ticket_id``): gaps grouped by normalized topic with counts,  for the Business knowledge suggestions panel.&quot;
+        /// Surfaces topics the support AI couldn&apos;t answer from the knowledge base.Two list shapes controlled by the ``ticket_id`` query param:- **per-ticket** (``?ticket_id=&lt;uuid&gt;``): individual gap rows for that ticket.- **aggregated** (no ``ticket_id``): gaps grouped by normalized topic with counts,  for the Business knowledge suggestions panel.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Gap_suggestionsRequestBuilderGetQueryParameters 

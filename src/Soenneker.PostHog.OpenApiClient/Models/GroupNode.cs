@@ -23,19 +23,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Fixed properties in the query, can&apos;t be edited in the interface (e.g. scoping down by person)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeFixedPropertiesAnyOf1Item>? FixedProperties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeFixedPropertiesItem>? FixedProperties { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeFixedPropertiesAnyOf1Item> FixedProperties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeFixedPropertiesItem> FixedProperties { get; set; }
 #endif
         /// <summary>The kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Kind { get; set; }
-#nullable restore
-#else
-        public string Kind { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeKind? Kind { get; set; }
         /// <summary>The limit property</summary>
         public int? Limit { get; set; }
         /// <summary>The math property</summary>
@@ -111,18 +105,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Columns to order by</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeOrderBy? OrderBy { get; set; }
+        public List<string>? OrderBy { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeOrderBy OrderBy { get; set; }
+        public List<string> OrderBy { get; set; }
 #endif
         /// <summary>Properties configurable in the interface</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodePropertiesAnyOf1Item>? Properties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodePropertiesItem>? Properties { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodePropertiesAnyOf1Item> Properties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodePropertiesItem> Properties { get; set; }
 #endif
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -153,8 +147,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "custom_name", n => { CustomName = n.GetStringValue(); } },
-                { "fixedProperties", n => { FixedProperties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeFixedPropertiesAnyOf1Item>(global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeFixedPropertiesAnyOf1Item.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
+                { "fixedProperties", n => { FixedProperties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeFixedPropertiesItem>(global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeFixedPropertiesItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeKind>(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
                 { "math", n => { Math = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeMath>(global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeMath.CreateFromDiscriminatorValue); } },
                 { "math_group_type_index", n => { MathGroupTypeIndex = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper12>(global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper12.CreateFromDiscriminatorValue); } },
@@ -167,8 +161,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "nodes", n => { Nodes = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeNodesItem>(global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeNodesItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "operator", n => { Operator = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FilterLogicalOperator>(); } },
                 { "optionalInFunnel", n => { OptionalInFunnel = n.GetBoolValue(); } },
-                { "orderBy", n => { OrderBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeOrderBy>(global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeOrderBy.CreateFromDiscriminatorValue); } },
-                { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodePropertiesAnyOf1Item>(global::Soenneker.PostHog.OpenApiClient.Models.GroupNodePropertiesAnyOf1Item.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "orderBy", n => { OrderBy = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodePropertiesItem>(global::Soenneker.PostHog.OpenApiClient.Models.GroupNodePropertiesItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeResponseProperty>(global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeResponseProperty.CreateFromDiscriminatorValue); } },
                 { "version", n => { Version = n.GetDoubleValue(); } },
             };
@@ -181,8 +175,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("custom_name", CustomName);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeFixedPropertiesAnyOf1Item>("fixedProperties", FixedProperties);
-            writer.WriteStringValue("kind", Kind);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeFixedPropertiesItem>("fixedProperties", FixedProperties);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeKind>("kind", Kind);
             writer.WriteIntValue("limit", Limit);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeMath>("math", Math);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MathGroupTypeIndexWrapper12>("math_group_type_index", MathGroupTypeIndex);
@@ -195,8 +189,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeNodesItem>("nodes", Nodes);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FilterLogicalOperator>("operator", Operator);
             writer.WriteBoolValue("optionalInFunnel", OptionalInFunnel);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeOrderBy>("orderBy", OrderBy);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodePropertiesAnyOf1Item>("properties", Properties);
+            writer.WriteCollectionOfPrimitiveValues<string>("orderBy", OrderBy);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodePropertiesItem>("properties", Properties);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupNodeResponseProperty>("response", Response);
             writer.WriteDoubleValue("version", Version);
         }

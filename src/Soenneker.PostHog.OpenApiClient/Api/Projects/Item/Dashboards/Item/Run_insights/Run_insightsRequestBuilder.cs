@@ -95,15 +95,17 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Run_
             [QueryParameter("filters_override")]
             public string FiltersOverride { get; set; }
 #endif
+            #pragma warning disable CS1591
             [QueryParameter("format")]
             public global::Soenneker.PostHog.OpenApiClient.Models.DashboardsRunInsightsRetrieveFormatParameter? Format { get; set; }
+            #pragma warning restore CS1591
             /// <summary>&apos;optimized&apos; (default) returns LLM-friendly formatted text per insight. &apos;json&apos; returns the raw query result objects.</summary>
             [QueryParameter("output_format")]
             public global::Soenneker.PostHog.OpenApiClient.Models.DashboardsRunInsightsRetrieveOutputFormatParameter? OutputFormat { get; set; }
             /// <summary>Cache behavior. &apos;force_cache&apos; (default) serves from cache even if stale. &apos;blocking&apos; uses cache if fresh, otherwise recalculates. &apos;force_blocking&apos; always recalculates.</summary>
             [QueryParameter("refresh")]
             public global::Soenneker.PostHog.OpenApiClient.Models.DashboardsRunInsightsRetrieveRefreshParameter? Refresh { get; set; }
-            /// <summary>&quot;Object (or pre-encoded JSON string) to override dashboard variables for this request only (not persisted). Format: {\&quot;&lt;variable_id&gt;\&quot;: {\&quot;code_name\&quot;: \&quot;&lt;code_name&gt;\&quot;, \&quot;variableId\&quot;: \&quot;&lt;variable_id&gt;\&quot;, \&quot;value\&quot;: &lt;new_value&gt;}}. Each entry must include `code_name` — partial entries are silently dropped. The simplest workflow is to call `dashboard-get` first, copy the matching entry from the response, and mutate `value`. Top-level keys replace; nested values are not deep-merged. Ignored when accessed via a sharing token.&quot;</summary>
+            /// <summary>Object (or pre-encoded JSON string) to override dashboard variables for this request only (not persisted). Format: {&quot;&lt;variable_id&gt;&quot;: {&quot;code_name&quot;: &quot;&lt;code_name&gt;&quot;, &quot;variableId&quot;: &quot;&lt;variable_id&gt;&quot;, &quot;value&quot;: &lt;new_value&gt;}}. Each entry must include `code_name` — partial entries are silently dropped. The simplest workflow is to call `dashboard-get` first, copy the matching entry from the response, and mutate `value`. Top-level keys replace; nested values are not deep-merged. Ignored when accessed via a sharing token.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("variables_override")]

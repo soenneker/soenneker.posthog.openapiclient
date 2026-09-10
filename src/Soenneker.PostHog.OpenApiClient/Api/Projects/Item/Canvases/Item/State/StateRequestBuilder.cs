@@ -40,7 +40,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.State
         {
         }
         /// <summary>
-        /// Read the canvas&apos;s runtime key-value state (the ph.state store).Returns the canvas&apos;s shared entries plus the caller&apos;s own user-scopedentries — never another viewer&apos;s.
+        /// Read the canvas&apos;s runtime key-value state (the ph.state store).Returns shared entries plus the authenticated user&apos;s own user-scopedentries — never another user&apos;s.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -58,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.State
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Read the canvas&apos;s runtime key-value state (the ph.state store).Returns the canvas&apos;s shared entries plus the caller&apos;s own user-scopedentries — never another viewer&apos;s.
+        /// Read the canvas&apos;s runtime key-value state (the ph.state store).Returns shared entries plus the authenticated user&apos;s own user-scopedentries — never another user&apos;s.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -86,7 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.State
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.State.StateRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Read the canvas&apos;s runtime key-value state (the ph.state store).Returns the canvas&apos;s shared entries plus the caller&apos;s own user-scopedentries — never another viewer&apos;s.
+        /// Read the canvas&apos;s runtime key-value state (the ph.state store).Returns shared entries plus the authenticated user&apos;s own user-scopedentries — never another user&apos;s.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class StateRequestBuilderGetQueryParameters 

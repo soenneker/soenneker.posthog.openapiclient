@@ -238,7 +238,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments
             [QueryParameter("search")]
             public string Search { get; set; }
 #endif
-            /// <summary>&quot;Filter by experiment status. \&quot;running\&quot;, \&quot;paused\&quot;, and \&quot;exposure_frozen\&quot; are mutually exclusive: \&quot;running\&quot; returns launched experiments with an active feature flag, \&quot;paused\&quot; returns launched experiments whose feature flag is deactivated, and \&quot;exposure_frozen\&quot; returns launched experiments whose exposure was frozen to the already-enrolled cohort while metrics keep flowing. \&quot;complete\&quot; is an alias for \&quot;stopped\&quot;. \&quot;all\&quot; disables status filtering.&quot;</summary>
+            /// <summary>Filter by experiment status. &quot;running&quot;, &quot;paused&quot;, and &quot;exposure_frozen&quot; are mutually exclusive: &quot;running&quot; returns launched experiments with an active feature flag, &quot;paused&quot; returns launched experiments whose feature flag is deactivated, and &quot;exposure_frozen&quot; returns launched experiments whose exposure was frozen to the already-enrolled cohort while metrics keep flowing. &quot;complete&quot; is an alias for &quot;stopped&quot;. &quot;all&quot; disables status filtering.</summary>
             [QueryParameter("status")]
             public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentsListStatusParameter? Status { get; set; }
         }

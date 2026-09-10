@@ -6,10 +6,14 @@ using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item.Affected_cohort;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item.Backfills;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item.Bulk_observe;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item.Duplicate;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item.Impact;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item.Observations;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item.Observe;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item.Prompt_suggestions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item.Scout_reports;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item.Scouts;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item.Self_driving_stats;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -39,6 +43,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item.Bulk_observe.Bulk_observeRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The duplicate property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item.Duplicate.DuplicateRequestBuilder Duplicate
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item.Duplicate.DuplicateRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The impact property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item.Impact.ImpactRequestBuilder Impact
         {
@@ -58,6 +67,21 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item.Prompt_suggestions.Prompt_suggestionsRequestBuilder Prompt_suggestions
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item.Prompt_suggestions.Prompt_suggestionsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The scout_reports property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item.Scout_reports.Scout_reportsRequestBuilder Scout_reports
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item.Scout_reports.Scout_reportsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The scouts property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item.Scouts.ScoutsRequestBuilder Scouts
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item.Scouts.ScoutsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The self_driving_stats property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item.Self_driving_stats.Self_driving_statsRequestBuilder Self_driving_stats
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item.Self_driving_stats.Self_driving_statsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item.ItemRequestBuilder"/> and sets the default values.
@@ -114,7 +138,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item
         /// CRUD for Replay Vision scanners.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReplayScanner"/></returns>
-        /// <param name="body">&quot;A Replay Vision scanner: its type, targeting query, and AI configuration.&quot;</param>
+        /// <param name="body">A Replay Vision scanner: its type, targeting query, and AI configuration.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -146,7 +170,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item
 #endif
             var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <summary>
@@ -172,7 +195,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item
         /// CRUD for Replay Vision scanners.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">&quot;A Replay Vision scanner: its type, targeting query, and AI configuration.&quot;</param>
+        /// <param name="body">A Replay Vision scanner: its type, targeting query, and AI configuration.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

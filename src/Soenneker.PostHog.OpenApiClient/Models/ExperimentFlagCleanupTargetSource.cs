@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;How the repository was determined: `explicit` (saved on the experiment), `team_default` (the environment&apos;s default cleanup repository), `single_repo` (the team&apos;s only connected repository), `ambiguous` (several connected repositories and none saved — pass one via repository on end/ship_variant), or `no_integration` (no GitHub integration or no connected repositories, so no cleanup PR can be opened).* `explicit` - explicit* `team_default` - team_default* `single_repo` - single_repo* `ambiguous` - ambiguous* `no_integration` - no_integration&quot;
+    /// How the repository was determined: `explicit` (saved on the experiment), `team_default` (the environment&apos;s default cleanup repository), `single_repo` (the team&apos;s only connected repository), `ambiguous` (several connected repositories and none saved — pass one via repository on end/ship_variant), or `no_integration` (no GitHub integration or no connected repositories, so no cleanup PR can be opened).* `explicit` - explicit* `team_default` - team_default* `single_repo` - single_repo* `ambiguous` - ambiguous* `no_integration` - no_integration
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ExperimentFlagCleanupTargetSource : IAdditionalDataHolder, IParsable

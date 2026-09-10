@@ -24,6 +24,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Events whose utm_source matched this integration</summary>
         public int? EventsMatchedLast7d { get; set; }
+        /// <summary>Of the matched events, how many look paid: a cost-bearing utm_medium (cpc, cpm, cpv, cpa, ppc, retargeting, or anything starting with &apos;paid&apos;) or a gclid/gad_source click id.</summary>
+        public int? EventsMatchedPaidLast7d { get; set; }
+        /// <summary>Of the matched events, how many carry any utm_medium. Zero paid with a non-zero count here means the traffic is tagged and organic; both zero means the team doesn&apos;t tag medium, which says nothing.</summary>
+        public int? EventsMatchedTaggedMediumLast7d { get; set; }
         /// <summary>Events that look like this integration&apos;s but don&apos;t match exactly</summary>
         public int? EventsUnmatchedLikelyYoursLast7d { get; set; }
         /// <summary>Total events with any utm_source in the window</summary>
@@ -75,6 +79,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "display_name", n => { DisplayName = n.GetStringValue(); } },
                 { "events_matched_last_7d", n => { EventsMatchedLast7d = n.GetIntValue(); } },
+                { "events_matched_paid_last_7d", n => { EventsMatchedPaidLast7d = n.GetIntValue(); } },
+                { "events_matched_tagged_medium_last_7d", n => { EventsMatchedTaggedMediumLast7d = n.GetIntValue(); } },
                 { "events_unmatched_likely_yours_last_7d", n => { EventsUnmatchedLikelyYoursLast7d = n.GetIntValue(); } },
                 { "events_with_utm_last_7d", n => { EventsWithUtmLast7d = n.GetIntValue(); } },
                 { "integration_key", n => { IntegrationKey = n.GetStringValue(); } },
@@ -92,6 +98,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("display_name", DisplayName);
             writer.WriteIntValue("events_matched_last_7d", EventsMatchedLast7d);
+            writer.WriteIntValue("events_matched_paid_last_7d", EventsMatchedPaidLast7d);
+            writer.WriteIntValue("events_matched_tagged_medium_last_7d", EventsMatchedTaggedMediumLast7d);
             writer.WriteIntValue("events_unmatched_likely_yours_last_7d", EventsUnmatchedLikelyYoursLast7d);
             writer.WriteIntValue("events_with_utm_last_7d", EventsWithUtmLast7d);
             writer.WriteStringValue("integration_key", IntegrationKey);

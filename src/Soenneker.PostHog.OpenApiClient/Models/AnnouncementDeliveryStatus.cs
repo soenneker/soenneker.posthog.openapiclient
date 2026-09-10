@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Per-channel delivery status: pending, sent, or failed.* `pending` - Pending* `sent` - Sent* `failed` - Failed&quot;
+    /// Per-channel delivery status: pending, sent, or failed.* `pending` - Pending* `sent` - Sent* `failed` - Failed
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AnnouncementDeliveryStatus : IAdditionalDataHolder, IParsable

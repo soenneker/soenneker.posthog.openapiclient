@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
         {
         }
         /// <summary>
-        /// &quot;Default-branch health as compact chart points over a window (default -30d), newest first, for the repo-hub run-activity chart. All of a commit&apos;s workflow runs are collapsed into ONE point per commit (head SHA): its earliest workflow start, wall-clock duration until the last workflow settled (null while any is still running), and an overall conclusion that is &apos;failure&apos; if any workflow decisively failed, else &apos;success&apos; when at least one passed, else &apos;neutral&apos;. `branch` overrides the detected default branch. `truncated` is true when more commits matched than the cap, so the chart covers only the most recent commits.&quot;
+        /// Default-branch health as compact chart points over a window (default -30d), newest first, for the repo-hub run-activity chart. All of a commit&apos;s workflow runs are collapsed into ONE point per commit (head SHA): its earliest workflow start, wall-clock duration until the last workflow settled (null while any is still running), and an overall conclusion that is &apos;failure&apos; if any workflow decisively failed, else &apos;success&apos; when at least one passed, else &apos;neutral&apos;. `branch` overrides the detected default branch. `truncated` is true when more commits matched than the cap, so the chart covers only the most recent commits.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WorkflowRunActivity"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowRunActivity>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.WorkflowRunActivity.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Default-branch health as compact chart points over a window (default -30d), newest first, for the repo-hub run-activity chart. All of a commit&apos;s workflow runs are collapsed into ONE point per commit (head SHA): its earliest workflow start, wall-clock duration until the last workflow settled (null while any is still running), and an overall conclusion that is &apos;failure&apos; if any workflow decisively failed, else &apos;success&apos; when at least one passed, else &apos;neutral&apos;. `branch` overrides the detected default branch. `truncated` is true when more commits matched than the cap, so the chart covers only the most recent commits.&quot;
+        /// Default-branch health as compact chart points over a window (default -30d), newest first, for the repo-hub run-activity chart. All of a commit&apos;s workflow runs are collapsed into ONE point per commit (head SHA): its earliest workflow start, wall-clock duration until the last workflow settled (null while any is still running), and an overall conclusion that is &apos;failure&apos; if any workflow decisively failed, else &apos;success&apos; when at least one passed, else &apos;neutral&apos;. `branch` overrides the detected default branch. `truncated` is true when more commits matched than the cap, so the chart covers only the most recent commits.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -80,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Repo_run_activity.Repo_run_activityRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// &quot;Default-branch health as compact chart points over a window (default -30d), newest first, for the repo-hub run-activity chart. All of a commit&apos;s workflow runs are collapsed into ONE point per commit (head SHA): its earliest workflow start, wall-clock duration until the last workflow settled (null while any is still running), and an overall conclusion that is &apos;failure&apos; if any workflow decisively failed, else &apos;success&apos; when at least one passed, else &apos;neutral&apos;. `branch` overrides the detected default branch. `truncated` is true when more commits matched than the cap, so the chart covers only the most recent commits.&quot;
+        /// Default-branch health as compact chart points over a window (default -30d), newest first, for the repo-hub run-activity chart. All of a commit&apos;s workflow runs are collapsed into ONE point per commit (head SHA): its earliest workflow start, wall-clock duration until the last workflow settled (null while any is still running), and an overall conclusion that is &apos;failure&apos; if any workflow decisively failed, else &apos;success&apos; when at least one passed, else &apos;neutral&apos;. `branch` overrides the detected default branch. `truncated` is true when more commits matched than the cap, so the chart covers only the most recent commits.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Repo_run_activityRequestBuilderGetQueryParameters 
@@ -95,7 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
             [QueryParameter("branch")]
             public string Branch { get; set; }
 #endif
-            /// <summary>&quot;Window start: relative (&apos;-30d&apos;, &apos;-8w&apos;) or ISO8601. Defaults to -30d.&quot;</summary>
+            /// <summary>Window start: relative (&apos;-30d&apos;, &apos;-8w&apos;) or ISO8601. Defaults to -30d.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("date_from")]
@@ -105,7 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
             [QueryParameter("date_from")]
             public string DateFrom { get; set; }
 #endif
-            /// <summary>&quot;Window end: relative or ISO8601. Defaults to now.&quot;</summary>
+            /// <summary>Window end: relative or ISO8601. Defaults to now.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("date_to")]

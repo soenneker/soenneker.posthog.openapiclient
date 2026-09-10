@@ -15,7 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;Filter by assignee ({type: user|role, id}). Omit for any assignee.&quot;</summary>
+        /// <summary>Filter by assignee ({type: user|role, id}). Omit for any assignee.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.WidgetAssigneeFilter? Assignee { get; set; }
@@ -137,14 +137,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Render log timestamps in UTC or in each viewer&apos;s local timezone.</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.LogsListWidgetConfigTimezone? Timezone { get; set; }
-        /// <summary>Union discriminator</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Type { get; set; }
-#nullable restore
-#else
-        public string Type { get; set; }
-#endif
         /// <summary>The widgetFilters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -204,7 +196,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetConfigStatus>(); } },
                 { "surveyId", n => { SurveyId = n.GetStringValue(); } },
                 { "timezone", n => { Timezone = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsListWidgetConfigTimezone>(); } },
-                { "type", n => { Type = n.GetStringValue(); } },
                 { "widgetFilters", n => { WidgetFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetConfigWidgetFiltersProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetConfigWidgetFiltersProperty.CreateFromDiscriminatorValue); } },
                 { "wrapLines", n => { WrapLines = n.GetBoolValue(); } },
             };
@@ -238,7 +229,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingListWidgetConfigStatus>("status", Status);
             writer.WriteStringValue("surveyId", SurveyId);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsListWidgetConfigTimezone>("timezone", Timezone);
-            writer.WriteStringValue("type", Type);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetConfigWidgetFiltersProperty>("widgetFilters", WidgetFilters);
             writer.WriteBoolValue("wrapLines", WrapLines);
             writer.WriteAdditionalData(AdditionalData);

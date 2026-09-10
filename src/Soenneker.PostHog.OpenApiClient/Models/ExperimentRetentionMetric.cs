@@ -57,21 +57,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The isSharedMetric property</summary>
         public bool? IsSharedMetric { get; set; }
         /// <summary>The kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Kind { get; set; }
-#nullable restore
-#else
-        public string Kind { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricKind? Kind { get; set; }
         /// <summary>The metric_type property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? MetricType { get; set; }
-#nullable restore
-#else
-        public string MetricType { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionMetricType? MetricType { get; set; }
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -141,8 +129,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "fingerprint", n => { Fingerprint = n.GetStringValue(); } },
                 { "goal", n => { Goal = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricGoalWrapper5>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricGoalWrapper5.CreateFromDiscriminatorValue); } },
                 { "isSharedMetric", n => { IsSharedMetric = n.GetBoolValue(); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
-                { "metric_type", n => { MetricType = n.GetStringValue(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricKind>(); } },
+                { "metric_type", n => { MetricType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionMetricType>(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricResponseProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricResponseProperty.CreateFromDiscriminatorValue); } },
                 { "retention_window_end", n => { RetentionWindowEnd = n.GetIntValue(); } },
@@ -169,8 +157,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("fingerprint", Fingerprint);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricGoalWrapper5>("goal", Goal);
             writer.WriteBoolValue("isSharedMetric", IsSharedMetric);
-            writer.WriteStringValue("kind", Kind);
-            writer.WriteStringValue("metric_type", MetricType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricKind>("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionMetricType>("metric_type", MetricType);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricResponseProperty>("response", Response);
             writer.WriteIntValue("retention_window_end", RetentionWindowEnd);

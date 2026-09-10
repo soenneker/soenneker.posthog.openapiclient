@@ -8,19 +8,11 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssigneeIdMember1"/>, <see cref="int"/>, <see cref="string"/>
+    /// Composed type wrapper for classes <see cref="int"/>, <see cref="string"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ErrorTrackingAssigneeId : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssigneeIdMember1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssigneeIdMember1? ErrorTrackingAssigneeIdMember1 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssigneeIdMember1 ErrorTrackingAssigneeIdMember1 { get; set; }
-#endif
         /// <summary>Composed type representation for type <see cref="int"/></summary>
         public int? Integer { get; set; }
         /// <summary>Composed type representation for type <see cref="string"/></summary>
@@ -57,10 +49,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(ErrorTrackingAssigneeIdMember1 != null)
-            {
-                return ErrorTrackingAssigneeIdMember1.GetFieldDeserializers();
-            }
             return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
@@ -70,11 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(ErrorTrackingAssigneeIdMember1 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssigneeIdMember1>(null, ErrorTrackingAssigneeIdMember1);
-            }
-            else if(Integer != null)
+            if(Integer != null)
             {
                 writer.WriteIntValue(null, Integer);
             }

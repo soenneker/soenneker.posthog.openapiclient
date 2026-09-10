@@ -35,7 +35,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AccountsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/accounts{?all_roles_unassigned*,include_churned*,limit*,offset*,ordering*,search*,tags*}", pathParameters)
+        public AccountsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/accounts{?all_roles_unassigned*,include_churned*,include_ignored*,limit*,offset*,ordering*,search*,tags*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AccountsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/accounts{?all_roles_unassigned*,include_churned*,limit*,offset*,ordering*,search*,tags*}", rawUrl)
+        public AccountsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/accounts{?all_roles_unassigned*,include_churned*,include_ignored*,limit*,offset*,ordering*,search*,tags*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedAccountList"/></returns>
@@ -133,6 +133,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts
             /// <summary>Include churned accounts. Churned accounts are hidden by default.</summary>
             [QueryParameter("include_churned")]
             public bool? IncludeChurned { get; set; }
+            /// <summary>Include ignored accounts. Ignored accounts are hidden by default.</summary>
+            [QueryParameter("include_ignored")]
+            public bool? IncludeIgnored { get; set; }
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
@@ -142,7 +145,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts
             /// <summary>Sort order. Defaults to &apos;-created_at&apos;.</summary>
             [QueryParameter("ordering")]
             public global::Soenneker.PostHog.OpenApiClient.Models.AccountsListOrderingParameter? Ordering { get; set; }
-            /// <summary>Case-insensitive substring search across account name and external ID.</summary>
+            /// <summary>Case-insensitive substring search across account name and external ID. A query holding an email address also matches accounts that list it as a known email, and a query holding a domain matches accounts that own that email domain.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("search")]

@@ -23,7 +23,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.AwsTenantFinding> Findings { get; private set; }
 #endif
-        /// <summary>&quot;Overall health derived from AWS&apos;s verdicts: healthy (no findings), warning (low-impact findings), critical (high-impact findings — sending may be paused), suspended (the SES tenant&apos;s sending is paused). Reflects AWS state only; PostHog-initiated suspensions are reported separately via email_sending_suspended.* `healthy` - healthy* `warning` - warning* `critical` - critical* `suspended` - suspended&quot;</summary>
+        /// <summary>Overall health derived from AWS&apos;s verdicts: healthy (no findings), warning (low-impact findings), critical (high-impact findings — sending may be paused), suspended (the SES tenant&apos;s sending is paused). Reflects AWS state only; PostHog-initiated suspensions are reported separately via email_sending_suspended.* `healthy` - healthy* `warning` - warning* `critical` - critical* `suspended` - suspended</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.AwsTenantReputationHealth? Health { get; private set; }

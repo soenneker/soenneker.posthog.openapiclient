@@ -14,10 +14,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Digest bucket this run drained, e.g. a team slug or &apos;repo:PostHog/posthog&apos;.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AudienceKey { get; private set; }
+#nullable restore
+#else
+        public string AudienceKey { get; private set; }
+#endif
         /// <summary>When the digest run was created.</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
-        /// <summary>ID of the digest channel this run belongs to.</summary>
-        public Guid? DigestChannel { get; private set; }
         /// <summary>Error message if the run failed, blank otherwise.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -32,6 +38,30 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? PostedAt { get; private set; }
         /// <summary>Number of merged PRs included in the posted digest.</summary>
         public int? PrCount { get; private set; }
+        /// <summary>Why the digest went to this channel: &apos;slack_name_match&apos; (no declaration anywhere, so the audience_key matched a same-named Slack channel), &apos;stamphog_config&apos; (the channel the repo declared under &apos;digest:&apos; in .stamphog/policy.yml), &apos;owners_contact&apos; (a teams: entry in a root owners.yaml named it), or &apos;manual&apos; (no longer produced).* `manual` - MANUAL* `slack_name_match` - SLACK_NAME_MATCH* `stamphog_config` - STAMPHOG_CONFIG* `owners_contact` - OWNERS_CONTACT</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.DigestRunResolutionSource? ResolutionSource { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.DigestRunResolutionSource ResolutionSource { get; private set; }
+#endif
+        /// <summary>Slack channel this digest was posted to, e.g. &apos;C012AB3CD&apos;.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SlackChannelId { get; private set; }
+#nullable restore
+#else
+        public string SlackChannelId { get; private set; }
+#endif
+        /// <summary>Human-readable name of that channel, for display.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SlackChannelName { get; private set; }
+#nullable restore
+#else
+        public string SlackChannelName { get; private set; }
+#endif
         /// <summary>Slack message timestamp of the posted digest, if posted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -73,12 +103,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "audience_key", n => { AudienceKey = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "digest_channel", n => { DigestChannel = n.GetGuidValue(); } },
                 { "error", n => { Error = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "posted_at", n => { PostedAt = n.GetDateTimeOffsetValue(); } },
                 { "pr_count", n => { PrCount = n.GetIntValue(); } },
+                { "resolution_source", n => { ResolutionSource = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DigestRunResolutionSource>(global::Soenneker.PostHog.OpenApiClient.Models.DigestRunResolutionSource.CreateFromDiscriminatorValue); } },
+                { "slack_channel_id", n => { SlackChannelId = n.GetStringValue(); } },
+                { "slack_channel_name", n => { SlackChannelName = n.GetStringValue(); } },
                 { "slack_message_ts", n => { SlackMessageTs = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DigestRunStatus>(global::Soenneker.PostHog.OpenApiClient.Models.DigestRunStatus.CreateFromDiscriminatorValue); } },
             };

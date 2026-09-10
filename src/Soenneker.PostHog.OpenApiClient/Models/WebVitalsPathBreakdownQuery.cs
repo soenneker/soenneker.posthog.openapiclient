@@ -55,13 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper26 Interval { get; set; }
 #endif
         /// <summary>The kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Kind { get; set; }
-#nullable restore
-#else
-        public string Kind { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsPathBreakdownQueryKind? Kind { get; set; }
         /// <summary>The metric property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsMetric? Metric { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
@@ -75,10 +69,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The orderBy property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsPathBreakdownQueryOrderByAnyOf1Item>? OrderBy { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsPathBreakdownQueryOrderByItem>? OrderBy { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsPathBreakdownQueryOrderByAnyOf1Item> OrderBy { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsPathBreakdownQueryOrderByItem> OrderBy { get; set; }
 #endif
         /// <summary>The percentile property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsPercentile? Percentile { get; set; }
@@ -157,10 +151,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "filterTestAccounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
                 { "includeRevenue", n => { IncludeRevenue = n.GetBoolValue(); } },
                 { "interval", n => { Interval = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper26>(global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper26.CreateFromDiscriminatorValue); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsPathBreakdownQueryKind>(); } },
                 { "metric", n => { Metric = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsMetric>(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
-                { "orderBy", n => { OrderBy = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsPathBreakdownQueryOrderByAnyOf1Item>(global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsPathBreakdownQueryOrderByAnyOf1Item.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "orderBy", n => { OrderBy = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsPathBreakdownQueryOrderByItem>(global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsPathBreakdownQueryOrderByItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "percentile", n => { Percentile = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsPercentile>(); } },
                 { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsPathBreakdownQueryPropertiesItem>(global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsPathBreakdownQueryPropertiesItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsPathBreakdownQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsPathBreakdownQueryResponse.CreateFromDiscriminatorValue); } },
@@ -189,10 +183,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("filterTestAccounts", FilterTestAccounts);
             writer.WriteBoolValue("includeRevenue", IncludeRevenue);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper26>("interval", Interval);
-            writer.WriteStringValue("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsPathBreakdownQueryKind>("kind", Kind);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsMetric>("metric", Metric);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsPathBreakdownQueryOrderByAnyOf1Item>("orderBy", OrderBy);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsPathBreakdownQueryOrderByItem>("orderBy", OrderBy);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsPercentile>("percentile", Percentile);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsPathBreakdownQueryPropertiesItem>("properties", Properties);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsPathBreakdownQueryResponse>("response", Response);

@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Highest htmlID suffix per element type, e.g. {\&quot;u_row\&quot;: 1, \&quot;u_content_text\&quot;: 2}.&quot;
+    /// Highest htmlID suffix per element type, e.g. {&quot;u_row&quot;: 1, &quot;u_content_text&quot;: 2}.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class EmailTemplateDesignCountersProperty : IAdditionalDataHolder, IParsable

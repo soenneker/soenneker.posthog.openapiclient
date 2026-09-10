@@ -15,6 +15,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Optional observations to add to the report&apos;s evidence rail, each becoming a bound signal attributed to this scout — adds to the report&apos;s evidence rather than replacing it. Use this for a new observation a reader should be able to check, and `append_note` for commentary (the owning team knows, a deploy fixed it). The report&apos;s signal count and weight move with the appended rows. Emit plus every append share a cap of 50 signals per report.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReportEvidence>? AppendEvidence { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReportEvidence> AppendEvidence { get; set; }
+#endif
         /// <summary>Optional free-form note to append to the report&apos;s work log (attributed to this scout).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -39,6 +47,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ReportId { get; set; }
 #endif
+        /// <summary>The full set of follow-up prompts (questions or next-step actions) the report should offer above its `Ask AI` box. Replaces the report&apos;s prompts rather than adding to them, so send every one you want kept. Omit the field (or send null) to leave them untouched, and send an empty list to take them down, which is what you want once a rewrite has left them pointing at the old report.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? SuggestedPrompts { get; set; }
+#nullable restore
+#else
+        public List<string> SuggestedPrompts { get; set; }
+#endif
         /// <summary>Optional reviewers to set on the report (each a `github_login` and/or `user_uuid`), replacing any existing list. Use this to route a report that surfaced with no reviewer — it re-runs autostart, so a report that was missing a qualifying reviewer can now open a draft PR. An empty list is a no-op (existing reviewers are left untouched, never cleared).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -47,7 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewer> SuggestedReviewers { get; set; }
 #endif
-        /// <summary>Optional new summary. Markdown is supported (headings, lists, code, links; images are not rendered); lead with one plain declarative sentence — it becomes the inbox card headline. The pipeline may later re-research and overwrite it.</summary>
+        /// <summary>Optional new summary. Markdown is supported (headings, lists, code, links; images are not rendered); lead with one plain declarative sentence — it becomes the inbox card headline. A heading, or a bold label on a line of its own with a blank line above it, marks a section that a threaded Slack delivery splits into its own reply. The pipeline may later re-research and overwrite it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Summary { get; set; }
@@ -55,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Summary { get; set; }
 #endif
-        /// <summary>&quot;Optional new title. Conventional-commit style (`type(scope): description`) renders with type/scope styling. The pipeline may later re-research and overwrite it.&quot;</summary>
+        /// <summary>Optional new title. Conventional-commit style (`type(scope): description`) renders with type/scope styling. The pipeline may later re-research and overwrite it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Title { get; set; }
@@ -88,9 +104,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "append_evidence", n => { AppendEvidence = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReportEvidence>(global::Soenneker.PostHog.OpenApiClient.Models.ReportEvidence.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "append_note", n => { AppendNote = n.GetStringValue(); } },
                 { "charts", n => { Charts = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReportChart>(global::Soenneker.PostHog.OpenApiClient.Models.ReportChart.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "report_id", n => { ReportId = n.GetStringValue(); } },
+                { "suggested_prompts", n => { SuggestedPrompts = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "suggested_reviewers", n => { SuggestedReviewers = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewer>(global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewer.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "summary", n => { Summary = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
@@ -103,9 +121,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReportEvidence>("append_evidence", AppendEvidence);
             writer.WriteStringValue("append_note", AppendNote);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReportChart>("charts", Charts);
             writer.WriteStringValue("report_id", ReportId);
+            writer.WriteCollectionOfPrimitiveValues<string>("suggested_prompts", SuggestedPrompts);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewer>("suggested_reviewers", SuggestedReviewers);
             writer.WriteStringValue("summary", Summary);
             writer.WriteStringValue("title", Title);

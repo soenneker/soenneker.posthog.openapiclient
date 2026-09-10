@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Alert orientation: total + enabled count, plus the 5 most recently created alerts with their state and threshold metadata.&quot;
+    /// Alert orientation: total + enabled count, plus the 5 most recently created alerts with their state and threshold metadata.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ProjectProfileInventoryRecentAlerts : IAdditionalDataHolder, IParsable

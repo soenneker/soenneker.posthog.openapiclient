@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `duckdb` - duckdb* `postgres` - postgres* `mysql` - mysql* `snowflake` - snowflake* `redshift` - redshift* `clickhouse` - clickhouse* `motherduck` - motherduck</summary>
+    /// <summary>* `duckdb` - duckdb* `postgres` - postgres* `mysql` - mysql* `snowflake` - snowflake* `redshift` - redshift* `clickhouse` - clickhouse* `motherduck` - motherduck* `trino` - trino</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum EngineEnum
     {
@@ -34,6 +34,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "motherduck")]
         #pragma warning disable CS1591
         Motherduck,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "trino")]
+        #pragma warning disable CS1591
+        Trino,
         #pragma warning restore CS1591
     }
 }

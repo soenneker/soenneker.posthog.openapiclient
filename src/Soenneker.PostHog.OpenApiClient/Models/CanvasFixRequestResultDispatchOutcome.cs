@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;signaled: the task&apos;s live run received the request. new_run: a fresh agent run was started. already_queued: a fix run was already starting, so no new run was created.* `signaled` - signaled* `new_run` - new_run* `already_queued` - already_queued&quot;
+    /// signaled: the task&apos;s live run received the request. new_run: a fresh agent run was started. already_queued: a fix run was already starting, so no new run was created.* `signaled` - signaled* `new_run` - new_run* `already_queued` - already_queued
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CanvasFixRequestResultDispatchOutcome : IAdditionalDataHolder, IParsable

@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;ExperimentMetric JSON. Must have kind=&apos;ExperimentMetric&apos; and a metric_type: &apos;mean&apos; (set source to an EventsNode with an event name), &apos;funnel&apos; (set series to an array of EventsNode steps), &apos;ratio&apos; (set numerator and denominator EventsNode entries), or &apos;retention&apos; (set start_event and completion_event). Legacy kinds (ExperimentTrendsQuery, ExperimentFunnelsQuery) are rejected for new shared metrics.&quot;
+    /// ExperimentMetric JSON. Must have kind=&apos;ExperimentMetric&apos; and a metric_type: &apos;mean&apos; (set source to an EventsNode with an event name), &apos;funnel&apos; (set series to an array of EventsNode steps), &apos;ratio&apos; (set numerator and denominator EventsNode entries), or &apos;retention&apos; (set start_event and completion_event). Legacy kinds (ExperimentTrendsQuery, ExperimentFunnelsQuery) are rejected for new shared metrics.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedExperimentSavedMetricQuery : IAdditionalDataHolder, IParsable

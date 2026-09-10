@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;passed: ok. warned: degraded but not blocking. failed: blocking. skipped: not run for this state.* `passed` - passed* `warned` - warned* `failed` - failed* `skipped` - skipped&quot;
+    /// passed: ok. warned: degraded but not blocking. failed: blocking. skipped: not run for this state.* `passed` - passed* `warned` - warned* `failed` - failed* `skipped` - skipped
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DiagnosticCheckResultStatus : IAdditionalDataHolder, IParsable

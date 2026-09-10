@@ -15,18 +15,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The bytecode property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQueryResponseBytecode? Bytecode { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogQueryResponseBytecodeItem>? Bytecode { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQueryResponseBytecode Bytecode { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogQueryResponseBytecodeItem> Bytecode { get; set; }
 #endif
         /// <summary>The coloredBytecode property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQueryResponseColoredBytecode? ColoredBytecode { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogQueryResponseColoredBytecodeItem>? ColoredBytecode { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQueryResponseColoredBytecode ColoredBytecode { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogQueryResponseColoredBytecodeItem> ColoredBytecode { get; set; }
 #endif
         /// <summary>The results property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -62,8 +62,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "bytecode", n => { Bytecode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQueryResponseBytecode>(global::Soenneker.PostHog.OpenApiClient.Models.HogQueryResponseBytecode.CreateFromDiscriminatorValue); } },
-                { "coloredBytecode", n => { ColoredBytecode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQueryResponseColoredBytecode>(global::Soenneker.PostHog.OpenApiClient.Models.HogQueryResponseColoredBytecode.CreateFromDiscriminatorValue); } },
+                { "bytecode", n => { Bytecode = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogQueryResponseBytecodeItem>(global::Soenneker.PostHog.OpenApiClient.Models.HogQueryResponseBytecodeItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "coloredBytecode", n => { ColoredBytecode = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogQueryResponseColoredBytecodeItem>(global::Soenneker.PostHog.OpenApiClient.Models.HogQueryResponseColoredBytecodeItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "results", n => { Results = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQueryResponseResults>(global::Soenneker.PostHog.OpenApiClient.Models.HogQueryResponseResults.CreateFromDiscriminatorValue); } },
                 { "stdout", n => { Stdout = n.GetStringValue(); } },
             };
@@ -75,8 +75,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQueryResponseBytecode>("bytecode", Bytecode);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQueryResponseColoredBytecode>("coloredBytecode", ColoredBytecode);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogQueryResponseBytecodeItem>("bytecode", Bytecode);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogQueryResponseColoredBytecodeItem>("coloredBytecode", ColoredBytecode);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQueryResponseResults>("results", Results);
             writer.WriteStringValue("stdout", Stdout);
         }

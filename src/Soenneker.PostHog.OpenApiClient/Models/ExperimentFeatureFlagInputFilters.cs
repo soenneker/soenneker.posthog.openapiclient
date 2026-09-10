@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Flag config to apply: `multivariate.variants` (2 to 20 variants; the baseline defaults to the variant keyed &apos;control&apos; when present, else the first variant), `groups` (a single group with `rollout_percentage` only; release conditions are not supported here, edit the feature flag directly), `aggregation_group_type_index`, and `payloads` (JSON-encoded strings keyed by variant key). On update, config this object omits is preserved from the linked flag&apos;s current state.&quot;
+    /// Flag config to apply: `multivariate.variants` (2 to 20 variants; the baseline defaults to the variant keyed &apos;control&apos; when present, else the first variant), `groups` (a single group with `rollout_percentage` only; release conditions are not supported here, edit the feature flag directly), `aggregation_group_type_index`, and `payloads` (JSON-encoded strings keyed by variant key). On update, config this object omits is preserved from the linked flag&apos;s current state.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ExperimentFeatureFlagInputFilters : IAdditionalDataHolder, IParsable
@@ -17,7 +17,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Group type index for group-based feature flags.</summary>
         public int? AggregationGroupTypeIndex { get; set; }
-        /// <summary>&quot;Overall rollout as a single group: [{\&quot;properties\&quot;: [], \&quot;rollout_percentage\&quot;: N}].&quot;</summary>
+        /// <summary>Overall rollout as a single group: [{&quot;properties&quot;: [], &quot;rollout_percentage&quot;: N}].</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagRolloutGroup>? Groups { get; set; }
@@ -28,10 +28,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Multivariate variant configuration.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFeatureFlagFiltersMultivariate? Multivariate { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagMultivariate? Multivariate { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFeatureFlagFiltersMultivariate Multivariate { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagMultivariate Multivariate { get; set; }
 #endif
         /// <summary>Optional payload values keyed by variant key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -68,7 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "aggregation_group_type_index", n => { AggregationGroupTypeIndex = n.GetIntValue(); } },
                 { "groups", n => { Groups = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagRolloutGroup>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagRolloutGroup.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "multivariate", n => { Multivariate = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFeatureFlagFiltersMultivariate>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFeatureFlagFiltersMultivariate.CreateFromDiscriminatorValue); } },
+                { "multivariate", n => { Multivariate = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagMultivariate>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagMultivariate.CreateFromDiscriminatorValue); } },
                 { "payloads", n => { Payloads = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFeatureFlagInputFiltersPayloads>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFeatureFlagInputFiltersPayloads.CreateFromDiscriminatorValue); } },
             };
         }
@@ -81,7 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("aggregation_group_type_index", AggregationGroupTypeIndex);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagRolloutGroup>("groups", Groups);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFeatureFlagFiltersMultivariate>("multivariate", Multivariate);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagMultivariate>("multivariate", Multivariate);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFeatureFlagInputFiltersPayloads>("payloads", Payloads);
             writer.WriteAdditionalData(AdditionalData);
         }

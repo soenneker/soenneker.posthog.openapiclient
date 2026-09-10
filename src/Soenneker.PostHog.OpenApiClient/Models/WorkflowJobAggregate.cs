@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public double? FailureRate { get; set; }
         /// <summary>Job instances observed in the window (all shards, all attempts).</summary>
         public int? JobCount { get; set; }
-        /// <summary>&quot;De-sharded job name: the matrix &apos;(G/N)&apos; suffix is stripped and unexpanded &apos;${{ matrix.* }}&apos; templates are collapsed, so shards of one matrix aggregate together.&quot;</summary>
+        /// <summary>De-sharded job name: the matrix &apos;(G/N)&apos; suffix is stripped and unexpanded &apos;${{ matrix.* }}&apos; templates are collapsed, so shards of one matrix aggregate together.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? JobName { get; set; }

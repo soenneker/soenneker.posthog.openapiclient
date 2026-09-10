@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Slack channel target in the channel picker&apos;s `channel_id|#channel-name` format. Null while choosing a channel; no messages are sent until it is set.</summary>
+        /// <summary>Slack channel target in the channel picker&apos;s `channel_id|#channel-name` format. Null while choosing a channel; no messages are sent until a channel or user is set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Channel { get; set; }
@@ -24,12 +24,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>ID of the Slack integration whose bot posts this scout&apos;s findings and reports.</summary>
         public int? IntegrationId { get; set; }
+        /// <summary>When true, post a report as a thread: a short lead in the channel and the rest split into replies at the summary&apos;s section labels, which can be Markdown headings or bold labels. Keeps a long summary from being clipped at Slack&apos;s section limit. Off by default, and it does not change how findings post.</summary>
+        public bool? ThreadReports { get; set; }
+        /// <summary>Slack members to send output to as direct messages, each in `member_id|@display-name` format (a bare member ID like `U0123ABC456` also works). Each member gets their own DM from the PostHog app; at most 5. Set either this or `channel`, not both. Useful for personal scouts where a DM beats a channel.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Users { get; set; }
+#nullable restore
+#else
+        public List<string> Users { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutSlackDestination"/> and sets the default values.
         /// </summary>
         public SignalScoutSlackDestination()
         {
             AdditionalData = new Dictionary<string, object>();
+            ThreadReports = false;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -51,6 +62,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "channel", n => { Channel = n.GetStringValue(); } },
                 { "integration_id", n => { IntegrationId = n.GetIntValue(); } },
+                { "thread_reports", n => { ThreadReports = n.GetBoolValue(); } },
+                { "users", n => { Users = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
         /// <summary>
@@ -62,6 +75,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("channel", Channel);
             writer.WriteIntValue("integration_id", IntegrationId);
+            writer.WriteBoolValue("thread_reports", ThreadReports);
+            writer.WriteCollectionOfPrimitiveValues<string>("users", Users);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

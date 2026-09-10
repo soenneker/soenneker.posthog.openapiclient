@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Dimensionality reduction method: &apos;none&apos; (cluster on raw), &apos;umap&apos;, or &apos;pca&apos;* `none` - none* `umap` - umap* `pca` - pca&quot;
+    /// Dimensionality reduction method: &apos;none&apos; (cluster on raw), &apos;umap&apos;, or &apos;pca&apos;* `none` - none* `umap` - umap* `pca` - pca
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ClusteringRunRequestDimensionalityReductionMethod : IAdditionalDataHolder, IParsable

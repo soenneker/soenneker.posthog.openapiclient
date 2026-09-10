@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Overall run status: starting, completed, failed, or skipped.* `starting` - Starting* `completed` - Completed* `failed` - Failed* `skipped` - Skipped&quot;
+    /// Overall run status: starting, completed, failed, or skipped.* `starting` - Starting* `completed` - Completed* `failed` - Failed* `skipped` - Skipped
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SubscriptionDeliveryStatus : IAdditionalDataHolder, IParsable

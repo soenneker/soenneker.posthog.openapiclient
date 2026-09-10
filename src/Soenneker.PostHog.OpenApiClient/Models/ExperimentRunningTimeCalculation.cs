@@ -12,7 +12,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class ExperimentRunningTimeCalculation : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>&quot;How the exposure estimate is configured: manual user-entered values or automatic from live experiment data.&quot;</summary>
+        /// <summary>How the exposure estimate is configured: manual user-entered values or automatic from live experiment data.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureEstimateConfig? ExposureEstimateConfig { get; set; }

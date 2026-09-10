@@ -15,7 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;signaled: the task&apos;s live run received the request. new_run: a fresh agent run was started. already_queued: a fix run was already starting, so no new run was created.* `signaled` - signaled* `new_run` - new_run* `already_queued` - already_queued&quot;</summary>
+        /// <summary>signaled: the task&apos;s live run received the request. new_run: a fresh agent run was started. already_queued: a fix run was already starting, so no new run was created.* `signaled` - signaled* `new_run` - new_run* `already_queued` - already_queued</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.CanvasFixRequestResultDispatchOutcome? DispatchOutcome { get; set; }

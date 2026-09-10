@@ -15,7 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The note&apos;s prose — feedback, a pointer, or a nudge for the scout(s) to weigh on their next runs (e.g. &apos;we shipped a new checkout on Tuesday, watch conversion closely&apos;, &apos;stop flagging the staging traffic spike&apos;). Write it in Markdown; scouts read it verbatim.</summary>
+        /// <summary>The note&apos;s prose — feedback, a pointer, or a nudge for the scout(s) to weigh on their next runs (e.g. &apos;we shipped a new checkout on Tuesday, watch conversion closely&apos;, &apos;stop flagging the staging traffic spike&apos;). Write it in Markdown; the run reads it verbatim.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Content { get; set; }
@@ -23,9 +23,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Content { get; set; }
 #endif
-        /// <summary>Optional ISO-8601 expiry. After this time the note drops out of the default list view, so time-boxed steering (&apos;watch closely this week&apos;) retires itself. Omit for a note that stays active until deleted.</summary>
-        public DateTimeOffset? ExpiresAt { get; set; }
-        /// <summary>Address the note to one scout by its skill name (`signals-scout-*`, exact match against an existing scout skill on the project — check `scout-config-list` for the roster). Omit or leave blank for a general note every scout sees.</summary>
+        /// <summary>Optional ISO-8601 expiry. After this time the note drops out of the default list view, so time-boxed steering (&apos;watch closely this week&apos;) retires itself. Omit for a note that stays active until deleted. Best-effort — a value that can&apos;t be parsed or is already in the past is dropped (the note stays active), not rejected, so the note is never lost.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ExpiresAt { get; set; }
+#nullable restore
+#else
+        public string ExpiresAt { get; set; }
+#endif
+        /// <summary>Address the note to one scout by its skill name (exact match against a configured scout on the project — check `scout-config-list` for the roster), or to one stage of the report pipeline by its reserved audience (`pipeline:report-research`). Use a pipeline audience for guidance about how reports get researched rather than about what the scouts watch, so it reaches that stage and no scout. Omit or leave blank for a general note every scout sees.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SkillName { get; set; }
@@ -59,7 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "content", n => { Content = n.GetStringValue(); } },
-                { "expires_at", n => { ExpiresAt = n.GetDateTimeOffsetValue(); } },
+                { "expires_at", n => { ExpiresAt = n.GetStringValue(); } },
                 { "skill_name", n => { SkillName = n.GetStringValue(); } },
             };
         }
@@ -71,7 +77,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("content", Content);
-            writer.WriteDateTimeOffsetValue("expires_at", ExpiresAt);
+            writer.WriteStringValue("expires_at", ExpiresAt);
             writer.WriteStringValue("skill_name", SkillName);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Render mode: &apos;screenshot&apos; (renders the page headlessly, default), &apos;iframe&apos;, or &apos;recording&apos;. Only &apos;screenshot&apos; generates image bytes.* `screenshot` - Screenshot* `iframe` - Iframe* `recording` - Recording&quot;
+    /// Render mode: &apos;screenshot&apos; (renders the page headlessly, default), &apos;iframe&apos;, or &apos;recording&apos;. Only &apos;screenshot&apos; generates image bytes.* `screenshot` - Screenshot* `iframe` - Iframe* `recording` - Recording
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedSavedHeatmapRequestType : IAdditionalDataHolder, IParsable
@@ -16,7 +16,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `screenshot` - Screenshot* `iframe` - Iframe* `recording` - Recording</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapType? Value { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SavedHeatmapTypeEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedSavedHeatmapRequestType"/> and sets the default values.
         /// </summary>
@@ -42,7 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "value", n => { Value = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapType>(); } },
+                { "value", n => { Value = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SavedHeatmapTypeEnum>(); } },
             };
         }
         /// <summary>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapType>("value", Value);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SavedHeatmapTypeEnum>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

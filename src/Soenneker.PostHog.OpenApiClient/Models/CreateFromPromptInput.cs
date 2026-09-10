@@ -46,7 +46,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string PromptName { get; set; }
 #endif
-        /// <summary>&quot;One or more metric templates to attach as primary metrics. Each template becomes one metric on the experiment. Allowed values: cost, latency, eval_pass_rate.&quot;</summary>
+        /// <summary>One or more metric templates to attach as primary metrics. Each template becomes one metric on the experiment. Allowed values: cost, latency, eval_pass_rate.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.TemplatesEnum?>? Templates { get; set; }

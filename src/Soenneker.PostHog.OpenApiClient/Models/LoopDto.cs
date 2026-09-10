@@ -36,10 +36,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Context this loop is attached to, or null when unattached.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LoopDtoContextTarget? ContextTarget { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LoopContextTargetDto? ContextTarget { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LoopDtoContextTarget ContextTarget { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LoopContextTargetDto ContextTarget { get; set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; set; }
@@ -215,7 +215,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "behaviors", n => { Behaviors = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LoopDtoBehaviors>(global::Soenneker.PostHog.OpenApiClient.Models.LoopDtoBehaviors.CreateFromDiscriminatorValue); } },
                 { "connectors", n => { Connectors = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LoopDtoConnectors>(global::Soenneker.PostHog.OpenApiClient.Models.LoopDtoConnectors.CreateFromDiscriminatorValue); } },
                 { "consecutive_failures", n => { ConsecutiveFailures = n.GetIntValue(); } },
-                { "context_target", n => { ContextTarget = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LoopDtoContextTarget>(global::Soenneker.PostHog.OpenApiClient.Models.LoopDtoContextTarget.CreateFromDiscriminatorValue); } },
+                { "context_target", n => { ContextTarget = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LoopContextTargetDto>(global::Soenneker.PostHog.OpenApiClient.Models.LoopContextTargetDto.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by_id", n => { CreatedById = n.GetIntValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
@@ -253,7 +253,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LoopDtoBehaviors>("behaviors", Behaviors);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LoopDtoConnectors>("connectors", Connectors);
             writer.WriteIntValue("consecutive_failures", ConsecutiveFailures);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LoopDtoContextTarget>("context_target", ContextTarget);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LoopContextTargetDto>("context_target", ContextTarget);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteIntValue("created_by_id", CreatedById);
             writer.WriteStringValue("description", Description);

@@ -15,7 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;Aggregation applied per time bucket. &apos;rate&apos; (per-second) and &apos;increase&apos; are counter-aware: per-series deltas with Prometheus counter-reset handling, temporality-aware (delta-temporality samples count as-is). &apos;histogram_quantile&apos; interpolates from OTel histogram buckets and requires &apos;quantile&apos;.* `sum` - sum* `avg` - avg* `count` - count* `p95` - p95* `rate` - rate* `increase` - increase* `histogram_quantile` - histogram_quantile&quot;</summary>
+        /// <summary>Aggregation applied per time bucket, always across series rather than across raw samples. &apos;sum&apos;, &apos;avg&apos;, &apos;min&apos;, &apos;max&apos; and &apos;p95&apos; reduce each series to its last sample in the bucket and then combine those, so the result does not scale with the scrape rate; &apos;count&apos; is the number of series that reported. &apos;rate&apos; (per-second) and &apos;increase&apos; are counter-aware: per-series deltas with Prometheus counter-reset handling, temporality-aware (delta-temporality samples count as-is). &apos;histogram_quantile&apos; interpolates from OTel histogram buckets and requires &apos;quantile&apos;.* `sum` - sum* `avg` - avg* `count` - count* `min` - min* `max` - max* `p95` - p95* `rate` - rate* `increase` - increase* `histogram_quantile` - histogram_quantile</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyAggregation? Aggregation { get; set; }
@@ -23,7 +23,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyAggregation Aggregation { get; set; }
 #endif
-        /// <summary>&quot;Full multi-clause form: each clause is an independent metric selection sharing the request&apos;s time grid (maximum 10). Mutually exclusive with &apos;metricName&apos;.&quot;</summary>
+        /// <summary>Full multi-clause form: each clause is an independent metric selection sharing the request&apos;s time grid (maximum 10). Mutually exclusive with &apos;metricName&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricClause>? Clauses { get; set; }

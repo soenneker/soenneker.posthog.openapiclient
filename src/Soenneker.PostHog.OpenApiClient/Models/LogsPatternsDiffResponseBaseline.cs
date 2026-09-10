@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Mining metadata for the baseline window. Check `total_count` before trusting a wall of \&quot;new\&quot; entries: an empty or tiny baseline (e.g. logging only started this week) makes everything look new.&quot;
+    /// Mining metadata for the baseline window. Check `total_count` before trusting a wall of &quot;new&quot; entries: an empty or tiny baseline (e.g. logging only started this week) makes everything look new.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class LogsPatternsDiffResponseBaseline : IAdditionalDataHolder, IParsable

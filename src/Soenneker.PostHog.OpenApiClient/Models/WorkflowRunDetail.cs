@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;Pull request whose merge produced this run&apos;s head commit, resolved through the merged pull request&apos;s merge commit and falling back to the commit subject&apos;s &apos;(#NNNN)&apos; suffix. Null when neither resolves. The only PR attribution a default-branch push has: read pr_number first and fall back to this.&quot;</summary>
+        /// <summary>Pull request whose merge produced this run&apos;s head commit, resolved through the merged pull request&apos;s merge commit and falling back to the commit subject&apos;s &apos;(#NNNN)&apos; suffix. Null when neither resolves. The only PR attribution a default-branch push has: read pr_number first and fall back to this.</summary>
         public int? CommitPrNumber { get; set; }
         /// <summary>Run conclusion (&apos;success&apos;, &apos;failure&apos;, &apos;timed_out&apos;, &apos;cancelled&apos;, &apos;skipped&apos;, &apos;action_required&apos;, ...), or null while still in progress.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -58,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? RunAttempt { get; set; }
         /// <summary>When the run started, or null for a queued/barely-started run.</summary>
         public DateTimeOffset? RunStartedAt { get; set; }
-        /// <summary>&quot;Raw run status: &apos;queued&apos;, &apos;in_progress&apos;, &apos;completed&apos;, etc.&quot;</summary>
+        /// <summary>Raw run status: &apos;queued&apos;, &apos;in_progress&apos;, &apos;completed&apos;, etc.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Status { get; set; }

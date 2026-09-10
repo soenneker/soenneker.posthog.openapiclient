@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Column type. Built-in types resolve client-side from log row fields; `custom` columns are computed server-side from `expression`.* `timestamp` - timestamp* `level` - level* `source` - source* `trace_id` - trace_id* `span_id` - span_id* `message` - message* `custom` - custom
+    /// Column type. Most built-in types resolve client-side from log row fields; `pattern` and `custom` columns are computed server-side, the latter from `expression`.* `timestamp` - timestamp* `level` - level* `source` - source* `trace_id` - trace_id* `span_id` - span_id* `person` - person* `session` - session* `pattern` - pattern* `message` - message* `custom` - custom
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class LogsViewColumnType : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `timestamp` - timestamp* `level` - level* `source` - source* `trace_id` - trace_id* `span_id` - span_id* `message` - message* `custom` - custom</summary>
+        /// <summary>* `timestamp` - timestamp* `level` - level* `source` - source* `trace_id` - trace_id* `span_id` - span_id* `person` - person* `session` - session* `pattern` - pattern* `message` - message* `custom` - custom</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.LogsViewColumnTypeEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsViewColumnType"/> and sets the default values.

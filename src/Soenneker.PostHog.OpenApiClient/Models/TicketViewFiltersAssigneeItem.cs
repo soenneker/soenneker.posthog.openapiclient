@@ -37,11 +37,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.TicketViewFiltersAssigneeItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.TicketViewFiltersAssigneeItem();
             if("TicketViewFiltersAssigneeItemOneOf2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.TicketViewFiltersAssigneeItemOneOf2 = new global::Soenneker.PostHog.OpenApiClient.Models.TicketViewFiltersAssigneeItemOneOf2();
+            }
+            else if("TicketViewFiltersAssigneeItemWrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.TicketViewFiltersAssigneeItemWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.TicketViewFiltersAssigneeItemWrapper();
             }
             return result;
         }

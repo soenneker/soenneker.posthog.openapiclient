@@ -5,12 +5,15 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Artifacts;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Comments;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Handoff;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Pin;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Presence;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Run;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Staged_artifacts;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Thread_messages;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Usage;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Warm;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -34,6 +37,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Comments.CommentsRequestBuilder Comments
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Comments.CommentsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The handoff property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Handoff.HandoffRequestBuilder Handoff
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Handoff.HandoffRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The pin property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Pin.PinRequestBuilder Pin
@@ -64,6 +72,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Thread_messages.Thread_messagesRequestBuilder Thread_messages
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Thread_messages.Thread_messagesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The usage property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Usage.UsageRequestBuilder Usage
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Usage.UsageRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The warm property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Warm.WarmRequestBuilder Warm
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Warm.WarmRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.ItemRequestBuilder"/> and sets the default values.
@@ -120,7 +138,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item
         /// API for managing tasks within a project. Tasks represent units of work to be performed by an agent.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskDetailDto"/></returns>
-        /// <param name="body">Request body for creating or updating a task.Field required/default semantics match the ``Task`` model. The view passes``validated_data`` (integration/report PK fields already resolved to instances) to thefacade ``create_task`` / ``update_task`` functions.</param>
+        /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -140,7 +158,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item
         /// API for managing tasks within a project. Tasks represent units of work to be performed by an agent.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskDetailDto"/></returns>
-        /// <param name="body">Request body for creating or updating a task.Field required/default semantics match the ``Task`` model. The view passes``validated_data`` (integration/report PK fields already resolved to instances) to thefacade ``create_task`` / ``update_task`` functions.</param>
+        /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -172,7 +190,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item
 #endif
             var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <summary>
@@ -198,7 +215,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item
         /// API for managing tasks within a project. Tasks represent units of work to be performed by an agent.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">Request body for creating or updating a task.Field required/default semantics match the ``Task`` model. The view passes``validated_data`` (integration/report PK fields already resolved to instances) to thefacade ``create_task`` / ``update_task`` functions.</param>
+        /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -220,7 +237,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item
         /// API for managing tasks within a project. Tasks represent units of work to be performed by an agent.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">Request body for creating or updating a task.Field required/default semantics match the ``Task`` model. The view passes``validated_data`` (integration/report PK fields already resolved to instances) to thefacade ``create_task`` / ``update_task`` functions.</param>
+        /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

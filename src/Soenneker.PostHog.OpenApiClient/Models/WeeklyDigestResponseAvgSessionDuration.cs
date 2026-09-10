@@ -18,10 +18,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Period-over-period change, null when not meaningful.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DurationMetricChange? Change { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WoWChange? Change { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DurationMetricChange Change { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WoWChange Change { get; set; }
 #endif
         /// <summary>Human-readable duration, e.g. &apos;2m 34s&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -64,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "change", n => { Change = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DurationMetricChange>(global::Soenneker.PostHog.OpenApiClient.Models.DurationMetricChange.CreateFromDiscriminatorValue); } },
+                { "change", n => { Change = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WoWChange>(global::Soenneker.PostHog.OpenApiClient.Models.WoWChange.CreateFromDiscriminatorValue); } },
                 { "current", n => { Current = n.GetStringValue(); } },
                 { "previous", n => { Previous = n.GetStringValue(); } },
             };
@@ -76,7 +76,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DurationMetricChange>("change", Change);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WoWChange>("change", Change);
             writer.WriteStringValue("current", Current);
             writer.WriteStringValue("previous", Previous);
             writer.WriteAdditionalData(AdditionalData);

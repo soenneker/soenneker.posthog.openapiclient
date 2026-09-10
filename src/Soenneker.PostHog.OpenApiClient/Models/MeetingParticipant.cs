@@ -35,7 +35,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? IsOrganizer { get; private set; }
         /// <summary>UUID of the PostHog person resolved for this attendee, if any.</summary>
         public Guid? PersonId { get; private set; }
-        /// <summary>&quot;The attendee&apos;s RSVP: &apos;needs_action&apos;, &apos;accepted&apos;, &apos;declined&apos;, or &apos;tentative&apos;.&quot;</summary>
+        /// <summary>The attendee&apos;s RSVP: &apos;needs_action&apos;, &apos;accepted&apos;, &apos;declined&apos;, or &apos;tentative&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ResponseStatus { get; private set; }

@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Source
         {
         }
         /// <summary>
-        /// &quot;Read the canvas&apos;s source project and its `current_version_id`.Always call this before editing: edit the returned files, then publishthe complete project passing the returned version id as`expected_current_version_id` so concurrent edits are not overwritten.`?version_id=` reads a historical version instead of the head.&quot;
+        /// Read the canvas&apos;s source project and its `current_version_id`.Always call this before editing: edit the returned files, then publishthe complete project passing the returned version id as`expected_current_version_id` so concurrent edits are not overwritten.`?version_id=` reads a historical version instead of the head.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Source
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Read the canvas&apos;s source project and its `current_version_id`.Always call this before editing: edit the returned files, then publishthe complete project passing the returned version id as`expected_current_version_id` so concurrent edits are not overwritten.`?version_id=` reads a historical version instead of the head.&quot;
+        /// Read the canvas&apos;s source project and its `current_version_id`.Always call this before editing: edit the returned files, then publishthe complete project passing the returned version id as`expected_current_version_id` so concurrent edits are not overwritten.`?version_id=` reads a historical version instead of the head.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -80,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Source
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Source.SourceRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// &quot;Read the canvas&apos;s source project and its `current_version_id`.Always call this before editing: edit the returned files, then publishthe complete project passing the returned version id as`expected_current_version_id` so concurrent edits are not overwritten.`?version_id=` reads a historical version instead of the head.&quot;
+        /// Read the canvas&apos;s source project and its `current_version_id`.Always call this before editing: edit the returned files, then publishthe complete project passing the returned version id as`expected_current_version_id` so concurrent edits are not overwritten.`?version_id=` reads a historical version instead of the head.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class SourceRequestBuilderGetQueryParameters 

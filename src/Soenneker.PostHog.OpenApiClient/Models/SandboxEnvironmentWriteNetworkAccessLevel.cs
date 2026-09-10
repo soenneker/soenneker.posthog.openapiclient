@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Network access policy: trusted (default allowlist), full (unrestricted), or custom.* `trusted` - Trusted* `full` - Full* `custom` - Custom&quot;
+    /// Network access policy: trusted (default allowlist), full (unrestricted), or custom.* `trusted` - Trusted* `full` - Full* `custom` - Custom
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SandboxEnvironmentWriteNetworkAccessLevel : IAdditionalDataHolder, IParsable
@@ -16,7 +16,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `trusted` - Trusted* `full` - Full* `custom` - Custom</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.NetworkAccessLevelEnum? Value { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SandboxEnvironmentNetworkAccessLevelEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SandboxEnvironmentWriteNetworkAccessLevel"/> and sets the default values.
         /// </summary>
@@ -42,7 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "value", n => { Value = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.NetworkAccessLevelEnum>(); } },
+                { "value", n => { Value = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SandboxEnvironmentNetworkAccessLevelEnum>(); } },
             };
         }
         /// <summary>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.NetworkAccessLevelEnum>("value", Value);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SandboxEnvironmentNetworkAccessLevelEnum>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

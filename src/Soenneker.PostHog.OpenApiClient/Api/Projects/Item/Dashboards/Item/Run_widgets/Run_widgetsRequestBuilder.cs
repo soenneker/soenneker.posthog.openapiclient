@@ -78,8 +78,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Run_
         public partial class Run_widgetsRequestBuilderGetQueryParameters 
         #pragma warning restore CS1591
         {
+            #pragma warning disable CS1591
             [QueryParameter("format")]
             public global::Soenneker.PostHog.OpenApiClient.Models.DashboardsRunWidgetsRetrieveFormatParameter? Format { get; set; }
+            #pragma warning restore CS1591
             /// <summary>Comma-separated dashboard tile IDs to run widgets for.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

@@ -12,11 +12,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class FeatureRequestUpdate : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Updated affected Customer Analytics account ID.</summary>
+        /// <summary>Deprecated single affected account ID. Use account_ids.</summary>
         public Guid? AccountId { get; set; }
+        /// <summary>One or more affected account IDs. Removed accounts are unlinked without deleting their evidence.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<Guid?>? AccountIds { get; set; }
+#nullable restore
+#else
+        public List<Guid?> AccountIds { get; set; }
+#endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Updated customer-facing request description in Markdown.</summary>
+        /// <summary>Updated optional customer-facing request description in Markdown.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Description { get; set; }
@@ -84,6 +92,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "account_id", n => { AccountId = n.GetGuidValue(); } },
+                { "account_ids", n => { AccountIds = n.GetCollectionOfPrimitiveValues<Guid?>()?.AsList(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "expected_version", n => { ExpectedVersion = n.GetIntValue(); } },
                 { "product_area_ids", n => { ProductAreaIds = n.GetCollectionOfPrimitiveValues<Guid?>()?.AsList(); } },
@@ -100,6 +109,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteGuidValue("account_id", AccountId);
+            writer.WriteCollectionOfPrimitiveValues<Guid?>("account_ids", AccountIds);
             writer.WriteStringValue("description", Description);
             writer.WriteIntValue("expected_version", ExpectedVersion);
             writer.WriteCollectionOfPrimitiveValues<Guid?>("product_area_ids", ProductAreaIds);

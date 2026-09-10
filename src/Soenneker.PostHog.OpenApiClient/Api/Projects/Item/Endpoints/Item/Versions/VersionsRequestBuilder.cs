@@ -85,10 +85,14 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Endpoints.Item.Versi
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class VersionsRequestBuilderGetQueryParameters 
         {
+            #pragma warning disable CS1591
             [QueryParameter("created_by")]
             public int? CreatedBy { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("is_active")]
             public bool? IsActive { get; set; }
+            #pragma warning restore CS1591
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }

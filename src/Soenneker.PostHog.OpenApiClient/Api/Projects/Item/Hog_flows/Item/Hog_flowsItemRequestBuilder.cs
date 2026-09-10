@@ -9,12 +9,14 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Batch_job
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Discard_draft;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Graph;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Invocation_results;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Invocation_results_count;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Invocations;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Logs;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Metrics;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Publish;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Rerun;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Revisions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Run;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Schedules;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -60,6 +62,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Invocation_results.Invocation_resultsRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The invocation_results_count property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Invocation_results_count.Invocation_results_countRequestBuilder Invocation_results_count
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Invocation_results_count.Invocation_results_countRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The invocations property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Invocations.InvocationsRequestBuilder Invocations
         {
@@ -89,6 +96,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Revisions.RevisionsRequestBuilder Revisions
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Revisions.RevisionsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The run property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Run.RunRequestBuilder Run
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Run.RunRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The schedules property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Schedules.SchedulesRequestBuilder Schedules
@@ -140,39 +152,39 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.HogFlow>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.HogFlow.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogFlow"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogFlowUpdate"/></returns>
         /// <param name="body">Mixin for serializers to add user access control fields</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.HogFlow?> PatchAsync(global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFlow body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowUpdate?> PatchAsync(global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFlowUpdate body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.HogFlow> PatchAsync(global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFlow body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowUpdate> PatchAsync(global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFlowUpdate body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.HogFlow>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.HogFlow.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowUpdate>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.HogFlowUpdate.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogFlow"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogFlowUpdate"/></returns>
         /// <param name="body">Mixin for serializers to add user access control fields</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.HogFlow?> PutAsync(global::Soenneker.PostHog.OpenApiClient.Models.HogFlow body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowUpdate?> PutAsync(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowUpdate body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.HogFlow> PutAsync(global::Soenneker.PostHog.OpenApiClient.Models.HogFlow body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowUpdate> PutAsync(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowUpdate body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.HogFlow>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.HogFlow.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowUpdate>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.HogFlowUpdate.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -187,7 +199,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item
 #endif
             var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <returns>A <see cref="RequestInformation"/></returns>
@@ -211,11 +222,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPatchRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFlow body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPatchRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFlowUpdate body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPatchRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFlow body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPatchRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFlowUpdate body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -230,11 +241,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPutRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.HogFlow body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowUpdate body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPutRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.HogFlow body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowUpdate body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));

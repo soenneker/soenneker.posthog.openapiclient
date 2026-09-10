@@ -17,13 +17,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The channel property</summary>
         public Guid? Channel { get; private set; }
-        /// <summary>The context property</summary>
+        /// <summary>For component-kind canvases: the head version&apos;s placement contract (size, optional configSchema). Null for other kinds and unpublished components.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Context { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasComponentMeta? ComponentMeta { get; private set; }
 #nullable restore
 #else
-        public string Context { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasComponentMeta ComponentMeta { get; private set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
@@ -37,10 +37,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Id of the live source version — pass as expected_current_version_id on publish. Null before the first publish.</summary>
         public Guid? CurrentVersionId { get; private set; }
+        /// <summary>Short prose describing the canvas. For components, the store-search text.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Description { get; private set; }
+#nullable restore
+#else
+        public string Description { get; private set; }
+#endif
         /// <summary>The generation_task_id property</summary>
         public Guid? GenerationTaskId { get; private set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
+        /// <summary>What the canvas is: &apos;freeform&apos; (a standalone app), &apos;component&apos; (a reusable widget grids place), or &apos;grid&apos; (a composition of components).* `freeform` - freeform* `grid` - grid* `component` - component</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasKind? Kind { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasKind Kind { get; private set; }
+#endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -99,12 +115,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "channel", n => { Channel = n.GetGuidValue(); } },
-                { "context", n => { Context = n.GetStringValue(); } },
+                { "component_meta", n => { ComponentMeta = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasComponentMeta>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasComponentMeta.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasCreatedBy.CreateFromDiscriminatorValue); } },
                 { "current_version_id", n => { CurrentVersionId = n.GetGuidValue(); } },
+                { "description", n => { Description = n.GetStringValue(); } },
                 { "generation_task_id", n => { GenerationTaskId = n.GetGuidValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
+                { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasKind>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasKind.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "pinned", n => { Pinned = n.GetBoolValue(); } },
                 { "pinned_at", n => { PinnedAt = n.GetDateTimeOffsetValue(); } },

@@ -32,12 +32,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Group type index for group-based targeting</summary>
         public int? GroupTypeIndex { get; set; }
+        /// <summary>Whether the workflow contains an email step. The tiered audience limit only applies to email sends; SMS, push, and webhook batches keep the flat limit. Defaults to true.</summary>
+        public bool? SendsEmail { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRequest"/> and sets the default values.
         /// </summary>
         public BlastRadiusRequest()
         {
             AdditionalData = new Dictionary<string, object>();
+            SendsEmail = true;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -60,6 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "dedupe_key", n => { DedupeKey = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRequestDedupeKey>(global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRequestDedupeKey.CreateFromDiscriminatorValue); } },
                 { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRequestFiltersProperty>(global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRequestFiltersProperty.CreateFromDiscriminatorValue); } },
                 { "group_type_index", n => { GroupTypeIndex = n.GetIntValue(); } },
+                { "sends_email", n => { SendsEmail = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -72,6 +76,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRequestDedupeKey>("dedupe_key", DedupeKey);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRequestFiltersProperty>("filters", Filters);
             writer.WriteIntValue("group_type_index", GroupTypeIndex);
+            writer.WriteBoolValue("sends_email", SendsEmail);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

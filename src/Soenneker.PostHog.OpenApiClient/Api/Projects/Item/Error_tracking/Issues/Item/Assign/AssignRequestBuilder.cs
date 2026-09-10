@@ -33,33 +33,33 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Issue
         public AssignRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/error_tracking/issues/{id}/assign", rawUrl)
         {
         }
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssuesAssignPartialUpdate200Response"/></returns>
-        /// <param name="body">Read-only serializer for issue contract types returned by the facade.</param>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAssignResponse"/></returns>
+        /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssuesAssignPartialUpdate200Response?> PatchAsync(global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingIssueRead body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAssignResponse?> PatchAsync(global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingIssueAssignRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssuesAssignPartialUpdate200Response> PatchAsync(global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingIssueRead body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAssignResponse> PatchAsync(global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingIssueAssignRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssuesAssignPartialUpdate200Response>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssuesAssignPartialUpdate200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAssignResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAssignResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">Read-only serializer for issue contract types returned by the facade.</param>
+        /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPatchRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingIssueRead body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPatchRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingIssueAssignRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPatchRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingIssueRead body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPatchRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingIssueAssignRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));

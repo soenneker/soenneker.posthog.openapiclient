@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Source config as flat keys. For source_type &apos;Custom&apos;: &apos;manifest_json&apos; (a stringified RESTAPIConfig describing client.base_url, auth, and resources) plus the credential for the manifest&apos;s declared auth type — &apos;auth_token&apos; (bearer), &apos;auth_api_key&apos; (api_key), or &apos;auth_password&apos; (http_basic). Secrets stay in these auth_* keys, never inline in the manifest.&quot;
+    /// Source config as flat keys. For source_type &apos;Custom&apos;: &apos;manifest_json&apos; (a stringified RESTAPIConfig describing client.base_url, auth, and resources) plus the credential for the manifest&apos;s declared auth type — &apos;auth_token&apos; (bearer), &apos;auth_api_key&apos; (api_key), or &apos;auth_password&apos; (http_basic). Secrets stay in these auth_* keys, never inline in the manifest.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SourcePreviewRequestPayloadProperty : IAdditionalDataHolder, IParsable

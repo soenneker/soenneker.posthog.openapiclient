@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeResponseMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeResponseMember2"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response10"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response11"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response12"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response13"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response14"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response15"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response16"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response17"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response18"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response19"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response2"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response21"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response22"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response23"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response3"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response4"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response5"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response6"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response7"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response8"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response9"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ResponseValue"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeResponseMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeResponseMember2"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response10"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response11"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response12"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response13"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response14"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response15"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response16"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response17"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response18"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response2"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response20"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response21"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response22"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response3"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response4"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response5"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response6"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response7"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response8"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response9"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ResponseValue"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DataTableNodeResponse : IComposedTypeWrapper, IParsable
@@ -109,14 +109,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.Response18 Response18 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response19"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.Response19? Response19 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.Response19 Response19 { get; set; }
-#endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -124,6 +116,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.Response2 Response2 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response20"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.Response20? Response20 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.Response20 Response20 { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response21"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -140,14 +140,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.Response22 Response22 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response23"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.Response23? Response23 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.Response23 Response23 { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Response3"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -234,11 +226,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             result.Response16 = new global::Soenneker.PostHog.OpenApiClient.Models.Response16();
             result.Response17 = new global::Soenneker.PostHog.OpenApiClient.Models.Response17();
             result.Response18 = new global::Soenneker.PostHog.OpenApiClient.Models.Response18();
-            result.Response19 = new global::Soenneker.PostHog.OpenApiClient.Models.Response19();
             result.Response2 = new global::Soenneker.PostHog.OpenApiClient.Models.Response2();
+            result.Response20 = new global::Soenneker.PostHog.OpenApiClient.Models.Response20();
             result.Response21 = new global::Soenneker.PostHog.OpenApiClient.Models.Response21();
             result.Response22 = new global::Soenneker.PostHog.OpenApiClient.Models.Response22();
-            result.Response23 = new global::Soenneker.PostHog.OpenApiClient.Models.Response23();
             result.Response3 = new global::Soenneker.PostHog.OpenApiClient.Models.Response3();
             result.Response4 = new global::Soenneker.PostHog.OpenApiClient.Models.Response4();
             result.Response5 = new global::Soenneker.PostHog.OpenApiClient.Models.Response5();
@@ -255,9 +246,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(DataTableNodeResponseMember1 != null || DataTableNodeResponseMember2 != null || Response1 != null || Response10 != null || Response11 != null || Response12 != null || Response13 != null || Response14 != null || Response15 != null || Response16 != null || Response17 != null || Response18 != null || Response19 != null || Response2 != null || Response21 != null || Response22 != null || Response23 != null || Response3 != null || Response4 != null || Response5 != null || Response6 != null || Response7 != null || Response8 != null || Response9 != null || ResponseValue != null)
+            if(DataTableNodeResponseMember1 != null || DataTableNodeResponseMember2 != null || Response1 != null || Response10 != null || Response11 != null || Response12 != null || Response13 != null || Response14 != null || Response15 != null || Response16 != null || Response17 != null || Response18 != null || Response2 != null || Response20 != null || Response21 != null || Response22 != null || Response3 != null || Response4 != null || Response5 != null || Response6 != null || Response7 != null || Response8 != null || Response9 != null || ResponseValue != null)
             {
-                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(DataTableNodeResponseMember1, DataTableNodeResponseMember2, Response1, Response10, Response11, Response12, Response13, Response14, Response15, Response16, Response17, Response18, Response19, Response2, Response21, Response22, Response23, Response3, Response4, Response5, Response6, Response7, Response8, Response9, ResponseValue);
+                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(DataTableNodeResponseMember1, DataTableNodeResponseMember2, Response1, Response10, Response11, Response12, Response13, Response14, Response15, Response16, Response17, Response18, Response2, Response20, Response21, Response22, Response3, Response4, Response5, Response6, Response7, Response8, Response9, ResponseValue);
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -268,7 +259,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeResponseMember1>(null, DataTableNodeResponseMember1, DataTableNodeResponseMember2, Response1, Response10, Response11, Response12, Response13, Response14, Response15, Response16, Response17, Response18, Response19, Response2, Response21, Response22, Response23, Response3, Response4, Response5, Response6, Response7, Response8, Response9, ResponseValue);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeResponseMember1>(null, DataTableNodeResponseMember1, DataTableNodeResponseMember2, Response1, Response10, Response11, Response12, Response13, Response14, Response15, Response16, Response17, Response18, Response2, Response20, Response21, Response22, Response3, Response4, Response5, Response6, Response7, Response8, Response9, ResponseValue);
         }
     }
 }

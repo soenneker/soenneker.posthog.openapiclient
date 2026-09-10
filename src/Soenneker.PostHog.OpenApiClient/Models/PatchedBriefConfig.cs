@@ -27,10 +27,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>User who created the config.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedBriefConfigCreatedBy? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedBriefConfigCreatedBy CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
 #endif
         /// <summary>Soft-delete flag. Deleted configs are hidden from lists but recoverable by patching this back to false.</summary>
         public bool? Deleted { get; set; }
@@ -91,7 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "anchors", n => { Anchors = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedBriefConfigAnchors>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedBriefConfigAnchors.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedBriefConfigCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedBriefConfigCreatedBy.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "focus_prompt", n => { FocusPrompt = n.GetStringValue(); } },

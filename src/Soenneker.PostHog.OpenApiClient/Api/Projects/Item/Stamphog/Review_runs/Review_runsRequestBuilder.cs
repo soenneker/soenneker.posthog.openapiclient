@@ -19,9 +19,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Review_runs
     public partial class Review_runsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.stamphog.review_runs.item collection</summary>
-        /// <param name="position">A UUID string identifying this review run.</param>
+        /// <param name="position">Unique identifier of the item</param>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Review_runs.Item.Review_runsItemRequestBuilder"/></returns>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Review_runs.Item.Review_runsItemRequestBuilder this[Guid position]
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Review_runs.Item.Review_runsItemRequestBuilder this[string position]
         {
             get
             {
@@ -35,7 +35,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Review_runs
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Review_runsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/stamphog/review_runs{?limit*,offset*,pr_number*,repository*,status*}", pathParameters)
+        public Review_runsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/stamphog/review_runs{?limit*,offset*,pr_number*,repository*,status*,trigger*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Review_runs
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Review_runsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/stamphog/review_runs{?limit*,offset*,pr_number*,repository*,status*}", rawUrl)
+        public Review_runsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/stamphog/review_runs{?limit*,offset*,pr_number*,repository*,status*,trigger*}", rawUrl)
         {
         }
         /// <summary>
@@ -127,6 +127,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Review_runs
             [QueryParameter("status")]
             public string Status { get; set; }
 #endif
+            /// <summary>Filter by what caused the run: self_driving, label, or all.</summary>
+            [QueryParameter("trigger")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.StamphogReviewRunsListTriggerParameter? Trigger { get; set; }
         }
     }
 }

@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Code { get; set; }
 #endif
-        /// <summary>&quot;SQL nodes only: id of a direct-query-capable external data source to run against instead of PostHog&apos;s ClickHouse. Omit to query PostHog.&quot;</summary>
+        /// <summary>SQL nodes only: id of a direct-query-capable external data source to run against instead of PostHog&apos;s ClickHouse. Omit to query PostHog.</summary>
         public Guid? ConnectionId { get; set; }
         /// <summary>ProseMirror node id of the SQLV2 node being run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -40,7 +40,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunRequestNodeType NodeType { get; set; }
 #endif
-        /// <summary>&quot;Kernel nodes only: the dataframe variable to bind the result to in the kernel namespace (a python node falls back to the last expression for its preview).&quot;</summary>
+        /// <summary>Kernel nodes only: the dataframe variable to bind the result to in the kernel namespace (a python node falls back to the last expression for its preview).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? OutputName { get; set; }
@@ -58,6 +58,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Send the code to the selected connection verbatim instead of compiling it from HogQL first. Ignored without connection_id, and incompatible with references to other cells.</summary>
         public bool? SendRawQuery { get; set; }
+        /// <summary>Notebook-level variables in scope for this run. A SQL node has each `{name}` bound to its value before dispatch; a Python node gets them as globals in the kernel namespace. A SQL node reading a `{name}` that is absent here fails the dispatch.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.NotebookVariable>? Variables { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.NotebookVariable> Variables { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunRequest"/> and sets the default values.
         /// </summary>
@@ -91,6 +99,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "output_name", n => { OutputName = n.GetStringValue(); } },
                 { "refs", n => { Refs = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunRequestRefsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunRequestRefsProperty.CreateFromDiscriminatorValue); } },
                 { "send_raw_query", n => { SendRawQuery = n.GetBoolValue(); } },
+                { "variables", n => { Variables = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.NotebookVariable>(global::Soenneker.PostHog.OpenApiClient.Models.NotebookVariable.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -107,6 +116,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("output_name", OutputName);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunRequestRefsProperty>("refs", Refs);
             writer.WriteBoolValue("send_raw_query", SendRawQuery);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.NotebookVariable>("variables", Variables);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

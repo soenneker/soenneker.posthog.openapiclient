@@ -55,6 +55,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> ServiceNames { get; set; }
 #endif
+        /// <summary>Scope results to one session ID. Matched server-side against the team&apos;s configured session-id log attribute keys plus the built-in conventions, in both log attributes and resource attributes.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SessionId { get; set; }
+#nullable restore
+#else
+        public string SessionId { get; set; }
+#endif
         /// <summary>Filter by log severity levels.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -109,6 +117,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "personId", n => { PersonId = n.GetStringValue(); } },
                 { "searchTerm", n => { SearchTerm = n.GetStringValue(); } },
                 { "serviceNames", n => { ServiceNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "sessionId", n => { SessionId = n.GetStringValue(); } },
                 { "severityLevels", n => { SeverityLevels = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.SeverityLevelsEnum>()?.AsList(); } },
                 { "sparklineBreakdownBy", n => { SparklineBreakdownBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsSparklineBodySparklineBreakdownBy>(global::Soenneker.PostHog.OpenApiClient.Models.LogsSparklineBodySparklineBreakdownBy.CreateFromDiscriminatorValue); } },
                 { "sparklineRankBy", n => { SparklineRankBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsSparklineBodySparklineRankBy>(global::Soenneker.PostHog.OpenApiClient.Models.LogsSparklineBodySparklineRankBy.CreateFromDiscriminatorValue); } },
@@ -126,6 +135,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("personId", PersonId);
             writer.WriteStringValue("searchTerm", SearchTerm);
             writer.WriteCollectionOfPrimitiveValues<string>("serviceNames", ServiceNames);
+            writer.WriteStringValue("sessionId", SessionId);
             writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.SeverityLevelsEnum>("severityLevels", SeverityLevels);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsSparklineBodySparklineBreakdownBy>("sparklineBreakdownBy", SparklineBreakdownBy);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsSparklineBodySparklineRankBy>("sparklineRankBy", SparklineRankBy);

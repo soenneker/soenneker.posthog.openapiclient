@@ -34,10 +34,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Context (channel) this loop is attached to, or null to detach. Drives feed placement and the context.md / canvas it keeps up to date.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LoopWriteContextTarget? ContextTarget { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LoopContextTargetWrite? ContextTarget { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LoopWriteContextTarget ContextTarget { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LoopContextTargetWrite ContextTarget { get; set; }
 #endif
         /// <summary>Free-form description of what this loop does.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -81,7 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.LoopWriteNotifications Notifications { get; set; }
 #endif
-        /// <summary>&quot;What happens when a trigger fires while a run is already active: &apos;skip&apos;, &apos;allow&apos;, or &apos;cancel_previous&apos;.* `skip` - skip* `allow` - allow* `cancel_previous` - cancel_previous&quot;</summary>
+        /// <summary>What happens when a trigger fires while a run is already active: &apos;skip&apos;, &apos;allow&apos;, or &apos;cancel_previous&apos;.* `skip` - skip* `allow` - allow* `cancel_previous` - cancel_previous</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.LoopWriteOverlapPolicy? OverlapPolicy { get; set; }
@@ -105,7 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.LoopRepositoryEntry> Repositories { get; set; }
 #endif
-        /// <summary>&quot;Runtime adapter: &apos;claude&apos; or &apos;codex&apos;.* `claude` - claude* `codex` - codex&quot;</summary>
+        /// <summary>Runtime adapter: &apos;claude&apos; or &apos;codex&apos;.* `claude` - claude* `codex` - codex</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.LoopWriteRuntimeAdapter? RuntimeAdapter { get; set; }
@@ -117,7 +117,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public Guid? SandboxEnvironment { get; set; }
         /// <summary>On a team loop, claim ownership as part of this update so you can edit identity-bearing config (instructions, model, triggers, ...) that only the owner may change. Ignored on personal loops and on create.</summary>
         public bool? TakeOwnership { get; set; }
-        /// <summary>&quot;Full desired trigger list, id-stable: entries with a matching `id` are updated in place, entries without one are created, and existing triggers absent from this list are deleted. Omit the field entirely to leave triggers untouched. At most 25 triggers per loop.&quot;</summary>
+        /// <summary>Full desired trigger list, id-stable: entries with a matching `id` are updated in place, entries without one are created, and existing triggers absent from this list are deleted. Omit the field entirely to leave triggers untouched. At most 25 triggers per loop.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.LoopTriggerWrite>? Triggers { get; set; }
@@ -162,7 +162,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "behaviors", n => { Behaviors = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LoopWriteBehaviors>(global::Soenneker.PostHog.OpenApiClient.Models.LoopWriteBehaviors.CreateFromDiscriminatorValue); } },
                 { "connectors", n => { Connectors = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LoopWriteConnectors>(global::Soenneker.PostHog.OpenApiClient.Models.LoopWriteConnectors.CreateFromDiscriminatorValue); } },
-                { "context_target", n => { ContextTarget = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LoopWriteContextTarget>(global::Soenneker.PostHog.OpenApiClient.Models.LoopWriteContextTarget.CreateFromDiscriminatorValue); } },
+                { "context_target", n => { ContextTarget = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LoopContextTargetWrite>(global::Soenneker.PostHog.OpenApiClient.Models.LoopContextTargetWrite.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "instructions", n => { Instructions = n.GetStringValue(); } },
@@ -188,7 +188,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LoopWriteBehaviors>("behaviors", Behaviors);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LoopWriteConnectors>("connectors", Connectors);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LoopWriteContextTarget>("context_target", ContextTarget);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LoopContextTargetWrite>("context_target", ContextTarget);
             writer.WriteStringValue("description", Description);
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteStringValue("instructions", Instructions);

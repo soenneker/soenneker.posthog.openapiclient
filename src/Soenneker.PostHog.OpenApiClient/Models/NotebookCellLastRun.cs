@@ -36,7 +36,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? RowCount { get; set; }
         /// <summary>Identifier of the cell&apos;s most recent run.</summary>
         public Guid? RunId { get; set; }
-        /// <summary>&quot;The run&apos;s own state: &apos;running&apos;, &apos;done&apos;, &apos;failed&apos;, or &apos;interrupted&apos;.&quot;</summary>
+        /// <summary>The run&apos;s own state: &apos;running&apos;, &apos;done&apos;, &apos;failed&apos;, or &apos;interrupted&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Status { get; set; }

@@ -12,12 +12,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class PatchedEvaluationTargetConfigInactivitySettleConfig : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>&quot;Hard cap in seconds on the total wait from the first matching generation, even if the unit stays active. Must be at least quiet_period_seconds. The accepted range depends on `target`: 60–7200 for &apos;trace&apos;, 60–604800 for &apos;session&apos;. The default also depends on `target`; see the field-level help_text.&quot;</summary>
+        /// <summary>Hard cap in seconds on the total wait from the first matching generation, even if the unit stays active. Must be at least quiet_period_seconds. The accepted range depends on `target`: 60–7200 for &apos;trace&apos;, 60–604800 for &apos;session&apos;. The default also depends on `target`; see the field-level help_text.</summary>
         public int? MaxAgeSeconds { get; set; }
-        /// <summary>&quot;Seconds without new activity before the unit counts as settled. The accepted range depends on `target`: 10–1800 for &apos;trace&apos;, 10–86400 for &apos;session&apos;. The default also depends on `target`; see the field-level help_text.&quot;</summary>
+        /// <summary>Seconds without new activity before the unit counts as settled. The accepted range depends on `target`: 10–1800 for &apos;trace&apos;, 10–86400 for &apos;session&apos;. The default also depends on `target`; see the field-level help_text.</summary>
         public int? QuietPeriodSeconds { get; set; }
         /// <summary>Evaluate once the unit has had no new activity for the quiet period.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationTargetConfigInactivitySettleConfigStrategy? Strategy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InactivityStrategy? Strategy { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -38,7 +38,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "max_age_seconds", n => { MaxAgeSeconds = n.GetIntValue(); } },
                 { "quiet_period_seconds", n => { QuietPeriodSeconds = n.GetIntValue(); } },
-                { "strategy", n => { Strategy = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationTargetConfigInactivitySettleConfigStrategy>(); } },
+                { "strategy", n => { Strategy = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InactivityStrategy>(); } },
             };
         }
         /// <summary>
@@ -50,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("max_age_seconds", MaxAgeSeconds);
             writer.WriteIntValue("quiet_period_seconds", QuietPeriodSeconds);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationTargetConfigInactivitySettleConfigStrategy>("strategy", Strategy);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InactivityStrategy>("strategy", Strategy);
         }
     }
 }

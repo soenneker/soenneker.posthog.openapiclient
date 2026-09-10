@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Overall outcome: healthy if the proxy is serving requests, warn for non-blocking issues, fail otherwise.* `healthy` - healthy* `warn` - warn* `fail` - fail&quot;
+    /// Overall outcome: healthy if the proxy is serving requests, warn for non-blocking issues, fail otherwise.* `healthy` - healthy* `warn` - warn* `fail` - fail
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DiagnosticReportSummaryStatus : IAdditionalDataHolder, IParsable

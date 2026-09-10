@@ -43,7 +43,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestRepo Repo { get; set; }
 #endif
-        /// <summary>&quot;Derived state: &apos;open&apos;, &apos;closed&apos;, or &apos;merged&apos;.* `open` - OPEN* `closed` - CLOSED* `merged` - MERGED&quot;</summary>
+        /// <summary>Derived state: &apos;open&apos;, &apos;closed&apos;, or &apos;merged&apos;.* `open` - OPEN* `closed` - CLOSED* `merged` - MERGED</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestState? State { get; set; }

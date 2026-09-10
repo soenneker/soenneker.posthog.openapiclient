@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `session_analysis_cluster` - Session analysis cluster* `evaluation_report` - Evaluation report* `issue` - Issue* `ticket` - Ticket* `issue_created` - Issue created* `issue_reopened` - Issue reopened* `issue_spiking` - Issue spiking* `cross_source_issue` - Cross source issue* `alert_state_change` - Alert state change* `health_issue` - Health issue* `endpoint_execution_failed` - Endpoint execution failed* `endpoint_breakdown_limit_exceeded` - Endpoint breakdown limit exceeded* `scanner_finding` - Scanner finding* `anomaly_investigation` - Anomaly investigation* `ci_flaky_check` - CI flaky check* `ci_broken_default_branch` - CI broken default branch* `ci_duration_regression` - CI duration regression</summary>
+    /// <summary>* `session_analysis_cluster` - Session analysis cluster* `evaluation_report` - Evaluation report* `issue` - Issue* `ticket` - Ticket* `issue_created` - Issue created* `issue_reopened` - Issue reopened* `issue_spiking` - Issue spiking* `cross_source_issue` - Cross source issue* `alert_state_change` - Alert state change* `health_issue` - Health issue* `endpoint_execution_failed` - Endpoint execution failed* `endpoint_breakdown_limit_exceeded` - Endpoint breakdown limit exceeded* `scanner_finding` - Scanner finding* `anomaly_investigation` - Anomaly investigation* `feedback` - Feedback* `review` - Review* `ci_flaky_check` - CI flaky check* `ci_broken_default_branch` - CI broken default branch* `ci_duration_regression` - CI duration regression* `search_opportunity` - Search opportunity</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum SignalSourceConfigSourceTypeEnum
     {
@@ -63,6 +63,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         AnomalyInvestigation,
         #pragma warning restore CS1591
+        [EnumMember(Value = "feedback")]
+        #pragma warning disable CS1591
+        Feedback,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "review")]
+        #pragma warning disable CS1591
+        Review,
+        #pragma warning restore CS1591
         [EnumMember(Value = "ci_flaky_check")]
         #pragma warning disable CS1591
         CiFlakyCheck,
@@ -74,6 +82,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "ci_duration_regression")]
         #pragma warning disable CS1591
         CiDurationRegression,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "search_opportunity")]
+        #pragma warning disable CS1591
+        SearchOpportunity,
         #pragma warning restore CS1591
     }
 }

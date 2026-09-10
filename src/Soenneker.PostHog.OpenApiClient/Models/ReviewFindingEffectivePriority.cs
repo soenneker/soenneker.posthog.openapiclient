@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;The priority that gates publishing: the validator&apos;s override when set, else the reviewer&apos;s.* `must_fix` - must_fix* `should_fix` - should_fix* `consider` - consider&quot;
+    /// The priority that gates publishing: the validator&apos;s override when set, else the reviewer&apos;s.* `must_fix` - must_fix* `should_fix` - should_fix* `consider` - consider
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ReviewFindingEffectivePriority : IAdditionalDataHolder, IParsable

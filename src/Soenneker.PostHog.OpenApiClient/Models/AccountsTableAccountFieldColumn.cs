@@ -15,13 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The field property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableAccountField? Field { get; set; }
         /// <summary>The kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Kind { get; set; }
-#nullable restore
-#else
-        public string Kind { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountFieldKind? Kind { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -41,7 +35,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "field", n => { Field = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableAccountField>(); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountFieldKind>(); } },
             };
         }
         /// <summary>
@@ -52,7 +46,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableAccountField>("field", Field);
-            writer.WriteStringValue("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountFieldKind>("kind", Kind);
         }
     }
 }

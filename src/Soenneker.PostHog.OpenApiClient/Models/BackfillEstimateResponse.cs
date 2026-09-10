@@ -18,7 +18,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? CreditsPerObservation { get; set; }
         /// <summary>Credits left in the org&apos;s monthly quota; null when the org is uncapped.</summary>
         public int? CreditsRemaining { get; set; }
-        /// <summary>&quot;Cost ceiling in credits (1 credit = $0.01): total_sessions x credits_per_observation. Actual spend lands under it: sessions already tried, expired recordings, and failures are not billed.&quot;</summary>
+        /// <summary>Cost ceiling in credits (1 credit = $0.01): total_sessions x credits_per_observation. Actual spend lands under it: sessions already tried, expired recordings, and failures are not billed.</summary>
         public int? TotalCredits { get; set; }
         /// <summary>Upper bound on the sessions the backfill would scan, after sampling and quality filters and excluding sessions this scanner already reported an observation for.</summary>
         public int? TotalSessions { get; set; }

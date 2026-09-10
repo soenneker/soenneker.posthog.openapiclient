@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;The person or role responsible for this feature, e.g. {\&quot;type\&quot;: \&quot;user\&quot;, \&quot;id\&quot;: 123} or {\&quot;type\&quot;: \&quot;role\&quot;, \&quot;id\&quot;: \&quot;&lt;role uuid&gt;\&quot;}. Defaults to the creator. Send null to unassign.&quot;
+    /// The person or role responsible for this feature, e.g. {&quot;type&quot;: &quot;user&quot;, &quot;id&quot;: 123} or {&quot;type&quot;: &quot;role&quot;, &quot;id&quot;: &quot;&lt;role uuid&gt;&quot;}. Defaults to the creator. Send null to unassign.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedEarlyAccessFeatureAssignee : IAdditionalDataHolder, IParsable

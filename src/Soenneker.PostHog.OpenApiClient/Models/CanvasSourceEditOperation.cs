@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;One per-file edit: set a file&apos;s content, or delete it.&quot;
+    /// One per-file edit: set a file&apos;s content, or delete it.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CanvasSourceEditOperation : IAdditionalDataHolder, IParsable

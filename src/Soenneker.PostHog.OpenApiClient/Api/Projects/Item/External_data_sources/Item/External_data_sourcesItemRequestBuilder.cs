@@ -8,6 +8,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.It
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Check_cdc_prerequisites_for_source;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Create_webhook;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Delete_webhook;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Destinations;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Disable_cdc;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Enable_cdc;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Jobs;
@@ -57,6 +58,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_source
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Delete_webhook.Delete_webhookRequestBuilder Delete_webhook
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Delete_webhook.Delete_webhookRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The destinations property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Destinations.DestinationsRequestBuilder Destinations
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Destinations.DestinationsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The disable_cdc property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_sources.Item.Disable_cdc.Disable_cdcRequestBuilder Disable_cdc
@@ -220,7 +226,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_source
 #endif
             var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <summary>

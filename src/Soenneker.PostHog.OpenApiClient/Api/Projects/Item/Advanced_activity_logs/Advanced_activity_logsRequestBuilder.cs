@@ -110,7 +110,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Advanced_activity_lo
             [QueryParameter("clients")]
             public string[] Clients { get; set; }
 #endif
-            /// <summary>&quot;JSON-encoded map of `detail` field paths to {operation, value} filters. Allowed operations: exact, contains, in.&quot;</summary>
+            /// <summary>JSON-encoded map of `detail` field paths to {operation, value} filters. Allowed operations: exact, contains, in.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("detail_filters")]
@@ -168,12 +168,12 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Advanced_activity_lo
             /// <summary>Page number for pagination. When provided, uses page-based pagination ordered by most recent first.</summary>
             [QueryParameter("page")]
             public int? Page { get; set; }
-            /// <summary>&quot;Number of results per page (default: 100, max: 1000).&quot;</summary>
+            /// <summary>Number of results per page (default: 100, max: 1000).</summary>
             [QueryParameter("page_size")]
             public int? PageSize { get; set; }
             /// <summary>Response format. Set to ocsf to return Open Cybersecurity Schema Framework events for ingestion into a security tool. Omit for the default PostHog format.* `ocsf` - ocsf</summary>
             [QueryParameter("schema")]
-            public global::Soenneker.PostHog.OpenApiClient.Models.AdvancedActivityLogsListSchemaParameter? Schema { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.OcsfSchema? Schema { get; set; }
             /// <summary>Filter by activity scopes (e.g. &quot;FeatureFlag&quot;, &quot;Insight&quot;).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

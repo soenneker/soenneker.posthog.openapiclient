@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Marketpla
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillMarketplaceCommand>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillMarketplaceCommand.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Mint the user&apos;s read-only marketplace credential (or rotate it) and return the install command.Per-user: rotating only ever invalidates this user&apos;s own credential, never a teammate&apos;s.&quot;
+        /// Mint the user&apos;s read-only marketplace credential (or rotate it) and return the install command.Per-user: rotating only ever invalidates this user&apos;s own credential, never a teammate&apos;s.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillMarketplaceCommand"/></returns>
         /// <param name="body">The request body</param>
@@ -91,7 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Marketpla
             return requestInfo;
         }
         /// <summary>
-        /// &quot;Mint the user&apos;s read-only marketplace credential (or rotate it) and return the install command.Per-user: rotating only ever invalidates this user&apos;s own credential, never a teammate&apos;s.&quot;
+        /// Mint the user&apos;s read-only marketplace credential (or rotate it) and return the install command.Per-user: rotating only ever invalidates this user&apos;s own credential, never a teammate&apos;s.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

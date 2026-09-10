@@ -87,6 +87,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Assignee { get; set; }
 #endif
+        /// <summary>The author_association property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AuthorAssociation { get; set; }
+#nullable restore
+#else
+        public string AuthorAssociation { get; set; }
+#endif
+        /// <summary>The author_login property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AuthorLogin { get; set; }
+#nullable restore
+#else
+        public string AuthorLogin { get; set; }
+#endif
         /// <summary>The baseline_p50_seconds property</summary>
         public double? BaselineP50Seconds { get; set; }
         /// <summary>The baseline_p95_seconds property</summary>
@@ -256,10 +272,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The dedupe_keys property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalsScoutSignalExtraDedupeKeys? DedupeKeys { get; set; }
+        public List<string>? DedupeKeys { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalsScoutSignalExtraDedupeKeys DedupeKeys { get; set; }
+        public List<string> DedupeKeys { get; set; }
 #endif
         /// <summary>The detector_type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -1200,12 +1216,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The triggered_dates property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AnalyticsAnomalyInvestigationSignalExtraTriggeredDates? TriggeredDates { get; set; }
+        public List<string>? TriggeredDates { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AnalyticsAnomalyInvestigationSignalExtraTriggeredDates TriggeredDates { get; set; }
+        public List<string> TriggeredDates { get; set; }
 #endif
-        /// <summary>Union discriminator</summary>
+        /// <summary>The type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Type { get; set; }
@@ -1357,6 +1373,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "app_version", n => { AppVersion = n.GetStringValue(); } },
                 { "applicationUrl", n => { ApplicationUrl = n.GetStringValue(); } },
                 { "assignee", n => { Assignee = n.GetStringValue(); } },
+                { "author_association", n => { AuthorAssociation = n.GetStringValue(); } },
+                { "author_login", n => { AuthorLogin = n.GetStringValue(); } },
                 { "baseline_p50_seconds", n => { BaselineP50Seconds = n.GetDoubleValue(); } },
                 { "baseline_p95_seconds", n => { BaselineP95Seconds = n.GetDoubleValue(); } },
                 { "branch", n => { Branch = n.GetStringValue(); } },
@@ -1385,7 +1403,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "cvss_v3_score", n => { CvssV3Score = n.GetStringValue(); } },
                 { "database_id", n => { DatabaseId = n.GetStringValue(); } },
                 { "date", n => { Date = n.GetStringValue(); } },
-                { "dedupe_keys", n => { DedupeKeys = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalsScoutSignalExtraDedupeKeys>(global::Soenneker.PostHog.OpenApiClient.Models.SignalsScoutSignalExtraDedupeKeys.CreateFromDiscriminatorValue); } },
+                { "dedupe_keys", n => { DedupeKeys = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "detector_type", n => { DetectorType = n.GetStringValue(); } },
                 { "displayUrl", n => { DisplayUrl = n.GetStringValue(); } },
                 { "distinct_id", n => { DistinctId = n.GetStringValue(); } },
@@ -1517,7 +1535,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "title", n => { Title = n.GetStringValue(); } },
                 { "topics", n => { Topics = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FrillFeedbackSignalExtraTopicsItem>(global::Soenneker.PostHog.OpenApiClient.Models.FrillFeedbackSignalExtraTopicsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "trace_id", n => { TraceId = n.GetStringValue(); } },
-                { "triggered_dates", n => { TriggeredDates = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AnalyticsAnomalyInvestigationSignalExtraTriggeredDates>(global::Soenneker.PostHog.OpenApiClient.Models.AnalyticsAnomalyInvestigationSignalExtraTriggeredDates.CreateFromDiscriminatorValue); } },
+                { "triggered_dates", n => { TriggeredDates = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "type", n => { Type = n.GetStringValue(); } },
                 { "updated", n => { Updated = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetStringValue(); } },
@@ -1555,6 +1573,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("applicationUrl", ApplicationUrl);
             writer.WriteStringValue("app_version", AppVersion);
             writer.WriteStringValue("assignee", Assignee);
+            writer.WriteStringValue("author_association", AuthorAssociation);
+            writer.WriteStringValue("author_login", AuthorLogin);
             writer.WriteDoubleValue("baseline_p50_seconds", BaselineP50Seconds);
             writer.WriteDoubleValue("baseline_p95_seconds", BaselineP95Seconds);
             writer.WriteStringValue("branch", Branch);
@@ -1584,7 +1604,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("cvss_v3_score", CvssV3Score);
             writer.WriteStringValue("database_id", DatabaseId);
             writer.WriteStringValue("date", Date);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalsScoutSignalExtraDedupeKeys>("dedupe_keys", DedupeKeys);
+            writer.WriteCollectionOfPrimitiveValues<string>("dedupe_keys", DedupeKeys);
             writer.WriteStringValue("detector_type", DetectorType);
             writer.WriteStringValue("displayUrl", DisplayUrl);
             writer.WriteStringValue("distinct_id", DistinctId);
@@ -1717,7 +1737,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("title", Title);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FrillFeedbackSignalExtraTopicsItem>("topics", Topics);
             writer.WriteStringValue("trace_id", TraceId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AnalyticsAnomalyInvestigationSignalExtraTriggeredDates>("triggered_dates", TriggeredDates);
+            writer.WriteCollectionOfPrimitiveValues<string>("triggered_dates", TriggeredDates);
             writer.WriteStringValue("type", Type);
             writer.WriteStringValue("updated", Updated);
             writer.WriteStringValue("updated_at", UpdatedAt);

@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Aggregate to rank groups by (descending): \&quot;log_count\&quot; for the noisiest groups, \&quot;error_count\&quot; for the most failing, \&quot;last_seen\&quot; for the most recent.* `log_count` - log_count* `error_count` - error_count* `last_seen` - last_seen&quot;
+    /// Aggregate to rank groups by (descending): &quot;log_count&quot; for the noisiest groups, &quot;error_count&quot; for the most failing, &quot;last_seen&quot; for the most recent.* `log_count` - log_count* `error_count` - error_count* `last_seen` - last_seen
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class LogsGroupByBodyOrderGroupsBy : IAdditionalDataHolder, IParsable

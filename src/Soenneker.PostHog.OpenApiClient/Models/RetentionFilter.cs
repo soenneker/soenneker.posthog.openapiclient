@@ -7,11 +7,10 @@ using System.IO;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>
-    /// Properties specific to the retention insight
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class RetentionFilter : IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>The property to aggregate when aggregationType is sum or avg</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -96,10 +95,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Custom brackets for retention calculations</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilterRetentionCustomBrackets? RetentionCustomBrackets { get; set; }
+        public List<double?>? RetentionCustomBrackets { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilterRetentionCustomBrackets RetentionCustomBrackets { get; set; }
+        public List<double?> RetentionCustomBrackets { get; set; }
 #endif
         /// <summary>Whether retention is with regard to initial cohort size, or that of the previous period.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -186,7 +185,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "meanRetentionCalculation", n => { MeanRetentionCalculation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MeanRetentionCalculationWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.MeanRetentionCalculationWrapper.CreateFromDiscriminatorValue); } },
                 { "minimumOccurrences", n => { MinimumOccurrences = n.GetIntValue(); } },
                 { "period", n => { Period = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionPeriodWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionPeriodWrapper.CreateFromDiscriminatorValue); } },
-                { "retentionCustomBrackets", n => { RetentionCustomBrackets = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilterRetentionCustomBrackets>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilterRetentionCustomBrackets.CreateFromDiscriminatorValue); } },
+                { "retentionCustomBrackets", n => { RetentionCustomBrackets = n.GetCollectionOfPrimitiveValues<double?>()?.AsList(); } },
                 { "retentionReference", n => { RetentionReference = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionReferenceWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionReferenceWrapper.CreateFromDiscriminatorValue); } },
                 { "retentionType", n => { RetentionType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionTypeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionTypeWrapper.CreateFromDiscriminatorValue); } },
                 { "returningEntity", n => { ReturningEntity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity.CreateFromDiscriminatorValue); } },
@@ -217,7 +216,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MeanRetentionCalculationWrapper>("meanRetentionCalculation", MeanRetentionCalculation);
             writer.WriteIntValue("minimumOccurrences", MinimumOccurrences);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionPeriodWrapper>("period", Period);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilterRetentionCustomBrackets>("retentionCustomBrackets", RetentionCustomBrackets);
+            writer.WriteCollectionOfPrimitiveValues<double?>("retentionCustomBrackets", RetentionCustomBrackets);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionReferenceWrapper>("retentionReference", RetentionReference);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionTypeWrapper>("retentionType", RetentionType);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity>("returningEntity", ReturningEntity);

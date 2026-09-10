@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Stats
         {
         }
         /// <summary>
-        /// &quot;Get aggregated response statistics across all surveys.Args:    date_from: Optional ISO timestamp for start date (e.g. 2024-01-01T00:00:00Z)    date_to: Optional ISO timestamp for end date (e.g. 2024-01-31T23:59:59Z)Returns:    Aggregated statistics across all surveys including total counts and rates&quot;
+        /// Get aggregated response statistics across all surveys.Args:    date_from: Optional ISO timestamp for start date (e.g. 2024-01-01T00:00:00Z)    date_to: Optional ISO timestamp for end date (e.g. 2024-01-31T23:59:59Z)Returns:    Aggregated statistics across all surveys including total counts and rates
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SurveyGlobalStatsResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Stats
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SurveyGlobalStatsResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SurveyGlobalStatsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Get aggregated response statistics across all surveys.Args:    date_from: Optional ISO timestamp for start date (e.g. 2024-01-01T00:00:00Z)    date_to: Optional ISO timestamp for end date (e.g. 2024-01-31T23:59:59Z)Returns:    Aggregated statistics across all surveys including total counts and rates&quot;
+        /// Get aggregated response statistics across all surveys.Args:    date_from: Optional ISO timestamp for start date (e.g. 2024-01-01T00:00:00Z)    date_to: Optional ISO timestamp for end date (e.g. 2024-01-31T23:59:59Z)Returns:    Aggregated statistics across all surveys including total counts and rates
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -80,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Stats
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Stats.StatsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// &quot;Get aggregated response statistics across all surveys.Args:    date_from: Optional ISO timestamp for start date (e.g. 2024-01-01T00:00:00Z)    date_to: Optional ISO timestamp for end date (e.g. 2024-01-31T23:59:59Z)Returns:    Aggregated statistics across all surveys including total counts and rates&quot;
+        /// Get aggregated response statistics across all surveys.Args:    date_from: Optional ISO timestamp for start date (e.g. 2024-01-01T00:00:00Z)    date_to: Optional ISO timestamp for end date (e.g. 2024-01-31T23:59:59Z)Returns:    Aggregated statistics across all surveys including total counts and rates
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class StatsRequestBuilderGetQueryParameters 

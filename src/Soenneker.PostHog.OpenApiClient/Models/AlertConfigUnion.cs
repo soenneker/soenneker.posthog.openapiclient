@@ -29,7 +29,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.HogQlAlertEvaluation? Evaluation { get; set; }
         /// <summary>Zero-based step index to evaluate. Null = the last step (overall conversion).</summary>
         public int? FunnelStep { get; set; }
-        /// <summary>&quot;Column whose value labels the evaluated row(s) in breach messages: every row in `any_row` mode, or the single evaluated row in `last_row`/`first_row`. When unset, the first non-evaluated column is used, falling back to the row number (any_row) or the value column name (last_row/first_row).&quot;</summary>
+        /// <summary>Column whose value labels the evaluated row(s) in breach messages: every row in `any_row` mode, or the single evaluated row in `last_row`/`first_row`. When unset, the first non-evaluated column is used, falling back to the row number (any_row) or the value column name (last_row/first_row).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? LabelColumn { get; set; }
@@ -41,7 +41,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionMetric? Metric { get; set; }
         /// <summary>Zero-based index of the series in the insight&apos;s query to monitor.</summary>
         public int? SeriesIndex { get; set; }
-        /// <summary>Union discriminator</summary>
+        /// <summary>The type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Type { get; set; }

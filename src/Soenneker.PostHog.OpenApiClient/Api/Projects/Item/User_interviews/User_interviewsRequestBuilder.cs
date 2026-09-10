@@ -133,7 +133,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.User_interviews
         public partial class User_interviewsRequestBuilderGetQueryParameters 
         #pragma warning restore CS1591
         {
-            /// <summary>&quot;Comma-separated classifications; returns responses carrying any of them (OR). Valid values: abandoned, off-topic.&quot;</summary>
+            /// <summary>Comma-separated classifications; returns responses carrying any of them (OR). Valid values: abandoned, off-topic.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("classifications")]
@@ -149,8 +149,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.User_interviews
             /// <summary>The initial index from which to return the results.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
+            #pragma warning disable CS1591
             [QueryParameter("topic")]
             public Guid? Topic { get; set; }
+            #pragma warning restore CS1591
         }
     }
 }

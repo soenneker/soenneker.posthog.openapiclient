@@ -15,10 +15,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The attr_class property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ElementTypeAttrClass? AttrClass { get; set; }
+        public List<string>? AttrClass { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ElementTypeAttrClass AttrClass { get; set; }
+        public List<string> AttrClass { get; set; }
 #endif
         /// <summary>The attributes property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -84,7 +84,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "attr_class", n => { AttrClass = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ElementTypeAttrClass>(global::Soenneker.PostHog.OpenApiClient.Models.ElementTypeAttrClass.CreateFromDiscriminatorValue); } },
+                { "attr_class", n => { AttrClass = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "attr_id", n => { AttrId = n.GetStringValue(); } },
                 { "attributes", n => { Attributes = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ElementTypeAttributesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ElementTypeAttributesProperty.CreateFromDiscriminatorValue); } },
                 { "href", n => { Href = n.GetStringValue(); } },
@@ -102,7 +102,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ElementTypeAttrClass>("attr_class", AttrClass);
+            writer.WriteCollectionOfPrimitiveValues<string>("attr_class", AttrClass);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ElementTypeAttributesProperty>("attributes", Attributes);
             writer.WriteStringValue("attr_id", AttrId);
             writer.WriteStringValue("href", Href);

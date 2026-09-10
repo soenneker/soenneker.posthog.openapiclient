@@ -46,6 +46,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Label { get; set; }
 #endif
+        /// <summary>Overrides the editor&apos;s default ordering for this item. Set when the backend can rank a suggestion, for example a function whose return type fits the comparison being written.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SortText { get; set; }
+#nullable restore
+#else
+        public string SortText { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -69,6 +77,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "insertText", n => { InsertText = n.GetStringValue(); } },
                 { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AutocompleteCompletionItemKind>(); } },
                 { "label", n => { Label = n.GetStringValue(); } },
+                { "sortText", n => { SortText = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -83,6 +92,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("insertText", InsertText);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AutocompleteCompletionItemKind>("kind", Kind);
             writer.WriteStringValue("label", Label);
+            writer.WriteStringValue("sortText", SortText);
         }
     }
 }

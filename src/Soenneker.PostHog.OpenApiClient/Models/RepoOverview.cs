@@ -18,6 +18,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public double? BillableMinutes { get; set; }
         /// <summary>Billable minutes over the previous window; null when the job-level source isn&apos;t synced.</summary>
         public double? BillableMinutesPrev { get; set; }
+        /// <summary>estimated_cost_usd divided by merged_pr_count — the window&apos;s CI cost per merged PR. Null when the job-level source isn&apos;t synced or nothing merged.</summary>
+        public double? CostPerMergeUsd { get; set; }
+        /// <summary>The same ratio over the previous window. Null when the job-level source isn&apos;t synced or nothing merged.</summary>
+        public double? CostPerMergeUsdPrev { get; set; }
         /// <summary>CI cost per merged PR across the window, oldest first, zero-filled, bucketed by cost_series_granularity. Empty when the job-level source isn&apos;t synced or include_series=false.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -26,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.CostPerMergeBucket> CostSeries { get; set; }
 #endif
-        /// <summary>&quot;Bucket width of the cost_series trend, chosen to fit the window: &apos;hour&apos;, &apos;day&apos;, or &apos;week&apos;.&quot;</summary>
+        /// <summary>Bucket width of the cost_series trend, chosen to fit the window: &apos;hour&apos;, &apos;day&apos;, or &apos;week&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CostSeriesGranularity { get; set; }
@@ -42,28 +46,82 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string DefaultBranch { get; set; }
 #endif
+        /// <summary>Where a change&apos;s wall-clock time goes on the way to production, over PRs merged in the window with bots and drafts excluded.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.RepoOverviewDeliveryPipeline? DeliveryPipeline { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.RepoOverviewDeliveryPipeline DeliveryPipeline { get; set; }
+#endif
         /// <summary>Estimated CI cost in USD (billable minutes x runner-tier rate); null when the job-level source isn&apos;t synced.</summary>
         public double? EstimatedCostUsd { get; set; }
         /// <summary>Estimated cost over the previous window; null when the job-level source isn&apos;t synced.</summary>
         public double? EstimatedCostUsdPrev { get; set; }
         /// <summary>Whether the job-level source is synced (cost and queue figures exist).</summary>
         public bool? JobsAvailable { get; set; }
-        /// <summary>&quot;Median merged_at - created_at over PRs merged in the window, bots and drafts excluded. Coarse by design: draft and ready-for-review time are fused. Null when nothing merged.&quot;</summary>
+        /// <summary>Median merged_at - created_at over PRs merged in the window, bots and drafts excluded. Coarse by design: draft and ready-for-review time are fused. Null when nothing merged.</summary>
         public double? MedianOpenToMergeSeconds { get; set; }
         /// <summary>The same median over the previous window. Null when nothing merged.</summary>
         public double? MedianOpenToMergeSecondsPrev { get; set; }
-        /// <summary>&quot;Median per-PR ready_to_merge_seconds (the true cycle time: merged_at minus the last observed ready-for-review transition) over PRs merged in the window, bots and drafts excluded. Null when the issue-events table isn&apos;t synced or no merged PR has an observed value; fall back to median_open_to_merge_seconds and label it open-to-merge.&quot;</summary>
+        /// <summary>Median per-PR ready_to_merge_seconds (the true cycle time: merged_at minus the last observed ready-for-review transition) over PRs merged in the window, bots and drafts excluded. Null when the issue-events table isn&apos;t synced or no merged PR has an observed value; fall back to median_open_to_merge_seconds and label it open-to-merge.</summary>
         public double? MedianReadyToMergeSeconds { get; set; }
         /// <summary>The same median over the previous window. Null when not observed.</summary>
         public double? MedianReadyToMergeSecondsPrev { get; set; }
+        /// <summary>Median wall clock for a PR push round to settle fully green over the window — the window-level twin of time_to_green_series, same population and exclusions. Null when no fully green rounds.</summary>
+        public double? MedianTimeToGreenSeconds { get; set; }
+        /// <summary>The same median over the previous window. Null when no fully green rounds.</summary>
+        public double? MedianTimeToGreenSecondsPrev { get; set; }
         /// <summary>PRs merged in the window, all authors and bots included — the merge population that triggered the CI spend, so it divides cleanly into billable_minutes and estimated_cost_usd.</summary>
         public int? MergedPrCount { get; set; }
         /// <summary>Merged-PR count over the previous window.</summary>
         public int? MergedPrCountPrev { get; set; }
+        /// <summary>Mean distinct gate attempts (distinct gate branches, flake-bisection branches collapsed) per queue-landed merge. Null when no queue-landed merges.</summary>
+        public double? MergeQueueAvgAttemptsPerMerge { get; set; }
+        /// <summary>The same mean over the previous window. Null when no queue-landed merges.</summary>
+        public double? MergeQueueAvgAttemptsPerMergePrev { get; set; }
         /// <summary>Slice of billable_minutes spent on merge-queue batch branches (trunk-merge/**); null when the job-level source isn&apos;t synced.</summary>
         public double? MergeQueueBillableMinutes { get; set; }
         /// <summary>Merge-queue billable minutes over the previous window; null when the job-level source isn&apos;t synced.</summary>
         public double? MergeQueueBillableMinutesPrev { get; set; }
+        /// <summary>Fraction (0-1) of queue-landed merges with at least one failed gate run before merging. Derived from CI run conclusions, not the queue&apos;s own eviction records. Null when no queue-landed merges.</summary>
+        public double? MergeQueueFailedGateMergeShare { get; set; }
+        /// <summary>The same fraction over the previous window. Null when no queue-landed merges.</summary>
+        public double? MergeQueueFailedGateMergeSharePrev { get; set; }
+        /// <summary>Fraction (0-1) of concluded queue entries (merged, failed, or cancelled) that ended failed or cancelled, from the queue&apos;s own records. Windowed on each entry&apos;s last state change. Null when the Trunk source isn&apos;t synced or nothing concluded.</summary>
+        public double? MergeQueueFailedOrCancelledShare { get; set; }
+        /// <summary>The same fraction over the previous window. Null when the Trunk source isn&apos;t synced or nothing concluded.</summary>
+        public double? MergeQueueFailedOrCancelledSharePrev { get; set; }
+        /// <summary>Median seconds from a PR&apos;s first observed merge-queue gate run starting to the PR merging. Pending time before gate testing starts is not included. Null when no queue-landed merges.</summary>
+        public double? MergeQueueMedianFirstGateToMergeSeconds { get; set; }
+        /// <summary>The same median over the previous window. Null when no queue-landed merges.</summary>
+        public double? MergeQueueMedianFirstGateToMergeSecondsPrev { get; set; }
+        /// <summary>PRs merged in the window with at least one corroborated merge-queue gate run — the population behind every merge_queue_* landing stat. All authors, bots included.</summary>
+        public int? MergeQueueMergedPrCount { get; set; }
+        /// <summary>Queue-landed merges over the previous window.</summary>
+        public int? MergeQueueMergedPrCountPrev { get; set; }
+        /// <summary>Fraction (0-1) of queue-landed merges that needed more than one gate attempt. Null when no queue-landed merges.</summary>
+        public double? MergeQueueMultiAttemptMergeShare { get; set; }
+        /// <summary>The same fraction over the previous window. Null when no queue-landed merges.</summary>
+        public double? MergeQueueMultiAttemptMergeSharePrev { get; set; }
+        /// <summary>p90 of the same first-gate-run-to-merge measure — the tail, where queue pain concentrates. Null when no queue-landed merges.</summary>
+        public double? MergeQueueP90FirstGateToMergeSeconds { get; set; }
+        /// <summary>The same p90 over the previous window. Null when no queue-landed merges.</summary>
+        public double? MergeQueueP90FirstGateToMergeSecondsPrev { get; set; }
+        /// <summary>p95 of the same first-gate-run-to-merge measure. Null when no queue-landed merges.</summary>
+        public double? MergeQueueP95FirstGateToMergeSeconds { get; set; }
+        /// <summary>The same p95 over the previous window. Null when no queue-landed merges.</summary>
+        public double? MergeQueueP95FirstGateToMergeSecondsPrev { get; set; }
+        /// <summary>p99 of the same first-gate-run-to-merge measure. Null when no queue-landed merges.</summary>
+        public double? MergeQueueP99FirstGateToMergeSeconds { get; set; }
+        /// <summary>The same p99 over the previous window. Null when no queue-landed merges.</summary>
+        public double? MergeQueueP99FirstGateToMergeSecondsPrev { get; set; }
+        /// <summary>Queue entries flagged skip-the-line (prioritized past the queue order) in the window, whatever state they reached. Null when the Trunk source isn&apos;t synced.</summary>
+        public int? MergeQueueSkipTheLineCount { get; set; }
+        /// <summary>Skip-the-line entries over the previous window. Null when the Trunk source isn&apos;t synced.</summary>
+        public int? MergeQueueSkipTheLineCountPrev { get; set; }
+        /// <summary>Whether the team&apos;s TrunkIo warehouse source has the opt-in merge-queue endpoint synced and readable by the requesting user. When false, every merge_queue_failed_or_cancelled_* and merge_queue_skip_the_line_* field is null; fall back to merge_queue_failed_gate_merge_share.</summary>
+        public bool? MergeQueueTrunkAvailable { get; set; }
         /// <summary>Median time-to-merge (p50 open_to_merge_seconds, bots/drafts excluded) per bucket across the window, oldest first, bucketed by open_to_merge_series_granularity. Empty buckets carry null; the whole series is empty when include_series=false.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -72,7 +130,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.OpenToMergeBucket> OpenToMergeSeries { get; set; }
 #endif
-        /// <summary>&quot;Bucket width of the open_to_merge_series trend: &apos;hour&apos;, &apos;day&apos;, or &apos;week&apos;.&quot;</summary>
+        /// <summary>Bucket width of the open_to_merge_series trend: &apos;hour&apos;, &apos;day&apos;, or &apos;week&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? OpenToMergeSeriesGranularity { get; set; }
@@ -88,7 +146,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ReadyToMergeBucket> ReadyToMergeSeries { get; set; }
 #endif
-        /// <summary>&quot;Bucket width of the ready_to_merge_series trend: &apos;hour&apos;, &apos;day&apos;, or &apos;week&apos;.&quot;</summary>
+        /// <summary>Bucket width of the ready_to_merge_series trend: &apos;hour&apos;, &apos;day&apos;, or &apos;week&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ReadyToMergeSeriesGranularity { get; set; }
@@ -104,11 +162,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? RunCount { get; set; }
         /// <summary>Same count over the equal-length window immediately before date_from — the delta baseline.</summary>
         public int? RunCountPrev { get; set; }
-        /// <summary>Fraction of completed runs that succeeded (0-1) in the window. Null if none completed.</summary>
+        /// <summary>Fraction of conclusive runs that succeeded (0-1) in the window. Skipped, cancelled, neutral, and action_required runs are excluded. Null if no run reached a verdict.</summary>
         public double? SuccessRate { get; set; }
-        /// <summary>Success rate over the previous window. Null if none completed.</summary>
+        /// <summary>Conclusive-run success rate over the previous window. Null if no run reached a verdict.</summary>
         public double? SuccessRatePrev { get; set; }
-        /// <summary>CI pass rate (completed runs that succeeded, all branches) per bucket across the window, oldest first, bucketed by success_rate_series_granularity. Empty buckets carry null; the whole series is empty when include_series=false.</summary>
+        /// <summary>CI pass rate (conclusive runs that succeeded, all branches) per bucket across the window, oldest first, bucketed by success_rate_series_granularity. Skipped, cancelled, neutral, and action_required runs are excluded. Empty buckets carry null; the whole series is empty when include_series=false.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.PassRateBucket>? SuccessRateSeries { get; set; }
@@ -116,7 +174,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.PassRateBucket> SuccessRateSeries { get; set; }
 #endif
-        /// <summary>&quot;Bucket width of the success_rate_series trend: &apos;hour&apos;, &apos;day&apos;, or &apos;week&apos;.&quot;</summary>
+        /// <summary>Bucket width of the success_rate_series trend: &apos;hour&apos;, &apos;day&apos;, or &apos;week&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SuccessRateSeriesGranularity { get; set; }
@@ -132,7 +190,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.TimeToGreenBucket> TimeToGreenSeries { get; set; }
 #endif
-        /// <summary>&quot;Bucket width of the time_to_green_series trend: &apos;hour&apos;, &apos;day&apos;, or &apos;week&apos;.&quot;</summary>
+        /// <summary>Bucket width of the time_to_green_series trend: &apos;hour&apos;, &apos;day&apos;, or &apos;week&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? TimeToGreenSeriesGranularity { get; set; }
@@ -167,9 +225,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "billable_minutes", n => { BillableMinutes = n.GetDoubleValue(); } },
                 { "billable_minutes_prev", n => { BillableMinutesPrev = n.GetDoubleValue(); } },
+                { "cost_per_merge_usd", n => { CostPerMergeUsd = n.GetDoubleValue(); } },
+                { "cost_per_merge_usd_prev", n => { CostPerMergeUsdPrev = n.GetDoubleValue(); } },
                 { "cost_series", n => { CostSeries = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CostPerMergeBucket>(global::Soenneker.PostHog.OpenApiClient.Models.CostPerMergeBucket.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "cost_series_granularity", n => { CostSeriesGranularity = n.GetStringValue(); } },
                 { "default_branch", n => { DefaultBranch = n.GetStringValue(); } },
+                { "delivery_pipeline", n => { DeliveryPipeline = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RepoOverviewDeliveryPipeline>(global::Soenneker.PostHog.OpenApiClient.Models.RepoOverviewDeliveryPipeline.CreateFromDiscriminatorValue); } },
                 { "estimated_cost_usd", n => { EstimatedCostUsd = n.GetDoubleValue(); } },
                 { "estimated_cost_usd_prev", n => { EstimatedCostUsdPrev = n.GetDoubleValue(); } },
                 { "jobs_available", n => { JobsAvailable = n.GetBoolValue(); } },
@@ -177,8 +238,31 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "median_open_to_merge_seconds_prev", n => { MedianOpenToMergeSecondsPrev = n.GetDoubleValue(); } },
                 { "median_ready_to_merge_seconds", n => { MedianReadyToMergeSeconds = n.GetDoubleValue(); } },
                 { "median_ready_to_merge_seconds_prev", n => { MedianReadyToMergeSecondsPrev = n.GetDoubleValue(); } },
+                { "median_time_to_green_seconds", n => { MedianTimeToGreenSeconds = n.GetDoubleValue(); } },
+                { "median_time_to_green_seconds_prev", n => { MedianTimeToGreenSecondsPrev = n.GetDoubleValue(); } },
+                { "merge_queue_avg_attempts_per_merge", n => { MergeQueueAvgAttemptsPerMerge = n.GetDoubleValue(); } },
+                { "merge_queue_avg_attempts_per_merge_prev", n => { MergeQueueAvgAttemptsPerMergePrev = n.GetDoubleValue(); } },
                 { "merge_queue_billable_minutes", n => { MergeQueueBillableMinutes = n.GetDoubleValue(); } },
                 { "merge_queue_billable_minutes_prev", n => { MergeQueueBillableMinutesPrev = n.GetDoubleValue(); } },
+                { "merge_queue_failed_gate_merge_share", n => { MergeQueueFailedGateMergeShare = n.GetDoubleValue(); } },
+                { "merge_queue_failed_gate_merge_share_prev", n => { MergeQueueFailedGateMergeSharePrev = n.GetDoubleValue(); } },
+                { "merge_queue_failed_or_cancelled_share", n => { MergeQueueFailedOrCancelledShare = n.GetDoubleValue(); } },
+                { "merge_queue_failed_or_cancelled_share_prev", n => { MergeQueueFailedOrCancelledSharePrev = n.GetDoubleValue(); } },
+                { "merge_queue_median_first_gate_to_merge_seconds", n => { MergeQueueMedianFirstGateToMergeSeconds = n.GetDoubleValue(); } },
+                { "merge_queue_median_first_gate_to_merge_seconds_prev", n => { MergeQueueMedianFirstGateToMergeSecondsPrev = n.GetDoubleValue(); } },
+                { "merge_queue_merged_pr_count", n => { MergeQueueMergedPrCount = n.GetIntValue(); } },
+                { "merge_queue_merged_pr_count_prev", n => { MergeQueueMergedPrCountPrev = n.GetIntValue(); } },
+                { "merge_queue_multi_attempt_merge_share", n => { MergeQueueMultiAttemptMergeShare = n.GetDoubleValue(); } },
+                { "merge_queue_multi_attempt_merge_share_prev", n => { MergeQueueMultiAttemptMergeSharePrev = n.GetDoubleValue(); } },
+                { "merge_queue_p90_first_gate_to_merge_seconds", n => { MergeQueueP90FirstGateToMergeSeconds = n.GetDoubleValue(); } },
+                { "merge_queue_p90_first_gate_to_merge_seconds_prev", n => { MergeQueueP90FirstGateToMergeSecondsPrev = n.GetDoubleValue(); } },
+                { "merge_queue_p95_first_gate_to_merge_seconds", n => { MergeQueueP95FirstGateToMergeSeconds = n.GetDoubleValue(); } },
+                { "merge_queue_p95_first_gate_to_merge_seconds_prev", n => { MergeQueueP95FirstGateToMergeSecondsPrev = n.GetDoubleValue(); } },
+                { "merge_queue_p99_first_gate_to_merge_seconds", n => { MergeQueueP99FirstGateToMergeSeconds = n.GetDoubleValue(); } },
+                { "merge_queue_p99_first_gate_to_merge_seconds_prev", n => { MergeQueueP99FirstGateToMergeSecondsPrev = n.GetDoubleValue(); } },
+                { "merge_queue_skip_the_line_count", n => { MergeQueueSkipTheLineCount = n.GetIntValue(); } },
+                { "merge_queue_skip_the_line_count_prev", n => { MergeQueueSkipTheLineCountPrev = n.GetIntValue(); } },
+                { "merge_queue_trunk_available", n => { MergeQueueTrunkAvailable = n.GetBoolValue(); } },
                 { "merged_pr_count", n => { MergedPrCount = n.GetIntValue(); } },
                 { "merged_pr_count_prev", n => { MergedPrCountPrev = n.GetIntValue(); } },
                 { "open_to_merge_series", n => { OpenToMergeSeries = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.OpenToMergeBucket>(global::Soenneker.PostHog.OpenApiClient.Models.OpenToMergeBucket.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -206,9 +290,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("billable_minutes", BillableMinutes);
             writer.WriteDoubleValue("billable_minutes_prev", BillableMinutesPrev);
+            writer.WriteDoubleValue("cost_per_merge_usd", CostPerMergeUsd);
+            writer.WriteDoubleValue("cost_per_merge_usd_prev", CostPerMergeUsdPrev);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CostPerMergeBucket>("cost_series", CostSeries);
             writer.WriteStringValue("cost_series_granularity", CostSeriesGranularity);
             writer.WriteStringValue("default_branch", DefaultBranch);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RepoOverviewDeliveryPipeline>("delivery_pipeline", DeliveryPipeline);
             writer.WriteDoubleValue("estimated_cost_usd", EstimatedCostUsd);
             writer.WriteDoubleValue("estimated_cost_usd_prev", EstimatedCostUsdPrev);
             writer.WriteBoolValue("jobs_available", JobsAvailable);
@@ -216,10 +303,33 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("median_open_to_merge_seconds_prev", MedianOpenToMergeSecondsPrev);
             writer.WriteDoubleValue("median_ready_to_merge_seconds", MedianReadyToMergeSeconds);
             writer.WriteDoubleValue("median_ready_to_merge_seconds_prev", MedianReadyToMergeSecondsPrev);
+            writer.WriteDoubleValue("median_time_to_green_seconds", MedianTimeToGreenSeconds);
+            writer.WriteDoubleValue("median_time_to_green_seconds_prev", MedianTimeToGreenSecondsPrev);
             writer.WriteIntValue("merged_pr_count", MergedPrCount);
             writer.WriteIntValue("merged_pr_count_prev", MergedPrCountPrev);
+            writer.WriteDoubleValue("merge_queue_avg_attempts_per_merge", MergeQueueAvgAttemptsPerMerge);
+            writer.WriteDoubleValue("merge_queue_avg_attempts_per_merge_prev", MergeQueueAvgAttemptsPerMergePrev);
             writer.WriteDoubleValue("merge_queue_billable_minutes", MergeQueueBillableMinutes);
             writer.WriteDoubleValue("merge_queue_billable_minutes_prev", MergeQueueBillableMinutesPrev);
+            writer.WriteDoubleValue("merge_queue_failed_gate_merge_share", MergeQueueFailedGateMergeShare);
+            writer.WriteDoubleValue("merge_queue_failed_gate_merge_share_prev", MergeQueueFailedGateMergeSharePrev);
+            writer.WriteDoubleValue("merge_queue_failed_or_cancelled_share", MergeQueueFailedOrCancelledShare);
+            writer.WriteDoubleValue("merge_queue_failed_or_cancelled_share_prev", MergeQueueFailedOrCancelledSharePrev);
+            writer.WriteDoubleValue("merge_queue_median_first_gate_to_merge_seconds", MergeQueueMedianFirstGateToMergeSeconds);
+            writer.WriteDoubleValue("merge_queue_median_first_gate_to_merge_seconds_prev", MergeQueueMedianFirstGateToMergeSecondsPrev);
+            writer.WriteIntValue("merge_queue_merged_pr_count", MergeQueueMergedPrCount);
+            writer.WriteIntValue("merge_queue_merged_pr_count_prev", MergeQueueMergedPrCountPrev);
+            writer.WriteDoubleValue("merge_queue_multi_attempt_merge_share", MergeQueueMultiAttemptMergeShare);
+            writer.WriteDoubleValue("merge_queue_multi_attempt_merge_share_prev", MergeQueueMultiAttemptMergeSharePrev);
+            writer.WriteDoubleValue("merge_queue_p90_first_gate_to_merge_seconds", MergeQueueP90FirstGateToMergeSeconds);
+            writer.WriteDoubleValue("merge_queue_p90_first_gate_to_merge_seconds_prev", MergeQueueP90FirstGateToMergeSecondsPrev);
+            writer.WriteDoubleValue("merge_queue_p95_first_gate_to_merge_seconds", MergeQueueP95FirstGateToMergeSeconds);
+            writer.WriteDoubleValue("merge_queue_p95_first_gate_to_merge_seconds_prev", MergeQueueP95FirstGateToMergeSecondsPrev);
+            writer.WriteDoubleValue("merge_queue_p99_first_gate_to_merge_seconds", MergeQueueP99FirstGateToMergeSeconds);
+            writer.WriteDoubleValue("merge_queue_p99_first_gate_to_merge_seconds_prev", MergeQueueP99FirstGateToMergeSecondsPrev);
+            writer.WriteIntValue("merge_queue_skip_the_line_count", MergeQueueSkipTheLineCount);
+            writer.WriteIntValue("merge_queue_skip_the_line_count_prev", MergeQueueSkipTheLineCountPrev);
+            writer.WriteBoolValue("merge_queue_trunk_available", MergeQueueTrunkAvailable);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.OpenToMergeBucket>("open_to_merge_series", OpenToMergeSeries);
             writer.WriteStringValue("open_to_merge_series_granularity", OpenToMergeSeriesGranularity);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReadyToMergeBucket>("ready_to_merge_series", ReadyToMergeSeries);

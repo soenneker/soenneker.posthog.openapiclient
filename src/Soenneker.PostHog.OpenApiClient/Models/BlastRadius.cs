@@ -16,7 +16,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of users matching the filters</summary>
         public int? Affected { get; set; }
-        /// <summary>&quot;Proof this audience was previewed: pass it to the batch dispatch (confirm_token) after echoing &apos;affected&apos; to the user. Signs these exact filters; expires in 15 minutes.&quot;</summary>
+        /// <summary>Proof this audience was previewed: pass it to the batch dispatch (confirm_token) after echoing &apos;affected&apos; to the user. Signs these exact filters; expires in 15 minutes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ConfirmToken { get; set; }

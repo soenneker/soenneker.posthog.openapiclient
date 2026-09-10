@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_server_installat
         {
         }
         /// <summary>
-        /// &quot;Escalate a personal installation to a team-wide shared one.Owner-only AND admin-only: sharing exposes the owner&apos;s credential toproject members, so it carries the same gate as creating a sharedinstall outright. Agents require separate explicit grants.&quot;
+        /// Escalate a personal installation to a team-wide shared one.Owner-only AND admin-only: sharing exposes the owner&apos;s credential toproject members, so it carries the same gate as creating a sharedinstall outright. Agents require separate explicit grants.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpServerInstallation"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_server_installat
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.McpServerInstallation>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.McpServerInstallation.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Escalate a personal installation to a team-wide shared one.Owner-only AND admin-only: sharing exposes the owner&apos;s credential toproject members, so it carries the same gate as creating a sharedinstall outright. Agents require separate explicit grants.&quot;
+        /// Escalate a personal installation to a team-wide shared one.Owner-only AND admin-only: sharing exposes the owner&apos;s credential toproject members, so it carries the same gate as creating a sharedinstall outright. Agents require separate explicit grants.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

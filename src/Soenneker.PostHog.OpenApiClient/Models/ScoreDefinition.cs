@@ -29,10 +29,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>User who created the scorer.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreatedBy? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreatedBy CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
 #endif
         /// <summary>Current immutable configuration version number.</summary>
         public int? CurrentVersion { get; private set; }
@@ -96,7 +96,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "archived", n => { Archived = n.GetBoolValue(); } },
                 { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionConfigComposed>(global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionConfigComposed.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreatedBy.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
                 { "current_version", n => { CurrentVersion = n.GetIntValue(); } },
                 { "current_version_id", n => { CurrentVersionId = n.GetGuidValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },

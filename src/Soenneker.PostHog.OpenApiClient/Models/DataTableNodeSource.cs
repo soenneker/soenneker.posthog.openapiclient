@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActorsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTableQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueCorrelationQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EventsNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EventsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.GroupsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogQlQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAggregatedQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NonIntegratedConversionsTableQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PersonsNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SessionAttributionExplorerQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SessionQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TraceQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebBotsTableQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebExternalClicksTableQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebGoalsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebOverviewQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsPathBreakdownQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActorsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EndpointsUsageTableQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueCorrelationQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EventsNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EventsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentTrendsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.GroupsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogQlQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAggregatedQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PersonsNode"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SessionAttributionExplorerQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SessionQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SessionsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TraceQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TracesQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebBotsTableQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebExternalClicksTableQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebGoalsQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebOverviewQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebStatsTableQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsPathBreakdownQuery"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WebVitalsQuery"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DataTableNodeSource : IComposedTypeWrapper, IParsable
@@ -124,14 +124,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQuery MarketingAnalyticsTableQuery { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NonIntegratedConversionsTableQuery"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.NonIntegratedConversionsTableQuery? NonIntegratedConversionsTableQuery { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.NonIntegratedConversionsTableQuery NonIntegratedConversionsTableQuery { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PersonsNode"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -303,10 +295,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 result.MarketingAnalyticsTableQuery = new global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQuery();
             }
-            else if("NonIntegratedConversionsTableQuery".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.NonIntegratedConversionsTableQuery = new global::Soenneker.PostHog.OpenApiClient.Models.NonIntegratedConversionsTableQuery();
-            }
             else if("PersonsNode".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.PersonsNode = new global::Soenneker.PostHog.OpenApiClient.Models.PersonsNode();
@@ -422,10 +410,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             else if(MarketingAnalyticsTableQuery != null)
             {
                 return MarketingAnalyticsTableQuery.GetFieldDeserializers();
-            }
-            else if(NonIntegratedConversionsTableQuery != null)
-            {
-                return NonIntegratedConversionsTableQuery.GetFieldDeserializers();
             }
             else if(PersonsNode != null)
             {
@@ -543,10 +527,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             else if(MarketingAnalyticsTableQuery != null)
             {
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsTableQuery>(null, MarketingAnalyticsTableQuery);
-            }
-            else if(NonIntegratedConversionsTableQuery != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NonIntegratedConversionsTableQuery>(null, NonIntegratedConversionsTableQuery);
             }
             else if(PersonsNode != null)
             {

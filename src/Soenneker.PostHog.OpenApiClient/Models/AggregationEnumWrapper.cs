@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `sum` - sum* `avg` - avg* `count` - count* `p95` - p95* `rate` - rate* `increase` - increase* `histogram_quantile` - histogram_quantile</summary>
+        /// <summary>* `sum` - sum* `avg` - avg* `count` - count* `min` - min* `max` - max* `p95` - p95* `rate` - rate* `increase` - increase* `histogram_quantile` - histogram_quantile</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.AggregationEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AggregationEnumWrapper"/> and sets the default values.

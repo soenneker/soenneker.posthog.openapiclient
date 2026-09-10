@@ -17,12 +17,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>True if the flag is effectively rolled out to everyone, independent of recent evaluation. For boolean flags this means at least one release condition targets 100% with no property filters (or there are no release conditions); for multivariate flags it means a single variant is served to 100% via a fully rolled out release condition. This is the signal for &apos;fully rolled out&apos; / GA — unlike `status`, which only reflects recent evaluation.</summary>
         public bool? EffectivelyFullRollout { get; set; }
-        /// <summary>True if any release condition has property filters, i.e. the flag is conditionally targeted rather than a blanket rollout. When true, `max_rollout_percentage` is a percentage within the targeted segment, not of the whole user base.</summary>
+        /// <summary>True if any release condition has property filters, i.e. the flag is conditionally targeted rather than a blanket rollout. This says nothing about which condition produced `max_rollout_percentage`: the two fields are computed independently over the whole condition list.</summary>
         public bool? HasTargetingConditions { get; set; }
         /// <summary>True if the flag serves multiple variants (has a multivariate variant set).</summary>
         public bool? IsMultivariate { get; set; }
-        /// <summary>Highest rollout percentage (0-100) across the flag&apos;s release conditions, treating a missing percentage as 100. Null when the flag has no release conditions. Interpret together with `has_targeting_conditions`.</summary>
-        public int? MaxRolloutPercentage { get; set; }
+        /// <summary>Highest rollout percentage (0-100) across the flag&apos;s release conditions, treating a missing percentage as 100. Null when the flag has no release conditions. The maximum can come from an untargeted condition even when `has_targeting_conditions` is true, so it cannot be attributed to a targeted condition or read as a share of a targeted segment.</summary>
+        public double? MaxRolloutPercentage { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagStatusResponseRollout"/> and sets the default values.
         /// </summary>
@@ -51,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "effectively_full_rollout", n => { EffectivelyFullRollout = n.GetBoolValue(); } },
                 { "has_targeting_conditions", n => { HasTargetingConditions = n.GetBoolValue(); } },
                 { "is_multivariate", n => { IsMultivariate = n.GetBoolValue(); } },
-                { "max_rollout_percentage", n => { MaxRolloutPercentage = n.GetIntValue(); } },
+                { "max_rollout_percentage", n => { MaxRolloutPercentage = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -64,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("effectively_full_rollout", EffectivelyFullRollout);
             writer.WriteBoolValue("has_targeting_conditions", HasTargetingConditions);
             writer.WriteBoolValue("is_multivariate", IsMultivariate);
-            writer.WriteIntValue("max_rollout_percentage", MaxRolloutPercentage);
+            writer.WriteDoubleValue("max_rollout_percentage", MaxRolloutPercentage);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

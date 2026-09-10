@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Data to summarize. For traces: {trace, hierarchy}. For events: {event}. Not required when using trace_id or generation_id.&quot;
+    /// Data to summarize. For traces: {trace, hierarchy}. For events: {event}. Not required when using trace_id or generation_id.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SummarizeRequestData : IAdditionalDataHolder, IParsable

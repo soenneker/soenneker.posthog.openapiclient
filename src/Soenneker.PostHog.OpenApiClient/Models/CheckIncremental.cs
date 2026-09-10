@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Body of the `check_incremental` action: a query and an optional config to check it against.&quot;
+    /// Body of the `check_incremental` action: a query and an optional config to check it against.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CheckIncremental : IAdditionalDataHolder, IParsable

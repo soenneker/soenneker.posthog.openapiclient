@@ -25,7 +25,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Summary { get; set; }
 #endif
-        /// <summary>&quot;Authoring docs for the verb: payload and result shape, behavior, and the confirmation copy it warrants.&quot;</summary>
+        /// <summary>Authoring docs for the verb: payload and result shape, behavior, and the confirmation copy it warrants.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Usage { get; set; }

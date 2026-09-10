@@ -68,6 +68,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? HasUnsafeDocuments { get; private set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
+        /// <summary>Whether PostHog manages this source with knowledge learned from resolved support tickets.</summary>
+        public bool? IsGenerated { get; private set; }
         /// <summary>The last_refresh_at property</summary>
         public DateTimeOffset? LastRefreshAt { get; private set; }
         /// <summary>The last_refresh_error property</summary>
@@ -185,6 +187,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "file_size_bytes", n => { FileSizeBytes = n.GetIntValue(); } },
                 { "has_unsafe_documents", n => { HasUnsafeDocuments = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
+                { "is_generated", n => { IsGenerated = n.GetBoolValue(); } },
                 { "last_refresh_at", n => { LastRefreshAt = n.GetDateTimeOffsetValue(); } },
                 { "last_refresh_error", n => { LastRefreshError = n.GetStringValue(); } },
                 { "last_refresh_status", n => { LastRefreshStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceLastRefreshStatus>(global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeSourceLastRefreshStatus.CreateFromDiscriminatorValue); } },

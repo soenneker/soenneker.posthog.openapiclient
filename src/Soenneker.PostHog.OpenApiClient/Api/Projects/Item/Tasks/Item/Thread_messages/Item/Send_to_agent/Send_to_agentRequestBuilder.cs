@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Thread_me
         {
         }
         /// <summary>
-        /// &quot;Task author only: forwards the message into the task&apos;s latest live run.&quot;
+        /// Task author only: forwards the message into the task&apos;s latest live run.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskThreadMessageDto"/></returns>
         /// <param name="body">Response shape for one message in a task&apos;s thread.</param>
@@ -59,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Thread_me
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.TaskThreadMessageDto>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.TaskThreadMessageDto.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Task author only: forwards the message into the task&apos;s latest live run.&quot;
+        /// Task author only: forwards the message into the task&apos;s latest live run.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">Response shape for one message in a task&apos;s thread.</param>

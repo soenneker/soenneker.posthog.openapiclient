@@ -39,6 +39,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Id { get; set; }
 #endif
+        /// <summary>The requires_exact_column_metadata property</summary>
+        public bool? RequiresExactColumnMetadata { get; set; }
         /// <summary>The source_type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -95,6 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "access_method", n => { AccessMethod = n.GetStringValue(); } },
                 { "api_version", n => { ApiVersion = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
+                { "requires_exact_column_metadata", n => { RequiresExactColumnMetadata = n.GetBoolValue(); } },
                 { "source_type", n => { SourceType = n.GetStringValue(); } },
                 { "supported_api_versions", n => { SupportedApiVersions = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "supports_column_selection", n => { SupportsColumnSelection = n.GetBoolValue(); } },
@@ -112,6 +115,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("access_method", AccessMethod);
             writer.WriteStringValue("api_version", ApiVersion);
             writer.WriteStringValue("id", Id);
+            writer.WriteBoolValue("requires_exact_column_metadata", RequiresExactColumnMetadata);
             writer.WriteStringValue("source_type", SourceType);
             writer.WriteCollectionOfPrimitiveValues<string>("supported_api_versions", SupportedApiVersions);
             writer.WriteBoolValue("supports_column_selection", SupportsColumnSelection);

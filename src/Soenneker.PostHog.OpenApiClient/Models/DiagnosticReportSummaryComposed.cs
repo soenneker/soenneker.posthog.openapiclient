@@ -31,7 +31,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string PrimaryIssue { get; set; }
 #endif
-        /// <summary>&quot;Overall outcome: healthy if the proxy is serving requests, warn for non-blocking issues, fail otherwise.* `healthy` - healthy* `warn` - warn* `fail` - fail&quot;</summary>
+        /// <summary>Overall outcome: healthy if the proxy is serving requests, warn for non-blocking issues, fail otherwise.* `healthy` - healthy* `warn` - warn* `fail` - fail</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticReportSummaryStatus? Status { get; set; }

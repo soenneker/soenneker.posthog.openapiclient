@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Body for appending an artefact to a report.Everything is append-only: log artefacts accumulate, status artefacts supersede the previousversion (latest-wins). The `content` shape depends on `artefact_type` and is validatedagainst the type&apos;s schema (see `products/signals/backend/artefact_schemas.py`).&quot;
+    /// Body for appending an artefact to a report.Everything is append-only: log artefacts accumulate, status artefacts supersede the previousversion (latest-wins). The `content` shape depends on `artefact_type` and is validatedagainst the type&apos;s schema (see `products/signals/backend/artefact_schemas.py`).
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SignalReportArtefactLogCreate : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;The artefact type. One of: actionability_judgment, code_reference, commit, dismissal, note, priority_judgment, related_to, repo_selection, safety_judgment, signal_finding, suggested_reviewers, task_run. Log types accumulate; status types (safety_judgment, actionability_judgment, priority_judgment, repo_selection, suggested_reviewers) are latest-wins — appending a new version supersedes the previous one as the report&apos;s canonical status.&quot;</summary>
+        /// <summary>The artefact type. One of: actionability_judgment, channel_assignment, code_reference, commit, dismissal, note, priority_judgment, related_to, repo_selection, safety_judgment, signal_finding, suggested_reviewers, task_run. Log types accumulate; status types (safety_judgment, actionability_judgment, priority_judgment, repo_selection, suggested_reviewers, channel_assignment) are latest-wins — appending a new version supersedes the previous one as the report&apos;s canonical status.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ArtefactType { get; set; }

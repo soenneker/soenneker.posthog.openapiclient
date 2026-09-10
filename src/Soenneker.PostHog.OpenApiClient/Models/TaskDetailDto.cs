@@ -34,10 +34,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskDetailDtoCreatedBy? CreatedBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo? CreatedBy { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskDetailDtoCreatedBy CreatedBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo CreatedBy { get; set; }
 #endif
         /// <summary>The description property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -63,13 +63,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskDetailDtoJsonSchemaProperty JsonSchema { get; set; }
 #endif
+        /// <summary>The last_activity_at property</summary>
+        public DateTimeOffset? LastActivityAt { get; set; }
         /// <summary>Latest run details for this task</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskDetailDtoLatestRun? LatestRun { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDto? LatestRun { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskDetailDtoLatestRun LatestRun { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDto LatestRun { get; set; }
+#endif
+        /// <summary>Stable key of the server-side flow that created this task, e.g. `desktop_onboarding_session:&lt;user_id&gt;`. Null for tasks people create themselves.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? OriginKey { get; set; }
+#nullable restore
+#else
+        public string OriginKey { get; set; }
 #endif
         /// <summary>The origin_product property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -165,14 +175,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "channel", n => { Channel = n.GetGuidValue(); } },
                 { "ci_prompt", n => { CiPrompt = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskDetailDtoCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.TaskDetailDtoCreatedBy.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo>(global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "github_integration", n => { GithubIntegration = n.GetIntValue(); } },
                 { "github_user_integration", n => { GithubUserIntegration = n.GetGuidValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "internal", n => { Internal = n.GetBoolValue(); } },
                 { "json_schema", n => { JsonSchema = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskDetailDtoJsonSchemaProperty>(global::Soenneker.PostHog.OpenApiClient.Models.TaskDetailDtoJsonSchemaProperty.CreateFromDiscriminatorValue); } },
-                { "latest_run", n => { LatestRun = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskDetailDtoLatestRun>(global::Soenneker.PostHog.OpenApiClient.Models.TaskDetailDtoLatestRun.CreateFromDiscriminatorValue); } },
+                { "last_activity_at", n => { LastActivityAt = n.GetDateTimeOffsetValue(); } },
+                { "latest_run", n => { LatestRun = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDto>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDto.CreateFromDiscriminatorValue); } },
+                { "origin_key", n => { OriginKey = n.GetStringValue(); } },
                 { "origin_product", n => { OriginProduct = n.GetStringValue(); } },
                 { "repositories", n => { Repositories = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "repository", n => { Repository = n.GetStringValue(); } },
@@ -198,14 +210,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteGuidValue("channel", Channel);
             writer.WriteStringValue("ci_prompt", CiPrompt);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskDetailDtoCreatedBy>("created_by", CreatedBy);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo>("created_by", CreatedBy);
             writer.WriteStringValue("description", Description);
             writer.WriteIntValue("github_integration", GithubIntegration);
             writer.WriteGuidValue("github_user_integration", GithubUserIntegration);
             writer.WriteGuidValue("id", Id);
             writer.WriteBoolValue("internal", Internal);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskDetailDtoJsonSchemaProperty>("json_schema", JsonSchema);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskDetailDtoLatestRun>("latest_run", LatestRun);
+            writer.WriteDateTimeOffsetValue("last_activity_at", LastActivityAt);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDto>("latest_run", LatestRun);
+            writer.WriteStringValue("origin_key", OriginKey);
             writer.WriteStringValue("origin_product", OriginProduct);
             writer.WriteCollectionOfPrimitiveValues<string>("repositories", Repositories);
             writer.WriteStringValue("repository", Repository);

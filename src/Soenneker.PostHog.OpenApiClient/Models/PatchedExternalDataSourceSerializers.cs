@@ -42,10 +42,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Set when the vendor has deprecated the API version this source is pinned to; null otherwise. Drives the in-product deprecation warning.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSourceSerializersApiVersionDeprecation? ApiVersionDeprecation { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceApiVersionDeprecation? ApiVersionDeprecation { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSourceSerializersApiVersionDeprecation ApiVersionDeprecation { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceApiVersionDeprecation ApiVersionDeprecation { get; private set; }
 #endif
         /// <summary>Automatically enable syncing for schemas discovered on this source after creation, on both the scheduled discovery pass and manual schema refreshes. Defaults to false. Not supported for direct-query sources.</summary>
         public bool? AutoSyncNewSchemas { get; set; }
@@ -93,7 +93,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Whether this synced source is also live-queryable via direct connection. Defaults to false for new sources; ignored for pure direct-query sources.</summary>
         public bool? DirectQueryEnabled { get; set; }
-        /// <summary>Backend engine detected for the direct connection.* `duckdb` - duckdb* `postgres` - postgres* `mysql` - mysql* `snowflake` - snowflake* `redshift` - redshift* `clickhouse` - clickhouse* `motherduck` - motherduck</summary>
+        /// <summary>Backend engine detected for the direct connection.* `duckdb` - duckdb* `postgres` - postgres* `mysql` - mysql* `snowflake` - snowflake* `redshift` - redshift* `clickhouse` - clickhouse* `motherduck` - motherduck* `trino` - trino</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSourceSerializersEngine? Engine { get; private set; }
@@ -207,7 +207,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "access_method", n => { AccessMethod = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSourceSerializersAccessMethod>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSourceSerializersAccessMethod.CreateFromDiscriminatorValue); } },
                 { "account_id", n => { AccountId = n.GetStringValue(); } },
                 { "api_version", n => { ApiVersion = n.GetStringValue(); } },
-                { "api_version_deprecation", n => { ApiVersionDeprecation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSourceSerializersApiVersionDeprecation>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSourceSerializersApiVersionDeprecation.CreateFromDiscriminatorValue); } },
+                { "api_version_deprecation", n => { ApiVersionDeprecation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceApiVersionDeprecation>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceApiVersionDeprecation.CreateFromDiscriminatorValue); } },
                 { "auto_sync_new_schemas", n => { AutoSyncNewSchemas = n.GetBoolValue(); } },
                 { "auto_sync_schema_patterns", n => { AutoSyncSchemaPatterns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "client_secret", n => { ClientSecret = n.GetStringValue(); } },

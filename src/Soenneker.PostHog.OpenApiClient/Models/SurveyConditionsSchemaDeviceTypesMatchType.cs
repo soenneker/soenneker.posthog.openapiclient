@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;URL/device matching types: &apos;regex&apos; (matches regex pattern), &apos;not_regex&apos; (does not match regex pattern), &apos;exact&apos; (exact string match), &apos;is_not&apos; (not exact match), &apos;icontains&apos; (case-insensitive contains), &apos;not_icontains&apos; (case-insensitive does not contain).* `regex` - regex* `not_regex` - not_regex* `exact` - exact* `is_not` - is_not* `icontains` - icontains* `not_icontains` - not_icontains&quot;
+    /// URL/device matching types: &apos;regex&apos; (matches regex pattern), &apos;not_regex&apos; (does not match regex pattern), &apos;exact&apos; (exact string match), &apos;is_not&apos; (not exact match), &apos;icontains&apos; (case-insensitive contains), &apos;not_icontains&apos; (case-insensitive does not contain).* `regex` - regex* `not_regex` - not_regex* `exact` - exact* `is_not` - is_not* `icontains` - icontains* `not_icontains` - not_icontains
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SurveyConditionsSchemaDeviceTypesMatchType : IAdditionalDataHolder, IParsable

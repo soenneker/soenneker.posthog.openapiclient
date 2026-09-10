@@ -132,6 +132,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string LastName { get; set; }
 #endif
+        /// <summary>Notification settings an organization admin enforces on this user. The matching controls are read-only, and `notification_settings` still holds the user&apos;s own choice underneath. Read-only.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationNotificationLock>? NotificationLocks { get; private set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationNotificationLock> NotificationLocks { get; private set; }
+#endif
         /// <summary>Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -200,7 +208,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.PendingInvite> PendingInvites { get; private set; }
 #endif
-        /// <summary>True if the user has at least one Personal API Key or passkey and has not yet acknowledged their existing credentials. Used to gate a one-shot review screen on first post-provisioning login. Becomes False once the user POSTs to `/api/users/@me/credentials_review_complete/`. Read-only.</summary>
+        /// <summary>True if the user has at least one Personal API Key or passkey, or a third-party OAuth application that can currently act as them, and has not yet acknowledged that access. Used to gate a one-shot review screen on first post-provisioning login. Becomes False once the user POSTs to `/api/users/@me/credentials_review_complete/`. Read-only.</summary>
         public bool? RequiresCredentialReview { get; private set; }
         /// <summary>* `engineering` - Engineering* `data` - Data* `product` - Product Management* `founder` - Founder* `leadership` - Leadership* `marketing` - Marketing* `sales` - Sales / Success* `student` - Student* `other` - Other</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.RoleAtOrganizationEnum? RoleAtOrganization { get; set; }
@@ -268,7 +276,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserToolbarMode ToolbarMode { get; set; }
 #endif
-        /// <summary>&quot;Per-user UI customization, validated against the `UserUIConfiguration` schema. Currently covers sidebar section and item visibility. Send the complete object: it replaces the stored value wholesale. Null means no customization; absent keys mean the element is shown.&quot;</summary>
+        /// <summary>Per-user UI customization, validated against the `UserUIConfiguration` schema. Currently covers sidebar section and item visibility. Send the complete object: it replaces the stored value wholesale. Null means no customization; absent keys mean the element is shown.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserUiConfiguration? UiConfiguration { get; set; }
@@ -329,6 +337,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "is_organization_first_user", n => { IsOrganizationFirstUser = n.GetBoolValue(); } },
                 { "is_staff", n => { IsStaff = n.GetBoolValue(); } },
                 { "last_name", n => { LastName = n.GetStringValue(); } },
+                { "notification_locks", n => { NotificationLocks = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationNotificationLock>(global::Soenneker.PostHog.OpenApiClient.Models.OrganizationNotificationLock.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "notification_settings", n => { NotificationSettings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserNotificationSettingsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserNotificationSettingsProperty.CreateFromDiscriminatorValue); } },
                 { "onboarding_delegated_to_invite", n => { OnboardingDelegatedToInvite = n.GetGuidValue(); } },
                 { "onboarding_delegated_to_organization_id", n => { OnboardingDelegatedToOrganizationId = n.GetGuidValue(); } },

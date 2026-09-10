@@ -93,12 +93,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Change_requests
         {
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("action_key")]
             public string? ActionKey { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("action_key")]
             public string ActionKey { get; set; }
+            #pragma warning restore CS1591
 #endif
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
@@ -106,25 +110,35 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Change_requests
             /// <summary>The initial index from which to return the results.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
+            #pragma warning disable CS1591
             [QueryParameter("requester")]
             public double? Requester { get; set; }
+            #pragma warning restore CS1591
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("resource_id")]
             public string? ResourceId { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("resource_id")]
             public string ResourceId { get; set; }
+            #pragma warning restore CS1591
 #endif
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("resource_type")]
             public string? ResourceType { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("resource_type")]
             public string ResourceType { get; set; }
+            #pragma warning restore CS1591
 #endif
             /// <summary>Multiple values may be separated by commas.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

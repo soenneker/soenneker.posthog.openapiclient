@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Lifecycle status. `active`: runs on its schedule. `pending_pause`: still running, but flagged by the system to pause soon unless something changes (any config edit clears it). `paused_by_system`: paused automatically, see `pause_reason`; set `enabled=true` to resume. `paused_by_user`: switched off by a person and never resumed automatically.* `active` - Active* `pending_pause` - Pending pause* `paused_by_system` - Paused by system* `paused_by_user` - Paused by user&quot;
+    /// Lifecycle status. `active`: runs on its schedule. `pending_pause`: still running, but flagged by the system to pause soon unless something changes (any config edit clears it). `paused_by_system`: paused automatically, see `pause_reason`; set `enabled=true` to resume. `paused_by_user`: switched off by a person and never resumed automatically.* `active` - Active* `pending_pause` - Pending pause* `paused_by_system` - Paused by system* `paused_by_user` - Paused by user
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SignalScoutConfigStatus : IAdditionalDataHolder, IParsable
@@ -16,7 +16,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `active` - Active* `pending_pause` - Pending pause* `paused_by_system` - Paused by system* `paused_by_user` - Paused by user</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutConfigStatusEnum? Value { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigStatusEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigStatus"/> and sets the default values.
         /// </summary>
@@ -42,7 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "value", n => { Value = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutConfigStatusEnum>(); } },
+                { "value", n => { Value = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigStatusEnum>(); } },
             };
         }
         /// <summary>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutConfigStatusEnum>("value", Value);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigStatusEnum>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

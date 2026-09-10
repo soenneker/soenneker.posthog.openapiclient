@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;List of delivery targets. Each entry is either {type: &apos;email&apos;, value: &apos;user@example.com&apos;} or {type: &apos;slack&apos;, integration_id: &lt;int&gt;, channel: &apos;&lt;channel&gt;&apos;}. Slack integration_id must belong to this team.&quot;
+    /// List of delivery targets. Each entry is either {type: &apos;email&apos;, value: &apos;user@example.com&apos;} or {type: &apos;slack&apos;, integration_id: &lt;int&gt;, channel: &apos;&lt;channel&gt;&apos;}. Slack integration_id must belong to this team.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedEvaluationReportUpdateDeliveryTargets : IAdditionalDataHolder, IParsable

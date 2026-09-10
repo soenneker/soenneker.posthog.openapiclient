@@ -8,20 +8,22 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Writable canvas fields: metadata only — source changes go through publish/edit.&quot;
+    /// Writable canvas fields: metadata only — source changes go through publish/edit.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedCanvasUpdate : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Updated author context markdown.</summary>
+        /// <summary>Id of the space the canvas belongs to.</summary>
+        public Guid? ChannelId { get; set; }
+        /// <summary>Updated canvas description (for components, the store-search text).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Context { get; set; }
+        public string? Description { get; set; }
 #nullable restore
 #else
-        public string Context { get; set; }
+        public string Description { get; set; }
 #endif
         /// <summary>Task currently generating this canvas, or null to clear it.</summary>
         public Guid? GenerationTaskId { get; set; }
@@ -60,7 +62,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "context", n => { Context = n.GetStringValue(); } },
+                { "channel_id", n => { ChannelId = n.GetGuidValue(); } },
+                { "description", n => { Description = n.GetStringValue(); } },
                 { "generation_task_id", n => { GenerationTaskId = n.GetGuidValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "pinned", n => { Pinned = n.GetBoolValue(); } },
@@ -73,7 +76,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("context", Context);
+            writer.WriteGuidValue("channel_id", ChannelId);
+            writer.WriteStringValue("description", Description);
             writer.WriteGuidValue("generation_task_id", GenerationTaskId);
             writer.WriteStringValue("name", Name);
             writer.WriteBoolValue("pinned", Pinned);

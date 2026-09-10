@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Ticket status: new, open, pending, on_hold, or resolved* `new` - New* `open` - Open* `pending` - Pending* `on_hold` - On hold* `resolved` - Resolved&quot;
+    /// Ticket status: new, open, pending, on_hold, or resolved* `new` - New* `open` - Open* `pending` - Pending* `on_hold` - On hold* `resolved` - Resolved
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TicketStatus : IAdditionalDataHolder, IParsable

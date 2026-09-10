@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Optional structured metadata for special artifact types, such as skill bundles.
+    /// Skill bundle metadata, required when the artifact type is skill_bundle.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TaskRunArtifactUploadMetadata : IAdditionalDataHolder, IParsable
@@ -18,10 +18,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Archive format used for the local skill bundle.* `zip` - zip</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactMetadataBundleFormat? BundleFormat { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSkillBundleMetadataBundleFormat? BundleFormat { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactMetadataBundleFormat BundleFormat { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSkillBundleMetadataBundleFormat BundleFormat { get; set; }
 #endif
         /// <summary>SHA-256 hex digest of the uploaded skill bundle bytes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -44,10 +44,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Local source for the uploaded skill bundle, such as user or repo.* `user` - user* `repo` - repo* `marketplace` - marketplace* `codex` - codex</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactMetadataSkillSource? SkillSource { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSkillBundleMetadataSkillSource? SkillSource { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactMetadataSkillSource SkillSource { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSkillBundleMetadataSkillSource SkillSource { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactUploadMetadata"/> and sets the default values.
@@ -74,11 +74,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "bundle_format", n => { BundleFormat = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactMetadataBundleFormat>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactMetadataBundleFormat.CreateFromDiscriminatorValue); } },
+                { "bundle_format", n => { BundleFormat = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSkillBundleMetadataBundleFormat>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSkillBundleMetadataBundleFormat.CreateFromDiscriminatorValue); } },
                 { "content_sha256", n => { ContentSha256 = n.GetStringValue(); } },
                 { "schema_version", n => { SchemaVersion = n.GetIntValue(); } },
                 { "skill_name", n => { SkillName = n.GetStringValue(); } },
-                { "skill_source", n => { SkillSource = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactMetadataSkillSource>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactMetadataSkillSource.CreateFromDiscriminatorValue); } },
+                { "skill_source", n => { SkillSource = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSkillBundleMetadataSkillSource>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSkillBundleMetadataSkillSource.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -88,11 +88,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactMetadataBundleFormat>("bundle_format", BundleFormat);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSkillBundleMetadataBundleFormat>("bundle_format", BundleFormat);
             writer.WriteStringValue("content_sha256", ContentSha256);
             writer.WriteIntValue("schema_version", SchemaVersion);
             writer.WriteStringValue("skill_name", SkillName);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactMetadataSkillSource>("skill_source", SkillSource);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSkillBundleMetadataSkillSource>("skill_source", SkillSource);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

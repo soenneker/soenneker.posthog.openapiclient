@@ -23,18 +23,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Agent that made the call, if any. Null for member calls.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpAuditEventActorServiceAccount? ActorServiceAccount { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AuditActorServiceAccount? ActorServiceAccount { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpAuditEventActorServiceAccount ActorServiceAccount { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AuditActorServiceAccount ActorServiceAccount { get; private set; }
 #endif
         /// <summary>Member who made the call, if any.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpAuditEventActorUser? ActorUser { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? ActorUser { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpAuditEventActorUser ActorUser { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic ActorUser { get; private set; }
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -43,10 +43,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Member whose connection an agent call used. Null for member calls and for owners whose account has since been deleted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpAuditEventCredentialOwner? CredentialOwner { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CredentialOwner { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpAuditEventCredentialOwner CredentialOwner { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CredentialOwner { get; private set; }
 #endif
         /// <summary>How the gateway decided the call.* `auto` - Auto-approved* `approved` - Approved* `pending` - Awaiting approval* `blocked` - Blocked</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -108,10 +108,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "actor_label", n => { ActorLabel = n.GetStringValue(); } },
-                { "actor_service_account", n => { ActorServiceAccount = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpAuditEventActorServiceAccount>(global::Soenneker.PostHog.OpenApiClient.Models.McpAuditEventActorServiceAccount.CreateFromDiscriminatorValue); } },
-                { "actor_user", n => { ActorUser = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpAuditEventActorUser>(global::Soenneker.PostHog.OpenApiClient.Models.McpAuditEventActorUser.CreateFromDiscriminatorValue); } },
+                { "actor_service_account", n => { ActorServiceAccount = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AuditActorServiceAccount>(global::Soenneker.PostHog.OpenApiClient.Models.AuditActorServiceAccount.CreateFromDiscriminatorValue); } },
+                { "actor_user", n => { ActorUser = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "credential_owner", n => { CredentialOwner = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpAuditEventCredentialOwner>(global::Soenneker.PostHog.OpenApiClient.Models.McpAuditEventCredentialOwner.CreateFromDiscriminatorValue); } },
+                { "credential_owner", n => { CredentialOwner = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
                 { "decision", n => { Decision = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpAuditEventDecision>(global::Soenneker.PostHog.OpenApiClient.Models.McpAuditEventDecision.CreateFromDiscriminatorValue); } },
                 { "grant_scope", n => { GrantScope = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpAuditEventGrantScope>(global::Soenneker.PostHog.OpenApiClient.Models.McpAuditEventGrantScope.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },

@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;absent: no credential yet. exists: one already exists (no token returned). created: a new credential was just minted. rotated: the existing credential was rolled.* `absent` - absent* `exists` - exists* `created` - created* `rotated` - rotated&quot;
+    /// absent: no credential yet. exists: one already exists (no token returned). created: a new credential was just minted. rotated: the existing credential was rolled.* `absent` - absent* `exists` - exists* `created` - created* `rotated` - rotated
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class LlmSkillMarketplaceCommandStatus : IAdditionalDataHolder, IParsable

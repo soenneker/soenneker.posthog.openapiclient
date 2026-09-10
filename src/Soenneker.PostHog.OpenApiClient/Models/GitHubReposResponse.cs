@@ -24,6 +24,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.GitHubRepo> Repositories { get; set; }
 #endif
+        /// <summary>Total number of repositories matching the search query, across all pages.</summary>
+        public int? Total { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.GitHubReposResponse"/> and sets the default values.
         /// </summary>
@@ -51,6 +53,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "has_more", n => { HasMore = n.GetBoolValue(); } },
                 { "repositories", n => { Repositories = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GitHubRepo>(global::Soenneker.PostHog.OpenApiClient.Models.GitHubRepo.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "total", n => { Total = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -62,6 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("has_more", HasMore);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GitHubRepo>("repositories", Repositories);
+            writer.WriteIntValue("total", Total);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -16,7 +16,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether reviews exist beyond this page — drives the list&apos;s &quot;Show more&quot; button.</summary>
         public bool? HasMore { get; set; }
-        /// <summary>&quot;The scoped reviews: in-progress runs first, then completed newest first.&quot;</summary>
+        /// <summary>The scoped reviews: in-progress runs first, then completed newest first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRecentReview>? Results { get; set; }

@@ -36,6 +36,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The end_time property</summary>
         public DateTimeOffset? EndTime { get; private set; }
+        /// <summary>Number of captured rrweb events in the recording. Only populated when the recording&apos;s metadata is loaded, e.g. on retrieve; null in list responses.</summary>
+        public int? EventCount { get; private set; }
         /// <summary>The expiry_time property</summary>
         public DateTimeOffset? ExpiryTime { get; private set; }
         /// <summary>Load external references (linked issues) for this recording</summary>
@@ -104,6 +106,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string StartUrl { get; private set; }
 #endif
+        /// <summary>Total stored size of the recording&apos;s snapshot data in bytes. Only populated when the recording&apos;s metadata is loaded, e.g. on retrieve; null in list responses.</summary>
+        public int? TotalSize { get; private set; }
         /// <summary>The viewed property</summary>
         public bool? Viewed { get; private set; }
         /// <summary>The viewers property</summary>
@@ -147,6 +151,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "console_warn_count", n => { ConsoleWarnCount = n.GetIntValue(); } },
                 { "distinct_id", n => { DistinctId = n.GetStringValue(); } },
                 { "end_time", n => { EndTime = n.GetDateTimeOffsetValue(); } },
+                { "event_count", n => { EventCount = n.GetIntValue(); } },
                 { "expiry_time", n => { ExpiryTime = n.GetDateTimeOffsetValue(); } },
                 { "external_references", n => { ExternalReferences = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSessionRecordingExternalReferencesItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedSessionRecordingExternalReferencesItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
@@ -163,6 +168,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "snapshot_source", n => { SnapshotSource = n.GetStringValue(); } },
                 { "start_time", n => { StartTime = n.GetDateTimeOffsetValue(); } },
                 { "start_url", n => { StartUrl = n.GetStringValue(); } },
+                { "total_size", n => { TotalSize = n.GetIntValue(); } },
                 { "viewed", n => { Viewed = n.GetBoolValue(); } },
                 { "viewers", n => { Viewers = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };

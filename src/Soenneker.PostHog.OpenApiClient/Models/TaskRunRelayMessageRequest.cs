@@ -38,6 +38,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> TextParts { get; set; }
 #endif
+        /// <summary>AI observability trace id of the turn that wrote this answer, when the sandbox reported one.</summary>
+        public Guid? TraceId { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunRelayMessageRequest"/> and sets the default values.
         /// </summary>
@@ -66,6 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "message_id", n => { MessageId = n.GetStringValue(); } },
                 { "text", n => { Text = n.GetStringValue(); } },
                 { "text_parts", n => { TextParts = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "trace_id", n => { TraceId = n.GetGuidValue(); } },
             };
         }
         /// <summary>
@@ -78,6 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("message_id", MessageId);
             writer.WriteStringValue("text", Text);
             writer.WriteCollectionOfPrimitiveValues<string>("text_parts", TextParts);
+            writer.WriteGuidValue("trace_id", TraceId);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

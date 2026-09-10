@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>&quot;JSON type inferred from the first non-null value: string, integer, number, boolean, object, array, or null.&quot;</summary>
+        /// <summary>JSON type inferred from the first non-null value: string, integer, number, boolean, object, array, or null.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Type { get; set; }

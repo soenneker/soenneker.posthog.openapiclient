@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Where the attribute lives: &apos;resource&apos; = per-target resource attributes (k8s.pod.name, service.version), &apos;attribute&apos; = per-datapoint attributes (http.method, path), &apos;auto&apos; = resource first with per-datapoint fallback. Use &apos;auto&apos; unless you know the exact scope.* `resource` - resource* `attribute` - attribute* `auto` - auto&quot;
+    /// Where the attribute lives: &apos;resource&apos; = per-target resource attributes (k8s.pod.name, service.version), &apos;attribute&apos; = per-datapoint attributes (http.method, path), &apos;auto&apos; = resource first with per-datapoint fallback. Use &apos;auto&apos; unless you know the exact scope.* `resource` - resource* `attribute` - attribute* `auto` - auto
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class MetricFilterScope : IAdditionalDataHolder, IParsable

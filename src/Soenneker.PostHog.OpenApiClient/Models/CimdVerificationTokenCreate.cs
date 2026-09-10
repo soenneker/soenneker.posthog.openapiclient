@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Write shape for `create`. `cimd_url` is required and non-null: only tokensissued before URL binding existed are nullable, not new ones.&quot;
+    /// Write shape for `create`. `cimd_url` is required and non-null: only tokensissued before URL binding existed are nullable, not new ones.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CimdVerificationTokenCreate : IAdditionalDataHolder, IParsable

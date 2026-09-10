@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Request body for binding a GitHub App installation to the current team.Always requires the user-to-server OAuth ``code`` (the ownership proof) and the ``state`` token.``installation_id`` is optional: when present (the fresh-install redirect) exactly that installationis verified and synced; when absent or blank (the authorize-first redirect) the caller&apos;s accessibleinstallations are discovered server-side from the code, so the client never has to supply aforgeable id.&quot;
+    /// Request body for binding a GitHub App installation to the current team.Always requires the user-to-server OAuth ``code`` (the ownership proof) and the ``state`` token.``installation_id`` is optional: when present (the fresh-install redirect) exactly that installationis verified and synced; when absent or blank (the authorize-first redirect) the caller&apos;s accessibleinstallations are discovered server-side from the code, so the client never has to supply aforgeable id.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class StamphogSyncInstallationRequest : IAdditionalDataHolder, IParsable
@@ -23,7 +23,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Code { get; set; }
 #endif
-        /// <summary>&quot;GitHub App installation ID from the fresh-install Setup URL redirect. Optional: absent or blank means discover the caller&apos;s installations from the OAuth code instead (authorize-first flow). The id is not trusted on its own — ownership is always proven via the code.&quot;</summary>
+        /// <summary>GitHub App installation ID from the fresh-install Setup URL redirect. Optional: absent or blank means discover the caller&apos;s installations from the OAuth code instead (authorize-first flow). The id is not trusted on its own — ownership is always proven via the code.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? InstallationId { get; set; }

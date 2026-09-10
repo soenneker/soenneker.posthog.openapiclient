@@ -85,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Sessions.Late
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class LatestRequestBuilderGetQueryParameters 
         {
-            /// <summary>Filter to a single skill within the workflow (e.g. &apos;nextjs&apos;).</summary>
+            /// <summary>Optional skill within the workflow.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("skill_id")]
@@ -95,7 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Sessions.Late
             [QueryParameter("skill_id")]
             public string SkillId { get; set; }
 #endif
-            /// <summary>Filter to a single workflow (e.g. &apos;posthog-integration&apos;).</summary>
+            /// <summary>Workflow to inspect.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("workflow_id")]

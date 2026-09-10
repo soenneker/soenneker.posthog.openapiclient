@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Deprecated — always returns `{items: [], truncated: false}`. Trace IDs are opaque strings that aren&apos;t actionable in the UI. Kept in the response shape so existing consumers don&apos;t crash; remove your rendering of this field and we&apos;ll drop it from the response entirely in a follow-up.&quot;
+    /// Deprecated — always returns `{items: [], truncated: false}`. Trace IDs are opaque strings that aren&apos;t actionable in the UI. Kept in the response shape so existing consumers don&apos;t crash; remove your rendering of this field and we&apos;ll drop it from the response entirely in a follow-up.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PersonalSpendAnalysisResponseTopTraces : IAdditionalDataHolder, IParsable

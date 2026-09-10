@@ -35,7 +35,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string MetricUuid { get; set; }
 #endif
-        /// <summary>&quot;Which of the metric&apos;s sources fired, so a hit reads as &apos;step 2 of 3&apos; or &apos;the start event of a retention metric&apos; rather than an unqualified &apos;this metric happened&apos;. Sources with no matching event are omitted, as is the whole breakdown for metrics beyond the scan&apos;s aggregate ceiling. A retention metric whose start and completion are the same event contributes only the start source: the completion would match the identical events and render a duplicate.&quot;</summary>
+        /// <summary>Which of the metric&apos;s sources fired, so a hit reads as &apos;step 2 of 3&apos; or &apos;the start event of a retention metric&apos; rather than an unqualified &apos;this metric happened&apos;. Sources with no matching event are omitted, as is the whole breakdown for metrics beyond the scan&apos;s aggregate ceiling. A retention metric whose start and completion are the same event contributes only the start source: the completion would match the identical events and render a duplicate.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionMetricSourceHit>? Sources { get; set; }

@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;JSON object with model parameters or any agent configuration to store with this version. If omitted, the current version&apos;s config is carried forward; pass null to clear it. Can be combined with either prompt or edits. Don&apos;t store secrets here: config is returned to anyone who can read the prompt.&quot;
+    /// JSON object with model parameters or any agent configuration to store with this version. If omitted, the current version&apos;s config is carried forward; pass null to clear it. Can be combined with either prompt or edits. Don&apos;t store secrets here: config is returned to anyone who can read the prompt.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedLlmPromptPublishConfigProperty : IAdditionalDataHolder, IParsable

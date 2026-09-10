@@ -12,6 +12,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.End;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Flag_cleanup_target;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Flag_cleanup_task;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Freeze_exposure;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.In_session_exposure;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Launch;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Metrics_recalculation;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Pause;
@@ -82,6 +83,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Freeze_exposure.Freeze_exposureRequestBuilder Freeze_exposure
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Freeze_exposure.Freeze_exposureRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The in_session_exposure property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.In_session_exposure.In_session_exposureRequestBuilder In_session_exposure
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.In_session_exposure.In_session_exposureRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The launch property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Launch.LaunchRequestBuilder Launch
@@ -162,19 +168,20 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item
         /// <summary>
         /// Hard delete of this model is not allowed. Use a patch API call to set &quot;deleted&quot; to true
         /// </summary>
+        /// <returns>A <see cref="Stream"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Stream?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Stream> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Retrieve a single experiment by ID, including its current status, metrics, feature flag, and results metadata.
@@ -250,7 +257,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item
 #endif
             var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <summary>

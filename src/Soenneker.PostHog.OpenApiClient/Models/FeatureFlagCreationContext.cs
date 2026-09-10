@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Indicates the origin product of the feature flag. Choices: &apos;feature_flags&apos;, &apos;experiments&apos;, &apos;surveys&apos;, &apos;early_access_features&apos;, &apos;web_experiments&apos;, &apos;product_tours&apos;.* `feature_flags` - feature_flags* `experiments` - experiments* `surveys` - surveys* `early_access_features` - early_access_features* `web_experiments` - web_experiments* `product_tours` - product_tours&quot;
+    /// Indicates the origin product of the feature flag. Choices: &apos;feature_flags&apos;, &apos;experiments&apos;, &apos;surveys&apos;, &apos;early_access_features&apos;, &apos;web_experiments&apos;, &apos;product_tours&apos;.* `feature_flags` - feature_flags* `experiments` - experiments* `surveys` - surveys* `early_access_features` - early_access_features* `web_experiments` - web_experiments* `product_tours` - product_tours
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class FeatureFlagCreationContext : IAdditionalDataHolder, IParsable

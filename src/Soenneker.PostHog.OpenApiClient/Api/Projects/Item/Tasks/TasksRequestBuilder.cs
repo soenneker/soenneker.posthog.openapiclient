@@ -4,9 +4,12 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Active_wizard_run;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Config;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Me;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.ModelsRequests;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Pinned;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Repo_routing_rules;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Repositories;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Repository_readiness;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Search;
@@ -32,6 +35,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Active_wizard_run.Active_wizard_runRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The config property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Config.ConfigRequestBuilder Config
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Config.ConfigRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The Me property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Me.MeRequestBuilder Me
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Me.MeRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The models property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.ModelsRequests.ModelsRequestBuilder Models
         {
@@ -41,6 +54,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Pinned.PinnedRequestBuilder Pinned
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Pinned.PinnedRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The repo_routing_rules property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Repo_routing_rules.Repo_routing_rulesRequestBuilder Repo_routing_rules
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Repo_routing_rules.Repo_routing_rulesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The repositories property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Repositories.RepositoriesRequestBuilder Repositories
@@ -89,7 +107,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TasksRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/tasks{?all_team_tasks*,archived*,channel*,created_by*,internal*,limit*,offset*,organization*,origin_product*,repository*,search*,stage*,status*}", pathParameters)
+        public TasksRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/tasks{?all_team_tasks*,archived*,basic*,channel*,ci_status*,commented_by*,created_by*,exclude_origin_product*,hog_flow_id*,internal*,limit*,mentions*,offset*,ordering*,organization*,origin_product*,pinned*,pr_state*,repository*,search*,stage*,status*}", pathParameters)
         {
         }
         /// <summary>
@@ -97,35 +115,38 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TasksRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/tasks{?all_team_tasks*,archived*,channel*,created_by*,internal*,limit*,offset*,organization*,origin_product*,repository*,search*,stage*,status*}", rawUrl)
+        public TasksRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/tasks{?all_team_tasks*,archived*,basic*,channel*,ci_status*,commented_by*,created_by*,exclude_origin_product*,hog_flow_id*,internal*,limit*,mentions*,offset*,ordering*,organization*,origin_product*,pinned*,pr_state*,repository*,search*,stage*,status*}", rawUrl)
         {
         }
         /// <summary>
-        /// Get a list of tasks for the current project, with optional filtering by origin product, stage, organization, repository, and created_by.
+        /// Get a list of tasks for the current project, with optional filtering by origin product, stage, organization, repository, created_by, and the workflow (hog_flow_id) that created the task. By default, each row includes description. Pass basic=true for a summary row that omits description and includes description_preview, its first 1000 characters. Use the search parameter to match description text server-side.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedTaskDetailDtoList"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedTaskListItemList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedTaskDetailDtoList?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.TasksRequestBuilder.TasksRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedTaskListItemList?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.TasksRequestBuilder.TasksRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedTaskDetailDtoList> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.TasksRequestBuilder.TasksRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedTaskListItemList> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.TasksRequestBuilder.TasksRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedTaskDetailDtoList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedTaskDetailDtoList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedTaskListItemList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedTaskListItemList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// API for managing tasks within a project. Tasks represent units of work to be performed by an agent.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskDetailDto"/></returns>
-        /// <param name="body">Request body for creating or updating a task.Field required/default semantics match the ``Task`` model. The view passes``validated_data`` (integration/report PK fields already resolved to instances) to thefacade ``create_task`` / ``update_task`` functions.</param>
+        /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponse">When receiving a 402 status code</exception>
+        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponse">When receiving a 403 status code</exception>
         /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponse">When receiving a 429 status code</exception>
+        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponse">When receiving a 503 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.PostHog.OpenApiClient.Models.TaskDetailDto?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.TaskCreate body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -139,12 +160,15 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
+                { "402", global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponse.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponse.CreateFromDiscriminatorValue },
                 { "429", global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponse.CreateFromDiscriminatorValue },
+                { "503", global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponse.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.TaskDetailDto>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.TaskDetailDto.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Get a list of tasks for the current project, with optional filtering by origin product, stage, organization, repository, and created_by.
+        /// Get a list of tasks for the current project, with optional filtering by origin product, stage, organization, repository, created_by, and the workflow (hog_flow_id) that created the task. By default, each row includes description. Pass basic=true for a summary row that omits description and includes description_preview, its first 1000 characters. Use the search parameter to match description text server-side.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -166,7 +190,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks
         /// API for managing tasks within a project. Tasks represent units of work to be performed by an agent.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">Request body for creating or updating a task.Field required/default semantics match the ``Task`` model. The view passes``validated_data`` (integration/report PK fields already resolved to instances) to thefacade ``create_task`` / ``update_task`` functions.</param>
+        /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -194,7 +218,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.TasksRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Get a list of tasks for the current project, with optional filtering by origin product, stage, organization, repository, and created_by.
+        /// Get a list of tasks for the current project, with optional filtering by origin product, stage, organization, repository, created_by, and the workflow (hog_flow_id) that created the task. By default, each row includes description. Pass basic=true for a summary row that omits description and includes description_preview, its first 1000 characters. Use the search parameter to match description text server-side.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class TasksRequestBuilderGetQueryParameters 
@@ -205,21 +229,42 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks
             /// <summary>Filter by archived state. Defaults to excluding archived tasks. Use &apos;true&apos; to list only archived tasks, &apos;false&apos; for the default, or &apos;all&apos; to include both.* `true` - true* `false` - false* `all` - all</summary>
             [QueryParameter("archived")]
             public global::Soenneker.PostHog.OpenApiClient.Models.TasksListArchivedParameter? Archived { get; set; }
+            /// <summary>With true, return basic list rows for summary surfaces: each row omits the full description and includes description_preview, its first 1000 characters. Defaults to false, which returns full task rows with description. The search parameter still matches description text server-side.</summary>
+            [QueryParameter("basic")]
+            public bool? Basic { get; set; }
             /// <summary>Filter tasks to a channel&apos;s feed.</summary>
             [QueryParameter("channel")]
             public Guid? Channel { get; set; }
+            /// <summary>Filter tasks by the CI check rollup on their most recent run&apos;s pull request, as last observed from GitHub. &apos;none&apos; means the PR has no checks.* `passing` - passing* `failing` - failing* `pending` - pending* `none` - none</summary>
+            [QueryParameter("ci_status")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.TasksListCiStatusParameter? CiStatus { get; set; }
+            /// <summary>Filter to tasks carrying a thread comment written by this user ID.</summary>
+            [QueryParameter("commented_by")]
+            public int? CommentedBy { get; set; }
             /// <summary>Filter by creator user ID</summary>
             [QueryParameter("created_by")]
             public int? CreatedBy { get; set; }
+            /// <summary>Exclude tasks with this origin product from the results* `onboarding` - Onboarding* `error_tracking` - Error Tracking* `eval_clusters` - Eval Clusters* `user_created` - User Created* `slack` - Slack* `support_queue` - Support Queue* `session_summaries` - Session Summaries* `posthog_ai` - PostHog AI* `experiments` - Experiments* `signal_report` - Signal Report* `signals_scout` - Signals Scout* `scout_suggestions` - Signals Scout Suggestions* `support_reply` - Support Reply* `hogdesk` - HogDesk* `review_hog` - ReviewHog* `image_builder` - Image Builder* `loop` - Loop* `mcp_analytics` - MCP Analytics* `signals_chat` - Signals Chat* `task_analysis` - Task Analysis* `workflow` - Workflow</summary>
+            [QueryParameter("exclude_origin_product")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.TasksListExcludeOriginProductParameter? ExcludeOriginProduct { get; set; }
+            /// <summary>Filter tasks to the runs spawned by this workflow&apos;s &apos;Create AI task&apos; action.</summary>
+            [QueryParameter("hog_flow_id")]
+            public Guid? HogFlowId { get; set; }
             /// <summary>Filter by the internal flag, which controls whether a task is shown by default, not whether it is accessible. Defaults to excluding internal tasks. Use &apos;all&apos; to include both internal and user-facing tasks, or &apos;true&apos; to list only internal tasks. All values are available to any team member; access stays governed by task visibility.* `true` - true* `false` - false* `all` - all</summary>
             [QueryParameter("internal")]
             public global::Soenneker.PostHog.OpenApiClient.Models.TasksListInternalParameter? Internal { get; set; }
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
+            /// <summary>Filter to tasks whose thread mentions this user ID.</summary>
+            [QueryParameter("mentions")]
+            public int? Mentions { get; set; }
             /// <summary>The initial index from which to return the results.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
+            /// <summary>Sort order. &apos;-last_activity_at&apos; is newest activity first, where activity means a thread message or a run starting, streaming, or finishing. Defaults to &apos;-created_at&apos;.* `-created_at` - -created_at* `-last_activity_at` - -last_activity_at</summary>
+            [QueryParameter("ordering")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.TasksListOrderingParameter? Ordering { get; set; }
             /// <summary>Filter by repository organization</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -240,6 +285,12 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks
             [QueryParameter("origin_product")]
             public string OriginProduct { get; set; }
 #endif
+            /// <summary>With true, only tasks the requesting user has pinned.</summary>
+            [QueryParameter("pinned")]
+            public bool? Pinned { get; set; }
+            /// <summary>Filter tasks by the state of their most recent run&apos;s pull request, as last observed from GitHub (webhooks plus the CI follow-up snapshot).* `open` - open* `draft` - draft* `merged` - merged* `closed` - closed</summary>
+            [QueryParameter("pr_state")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.TasksListPrStateParameter? PrState { get; set; }
             /// <summary>Filter by repository name (can include org/repo format)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

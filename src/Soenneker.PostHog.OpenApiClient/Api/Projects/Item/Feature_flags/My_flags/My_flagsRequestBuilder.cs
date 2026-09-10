@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.My_fla
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public My_flagsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/feature_flags/my_flags{?groups*}", pathParameters)
+        public My_flagsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/feature_flags/my_flags{?flag_keys*,groups*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.My_fla
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public My_flagsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/feature_flags/my_flags{?groups*}", rawUrl)
+        public My_flagsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/feature_flags/my_flags{?flag_keys*,groups*}", rawUrl)
         {
         }
         /// <summary>
@@ -86,6 +86,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.My_fla
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class My_flagsRequestBuilderGetQueryParameters 
         {
+            /// <summary>Optional list of flag keys to scope the response to. When omitted, every flag in the project is returned with its evaluated value, which can be a very large payload on projects with many flags. Pass the specific flag(s) you want to check to keep the response small. Accepts either repeated query params (flag_keys=a&amp;flag_keys=b) or a JSON array string (flag_keys=[&quot;a&quot;,&quot;b&quot;]).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("flag_keys")]
+            public string[]? FlagKeys { get; set; }
+#nullable restore
+#else
+            [QueryParameter("flag_keys")]
+            public string[] FlagKeys { get; set; }
+#endif
             /// <summary>Groups for feature flag evaluation (JSON object string)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

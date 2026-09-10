@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Recipient-consent enforcement for open/click tracking on marketing workflow emails. &apos;off&apos;: no enforcement, tracking follows each email step&apos;s own setting. &apos;opt_out&apos;: track by default but not recipients who have opted out. &apos;opt_in&apos;: only track recipients who have explicitly opted in. Transactional emails are exempt from consent enforcement.* `off` - Off* `opt_out` - Opt Out* `opt_in` - Opt In&quot;
+    /// Recipient-consent enforcement for open/click tracking on marketing workflow emails. &apos;off&apos;: no enforcement, tracking follows each email step&apos;s own setting. &apos;opt_out&apos;: track by default but not recipients who have opted out. &apos;opt_in&apos;: only track recipients who have explicitly opted in. Transactional emails are exempt from consent enforcement.* `off` - Off* `opt_out` - Opt Out* `opt_in` - Opt In
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TeamWorkflowsConfigEmailTrackingConsentMode : IAdditionalDataHolder, IParsable

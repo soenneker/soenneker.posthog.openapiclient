@@ -28,7 +28,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Number of reports whose transition was not allowed.</summary>
         public int? SkippedCount { get; set; }
-        /// <summary>Number of reports whose state was changed.</summary>
+        /// <summary>Number of reports the call accepted. A report that already had the requested state counts here too, because a repeat dismiss or resolve still records its feedback.</summary>
         public int? TransitionedCount { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportBulkStateResponse"/> and sets the default values.

@@ -79,8 +79,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Actions.Item.Referen
         public partial class ReferencesRequestBuilderGetQueryParameters 
         #pragma warning restore CS1591
         {
+            #pragma warning disable CS1591
             [QueryParameter("format")]
             public global::Soenneker.PostHog.OpenApiClient.Models.ActionsReferencesListFormatParameter? Format { get; set; }
+            #pragma warning restore CS1591
         }
     }
 }

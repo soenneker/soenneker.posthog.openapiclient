@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Which usage limit was hit on a rate_limited error: &apos;burst&apos; (daily) or &apos;sustained&apos; (monthly)* `burst` - burst* `sustained` - sustained&quot;
+    /// Which usage limit was hit on a rate_limited error: &apos;burst&apos; (daily) or &apos;sustained&apos; (monthly)* `burst` - burst* `sustained` - sustained
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TaskRunErrorResponseLimitType : IAdditionalDataHolder, IParsable

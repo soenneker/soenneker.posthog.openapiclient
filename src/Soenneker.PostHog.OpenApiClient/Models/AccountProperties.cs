@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Typed account properties: external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link, metabase_link) plus touchpoint matching lists: email_domains (the company&apos;s email domains) and known_emails (individual addresses pinned to the account). Defaults to an empty object. Unknown keys are rejected. User assignments live on account relationships, not here.&quot;
+    /// Typed account properties: website_domain, external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link, metabase_link), and touchpoint matching lists: email_domains (the company&apos;s email domains) and known_emails (individual addresses pinned to the account). Defaults to an empty object. Unknown keys are rejected. User assignments live on account relationships, not here.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AccountProperties : IParsable
@@ -85,6 +85,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string UsageDashboardLink { get; set; }
 #endif
+        /// <summary>Primary company website hostname used for account identity and logo lookup.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? WebsiteDomain { get; set; }
+#nullable restore
+#else
+        public string WebsiteDomain { get; set; }
+#endif
         /// <summary>The zendesk_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -120,6 +128,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "slack_channel_id", n => { SlackChannelId = n.GetStringValue(); } },
                 { "stripe_customer_id", n => { StripeCustomerId = n.GetStringValue(); } },
                 { "usage_dashboard_link", n => { UsageDashboardLink = n.GetStringValue(); } },
+                { "website_domain", n => { WebsiteDomain = n.GetStringValue(); } },
                 { "zendesk_id", n => { ZendeskId = n.GetStringValue(); } },
             };
         }
@@ -139,6 +148,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("slack_channel_id", SlackChannelId);
             writer.WriteStringValue("stripe_customer_id", StripeCustomerId);
             writer.WriteStringValue("usage_dashboard_link", UsageDashboardLink);
+            writer.WriteStringValue("website_domain", WebsiteDomain);
             writer.WriteStringValue("zendesk_id", ZendeskId);
         }
     }

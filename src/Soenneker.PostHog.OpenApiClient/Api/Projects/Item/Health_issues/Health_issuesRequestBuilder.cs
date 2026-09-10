@@ -129,7 +129,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Health_issues
             /// <summary>The initial index from which to return the results.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
-            /// <summary>&quot;Only return issues with this severity. One of: &apos;critical&apos;, &apos;warning&apos;, &apos;info&apos;.&quot;</summary>
+            /// <summary>Only return issues with this severity. One of: &apos;critical&apos;, &apos;warning&apos;, &apos;info&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("severity")]
@@ -139,7 +139,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Health_issues
             [QueryParameter("severity")]
             public string Severity { get; set; }
 #endif
-            /// <summary>&quot;Only return issues with this status. One of: &apos;active&apos;, &apos;resolved&apos;.&quot;</summary>
+            /// <summary>Only return issues with this status. One of: &apos;active&apos;, &apos;resolved&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("status")]

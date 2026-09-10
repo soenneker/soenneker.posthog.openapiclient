@@ -8,15 +8,15 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Request field represented by this change.* `status` - Status* `priority` - Priority* `account` - Account* `product_areas` - Product areas
+    /// Request field represented by this change.* `status` - Status* `priority` - Priority* `account` - Account* `accounts` - Accounts* `evidence` - Evidence* `product_areas` - Product areas
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class FeatureRequestHistoryChangeField : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `status` - Status* `priority` - Priority* `account` - Account* `product_areas` - Product areas</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.FieldEnum? Value { get; set; }
+        /// <summary>* `status` - Status* `priority` - Priority* `account` - Account* `accounts` - Accounts* `evidence` - Evidence* `product_areas` - Product areas</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeFieldEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeField"/> and sets the default values.
         /// </summary>
@@ -42,7 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "value", n => { Value = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FieldEnum>(); } },
+                { "value", n => { Value = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeFieldEnum>(); } },
             };
         }
         /// <summary>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FieldEnum>("value", Value);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeFieldEnum>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -14,6 +14,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Extra binary files to ship next to app.py, keyed by project-relative path (for example &apos;data/events.parquet&apos;), each as standard base64 text.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.CreateVersionFromSourceInputAssetsProperty? Assets { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.CreateVersionFromSourceInputAssetsProperty Assets { get; set; }
+#endif
+        /// <summary>Extra text files to ship next to app.py, keyed by project-relative path (for example &apos;utils.py&apos; or &apos;data/config.json&apos;), each as plain text (max 1 MB).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.CreateVersionFromSourceInputFilesProperty? Files { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.CreateVersionFromSourceInputFilesProperty Files { get; set; }
+#endif
         /// <summary>Full Python source for the Streamlit app&apos;s root app.py file, as free text (max 1 MB). Becomes a new version and is set as the active version.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -47,6 +63,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "assets", n => { Assets = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateVersionFromSourceInputAssetsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.CreateVersionFromSourceInputAssetsProperty.CreateFromDiscriminatorValue); } },
+                { "files", n => { Files = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateVersionFromSourceInputFilesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.CreateVersionFromSourceInputFilesProperty.CreateFromDiscriminatorValue); } },
                 { "source", n => { Source = n.GetStringValue(); } },
             };
         }
@@ -57,6 +75,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateVersionFromSourceInputAssetsProperty>("assets", Assets);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateVersionFromSourceInputFilesProperty>("files", Files);
             writer.WriteStringValue("source", Source);
             writer.WriteAdditionalData(AdditionalData);
         }

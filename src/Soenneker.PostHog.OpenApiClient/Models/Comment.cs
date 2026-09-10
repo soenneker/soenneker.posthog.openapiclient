@@ -19,10 +19,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The user who marked this task complete. Null for open tasks and non-task comments.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CommentCompletedBy? CompletedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CompletedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CommentCompletedBy CompletedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CompletedBy { get; private set; }
 #endif
         /// <summary>The content property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -37,10 +37,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CommentCreatedBy? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CommentCreatedBy CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
 #endif
         /// <summary>The deleted property</summary>
         public bool? Deleted { get; set; }
@@ -91,10 +91,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The Slack thread this comment&apos;s discussion is mirrored to, or null. Set only on a tracked thread-root comment; used to surface an &apos;Open in Slack&apos; link and hide re-sending.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CommentSlackThreadComposed? SlackThread { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CommentSlackThreadRef? SlackThread { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CommentSlackThreadComposed SlackThread { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CommentSlackThreadRef SlackThread { get; private set; }
 #endif
         /// <summary>The slug property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -135,10 +135,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "completed_at", n => { CompletedAt = n.GetDateTimeOffsetValue(); } },
-                { "completed_by", n => { CompletedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CommentCompletedBy>(global::Soenneker.PostHog.OpenApiClient.Models.CommentCompletedBy.CreateFromDiscriminatorValue); } },
+                { "completed_by", n => { CompletedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
                 { "content", n => { Content = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CommentCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.CommentCreatedBy.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "is_task", n => { IsTask = n.GetBoolValue(); } },
@@ -147,7 +147,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "mentions", n => { Mentions = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
                 { "rich_content", n => { RichContent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CommentRichContent>(global::Soenneker.PostHog.OpenApiClient.Models.CommentRichContent.CreateFromDiscriminatorValue); } },
                 { "scope", n => { Scope = n.GetStringValue(); } },
-                { "slack_thread", n => { SlackThread = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CommentSlackThreadComposed>(global::Soenneker.PostHog.OpenApiClient.Models.CommentSlackThreadComposed.CreateFromDiscriminatorValue); } },
+                { "slack_thread", n => { SlackThread = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CommentSlackThreadRef>(global::Soenneker.PostHog.OpenApiClient.Models.CommentSlackThreadRef.CreateFromDiscriminatorValue); } },
                 { "slug", n => { Slug = n.GetStringValue(); } },
                 { "source_comment", n => { SourceComment = n.GetGuidValue(); } },
                 { "version", n => { Version = n.GetIntValue(); } },

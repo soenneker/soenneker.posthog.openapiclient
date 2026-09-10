@@ -14,6 +14,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>`unavailable` when GitHub reports the App installation as uninstalled or suspended, in which case `repositories` is the last cached list rather than a fresh one.* `connected` - connected* `unavailable` - unavailable</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.GitHubReposRefreshResponseInstallationStatus? InstallationStatus { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.GitHubReposRefreshResponseInstallationStatus InstallationStatus { get; set; }
+#endif
         /// <summary>The refreshed repository cache.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -47,6 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "installation_status", n => { InstallationStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GitHubReposRefreshResponseInstallationStatus>(global::Soenneker.PostHog.OpenApiClient.Models.GitHubReposRefreshResponseInstallationStatus.CreateFromDiscriminatorValue); } },
                 { "repositories", n => { Repositories = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GitHubRepo>(global::Soenneker.PostHog.OpenApiClient.Models.GitHubRepo.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -57,6 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GitHubReposRefreshResponseInstallationStatus>("installation_status", InstallationStatus);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GitHubRepo>("repositories", Repositories);
             writer.WriteAdditionalData(AdditionalData);
         }

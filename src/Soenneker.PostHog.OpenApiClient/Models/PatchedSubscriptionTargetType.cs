@@ -8,15 +8,15 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Delivery channel: email or slack.* `email` - Email* `slack` - Slack&quot;
+    /// Delivery channel: email, slack, or teams.* `email` - Email* `slack` - Slack* `teams` - Microsoft Teams
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedSubscriptionTargetType : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `email` - Email* `slack` - Slack</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.TargetTypeEnum? Value { get; set; }
+        /// <summary>* `email` - Email* `slack` - Slack* `teams` - Microsoft Teams</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionTargetEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionTargetType"/> and sets the default values.
         /// </summary>
@@ -42,7 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "value", n => { Value = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TargetTypeEnum>(); } },
+                { "value", n => { Value = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionTargetEnum>(); } },
             };
         }
         /// <summary>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TargetTypeEnum>("value", Value);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionTargetEnum>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

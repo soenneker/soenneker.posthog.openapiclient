@@ -30,10 +30,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>URL whose heatmap data is overlaid on the screenshot (defaults to &apos;url&apos;).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DataUrl { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseDataUrl? DataUrl { get; set; }
 #nullable restore
 #else
-        public string DataUrl { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseDataUrl DataUrl { get; set; }
 #endif
         /// <summary>Soft-delete flag; deleted heatmaps are hidden from the list.</summary>
         public bool? Deleted { get; set; }
@@ -73,7 +73,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapSnapshotMetadata> Snapshots { get; private set; }
 #endif
-        /// <summary>&quot;Screenshot generation status: &apos;processing&apos;, &apos;completed&apos;, or &apos;failed&apos;.* `processing` - Processing* `completed` - Completed* `failed` - Failed&quot;</summary>
+        /// <summary>How the screenshot was captured: &apos;server&apos; (rendered headlessly via Browserless) or &apos;toolbar&apos; (captured client-side from the on-page toolbar, e.g. for pages behind a login).* `server` - Server* `toolbar` - Toolbar</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseSource? Source { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseSource Source { get; private set; }
+#endif
+        /// <summary>Screenshot generation status: &apos;processing&apos;, &apos;completed&apos;, or &apos;failed&apos;.* `processing` - Processing* `completed` - Completed* `failed` - Failed</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseStatus? Status { get; private set; }
@@ -84,12 +92,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Viewport widths (CSS pixels) the screenshot is rendered at.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseTargetWidths? TargetWidths { get; set; }
+        public List<int?>? TargetWidths { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseTargetWidths TargetWidths { get; set; }
+        public List<int?> TargetWidths { get; private set; }
 #endif
-        /// <summary>&quot;Render mode: &apos;screenshot&apos;, &apos;iframe&apos;, or &apos;recording&apos;.* `screenshot` - Screenshot* `iframe` - Iframe* `recording` - Recording&quot;</summary>
+        /// <summary>Render mode: &apos;screenshot&apos;, &apos;iframe&apos;, or &apos;recording&apos;.* `screenshot` - Screenshot* `iframe` - Iframe* `recording` - Recording</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseType? Type { get; set; }
@@ -143,7 +151,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "block_consent_modals", n => { BlockConsentModals = n.GetBoolValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseCreatedBy.CreateFromDiscriminatorValue); } },
-                { "data_url", n => { DataUrl = n.GetStringValue(); } },
+                { "data_url", n => { DataUrl = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseDataUrl>(global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseDataUrl.CreateFromDiscriminatorValue); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "exception", n => { Exception = n.GetStringValue(); } },
                 { "has_content", n => { HasContent = n.GetBoolValue(); } },
@@ -151,8 +159,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "short_id", n => { ShortId = n.GetStringValue(); } },
                 { "snapshots", n => { Snapshots = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapSnapshotMetadata>(global::Soenneker.PostHog.OpenApiClient.Models.HeatmapSnapshotMetadata.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseSource>(global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseSource.CreateFromDiscriminatorValue); } },
                 { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseStatus>(global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseStatus.CreateFromDiscriminatorValue); } },
-                { "target_widths", n => { TargetWidths = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseTargetWidths>(global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseTargetWidths.CreateFromDiscriminatorValue); } },
+                { "target_widths", n => { TargetWidths = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
                 { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseType>(global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseType.CreateFromDiscriminatorValue); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
@@ -167,10 +176,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("block_consent_modals", BlockConsentModals);
-            writer.WriteStringValue("data_url", DataUrl);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseDataUrl>("data_url", DataUrl);
             writer.WriteBoolValue("deleted", Deleted);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseTargetWidths>("target_widths", TargetWidths);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotResponseType>("type", Type);
             writer.WriteStringValue("url", Url);
             writer.WriteAdditionalData(AdditionalData);

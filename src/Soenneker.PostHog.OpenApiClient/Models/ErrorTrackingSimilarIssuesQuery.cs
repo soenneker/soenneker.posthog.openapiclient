@@ -29,13 +29,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string IssueId { get; set; }
 #endif
         /// <summary>The kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Kind { get; set; }
-#nullable restore
-#else
-        public string Kind { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSimilarIssuesQueryKind? Kind { get; set; }
         /// <summary>The limit property</summary>
         public int? Limit { get; set; }
         /// <summary>The maxDistance property</summary>
@@ -43,10 +37,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The modelName property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingModelNameWrapper? ModelName { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingModelNameWrapper2? ModelName { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingModelNameWrapper ModelName { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingModelNameWrapper2 ModelName { get; set; }
 #endif
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -104,10 +98,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>(global::Soenneker.PostHog.OpenApiClient.Models.DateRange.CreateFromDiscriminatorValue); } },
                 { "issueId", n => { IssueId = n.GetStringValue(); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSimilarIssuesQueryKind>(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
                 { "maxDistance", n => { MaxDistance = n.GetDoubleValue(); } },
-                { "modelName", n => { ModelName = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingModelNameWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingModelNameWrapper.CreateFromDiscriminatorValue); } },
+                { "modelName", n => { ModelName = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingModelNameWrapper2>(global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingModelNameWrapper2.CreateFromDiscriminatorValue); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "offset", n => { Offset = n.GetIntValue(); } },
                 { "rendering", n => { Rendering = n.GetStringValue(); } },
@@ -125,10 +119,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>("dateRange", DateRange);
             writer.WriteStringValue("issueId", IssueId);
-            writer.WriteStringValue("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSimilarIssuesQueryKind>("kind", Kind);
             writer.WriteIntValue("limit", Limit);
             writer.WriteDoubleValue("maxDistance", MaxDistance);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingModelNameWrapper>("modelName", ModelName);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingModelNameWrapper2>("modelName", ModelName);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
             writer.WriteIntValue("offset", Offset);
             writer.WriteStringValue("rendering", Rendering);

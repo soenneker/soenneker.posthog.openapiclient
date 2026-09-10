@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string CurrentActionId { get; set; }
 #endif
-        /// <summary>Test trigger payload, typically {event, person, groups}.</summary>
+        /// <summary>Test trigger payload, typically {event, person, groups}. Shape it like the trigger&apos;s real payload: an event matching the trigger filters for event triggers, or for an internal-event trigger an event named in its filters.events (e.g. $slack_message_received with Slack properties like channel, user, text, ts) and no person.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowInvocationGlobalsProperty? Globals { get; set; }

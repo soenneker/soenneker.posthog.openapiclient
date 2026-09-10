@@ -78,7 +78,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Values
         public partial class ValuesRequestBuilderGetQueryParameters 
         #pragma warning restore CS1591
         {
-            /// <summary>&quot;Type of attribute: \&quot;log\&quot; or \&quot;resource\&quot;. Defaults to \&quot;log\&quot;.* `log` - log* `resource` - resource&quot;</summary>
+            /// <summary>Type of attribute: &quot;log&quot; or &quot;resource&quot;. Defaults to &quot;log&quot;.* `log` - log* `resource` - resource</summary>
             [QueryParameter("attribute_type")]
             public global::Soenneker.PostHog.OpenApiClient.Models.LogsValuesRetrieveAttributeTypeParameter? AttributeType { get; set; }
             /// <summary>Date range to search within. Defaults to last hour.</summary>

@@ -14,6 +14,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>When this run&apos;s GitHub approval was retracted because the head moved, null if it wasn&apos;t.</summary>
+        public DateTimeOffset? ApprovalDismissedAt { get; private set; }
+        /// <summary>GitHub login of the pull request author.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AuthorLogin { get; private set; }
+#nullable restore
+#else
+        public string AuthorLogin { get; private set; }
+#endif
         /// <summary>When the review run reached a terminal state, if it has.</summary>
         public DateTimeOffset? CompletedAt { get; private set; }
         /// <summary>When the review run was created.</summary>
@@ -68,6 +78,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRunOutput Output { get; private set; }
 #endif
+        /// <summary>ID of the GitHub review this run posted, null if it never posted one.</summary>
+        public int? PostedReviewId { get; private set; }
         /// <summary>Pull request number on GitHub.</summary>
         public int? PrNumber { get; private set; }
         /// <summary>Full URL to the pull request on GitHub.</summary>
@@ -96,6 +108,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRunStatus Status { get; private set; }
 #endif
+        /// <summary>Pull request title as of the last webhook delivery applied.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Title { get; private set; }
+#nullable restore
+#else
+        public string Title { get; private set; }
+#endif
+        /// <summary>What caused this run to exist: self-driving inbox provenance, the repo&apos;s trigger label, or the repo reviewing every PR event.* `self_driving` - SELF_DRIVING* `label` - LABEL* `all` - ALL</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRunTrigger? Trigger { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRunTrigger Trigger { get; private set; }
+#endif
         /// <summary>When the review run was last updated.</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>Final verdict reached by the reviewer, if any.* `none` - NONE* `approved` - APPROVED* `refused` - REFUSED* `escalate` - ESCALATE* `wait` - WAIT* `error` - ERROR</summary>
@@ -106,6 +134,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRunVerdict Verdict { get; private set; }
 #endif
+        /// <summary>When this run&apos;s verdict reached GitHub, null if it never did.</summary>
+        public DateTimeOffset? VerdictPostedAt { get; private set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReviewRun"/> and sets the default values.
         /// </summary>
@@ -131,6 +161,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "approval_dismissed_at", n => { ApprovalDismissedAt = n.GetDateTimeOffsetValue(); } },
+                { "author_login", n => { AuthorLogin = n.GetStringValue(); } },
                 { "completed_at", n => { CompletedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "delivery_id", n => { DeliveryId = n.GetStringValue(); } },
@@ -140,13 +172,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "head_sha", n => { HeadSha = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "output", n => { Output = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRunOutput>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewRunOutput.CreateFromDiscriminatorValue); } },
+                { "posted_review_id", n => { PostedReviewId = n.GetIntValue(); } },
                 { "pr_number", n => { PrNumber = n.GetIntValue(); } },
                 { "pr_url", n => { PrUrl = n.GetStringValue(); } },
                 { "pull_request", n => { PullRequest = n.GetGuidValue(); } },
                 { "repository", n => { Repository = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRunStatus>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewRunStatus.CreateFromDiscriminatorValue); } },
+                { "title", n => { Title = n.GetStringValue(); } },
+                { "trigger", n => { Trigger = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRunTrigger>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewRunTrigger.CreateFromDiscriminatorValue); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "verdict", n => { Verdict = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRunVerdict>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewRunVerdict.CreateFromDiscriminatorValue); } },
+                { "verdict_posted_at", n => { VerdictPostedAt = n.GetDateTimeOffsetValue(); } },
             };
         }
         /// <summary>

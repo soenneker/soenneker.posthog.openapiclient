@@ -16,7 +16,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Bucket start, aligned to success_rate_series_granularity (top of hour, midnight, or Monday).</summary>
         public DateTimeOffset? BucketStart { get; set; }
-        /// <summary>Fraction (0-1) of completed runs started in this bucket that succeeded. Null when the bucket had no completed run (a gap, not a 0% pass rate).</summary>
+        /// <summary>Fraction (0-1) of conclusive runs started in this bucket that succeeded. Skipped, cancelled, neutral, and action_required runs are excluded. Null when the bucket had no conclusive run (a gap, not a 0% pass rate).</summary>
         public double? SuccessRate { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PassRateBucket"/> and sets the default values.

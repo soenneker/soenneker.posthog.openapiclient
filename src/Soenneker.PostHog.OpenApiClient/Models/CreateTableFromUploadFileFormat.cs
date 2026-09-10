@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;How the uploaded file is read: &apos;csv&apos;, &apos;json&apos;, or &apos;parquet&apos;.* `csv` - csv* `json` - json* `parquet` - parquet&quot;
+    /// How the uploaded file is read: &apos;csv&apos;, &apos;json&apos;, or &apos;parquet&apos;.* `csv` - csv* `json` - json* `parquet` - parquet
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CreateTableFromUploadFileFormat : IAdditionalDataHolder, IParsable

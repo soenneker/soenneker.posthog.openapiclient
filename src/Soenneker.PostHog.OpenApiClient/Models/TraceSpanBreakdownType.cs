@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>&quot;Where the key lives: an allowlisted top-level span column, span-level attributes, or resource-level attributes.&quot;</summary>
+    /// <summary>Where the key lives: an allowlisted top-level span column, span-level attributes, or resource-level attributes.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum TraceSpanBreakdownType
     {

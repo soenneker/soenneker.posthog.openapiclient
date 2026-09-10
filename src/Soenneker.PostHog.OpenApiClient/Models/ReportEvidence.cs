@@ -31,8 +31,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SourceId { get; set; }
 #endif
-        /// <summary>Optional per-signal weight (defaults to 1.0). Scouts rarely need to set this.</summary>
-        public double? Weight { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReportEvidence"/> and sets the default values.
         /// </summary>
@@ -60,7 +58,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "source_id", n => { SourceId = n.GetStringValue(); } },
-                { "weight", n => { Weight = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -72,7 +69,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("source_id", SourceId);
-            writer.WriteDoubleValue("weight", Weight);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

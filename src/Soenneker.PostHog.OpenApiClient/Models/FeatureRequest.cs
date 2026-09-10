@@ -12,7 +12,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class FeatureRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Affected account in the first release.</summary>
+        /// <summary>First visible account retained for client compatibility. Use account_links for the complete list.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestAccountComposed? Account { get; private set; }
@@ -20,12 +20,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestAccountComposed Account { get; private set; }
 #endif
+        /// <summary>Active account links visible to the caller, with account-specific evidence.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestAccountLink>? AccountLinks { get; private set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestAccountLink> AccountLinks { get; private set; }
+#endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When the request was archived, or null while active.</summary>
         public DateTimeOffset? ArchivedAt { get; private set; }
         /// <summary>ID of the user who archived the request, or null while active.</summary>
         public int? ArchivedBy { get; private set; }
+        /// <summary>Whether the caller can update this request and all its active account links.</summary>
+        public bool? CanUpdate { get; private set; }
         /// <summary>When the request was created.</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>ID of the user who created the request.</summary>
@@ -38,6 +48,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Description { get; private set; }
 #endif
+        /// <summary>Total evidence items recorded across visible account links.</summary>
+        public int? EvidenceCount { get; private set; }
         /// <summary>Stable feature request ID.</summary>
         public Guid? Id { get; private set; }
         /// <summary>Whether the request is archived.</summary>
@@ -106,11 +118,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "account", n => { Account = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestAccountComposed>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestAccountComposed.CreateFromDiscriminatorValue); } },
+                { "account_links", n => { AccountLinks = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestAccountLink>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestAccountLink.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "archived_at", n => { ArchivedAt = n.GetDateTimeOffsetValue(); } },
                 { "archived_by", n => { ArchivedBy = n.GetIntValue(); } },
+                { "can_update", n => { CanUpdate = n.GetBoolValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetIntValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
+                { "evidence_count", n => { EvidenceCount = n.GetIntValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "is_archived", n => { IsArchived = n.GetBoolValue(); } },
                 { "product_areas", n => { ProductAreas = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestProductArea>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestProductArea.CreateFromDiscriminatorValue)?.AsList(); } },

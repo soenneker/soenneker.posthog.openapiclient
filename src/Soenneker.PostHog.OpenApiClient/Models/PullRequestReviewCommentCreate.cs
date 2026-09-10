@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Request body for posting an inline PR review comment as the requesting user.Two shapes: a reply to an existing thread (only `body` + `in_reply_to`), or a newthread on a diff line (`body` + `path` + `line`, optionally `side`).&quot;
+    /// Request body for posting an inline PR review comment as the requesting user.Two shapes: a reply to an existing thread (only `body` + `in_reply_to`), or a newthread on a diff line (`body` + `path` + `line`, optionally `side`).
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PullRequestReviewCommentCreate : IAdditionalDataHolder, IParsable
@@ -41,7 +41,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Path { get; set; }
 #endif
-        /// <summary>&quot;Diff side of the anchor line: &apos;LEFT&apos; = deletions, &apos;RIGHT&apos; = additions. Defaults to &apos;RIGHT&apos;.* `LEFT` - LEFT* `RIGHT` - RIGHT&quot;</summary>
+        /// <summary>Diff side of the anchor line: &apos;LEFT&apos; = deletions, &apos;RIGHT&apos; = additions. Defaults to &apos;RIGHT&apos;.* `LEFT` - LEFT* `RIGHT` - RIGHT</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestReviewCommentCreateSide? Side { get; set; }

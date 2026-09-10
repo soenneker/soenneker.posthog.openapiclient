@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;add_content only. A content block {type, values: {...}}; omit id and values._meta — they&apos;re assigned server-side. type is one of text, heading, button, image, divider, html, etc.&quot;
+    /// add_content only. A content block {type, values: {...}}; omit id and values._meta — they&apos;re assigned server-side. type is one of text, heading, button, image, divider, html, etc.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DesignOperationContent : IAdditionalDataHolder, IParsable

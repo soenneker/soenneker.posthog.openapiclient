@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Match accounts where any of these user ids actively holds any relationship (CSM, Account executive, or a custom definition). Drives the &quot;My accounts&quot; shortcut (the current user&apos;s id) and the shareable &quot;Assigned to&quot; filter — the ids are explicit so a shared URL resolves identically for every viewer.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryAssignedToUserIds? AssignedToUserIds { get; set; }
+        public List<int?>? AssignedToUserIds { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryAssignedToUserIds AssignedToUserIds { get; set; }
+        public List<int?> AssignedToUserIds { get; set; }
 #endif
         /// <summary>Optional HogQL boolean expression AND-ed into the WHERE clause. Used by the overview tile click-to-filter affordance.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -30,23 +30,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string FilterExpression { get; set; }
 #endif
+        /// <summary>Include ignored accounts. Ignored accounts are hidden by default.</summary>
+        public bool? IncludeIgnored { get; set; }
         /// <summary>The kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Kind { get; set; }
-#nullable restore
-#else
-        public string Kind { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryKind? Kind { get; set; }
         /// <summary>The limit property</summary>
         public int? Limit { get; set; }
         /// <summary>Aggregation expressions evaluated against the filtered account set; one value per metric is returned in `metricsResults`. When `metrics` is set without a `select`, the runner skips the regular row fetch and returns only the aggregated values.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryMetrics? Metrics { get; set; }
+        public List<string>? Metrics { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryMetrics Metrics { get; set; }
+        public List<string> Metrics { get; set; }
 #endif
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -61,10 +57,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The orderBy property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryOrderBy? OrderBy { get; set; }
+        public List<string>? OrderBy { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryOrderBy OrderBy { get; set; }
+        public List<string> OrderBy { get; set; }
 #endif
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -85,18 +81,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The select property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsQuerySelect? Select { get; set; }
+        public List<string>? Select { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsQuerySelect Select { get; set; }
+        public List<string> Select { get; set; }
 #endif
         /// <summary>The tagNames property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryTagNames? TagNames { get; set; }
+        public List<string>? TagNames { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryTagNames TagNames { get; set; }
+        public List<string> TagNames { get; set; }
 #endif
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -127,18 +123,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "allRolesUnassigned", n => { AllRolesUnassigned = n.GetBoolValue(); } },
-                { "assignedToUserIds", n => { AssignedToUserIds = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryAssignedToUserIds>(global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryAssignedToUserIds.CreateFromDiscriminatorValue); } },
+                { "assignedToUserIds", n => { AssignedToUserIds = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
                 { "filterExpression", n => { FilterExpression = n.GetStringValue(); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
+                { "includeIgnored", n => { IncludeIgnored = n.GetBoolValue(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryKind>(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
-                { "metrics", n => { Metrics = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryMetrics>(global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryMetrics.CreateFromDiscriminatorValue); } },
+                { "metrics", n => { Metrics = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "offset", n => { Offset = n.GetIntValue(); } },
-                { "orderBy", n => { OrderBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryOrderBy>(global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryOrderBy.CreateFromDiscriminatorValue); } },
+                { "orderBy", n => { OrderBy = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryResponse.CreateFromDiscriminatorValue); } },
                 { "search", n => { Search = n.GetStringValue(); } },
-                { "select", n => { Select = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsQuerySelect>(global::Soenneker.PostHog.OpenApiClient.Models.AccountsQuerySelect.CreateFromDiscriminatorValue); } },
-                { "tagNames", n => { TagNames = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryTagNames>(global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryTagNames.CreateFromDiscriminatorValue); } },
+                { "select", n => { Select = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "tagNames", n => { TagNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
                 { "version", n => { Version = n.GetDoubleValue(); } },
             };
@@ -151,18 +148,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("allRolesUnassigned", AllRolesUnassigned);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryAssignedToUserIds>("assignedToUserIds", AssignedToUserIds);
+            writer.WriteCollectionOfPrimitiveValues<int?>("assignedToUserIds", AssignedToUserIds);
             writer.WriteStringValue("filterExpression", FilterExpression);
-            writer.WriteStringValue("kind", Kind);
+            writer.WriteBoolValue("includeIgnored", IncludeIgnored);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryKind>("kind", Kind);
             writer.WriteIntValue("limit", Limit);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryMetrics>("metrics", Metrics);
+            writer.WriteCollectionOfPrimitiveValues<string>("metrics", Metrics);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
             writer.WriteIntValue("offset", Offset);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryOrderBy>("orderBy", OrderBy);
+            writer.WriteCollectionOfPrimitiveValues<string>("orderBy", OrderBy);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryResponse>("response", Response);
             writer.WriteStringValue("search", Search);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsQuerySelect>("select", Select);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryTagNames>("tagNames", TagNames);
+            writer.WriteCollectionOfPrimitiveValues<string>("select", Select);
+            writer.WriteCollectionOfPrimitiveValues<string>("tagNames", TagNames);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
             writer.WriteDoubleValue("version", Version);
         }

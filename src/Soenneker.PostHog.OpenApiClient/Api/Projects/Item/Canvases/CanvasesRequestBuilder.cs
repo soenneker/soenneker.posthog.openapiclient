@@ -4,6 +4,8 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Actions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Connectors;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Home;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -24,6 +26,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Actions.ActionsRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The connectors property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Connectors.ConnectorsRequestBuilder Connectors
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Connectors.ConnectorsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The home property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Home.HomeRequestBuilder Home
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Home.HomeRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.canvases.item collection</summary>
         /// <param name="position">A UUID string identifying this canvas.</param>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.CanvasesItemRequestBuilder"/></returns>
@@ -41,7 +53,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public CanvasesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/canvases{?channel*,limit*,offset*}", pathParameters)
+        public CanvasesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/canvases{?channel*,kind*,limit*,offset*,search*}", pathParameters)
         {
         }
         /// <summary>
@@ -49,11 +61,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public CanvasesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/canvases{?channel*,limit*,offset*}", rawUrl)
+        public CanvasesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/canvases{?channel*,kind*,limit*,offset*,search*}", rawUrl)
         {
         }
         /// <summary>
-        /// &quot;Canvases: agent-built sandboxed browser apps, filed into channels.Source is versioned per publish and built server-side; the canvas apprenders the published build&apos;s artifact from the isolated artifact origin.&quot;
+        /// Canvases: agent-built sandboxed browser apps, filed into channels.Source is versioned per publish and built server-side; the canvas apprenders the published build&apos;s artifact from the isolated artifact origin.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedCanvasList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -91,7 +103,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.Canvas>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.Canvas.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Canvases: agent-built sandboxed browser apps, filed into channels.Source is versioned per publish and built server-side; the canvas apprenders the published build&apos;s artifact from the isolated artifact origin.&quot;
+        /// Canvases: agent-built sandboxed browser apps, filed into channels.Source is versioned per publish and built server-side; the canvas apprenders the published build&apos;s artifact from the isolated artifact origin.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -141,7 +153,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.CanvasesRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// &quot;Canvases: agent-built sandboxed browser apps, filed into channels.Source is versioned per publish and built server-side; the canvas apprenders the published build&apos;s artifact from the isolated artifact origin.&quot;
+        /// Canvases: agent-built sandboxed browser apps, filed into channels.Source is versioned per publish and built server-side; the canvas apprenders the published build&apos;s artifact from the isolated artifact origin.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class CanvasesRequestBuilderGetQueryParameters 
@@ -149,12 +161,25 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases
             /// <summary>Only return canvases in this channel.</summary>
             [QueryParameter("channel")]
             public Guid? Channel { get; set; }
+            /// <summary>Only return canvases of this kind. kind=component lists the component store.</summary>
+            [QueryParameter("kind")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.CanvasesListKindParameter? Kind { get; set; }
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
             /// <summary>The initial index from which to return the results.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
+            /// <summary>Only return canvases whose name or description contains this text (case-insensitive).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("search")]
+            public string? Search { get; set; }
+#nullable restore
+#else
+            [QueryParameter("search")]
+            public string Search { get; set; }
+#endif
         }
     }
 }

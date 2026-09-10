@@ -25,7 +25,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The window `last_emitted_at` was resolved over, so a null reads as &apos;quiet&apos;, not &apos;never&apos;.</summary>
         public int? EmittedLookbackDays { get; set; }
-        /// <summary>&quot;Scouts that actually run on this team: enabled, with a live skill the coordinator dispatches.&quot;</summary>
+        /// <summary>Scouts that actually run on this team: enabled, with a live skill the coordinator dispatches.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutFleetEntry>? Enabled { get; set; }

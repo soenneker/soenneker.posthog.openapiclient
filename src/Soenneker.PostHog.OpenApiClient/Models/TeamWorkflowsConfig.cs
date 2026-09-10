@@ -16,7 +16,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When enabled, workflows engagement activity (email sends, opens, clicks, bounces, spam reports, unsubscribes) is captured as standard PostHog events ($workflows_email_*) alongside the existing workflow metrics.</summary>
         public bool? CaptureWorkflowsEngagementEvents { get; set; }
-        /// <summary>&quot;Recipient-consent enforcement for open/click tracking on marketing workflow emails. &apos;off&apos;: no enforcement, tracking follows each email step&apos;s own setting. &apos;opt_out&apos;: track by default but not recipients who have opted out. &apos;opt_in&apos;: only track recipients who have explicitly opted in. Transactional emails are exempt from consent enforcement.* `off` - Off* `opt_out` - Opt Out* `opt_in` - Opt In&quot;</summary>
+        /// <summary>Recipient-consent enforcement for open/click tracking on marketing workflow emails. &apos;off&apos;: no enforcement, tracking follows each email step&apos;s own setting. &apos;opt_out&apos;: track by default but not recipients who have opted out. &apos;opt_in&apos;: only track recipients who have explicitly opted in. Transactional emails are exempt from consent enforcement.* `off` - Off* `opt_out` - Opt Out* `opt_in` - Opt In</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.TeamWorkflowsConfigEmailTrackingConsentMode? EmailTrackingConsentMode { get; set; }

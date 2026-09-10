@@ -17,6 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether this endpoint query can be materialized.</summary>
         public bool? CanMaterialize { get; set; }
+        /// <summary>Whether materialization is enabled for this endpoint version.</summary>
+        public bool? Enabled { get; set; }
         /// <summary>Last materialization error message, if any.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -41,6 +43,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
+        /// <summary>Whether a successful materialization is available to serve.</summary>
+        public bool? Ready { get; set; }
         /// <summary>Reason why materialization is not possible (only when can_materialize is false).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -85,9 +89,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "can_materialize", n => { CanMaterialize = n.GetBoolValue(); } },
+                { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "error", n => { Error = n.GetStringValue(); } },
                 { "last_materialized_at", n => { LastMaterializedAt = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "ready", n => { Ready = n.GetBoolValue(); } },
                 { "reason", n => { Reason = n.GetStringValue(); } },
                 { "saved_query_id", n => { SavedQueryId = n.GetGuidValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
@@ -101,9 +107,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("can_materialize", CanMaterialize);
+            writer.WriteBoolValue("enabled", Enabled);
             writer.WriteStringValue("error", Error);
             writer.WriteStringValue("last_materialized_at", LastMaterializedAt);
             writer.WriteStringValue("name", Name);
+            writer.WriteBoolValue("ready", Ready);
             writer.WriteStringValue("reason", Reason);
             writer.WriteGuidValue("saved_query_id", SavedQueryId);
             writer.WriteStringValue("status", Status);

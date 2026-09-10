@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Primary grounding: observed=a category this scanner already emitted on recordings; product=the org&apos;s events/screens; prompt=the scanner&apos;s stated goal.* `observed` - observed* `product` - product* `prompt` - prompt&quot;
+    /// Primary grounding: observed=a category this scanner already emitted on recordings; product=the org&apos;s events/screens; prompt=the scanner&apos;s stated goal.* `observed` - observed* `product` - product* `prompt` - prompt
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TagSuggestionSource : IAdditionalDataHolder, IParsable

@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Schema-only — referenced from ``@extend_schema(responses=...)`` to describe the wire format.Never instantiate this for validation or call ``.is_valid()`` / ``.errors`` on it: thedeclared ``errors`` field shadows DRF&apos;s inherited ``Serializer.errors`` ReturnDict property,so accessing ``serializer.errors`` would return this field descriptor instead of validationerrors. The handler builds the response dict directly; this class exists only so drf-spectacularcan render the response in the OpenAPI spec and downstream generated clients.&quot;
+    /// Schema-only — referenced from ``@extend_schema(responses=...)`` to describe the wire format.Never instantiate this for validation or call ``.is_valid()`` / ``.errors`` on it: thedeclared ``errors`` field shadows DRF&apos;s inherited ``Serializer.errors`` ReturnDict property,so accessing ``serializer.errors`` would return this field descriptor instead of validationerrors. The handler builds the response dict directly; this class exists only so drf-spectacularcan render the response in the OpenAPI spec and downstream generated clients.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class BulkDeleteResponse : IAdditionalDataHolder, IParsable

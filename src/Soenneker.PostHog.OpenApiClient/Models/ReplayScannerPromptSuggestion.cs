@@ -19,10 +19,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>User who applied this suggestion to the scanner; null unless applied.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerPromptSuggestionAppliedBy? AppliedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? AppliedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerPromptSuggestionAppliedBy AppliedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic AppliedBy { get; private set; }
 #endif
         /// <summary>The scanner config this suggestion was generated against.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -57,18 +57,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>User who requested this suggestion; null for automatic refreshes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerPromptSuggestionCreatedBy? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerPromptSuggestionCreatedBy CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
 #endif
-        /// <summary>&quot;Test-before-apply results: the suggested prompt re-run against rated sessions.&quot;</summary>
+        /// <summary>Test-before-apply results: the suggested prompt re-run against rated sessions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerPromptSuggestionEvaluation? Evaluation { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PromptSuggestionEvaluation? Evaluation { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerPromptSuggestionEvaluation Evaluation { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PromptSuggestionEvaluation Evaluation { get; private set; }
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
@@ -132,15 +132,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "applied_at", n => { AppliedAt = n.GetDateTimeOffsetValue(); } },
-                { "applied_by", n => { AppliedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerPromptSuggestionAppliedBy>(global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerPromptSuggestionAppliedBy.CreateFromDiscriminatorValue); } },
+                { "applied_by", n => { AppliedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
                 { "base_config", n => { BaseConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerPromptSuggestionBaseConfig>(global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerPromptSuggestionBaseConfig.CreateFromDiscriminatorValue); } },
                 { "base_prompt", n => { BasePrompt = n.GetStringValue(); } },
                 { "based_on_down", n => { BasedOnDown = n.GetIntValue(); } },
                 { "based_on_up", n => { BasedOnUp = n.GetIntValue(); } },
                 { "changes", n => { Changes = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerPromptSuggestionChanges>(global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerPromptSuggestionChanges.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerPromptSuggestionCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerPromptSuggestionCreatedBy.CreateFromDiscriminatorValue); } },
-                { "evaluation", n => { Evaluation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerPromptSuggestionEvaluation>(global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerPromptSuggestionEvaluation.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "evaluation", n => { Evaluation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PromptSuggestionEvaluation>(global::Soenneker.PostHog.OpenApiClient.Models.PromptSuggestionEvaluation.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "rationale", n => { Rationale = n.GetStringValue(); } },
                 { "scanner_version", n => { ScannerVersion = n.GetIntValue(); } },

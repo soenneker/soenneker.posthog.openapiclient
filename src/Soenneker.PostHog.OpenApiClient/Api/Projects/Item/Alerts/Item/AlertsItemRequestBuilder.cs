@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Alerts.Item.Destinations;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Alerts.Item.TestDelivery;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -18,6 +19,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Alerts.Item
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AlertsItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The destinations property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Alerts.Item.Destinations.DestinationsRequestBuilder Destinations
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Alerts.Item.Destinations.DestinationsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The testDelivery property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Alerts.Item.TestDelivery.TestDeliveryRequestBuilder TestDelivery
         {
@@ -115,7 +121,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Alerts.Item
 #endif
             var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <returns>A <see cref="RequestInformation"/></returns>

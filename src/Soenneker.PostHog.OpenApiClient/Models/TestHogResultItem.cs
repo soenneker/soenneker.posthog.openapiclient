@@ -54,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Reasoning { get; set; }
 #endif
-        /// <summary>True = pass, False = fail, null = N/A or error.</summary>
+        /// <summary>Raw boolean result, or null when the evaluation returns N/A or raises an error.</summary>
         public bool? Result { get; set; }
         /// <summary>Stable identifier for the sampled generation, trace, or session.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -64,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SampleId { get; set; }
 #endif
-        /// <summary>&quot;Type of sampled unit: generation, trace, or session.* `generation` - Generation* `trace` - Trace* `session` - Session&quot;</summary>
+        /// <summary>Type of sampled unit: generation, trace, or session.* `generation` - Generation* `trace` - Trace* `session` - Session</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.TestHogResultItemSampleType? SampleType { get; set; }

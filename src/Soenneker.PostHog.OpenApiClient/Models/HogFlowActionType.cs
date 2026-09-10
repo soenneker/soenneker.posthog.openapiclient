@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;One of: trigger | function | function_email | function_sms | function_push | delay | wait_until_condition | wait_until_time_window | conditional_branch | random_cohort_branch | exit.* `trigger` - trigger* `function` - function* `function_email` - function_email* `function_sms` - function_sms* `function_push` - function_push* `delay` - delay* `wait_until_condition` - wait_until_condition* `wait_until_time_window` - wait_until_time_window* `conditional_branch` - conditional_branch* `random_cohort_branch` - random_cohort_branch* `exit` - exit&quot;
+    /// One of: trigger | function | function_email | function_sms | function_push | delay | wait_until_condition | wait_until_time_window | conditional_branch | random_cohort_branch | exit.* `trigger` - trigger* `function` - function* `function_email` - function_email* `function_sms` - function_sms* `function_push` - function_push* `delay` - delay* `wait_until_condition` - wait_until_condition* `wait_until_time_window` - wait_until_time_window* `conditional_branch` - conditional_branch* `random_cohort_branch` - random_cohort_branch* `exit` - exit
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class HogFlowActionType : IAdditionalDataHolder, IParsable

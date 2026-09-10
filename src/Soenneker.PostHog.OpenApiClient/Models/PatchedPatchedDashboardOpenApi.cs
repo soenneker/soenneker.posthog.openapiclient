@@ -8,20 +8,20 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;OpenAPI-only PATCH body for dashboards (agents/MCP).Must be a superset of ``dashboard_patch_runtime_openapi_field_names()`` — ``extend_schema(request=...)``replaces the inferred schema entirely. Contract: ``test_dashboard_openapi.py``.&quot;
+    /// OpenAPI-only PATCH body for dashboards (agents/MCP).Must be a superset of ``dashboard_patch_runtime_openapi_field_names()`` — ``extend_schema(request=...)``replaces the inferred schema entirely. Contract: ``test_dashboard_openapi.py``.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedPatchedDashboardOpenApi : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Custom color mapping for breakdown values.</summary>
+        /// <summary>Colors pinned to specific breakdown values across the dashboard&apos;s tiles. A list of entries, not an object keyed by breakdown value. Send an empty list to clear them.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiBreakdownColors? BreakdownColors { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownColorConfig>? BreakdownColors { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiBreakdownColors BreakdownColors { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownColorConfig> BreakdownColors { get; set; }
 #endif
         /// <summary>ID of the color theme used for chart visualizations.</summary>
         public int? DataColorThemeId { get; set; }
@@ -43,6 +43,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiFilters Filters { get; set; }
 #endif
+        /// <summary>Named tile density preset. Use tight, condensed, standard, relaxed, or wide.* `tight` - tight* `condensed` - condensed* `standard` - standard* `relaxed` - relaxed* `wide` - wide</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGridSpacing? GridSpacing { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGridSpacing GridSpacing { get; set; }
+#endif
+        /// <summary>How tiles rearrange after a move or resize. vertical stacks tiles upward, horizontal stacks tiles to the left, and stable preserves positions while moving colliding tiles.* `vertical` - vertical* `horizontal` - horizontal* `stable` - stable</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiLayoutCompaction? LayoutCompaction { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiLayoutCompaction LayoutCompaction { get; set; }
+#endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -61,8 +77,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> QuickFilterIds { get; set; }
 #endif
-        /// <summary>The restriction_level property</summary>
-        public int? RestrictionLevel { get; set; }
+        /// <summary>Who can edit this dashboard.* `21` - Everyone in the project can edit* `37` - Only those invited to this dashboard can edit</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiRestrictionLevel? RestrictionLevel { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiRestrictionLevel RestrictionLevel { get; set; }
+#endif
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -115,15 +137,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "breakdown_colors", n => { BreakdownColors = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiBreakdownColors>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiBreakdownColors.CreateFromDiscriminatorValue); } },
+                { "breakdown_colors", n => { BreakdownColors = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownColorConfig>(global::Soenneker.PostHog.OpenApiClient.Models.BreakdownColorConfig.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "data_color_theme_id", n => { DataColorThemeId = n.GetIntValue(); } },
                 { "delete_insights", n => { DeleteInsights = n.GetBoolValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiFilters>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiFilters.CreateFromDiscriminatorValue); } },
+                { "grid_spacing", n => { GridSpacing = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGridSpacing>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGridSpacing.CreateFromDiscriminatorValue); } },
+                { "layout_compaction", n => { LayoutCompaction = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiLayoutCompaction>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiLayoutCompaction.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "pinned", n => { Pinned = n.GetBoolValue(); } },
                 { "quick_filter_ids", n => { QuickFilterIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "restriction_level", n => { RestrictionLevel = n.GetIntValue(); } },
+                { "restriction_level", n => { RestrictionLevel = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiRestrictionLevel>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiRestrictionLevel.CreateFromDiscriminatorValue); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "tiles", n => { Tiles = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApi>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApi.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "use_dashboard", n => { UseDashboard = n.GetIntValue(); } },
@@ -137,15 +161,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiBreakdownColors>("breakdown_colors", BreakdownColors);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownColorConfig>("breakdown_colors", BreakdownColors);
             writer.WriteIntValue("data_color_theme_id", DataColorThemeId);
             writer.WriteBoolValue("delete_insights", DeleteInsights);
             writer.WriteStringValue("description", Description);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiFilters>("filters", Filters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGridSpacing>("grid_spacing", GridSpacing);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiLayoutCompaction>("layout_compaction", LayoutCompaction);
             writer.WriteStringValue("name", Name);
             writer.WriteBoolValue("pinned", Pinned);
             writer.WriteCollectionOfPrimitiveValues<string>("quick_filter_ids", QuickFilterIds);
-            writer.WriteIntValue("restriction_level", RestrictionLevel);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiRestrictionLevel>("restriction_level", RestrictionLevel);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApi>("tiles", Tiles);
             writer.WriteIntValue("use_dashboard", UseDashboard);

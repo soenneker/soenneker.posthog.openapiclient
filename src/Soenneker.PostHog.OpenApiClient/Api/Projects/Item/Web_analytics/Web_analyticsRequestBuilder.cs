@@ -2,6 +2,7 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Web_analytics.Llms_txt;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Web_analytics.Recap;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Web_analytics.Weekly_digest;
 using System.Collections.Generic;
@@ -16,6 +17,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Web_analytics
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Web_analyticsRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The llms_txt property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Web_analytics.Llms_txt.Llms_txtRequestBuilder Llms_txt
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Web_analytics.Llms_txt.Llms_txtRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The recap property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Web_analytics.Recap.RecapRequestBuilder Recap
         {

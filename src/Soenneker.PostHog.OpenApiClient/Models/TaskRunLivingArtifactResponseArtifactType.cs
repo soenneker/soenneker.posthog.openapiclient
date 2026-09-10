@@ -16,7 +16,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `slack_message` - slack_message* `slack_canvas` - slack_canvas* `document` - document* `spreadsheet` - spreadsheet* `dashboard` - dashboard* `file` - file* `github_pr` - github_pr</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ArtifactTypeEnum? Value { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ArtifactType2F0Enum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactResponseArtifactType"/> and sets the default values.
         /// </summary>
@@ -42,7 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "value", n => { Value = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ArtifactTypeEnum>(); } },
+                { "value", n => { Value = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ArtifactType2F0Enum>(); } },
             };
         }
         /// <summary>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ArtifactTypeEnum>("value", Value);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ArtifactType2F0Enum>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

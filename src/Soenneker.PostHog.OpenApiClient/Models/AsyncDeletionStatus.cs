@@ -26,7 +26,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string PersonUuid { get; set; }
 #endif
-        /// <summary>&quot;Current status: &apos;pending&apos; or &apos;completed&apos;.&quot;</summary>
+        /// <summary>Current status: &apos;pending&apos; or &apos;completed&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Status { get; private set; }

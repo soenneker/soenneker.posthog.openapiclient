@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedGroupUsageMetricDisplay Display { get; set; }
 #endif
-        /// <summary>&quot;Filter definition for the metric. Two shapes are accepted, discriminated by an optional `source` key.**Events** (default, when `source` is missing or `\&quot;events\&quot;`): HogFunction filter shape — `events: [...]`, optional `actions: [...]`, `properties: [...]`, `filter_test_accounts: bool`.**Data warehouse** (`source: \&quot;data_warehouse\&quot;`): `table_name` (synced DW table), `timestamp_field` (timestamp column or HogQL expression), `key_field` (column whose value matches the entity key). Currently DW metrics only render on group profiles — person profiles are not yet supported.&quot;</summary>
+        /// <summary>Filter definition for the metric. Two shapes are accepted, discriminated by an optional `source` key.**Events** (default, when `source` is missing or `&quot;events&quot;`): HogFunction filter shape — `events: [...]`, optional `actions: [...]`, `properties: [...]`, `filter_test_accounts: bool`.**Data warehouse** (`source: &quot;data_warehouse&quot;`): `table_name` (synced DW table), `timestamp_field` (timestamp column or HogQL expression), `key_field` (column whose value matches the entity key). Currently DW metrics only render on group profiles — person profiles are not yet supported.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedGroupUsageMetricFiltersProperty? Filters { get; set; }

@@ -12,11 +12,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class PreprocessingConfig : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>&quot;Order of differencing. 0 = raw values, 1 = first-order diffs (default: 0)&quot;</summary>
+        /// <summary>Order of differencing. 0 = raw values, 1 = first-order diffs (default: 0)</summary>
         public int? DiffsN { get; set; }
-        /// <summary>&quot;Number of lag features. 0 = none, &gt;0 = include n lagged values (default: 0)&quot;</summary>
+        /// <summary>Number of lag features. 0 = none, &gt;0 = include n lagged values (default: 0)</summary>
         public int? LagsN { get; set; }
-        /// <summary>&quot;Moving average window size. 0 = no smoothing, &gt;1 = smooth over n points (default: 0)&quot;</summary>
+        /// <summary>Moving average window size. 0 = no smoothing, &gt;1 = smooth over n points (default: 0)</summary>
         public int? SmoothN { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value

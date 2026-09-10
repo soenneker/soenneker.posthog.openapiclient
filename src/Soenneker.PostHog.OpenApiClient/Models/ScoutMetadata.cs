@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Team-scoped scout metadata for the inbox / Code-app UIs: enrollment, the alpha banner, andthe enforced limits. Sourced from the `signals-scout` flag payload so the banner and caps canchange without a deploy to either app.&quot;
+    /// Team-scoped scout metadata for the inbox / Code-app UIs: enrollment, the alpha banner, andthe enforced limits. Sourced from the `signals-scout` flag payload so the banner and caps canchange without a deploy to either app.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ScoutMetadata : IAdditionalDataHolder, IParsable

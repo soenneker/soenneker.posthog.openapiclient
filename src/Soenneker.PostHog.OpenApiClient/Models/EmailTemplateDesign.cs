@@ -23,7 +23,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplateDesignBody Body { get; set; }
 #endif
-        /// <summary>&quot;Highest htmlID suffix per element type, e.g. {\&quot;u_row\&quot;: 1, \&quot;u_content_text\&quot;: 2}.&quot;</summary>
+        /// <summary>Highest htmlID suffix per element type, e.g. {&quot;u_row&quot;: 1, &quot;u_content_text&quot;: 2}.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplateDesignCountersProperty? Counters { get; set; }

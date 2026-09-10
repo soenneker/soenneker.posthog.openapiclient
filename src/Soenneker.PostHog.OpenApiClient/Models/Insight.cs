@@ -107,10 +107,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Resolved dashboard and tile filter layers used to explain filter precedence in the UI.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightFilterOverrideContextComposed? FilterOverrideContext { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightFilterOverrideContext? FilterOverrideContext { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightFilterOverrideContextComposed FilterOverrideContext { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightFilterOverrideContext FilterOverrideContext { get; private set; }
 #endif
         /// <summary>The hasMore property</summary>
         public bool? HasMore { get; private set; }
@@ -157,10 +157,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The query property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightQuery? Query { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightQuerySchema? Query { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightQuery Query { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightQuerySchema Query { get; set; }
 #endif
         /// <summary>The query_status property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -186,7 +186,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.InsightResultProperty Result { get; private set; }
 #endif
-        /// <summary>&quot;How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`.&quot;</summary>
+        /// <summary>How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.InsightSearchMatchType? SearchMatchType { get; private set; }
@@ -275,7 +275,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "effective_privilege_level", n => { EffectivePrivilegeLevel = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightEffectivePrivilegeLevel>(global::Soenneker.PostHog.OpenApiClient.Models.InsightEffectivePrivilegeLevel.CreateFromDiscriminatorValue); } },
                 { "effective_restriction_level", n => { EffectiveRestrictionLevel = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightEffectiveRestrictionLevel>(global::Soenneker.PostHog.OpenApiClient.Models.InsightEffectiveRestrictionLevel.CreateFromDiscriminatorValue); } },
                 { "favorited", n => { Favorited = n.GetBoolValue(); } },
-                { "filter_override_context", n => { FilterOverrideContext = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightFilterOverrideContextComposed>(global::Soenneker.PostHog.OpenApiClient.Models.InsightFilterOverrideContextComposed.CreateFromDiscriminatorValue); } },
+                { "filter_override_context", n => { FilterOverrideContext = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightFilterOverrideContext>(global::Soenneker.PostHog.OpenApiClient.Models.InsightFilterOverrideContext.CreateFromDiscriminatorValue); } },
                 { "hasMore", n => { HasMore = n.GetBoolValue(); } },
                 { "hogql", n => { Hogql = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetIntValue(); } },
@@ -288,7 +288,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "next_allowed_client_refresh", n => { NextAllowedClientRefresh = n.GetDateTimeOffsetValue(); } },
                 { "order", n => { Order = n.GetIntValue(); } },
-                { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightQuery>(global::Soenneker.PostHog.OpenApiClient.Models.InsightQuery.CreateFromDiscriminatorValue); } },
+                { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightQuerySchema>(global::Soenneker.PostHog.OpenApiClient.Models.InsightQuerySchema.CreateFromDiscriminatorValue); } },
                 { "query_status", n => { QueryStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightQueryStatus>(global::Soenneker.PostHog.OpenApiClient.Models.InsightQueryStatus.CreateFromDiscriminatorValue); } },
                 { "resolved_date_range", n => { ResolvedDateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightResolvedDateRange>(global::Soenneker.PostHog.OpenApiClient.Models.InsightResolvedDateRange.CreateFromDiscriminatorValue); } },
                 { "result", n => { Result = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightResultProperty>(global::Soenneker.PostHog.OpenApiClient.Models.InsightResultProperty.CreateFromDiscriminatorValue); } },
@@ -316,7 +316,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("favorited", Favorited);
             writer.WriteStringValue("name", Name);
             writer.WriteIntValue("order", Order);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightQuery>("query", Query);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightQuerySchema>("query", Query);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.InsightTagsItem>("tags", Tags);
             writer.WriteAdditionalData(AdditionalData);
         }

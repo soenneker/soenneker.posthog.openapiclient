@@ -24,7 +24,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ErrorSignature { get; set; }
 #endif
-        /// <summary>&quot;Stable identity of this distinct failure: the failing test&apos;s node id plus a normalized error signature, so the same failure across runs groups into one row.&quot;</summary>
+        /// <summary>Stable identity of this distinct failure: the failing test&apos;s node id plus a normalized error signature, so the same failure across runs groups into one row.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Fingerprint { get; set; }
@@ -66,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Repo { get; set; }
 #endif
-        /// <summary>&quot;The classifier&apos;s verdict on how this failure is behaving right now: &apos;breaking_master&apos; (failing on trunk, latest trunk run still red), &apos;blocking_merge_queue&apos; (stopped a merge on a commit that already passed the PR&apos;s own CI, trunk still green), &apos;novel_burst&apos; (new within a day and spreading across branches, not on trunk yet), &apos;potentially_resolved&apos; (hit trunk but trunk is green again), &apos;flaky&apos; (sporadic across branches over more than a day), or &apos;pr_only&apos; (confined to one branch — one PR&apos;s own problem).* `breaking_master` - BREAKING_MASTER* `blocking_merge_queue` - BLOCKING_MERGE_QUEUE* `novel_burst` - NOVEL_BURST* `potentially_resolved` - POTENTIALLY_RESOLVED* `flaky` - FLAKY* `pr_only` - PR_ONLY&quot;</summary>
+        /// <summary>The classifier&apos;s verdict on how this failure is behaving right now: &apos;breaking_master&apos; (failing on trunk, latest trunk run still red), &apos;blocking_merge_queue&apos; (stopped a merge on a commit that already passed the PR&apos;s own CI, trunk still green), &apos;novel_burst&apos; (new within a day and spreading across branches, not on trunk yet), &apos;potentially_resolved&apos; (hit trunk but trunk is green again), &apos;flaky&apos; (sporadic across branches over more than a day), or &apos;pr_only&apos; (confined to one branch — one PR&apos;s own problem).* `breaking_master` - BREAKING_MASTER* `blocking_merge_queue` - BLOCKING_MERGE_QUEUE* `novel_burst` - NOVEL_BURST* `potentially_resolved` - POTENTIALLY_RESOLVED* `flaky` - FLAKY* `pr_only` - PR_ONLY</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.BrokenTestRowState? State { get; set; }

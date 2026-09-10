@@ -3,10 +3,9 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
+    /// <summary>Whether every condition must match (AND) or any one of them (OR).</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public enum FilterLogicalOperator
-    #pragma warning restore CS1591
     {
         [EnumMember(Value = "AND")]
         #pragma warning disable CS1591

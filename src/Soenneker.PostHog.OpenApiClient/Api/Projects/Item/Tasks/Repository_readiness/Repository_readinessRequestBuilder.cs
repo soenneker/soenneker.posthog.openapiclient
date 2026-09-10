@@ -85,8 +85,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Repository_rea
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Repository_readinessRequestBuilderGetQueryParameters 
         {
+            #pragma warning disable CS1591
             [QueryParameter("refresh")]
             public bool? Refresh { get; set; }
+            #pragma warning restore CS1591
             /// <summary>Repository in org/repo format</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -97,8 +99,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Repository_rea
             [QueryParameter("repository")]
             public string Repository { get; set; }
 #endif
+            #pragma warning disable CS1591
             [QueryParameter("window_days")]
             public int? WindowDays { get; set; }
+            #pragma warning restore CS1591
         }
     }
 }

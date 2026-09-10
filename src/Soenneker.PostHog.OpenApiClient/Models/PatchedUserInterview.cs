@@ -25,10 +25,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Searchable classifications on the response. `abandoned` is auto-derived from the transcript when the interview is recorded; `off-topic` is set manually. Sending `classifications` on an update replaces the whole list — pass the full desired set, not a delta.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ClassificationsEnum?>? Classifications { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.UserInterviewClassificationEnum?>? Classifications { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ClassificationsEnum?> Classifications { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.UserInterviewClassificationEnum?> Classifications { get; set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
@@ -102,7 +102,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "audio", n => { Audio = n.GetStringValue(); } },
-                { "classifications", n => { Classifications = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.ClassificationsEnum>()?.AsList(); } },
+                { "classifications", n => { Classifications = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.UserInterviewClassificationEnum>()?.AsList(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserInterviewCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserInterviewCreatedBy.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
@@ -121,7 +121,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("audio", Audio);
-            writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.ClassificationsEnum>("classifications", Classifications);
+            writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.UserInterviewClassificationEnum>("classifications", Classifications);
             writer.WriteCollectionOfPrimitiveValues<string>("interviewee_emails", IntervieweeEmails);
             writer.WriteStringValue("summary", Summary);
             writer.WriteAdditionalData(AdditionalData);

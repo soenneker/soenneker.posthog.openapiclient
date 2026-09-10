@@ -45,18 +45,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The interval property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper17? Interval { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper16? Interval { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper17 Interval { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper16 Interval { get; set; }
 #endif
         /// <summary>The properties property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TileFiltersPropertiesAnyOf1Item>? Properties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TileFiltersPropertiesItem>? Properties { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TileFiltersPropertiesAnyOf1Item> Properties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TileFiltersPropertiesItem> Properties { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -82,8 +82,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "explicitDate", n => { ExplicitDate = n.GetBoolValue(); } },
                 { "filterTestAccounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
                 { "ignoreDashboardFilters", n => { IgnoreDashboardFilters = n.GetBoolValue(); } },
-                { "interval", n => { Interval = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper17>(global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper17.CreateFromDiscriminatorValue); } },
-                { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TileFiltersPropertiesAnyOf1Item>(global::Soenneker.PostHog.OpenApiClient.Models.TileFiltersPropertiesAnyOf1Item.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "interval", n => { Interval = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper16>(global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper16.CreateFromDiscriminatorValue); } },
+                { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TileFiltersPropertiesItem>(global::Soenneker.PostHog.OpenApiClient.Models.TileFiltersPropertiesItem.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -99,8 +99,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("explicitDate", ExplicitDate);
             writer.WriteBoolValue("filterTestAccounts", FilterTestAccounts);
             writer.WriteBoolValue("ignoreDashboardFilters", IgnoreDashboardFilters);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper17>("interval", Interval);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TileFiltersPropertiesAnyOf1Item>("properties", Properties);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper16>("interval", Interval);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TileFiltersPropertiesItem>("properties", Properties);
         }
     }
 }

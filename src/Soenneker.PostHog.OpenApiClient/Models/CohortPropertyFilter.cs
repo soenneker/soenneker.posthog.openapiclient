@@ -21,13 +21,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string CohortName { get; set; }
 #endif
         /// <summary>The key property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Key { get; set; }
-#nullable restore
-#else
-        public string Key { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.IdKey? Key { get; set; }
         /// <summary>The label property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -39,19 +33,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The operator property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperatorWrapper? Operator { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperatorWrapper2? Operator { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperatorWrapper Operator { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperatorWrapper2 Operator { get; set; }
 #endif
         /// <summary>The type property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Type { get; set; }
-#nullable restore
-#else
-        public string Type { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.CohortType? Type { get; set; }
         /// <summary>The value property</summary>
         public int? Value { get; set; }
         /// <summary>
@@ -73,10 +61,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "cohort_name", n => { CohortName = n.GetStringValue(); } },
-                { "key", n => { Key = n.GetStringValue(); } },
+                { "key", n => { Key = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IdKey>(); } },
                 { "label", n => { Label = n.GetStringValue(); } },
-                { "operator", n => { Operator = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperatorWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperatorWrapper.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetStringValue(); } },
+                { "operator", n => { Operator = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperatorWrapper2>(global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperatorWrapper2.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortType>(); } },
                 { "value", n => { Value = n.GetIntValue(); } },
             };
         }
@@ -88,10 +76,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("cohort_name", CohortName);
-            writer.WriteStringValue("key", Key);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IdKey>("key", Key);
             writer.WriteStringValue("label", Label);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperatorWrapper>("operator", Operator);
-            writer.WriteStringValue("type", Type);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperatorWrapper2>("operator", Operator);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortType>("type", Type);
             writer.WriteIntValue("value", Value);
         }
     }

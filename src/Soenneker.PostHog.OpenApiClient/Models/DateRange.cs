@@ -12,7 +12,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class DateRange : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>&quot;Start of the date range. Accepts ISO 8601 timestamps (e.g., 2024-01-15T00:00:00Z) or relative formats: -7d (7 days ago), -2w (2 weeks ago), -1m (1 month ago),-1h (1 hour ago), -1mStart (start of last month), -1yStart (start of last year).&quot;</summary>
+        /// <summary>Start of the date range. Accepts ISO 8601 timestamps (e.g., 2024-01-15T00:00:00Z) or relative formats: -7d (7 days ago), -2w (2 weeks ago), -1m (1 month ago),-1h (1 hour ago), -1mStart (start of last month), -1yStart (start of last year).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? DateFrom { get; set; }
@@ -31,10 +31,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Restrict the query to events occurring on these ISO days of week (1=Monday to 7=Sunday), evaluated in the project timezone. Omit or empty for all days. Only applied by insight queries.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DaysOfWeekEnum>? DaysOfWeek { get; set; }
+        public List<double?>? DaysOfWeek { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DaysOfWeekEnum> DaysOfWeek { get; set; }
+        public List<double?> DaysOfWeek { get; set; }
 #endif
         /// <summary>Exclude the current, still-collecting period by clipping date_to to the end of the last complete interval (evaluated in the project timezone). No-op when the range contains no complete interval. Only applied by insight queries.</summary>
         public bool? ExcludeIncompletePeriods { get; set; }
@@ -68,7 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "date_from", n => { DateFrom = n.GetStringValue(); } },
                 { "date_to", n => { DateTo = n.GetStringValue(); } },
-                { "daysOfWeek", n => { DaysOfWeek = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DaysOfWeekEnum>(global::Soenneker.PostHog.OpenApiClient.Models.DaysOfWeekEnum.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "daysOfWeek", n => { DaysOfWeek = n.GetCollectionOfPrimitiveValues<double?>()?.AsList(); } },
                 { "excludeIncompletePeriods", n => { ExcludeIncompletePeriods = n.GetBoolValue(); } },
                 { "explicitDate", n => { ExplicitDate = n.GetBoolValue(); } },
             };
@@ -82,7 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("date_from", DateFrom);
             writer.WriteStringValue("date_to", DateTo);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DaysOfWeekEnum>("daysOfWeek", DaysOfWeek);
+            writer.WriteCollectionOfPrimitiveValues<double?>("daysOfWeek", DaysOfWeek);
             writer.WriteBoolValue("excludeIncompletePeriods", ExcludeIncompletePeriods);
             writer.WriteBoolValue("explicitDate", ExplicitDate);
         }

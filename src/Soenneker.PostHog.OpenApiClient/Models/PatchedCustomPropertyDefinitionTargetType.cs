@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;What entity this property is attached to: &apos;account&apos; (default), &apos;person&apos;, or &apos;group&apos;. Person and group properties are populated from a warehouse schema and become usable like any other person/group property (feature flags, cohorts, insights).* `account` - account* `person` - person* `group` - group&quot;
+    /// What entity this property is attached to: &apos;account&apos; (default), &apos;person&apos;, or &apos;group&apos;. Person and group properties are populated from a warehouse schema and become usable like any other person/group property (feature flags, cohorts, insights).* `account` - account* `person` - person* `group` - group
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedCustomPropertyDefinitionTargetType : IAdditionalDataHolder, IParsable

@@ -33,6 +33,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTableCreatedBy CreatedBy { get; private set; }
 #endif
+        /// <summary>Where the table came from: `web` for the in-app UI, `api` for direct API callers, `mcp` for agent/MCP tool calls, `wizard` for the setup agent, `self_driving` for a self-driving run, `source` for a table a data source syncs, `materialized_view` for the table behind a materialized view, and `demo` for a demo project&apos;s sample table. Set server-side from the request, never from the request body. Null on tables created before this was recorded.* `web` - web* `api` - api* `mcp` - mcp* `wizard` - wizard* `self_driving` - self_driving* `source` - source* `materialized_view` - materialized_view* `demo` - demo</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTableCreatedVia? CreatedVia { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTableCreatedVia CreatedVia { get; private set; }
+#endif
         /// <summary>The credential property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -41,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.Credential Credential { get; set; }
 #endif
-        /// <summary>The deleted property</summary>
+        /// <summary>Whether the table is soft-deleted and hidden from queries.</summary>
         public bool? Deleted { get; set; }
         /// <summary>The external_data_source property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -59,8 +67,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTableExternalSchemaProperty ExternalSchema { get; set; }
 #endif
-        /// <summary>* `CSV` - CSV* `CSVWithNames` - CSVWithNames* `Parquet` - Parquet* `JSONEachRow` - JSON* `Delta` - Delta* `DeltaS3Wrapper` - DeltaS3Wrapper</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.TableFormatEnum? Format { get; set; }
+        /// <summary>File format of the objects the pattern matches. Every matched file must share this format.* `CSV` - CSV* `CSVWithNames` - CSVWithNames* `Parquet` - Parquet* `JSONEachRow` - JSON* `Delta` - Delta* `DeltaS3Wrapper` - DeltaS3Wrapper</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTableFormat? Format { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTableFormat Format { get; set; }
+#endif
         /// <summary>Dotted name the table is queried by in HogQL (e.g. `googleanalytics.devices` or `postgres.&lt;prefix&gt;.&lt;table&gt;`), as opposed to `name`, which is the underlying storage identifier.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -71,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
-        /// <summary>The name property</summary>
+        /// <summary>Name the table is queried by in HogQL. Must be unique within the project, and must start with a letter or underscore and contain only letters, numbers, and underscores.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
@@ -79,7 +93,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>The options property</summary>
+        /// <summary>Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTableOptionsProperty? Options { get; set; }
@@ -87,7 +101,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTableOptionsProperty Options { get; set; }
 #endif
-        /// <summary>The url_pattern property</summary>
+        /// <summary>HTTPS URL of the files to read, with `*` matching any part of a path segment (e.g. `https://your-bucket.s3.amazonaws.com/orders/*.parquet`). All matched files are read as one table. Must point at a bucket you control, not at PostHog&apos;s own storage.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UrlPattern { get; set; }
@@ -131,11 +145,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "columns", n => { Columns = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTableColumnsItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTableColumnsItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTableCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTableCreatedBy.CreateFromDiscriminatorValue); } },
+                { "created_via", n => { CreatedVia = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTableCreatedVia>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTableCreatedVia.CreateFromDiscriminatorValue); } },
                 { "credential", n => { Credential = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Credential>(global::Soenneker.PostHog.OpenApiClient.Models.Credential.CreateFromDiscriminatorValue); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "external_data_source", n => { ExternalDataSource = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTableExternalDataSource>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTableExternalDataSource.CreateFromDiscriminatorValue); } },
                 { "external_schema", n => { ExternalSchema = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTableExternalSchemaProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTableExternalSchemaProperty.CreateFromDiscriminatorValue); } },
-                { "format", n => { Format = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TableFormatEnum>(); } },
+                { "format", n => { Format = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTableFormat>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedTableFormat.CreateFromDiscriminatorValue); } },
                 { "hogql_name", n => { HogqlName = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
@@ -154,7 +169,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Credential>("credential", Credential);
             writer.WriteBoolValue("deleted", Deleted);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTableExternalSchemaProperty>("external_schema", ExternalSchema);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TableFormatEnum>("format", Format);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTableFormat>("format", Format);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedTableOptionsProperty>("options", Options);
             writer.WriteStringValue("url_pattern", UrlPattern);

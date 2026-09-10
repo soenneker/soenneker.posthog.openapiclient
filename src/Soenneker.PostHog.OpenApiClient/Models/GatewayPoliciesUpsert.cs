@@ -24,7 +24,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Agent scope target. Required when scope_type is agent.</summary>
         public Guid? ScopeServiceAccountId { get; set; }
-        /// <summary>&quot;Which scope to resolve: the team default, one member, or one agent.* `team` - Team default* `member` - Member* `agent` - Agent&quot;</summary>
+        /// <summary>Which scope to resolve: the team default, one member, or one agent.* `team` - Team default* `member` - Member* `agent` - Agent</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.GatewayPoliciesUpsertScopeType? ScopeType { get; set; }

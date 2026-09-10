@@ -89,7 +89,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public PersonsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/persons{?distinct_id*,email*,format*,limit*,offset*,properties*,search*}", pathParameters)
+        public PersonsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/persons{?client_query_id*,distinct_id*,email*,format*,limit*,offset*,properties*,search*}", pathParameters)
         {
         }
         /// <summary>
@@ -97,7 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public PersonsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/persons{?distinct_id*,email*,format*,limit*,offset*,properties*,search*}", rawUrl)
+        public PersonsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/persons{?client_query_id*,distinct_id*,email*,format*,limit*,offset*,properties*,search*}", rawUrl)
         {
         }
         /// <summary>
@@ -152,6 +152,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class PersonsRequestBuilderGetQueryParameters 
         {
+            /// <summary>Names the ClickHouse query this request runs. Send the same id to `DELETE /api/projects/:project_id/query/:client_query_id/` to stop a search that is still running. Up to 128 characters.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("client_query_id")]
+            public string? ClientQueryId { get; set; }
+#nullable restore
+#else
+            [QueryParameter("client_query_id")]
+            public string ClientQueryId { get; set; }
+#endif
             /// <summary>Filter list by distinct id.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -172,8 +182,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons
             [QueryParameter("email")]
             public string Email { get; set; }
 #endif
+            #pragma warning disable CS1591
             [QueryParameter("format")]
             public global::Soenneker.PostHog.OpenApiClient.Models.PersonsListFormatParameter? Format { get; set; }
+            #pragma warning restore CS1591
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
@@ -190,7 +202,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons
             [QueryParameter("properties")]
             public string[] Properties { get; set; }
 #endif
-            /// <summary>Search persons, either by email (full text search) or distinct_id (exact match).</summary>
+            /// <summary>Search persons by email, name, person ID, or distinct ID. Partial values match. When the term is a complete email address or UUID that exactly matches a distinct ID or person ID, only that person is returned.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("search")]

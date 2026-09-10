@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;confirmed_flake: one commit both failed and passed the test (a re-run attempt went green, or an in-job retry recovered it), so it is provably nondeterministic. quarantined: a tolerated failure was recorded while it was masked. suspected_regression: only failures were recorded, which is absence of proof, not proof that it is a real break.* `confirmed_flake` - CONFIRMED_FLAKE* `suspected_regression` - SUSPECTED_REGRESSION* `quarantined` - QUARANTINED&quot;
+    /// confirmed_flake: one commit both failed and passed the test (a re-run attempt went green, or an in-job retry recovered it), so it is provably nondeterministic. quarantined: a tolerated failure was recorded while it was masked. suspected_regression: only failures were recorded, which is absence of proof, not proof that it is a real break.* `confirmed_flake` - CONFIRMED_FLAKE* `suspected_regression` - SUSPECTED_REGRESSION* `quarantined` - QUARANTINED
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class FlakyTestItemClassification : IAdditionalDataHolder, IParsable

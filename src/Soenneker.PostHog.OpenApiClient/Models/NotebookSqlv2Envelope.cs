@@ -60,7 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public Guid? ResultId { get; set; }
         /// <summary>Number of rows in the result.</summary>
         public int? RowCount { get; set; }
-        /// <summary>&quot;Run outcome: &apos;ok&apos;, &apos;error&apos;, or &apos;interrupted&apos; (user-requested stop).&quot;</summary>
+        /// <summary>Run outcome: &apos;ok&apos;, &apos;error&apos;, or &apos;interrupted&apos; (user-requested stop).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Status { get; set; }
@@ -84,7 +84,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Stdout { get; set; }
 #endif
-        /// <summary>&quot;Phase durations in seconds. From the sandbox: input_wait_s (waiting on the data plane), download_s (presigned frame downloads), kernel_boot_s (ensuring the ipykernel is up), exec_s (kernel cell execution), sandbox_total_s (the whole sandbox-side run). From the direct lane: queued_s (enqueue to Celery pickup), clickhouse_s (pickup to completion). Feeds the node-run metrics.&quot;</summary>
+        /// <summary>Phase durations in seconds. From the sandbox: input_wait_s (waiting on the data plane), download_s (presigned frame downloads), kernel_boot_s (ensuring the ipykernel is up), exec_s (kernel cell execution), sandbox_total_s (the whole sandbox-side run). From the direct lane: queued_s (enqueue to Celery pickup), clickhouse_s (pickup to completion). Feeds the node-run metrics.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2EnvelopeTimingsProperty? Timings { get; set; }

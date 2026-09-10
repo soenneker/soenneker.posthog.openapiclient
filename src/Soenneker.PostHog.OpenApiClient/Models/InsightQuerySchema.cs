@@ -15,7 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;Can the user click on column headers to sort the table? (default: true)&quot;</summary>
+        /// <summary>Can the user click on column headers to sort the table? (default: true)</summary>
         public bool? AllowSorting { get; set; }
         /// <summary>The chartSettings property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -36,10 +36,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Columns shown in the table, unless the `source` provides them.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeColumns? Columns { get; set; }
+        public List<string>? Columns { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeColumns Columns { get; set; }
+        public List<string> Columns { get; set; }
 #endif
         /// <summary>Context for the table, used by components like ColumnConfigurator</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -60,10 +60,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Default columns to use when resetting column configuration</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeDefaultColumns? DefaultColumns { get; set; }
+        public List<string>? DefaultColumns { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeDefaultColumns DefaultColumns { get; set; }
+        public List<string> DefaultColumns { get; set; }
 #endif
         /// <summary>The display property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -75,23 +75,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Query is embedded inside another bordered component</summary>
         public bool? Embedded { get; set; }
-        /// <summary>&quot;Can expand row to show raw event data (default: true)&quot;</summary>
+        /// <summary>Can expand row to show raw event data (default: true)</summary>
         public bool? Expandable { get; set; }
         /// <summary>Show with most visual options enabled. Used in insight scene.</summary>
         public bool? Full { get; set; }
         /// <summary>Columns that aren&apos;t shown in the table, even if in columns or returned data</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeHiddenColumns? HiddenColumns { get; set; }
+        public List<string>? HiddenColumns { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeHiddenColumns HiddenColumns { get; set; }
+        public List<string> HiddenColumns { get; set; }
 #endif
         /// <summary>The hidePersonsModal property</summary>
         public bool? HidePersonsModal { get; set; }
         /// <summary>The hideTooltipOnScroll property</summary>
         public bool? HideTooltipOnScroll { get; set; }
-        /// <summary>Union discriminator</summary>
+        /// <summary>The kind property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Kind { get; set; }
@@ -110,12 +110,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Columns that are sticky when scrolling horizontally</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodePinnedColumns? PinnedColumns { get; set; }
+        public List<string>? PinnedColumns { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodePinnedColumns PinnedColumns { get; set; }
+        public List<string> PinnedColumns { get; set; }
 #endif
-        /// <summary>&quot;Link properties via the URL (default: false)&quot;</summary>
+        /// <summary>Link properties via the URL (default: false)</summary>
         public bool? PropertiesViaUrl { get; set; }
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -155,7 +155,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? ShowLastComputation { get; set; }
         /// <summary>The showLastComputationRefresh property</summary>
         public bool? ShowLastComputationRefresh { get; set; }
-        /// <summary>&quot;Show a button to open the current query as a new insight. (default: true)&quot;</summary>
+        /// <summary>Show a button to open the current query as a new insight. (default: true)</summary>
         public bool? ShowOpenEditorButton { get; set; }
         /// <summary>Show a button to configure and persist the table&apos;s default columns if possible</summary>
         public bool? ShowPersistentColumnConfigurator { get; set; }
@@ -255,20 +255,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "allowSorting", n => { AllowSorting = n.GetBoolValue(); } },
                 { "chartSettings", n => { ChartSettings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartSettings>(global::Soenneker.PostHog.OpenApiClient.Models.ChartSettings.CreateFromDiscriminatorValue); } },
                 { "code", n => { Code = n.GetStringValue(); } },
-                { "columns", n => { Columns = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeColumns>(global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeColumns.CreateFromDiscriminatorValue); } },
+                { "columns", n => { Columns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "context", n => { Context = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeViewPropsContext>(global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeViewPropsContext.CreateFromDiscriminatorValue); } },
                 { "contextKey", n => { ContextKey = n.GetStringValue(); } },
-                { "defaultColumns", n => { DefaultColumns = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeDefaultColumns>(global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeDefaultColumns.CreateFromDiscriminatorValue); } },
+                { "defaultColumns", n => { DefaultColumns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "display", n => { Display = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayTypeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayTypeWrapper.CreateFromDiscriminatorValue); } },
                 { "embedded", n => { Embedded = n.GetBoolValue(); } },
                 { "expandable", n => { Expandable = n.GetBoolValue(); } },
                 { "full", n => { Full = n.GetBoolValue(); } },
-                { "hiddenColumns", n => { HiddenColumns = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeHiddenColumns>(global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeHiddenColumns.CreateFromDiscriminatorValue); } },
+                { "hiddenColumns", n => { HiddenColumns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "hidePersonsModal", n => { HidePersonsModal = n.GetBoolValue(); } },
                 { "hideTooltipOnScroll", n => { HideTooltipOnScroll = n.GetBoolValue(); } },
                 { "kind", n => { Kind = n.GetStringValue(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
-                { "pinnedColumns", n => { PinnedColumns = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodePinnedColumns>(global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodePinnedColumns.CreateFromDiscriminatorValue); } },
+                { "pinnedColumns", n => { PinnedColumns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "propertiesViaUrl", n => { PropertiesViaUrl = n.GetBoolValue(); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeResponse>(global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeResponse.CreateFromDiscriminatorValue); } },
                 { "showAbsoluteTime", n => { ShowAbsoluteTime = n.GetBoolValue(); } },
@@ -319,20 +319,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("allowSorting", AllowSorting);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartSettings>("chartSettings", ChartSettings);
             writer.WriteStringValue("code", Code);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeColumns>("columns", Columns);
+            writer.WriteCollectionOfPrimitiveValues<string>("columns", Columns);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeViewPropsContext>("context", Context);
             writer.WriteStringValue("contextKey", ContextKey);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeDefaultColumns>("defaultColumns", DefaultColumns);
+            writer.WriteCollectionOfPrimitiveValues<string>("defaultColumns", DefaultColumns);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayTypeWrapper>("display", Display);
             writer.WriteBoolValue("embedded", Embedded);
             writer.WriteBoolValue("expandable", Expandable);
             writer.WriteBoolValue("full", Full);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeHiddenColumns>("hiddenColumns", HiddenColumns);
+            writer.WriteCollectionOfPrimitiveValues<string>("hiddenColumns", HiddenColumns);
             writer.WriteBoolValue("hidePersonsModal", HidePersonsModal);
             writer.WriteBoolValue("hideTooltipOnScroll", HideTooltipOnScroll);
             writer.WriteStringValue("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodePinnedColumns>("pinnedColumns", PinnedColumns);
+            writer.WriteCollectionOfPrimitiveValues<string>("pinnedColumns", PinnedColumns);
             writer.WriteBoolValue("propertiesViaUrl", PropertiesViaUrl);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeResponse>("response", Response);
             writer.WriteBoolValue("showAbsoluteTime", ShowAbsoluteTime);

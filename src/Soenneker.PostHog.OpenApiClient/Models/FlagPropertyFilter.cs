@@ -29,21 +29,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Label { get; set; }
 #endif
         /// <summary>Only flag_evaluates_to operator is allowed for flag dependencies</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Operator { get; set; }
-#nullable restore
-#else
-        public string Operator { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.FlagEvaluatesToOperator? Operator { get; set; }
         /// <summary>Feature flag dependency</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Type { get; set; }
-#nullable restore
-#else
-        public string Type { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.FlagType? Type { get; set; }
         /// <summary>The value can be true, false, or a variant name</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -72,8 +60,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "key", n => { Key = n.GetStringValue(); } },
                 { "label", n => { Label = n.GetStringValue(); } },
-                { "operator", n => { Operator = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetStringValue(); } },
+                { "operator", n => { Operator = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FlagEvaluatesToOperator>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FlagType>(); } },
                 { "value", n => { Value = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FlagPropertyFilterValue>(global::Soenneker.PostHog.OpenApiClient.Models.FlagPropertyFilterValue.CreateFromDiscriminatorValue); } },
             };
         }
@@ -86,8 +74,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("key", Key);
             writer.WriteStringValue("label", Label);
-            writer.WriteStringValue("operator", Operator);
-            writer.WriteStringValue("type", Type);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FlagEvaluatesToOperator>("operator", Operator);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FlagType>("type", Type);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FlagPropertyFilterValue>("value", Value);
         }
     }

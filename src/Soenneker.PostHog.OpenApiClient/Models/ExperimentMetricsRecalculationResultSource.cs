@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Where these results came from: &apos;recalculation&apos; for a real metrics-recalculation run, &apos;timeseries_fallback&apos; for a cold-start placeholder built from the latest daily timeseries data.* `recalculation` - recalculation* `timeseries_fallback` - timeseries_fallback&quot;
+    /// Where these results came from: &apos;recalculation&apos; for a real metrics-recalculation run, &apos;timeseries_fallback&apos; for a cold-start placeholder built from the latest daily timeseries data.* `recalculation` - recalculation* `timeseries_fallback` - timeseries_fallback
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ExperimentMetricsRecalculationResultSource : IAdditionalDataHolder, IParsable

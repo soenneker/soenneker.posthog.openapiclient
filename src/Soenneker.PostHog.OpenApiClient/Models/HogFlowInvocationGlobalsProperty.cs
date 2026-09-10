@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Test trigger payload, typically {event, person, groups}.
+    /// Test trigger payload, typically {event, person, groups}. Shape it like the trigger&apos;s real payload: an event matching the trigger filters for event triggers, or for an internal-event trigger an event named in its filters.events (e.g. $slack_message_received with Slack properties like channel, user, text, ts) and no person.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class HogFlowInvocationGlobalsProperty : IAdditionalDataHolder, IParsable

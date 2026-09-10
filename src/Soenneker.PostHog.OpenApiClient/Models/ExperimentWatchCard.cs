@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;One group of recordings worth opening, and the sentence that justifies it.Deliberately no rate, no ratio and no person count: a precise number next to an event name isan effect size, and the experiment&apos;s results publish those for everything it measures, computedover a different window and a different unit. The only number here is how many recordings thecard can actually show.&quot;
+    /// One group of recordings worth opening, and the sentence that justifies it.Deliberately no rate, no ratio and no person count: a precise number next to an event name isan effect size, and the experiment&apos;s results publish those for everything it measures, computedover a different window and a different unit. The only number here is how many recordings thecard can actually show.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ExperimentWatchCard : IAdditionalDataHolder, IParsable
@@ -23,7 +23,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Event { get; set; }
 #endif
-        /// <summary>&quot;Which of the card&apos;s recordings to open first, at most 3, ranked by how much each one carries: recordings showing several kinds of signal at once come before recordings showing more of a single kind. Offer these before the full list: the recordings list orders by its own sort, so session_ids order never reaches the viewer, and twenty recordings that share an event are otherwise indistinguishable in it. Empty when no recording the viewer can open carries a signal, which is worth saying rather than hiding.&quot;</summary>
+        /// <summary>Which of the card&apos;s recordings to open first, at most 3, ranked by how much each one carries: recordings showing several kinds of signal at once come before recordings showing more of a single kind. Offer these before the full list: the recordings list orders by its own sort, so session_ids order never reaches the viewer, and twenty recordings that share an event are otherwise indistinguishable in it. Empty when no recording the viewer can open carries a signal, which is worth saying rather than hiding.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWatchHighlight>? Highlights { get; set; }
@@ -31,7 +31,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWatchHighlight> Highlights { get; set; }
 #endif
-        /// <summary>&quot;What the card is: &apos;behavior&apos; for an event this variant did clearly more than the other variants together, &apos;friction&apos; for the same finding on an error or rage signal, &apos;variant_only&apos; for an event no other variant fired at all, and &apos;metric&apos; for a shortcut to recordings around one of the experiment&apos;s own metric events. A &apos;variant_only&apos; card shows the variant rendering its own change rather than a behavior difference, so present it as confirmation the change is live and never as a finding. Metric cards claim nothing about how the metric moved: that is the experiment results&apos; answer.* `behavior` - behavior* `friction` - friction* `variant_only` - variant_only* `metric` - metric&quot;</summary>
+        /// <summary>What the card is: &apos;behavior&apos; for an event this variant did clearly more than the other variants together, &apos;friction&apos; for the same finding on an error or rage signal, &apos;variant_only&apos; for an event no other variant fired at all, and &apos;metric&apos; for a shortcut to recordings around one of the experiment&apos;s own metric events. A &apos;variant_only&apos; card shows the variant rendering its own change rather than a behavior difference, so present it as confirmation the change is live and never as a finding. Metric cards claim nothing about how the metric moved: that is the experiment results&apos; answer.* `behavior` - behavior* `friction` - friction* `variant_only` - variant_only* `metric` - metric</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWatchCardKind? Kind { get; set; }
@@ -47,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string MetricName { get; set; }
 #endif
-        /// <summary>&quot;How many recordings the card carries, at most max_card_recordings (20). Every card is backed by recordings that actually exist: a finding whose sessions were never recorded is dropped rather than promised. A count sitting on the ceiling means at least that many, so say &apos;at least&apos; and never compare two such counts: how often the event happened is the experiment&apos;s results, and this only counts what replay kept.&quot;</summary>
+        /// <summary>How many recordings the card carries, at most max_card_recordings (20). Every card is backed by recordings that actually exist: a finding whose sessions were never recorded is dropped rather than promised. A count sitting on the ceiling means at least that many, so say &apos;at least&apos; and never compare two such counts: how often the event happened is the experiment&apos;s results, and this only counts what replay kept.</summary>
         public int? RecordingCount { get; set; }
         /// <summary>The recordings themselves, most recent first, ready to hand to the recordings list as-is.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -57,7 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> SessionIds { get; set; }
 #endif
-        /// <summary>&quot;How far apart this variant and the rest are, as a band rather than a number: &apos;only&apos; when nobody in the other variants did it at all among the people compared, then &apos;far_more&apos;, &apos;more&apos; and &apos;slightly_more&apos;. Read off the conservative end of the difference, so a card that clears the bar only because the sample is large reports as slight. Null on metric cards, which compare nothing. Present a band as a comparison (&apos;far more common in test&apos;), never convert it into a multiple.* `only` - only* `far_more` - far_more* `more` - more* `slightly_more` - slightly_more&quot;</summary>
+        /// <summary>How far apart this variant and the rest are, as a band rather than a number: &apos;only&apos; when nobody in the other variants did it at all among the people compared, then &apos;far_more&apos;, &apos;more&apos; and &apos;slightly_more&apos;. Read off the conservative end of the difference, so a card that clears the bar only because the sample is large reports as slight. Null on metric cards, which compare nothing. Present a band as a comparison (&apos;far more common in test&apos;), never convert it into a multiple.* `only` - only* `far_more` - far_more* `more` - more* `slightly_more` - slightly_more</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWatchCardStrength? Strength { get; set; }
@@ -65,7 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWatchCardStrength Strength { get; set; }
 #endif
-        /// <summary>&quot;The variant whose recordings these are: for comparison cards, the one that did the event more.&quot;</summary>
+        /// <summary>The variant whose recordings these are: for comparison cards, the one that did the event more.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Variant { get; set; }

@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;The patterns query for the current (foreground) window: date range plus any severity/service/search/property filters. The same filters are applied to the baseline window.&quot;
+    /// The patterns query for the current (foreground) window: date range plus any severity/service/search/property filters. The same filters are applied to the baseline window.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class LogsPatternsDiffRequestQuery : IAdditionalDataHolder, IParsable
@@ -31,6 +31,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.LogPropertyFilter2> FilterGroup { get; set; }
 #endif
+        /// <summary>Scope mining to one person (UUID or numeric ID). Expanded server-side to the person&apos;s distinct IDs and matched against the team&apos;s configured distinct-id log attribute keys.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? PersonId { get; set; }
+#nullable restore
+#else
+        public string PersonId { get; set; }
+#endif
         /// <summary>Full-text search term to filter log bodies before mining.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -46,6 +54,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public List<string> ServiceNames { get; set; }
+#endif
+        /// <summary>Scope mining to one session ID. Matched server-side against the team&apos;s configured session-id log attribute keys plus the built-in conventions, in both log attributes and resource attributes.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SessionId { get; set; }
+#nullable restore
+#else
+        public string SessionId { get; set; }
 #endif
         /// <summary>Filter by log severity levels before mining.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -82,8 +98,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsBodyDateRange>(global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsBodyDateRange.CreateFromDiscriminatorValue); } },
                 { "filterGroup", n => { FilterGroup = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogPropertyFilter2>(global::Soenneker.PostHog.OpenApiClient.Models.LogPropertyFilter2.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "personId", n => { PersonId = n.GetStringValue(); } },
                 { "searchTerm", n => { SearchTerm = n.GetStringValue(); } },
                 { "serviceNames", n => { ServiceNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "sessionId", n => { SessionId = n.GetStringValue(); } },
                 { "severityLevels", n => { SeverityLevels = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.SeverityLevelsEnum>()?.AsList(); } },
             };
         }
@@ -96,8 +114,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsBodyDateRange>("dateRange", DateRange);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogPropertyFilter2>("filterGroup", FilterGroup);
+            writer.WriteStringValue("personId", PersonId);
             writer.WriteStringValue("searchTerm", SearchTerm);
             writer.WriteCollectionOfPrimitiveValues<string>("serviceNames", ServiceNames);
+            writer.WriteStringValue("sessionId", SessionId);
             writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.SeverityLevelsEnum>("severityLevels", SeverityLevels);
             writer.WriteAdditionalData(AdditionalData);
         }

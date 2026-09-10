@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;continue: fall-through (sequential or the no-match path of conditional_branch). branch: requires &apos;index&apos; matching config.conditions[index].* `continue` - continue* `branch` - branch&quot;
+    /// continue: fall-through (sequential or the no-match path of conditional_branch). branch: requires &apos;index&apos; matching config.conditions[index].* `continue` - continue* `branch` - branch
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class HogFlowEdgeType : IAdditionalDataHolder, IParsable

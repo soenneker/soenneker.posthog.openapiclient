@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;What the evaluation runs on. &apos;generation&apos; evaluates each matching $ai_generation event individually. &apos;trace&apos; evaluates the whole trace once and &apos;session&apos; the whole $ai_session_id session once: the first matching generation schedules a run that waits for the unit to settle, then evaluates all of its events together. Condition filters still match individual generations — a unit is evaluated when any of its generations matches, and sampling applies per unit. A &apos;session&apos; evaluation only fires for generations that carry $ai_session_id. When and how the run fires is controlled by target_config&apos;s settle strategy.* `generation` - Generation* `trace` - Trace* `session` - Session&quot;
+    /// What the evaluation runs on. &apos;generation&apos; evaluates each matching $ai_generation event individually. &apos;trace&apos; evaluates the whole trace once and &apos;session&apos; the whole $ai_session_id session once: the first matching generation schedules a run that waits for the unit to settle, then evaluates all of its events together. Condition filters still match individual generations — a unit is evaluated when any of its generations matches, and sampling applies per unit. A &apos;session&apos; evaluation only fires for generations that carry $ai_session_id. When and how the run fires is controlled by target_config&apos;s settle strategy.* `generation` - Generation* `trace` - Trace* `session` - Session
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedEvaluationTarget : IAdditionalDataHolder, IParsable

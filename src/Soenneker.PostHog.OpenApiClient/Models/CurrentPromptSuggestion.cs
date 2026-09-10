@@ -23,10 +23,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The newest suggestion for this scanner, or null when none has been generated yet.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CurrentPromptSuggestionSuggestion? Suggestion { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerPromptSuggestion? Suggestion { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CurrentPromptSuggestionSuggestion Suggestion { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerPromptSuggestion Suggestion { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CurrentPromptSuggestion"/> and sets the default values.
@@ -56,7 +56,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "evaluation_session_cap", n => { EvaluationSessionCap = n.GetIntValue(); } },
                 { "rated_count", n => { RatedCount = n.GetIntValue(); } },
                 { "stale", n => { Stale = n.GetBoolValue(); } },
-                { "suggestion", n => { Suggestion = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CurrentPromptSuggestionSuggestion>(global::Soenneker.PostHog.OpenApiClient.Models.CurrentPromptSuggestionSuggestion.CreateFromDiscriminatorValue); } },
+                { "suggestion", n => { Suggestion = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerPromptSuggestion>(global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerPromptSuggestion.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -69,7 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("evaluation_session_cap", EvaluationSessionCap);
             writer.WriteIntValue("rated_count", RatedCount);
             writer.WriteBoolValue("stale", Stale);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CurrentPromptSuggestionSuggestion>("suggestion", Suggestion);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerPromptSuggestion>("suggestion", Suggestion);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;How serious the issue is: &apos;critical&apos;, &apos;warning&apos;, or &apos;info&apos;.* `critical` - Critical* `warning` - Warning* `info` - Info&quot;
+    /// How serious the issue is: &apos;critical&apos;, &apos;warning&apos;, or &apos;info&apos;.* `critical` - Critical* `warning` - Warning* `info` - Info
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class HealthIssueDetailSeverity : IAdditionalDataHolder, IParsable

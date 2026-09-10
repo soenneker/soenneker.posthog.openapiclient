@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.Delet
         {
         }
         /// <summary>
-        /// &quot;Remove the organization&apos;s provisioning record after teardown, freeing its warehouse name.Called once the warehouse status reports `deleted`: deprovision tears the warehousedown, this removes the now-empty org row so the database_name can be reused. Restrictedto organization admins.&quot;
+        /// Remove the organization&apos;s provisioning record after teardown, freeing its warehouse name.Called once the warehouse status reports `deleted`: deprovision tears the warehousedown, this removes the now-empty org row so the database_name can be reused. Restrictedto organization admins.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DeleteWarehouseOrgResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.Delet
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.DeleteWarehouseOrgResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.DeleteWarehouseOrgResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Remove the organization&apos;s provisioning record after teardown, freeing its warehouse name.Called once the warehouse status reports `deleted`: deprovision tears the warehousedown, this removes the now-empty org row so the database_name can be reused. Restrictedto organization admins.&quot;
+        /// Remove the organization&apos;s provisioning record after teardown, freeing its warehouse name.Called once the warehouse status reports `deleted`: deprovision tears the warehousedown, this removes the now-empty org row so the database_name can be reused. Restrictedto organization admins.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

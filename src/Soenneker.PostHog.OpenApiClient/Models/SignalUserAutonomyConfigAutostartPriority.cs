@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AutonomyPriorityEnumWrapper4"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper31"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AutonomyPriorityEnumWrapper4"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper34"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SignalUserAutonomyConfigAutostartPriority : IComposedTypeWrapper, IParsable
@@ -21,13 +21,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.AutonomyPriorityEnumWrapper4 AutonomyPriorityEnumWrapper4 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper31"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper34"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper31? BlankEnumWrapper31 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper34? BlankEnumWrapper34 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper31 BlankEnumWrapper31 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper34 BlankEnumWrapper34 { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -51,9 +51,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 result.AutonomyPriorityEnumWrapper4 = new global::Soenneker.PostHog.OpenApiClient.Models.AutonomyPriorityEnumWrapper4();
             }
-            else if("BlankEnumWrapper31".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("BlankEnumWrapper34".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.BlankEnumWrapper31 = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper31();
+                result.BlankEnumWrapper34 = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper34();
             }
             return result;
         }
@@ -67,9 +67,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 return AutonomyPriorityEnumWrapper4.GetFieldDeserializers();
             }
-            else if(BlankEnumWrapper31 != null)
+            else if(BlankEnumWrapper34 != null)
             {
-                return BlankEnumWrapper31.GetFieldDeserializers();
+                return BlankEnumWrapper34.GetFieldDeserializers();
             }
             else if(NullEnum != null)
             {
@@ -88,9 +88,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutonomyPriorityEnumWrapper4>(null, AutonomyPriorityEnumWrapper4);
             }
-            else if(BlankEnumWrapper31 != null)
+            else if(BlankEnumWrapper34 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper31>(null, BlankEnumWrapper31);
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper34>(null, BlankEnumWrapper34);
             }
             else if(NullEnum != null)
             {

@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Structured event data, e.g. {\&quot;context_name\&quot;: \&quot;mobile\&quot;}. At most 8 KB of JSON.&quot;
+    /// Structured event data, e.g. {&quot;context_name&quot;: &quot;mobile&quot;}. At most 8 KB of JSON.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ChannelFeedMessageWritePayload : IAdditionalDataHolder, IParsable

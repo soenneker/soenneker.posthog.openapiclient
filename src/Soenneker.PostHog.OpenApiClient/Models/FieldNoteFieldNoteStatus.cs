@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Lifecycle of the field note: pending, acknowledged, resolved, or dismissed. Ignored on create.* `pending` - Pending* `acknowledged` - Acknowledged* `resolved` - Resolved* `dismissed` - Dismissed&quot;
+    /// Lifecycle of the field note: pending, acknowledged, resolved, or dismissed. Ignored on create.* `pending` - Pending* `acknowledged` - Acknowledged* `resolved` - Resolved* `dismissed` - Dismissed
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class FieldNoteFieldNoteStatus : IAdditionalDataHolder, IParsable

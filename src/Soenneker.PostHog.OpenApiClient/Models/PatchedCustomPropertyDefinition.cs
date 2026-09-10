@@ -27,7 +27,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
-        /// <summary>&quot;How the property is interpreted and rendered: &apos;text&apos;, &apos;number&apos;, &apos;currency&apos;, &apos;percent&apos;, &apos;date&apos;, &apos;datetime&apos;, &apos;boolean&apos;, or &apos;select&apos;.* `text` - text* `number` - number* `currency` - currency* `percent` - percent* `date` - date* `datetime` - datetime* `boolean` - boolean* `select` - select&quot;</summary>
+        /// <summary>How the property is interpreted and rendered: &apos;text&apos;, &apos;link&apos;, &apos;number&apos;, &apos;currency&apos;, &apos;percent&apos;, &apos;date&apos;, &apos;datetime&apos;, &apos;boolean&apos;, or &apos;select&apos;. Links require an HTTP or HTTPS URL.* `text` - text* `link` - link* `number` - number* `currency` - currency* `percent` - percent* `date` - date* `datetime` - datetime* `boolean` - boolean* `select` - select</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedCustomPropertyDefinitionDisplayType? DisplayType { get; set; }
@@ -35,8 +35,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedCustomPropertyDefinitionDisplayType DisplayType { get; set; }
 #endif
-        /// <summary>&quot;For &apos;group&apos; targets only: which group type (0-4) the property attaches to. Required when target_type is &apos;group&apos;; must be omitted otherwise. Create-only.&quot;</summary>
+        /// <summary>For &apos;group&apos; targets only: which group type (0-4) the property attaches to. Required when target_type is &apos;group&apos;; must be omitted otherwise. Create-only.</summary>
         public int? GroupTypeIndex { get; set; }
+        /// <summary>Whether a workflow updates this property. Always returned, even when workflow details are hidden.</summary>
+        public bool? HasWorkflowReference { get; private set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>Abbreviate large numbers (e.g. 10,000 → 10K). Only applies to numeric properties.</summary>
@@ -51,7 +53,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>&quot;For select properties: the allowed options. Required (non-empty) when display_type is &apos;select&apos;; cleared server-side for other types.&quot;</summary>
+        /// <summary>For select properties: the allowed options. Required (non-empty) when display_type is &apos;select&apos;; cleared server-side for other types.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyOption>? Options { get; set; }
@@ -59,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyOption> Options { get; set; }
 #endif
-        /// <summary>Workflows that use this property, resolved by definition id.</summary>
+        /// <summary>Workflows that use this property, resolved by definition id when the caller can view workflows.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyReference>? References { get; private set; }
@@ -70,12 +72,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The data-warehouse view-sync binding feeding this property, or null when values are set manually.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedCustomPropertyDefinitionSource? Source { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySource? Source { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedCustomPropertyDefinitionSource Source { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySource Source { get; private set; }
 #endif
-        /// <summary>&quot;What entity this property is attached to: &apos;account&apos; (default), &apos;person&apos;, or &apos;group&apos;. Person and group properties are populated from a warehouse schema and become usable like any other person/group property (feature flags, cohorts, insights).* `account` - account* `person` - person* `group` - group&quot;</summary>
+        /// <summary>What entity this property is attached to: &apos;account&apos; (default), &apos;person&apos;, or &apos;group&apos;. Person and group properties are populated from a warehouse schema and become usable like any other person/group property (feature flags, cohorts, insights).* `account` - account* `person` - person* `group` - group</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedCustomPropertyDefinitionTargetType? TargetType { get; set; }
@@ -116,13 +118,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "display_type", n => { DisplayType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedCustomPropertyDefinitionDisplayType>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedCustomPropertyDefinitionDisplayType.CreateFromDiscriminatorValue); } },
                 { "group_type_index", n => { GroupTypeIndex = n.GetIntValue(); } },
+                { "has_workflow_reference", n => { HasWorkflowReference = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "is_big_number", n => { IsBigNumber = n.GetBoolValue(); } },
                 { "is_canonical", n => { IsCanonical = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "options", n => { Options = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyOption>(global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyOption.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "references", n => { References = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyReference>(global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyReference.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedCustomPropertyDefinitionSource>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedCustomPropertyDefinitionSource.CreateFromDiscriminatorValue); } },
+                { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySource>(global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySource.CreateFromDiscriminatorValue); } },
                 { "target_type", n => { TargetType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedCustomPropertyDefinitionTargetType>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedCustomPropertyDefinitionTargetType.CreateFromDiscriminatorValue); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };

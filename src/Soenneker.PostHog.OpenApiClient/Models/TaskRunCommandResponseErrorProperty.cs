@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Error details on failure
+    /// JSON-RPC error details, including failures returned with HTTP 200
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TaskRunCommandResponseErrorProperty : IAdditionalDataHolder, IParsable

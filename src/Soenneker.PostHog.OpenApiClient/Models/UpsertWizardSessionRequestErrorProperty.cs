@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Populated when run_phase=&apos;error&apos;. Shape: { type: string, message: string }.&quot;
+    /// Populated when run_phase=&apos;error&apos;. Shape: { type: string, message: string }.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class UpsertWizardSessionRequestErrorProperty : IAdditionalDataHolder, IParsable

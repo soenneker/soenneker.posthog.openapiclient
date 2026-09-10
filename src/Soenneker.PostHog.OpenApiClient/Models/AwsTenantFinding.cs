@@ -23,7 +23,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Description { get; private set; }
 #endif
-        /// <summary>&quot;What the finding is about: authentication setup (DKIM/DMARC/SPF/BIMI), recipient signals (COMPLAINT/BOUNCE/FEEDBACK_3P), or a blocklist listing (IP_LISTING).* `DKIM` - DKIM* `DMARC` - DMARC* `SPF` - SPF* `BIMI` - BIMI* `COMPLAINT` - COMPLAINT* `BOUNCE` - BOUNCE* `FEEDBACK_3P` - FEEDBACK_3P* `IP_LISTING` - IP_LISTING&quot;</summary>
+        /// <summary>What the finding is about: authentication setup (DKIM/DMARC/SPF/BIMI), recipient signals (COMPLAINT/BOUNCE/FEEDBACK_3P), or a blocklist listing (IP_LISTING).* `DKIM` - DKIM* `DMARC` - DMARC* `SPF` - SPF* `BIMI` - BIMI* `COMPLAINT` - COMPLAINT* `BOUNCE` - BOUNCE* `FEEDBACK_3P` - FEEDBACK_3P* `IP_LISTING` - IP_LISTING</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.AwsTenantFindingFindingType? FindingType { get; private set; }

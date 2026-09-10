@@ -111,7 +111,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions.Item.M
             [QueryParameter("instance_id")]
             public string InstanceId { get; set; }
 #endif
-            /// <summary>&quot;Time bucket size for the series. One of: hour, day, week. Defaults to &apos;day&apos;.* `hour` - hour* `day` - day* `week` - week&quot;</summary>
+            /// <summary>Time bucket size for the series. One of: hour, day, week. Defaults to &apos;day&apos;.* `hour` - hour* `day` - day* `week` - week</summary>
             [QueryParameter("interval")]
             public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionsMetricsTotalsRetrieveIntervalParameter? Interval { get; set; }
             /// <summary>Comma-separated metric kinds to filter by, e.g. &apos;success,failure&apos;.</summary>

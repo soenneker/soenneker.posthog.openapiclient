@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.SuggestionApply Apply { get; set; }
 #endif
-        /// <summary>&quot;0-1. Never 1.0: these are inferences, not proofs.&quot;</summary>
+        /// <summary>0-1. Never 1.0: these are inferences, not proofs.</summary>
         public double? Confidence { get; set; }
         /// <summary>In-app URL to resolve this manually, if any</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -112,7 +112,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Title { get; set; }
 #endif
-        /// <summary>&quot;Capabilities this unblocks: cost, attribution, roas, cac&quot;</summary>
+        /// <summary>Capabilities this unblocks: cost, attribution, roas, cac</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? Unlocks { get; set; }

@@ -62,7 +62,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Custom_property_sour
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedCustomPropertySourceList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedCustomPropertySourceList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySource"/></returns>
-        /// <param name="body">Binds a data-warehouse source to a custom property definition. Account sources read amaterialized view column and sync onto matching accounts; person and group sources read awarehouse schema and sync onto matching persons or groups on each warehouse sync.</param>
+        /// <param name="body">Binds warehouse columns to a custom property definition. Account sources read a materializedview column and sync onto matching accounts; person and group sources read either an importedwarehouse table or a materialized view, and sync onto matching persons or groups on everywarehouse run of what they read.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -95,7 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Custom_property_sour
             return requestInfo;
         }
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">Binds a data-warehouse source to a custom property definition. Account sources read amaterialized view column and sync onto matching accounts; person and group sources read awarehouse schema and sync onto matching persons or groups on each warehouse sync.</param>
+        /// <param name="body">Binds warehouse columns to a custom property definition. Account sources read a materializedview column and sync onto matching accounts; person and group sources read either an importedwarehouse table or a materialized view, and sync onto matching persons or groups on everywarehouse run of what they read.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

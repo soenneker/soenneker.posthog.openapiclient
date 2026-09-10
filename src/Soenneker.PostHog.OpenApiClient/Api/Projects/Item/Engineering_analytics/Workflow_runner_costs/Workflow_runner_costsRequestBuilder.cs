@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Workflow_runner_costsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/engineering_analytics/workflow_runner_costs?repo={repo}&workflow_name={workflow_name}{&branch*,date_from*,date_to*,source_id*}", pathParameters)
+        public Workflow_runner_costsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/engineering_analytics/workflow_runner_costs?repo={repo}&workflow_name={workflow_name}{&branch*,date_from*,date_to*,run_scope*,source_id*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,11 +30,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Workflow_runner_costsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/engineering_analytics/workflow_runner_costs?repo={repo}&workflow_name={workflow_name}{&branch*,date_from*,date_to*,source_id*}", rawUrl)
+        public Workflow_runner_costsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/engineering_analytics/workflow_runner_costs?repo={repo}&workflow_name={workflow_name}{&branch*,date_from*,date_to*,run_scope*,source_id*}", rawUrl)
         {
         }
         /// <summary>
-        /// A workflow&apos;s estimated CI cost broken down by runner tier over a window (date_from default -30d), highest spend first. Optionally scope to a single git branch via `branch`. Returns an empty list when the job-level source isn&apos;t synced.
+        /// A workflow&apos;s estimated CI cost broken down by runner tier over a window (date_from default -30d), highest spend first. Optionally scope to a single git branch via `branch` or one run group via `run_scope`. Returns an empty list when the job-level source isn&apos;t synced.
         /// </summary>
         /// <returns>A List&lt;global::Soenneker.PostHog.OpenApiClient.Models.WorkflowRunnerCost&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -53,7 +53,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
             return collectionResult?.AsList();
         }
         /// <summary>
-        /// A workflow&apos;s estimated CI cost broken down by runner tier over a window (date_from default -30d), highest spend first. Optionally scope to a single git branch via `branch`. Returns an empty list when the job-level source isn&apos;t synced.
+        /// A workflow&apos;s estimated CI cost broken down by runner tier over a window (date_from default -30d), highest spend first. Optionally scope to a single git branch via `branch` or one run group via `run_scope`. Returns an empty list when the job-level source isn&apos;t synced.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -81,7 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Workflow_runner_costs.Workflow_runner_costsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// A workflow&apos;s estimated CI cost broken down by runner tier over a window (date_from default -30d), highest spend first. Optionally scope to a single git branch via `branch`. Returns an empty list when the job-level source isn&apos;t synced.
+        /// A workflow&apos;s estimated CI cost broken down by runner tier over a window (date_from default -30d), highest spend first. Optionally scope to a single git branch via `branch` or one run group via `run_scope`. Returns an empty list when the job-level source isn&apos;t synced.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Workflow_runner_costsRequestBuilderGetQueryParameters 
@@ -96,7 +96,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
             [QueryParameter("branch")]
             public string Branch { get; set; }
 #endif
-            /// <summary>&quot;Window start: relative (&apos;-30d&apos;, &apos;-8w&apos;) or ISO8601. Defaults to -30d.&quot;</summary>
+            /// <summary>Window start: relative (&apos;-30d&apos;, &apos;-8w&apos;) or ISO8601. Defaults to -30d.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("date_from")]
@@ -106,7 +106,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
             [QueryParameter("date_from")]
             public string DateFrom { get; set; }
 #endif
-            /// <summary>&quot;Window end: relative or ISO8601. Defaults to now.&quot;</summary>
+            /// <summary>Window end: relative or ISO8601. Defaults to now.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("date_to")]
@@ -126,6 +126,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
             [QueryParameter("repo")]
             public string Repo { get; set; }
 #endif
+            /// <summary>Which group of runs to report on: &apos;all&apos; (default) is every run; &apos;default_branch&apos; is runs on master or main; &apos;pull_request&apos; is runs on PR branches, excluding default-branch and merge-queue runs; &apos;merge_queue&apos; is the gate runs the merge queue fired before a merge landed. Fork PRs carry no PR attribution (a GitHub limitation), so they appear only under &apos;all&apos;. Any other value is a 400.</summary>
+            [QueryParameter("run_scope")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.EngineeringAnalyticsWorkflowRunnerCostsRunScopeParameter? RunScope { get; set; }
             /// <summary>Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one.</summary>
             [QueryParameter("source_id")]
             public Guid? SourceId { get; set; }

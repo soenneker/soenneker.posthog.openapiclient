@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;The full markdown notebook document: a ProseMirror doc wrapping a single markdown node.&quot;
+    /// The full markdown notebook document: a ProseMirror doc wrapping a single markdown node.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class NotebookMarkdownSaveContent : IAdditionalDataHolder, IParsable

@@ -14,6 +14,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Optional, only allowed with dismissal_reason=&apos;wrong_repo&apos;. The repository this report should have targeted, in &apos;owner/repo&apos; format (case-insensitive). It is recorded with the dismissal and fed into future repository selection for this project. When the repository is connected to the project, it also becomes the report&apos;s corrected repo selection, so restoring the report re-researches against it.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CorrectedRepository { get; set; }
+#nullable restore
+#else
+        public string CorrectedRepository { get; set; }
+#endif
         /// <summary>Optional free-form note explaining the dismissal. Capped at 4000 characters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -22,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string DismissalNote { get; set; }
 #endif
-        /// <summary>&quot;Optional canonical reason code for the dismissal. Must be one of: already_fixed, report_unclear, analysis_wrong, wontfix_intentional, wontfix_irrelevant, other — these match the inbox UI so the rationale renders as a labelled chip rather than a raw code. When the work this report asked for is done, the honest transition is state=&apos;resolved&apos; (the reason/note records why). Reserve &apos;already_fixed&apos; with state=&apos;potential&apos; (snooze/restore) for \&quot;fixed by something else / might recur\&quot; cases, so the report reappears if the issue comes back. Use &apos;other&apos; together with a dismissal_note for anything that doesn&apos;t fit a code.* `already_fixed` - Already fixed* `report_unclear` - Report is unclear to me* `analysis_wrong` - Agent&apos;s analysis is wrong* `wontfix_intentional` - Won&apos;t fix - intentional behavior* `wontfix_irrelevant` - Won&apos;t fix - issue is real but insignificant* `other` - Something else…&quot;</summary>
+        /// <summary>Optional canonical reason code recorded with the transition. Must be one of: already_fixed, report_unclear, analysis_wrong, wrong_repo, wontfix_intentional, wontfix_irrelevant, fixed_outside_posthog, pr_merged, other — these match the inbox UI so the rationale renders as a labelled chip rather than a raw code. When the work this report asked for is done, the honest transition is state=&apos;resolved&apos; with &apos;fixed_outside_posthog&apos; (the fix landed without a pull request), &apos;pr_merged&apos; (a pull request with the fix was merged but did not resolve the report on its own), or &apos;already_fixed&apos; (it was fixed before the report was filed). The dismissal codes (report_unclear, analysis_wrong, wrong_repo, wontfix_*) go with state=&apos;suppressed&apos;. Use &apos;wrong_repo&apos; when the agent picked the wrong repository for this report, ideally with corrected_repository naming the right one. Use &apos;other&apos; together with a dismissal_note for anything that doesn&apos;t fit a code.* `already_fixed` - Already fixed* `report_unclear` - Report is unclear to me* `analysis_wrong` - Agent&apos;s analysis is wrong* `wrong_repo` - Agent picked the wrong repository* `wontfix_intentional` - Won&apos;t fix - intentional behavior* `wontfix_irrelevant` - Won&apos;t fix - issue is real but insignificant* `fixed_outside_posthog` - Fixed outside PostHog* `pr_merged` - PR was merged* `other` - Something else…</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportStateRequestDismissalReason? DismissalReason { get; set; }
@@ -32,7 +40,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Optional, only honored when state is &apos;potential&apos;. Number of additional signals the report must accumulate before it is re-promoted into the pipeline — effectively snoozing it until then. Omit to let the report re-enter the pipeline on the next matching signal.</summary>
         public int? SnoozeFor { get; set; }
-        /// <summary>Target state for the report. Use &apos;suppressed&apos; to dismiss the report from the inbox, &apos;potential&apos; to snooze/reopen it for later review, or &apos;resolved&apos; when the work this report asked for has been done. Resolving is only allowed from a researched status (ready or pending_input) or a suppressed report; other statuses return 409 (skipped in bulk).* `suppressed` - suppressed* `potential` - potential* `resolved` - resolved</summary>
+        /// <summary>Target state for the report. Use &apos;suppressed&apos; to dismiss the report from the inbox, &apos;potential&apos; to snooze/reopen it for later review, or &apos;resolved&apos; when the work this report asked for has been done. Resolving is only allowed from a researched status (ready or pending_input) or a suppressed report; other statuses return 409 (skipped in bulk). Dismissing or resolving closes the report&apos;s open implementation PR, if it has one.* `suppressed` - suppressed* `potential` - potential* `resolved` - resolved</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportStateRequestState? State { get; set; }
@@ -65,6 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "corrected_repository", n => { CorrectedRepository = n.GetStringValue(); } },
                 { "dismissal_note", n => { DismissalNote = n.GetStringValue(); } },
                 { "dismissal_reason", n => { DismissalReason = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportStateRequestDismissalReason>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportStateRequestDismissalReason.CreateFromDiscriminatorValue); } },
                 { "snooze_for", n => { SnoozeFor = n.GetIntValue(); } },
@@ -78,6 +87,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("corrected_repository", CorrectedRepository);
             writer.WriteStringValue("dismissal_note", DismissalNote);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportStateRequestDismissalReason>("dismissal_reason", DismissalReason);
             writer.WriteIntValue("snooze_for", SnoozeFor);

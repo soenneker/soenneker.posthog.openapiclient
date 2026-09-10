@@ -29,10 +29,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The docs_url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DocsUrl { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.McpServerTemplateDocsUrl? DocsUrl { get; set; }
 #nullable restore
 #else
-        public string DocsUrl { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.McpServerTemplateDocsUrl DocsUrl { get; set; }
 #endif
         /// <summary>The vendor&apos;s brand domain (e.g. &apos;linear.app&apos;), resolved to an icon at render time via the logo.dev proxy endpoint. Empty when no brand icon is known.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -42,7 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string IconDomain { get; private set; }
 #endif
-        /// <summary>&quot;Deprecated: use icon_domain instead. Lowercase key for clients that still render bundled icon assets.&quot;</summary>
+        /// <summary>Deprecated: use icon_domain instead. Lowercase key for clients that still render bundled icon assets.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? IconKey { get; private set; }
@@ -96,7 +96,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "auth_type", n => { AuthType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpAuthTypeEnum>(); } },
                 { "category", n => { Category = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpServerCategoryEnum>(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
-                { "docs_url", n => { DocsUrl = n.GetStringValue(); } },
+                { "docs_url", n => { DocsUrl = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpServerTemplateDocsUrl>(global::Soenneker.PostHog.OpenApiClient.Models.McpServerTemplateDocsUrl.CreateFromDiscriminatorValue); } },
                 { "icon_domain", n => { IconDomain = n.GetStringValue(); } },
                 { "icon_key", n => { IconKey = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
@@ -114,7 +114,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpAuthTypeEnum>("auth_type", AuthType);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpServerCategoryEnum>("category", Category);
             writer.WriteStringValue("description", Description);
-            writer.WriteStringValue("docs_url", DocsUrl);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpServerTemplateDocsUrl>("docs_url", DocsUrl);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("url", Url);
             writer.WriteAdditionalData(AdditionalData);

@@ -9,6 +9,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Users.Item.Hedgehog_config;
 using Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations;
 using Soenneker.PostHog.OpenApiClient.Api.Users.Item.Login_sessions;
 using Soenneker.PostHog.OpenApiClient.Api.Users.Item.Onboarding;
+using Soenneker.PostHog.OpenApiClient.Api.Users.Item.Product_intro_seen;
 using Soenneker.PostHog.OpenApiClient.Api.Users.Item.Push_tokens;
 using Soenneker.PostHog.OpenApiClient.Api.Users.Item.Scene_personalisation;
 using Soenneker.PostHog.OpenApiClient.Api.Users.Item.Signal_autonomy;
@@ -62,6 +63,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Users.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Users.Item.Onboarding.OnboardingRequestBuilder Onboarding
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Users.Item.Onboarding.OnboardingRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The product_intro_seen property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Users.Item.Product_intro_seen.Product_intro_seenRequestBuilder Product_intro_seen
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Users.Item.Product_intro_seen.Product_intro_seenRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The push_tokens property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Users.Item.Push_tokens.Push_tokensRequestBuilder Push_tokens
@@ -214,7 +220,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Users.Item
 #endif
             var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <summary>

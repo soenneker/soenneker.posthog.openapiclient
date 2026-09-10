@@ -12,7 +12,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class EvaluationEvaluationConfigHogConfig : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Hog source code. Must return true (pass), false (fail), or null for N/A.</summary>
+        /// <summary>Hog source code. Must return true or false, or null for N/A. Output settings determine which boolean counts as a failure.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Source { get; set; }

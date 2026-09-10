@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;Event/action filters for this conversion event, same shape as trigger filters: {events: [{id, name, type: &apos;events&apos;, properties?: [&lt;cond&gt;]}], actions?: [...], properties?: [&lt;cond&gt;]}. bytecode is compiled server-side.&quot;</summary>
+        /// <summary>Event/action filters for this conversion event, same shape as trigger filters: {events: [{id, name, type: &apos;events&apos;, properties?: [&lt;cond&gt;]}], actions?: [...], properties?: [&lt;cond&gt;]}. bytecode is compiled server-side.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversionEventFilters? Filters { get; set; }

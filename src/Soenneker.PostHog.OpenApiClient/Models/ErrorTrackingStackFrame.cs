@@ -45,10 +45,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The release property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrameRelease? Release { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingRelease? Release { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrameRelease Release { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingRelease Release { get; set; }
 #endif
         /// <summary>The resolved property</summary>
         public bool? Resolved { get; set; }
@@ -90,7 +90,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "raw_id", n => { RawId = n.GetStringValue(); } },
-                { "release", n => { Release = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrameRelease>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrameRelease.CreateFromDiscriminatorValue); } },
+                { "release", n => { Release = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingRelease>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingRelease.CreateFromDiscriminatorValue); } },
                 { "resolved", n => { Resolved = n.GetBoolValue(); } },
                 { "symbol_set_ref", n => { SymbolSetRef = n.GetStringValue(); } },
             };
@@ -107,7 +107,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteGuidValue("id", Id);
             writer.WriteStringValue("raw_id", RawId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrameRelease>("release", Release);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingRelease>("release", Release);
             writer.WriteBoolValue("resolved", Resolved);
             writer.WriteStringValue("symbol_set_ref", SymbolSetRef);
             writer.WriteAdditionalData(AdditionalData);

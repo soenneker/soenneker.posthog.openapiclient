@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
         {
         }
         /// <summary>
-        /// &quot;The active test-health queue: pytest and Jest tests worth acting on now, from the per-test CI spans, over a window (default -7d, maximum 30 days). Evidence is counted per CI run, never per span or run attempt. A test is a &apos;confirmed_flake&apos; when one commit both failed and passed it (a &apos;Re-run failed jobs&apos; attempt went green, or an in-job retry recovered it); &apos;quarantined&apos; when a tolerated failure is recorded while it is masked; otherwise &apos;suspected_regression&apos;. It qualifies on any same-commit recovery, any master/main failure, a quarantined failure, or failures on at least min_failed_prs distinct PRs. Counts are absolute, never rates: CI emits every failure but omits ordinary passing spans, so there is no execution denominator. &apos;suspected_regression&apos; means no recovery was recorded in this data, not that the test never flakes.&quot;
+        /// The active test-health queue: pytest and Jest tests worth acting on now, from the per-test CI spans, over a window (default -7d, maximum 30 days). Evidence is counted per CI run, never per span or run attempt. A test is a &apos;confirmed_flake&apos; when one commit both failed and passed it (a &apos;Re-run failed jobs&apos; attempt went green, or an in-job retry recovered it); &apos;quarantined&apos; when a tolerated failure is recorded while it is masked; otherwise &apos;suspected_regression&apos;. It qualifies on any same-commit recovery, any master/main failure, a quarantined failure, or failures on at least min_failed_prs distinct PRs. Counts are absolute, never rates: CI emits every failure but omits ordinary passing spans, so there is no execution denominator. &apos;suspected_regression&apos; means no recovery was recorded in this data, not that the test never flakes.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FlakyTestList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.FlakyTestList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.FlakyTestList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;The active test-health queue: pytest and Jest tests worth acting on now, from the per-test CI spans, over a window (default -7d, maximum 30 days). Evidence is counted per CI run, never per span or run attempt. A test is a &apos;confirmed_flake&apos; when one commit both failed and passed it (a &apos;Re-run failed jobs&apos; attempt went green, or an in-job retry recovered it); &apos;quarantined&apos; when a tolerated failure is recorded while it is masked; otherwise &apos;suspected_regression&apos;. It qualifies on any same-commit recovery, any master/main failure, a quarantined failure, or failures on at least min_failed_prs distinct PRs. Counts are absolute, never rates: CI emits every failure but omits ordinary passing spans, so there is no execution denominator. &apos;suspected_regression&apos; means no recovery was recorded in this data, not that the test never flakes.&quot;
+        /// The active test-health queue: pytest and Jest tests worth acting on now, from the per-test CI spans, over a window (default -7d, maximum 30 days). Evidence is counted per CI run, never per span or run attempt. A test is a &apos;confirmed_flake&apos; when one commit both failed and passed it (a &apos;Re-run failed jobs&apos; attempt went green, or an in-job retry recovered it); &apos;quarantined&apos; when a tolerated failure is recorded while it is masked; otherwise &apos;suspected_regression&apos;. It qualifies on any same-commit recovery, any master/main failure, a quarantined failure, or failures on at least min_failed_prs distinct PRs. Counts are absolute, never rates: CI emits every failure but omits ordinary passing spans, so there is no execution denominator. &apos;suspected_regression&apos; means no recovery was recorded in this data, not that the test never flakes.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -80,12 +80,12 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Flaky_tests.Flaky_testsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// &quot;The active test-health queue: pytest and Jest tests worth acting on now, from the per-test CI spans, over a window (default -7d, maximum 30 days). Evidence is counted per CI run, never per span or run attempt. A test is a &apos;confirmed_flake&apos; when one commit both failed and passed it (a &apos;Re-run failed jobs&apos; attempt went green, or an in-job retry recovered it); &apos;quarantined&apos; when a tolerated failure is recorded while it is masked; otherwise &apos;suspected_regression&apos;. It qualifies on any same-commit recovery, any master/main failure, a quarantined failure, or failures on at least min_failed_prs distinct PRs. Counts are absolute, never rates: CI emits every failure but omits ordinary passing spans, so there is no execution denominator. &apos;suspected_regression&apos; means no recovery was recorded in this data, not that the test never flakes.&quot;
+        /// The active test-health queue: pytest and Jest tests worth acting on now, from the per-test CI spans, over a window (default -7d, maximum 30 days). Evidence is counted per CI run, never per span or run attempt. A test is a &apos;confirmed_flake&apos; when one commit both failed and passed it (a &apos;Re-run failed jobs&apos; attempt went green, or an in-job retry recovered it); &apos;quarantined&apos; when a tolerated failure is recorded while it is masked; otherwise &apos;suspected_regression&apos;. It qualifies on any same-commit recovery, any master/main failure, a quarantined failure, or failures on at least min_failed_prs distinct PRs. Counts are absolute, never rates: CI emits every failure but omits ordinary passing spans, so there is no execution denominator. &apos;suspected_regression&apos; means no recovery was recorded in this data, not that the test never flakes.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Flaky_testsRequestBuilderGetQueryParameters 
         {
-            /// <summary>&quot;Window start: relative (&apos;-7d&apos;, &apos;-30d&apos;) or ISO8601. Defaults to -7d; the window may span at most 30 days.&quot;</summary>
+            /// <summary>Window start: relative (&apos;-7d&apos;, &apos;-30d&apos;) or ISO8601. Defaults to -7d; the window may span at most 30 days.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("date_from")]
@@ -95,7 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
             [QueryParameter("date_from")]
             public string DateFrom { get; set; }
 #endif
-            /// <summary>&quot;Window end: relative or ISO8601. Defaults to now.&quot;</summary>
+            /// <summary>Window end: relative or ISO8601. Defaults to now.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("date_to")]
@@ -121,7 +121,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
             [QueryParameter("repo")]
             public string Repo { get; set; }
 #endif
-            /// <summary>&quot;Optional test runner to return: &apos;pytest&apos; or &apos;jest&apos;.&quot;</summary>
+            /// <summary>Optional test runner to return: &apos;pytest&apos; or &apos;jest&apos;.</summary>
             [QueryParameter("runner")]
             public global::Soenneker.PostHog.OpenApiClient.Models.EngineeringAnalyticsFlakyTestsRunnerParameter? Runner { get; set; }
             /// <summary>Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one.</summary>

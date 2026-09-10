@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;For counters: &apos;delta&apos; or &apos;cumulative&apos; (decides whether rate() must diff). Empty for gauges.&quot;</summary>
+        /// <summary>For counters: &apos;delta&apos; or &apos;cumulative&apos; (decides whether rate() must diff). Empty for gauges.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AggregationTemporality { get; set; }
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.MetricEventSampleAttributesProperty Attributes { get; set; }
 #endif
-        /// <summary>&quot;Observations behind this point: 1 for gauges/counters, the distribution count for histograms/summaries.&quot;</summary>
+        /// <summary>Observations behind this point: 1 for gauges/counters, the distribution count for histograms/summaries.</summary>
         public int? Count { get; set; }
         /// <summary>True for monotonically increasing counters.</summary>
         public bool? IsMonotonic { get; set; }
@@ -42,7 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string MetricName { get; set; }
 #endif
-        /// <summary>&quot;OTel metric type: gauge, sum, histogram, summary, or exponential_histogram.&quot;</summary>
+        /// <summary>OTel metric type: gauge, sum, histogram, summary, or exponential_histogram.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? MetricType { get; set; }

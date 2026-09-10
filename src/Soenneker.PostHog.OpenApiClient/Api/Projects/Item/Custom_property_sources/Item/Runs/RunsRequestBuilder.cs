@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Custom_property_sour
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RunsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/custom_property_sources/{id}/runs{?limit*,offset*}", pathParameters)
+        public RunsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/custom_property_sources/{id}/runs{?limit*,offset*,search*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,11 +30,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Custom_property_sour
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RunsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/custom_property_sources/{id}/runs{?limit*,offset*}", rawUrl)
+        public RunsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/custom_property_sources/{id}/runs{?limit*,offset*,search*}", rawUrl)
         {
         }
         /// <summary>
-        /// &quot;Person and group sources only: the source&apos;s sync/backfill run history, newest first. Gatedon the caller&apos;s warehouse-source viewer access, since the runs expose its row counts and syncerrors.&quot;
+        /// The source&apos;s sync history, newest first. Person and group runs require viewer access totheir warehouse source because the response includes row counts and sync errors.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedCustomPropertySyncRunList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Custom_property_sour
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedCustomPropertySyncRunList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedCustomPropertySyncRunList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Person and group sources only: the source&apos;s sync/backfill run history, newest first. Gatedon the caller&apos;s warehouse-source viewer access, since the runs expose its row counts and syncerrors.&quot;
+        /// The source&apos;s sync history, newest first. Person and group runs require viewer access totheir warehouse source because the response includes row counts and sync errors.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -80,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Custom_property_sour
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Custom_property_sources.Item.Runs.RunsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// &quot;Person and group sources only: the source&apos;s sync/backfill run history, newest first. Gatedon the caller&apos;s warehouse-source viewer access, since the runs expose its row counts and syncerrors.&quot;
+        /// The source&apos;s sync history, newest first. Person and group runs require viewer access totheir warehouse source because the response includes row counts and sync errors.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class RunsRequestBuilderGetQueryParameters 
@@ -91,6 +91,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Custom_property_sour
             /// <summary>The initial index from which to return the results.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
+            /// <summary>Match run IDs, workflow IDs, job IDs, statuses, segments, triggers, or errors.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("search")]
+            public string? Search { get; set; }
+#nullable restore
+#else
+            [QueryParameter("search")]
+            public string Search { get; set; }
+#endif
         }
     }
 }

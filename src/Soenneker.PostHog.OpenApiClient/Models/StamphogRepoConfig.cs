@@ -16,7 +16,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
-        /// <summary>Whether merged PRs on this repo are captured for the daily Slack digest.</summary>
+        /// <summary>Whether merged PRs on this repo are captured for the daily Slack digest. Requires &apos;enabled&apos;, since the digest reports what stamphog approved.</summary>
         public bool? DigestEnabled { get; set; }
         /// <summary>Whether stamphog actively reviews pull requests for this repo.</summary>
         public bool? Enabled { get; set; }
@@ -46,13 +46,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Repository { get; set; }
 #endif
-        /// <summary>&quot;When reviews run: &apos;all&apos; reviews every pull request (the default); &apos;label&apos; reviews only pull requests carrying the trigger label, mirroring the Action&apos;s opt-in flow.* `all` - all* `label` - label&quot;</summary>
+        /// <summary>When reviews run: &apos;all&apos; reviews every pull request (the default); &apos;label&apos; reviews only pull requests carrying the trigger label, mirroring the Action&apos;s opt-in flow.* `all` - all* `label` - label</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfigReviewMode? ReviewMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfigReviewMode? ReviewMode { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfigReviewMode ReviewMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfigReviewMode ReviewMode { get; private set; }
 #endif
         /// <summary>Pull request label that triggers a review when review_mode is &apos;label&apos;. Defaults to &apos;stamphog&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -64,13 +64,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
+        /// <summary>The caller&apos;s access level on the stamphog resource, resolved for the team that owns this row. &apos;manager&apos; is required to change enabled, review_mode, or trigger_label.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? UserAccessLevel { get; private set; }
+#nullable restore
+#else
+        public string UserAccessLevel { get; private set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfig"/> and sets the default values.
         /// </summary>
         public StamphogRepoConfig()
         {
             AdditionalData = new Dictionary<string, object>();
-            Provider = "github";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -100,6 +107,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "review_mode", n => { ReviewMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfigReviewMode>(global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfigReviewMode.CreateFromDiscriminatorValue); } },
                 { "trigger_label", n => { TriggerLabel = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
+                { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -113,7 +121,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteStringValue("provider", Provider);
             writer.WriteStringValue("repository", Repository);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfigReviewMode>("review_mode", ReviewMode);
             writer.WriteStringValue("trigger_label", TriggerLabel);
             writer.WriteAdditionalData(AdditionalData);
         }

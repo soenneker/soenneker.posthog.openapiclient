@@ -27,10 +27,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Optional user-authored expected output.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemCreateExpectedOutput? ExpectedOutput { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetJsonValue? ExpectedOutput { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemCreateExpectedOutput ExpectedOutput { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetJsonValue ExpectedOutput { get; set; }
 #endif
         /// <summary>Input supplied to the system under test. Any non-null JSON value is accepted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -59,10 +59,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Optional actual output captured from the source trace.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemCreateSourceOutput? SourceOutput { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetJsonValue? SourceOutput { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemCreateSourceOutput SourceOutput { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetJsonValue SourceOutput { get; set; }
 #endif
         /// <summary>Timestamp needed to retrieve the event-backed source trace.</summary>
         public DateTimeOffset? SourceTimestamp { get; set; }
@@ -101,11 +101,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "client_item_id", n => { ClientItemId = n.GetStringValue(); } },
                 { "dataset", n => { Dataset = n.GetGuidValue(); } },
-                { "expected_output", n => { ExpectedOutput = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemCreateExpectedOutput>(global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemCreateExpectedOutput.CreateFromDiscriminatorValue); } },
+                { "expected_output", n => { ExpectedOutput = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetJsonValue>(global::Soenneker.PostHog.OpenApiClient.Models.DatasetJsonValue.CreateFromDiscriminatorValue); } },
                 { "input", n => { Input = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemCreateInput>(global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemCreateInput.CreateFromDiscriminatorValue); } },
                 { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemCreateMetadataProperty>(global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemCreateMetadataProperty.CreateFromDiscriminatorValue); } },
                 { "source_event_id", n => { SourceEventId = n.GetStringValue(); } },
-                { "source_output", n => { SourceOutput = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemCreateSourceOutput>(global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemCreateSourceOutput.CreateFromDiscriminatorValue); } },
+                { "source_output", n => { SourceOutput = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetJsonValue>(global::Soenneker.PostHog.OpenApiClient.Models.DatasetJsonValue.CreateFromDiscriminatorValue); } },
                 { "source_timestamp", n => { SourceTimestamp = n.GetDateTimeOffsetValue(); } },
                 { "source_trace_id", n => { SourceTraceId = n.GetStringValue(); } },
             };
@@ -119,11 +119,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("client_item_id", ClientItemId);
             writer.WriteGuidValue("dataset", Dataset);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemCreateExpectedOutput>("expected_output", ExpectedOutput);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetJsonValue>("expected_output", ExpectedOutput);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemCreateInput>("input", Input);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemCreateMetadataProperty>("metadata", Metadata);
             writer.WriteStringValue("source_event_id", SourceEventId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemCreateSourceOutput>("source_output", SourceOutput);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetJsonValue>("source_output", SourceOutput);
             writer.WriteDateTimeOffsetValue("source_timestamp", SourceTimestamp);
             writer.WriteStringValue("source_trace_id", SourceTraceId);
             writer.WriteAdditionalData(AdditionalData);

@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Currently effective sandbox compute rate card, or null before pricing is published.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SandboxComputePricingCurrent? Current { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ComputeRateCard? Current { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SandboxComputePricingCurrent Current { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ComputeRateCard Current { get; set; }
 #endif
         /// <summary>Expired sandbox compute rate cards, newest first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -55,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "current", n => { Current = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SandboxComputePricingCurrent>(global::Soenneker.PostHog.OpenApiClient.Models.SandboxComputePricingCurrent.CreateFromDiscriminatorValue); } },
+                { "current", n => { Current = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ComputeRateCard>(global::Soenneker.PostHog.OpenApiClient.Models.ComputeRateCard.CreateFromDiscriminatorValue); } },
                 { "history", n => { History = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ComputeRateCard>(global::Soenneker.PostHog.OpenApiClient.Models.ComputeRateCard.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -66,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SandboxComputePricingCurrent>("current", Current);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ComputeRateCard>("current", Current);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ComputeRateCard>("history", History);
             writer.WriteAdditionalData(AdditionalData);
         }

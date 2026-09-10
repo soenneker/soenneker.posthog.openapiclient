@@ -23,6 +23,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Content { get; set; }
 #endif
+        /// <summary>Optional ISO-8601 expiry for a memory that&apos;s only true for a while (a cooldown, a window you&apos;re watching). After this time the entry drops out of searches, so you don&apos;t have to come back and forget it. Omit for a durable memory — every write sets the whole entry, so omitting it on a later write clears an expiry set earlier. Best-effort — a value that can&apos;t be parsed or is already in the past is dropped (the memory stays durable), not rejected, so the memory write is never lost.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ExpiresAt { get; set; }
+#nullable restore
+#else
+        public string ExpiresAt { get; set; }
+#endif
         /// <summary>Agent-chosen semantic key, unique per team; re-using a key overwrites the entry in place. Key off the *stable identity* of what you&apos;re tracking — never embed a date, timestamp, or run id (that mints a new row every run and breaks dedupe). For run state/cursors, use one fixed key and keep the timestamp in `content`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -31,7 +39,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Key { get; set; }
 #endif
-        /// <summary>Run that authored this memory; persisted as `created_by_run_id` for lineage. Best-effort — a `run_id` that isn&apos;t a run on this project is dropped (lineage left null), not rejected, so the memory write is never lost.</summary>
+        /// <summary>Run that authored this memory; persisted as `created_by_run_id` for lineage. Best-effort — a `run_id` that is unparseable, or that isn&apos;t a run on this project, is dropped rather than rejected, so the memory write is never lost. Omit it and the lineage still lands: a write from a scout sandbox is attributed to that sandbox&apos;s own run.</summary>
         public Guid? RunId { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RememberRequest"/> and sets the default values.
@@ -59,6 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "content", n => { Content = n.GetStringValue(); } },
+                { "expires_at", n => { ExpiresAt = n.GetStringValue(); } },
                 { "key", n => { Key = n.GetStringValue(); } },
                 { "run_id", n => { RunId = n.GetGuidValue(); } },
             };
@@ -71,6 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("content", Content);
+            writer.WriteStringValue("expires_at", ExpiresAt);
             writer.WriteStringValue("key", Key);
             writer.WriteGuidValue("run_id", RunId);
             writer.WriteAdditionalData(AdditionalData);

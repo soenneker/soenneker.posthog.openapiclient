@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_source
         {
         }
         /// <summary>
-        /// &quot;Read a bounded sample of rows for one resource of a Custom REST source.Lets a manifest author verify `data_selector`, `primary_key`, and the incremental`cursor_path` against live data before creating the source. Only `source_type: \&quot;Custom\&quot;`is supported — other source types return 400. The read is bounded (single page perresource, capped row count, short timeouts, no redirects). Manifest, validation, and SSRFproblems return 400; a live fetch failure returns 200 with `error` set and empty `rows`.&quot;
+        /// Read a bounded sample of rows for one resource of a Custom REST source.Lets a manifest author verify `data_selector`, `primary_key`, and the incremental`cursor_path` against live data before creating the source. Only `source_type: &quot;Custom&quot;`is supported — other source types return 400. The read is bounded (single page perresource, capped row count, short timeouts, no redirects). Manifest, validation, and SSRFproblems return 400; a live fetch failure returns 200 with `error` set and empty `rows`.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SourcePreviewResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -54,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_source
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SourcePreviewResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SourcePreviewResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Read a bounded sample of rows for one resource of a Custom REST source.Lets a manifest author verify `data_selector`, `primary_key`, and the incremental`cursor_path` against live data before creating the source. Only `source_type: \&quot;Custom\&quot;`is supported — other source types return 400. The read is bounded (single page perresource, capped row count, short timeouts, no redirects). Manifest, validation, and SSRFproblems return 400; a live fetch failure returns 200 with `error` set and empty `rows`.&quot;
+        /// Read a bounded sample of rows for one resource of a Custom REST source.Lets a manifest author verify `data_selector`, `primary_key`, and the incremental`cursor_path` against live data before creating the source. Only `source_type: &quot;Custom&quot;`is supported — other source types return 400. The read is bounded (single page perresource, capped row count, short timeouts, no redirects). Manifest, validation, and SSRFproblems return 400; a live fetch failure returns 200 with `error` set and empty `rows`.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

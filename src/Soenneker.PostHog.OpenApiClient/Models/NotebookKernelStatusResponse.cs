@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;Sandbox backend the kernel runs on: &apos;modal&apos; or &apos;docker&apos;.&quot;</summary>
+        /// <summary>Sandbox backend the kernel runs on: &apos;modal&apos; or &apos;docker&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Backend { get; set; }
@@ -34,6 +34,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2Frame> Frames { get; set; }
 #endif
+        /// <summary>What this sandbox shape costs per hour in USD while it is alive, at this region&apos;s rates. Charged on the sandbox&apos;s lifetime, not on how much of it a cell uses. Resizing through the kernel config endpoint restarts a live kernel, so this tracks the running sandbox.</summary>
+        public double? HourlyPrice { get; set; }
         /// <summary>Seconds of inactivity before the sandbox shuts down.</summary>
         public int? IdleTimeoutSeconds { get; set; }
         /// <summary>Jupyter kernel identifier.</summary>
@@ -58,6 +60,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? LastUsedAt { get; set; }
         /// <summary>Memory in GB the sandbox is configured with.</summary>
         public double? MemoryGb { get; set; }
+        /// <summary>Compute preset for the shape hourly_price describes: the running sandbox while a kernel is live, otherwise the configured shape. Null when that shape was tuned by hand and matches no preset.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? PresetKey { get; set; }
+#nullable restore
+#else
+        public string PresetKey { get; set; }
+#endif
         /// <summary>Kernel runtime row identifier.</summary>
         public Guid? RuntimeId { get; set; }
         /// <summary>Sandbox container identifier.</summary>
@@ -68,7 +78,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SandboxId { get; set; }
 #endif
-        /// <summary>&quot;Live-checked kernel state: &apos;starting&apos;, &apos;running&apos;, &apos;stopped&apos;, &apos;timed_out&apos;, &apos;discarded&apos;, or &apos;error&apos;.&quot;</summary>
+        /// <summary>Live-checked kernel state: &apos;starting&apos;, &apos;running&apos;, &apos;stopped&apos;, &apos;timed_out&apos;, &apos;discarded&apos;, or &apos;error&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Status { get; set; }
@@ -105,12 +115,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "cpu_cores", n => { CpuCores = n.GetDoubleValue(); } },
                 { "disk_size_gb", n => { DiskSizeGb = n.GetDoubleValue(); } },
                 { "frames", n => { Frames = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2Frame>(global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2Frame.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "hourly_price", n => { HourlyPrice = n.GetDoubleValue(); } },
                 { "idle_timeout_seconds", n => { IdleTimeoutSeconds = n.GetIntValue(); } },
                 { "kernel_id", n => { KernelId = n.GetStringValue(); } },
                 { "kernel_pid", n => { KernelPid = n.GetIntValue(); } },
                 { "last_error", n => { LastError = n.GetStringValue(); } },
                 { "last_used_at", n => { LastUsedAt = n.GetDateTimeOffsetValue(); } },
                 { "memory_gb", n => { MemoryGb = n.GetDoubleValue(); } },
+                { "preset_key", n => { PresetKey = n.GetStringValue(); } },
                 { "runtime_id", n => { RuntimeId = n.GetGuidValue(); } },
                 { "sandbox_id", n => { SandboxId = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
@@ -127,12 +139,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("cpu_cores", CpuCores);
             writer.WriteDoubleValue("disk_size_gb", DiskSizeGb);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2Frame>("frames", Frames);
+            writer.WriteDoubleValue("hourly_price", HourlyPrice);
             writer.WriteIntValue("idle_timeout_seconds", IdleTimeoutSeconds);
             writer.WriteStringValue("kernel_id", KernelId);
             writer.WriteIntValue("kernel_pid", KernelPid);
             writer.WriteStringValue("last_error", LastError);
             writer.WriteDateTimeOffsetValue("last_used_at", LastUsedAt);
             writer.WriteDoubleValue("memory_gb", MemoryGb);
+            writer.WriteStringValue("preset_key", PresetKey);
             writer.WriteGuidValue("runtime_id", RuntimeId);
             writer.WriteStringValue("sandbox_id", SandboxId);
             writer.WriteStringValue("status", Status);

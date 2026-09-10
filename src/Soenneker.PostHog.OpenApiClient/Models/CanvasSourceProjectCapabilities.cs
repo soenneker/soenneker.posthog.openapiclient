@@ -8,13 +8,21 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Bounded capabilities frozen into the built artifact. Declare every insight short id the canvas loads, every event it captures, and inlineQueries when it runs ad-hoc HogQL — the host enforces these at runtime and validation rejects undeclared `ph` calls.
+    /// Bounded capabilities frozen into the built artifact. Declare every insight short id the canvas loads, every event it captures, and inlineQueries when it runs ad-hoc HogQL — the host enforces these at runtime and validation rejects undeclared `ph` calls. Network origins must be exact HTTPS origins. Data fetched by canvas code can be sent to those origins.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CanvasSourceProjectCapabilities : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Third-party providers the canvas reads through ph.connectors, each with the tools it may call. Every call runs with the viewer&apos;s own connection; declaring one shows it in the promote review.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorDeclaration>? Connectors { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorDeclaration> Connectors { get; set; }
+#endif
         /// <summary>The network property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -56,6 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "connectors", n => { Connectors = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorDeclaration>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorDeclaration.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "network", n => { Network = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasNetworkCapabilities>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasNetworkCapabilities.CreateFromDiscriminatorValue); } },
                 { "posthog", n => { Posthog = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasPostHogCapabilities>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasPostHogCapabilities.CreateFromDiscriminatorValue); } },
             };
@@ -67,6 +76,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorDeclaration>("connectors", Connectors);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasNetworkCapabilities>("network", Network);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasPostHogCapabilities>("posthog", Posthog);
             writer.WriteAdditionalData(AdditionalData);

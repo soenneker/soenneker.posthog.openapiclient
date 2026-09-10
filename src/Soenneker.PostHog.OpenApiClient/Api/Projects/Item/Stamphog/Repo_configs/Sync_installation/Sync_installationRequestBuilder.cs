@@ -37,7 +37,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Repo_config
         /// Per-repo stamphog settings — enable/disable review, GitHub App installation, policy overrides.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.StamphogSyncInstallationResponse"/></returns>
-        /// <param name="body">&quot;Request body for binding a GitHub App installation to the current team.Always requires the user-to-server OAuth ``code`` (the ownership proof) and the ``state`` token.``installation_id`` is optional: when present (the fresh-install redirect) exactly that installationis verified and synced; when absent or blank (the authorize-first redirect) the caller&apos;s accessibleinstallations are discovered server-side from the code, so the client never has to supply aforgeable id.&quot;</param>
+        /// <param name="body">Request body for binding a GitHub App installation to the current team.Always requires the user-to-server OAuth ``code`` (the ownership proof) and the ``state`` token.``installation_id`` is optional: when present (the fresh-install redirect) exactly that installationis verified and synced; when absent or blank (the authorize-first redirect) the caller&apos;s accessibleinstallations are discovered server-side from the code, so the client never has to supply aforgeable id.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -57,7 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Repo_config
         /// Per-repo stamphog settings — enable/disable review, GitHub App installation, policy overrides.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">&quot;Request body for binding a GitHub App installation to the current team.Always requires the user-to-server OAuth ``code`` (the ownership proof) and the ``state`` token.``installation_id`` is optional: when present (the fresh-install redirect) exactly that installationis verified and synced; when absent or blank (the authorize-first redirect) the caller&apos;s accessibleinstallations are discovered server-side from the code, so the client never has to supply aforgeable id.&quot;</param>
+        /// <param name="body">Request body for binding a GitHub App installation to the current team.Always requires the user-to-server OAuth ``code`` (the ownership proof) and the ``state`` token.``installation_id`` is optional: when present (the fresh-install redirect) exactly that installationis verified and synced; when absent or blank (the authorize-first redirect) the caller&apos;s accessibleinstallations are discovered server-side from the code, so the client never has to supply aforgeable id.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

@@ -33,7 +33,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> KeyCandidates { get; set; }
 #endif
-        /// <summary>&quot;Coarse type per candidate, keyed by column name: datetime, date, integer, decimal, float, string, or uuid. A candidate with no entry has a type the check could not determine.&quot;</summary>
+        /// <summary>Coarse type per candidate, keyed by column name: datetime, date, integer, decimal, float, string, or uuid. A candidate with no entry has a type the check could not determine.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.IncrementalEligibilityKeyCandidateTypesProperty? KeyCandidateTypes { get; set; }
@@ -41,7 +41,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.IncrementalEligibilityKeyCandidateTypesProperty KeyCandidateTypes { get; set; }
 #endif
-        /// <summary>&quot;Output columns the unique key may be built from. A superset of key_candidates: identifying a row only needs equality, so strings qualify here even though they cannot be the incremental key.&quot;</summary>
+        /// <summary>Output columns the unique key may be built from. A superset of key_candidates: identifying a row only needs equality, so strings qualify here even though they cannot be the incremental key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? UniqueKeyCandidates { get; set; }

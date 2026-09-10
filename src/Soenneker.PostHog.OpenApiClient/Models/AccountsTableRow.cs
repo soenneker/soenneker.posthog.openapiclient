@@ -52,6 +52,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Id { get; set; }
 #endif
+        /// <summary>Bare hostname the row&apos;s logo is rendered from. Null when no source resolved one.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? LogoDomain { get; set; }
+#nullable restore
+#else
+        public string LogoDomain { get; set; }
+#endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -73,10 +81,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Sorted tag names. Omitted when the request does not select tags.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRowTags? Tags { get; set; }
+        public List<string>? Tags { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRowTags Tags { get; set; }
+        public List<string> Tags { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -101,10 +109,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "customPropertyHistory", n => { CustomPropertyHistory = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRowCustomPropertyHistoryProperty>(global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRowCustomPropertyHistoryProperty.CreateFromDiscriminatorValue); } },
                 { "externalId", n => { ExternalId = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
+                { "logoDomain", n => { LogoDomain = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "noteCount", n => { NoteCount = n.GetIntValue(); } },
                 { "relationships", n => { Relationships = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRowRelationshipsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRowRelationshipsProperty.CreateFromDiscriminatorValue); } },
-                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRowTags>(global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRowTags.CreateFromDiscriminatorValue); } },
+                { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
         /// <summary>
@@ -119,10 +128,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRowCustomPropertyHistoryProperty>("customPropertyHistory", CustomPropertyHistory);
             writer.WriteStringValue("externalId", ExternalId);
             writer.WriteStringValue("id", Id);
+            writer.WriteStringValue("logoDomain", LogoDomain);
             writer.WriteStringValue("name", Name);
             writer.WriteIntValue("noteCount", NoteCount);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRowRelationshipsProperty>("relationships", Relationships);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRowTags>("tags", Tags);
+            writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
         }
     }
 }

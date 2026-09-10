@@ -3,10 +3,12 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Costs;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Emissions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Findings;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.RecentPerScout;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.TokenCosts;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -21,6 +23,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RunsRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The costs property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Costs.CostsRequestBuilder Costs
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Costs.CostsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The emissions property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Emissions.EmissionsRequestBuilder Emissions
         {
@@ -35,6 +42,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.RecentPerScout.RecentPerScoutRequestBuilder RecentPerScout
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.RecentPerScout.RecentPerScoutRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The tokenCosts property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.TokenCosts.TokenCostsRequestBuilder TokenCosts
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.TokenCosts.TokenCostsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.signals.scout.runs.item collection</summary>
         /// <param name="position">UUID of the `SignalScoutRun` bridge row.</param>
@@ -120,7 +132,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs
             /// <summary>ISO-8601 inclusive lower bound on `created_at`. Omit to skip the lower bound.</summary>
             [QueryParameter("date_from")]
             public DateTimeOffset? DateFrom { get; set; }
-            /// <summary>&quot;ISO-8601 exclusive upper bound on `created_at`. Pass to walk back past the result cap on subsequent calls (cursor-style: set to the `created_at` of the oldest run from the prior page).&quot;</summary>
+            /// <summary>ISO-8601 exclusive upper bound on `created_at`. Pass to walk back past the result cap on subsequent calls (cursor-style: set to the `created_at` of the oldest run from the prior page).</summary>
             [QueryParameter("date_to")]
             public DateTimeOffset? DateTo { get; set; }
             /// <summary>Filter by emit outcome. `true` returns only runs that emitted at least one finding (`emitted_count &gt; 0`); `false` returns only runs that emitted nothing. Omit for both.</summary>

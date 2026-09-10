@@ -40,7 +40,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string QuestionText { get; set; }
 #endif
-        /// <summary>&quot;Question type: open, rating, single_choice, multiple_choice, or link. Determines the shape of the answer field.&quot;</summary>
+        /// <summary>Question type: open, rating, single_choice, multiple_choice, or link. Determines the shape of the answer field.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? QuestionType { get; set; }

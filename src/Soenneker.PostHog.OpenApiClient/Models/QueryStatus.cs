@@ -12,6 +12,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class QueryStatus : IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>The budget_remaining_bytes property</summary>
+        public int? BudgetRemainingBytes { get; set; }
+        /// <summary>The bytes_read property</summary>
+        public int? BytesRead { get; set; }
         /// <summary>Whether the query is still running. Will be true if the query is complete, even if it errored. Either result or error will be set.</summary>
         public bool? Complete { get; set; }
         /// <summary>The dashboard_id property</summary>
@@ -51,10 +55,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The labels property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatusLabels? Labels { get; set; }
+        public List<string>? Labels { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatusLabels Labels { get; set; }
+        public List<string> Labels { get; set; }
 #endif
         /// <summary>When was the query execution task picked up by a worker.</summary>
         public DateTimeOffset? PickupTime { get; set; }
@@ -115,6 +119,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "budget_remaining_bytes", n => { BudgetRemainingBytes = n.GetIntValue(); } },
+                { "bytes_read", n => { BytesRead = n.GetIntValue(); } },
                 { "complete", n => { Complete = n.GetBoolValue(); } },
                 { "dashboard_id", n => { DashboardId = n.GetIntValue(); } },
                 { "end_time", n => { EndTime = n.GetDateTimeOffsetValue(); } },
@@ -124,7 +130,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "expiration_time", n => { ExpirationTime = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "insight_id", n => { InsightId = n.GetIntValue(); } },
-                { "labels", n => { Labels = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatusLabels>(global::Soenneker.PostHog.OpenApiClient.Models.QueryStatusLabels.CreateFromDiscriminatorValue); } },
+                { "labels", n => { Labels = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "pickup_time", n => { PickupTime = n.GetDateTimeOffsetValue(); } },
                 { "query_async", n => { QueryAsync = n.GetBoolValue(); } },
                 { "query_progress", n => { QueryProgress = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ClickhouseQueryProgress>(global::Soenneker.PostHog.OpenApiClient.Models.ClickhouseQueryProgress.CreateFromDiscriminatorValue); } },
@@ -141,6 +147,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteIntValue("budget_remaining_bytes", BudgetRemainingBytes);
+            writer.WriteIntValue("bytes_read", BytesRead);
             writer.WriteBoolValue("complete", Complete);
             writer.WriteIntValue("dashboard_id", DashboardId);
             writer.WriteDateTimeOffsetValue("end_time", EndTime);
@@ -150,7 +158,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("expiration_time", ExpirationTime);
             writer.WriteStringValue("id", Id);
             writer.WriteIntValue("insight_id", InsightId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatusLabels>("labels", Labels);
+            writer.WriteCollectionOfPrimitiveValues<string>("labels", Labels);
             writer.WriteDateTimeOffsetValue("pickup_time", PickupTime);
             writer.WriteBoolValue("query_async", QueryAsync);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ClickhouseQueryProgress>("query_progress", QueryProgress);

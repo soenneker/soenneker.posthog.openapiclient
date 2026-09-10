@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Item.C
         {
         }
         /// <summary>
-        /// API for task channels — the shared feeds tasks are kicked off in. Listing lazilyprovisions the requester&apos;s personal &quot;#me&quot; channel; creation is resolve-or-createby normalized name so clients can map channel-like surfaces onto backend channels.
+        /// Get the channel&apos;s CONTEXT.md generation task
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ChannelContextGeneration"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Item.C
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ChannelContextGeneration>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ChannelContextGeneration.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// API for task channels — the shared feeds tasks are kicked off in. Listing lazilyprovisions the requester&apos;s personal &quot;#me&quot; channel; creation is resolve-or-createby normalized name so clients can map channel-like surfaces onto backend channels.
+        /// Set or clear the channel&apos;s CONTEXT.md generation task
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ChannelContextGeneration"/></returns>
         /// <param name="body">The task currently generating this channel&apos;s CONTEXT.md, or null.</param>
@@ -72,7 +72,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Item.C
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ChannelContextGeneration>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ChannelContextGeneration.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// API for task channels — the shared feeds tasks are kicked off in. Listing lazilyprovisions the requester&apos;s personal &quot;#me&quot; channel; creation is resolve-or-createby normalized name so clients can map channel-like surfaces onto backend channels.
+        /// Get the channel&apos;s CONTEXT.md generation task
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -91,7 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Item.C
             return requestInfo;
         }
         /// <summary>
-        /// API for task channels — the shared feeds tasks are kicked off in. Listing lazilyprovisions the requester&apos;s personal &quot;#me&quot; channel; creation is resolve-or-createby normalized name so clients can map channel-like surfaces onto backend channels.
+        /// Set or clear the channel&apos;s CONTEXT.md generation task
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The task currently generating this channel&apos;s CONTEXT.md, or null.</param>

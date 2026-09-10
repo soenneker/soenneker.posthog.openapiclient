@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper4"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyDefinitionTypeEnumWrapper"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper4"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyTypeEnumWrapper"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class EnterprisePropertyDefinitionPropertyType : IComposedTypeWrapper, IParsable
@@ -29,13 +29,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum NullEnum { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyDefinitionTypeEnumWrapper"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyTypeEnumWrapper"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyDefinitionTypeEnumWrapper? PropertyDefinitionTypeEnumWrapper { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyTypeEnumWrapper? PropertyTypeEnumWrapper { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyDefinitionTypeEnumWrapper PropertyDefinitionTypeEnumWrapper { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyTypeEnumWrapper PropertyTypeEnumWrapper { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -51,9 +51,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 result.BlankEnumWrapper4 = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper4();
             }
-            else if("PropertyDefinitionTypeEnumWrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("PropertyTypeEnumWrapper".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.PropertyDefinitionTypeEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.PropertyDefinitionTypeEnumWrapper();
+                result.PropertyTypeEnumWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.PropertyTypeEnumWrapper();
             }
             return result;
         }
@@ -71,9 +71,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 return NullEnum.GetFieldDeserializers();
             }
-            else if(PropertyDefinitionTypeEnumWrapper != null)
+            else if(PropertyTypeEnumWrapper != null)
             {
-                return PropertyDefinitionTypeEnumWrapper.GetFieldDeserializers();
+                return PropertyTypeEnumWrapper.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -92,9 +92,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NullEnum>(null, NullEnum);
             }
-            else if(PropertyDefinitionTypeEnumWrapper != null)
+            else if(PropertyTypeEnumWrapper != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyDefinitionTypeEnumWrapper>(null, PropertyDefinitionTypeEnumWrapper);
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyTypeEnumWrapper>(null, PropertyTypeEnumWrapper);
             }
         }
     }

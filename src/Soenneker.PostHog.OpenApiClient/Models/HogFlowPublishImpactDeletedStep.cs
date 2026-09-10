@@ -27,10 +27,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Where those runs continue (skip-forward). Null when nothing downstream survives.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpactDeletedStepMovesTo? MovesTo { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpactMoveTarget? MovesTo { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpactDeletedStepMovesTo MovesTo { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpactMoveTarget MovesTo { get; set; }
 #endif
         /// <summary>Name of the deleted step.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -69,7 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "action_id", n => { ActionId = n.GetStringValue(); } },
                 { "exits", n => { Exits = n.GetBoolValue(); } },
-                { "moves_to", n => { MovesTo = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpactDeletedStepMovesTo>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpactDeletedStepMovesTo.CreateFromDiscriminatorValue); } },
+                { "moves_to", n => { MovesTo = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpactMoveTarget>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpactMoveTarget.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "runs", n => { Runs = n.GetIntValue(); } },
             };
@@ -83,7 +83,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("action_id", ActionId);
             writer.WriteBoolValue("exits", Exits);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpactDeletedStepMovesTo>("moves_to", MovesTo);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpactMoveTarget>("moves_to", MovesTo);
             writer.WriteStringValue("name", Name);
             writer.WriteIntValue("runs", Runs);
             writer.WriteAdditionalData(AdditionalData);

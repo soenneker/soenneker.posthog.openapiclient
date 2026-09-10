@@ -15,7 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;The person or role responsible for this feature, e.g. {\&quot;type\&quot;: \&quot;user\&quot;, \&quot;id\&quot;: 123} or {\&quot;type\&quot;: \&quot;role\&quot;, \&quot;id\&quot;: \&quot;&lt;role uuid&gt;\&quot;}. Defaults to the creator. Send null to unassign.&quot;</summary>
+        /// <summary>The person or role responsible for this feature, e.g. {&quot;type&quot;: &quot;user&quot;, &quot;id&quot;: 123} or {&quot;type&quot;: &quot;role&quot;, &quot;id&quot;: &quot;&lt;role uuid&gt;&quot;}. Defaults to the creator. Send null to unassign.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureAssignee? Assignee { get; private set; }
@@ -28,10 +28,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The user who created this early access feature. Null for features created before creator tracking was added.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureCreatedBy? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureCreatedBy CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
 #endif
         /// <summary>A longer description of what this early access feature does, shown to users in the opt-in UI.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -44,10 +44,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>URL to external documentation for this feature. Shown to users in the opt-in UI.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DocumentationUrl { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureDocumentationUrl? DocumentationUrl { get; set; }
 #nullable restore
 #else
-        public string DocumentationUrl { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureDocumentationUrl DocumentationUrl { get; set; }
 #endif
         /// <summary>The feature_flag property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -75,7 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeaturePayloadProperty Payload { get; set; }
 #endif
-        /// <summary>&quot;Lifecycle stage. Valid values: draft, concept, alpha, beta, general-availability, archived. Moving to an active stage (alpha/beta/general-availability) enables the feature flag for opted-in users.* `draft` - draft* `concept` - concept* `alpha` - alpha* `beta` - beta* `general-availability` - general availability* `archived` - archived&quot;</summary>
+        /// <summary>Lifecycle stage. Valid values: draft, concept, alpha, beta, general-availability, archived. Moving to an active stage (alpha/beta/general-availability) enables the feature flag for opted-in users.* `draft` - draft* `concept` - concept* `alpha` - alpha* `beta` - beta* `general-availability` - general availability* `archived` - archived</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureStage? Stage { get; set; }
@@ -118,9 +118,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "assignee", n => { Assignee = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureAssignee>(global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureAssignee.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureCreatedBy.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
-                { "documentation_url", n => { DocumentationUrl = n.GetStringValue(); } },
+                { "documentation_url", n => { DocumentationUrl = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureDocumentationUrl>(global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureDocumentationUrl.CreateFromDiscriminatorValue); } },
                 { "feature_flag", n => { FeatureFlag = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureFeatureFlag>(global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureFeatureFlag.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
@@ -137,7 +137,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("description", Description);
-            writer.WriteStringValue("documentation_url", DocumentationUrl);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureDocumentationUrl>("documentation_url", DocumentationUrl);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeaturePayloadProperty>("payload", Payload);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureStage>("stage", Stage);

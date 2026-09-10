@@ -12,6 +12,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         All,
         #pragma warning restore CS1591
+        [EnumMember(Value = "default_branch")]
+        #pragma warning disable CS1591
+        DefaultBranch,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "merge_queue")]
+        #pragma warning disable CS1591
+        MergeQueue,
+        #pragma warning restore CS1591
         [EnumMember(Value = "pull_request")]
         #pragma warning disable CS1591
         PullRequest,

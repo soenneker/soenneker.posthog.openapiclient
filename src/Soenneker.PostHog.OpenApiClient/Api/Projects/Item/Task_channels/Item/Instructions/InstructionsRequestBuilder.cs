@@ -40,7 +40,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Item.I
         {
         }
         /// <summary>
-        /// API for task channels — the shared feeds tasks are kicked off in. Listing lazilyprovisions the requester&apos;s personal &quot;#me&quot; channel; creation is resolve-or-createby normalized name so clients can map channel-like surfaces onto backend channels.
+        /// Delete channel instructions
         /// </summary>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -115,7 +115,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Item.I
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ChannelInstructionsDto>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ChannelInstructionsDto.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// API for task channels — the shared feeds tasks are kicked off in. Listing lazilyprovisions the requester&apos;s personal &quot;#me&quot; channel; creation is resolve-or-createby normalized name so clients can map channel-like surfaces onto backend channels.
+        /// Delete channel instructions
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -130,7 +130,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Item.I
 #endif
             var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <summary>

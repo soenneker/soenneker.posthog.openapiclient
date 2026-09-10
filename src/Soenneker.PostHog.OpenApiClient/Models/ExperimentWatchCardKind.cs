@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;What the card is: &apos;behavior&apos; for an event this variant did clearly more than the other variants together, &apos;friction&apos; for the same finding on an error or rage signal, &apos;variant_only&apos; for an event no other variant fired at all, and &apos;metric&apos; for a shortcut to recordings around one of the experiment&apos;s own metric events. A &apos;variant_only&apos; card shows the variant rendering its own change rather than a behavior difference, so present it as confirmation the change is live and never as a finding. Metric cards claim nothing about how the metric moved: that is the experiment results&apos; answer.* `behavior` - behavior* `friction` - friction* `variant_only` - variant_only* `metric` - metric&quot;
+    /// What the card is: &apos;behavior&apos; for an event this variant did clearly more than the other variants together, &apos;friction&apos; for the same finding on an error or rage signal, &apos;variant_only&apos; for an event no other variant fired at all, and &apos;metric&apos; for a shortcut to recordings around one of the experiment&apos;s own metric events. A &apos;variant_only&apos; card shows the variant rendering its own change rather than a behavior difference, so present it as confirmation the change is live and never as a finding. Metric cards claim nothing about how the metric moved: that is the experiment results&apos; answer.* `behavior` - behavior* `friction` - friction* `variant_only` - variant_only* `metric` - metric
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ExperimentWatchCardKind : IAdditionalDataHolder, IParsable

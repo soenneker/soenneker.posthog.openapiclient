@@ -41,29 +41,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Event property filters - filters sessions that contain events matching these properties</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryEventPropertiesAnyOf1Item>? EventProperties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryEventPropertiesItem>? EventProperties { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryEventPropertiesAnyOf1Item> EventProperties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryEventPropertiesItem> EventProperties { get; set; }
 #endif
         /// <summary>Filter test accounts</summary>
         public bool? FilterTestAccounts { get; set; }
         /// <summary>Fixed properties in the query, can&apos;t be edited in the interface (e.g. scoping down by person)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryFixedPropertiesAnyOf1Item>? FixedProperties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryFixedPropertiesItem>? FixedProperties { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryFixedPropertiesAnyOf1Item> FixedProperties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryFixedPropertiesItem> FixedProperties { get; set; }
 #endif
         /// <summary>The kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Kind { get; set; }
-#nullable restore
-#else
-        public string Kind { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryKind? Kind { get; set; }
         /// <summary>Number of rows to return</summary>
         public int? Limit { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
@@ -79,10 +73,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Columns to order by</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryOrderBy? OrderBy { get; set; }
+        public List<string>? OrderBy { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryOrderBy OrderBy { get; set; }
+        public List<string> OrderBy { get; set; }
 #endif
         /// <summary>Show sessions for a given person</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -95,10 +89,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Properties configurable in the interface</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryPropertiesAnyOf1Item>? Properties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryPropertiesItem>? Properties { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryPropertiesAnyOf1Item> Properties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryPropertiesItem> Properties { get; set; }
 #endif
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -129,10 +123,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>HogQL filters to apply on returned data</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryWhere? Where { get; set; }
+        public List<string>? Where { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryWhere Where { get; set; }
+        public List<string> Where { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -156,21 +150,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "after", n => { After = n.GetStringValue(); } },
                 { "before", n => { Before = n.GetStringValue(); } },
                 { "event", n => { Event = n.GetStringValue(); } },
-                { "eventProperties", n => { EventProperties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryEventPropertiesAnyOf1Item>(global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryEventPropertiesAnyOf1Item.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "eventProperties", n => { EventProperties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryEventPropertiesItem>(global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryEventPropertiesItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "filterTestAccounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
-                { "fixedProperties", n => { FixedProperties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryFixedPropertiesAnyOf1Item>(global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryFixedPropertiesAnyOf1Item.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
+                { "fixedProperties", n => { FixedProperties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryFixedPropertiesItem>(global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryFixedPropertiesItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryKind>(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "offset", n => { Offset = n.GetIntValue(); } },
-                { "orderBy", n => { OrderBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryOrderBy>(global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryOrderBy.CreateFromDiscriminatorValue); } },
+                { "orderBy", n => { OrderBy = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "personId", n => { PersonId = n.GetStringValue(); } },
-                { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryPropertiesAnyOf1Item>(global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryPropertiesAnyOf1Item.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryPropertiesItem>(global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryPropertiesItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryResponse.CreateFromDiscriminatorValue); } },
                 { "select", n => { Select = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
                 { "version", n => { Version = n.GetDoubleValue(); } },
-                { "where", n => { Where = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryWhere>(global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryWhere.CreateFromDiscriminatorValue); } },
+                { "where", n => { Where = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
         /// <summary>
@@ -184,21 +178,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("after", After);
             writer.WriteStringValue("before", Before);
             writer.WriteStringValue("event", Event);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryEventPropertiesAnyOf1Item>("eventProperties", EventProperties);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryEventPropertiesItem>("eventProperties", EventProperties);
             writer.WriteBoolValue("filterTestAccounts", FilterTestAccounts);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryFixedPropertiesAnyOf1Item>("fixedProperties", FixedProperties);
-            writer.WriteStringValue("kind", Kind);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryFixedPropertiesItem>("fixedProperties", FixedProperties);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryKind>("kind", Kind);
             writer.WriteIntValue("limit", Limit);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
             writer.WriteIntValue("offset", Offset);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryOrderBy>("orderBy", OrderBy);
+            writer.WriteCollectionOfPrimitiveValues<string>("orderBy", OrderBy);
             writer.WriteStringValue("personId", PersonId);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryPropertiesAnyOf1Item>("properties", Properties);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryPropertiesItem>("properties", Properties);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryResponse>("response", Response);
             writer.WriteCollectionOfPrimitiveValues<string>("select", Select);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
             writer.WriteDoubleValue("version", Version);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionsQueryWhere>("where", Where);
+            writer.WriteCollectionOfPrimitiveValues<string>("where", Where);
         }
     }
 }

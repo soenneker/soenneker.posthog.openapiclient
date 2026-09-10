@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Annotation visibility scope: `project`, `organization`, `dashboard`, or `dashboard_item`. `recording` is deprecated and rejected.* `dashboard_item` - insight* `dashboard` - dashboard* `project` - project* `organization` - organization* `recording` - recording&quot;
+    /// Annotation visibility scope: `project`, `organization`, `dashboard`, or `dashboard_item`. `recording` is deprecated and rejected.* `dashboard_item` - insight* `dashboard` - dashboard* `project` - project* `organization` - organization* `recording` - recording
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedAnnotationScope : IAdditionalDataHolder, IParsable

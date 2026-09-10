@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Type of matched resource.* `task` - task* `pull_request` - pull_request* `artifact` - artifact* `channel` - channel
+    /// Type of matched resource.* `task` - task* `pull_request` - pull_request* `artifact` - artifact* `channel` - channel* `canvas` - canvas
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TaskSearchResultKind : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `task` - task* `pull_request` - pull_request* `artifact` - artifact* `channel` - channel</summary>
+        /// <summary>* `task` - task* `pull_request` - pull_request* `artifact` - artifact* `channel` - channel* `canvas` - canvas</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskSearchResultKindEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskSearchResultKind"/> and sets the default values.

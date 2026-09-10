@@ -85,8 +85,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Deletion_sta
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Deletion_statusRequestBuilderGetQueryParameters 
         {
+            #pragma warning disable CS1591
             [QueryParameter("format")]
             public global::Soenneker.PostHog.OpenApiClient.Models.PersonsDeletionStatusListFormatParameter? Format { get; set; }
+            #pragma warning restore CS1591
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
@@ -96,7 +98,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Deletion_sta
             /// <summary>Filter by a specific person UUID.</summary>
             [QueryParameter("person_uuid")]
             public Guid? PersonUuid { get; set; }
-            /// <summary>&quot;Filter by deletion status: &apos;pending&apos;, &apos;completed&apos;, or &apos;all&apos;.&quot;</summary>
+            /// <summary>Filter by deletion status: &apos;pending&apos;, &apos;completed&apos;, or &apos;all&apos;.</summary>
             [QueryParameter("status")]
             public global::Soenneker.PostHog.OpenApiClient.Models.PersonsDeletionStatusListStatusParameter? Status { get; set; }
         }

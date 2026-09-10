@@ -12,14 +12,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class QueryResponseAlternative36 : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>The columns property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative36ColumnsItem>? Columns { get; set; }
-#nullable restore
-#else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative36ColumnsItem> Columns { get; set; }
-#endif
+        /// <summary>Conversions with at least one in-window touchpoint. The share denominator — deliberately unfiltered by min/maxTouchpoints so shares stay comparable across filter values.</summary>
+        public int? AttributedConversions { get; set; }
+        /// <summary>The attribution window actually used, for the tooltips.</summary>
+        public int? AttributionWindowDays { get; set; }
         /// <summary>Query error. Returned only if &apos;explain&apos; or `modifiers.debug` is true. Throws an error otherwise.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -30,6 +26,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The hasMore property</summary>
         public bool? HasMore { get; set; }
+        /// <summary>Whether the goal is revenue-bearing, which gates the value column.</summary>
+        public bool? HasValue { get; set; }
         /// <summary>Generated HogQL query.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -40,8 +38,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The limit property</summary>
         public int? Limit { get; set; }
-        /// <summary>The missing_actors_count property</summary>
-        public int? MissingActorsCount { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -79,10 +75,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The results property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Results { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionPathRow>? Results { get; set; }
 #nullable restore
 #else
-        public UntypedNode Results { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionPathRow> Results { get; set; }
 #endif
         /// <summary>Measured timings for different parts of the query generation process</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -92,14 +88,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.QueryTiming> Timings { get; set; }
 #endif
-        /// <summary>The types property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative36Types? Types { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative36Types Types { get; set; }
-#endif
+        /// <summary>All conversions in range, before the touchpoint-count filter.</summary>
+        public int? TotalConversions { get; set; }
         /// <summary>Connector-synced data warehouse sources referenced by this query, if any.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -111,10 +101,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can&apos;t access.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative36WarningsAnyOf1Item>? Warnings { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative36WarningsItem>? Warnings { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative36WarningsAnyOf1Item> Warnings { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative36WarningsItem> Warnings { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -134,22 +124,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "columns", n => { Columns = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative36ColumnsItem>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative36ColumnsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "attributedConversions", n => { AttributedConversions = n.GetIntValue(); } },
+                { "attributionWindowDays", n => { AttributionWindowDays = n.GetIntValue(); } },
                 { "error", n => { Error = n.GetStringValue(); } },
                 { "hasMore", n => { HasMore = n.GetBoolValue(); } },
+                { "hasValue", n => { HasValue = n.GetBoolValue(); } },
                 { "hogql", n => { Hogql = n.GetStringValue(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
-                { "missing_actors_count", n => { MissingActorsCount = n.GetIntValue(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "offset", n => { Offset = n.GetIntValue(); } },
                 { "query_status", n => { QueryStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus>(global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus.CreateFromDiscriminatorValue); } },
                 { "resolved_compare_date_range", n => { ResolvedCompareDateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse.CreateFromDiscriminatorValue); } },
                 { "resolved_date_range", n => { ResolvedDateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse.CreateFromDiscriminatorValue); } },
-                { "results", n => { Results = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "results", n => { Results = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionPathRow>(global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionPathRow.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "timings", n => { Timings = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.QueryTiming>(global::Soenneker.PostHog.OpenApiClient.Models.QueryTiming.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "types", n => { Types = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative36Types>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative36Types.CreateFromDiscriminatorValue); } },
+                { "totalConversions", n => { TotalConversions = n.GetIntValue(); } },
                 { "used_data_warehouse_sources", n => { UsedDataWarehouseSources = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSourceUsage>(global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSourceUsage.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "warnings", n => { Warnings = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative36WarningsAnyOf1Item>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative36WarningsAnyOf1Item.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "warnings", n => { Warnings = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative36WarningsItem>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative36WarningsItem.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -159,22 +150,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative36ColumnsItem>("columns", Columns);
+            writer.WriteIntValue("attributedConversions", AttributedConversions);
+            writer.WriteIntValue("attributionWindowDays", AttributionWindowDays);
             writer.WriteStringValue("error", Error);
             writer.WriteBoolValue("hasMore", HasMore);
+            writer.WriteBoolValue("hasValue", HasValue);
             writer.WriteStringValue("hogql", Hogql);
             writer.WriteIntValue("limit", Limit);
-            writer.WriteIntValue("missing_actors_count", MissingActorsCount);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
             writer.WriteIntValue("offset", Offset);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus>("query_status", QueryStatus);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse>("resolved_compare_date_range", ResolvedCompareDateRange);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse>("resolved_date_range", ResolvedDateRange);
-            writer.WriteObjectValue<UntypedNode>("results", Results);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionPathRow>("results", Results);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.QueryTiming>("timings", Timings);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative36Types>("types", Types);
+            writer.WriteIntValue("totalConversions", TotalConversions);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSourceUsage>("used_data_warehouse_sources", UsedDataWarehouseSources);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative36WarningsAnyOf1Item>("warnings", Warnings);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative36WarningsItem>("warnings", Warnings);
         }
     }
 }

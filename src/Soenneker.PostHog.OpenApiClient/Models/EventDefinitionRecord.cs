@@ -28,7 +28,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.EventDefinitionRecordCreatedBy CreatedBy { get; private set; }
 #endif
         /// <summary>* `allow` - Allow* `reject` - Reject</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.EnforcementModeEnum? EnforcementMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SchemaEnforcementModeEnum? EnforcementMode { get; set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>The is_action property</summary>
@@ -96,7 +96,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "action_id", n => { ActionId = n.GetIntValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventDefinitionRecordCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.EventDefinitionRecordCreatedBy.CreateFromDiscriminatorValue); } },
-                { "enforcement_mode", n => { EnforcementMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EnforcementModeEnum>(); } },
+                { "enforcement_mode", n => { EnforcementMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SchemaEnforcementModeEnum>(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "is_action", n => { IsAction = n.GetBoolValue(); } },
                 { "is_calculating", n => { IsCalculating = n.GetBoolValue(); } },
@@ -117,7 +117,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EnforcementModeEnum>("enforcement_mode", EnforcementMode);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SchemaEnforcementModeEnum>("enforcement_mode", EnforcementMode);
             writer.WriteDateTimeOffsetValue("last_seen_at", LastSeenAt);
             writer.WriteStringValue("name", Name);
             writer.WriteBoolValue("post_to_slack", PostToSlack);

@@ -15,11 +15,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;Scorer scanners only: count sessions scoring at or below this value.&quot;</summary>
+        /// <summary>Scorer scanners only: count sessions scoring at or below this value.</summary>
         public double? MaxScore { get; set; }
-        /// <summary>&quot;Scorer scanners only: count sessions scoring at or above this value. Scorers require `min_score` and/or `max_score`. Not applicable to other scanner types.&quot;</summary>
+        /// <summary>Scorer scanners only: count sessions scoring at or above this value. Scorers require `min_score` and/or `max_score`. Not applicable to other scanner types.</summary>
         public double? MinScore { get; set; }
-        /// <summary>&quot;Classifier scanners only, required for them: count sessions carrying this tag (fixed or freeform). Not applicable to other scanner types.&quot;</summary>
+        /// <summary>Classifier scanners only, required for them: count sessions carrying this tag (fixed or freeform). Not applicable to other scanner types.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Tag { get; set; }

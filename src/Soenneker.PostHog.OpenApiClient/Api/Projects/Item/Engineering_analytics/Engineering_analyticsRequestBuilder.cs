@@ -8,6 +8,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Ci
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Ci_cards;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Ci_failure_logs;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Current_branch_health;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Dora;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Flaky_tests;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Job_aggregates;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Master_failures;
@@ -24,6 +25,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.So
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Team_ci_activity;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Team_ci_health;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Team_merge_trend;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Trunk_quarantine;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Workflow_health;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Workflow_jobs;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Workflow_run;
@@ -71,6 +73,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Current_branch_health.Current_branch_healthRequestBuilder Current_branch_health
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Current_branch_health.Current_branch_healthRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The dora property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Dora.DoraRequestBuilder Dora
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Dora.DoraRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The flaky_tests property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Flaky_tests.Flaky_testsRequestBuilder Flaky_tests
@@ -151,6 +158,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Team_merge_trend.Team_merge_trendRequestBuilder Team_merge_trend
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Team_merge_trend.Team_merge_trendRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The trunk_quarantine property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Trunk_quarantine.Trunk_quarantineRequestBuilder Trunk_quarantine
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Trunk_quarantine.Trunk_quarantineRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The workflow_health property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Workflow_health.Workflow_healthRequestBuilder Workflow_health

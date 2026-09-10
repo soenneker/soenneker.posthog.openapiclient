@@ -27,10 +27,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The strongest other tool in this cluster. Null when this tool is the only one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpToolPivotClusterEntryTopCompetitor? TopCompetitor { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.McpToolPivotCompetitor? TopCompetitor { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpToolPivotClusterEntryTopCompetitor TopCompetitor { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.McpToolPivotCompetitor TopCompetitor { get; private set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpToolPivotClusterEntry"/> and sets the default values.
@@ -62,7 +62,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "cluster_id", n => { ClusterId = n.GetIntValue(); } },
                 { "description_fit", n => { DescriptionFit = n.GetDoubleValue(); } },
                 { "rank", n => { Rank = n.GetIntValue(); } },
-                { "top_competitor", n => { TopCompetitor = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolPivotClusterEntryTopCompetitor>(global::Soenneker.PostHog.OpenApiClient.Models.McpToolPivotClusterEntryTopCompetitor.CreateFromDiscriminatorValue); } },
+                { "top_competitor", n => { TopCompetitor = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolPivotCompetitor>(global::Soenneker.PostHog.OpenApiClient.Models.McpToolPivotCompetitor.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>

@@ -21,10 +21,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>User who requested the brief.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProductBriefListCreatedBy? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProductBriefListCreatedBy CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
 #endif
         /// <summary>Error detail when status is failed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> SourcesUsed { get; private set; }
 #endif
-        /// <summary>&quot;Lifecycle status: generating, ready, quiet (nothing confident to say), or failed.* `generating` - Generating* `ready` - Ready* `quiet` - Quiet* `failed` - Failed&quot;</summary>
+        /// <summary>Lifecycle status: generating, ready, quiet (nothing confident to say), or failed.* `generating` - Generating* `ready` - Ready* `quiet` - Quiet* `failed` - Failed</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ProductBriefListStatus? Status { get; private set; }
@@ -60,7 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ProductBriefListStatus Status { get; private set; }
 #endif
-        /// <summary>&quot;What started the generation: on_demand or scheduled.* `on_demand` - On Demand* `scheduled` - Scheduled&quot;</summary>
+        /// <summary>What started the generation: on_demand or scheduled.* `on_demand` - On Demand* `scheduled` - Scheduled</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ProductBriefListTrigger? Trigger { get; private set; }
@@ -97,7 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "config", n => { Config = n.GetGuidValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProductBriefListCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.ProductBriefListCreatedBy.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
                 { "error", n => { Error = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "period", n => { Period = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProductBriefListPeriod>(global::Soenneker.PostHog.OpenApiClient.Models.ProductBriefListPeriod.CreateFromDiscriminatorValue); } },

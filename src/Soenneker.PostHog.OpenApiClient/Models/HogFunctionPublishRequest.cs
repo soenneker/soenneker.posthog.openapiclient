@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;False (default) previews the publish: returns which config fields would change without changing anything. True applies the staged draft to the live function.&quot;</summary>
+        /// <summary>False (default) previews the publish: returns which config fields would change without changing anything. True applies the staged draft to the live function.</summary>
         public bool? Confirm { get; set; }
         /// <summary>From the preview response, and required when confirm=true on an enabled function. Expires after 15 minutes, and any edit to the draft or the live config invalidates it (409), so you always publish the exact draft you previewed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

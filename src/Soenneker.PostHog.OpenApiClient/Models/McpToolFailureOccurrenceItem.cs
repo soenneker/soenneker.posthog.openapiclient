@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Intent { get; set; }
 #endif
-        /// <summary>&quot;Conversation id: $mcp_session_id, falling back to $session_id; empty when neither is set.&quot;</summary>
+        /// <summary>Conversation id: $mcp_session_id, falling back to $session_id; empty when neither is set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SessionId { get; set; }

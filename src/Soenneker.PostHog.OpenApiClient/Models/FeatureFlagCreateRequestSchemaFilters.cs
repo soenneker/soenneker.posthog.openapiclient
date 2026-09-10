@@ -32,10 +32,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Multivariate configuration for variant-based rollouts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFiltersSchemaMultivariate? Multivariate { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagMultivariateSchema? Multivariate { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFiltersSchemaMultivariate Multivariate { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagMultivariateSchema Multivariate { get; set; }
 #endif
         /// <summary>Optional payload values keyed by variant key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -75,7 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "early_exit", n => { EarlyExit = n.GetBoolValue(); } },
                 { "feature_enrollment", n => { FeatureEnrollment = n.GetBoolValue(); } },
                 { "groups", n => { Groups = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionGroupSchema>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionGroupSchema.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "multivariate", n => { Multivariate = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFiltersSchemaMultivariate>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFiltersSchemaMultivariate.CreateFromDiscriminatorValue); } },
+                { "multivariate", n => { Multivariate = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagMultivariateSchema>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagMultivariateSchema.CreateFromDiscriminatorValue); } },
                 { "payloads", n => { Payloads = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagCreateRequestSchemaFiltersPayloads>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagCreateRequestSchemaFiltersPayloads.CreateFromDiscriminatorValue); } },
             };
         }
@@ -90,7 +90,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("early_exit", EarlyExit);
             writer.WriteBoolValue("feature_enrollment", FeatureEnrollment);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionGroupSchema>("groups", Groups);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFiltersSchemaMultivariate>("multivariate", Multivariate);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagMultivariateSchema>("multivariate", Multivariate);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagCreateRequestSchemaFiltersPayloads>("payloads", Payloads);
             writer.WriteAdditionalData(AdditionalData);
         }

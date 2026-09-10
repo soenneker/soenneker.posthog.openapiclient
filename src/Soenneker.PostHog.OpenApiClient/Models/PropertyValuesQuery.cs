@@ -15,21 +15,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The event_names property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQueryEventNames? EventNames { get; set; }
+        public List<string>? EventNames { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQueryEventNames EventNames { get; set; }
+        public List<string> EventNames { get; set; }
 #endif
         /// <summary>The is_column property</summary>
         public bool? IsColumn { get; set; }
         /// <summary>The kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Kind { get; set; }
-#nullable restore
-#else
-        public string Kind { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQueryKind? Kind { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -92,9 +86,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "event_names", n => { EventNames = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQueryEventNames>(global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQueryEventNames.CreateFromDiscriminatorValue); } },
+                { "event_names", n => { EventNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "is_column", n => { IsColumn = n.GetBoolValue(); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQueryKind>(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "property_key", n => { PropertyKey = n.GetStringValue(); } },
                 { "property_type", n => { PropertyType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyType>(); } },
@@ -111,9 +105,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQueryEventNames>("event_names", EventNames);
+            writer.WriteCollectionOfPrimitiveValues<string>("event_names", EventNames);
             writer.WriteBoolValue("is_column", IsColumn);
-            writer.WriteStringValue("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyValuesQueryKind>("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
             writer.WriteStringValue("property_key", PropertyKey);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyType>("property_type", PropertyType);

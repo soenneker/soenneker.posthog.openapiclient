@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Write shape for `partial_update` (PATCH). Exposes only `cimd_url`, and only everperforms a null -&gt; value transition: `validate` rejects any instance whose `cimd_url`is already set, so an existing binding can never be re-pointed through this endpoint.&quot;
+    /// Write shape for `partial_update` (PATCH). Exposes only `cimd_url`, and only everperforms a null -&gt; value transition: `validate` rejects any instance whose `cimd_url`is already set, so an existing binding can never be re-pointed through this endpoint.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedCimdVerificationTokenUpdate : IAdditionalDataHolder, IParsable

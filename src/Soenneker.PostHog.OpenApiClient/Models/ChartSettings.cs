@@ -12,6 +12,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class ChartSettings : IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>The boxPlot property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.BoxPlotSettings? BoxPlot { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.BoxPlotSettings BoxPlot { get; set; }
+#endif
         /// <summary>Chart rendering style overrides (line shape). Only applies to line and area charts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -43,6 +51,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.YAxisSettings LeftYAxisSettings { get; set; }
+#endif
+        /// <summary>Where the legend sits relative to the chart. Unset falls back per chart type: right for pie, top for the rest.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper? LegendPosition { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper LegendPosition { get; set; }
+#endif
+        /// <summary>The metric property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricChartSettings? Metric { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricChartSettings Metric { get; set; }
 #endif
         /// <summary>The pie property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -84,6 +108,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SeriesBreakdownColumn { get; set; }
 #endif
+        /// <summary>The showAnnotations property</summary>
+        public bool? ShowAnnotations { get; set; }
         /// <summary>The showLegend property</summary>
         public bool? ShowLegend { get; set; }
         /// <summary>The showNullsAsZero property</summary>
@@ -126,7 +152,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ChartAxis> YAxis { get; set; }
 #endif
-        /// <summary>&quot;Deprecated: use `[left|right]YAxisSettings`. Whether the Y axis should start at zero&quot;</summary>
+        /// <summary>Deprecated: use `[left|right]YAxisSettings`. Whether the Y axis should start at zero</summary>
         public bool? YAxisAtZero { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -146,15 +172,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "boxPlot", n => { BoxPlot = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BoxPlotSettings>(global::Soenneker.PostHog.OpenApiClient.Models.BoxPlotSettings.CreateFromDiscriminatorValue); } },
                 { "chartStyle", n => { ChartStyle = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle>(global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle.CreateFromDiscriminatorValue); } },
                 { "goalLines", n => { GoalLines = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine>(global::Soenneker.PostHog.OpenApiClient.Models.GoalLine.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "heatmap", n => { Heatmap = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapSettings>(global::Soenneker.PostHog.OpenApiClient.Models.HeatmapSettings.CreateFromDiscriminatorValue); } },
                 { "leftYAxisSettings", n => { LeftYAxisSettings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.YAxisSettings>(global::Soenneker.PostHog.OpenApiClient.Models.YAxisSettings.CreateFromDiscriminatorValue); } },
+                { "legendPosition", n => { LegendPosition = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper.CreateFromDiscriminatorValue); } },
+                { "metric", n => { Metric = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricChartSettings>(global::Soenneker.PostHog.OpenApiClient.Models.MetricChartSettings.CreateFromDiscriminatorValue); } },
                 { "pie", n => { Pie = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PieChartSettings>(global::Soenneker.PostHog.OpenApiClient.Models.PieChartSettings.CreateFromDiscriminatorValue); } },
                 { "resultCustomizations", n => { ResultCustomizations = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartSettingsResultCustomizationsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ChartSettingsResultCustomizationsProperty.CreateFromDiscriminatorValue); } },
                 { "rightYAxisSettings", n => { RightYAxisSettings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.YAxisSettings>(global::Soenneker.PostHog.OpenApiClient.Models.YAxisSettings.CreateFromDiscriminatorValue); } },
                 { "scatter", n => { Scatter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScatterChartSettings>(global::Soenneker.PostHog.OpenApiClient.Models.ScatterChartSettings.CreateFromDiscriminatorValue); } },
                 { "seriesBreakdownColumn", n => { SeriesBreakdownColumn = n.GetStringValue(); } },
+                { "showAnnotations", n => { ShowAnnotations = n.GetBoolValue(); } },
                 { "showLegend", n => { ShowLegend = n.GetBoolValue(); } },
                 { "showNullsAsZero", n => { ShowNullsAsZero = n.GetBoolValue(); } },
                 { "showPieTotal", n => { ShowPieTotal = n.GetBoolValue(); } },
@@ -177,15 +207,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BoxPlotSettings>("boxPlot", BoxPlot);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle>("chartStyle", ChartStyle);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine>("goalLines", GoalLines);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapSettings>("heatmap", Heatmap);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.YAxisSettings>("leftYAxisSettings", LeftYAxisSettings);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper>("legendPosition", LegendPosition);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricChartSettings>("metric", Metric);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PieChartSettings>("pie", Pie);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartSettingsResultCustomizationsProperty>("resultCustomizations", ResultCustomizations);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.YAxisSettings>("rightYAxisSettings", RightYAxisSettings);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScatterChartSettings>("scatter", Scatter);
             writer.WriteStringValue("seriesBreakdownColumn", SeriesBreakdownColumn);
+            writer.WriteBoolValue("showAnnotations", ShowAnnotations);
             writer.WriteBoolValue("showLegend", ShowLegend);
             writer.WriteBoolValue("showNullsAsZero", ShowNullsAsZero);
             writer.WriteBoolValue("showPieTotal", ShowPieTotal);

@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;update_* only. Partial fields deep-merged into the existing node; a null leaf deletes that key. e.g. {values: {text: &apos;&lt;p&gt;Hi&lt;/p&gt;&apos;}} changes only the block&apos;s text.&quot;
+    /// update_* only. Partial fields deep-merged into the existing node; a null leaf deletes that key. e.g. {values: {text: &apos;&lt;p&gt;Hi&lt;/p&gt;&apos;}} changes only the block&apos;s text.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DesignOperationPatch : IAdditionalDataHolder, IParsable

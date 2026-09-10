@@ -16,5 +16,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         Slack,
         #pragma warning restore CS1591
+        [EnumMember(Value = "teams")]
+        #pragma warning disable CS1591
+        Teams,
+        #pragma warning restore CS1591
     }
 }

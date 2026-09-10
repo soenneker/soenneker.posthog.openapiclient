@@ -16,10 +16,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Run currently executing for this experiment, if any; poll it by id for live progress</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationActiveRun? ActiveRun { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActiveRecalculationRun? ActiveRun { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationActiveRun ActiveRun { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActiveRecalculationRun ActiveRun { get; private set; }
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -33,7 +33,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? EstimatedRowsTotal { get; set; }
         /// <summary>ID of the experiment being recalculated</summary>
         public int? ExperimentId { get; private set; }
-        /// <summary>&quot;Number of failed metrics in this run (derived): FAILED result rows plus discovery-step failures that never made it to a result row&quot;</summary>
+        /// <summary>Number of failed metrics in this run (derived): FAILED result rows plus discovery-step failures that never made it to a result row</summary>
         public int? FailedMetrics { get; private set; }
         /// <summary>Unique identifier for this recalculation job</summary>
         public Guid? Id { get; private set; }
@@ -47,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationMetricErrors MetricErrors { get; private set; }
 #endif
-        /// <summary>&quot;Transient retry state per metric_uuid: {attempt, max_attempts, error_type, message, next_retry_at}. message is a user-safe description of the error that triggered the retry. Present only while a metric is between failed attempts; cleared when it succeeds or fails terminally, so treat entries for metrics that already have a result as stale.&quot;</summary>
+        /// <summary>Transient retry state per metric_uuid: {attempt, max_attempts, error_type, message, next_retry_at}. message is a user-safe description of the error that triggered the retry. Present only while a metric is between failed attempts; cleared when it succeeds or fails terminally, so treat entries for metrics that already have a result as stale.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationMetricRetries? MetricRetries { get; private set; }
@@ -65,7 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricRecalculationResult> Results { get; private set; }
 #endif
-        /// <summary>&quot;Where these results came from: &apos;recalculation&apos; for a real metrics-recalculation run, &apos;timeseries_fallback&apos; for a cold-start placeholder built from the latest daily timeseries data.* `recalculation` - recalculation* `timeseries_fallback` - timeseries_fallback&quot;</summary>
+        /// <summary>Where these results came from: &apos;recalculation&apos; for a real metrics-recalculation run, &apos;timeseries_fallback&apos; for a cold-start placeholder built from the latest daily timeseries data.* `recalculation` - recalculation* `timeseries_fallback` - timeseries_fallback</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationResultSource? ResultSource { get; private set; }
@@ -87,7 +87,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Total number of metrics to recalculate</summary>
         public int? TotalMetrics { get; private set; }
-        /// <summary>What triggered this recalculation* `manual` - Manual* `agent_mcp` - Agent (MCP)* `cold_run` - Cold Run* `stale_refresh` - Stale Refresh* `auto_refresh` - Auto Refresh* `config_change` - Config Change* `experiment_launch` - Experiment Launch* `experiment_stop` - Experiment Stop* `experiment_update` - Experiment Update</summary>
+        /// <summary>What triggered this recalculation* `manual` - Manual* `agent_mcp` - Agent (MCP)* `cold_run` - Cold Run* `stale_refresh` - Stale Refresh* `auto_refresh` - Auto Refresh* `experiment_config_change` - Experiment Config Change* `metric_config_change` - Metric Config Change* `config_change` - Config Change* `experiment_launch` - Experiment Launch* `experiment_stop` - Experiment Stop* `experiment_update` - Experiment Update</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationTrigger? Trigger { get; private set; }
@@ -120,7 +120,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "active_run", n => { ActiveRun = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationActiveRun>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationActiveRun.CreateFromDiscriminatorValue); } },
+                { "active_run", n => { ActiveRun = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActiveRecalculationRun>(global::Soenneker.PostHog.OpenApiClient.Models.ActiveRecalculationRun.CreateFromDiscriminatorValue); } },
                 { "completed_at", n => { CompletedAt = n.GetDateTimeOffsetValue(); } },
                 { "completed_metrics", n => { CompletedMetrics = n.GetIntValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },

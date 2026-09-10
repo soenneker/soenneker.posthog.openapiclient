@@ -16,7 +16,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Work units finished within the stage; null when the stage has no counter.</summary>
         public int? Done { get; set; }
-        /// <summary>&quot;How far the in-flight review turn has come: fetching the diff, chunking, picking each chunk&apos;s perspectives, reviewing chunks, merging overlapping findings, validating them, or finalizing (building and publishing the review).* `fetching` - fetching* `chunking` - chunking* `selecting` - selecting* `reviewing` - reviewing* `deduplicating` - deduplicating* `validating` - validating* `finalizing` - finalizing&quot;</summary>
+        /// <summary>How far the in-flight review turn has come: fetching the diff, chunking, picking each chunk&apos;s perspectives, reviewing chunks, merging overlapping findings, validating them, or finalizing (building and publishing the review).* `fetching` - fetching* `chunking` - chunking* `selecting` - selecting* `reviewing` - reviewing* `deduplicating` - deduplicating* `validating` - validating* `finalizing` - finalizing</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ReviewProgressReviewStage? ReviewStage { get; set; }

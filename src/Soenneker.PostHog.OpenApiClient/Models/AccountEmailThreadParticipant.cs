@@ -38,6 +38,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.AccountEmailThreadParticipantKind Kind { get; private set; }
 #endif
+        /// <summary>UUID of the matched PostHog person for a customer participant, when available.</summary>
+        public Guid? PersonId { get; private set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountEmailThreadParticipant"/> and sets the default values.
         /// </summary>
@@ -66,6 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "display_name", n => { DisplayName = n.GetStringValue(); } },
                 { "email", n => { Email = n.GetStringValue(); } },
                 { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountEmailThreadParticipantKind>(global::Soenneker.PostHog.OpenApiClient.Models.AccountEmailThreadParticipantKind.CreateFromDiscriminatorValue); } },
+                { "person_id", n => { PersonId = n.GetGuidValue(); } },
             };
         }
         /// <summary>

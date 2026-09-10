@@ -73,6 +73,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalEdges Edges { get; private set; }
 #endif
+        /// <summary>The email_sending_rate_limit property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalEmailSendingRateLimit? EmailSendingRateLimit { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalEmailSendingRateLimit EmailSendingRateLimit { get; private set; }
+#endif
         /// <summary>The exit_condition property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -90,6 +98,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string Name { get; private set; }
+#endif
+        /// <summary>The origin_product property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalOriginProduct? OriginProduct { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalOriginProduct OriginProduct { get; private set; }
 #endif
         /// <summary>The status property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -168,9 +184,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalCreatedBy.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "edges", n => { Edges = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalEdges>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalEdges.CreateFromDiscriminatorValue); } },
+                { "email_sending_rate_limit", n => { EmailSendingRateLimit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalEmailSendingRateLimit>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalEmailSendingRateLimit.CreateFromDiscriminatorValue); } },
                 { "exit_condition", n => { ExitCondition = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalExitCondition>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalExitCondition.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "origin_product", n => { OriginProduct = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalOriginProduct>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalOriginProduct.CreateFromDiscriminatorValue); } },
                 { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalStatus>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalStatus.CreateFromDiscriminatorValue); } },
                 { "trigger", n => { Trigger = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalTrigger>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalTrigger.CreateFromDiscriminatorValue); } },
                 { "trigger_masking", n => { TriggerMasking = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalTriggerMasking>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalTriggerMasking.CreateFromDiscriminatorValue); } },

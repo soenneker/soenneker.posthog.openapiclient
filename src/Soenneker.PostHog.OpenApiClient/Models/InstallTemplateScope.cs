@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &apos;personal&apos; is per-user; &apos;shared&apos; makes the credential available to project members. Agent access is granted separately.* `personal` - personal* `shared` - shared
+    /// &apos;personal&apos; is per-user; &apos;shared&apos; makes the credential available to project members. PostHog agents get access to the connection automatically; see agent_scope.* `personal` - personal* `shared` - shared
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class InstallTemplateScope : IAdditionalDataHolder, IParsable

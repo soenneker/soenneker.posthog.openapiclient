@@ -29,7 +29,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SourceName { get; set; }
 #endif
-        /// <summary>&quot;What this source means to its metric: &apos;source&apos; (a mean metric&apos;s single event), &apos;step&apos; (a funnel step, numbered by source_index), &apos;numerator&apos;/&apos;denominator&apos; (a ratio metric&apos;s two sides), or &apos;retention_start&apos;/&apos;retention_completion&apos; (a retention metric&apos;s start event and return visit). A hit on one source is not a hit on the metric as the analysis counts it.* `source` - source* `step` - step* `numerator` - numerator* `denominator` - denominator* `retention_start` - retention_start* `retention_completion` - retention_completion&quot;</summary>
+        /// <summary>What this source means to its metric: &apos;source&apos; (a mean metric&apos;s single event), &apos;step&apos; (a funnel step, numbered by source_index), &apos;numerator&apos;/&apos;denominator&apos; (a ratio metric&apos;s two sides), or &apos;retention_start&apos;/&apos;retention_completion&apos; (a retention metric&apos;s start event and return visit). A hit on one source is not a hit on the metric as the analysis counts it.* `source` - source* `step` - step* `numerator` - numerator* `denominator` - denominator* `retention_start` - retention_start* `retention_completion` - retention_completion</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionMetricSourceHitSourceRole? SourceRole { get; set; }

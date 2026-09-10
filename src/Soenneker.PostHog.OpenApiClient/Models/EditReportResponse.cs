@@ -16,6 +16,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>How many charts the report now shows, or null if the edit left its charts as they were (the field omitted, or a re-send of what was already stored). 0 means the edit took the report&apos;s charts down.</summary>
         public int? ChartsSet { get; set; }
+        /// <summary>How many observations this edit added to the report&apos;s evidence rail; 0 if none.</summary>
+        public int? EvidenceAppended { get; set; }
         /// <summary>Whether a note artefact was appended.</summary>
         public bool? NoteAppended { get; set; }
         /// <summary>Id of the edited report.</summary>
@@ -28,6 +30,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Whether the report&apos;s suggested reviewers were replaced.</summary>
         public bool? ReviewersSet { get; set; }
+        /// <summary>How many prompts the report now suggests, or null if the edit left them as they were (the field omitted, or a re-send of what was already stored). 0 means the edit took the report&apos;s suggested prompts down.</summary>
+        public int? SuggestedPromptsSet { get; set; }
         /// <summary>Which presentation fields changed (e.g. `title`, `summary`); empty if only a note was appended.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -62,9 +66,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "charts_set", n => { ChartsSet = n.GetIntValue(); } },
+                { "evidence_appended", n => { EvidenceAppended = n.GetIntValue(); } },
                 { "note_appended", n => { NoteAppended = n.GetBoolValue(); } },
                 { "report_id", n => { ReportId = n.GetStringValue(); } },
                 { "reviewers_set", n => { ReviewersSet = n.GetBoolValue(); } },
+                { "suggested_prompts_set", n => { SuggestedPromptsSet = n.GetIntValue(); } },
                 { "updated_fields", n => { UpdatedFields = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
@@ -76,9 +82,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("charts_set", ChartsSet);
+            writer.WriteIntValue("evidence_appended", EvidenceAppended);
             writer.WriteBoolValue("note_appended", NoteAppended);
             writer.WriteStringValue("report_id", ReportId);
             writer.WriteBoolValue("reviewers_set", ReviewersSet);
+            writer.WriteIntValue("suggested_prompts_set", SuggestedPromptsSet);
             writer.WriteCollectionOfPrimitiveValues<string>("updated_fields", UpdatedFields);
             writer.WriteAdditionalData(AdditionalData);
         }

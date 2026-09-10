@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Person and group sources only: {warehouse_column: property_name} mapping the columns this source writes onto the person or group.&quot;
+    /// Person and group sources only: {warehouse_column: property_name} mapping the columns this source writes onto the person or group.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CustomPropertySourceColumnPropertyMap : IAdditionalDataHolder, IParsable

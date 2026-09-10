@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Conversion goal summary, when requested</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingDiagnosticResponseConversionGoals? ConversionGoals { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalsListResponse? ConversionGoals { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingDiagnosticResponseConversionGoals ConversionGoals { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalsListResponse ConversionGoals { get; set; }
 #endif
         /// <summary>Per-integration cross-domain diagnostics</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -79,7 +79,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "conversion_goals", n => { ConversionGoals = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingDiagnosticResponseConversionGoals>(global::Soenneker.PostHog.OpenApiClient.Models.MarketingDiagnosticResponseConversionGoals.CreateFromDiscriminatorValue); } },
+                { "conversion_goals", n => { ConversionGoals = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalsListResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalsListResponse.CreateFromDiscriminatorValue); } },
                 { "integrations", n => { Integrations = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationDiagnostic>(global::Soenneker.PostHog.OpenApiClient.Models.IntegrationDiagnostic.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "overall_status", n => { OverallStatus = n.GetStringValue(); } },
                 { "recommended_actions", n => { RecommendedActions = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RecommendedAction>(global::Soenneker.PostHog.OpenApiClient.Models.RecommendedAction.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -93,7 +93,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingDiagnosticResponseConversionGoals>("conversion_goals", ConversionGoals);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalsListResponse>("conversion_goals", ConversionGoals);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationDiagnostic>("integrations", Integrations);
             writer.WriteStringValue("overall_status", OverallStatus);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RecommendedAction>("recommended_actions", RecommendedActions);

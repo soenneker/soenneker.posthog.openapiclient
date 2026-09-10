@@ -16,7 +16,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>UTC start of the time bucket the events fall in (`toStartOfInterval(timestamp, ...)`).</summary>
         public DateTimeOffset? BucketStart { get; set; }
-        /// <summary>&quot;Cost of prompt-cache writes in USD (sum of `$ai_cache_creation_cost_usd`). A spike here with near-zero cache reads is the signature of a cold session being revived: the full conversation context is re-written to the cache at the cache-write rate instead of being read back cheaply.&quot;</summary>
+        /// <summary>Cost of prompt-cache writes in USD (sum of `$ai_cache_creation_cost_usd`). A spike here with near-zero cache reads is the signature of a cold session being revived: the full conversation context is re-written to the cache at the cache-write rate instead of being read back cheaply.</summary>
         public double? CacheCreationCostUsd { get; set; }
         /// <summary>Sum of `$ai_cache_creation_input_tokens` (prompt tokens written to cache) in this bucket.</summary>
         public int? CacheCreationInputTokens { get; set; }
@@ -24,13 +24,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public double? CacheReadCostUsd { get; set; }
         /// <summary>Sum of `$ai_cache_read_input_tokens` (prompt tokens served from cache) in this bucket.</summary>
         public int? CacheReadInputTokens { get; set; }
-        /// <summary>&quot;Total cost in USD in this bucket (sum of `$ai_total_cost_usd`). Authoritative: the component columns below can sum to less than this when the cost breakdown was unavailable for some events; render any remainder as uncategorized rather than assuming the components reconcile.&quot;</summary>
+        /// <summary>Total cost in USD in this bucket (sum of `$ai_total_cost_usd`). Authoritative: the component columns below can sum to less than this when the cost breakdown was unavailable for some events; render any remainder as uncategorized rather than assuming the components reconcile.</summary>
         public double? CostUsd { get; set; }
         /// <summary>Number of $ai_generation + $ai_embedding events in this bucket for the scoped product.</summary>
         public int? EventCount { get; set; }
-        /// <summary>&quot;Cost of uncached (full-price) input tokens in USD, derived per event as `$ai_input_cost_usd` minus the cache read/write costs (the stored input cost includes them), clamped at zero. The four component columns are disjoint: they sum to `cost_usd` when the full breakdown is present, so they can be stacked without double counting cache costs.&quot;</summary>
+        /// <summary>Cost of uncached (full-price) input tokens in USD, derived per event as `$ai_input_cost_usd` minus the cache read/write costs (the stored input cost includes them), clamped at zero. The four component columns are disjoint: they sum to `cost_usd` when the full breakdown is present, so they can be stacked without double counting cache costs.</summary>
         public double? InputCostUsd { get; set; }
-        /// <summary>&quot;Sum of `$ai_input_tokens` in this bucket. Whether cached tokens are included follows the provider&apos;s reporting (`$ai_cache_reporting_exclusive`): Anthropic-style events exclude them, OpenAI-style events include them, so don&apos;t stack this with the cache token sums.&quot;</summary>
+        /// <summary>Sum of `$ai_input_tokens` in this bucket. Whether cached tokens are included follows the provider&apos;s reporting (`$ai_cache_reporting_exclusive`): Anthropic-style events exclude them, OpenAI-style events include them, so don&apos;t stack this with the cache token sums.</summary>
         public int? InputTokens { get; set; }
         /// <summary>Cost of output tokens in USD (sum of `$ai_output_cost_usd`).</summary>
         public double? OutputCostUsd { get; set; }

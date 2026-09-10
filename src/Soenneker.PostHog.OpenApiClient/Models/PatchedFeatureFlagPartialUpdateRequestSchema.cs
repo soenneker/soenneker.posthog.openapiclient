@@ -16,9 +16,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? Active { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;Whether the flag is archived. Archived flags are hidden from the flag list by default and must be disabled (`active: false`).&quot;</summary>
+        /// <summary>Whether the flag is archived. Archived flags are hidden from the flag list by default and must be disabled (`active: false`).</summary>
         public bool? Archived { get; set; }
-        /// <summary>&quot;Identifier used to bucket users into rollout percentages and variants: &apos;distinct_id&apos; (user ID, the default) or &apos;device_id&apos;. Using &apos;device_id&apos; is incompatible with ensure_experience_continuity=True.* `distinct_id` - User ID (default)* `device_id` - Device ID&quot;</summary>
+        /// <summary>Identifier used to bucket users into rollout percentages and variants: &apos;distinct_id&apos; (user ID, the default) or &apos;device_id&apos;. Using &apos;device_id&apos; is incompatible with ensure_experience_continuity=True.* `distinct_id` - User ID (default)* `device_id` - Device ID</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaBucketingIdentifier? BucketingIdentifier { get; set; }
@@ -36,7 +36,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> EvaluationContexts { get; set; }
 #endif
-        /// <summary>&quot;Where this flag is allowed to evaluate: &apos;server&apos; (server-side SDKs only), &apos;client&apos; (client-side SDKs only), or &apos;all&apos; (both). Defaults to &apos;all&apos;.* `server` - Server* `client` - Client* `all` - All&quot;</summary>
+        /// <summary>Where this flag is allowed to evaluate: &apos;server&apos; (server-side SDKs only), &apos;client&apos; (client-side SDKs only), or &apos;all&apos; (both). Defaults to &apos;all&apos;.* `server` - Server* `client` - Client* `all` - All</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaEvaluationRuntime? EvaluationRuntime { get; set; }

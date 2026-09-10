@@ -78,9 +78,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Events.Item
         public partial class EventsItemRequestBuilderGetQueryParameters 
         #pragma warning restore CS1591
         {
+            #pragma warning disable CS1591
             [QueryParameter("format")]
             public global::Soenneker.PostHog.OpenApiClient.Models.EventsRetrieveFormatParameter? Format { get; set; }
-            /// <summary>&quot;Include person details for the event. Default: false.&quot;</summary>
+            #pragma warning restore CS1591
+            /// <summary>Include person details for the event. Default: false.</summary>
             [QueryParameter("include_person")]
             public bool? IncludePerson { get; set; }
         }

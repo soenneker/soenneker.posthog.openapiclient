@@ -54,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.NotebookLastModifiedBy LastModifiedBy { get; private set; }
 #endif
-        /// <summary>&quot;Parent resource this notebook is attached to, or `null`. Returns `{type: &apos;account&apos;, id: &lt;uuid&gt;}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource&apos;s list.&quot;</summary>
+        /// <summary>Parent resource this notebook is attached to, or `null`. Returns `{type: &apos;account&apos;, id: &lt;uuid&gt;}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource&apos;s list.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.NotebookParentResource? ParentResource { get; private set; }
@@ -93,6 +93,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string UserAccessLevel { get; private set; }
+#endif
+        /// <summary>Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.NotebookVariable>? Variables { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.NotebookVariable> Variables { get; set; }
 #endif
         /// <summary>Version number for optimistic concurrency control. Must match the current version when updating content.</summary>
         public int? Version { get; set; }
@@ -134,6 +142,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "text_content", n => { TextContent = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
                 { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },
+                { "variables", n => { Variables = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.NotebookVariable>(global::Soenneker.PostHog.OpenApiClient.Models.NotebookVariable.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "version", n => { Version = n.GetIntValue(); } },
             };
         }
@@ -149,6 +158,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("deleted", Deleted);
             writer.WriteStringValue("text_content", TextContent);
             writer.WriteStringValue("title", Title);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.NotebookVariable>("variables", Variables);
             writer.WriteIntValue("version", Version);
             writer.WriteAdditionalData(AdditionalData);
         }

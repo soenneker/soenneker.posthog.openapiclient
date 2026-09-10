@@ -23,7 +23,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string From { get; set; }
 #endif
-        /// <summary>&quot;Required for type=&apos;branch&apos;. conditional_branch: index into config.conditions[index]. random_cohort_branch: index into config.cohorts[index]. wait_until_condition: use index:0 — it advances via the index:0 branch edge when it resolves (a condition match or an events entry firing).&quot;</summary>
+        /// <summary>Required for type=&apos;branch&apos;. conditional_branch: index into config.conditions[index]. random_cohort_branch: index into config.cohorts[index]. wait_until_condition: use index:0 — it advances via the index:0 branch edge when it resolves (a condition match or an events entry firing).</summary>
         public int? Index { get; set; }
         /// <summary>Target action id.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -33,7 +33,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string To { get; set; }
 #endif
-        /// <summary>&quot;continue: fall-through (sequential or the no-match path of conditional_branch). branch: requires &apos;index&apos; matching config.conditions[index].* `continue` - continue* `branch` - branch&quot;</summary>
+        /// <summary>continue: fall-through (sequential or the no-match path of conditional_branch). branch: requires &apos;index&apos; matching config.conditions[index].* `continue` - continue* `branch` - branch</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEdgeType? Type { get; set; }

@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Code { get; set; }
 #endif
-        /// <summary>&quot;Programming language: &apos;hog&apos; or &apos;javascript&apos;.&quot;</summary>
+        /// <summary>Programming language: &apos;hog&apos; or &apos;javascript&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CodeLanguage { get; set; }
@@ -72,7 +72,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>&quot;Lifecycle status: alpha, beta, stable, deprecated, or hidden.&quot;</summary>
+        /// <summary>Lifecycle status: alpha, beta, stable, deprecated, or hidden.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Status { get; set; }

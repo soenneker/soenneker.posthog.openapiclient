@@ -31,7 +31,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string CanvasSdkVersion { get; set; }
 #endif
-        /// <summary>Bounded capabilities frozen into the built artifact. Declare every insight short id the canvas loads, every event it captures, and inlineQueries when it runs ad-hoc HogQL — the host enforces these at runtime and validation rejects undeclared `ph` calls.</summary>
+        /// <summary>Bounded capabilities frozen into the built artifact. Declare every insight short id the canvas loads, every event it captures, and inlineQueries when it runs ad-hoc HogQL — the host enforces these at runtime and validation rejects undeclared `ph` calls. Network origins must be exact HTTPS origins. Data fetched by canvas code can be sent to those origins.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceProjectCapabilities? Capabilities { get; set; }
@@ -39,7 +39,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceProjectCapabilities Capabilities { get; set; }
 #endif
-        /// <summary>Exact-version dependencies, restricted to the platform-supported set (react, react-dom, @posthog/quill, recharts, lucide-react, dayjs) at their pinned versions.</summary>
+        /// <summary>Placement contract, required for (and only allowed on) component-kind canvases: the grid size the component takes and the JSON Schema of its per-placement config.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceProjectComponent? Component { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceProjectComponent Component { get; set; }
+#endif
+        /// <summary>Exact-version dependencies, restricted to the platform-supported set at its pinned versions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourcePublishProjectDependencies? Dependencies { get; set; }
@@ -93,6 +101,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "assets", n => { Assets = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourcePublishProjectAssets>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourcePublishProjectAssets.CreateFromDiscriminatorValue); } },
                 { "canvasSdkVersion", n => { CanvasSdkVersion = n.GetStringValue(); } },
                 { "capabilities", n => { Capabilities = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceProjectCapabilities>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceProjectCapabilities.CreateFromDiscriminatorValue); } },
+                { "component", n => { Component = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceProjectComponent>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceProjectComponent.CreateFromDiscriminatorValue); } },
                 { "dependencies", n => { Dependencies = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourcePublishProjectDependencies>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourcePublishProjectDependencies.CreateFromDiscriminatorValue); } },
                 { "entryHtml", n => { EntryHtml = n.GetStringValue(); } },
                 { "files", n => { Files = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourcePublishProjectFiles>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourcePublishProjectFiles.CreateFromDiscriminatorValue); } },
@@ -109,6 +118,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourcePublishProjectAssets>("assets", Assets);
             writer.WriteStringValue("canvasSdkVersion", CanvasSdkVersion);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceProjectCapabilities>("capabilities", Capabilities);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceProjectComponent>("component", Component);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourcePublishProjectDependencies>("dependencies", Dependencies);
             writer.WriteStringValue("entryHtml", EntryHtml);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourcePublishProjectFiles>("files", Files);

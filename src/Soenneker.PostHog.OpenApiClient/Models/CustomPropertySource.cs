@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Binds a data-warehouse source to a custom property definition. Account sources read amaterialized view column and sync onto matching accounts; person and group sources read awarehouse schema and sync onto matching persons or groups on each warehouse sync.
+    /// Binds warehouse columns to a custom property definition. Account sources read a materializedview column and sync onto matching accounts; person and group sources read either an importedwarehouse table or a materialized view, and sync onto matching persons or groups on everywarehouse run of what they read.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CustomPropertySource : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;Person sources only: {warehouse_column: description} giving each mapped column a human-facing description, seeded from the warehouse column&apos;s information_schema description. Optional per column. Create-only.&quot;</summary>
+        /// <summary>Person and group sources only: {warehouse_column: description} giving each mapped column a human-facing description, seeded from the warehouse column&apos;s information_schema description. Optional per column. Create-only.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySourceColumnDescriptions? ColumnDescriptions { get; set; }
@@ -23,7 +23,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySourceColumnDescriptions ColumnDescriptions { get; set; }
 #endif
-        /// <summary>&quot;Person and group sources only: {warehouse_column: property_name} mapping the columns this source writes onto the person or group.&quot;</summary>
+        /// <summary>Person and group sources only: {warehouse_column: property_name} mapping the columns this source writes onto the person or group.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySourceColumnPropertyMap? ColumnPropertyMap { get; set; }
@@ -39,15 +39,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? CreatedBy { get; private set; }
         /// <summary>UUID of the custom property definition this source feeds. One source per definition.</summary>
         public Guid? Definition { get; set; }
-        /// <summary>&quot;Person and group sources only: UUID of the warehouse schema (raw incremental table) to read from. Mutually exclusive with saved_query.&quot;</summary>
+        /// <summary>Person and group sources only: UUID of the warehouse schema (an imported table) to read from. Mutually exclusive with saved_query; a person or group source sets exactly one.</summary>
         public Guid? ExternalDataSchema { get; set; }
-        /// <summary>&quot;Person and group sources only: UUID of the warehouse source owning the schema, so the UI can link to the table. Null for account sources or when unavailable.&quot;</summary>
+        /// <summary>Table-bound person and group sources only: UUID of the warehouse source owning the schema, so the UI can link to the table. Null for account sources, view-bound sources, or when unavailable.</summary>
         public Guid? ExternalDataSource { get; private set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>Whether the source syncs. Auto-disabled after repeated failures or a missing view; re-enabling resets the failure count.</summary>
         public bool? IsEnabled { get; set; }
-        /// <summary>&quot;Column whose value identifies the target: an account&apos;s external_id for account sources, the person&apos;s distinct_id for person sources, or the group key for group sources.&quot;</summary>
+        /// <summary>Column whose value identifies the target: an account&apos;s external_id for account sources, the person&apos;s distinct_id for person sources, or the group key for group sources.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? KeyColumn { get; set; }
@@ -65,19 +65,27 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string LastSyncError { get; private set; }
 #endif
-        /// <summary>&quot;Person and group sources only: the most recent sync/backfill run, or null if none yet.&quot;</summary>
+        /// <summary>Person and group sources only: the most recent sync/backfill run, or null if none yet.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySourceLatestRun? LatestRun { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySyncRun? LatestRun { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySourceLatestRun LatestRun { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySyncRun LatestRun { get; private set; }
 #endif
-        /// <summary>&quot;Person and group sources only: approximate time of the next scheduled sync (last synced + interval). Approximate — drifts if the schedule was paused. Null for account sources or if never synced.&quot;</summary>
+        /// <summary>Person and group sources only: approximate time of the next scheduled run (last run + interval). Approximate — drifts if the schedule was paused. Null for account sources, if never run, or when the interval is unavailable.</summary>
         public DateTimeOffset? NextSyncAt { get; private set; }
-        /// <summary>&quot;Account sources only: UUID of the data-warehouse saved query (materialized view) to read values from. Mutually exclusive with external_data_schema.&quot;</summary>
+        /// <summary>UUID of the data-warehouse saved query to read from. Required for an account source. For a person or group source it must be a materialized view, and is one of the two binding options. Mutually exclusive with external_data_schema.</summary>
         public Guid? SavedQuery { get; set; }
-        /// <summary>&quot;Account sources only: column in the view whose value is written to the property.&quot;</summary>
+        /// <summary>View-bound person and group sources only: the materialized view&apos;s name, so the UI can tell a view-backed source from a table-backed one. Null for account and table-bound sources.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SavedQueryName { get; private set; }
+#nullable restore
+#else
+        public string SavedQueryName { get; private set; }
+#endif
+        /// <summary>Account sources only: column in the view whose value is written to the property.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SourceColumn { get; set; }
@@ -85,9 +93,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SourceColumn { get; set; }
 #endif
-        /// <summary>&quot;Person and group sources only: how often the underlying warehouse schema syncs, in seconds. Null for account sources or when unavailable.&quot;</summary>
+        /// <summary>Person and group sources only: how often the bound table or view runs, in seconds. Null for account sources, or when the schedule is unavailable — including a view whose frequency is set on its data-modeling DAG.</summary>
         public double? SyncFrequencyIntervalSeconds { get; private set; }
-        /// <summary>&quot;Person and group sources only: the bound warehouse table as it is named in HogQL. Null for account sources or when unavailable.&quot;</summary>
+        /// <summary>Person and group sources only: what this source reads, as it is named in HogQL — the imported table, or the view. Null for account sources or when unavailable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? TableName { get; private set; }
@@ -136,9 +144,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "key_column", n => { KeyColumn = n.GetStringValue(); } },
                 { "last_sync_error", n => { LastSyncError = n.GetStringValue(); } },
                 { "last_synced_at", n => { LastSyncedAt = n.GetDateTimeOffsetValue(); } },
-                { "latest_run", n => { LatestRun = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySourceLatestRun>(global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySourceLatestRun.CreateFromDiscriminatorValue); } },
+                { "latest_run", n => { LatestRun = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySyncRun>(global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySyncRun.CreateFromDiscriminatorValue); } },
                 { "next_sync_at", n => { NextSyncAt = n.GetDateTimeOffsetValue(); } },
                 { "saved_query", n => { SavedQuery = n.GetGuidValue(); } },
+                { "saved_query_name", n => { SavedQueryName = n.GetStringValue(); } },
                 { "source_column", n => { SourceColumn = n.GetStringValue(); } },
                 { "sync_frequency_interval_seconds", n => { SyncFrequencyIntervalSeconds = n.GetDoubleValue(); } },
                 { "table_name", n => { TableName = n.GetStringValue(); } },

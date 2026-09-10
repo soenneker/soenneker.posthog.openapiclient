@@ -101,10 +101,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The tools property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LlmTraceTools? Tools { get; set; }
+        public List<string>? Tools { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LlmTraceTools Tools { get; set; }
+        public List<string> Tools { get; set; }
 #endif
         /// <summary>The totalCost property</summary>
         public double? TotalCost { get; set; }
@@ -154,7 +154,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "person", n => { Person = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmTracePerson>(global::Soenneker.PostHog.OpenApiClient.Models.LlmTracePerson.CreateFromDiscriminatorValue); } },
                 { "requestCost", n => { RequestCost = n.GetDoubleValue(); } },
                 { "sentiment", n => { Sentiment = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmSentimentResult>(global::Soenneker.PostHog.OpenApiClient.Models.LlmSentimentResult.CreateFromDiscriminatorValue); } },
-                { "tools", n => { Tools = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmTraceTools>(global::Soenneker.PostHog.OpenApiClient.Models.LlmTraceTools.CreateFromDiscriminatorValue); } },
+                { "tools", n => { Tools = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "totalCost", n => { TotalCost = n.GetDoubleValue(); } },
                 { "totalLatency", n => { TotalLatency = n.GetDoubleValue(); } },
                 { "traceName", n => { TraceName = n.GetStringValue(); } },
@@ -184,7 +184,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmTracePerson>("person", Person);
             writer.WriteDoubleValue("requestCost", RequestCost);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmSentimentResult>("sentiment", Sentiment);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmTraceTools>("tools", Tools);
+            writer.WriteCollectionOfPrimitiveValues<string>("tools", Tools);
             writer.WriteDoubleValue("totalCost", TotalCost);
             writer.WriteDoubleValue("totalLatency", TotalLatency);
             writer.WriteStringValue("traceName", TraceName);

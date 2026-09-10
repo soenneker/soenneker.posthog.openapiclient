@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Summaries
         {
         }
         /// <summary>
-        /// &quot;Returns summary for the requested tasks: `id`, `title`, `repository`, `created_at`, `updated_at`, and the latest run&apos;s `status` and `environment`.&quot;
+        /// Returns summary for the requested tasks, including the creator ID and the latest run&apos;s ID, status, and environment.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedTaskSummaryDtoList"/></returns>
         /// <param name="body">The request body</param>
@@ -54,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Summaries
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedTaskSummaryDtoList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedTaskSummaryDtoList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Returns summary for the requested tasks: `id`, `title`, `repository`, `created_at`, `updated_at`, and the latest run&apos;s `status` and `environment`.&quot;
+        /// Returns summary for the requested tasks, including the creator ID and the latest run&apos;s ID, status, and environment.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
@@ -85,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Summaries
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Summaries.SummariesRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// &quot;Returns summary for the requested tasks: `id`, `title`, `repository`, `created_at`, `updated_at`, and the latest run&apos;s `status` and `environment`.&quot;
+        /// Returns summary for the requested tasks, including the creator ID and the latest run&apos;s ID, status, and environment.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class SummariesRequestBuilderPostQueryParameters 

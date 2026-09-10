@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Note { get; set; }
 #endif
-        /// <summary>&quot;Why this PR is being refunded. One of: pr_incorrect (the PR doesn&apos;t address what the report promised), pr_not_useful (technically fine but not worth paying for), duplicate (covers work already charged elsewhere), other. Required — refund reviews key on it.* `pr_incorrect` - PR incorrect* `pr_not_useful` - PR not useful* `duplicate` - Duplicate* `other` - Other&quot;</summary>
+        /// <summary>Why this PR is being refunded. One of: pr_incorrect (the PR doesn&apos;t address what the report promised), pr_not_useful (technically fine but not worth paying for), duplicate (covers work already charged elsewhere), other. Required — refund reviews key on it.* `pr_incorrect` - PR incorrect* `pr_not_useful` - PR not useful* `duplicate` - Duplicate* `other` - Other</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundRequestReason? Reason { get; set; }

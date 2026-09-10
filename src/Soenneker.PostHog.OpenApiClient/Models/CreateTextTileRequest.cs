@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Markdown body for the text tile. Supports headings, lists, and inline formatting. Useful as a dashboard section heading, divider, or annotation between insights. Max 4000 characters.</summary>
+        /// <summary>Markdown body for the dashboard tile. Text tiles support headings, lists, and inline formatting. Image tiles require exactly one Markdown image. Max 4000 characters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Body { get; set; }
@@ -37,6 +37,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.CreateTextTileRequestLayouts Layouts { get; set; }
+#endif
+        /// <summary>Tile type. Use image for a body with exactly one Markdown image. Defaults to text.* `text` - text* `image` - image</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.CreateTextTileRequestType? Type { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.CreateTextTileRequestType Type { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CreateTextTileRequest"/> and sets the default values.
@@ -66,6 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "body", n => { Body = n.GetStringValue(); } },
                 { "color", n => { Color = n.GetStringValue(); } },
                 { "layouts", n => { Layouts = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateTextTileRequestLayouts>(global::Soenneker.PostHog.OpenApiClient.Models.CreateTextTileRequestLayouts.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateTextTileRequestType>(global::Soenneker.PostHog.OpenApiClient.Models.CreateTextTileRequestType.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -78,6 +87,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("body", Body);
             writer.WriteStringValue("color", Color);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateTextTileRequestLayouts>("layouts", Layouts);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateTextTileRequestType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

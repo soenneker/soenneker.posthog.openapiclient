@@ -14,13 +14,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;Node that set this bound. Null when nothing identifiable set it, and also when it sits outside the caller&apos;s access grants: the bound still applies, it just goes unnamed.&quot;</summary>
+        /// <summary>Node that set this bound. Null when nothing identifiable set it, and also when it sits outside the caller&apos;s access grants: the bound still applies, it just goes unnamed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBoundBlocker? Blocker { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBlocker? Blocker { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBoundBlocker Blocker { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBlocker Blocker { get; set; }
 #endif
         /// <summary>The bounding cadence in plain English, for example &apos;6 hours&apos;. Matches the wording used in the error raised when an out-of-bounds cadence is written. Prose rather than a `sync_frequency` value because a source can deliver on a cadence no `sync_frequency` names.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -55,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "blocker", n => { Blocker = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBoundBlocker>(global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBoundBlocker.CreateFromDiscriminatorValue); } },
+                { "blocker", n => { Blocker = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBlocker>(global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBlocker.CreateFromDiscriminatorValue); } },
                 { "label", n => { Label = n.GetStringValue(); } },
             };
         }
@@ -66,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBoundBlocker>("blocker", Blocker);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBlocker>("blocker", Blocker);
             writer.WriteStringValue("label", Label);
             writer.WriteAdditionalData(AdditionalData);
         }

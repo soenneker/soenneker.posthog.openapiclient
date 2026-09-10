@@ -28,7 +28,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Scratc
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ScratchpadRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/signals/scout/scratchpad{?content_max_chars*,date_from*,date_to*,key*,keys_only*,limit*,text*}", pathParameters)
+        public ScratchpadRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/signals/scout/scratchpad{?content_max_chars*,date_from*,date_to*,include_expired*,key*,keys_only*,limit*,text*}", pathParameters)
         {
         }
         /// <summary>
@@ -36,11 +36,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Scratc
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ScratchpadRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/signals/scout/scratchpad{?content_max_chars*,date_from*,date_to*,key*,keys_only*,limit*,text*}", rawUrl)
+        public ScratchpadRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/signals/scout/scratchpad{?content_max_chars*,date_from*,date_to*,include_expired*,key*,keys_only*,limit*,text*}", rawUrl)
         {
         }
         /// <summary>
-        /// Return `SignalScratchpad` entries for this project, newest-first. ILIKE matches on `content` and `key`; pass `key` instead for an exact single-entry lookup. `date_from` / `date_to` are a half-open window on `updated_at` (`&gt;= date_from`, `&lt; date_to`); pass `date_to` (the `updated_at` of the oldest entry seen) on subsequent calls to walk past the cap. Pass `keys_only=true` to scan keys without pulling entry bodies, or `content_max_chars` to cap each `content` to a preview — both keep a wide orientation scan from returning every entry&apos;s full prose. Results capped at 1000.
+        /// Return `SignalScratchpad` entries for this project, newest-first. ILIKE matches on `content` and `key`; pass `key` instead for an exact single-entry lookup. `date_from` / `date_to` are a half-open window on `updated_at` (`&gt;= date_from`, `&lt; date_to`); pass `date_to` (the `updated_at` of the oldest entry seen) on subsequent calls to walk past the cap. Entries whose `expires_at` has passed are excluded unless `include_expired=true`, and are hard-deleted by a daily janitor once their expiry is more than two weeks in the past. Pass `keys_only=true` to scan keys without pulling entry bodies, or `content_max_chars` to cap each `content` to a preview — both keep a wide orientation scan from returning every entry&apos;s full prose. Results capped at 1000.
         /// </summary>
         /// <returns>A List&lt;global::Soenneker.PostHog.OpenApiClient.Models.ScratchpadEntry&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -59,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Scratc
             return collectionResult?.AsList();
         }
         /// <summary>
-        /// Upsert a memory keyed on `(team, key)`. Re-using a key updates the existing entry in place.
+        /// Upsert a memory keyed on `(team, key)`. Re-using a key updates the existing entry in place. A write carries the entry&apos;s whole state, so `expires_at` is set when passed and cleared when omitted.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ScratchpadEntry"/></returns>
         /// <param name="body">Request body for `remember`.</param>
@@ -79,7 +79,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Scratc
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ScratchpadEntry>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ScratchpadEntry.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Return `SignalScratchpad` entries for this project, newest-first. ILIKE matches on `content` and `key`; pass `key` instead for an exact single-entry lookup. `date_from` / `date_to` are a half-open window on `updated_at` (`&gt;= date_from`, `&lt; date_to`); pass `date_to` (the `updated_at` of the oldest entry seen) on subsequent calls to walk past the cap. Pass `keys_only=true` to scan keys without pulling entry bodies, or `content_max_chars` to cap each `content` to a preview — both keep a wide orientation scan from returning every entry&apos;s full prose. Results capped at 1000.
+        /// Return `SignalScratchpad` entries for this project, newest-first. ILIKE matches on `content` and `key`; pass `key` instead for an exact single-entry lookup. `date_from` / `date_to` are a half-open window on `updated_at` (`&gt;= date_from`, `&lt; date_to`); pass `date_to` (the `updated_at` of the oldest entry seen) on subsequent calls to walk past the cap. Entries whose `expires_at` has passed are excluded unless `include_expired=true`, and are hard-deleted by a daily janitor once their expiry is more than two weeks in the past. Pass `keys_only=true` to scan keys without pulling entry bodies, or `content_max_chars` to cap each `content` to a preview — both keep a wide orientation scan from returning every entry&apos;s full prose. Results capped at 1000.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -98,7 +98,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Scratc
             return requestInfo;
         }
         /// <summary>
-        /// Upsert a memory keyed on `(team, key)`. Re-using a key updates the existing entry in place.
+        /// Upsert a memory keyed on `(team, key)`. Re-using a key updates the existing entry in place. A write carries the entry&apos;s whole state, so `expires_at` is set when passed and cleared when omitted.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">Request body for `remember`.</param>
@@ -129,7 +129,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Scratc
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Scratchpad.ScratchpadRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Return `SignalScratchpad` entries for this project, newest-first. ILIKE matches on `content` and `key`; pass `key` instead for an exact single-entry lookup. `date_from` / `date_to` are a half-open window on `updated_at` (`&gt;= date_from`, `&lt; date_to`); pass `date_to` (the `updated_at` of the oldest entry seen) on subsequent calls to walk past the cap. Pass `keys_only=true` to scan keys without pulling entry bodies, or `content_max_chars` to cap each `content` to a preview — both keep a wide orientation scan from returning every entry&apos;s full prose. Results capped at 1000.
+        /// Return `SignalScratchpad` entries for this project, newest-first. ILIKE matches on `content` and `key`; pass `key` instead for an exact single-entry lookup. `date_from` / `date_to` are a half-open window on `updated_at` (`&gt;= date_from`, `&lt; date_to`); pass `date_to` (the `updated_at` of the oldest entry seen) on subsequent calls to walk past the cap. Entries whose `expires_at` has passed are excluded unless `include_expired=true`, and are hard-deleted by a daily janitor once their expiry is more than two weeks in the past. Pass `keys_only=true` to scan keys without pulling entry bodies, or `content_max_chars` to cap each `content` to a preview — both keep a wide orientation scan from returning every entry&apos;s full prose. Results capped at 1000.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class ScratchpadRequestBuilderGetQueryParameters 
@@ -140,9 +140,12 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Scratc
             /// <summary>ISO-8601 inclusive lower bound on `updated_at`. Omit to skip the lower bound.</summary>
             [QueryParameter("date_from")]
             public DateTimeOffset? DateFrom { get; set; }
-            /// <summary>&quot;ISO-8601 exclusive upper bound on `updated_at`. Pass to walk back past the result cap on subsequent calls (cursor-style: set to the `updated_at` of the oldest entry from the prior page).&quot;</summary>
+            /// <summary>ISO-8601 exclusive upper bound on `updated_at`. Pass to walk back past the result cap on subsequent calls (cursor-style: set to the `updated_at` of the oldest entry from the prior page).</summary>
             [QueryParameter("date_to")]
             public DateTimeOffset? DateTo { get; set; }
+            /// <summary>Include entries whose `expires_at` has passed. Off by default so a time-boxed memory retires itself; turn it on to audit what the fleet remembered and when it lapsed.</summary>
+            [QueryParameter("include_expired")]
+            public bool? IncludeExpired { get; set; }
             /// <summary>Exact key match — returns the single entry with this key, or nothing. Use this to re-read a known entry; `text` searches key *and* content, so it can push the row you asked for past the limit.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

@@ -3,6 +3,8 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Bulk_approve;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Bulk_delete;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Item;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -18,6 +20,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class MetricsRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The bulk_approve property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Bulk_approve.Bulk_approveRequestBuilder Bulk_approve
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Bulk_approve.Bulk_approveRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The bulk_delete property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Bulk_delete.Bulk_deleteRequestBuilder Bulk_delete
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Bulk_delete.Bulk_deleteRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.data_catalog.metrics.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Item.WithNameItemRequestBuilder"/></returns>

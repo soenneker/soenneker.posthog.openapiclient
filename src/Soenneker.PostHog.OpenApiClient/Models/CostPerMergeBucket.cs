@@ -16,7 +16,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Bucket start, aligned to cost_series_granularity (top of hour, midnight, or Monday).</summary>
         public DateTimeOffset? BucketStart { get; set; }
-        /// <summary>&quot;Rolling ratio: trailing-window CI cost divided by trailing-window merges (24 h / 7 d / 4 w to match the granularity). Null when the trailing window had no merges or no costable cost.&quot;</summary>
+        /// <summary>Rolling ratio: trailing-window CI cost divided by trailing-window merges (24 h / 7 d / 4 w to match the granularity). Null when the trailing window had no merges or no costable cost.</summary>
         public double? CostPerMergeUsd { get; set; }
         /// <summary>Estimated Depot CI cost (USD) of all runs started in this bucket. Null when nothing was costable (no billable self-hosted Linux jobs) or the job source isn&apos;t synced.</summary>
         public double? EstimatedCostUsd { get; set; }

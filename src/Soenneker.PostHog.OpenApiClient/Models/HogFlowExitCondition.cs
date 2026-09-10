@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;exit_only_at_end: only at exit node (default). exit_on_conversion: also on conversion (needs &apos;conversion&apos;; silent no-op otherwise). exit_on_trigger_not_matched: also when trigger filter stops matching. exit_on_trigger_not_matched_or_conversion: both (needs &apos;conversion&apos;).* `exit_on_conversion` - Conversion* `exit_on_trigger_not_matched` - Trigger Not Matched* `exit_on_trigger_not_matched_or_conversion` - Trigger Not Matched Or Conversion* `exit_only_at_end` - Only At End&quot;
+    /// exit_only_at_end: only at exit node (default). exit_on_conversion: also on conversion (needs &apos;conversion&apos;; silent no-op otherwise). exit_on_trigger_not_matched: also when trigger filter stops matching. exit_on_trigger_not_matched_or_conversion: both (needs &apos;conversion&apos;).* `exit_on_conversion` - Conversion* `exit_on_trigger_not_matched` - Trigger Not Matched* `exit_on_trigger_not_matched_or_conversion` - Trigger Not Matched Or Conversion* `exit_only_at_end` - Only At End
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class HogFlowExitCondition : IAdditionalDataHolder, IParsable

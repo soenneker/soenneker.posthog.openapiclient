@@ -71,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedReplayScannerBackfillList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedReplayScannerBackfillList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Create a backfill: freeze the scanner config, enumerate the exact candidate set, start the tick schedule.The enumeration reruns here rather than trusting the client-confirmed estimate: the count isbilling-relevant, so the authoritative value is computed server-side at creation time. Newsettled sessions between estimate and confirm can nudge total_count slightly.&quot;
+        /// Create a backfill: freeze the scanner config, enumerate the exact candidate set, start the tick schedule.The enumeration reruns here rather than trusting the client-confirmed estimate: the count isbilling-relevant, so the authoritative value is computed server-side at creation time. Newsettled sessions between estimate and confirm can nudge total_count slightly.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerBackfill"/></returns>
         /// <param name="body">The request body</param>
@@ -110,7 +110,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item
             return requestInfo;
         }
         /// <summary>
-        /// &quot;Create a backfill: freeze the scanner config, enumerate the exact candidate set, start the tick schedule.The enumeration reruns here rather than trusting the client-confirmed estimate: the count isbilling-relevant, so the authoritative value is computed server-side at creation time. Newsettled sessions between estimate and confirm can nudge total_count slightly.&quot;
+        /// Create a backfill: freeze the scanner config, enumerate the exact candidate set, start the tick schedule.The enumeration reruns here rather than trusting the client-confirmed estimate: the count isbilling-relevant, so the authoritative value is computed server-side at creation time. Newsettled sessions between estimate and confirm can nudge total_count slightly.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

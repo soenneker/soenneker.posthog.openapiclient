@@ -78,13 +78,13 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.Attrib
         public partial class AttributesRequestBuilderGetQueryParameters 
         #pragma warning restore CS1591
         {
-            /// <summary>&quot;Type of attributes: \&quot;span_attribute\&quot; for span-level attributes, \&quot;span_resource_attribute\&quot; for resource-level attributes.* `span_attribute` - span_attribute* `span_resource_attribute` - span_resource_attribute&quot;</summary>
+            /// <summary>Type of attributes: &quot;span_attribute&quot; for span-level attributes, &quot;span_resource_attribute&quot; for resource-level attributes.* `span_attribute` - span_attribute* `span_resource_attribute` - span_resource_attribute</summary>
             [QueryParameter("attribute_type")]
             public global::Soenneker.PostHog.OpenApiClient.Models.TracingSpansAttributesRetrieveAttributeTypeParameter? AttributeType { get; set; }
-            /// <summary>&quot;Max results (default: 100).&quot;</summary>
+            /// <summary>Max results (default: 100).</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
-            /// <summary>&quot;Pagination offset (default: 0).&quot;</summary>
+            /// <summary>Pagination offset (default: 0).</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
             /// <summary>Search filter for attribute names.</summary>

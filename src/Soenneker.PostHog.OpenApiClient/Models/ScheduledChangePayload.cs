@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;The change to apply. Must include an &apos;operation&apos; key and a &apos;value&apos; key. Supported operations: &apos;update_status&apos; (value: true/false to enable/disable the flag), &apos;add_release_condition&apos; (value: object with &apos;groups&apos;, &apos;payloads&apos;, and &apos;multivariate&apos; keys), &apos;update_variants&apos; (value: object with &apos;variants&apos; and &apos;payloads&apos; keys).&quot;
+    /// The change to apply. Must include an &apos;operation&apos; key and a &apos;value&apos; key. Supported operations: &apos;update_status&apos; (value: true/false to enable/disable the flag), &apos;add_release_condition&apos; (value: object with &apos;groups&apos;, &apos;payloads&apos;, and &apos;multivariate&apos; keys), &apos;update_variants&apos; (value: object with &apos;variants&apos; and &apos;payloads&apos; keys).
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ScheduledChangePayload : IAdditionalDataHolder, IParsable

@@ -24,7 +24,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>&quot;Insight query JSON to render ad hoc, e.g. {\&quot;kind\&quot;: \&quot;InsightVizNode\&quot;, \&quot;source\&quot;: {\&quot;kind\&quot;: \&quot;TrendsQuery\&quot;, ...}}. SQL queries (DataVisualizationNode, HogQLQuery) are not supported yet. Provide exactly one of query or insight_id.&quot;</summary>
+        /// <summary>Insight query JSON to render ad hoc, e.g. {&quot;kind&quot;: &quot;InsightVizNode&quot;, &quot;source&quot;: {&quot;kind&quot;: &quot;TrendsQuery&quot;, ...}}. SQL queries (DataVisualizationNode, HogQLQuery) are not supported yet. Provide exactly one of query or insight_id.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunLivingArtifactChartRequestQueryProperty? Query { get; set; }

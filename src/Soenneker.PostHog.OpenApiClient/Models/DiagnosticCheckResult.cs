@@ -41,12 +41,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Concrete remediation steps when the check failed; null when there&apos;s nothing actionable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticCheckResultRemediation? Remediation { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticRemediation? Remediation { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticCheckResultRemediation Remediation { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticRemediation Remediation { get; set; }
 #endif
-        /// <summary>&quot;passed: ok. warned: degraded but not blocking. failed: blocking. skipped: not run for this state.* `passed` - passed* `warned` - warned* `failed` - failed* `skipped` - skipped&quot;</summary>
+        /// <summary>passed: ok. warned: degraded but not blocking. failed: blocking. skipped: not run for this state.* `passed` - passed* `warned` - warned* `failed` - failed* `skipped` - skipped</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticCheckResultStatus? Status { get; set; }
@@ -82,7 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "detail", n => { Detail = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "remediation", n => { Remediation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticCheckResultRemediation>(global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticCheckResultRemediation.CreateFromDiscriminatorValue); } },
+                { "remediation", n => { Remediation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticRemediation>(global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticRemediation.CreateFromDiscriminatorValue); } },
                 { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticCheckResultStatus>(global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticCheckResultStatus.CreateFromDiscriminatorValue); } },
             };
         }
@@ -96,7 +96,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("detail", Detail);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticCheckResultRemediation>("remediation", Remediation);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticRemediation>("remediation", Remediation);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticCheckResultStatus>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }

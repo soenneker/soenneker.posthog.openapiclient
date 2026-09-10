@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_saved_queries.Item.Ancestors
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{projectId}\warehouse_saved_queries\{id}\ancestors
+    /// Builds and executes requests for operations under \api\projects\{projectId}\warehouse_saved_queries\{-id}\ancestors
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AncestorsRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_saved_quer
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AncestorsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/warehouse_saved_queries/{id}/ancestors", pathParameters)
+        public AncestorsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/warehouse_saved_queries/{%2Did}/ancestors", pathParameters)
         {
         }
         /// <summary>
@@ -30,42 +30,42 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_saved_quer
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AncestorsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/warehouse_saved_queries/{id}/ancestors", rawUrl)
+        public AncestorsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/warehouse_saved_queries/{%2Did}/ancestors", rawUrl)
         {
         }
         /// <summary>
-        /// Return the ancestors of this saved query.By default, we return the immediate parents. The `level` parameter can be used tolook further back into the ancestor tree. If `level` overshoots (i.e. points to onlyancestors beyond the root), we return an empty list.
+        /// Return the ancestors of this saved query.By default, we return every ancestor. The `level` parameter bounds how many hops backto walk, so 1 gives the immediate parents.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQuery"/></returns>
-        /// <param name="body">Shared methods for DataWarehouseSavedQuery serializers.This mixin is intended to be used with serializers.ModelSerializer subclasses.</param>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryAncestors"/></returns>
+        /// <param name="body">Body of the `ancestors` and `descendants` actions.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQuery?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQuery body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryAncestors?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryLineageRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQuery> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQuery body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryAncestors> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryLineageRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQuery>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQuery.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryAncestors>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryAncestors.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Return the ancestors of this saved query.By default, we return the immediate parents. The `level` parameter can be used tolook further back into the ancestor tree. If `level` overshoots (i.e. points to onlyancestors beyond the root), we return an empty list.
+        /// Return the ancestors of this saved query.By default, we return every ancestor. The `level` parameter bounds how many hops backto walk, so 1 gives the immediate parents.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">Shared methods for DataWarehouseSavedQuery serializers.This mixin is intended to be used with serializers.ModelSerializer subclasses.</param>
+        /// <param name="body">Body of the `ancestors` and `descendants` actions.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQuery body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryLineageRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQuery body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryLineageRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));

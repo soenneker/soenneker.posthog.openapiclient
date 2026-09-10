@@ -16,13 +16,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public Guid? AccountId { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Required customer-facing request description in Markdown.</summary>
+        /// <summary>Optional customer-facing request description in Markdown.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Description { get; set; }
 #nullable restore
 #else
         public string Description { get; set; }
+#endif
+        /// <summary>Optional first evidence item to create for the selected account.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestEvidencePayload? Evidence { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestEvidencePayload Evidence { get; set; }
 #endif
         /// <summary>Client-generated key that makes retries return the original request instead of creating a duplicate.</summary>
         public Guid? IdempotencyKey { get; set; }
@@ -69,6 +77,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "account_id", n => { AccountId = n.GetGuidValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
+                { "evidence", n => { Evidence = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestEvidencePayload>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestEvidencePayload.CreateFromDiscriminatorValue); } },
                 { "idempotency_key", n => { IdempotencyKey = n.GetGuidValue(); } },
                 { "product_area_ids", n => { ProductAreaIds = n.GetCollectionOfPrimitiveValues<Guid?>()?.AsList(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
@@ -83,6 +92,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteGuidValue("account_id", AccountId);
             writer.WriteStringValue("description", Description);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestEvidencePayload>("evidence", Evidence);
             writer.WriteGuidValue("idempotency_key", IdempotencyKey);
             writer.WriteCollectionOfPrimitiveValues<Guid?>("product_area_ids", ProductAreaIds);
             writer.WriteStringValue("title", Title);

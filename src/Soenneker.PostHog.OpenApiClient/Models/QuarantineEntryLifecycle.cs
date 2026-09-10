@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Expiry classification: &apos;active&apos; (&gt;7 days left), &apos;expiring_soon&apos; (0-7 days left), &apos;in_grace&apos; (expired up to 7 days ago), &apos;overdue&apos; (expired beyond the grace period).* `active` - ACTIVE* `expiring_soon` - EXPIRING_SOON* `in_grace` - IN_GRACE* `overdue` - OVERDUE&quot;
+    /// Expiry classification: &apos;active&apos; (&gt;7 days left), &apos;expiring_soon&apos; (0-7 days left), &apos;in_grace&apos; (expired up to 7 days ago), &apos;overdue&apos; (expired beyond the grace period).* `active` - ACTIVE* `expiring_soon` - EXPIRING_SOON* `in_grace` - IN_GRACE* `overdue` - OVERDUE
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class QuarantineEntryLifecycle : IAdditionalDataHolder, IParsable

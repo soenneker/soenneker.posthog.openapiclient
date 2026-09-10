@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Body-level settings: backgroundColor, contentWidth (&apos;600px&apos;), fontFamily, textColor.&quot;
+    /// Body-level settings: backgroundColor, contentWidth (&apos;600px&apos;), fontFamily, textColor.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class EmailTemplateDesignBodyValuesProperty : IAdditionalDataHolder, IParsable

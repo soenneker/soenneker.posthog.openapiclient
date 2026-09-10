@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_prompts
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Llm_promptsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/llm_prompts{?content*,created_by_id*,limit*,offset*,order_by*,search*}", pathParameters)
+        public Llm_promptsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/llm_prompts{?content*,created_by_id*,label*,limit*,offset*,order_by*,search*}", pathParameters)
         {
         }
         /// <summary>
@@ -42,7 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_prompts
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Llm_promptsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/llm_prompts{?content*,created_by_id*,limit*,offset*,order_by*,search*}", rawUrl)
+        public Llm_promptsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/llm_prompts{?content*,created_by_id*,label*,limit*,offset*,order_by*,search*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedLlmPromptListList"/></returns>
@@ -132,6 +132,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_prompts
             /// <summary>Filter prompts by the ID of the user who created them.</summary>
             [QueryParameter("created_by_id")]
             public int? CreatedById { get; set; }
+            /// <summary>Return each prompt at the version this label points to, e.g. &apos;production&apos;. Prompts that do not carry the label are omitted. If omitted, the latest version of every prompt is returned.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("label")]
+            public string? Label { get; set; }
+#nullable restore
+#else
+            [QueryParameter("label")]
+            public string Label { get; set; }
+#endif
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }

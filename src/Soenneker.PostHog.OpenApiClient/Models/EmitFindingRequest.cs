@@ -84,10 +84,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Optional time window the finding refers to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequestTimeRange? TimeRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TimeRange? TimeRange { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequestTimeRange TimeRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TimeRange TimeRange { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequest"/> and sets the default values.
@@ -123,7 +123,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "mcp_trace_id", n => { McpTraceId = n.GetStringValue(); } },
                 { "severity", n => { Severity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequestSeverity>(global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequestSeverity.CreateFromDiscriminatorValue); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "time_range", n => { TimeRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequestTimeRange>(global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequestTimeRange.CreateFromDiscriminatorValue); } },
+                { "time_range", n => { TimeRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TimeRange>(global::Soenneker.PostHog.OpenApiClient.Models.TimeRange.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -142,7 +142,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("mcp_trace_id", McpTraceId);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequestSeverity>("severity", Severity);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequestTimeRange>("time_range", TimeRange);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TimeRange>("time_range", TimeRange);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

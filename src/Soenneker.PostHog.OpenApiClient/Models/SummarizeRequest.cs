@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;Data to summarize. For traces: {trace, hierarchy}. For events: {event}. Not required when using trace_id or generation_id.&quot;</summary>
+        /// <summary>Data to summarize. For traces: {trace, hierarchy}. For events: {event}. Not required when using trace_id or generation_id.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.SummarizeRequestData? Data { get; set; }
@@ -48,7 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string GenerationId { get; set; }
 #endif
-        /// <summary>&quot;Summary detail level: &apos;minimal&apos; for 3-5 points, &apos;detailed&apos; for 5-10 points* `minimal` - minimal* `detailed` - detailed&quot;</summary>
+        /// <summary>Summary detail level: &apos;minimal&apos; for 3-5 points, &apos;detailed&apos; for 5-10 points* `minimal` - minimal* `detailed` - detailed</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.SummarizeRequestMode? Mode { get; set; }

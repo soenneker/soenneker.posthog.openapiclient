@@ -15,7 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;For session samples: only sessions with no activity for this long are previewed, matching when a session evaluation would actually run.&quot;</summary>
+        /// <summary>For session samples: only sessions with no activity for this long are previewed, matching when a session evaluation would actually run.</summary>
         public int? QuietPeriodSeconds { get; set; }
         /// <summary>Aggregation window for trace samples, in seconds.</summary>
         public int? WindowSeconds { get; set; }

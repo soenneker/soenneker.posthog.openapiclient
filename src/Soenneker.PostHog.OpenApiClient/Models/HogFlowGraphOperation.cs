@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowGraphOperationEdge Edge { get; set; }
 #endif
-        /// <summary>&quot;replace_action_edges: the complete set of the action&apos;s outgoing edges (incoming edges are preserved). add_action: optional edges to wire the new node in the same op.&quot;</summary>
+        /// <summary>replace_action_edges: the complete set of the action&apos;s outgoing edges (incoming edges are preserved). add_action: optional edges to wire the new node in the same op.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEdge>? Edges { get; set; }
@@ -46,7 +46,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Id { get; set; }
 #endif
-        /// <summary>&quot;Graph edit. update_action {id, patch}: deep-merge patch into the action&apos;s fields (a null leaf deletes that key) — the surgical path for tweaking one config value. add_action {action, edges?}: append a full action node, optionally wiring its edges in the same op. remove_action {id}: delete a node and reconnect its incoming edges to its first outgoer. add_edge {edge} / remove_edge {edge}: add or delete one edge. replace_action_edges {id, edges}: replace this action&apos;s outgoing edges with the given set (use when adding/removing branch conditions); incoming edges are left intact.* `update_action` - update_action* `add_action` - add_action* `remove_action` - remove_action* `add_edge` - add_edge* `remove_edge` - remove_edge* `replace_action_edges` - replace_action_edges&quot;</summary>
+        /// <summary>Graph edit. update_action {id, patch}: deep-merge patch into the action&apos;s fields (a null leaf deletes that key) — the surgical path for tweaking one config value. add_action {action, edges?}: append a full action node, optionally wiring its edges in the same op. remove_action {id}: delete a node and reconnect its incoming edges to its first outgoer. add_edge {edge} / remove_edge {edge}: add or delete one edge. replace_action_edges {id, edges}: replace this action&apos;s outgoing edges with the given set (use when adding/removing branch conditions); incoming edges are left intact.* `update_action` - update_action* `add_action` - add_action* `remove_action` - remove_action* `add_edge` - add_edge* `remove_edge` - remove_edge* `replace_action_edges` - replace_action_edges</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowGraphOperationOp? Op { get; set; }
@@ -54,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowGraphOperationOp Op { get; set; }
 #endif
-        /// <summary>&quot;update_action only. Partial action fields, deep-merged into the existing action; a null leaf deletes that key. e.g. {config: {inputs: {subject: {value: &apos;Hi&apos;}}}} changes only that input.&quot;</summary>
+        /// <summary>update_action only. Partial action fields, deep-merged into the existing action; a null leaf deletes that key. e.g. {config: {inputs: {subject: {value: &apos;Hi&apos;}}}} changes only that input.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowGraphOperationPatch? Patch { get; set; }

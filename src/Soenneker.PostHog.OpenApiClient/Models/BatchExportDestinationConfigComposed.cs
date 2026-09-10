@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Destination-specific configuration. Fields depend on `type`. Credentials for integration-backed destinations (Databricks, AzureBlob, BigQuery, Postgres, AwsS3, S3Compatible, Snowflake) are NOT stored here — they live in the linked Integration. Secret fields are stripped from responses.
+    /// Destination-specific configuration. Fields depend on `type`. Credentials for integration-backed destinations (Databricks, AzureBlob, BigQuery, Postgres, AwsS3, S3Compatible, Snowflake, Redshift) are NOT stored here — they live in the linked Integration. Secret fields are stripped from responses.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class BatchExportDestinationConfigComposed : IAdditionalDataHolder, IParsable
@@ -47,6 +47,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ContainerName { get; set; }
 #endif
+        /// <summary>S3 staging configuration, required when mode is &apos;COPY&apos;.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.RedshiftDestinationConfigCopyInputs? CopyInputs { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.RedshiftDestinationConfigCopyInputs CopyInputs { get; set; }
+#endif
         /// <summary>PostgreSQL database name to connect to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -81,6 +89,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Legacy SSL option for direct credential configuration. Ignored when using a PostgreSQL integration.</summary>
         public bool? HasSelfSignedCert { get; set; }
+        /// <summary>Redshift cluster or Serverless workgroup endpoint. Required when using an AWS Redshift integration; plain Redshift integrations store the host themselves.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Host { get; set; }
+#nullable restore
+#else
+        public string Host { get; set; }
+#endif
         /// <summary>Databricks SQL warehouse HTTP path.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -99,6 +115,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>If set, rolls to a new file once the current file exceeds this size in MB.</summary>
         public int? MaxFileSizeMb { get; set; }
+        /// <summary>How rows reach Redshift: batched INSERT statements, or COPY from files staged in S3.* `INSERT` - INSERT* `COPY` - COPY</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.RedshiftDestinationConfigMode? Mode { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.RedshiftDestinationConfigMode Mode { get; set; }
+#endif
+        /// <summary>Port the Redshift server listens on.</summary>
+        public int? Port { get; set; }
         /// <summary>Object key prefix applied to every exported file.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -106,6 +132,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string Prefix { get; set; }
+#endif
+        /// <summary>Data type used for JSON-like columns such as event properties.* `varchar` - varchar* `super` - super</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.RedshiftDestinationConfigPropertiesDataType? PropertiesDataType { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.RedshiftDestinationConfigPropertiesDataType PropertiesDataType { get; set; }
 #endif
         /// <summary>Region the bucket is in (e.g. &apos;us-east-1&apos;).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -147,7 +181,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string TableName { get; set; }
 #endif
-        /// <summary>Union discriminator</summary>
+        /// <summary>The type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Type { get; set; }
@@ -178,6 +212,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             AdditionalData = new Dictionary<string, object>();
             HasSelfSignedCert = false;
+            Port = 5439;
             TableId = "events";
             UseAutomaticSchemaEvolution = true;
             UseJsonType = false;
@@ -206,15 +241,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "catalog", n => { Catalog = n.GetStringValue(); } },
                 { "compression", n => { Compression = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AzureBlobDestinationConfigCompression>(global::Soenneker.PostHog.OpenApiClient.Models.AzureBlobDestinationConfigCompression.CreateFromDiscriminatorValue); } },
                 { "container_name", n => { ContainerName = n.GetStringValue(); } },
+                { "copy_inputs", n => { CopyInputs = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RedshiftDestinationConfigCopyInputs>(global::Soenneker.PostHog.OpenApiClient.Models.RedshiftDestinationConfigCopyInputs.CreateFromDiscriminatorValue); } },
                 { "database", n => { Database = n.GetStringValue(); } },
                 { "dataset_id", n => { DatasetId = n.GetStringValue(); } },
                 { "encryption", n => { Encryption = n.GetStringValue(); } },
                 { "file_format", n => { FileFormat = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AzureBlobDestinationConfigFileFormat>(global::Soenneker.PostHog.OpenApiClient.Models.AzureBlobDestinationConfigFileFormat.CreateFromDiscriminatorValue); } },
                 { "has_self_signed_cert", n => { HasSelfSignedCert = n.GetBoolValue(); } },
+                { "host", n => { Host = n.GetStringValue(); } },
                 { "http_path", n => { HttpPath = n.GetStringValue(); } },
                 { "kms_key_id", n => { KmsKeyId = n.GetStringValue(); } },
                 { "max_file_size_mb", n => { MaxFileSizeMb = n.GetIntValue(); } },
+                { "mode", n => { Mode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RedshiftDestinationConfigMode>(global::Soenneker.PostHog.OpenApiClient.Models.RedshiftDestinationConfigMode.CreateFromDiscriminatorValue); } },
+                { "port", n => { Port = n.GetIntValue(); } },
                 { "prefix", n => { Prefix = n.GetStringValue(); } },
+                { "properties_data_type", n => { PropertiesDataType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RedshiftDestinationConfigPropertiesDataType>(global::Soenneker.PostHog.OpenApiClient.Models.RedshiftDestinationConfigPropertiesDataType.CreateFromDiscriminatorValue); } },
                 { "region", n => { Region = n.GetStringValue(); } },
                 { "role", n => { Role = n.GetStringValue(); } },
                 { "schema", n => { Schema = n.GetStringValue(); } },
@@ -239,15 +279,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("catalog", Catalog);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AzureBlobDestinationConfigCompression>("compression", Compression);
             writer.WriteStringValue("container_name", ContainerName);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RedshiftDestinationConfigCopyInputs>("copy_inputs", CopyInputs);
             writer.WriteStringValue("database", Database);
             writer.WriteStringValue("dataset_id", DatasetId);
             writer.WriteStringValue("encryption", Encryption);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AzureBlobDestinationConfigFileFormat>("file_format", FileFormat);
             writer.WriteBoolValue("has_self_signed_cert", HasSelfSignedCert);
+            writer.WriteStringValue("host", Host);
             writer.WriteStringValue("http_path", HttpPath);
             writer.WriteStringValue("kms_key_id", KmsKeyId);
             writer.WriteIntValue("max_file_size_mb", MaxFileSizeMb);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RedshiftDestinationConfigMode>("mode", Mode);
+            writer.WriteIntValue("port", Port);
             writer.WriteStringValue("prefix", Prefix);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RedshiftDestinationConfigPropertiesDataType>("properties_data_type", PropertiesDataType);
             writer.WriteStringValue("region", Region);
             writer.WriteStringValue("role", Role);
             writer.WriteStringValue("schema", Schema);

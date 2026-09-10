@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The connection property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponseConnection? Connection { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseConnection? Connection { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponseConnection Connection { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseConnection Connection { get; set; }
 #endif
         /// <summary>When provisioning failed</summary>
         public DateTimeOffset? FailedAt { get; set; }
@@ -127,7 +127,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "connection", n => { Connection = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponseConnection>(global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponseConnection.CreateFromDiscriminatorValue); } },
+                { "connection", n => { Connection = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseConnection>(global::Soenneker.PostHog.OpenApiClient.Models.WarehouseConnection.CreateFromDiscriminatorValue); } },
                 { "failed_at", n => { FailedAt = n.GetDateTimeOffsetValue(); } },
                 { "has_backfill", n => { HasBackfill = n.GetBoolValue(); } },
                 { "identity_state", n => { IdentityState = n.GetStringValue(); } },
@@ -150,7 +150,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponseConnection>("connection", Connection);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseConnection>("connection", Connection);
             writer.WriteDateTimeOffsetValue("failed_at", FailedAt);
             writer.WriteBoolValue("has_backfill", HasBackfill);
             writer.WriteStringValue("identity_state", IdentityState);

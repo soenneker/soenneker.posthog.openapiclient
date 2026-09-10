@@ -15,13 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The groupTypeIndex property</summary>
         public int? GroupTypeIndex { get; set; }
         /// <summary>The kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Kind { get; set; }
-#nullable restore
-#else
-        public string Kind { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQueryKind? Kind { get; set; }
         /// <summary>The maxPropertyValues property</summary>
         public int? MaxPropertyValues { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
@@ -77,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "groupTypeIndex", n => { GroupTypeIndex = n.GetIntValue(); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQueryKind>(); } },
                 { "maxPropertyValues", n => { MaxPropertyValues = n.GetIntValue(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "properties", n => { Properties = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -94,7 +88,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("groupTypeIndex", GroupTypeIndex);
-            writer.WriteStringValue("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQueryKind>("kind", Kind);
             writer.WriteIntValue("maxPropertyValues", MaxPropertyValues);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
             writer.WriteCollectionOfPrimitiveValues<string>("properties", Properties);

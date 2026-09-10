@@ -3,7 +3,6 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Code.Invites.CheckAccess;
-using Soenneker.PostHog.OpenApiClient.Api.Code.Invites.Redeem;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -20,11 +19,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Code.Invites
         public global::Soenneker.PostHog.OpenApiClient.Api.Code.Invites.CheckAccess.CheckAccessRequestBuilder CheckAccess
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Code.Invites.CheckAccess.CheckAccessRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The redeem property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Code.Invites.Redeem.RedeemRequestBuilder Redeem
-        {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Code.Invites.Redeem.RedeemRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Code.Invites.InvitesRequestBuilder"/> and sets the default values.

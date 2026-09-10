@@ -12,7 +12,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class IqrDetectorConfig : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>&quot;IQR multiplier for fence calculation (default: 1.5, use 3.0 for far outliers)&quot;</summary>
+        /// <summary>IQR multiplier for fence calculation (default: 1.5, use 3.0 for far outliers)</summary>
         public double? Multiplier { get; set; }
         /// <summary>Preprocessing transforms applied before detection</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -23,14 +23,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig Preprocessing { get; set; }
 #endif
         /// <summary>The type property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Type { get; set; }
-#nullable restore
-#else
-        public string Type { get; set; }
-#endif
-        /// <summary>&quot;Rolling window size for calculating quartiles (default: 30)&quot;</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.IqrType? Type { get; set; }
+        /// <summary>Rolling window size for calculating quartiles (default: 30)</summary>
         public int? Window { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -52,7 +46,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "multiplier", n => { Multiplier = n.GetDoubleValue(); } },
                 { "preprocessing", n => { Preprocessing = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig>(global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IqrType>(); } },
                 { "window", n => { Window = n.GetIntValue(); } },
             };
         }
@@ -65,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("multiplier", Multiplier);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig>("preprocessing", Preprocessing);
-            writer.WriteStringValue("type", Type);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IqrType>("type", Type);
             writer.WriteIntValue("window", Window);
         }
     }

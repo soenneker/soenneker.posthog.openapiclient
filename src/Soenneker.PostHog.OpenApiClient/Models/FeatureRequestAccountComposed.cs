@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Affected account in the first release.
+    /// First visible account retained for client compatibility. Use account_links for the complete list.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class FeatureRequestAccountComposed : IAdditionalDataHolder, IParsable

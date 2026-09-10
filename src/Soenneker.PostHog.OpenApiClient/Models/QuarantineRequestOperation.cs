@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;What to do: &apos;quarantine&apos; (add or replace an entry and file a tracking issue), &apos;extend&apos; (re-stamp an existing entry&apos;s expiry, reusing its issue), or &apos;remove&apos; (delete the entry). All three open a pull request.* `quarantine` - QUARANTINE* `extend` - EXTEND* `remove` - REMOVE&quot;
+    /// What to do: &apos;quarantine&apos; (add or replace an entry and file a tracking issue), &apos;extend&apos; (re-stamp an existing entry&apos;s expiry, reusing its issue), or &apos;remove&apos; (delete the entry). All three open a pull request.* `quarantine` - QUARANTINE* `extend` - EXTEND* `remove` - REMOVE
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class QuarantineRequestOperation : IAdditionalDataHolder, IParsable

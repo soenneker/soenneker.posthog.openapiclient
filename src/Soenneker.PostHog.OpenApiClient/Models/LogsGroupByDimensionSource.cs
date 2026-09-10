@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Where this dimension&apos;s key lives: \&quot;log\&quot; for log-level attributes, \&quot;resource\&quot; for resource-level attributes, \&quot;column\&quot; for top-level log fields.* `log` - log* `resource` - resource* `column` - column&quot;
+    /// Where this dimension&apos;s key lives: &quot;log&quot; for log-level attributes, &quot;resource&quot; for resource-level attributes, &quot;column&quot; for top-level log fields.* `log` - log* `resource` - resource* `column` - column
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class LogsGroupByDimensionSource : IAdditionalDataHolder, IParsable

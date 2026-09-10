@@ -22,6 +22,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummaryEnvironment Environment { get; set; }
 #endif
+        /// <summary>ID of the latest run.</summary>
+        public Guid? Id { get; set; }
+        /// <summary>Execution mode of the latest run.* `interactive` - interactive* `background` - background</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummaryMode? Mode { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummaryMode Mode { get; set; }
+#endif
         /// <summary>The status property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -56,6 +66,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "environment", n => { Environment = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummaryEnvironment>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummaryEnvironment.CreateFromDiscriminatorValue); } },
+                { "id", n => { Id = n.GetGuidValue(); } },
+                { "mode", n => { Mode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummaryMode>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummaryMode.CreateFromDiscriminatorValue); } },
                 { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummaryStatus>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummaryStatus.CreateFromDiscriminatorValue); } },
             };
         }
@@ -67,6 +79,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummaryEnvironment>("environment", Environment);
+            writer.WriteGuidValue("id", Id);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummaryMode>("mode", Mode);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummaryStatus>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }

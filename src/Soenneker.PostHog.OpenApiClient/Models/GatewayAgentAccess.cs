@@ -18,10 +18,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Member who shared this server with the agent.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.GatewayAgentAccessGrantedBy? GrantedBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? GrantedBy { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.GatewayAgentAccessGrantedBy GrantedBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic GrantedBy { get; set; }
 #endif
         /// <summary>Agent identity handle, e.g. posthog-support.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -92,7 +92,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "granted_by", n => { GrantedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GatewayAgentAccessGrantedBy>(global::Soenneker.PostHog.OpenApiClient.Models.GatewayAgentAccessGrantedBy.CreateFromDiscriminatorValue); } },
+                { "granted_by", n => { GrantedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
                 { "handle", n => { Handle = n.GetStringValue(); } },
                 { "last_active_at", n => { LastActiveAt = n.GetDateTimeOffsetValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
@@ -109,7 +109,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GatewayAgentAccessGrantedBy>("granted_by", GrantedBy);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>("granted_by", GrantedBy);
             writer.WriteStringValue("handle", Handle);
             writer.WriteDateTimeOffsetValue("last_active_at", LastActiveAt);
             writer.WriteStringValue("name", Name);

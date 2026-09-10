@@ -4,6 +4,10 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Item;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Onboarding_session;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Onboarding_session_test;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Provision_defaults;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Teaching_canvas_test;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -18,6 +22,26 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Task_channelsRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The onboarding_session property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Onboarding_session.Onboarding_sessionRequestBuilder Onboarding_session
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Onboarding_session.Onboarding_sessionRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The onboarding_session_test property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Onboarding_session_test.Onboarding_session_testRequestBuilder Onboarding_session_test
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Onboarding_session_test.Onboarding_session_testRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The provision_defaults property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Provision_defaults.Provision_defaultsRequestBuilder Provision_defaults
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Provision_defaults.Provision_defaultsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The teaching_canvas_test property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Teaching_canvas_test.Teaching_canvas_testRequestBuilder Teaching_canvas_test
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Teaching_canvas_test.Teaching_canvas_testRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.task_channels.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Item.ChannelItemRequestBuilder"/></returns>
@@ -47,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels
         {
         }
         /// <summary>
-        /// All live public channels plus the requester&apos;s personal #me channel (created on first list).
+        /// List channels the requester can access, sorted by name and ID. Includes public channels, their personal #me channel, and private channels they belong to. Call provision_defaults to create missing default channels. Send limit and offset to get a page with count, next, previous, and results. Without limit, the response is an array of all accessible channels.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedChannelDtoList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -65,10 +89,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedChannelDtoList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedChannelDtoList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Returns the existing public channel with the (normalized) name, creating it if needed. A channel created here is starred for the requester unless star is false.
+        /// Create a channel. Public channels use lowercase names with hyphens. If a public channel has that name, return it. The name general returns the project&apos;s general space. Private channels always get a new ID, even if another channel has the same name. The requester and users in member_ids with project access become members. New channels are starred for the requester unless star is false. The names &quot;me&quot; and &quot;personal&quot; are reserved.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ChannelDto"/></returns>
-        /// <param name="body">Request body for creating (resolve-or-create) or renaming a public channel.</param>
+        /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -85,7 +109,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ChannelDto>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ChannelDto.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// All live public channels plus the requester&apos;s personal #me channel (created on first list).
+        /// List channels the requester can access, sorted by name and ID. Includes public channels, their personal #me channel, and private channels they belong to. Call provision_defaults to create missing default channels. Send limit and offset to get a page with count, next, previous, and results. Without limit, the response is an array of all accessible channels.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -104,10 +128,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels
             return requestInfo;
         }
         /// <summary>
-        /// Returns the existing public channel with the (normalized) name, creating it if needed. A channel created here is starred for the requester unless star is false.
+        /// Create a channel. Public channels use lowercase names with hyphens. If a public channel has that name, return it. The name general returns the project&apos;s general space. Private channels always get a new ID, even if another channel has the same name. The requester and users in member_ids with project access become members. New channels are starred for the requester unless star is false. The names &quot;me&quot; and &quot;personal&quot; are reserved.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">Request body for creating (resolve-or-create) or renaming a public channel.</param>
+        /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -135,7 +159,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Task_channelsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// All live public channels plus the requester&apos;s personal #me channel (created on first list).
+        /// List channels the requester can access, sorted by name and ID. Includes public channels, their personal #me channel, and private channels they belong to. Call provision_defaults to create missing default channels. Send limit and offset to get a page with count, next, previous, and results. Without limit, the response is an array of all accessible channels.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Task_channelsRequestBuilderGetQueryParameters 

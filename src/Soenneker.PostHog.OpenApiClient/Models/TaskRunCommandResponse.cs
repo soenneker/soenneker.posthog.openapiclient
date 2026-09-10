@@ -15,7 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Error details on failure</summary>
+        /// <summary>JSON-RPC error details, including failures returned with HTTP 200</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponseErrorProperty? Error { get; set; }
@@ -39,7 +39,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Jsonrpc { get; set; }
 #endif
-        /// <summary>Command result on success</summary>
+        /// <summary>Command result. Permission responses confirm acceptance only with resolved=true.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandResponseResult? Result { get; set; }

@@ -22,16 +22,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Domain { get; set; }
 #endif
-        /// <summary>Returns whether ID-JAG (XAA) is configured for this domain.</summary>
-        public bool? HasIdJag { get; private set; }
-        /// <summary>Returns whether SAML is configured for the instance. Does not validate the user has the required license (that check is performed in other places).</summary>
-        public bool? HasSaml { get; private set; }
-        /// <summary>Returns whether SCIM is configured and enabled for this domain.</summary>
-        public bool? HasScim { get; private set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
-        /// <summary>Linked IdP configuration (SAML/SCIM/XAA) that backs this domain. Must belong to the same organization.</summary>
-        public Guid? IdentityProviderConfig { get; set; }
         /// <summary>Determines whether a domain is verified or not.</summary>
         public bool? IsVerified { get; private set; }
         /// <summary>The jit_provisioning_enabled property</summary>
@@ -88,11 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "domain", n => { Domain = n.GetStringValue(); } },
-                { "has_id_jag", n => { HasIdJag = n.GetBoolValue(); } },
-                { "has_saml", n => { HasSaml = n.GetBoolValue(); } },
-                { "has_scim", n => { HasScim = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "identity_provider_config", n => { IdentityProviderConfig = n.GetGuidValue(); } },
                 { "is_verified", n => { IsVerified = n.GetBoolValue(); } },
                 { "jit_provisioning_enabled", n => { JitProvisioningEnabled = n.GetBoolValue(); } },
                 { "scim_base_url", n => { ScimBaseUrl = n.GetStringValue(); } },
@@ -109,7 +97,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("domain", Domain);
-            writer.WriteGuidValue("identity_provider_config", IdentityProviderConfig);
             writer.WriteBoolValue("jit_provisioning_enabled", JitProvisioningEnabled);
             writer.WriteStringValue("sso_enforcement", SsoEnforcement);
             writer.WriteAdditionalData(AdditionalData);

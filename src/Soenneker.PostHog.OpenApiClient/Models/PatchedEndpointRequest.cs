@@ -23,7 +23,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEndpointRequestBucketOverridesProperty BucketOverrides { get; set; }
 #endif
-        /// <summary>&quot;How fresh the data should be, in seconds. Must be one of: 900 (15 min), 1800 (30 min), 3600 (1 h), 21600 (6 h), 43200 (12 h), 86400 (24 h, default), 604800 (7 d). Controls cache TTL and materialization sync frequency.&quot;</summary>
+        /// <summary>How fresh the data should be, in seconds. Must be one of: 900 (15 min), 1800 (30 min), 3600 (1 h), 21600 (6 h), 43200 (12 h), 86400 (24 h, default), 604800 (7 d). Controls cache TTL and materialization sync frequency.</summary>
         public int? DataFreshnessSeconds { get; set; }
         /// <summary>Set to true to soft-delete this endpoint.</summary>
         public bool? Deleted { get; set; }

@@ -122,7 +122,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Ticket
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class TicketsRequestBuilderGetQueryParameters 
         {
-            /// <summary>&quot;Filter by AI triage outcome. Accepts a single value or a comma-separated list. Valid values: `persisted`, `escalated_with_best`, `escalated_no_reply`, `skipped_unactionable`, `blocked_unsafe`, `blocked_unsafe_reply`, `in_progress`.&quot;</summary>
+            /// <summary>Filter by AI triage outcome. Accepts a single value or a comma-separated list. Valid values: `persisted`, `escalated_with_best`, `escalated_no_reply`, `skipped_unactionable`, `blocked_unsafe`, `blocked_unsafe_reply`, `in_progress`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("ai_triage_result")]
@@ -197,7 +197,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Ticket
             /// <summary>Sort order. Prefix with `-` for descending. Defaults to `-updated_at`.</summary>
             [QueryParameter("order_by")]
             public global::Soenneker.PostHog.OpenApiClient.Models.ConversationsTicketsListOrderByParameter? OrderBy { get; set; }
-            /// <summary>&quot;Filter by priority. Accepts a single value or a comma-separated list (e.g. `medium,high`). Valid values: `low`, `medium`, `high`, `critical`.&quot;</summary>
+            /// <summary>Filter by priority. Accepts a single value or a comma-separated list (e.g. `medium,high`). Valid values: `low`, `medium`, `high`, `critical`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("priority")]
@@ -220,10 +220,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Ticket
             /// <summary>Filter by SLA state. `breached` = past `sla_due_at`, `at-risk` = due within the next hour, `on-track` = more than an hour remaining.</summary>
             [QueryParameter("sla")]
             public global::Soenneker.PostHog.OpenApiClient.Models.ConversationsTicketsListSlaParameter? Sla { get; set; }
-            /// <summary>&quot;Filter by snooze state: `true` returns only snoozed tickets, `false` only non-snoozed.&quot;</summary>
+            /// <summary>Filter by snooze state: `true` returns only snoozed tickets, `false` only non-snoozed.</summary>
             [QueryParameter("snoozed")]
             public bool? Snoozed { get; set; }
-            /// <summary>&quot;Filter by status. Accepts a single value or a comma-separated list (e.g. `new,open,pending`). Valid values: `new`, `open`, `pending`, `on_hold`, `resolved`.&quot;</summary>
+            /// <summary>Filter by status. Accepts a single value or a comma-separated list (e.g. `new,open,pending`). Valid values: `new`, `open`, `pending`, `on_hold`, `resolved`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("status")]

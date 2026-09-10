@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Note { get; set; }
 #endif
-        /// <summary>&quot;The rating left on the report: &apos;positive&apos; (thumbs up) or &apos;negative&apos; (thumbs down).* `positive` - positive* `negative` - negative&quot;</summary>
+        /// <summary>The rating left on the report: &apos;positive&apos; (thumbs up) or &apos;negative&apos; (thumbs down).* `positive` - positive* `negative` - negative</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportFeedbackRequestSentiment? Sentiment { get; set; }

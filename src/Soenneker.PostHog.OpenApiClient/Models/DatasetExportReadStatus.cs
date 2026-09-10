@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Current export state: pending, complete, or failed.&quot;
+    /// Current export state: pending, complete, or failed.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DatasetExportReadStatus : IAdditionalDataHolder, IParsable

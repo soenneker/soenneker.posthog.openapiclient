@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Message { get; set; }
 #endif
-        /// <summary>&quot;Present only when the vote reached quorum and the change was applied immediately: details of the affected resource (e.g. resource_id, resource_version).&quot;</summary>
+        /// <summary>Present only when the vote reached quorum and the change was applied immediately: details of the affected resource (e.g. resource_id, resource_version).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestDecisionResponseResult? Result { get; set; }

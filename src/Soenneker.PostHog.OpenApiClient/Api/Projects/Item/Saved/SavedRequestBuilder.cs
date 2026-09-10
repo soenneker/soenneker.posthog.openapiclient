@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Saved.Capture;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Saved.Item;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Saved.Preflight;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Saved.Prewarm;
@@ -20,6 +21,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Saved
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SavedRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The capture property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Saved.Capture.CaptureRequestBuilder Capture
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Saved.Capture.CaptureRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The preflight property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Saved.Preflight.PreflightRequestBuilder Preflight
         {
@@ -182,7 +188,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Saved
             [QueryParameter("search")]
             public string Search { get; set; }
 #endif
-            /// <summary>&quot;Filter by generation status: &apos;processing&apos;, &apos;completed&apos;, or &apos;failed&apos;.&quot;</summary>
+            /// <summary>Filter by generation status: &apos;processing&apos;, &apos;completed&apos;, or &apos;failed&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("status")]
@@ -192,7 +198,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Saved
             [QueryParameter("status")]
             public string Status { get; set; }
 #endif
-            /// <summary>&quot;Filter by render mode: &apos;screenshot&apos;, &apos;iframe&apos;, or &apos;recording&apos;.&quot;</summary>
+            /// <summary>Filter by render mode: &apos;screenshot&apos;, &apos;iframe&apos;, or &apos;recording&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("type")]

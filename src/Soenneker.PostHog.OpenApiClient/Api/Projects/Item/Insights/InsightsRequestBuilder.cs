@@ -6,6 +6,7 @@ using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Activity;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Bulk_delete;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Bulk_restore;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Bulk_set_test_account_filter;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Bulk_update_tags;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Cancel;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Generate_metadata;
@@ -41,6 +42,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Bulk_restore.Bulk_restoreRequestBuilder Bulk_restore
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Bulk_restore.Bulk_restoreRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The bulk_set_test_account_filter property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Bulk_set_test_account_filter.Bulk_set_test_account_filterRequestBuilder Bulk_set_test_account_filter
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Bulk_set_test_account_filter.Bulk_set_test_account_filterRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The bulk_update_tags property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Bulk_update_tags.Bulk_update_tagsRequestBuilder Bulk_update_tags
@@ -260,8 +266,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights
             /// <summary>Include this parameter (any value) to restrict results to insights marked as favorited.</summary>
             [QueryParameter("favorited")]
             public bool? Favorited { get; set; }
+            #pragma warning disable CS1591
             [QueryParameter("format")]
             public global::Soenneker.PostHog.OpenApiClient.Models.InsightsListFormatParameter? Format { get; set; }
+            #pragma warning restore CS1591
             /// <summary>Opt in to receiving the deprecated `dashboards` field in insight payloads. Once opt-in enforcement is enabled, API-token callers stop receiving it by default; use `dashboard_tiles` instead.</summary>
             [QueryParameter("include_dashboards")]
             public bool? IncludeDashboards { get; set; }
@@ -312,12 +320,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights
 #endif
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("short_id")]
             public string? ShortId { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("short_id")]
             public string ShortId { get; set; }
+            #pragma warning restore CS1591
 #endif
             /// <summary>JSON-encoded array of tag names. Returns insights with any of the listed tags.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -339,8 +351,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class InsightsRequestBuilderPostQueryParameters 
         {
+            #pragma warning disable CS1591
             [QueryParameter("format")]
             public global::Soenneker.PostHog.OpenApiClient.Models.InsightsCreateFormatParameter? Format { get; set; }
+            #pragma warning restore CS1591
             /// <summary>Opt in to receiving the deprecated `dashboards` field in insight payloads. Once opt-in enforcement is enabled, API-token callers stop receiving it by default; use `dashboard_tiles` instead.</summary>
             [QueryParameter("include_dashboards")]
             public bool? IncludeDashboards { get; set; }

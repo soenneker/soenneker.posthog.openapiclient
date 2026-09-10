@@ -31,9 +31,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Repo_config
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Repo_configs.Sync_installation.Sync_installationRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.stamphog.repo_configs.item collection</summary>
-        /// <param name="position">A UUID string identifying this stamphog repo config.</param>
+        /// <param name="position">Unique identifier of the item</param>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Repo_configs.Item.Repo_configsItemRequestBuilder"/></returns>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Repo_configs.Item.Repo_configsItemRequestBuilder this[Guid position]
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Repo_configs.Item.Repo_configsItemRequestBuilder this[string position]
         {
             get
             {
@@ -80,16 +80,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Repo_config
         /// Per-repo stamphog settings — enable/disable review, GitHub App installation, policy overrides.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfig"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Input shape for creating/updating a repo config.Separate from the read serializer because the contract is an output shape: it carries arequired id, which a create request has no way to supply. Same split as visual_review&apos;sinput serializers.installation_id is deliberately absent: it may only ever be set by the verifiedsync_installation flow, which proves the caller owns the installation before binding it. Aclient-supplied value on this path is ignored, so a manually created config carries noinstallation and simply won&apos;t resolve webhooks until synced.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfig?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfig body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfig?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfigWrite body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfig> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfig body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfig> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfigWrite body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -119,15 +119,15 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Repo_config
         /// Per-repo stamphog settings — enable/disable review, GitHub App installation, policy overrides.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Input shape for creating/updating a repo config.Separate from the read serializer because the contract is an output shape: it carries arequired id, which a create request has no way to supply. Same split as visual_review&apos;sinput serializers.installation_id is deliberately absent: it may only ever be set by the verifiedsync_installation flow, which proves the caller owns the installation before binding it. Aclient-supplied value on this path is ignored, so a manually created config carries noinstallation and simply won&apos;t resolve webhooks until synced.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfig body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfigWrite body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfig body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfigWrite body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));

@@ -41,13 +41,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The includeRecordings property</summary>
         public bool? IncludeRecordings { get; set; }
         /// <summary>The kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Kind { get; set; }
-#nullable restore
-#else
-        public string Kind { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQueryKind? Kind { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -113,7 +107,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "funnelStep", n => { FunnelStep = n.GetIntValue(); } },
                 { "funnelStepBreakdown", n => { FunnelStepBreakdown = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQueryFunnelStepBreakdown>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQueryFunnelStepBreakdown.CreateFromDiscriminatorValue); } },
                 { "includeRecordings", n => { IncludeRecordings = n.GetBoolValue(); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQueryKind>(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "multipleVariantHandling", n => { MultipleVariantHandling = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MultipleVariantHandlingWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.MultipleVariantHandlingWrapper.CreateFromDiscriminatorValue); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryResponse.CreateFromDiscriminatorValue); } },
@@ -134,7 +128,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("funnelStep", FunnelStep);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQueryFunnelStepBreakdown>("funnelStepBreakdown", FunnelStepBreakdown);
             writer.WriteBoolValue("includeRecordings", IncludeRecordings);
-            writer.WriteStringValue("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQueryKind>("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MultipleVariantHandlingWrapper>("multipleVariantHandling", MultipleVariantHandling);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryResponse>("response", Response);

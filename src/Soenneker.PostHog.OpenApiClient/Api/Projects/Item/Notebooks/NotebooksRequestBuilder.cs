@@ -5,6 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Activity;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Kernel;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Recording_comments;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -24,6 +25,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Activity.ActivityRequestBuilder Activity
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Activity.ActivityRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The kernel property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Kernel.KernelRequestBuilder Kernel
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Kernel.KernelRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The recording_comments property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Recording_comments.Recording_commentsRequestBuilder Recording_comments

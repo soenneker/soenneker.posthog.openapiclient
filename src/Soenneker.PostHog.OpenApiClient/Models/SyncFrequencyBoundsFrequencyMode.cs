@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// What governs this view&apos;s cadence. &apos;tiered&apos; is the only mode where `options` is meaningful and `sync_frequency` is writable per view. &apos;dag_schedule&apos; means the team&apos;s single DAG schedule owns it, &apos;managed_viewset&apos; means PostHog owns the view, &apos;legacy&apos; means the v1 backend, where any cadence is accepted and no bounds apply, and &apos;no_node&apos; means the view has no data modeling node to store a cadence on.* `tiered` - tiered* `dag_schedule` - dag_schedule* `managed_viewset` - managed_viewset* `legacy` - legacy* `no_node` - no_node
+    /// What governs this view&apos;s cadence. &apos;tiered&apos; is the only mode where `options` is meaningful and `sync_frequency` is writable per view. &apos;managed_viewset&apos; means PostHog owns the view, &apos;legacy&apos; means the v1 backend, where any cadence is accepted and no bounds apply, and &apos;no_node&apos; means the view has no data modeling node to store a cadence on.* `tiered` - tiered* `managed_viewset` - managed_viewset* `legacy` - legacy* `no_node` - no_node
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SyncFrequencyBoundsFrequencyMode : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `tiered` - tiered* `dag_schedule` - dag_schedule* `managed_viewset` - managed_viewset* `legacy` - legacy* `no_node` - no_node</summary>
+        /// <summary>* `tiered` - tiered* `managed_viewset` - managed_viewset* `legacy` - legacy* `no_node` - no_node</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.FrequencyModeEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBoundsFrequencyMode"/> and sets the default values.

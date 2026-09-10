@@ -31,7 +31,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string MetricUuid { get; set; }
 #endif
-        /// <summary>&quot;Why the metric can&apos;t be matched to recordings: a data-warehouse-only source, a retention window, or events only ever captured server-side.&quot;</summary>
+        /// <summary>Why the metric can&apos;t be matched to recordings: a data-warehouse-only source, a retention window, or events only ever captured server-side.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Reason { get; set; }

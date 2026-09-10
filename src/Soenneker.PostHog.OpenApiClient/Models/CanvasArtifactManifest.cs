@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;The manifest frozen into a ready build: entry, assets, versions, capabilities.&quot;
+    /// The manifest frozen into a ready build: entry, assets, versions, capabilities.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CanvasArtifactManifest : IAdditionalDataHolder, IParsable
@@ -38,6 +38,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifestCapabilitiesProperty Capabilities { get; set; }
+#endif
+        /// <summary>For component artifacts: the placement contract (size, configSchema) frozen into the build.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifestComponentProperty? Component { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifestComponentProperty Component { get; set; }
 #endif
         /// <summary>Exact dependency versions the artifact was built against.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -99,6 +107,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "assets", n => { Assets = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactAsset>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactAsset.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "canvasSdkVersion", n => { CanvasSdkVersion = n.GetStringValue(); } },
                 { "capabilities", n => { Capabilities = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifestCapabilitiesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifestCapabilitiesProperty.CreateFromDiscriminatorValue); } },
+                { "component", n => { Component = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifestComponentProperty>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifestComponentProperty.CreateFromDiscriminatorValue); } },
                 { "dependencies", n => { Dependencies = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifestDependenciesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifestDependenciesProperty.CreateFromDiscriminatorValue); } },
                 { "entryHtml", n => { EntryHtml = n.GetStringValue(); } },
                 { "legacyCode", n => { LegacyCode = n.GetStringValue(); } },
@@ -115,6 +124,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactAsset>("assets", Assets);
             writer.WriteStringValue("canvasSdkVersion", CanvasSdkVersion);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifestCapabilitiesProperty>("capabilities", Capabilities);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifestComponentProperty>("component", Component);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifestDependenciesProperty>("dependencies", Dependencies);
             writer.WriteStringValue("entryHtml", EntryHtml);
             writer.WriteStringValue("legacyCode", LegacyCode);

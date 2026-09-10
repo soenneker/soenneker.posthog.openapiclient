@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Derived state: &apos;open&apos;, &apos;closed&apos;, or &apos;merged&apos;.* `open` - OPEN* `closed` - CLOSED* `merged` - MERGED&quot;
+    /// Derived state: &apos;open&apos;, &apos;closed&apos;, or &apos;merged&apos;.* `open` - OPEN* `closed` - CLOSED* `merged` - MERGED
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PullRequestState : IAdditionalDataHolder, IParsable

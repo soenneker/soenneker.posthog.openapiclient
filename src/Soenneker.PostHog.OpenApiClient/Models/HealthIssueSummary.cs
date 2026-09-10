@@ -14,24 +14,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Count of active, non-dismissed issues keyed by check kind (e.g. &apos;sdk_outdated&apos;).</summary>
+        /// <summary>Counts for active, non-dismissed issues whose snooze has not expired yet. Reported separately so callers can decide for themselves whether a snoozed issue is worth surfacing.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummaryByKindProperty? ByKind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummarySnoozed? Snoozed { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummaryByKindProperty ByKind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummarySnoozed Snoozed { get; set; }
 #endif
-        /// <summary>Count of active, non-dismissed issues keyed by severity (&apos;critical&apos;, &apos;warning&apos;, &apos;info&apos;).</summary>
+        /// <summary>Counts for active, non-dismissed issues that are not currently snoozed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummaryBySeverityProperty? BySeverity { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummaryUnsnoozed? Unsnoozed { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummaryBySeverityProperty BySeverity { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummaryUnsnoozed Unsnoozed { get; set; }
 #endif
-        /// <summary>Total number of active, non-dismissed health issues for the project.</summary>
-        public int? Total { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummary"/> and sets the default values.
         /// </summary>
@@ -57,9 +55,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "by_kind", n => { ByKind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummaryByKindProperty>(global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummaryByKindProperty.CreateFromDiscriminatorValue); } },
-                { "by_severity", n => { BySeverity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummaryBySeverityProperty>(global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummaryBySeverityProperty.CreateFromDiscriminatorValue); } },
-                { "total", n => { Total = n.GetIntValue(); } },
+                { "snoozed", n => { Snoozed = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummarySnoozed>(global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummarySnoozed.CreateFromDiscriminatorValue); } },
+                { "unsnoozed", n => { Unsnoozed = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummaryUnsnoozed>(global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummaryUnsnoozed.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -69,9 +66,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummaryByKindProperty>("by_kind", ByKind);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummaryBySeverityProperty>("by_severity", BySeverity);
-            writer.WriteIntValue("total", Total);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummarySnoozed>("snoozed", Snoozed);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummaryUnsnoozed>("unsnoozed", Unsnoozed);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

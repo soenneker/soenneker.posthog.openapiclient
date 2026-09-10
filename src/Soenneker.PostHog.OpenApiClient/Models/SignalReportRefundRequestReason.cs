@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Why this PR is being refunded. One of: pr_incorrect (the PR doesn&apos;t address what the report promised), pr_not_useful (technically fine but not worth paying for), duplicate (covers work already charged elsewhere), other. Required — refund reviews key on it.* `pr_incorrect` - PR incorrect* `pr_not_useful` - PR not useful* `duplicate` - Duplicate* `other` - Other&quot;
+    /// Why this PR is being refunded. One of: pr_incorrect (the PR doesn&apos;t address what the report promised), pr_not_useful (technically fine but not worth paying for), duplicate (covers work already charged elsewhere), other. Required — refund reviews key on it.* `pr_incorrect` - PR incorrect* `pr_not_useful` - PR not useful* `duplicate` - Duplicate* `other` - Other
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SignalReportRefundRequestReason : IAdditionalDataHolder, IParsable

@@ -5,6 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.BulkState;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Pr_ci_statuses;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.RefundSummary;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -24,6 +25,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.BulkState.BulkStateRequestBuilder BulkState
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.BulkState.BulkStateRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The pr_ci_statuses property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Pr_ci_statuses.Pr_ci_statusesRequestBuilder Pr_ci_statuses
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Pr_ci_statuses.Pr_ci_statusesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The refundSummary property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.RefundSummary.RefundSummaryRequestBuilder RefundSummary
@@ -47,7 +53,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ReportsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/signals/reports{?has_implementation_pr*,include_all_statuses*,limit*,offset*,ordering*,priority*,scout*,scout_prefix*,search*,source_id*,source_product*,status*,suggested_reviewers*,task_id*}", pathParameters)
+        public ReportsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/signals/reports{?actionability*,already_addressed*,assignee*,channel_id*,count_only*,has_implementation_pr*,include_all_statuses*,limit*,offset*,ordering*,priority*,scope*,scout*,scout_prefix*,search*,sort*,source_id*,source_product*,status*,suggested_reviewers*,task_id*,teammate_uuid*,unclaimed*,use_priority_preference*,view*}", pathParameters)
         {
         }
         /// <summary>
@@ -55,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ReportsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/signals/reports{?has_implementation_pr*,include_all_statuses*,limit*,offset*,ordering*,priority*,scout*,scout_prefix*,search*,source_id*,source_product*,status*,suggested_reviewers*,task_id*}", rawUrl)
+        public ReportsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/signals/reports{?actionability*,already_addressed*,assignee*,channel_id*,count_only*,has_implementation_pr*,include_all_statuses*,limit*,offset*,ordering*,priority*,scope*,scout*,scout_prefix*,search*,sort*,source_id*,source_product*,status*,suggested_reviewers*,task_id*,teammate_uuid*,unclaimed*,use_priority_preference*,view*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedSignalReportList"/></returns>
@@ -103,7 +109,29 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports
         public partial class ReportsRequestBuilderGetQueryParameters 
         #pragma warning restore CS1591
         {
-            /// <summary>Filter reports by whether a shipped implementation pull request exists. &apos;true&apos; keeps only reports with a PR; &apos;false&apos; keeps only those without. Pair with limit=1 to count PR reports cheaply.</summary>
+            /// <summary>Comma-separated actionability judgments to include. Valid values: immediately_actionable, requires_human_input, not_actionable. Reports without a judgment are excluded.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("actionability")]
+            public string? Actionability { get; set; }
+#nullable restore
+#else
+            [QueryParameter("actionability")]
+            public string Actionability { get; set; }
+#endif
+            /// <summary>Filter by whether the latest actionability judgment says the issue is already being handled. False also includes older reports where that judgment did not record a value.</summary>
+            [QueryParameter("already_addressed")]
+            public bool? AlreadyAddressed { get; set; }
+            /// <summary>Use &apos;me&apos; to return reports claimed by the current user, task, or MCP agent.</summary>
+            [QueryParameter("assignee")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.MeAssignee? Assignee { get; set; }
+            /// <summary>Narrow to reports assigned to one space (channel). Absent or empty means all reports regardless of assignment.</summary>
+            [QueryParameter("channel_id")]
+            public Guid? ChannelId { get; set; }
+            /// <summary>Return the filtered total with an empty results page. Skips report ordering, serialization, and decorative metadata lookups. Defaults to false.</summary>
+            [QueryParameter("count_only")]
+            public bool? CountOnly { get; set; }
+            /// <summary>Filter reports by whether an implementation pull request is attached. &apos;true&apos; keeps only reports with a PR; &apos;false&apos; keeps only those without. Pair with count_only=true to return only the filtered total.</summary>
             [QueryParameter("has_implementation_pr")]
             public bool? HasImplementationPr { get; set; }
             /// <summary>When true, the list includes reports in every status with no default exclusions applied — currently that adds suppressed (dismissed) reports, which are otherwise hidden. Use it to see the full inbox state (e.g. deduplicating before creating a report) and read each row&apos;s status (plus dismissal_reason/dismissal_note on dismissed rows) before acting. Deleted reports are terminal and never returned. Defaults to false, which keeps the existing default exclusions. Ignored when an explicit &apos;status&apos; filter is set — that filter alone decides which statuses are returned.</summary>
@@ -115,7 +143,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports
             /// <summary>The initial index from which to return the results.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
-            /// <summary>&quot;Comma-separated ordering clauses. Each clause is a field name optionally prefixed with &apos;-&apos; for descending. Allowed fields: status, is_suggested_reviewer, signal_count, total_weight, priority, created_at, updated_at, id. Defaults to &apos;-is_suggested_reviewer,status,-updated_at&apos;.&quot;</summary>
+            /// <summary>Comma-separated ordering clauses. Each clause is a field name optionally prefixed with &apos;-&apos; for descending. Allowed fields: status, is_suggested_reviewer, signal_count, total_weight, priority, created_at, updated_at, id. Defaults to &apos;-is_suggested_reviewer,status,-updated_at&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("ordering")]
@@ -125,7 +153,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports
             [QueryParameter("ordering")]
             public string Ordering { get; set; }
 #endif
-            /// <summary>&quot;Comma-separated list of priorities to include. Valid values: P0, P1, P2, P3, P4. Reports without a priority assignment are excluded when this filter is set.&quot;</summary>
+            /// <summary>Comma-separated list of priorities to include. Valid values: P0, P1, P2, P3, P4. Reports without a priority assignment are excluded when this filter is set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("priority")]
@@ -134,6 +162,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports
 #else
             [QueryParameter("priority")]
             public string Priority { get; set; }
+#endif
+            /// <summary>Reviewer scope: for_me, entire_project, or teammate. Pass teammate_uuid with teammate.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("scope")]
+            public string? Scope { get; set; }
+#nullable restore
+#else
+            [QueryParameter("scope")]
+            public string Scope { get; set; }
 #endif
             /// <summary>Comma-separated list of scout skill_name slugs (e.g. signals-scout-error-tracking). Reports are kept if at least one of their contributing signals was authored by one of these scouts. Combines with source_product as an AND.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -165,6 +203,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports
             [QueryParameter("search")]
             public string Search { get; set; }
 #endif
+            /// <summary>Inbox sort preset: priority, last_updated, newest, or oldest. Ignored when ordering is supplied.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("sort")]
+            public string? Sort { get; set; }
+#nullable restore
+#else
+            [QueryParameter("sort")]
+            public string Sort { get; set; }
+#endif
             /// <summary>Comma-separated list of source record ids. Reports are kept if at least one of their contributing signals came from one of these records — e.g. pass a support ticket&apos;s UUID to see what the inbox already found for that ticket. Requires exactly one source_product, since a source id is only unique within its product.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -185,7 +233,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports
             [QueryParameter("source_product")]
             public string SourceProduct { get; set; }
 #endif
-            /// <summary>&quot;Comma-separated list of statuses to include. Valid values: potential, candidate, in_progress, pending_input, ready, resolved, failed, suppressed. Defaults to all statuses except suppressed.&quot;</summary>
+            /// <summary>Comma-separated list of statuses to include. Valid values: potential, candidate, in_progress, pending_input, ready, resolved, failed, suppressed. Defaults to all statuses except suppressed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("status")]
@@ -208,6 +256,25 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports
             /// <summary>Only reports associated with this task (via the report&apos;s task associations).</summary>
             [QueryParameter("task_id")]
             public Guid? TaskId { get; set; }
+            /// <summary>PostHog user UUID used when scope=teammate.</summary>
+            [QueryParameter("teammate_uuid")]
+            public Guid? TeammateUuid { get; set; }
+            /// <summary>Filter by whether the report has no owner and no draft, open, or unknown PR. Resolved reports are never unclaimed.</summary>
+            [QueryParameter("unclaimed")]
+            public bool? Unclaimed { get; set; }
+            /// <summary>When true and priority is omitted, include priorities at or above the requesting user&apos;s personal PR-generation threshold, falling back to the project threshold.</summary>
+            [QueryParameter("use_priority_preference")]
+            public bool? UsePriorityPreference { get; set; }
+            /// <summary>Apply an inbox view: actionable, needs_input, monitoring, resolved, dismissed, not_actionable, or all. Each view applies the corresponding status, actionability, and implementation-PR filters.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("view")]
+            public string? View { get; set; }
+#nullable restore
+#else
+            [QueryParameter("view")]
+            public string View { get; set; }
+#endif
         }
     }
 }

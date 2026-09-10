@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OtelMetricTypeEnumWrapper2"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OtelMetricTypeEnumWrapper3"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class MetricQueryBodyMetricType : IComposedTypeWrapper, IParsable
@@ -21,13 +21,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum NullEnum { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OtelMetricTypeEnumWrapper2"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OtelMetricTypeEnumWrapper3"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.OtelMetricTypeEnumWrapper2? OtelMetricTypeEnumWrapper2 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OtelMetricTypeEnumWrapper3? OtelMetricTypeEnumWrapper3 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.OtelMetricTypeEnumWrapper2 OtelMetricTypeEnumWrapper2 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OtelMetricTypeEnumWrapper3 OtelMetricTypeEnumWrapper3 { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -39,9 +39,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyMetricType();
-            if("OtelMetricTypeEnumWrapper2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("OtelMetricTypeEnumWrapper3".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.OtelMetricTypeEnumWrapper2 = new global::Soenneker.PostHog.OpenApiClient.Models.OtelMetricTypeEnumWrapper2();
+                result.OtelMetricTypeEnumWrapper3 = new global::Soenneker.PostHog.OpenApiClient.Models.OtelMetricTypeEnumWrapper3();
             }
             return result;
         }
@@ -55,9 +55,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 return NullEnum.GetFieldDeserializers();
             }
-            else if(OtelMetricTypeEnumWrapper2 != null)
+            else if(OtelMetricTypeEnumWrapper3 != null)
             {
-                return OtelMetricTypeEnumWrapper2.GetFieldDeserializers();
+                return OtelMetricTypeEnumWrapper3.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -72,9 +72,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NullEnum>(null, NullEnum);
             }
-            else if(OtelMetricTypeEnumWrapper2 != null)
+            else if(OtelMetricTypeEnumWrapper3 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OtelMetricTypeEnumWrapper2>(null, OtelMetricTypeEnumWrapper2);
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OtelMetricTypeEnumWrapper3>(null, OtelMetricTypeEnumWrapper3);
             }
         }
     }

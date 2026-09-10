@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Method for 2D scatter plot visualization: &apos;umap&apos;, &apos;pca&apos;, or &apos;tsne&apos;* `umap` - umap* `pca` - pca* `tsne` - tsne&quot;
+    /// Method for 2D scatter plot visualization: &apos;umap&apos;, &apos;pca&apos;, or &apos;tsne&apos;* `umap` - umap* `pca` - pca* `tsne` - tsne
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ClusteringRunRequestVisualizationMethod : IAdditionalDataHolder, IParsable

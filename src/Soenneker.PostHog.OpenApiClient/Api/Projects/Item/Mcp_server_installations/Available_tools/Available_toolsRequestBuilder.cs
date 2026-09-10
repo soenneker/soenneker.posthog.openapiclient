@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_server_installat
         {
         }
         /// <summary>
-        /// &quot;Every tool the caller can currently reach, across all their connections.One request instead of one per connection: an agent surface resolving itstool list on each session cannot afford a fan-out. `do_not_use` and removedtools are omitted — an agent should not see what it cannot call — while`needs_approval` tools are listed with their state so the caller can explainthe block rather than report the capability as missing.&quot;
+        /// Every tool the caller can currently reach, across all their connections.One request instead of one per connection: an agent surface resolving itstool list on each session cannot afford a fan-out. `do_not_use` and removedtools are omitted — an agent should not see what it cannot call — while`needs_approval` tools are listed with their state so the caller can explainthe block rather than report the capability as missing.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AvailableToolsResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_server_installat
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.AvailableToolsResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.AvailableToolsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Every tool the caller can currently reach, across all their connections.One request instead of one per connection: an agent surface resolving itstool list on each session cannot afford a fan-out. `do_not_use` and removedtools are omitted — an agent should not see what it cannot call — while`needs_approval` tools are listed with their state so the caller can explainthe block rather than report the capability as missing.&quot;
+        /// Every tool the caller can currently reach, across all their connections.One request instead of one per connection: an agent surface resolving itstool list on each session cannot afford a fan-out. `do_not_use` and removedtools are omitted — an agent should not see what it cannot call — while`needs_approval` tools are listed with their state so the caller can explainthe block rather than report the capability as missing.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

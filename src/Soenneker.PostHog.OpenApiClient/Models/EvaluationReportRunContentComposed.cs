@@ -42,10 +42,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Structured metrics for completed reports, or null when metrics were temporarily unavailable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunContentMetrics? Metrics { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetrics? Metrics { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunContentMetrics Metrics { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetrics Metrics { get; set; }
 #endif
         /// <summary>Ordered narrative sections in the report.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -91,7 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "citations", n => { Citations = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportCitation>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportCitation.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "evaluation_target", n => { EvaluationTarget = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunContentEvaluationTarget>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunContentEvaluationTarget.CreateFromDiscriminatorValue); } },
                 { "generation_status", n => { GenerationStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunContentGenerationStatus>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunContentGenerationStatus.CreateFromDiscriminatorValue); } },
-                { "metrics", n => { Metrics = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunContentMetrics>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunContentMetrics.CreateFromDiscriminatorValue); } },
+                { "metrics", n => { Metrics = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetrics>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetrics.CreateFromDiscriminatorValue); } },
                 { "sections", n => { Sections = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportSection>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportSection.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
             };
@@ -106,7 +106,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportCitation>("citations", Citations);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunContentEvaluationTarget>("evaluation_target", EvaluationTarget);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunContentGenerationStatus>("generation_status", GenerationStatus);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunContentMetrics>("metrics", Metrics);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetrics>("metrics", Metrics);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportSection>("sections", Sections);
             writer.WriteStringValue("title", Title);
             writer.WriteAdditionalData(AdditionalData);

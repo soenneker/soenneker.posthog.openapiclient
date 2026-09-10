@@ -22,6 +22,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The agentRequests property</summary>
+        public bool? AgentRequests { get; set; }
         /// <summary>The captureEvents property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -40,7 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> Insights { get; set; }
 #endif
-        /// <summary>&quot;State scopes the canvas may use via ph.state: &apos;user&apos; (private to each viewer) and/or &apos;shared&apos; (one value per canvas, team-visible).&quot;</summary>
+        /// <summary>State scopes the canvas may use via ph.state: &apos;user&apos; (private to each viewer) and/or &apos;shared&apos; (one value per canvas, team-visible).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateScopeEnum?>? State { get; set; }
@@ -54,6 +56,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public CanvasPostHogCapabilities()
         {
             AdditionalData = new Dictionary<string, object>();
+            AgentRequests = false;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -74,6 +77,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "actions", n => { Actions = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "agentRequests", n => { AgentRequests = n.GetBoolValue(); } },
                 { "captureEvents", n => { CaptureEvents = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "inlineQueries", n => { InlineQueries = n.GetBoolValue(); } },
                 { "insights", n => { Insights = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -88,6 +92,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("actions", Actions);
+            writer.WriteBoolValue("agentRequests", AgentRequests);
             writer.WriteCollectionOfPrimitiveValues<string>("captureEvents", CaptureEvents);
             writer.WriteBoolValue("inlineQueries", InlineQueries);
             writer.WriteCollectionOfPrimitiveValues<string>("insights", Insights);

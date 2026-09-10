@@ -8,26 +8,26 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper11"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpAgentGrantScopeEnumWrapper2"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper13"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpAgentGrantScopeEnumWrapper4"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class McpAuditEventGrantScope : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper11"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper13"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper11? BlankEnumWrapper11 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper13? BlankEnumWrapper13 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper11 BlankEnumWrapper11 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper13 BlankEnumWrapper13 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpAgentGrantScopeEnumWrapper2"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpAgentGrantScopeEnumWrapper4"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpAgentGrantScopeEnumWrapper2? McpAgentGrantScopeEnumWrapper2 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.McpAgentGrantScopeEnumWrapper4? McpAgentGrantScopeEnumWrapper4 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpAgentGrantScopeEnumWrapper2 McpAgentGrantScopeEnumWrapper2 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.McpAgentGrantScopeEnumWrapper4 McpAgentGrantScopeEnumWrapper4 { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -39,13 +39,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.McpAuditEventGrantScope();
-            if("BlankEnumWrapper11".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("BlankEnumWrapper13".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.BlankEnumWrapper11 = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper11();
+                result.BlankEnumWrapper13 = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper13();
             }
-            else if("McpAgentGrantScopeEnumWrapper2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("McpAgentGrantScopeEnumWrapper4".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.McpAgentGrantScopeEnumWrapper2 = new global::Soenneker.PostHog.OpenApiClient.Models.McpAgentGrantScopeEnumWrapper2();
+                result.McpAgentGrantScopeEnumWrapper4 = new global::Soenneker.PostHog.OpenApiClient.Models.McpAgentGrantScopeEnumWrapper4();
             }
             return result;
         }
@@ -55,13 +55,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(BlankEnumWrapper11 != null)
+            if(BlankEnumWrapper13 != null)
             {
-                return BlankEnumWrapper11.GetFieldDeserializers();
+                return BlankEnumWrapper13.GetFieldDeserializers();
             }
-            else if(McpAgentGrantScopeEnumWrapper2 != null)
+            else if(McpAgentGrantScopeEnumWrapper4 != null)
             {
-                return McpAgentGrantScopeEnumWrapper2.GetFieldDeserializers();
+                return McpAgentGrantScopeEnumWrapper4.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -72,13 +72,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(BlankEnumWrapper11 != null)
+            if(BlankEnumWrapper13 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper11>(null, BlankEnumWrapper11);
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper13>(null, BlankEnumWrapper13);
             }
-            else if(McpAgentGrantScopeEnumWrapper2 != null)
+            else if(McpAgentGrantScopeEnumWrapper4 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpAgentGrantScopeEnumWrapper2>(null, McpAgentGrantScopeEnumWrapper2);
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpAgentGrantScopeEnumWrapper4>(null, McpAgentGrantScopeEnumWrapper4);
             }
         }
     }

@@ -31,10 +31,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The pinnedColumns property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TableSettingsPinnedColumns? PinnedColumns { get; set; }
+        public List<string>? PinnedColumns { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TableSettingsPinnedColumns PinnedColumns { get; set; }
+        public List<string> PinnedColumns { get; set; }
 #endif
         /// <summary>The transpose property</summary>
         public bool? Transpose { get; set; }
@@ -58,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "columns", n => { Columns = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ChartAxis>(global::Soenneker.PostHog.OpenApiClient.Models.ChartAxis.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "conditionalFormatting", n => { ConditionalFormatting = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ConditionalFormattingRule>(global::Soenneker.PostHog.OpenApiClient.Models.ConditionalFormattingRule.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "pinnedColumns", n => { PinnedColumns = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TableSettingsPinnedColumns>(global::Soenneker.PostHog.OpenApiClient.Models.TableSettingsPinnedColumns.CreateFromDiscriminatorValue); } },
+                { "pinnedColumns", n => { PinnedColumns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "transpose", n => { Transpose = n.GetBoolValue(); } },
             };
         }
@@ -71,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ChartAxis>("columns", Columns);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ConditionalFormattingRule>("conditionalFormatting", ConditionalFormatting);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TableSettingsPinnedColumns>("pinnedColumns", PinnedColumns);
+            writer.WriteCollectionOfPrimitiveValues<string>("pinnedColumns", PinnedColumns);
             writer.WriteBoolValue("transpose", Transpose);
         }
     }

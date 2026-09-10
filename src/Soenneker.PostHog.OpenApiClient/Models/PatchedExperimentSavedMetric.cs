@@ -43,7 +43,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>&quot;ExperimentMetric JSON. Must have kind=&apos;ExperimentMetric&apos; and a metric_type: &apos;mean&apos; (set source to an EventsNode with an event name), &apos;funnel&apos; (set series to an array of EventsNode steps), &apos;ratio&apos; (set numerator and denominator EventsNode entries), or &apos;retention&apos; (set start_event and completion_event). Legacy kinds (ExperimentTrendsQuery, ExperimentFunnelsQuery) are rejected for new shared metrics.&quot;</summary>
+        /// <summary>ExperimentMetric JSON. Must have kind=&apos;ExperimentMetric&apos; and a metric_type: &apos;mean&apos; (set source to an EventsNode with an event name), &apos;funnel&apos; (set series to an array of EventsNode steps), &apos;ratio&apos; (set numerator and denominator EventsNode entries), or &apos;retention&apos; (set start_event and completion_event). Legacy kinds (ExperimentTrendsQuery, ExperimentFunnelsQuery) are rejected for new shared metrics.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedExperimentSavedMetricQuery? Query { get; set; }

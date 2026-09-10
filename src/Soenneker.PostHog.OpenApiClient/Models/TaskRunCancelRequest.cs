@@ -14,6 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Cancel only while the run is still a warm sandbox awaiting its first message. A run that has since received one is left alone and returned unchanged. Set this when handing a warm sandbox back, so a release that races a submit cannot stop the run that submit started.</summary>
+        public bool? OnlyIfAwaitingFirstMessage { get; set; }
         /// <summary>Optional reason for the cancellation, recorded on the run and shown to run watchers.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -28,6 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public TaskRunCancelRequest()
         {
             AdditionalData = new Dictionary<string, object>();
+            OnlyIfAwaitingFirstMessage = false;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -47,6 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "only_if_awaiting_first_message", n => { OnlyIfAwaitingFirstMessage = n.GetBoolValue(); } },
                 { "reason", n => { Reason = n.GetStringValue(); } },
             };
         }
@@ -57,6 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteBoolValue("only_if_awaiting_first_message", OnlyIfAwaitingFirstMessage);
             writer.WriteStringValue("reason", Reason);
             writer.WriteAdditionalData(AdditionalData);
         }

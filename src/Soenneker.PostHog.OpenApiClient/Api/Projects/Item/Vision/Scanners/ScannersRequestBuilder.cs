@@ -104,7 +104,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners
         /// CRUD for Replay Vision scanners.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReplayScanner"/></returns>
-        /// <param name="body">&quot;A Replay Vision scanner: its type, targeting query, and AI configuration.&quot;</param>
+        /// <param name="body">A Replay Vision scanner: its type, targeting query, and AI configuration.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -143,7 +143,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners
         /// CRUD for Replay Vision scanners.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">&quot;A Replay Vision scanner: its type, targeting query, and AI configuration.&quot;</param>
+        /// <param name="body">A Replay Vision scanner: its type, targeting query, and AI configuration.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -189,7 +189,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners
             /// <summary>Filter to scanners that emit Signals.</summary>
             [QueryParameter("emits_signals")]
             public bool? EmitsSignals { get; set; }
-            /// <summary>Filter by enabled state. Accepts a comma-separated list of `enabled`/`disabled`.</summary>
+            /// <summary>Filter by enabled state. Accepts `enabled`, `disabled`, a comma-separated list of both, or the boolean form `true`/`false`. Omit to list every scanner.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("enabled")]

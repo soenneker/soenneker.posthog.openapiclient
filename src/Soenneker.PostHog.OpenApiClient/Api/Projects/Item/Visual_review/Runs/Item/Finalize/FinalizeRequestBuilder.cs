@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.I
         {
         }
         /// <summary>
-        /// &quot;Finalize a fully-reviewed run: commit the approved baseline and green the gate.Commits exactly the snapshots approved in the DB (tolerated ones keep their baseline)and only succeeds once every changed/new snapshot is resolved. With approve_all=true,any still-pending changed/new snapshot is approved first. With commit_to_github=falsethe server returns the signed baseline YAML instead of committing it.&quot;
+        /// Finalize a fully-reviewed run: commit the approved baseline and green the gate.Commits exactly the snapshots approved in the DB (tolerated ones keep their baseline)and only succeeds once every changed/new snapshot is resolved. With approve_all=true,any still-pending changed/new snapshot is approved first; quarantined snapshots areskipped, but a quarantined NEW snapshot approved by identifier is still committed.With commit_to_github=false the server returns the signed baseline YAML instead ofcommitting it.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FinalizeResult"/></returns>
         /// <param name="body">The request body</param>
@@ -54,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.I
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.FinalizeResult>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.FinalizeResult.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Finalize a fully-reviewed run: commit the approved baseline and green the gate.Commits exactly the snapshots approved in the DB (tolerated ones keep their baseline)and only succeeds once every changed/new snapshot is resolved. With approve_all=true,any still-pending changed/new snapshot is approved first. With commit_to_github=falsethe server returns the signed baseline YAML instead of committing it.&quot;
+        /// Finalize a fully-reviewed run: commit the approved baseline and green the gate.Commits exactly the snapshots approved in the DB (tolerated ones keep their baseline)and only succeeds once every changed/new snapshot is resolved. With approve_all=true,any still-pending changed/new snapshot is approved first; quarantined snapshots areskipped, but a quarantined NEW snapshot approved by identifier is still committed.With commit_to_github=false the server returns the signed baseline YAML instead ofcommitting it.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

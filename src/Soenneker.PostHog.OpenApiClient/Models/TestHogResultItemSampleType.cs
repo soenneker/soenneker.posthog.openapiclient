@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Type of sampled unit: generation, trace, or session.* `generation` - Generation* `trace` - Trace* `session` - Session&quot;
+    /// Type of sampled unit: generation, trace, or session.* `generation` - Generation* `trace` - Trace* `session` - Session
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TestHogResultItemSampleType : IAdditionalDataHolder, IParsable

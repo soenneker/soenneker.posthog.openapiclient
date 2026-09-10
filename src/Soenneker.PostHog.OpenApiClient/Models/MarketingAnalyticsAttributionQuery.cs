@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Groups aggregation - not used in Web Analytics but required for type compatibility</summary>
         public int? AggregationGroupTypeIndex { get; set; }
-        /// <summary>&quot;Whether one person converting repeatedly counts once or every time. Null follows the goal&apos;s own math: unique-users goals count each person once, count-based goals count every conversion. Set explicitly to override. Counting every conversion makes the rate columns exceed 100%, since a person can convert more times than they visited.&quot;</summary>
+        /// <summary>Whether one person converting repeatedly counts once or every time. Null follows the goal&apos;s own math: unique-users goals count each person once, count-based goals count every conversion. Set explicitly to override. Counting every conversion makes the rate columns exceed 100%, since a person can convert more times than they visited.</summary>
         public bool? AllowMultipleConversionsPerVisitor { get; set; }
         /// <summary>Row dimension. Defaults to channel.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -69,13 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper13 Interval { get; set; }
 #endif
         /// <summary>The kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Kind { get; set; }
-#nullable restore
-#else
-        public string Kind { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionQueryKind? Kind { get; set; }
         /// <summary>Number of rows to return</summary>
         public int? Limit { get; set; }
         /// <summary>How many days before each conversion a touchpoint can earn credit, overriding the team&apos;s configured attribution window for this query only.</summary>
@@ -159,7 +153,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "filterTestAccounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
                 { "includeRevenue", n => { IncludeRevenue = n.GetBoolValue(); } },
                 { "interval", n => { Interval = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper13>(global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper13.CreateFromDiscriminatorValue); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionQueryKind>(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
                 { "lookbackWindowDays", n => { LookbackWindowDays = n.GetIntValue(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
@@ -193,7 +187,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("filterTestAccounts", FilterTestAccounts);
             writer.WriteBoolValue("includeRevenue", IncludeRevenue);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalTypeWrapper13>("interval", Interval);
-            writer.WriteStringValue("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionQueryKind>("kind", Kind);
             writer.WriteIntValue("limit", Limit);
             writer.WriteIntValue("lookbackWindowDays", LookbackWindowDays);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);

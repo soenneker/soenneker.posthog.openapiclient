@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;confirmed_flake: one commit both failed and passed the test (a re-run attempt went green, or an in-job retry recovered it), so it is provably nondeterministic. quarantined: a tolerated failure was recorded while it was masked. suspected_regression: only failures were recorded, which is absence of proof, not proof that it is a real break.* `confirmed_flake` - CONFIRMED_FLAKE* `suspected_regression` - SUSPECTED_REGRESSION* `quarantined` - QUARANTINED&quot;</summary>
+        /// <summary>confirmed_flake: one commit both failed and passed the test (a re-run attempt went green, or an in-job retry recovered it), so it is provably nondeterministic. quarantined: a tolerated failure was recorded while it was masked. suspected_regression: only failures were recorded, which is absence of proof, not proof that it is a real break.* `confirmed_flake` - CONFIRMED_FLAKE* `suspected_regression` - SUSPECTED_REGRESSION* `quarantined` - QUARANTINED</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.FlakyTestItemClassification? Classification { get; set; }
@@ -28,7 +28,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? FailedRunCount { get; set; }
         /// <summary>Most recent failure, recovery, or quarantined-failure run for this test in the window.</summary>
         public DateTimeOffset? LastSignalAt { get; set; }
-        /// <summary>&quot;Failed runs on the default branch (master/main approximation): the &apos;matters right now&apos; signal that a test is breaking the trunk, not just PR branches.&quot;</summary>
+        /// <summary>Failed runs on the default branch (master/main approximation): the &apos;matters right now&apos; signal that a test is breaking the trunk, not just PR branches.</summary>
         public int? MasterFailedRunCount { get; set; }
         /// <summary>Runner-specific stable test identity (the CI span name). This is a grouping key, not necessarily runnable; use `selector` to run or quarantine the test.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -38,9 +38,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Nodeid { get; set; }
 #endif
-        /// <summary>&quot;Runs where the test recorded a tolerated failure while quarantined: already masked in CI, still failing.&quot;</summary>
+        /// <summary>Runs where the test recorded a tolerated failure while quarantined: already masked in CI, still failing.</summary>
         public int? QuarantinedFailedRunCount { get; set; }
-        /// <summary>&quot;Test runner that emitted this signal: &apos;pytest&apos; or &apos;jest&apos;.* `pytest` - PYTEST* `jest` - JEST&quot;</summary>
+        /// <summary>Test runner that emitted this signal: &apos;pytest&apos; or &apos;jest&apos;.* `pytest` - PYTEST* `jest` - JEST</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.FlakyTestItemRunner? Runner { get; set; }
@@ -48,7 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.FlakyTestItemRunner Runner { get; set; }
 #endif
-        /// <summary>&quot;Runs where one commit both failed and passed the test: a &apos;Re-run failed jobs&apos; attempt went green on the same commit, or an in-job pytest retry (tests hand-marked @pytest.mark.flaky(reruns=N)) recovered it. A pass in a different run is a different commit and never counts.&quot;</summary>
+        /// <summary>Runs where one commit both failed and passed the test: a &apos;Re-run failed jobs&apos; attempt went green on the same commit, or an in-job pytest retry (tests hand-marked @pytest.mark.flaky(reruns=N)) recovered it. A pass in a different run is a different commit and never counts.</summary>
         public int? SameCommitRecoveryRunCount { get; set; }
         /// <summary>Runnable pytest or Jest selector. Exact when the CI reporter emitted it; older pytest spans use a best-effort reconstruction from the nodeid.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

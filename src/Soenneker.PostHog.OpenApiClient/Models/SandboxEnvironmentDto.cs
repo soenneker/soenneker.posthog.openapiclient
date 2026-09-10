@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// List response for sandbox environments (subset of fields).
+    /// A sandbox environment, as returned by list, detail, create and update.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SandboxEnvironmentDto : IAdditionalDataHolder, IParsable
@@ -28,10 +28,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SandboxEnvironmentDtoCreatedBy? CreatedBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo? CreatedBy { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SandboxEnvironmentDtoCreatedBy CreatedBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo CreatedBy { get; set; }
 #endif
         /// <summary>The custom_image_id property</summary>
         public Guid? CustomImageId { get; set; }
@@ -51,8 +51,28 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string CustomImageStatus { get; set; }
 #endif
+        /// <summary>The effective_domains property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? EffectiveDomains { get; set; }
+#nullable restore
+#else
+        public List<string> EffectiveDomains { get; set; }
+#endif
+        /// <summary>Names of the environment variables that are set, sorted. Values are write-only and never returned.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? EnvironmentVariableKeys { get; set; }
+#nullable restore
+#else
+        public List<string> EnvironmentVariableKeys { get; set; }
+#endif
+        /// <summary>Whether any environment variables are set on this environment.</summary>
+        public bool? HasEnvironmentVariables { get; set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; set; }
+        /// <summary>The include_default_domains property</summary>
+        public bool? IncludeDefaultDomains { get; set; }
         /// <summary>The internal property</summary>
         public bool? Internal { get; set; }
         /// <summary>The name property</summary>
@@ -110,11 +130,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "allowed_domains", n => { AllowedDomains = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SandboxEnvironmentDtoCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.SandboxEnvironmentDtoCreatedBy.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo>(global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo.CreateFromDiscriminatorValue); } },
                 { "custom_image_id", n => { CustomImageId = n.GetGuidValue(); } },
                 { "custom_image_name", n => { CustomImageName = n.GetStringValue(); } },
                 { "custom_image_status", n => { CustomImageStatus = n.GetStringValue(); } },
+                { "effective_domains", n => { EffectiveDomains = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "environment_variable_keys", n => { EnvironmentVariableKeys = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "has_environment_variables", n => { HasEnvironmentVariables = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
+                { "include_default_domains", n => { IncludeDefaultDomains = n.GetBoolValue(); } },
                 { "internal", n => { Internal = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "network_access_level", n => { NetworkAccessLevel = n.GetStringValue(); } },
@@ -132,11 +156,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("allowed_domains", AllowedDomains);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SandboxEnvironmentDtoCreatedBy>("created_by", CreatedBy);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo>("created_by", CreatedBy);
             writer.WriteGuidValue("custom_image_id", CustomImageId);
             writer.WriteStringValue("custom_image_name", CustomImageName);
             writer.WriteStringValue("custom_image_status", CustomImageStatus);
+            writer.WriteCollectionOfPrimitiveValues<string>("effective_domains", EffectiveDomains);
+            writer.WriteCollectionOfPrimitiveValues<string>("environment_variable_keys", EnvironmentVariableKeys);
+            writer.WriteBoolValue("has_environment_variables", HasEnvironmentVariables);
             writer.WriteGuidValue("id", Id);
+            writer.WriteBoolValue("include_default_domains", IncludeDefaultDomains);
             writer.WriteBoolValue("internal", Internal);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("network_access_level", NetworkAccessLevel);

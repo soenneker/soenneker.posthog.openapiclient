@@ -55,13 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHoldoutType Holdout { get; set; }
 #endif
         /// <summary>The kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Kind { get; set; }
-#nullable restore
-#else
-        public string Kind { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQueryKind? Kind { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -120,7 +114,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "exposure_criteria", n => { ExposureCriteria = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureCriteria>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureCriteria.CreateFromDiscriminatorValue); } },
                 { "feature_flag", n => { FeatureFlag = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQueryFeatureFlagProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQueryFeatureFlagProperty.CreateFromDiscriminatorValue); } },
                 { "holdout", n => { Holdout = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHoldoutType>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHoldoutType.CreateFromDiscriminatorValue); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQueryKind>(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQueryResponse.CreateFromDiscriminatorValue); } },
                 { "start_date", n => { StartDate = n.GetStringValue(); } },
@@ -141,7 +135,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureCriteria>("exposure_criteria", ExposureCriteria);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQueryFeatureFlagProperty>("feature_flag", FeatureFlag);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHoldoutType>("holdout", Holdout);
-            writer.WriteStringValue("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQueryKind>("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQueryResponse>("response", Response);
             writer.WriteStringValue("start_date", StartDate);

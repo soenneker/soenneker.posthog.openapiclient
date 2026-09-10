@@ -3,13 +3,17 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `events` - events* `person-updates` - person-updates* `data-warehouse-table` - data-warehouse-table</summary>
+    /// <summary>* `events` - events* `internal-events` - internal-events* `person-updates` - person-updates* `data-warehouse-table` - data-warehouse-table* `data-warehouse-view` - data-warehouse-view</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum HogFunctionFiltersSourceEnum
     {
         [EnumMember(Value = "events")]
         #pragma warning disable CS1591
         Events,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "internal-events")]
+        #pragma warning disable CS1591
+        InternalEvents,
         #pragma warning restore CS1591
         [EnumMember(Value = "person-updates")]
         #pragma warning disable CS1591
@@ -18,6 +22,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "data-warehouse-table")]
         #pragma warning disable CS1591
         DataWarehouseTable,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "data-warehouse-view")]
+        #pragma warning disable CS1591
+        DataWarehouseView,
         #pragma warning restore CS1591
     }
 }

@@ -104,7 +104,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Property_access_cont
 #endif
             var requestInfo = new RequestInformation(Method.DELETE, "{+baseurl}/api/projects/{projectId}/property_access_controls?property_definition_id={property_definition_id}{&organization_member*,role*}", PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <summary>

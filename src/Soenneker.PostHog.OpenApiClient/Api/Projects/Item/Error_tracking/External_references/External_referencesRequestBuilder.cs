@@ -4,6 +4,8 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.External_references.Item;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.External_references.Link_issue;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.External_references.Search_issues;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -18,6 +20,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Exter
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class External_referencesRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The link_issue property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.External_references.Link_issue.Link_issueRequestBuilder Link_issue
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.External_references.Link_issue.Link_issueRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The search_issues property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.External_references.Search_issues.Search_issuesRequestBuilder Search_issues
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.External_references.Search_issues.Search_issuesRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.error_tracking.external_references.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.External_references.Item.External_referencesItemRequestBuilder"/></returns>
@@ -62,16 +74,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Exter
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedErrorTrackingExternalReferenceResultList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedErrorTrackingExternalReferenceResultList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceResult"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Payload for creating a new provider issue and linking it to an error tracking issue.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceResult?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceResult body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceResult?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceCreate body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceResult> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceResult body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceResult> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceCreate body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -95,15 +107,15 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Exter
             return requestInfo;
         }
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Payload for creating a new provider issue and linking it to an error tracking issue.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceResult body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceCreate body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceResult body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReferenceCreate body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));

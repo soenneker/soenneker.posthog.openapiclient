@@ -3,13 +3,17 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `text` - text* `number` - number* `currency` - currency* `percent` - percent* `date` - date* `datetime` - datetime* `boolean` - boolean* `select` - select</summary>
+    /// <summary>* `text` - text* `link` - link* `number` - number* `currency` - currency* `percent` - percent* `date` - date* `datetime` - datetime* `boolean` - boolean* `select` - select</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum CustomPropertyDisplayTypeEnum
     {
         [EnumMember(Value = "text")]
         #pragma warning disable CS1591
         Text,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "link")]
+        #pragma warning disable CS1591
+        Link,
         #pragma warning restore CS1591
         [EnumMember(Value = "number")]
         #pragma warning disable CS1591

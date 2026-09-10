@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Whether the team is on a Pro plan (drives the upgrade-prompt copy)</summary>
         public bool? IsPro { get; set; }
-        /// <summary>&quot;Which usage limit was hit on a rate_limited error: &apos;burst&apos; (daily) or &apos;sustained&apos; (monthly)* `burst` - burst* `sustained` - sustained&quot;</summary>
+        /// <summary>Which usage limit was hit on a rate_limited error: &apos;burst&apos; (daily) or &apos;sustained&apos; (monthly)* `burst` - burst* `sustained` - sustained</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponseLimitType? LimitType { get; set; }
@@ -67,6 +67,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> MissingArtifactIds { get; set; }
 #endif
+        /// <summary>Why PostHog Desktop access was denied, when applicable.* `startup_plan` - startup_plan* `prepaid_credits` - prepaid_credits</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponseReason? Reason { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponseReason Reason { get; set; }
+#endif
         /// <summary>ISO 8601 timestamp when the hit usage limit resets, when known</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -74,6 +82,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string ResetAt { get; set; }
+#endif
+        /// <summary>After confirmed warm startup nondelivery, echo this token in X-PostHog-Warm-Retry to retry the same run and message within 60 seconds.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? RetryToken { get; set; }
+#nullable restore
+#else
+        public string RetryToken { get; set; }
 #endif
         /// <summary>Machine-readable error type</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -115,7 +131,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "is_pro", n => { IsPro = n.GetBoolValue(); } },
                 { "limit_type", n => { LimitType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponseLimitType>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponseLimitType.CreateFromDiscriminatorValue); } },
                 { "missing_artifact_ids", n => { MissingArtifactIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "reason", n => { Reason = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponseReason>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponseReason.CreateFromDiscriminatorValue); } },
                 { "reset_at", n => { ResetAt = n.GetStringValue(); } },
+                { "retry_token", n => { RetryToken = n.GetStringValue(); } },
                 { "type", n => { Type = n.GetStringValue(); } },
             };
         }
@@ -133,7 +151,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("is_pro", IsPro);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponseLimitType>("limit_type", LimitType);
             writer.WriteCollectionOfPrimitiveValues<string>("missing_artifact_ids", MissingArtifactIds);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponseReason>("reason", Reason);
             writer.WriteStringValue("reset_at", ResetAt);
+            writer.WriteStringValue("retry_token", RetryToken);
             writer.WriteStringValue("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }

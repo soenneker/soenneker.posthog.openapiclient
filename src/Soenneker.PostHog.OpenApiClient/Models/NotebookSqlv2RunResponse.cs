@@ -16,6 +16,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Identifier of the dispatched run. Poll the run result endpoint with it until the status is terminal.</summary>
         public Guid? RunId { get; set; }
+        /// <summary>What the sandbox this run provisions costs per hour in USD. Null when the run needs no new sandbox, or when the backend is not charged.</summary>
+        public double? SandboxHourlyPrice { get; set; }
+        /// <summary>True when this run has to provision a sandbox because none is live for the caller, checked here rather than inferred from a client&apos;s cached kernel status. Tell the user what that costs.</summary>
+        public bool? StartsSandbox { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunResponse"/> and sets the default values.
         /// </summary>
@@ -42,6 +46,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "run_id", n => { RunId = n.GetGuidValue(); } },
+                { "sandbox_hourly_price", n => { SandboxHourlyPrice = n.GetDoubleValue(); } },
+                { "starts_sandbox", n => { StartsSandbox = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -52,6 +58,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteGuidValue("run_id", RunId);
+            writer.WriteDoubleValue("sandbox_hourly_price", SandboxHourlyPrice);
+            writer.WriteBoolValue("starts_sandbox", StartsSandbox);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

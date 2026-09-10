@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Characterize
         {
         }
         /// <summary>
-        /// &quot;Characterize a metric anomaly: compare an anomaly window against abaseline, find the onset, and rank which label values moved.&quot;
+        /// Characterize a metric anomaly: compare an anomaly window against abaseline, find the onset, and rank which label values moved.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MetricAnomalyReport"/></returns>
         /// <param name="body">The request body</param>
@@ -54,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.Characterize
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.MetricAnomalyReport>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.MetricAnomalyReport.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Characterize a metric anomaly: compare an anomaly window against abaseline, find the onset, and rank which label values moved.&quot;
+        /// Characterize a metric anomaly: compare an anomaly window against abaseline, find the onset, and rank which label values moved.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

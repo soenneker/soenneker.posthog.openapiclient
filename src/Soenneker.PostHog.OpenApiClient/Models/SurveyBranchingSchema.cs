@@ -24,13 +24,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.SurveyResponseBasedBranchingResponseValuesProperty ResponseValues { get; set; }
 #endif
-        /// <summary>Union discriminator</summary>
+        /// <summary>Continue to the next question in sequence.* `next_question` - next_question</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Type { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyNextQuestionBranchingType? Type { get; set; }
 #nullable restore
 #else
-        public string Type { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyNextQuestionBranchingType Type { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SurveyBranchingSchema"/> and sets the default values.
@@ -59,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "index", n => { Index = n.GetIntValue(); } },
                 { "responseValues", n => { ResponseValues = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyResponseBasedBranchingResponseValuesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyResponseBasedBranchingResponseValuesProperty.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyNextQuestionBranchingType>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyNextQuestionBranchingType.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -71,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("index", Index);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyResponseBasedBranchingResponseValuesProperty>("responseValues", ResponseValues);
-            writer.WriteStringValue("type", Type);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyNextQuestionBranchingType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

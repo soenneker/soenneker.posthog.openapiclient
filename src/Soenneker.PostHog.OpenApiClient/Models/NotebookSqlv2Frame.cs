@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public UntypedNode Columns { get; set; }
 #endif
-        /// <summary>&quot;Where the object came from: &apos;frame&apos; (a dataframe a node produced), or &apos;table&apos;/&apos;view&apos; (created by SQL DDL in a DuckDB node).&quot;</summary>
+        /// <summary>Where the object came from: &apos;frame&apos; (a dataframe a node produced), or &apos;table&apos;/&apos;view&apos; (created by SQL DDL in a DuckDB node).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Kind { get; set; }

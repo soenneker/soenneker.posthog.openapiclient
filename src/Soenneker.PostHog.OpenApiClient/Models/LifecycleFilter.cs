@@ -15,10 +15,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Where the in-chart legend sits relative to the plot. Only applies to the in-chart legend.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper2? LegendPosition { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper3? LegendPosition { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper2 LegendPosition { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper3 LegendPosition { get; set; }
 #endif
         /// <summary>The showLegend property</summary>
         public bool? ShowLegend { get; set; }
@@ -31,10 +31,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The toggledLifecycles property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LifecycleToggle>? ToggledLifecycles { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LifecycleToggle?>? ToggledLifecycles { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LifecycleToggle> ToggledLifecycles { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LifecycleToggle?> ToggledLifecycles { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LifecycleFilter"/> and sets the default values.
@@ -62,12 +62,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "legendPosition", n => { LegendPosition = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper2>(global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper2.CreateFromDiscriminatorValue); } },
+                { "legendPosition", n => { LegendPosition = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper3>(global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper3.CreateFromDiscriminatorValue); } },
                 { "showLegend", n => { ShowLegend = n.GetBoolValue(); } },
                 { "showPercentagesOnSeries", n => { ShowPercentagesOnSeries = n.GetBoolValue(); } },
                 { "showValuesOnSeries", n => { ShowValuesOnSeries = n.GetBoolValue(); } },
                 { "stacked", n => { Stacked = n.GetBoolValue(); } },
-                { "toggledLifecycles", n => { ToggledLifecycles = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LifecycleToggle>(global::Soenneker.PostHog.OpenApiClient.Models.LifecycleToggle.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "toggledLifecycles", n => { ToggledLifecycles = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.LifecycleToggle>()?.AsList(); } },
             };
         }
         /// <summary>
@@ -77,12 +77,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper2>("legendPosition", LegendPosition);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper3>("legendPosition", LegendPosition);
             writer.WriteBoolValue("showLegend", ShowLegend);
             writer.WriteBoolValue("showPercentagesOnSeries", ShowPercentagesOnSeries);
             writer.WriteBoolValue("showValuesOnSeries", ShowValuesOnSeries);
             writer.WriteBoolValue("stacked", Stacked);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LifecycleToggle>("toggledLifecycles", ToggledLifecycles);
+            writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.LifecycleToggle>("toggledLifecycles", ToggledLifecycles);
         }
     }
 }

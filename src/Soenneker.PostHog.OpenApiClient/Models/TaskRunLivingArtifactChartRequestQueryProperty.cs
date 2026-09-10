@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Insight query JSON to render ad hoc, e.g. {\&quot;kind\&quot;: \&quot;InsightVizNode\&quot;, \&quot;source\&quot;: {\&quot;kind\&quot;: \&quot;TrendsQuery\&quot;, ...}}. SQL queries (DataVisualizationNode, HogQLQuery) are not supported yet. Provide exactly one of query or insight_id.&quot;
+    /// Insight query JSON to render ad hoc, e.g. {&quot;kind&quot;: &quot;InsightVizNode&quot;, &quot;source&quot;: {&quot;kind&quot;: &quot;TrendsQuery&quot;, ...}}. SQL queries (DataVisualizationNode, HogQLQuery) are not supported yet. Provide exactly one of query or insight_id.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TaskRunLivingArtifactChartRequestQueryProperty : IAdditionalDataHolder, IParsable

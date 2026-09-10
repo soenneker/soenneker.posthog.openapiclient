@@ -3,6 +3,15 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Access_control_default_objects;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Access_control_default_properties;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Access_control_defaults;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Access_control_member_objects;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Access_control_member_properties;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Access_control_members;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Access_control_role_objects;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Access_control_role_properties;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Access_control_roles;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Activity;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Add_product_intent;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Change_organization;
@@ -19,6 +28,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Logs_
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Reset_token;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Rotate_secret_token;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Settings_as_of;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Tracing_config;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -33,6 +43,51 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ProjectsItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The access_control_default_objects property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Access_control_default_objects.Access_control_default_objectsRequestBuilder Access_control_default_objects
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Access_control_default_objects.Access_control_default_objectsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The access_control_default_properties property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Access_control_default_properties.Access_control_default_propertiesRequestBuilder Access_control_default_properties
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Access_control_default_properties.Access_control_default_propertiesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The access_control_defaults property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Access_control_defaults.Access_control_defaultsRequestBuilder Access_control_defaults
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Access_control_defaults.Access_control_defaultsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The access_control_member_objects property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Access_control_member_objects.Access_control_member_objectsRequestBuilder Access_control_member_objects
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Access_control_member_objects.Access_control_member_objectsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The access_control_member_properties property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Access_control_member_properties.Access_control_member_propertiesRequestBuilder Access_control_member_properties
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Access_control_member_properties.Access_control_member_propertiesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The access_control_members property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Access_control_members.Access_control_membersRequestBuilder Access_control_members
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Access_control_members.Access_control_membersRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The access_control_role_objects property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Access_control_role_objects.Access_control_role_objectsRequestBuilder Access_control_role_objects
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Access_control_role_objects.Access_control_role_objectsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The access_control_role_properties property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Access_control_role_properties.Access_control_role_propertiesRequestBuilder Access_control_role_properties
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Access_control_role_properties.Access_control_role_propertiesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The access_control_roles property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Access_control_roles.Access_control_rolesRequestBuilder Access_control_roles
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Access_control_roles.Access_control_rolesRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The activity property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Activity.ActivityRequestBuilder Activity
         {
@@ -113,6 +168,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Settings_as_of.Settings_as_ofRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The tracing_config property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Tracing_config.Tracing_configRequestBuilder Tracing_config
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Tracing_config.Tracing_configRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.ProjectsItemRequestBuilder"/> and sets the default values.
         /// </summary>
@@ -168,7 +228,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item
         /// Update one or more of a project&apos;s settings. Only the fields included in the request body are changed.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ProjectBackwardCompat"/></returns>
-        /// <param name="body">Mixin for serializers to add user access control fields</param>
+        /// <param name="body">A project and its settings, including the settings that live on its passthrough Team.This shape is a superset of TeamSerializer&apos;s, so a request rewritten from /api/environments/onto /api/projects/ never loses a field.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -188,7 +248,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item
         /// Replace a project and its settings. Prefer the PATCH endpoint for partial updates — PUT requires every writable field to be provided.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ProjectBackwardCompat"/></returns>
-        /// <param name="body">Mixin for serializers to add user access control fields</param>
+        /// <param name="body">A project and its settings, including the settings that live on its passthrough Team.This shape is a superset of TeamSerializer&apos;s, so a request rewritten from /api/environments/onto /api/projects/ never loses a field.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -220,7 +280,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item
 #endif
             var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <summary>
@@ -246,7 +305,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item
         /// Update one or more of a project&apos;s settings. Only the fields included in the request body are changed.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">Mixin for serializers to add user access control fields</param>
+        /// <param name="body">A project and its settings, including the settings that live on its passthrough Team.This shape is a superset of TeamSerializer&apos;s, so a request rewritten from /api/environments/onto /api/projects/ never loses a field.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -268,7 +327,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item
         /// Replace a project and its settings. Prefer the PATCH endpoint for partial updates — PUT requires every writable field to be provided.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">Mixin for serializers to add user access control fields</param>
+        /// <param name="body">A project and its settings, including the settings that live on its passthrough Team.This shape is a superset of TeamSerializer&apos;s, so a request rewritten from /api/environments/onto /api/projects/ never loses a field.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

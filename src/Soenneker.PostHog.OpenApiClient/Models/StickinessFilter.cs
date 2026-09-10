@@ -39,18 +39,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The hiddenLegendIndexes property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilterHiddenLegendIndexes? HiddenLegendIndexes { get; set; }
+        public List<int?>? HiddenLegendIndexes { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilterHiddenLegendIndexes HiddenLegendIndexes { get; set; }
+        public List<int?> HiddenLegendIndexes { get; set; }
 #endif
         /// <summary>Where the in-chart legend sits relative to the plot. Only applies to the in-chart legend.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper3? LegendPosition { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper4? LegendPosition { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper3 LegendPosition { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper4 LegendPosition { get; set; }
 #endif
         /// <summary>Whether result datasets are associated by their values or by their order.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -103,8 +103,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "chartStyle", n => { ChartStyle = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle>(global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle.CreateFromDiscriminatorValue); } },
                 { "computedAs", n => { ComputedAs = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessComputationModeWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.StickinessComputationModeWrapper.CreateFromDiscriminatorValue); } },
                 { "display", n => { Display = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayTypeWrapper3>(global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayTypeWrapper3.CreateFromDiscriminatorValue); } },
-                { "hiddenLegendIndexes", n => { HiddenLegendIndexes = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilterHiddenLegendIndexes>(global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilterHiddenLegendIndexes.CreateFromDiscriminatorValue); } },
-                { "legendPosition", n => { LegendPosition = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper3>(global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper3.CreateFromDiscriminatorValue); } },
+                { "hiddenLegendIndexes", n => { HiddenLegendIndexes = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
+                { "legendPosition", n => { LegendPosition = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper4>(global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper4.CreateFromDiscriminatorValue); } },
                 { "resultCustomizationBy", n => { ResultCustomizationBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResultCustomizationByWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.ResultCustomizationByWrapper.CreateFromDiscriminatorValue); } },
                 { "resultCustomizations", n => { ResultCustomizations = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilterResultCustomizations>(global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilterResultCustomizations.CreateFromDiscriminatorValue); } },
                 { "showLegend", n => { ShowLegend = n.GetBoolValue(); } },
@@ -123,8 +123,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle>("chartStyle", ChartStyle);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessComputationModeWrapper>("computedAs", ComputedAs);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayTypeWrapper3>("display", Display);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilterHiddenLegendIndexes>("hiddenLegendIndexes", HiddenLegendIndexes);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper3>("legendPosition", LegendPosition);
+            writer.WriteCollectionOfPrimitiveValues<int?>("hiddenLegendIndexes", HiddenLegendIndexes);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper4>("legendPosition", LegendPosition);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResultCustomizationByWrapper>("resultCustomizationBy", ResultCustomizationBy);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilterResultCustomizations>("resultCustomizations", ResultCustomizations);
             writer.WriteBoolValue("showLegend", ShowLegend);

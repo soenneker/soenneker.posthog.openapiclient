@@ -9,18 +9,27 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class PathCleaningFilter : IAdditionalDataHolder, IParsable
+    public partial class PathCleaningFilter : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningFilter"/> and sets the default values.
-        /// </summary>
-        public PathCleaningFilter()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
+        /// <summary>The replacement for the matched path. Use angle-bracket placeholders (`&lt;id&gt;`, `&lt;uuid&gt;`, `&lt;slug&gt;`) by convention, or reuse a capture group from the regex with ClickHouse `replaceRegexpAll` replacement syntax: `\1` to `\9` for a group and `\0` for the whole match.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Alias { get; set; }
+#nullable restore
+#else
+        public string Alias { get; set; }
+#endif
+        /// <summary>The order property</summary>
+        public double? Order { get; set; }
+        /// <summary>The regex property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Regex { get; set; }
+#nullable restore
+#else
+        public string Regex { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -39,6 +48,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "alias", n => { Alias = n.GetStringValue(); } },
+                { "order", n => { Order = n.GetDoubleValue(); } },
+                { "regex", n => { Regex = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -48,7 +60,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteAdditionalData(AdditionalData);
+            writer.WriteStringValue("alias", Alias);
+            writer.WriteDoubleValue("order", Order);
+            writer.WriteStringValue("regex", Regex);
         }
     }
 }

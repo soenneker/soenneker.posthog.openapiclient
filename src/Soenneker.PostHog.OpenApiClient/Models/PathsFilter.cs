@@ -7,11 +7,10 @@ using System.IO;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>
-    /// Properties specific to the paths insight
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class PathsFilter : IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>The edgeLimit property</summary>
         public int? EdgeLimit { get; set; }
@@ -26,18 +25,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The excludeEvents property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsFilterExcludeEvents? ExcludeEvents { get; set; }
+        public List<string>? ExcludeEvents { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsFilterExcludeEvents ExcludeEvents { get; set; }
+        public List<string> ExcludeEvents { get; set; }
 #endif
         /// <summary>The includeEventTypes property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PathType>? IncludeEventTypes { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PathType?>? IncludeEventTypes { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PathType> IncludeEventTypes { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PathType?> IncludeEventTypes { get; set; }
 #endif
         /// <summary>The localPathCleaningFilters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -70,10 +69,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The pathGroupings property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsFilterPathGroupings? PathGroupings { get; set; }
+        public List<string>? PathGroupings { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsFilterPathGroupings PathGroupings { get; set; }
+        public List<string> PathGroupings { get; set; }
 #endif
         /// <summary>The pathReplacements property</summary>
         public bool? PathReplacements { get; set; }
@@ -133,14 +132,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "edgeLimit", n => { EdgeLimit = n.GetIntValue(); } },
                 { "endPoint", n => { EndPoint = n.GetStringValue(); } },
-                { "excludeEvents", n => { ExcludeEvents = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsFilterExcludeEvents>(global::Soenneker.PostHog.OpenApiClient.Models.PathsFilterExcludeEvents.CreateFromDiscriminatorValue); } },
-                { "includeEventTypes", n => { IncludeEventTypes = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PathType>(global::Soenneker.PostHog.OpenApiClient.Models.PathType.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "excludeEvents", n => { ExcludeEvents = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "includeEventTypes", n => { IncludeEventTypes = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.PathType>()?.AsList(); } },
                 { "localPathCleaningFilters", n => { LocalPathCleaningFilters = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningFilter>(global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningFilter.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "maxEdgeWeight", n => { MaxEdgeWeight = n.GetIntValue(); } },
                 { "minEdgeWeight", n => { MinEdgeWeight = n.GetIntValue(); } },
                 { "pathDropoffKey", n => { PathDropoffKey = n.GetStringValue(); } },
                 { "pathEndKey", n => { PathEndKey = n.GetStringValue(); } },
-                { "pathGroupings", n => { PathGroupings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsFilterPathGroupings>(global::Soenneker.PostHog.OpenApiClient.Models.PathsFilterPathGroupings.CreateFromDiscriminatorValue); } },
+                { "pathGroupings", n => { PathGroupings = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "pathReplacements", n => { PathReplacements = n.GetBoolValue(); } },
                 { "pathStartKey", n => { PathStartKey = n.GetStringValue(); } },
                 { "pathsHogQLExpression", n => { PathsHogQLExpression = n.GetStringValue(); } },
@@ -158,14 +157,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("edgeLimit", EdgeLimit);
             writer.WriteStringValue("endPoint", EndPoint);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsFilterExcludeEvents>("excludeEvents", ExcludeEvents);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PathType>("includeEventTypes", IncludeEventTypes);
+            writer.WriteCollectionOfPrimitiveValues<string>("excludeEvents", ExcludeEvents);
+            writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.PathType>("includeEventTypes", IncludeEventTypes);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningFilter>("localPathCleaningFilters", LocalPathCleaningFilters);
             writer.WriteIntValue("maxEdgeWeight", MaxEdgeWeight);
             writer.WriteIntValue("minEdgeWeight", MinEdgeWeight);
             writer.WriteStringValue("pathDropoffKey", PathDropoffKey);
             writer.WriteStringValue("pathEndKey", PathEndKey);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsFilterPathGroupings>("pathGroupings", PathGroupings);
+            writer.WriteCollectionOfPrimitiveValues<string>("pathGroupings", PathGroupings);
             writer.WriteBoolValue("pathReplacements", PathReplacements);
             writer.WriteStringValue("pathsHogQLExpression", PathsHogQLExpression);
             writer.WriteStringValue("pathStartKey", PathStartKey);

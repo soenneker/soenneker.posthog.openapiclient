@@ -8,22 +8,14 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;The recordings worth watching for this experiment, grouped into cards.Descriptive, never a result: cards say where behavior visibly differed and hand over therecordings, while the experiment&apos;s results measure its metrics over the whole run window andstate the magnitudes. Nothing here says a variant is winning.&quot;
+    /// The recordings worth watching for this experiment, grouped into cards.Descriptive, never a result: cards say where behavior visibly differed and hand over therecordings, while the experiment&apos;s results measure its metrics over the whole run window andstate the magnitudes. Nothing here says a variant is winning.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ExperimentSessionEventDeltaResponse : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Every variant&apos;s compared population, in the flag&apos;s variant order.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWatchArm>? Arms { get; set; }
-#nullable restore
-#else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWatchArm> Arms { get; set; }
-#endif
-        /// <summary>&quot;The shelf, strongest comparison first, then the variant&apos;s own rendering, then metric shortcuts. Events the variants can&apos;t be told apart on get no card at all rather than a weak one, so an empty shelf means no difference was big enough to be sure of, not that nothing was measured. Group by kind before presenting: a &apos;variant_only&apos; card outranks every real difference by construction, and reading the shelf in order would report it as the headline.&quot;</summary>
+        /// <summary>The shelf, strongest comparison first, then the variant&apos;s own rendering, then metric shortcuts. Events the variants can&apos;t be told apart on get no card at all rather than a weak one, so an empty shelf means no difference was big enough to be sure of, not that nothing was measured. Empty also takes the metric shortcuts with it: a shelf of shortcuts and no finding restates what the experiment&apos;s results already answer while reading as a finding, so it is withheld. Read empty_reason and say what it reports instead of presenting an empty shelf. Group by kind before presenting: a &apos;variant_only&apos; card outranks every real difference by construction, and reading the shelf in order would report it as the headline.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWatchCard>? Cards { get; set; }
@@ -31,10 +23,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWatchCard> Cards { get; set; }
 #endif
-        /// <summary>Start of what was actually compared. The requested window is the experiment&apos;s run window clamped to its most recent 14 days (2 when sessions are matched on the stamped flag property, which no event name can prune a scan on), but a busy experiment reaches the session ceiling long before that, and this reports where the compared sessions really begin - often hours rather than days back. Display this, not the experiment&apos;s own dates.</summary>
+        /// <summary>Start of what was actually compared. The requested window is the experiment&apos;s run window clamped to its most recent 14 days, but a busy experiment reaches the session ceiling long before that, and this reports where the compared sessions really begin - often hours rather than days back. Display this, not the experiment&apos;s own dates.</summary>
         public DateTimeOffset? DateFrom { get; set; }
-        /// <summary>&quot;End of what was compared: the experiment&apos;s end date, or now while it runs.&quot;</summary>
+        /// <summary>End of what was compared: the experiment&apos;s end date, or now while it runs.</summary>
         public DateTimeOffset? DateTo { get; set; }
+        /// <summary>How many cards were removed because their recordings were already another card&apos;s on the same shelf. Nothing was lost: the recordings are all reachable through the cards that stayed.</summary>
+        public int? DroppedDuplicateCards { get; set; }
+        /// <summary>Why cards is empty, and null whenever cards is not empty. Report which of the four happened rather than reporting an empty shelf, because they ask different things of the reader. &apos;too_early&apos;: fewer than two variants have min_variant_persons exposed people, so nothing was compared yet and the answer can still change. &apos;no_separation&apos;: the variants were compared and no event told them apart, which is a result rather than a failure. &apos;no_recordings&apos;: events did tell the variants apart, but no recording behind them can be opened, so the project&apos;s session replay sampling and retention are what decide whether this surface can ever show anything. &apos;no_session_linked_exposures&apos;: the experiment has exposed people and none of them has a session we can see between date_from and date_to, so there was nothing to compare. Who counts as exposed is read over the whole run, so the exposures themselves can predate that window: date the claim to the window instead of reporting when anyone was exposed. Two things reach this state, and they ask for different answers: no browser or mobile SDK is capturing events, because sessions exist nowhere else, or the exposed people were last active before the window. Check which one before telling anyone to check back, because more exposures captured the same way yield more of the same. Never fill an empty shelf with the experiment&apos;s metrics: shortcut cards to those metrics&apos; events are withheld here for exactly that reason.* `too_early` - too_early* `no_separation` - no_separation* `no_recordings` - no_recordings* `no_session_linked_exposures` - no_session_linked_exposures</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionEventDeltaResponseEmptyReason? EmptyReason { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionEventDeltaResponseEmptyReason EmptyReason { get; set; }
+#endif
         /// <summary>True when the project has more distinct event names in the window than one comparison can rank, so some were never considered.</summary>
         public bool? EventsTruncated { get; set; }
         /// <summary>Whether the project&apos;s test-account filters were applied, following the experiment&apos;s exposure criteria, the same rule the experiment&apos;s recordings list uses.</summary>
@@ -50,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public List<string> MetricEvents { get; set; }
 #endif
         /// <summary>How many exposed people a variant needs before it can be compared at all. Below it a variant&apos;s cards would be noise whatever the evidence bar allows.</summary>
-        public int? MinArmPersons { get; set; }
+        public int? MinVariantPersons { get; set; }
         /// <summary>How the experiment handles someone who saw more than one variant, followed here so the cards split their people the same way the analysis does.* `exclude` - exclude* `first_seen` - first_seen</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -63,10 +65,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? MultipleVariantPersons { get; set; }
         /// <summary>True when the experiment had more exposed sessions in the requested window than one comparison covers, so the most recent ones were used and date_from is later than the experiment&apos;s own window. Every variant is still covered over the same stretch of time.</summary>
         public bool? SessionsTruncated { get; set; }
-        /// <summary>True when fewer than two variants have min_arm_persons exposed people, so no comparison exists and cards is empty. Say &apos;too early to compare&apos; and show the arms&apos; counts; an empty shelf presented without this would read as &apos;the variants behaved identically&apos;.</summary>
+        /// <summary>True when fewer than two variants have min_variant_persons exposed people, so no comparison exists and cards is empty. Show the variants&apos; counts alongside it: an empty shelf presented without them would read as &apos;the variants behaved identically&apos;. Read empty_reason before telling anyone to check back: this is also true when the variants are empty because the people exposed have no sessions we can see, which empty_reason reports as &apos;no_session_linked_exposures&apos; and which more time does not fix on its own.</summary>
         public bool? TooEarly { get; set; }
-        /// <summary>True when the compared sessions were matched on the stamped $feature/&lt;flag key&gt; event property instead of the exposure event, because the default exposure event has only ever been captured server-side and can never match a session. The sessions then mean &apos;the flag was active in this session&apos;, and the variant comes from the flag&apos;s value on each event, so a returning user can be counted under a variant they were re-bucketed into later.</summary>
+        /// <summary>Always false. The compared population is the exposed population the experiment&apos;s results count, matched to sessions by person, so no stamped-property fallback exists any more. The field stays for compatibility with existing readers.</summary>
         public bool? UsedExposureFallback { get; set; }
+        /// <summary>Every variant the analysis compares, with its population, in the flag&apos;s variant order. A variant the experiment excludes never appears here, because the analysis does not count it either, so read a missing key as excluded rather than as zero people.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWatchVariant>? Variants { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWatchVariant> Variants { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionEventDeltaResponse"/> and sets the default values.
         /// </summary>
@@ -92,20 +102,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "arms", n => { Arms = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWatchArm>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWatchArm.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "cards", n => { Cards = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWatchCard>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWatchCard.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "date_from", n => { DateFrom = n.GetDateTimeOffsetValue(); } },
                 { "date_to", n => { DateTo = n.GetDateTimeOffsetValue(); } },
+                { "dropped_duplicate_cards", n => { DroppedDuplicateCards = n.GetIntValue(); } },
+                { "empty_reason", n => { EmptyReason = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionEventDeltaResponseEmptyReason>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionEventDeltaResponseEmptyReason.CreateFromDiscriminatorValue); } },
                 { "events_truncated", n => { EventsTruncated = n.GetBoolValue(); } },
                 { "filter_test_accounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
                 { "max_card_recordings", n => { MaxCardRecordings = n.GetIntValue(); } },
                 { "metric_events", n => { MetricEvents = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "min_arm_persons", n => { MinArmPersons = n.GetIntValue(); } },
+                { "min_variant_persons", n => { MinVariantPersons = n.GetIntValue(); } },
                 { "multiple_variant_handling", n => { MultipleVariantHandling = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionEventDeltaResponseMultipleVariantHandling>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionEventDeltaResponseMultipleVariantHandling.CreateFromDiscriminatorValue); } },
                 { "multiple_variant_persons", n => { MultipleVariantPersons = n.GetIntValue(); } },
                 { "sessions_truncated", n => { SessionsTruncated = n.GetBoolValue(); } },
                 { "too_early", n => { TooEarly = n.GetBoolValue(); } },
                 { "used_exposure_fallback", n => { UsedExposureFallback = n.GetBoolValue(); } },
+                { "variants", n => { Variants = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWatchVariant>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWatchVariant.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -115,20 +127,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWatchArm>("arms", Arms);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWatchCard>("cards", Cards);
             writer.WriteDateTimeOffsetValue("date_from", DateFrom);
             writer.WriteDateTimeOffsetValue("date_to", DateTo);
+            writer.WriteIntValue("dropped_duplicate_cards", DroppedDuplicateCards);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionEventDeltaResponseEmptyReason>("empty_reason", EmptyReason);
             writer.WriteBoolValue("events_truncated", EventsTruncated);
             writer.WriteBoolValue("filter_test_accounts", FilterTestAccounts);
             writer.WriteIntValue("max_card_recordings", MaxCardRecordings);
             writer.WriteCollectionOfPrimitiveValues<string>("metric_events", MetricEvents);
-            writer.WriteIntValue("min_arm_persons", MinArmPersons);
+            writer.WriteIntValue("min_variant_persons", MinVariantPersons);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionEventDeltaResponseMultipleVariantHandling>("multiple_variant_handling", MultipleVariantHandling);
             writer.WriteIntValue("multiple_variant_persons", MultipleVariantPersons);
             writer.WriteBoolValue("sessions_truncated", SessionsTruncated);
             writer.WriteBoolValue("too_early", TooEarly);
             writer.WriteBoolValue("used_exposure_fallback", UsedExposureFallback);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWatchVariant>("variants", Variants);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

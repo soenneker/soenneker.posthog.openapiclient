@@ -29,10 +29,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemReadCreatedBy? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemReadCreatedBy CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
 #endif
         /// <summary>Dataset that owns the item.</summary>
         public Guid? Dataset { get; private set; }
@@ -43,10 +43,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Optional user-authored expected output.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemReadExpectedOutput? ExpectedOutput { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetJsonValue? ExpectedOutput { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemReadExpectedOutput ExpectedOutput { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetJsonValue ExpectedOutput { get; private set; }
 #endif
         /// <summary>Stable dataset item ID shared by every version.</summary>
         public Guid? Id { get; private set; }
@@ -77,10 +77,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Optional actual output captured from the source trace.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemReadSourceOutput? SourceOutput { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetJsonValue? SourceOutput { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemReadSourceOutput SourceOutput { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetJsonValue SourceOutput { get; private set; }
 #endif
         /// <summary>The source_timestamp property</summary>
         public DateTimeOffset? SourceTimestamp { get; private set; }
@@ -103,10 +103,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The version_created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemReadVersionCreatedBy? VersionCreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? VersionCreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemReadVersionCreatedBy VersionCreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic VersionCreatedBy { get; private set; }
 #endif
         /// <summary>ID of this immutable item version.</summary>
         public Guid? VersionId { get; private set; }
@@ -138,23 +138,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "archived", n => { Archived = n.GetBoolValue(); } },
                 { "client_item_id", n => { ClientItemId = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemReadCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemReadCreatedBy.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
                 { "dataset", n => { Dataset = n.GetGuidValue(); } },
                 { "dataset_revision", n => { DatasetRevision = n.GetIntValue(); } },
                 { "dataset_revision_id", n => { DatasetRevisionId = n.GetGuidValue(); } },
-                { "expected_output", n => { ExpectedOutput = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemReadExpectedOutput>(global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemReadExpectedOutput.CreateFromDiscriminatorValue); } },
+                { "expected_output", n => { ExpectedOutput = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetJsonValue>(global::Soenneker.PostHog.OpenApiClient.Models.DatasetJsonValue.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "input", n => { Input = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemReadInput>(global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemReadInput.CreateFromDiscriminatorValue); } },
                 { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemReadMetadataProperty>(global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemReadMetadataProperty.CreateFromDiscriminatorValue); } },
                 { "source_event_id", n => { SourceEventId = n.GetStringValue(); } },
-                { "source_output", n => { SourceOutput = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemReadSourceOutput>(global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemReadSourceOutput.CreateFromDiscriminatorValue); } },
+                { "source_output", n => { SourceOutput = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetJsonValue>(global::Soenneker.PostHog.OpenApiClient.Models.DatasetJsonValue.CreateFromDiscriminatorValue); } },
                 { "source_timestamp", n => { SourceTimestamp = n.GetDateTimeOffsetValue(); } },
                 { "source_trace_id", n => { SourceTraceId = n.GetStringValue(); } },
                 { "team_id", n => { TeamId = n.GetIntValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "version", n => { Version = n.GetIntValue(); } },
                 { "version_created_at", n => { VersionCreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "version_created_by", n => { VersionCreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemReadVersionCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemReadVersionCreatedBy.CreateFromDiscriminatorValue); } },
+                { "version_created_by", n => { VersionCreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
                 { "version_id", n => { VersionId = n.GetGuidValue(); } },
             };
         }

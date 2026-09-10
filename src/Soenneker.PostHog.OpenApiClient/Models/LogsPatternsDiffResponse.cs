@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;Mining metadata for the baseline window. Check `total_count` before trusting a wall of \&quot;new\&quot; entries: an empty or tiny baseline (e.g. logging only started this week) makes everything look new.&quot;</summary>
+        /// <summary>Mining metadata for the baseline window. Check `total_count` before trusting a wall of &quot;new&quot; entries: an empty or tiny baseline (e.g. logging only started this week) makes everything look new.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffResponseBaseline? Baseline { get; set; }
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffResponseCurrent Current { get; set; }
 #endif
-        /// <summary>&quot;Classified diff entries, most interesting first: \&quot;new\&quot; (by estimated count), then \&quot;rate_shift\&quot; (by shift magnitude), then \&quot;gone\&quot;, then \&quot;unchanged\&quot;. A pattern in the baseline is matched to the current window by literal-content fingerprint, so a placeholder widening between runs does not read as one pattern vanishing and another appearing.&quot;</summary>
+        /// <summary>Classified diff entries, most interesting first: &quot;new&quot; (by estimated count), then &quot;rate_shift&quot; (by shift magnitude), then &quot;gone&quot;, then &quot;unchanged&quot;. A pattern in the baseline is matched to the current window by literal-content fingerprint, so a placeholder widening between runs does not read as one pattern vanishing and another appearing.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.LogPatternDiffEntry>? Entries { get; set; }

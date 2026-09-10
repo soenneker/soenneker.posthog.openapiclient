@@ -16,7 +16,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
-        /// <summary>&quot;Boolean expression tree. Nodes: {\&quot;type\&quot;: \&quot;and\&quot;|\&quot;or\&quot;, \&quot;children\&quot;: [...]}, {\&quot;type\&quot;: \&quot;not\&quot;, \&quot;child\&quot;: {...}}, {\&quot;type\&quot;: \&quot;condition\&quot;, \&quot;field\&quot;: \&quot;event_name\&quot;|\&quot;distinct_id\&quot;, \&quot;operator\&quot;: \&quot;exact\&quot;|\&quot;contains\&quot;, \&quot;value\&quot;: \&quot;&lt;string&gt;\&quot;}&quot;</summary>
+        /// <summary>Boolean expression tree. Nodes: {&quot;type&quot;: &quot;and&quot;|&quot;or&quot;, &quot;children&quot;: [...]}, {&quot;type&quot;: &quot;not&quot;, &quot;child&quot;: {...}}, {&quot;type&quot;: &quot;condition&quot;, &quot;field&quot;: &quot;event_name&quot;|&quot;distinct_id&quot;, &quot;operator&quot;: &quot;exact&quot;|&quot;contains&quot;, &quot;value&quot;: &quot;&lt;string&gt;&quot;}</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.EventFilterConfigFilterTree? FilterTree { get; set; }
@@ -27,8 +27,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>* `disabled` - Disabled* `dry_run` - Dry Run* `live` - Live</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.EventFilterConfigModeEnum? Mode { get; set; }
-        /// <summary>&quot;Test events to validate the filter. Each: {\&quot;event_name\&quot;: \&quot;...\&quot;, \&quot;distinct_id\&quot;: \&quot;...\&quot;, \&quot;expected_result\&quot;: \&quot;drop\&quot;|\&quot;ingest\&quot;}&quot;</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.EventFilterModeEnum? Mode { get; set; }
+        /// <summary>Test events to validate the filter. Each: {&quot;event_name&quot;: &quot;...&quot;, &quot;distinct_id&quot;: &quot;...&quot;, &quot;expected_result&quot;: &quot;drop&quot;|&quot;ingest&quot;}</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.EventFilterConfigTestCases? TestCases { get; set; }
@@ -66,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "filter_tree", n => { FilterTree = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventFilterConfigFilterTree>(global::Soenneker.PostHog.OpenApiClient.Models.EventFilterConfigFilterTree.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "mode", n => { Mode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EventFilterConfigModeEnum>(); } },
+                { "mode", n => { Mode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EventFilterModeEnum>(); } },
                 { "test_cases", n => { TestCases = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventFilterConfigTestCases>(global::Soenneker.PostHog.OpenApiClient.Models.EventFilterConfigTestCases.CreateFromDiscriminatorValue); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
@@ -79,7 +79,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventFilterConfigFilterTree>("filter_tree", FilterTree);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EventFilterConfigModeEnum>("mode", Mode);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EventFilterModeEnum>("mode", Mode);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventFilterConfigTestCases>("test_cases", TestCases);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Display format: &apos;number&apos; shows numeric scale, &apos;emoji&apos; shows emoji scale.* `number` - number* `emoji` - emoji&quot;
+    /// Display format: &apos;number&apos; shows numeric scale, &apos;emoji&apos; shows emoji scale.* `number` - number* `emoji` - emoji
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SurveyRatingQuestionSchemaDisplay : IAdditionalDataHolder, IParsable

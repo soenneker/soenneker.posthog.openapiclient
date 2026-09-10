@@ -46,7 +46,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_gateway.Servers.
         {
         }
         /// <summary>
-        /// &quot;The team&apos;s gateway server registry. The registry is sparse: rows appearthrough the install/share/OAuth-start flows in views.py, or when an admintoggles an untouched catalog template here (`set_template_enabled`).Servers with no row follow the team config&apos;s `default_servers_enabled`.&quot;
+        /// The team&apos;s gateway server registry. The registry is sparse: rows appearthrough the install/share/OAuth-start flows in views.py, or when an admintoggles an untouched catalog template here (`set_template_enabled`).Servers with no row follow the team config&apos;s `default_servers_enabled`.
         /// </summary>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -63,7 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_gateway.Servers.
             await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;The team&apos;s gateway server registry. The registry is sparse: rows appearthrough the install/share/OAuth-start flows in views.py, or when an admintoggles an untouched catalog template here (`set_template_enabled`).Servers with no row follow the team config&apos;s `default_servers_enabled`.&quot;
+        /// The team&apos;s gateway server registry. The registry is sparse: rows appearthrough the install/share/OAuth-start flows in views.py, or when an admintoggles an untouched catalog template here (`set_template_enabled`).Servers with no row follow the team config&apos;s `default_servers_enabled`.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpGatewayServer"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -81,7 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_gateway.Servers.
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.McpGatewayServer>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.McpGatewayServer.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;The team&apos;s gateway server registry. The registry is sparse: rows appearthrough the install/share/OAuth-start flows in views.py, or when an admintoggles an untouched catalog template here (`set_template_enabled`).Servers with no row follow the team config&apos;s `default_servers_enabled`.&quot;
+        /// The team&apos;s gateway server registry. The registry is sparse: rows appearthrough the install/share/OAuth-start flows in views.py, or when an admintoggles an untouched catalog template here (`set_template_enabled`).Servers with no row follow the team config&apos;s `default_servers_enabled`.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpGatewayServerUpdate"/></returns>
         /// <param name="body">The request body</param>
@@ -101,7 +101,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_gateway.Servers.
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.McpGatewayServerUpdate>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.McpGatewayServerUpdate.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;The team&apos;s gateway server registry. The registry is sparse: rows appearthrough the install/share/OAuth-start flows in views.py, or when an admintoggles an untouched catalog template here (`set_template_enabled`).Servers with no row follow the team config&apos;s `default_servers_enabled`.&quot;
+        /// The team&apos;s gateway server registry. The registry is sparse: rows appearthrough the install/share/OAuth-start flows in views.py, or when an admintoggles an untouched catalog template here (`set_template_enabled`).Servers with no row follow the team config&apos;s `default_servers_enabled`.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpGatewayServerUpdate"/></returns>
         /// <param name="body">The request body</param>
@@ -121,7 +121,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_gateway.Servers.
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.McpGatewayServerUpdate>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.McpGatewayServerUpdate.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;The team&apos;s gateway server registry. The registry is sparse: rows appearthrough the install/share/OAuth-start flows in views.py, or when an admintoggles an untouched catalog template here (`set_template_enabled`).Servers with no row follow the team config&apos;s `default_servers_enabled`.&quot;
+        /// The team&apos;s gateway server registry. The registry is sparse: rows appearthrough the install/share/OAuth-start flows in views.py, or when an admintoggles an untouched catalog template here (`set_template_enabled`).Servers with no row follow the team config&apos;s `default_servers_enabled`.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -136,11 +136,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_gateway.Servers.
 #endif
             var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <summary>
-        /// &quot;The team&apos;s gateway server registry. The registry is sparse: rows appearthrough the install/share/OAuth-start flows in views.py, or when an admintoggles an untouched catalog template here (`set_template_enabled`).Servers with no row follow the team config&apos;s `default_servers_enabled`.&quot;
+        /// The team&apos;s gateway server registry. The registry is sparse: rows appearthrough the install/share/OAuth-start flows in views.py, or when an admintoggles an untouched catalog template here (`set_template_enabled`).Servers with no row follow the team config&apos;s `default_servers_enabled`.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -159,7 +158,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_gateway.Servers.
             return requestInfo;
         }
         /// <summary>
-        /// &quot;The team&apos;s gateway server registry. The registry is sparse: rows appearthrough the install/share/OAuth-start flows in views.py, or when an admintoggles an untouched catalog template here (`set_template_enabled`).Servers with no row follow the team config&apos;s `default_servers_enabled`.&quot;
+        /// The team&apos;s gateway server registry. The registry is sparse: rows appearthrough the install/share/OAuth-start flows in views.py, or when an admintoggles an untouched catalog template here (`set_template_enabled`).Servers with no row follow the team config&apos;s `default_servers_enabled`.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
@@ -181,7 +180,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_gateway.Servers.
             return requestInfo;
         }
         /// <summary>
-        /// &quot;The team&apos;s gateway server registry. The registry is sparse: rows appearthrough the install/share/OAuth-start flows in views.py, or when an admintoggles an untouched catalog template here (`set_template_enabled`).Servers with no row follow the team config&apos;s `default_servers_enabled`.&quot;
+        /// The team&apos;s gateway server registry. The registry is sparse: rows appearthrough the install/share/OAuth-start flows in views.py, or when an admintoggles an untouched catalog template here (`set_template_enabled`).Servers with no row follow the team config&apos;s `default_servers_enabled`.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

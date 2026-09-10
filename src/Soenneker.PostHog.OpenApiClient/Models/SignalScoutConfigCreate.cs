@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Request body for registering a scout config without waiting for the coordinator tick.Upsert keyed on `skill_name`: if the coordinator (or a concurrent caller) alreadyregistered the row, the provided tunables are applied to it instead.&quot;
+    /// Request body for registering a scout config without waiting for the coordinator tick.Upsert keyed on `skill_name`: if the coordinator (or a concurrent caller) alreadyregistered the row, the provided tunables are applied to it instead.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SignalScoutConfigCreate : IAdditionalDataHolder, IParsable
@@ -17,11 +17,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Exempt this scout from the inactivity pause, which otherwise switches off a scout that goes a fortnight without surfacing anything anyone engages with. Set it on watchdog scouts whose value is staying quiet. Defaults to false.</summary>
         public bool? AutoPauseExempt { get; set; }
-        /// <summary>&quot;Whether the scout writes findings to the inbox. False = dry-run: it runs and logs but emits nothing. Defaults to true.&quot;</summary>
+        /// <summary>Whether the scout writes findings to the inbox. False = dry-run: it runs and logs but emits nothing. Defaults to true.</summary>
         public bool? Emit { get; set; }
         /// <summary>Whether this scout runs on its schedule. Defaults to true.</summary>
         public bool? Enabled { get; set; }
-        /// <summary>&quot;MCP gateway servers (by id) this scout&apos;s runs may use, chosen from the connections members shared to the whole team. Selection is per scout: an empty list gives the scout no MCP servers. Applies from the scout&apos;s next run.&quot;</summary>
+        /// <summary>MCP gateway servers (by id) this scout&apos;s runs may use, chosen from the connections members shared to the whole team. Selection is per scout: an empty list gives the scout no MCP servers. Applies from the scout&apos;s next run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<Guid?>? McpGatewayServerIds { get; set; }
@@ -29,7 +29,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<Guid?> McpGatewayServerIds { get; set; }
 #endif
-        /// <summary>&quot;Optional model id this scout&apos;s runs are pinned to, e.g. `claude-opus-4-5`. Must be one of the platform&apos;s agent models; an invalid id is rejected with the available ones listed. Null keeps the default model, chosen by the platform. Early access: the pin can only be set on projects enrolled in the scout model preview, and only takes effect there. Set null to clear it.&quot;</summary>
+        /// <summary>Optional model id this scout&apos;s runs are pinned to, e.g. `claude-opus-4-5`. Must be one of the platform&apos;s agent models; an invalid id is rejected with the available ones listed. Null keeps the default model, chosen by the platform. Early access: the pin can only be set on projects enrolled in the scout model preview, and only takes effect there. Set null to clear it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Model { get; set; }
@@ -63,7 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Minutes between runs (30–43200). Defaults to 1440 (every 24 hours).</summary>
         public int? RunIntervalMinutes { get; set; }
-        /// <summary>The `signals-scout-*` skill to register a config for. The skill must already exist on this project — author it via the skills store first.</summary>
+        /// <summary>The skill to register a config for. Any valid skill name works — the config row is what makes a skill a scout. The skill must already exist on this project — author it via the skills store first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SkillName { get; set; }
@@ -71,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SkillName { get; set; }
 #endif
-        /// <summary>&quot;Optional JSON Schema (draft 2020-12) describing ONE structured record this scout produces via `scout-record-output` — e.g. a per-report quality judgment (`{\&quot;type\&quot;: \&quot;object\&quot;, \&quot;properties\&quot;: {\&quot;verdict\&quot;: {\&quot;enum\&quot;: [\&quot;good\&quot;, \&quot;bad\&quot;, \&quot;unsure\&quot;]}, \&quot;reason\&quot;: {\&quot;type\&quot;: \&quot;string\&quot;}}, \&quot;required\&quot;: [\&quot;verdict\&quot;, \&quot;reason\&quot;]}`). The root must be `\&quot;type\&quot;: \&quot;object\&quot;`. Setting a schema turns the structured-output channel on: the run prompt renders the schema and every submitted record is validated against it and recorded in the project as a `$scout_structured_output` event, queryable like any event. The channel also requires emit — a dry-run scout has nowhere to record to. Cardinality is the scout&apos;s call (one record per run, one per judged entity, ...). Null = channel off. Setting a schema requires skill-authoring authorization (the `llm_skill:write` scope and skill editor access) since the scout reads it verbatim in its prompt; clearing it needs only the config write. Records validate against the schema in force when the run was dispatched.&quot;</summary>
+        /// <summary>Optional JSON Schema (draft 2020-12) describing ONE structured record this scout produces via `scout-record-output` — e.g. a per-report quality judgment (`{&quot;type&quot;: &quot;object&quot;, &quot;properties&quot;: {&quot;verdict&quot;: {&quot;enum&quot;: [&quot;good&quot;, &quot;bad&quot;, &quot;unsure&quot;]}, &quot;reason&quot;: {&quot;type&quot;: &quot;string&quot;}}, &quot;required&quot;: [&quot;verdict&quot;, &quot;reason&quot;]}`). The root must be `&quot;type&quot;: &quot;object&quot;`. Setting a schema turns the structured-output channel on: the run prompt renders the schema and every submitted record is validated against it and recorded in the project as a `$scout_structured_output` event, queryable like any event. The channel also requires emit — a dry-run scout has nowhere to record to. Cardinality is the scout&apos;s call (one record per run, one per judged entity, ...). Null = channel off. Setting a schema requires skill-authoring authorization (the `llm_skill:write` scope and skill editor access) since the scout reads it verbatim in its prompt; clearing it needs only the config write. Records validate against the schema in force when the run was dispatched.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigCreateStructuredOutputSchemaProperty? StructuredOutputSchema { get; set; }
@@ -86,6 +86,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public List<string> Tags { get; set; }
+#endif
+        /// <summary>Extra write access granted to this one scout, as scope strings. The grantable set is `alert:write`, `annotation:write`, `dashboard:write`, `insight:write`, `llm_skill:write`, `warehouse_table:write`, `warehouse_view:write`. Empty (the default) means the scout reads the project and writes only what every scout may write: notebooks, its findings, and its own memory. Each scope is project-wide and object-level, so a scout holding `dashboard:write` can update or delete any dashboard in the project, not only ones it made. Grant only what this scout maintains. Only the person the scout&apos;s runs act as (whoever authored it) or a project admin can set it, and a scoped API key must itself carry each scope it grants. A dry run (`emit=false`) never holds the grant. Applies from the scout&apos;s next run.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? WriteScopes { get; set; }
+#nullable restore
+#else
+        public List<string> WriteScopes { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigCreate"/> and sets the default values.
@@ -124,6 +132,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "skill_name", n => { SkillName = n.GetStringValue(); } },
                 { "structured_output_schema", n => { StructuredOutputSchema = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigCreateStructuredOutputSchemaProperty>(global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigCreateStructuredOutputSchemaProperty.CreateFromDiscriminatorValue); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "write_scopes", n => { WriteScopes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
         /// <summary>
@@ -145,6 +154,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("skill_name", SkillName);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigCreateStructuredOutputSchemaProperty>("structured_output_schema", StructuredOutputSchema);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
+            writer.WriteCollectionOfPrimitiveValues<string>("write_scopes", WriteScopes);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

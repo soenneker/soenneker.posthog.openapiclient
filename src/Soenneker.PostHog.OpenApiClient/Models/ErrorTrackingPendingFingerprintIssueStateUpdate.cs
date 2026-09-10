@@ -9,18 +9,79 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class ErrorTrackingPendingFingerprintIssueStateUpdate : IAdditionalDataHolder, IParsable
+    public partial class ErrorTrackingPendingFingerprintIssueStateUpdate : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingPendingFingerprintIssueStateUpdate"/> and sets the default values.
-        /// </summary>
-        public ErrorTrackingPendingFingerprintIssueStateUpdate()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
+        /// <summary>The assigned_role_id property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AssignedRoleId { get; set; }
+#nullable restore
+#else
+        public string AssignedRoleId { get; set; }
+#endif
+        /// <summary>The assigned_user_id property</summary>
+        public int? AssignedUserId { get; set; }
+        /// <summary>The fingerprint property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Fingerprint { get; set; }
+#nullable restore
+#else
+        public string Fingerprint { get; set; }
+#endif
+        /// <summary>ISO 8601 datetime string.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? FirstSeen { get; set; }
+#nullable restore
+#else
+        public string FirstSeen { get; set; }
+#endif
+        /// <summary>The is_deleted property</summary>
+        public int? IsDeleted { get; set; }
+        /// <summary>The issue_description property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? IssueDescription { get; set; }
+#nullable restore
+#else
+        public string IssueDescription { get; set; }
+#endif
+        /// <summary>The issue_id property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? IssueId { get; set; }
+#nullable restore
+#else
+        public string IssueId { get; set; }
+#endif
+        /// <summary>The issue_name property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? IssueName { get; set; }
+#nullable restore
+#else
+        public string IssueName { get; set; }
+#endif
+        /// <summary>The issue_severity property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQueryIssueSeverityWrapper3? IssueSeverity { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQueryIssueSeverityWrapper3 IssueSeverity { get; set; }
+#endif
+        /// <summary>The issue_status property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? IssueStatus { get; set; }
+#nullable restore
+#else
+        public string IssueStatus { get; set; }
+#endif
+        /// <summary>Client-stamped monotonic version (`Date.now()` ms at mutation success).</summary>
+        public int? Version { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -39,6 +100,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "assigned_role_id", n => { AssignedRoleId = n.GetStringValue(); } },
+                { "assigned_user_id", n => { AssignedUserId = n.GetIntValue(); } },
+                { "fingerprint", n => { Fingerprint = n.GetStringValue(); } },
+                { "first_seen", n => { FirstSeen = n.GetStringValue(); } },
+                { "is_deleted", n => { IsDeleted = n.GetIntValue(); } },
+                { "issue_description", n => { IssueDescription = n.GetStringValue(); } },
+                { "issue_id", n => { IssueId = n.GetStringValue(); } },
+                { "issue_name", n => { IssueName = n.GetStringValue(); } },
+                { "issue_severity", n => { IssueSeverity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQueryIssueSeverityWrapper3>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQueryIssueSeverityWrapper3.CreateFromDiscriminatorValue); } },
+                { "issue_status", n => { IssueStatus = n.GetStringValue(); } },
+                { "version", n => { Version = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -48,7 +120,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteAdditionalData(AdditionalData);
+            writer.WriteStringValue("assigned_role_id", AssignedRoleId);
+            writer.WriteIntValue("assigned_user_id", AssignedUserId);
+            writer.WriteStringValue("fingerprint", Fingerprint);
+            writer.WriteStringValue("first_seen", FirstSeen);
+            writer.WriteIntValue("is_deleted", IsDeleted);
+            writer.WriteStringValue("issue_description", IssueDescription);
+            writer.WriteStringValue("issue_id", IssueId);
+            writer.WriteStringValue("issue_name", IssueName);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingQueryIssueSeverityWrapper3>("issue_severity", IssueSeverity);
+            writer.WriteStringValue("issue_status", IssueStatus);
+            writer.WriteIntValue("version", Version);
         }
     }
 }

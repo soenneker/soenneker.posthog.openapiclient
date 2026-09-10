@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;Everything that limited the baseline, empty for an unconstrained scan. team_retention: the project&apos;s log retention is shorter than the full lookback. byte_budget: the scan degraded to stay inside its ClickHouse read budget.&quot;</summary>
+        /// <summary>Everything that limited the baseline, empty for an unconstrained scan. team_retention: the project&apos;s log retention is shorter than the full lookback. byte_budget: the scan degraded to stay inside its ClickHouse read budget.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.BindingConstraintsEnum?>? BindingConstraints { get; set; }

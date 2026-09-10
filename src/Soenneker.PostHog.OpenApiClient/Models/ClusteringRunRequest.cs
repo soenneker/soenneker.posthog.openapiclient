@@ -17,7 +17,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>If provided, use this clustering job&apos;s analysis_level and event_filters instead of request params</summary>
         public Guid? ClusteringJobId { get; set; }
-        /// <summary>&quot;Clustering algorithm: &apos;hdbscan&apos; (density-based, auto-determines k) or &apos;kmeans&apos; (centroid-based)* `hdbscan` - hdbscan* `kmeans` - kmeans&quot;</summary>
+        /// <summary>Clustering algorithm: &apos;hdbscan&apos; (density-based, auto-determines k) or &apos;kmeans&apos; (centroid-based)* `hdbscan` - hdbscan* `kmeans` - kmeans</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestClusteringMethod? ClusteringMethod { get; set; }
@@ -25,7 +25,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestClusteringMethod ClusteringMethod { get; set; }
 #endif
-        /// <summary>&quot;Dimensionality reduction method: &apos;none&apos; (cluster on raw), &apos;umap&apos;, or &apos;pca&apos;* `none` - none* `umap` - umap* `pca` - pca&quot;</summary>
+        /// <summary>Dimensionality reduction method: &apos;none&apos; (cluster on raw), &apos;umap&apos;, or &apos;pca&apos;* `none` - none* `umap` - umap* `pca` - pca</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestDimensionalityReductionMethod? DimensionalityReductionMethod { get; set; }
@@ -35,7 +35,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Target dimensions for dimensionality reduction (ignored if method is &apos;none&apos;)</summary>
         public int? DimensionalityReductionNdims { get; set; }
-        /// <summary>&quot;Embedding normalization method: &apos;none&apos; (raw embeddings) or &apos;l2&apos; (L2 normalize before clustering)* `none` - none* `l2` - l2&quot;</summary>
+        /// <summary>Embedding normalization method: &apos;none&apos; (raw embeddings) or &apos;l2&apos; (L2 normalize before clustering)* `none` - none* `l2` - l2</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestEmbeddingNormalization? EmbeddingNormalization { get; set; }
@@ -71,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string RunLabel { get; set; }
 #endif
-        /// <summary>&quot;Method for 2D scatter plot visualization: &apos;umap&apos;, &apos;pca&apos;, or &apos;tsne&apos;* `umap` - umap* `pca` - pca* `tsne` - tsne&quot;</summary>
+        /// <summary>Method for 2D scatter plot visualization: &apos;umap&apos;, &apos;pca&apos;, or &apos;tsne&apos;* `umap` - umap* `pca` - pca* `tsne` - tsne</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestVisualizationMethod? VisualizationMethod { get; set; }

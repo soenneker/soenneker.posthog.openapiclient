@@ -24,7 +24,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? DailyRunCap { get; set; }
         /// <summary>Read-only. Report configs are soft-deleted only when their evaluation is deleted. Use enabled=false to stop deliveries.</summary>
         public bool? Deleted { get; private set; }
-        /// <summary>&quot;List of delivery targets. Each entry is either {type: &apos;email&apos;, value: &apos;user@example.com&apos;} or {type: &apos;slack&apos;, integration_id: &lt;int&gt;, channel: &apos;&lt;channel&gt;&apos;}. Slack integration_id must belong to this team.&quot;</summary>
+        /// <summary>List of delivery targets. Each entry is either {type: &apos;email&apos;, value: &apos;user@example.com&apos;} or {type: &apos;slack&apos;, integration_id: &lt;int&gt;, channel: &apos;&lt;channel&gt;&apos;}. Slack integration_id must belong to this team.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportUpdateDeliveryTargets? DeliveryTargets { get; set; }
@@ -64,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ReportPromptGuidance { get; set; }
 #endif
-        /// <summary>&quot;RFC 5545 recurrence rule string for scheduled reports. Only daily and weekly cadences are supported: use &apos;FREQ=DAILY&apos; or &apos;FREQ=WEEKLY;BYDAY=MO,FR&apos;. Required when frequency is &apos;scheduled&apos;; ignored otherwise.&quot;</summary>
+        /// <summary>RFC 5545 recurrence rule string for scheduled reports. Only daily and weekly cadences are supported: use &apos;FREQ=DAILY&apos; or &apos;FREQ=WEEKLY;BYDAY=MO,FR&apos;. Required when frequency is &apos;scheduled&apos;; ignored otherwise.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Rrule { get; set; }

@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Command method to execute on the agent server* `user_message` - user_message* `cancel` - cancel* `close` - close* `permission_response` - permission_response* `set_config_option` - set_config_option* `mcp_response` - mcp_response* `pi/rpc` - pi/rpc* `queue_get` - queue_get* `queue_clear` - queue_clear
+    /// Command method to execute on the agent server* `user_message` - user_message* `cancel` - cancel* `close` - close* `permission_response` - permission_response* `set_config_option` - set_config_option* `mcp_response` - mcp_response* `credential_response` - credential_response* `pi/rpc` - pi/rpc* `queue_get` - queue_get* `queue_clear` - queue_clear* `side_question` - side_question
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TaskRunCommandRequestMethod : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `user_message` - user_message* `cancel` - cancel* `close` - close* `permission_response` - permission_response* `set_config_option` - set_config_option* `mcp_response` - mcp_response* `pi/rpc` - pi/rpc* `queue_get` - queue_get* `queue_clear` - queue_clear</summary>
+        /// <summary>* `user_message` - user_message* `cancel` - cancel* `close` - close* `permission_response` - permission_response* `set_config_option` - set_config_option* `mcp_response` - mcp_response* `credential_response` - credential_response* `pi/rpc` - pi/rpc* `queue_get` - queue_get* `queue_clear` - queue_clear* `side_question` - side_question</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequestMethodEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequestMethod"/> and sets the default values.

@@ -2,6 +2,7 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Customer_analytics.External.Account;
 using Soenneker.PostHog.OpenApiClient.Api.Customer_analytics.External.Accounts;
 using System.Collections.Generic;
 using System.IO;
@@ -15,6 +16,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Customer_analytics.External
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ExternalRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The account property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Customer_analytics.External.Account.AccountRequestBuilder Account
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Customer_analytics.External.Account.AccountRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The accounts property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Customer_analytics.External.Accounts.AccountsRequestBuilder Accounts
         {

@@ -57,14 +57,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string TrueLabel { get; set; }
 #endif
-        /// <summary>Union discriminator</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Type { get; set; }
-#nullable restore
-#else
-        public string Type { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateConfig"/> and sets the default values.
         /// </summary>
@@ -99,7 +91,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "selection_mode", n => { SelectionMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreDefinitionConfigSelectionMode>(global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreDefinitionConfigSelectionMode.CreateFromDiscriminatorValue); } },
                 { "step", n => { Step = n.GetDoubleValue(); } },
                 { "true_label", n => { TrueLabel = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -118,7 +109,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreDefinitionConfigSelectionMode>("selection_mode", SelectionMode);
             writer.WriteDoubleValue("step", Step);
             writer.WriteStringValue("true_label", TrueLabel);
-            writer.WriteStringValue("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

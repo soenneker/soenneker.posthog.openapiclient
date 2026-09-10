@@ -25,7 +25,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; private set; }
 #endif
-        /// <summary>&quot;Persons actually in the created cohort. Can be lower than `affected_users`: matched distinct IDs without a person profile are dropped, and merged persons deduplicate.&quot;</summary>
+        /// <summary>Persons actually in the created cohort. Can be lower than `affected_users`: matched distinct IDs without a person profile are dropped, and merged persons deduplicate.</summary>
         public int? UsersInCohort { get; private set; }
         /// <summary>Trailing window the cohort was drawn from, in days.</summary>
         public int? WindowDays { get; private set; }

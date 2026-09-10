@@ -18,7 +18,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? BucketStart { get; set; }
         /// <summary>Runs that completed in this bucket.</summary>
         public int? Completed { get; set; }
-        /// <summary>Completed runs that failed in this bucket (conclusion &apos;failure&apos; or &apos;timed_out&apos;); excludes skipped, cancelled, and action_required runs.</summary>
+        /// <summary>Completed runs with conclusion &apos;failure&apos;, &apos;timed_out&apos;, &apos;startup_failure&apos;, or &apos;stale&apos;. Skipped, cancelled, neutral, and action_required runs are excluded.</summary>
         public int? Failures { get; set; }
         /// <summary>Runs started in this bucket.</summary>
         public int? RunCount { get; set; }

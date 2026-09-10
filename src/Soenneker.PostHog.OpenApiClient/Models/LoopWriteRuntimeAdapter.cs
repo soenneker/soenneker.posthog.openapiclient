@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Runtime adapter: &apos;claude&apos; or &apos;codex&apos;.* `claude` - claude* `codex` - codex&quot;
+    /// Runtime adapter: &apos;claude&apos; or &apos;codex&apos;.* `claude` - claude* `codex` - codex
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class LoopWriteRuntimeAdapter : IAdditionalDataHolder, IParsable

@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Normalized text or document anchor.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskCommentEntryAnchor? Anchor { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskCommentAnchor? Anchor { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskCommentEntryAnchor Anchor { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskCommentAnchor Anchor { get; set; }
 #endif
         /// <summary>Comment author&apos;s display name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -79,7 +79,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "anchor", n => { Anchor = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskCommentEntryAnchor>(global::Soenneker.PostHog.OpenApiClient.Models.TaskCommentEntryAnchor.CreateFromDiscriminatorValue); } },
+                { "anchor", n => { Anchor = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskCommentAnchor>(global::Soenneker.PostHog.OpenApiClient.Models.TaskCommentAnchor.CreateFromDiscriminatorValue); } },
                 { "author", n => { Author = n.GetStringValue(); } },
                 { "canvas_version_id", n => { CanvasVersionId = n.GetStringValue(); } },
                 { "content", n => { Content = n.GetStringValue(); } },
@@ -96,7 +96,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskCommentEntryAnchor>("anchor", Anchor);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskCommentAnchor>("anchor", Anchor);
             writer.WriteStringValue("author", Author);
             writer.WriteStringValue("canvas_version_id", CanvasVersionId);
             writer.WriteStringValue("content", Content);

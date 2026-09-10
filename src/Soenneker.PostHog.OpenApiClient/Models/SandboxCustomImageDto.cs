@@ -30,10 +30,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SandboxCustomImageDtoCreatedBy? CreatedBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo? CreatedBy { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SandboxCustomImageDtoCreatedBy CreatedBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo CreatedBy { get; set; }
 #endif
         /// <summary>The description property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -143,7 +143,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "build_log", n => { BuildLog = n.GetStringValue(); } },
                 { "builder_task_id", n => { BuilderTaskId = n.GetGuidValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SandboxCustomImageDtoCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.SandboxCustomImageDtoCreatedBy.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo>(global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "error", n => { Error = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
@@ -169,7 +169,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteGuidValue("builder_task_id", BuilderTaskId);
             writer.WriteStringValue("build_log", BuildLog);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SandboxCustomImageDtoCreatedBy>("created_by", CreatedBy);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo>("created_by", CreatedBy);
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("error", Error);
             writer.WriteGuidValue("id", Id);

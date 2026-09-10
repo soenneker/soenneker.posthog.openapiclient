@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Sending health as judged and enforced by AWS SES for this project&apos;s tenant; null when the caller lacks project-wide workflow access, no tenant is provisioned, or AWS is unreachable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamEmailReputationResponseAws? Aws { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AwsTenantReputation? Aws { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamEmailReputationResponseAws Aws { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AwsTenantReputation Aws { get; private set; }
 #endif
         /// <summary>True while workflow email sending is suspended for this project to protect deliverability.</summary>
         public bool? EmailSendingSuspended { get; private set; }
@@ -34,13 +34,45 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string EmailSendingSuspensionReason { get; private set; }
 #endif
+        /// <summary>Sending health per mailbox provider, busiest first. Empty when the caller lacks project-wide workflow access, no sending domain is verified, or AWS has no data yet.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.IspSendingHealth>? Isps { get; private set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.IspSendingHealth> Isps { get; private set; }
+#endif
+        /// <summary>Sending domains behind the breakdown that another project also sends from, so its counts include that project&apos;s email. Empty when every domain is this project&apos;s alone.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? IspSharedDomains { get; private set; }
+#nullable restore
+#else
+        public List<string> IspSharedDomains { get; private set; }
+#endif
+        /// <summary>Sending domains left out of the breakdown because another project sends from them and the caller cannot access that project. Empty when nothing is withheld.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? IspWithheldDomains { get; private set; }
+#nullable restore
+#else
+        public List<string> IspWithheldDomains { get; private set; }
+#endif
         /// <summary>Project-wide rates across all workflow email in the last 30 days (including sends from since-deleted workflows); null when nothing was sent.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamEmailReputationResponseReputation? Reputation { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EmailSendingRates? Reputation { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamEmailReputationResponseReputation Reputation { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EmailSendingRates Reputation { get; private set; }
+#endif
+        /// <summary>The project&apos;s sending tier, what it allows, and how much of it has been used; null when the caller lacks project-wide workflow access.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.EmailSendingAllowance? SendingAllowance { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.EmailSendingAllowance SendingAllowance { get; private set; }
 #endif
         /// <summary>Rates per workflow, worst first (complaint rate, then bounce rate), capped at the worst 50.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -75,11 +107,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "aws", n => { Aws = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamEmailReputationResponseAws>(global::Soenneker.PostHog.OpenApiClient.Models.TeamEmailReputationResponseAws.CreateFromDiscriminatorValue); } },
+                { "aws", n => { Aws = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AwsTenantReputation>(global::Soenneker.PostHog.OpenApiClient.Models.AwsTenantReputation.CreateFromDiscriminatorValue); } },
                 { "email_sending_suspended", n => { EmailSendingSuspended = n.GetBoolValue(); } },
                 { "email_sending_suspended_at", n => { EmailSendingSuspendedAt = n.GetDateTimeOffsetValue(); } },
                 { "email_sending_suspension_reason", n => { EmailSendingSuspensionReason = n.GetStringValue(); } },
-                { "reputation", n => { Reputation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamEmailReputationResponseReputation>(global::Soenneker.PostHog.OpenApiClient.Models.TeamEmailReputationResponseReputation.CreateFromDiscriminatorValue); } },
+                { "isp_shared_domains", n => { IspSharedDomains = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "isp_withheld_domains", n => { IspWithheldDomains = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "isps", n => { Isps = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.IspSendingHealth>(global::Soenneker.PostHog.OpenApiClient.Models.IspSendingHealth.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "reputation", n => { Reputation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmailSendingRates>(global::Soenneker.PostHog.OpenApiClient.Models.EmailSendingRates.CreateFromDiscriminatorValue); } },
+                { "sending_allowance", n => { SendingAllowance = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmailSendingAllowance>(global::Soenneker.PostHog.OpenApiClient.Models.EmailSendingAllowance.CreateFromDiscriminatorValue); } },
                 { "workflows", n => { Workflows = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowEmailSendingRates>(global::Soenneker.PostHog.OpenApiClient.Models.WorkflowEmailSendingRates.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }

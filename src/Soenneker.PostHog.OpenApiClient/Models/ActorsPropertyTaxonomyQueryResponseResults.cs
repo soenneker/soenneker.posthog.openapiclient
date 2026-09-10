@@ -8,19 +8,11 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQueryResponseResultsBranch2"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyResponse"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyResponse"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ResultsWrapper"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ActorsPropertyTaxonomyQueryResponseResults : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQueryResponseResultsBranch2"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQueryResponseResultsBranch2? ActorsPropertyTaxonomyQueryResponseResultsBranch2 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQueryResponseResultsBranch2 ActorsPropertyTaxonomyQueryResponseResultsBranch2 { get; set; }
-#endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyResponse"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -28,6 +20,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyResponse ActorsPropertyTaxonomyResponse { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ResultsWrapper"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ResultsWrapper? ResultsWrapper { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ResultsWrapper ResultsWrapper { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -38,8 +38,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQueryResponseResults();
-            result.ActorsPropertyTaxonomyQueryResponseResultsBranch2 = new global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQueryResponseResultsBranch2();
             result.ActorsPropertyTaxonomyResponse = new global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyResponse();
+            result.ResultsWrapper = new global::Soenneker.PostHog.OpenApiClient.Models.ResultsWrapper();
             return result;
         }
         /// <summary>
@@ -48,9 +48,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(ActorsPropertyTaxonomyQueryResponseResultsBranch2 != null || ActorsPropertyTaxonomyResponse != null)
+            if(ActorsPropertyTaxonomyResponse != null || ResultsWrapper != null)
             {
-                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ActorsPropertyTaxonomyQueryResponseResultsBranch2, ActorsPropertyTaxonomyResponse);
+                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ActorsPropertyTaxonomyResponse, ResultsWrapper);
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -61,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyQueryResponseResultsBranch2>(null, ActorsPropertyTaxonomyQueryResponseResultsBranch2, ActorsPropertyTaxonomyResponse);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyResponse>(null, ActorsPropertyTaxonomyResponse, ResultsWrapper);
         }
     }
 }

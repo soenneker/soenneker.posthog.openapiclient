@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;Billable CI minutes: each costed (self-hosted) job&apos;s elapsed time, summed. Parallel jobs add up, so this is compute time spent, not wall-clock run duration.&quot;</summary>
+        /// <summary>Billable CI minutes: each costed (self-hosted) job&apos;s elapsed time, summed. Parallel jobs add up, so this is compute time spent, not wall-clock run duration.</summary>
         public double? BillableMinutes { get; set; }
         /// <summary>Same spend broken down per workflow run, keyed by (run_id, run_attempt).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Jobs counted in the estimate (billable Linux runner, finished).</summary>
         public int? CostedJobs { get; set; }
-        /// <summary>&quot;Estimated dollar cost (sum of per-job estimates: elapsed x tier multiplier x reference rate). Null when no job was costable.&quot;</summary>
+        /// <summary>Estimated dollar cost (sum of per-job estimates: elapsed x tier multiplier x reference rate). Null when no job was costable.</summary>
         public double? EstimatedCostUsd { get; set; }
         /// <summary>Jobs on provider-hosted (GitHub-hosted, free) or non-Linux runners — outside the estimate.</summary>
         public int? ExcludedJobs { get; set; }
@@ -43,10 +43,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Agent LLM token spend attributed to this PR by git branch ($ai_git_branch), or null when no generation matched — independent of the CI cost figures, so it can be present even when jobs_available is false. The UI hides the row when null.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PrCostSummaryLlmSpend? LlmSpend { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PrllmSpend? LlmSpend { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PrCostSummaryLlmSpend LlmSpend { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PrllmSpend LlmSpend { get; set; }
 #endif
         /// <summary>Billable Linux jobs still queued/running (no elapsed) — excluded from the estimate.</summary>
         public int? UnsettledJobs { get; set; }
@@ -82,7 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "estimated_cost_usd", n => { EstimatedCostUsd = n.GetDoubleValue(); } },
                 { "excluded_jobs", n => { ExcludedJobs = n.GetIntValue(); } },
                 { "jobs_available", n => { JobsAvailable = n.GetBoolValue(); } },
-                { "llm_spend", n => { LlmSpend = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PrCostSummaryLlmSpend>(global::Soenneker.PostHog.OpenApiClient.Models.PrCostSummaryLlmSpend.CreateFromDiscriminatorValue); } },
+                { "llm_spend", n => { LlmSpend = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PrllmSpend>(global::Soenneker.PostHog.OpenApiClient.Models.PrllmSpend.CreateFromDiscriminatorValue); } },
                 { "unsettled_jobs", n => { UnsettledJobs = n.GetIntValue(); } },
             };
         }
@@ -100,7 +100,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("estimated_cost_usd", EstimatedCostUsd);
             writer.WriteIntValue("excluded_jobs", ExcludedJobs);
             writer.WriteBoolValue("jobs_available", JobsAvailable);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PrCostSummaryLlmSpend>("llm_spend", LlmSpend);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PrllmSpend>("llm_spend", LlmSpend);
             writer.WriteIntValue("unsettled_jobs", UnsettledJobs);
             writer.WriteAdditionalData(AdditionalData);
         }

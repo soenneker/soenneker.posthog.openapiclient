@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.I
         {
         }
         /// <summary>
-        /// &quot;Complete a run: detect removals, verify uploads, trigger diff processing.&quot;
+        /// Complete a run: detect removals, verify uploads, trigger diff processing.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Run"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.I
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.Run>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.Run.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Complete a run: detect removals, verify uploads, trigger diff processing.&quot;
+        /// Complete a run: detect removals, verify uploads, trigger diff processing.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

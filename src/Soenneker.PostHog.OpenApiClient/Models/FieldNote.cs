@@ -56,7 +56,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ElementText { get; set; }
 #endif
-        /// <summary>&quot;Lifecycle of the field note: pending, acknowledged, resolved, or dismissed. Ignored on create.* `pending` - Pending* `acknowledged` - Acknowledged* `resolved` - Resolved* `dismissed` - Dismissed&quot;</summary>
+        /// <summary>Lifecycle of the field note: pending, acknowledged, resolved, or dismissed. Ignored on create.* `pending` - Pending* `acknowledged` - Acknowledged* `resolved` - Resolved* `dismissed` - Dismissed</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.FieldNoteFieldNoteStatus? FieldNoteStatus { get; set; }

@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AutonomyPriorityEnumWrapper5"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper32"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AutonomyPriorityEnumWrapper5"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper35"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SignalUserAutonomyConfigSlackNotificationMinPriority : IComposedTypeWrapper, IParsable
@@ -21,13 +21,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.AutonomyPriorityEnumWrapper5 AutonomyPriorityEnumWrapper5 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper32"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper35"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper32? BlankEnumWrapper32 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper35? BlankEnumWrapper35 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper32 BlankEnumWrapper32 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper35 BlankEnumWrapper35 { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -51,9 +51,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 result.AutonomyPriorityEnumWrapper5 = new global::Soenneker.PostHog.OpenApiClient.Models.AutonomyPriorityEnumWrapper5();
             }
-            else if("BlankEnumWrapper32".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("BlankEnumWrapper35".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.BlankEnumWrapper32 = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper32();
+                result.BlankEnumWrapper35 = new global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper35();
             }
             return result;
         }
@@ -67,9 +67,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 return AutonomyPriorityEnumWrapper5.GetFieldDeserializers();
             }
-            else if(BlankEnumWrapper32 != null)
+            else if(BlankEnumWrapper35 != null)
             {
-                return BlankEnumWrapper32.GetFieldDeserializers();
+                return BlankEnumWrapper35.GetFieldDeserializers();
             }
             else if(NullEnum != null)
             {
@@ -88,9 +88,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutonomyPriorityEnumWrapper5>(null, AutonomyPriorityEnumWrapper5);
             }
-            else if(BlankEnumWrapper32 != null)
+            else if(BlankEnumWrapper35 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper32>(null, BlankEnumWrapper32);
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlankEnumWrapper35>(null, BlankEnumWrapper35);
             }
             else if(NullEnum != null)
             {

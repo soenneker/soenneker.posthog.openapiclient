@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Goal type: EventsNode (PostHog event), ActionsNode (PostHog action), or DataWarehouseNode (external table)* `EventsNode` - EventsNode* `ActionsNode` - ActionsNode* `DataWarehouseNode` - DataWarehouseNode&quot;
+    /// Goal type: EventsNode (PostHog event), ActionsNode (PostHog action), or DataWarehouseNode (external table)* `EventsNode` - EventsNode* `ActionsNode` - ActionsNode* `DataWarehouseNode` - DataWarehouseNode
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class GoalExplanationKind : IAdditionalDataHolder, IParsable

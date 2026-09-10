@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.E
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Event_ingestion_restrictionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/organizations/{%2Did}/projects/{id}/event_ingestion_restrictions", pathParameters)
+        public Event_ingestion_restrictionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/organizations/{%2Did}/projects/{id}/event_ingestion_restrictions{?search*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,26 +30,27 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.E
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Event_ingestion_restrictionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/organizations/{%2Did}/projects/{id}/event_ingestion_restrictions", rawUrl)
+        public Event_ingestion_restrictionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/organizations/{%2Did}/projects/{id}/event_ingestion_restrictions{?search*}", rawUrl)
         {
         }
         /// <summary>
         /// Projects for the current organization.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ProjectBackwardCompat"/></returns>
+        /// <returns>A List&lt;global::Soenneker.PostHog.OpenApiClient.Models.EventIngestionRestriction&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ProjectBackwardCompat?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<List<global::Soenneker.PostHog.OpenApiClient.Models.EventIngestionRestriction>?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Event_ingestion_restrictions.Event_ingestion_restrictionsRequestBuilder.Event_ingestion_restrictionsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ProjectBackwardCompat> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<List<global::Soenneker.PostHog.OpenApiClient.Models.EventIngestionRestriction>> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Event_ingestion_restrictions.Event_ingestion_restrictionsRequestBuilder.Event_ingestion_restrictionsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ProjectBackwardCompat>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ProjectBackwardCompat.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var collectionResult = await RequestAdapter.SendCollectionAsync<global::Soenneker.PostHog.OpenApiClient.Models.EventIngestionRestriction>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.EventIngestionRestriction.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return collectionResult?.AsList();
         }
         /// <summary>
         /// Projects for the current organization.
@@ -58,11 +59,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.E
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Event_ingestion_restrictions.Event_ingestion_restrictionsRequestBuilder.Event_ingestion_restrictionsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Event_ingestion_restrictions.Event_ingestion_restrictionsRequestBuilder.Event_ingestion_restrictionsRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -78,6 +79,23 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.E
         public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Event_ingestion_restrictions.Event_ingestion_restrictionsRequestBuilder WithUrl(string rawUrl)
         {
             return new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.Event_ingestion_restrictions.Event_ingestion_restrictionsRequestBuilder(rawUrl, RequestAdapter);
+        }
+        /// <summary>
+        /// Projects for the current organization.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class Event_ingestion_restrictionsRequestBuilderGetQueryParameters 
+        {
+            /// <summary>A search term.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("search")]
+            public string? Search { get; set; }
+#nullable restore
+#else
+            [QueryParameter("search")]
+            public string Search { get; set; }
+#endif
         }
     }
 }

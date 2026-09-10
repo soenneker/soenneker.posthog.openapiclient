@@ -12,7 +12,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class Credential : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>The access_key property</summary>
+        /// <summary>Access key ID for the bucket the files live in (an AWS access key ID, a Google Cloud HMAC key, or the equivalent for another S3-compatible store).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AccessKey { get; set; }
@@ -20,7 +20,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string AccessKey { get; set; }
 #endif
-        /// <summary>The access_secret property</summary>
+        /// <summary>Secret for the access key. Stored encrypted and never returned by the API.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AccessSecret { get; set; }

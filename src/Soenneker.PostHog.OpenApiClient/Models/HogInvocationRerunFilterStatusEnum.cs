@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `running` - running* `succeeded` - succeeded* `failed` - failed</summary>
+    /// <summary>* `running` - running* `succeeded` - succeeded* `failed` - failed* `canceled` - canceled</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum HogInvocationRerunFilterStatusEnum
     {
@@ -18,6 +18,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "failed")]
         #pragma warning disable CS1591
         Failed,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "canceled")]
+        #pragma warning disable CS1591
+        Canceled,
         #pragma warning restore CS1591
     }
 }

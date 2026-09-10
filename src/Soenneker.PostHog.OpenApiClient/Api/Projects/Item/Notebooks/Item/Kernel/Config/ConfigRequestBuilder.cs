@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Kerne
         {
         }
         /// <summary>
-        /// &quot;Set the notebook&apos;s kernel compute configuration. Applies at sandbox provision time: a currently running kernel keeps its resources until restarted.&quot;
+        /// Set the notebook&apos;s kernel compute configuration. Applies at sandbox provision time: a currently running kernel keeps its resources until restarted.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NotebookKernelConfigResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -54,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Kerne
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.NotebookKernelConfigResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.NotebookKernelConfigResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Set the notebook&apos;s kernel compute configuration. Applies at sandbox provision time: a currently running kernel keeps its resources until restarted.&quot;
+        /// Set the notebook&apos;s kernel compute configuration. Applies at sandbox provision time: a currently running kernel keeps its resources until restarted.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

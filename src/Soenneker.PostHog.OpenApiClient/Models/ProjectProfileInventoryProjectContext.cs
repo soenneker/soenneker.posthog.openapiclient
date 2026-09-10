@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Free-form orientation: human-set product description + registered app URLs.&quot;
+    /// Free-form orientation: human-set product description + registered app URLs.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ProjectProfileInventoryProjectContext : IAdditionalDataHolder, IParsable

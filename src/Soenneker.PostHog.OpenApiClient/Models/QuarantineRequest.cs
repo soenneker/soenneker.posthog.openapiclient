@@ -33,7 +33,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.QuarantineRequestMode Mode { get; set; }
 #endif
-        /// <summary>&quot;What to do: &apos;quarantine&apos; (add or replace an entry and file a tracking issue), &apos;extend&apos; (re-stamp an existing entry&apos;s expiry, reusing its issue), or &apos;remove&apos; (delete the entry). All three open a pull request.* `quarantine` - QUARANTINE* `extend` - EXTEND* `remove` - REMOVE&quot;</summary>
+        /// <summary>What to do: &apos;quarantine&apos; (add or replace an entry and file a tracking issue), &apos;extend&apos; (re-stamp an existing entry&apos;s expiry, reusing its issue), or &apos;remove&apos; (delete the entry). All three open a pull request.* `quarantine` - QUARANTINE* `extend` - EXTEND* `remove` - REMOVE</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.QuarantineRequestOperation? Operation { get; set; }
@@ -65,7 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Repo { get; set; }
 #endif
-        /// <summary>&quot;Test runner the selector targets: &apos;pytest&apos;, &apos;jest&apos;, or &apos;playwright&apos;. Existing entries and Jest file extensions are inferred for older clients that omit it; other selectors default to &apos;pytest&apos;.* `pytest` - PYTEST* `jest` - JEST* `playwright` - PLAYWRIGHT&quot;</summary>
+        /// <summary>Test runner the selector targets: &apos;pytest&apos;, &apos;jest&apos;, or &apos;playwright&apos;. Existing entries and Jest file extensions are inferred for older clients that omit it; other selectors default to &apos;pytest&apos;.* `pytest` - PYTEST* `jest` - JEST* `playwright` - PLAYWRIGHT</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.QuarantineRequestRunner? Runner { get; set; }
@@ -73,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.QuarantineRequestRunner Runner { get; set; }
 #endif
-        /// <summary>&quot;Test selector to act on: an exact test id, a file, a directory, a class prefix, or &apos;product:&lt;dashed-name&gt;&apos;.&quot;</summary>
+        /// <summary>Test selector to act on: an exact test id, a file, a directory, a class prefix, or &apos;product:&lt;dashed-name&gt;&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Selector { get; set; }

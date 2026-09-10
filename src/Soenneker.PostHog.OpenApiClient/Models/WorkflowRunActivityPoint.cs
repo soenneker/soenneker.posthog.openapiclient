@@ -44,7 +44,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? PrNumber { get; set; }
         /// <summary>GitHub Actions run id.</summary>
         public int? RunId { get; set; }
-        /// <summary>&quot;When the run started. Never null on this endpoint: runs without a parseable start timestamp are excluded from the window (they can&apos;t be plotted on the chart&apos;s time axis).&quot;</summary>
+        /// <summary>When the run started. Never null on this endpoint: runs without a parseable start timestamp are excluded from the window (they can&apos;t be plotted on the chart&apos;s time axis).</summary>
         public DateTimeOffset? RunStartedAt { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WorkflowRunActivityPoint"/> and sets the default values.

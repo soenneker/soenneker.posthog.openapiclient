@@ -2,7 +2,6 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
-using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Digest_channels;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Digest_runs;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Pull_requests;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Repo_configs;
@@ -19,11 +18,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class StamphogRequestBuilder : BaseRequestBuilder
     {
-        /// <summary>The digest_channels property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Digest_channels.Digest_channelsRequestBuilder Digest_channels
-        {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Digest_channels.Digest_channelsRequestBuilder(PathParameters, RequestAdapter);
-        }
         /// <summary>The digest_runs property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Digest_runs.Digest_runsRequestBuilder Digest_runs
         {

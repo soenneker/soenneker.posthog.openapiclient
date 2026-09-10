@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Overall health derived from AWS&apos;s verdicts: healthy (no findings), warning (low-impact findings), critical (high-impact findings — sending may be paused), suspended (the SES tenant&apos;s sending is paused). Reflects AWS state only; PostHog-initiated suspensions are reported separately via email_sending_suspended.* `healthy` - healthy* `warning` - warning* `critical` - critical* `suspended` - suspended&quot;
+    /// Overall health derived from AWS&apos;s verdicts: healthy (no findings), warning (low-impact findings), critical (high-impact findings — sending may be paused), suspended (the SES tenant&apos;s sending is paused). Reflects AWS state only; PostHog-initiated suspensions are reported separately via email_sending_suspended.* `healthy` - healthy* `warning` - warning* `critical` - critical* `suspended` - suspended
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AwsTenantReputationHealth : IAdditionalDataHolder, IParsable

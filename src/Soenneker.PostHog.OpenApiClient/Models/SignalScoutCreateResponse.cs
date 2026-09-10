@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Read shape for a per-(team, skill) scout config.One row per `signals-scout-*` skill on the team. The coordinator auto-creates a rowwhen it discovers a scout skill; this serializer lets agents tune the row.</summary>
+        /// <summary>Read shape for a per-(team, skill) scout config.One row per scout skill on the team. The coordinator auto-creates a rowwhen it discovers a scout skill; this serializer lets agents tune the row.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfig? Config { get; set; }

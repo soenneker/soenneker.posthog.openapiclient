@@ -2,7 +2,7 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
-using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Actions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Alerts;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Quota;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners;
@@ -18,10 +18,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class VisionRequestBuilder : BaseRequestBuilder
     {
-        /// <summary>The actions property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Actions.ActionsRequestBuilder Actions
+        /// <summary>The alerts property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Alerts.AlertsRequestBuilder Alerts
         {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Actions.ActionsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Alerts.AlertsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The observations property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.ObservationsRequestBuilder Observations

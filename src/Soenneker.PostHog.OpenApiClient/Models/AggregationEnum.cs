@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `sum` - sum* `avg` - avg* `count` - count* `p95` - p95* `rate` - rate* `increase` - increase* `histogram_quantile` - histogram_quantile</summary>
+    /// <summary>* `sum` - sum* `avg` - avg* `count` - count* `min` - min* `max` - max* `p95` - p95* `rate` - rate* `increase` - increase* `histogram_quantile` - histogram_quantile</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum AggregationEnum
     {
@@ -18,6 +18,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "count")]
         #pragma warning disable CS1591
         Count,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "min")]
+        #pragma warning disable CS1591
+        Min,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "max")]
+        #pragma warning disable CS1591
+        Max,
         #pragma warning restore CS1591
         [EnumMember(Value = "p95")]
         #pragma warning disable CS1591

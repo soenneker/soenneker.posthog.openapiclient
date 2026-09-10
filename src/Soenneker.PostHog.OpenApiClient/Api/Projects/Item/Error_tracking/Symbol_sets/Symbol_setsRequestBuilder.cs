@@ -138,7 +138,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Symbo
             [QueryParameter("search")]
             public string Search { get; set; }
 #endif
-            /// <summary>&quot;Upload status filter: `valid` has an uploaded file, `invalid` is missing a file, `all` returns both.* `all` - all* `valid` - valid* `invalid` - invalid&quot;</summary>
+            /// <summary>Upload status filter: `valid` has an uploaded file, `invalid` is missing a file, `all` returns both.* `all` - all* `valid` - valid* `invalid` - invalid</summary>
             [QueryParameter("status")]
             public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetsListStatusParameter? Status { get; set; }
         }

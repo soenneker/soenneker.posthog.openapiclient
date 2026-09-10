@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Workflow_run_activityRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/engineering_analytics/workflow_run_activity?repo={repo}&workflow_name={workflow_name}{&branch*,date_from*,date_to*,source_id*}", pathParameters)
+        public Workflow_run_activityRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/engineering_analytics/workflow_run_activity?repo={repo}&workflow_name={workflow_name}{&branch*,date_from*,date_to*,run_scope*,source_id*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,11 +30,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Workflow_run_activityRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/engineering_analytics/workflow_run_activity?repo={repo}&workflow_name={workflow_name}{&branch*,date_from*,date_to*,source_id*}", rawUrl)
+        public Workflow_run_activityRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/engineering_analytics/workflow_run_activity?repo={repo}&workflow_name={workflow_name}{&branch*,date_from*,date_to*,run_scope*,source_id*}", rawUrl)
         {
         }
         /// <summary>
-        /// &quot;Compact per-run points for a single workflow over a window (date_from default -30d), newest first, for the run-activity chart: each run&apos;s start time, duration, conclusion, branch, and attributed PR. Optionally scope to a single git branch via `branch`, matching workflow_runs. Leaner and higher-capped than workflow_runs so the chart spans the full window even on busy workflows; `truncated` is true when the cap is hit, so the chart covers only the most recent runs.&quot;
+        /// Compact per-run points for a single workflow over a window (date_from default -30d), newest first, for the run-activity chart: each run&apos;s start time, duration, conclusion, branch, and attributed PR. Optionally scope to a single git branch via `branch` or one run group via `run_scope`, matching workflow_runs. Leaner and higher-capped than workflow_runs so the chart spans the full window even on busy workflows; `truncated` is true when the cap is hit, so the chart covers only the most recent runs.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WorkflowRunActivity"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowRunActivity>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.WorkflowRunActivity.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Compact per-run points for a single workflow over a window (date_from default -30d), newest first, for the run-activity chart: each run&apos;s start time, duration, conclusion, branch, and attributed PR. Optionally scope to a single git branch via `branch`, matching workflow_runs. Leaner and higher-capped than workflow_runs so the chart spans the full window even on busy workflows; `truncated` is true when the cap is hit, so the chart covers only the most recent runs.&quot;
+        /// Compact per-run points for a single workflow over a window (date_from default -30d), newest first, for the run-activity chart: each run&apos;s start time, duration, conclusion, branch, and attributed PR. Optionally scope to a single git branch via `branch` or one run group via `run_scope`, matching workflow_runs. Leaner and higher-capped than workflow_runs so the chart spans the full window even on busy workflows; `truncated` is true when the cap is hit, so the chart covers only the most recent runs.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -80,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Workflow_run_activity.Workflow_run_activityRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// &quot;Compact per-run points for a single workflow over a window (date_from default -30d), newest first, for the run-activity chart: each run&apos;s start time, duration, conclusion, branch, and attributed PR. Optionally scope to a single git branch via `branch`, matching workflow_runs. Leaner and higher-capped than workflow_runs so the chart spans the full window even on busy workflows; `truncated` is true when the cap is hit, so the chart covers only the most recent runs.&quot;
+        /// Compact per-run points for a single workflow over a window (date_from default -30d), newest first, for the run-activity chart: each run&apos;s start time, duration, conclusion, branch, and attributed PR. Optionally scope to a single git branch via `branch` or one run group via `run_scope`, matching workflow_runs. Leaner and higher-capped than workflow_runs so the chart spans the full window even on busy workflows; `truncated` is true when the cap is hit, so the chart covers only the most recent runs.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Workflow_run_activityRequestBuilderGetQueryParameters 
@@ -95,7 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
             [QueryParameter("branch")]
             public string Branch { get; set; }
 #endif
-            /// <summary>&quot;Window start: relative (&apos;-30d&apos;, &apos;-8w&apos;) or ISO8601. Defaults to -30d.&quot;</summary>
+            /// <summary>Window start: relative (&apos;-30d&apos;, &apos;-8w&apos;) or ISO8601. Defaults to -30d.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("date_from")]
@@ -105,7 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
             [QueryParameter("date_from")]
             public string DateFrom { get; set; }
 #endif
-            /// <summary>&quot;Window end: relative or ISO8601. Defaults to now.&quot;</summary>
+            /// <summary>Window end: relative or ISO8601. Defaults to now.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("date_to")]
@@ -125,6 +125,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
             [QueryParameter("repo")]
             public string Repo { get; set; }
 #endif
+            /// <summary>Which group of runs to report on: &apos;all&apos; (default) is every run; &apos;default_branch&apos; is runs on master or main; &apos;pull_request&apos; is runs on PR branches, excluding default-branch and merge-queue runs; &apos;merge_queue&apos; is the gate runs the merge queue fired before a merge landed. Fork PRs carry no PR attribution (a GitHub limitation), so they appear only under &apos;all&apos;. Any other value is a 400.</summary>
+            [QueryParameter("run_scope")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.EngineeringAnalyticsWorkflowRunActivityRunScopeParameter? RunScope { get; set; }
             /// <summary>Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one.</summary>
             [QueryParameter("source_id")]
             public Guid? SourceId { get; set; }

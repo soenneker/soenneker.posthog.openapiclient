@@ -49,26 +49,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>PR-specificity gate result, when the gate ran.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MatchedMetadataSpecificity? Specificity { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SpecificityMetadata? Specificity { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MatchedMetadataSpecificity Specificity { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SpecificityMetadata Specificity { get; set; }
 #endif
         /// <summary>PR-specificity gate result that caused a rejection, when present.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.NoMatchMetadataSpecificityRejection? SpecificityRejection { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SpecificityMetadata? SpecificityRejection { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.NoMatchMetadataSpecificityRejection SpecificityRejection { get; set; }
-#endif
-        /// <summary>Union discriminator</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Type { get; set; }
-#nullable restore
-#else
-        public string Type { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SpecificityMetadata SpecificityRejection { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalMatchMetadata"/> and sets the default values.
@@ -99,9 +91,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "parent_signal_id", n => { ParentSignalId = n.GetStringValue(); } },
                 { "reason", n => { Reason = n.GetStringValue(); } },
                 { "rejected_signal_ids", n => { RejectedSignalIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "specificity", n => { Specificity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MatchedMetadataSpecificity>(global::Soenneker.PostHog.OpenApiClient.Models.MatchedMetadataSpecificity.CreateFromDiscriminatorValue); } },
-                { "specificity_rejection", n => { SpecificityRejection = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NoMatchMetadataSpecificityRejection>(global::Soenneker.PostHog.OpenApiClient.Models.NoMatchMetadataSpecificityRejection.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetStringValue(); } },
+                { "specificity", n => { Specificity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SpecificityMetadata>(global::Soenneker.PostHog.OpenApiClient.Models.SpecificityMetadata.CreateFromDiscriminatorValue); } },
+                { "specificity_rejection", n => { SpecificityRejection = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SpecificityMetadata>(global::Soenneker.PostHog.OpenApiClient.Models.SpecificityMetadata.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -115,9 +106,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("parent_signal_id", ParentSignalId);
             writer.WriteStringValue("reason", Reason);
             writer.WriteCollectionOfPrimitiveValues<string>("rejected_signal_ids", RejectedSignalIds);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MatchedMetadataSpecificity>("specificity", Specificity);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NoMatchMetadataSpecificityRejection>("specificity_rejection", SpecificityRejection);
-            writer.WriteStringValue("type", Type);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SpecificityMetadata>("specificity", Specificity);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SpecificityMetadata>("specificity_rejection", SpecificityRejection);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

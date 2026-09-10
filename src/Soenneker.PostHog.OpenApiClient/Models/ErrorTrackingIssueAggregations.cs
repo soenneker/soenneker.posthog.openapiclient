@@ -29,10 +29,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The volumeRange property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAggregationsVolumeRange? VolumeRange { get; set; }
+        public List<double?>? VolumeRange { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAggregationsVolumeRange VolumeRange { get; set; }
+        public List<double?> VolumeRange { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -56,7 +56,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "sessions", n => { Sessions = n.GetDoubleValue(); } },
                 { "users", n => { Users = n.GetDoubleValue(); } },
                 { "volume_buckets", n => { VolumeBuckets = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.VolumeBucket>(global::Soenneker.PostHog.OpenApiClient.Models.VolumeBucket.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "volumeRange", n => { VolumeRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAggregationsVolumeRange>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAggregationsVolumeRange.CreateFromDiscriminatorValue); } },
+                { "volumeRange", n => { VolumeRange = n.GetCollectionOfPrimitiveValues<double?>()?.AsList(); } },
             };
         }
         /// <summary>
@@ -70,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("sessions", Sessions);
             writer.WriteDoubleValue("users", Users);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.VolumeBucket>("volume_buckets", VolumeBuckets);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAggregationsVolumeRange>("volumeRange", VolumeRange);
+            writer.WriteCollectionOfPrimitiveValues<double?>("volumeRange", VolumeRange);
         }
     }
 }

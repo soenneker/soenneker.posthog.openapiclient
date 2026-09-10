@@ -141,7 +141,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string OrganizationId { get; private set; }
 #endif
-        /// <summary>&quot;How organization_id was resolved: &apos;person&apos; (from the requester&apos;s identity) or &apos;slack_channel_account&apos; (inferred from the customer analytics account linked to the ticket&apos;s Slack channel). Null when organization_id is unset.&quot;</summary>
+        /// <summary>How organization_id was resolved: &apos;person&apos; (from the requester&apos;s identity) or &apos;slack_channel_account&apos; (inferred from the customer analytics account linked to the ticket&apos;s Slack channel). Null when organization_id is unset.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? OrganizationIdSource { get; private set; }
@@ -152,12 +152,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The person property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TicketPersonComposed? Person { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TicketPerson? Person { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TicketPersonComposed Person { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TicketPerson Person { get; private set; }
 #endif
-        /// <summary>&quot;Ticket priority: low, medium, high, or critical. Null if unset.* `low` - Low* `medium` - Medium* `high` - High* `critical` - Critical&quot;</summary>
+        /// <summary>Ticket priority: low, medium, high, or critical. Null if unset.* `low` - Low* `medium` - Medium* `high` - High* `critical` - Critical</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.TicketPriority? Priority { get; set; }
@@ -209,7 +209,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? SlaDueAt { get; set; }
         /// <summary>The snoozed_until property</summary>
         public DateTimeOffset? SnoozedUntil { get; set; }
-        /// <summary>&quot;Ticket status: new, open, pending, on_hold, or resolved* `new` - New* `open` - Open* `pending` - Pending* `on_hold` - On hold* `resolved` - Resolved&quot;</summary>
+        /// <summary>Ticket status: new, open, pending, on_hold, or resolved* `new` - New* `open` - Open* `pending` - Pending* `on_hold` - On hold* `resolved` - Resolved</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.TicketStatus? Status { get; set; }
@@ -290,7 +290,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "message_count", n => { MessageCount = n.GetIntValue(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "organization_id_source", n => { OrganizationIdSource = n.GetStringValue(); } },
-                { "person", n => { Person = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TicketPersonComposed>(global::Soenneker.PostHog.OpenApiClient.Models.TicketPersonComposed.CreateFromDiscriminatorValue); } },
+                { "person", n => { Person = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TicketPerson>(global::Soenneker.PostHog.OpenApiClient.Models.TicketPerson.CreateFromDiscriminatorValue); } },
                 { "priority", n => { Priority = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TicketPriority>(global::Soenneker.PostHog.OpenApiClient.Models.TicketPriority.CreateFromDiscriminatorValue); } },
                 { "session_context", n => { SessionContext = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TicketSessionContext>(global::Soenneker.PostHog.OpenApiClient.Models.TicketSessionContext.CreateFromDiscriminatorValue); } },
                 { "session_id", n => { SessionId = n.GetStringValue(); } },

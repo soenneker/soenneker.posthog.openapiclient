@@ -31,7 +31,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string MessageId { get; set; }
 #endif
-        /// <summary>&quot;Reviewer rating: good or bad.* `good` - good* `bad` - bad&quot;</summary>
+        /// <summary>Reviewer rating: good or bad.* `good` - good* `bad` - bad</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.AiFeedbackRequestRating? Rating { get; set; }

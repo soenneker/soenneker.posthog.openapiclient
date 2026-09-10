@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Bulk
         {
         }
         /// <summary>
-        /// &quot;Transition many reports to a new state in one call.Each id is processed independently: a report whose transition isn&apos;t allowed from itscurrent status is reported as `skipped` (a 409 on the single-report endpoint) and therest still go through. Returns one result per requested id (in request order, afterde-duplication) plus per-outcome counts. The whole call is 200 even on partial failure —inspect `results` / the counts to see what happened.&quot;
+        /// Transition many reports to a new state in one call.Each id is processed independently: a report whose transition isn&apos;t allowed from itscurrent status is reported as `skipped` (a 409 on the single-report endpoint) and therest still go through. Returns one result per requested id (in request order, afterde-duplication) plus per-outcome counts. The whole call is 200 even on partial failure —inspect `results` / the counts to see what happened.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportBulkStateResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -54,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Bulk
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportBulkStateResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SignalReportBulkStateResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Transition many reports to a new state in one call.Each id is processed independently: a report whose transition isn&apos;t allowed from itscurrent status is reported as `skipped` (a 409 on the single-report endpoint) and therest still go through. Returns one result per requested id (in request order, afterde-duplication) plus per-outcome counts. The whole call is 200 even on partial failure —inspect `results` / the counts to see what happened.&quot;
+        /// Transition many reports to a new state in one call.Each id is processed independently: a report whose transition isn&apos;t allowed from itscurrent status is reported as `skipped` (a 409 on the single-report endpoint) and therest still go through. Returns one result per requested id (in request order, afterde-duplication) plus per-outcome counts. The whole call is 200 even on partial failure —inspect `results` / the counts to see what happened.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

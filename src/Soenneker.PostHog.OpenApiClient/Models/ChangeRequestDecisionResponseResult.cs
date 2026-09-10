@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Present only when the vote reached quorum and the change was applied immediately: details of the affected resource (e.g. resource_id, resource_version).&quot;
+    /// Present only when the vote reached quorum and the change was applied immediately: details of the affected resource (e.g. resource_id, resource_version).
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ChangeRequestDecisionResponseResult : IAdditionalDataHolder, IParsable

@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `events` - events* `person-updates` - person-updates* `data-warehouse-table` - data-warehouse-table</summary>
+        /// <summary>* `events` - events* `internal-events` - internal-events* `person-updates` - person-updates* `data-warehouse-table` - data-warehouse-table* `data-warehouse-view` - data-warehouse-view</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersSourceEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersSource"/> and sets the default values.

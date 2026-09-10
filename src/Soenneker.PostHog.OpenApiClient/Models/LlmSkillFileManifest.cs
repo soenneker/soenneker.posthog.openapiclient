@@ -14,6 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Number of characters in the file content.</summary>
+        public int? CharCount { get; set; }
         /// <summary>The content_type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -22,6 +24,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ContentType { get; set; }
 #endif
+        /// <summary>Number of lines in the file content.</summary>
+        public int? LineCount { get; set; }
         /// <summary>The path property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -55,7 +59,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "char_count", n => { CharCount = n.GetIntValue(); } },
                 { "content_type", n => { ContentType = n.GetStringValue(); } },
+                { "line_count", n => { LineCount = n.GetIntValue(); } },
                 { "path", n => { Path = n.GetStringValue(); } },
             };
         }
@@ -66,7 +72,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteIntValue("char_count", CharCount);
             writer.WriteStringValue("content_type", ContentType);
+            writer.WriteIntValue("line_count", LineCount);
             writer.WriteStringValue("path", Path);
             writer.WriteAdditionalData(AdditionalData);
         }

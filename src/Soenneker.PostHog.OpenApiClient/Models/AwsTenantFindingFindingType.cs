@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;What the finding is about: authentication setup (DKIM/DMARC/SPF/BIMI), recipient signals (COMPLAINT/BOUNCE/FEEDBACK_3P), or a blocklist listing (IP_LISTING).* `DKIM` - DKIM* `DMARC` - DMARC* `SPF` - SPF* `BIMI` - BIMI* `COMPLAINT` - COMPLAINT* `BOUNCE` - BOUNCE* `FEEDBACK_3P` - FEEDBACK_3P* `IP_LISTING` - IP_LISTING&quot;
+    /// What the finding is about: authentication setup (DKIM/DMARC/SPF/BIMI), recipient signals (COMPLAINT/BOUNCE/FEEDBACK_3P), or a blocklist listing (IP_LISTING).* `DKIM` - DKIM* `DMARC` - DMARC* `SPF` - SPF* `BIMI` - BIMI* `COMPLAINT` - COMPLAINT* `BOUNCE` - BOUNCE* `FEEDBACK_3P` - FEEDBACK_3P* `IP_LISTING` - IP_LISTING
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AwsTenantFindingFindingType : IAdditionalDataHolder, IParsable

@@ -192,5 +192,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         Vercel,
         #pragma warning restore CS1591
+        [EnumMember(Value = "youtube-analytics")]
+        #pragma warning disable CS1591
+        YoutubeAnalytics,
+        #pragma warning restore CS1591
     }
 }

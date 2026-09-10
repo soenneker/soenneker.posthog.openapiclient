@@ -9,18 +9,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class MatchedRecording : IAdditionalDataHolder, IParsable
+    public partial class MatchedRecording : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MatchedRecording"/> and sets the default values.
-        /// </summary>
-        public MatchedRecording()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
+        /// <summary>The events property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MatchedRecordingEvent>? Events { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MatchedRecordingEvent> Events { get; set; }
+#endif
+        /// <summary>The session_id property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SessionId { get; set; }
+#nullable restore
+#else
+        public string SessionId { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -39,6 +46,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "events", n => { Events = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MatchedRecordingEvent>(global::Soenneker.PostHog.OpenApiClient.Models.MatchedRecordingEvent.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "session_id", n => { SessionId = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -48,7 +57,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteAdditionalData(AdditionalData);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MatchedRecordingEvent>("events", Events);
+            writer.WriteStringValue("session_id", SessionId);
         }
     }
 }

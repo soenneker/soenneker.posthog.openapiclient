@@ -26,7 +26,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? LastLogin { get; private set; }
         /// <summary>* `1` - member* `8` - administrator* `15` - owner</summary>
         public int? Level { get; set; }
-        /// <summary>&quot;How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`.&quot;</summary>
+        /// <summary>How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationMemberSearchMatchType? SearchMatchType { get; private set; }

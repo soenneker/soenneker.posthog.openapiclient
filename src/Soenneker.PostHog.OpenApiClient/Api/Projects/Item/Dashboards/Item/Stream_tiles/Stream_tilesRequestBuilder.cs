@@ -36,20 +36,20 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Stre
         /// <summary>
         /// Stream dashboard metadata and tiles via Server-Sent Events. Sends metadata first, then tiles as they are rendered.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardsStreamTilesRetrieve200Response"/></returns>
+        /// <returns>A <see cref="Stream"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.DashboardsStreamTilesRetrieve200Response?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Stream_tiles.Stream_tilesRequestBuilder.Stream_tilesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Stream?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Stream_tiles.Stream_tilesRequestBuilder.Stream_tilesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.DashboardsStreamTilesRetrieve200Response> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Stream_tiles.Stream_tilesRequestBuilder.Stream_tilesRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Stream> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Stream_tiles.Stream_tilesRequestBuilder.Stream_tilesRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.DashboardsStreamTilesRetrieve200Response>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.DashboardsStreamTilesRetrieve200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Stream dashboard metadata and tiles via Server-Sent Events. Sends metadata first, then tiles as they are rendered.
@@ -67,7 +67,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Stre
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <summary>
@@ -95,12 +94,14 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Stre
             [QueryParameter("filters_override")]
             public string FiltersOverride { get; set; }
 #endif
+            #pragma warning disable CS1591
             [QueryParameter("format")]
             public global::Soenneker.PostHog.OpenApiClient.Models.DashboardsStreamTilesRetrieveFormatParameter? Format { get; set; }
+            #pragma warning restore CS1591
             /// <summary>Layout size for tile positioning. &apos;sm&apos; (default) for standard, &apos;xs&apos; for mobile. The snake_case alias `layout_size` is also accepted for backward compatibility.</summary>
             [QueryParameter("layoutSize")]
             public global::Soenneker.PostHog.OpenApiClient.Models.DashboardsStreamTilesRetrieveLayoutSizeParameter? LayoutSize { get; set; }
-            /// <summary>&quot;Object (or pre-encoded JSON string) to override dashboard variables for this request only (not persisted). Format: {\&quot;&lt;variable_id&gt;\&quot;: {\&quot;code_name\&quot;: \&quot;&lt;code_name&gt;\&quot;, \&quot;variableId\&quot;: \&quot;&lt;variable_id&gt;\&quot;, \&quot;value\&quot;: &lt;new_value&gt;}}. Each entry must include `code_name` — partial entries are silently dropped. The simplest workflow is to call `dashboard-get` first, copy the matching entry from the response, and mutate `value`. Top-level keys replace; nested values are not deep-merged. Ignored when accessed via a sharing token.&quot;</summary>
+            /// <summary>Object (or pre-encoded JSON string) to override dashboard variables for this request only (not persisted). Format: {&quot;&lt;variable_id&gt;&quot;: {&quot;code_name&quot;: &quot;&lt;code_name&gt;&quot;, &quot;variableId&quot;: &quot;&lt;variable_id&gt;&quot;, &quot;value&quot;: &lt;new_value&gt;}}. Each entry must include `code_name` — partial entries are silently dropped. The simplest workflow is to call `dashboard-get` first, copy the matching entry from the response, and mutate `value`. Top-level keys replace; nested values are not deep-merged. Ignored when accessed via a sharing token.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("variables_override")]

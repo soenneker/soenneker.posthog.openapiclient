@@ -29,13 +29,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.DateRange DateRange { get; set; }
 #endif
         /// <summary>The kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Kind { get; set; }
-#nullable restore
-#else
-        public string Kind { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQueryKind? Kind { get; set; }
         /// <summary>The sample_ratio_mismatch property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -88,7 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "bias_risk", n => { BiasRisk = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BiasRisk>(global::Soenneker.PostHog.OpenApiClient.Models.BiasRisk.CreateFromDiscriminatorValue); } },
                 { "date_range", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>(global::Soenneker.PostHog.OpenApiClient.Models.DateRange.CreateFromDiscriminatorValue); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQueryKind>(); } },
                 { "sample_ratio_mismatch", n => { SampleRatioMismatch = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SampleRatioMismatch>(global::Soenneker.PostHog.OpenApiClient.Models.SampleRatioMismatch.CreateFromDiscriminatorValue); } },
                 { "timeseries", n => { Timeseries = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureTimeSeries>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureTimeSeries.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "total_exposures", n => { TotalExposures = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQueryResponseTotalExposuresProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQueryResponseTotalExposuresProperty.CreateFromDiscriminatorValue); } },
@@ -104,7 +98,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BiasRisk>("bias_risk", BiasRisk);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>("date_range", DateRange);
-            writer.WriteStringValue("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQueryKind>("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SampleRatioMismatch>("sample_ratio_mismatch", SampleRatioMismatch);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureTimeSeries>("timeseries", Timeseries);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureQueryResponseTotalExposuresProperty>("total_exposures", TotalExposures);

@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Test events to validate the filter. Each: {\&quot;event_name\&quot;: \&quot;...\&quot;, \&quot;distinct_id\&quot;: \&quot;...\&quot;, \&quot;expected_result\&quot;: \&quot;drop\&quot;|\&quot;ingest\&quot;}&quot;
+    /// Test events to validate the filter. Each: {&quot;event_name&quot;: &quot;...&quot;, &quot;distinct_id&quot;: &quot;...&quot;, &quot;expected_result&quot;: &quot;drop&quot;|&quot;ingest&quot;}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class EventFilterConfigTestCases : IAdditionalDataHolder, IParsable

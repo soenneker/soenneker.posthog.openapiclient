@@ -16,15 +16,31 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Containing space identifier, when applicable.</summary>
         public Guid? ChannelId { get; set; }
+        /// <summary>Who created the containing task, when the match has one.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo? CreatedBy { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo CreatedBy { get; set; }
+#endif
         /// <summary>Search document identifier.</summary>
         public Guid? Id { get; set; }
-        /// <summary>Type of matched resource.* `task` - task* `pull_request` - pull_request* `artifact` - artifact* `channel` - channel</summary>
+        /// <summary>Type of matched resource.* `task` - task* `pull_request` - pull_request* `artifact` - artifact* `channel` - channel* `canvas` - canvas</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskSearchResultKind? Kind { get; set; }
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskSearchResultKind Kind { get; set; }
+#endif
+        /// <summary>Status of the containing task&apos;s most recent run.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummary? LatestRun { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummary LatestRun { get; set; }
 #endif
         /// <summary>Resource-specific navigation metadata.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -33,6 +49,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskSearchResultMetadata Metadata { get; set; }
+#endif
+        /// <summary>What created the containing task, for example &apos;slack&apos;.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? OriginProduct { get; set; }
+#nullable restore
+#else
+        public string OriginProduct { get; set; }
 #endif
         /// <summary>Secondary result context.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -54,6 +78,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Title { get; set; }
 #endif
+        /// <summary>When the matched resource last changed.</summary>
+        public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskSearchResult"/> and sets the default values.
         /// </summary>
@@ -80,13 +106,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "channel_id", n => { ChannelId = n.GetGuidValue(); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo>(global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskSearchResultKind>(global::Soenneker.PostHog.OpenApiClient.Models.TaskSearchResultKind.CreateFromDiscriminatorValue); } },
+                { "latest_run", n => { LatestRun = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummary>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummary.CreateFromDiscriminatorValue); } },
                 { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskSearchResultMetadata>(global::Soenneker.PostHog.OpenApiClient.Models.TaskSearchResultMetadata.CreateFromDiscriminatorValue); } },
+                { "origin_product", n => { OriginProduct = n.GetStringValue(); } },
                 { "subtitle", n => { Subtitle = n.GetStringValue(); } },
                 { "task_id", n => { TaskId = n.GetGuidValue(); } },
                 { "task_run_id", n => { TaskRunId = n.GetGuidValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
+                { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }
         /// <summary>
@@ -97,13 +127,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteGuidValue("channel_id", ChannelId);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo>("created_by", CreatedBy);
             writer.WriteGuidValue("id", Id);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskSearchResultKind>("kind", Kind);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummary>("latest_run", LatestRun);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskSearchResultMetadata>("metadata", Metadata);
+            writer.WriteStringValue("origin_product", OriginProduct);
             writer.WriteStringValue("subtitle", Subtitle);
             writer.WriteGuidValue("task_id", TaskId);
             writer.WriteGuidValue("task_run_id", TaskRunId);
             writer.WriteStringValue("title", Title);
+            writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

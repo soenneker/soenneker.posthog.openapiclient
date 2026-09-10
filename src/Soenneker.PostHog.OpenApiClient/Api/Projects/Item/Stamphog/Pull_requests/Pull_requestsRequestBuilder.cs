@@ -19,9 +19,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Pull_reques
     public partial class Pull_requestsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.stamphog.pull_requests.item collection</summary>
-        /// <param name="position">A UUID string identifying this pull request.</param>
+        /// <param name="position">Unique identifier of the item</param>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Pull_requests.Item.Pull_requestsItemRequestBuilder"/></returns>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Pull_requests.Item.Pull_requestsItemRequestBuilder this[Guid position]
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Pull_requests.Item.Pull_requestsItemRequestBuilder this[string position]
         {
             get
             {
@@ -101,7 +101,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Pull_reques
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
-            /// <summary>&quot;Filter by merge state: true for merged pull requests, false for unmerged.&quot;</summary>
+            /// <summary>Filter by merge state: true for merged pull requests, false for unmerged.</summary>
             [QueryParameter("merged")]
             public bool? Merged { get; set; }
             /// <summary>The initial index from which to return the results.</summary>

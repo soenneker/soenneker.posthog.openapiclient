@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `destination` - Destination* `site_destination` - Site Destination* `internal_destination` - Internal Destination* `source_webhook` - Source Webhook* `warehouse_source_webhook` - Warehouse Source Webhook* `site_app` - Site App* `transformation` - Transformation* `transformation_log` - Transformation Log</summary>
+        /// <summary>* `destination` - Destination* `site_destination` - Site Destination* `internal_destination` - Internal Destination* `source_webhook` - Source Webhook* `warehouse_source_webhook` - Warehouse Source Webhook* `site_app` - Site App* `transformation` - Transformation* `transformation_log` - Transformation Log* `legacy_destination` - Legacy Destination</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionTypeEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionTypeEnumWrapper2"/> and sets the default values.

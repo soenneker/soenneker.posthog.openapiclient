@@ -15,10 +15,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The ch_table_names property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative9ChTableNames? ChTableNames { get; set; }
+        public List<string>? ChTableNames { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative9ChTableNames ChTableNames { get; set; }
+        public List<string> ChTableNames { get; set; }
 #endif
         /// <summary>The errors property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -27,6 +27,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.HogQlNotice> Errors { get; set; }
+#endif
+        /// <summary>One entry per property filter, in query order.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PredicateIndexUsage>? IndexUsage { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PredicateIndexUsage> IndexUsage { get; set; }
 #endif
         /// <summary>The isUsingIndices property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -57,10 +65,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The table_names property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative9TableNames? TableNames { get; set; }
+        public List<string>? TableNames { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative9TableNames TableNames { get; set; }
+        public List<string> TableNames { get; set; }
 #endif
         /// <summary>The warnings property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -88,13 +96,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "ch_table_names", n => { ChTableNames = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative9ChTableNames>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative9ChTableNames.CreateFromDiscriminatorValue); } },
+                { "ch_table_names", n => { ChTableNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "errors", n => { Errors = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogQlNotice>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlNotice.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "index_usage", n => { IndexUsage = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PredicateIndexUsage>(global::Soenneker.PostHog.OpenApiClient.Models.PredicateIndexUsage.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "isUsingIndices", n => { IsUsingIndices = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryIndexUsageWrapper2>(global::Soenneker.PostHog.OpenApiClient.Models.QueryIndexUsageWrapper2.CreateFromDiscriminatorValue); } },
                 { "isValid", n => { IsValid = n.GetBoolValue(); } },
                 { "notices", n => { Notices = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogQlNotice>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlNotice.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "query", n => { Query = n.GetStringValue(); } },
-                { "table_names", n => { TableNames = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative9TableNames>(global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative9TableNames.CreateFromDiscriminatorValue); } },
+                { "table_names", n => { TableNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "warnings", n => { Warnings = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogQlNotice>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlNotice.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -105,13 +114,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative9ChTableNames>("ch_table_names", ChTableNames);
+            writer.WriteCollectionOfPrimitiveValues<string>("ch_table_names", ChTableNames);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogQlNotice>("errors", Errors);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PredicateIndexUsage>("index_usage", IndexUsage);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryIndexUsageWrapper2>("isUsingIndices", IsUsingIndices);
             writer.WriteBoolValue("isValid", IsValid);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogQlNotice>("notices", Notices);
             writer.WriteStringValue("query", Query);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative9TableNames>("table_names", TableNames);
+            writer.WriteCollectionOfPrimitiveValues<string>("table_names", TableNames);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogQlNotice>("warnings", Warnings);
         }
     }

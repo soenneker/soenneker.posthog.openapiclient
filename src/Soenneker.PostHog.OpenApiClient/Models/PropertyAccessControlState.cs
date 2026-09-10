@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Serializes the aggregate state for a property definition.Preserves the existing API shape: ``access_controls`` is the listof rules, plus the available levels and the computed default.&quot;
+    /// Serializes the aggregate state for a property definition.Preserves the existing API shape: ``access_controls`` is the listof rules, plus the available levels and the computed default.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PropertyAccessControlState : IAdditionalDataHolder, IParsable

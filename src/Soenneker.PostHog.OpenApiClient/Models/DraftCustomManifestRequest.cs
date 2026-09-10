@@ -25,10 +25,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>URL of the API documentation to read. Provide this or docs_text; fetched server-side via the egress proxy.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DocsUrl { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DraftCustomManifestRequestDocsUrl? DocsUrl { get; set; }
 #nullable restore
 #else
-        public string DocsUrl { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DraftCustomManifestRequestDocsUrl DocsUrl { get; set; }
 #endif
         /// <summary>Optional human name of the API being connected (e.g. &apos;Acme CRM&apos;). Used only to orient the model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -64,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "docs_text", n => { DocsText = n.GetStringValue(); } },
-                { "docs_url", n => { DocsUrl = n.GetStringValue(); } },
+                { "docs_url", n => { DocsUrl = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DraftCustomManifestRequestDocsUrl>(global::Soenneker.PostHog.OpenApiClient.Models.DraftCustomManifestRequestDocsUrl.CreateFromDiscriminatorValue); } },
                 { "source_name", n => { SourceName = n.GetStringValue(); } },
             };
         }
@@ -76,7 +76,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("docs_text", DocsText);
-            writer.WriteStringValue("docs_url", DocsUrl);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DraftCustomManifestRequestDocsUrl>("docs_url", DocsUrl);
             writer.WriteStringValue("source_name", SourceName);
             writer.WriteAdditionalData(AdditionalData);
         }

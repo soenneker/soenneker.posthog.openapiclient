@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Request body for the batched emissions / emission-reports lookups: the set of run UUIDs toresolve in one call. Collapses the findings UI&apos;s old per-run fan-out (one request — and for thereports lookup, one ClickHouse round-trip — per emitted run) into a single request.&quot;
+    /// Request body for the batched emissions / emission-reports lookups: the set of run UUIDs toresolve in one call. Collapses the findings UI&apos;s old per-run fan-out (one request — and for thereports lookup, one ClickHouse round-trip — per emitted run) into a single request.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ScoutRunIdsBatchRequest : IAdditionalDataHolder, IParsable

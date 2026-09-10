@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Reviewer rating: good or bad.* `good` - good* `bad` - bad&quot;
+    /// Reviewer rating: good or bad.* `good` - good* `bad` - bad
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AiFeedbackRequestRating : IAdditionalDataHolder, IParsable

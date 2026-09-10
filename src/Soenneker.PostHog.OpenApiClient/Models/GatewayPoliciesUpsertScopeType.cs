@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Which scope to resolve: the team default, one member, or one agent.* `team` - Team default* `member` - Member* `agent` - Agent&quot;
+    /// Which scope to resolve: the team default, one member, or one agent.* `team` - Team default* `member` - Member* `agent` - Agent
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class GatewayPoliciesUpsertScopeType : IAdditionalDataHolder, IParsable

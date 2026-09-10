@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `web` - web* `posthog-ios` - posthog-ios* `posthog-android` - posthog-android* `posthog-java` - posthog-java* `posthog-server` - posthog-server* `posthog-node` - posthog-node* `posthog-python` - posthog-python* `posthog-php` - posthog-php* `posthog-ruby` - posthog-ruby* `posthog-go` - posthog-go* `posthog-flutter` - posthog-flutter* `posthog-react-native` - posthog-react-native* `posthog-kmp` - posthog-kmp* `posthog-dotnet` - posthog-dotnet* `posthog-elixir` - posthog-elixir</summary>
+    /// <summary>* `web` - web* `posthog-ios` - posthog-ios* `posthog-android` - posthog-android* `posthog-java` - posthog-java* `posthog-server` - posthog-server* `posthog-node` - posthog-node* `posthog-python` - posthog-python* `posthog-php` - posthog-php* `posthog-ruby` - posthog-ruby* `posthog-go` - posthog-go* `posthog-flutter` - posthog-flutter* `posthog-react-native` - posthog-react-native* `posthog-kmp` - posthog-kmp* `posthog-dotnet` - posthog-dotnet* `posthog-elixir` - posthog-elixir* `posthog-unity` - posthog-unity* `posthog-node-mcp` - posthog-node-mcp* `posthog-python-mcp` - posthog-python-mcp* `posthog-edge` - posthog-edge* `posthog-convex` - posthog-convex* `posthog-rails` - posthog-rails* `posthog-aspnetcore` - posthog-aspnetcore</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum LibEnum
     {
@@ -66,6 +66,34 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "posthog-elixir")]
         #pragma warning disable CS1591
         PosthogElixir,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "posthog-unity")]
+        #pragma warning disable CS1591
+        PosthogUnity,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "posthog-node-mcp")]
+        #pragma warning disable CS1591
+        PosthogNodeMcp,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "posthog-python-mcp")]
+        #pragma warning disable CS1591
+        PosthogPythonMcp,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "posthog-edge")]
+        #pragma warning disable CS1591
+        PosthogEdge,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "posthog-convex")]
+        #pragma warning disable CS1591
+        PosthogConvex,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "posthog-rails")]
+        #pragma warning disable CS1591
+        PosthogRails,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "posthog-aspnetcore")]
+        #pragma warning disable CS1591
+        PosthogAspnetcore,
         #pragma warning restore CS1591
     }
 }

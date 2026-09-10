@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;How far the in-flight review turn has come: fetching the diff, chunking, picking each chunk&apos;s perspectives, reviewing chunks, merging overlapping findings, validating them, or finalizing (building and publishing the review).* `fetching` - fetching* `chunking` - chunking* `selecting` - selecting* `reviewing` - reviewing* `deduplicating` - deduplicating* `validating` - validating* `finalizing` - finalizing&quot;
+    /// How far the in-flight review turn has come: fetching the diff, chunking, picking each chunk&apos;s perspectives, reviewing chunks, merging overlapping findings, validating them, or finalizing (building and publishing the review).* `fetching` - fetching* `chunking` - chunking* `selecting` - selecting* `reviewing` - reviewing* `deduplicating` - deduplicating* `validating` - validating* `finalizing` - finalizing
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ReviewProgressReviewStage : IAdditionalDataHolder, IParsable

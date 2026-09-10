@@ -34,6 +34,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.AlertDelivery> Deliveries { get; private set; }
 #endif
+        /// <summary>The error property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertCheckErrorProperty? Error { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertCheckErrorProperty Error { get; set; }
+#endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>The interval property</summary>
@@ -143,6 +151,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "calculated_value", n => { CalculatedValue = n.GetDoubleValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "deliveries", n => { Deliveries = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AlertDelivery>(global::Soenneker.PostHog.OpenApiClient.Models.AlertDelivery.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "error", n => { Error = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertCheckErrorProperty>(global::Soenneker.PostHog.OpenApiClient.Models.AlertCheckErrorProperty.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "interval", n => { Interval = n.GetStringValue(); } },
                 { "investigation_notebook_short_id", n => { InvestigationNotebookShortId = n.GetStringValue(); } },
@@ -165,6 +174,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertCheckErrorProperty>("error", Error);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

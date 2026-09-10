@@ -8,11 +8,19 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryStatusEnumWrapper3"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryStatusEnumWrapper3"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedDataWarehouseSavedQueryStatus : IComposedTypeWrapper, IParsable
     {
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryStatusEnumWrapper3"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryStatusEnumWrapper3? DataWarehouseSavedQueryStatusEnumWrapper3 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryStatusEnumWrapper3 DataWarehouseSavedQueryStatusEnumWrapper3 { get; set; }
+#endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -20,14 +28,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum NullEnum { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryStatusEnumWrapper3"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryStatusEnumWrapper3? SavedQueryStatusEnumWrapper3 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryStatusEnumWrapper3 SavedQueryStatusEnumWrapper3 { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -39,9 +39,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataWarehouseSavedQueryStatus();
-            if("SavedQueryStatusEnumWrapper3".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("DataWarehouseSavedQueryStatusEnumWrapper3".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.SavedQueryStatusEnumWrapper3 = new global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryStatusEnumWrapper3();
+                result.DataWarehouseSavedQueryStatusEnumWrapper3 = new global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryStatusEnumWrapper3();
             }
             return result;
         }
@@ -51,13 +51,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(NullEnum != null)
+            if(DataWarehouseSavedQueryStatusEnumWrapper3 != null)
+            {
+                return DataWarehouseSavedQueryStatusEnumWrapper3.GetFieldDeserializers();
+            }
+            else if(NullEnum != null)
             {
                 return NullEnum.GetFieldDeserializers();
-            }
-            else if(SavedQueryStatusEnumWrapper3 != null)
-            {
-                return SavedQueryStatusEnumWrapper3.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -68,13 +68,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(NullEnum != null)
+            if(DataWarehouseSavedQueryStatusEnumWrapper3 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryStatusEnumWrapper3>(null, DataWarehouseSavedQueryStatusEnumWrapper3);
+            }
+            else if(NullEnum != null)
             {
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NullEnum>(null, NullEnum);
-            }
-            else if(SavedQueryStatusEnumWrapper3 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryStatusEnumWrapper3>(null, SavedQueryStatusEnumWrapper3);
             }
         }
     }

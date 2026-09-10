@@ -23,13 +23,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>When false, skip serializing each table&apos;s fields (`fields` comes back empty). Defaults to true.</summary>
         public bool? IncludeFields { get; set; }
         /// <summary>The kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Kind { get; set; }
-#nullable restore
-#else
-        public string Kind { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.DatabaseSchemaQueryKind? Kind { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -49,10 +43,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Only serialize these tables (keys as returned in the response, e.g. `events` or `zendesk.groups`). Omit for all tables.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatabaseSchemaQueryTables? Tables { get; set; }
+        public List<string>? Tables { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatabaseSchemaQueryTables Tables { get; set; }
+        public List<string> Tables { get; set; }
 #endif
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -84,10 +78,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "connectionId", n => { ConnectionId = n.GetStringValue(); } },
                 { "includeFields", n => { IncludeFields = n.GetBoolValue(); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DatabaseSchemaQueryKind>(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatabaseSchemaQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.DatabaseSchemaQueryResponse.CreateFromDiscriminatorValue); } },
-                { "tables", n => { Tables = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatabaseSchemaQueryTables>(global::Soenneker.PostHog.OpenApiClient.Models.DatabaseSchemaQueryTables.CreateFromDiscriminatorValue); } },
+                { "tables", n => { Tables = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
                 { "version", n => { Version = n.GetDoubleValue(); } },
             };
@@ -101,10 +95,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("connectionId", ConnectionId);
             writer.WriteBoolValue("includeFields", IncludeFields);
-            writer.WriteStringValue("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DatabaseSchemaQueryKind>("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatabaseSchemaQueryResponse>("response", Response);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatabaseSchemaQueryTables>("tables", Tables);
+            writer.WriteCollectionOfPrimitiveValues<string>("tables", Tables);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
             writer.WriteDoubleValue("version", Version);
         }

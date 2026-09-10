@@ -36,7 +36,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Message { get; private set; }
 #endif
-        /// <summary>&quot;Current provisioning status. Values: waiting (DNS verification pending), issuing (SSL certificate being issued), valid (proxy is live and working), warning (proxy has issues but is operational), erroring (proxy setup failed), deleting (removal in progress), timed_out (DNS verification timed out).* `waiting` - Waiting* `issuing` - Issuing* `valid` - Valid* `warning` - Warning* `erroring` - Erroring* `deleting` - Deleting* `timed_out` - Timed Out&quot;</summary>
+        /// <summary>Whether this managed proxy supports a redirect from its root URL.</summary>
+        public bool? RootRedirectSupported { get; private set; }
+        /// <summary>HTTPS URL that requests to the proxy domain root redirect to, or null when disabled.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? RootRedirectUrl { get; private set; }
+#nullable restore
+#else
+        public string RootRedirectUrl { get; private set; }
+#endif
+        /// <summary>Current provisioning status. Values: waiting (DNS verification pending), issuing (SSL certificate being issued), valid (proxy is live and working), warning (proxy has issues but is operational), erroring (proxy setup failed), deleting (removal in progress), timed_out (DNS verification timed out).* `waiting` - Waiting* `issuing` - Issuing* `valid` - Valid* `warning` - Warning* `erroring` - Erroring* `deleting` - Deleting* `timed_out` - Timed Out</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ProxyRecordStatus? Status { get; private set; }
@@ -84,6 +94,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "domain", n => { Domain = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "message", n => { Message = n.GetStringValue(); } },
+                { "root_redirect_supported", n => { RootRedirectSupported = n.GetBoolValue(); } },
+                { "root_redirect_url", n => { RootRedirectUrl = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProxyRecordStatus>(global::Soenneker.PostHog.OpenApiClient.Models.ProxyRecordStatus.CreateFromDiscriminatorValue); } },
                 { "target_cname", n => { TargetCname = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },

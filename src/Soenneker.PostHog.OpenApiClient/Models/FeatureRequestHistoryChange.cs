@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeBefore Before { get; private set; }
 #endif
-        /// <summary>Request field represented by this change.* `status` - Status* `priority` - Priority* `account` - Account* `product_areas` - Product areas</summary>
+        /// <summary>Request field represented by this change.* `status` - Status* `priority` - Priority* `account` - Account* `accounts` - Accounts* `evidence` - Evidence* `product_areas` - Product areas</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeField? Field { get; private set; }

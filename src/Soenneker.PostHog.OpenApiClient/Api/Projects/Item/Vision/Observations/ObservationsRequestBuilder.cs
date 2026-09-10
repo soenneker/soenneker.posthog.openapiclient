@@ -4,6 +4,9 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.Item;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.Search;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.Search_suggestions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.Search_viewed;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -18,6 +21,21 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ObservationsRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The search property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.Search.SearchRequestBuilder Search
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.Search.SearchRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The search_suggestions property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.Search_suggestions.Search_suggestionsRequestBuilder Search_suggestions
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.Search_suggestions.Search_suggestionsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The search_viewed property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.Search_viewed.Search_viewedRequestBuilder Search_viewed
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.Search_viewed.Search_viewedRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.vision.observations.item collection</summary>
         /// <param name="position">A UUID string identifying this replay observation.</param>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.Item.ObservationsItemRequestBuilder"/></returns>
@@ -47,7 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations
         {
         }
         /// <summary>
-        /// Read-only access to a session&apos;s observations across every scanner the caller can read, for the replay-page dock.
+        /// A session&apos;s observations across every scanner the caller can read, plus the team-level semantic`search` action, which resolves its own scanner scope instead of this queryset.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedReplayObservationList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -65,7 +83,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedReplayObservationList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedReplayObservationList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Read-only access to a session&apos;s observations across every scanner the caller can read, for the replay-page dock.
+        /// A session&apos;s observations across every scanner the caller can read, plus the team-level semantic`search` action, which resolves its own scanner scope instead of this queryset.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -93,7 +111,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.ObservationsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Read-only access to a session&apos;s observations across every scanner the caller can read, for the replay-page dock.
+        /// A session&apos;s observations across every scanner the caller can read, plus the team-level semantic`search` action, which resolves its own scanner scope instead of this queryset.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class ObservationsRequestBuilderGetQueryParameters 
@@ -104,7 +122,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations
             /// <summary>The initial index from which to return the results.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
-            /// <summary>&quot;Sort observations. Plain keys: created_at, started_at, completed_at, status, recording_subject_email. JSONB keys: result_score (scorer), result_verdict (monitor), result_confidence, scanner_version. Prefix with `-` for descending; nullable keys sort nulls last either way.&quot;</summary>
+            /// <summary>Sort observations. Plain keys: created_at, started_at, completed_at, status, recording_subject_email. JSONB keys: result_score (scorer), result_verdict (monitor), result_confidence, scanner_version. Prefix with `-` for descending; nullable keys sort nulls last either way.</summary>
             [QueryParameter("order_by")]
             public global::Soenneker.PostHog.OpenApiClient.Models.VisionObservationsListOrderByParameter? OrderBy { get; set; }
             /// <summary>Session recording id to return observations for.</summary>

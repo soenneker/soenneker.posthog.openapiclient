@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.G
         {
         }
         /// <summary>
-        /// &quot;Surfaces topics the support AI couldn&apos;t answer from the knowledge base.Two list shapes controlled by the ``ticket_id`` query param:- **per-ticket** (``?ticket_id=&lt;uuid&gt;``): individual gap rows for that ticket.- **aggregated** (no ``ticket_id``): gaps grouped by normalized topic with counts,  for the Business knowledge suggestions panel.&quot;
+        /// Surfaces topics the support AI couldn&apos;t answer from the knowledge base.Two list shapes controlled by the ``ticket_id`` query param:- **per-ticket** (``?ticket_id=&lt;uuid&gt;``): individual gap rows for that ticket.- **aggregated** (no ``ticket_id``): gaps grouped by normalized topic with counts,  for the Business knowledge suggestions panel.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeGapSuggestion"/></returns>
         /// <param name="body">The request body</param>
@@ -54,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.G
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeGapSuggestion>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.KnowledgeGapSuggestion.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Surfaces topics the support AI couldn&apos;t answer from the knowledge base.Two list shapes controlled by the ``ticket_id`` query param:- **per-ticket** (``?ticket_id=&lt;uuid&gt;``): individual gap rows for that ticket.- **aggregated** (no ``ticket_id``): gaps grouped by normalized topic with counts,  for the Business knowledge suggestions panel.&quot;
+        /// Surfaces topics the support AI couldn&apos;t answer from the knowledge base.Two list shapes controlled by the ``ticket_id`` query param:- **per-ticket** (``?ticket_id=&lt;uuid&gt;``): individual gap rows for that ticket.- **aggregated** (no ``ticket_id``): gaps grouped by normalized topic with counts,  for the Business knowledge suggestions panel.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

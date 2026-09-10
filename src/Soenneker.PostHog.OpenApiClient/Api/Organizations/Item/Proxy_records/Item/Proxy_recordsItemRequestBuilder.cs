@@ -81,6 +81,26 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Proxy_records.I
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ProxyRecord>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ProxyRecord.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
+        /// Set or clear the HTTPS redirect for requests to the managed proxy domain root.
+        /// </summary>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ProxyRecord"/></returns>
+        /// <param name="body">The request body</param>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ProxyRecord?> PatchAsync(global::Soenneker.PostHog.OpenApiClient.Models.PatchedProxyRecordUpdate body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#nullable restore
+#else
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ProxyRecord> PatchAsync(global::Soenneker.PostHog.OpenApiClient.Models.PatchedProxyRecordUpdate body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ProxyRecord>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ProxyRecord.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+        }
+        /// <summary>
         /// Delete a reverse proxy. For proxies in &apos;waiting&apos;, &apos;erroring&apos;, or &apos;timed_out&apos; status, the record is deleted immediately. For active proxies, a deletion workflow is started to clean up the provisioned infrastructure.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
@@ -96,7 +116,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Proxy_records.I
 #endif
             var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <summary>
@@ -116,6 +135,28 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Proxy_records.I
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
+            return requestInfo;
+        }
+        /// <summary>
+        /// Set or clear the HTTPS redirect for requests to the managed proxy domain root.
+        /// </summary>
+        /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="body">The request body</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public RequestInformation ToPatchRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.PatchedProxyRecordUpdate body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
+#nullable restore
+#else
+        public RequestInformation ToPatchRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.PatchedProxyRecordUpdate body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
+#endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = new RequestInformation(Method.PATCH, UrlTemplate, PathParameters);
+            requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
+            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }
         /// <summary>

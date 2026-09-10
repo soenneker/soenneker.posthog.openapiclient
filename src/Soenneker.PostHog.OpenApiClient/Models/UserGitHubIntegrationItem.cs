@@ -15,10 +15,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Installation account metadata from GitHub.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubIntegrationItemAccount? Account { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubAccount? Account { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubIntegrationItemAccount Account { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubAccount Account { get; set; }
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -41,6 +41,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string InstallationId { get; set; }
+#endif
+        /// <summary>Whether any other PostHog project or personal connection references the same App installation. When false, disconnecting this integration also uninstalls the GitHub App from the connected account or organization.</summary>
+        public bool? InstallationShared { get; set; }
+        /// <summary>`unavailable` means the App was uninstalled or suspended on GitHub and PostHog can no longer mint tokens for it; `connected` otherwise.* `connected` - connected* `unavailable` - unavailable</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubIntegrationItemInstallationStatus? InstallationStatus { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubIntegrationItemInstallationStatus InstallationStatus { get; set; }
 #endif
         /// <summary>Integration kind; always `github` for this API.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -85,11 +95,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "account", n => { Account = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubIntegrationItemAccount>(global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubIntegrationItemAccount.CreateFromDiscriminatorValue); } },
+                { "account", n => { Account = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubAccount>(global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubAccount.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "github_login", n => { GithubLogin = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "installation_id", n => { InstallationId = n.GetStringValue(); } },
+                { "installation_shared", n => { InstallationShared = n.GetBoolValue(); } },
+                { "installation_status", n => { InstallationStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubIntegrationItemInstallationStatus>(global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubIntegrationItemInstallationStatus.CreateFromDiscriminatorValue); } },
                 { "kind", n => { Kind = n.GetStringValue(); } },
                 { "repository_selection", n => { RepositorySelection = n.GetStringValue(); } },
                 { "uses_shared_installation", n => { UsesSharedInstallation = n.GetBoolValue(); } },
@@ -102,11 +114,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubIntegrationItemAccount>("account", Account);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubAccount>("account", Account);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("github_login", GithubLogin);
             writer.WriteGuidValue("id", Id);
             writer.WriteStringValue("installation_id", InstallationId);
+            writer.WriteBoolValue("installation_shared", InstallationShared);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubIntegrationItemInstallationStatus>("installation_status", InstallationStatus);
             writer.WriteStringValue("kind", Kind);
             writer.WriteStringValue("repository_selection", RepositorySelection);
             writer.WriteBoolValue("uses_shared_installation", UsesSharedInstallation);

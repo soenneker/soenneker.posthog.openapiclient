@@ -33,10 +33,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Clustering match/no-match metadata, when present.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalNodeMatchMetadata? MatchMetadata { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalMatchMetadata? MatchMetadata { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalNodeMatchMetadata MatchMetadata { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalMatchMetadata MatchMetadata { get; set; }
 #endif
         /// <summary>ClickHouse document id of the signal.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -101,7 +101,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "content", n => { Content = n.GetStringValue(); } },
                 { "extra", n => { Extra = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalNodeExtra>(global::Soenneker.PostHog.OpenApiClient.Models.SignalNodeExtra.CreateFromDiscriminatorValue); } },
-                { "match_metadata", n => { MatchMetadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalNodeMatchMetadata>(global::Soenneker.PostHog.OpenApiClient.Models.SignalNodeMatchMetadata.CreateFromDiscriminatorValue); } },
+                { "match_metadata", n => { MatchMetadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalMatchMetadata>(global::Soenneker.PostHog.OpenApiClient.Models.SignalMatchMetadata.CreateFromDiscriminatorValue); } },
                 { "signal_id", n => { SignalId = n.GetStringValue(); } },
                 { "source_id", n => { SourceId = n.GetStringValue(); } },
                 { "source_product", n => { SourceProduct = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalNodeSourceProduct>(global::Soenneker.PostHog.OpenApiClient.Models.SignalNodeSourceProduct.CreateFromDiscriminatorValue); } },
@@ -119,7 +119,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("content", Content);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalNodeExtra>("extra", Extra);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalNodeMatchMetadata>("match_metadata", MatchMetadata);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalMatchMetadata>("match_metadata", MatchMetadata);
             writer.WriteStringValue("signal_id", SignalId);
             writer.WriteStringValue("source_id", SourceId);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalNodeSourceProduct>("source_product", SourceProduct);

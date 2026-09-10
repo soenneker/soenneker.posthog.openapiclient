@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;How often to deliver: daily, weekly, monthly, or yearly.* `daily` - Daily* `weekly` - Weekly* `monthly` - Monthly* `yearly` - Yearly&quot;
+    /// How often to deliver: daily, weekly, monthly, or yearly.* `daily` - Daily* `weekly` - Weekly* `monthly` - Monthly* `yearly` - Yearly
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SubscriptionFrequency : IAdditionalDataHolder, IParsable

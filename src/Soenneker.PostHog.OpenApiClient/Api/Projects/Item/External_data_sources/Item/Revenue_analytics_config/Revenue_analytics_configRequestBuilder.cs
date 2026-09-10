@@ -36,22 +36,22 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_source
         /// <summary>
         /// Update the revenue analytics configuration and return the full external data source.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourcesRevenueAnalyticsConfigPartialUpdate200Response"/></returns>
+        /// <returns>A <see cref="Stream"/></returns>
         /// <param name="body">Mixin for serializers to add user access control fields</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourcesRevenueAnalyticsConfigPartialUpdate200Response?> PatchAsync(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSourceSerializers body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Stream?> PatchAsync(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSourceSerializers body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourcesRevenueAnalyticsConfigPartialUpdate200Response> PatchAsync(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSourceSerializers body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Stream> PatchAsync(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSourceSerializers body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourcesRevenueAnalyticsConfigPartialUpdate200Response>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourcesRevenueAnalyticsConfigPartialUpdate200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Update the revenue analytics configuration and return the full external data source.
@@ -71,7 +71,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_source
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.PATCH, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }

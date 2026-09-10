@@ -44,7 +44,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Description { get; set; }
 #endif
         /// <summary>* `allow` - Allow* `reject` - Reject</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.EnforcementModeEnum? EnforcementMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SchemaEnforcementModeEnum? EnforcementMode { get; set; }
         /// <summary>The hidden property</summary>
         public bool? Hidden { get; set; }
         /// <summary>The id property</summary>
@@ -148,7 +148,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEnterpriseEventDefinitionCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedEnterpriseEventDefinitionCreatedBy.CreateFromDiscriminatorValue); } },
                 { "default_columns", n => { DefaultColumns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
-                { "enforcement_mode", n => { EnforcementMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EnforcementModeEnum>(); } },
+                { "enforcement_mode", n => { EnforcementMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SchemaEnforcementModeEnum>(); } },
                 { "hidden", n => { Hidden = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "is_action", n => { IsAction = n.GetBoolValue(); } },
@@ -178,7 +178,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("default_columns", DefaultColumns);
             writer.WriteStringValue("description", Description);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EnforcementModeEnum>("enforcement_mode", EnforcementMode);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SchemaEnforcementModeEnum>("enforcement_mode", EnforcementMode);
             writer.WriteBoolValue("hidden", Hidden);
             writer.WriteStringValue("name", Name);
             writer.WriteIntValue("owner", Owner);

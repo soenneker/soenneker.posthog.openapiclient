@@ -41,13 +41,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Return the matching spans themselves, one row per span (root and child), instead of the whole-trace grouping. Streams the matches under `ORDER BY … LIMIT` rather than grouping every matching span by trace, so a filter on a hot child attribute (e.g. `code.filepath`) stays bounded. Distinct from `rootSpans`, which scopes whole-trace selection. The single-trace waterfall never sets this.</summary>
         public bool? FlatSpans { get; set; }
         /// <summary>The kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Kind { get; set; }
-#nullable restore
-#else
-        public string Kind { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansQueryKind? Kind { get; set; }
         /// <summary>The limit property</summary>
         public int? Limit { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
@@ -91,18 +85,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The serviceNames property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansQueryServiceNames? ServiceNames { get; set; }
+        public List<string>? ServiceNames { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansQueryServiceNames ServiceNames { get; set; }
+        public List<string> ServiceNames { get; set; }
 #endif
         /// <summary>The statusCodes property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansQueryStatusCodes? StatusCodes { get; set; }
+        public List<int?>? StatusCodes { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansQueryStatusCodes StatusCodes { get; set; }
+        public List<int?> StatusCodes { get; set; }
 #endif
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -145,7 +139,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "excludeAttributes", n => { ExcludeAttributes = n.GetBoolValue(); } },
                 { "filterGroup", n => { FilterGroup = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter>(global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter.CreateFromDiscriminatorValue); } },
                 { "flatSpans", n => { FlatSpans = n.GetBoolValue(); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansQueryKind>(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "offset", n => { Offset = n.GetIntValue(); } },
@@ -154,8 +148,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "prefetchSpans", n => { PrefetchSpans = n.GetIntValue(); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansQueryResponse.CreateFromDiscriminatorValue); } },
                 { "rootSpans", n => { RootSpans = n.GetBoolValue(); } },
-                { "serviceNames", n => { ServiceNames = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansQueryServiceNames>(global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansQueryServiceNames.CreateFromDiscriminatorValue); } },
-                { "statusCodes", n => { StatusCodes = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansQueryStatusCodes>(global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansQueryStatusCodes.CreateFromDiscriminatorValue); } },
+                { "serviceNames", n => { ServiceNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "statusCodes", n => { StatusCodes = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
                 { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
                 { "traceId", n => { TraceId = n.GetStringValue(); } },
                 { "version", n => { Version = n.GetDoubleValue(); } },
@@ -173,7 +167,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("excludeAttributes", ExcludeAttributes);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter>("filterGroup", FilterGroup);
             writer.WriteBoolValue("flatSpans", FlatSpans);
-            writer.WriteStringValue("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansQueryKind>("kind", Kind);
             writer.WriteIntValue("limit", Limit);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
             writer.WriteIntValue("offset", Offset);
@@ -182,8 +176,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("prefetchSpans", PrefetchSpans);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansQueryResponse>("response", Response);
             writer.WriteBoolValue("rootSpans", RootSpans);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansQueryServiceNames>("serviceNames", ServiceNames);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansQueryStatusCodes>("statusCodes", StatusCodes);
+            writer.WriteCollectionOfPrimitiveValues<string>("serviceNames", ServiceNames);
+            writer.WriteCollectionOfPrimitiveValues<int?>("statusCodes", StatusCodes);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
             writer.WriteStringValue("traceId", TraceId);
             writer.WriteDoubleValue("version", Version);

@@ -18,10 +18,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Email message content. Replaced as a whole on update — send the complete object.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateContentEmail? Email { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplate? Email { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateContentEmail Email { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplate Email { get; set; }
 #endif
         /// <summary>Templating language for the email content. Always &apos;liquid&apos; — Liquid tags pass through verbatim.* `liquid` - liquid</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -56,7 +56,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "email", n => { Email = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateContentEmail>(global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateContentEmail.CreateFromDiscriminatorValue); } },
+                { "email", n => { Email = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplate>(global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplate.CreateFromDiscriminatorValue); } },
                 { "templating", n => { Templating = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateContentTemplating>(global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateContentTemplating.CreateFromDiscriminatorValue); } },
             };
         }
@@ -67,7 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateContentEmail>("email", Email);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplate>("email", Email);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateContentTemplating>("templating", Templating);
             writer.WriteAdditionalData(AdditionalData);
         }

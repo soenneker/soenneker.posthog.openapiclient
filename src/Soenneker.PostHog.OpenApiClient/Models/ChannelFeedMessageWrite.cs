@@ -25,7 +25,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ChannelFeedMessageWriteEvent Event { get; set; }
 #endif
-        /// <summary>&quot;Structured event data, e.g. {\&quot;context_name\&quot;: \&quot;mobile\&quot;}. At most 8 KB of JSON.&quot;</summary>
+        /// <summary>Structured event data, e.g. {&quot;context_name&quot;: &quot;mobile&quot;}. At most 8 KB of JSON.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ChannelFeedMessageWritePayload? Payload { get; set; }

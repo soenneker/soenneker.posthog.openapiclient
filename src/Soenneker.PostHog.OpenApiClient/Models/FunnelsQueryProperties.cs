@@ -8,19 +8,11 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQueryPropertiesBranch1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQueryPropertiesMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQueryPropertiesMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Properties"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class FunnelsQueryProperties : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQueryPropertiesBranch1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQueryPropertiesBranch1? FunnelsQueryPropertiesBranch1 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQueryPropertiesBranch1 FunnelsQueryPropertiesBranch1 { get; set; }
-#endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQueryPropertiesMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -28,6 +20,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQueryPropertiesMember1 FunnelsQueryPropertiesMember1 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Properties"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.Properties? Properties { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.Properties Properties { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -46,8 +46,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQueryProperties();
-            result.FunnelsQueryPropertiesBranch1 = new global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQueryPropertiesBranch1();
             result.FunnelsQueryPropertiesMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQueryPropertiesMember1();
+            result.Properties = new global::Soenneker.PostHog.OpenApiClient.Models.Properties();
             result.PropertyGroupFilter = new global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter();
             return result;
         }
@@ -57,9 +57,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(FunnelsQueryPropertiesBranch1 != null || FunnelsQueryPropertiesMember1 != null || PropertyGroupFilter != null)
+            if(FunnelsQueryPropertiesMember1 != null || Properties != null || PropertyGroupFilter != null)
             {
-                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(FunnelsQueryPropertiesBranch1, FunnelsQueryPropertiesMember1, PropertyGroupFilter);
+                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(FunnelsQueryPropertiesMember1, Properties, PropertyGroupFilter);
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -70,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQueryPropertiesBranch1>(null, FunnelsQueryPropertiesBranch1, FunnelsQueryPropertiesMember1, PropertyGroupFilter);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQueryPropertiesMember1>(null, FunnelsQueryPropertiesMember1, Properties, PropertyGroupFilter);
         }
     }
 }

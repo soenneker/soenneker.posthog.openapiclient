@@ -18,12 +18,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Raw control-group statistics. When provided, the server derives baseline_value and variance.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeCalculationInputBaselineStats? BaselineStats { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeBaselineStats? BaselineStats { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeCalculationInputBaselineStats BaselineStats { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeBaselineStats BaselineStats { get; set; }
 #endif
-        /// <summary>&quot;Baseline metric value: conversion rate as a fraction 0-1 (funnel), average per user (mean), or the ratio (ratio/retention). Provide this or baseline_stats.&quot;</summary>
+        /// <summary>Baseline metric value: conversion rate as a fraction 0-1 (funnel), average per user (mean), or the ratio (ratio/retention). Provide this or baseline_stats.</summary>
         public double? BaselineValue { get; set; }
         /// <summary>Expected exposures per day. When provided, the response includes the recommended running time.</summary>
         public double? ExposureRatePerDay { get; set; }
@@ -67,7 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "baseline_stats", n => { BaselineStats = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeCalculationInputBaselineStats>(global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeCalculationInputBaselineStats.CreateFromDiscriminatorValue); } },
+                { "baseline_stats", n => { BaselineStats = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeBaselineStats>(global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeBaselineStats.CreateFromDiscriminatorValue); } },
                 { "baseline_value", n => { BaselineValue = n.GetDoubleValue(); } },
                 { "exposure_rate_per_day", n => { ExposureRatePerDay = n.GetDoubleValue(); } },
                 { "metric_type", n => { MetricType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeCalculationInputMetricType>(global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeCalculationInputMetricType.CreateFromDiscriminatorValue); } },
@@ -83,7 +83,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeCalculationInputBaselineStats>("baseline_stats", BaselineStats);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeBaselineStats>("baseline_stats", BaselineStats);
             writer.WriteDoubleValue("baseline_value", BaselineValue);
             writer.WriteDoubleValue("exposure_rate_per_day", ExposureRatePerDay);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeCalculationInputMetricType>("metric_type", MetricType);

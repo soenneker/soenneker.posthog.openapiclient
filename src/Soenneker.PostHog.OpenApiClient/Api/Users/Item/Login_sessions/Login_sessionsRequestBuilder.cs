@@ -107,15 +107,21 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Users.Item.Login_sessions
         {
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("email")]
             public string? Email { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("email")]
             public string Email { get; set; }
+            #pragma warning restore CS1591
 #endif
+            #pragma warning disable CS1591
             [QueryParameter("is_staff")]
             public bool? IsStaff { get; set; }
+            #pragma warning restore CS1591
         }
     }
 }

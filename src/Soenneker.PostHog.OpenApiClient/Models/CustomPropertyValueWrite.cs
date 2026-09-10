@@ -16,7 +16,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>UUID of the custom property definition whose value to set for this account.</summary>
         public Guid? Definition { get; set; }
-        /// <summary>&quot;Value to store, matching the definition&apos;s type: a number for number/currency/percent, a boolean for boolean, an ISO-8601 string for date/datetime, or text for text properties.&quot;</summary>
+        /// <summary>Value to store, matching the definition&apos;s type: a number for number/currency/percent, a boolean for boolean, an ISO-8601 string for date/datetime, an HTTP or HTTPS URL for link properties, or text for text properties. Null clears the current value while preserving its history.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyValueWriteValue? Value { get; set; }

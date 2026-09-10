@@ -18,10 +18,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The author property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskMentionDtoAuthor? Author { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo? Author { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskMentionDtoAuthor Author { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo Author { get; set; }
 #endif
         /// <summary>The channel_id property</summary>
         public Guid? ChannelId { get; set; }
@@ -82,7 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "author", n => { Author = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskMentionDtoAuthor>(global::Soenneker.PostHog.OpenApiClient.Models.TaskMentionDtoAuthor.CreateFromDiscriminatorValue); } },
+                { "author", n => { Author = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo>(global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo.CreateFromDiscriminatorValue); } },
                 { "channel_id", n => { ChannelId = n.GetGuidValue(); } },
                 { "channel_name", n => { ChannelName = n.GetStringValue(); } },
                 { "content", n => { Content = n.GetStringValue(); } },
@@ -100,7 +100,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskMentionDtoAuthor>("author", Author);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo>("author", Author);
             writer.WriteGuidValue("channel_id", ChannelId);
             writer.WriteStringValue("channel_name", ChannelName);
             writer.WriteStringValue("content", Content);

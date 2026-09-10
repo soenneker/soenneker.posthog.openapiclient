@@ -12,7 +12,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class ChartStyle : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>&quot;Line interpolation: straight segments or a smoothed curve through the points.&quot;</summary>
+        /// <summary>Line interpolation: straight segments or a smoothed curve through the points.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.CurveWrapper? Curve { get; set; }

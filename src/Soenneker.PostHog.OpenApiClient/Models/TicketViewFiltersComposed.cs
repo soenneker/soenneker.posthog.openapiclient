@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Saved ticket filter criteria: status, priority, channel, sla, aiTriageResult, assignee, tags, tagsMatch, tagsExclude, dateFrom, dateTo, sorting, and search.&quot;
+    /// Saved ticket filter criteria: status, priority, channel, sla, aiTriageResult, assignee, tags, tagsMatch, tagsExclude, dateFrom, dateTo, sorting, and search.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TicketViewFiltersComposed : IAdditionalDataHolder, IParsable
@@ -23,7 +23,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.AiTriageResultEnum?> AiTriageResult { get; set; }
 #endif
-        /// <summary>&quot;Assignees to match (any of): &apos;unassigned&apos;, &apos;me&apos; (resolved to the requesting user), or an object with type (&apos;user&apos; or &apos;role&apos;) and id. The legacy single-value shape is accepted and normalized to a list.&quot;</summary>
+        /// <summary>Assignees to match (any of): &apos;unassigned&apos;, &apos;me&apos; (resolved to the requesting user), or an object with type (&apos;user&apos; or &apos;role&apos;) and id. Send a list. Views saved earlier can hold a single value instead of a list, or the value &apos;all&apos;. Wrap a single value in a list, and replace &apos;all&apos; with an empty list to apply no assignee filter.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.TicketViewFiltersAssigneeItem>? Assignee { get; set; }
@@ -71,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Search { get; set; }
 #endif
-        /// <summary>&quot;SLA state: &apos;breached&apos; is past due, &apos;at-risk&apos; is due within the next hour, &apos;on-track&apos; has more than an hour remaining. &apos;all&apos; disables the filter.* `breached` - breached* `at-risk` - at-risk* `on-track` - on-track* `all` - all&quot;</summary>
+        /// <summary>SLA state: &apos;breached&apos; is past due, &apos;at-risk&apos; is due within the next hour, &apos;on-track&apos; has more than an hour remaining. &apos;all&apos; disables the filter.* `breached` - breached* `at-risk` - at-risk* `on-track` - on-track* `all` - all</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.TicketViewFiltersSla? Sla { get; set; }
@@ -82,10 +82,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Sort order for the ticket list.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TicketViewFiltersSorting? Sorting { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TicketViewSorting? Sorting { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TicketViewFiltersSorting Sorting { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TicketViewSorting Sorting { get; set; }
 #endif
         /// <summary>Ticket statuses to include. Empty or omitted means all statuses.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -152,7 +152,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "priority", n => { Priority = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.TicketPriorityEnum>()?.AsList(); } },
                 { "search", n => { Search = n.GetStringValue(); } },
                 { "sla", n => { Sla = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TicketViewFiltersSla>(global::Soenneker.PostHog.OpenApiClient.Models.TicketViewFiltersSla.CreateFromDiscriminatorValue); } },
-                { "sorting", n => { Sorting = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TicketViewFiltersSorting>(global::Soenneker.PostHog.OpenApiClient.Models.TicketViewFiltersSorting.CreateFromDiscriminatorValue); } },
+                { "sorting", n => { Sorting = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TicketViewSorting>(global::Soenneker.PostHog.OpenApiClient.Models.TicketViewSorting.CreateFromDiscriminatorValue); } },
                 { "status", n => { Status = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.TicketStatusEnum>()?.AsList(); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "tagsExclude", n => { TagsExclude = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -174,7 +174,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.TicketPriorityEnum>("priority", Priority);
             writer.WriteStringValue("search", Search);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TicketViewFiltersSla>("sla", Sla);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TicketViewFiltersSorting>("sorting", Sorting);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TicketViewSorting>("sorting", Sorting);
             writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.TicketStatusEnum>("status", Status);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteCollectionOfPrimitiveValues<string>("tagsExclude", TagsExclude);

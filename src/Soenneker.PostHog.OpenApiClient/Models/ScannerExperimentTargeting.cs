@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// The experiment a scanner&apos;s targeting watches. Metadata only; scanning never reads it.
+    /// The experiment a scanner watches. Scans derive their person-scoped exposure filter fromthis blob at query time, so it is the only place an experiment can enter a scanner&apos;stargeting — which is what lets the write-side access check and read-side redaction cover it.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ScannerExperimentTargeting : IAdditionalDataHolder, IParsable
@@ -17,15 +17,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The experiment the scanner watches.</summary>
         public int? ExperimentId { get; set; }
-        /// <summary>True when the exposure event is captured server-side and the query filters on the `$feature/&lt;flag_key&gt;` property instead.</summary>
-        public bool? UseExposureFallback { get; set; }
-        /// <summary>Targeted experiment variants. Empty means every variant.</summary>
+        /// <summary>Narrow to sessions of people exposed to this variant. Null means every variant.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? VariantKeys { get; set; }
+        public string? Variant { get; set; }
 #nullable restore
 #else
-        public List<string> VariantKeys { get; set; }
+        public string Variant { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ScannerExperimentTargeting"/> and sets the default values.
@@ -53,8 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "experiment_id", n => { ExperimentId = n.GetIntValue(); } },
-                { "use_exposure_fallback", n => { UseExposureFallback = n.GetBoolValue(); } },
-                { "variant_keys", n => { VariantKeys = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "variant", n => { Variant = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -65,8 +62,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("experiment_id", ExperimentId);
-            writer.WriteBoolValue("use_exposure_fallback", UseExposureFallback);
-            writer.WriteCollectionOfPrimitiveValues<string>("variant_keys", VariantKeys);
+            writer.WriteStringValue("variant", Variant);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

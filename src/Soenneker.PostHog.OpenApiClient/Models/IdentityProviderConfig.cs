@@ -14,8 +14,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Feature configured by this identity provider configuration.* `saml` - Saml* `scim` - Scim* `xaa` - Xaa</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.IdentityProviderConfigConfigScope? ConfigScope { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.IdentityProviderConfigConfigScope ConfigScope { get; set; }
+#endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
+        /// <summary>Domains this configuration applies to. An unset value behaves like selected domains.* `all` - All* `selected` - Selected</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.IdentityProviderConfigDomainScope? DomainScope { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.IdentityProviderConfigDomainScope DomainScope { get; set; }
+#endif
         /// <summary>Whether ID-JAG (XAA) is configured on this config.</summary>
         public bool? HasIdJag { get; private set; }
         /// <summary>Whether SAML is fully configured on this config.</summary>
@@ -56,6 +72,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
+        /// <summary>Organization domain IDs that this identity provider configuration applies to.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<Guid?>? OrganizationDomainIds { get; set; }
+#nullable restore
+#else
+        public List<Guid?> OrganizationDomainIds { get; set; }
+#endif
         /// <summary>SAML single sign-on (ACS) URL the IdP redirects to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -72,6 +96,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SamlEntityId { get; set; }
 #endif
+        /// <summary>Stable UUID sent as SAML RelayState to route authentication responses to this IdP configuration.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SamlRelayState { get; private set; }
+#nullable restore
+#else
+        public string SamlRelayState { get; private set; }
+#endif
         /// <summary>SAML IdP X.509 signing certificate (PEM).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -79,6 +111,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string SamlX509Cert { get; set; }
+#endif
+        /// <summary>SCIM base URL for this identity provider configuration.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ScimBaseUrl { get; private set; }
+#nullable restore
+#else
+        public string ScimBaseUrl { get; private set; }
 #endif
         /// <summary>Plaintext SCIM bearer token. Only returned once, immediately after SCIM is enabled or the token is regenerated; null otherwise.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -117,7 +157,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "config_scope", n => { ConfigScope = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IdentityProviderConfigConfigScope>(global::Soenneker.PostHog.OpenApiClient.Models.IdentityProviderConfigConfigScope.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
+                { "domain_scope", n => { DomainScope = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IdentityProviderConfigDomainScope>(global::Soenneker.PostHog.OpenApiClient.Models.IdentityProviderConfigDomainScope.CreateFromDiscriminatorValue); } },
                 { "has_id_jag", n => { HasIdJag = n.GetBoolValue(); } },
                 { "has_saml", n => { HasSaml = n.GetBoolValue(); } },
                 { "has_scim", n => { HasScim = n.GetBoolValue(); } },
@@ -126,9 +168,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id_jag_issuer_url", n => { IdJagIssuerUrl = n.GetStringValue(); } },
                 { "id_jag_jwks_url", n => { IdJagJwksUrl = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "organization_domain_ids", n => { OrganizationDomainIds = n.GetCollectionOfPrimitiveValues<Guid?>()?.AsList(); } },
                 { "saml_acs_url", n => { SamlAcsUrl = n.GetStringValue(); } },
                 { "saml_entity_id", n => { SamlEntityId = n.GetStringValue(); } },
+                { "saml_relay_state", n => { SamlRelayState = n.GetStringValue(); } },
                 { "saml_x509_cert", n => { SamlX509Cert = n.GetStringValue(); } },
+                { "scim_base_url", n => { ScimBaseUrl = n.GetStringValue(); } },
                 { "scim_bearer_token", n => { ScimBearerToken = n.GetStringValue(); } },
                 { "scim_enabled", n => { ScimEnabled = n.GetBoolValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
@@ -141,10 +186,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IdentityProviderConfigConfigScope>("config_scope", ConfigScope);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IdentityProviderConfigDomainScope>("domain_scope", DomainScope);
             writer.WriteCollectionOfPrimitiveValues<string>("id_jag_allowed_clients", IdJagAllowedClients);
             writer.WriteStringValue("id_jag_issuer_url", IdJagIssuerUrl);
             writer.WriteStringValue("id_jag_jwks_url", IdJagJwksUrl);
             writer.WriteStringValue("name", Name);
+            writer.WriteCollectionOfPrimitiveValues<Guid?>("organization_domain_ids", OrganizationDomainIds);
             writer.WriteStringValue("saml_acs_url", SamlAcsUrl);
             writer.WriteStringValue("saml_entity_id", SamlEntityId);
             writer.WriteStringValue("saml_x509_cert", SamlX509Cert);

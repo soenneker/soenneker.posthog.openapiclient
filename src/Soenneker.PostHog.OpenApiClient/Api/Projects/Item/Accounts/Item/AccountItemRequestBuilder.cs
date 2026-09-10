@@ -7,6 +7,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Custom_pro
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Email_threads;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Meetings;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Notebooks;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Presence;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Relationships;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Summaries;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Support_tickets;
@@ -43,6 +44,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Notebooks.NotebooksRequestBuilder Notebooks
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Notebooks.NotebooksRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The presence property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Presence.PresenceRequestBuilder Presence
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Presence.PresenceRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The relationships property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Relationships.RelationshipsRequestBuilder Relationships
@@ -151,7 +157,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item
 #endif
             var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <returns>A <see cref="RequestInformation"/></returns>

@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ColumnId { get; set; }
 #endif
-        /// <summary>&quot;add_content only. A content block {type, values: {...}}; omit id and values._meta — they&apos;re assigned server-side. type is one of text, heading, button, image, divider, html, etc.&quot;</summary>
+        /// <summary>add_content only. A content block {type, values: {...}}; omit id and values._meta — they&apos;re assigned server-side. type is one of text, heading, button, image, divider, html, etc.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.DesignOperationContent? Content { get; set; }
@@ -40,7 +40,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>add_*/move_content only. 0-based insert position; omit to append to the end.</summary>
         public int? Index { get; set; }
-        /// <summary>&quot;Design edit. update_content {id, patch}: deep-merge patch into the content block&apos;s fields (a null leaf deletes that key) — the surgical path, e.g. change just values.text. update_row / update_column {id, patch} and update_body {patch}: same deep-merge for row/column/body-level settings. add_content {column_id, content, index?}: insert a content block into a column (id and Unlayer numbering are filled in for you). remove_content {id} / move_content {id, column_id, index?}: delete or relocate a block. add_row {row, index?} / remove_row {id}: add or delete a row.* `update_content` - update_content* `update_column` - update_column* `update_row` - update_row* `update_body` - update_body* `add_content` - add_content* `remove_content` - remove_content* `move_content` - move_content* `add_row` - add_row* `remove_row` - remove_row&quot;</summary>
+        /// <summary>Design edit. update_content {id, patch}: deep-merge patch into the content block&apos;s fields (a null leaf deletes that key) — the surgical path, e.g. change just values.text. update_row / update_column {id, patch} and update_body {patch}: same deep-merge for row/column/body-level settings. add_content {column_id, content, index?}: insert a content block into a column (id and Unlayer numbering are filled in for you). remove_content {id} / move_content {id, column_id, index?}: delete or relocate a block. add_row {row, index?} / remove_row {id}: add or delete a row.* `update_content` - update_content* `update_column` - update_column* `update_row` - update_row* `update_body` - update_body* `add_content` - add_content* `remove_content` - remove_content* `move_content` - move_content* `add_row` - add_row* `remove_row` - remove_row</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.DesignOperationOp? Op { get; set; }
@@ -48,7 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.DesignOperationOp Op { get; set; }
 #endif
-        /// <summary>&quot;update_* only. Partial fields deep-merged into the existing node; a null leaf deletes that key. e.g. {values: {text: &apos;&lt;p&gt;Hi&lt;/p&gt;&apos;}} changes only the block&apos;s text.&quot;</summary>
+        /// <summary>update_* only. Partial fields deep-merged into the existing node; a null leaf deletes that key. e.g. {values: {text: &apos;&lt;p&gt;Hi&lt;/p&gt;&apos;}} changes only the block&apos;s text.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.DesignOperationPatch? Patch { get; set; }
@@ -56,7 +56,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.DesignOperationPatch Patch { get; set; }
 #endif
-        /// <summary>&quot;add_row only. A full row {cells, columns: [{contents: [...], values}], values}; ids and Unlayer numbering are assigned server-side for the row and everything nested in it.&quot;</summary>
+        /// <summary>add_row only. A full row {cells, columns: [{contents: [...], values}], values}; ids and Unlayer numbering are assigned server-side for the row and everything nested in it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.DesignOperationRow? Row { get; set; }

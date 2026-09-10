@@ -16,9 +16,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Committed-but-unspent credits of the organization&apos;s active backfills. A one-off charge rather than a rate, so it lands in full regardless of how much of the period is left.</summary>
         public int? BackfillsCommittedCredits { get; private set; }
-        /// <summary>&quot;Credits the org may spend per billing period (1 credit = $0.01). Null when billing has synced the product with no spend limit: uncapped.&quot;</summary>
+        /// <summary>Credits the organization may spend per billing period (1 credit = $0.01). 0 is a hard block: no observation can start. Null when billing has synced the product with no spend limit: uncapped.</summary>
         public int? CreditLimit { get; private set; }
-        /// <summary>&quot;Credits spent this period: succeeded observations from the receipt ledger plus reserved in-flight observations.&quot;</summary>
+        /// <summary>Credits held by in-flight observations and running prompt tests across every project in the organization. Released without charge when the work fails, settled into `credits_settled` when it succeeds.</summary>
+        public int? CreditsReserved { get; private set; }
+        /// <summary>Credits posted to the receipt ledger by succeeded observations and finished prompt-test sessions this period, across every project in the organization. Deleting an observation never refunds these.</summary>
+        public int? CreditsSettled { get; private set; }
+        /// <summary>`credits_settled` plus `credits_reserved`: the organization&apos;s total draw on `credit_limit` this period, across every project.</summary>
         public int? CreditsUsed { get; private set; }
         /// <summary>True when `credits_used &gt;= credit_limit`; further observations are skipped until next period. Always false when uncapped.</summary>
         public bool? Exhausted { get; private set; }
@@ -32,7 +36,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? ProjectedMonthlyCredits { get; private set; }
         /// <summary>`credit_limit - credits_used`, floored at 0. Null when uncapped.</summary>
         public int? Remaining { get; private set; }
-        /// <summary>&quot;Credit-weighted sum of enabled scanners&apos; projected observations/month across the organization. A monthly rate: only the part falling in the days left of the period lands this period. Scanners without a computed estimate contribute 0.&quot;</summary>
+        /// <summary>Credit-weighted sum of enabled scanners&apos; projected observations/month across the organization. A capped scanner contributes at most what its own credit limit has left this period, folded back into a 30-day rate. A monthly rate: only the part falling in the days left of the period lands this period. Scanners without a computed estimate contribute 0.</summary>
         public int? ScannersMonthlyCredits { get; private set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.VisionQuota"/> and sets the default values.
@@ -61,6 +65,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "backfills_committed_credits", n => { BackfillsCommittedCredits = n.GetIntValue(); } },
                 { "credit_limit", n => { CreditLimit = n.GetIntValue(); } },
+                { "credits_reserved", n => { CreditsReserved = n.GetIntValue(); } },
+                { "credits_settled", n => { CreditsSettled = n.GetIntValue(); } },
                 { "credits_used", n => { CreditsUsed = n.GetIntValue(); } },
                 { "exhausted", n => { Exhausted = n.GetBoolValue(); } },
                 { "free_monthly_credits", n => { FreeMonthlyCredits = n.GetIntValue(); } },

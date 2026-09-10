@@ -3,10 +3,9 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
+    /// <summary>* `canonical` - canonical* `custom` - custom</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public enum ScoutOriginEnum
-    #pragma warning restore CS1591
     {
         [EnumMember(Value = "canonical")]
         #pragma warning disable CS1591

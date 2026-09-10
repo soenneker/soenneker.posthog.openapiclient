@@ -59,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Review_hog.Reviews
         {
         }
         /// <summary>
-        /// &quot;Recent ReviewHog reviews on this project: actively running reviews first (with the in-flight turn&apos;s stage), then the most recent completed ones — at most `limit` rows (default 5), plus `has_more` for whether a larger `limit` would reveal more. By default only the requesting user&apos;s reviews; `scope=everyone` lists every review on the project.&quot;
+        /// Recent ReviewHog reviews on this project: actively running reviews first (with the in-flight turn&apos;s stage), then the most recent completed ones — at most `limit` rows (default 5), plus `has_more` for whether a larger `limit` would reveal more. By default only the requesting user&apos;s reviews; `scope=everyone` lists every review on the project.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReviewRecentReviewsPage"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -77,7 +77,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Review_hog.Reviews
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRecentReviewsPage>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ReviewRecentReviewsPage.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Recent ReviewHog reviews on this project: actively running reviews first (with the in-flight turn&apos;s stage), then the most recent completed ones — at most `limit` rows (default 5), plus `has_more` for whether a larger `limit` would reveal more. By default only the requesting user&apos;s reviews; `scope=everyone` lists every review on the project.&quot;
+        /// Recent ReviewHog reviews on this project: actively running reviews first (with the in-flight turn&apos;s stage), then the most recent completed ones — at most `limit` rows (default 5), plus `has_more` for whether a larger `limit` would reveal more. By default only the requesting user&apos;s reviews; `scope=everyone` lists every review on the project.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -105,7 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Review_hog.Reviews
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Review_hog.Reviews.ReviewsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// &quot;Recent ReviewHog reviews on this project: actively running reviews first (with the in-flight turn&apos;s stage), then the most recent completed ones — at most `limit` rows (default 5), plus `has_more` for whether a larger `limit` would reveal more. By default only the requesting user&apos;s reviews; `scope=everyone` lists every review on the project.&quot;
+        /// Recent ReviewHog reviews on this project: actively running reviews first (with the in-flight turn&apos;s stage), then the most recent completed ones — at most `limit` rows (default 5), plus `has_more` for whether a larger `limit` would reveal more. By default only the requesting user&apos;s reviews; `scope=everyone` lists every review on the project.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class ReviewsRequestBuilderGetQueryParameters 
@@ -113,7 +113,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Review_hog.Reviews
             /// <summary>Maximum rows to return. The list grows this instead of paging by offset — in-progress rows reorder the list between refreshes, so offset pages would shift under the reader.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
-            /// <summary>&quot;Whose reviews to list: `mine` (the default) for reviews the requesting user ran plus reviews of pull requests they authored (matched via their linked GitHub login), `everyone` for every review on this project.* `mine` - mine* `everyone` - everyone&quot;</summary>
+            /// <summary>Whose reviews to list: `mine` (the default) for reviews the requesting user ran plus reviews of pull requests they authored (matched via their linked GitHub login), `everyone` for every review on this project.* `mine` - mine* `everyone` - everyone</summary>
             [QueryParameter("scope")]
             public global::Soenneker.PostHog.OpenApiClient.Models.ReviewHogReviewsListScopeParameter? Scope { get; set; }
         }

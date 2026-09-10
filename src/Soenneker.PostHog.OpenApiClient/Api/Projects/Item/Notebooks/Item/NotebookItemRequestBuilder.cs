@@ -5,10 +5,10 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Activity;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Collab;
-using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Hogql;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Kernel;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Sharing;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Sql_v2;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Widgets;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -33,11 +33,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Collab.CollabRequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>The hogql property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Hogql.HogqlRequestBuilder Hogql
-        {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Hogql.HogqlRequestBuilder(PathParameters, RequestAdapter);
-        }
         /// <summary>The kernel property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Kernel.KernelRequestBuilder Kernel
         {
@@ -52,6 +47,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Sql_v2.Sql_v2RequestBuilder Sql_v2
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Sql_v2.Sql_v2RequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The widgets property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Widgets.WidgetsRequestBuilder Widgets
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Widgets.WidgetsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.NotebookItemRequestBuilder"/> and sets the default values.
@@ -72,19 +72,20 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item
         /// <summary>
         /// Hard delete of this model is not allowed. Use a patch API call to set &quot;deleted&quot; to true
         /// </summary>
+        /// <returns>A <see cref="Stream"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Stream?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Stream> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// The API for interacting with Notebooks. This feature is in early access and the API can have breaking changes without announcement.
@@ -160,7 +161,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item
 #endif
             var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <summary>

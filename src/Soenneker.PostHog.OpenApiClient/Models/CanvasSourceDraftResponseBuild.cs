@@ -56,10 +56,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The frozen artifact manifest — present once the build is ready.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuildManifest? Manifest { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifest? Manifest { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuildManifest Manifest { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifest Manifest { get; set; }
 #endif
         /// <summary>Pinned builds are retained for the lifetime of the canvas.</summary>
         public bool? Pinned { get; set; }
@@ -97,7 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "finished_at", n => { FinishedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "integrity", n => { Integrity = n.GetStringValue(); } },
-                { "manifest", n => { Manifest = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuildManifest>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuildManifest.CreateFromDiscriminatorValue); } },
+                { "manifest", n => { Manifest = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifest>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifest.CreateFromDiscriminatorValue); } },
                 { "pinned", n => { Pinned = n.GetBoolValue(); } },
                 { "source_version_id", n => { SourceVersionId = n.GetGuidValue(); } },
             };
@@ -115,7 +115,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("finished_at", FinishedAt);
             writer.WriteGuidValue("id", Id);
             writer.WriteStringValue("integrity", Integrity);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuildManifest>("manifest", Manifest);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifest>("manifest", Manifest);
             writer.WriteBoolValue("pinned", Pinned);
             writer.WriteGuidValue("source_version_id", SourceVersionId);
             writer.WriteAdditionalData(AdditionalData);

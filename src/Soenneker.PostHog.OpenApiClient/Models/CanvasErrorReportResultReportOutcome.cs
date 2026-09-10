@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;filed: a new report row was written. duplicate: this build and error type were already reported. no_authoring_task: the canvas has no linked task to notify. skipped: thread updates are unavailable.* `filed` - filed* `duplicate` - duplicate* `no_authoring_task` - no_authoring_task* `skipped` - skipped&quot;
+    /// filed: a new report row was written. duplicate: this build and error type were already reported. no_authoring_task: the canvas has no linked task to notify. skipped: thread updates are unavailable.* `filed` - filed* `duplicate` - duplicate* `no_authoring_task` - no_authoring_task* `skipped` - skipped
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CanvasErrorReportResultReportOutcome : IAdditionalDataHolder, IParsable

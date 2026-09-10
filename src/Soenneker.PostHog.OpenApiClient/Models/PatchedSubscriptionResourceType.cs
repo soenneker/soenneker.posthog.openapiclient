@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;What the subscription delivers: &apos;insight&apos; (snapshot of one insight), &apos;dashboard&apos; (snapshot of one dashboard), or &apos;ai_prompt&apos; (LLM-generated report). Read-only — derived from the populated target (insight → insight, dashboard → dashboard, prompt → ai_prompt).* `insight` - Insight* `dashboard` - Dashboard* `ai_prompt` - AI prompt&quot;
+    /// What the subscription delivers: &apos;insight&apos; (snapshot of one insight), &apos;dashboard&apos; (snapshot of one dashboard), or &apos;ai_prompt&apos; (LLM-generated report). Read-only — derived from the populated target (insight → insight, dashboard → dashboard, prompt → ai_prompt).* `insight` - Insight* `dashboard` - Dashboard* `ai_prompt` - AI prompt
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedSubscriptionResourceType : IAdditionalDataHolder, IParsable
@@ -16,7 +16,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `insight` - Insight* `dashboard` - Dashboard* `ai_prompt` - AI prompt</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ResourceTypeEnum? Value { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionResourceTypeEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionResourceType"/> and sets the default values.
         /// </summary>
@@ -42,7 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "value", n => { Value = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ResourceTypeEnum>(); } },
+                { "value", n => { Value = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionResourceTypeEnum>(); } },
             };
         }
         /// <summary>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ResourceTypeEnum>("value", Value);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionResourceTypeEnum>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

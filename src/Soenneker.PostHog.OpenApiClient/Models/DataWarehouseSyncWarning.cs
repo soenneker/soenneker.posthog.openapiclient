@@ -9,18 +9,59 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class DataWarehouseSyncWarning : IAdditionalDataHolder, IParsable
+    public partial class DataWarehouseSyncWarning : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSyncWarning"/> and sets the default values.
-        /// </summary>
-        public DataWarehouseSyncWarning()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
+        /// <summary>Human-readable warning shown to the user</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Message { get; set; }
+#nullable restore
+#else
+        public string Message { get; set; }
+#endif
+        /// <summary>Name of the ExternalDataSchema responsible for syncing the table</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SchemaName { get; set; }
+#nullable restore
+#else
+        public string SchemaName { get; set; }
+#endif
+        /// <summary>ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SourceId { get; set; }
+#nullable restore
+#else
+        public string SourceId { get; set; }
+#endif
+        /// <summary>Source type, e.g. &quot;Stripe&quot;, &quot;Hubspot&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SourceType { get; set; }
+#nullable restore
+#else
+        public string SourceType { get; set; }
+#endif
+        /// <summary>Sync status that triggered the warning, e.g. &quot;Failed&quot;, &quot;Paused&quot;, &quot;BillingLimitReached&quot;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Status { get; set; }
+#nullable restore
+#else
+        public string Status { get; set; }
+#endif
+        /// <summary>Name of the warehouse table the warning refers to</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? TableName { get; set; }
+#nullable restore
+#else
+        public string TableName { get; set; }
+#endif
+        /// <summary>Tells warning kinds apart in the shared `warnings` list</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSyncType? Type { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -39,6 +80,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "message", n => { Message = n.GetStringValue(); } },
+                { "schema_name", n => { SchemaName = n.GetStringValue(); } },
+                { "source_id", n => { SourceId = n.GetStringValue(); } },
+                { "source_type", n => { SourceType = n.GetStringValue(); } },
+                { "status", n => { Status = n.GetStringValue(); } },
+                { "table_name", n => { TableName = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSyncType>(); } },
             };
         }
         /// <summary>
@@ -48,7 +96,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteAdditionalData(AdditionalData);
+            writer.WriteStringValue("message", Message);
+            writer.WriteStringValue("schema_name", SchemaName);
+            writer.WriteStringValue("source_id", SourceId);
+            writer.WriteStringValue("source_type", SourceType);
+            writer.WriteStringValue("status", Status);
+            writer.WriteStringValue("table_name", TableName);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSyncType>("type", Type);
         }
     }
 }

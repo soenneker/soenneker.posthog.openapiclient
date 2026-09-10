@@ -35,7 +35,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ProjectsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/organizations/{%2Did}/projects{?limit*,offset*,search*}", pathParameters)
+        public ProjectsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/organizations/{%2Did}/projects{?limit*,offset*,search*,tags*,tags_match*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ProjectsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/organizations/{%2Did}/projects{?limit*,offset*,search*}", rawUrl)
+        public ProjectsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/organizations/{%2Did}/projects{?limit*,offset*,search*,tags*,tags_match*}", rawUrl)
         {
         }
         /// <summary>
@@ -68,7 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects
         /// Projects for the current organization.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ProjectBackwardCompat"/></returns>
-        /// <param name="body">Mixin for serializers to add user access control fields</param>
+        /// <param name="body">A project and its settings, including the settings that live on its passthrough Team.This shape is a superset of TeamSerializer&apos;s, so a request rewritten from /api/environments/onto /api/projects/ never loses a field.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -107,7 +107,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects
         /// Projects for the current organization.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">Mixin for serializers to add user access control fields</param>
+        /// <param name="body">A project and its settings, including the settings that live on its passthrough Team.This shape is a superset of TeamSerializer&apos;s, so a request rewritten from /api/environments/onto /api/projects/ never loses a field.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -156,6 +156,19 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects
             [QueryParameter("search")]
             public string Search { get; set; }
 #endif
+            /// <summary>Comma-separated tag names to filter by, for example `production,eu-region`. Names are trimmed and lowercased before matching. At most 20 distinct tags per request.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("tags")]
+            public string? Tags { get; set; }
+#nullable restore
+#else
+            [QueryParameter("tags")]
+            public string Tags { get; set; }
+#endif
+            /// <summary>How to combine the `tags` filter. `all` (the default) returns projects carrying every listed tag; `any` returns projects carrying at least one.</summary>
+            [QueryParameter("tags_match")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.OrganizationsProjectsListTagsMatchParameter? TagsMatch { get; set; }
         }
     }
 }

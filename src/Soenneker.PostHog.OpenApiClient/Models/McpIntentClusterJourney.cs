@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Highest-volume non-completed path. Null when every path completed successfully.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpIntentClusterJourneyLeak? Leak { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.McpIntentClusterJourneyPath? Leak { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpIntentClusterJourneyLeak Leak { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.McpIntentClusterJourneyPath Leak { get; private set; }
 #endif
         /// <summary>Top paths by session count, capped at MAX_JOURNEY_PATHS_PER_CLUSTER.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -57,7 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "leak", n => { Leak = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpIntentClusterJourneyLeak>(global::Soenneker.PostHog.OpenApiClient.Models.McpIntentClusterJourneyLeak.CreateFromDiscriminatorValue); } },
+                { "leak", n => { Leak = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpIntentClusterJourneyPath>(global::Soenneker.PostHog.OpenApiClient.Models.McpIntentClusterJourneyPath.CreateFromDiscriminatorValue); } },
                 { "paths", n => { Paths = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.McpIntentClusterJourneyPath>(global::Soenneker.PostHog.OpenApiClient.Models.McpIntentClusterJourneyPath.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "total_sessions", n => { TotalSessions = n.GetIntValue(); } },
             };

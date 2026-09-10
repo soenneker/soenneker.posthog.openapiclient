@@ -15,7 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;Attribute key to group by (e.g. \&quot;server.address\&quot;, \&quot;http.response.status_code\&quot;). Discover keys with apm-attributes-list. For the \&quot;span\&quot; breakdown type, must be one of the allowlisted top-level columns: \&quot;service_name\&quot;, \&quot;status_code\&quot;.&quot;</summary>
+        /// <summary>Attribute key to group by (e.g. &quot;server.address&quot;, &quot;http.response.status_code&quot;). Discover keys with apm-attributes-list. For the &quot;span&quot; breakdown type, must be one of the allowlisted top-level columns: &quot;service_name&quot;, &quot;status_code&quot;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? BreakdownKey { get; set; }
@@ -23,7 +23,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string BreakdownKey { get; set; }
 #endif
-        /// <summary>&quot;Where the key lives: \&quot;span\&quot; for allowlisted top-level span columns, \&quot;span_attribute\&quot; for span-level attributes, \&quot;span_resource_attribute\&quot; for resource-level attributes.* `span` - span* `span_attribute` - span_attribute* `span_resource_attribute` - span_resource_attribute&quot;</summary>
+        /// <summary>Where the key lives: &quot;span&quot; for allowlisted top-level span columns, &quot;span_attribute&quot; for span-level attributes, &quot;span_resource_attribute&quot; for resource-level attributes.* `span` - span* `span_attribute` - span_attribute* `span_resource_attribute` - span_resource_attribute</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyBreakdownType? BreakdownType { get; set; }

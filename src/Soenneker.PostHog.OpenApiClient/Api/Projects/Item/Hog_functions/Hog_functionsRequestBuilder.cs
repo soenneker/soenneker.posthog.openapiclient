@@ -6,6 +6,7 @@ using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions.Icon;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions.Icons;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions.Item;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions.Masked_secrets;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions.Rearrange;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -30,6 +31,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions.Icons.IconsRequestBuilder Icons
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions.Icons.IconsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The masked_secrets property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions.Masked_secrets.Masked_secretsRequestBuilder Masked_secrets
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions.Masked_secrets.Masked_secretsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The rearrange property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions.Rearrange.RearrangeRequestBuilder Rearrange
@@ -145,14 +151,22 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions
         public partial class Hog_functionsRequestBuilderGetQueryParameters 
         #pragma warning restore CS1591
         {
+            #pragma warning disable CS1591
             [QueryParameter("created_at")]
             public DateTimeOffset? CreatedAt { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("created_by")]
             public int? CreatedBy { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("enabled")]
             public bool? Enabled { get; set; }
+            #pragma warning restore CS1591
+            #pragma warning disable CS1591
             [QueryParameter("id")]
             public Guid? Id { get; set; }
+            #pragma warning restore CS1591
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
@@ -169,8 +183,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions
             [QueryParameter("type")]
             public string[] Type { get; set; }
 #endif
+            #pragma warning disable CS1591
             [QueryParameter("updated_at")]
             public DateTimeOffset? UpdatedAt { get; set; }
+            #pragma warning restore CS1591
         }
     }
 }

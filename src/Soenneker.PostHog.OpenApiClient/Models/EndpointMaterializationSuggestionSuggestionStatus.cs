@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Outcome of the suggestion run: &apos;ok&apos; — the suggested query passes the live materialization checks; &apos;cannot_fix&apos; — no semantically equivalent rewrite exists; &apos;invalid&apos; — a suggestion was produced but never passed validation (suggested_query carries the last attempt); &apos;model_error&apos; — the model returned no usable response.* `ok` - ok* `cannot_fix` - cannot_fix* `invalid` - invalid* `model_error` - model_error&quot;
+    /// Outcome of the suggestion run: &apos;ok&apos; — the suggested query passes the live materialization checks; &apos;cannot_fix&apos; — no semantically equivalent rewrite exists; &apos;invalid&apos; — a suggestion was produced but never passed validation (suggested_query carries the last attempt); &apos;model_error&apos; — the model returned no usable response.* `ok` - ok* `cannot_fix` - cannot_fix* `invalid` - invalid* `model_error` - model_error
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class EndpointMaterializationSuggestionSuggestionStatus : IAdditionalDataHolder, IParsable

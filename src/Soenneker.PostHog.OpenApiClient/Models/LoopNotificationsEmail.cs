@@ -17,7 +17,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether this channel is active.</summary>
         public bool? Enabled { get; set; }
-        /// <summary>&quot;Event kinds this channel notifies on. One or more of: run_completed, run_failed, pr_created, needs_attention.&quot;</summary>
+        /// <summary>Event kinds this channel notifies on. One or more of: run_completed, run_failed, pr_created, needs_attention.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.EventsEnum?>? Events { get; set; }

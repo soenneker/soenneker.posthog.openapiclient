@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Anomalies.Scan;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Anomalies.Series_bands;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -19,6 +20,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Anomalies
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Anomalies.Scan.ScanRequestBuilder Scan
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Anomalies.Scan.ScanRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The series_bands property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Anomalies.Series_bands.Series_bandsRequestBuilder Series_bands
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Anomalies.Series_bands.Series_bandsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Anomalies.AnomaliesRequestBuilder"/> and sets the default values.

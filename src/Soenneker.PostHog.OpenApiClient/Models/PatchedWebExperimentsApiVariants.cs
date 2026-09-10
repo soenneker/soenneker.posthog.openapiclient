@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Variants for the web experiment. Example:        {            \&quot;control\&quot;: {                \&quot;transforms\&quot;: [                    {                        \&quot;text\&quot;: \&quot;Here comes Superman!\&quot;,                        \&quot;html\&quot;: \&quot;\&quot;,                        \&quot;selector\&quot;: \&quot;#page &gt; #body &gt; .header h1\&quot;                    }                ],                \&quot;conditions\&quot;: \&quot;None\&quot;,                \&quot;rollout_percentage\&quot;: 50            },        }&quot;
+    /// Variants for the web experiment. Example:        {            &quot;control&quot;: {                &quot;transforms&quot;: [                    {                        &quot;text&quot;: &quot;Here comes Superman!&quot;,                        &quot;html&quot;: &quot;&quot;,                        &quot;selector&quot;: &quot;#page &gt; #body &gt; .header h1&quot;                    }                ],                &quot;conditions&quot;: &quot;None&quot;,                &quot;rollout_percentage&quot;: 50            },        }
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedWebExperimentsApiVariants : IAdditionalDataHolder, IParsable

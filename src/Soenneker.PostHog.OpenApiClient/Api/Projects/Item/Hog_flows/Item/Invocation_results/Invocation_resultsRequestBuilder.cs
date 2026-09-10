@@ -35,7 +35,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Invoc
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Invocation_resultsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/hog_flows/{id}/invocation_results{?after*,before*,distinct_id*,limit*,status*}", pathParameters)
+        public Invocation_resultsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/hog_flows/{id}/invocation_results{?after*,before*,distinct_id*,error_message_contains*,limit*,status*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Invoc
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Invocation_resultsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/hog_flows/{id}/invocation_results{?after*,before*,distinct_id*,limit*,status*}", rawUrl)
+        public Invocation_resultsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/hog_flows/{id}/invocation_results{?after*,before*,distinct_id*,error_message_contains*,limit*,status*}", rawUrl)
         {
         }
         /// <returns>A List&lt;global::Soenneker.PostHog.OpenApiClient.Models.HogInvocationResult&gt;</returns>
@@ -121,6 +121,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Invoc
 #else
             [QueryParameter("distinct_id")]
             public string DistinctId { get; set; }
+#endif
+            /// <summary>Only return invocations whose latest error_message contains this substring (case-insensitive). Matches the rerun endpoint&apos;s filter of the same name, so callers can check what a rerun would target.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("error_message_contains")]
+            public string? ErrorMessageContains { get; set; }
+#nullable restore
+#else
+            [QueryParameter("error_message_contains")]
+            public string ErrorMessageContains { get; set; }
 #endif
             /// <summary>Maximum number of invocations to return (1-500, default 50).</summary>
             [QueryParameter("limit")]

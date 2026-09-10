@@ -88,7 +88,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_gateway.Servers.
             /// <summary>Agent scope target. Required when scope_type is agent.</summary>
             [QueryParameter("scope_service_account_id")]
             public Guid? ScopeServiceAccountId { get; set; }
-            /// <summary>&quot;Which scope to resolve: the team default, one member, or one agent.* `team` - Team default* `member` - Member* `agent` - Agent&quot;</summary>
+            /// <summary>Which scope to resolve: the team default, one member, or one agent.* `team` - Team default* `member` - Member* `agent` - Agent</summary>
             [QueryParameter("scope_type")]
             public global::Soenneker.PostHog.OpenApiClient.Models.McpGatewayServersToolsRetrieveScopeTypeParameter? ScopeType { get; set; }
             /// <summary>Member scope target. Defaults to the requesting user.</summary>

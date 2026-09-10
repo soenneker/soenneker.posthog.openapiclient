@@ -37,7 +37,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.E
         /// Batched form of the per-run emission-reports endpoint. For every finding the requested runs emitted, resolve the inbox `SignalReport` (if any) its signal grouped into — all in a single ClickHouse round-trip rather than one query per run, which is what made the findings page slow to open. `report` is null when a finding hasn&apos;t grouped yet, was de-duplicated, or its signal was deleted. Strictly team-scoped — run ids belonging to another team contribute no rows.
         /// </summary>
         /// <returns>A List&lt;global::Soenneker.PostHog.OpenApiClient.Models.ScoutEmissionReportLink&gt;</returns>
-        /// <param name="body">&quot;Request body for the batched emissions / emission-reports lookups: the set of run UUIDs toresolve in one call. Collapses the findings UI&apos;s old per-run fan-out (one request — and for thereports lookup, one ClickHouse round-trip — per emitted run) into a single request.&quot;</param>
+        /// <param name="body">Request body for the batched emissions / emission-reports lookups: the set of run UUIDs toresolve in one call. Collapses the findings UI&apos;s old per-run fan-out (one request — and for thereports lookup, one ClickHouse round-trip — per emitted run) into a single request.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -58,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.E
         /// Batched form of the per-run emission-reports endpoint. For every finding the requested runs emitted, resolve the inbox `SignalReport` (if any) its signal grouped into — all in a single ClickHouse round-trip rather than one query per run, which is what made the findings page slow to open. `report` is null when a finding hasn&apos;t grouped yet, was de-duplicated, or its signal was deleted. Strictly team-scoped — run ids belonging to another team contribute no rows.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">&quot;Request body for the batched emissions / emission-reports lookups: the set of run UUIDs toresolve in one call. Collapses the findings UI&apos;s old per-run fan-out (one request — and for thereports lookup, one ClickHouse round-trip — per emitted run) into a single request.&quot;</param>
+        /// <param name="body">Request body for the batched emissions / emission-reports lookups: the set of run UUIDs toresolve in one call. Collapses the findings UI&apos;s old per-run fan-out (one request — and for thereports lookup, one ClickHouse round-trip — per emitted run) into a single request.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

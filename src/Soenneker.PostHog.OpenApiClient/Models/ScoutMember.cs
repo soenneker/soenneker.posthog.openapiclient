@@ -31,7 +31,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string FirstName { get; set; }
 #endif
-        /// <summary>&quot;The member&apos;s resolved GitHub login (lowercased), already resolved server-side — put this value in a report&apos;s `suggested_reviewers` once you&apos;ve matched the finding&apos;s owner to this row. Null when the member has no linked GitHub identity: a null-login member can&apos;t be routed to at all (neither a login nor a uuid resolves), so pick a different owner or leave `suggested_reviewers` empty.&quot;</summary>
+        /// <summary>The member&apos;s resolved GitHub login (lowercased), already resolved server-side. Null when the member has no linked GitHub account, which does not stop you routing to them: pass their `user_uuid` in `suggested_reviewers` and the report reaches them. A null login only means no draft PR can be opened as that person.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? GithubLogin { get; set; }

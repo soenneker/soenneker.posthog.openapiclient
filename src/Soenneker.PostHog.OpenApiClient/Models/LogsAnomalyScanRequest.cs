@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanRequestDateRange DateRange { get; set; }
 #endif
-        /// <summary>&quot;Service to scan (the log record&apos;s service_name). Required: the scan aggregates weeks of baseline history from raw logs, so it is scoped to one service per call.&quot;</summary>
+        /// <summary>Service to scan (the log record&apos;s service_name). Required: the scan aggregates weeks of baseline history from raw logs, so it is scoped to one service per call.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ServiceName { get; set; }

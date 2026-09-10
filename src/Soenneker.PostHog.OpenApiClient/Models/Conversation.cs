@@ -56,7 +56,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ConversationPendingApprovalsItemProperty> PendingApprovals { get; private set; }
 #endif
-        /// <summary>&quot;Unique key for Slack thread: &apos;{workspace_id}:{channel}:{thread_ts}&apos;&quot;</summary>
+        /// <summary>Unique key for Slack thread: &apos;{workspace_id}:{channel}:{thread_ts}&apos;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SlackThreadKey { get; private set; }
@@ -75,18 +75,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The status property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationStatusComposed? Status { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationStatus? Status { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationStatusComposed Status { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationStatus Status { get; private set; }
 #endif
         /// <summary>The task property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationTaskComposed? Task { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationTask? Task { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationTaskComposed Task { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationTask Task { get; private set; }
 #endif
         /// <summary>Title of the conversation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -107,10 +107,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationTypeComposed? Type { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationType? Type { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationTypeComposed Type { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationType Type { get; private set; }
 #endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
@@ -158,11 +158,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "pending_approvals", n => { PendingApprovals = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ConversationPendingApprovalsItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationPendingApprovalsItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "slack_thread_key", n => { SlackThreadKey = n.GetStringValue(); } },
                 { "slack_workspace_domain", n => { SlackWorkspaceDomain = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationStatusComposed>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationStatusComposed.CreateFromDiscriminatorValue); } },
-                { "task", n => { Task = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationTaskComposed>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationTaskComposed.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationStatus>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationStatus.CreateFromDiscriminatorValue); } },
+                { "task", n => { Task = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationTask>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationTask.CreateFromDiscriminatorValue); } },
                 { "title", n => { Title = n.GetStringValue(); } },
                 { "topic", n => { Topic = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationTopic>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationTopic.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationTypeComposed>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationTypeComposed.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationType>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationType.CreateFromDiscriminatorValue); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "user", n => { User = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationUser>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationUser.CreateFromDiscriminatorValue); } },
             };

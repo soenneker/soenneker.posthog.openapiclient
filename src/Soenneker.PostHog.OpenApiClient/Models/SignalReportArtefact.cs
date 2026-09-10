@@ -12,6 +12,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class SignalReportArtefact : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>MCP client name when an external agent produced the artefact.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ActorAgent { get; private set; }
+#nullable restore
+#else
+        public string ActorAgent { get; private set; }
+#endif
+        /// <summary>Actor kind. Legacy rows without attribution are returned as system.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactActorKind? ActorKind { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactActorKind ActorKind { get; private set; }
+#endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The content property</summary>
@@ -24,17 +40,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
-        /// <summary>User the artefact is attributed to, when a user produced it. Null for task/system writes.</summary>
+        /// <summary>Authenticated user principal for user or external agent writes. Null for internal task and system writes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactCreatedBy? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.User2? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactCreatedBy CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.User2 CreatedBy { get; private set; }
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
-        /// <summary>Task the artefact is attributed to, when an agent produced it. Null for user/system writes.</summary>
+        /// <summary>Internal task the artefact is attributed to. Null for user, external agent, and system writes.</summary>
         public Guid? TaskId { get; private set; }
         /// <summary>The type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -71,9 +87,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "actor_agent", n => { ActorAgent = n.GetStringValue(); } },
+                { "actor_kind", n => { ActorKind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactActorKind>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactActorKind.CreateFromDiscriminatorValue); } },
                 { "content", n => { Content = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactContent>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactContent.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactCreatedBy.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.User2>(global::Soenneker.PostHog.OpenApiClient.Models.User2.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "task_id", n => { TaskId = n.GetGuidValue(); } },
                 { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactType>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactType.CreateFromDiscriminatorValue); } },

@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Reaction to add: one of &apos;+1&apos;, &apos;-1&apos;, &apos;laugh&apos;, &apos;hooray&apos;, &apos;confused&apos;, &apos;heart&apos;, &apos;rocket&apos;, &apos;eyes&apos;.* `+1` - +1* `-1` - -1* `laugh` - laugh* `hooray` - hooray* `confused` - confused* `heart` - heart* `rocket` - rocket* `eyes` - eyes&quot;
+    /// Reaction to add: one of &apos;+1&apos;, &apos;-1&apos;, &apos;laugh&apos;, &apos;hooray&apos;, &apos;confused&apos;, &apos;heart&apos;, &apos;rocket&apos;, &apos;eyes&apos;.* `+1` - +1* `-1` - -1* `laugh` - laugh* `hooray` - hooray* `confused` - confused* `heart` - heart* `rocket` - rocket* `eyes` - eyes
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PullRequestReviewCommentReactionCreateContent : IAdditionalDataHolder, IParsable

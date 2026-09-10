@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Overall status: pending, sending, sent, partially_failed, or failed.* `pending` - Pending* `sending` - Sending* `sent` - Sent* `partially_failed` - Partially failed* `failed` - Failed&quot;
+    /// Overall status: pending, sending, sent, partially_failed, or failed.* `pending` - Pending* `sending` - Sending* `sent` - Sent* `partially_failed` - Partially failed* `failed` - Failed
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AnnouncementStatus : IAdditionalDataHolder, IParsable

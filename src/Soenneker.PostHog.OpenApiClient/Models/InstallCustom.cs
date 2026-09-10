@@ -14,13 +14,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Service accounts to share the server with at install time. Available to members when team settings allow member-managed agent access.</summary>
+        /// <summary>How far the automatic agent grants for this connection reach. &apos;personal&apos; (the default) lets PostHog agents use it only on runs for you; &apos;team&apos; lets every agent run in the project use it. Grants are created when the caller may manage agent access: project admins always, members when team settings allow it. Sending a value without that permission is rejected.* `personal` - Personal* `team` - Team</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Guid?>? AgentIds { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InstallCustomAgentScope? AgentScope { get; set; }
 #nullable restore
 #else
-        public List<Guid?> AgentIds { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InstallCustomAgentScope AgentScope { get; set; }
 #endif
         /// <summary>The api_key property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -88,7 +88,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ReturnPath { get; set; }
 #endif
-        /// <summary>&apos;personal&apos; is per-user; &apos;shared&apos; makes the credential available to project members. Agent access is granted separately.* `personal` - personal* `shared` - shared</summary>
+        /// <summary>&apos;personal&apos; is per-user; &apos;shared&apos; makes the credential available to project members. PostHog agents get access to the connection automatically; see agent_scope.* `personal` - personal* `shared` - shared</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.InstallCustomScope? Scope { get; set; }
@@ -132,7 +132,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "agent_ids", n => { AgentIds = n.GetCollectionOfPrimitiveValues<Guid?>()?.AsList(); } },
+                { "agent_scope", n => { AgentScope = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InstallCustomAgentScope>(global::Soenneker.PostHog.OpenApiClient.Models.InstallCustomAgentScope.CreateFromDiscriminatorValue); } },
                 { "api_key", n => { ApiKey = n.GetStringValue(); } },
                 { "auth_type", n => { AuthType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InstallCustomAuthTypeEnum>(); } },
                 { "client_id", n => { ClientId = n.GetStringValue(); } },
@@ -154,7 +154,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfPrimitiveValues<Guid?>("agent_ids", AgentIds);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InstallCustomAgentScope>("agent_scope", AgentScope);
             writer.WriteStringValue("api_key", ApiKey);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InstallCustomAuthTypeEnum>("auth_type", AuthType);
             writer.WriteStringValue("client_id", ClientId);

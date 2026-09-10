@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.S
         {
         }
         /// <summary>
-        /// &quot;Return the project settings as of the provided timestamp.Query params:- at: ISO8601 datetime (required)- scope: optional, one or multiple keys to filter the returned settings&quot;
+        /// Return the project settings as of the provided timestamp.Query params:- at: ISO8601 datetime (required)- scope: optional, one or multiple keys to filter the returned settings
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ProjectBackwardCompat"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.S
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ProjectBackwardCompat>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ProjectBackwardCompat.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Return the project settings as of the provided timestamp.Query params:- at: ISO8601 datetime (required)- scope: optional, one or multiple keys to filter the returned settings&quot;
+        /// Return the project settings as of the provided timestamp.Query params:- at: ISO8601 datetime (required)- scope: optional, one or multiple keys to filter the returned settings
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

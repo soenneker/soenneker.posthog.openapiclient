@@ -161,8 +161,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards
             [QueryParameter("folder")]
             public string Folder { get; set; }
 #endif
+            #pragma warning disable CS1591
             [QueryParameter("format")]
             public global::Soenneker.PostHog.OpenApiClient.Models.DashboardsListFormatParameter? Format { get; set; }
+            #pragma warning restore CS1591
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
@@ -185,8 +187,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards
         public partial class DashboardsRequestBuilderPostQueryParameters 
         #pragma warning restore CS1591
         {
+            #pragma warning disable CS1591
             [QueryParameter("format")]
             public global::Soenneker.PostHog.OpenApiClient.Models.DashboardsCreateFormatParameter? Format { get; set; }
+            #pragma warning restore CS1591
             /// <summary>Opt in to receiving the deprecated `dashboards` field in insight payloads. Once opt-in enforcement is enabled, API-token callers stop receiving it by default; use `dashboard_tiles` instead.</summary>
             [QueryParameter("include_dashboards")]
             public bool? IncludeDashboards { get; set; }

@@ -14,13 +14,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The config property</summary>
+        /// <summary>Per-source settings as a JSON object. Keys read by the emission actionability gate on sources that define one (most data warehouse imports, and Conversations): `steering` (string, max 2000 characters) holds the team&apos;s preferences about this source&apos;s records in plain language: what matters, what to skip, what&apos;s out of scope. The emission actionability gate applies it when deciding which records become signals; rules apply from the next sync and nothing already emitted is retracted. `default_not_actionable` (boolean, default false) flips the gate&apos;s default: instead of keeping every record the steering rules don&apos;t exclude, only records that clearly match the team&apos;s preferences are kept. Other sources store these keys without reading them yet; future pipeline stages will consume the same steering text. Some sources read additional keys, for example `recording_filters` and `sample_rate` for session analysis.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalSourceConfigConfig? Config { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalSourceConfigConfigProperty? Config { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalSourceConfigConfig Config { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalSourceConfigConfigProperty Config { get; set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
@@ -29,10 +29,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>* `session_replay` - Session replay* `llm_analytics` - LLM analytics* `github` - GitHub* `linear` - Linear* `jira` - Jira* `zendesk` - Zendesk* `conversations` - Conversations* `error_tracking` - Error tracking* `pganalyze` - pganalyze* `signals_scout` - Signals scout* `logs` - Logs* `health_checks` - Health checks* `endpoints` - Endpoints* `replay_vision` - Replay Vision* `analytics` - Product analytics* `freshdesk` - Freshdesk* `freshservice` - Freshservice* `front` - Front* `gorgias` - Gorgias* `kustomer` - Kustomer* `dixa` - Dixa* `plain` - Plain* `gitlab` - GitLab* `gitea` - Gitea* `shortcut` - Shortcut* `sentry` - Sentry* `rollbar` - Rollbar* `bugsnag` - Bugsnag* `honeybadger` - Honeybadger* `raygun` - Raygun* `snyk` - Snyk* `sonarqube` - SonarQube* `semgrep` - Semgrep* `rapid7_insightvm` - Rapid7 InsightVM* `featurebase` - Featurebase* `frill` - Frill* `aha` - Aha* `uservoice` - UserVoice* `productboard` - Productboard* `canny` - Canny* `asknicely` - AskNicely* `retently` - Retently* `appfigures` - Appfigures* `appfollow` - AppFollow* `judgeme_reviews` - Judge.me* `intercom` - Intercom* `hubspot` - HubSpot* `engineering_analytics` - Engineering analytics* `google_search_console` - Google Search Console</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalSourceConfigSourceProductEnum? SourceProduct { get; set; }
-        /// <summary>* `session_analysis_cluster` - Session analysis cluster* `evaluation_report` - Evaluation report* `issue` - Issue* `ticket` - Ticket* `issue_created` - Issue created* `issue_reopened` - Issue reopened* `issue_spiking` - Issue spiking* `cross_source_issue` - Cross source issue* `alert_state_change` - Alert state change* `health_issue` - Health issue* `endpoint_execution_failed` - Endpoint execution failed* `endpoint_breakdown_limit_exceeded` - Endpoint breakdown limit exceeded* `scanner_finding` - Scanner finding* `anomaly_investigation` - Anomaly investigation* `ci_flaky_check` - CI flaky check* `ci_broken_default_branch` - CI broken default branch* `ci_duration_regression` - CI duration regression</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalSourceProductEnum? SourceProduct { get; set; }
+        /// <summary>* `session_analysis_cluster` - Session analysis cluster* `evaluation_report` - Evaluation report* `issue` - Issue* `ticket` - Ticket* `issue_created` - Issue created* `issue_reopened` - Issue reopened* `issue_spiking` - Issue spiking* `cross_source_issue` - Cross source issue* `alert_state_change` - Alert state change* `health_issue` - Health issue* `endpoint_execution_failed` - Endpoint execution failed* `endpoint_breakdown_limit_exceeded` - Endpoint breakdown limit exceeded* `scanner_finding` - Scanner finding* `anomaly_investigation` - Anomaly investigation* `feedback` - Feedback* `review` - Review* `ci_flaky_check` - CI flaky check* `ci_broken_default_branch` - CI broken default branch* `ci_duration_regression` - CI duration regression* `search_opportunity` - Search opportunity</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalSourceConfigSourceTypeEnum? SourceType { get; set; }
-        /// <summary>The status property</summary>
+        /// <summary>Sync state of the warehouse import behind this source: `running`, `failed`, or `completed`. Null for a source that imports nothing from the warehouse, for an import that has never synced, and when the sync state could not be read.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Status { get; private set; }
@@ -67,11 +67,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalSourceConfigConfig>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalSourceConfigConfig.CreateFromDiscriminatorValue); } },
+                { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalSourceConfigConfigProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalSourceConfigConfigProperty.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "source_product", n => { SourceProduct = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalSourceConfigSourceProductEnum>(); } },
+                { "source_product", n => { SourceProduct = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalSourceProductEnum>(); } },
                 { "source_type", n => { SourceType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalSourceConfigSourceTypeEnum>(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
@@ -84,9 +84,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalSourceConfigConfig>("config", Config);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalSourceConfigConfigProperty>("config", Config);
             writer.WriteBoolValue("enabled", Enabled);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalSourceConfigSourceProductEnum>("source_product", SourceProduct);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalSourceProductEnum>("source_product", SourceProduct);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalSourceConfigSourceTypeEnum>("source_type", SourceType);
             writer.WriteAdditionalData(AdditionalData);
         }

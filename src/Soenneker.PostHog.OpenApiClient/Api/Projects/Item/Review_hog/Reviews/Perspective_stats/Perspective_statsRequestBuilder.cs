@@ -85,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Review_hog.Reviews.P
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Perspective_statsRequestBuilderGetQueryParameters 
         {
-            /// <summary>&quot;Whose reviews to aggregate: `mine` (the default) for reviews the requesting user ran plus reviews of pull requests they authored (matched via their linked GitHub login), `everyone` for every review on this project.* `mine` - mine* `everyone` - everyone&quot;</summary>
+            /// <summary>Whose reviews to aggregate: `mine` (the default) for reviews the requesting user ran plus reviews of pull requests they authored (matched via their linked GitHub login), `everyone` for every review on this project.* `mine` - mine* `everyone` - everyone</summary>
             [QueryParameter("scope")]
             public global::Soenneker.PostHog.OpenApiClient.Models.ReviewHogReviewsPerspectiveStatsRetrieveScopeParameter? Scope { get; set; }
         }

@@ -17,18 +17,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Score histogram; null when no observations have been scored.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScorerStatsHistogram? Histogram { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScorerHistogram? Histogram { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScorerStatsHistogram Histogram { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScorerHistogram Histogram { get; set; }
 #endif
         /// <summary>Score quantile summary; null when no observations have been scored.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScorerStatsSummary? Summary { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScorerSummary? Summary { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScorerStatsSummary Summary { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScorerSummary Summary { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ScorerStats"/> and sets the default values.
@@ -55,8 +55,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "histogram", n => { Histogram = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScorerStatsHistogram>(global::Soenneker.PostHog.OpenApiClient.Models.ScorerStatsHistogram.CreateFromDiscriminatorValue); } },
-                { "summary", n => { Summary = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScorerStatsSummary>(global::Soenneker.PostHog.OpenApiClient.Models.ScorerStatsSummary.CreateFromDiscriminatorValue); } },
+                { "histogram", n => { Histogram = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScorerHistogram>(global::Soenneker.PostHog.OpenApiClient.Models.ScorerHistogram.CreateFromDiscriminatorValue); } },
+                { "summary", n => { Summary = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScorerSummary>(global::Soenneker.PostHog.OpenApiClient.Models.ScorerSummary.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -66,8 +66,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScorerStatsHistogram>("histogram", Histogram);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScorerStatsSummary>("summary", Summary);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScorerHistogram>("histogram", Histogram);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScorerSummary>("summary", Summary);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

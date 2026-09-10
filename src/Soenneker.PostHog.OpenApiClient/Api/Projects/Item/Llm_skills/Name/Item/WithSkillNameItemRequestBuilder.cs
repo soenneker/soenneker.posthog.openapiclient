@@ -8,6 +8,8 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Name.Item.Dup
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Name.Item.Export;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Name.Item.Files;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Name.Item.FilesRename;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Name.Item.PublishCommunity;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Name.Item.Rename;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -46,6 +48,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Name.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Name.Item.FilesRename.FilesRenameRequestBuilder FilesRename
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Name.Item.FilesRename.FilesRenameRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The publishCommunity property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Name.Item.PublishCommunity.PublishCommunityRequestBuilder PublishCommunity
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Name.Item.PublishCommunity.PublishCommunityRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The rename property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Name.Item.Rename.RenameRequestBuilder Rename
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Name.Item.Rename.RenameRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Name.Item.WithSkillNameItemRequestBuilder"/> and sets the default values.

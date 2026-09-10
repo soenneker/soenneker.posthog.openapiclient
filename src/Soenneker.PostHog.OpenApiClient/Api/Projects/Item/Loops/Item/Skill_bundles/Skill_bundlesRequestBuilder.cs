@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Loops.Item.Skill_bun
         {
         }
         /// <summary>
-        /// &quot;Replaces the loop&apos;s attached skill bundles wholesale: zipped local skills whose contents are seeded into every fired run&apos;s sandbox. Send an empty list to detach every skill. Owner-only on team loops, like other identity-bearing configuration.&quot;
+        /// Replaces the loop&apos;s attached skill bundles wholesale: zipped local skills whose contents are seeded into every fired run&apos;s sandbox. Send an empty list to detach every skill. Owner-only on team loops, like other identity-bearing configuration.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LoopDto"/></returns>
         /// <param name="body">Request body for replacing a loop&apos;s attached skill bundles wholesale. Send an emptylist to detach every skill.</param>
@@ -54,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Loops.Item.Skill_bun
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.LoopDto>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.LoopDto.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Replaces the loop&apos;s attached skill bundles wholesale: zipped local skills whose contents are seeded into every fired run&apos;s sandbox. Send an empty list to detach every skill. Owner-only on team loops, like other identity-bearing configuration.&quot;
+        /// Replaces the loop&apos;s attached skill bundles wholesale: zipped local skills whose contents are seeded into every fired run&apos;s sandbox. Send an empty list to detach every skill. Owner-only on team loops, like other identity-bearing configuration.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">Request body for replacing a loop&apos;s attached skill bundles wholesale. Send an emptylist to detach every skill.</param>

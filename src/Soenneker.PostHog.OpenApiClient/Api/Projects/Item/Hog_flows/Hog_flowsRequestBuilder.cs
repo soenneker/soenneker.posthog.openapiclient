@@ -65,7 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Hog_flowsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/hog_flows{?created_at*,created_by*,id*,limit*,offset*,search*,status*,updated_at*}", pathParameters)
+        public Hog_flowsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/hog_flows{?created_at*,created_by*,id*,limit*,offset*,origin_product*,search*,status*,trigger*,type*,updated_at*}", pathParameters)
         {
         }
         /// <summary>
@@ -73,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Hog_flowsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/hog_flows{?created_at*,created_by*,id*,limit*,offset*,search*,status*,updated_at*}", rawUrl)
+        public Hog_flowsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/hog_flows{?created_at*,created_by*,id*,limit*,offset*,origin_product*,search*,status*,trigger*,type*,updated_at*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedHogFlowMinimalList"/></returns>
@@ -157,19 +157,26 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows
         public partial class Hog_flowsRequestBuilderGetQueryParameters 
         #pragma warning restore CS1591
         {
+            #pragma warning disable CS1591
             [QueryParameter("created_at")]
             public DateTimeOffset? CreatedAt { get; set; }
+            #pragma warning restore CS1591
             /// <summary>Filter to workflows created by the user with this uuid.</summary>
             [QueryParameter("created_by")]
             public Guid? CreatedBy { get; set; }
+            #pragma warning disable CS1591
             [QueryParameter("id")]
             public Guid? Id { get; set; }
+            #pragma warning restore CS1591
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
             /// <summary>The initial index from which to return the results.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
+            /// <summary>Filter to workflows owned by a product surface, e.g. `loops` for Desktop loops.</summary>
+            [QueryParameter("origin_product")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.LoopsOriginProduct? OriginProduct { get; set; }
             /// <summary>Case-insensitive search across workflow name and description.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -183,8 +190,23 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows
             /// <summary>* `draft` - Draft* `active` - Active* `archived` - Archived</summary>
             [QueryParameter("status")]
             public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowsListStatusParameter? Status { get; set; }
+            /// <summary>Filter by trigger config as a JSON object. Returns workflows whose trigger contains the given object, e.g. {&quot;type&quot;: &quot;event&quot;}.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("trigger")]
+            public string? Trigger { get; set; }
+#nullable restore
+#else
+            [QueryParameter("trigger")]
+            public string Trigger { get; set; }
+#endif
+            /// <summary>Filter by workflow type. `messaging` returns workflows with an email, SMS, or push action; `automation` returns the rest.</summary>
+            [QueryParameter("type")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowsListTypeParameter? Type { get; set; }
+            #pragma warning disable CS1591
             [QueryParameter("updated_at")]
             public DateTimeOffset? UpdatedAt { get; set; }
+            #pragma warning restore CS1591
         }
     }
 }

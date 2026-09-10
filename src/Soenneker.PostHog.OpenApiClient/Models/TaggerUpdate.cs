@@ -37,10 +37,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The model_configuration property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateModelConfiguration? ModelConfiguration { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaggerModelConfigurationWrite? ModelConfiguration { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateModelConfiguration ModelConfiguration { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaggerModelConfigurationWrite ModelConfiguration { get; set; }
 #endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -50,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>&quot;Tagger configuration. For tagger_type &apos;llm&apos;: {prompt, tags, min_tags?, max_tags?}. For tagger_type &apos;hog&apos;: {source, tags?}.&quot;</summary>
+        /// <summary>Tagger configuration. For tagger_type &apos;llm&apos;: {prompt, tags, min_tags?, max_tags?}. For tagger_type &apos;hog&apos;: {source, tags?}.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateTaggerConfig? TaggerConfig { get; set; }
@@ -95,7 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
-                { "model_configuration", n => { ModelConfiguration = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateModelConfiguration>(global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateModelConfiguration.CreateFromDiscriminatorValue); } },
+                { "model_configuration", n => { ModelConfiguration = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaggerModelConfigurationWrite>(global::Soenneker.PostHog.OpenApiClient.Models.TaggerModelConfigurationWrite.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "tagger_config", n => { TaggerConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateTaggerConfig>(global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateTaggerConfig.CreateFromDiscriminatorValue); } },
                 { "tagger_type", n => { TaggerType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateTaggerType>(global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateTaggerType.CreateFromDiscriminatorValue); } },
@@ -112,7 +112,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("deleted", Deleted);
             writer.WriteStringValue("description", Description);
             writer.WriteBoolValue("enabled", Enabled);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateModelConfiguration>("model_configuration", ModelConfiguration);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaggerModelConfigurationWrite>("model_configuration", ModelConfiguration);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateTaggerConfig>("tagger_config", TaggerConfig);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateTaggerType>("tagger_type", TaggerType);

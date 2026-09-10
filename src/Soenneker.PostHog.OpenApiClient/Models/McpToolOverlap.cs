@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;Sum over shared clusters of the smaller tool&apos;s calls: the volume both tools plausibly compete for.&quot;</summary>
+        /// <summary>Sum over shared clusters of the smaller tool&apos;s calls: the volume both tools plausibly compete for.</summary>
         public int? ContestedCalls { get; private set; }
         /// <summary>Sampled sessions that called both tools. High relative to sessions_with_either suggests the pair is a workflow, not confusion.</summary>
         public int? SessionsWithBoth { get; private set; }

@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;Optimistic concurrency: the updated_at (or draft_updated_at when editing a staged draft) you last read. If the stored side is newer, the write fails with 409 instead of overwriting the concurrent edit. Omit to overwrite unconditionally.&quot;</summary>
+        /// <summary>Optimistic concurrency: the updated_at (or draft_updated_at when editing a staged draft) you last read. If the stored side is newer, the write fails with 409 instead of overwriting the concurrent edit. Omit to overwrite unconditionally.</summary>
         public DateTimeOffset? BaseUpdatedAt { get; set; }
         /// <summary>The batch_export_id property</summary>
         public Guid? BatchExportId { get; private set; }
@@ -105,10 +105,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>PII masking configuration with TTL, threshold, and hash expression.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMaskingComposed? Masking { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMasking? Masking { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMaskingComposed Masking { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMasking Masking { get; set; }
 #endif
         /// <summary>Display name for the function.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -118,7 +118,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>&quot;How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`.&quot;</summary>
+        /// <summary>How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionSearchMatchType? SearchMatchType { get; private set; }
@@ -129,10 +129,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The status property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionStatusComposed? Status { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionStatus? Status { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionStatusComposed Status { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionStatus Status { get; private set; }
 #endif
         /// <summary>The template property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -158,7 +158,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Transpiled { get; private set; }
 #endif
-        /// <summary>&quot;Function type: destination, site_destination, internal_destination, source_webhook, warehouse_source_webhook, site_app, transformation, or transformation_log.* `destination` - Destination* `site_destination` - Site Destination* `internal_destination` - Internal Destination* `source_webhook` - Source Webhook* `warehouse_source_webhook` - Warehouse Source Webhook* `site_app` - Site App* `transformation` - Transformation* `transformation_log` - Transformation Log&quot;</summary>
+        /// <summary>Function type: destination, site_destination, internal_destination, source_webhook, warehouse_source_webhook, site_app, transformation, or transformation_log.* `destination` - Destination* `site_destination` - Site Destination* `internal_destination` - Internal Destination* `source_webhook` - Source Webhook* `warehouse_source_webhook` - Warehouse Source Webhook* `site_app` - Site App* `transformation` - Transformation* `transformation_log` - Transformation Log* `legacy_destination` - Legacy Destination</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionType? Type { get; set; }
@@ -212,10 +212,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "inputs", n => { Inputs = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInputsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInputsProperty.CreateFromDiscriminatorValue); } },
                 { "inputs_schema", n => { InputsSchema = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItem>(global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "mappings", n => { Mappings = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.Mappings>(global::Soenneker.PostHog.OpenApiClient.Models.Mappings.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "masking", n => { Masking = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMaskingComposed>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMaskingComposed.CreateFromDiscriminatorValue); } },
+                { "masking", n => { Masking = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMasking>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMasking.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "search_match_type", n => { SearchMatchType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionSearchMatchType>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionSearchMatchType.CreateFromDiscriminatorValue); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionStatusComposed>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionStatusComposed.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionStatus>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionStatus.CreateFromDiscriminatorValue); } },
                 { "template", n => { Template = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionTemplateComposed>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionTemplateComposed.CreateFromDiscriminatorValue); } },
                 { "template_id", n => { TemplateId = n.GetStringValue(); } },
                 { "transpiled", n => { Transpiled = n.GetStringValue(); } },
@@ -243,7 +243,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInputsProperty>("inputs", Inputs);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItem>("inputs_schema", InputsSchema);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.Mappings>("mappings", Mappings);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMaskingComposed>("masking", Masking);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMasking>("masking", Masking);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("template_id", TemplateId);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionType>("type", Type);

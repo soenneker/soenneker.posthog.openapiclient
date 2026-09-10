@@ -14,6 +14,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Query plan state recorded for this delivery: frozen, not_frozen, or planner_updated. Null for older deliveries and non-AI deliveries.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDeliveryAiQueryPlanStatus? AiQueryPlanStatus { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDeliveryAiQueryPlanStatus AiQueryPlanStatus { get; private set; }
+#endif
         /// <summary>AI-generated report markdown delivered by this run. Null for non-AI deliveries or runs without a persisted report.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -21,6 +29,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string AiReport { get; private set; }
+#endif
+        /// <summary>Charts rendered for this report, in the order they were delivered. Empty when the report had no charts. Null for non-AI deliveries and for deliveries recorded before charts existed.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AiReportChart>? AiReportCharts { get; private set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AiReportChart> AiReportCharts { get; private set; }
 #endif
         /// <summary>Per-step query diagnostics (generated HogQL + failure type) for this report. Null for non-AI deliveries or runs without persisted diagnostics.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -46,7 +62,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ChangeSummary { get; private set; }
 #endif
-        /// <summary>&quot;Snapshot at send time: dashboard metadata, total_insight_count, and per-exported-insight entries (id, short_id, name, query_hash, cache_key, query_results, optional query_error).&quot;</summary>
+        /// <summary>Snapshot at send time: dashboard metadata, total_insight_count, and per-exported-insight entries (id, short_id, name, query_hash, cache_key, query_results, optional query_error).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDeliveryContentSnapshot? ContentSnapshot { get; private set; }
@@ -96,7 +112,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Planned send time when applicable.</summary>
         public DateTimeOffset? ScheduledAt { get; private set; }
-        /// <summary>&quot;Overall run status: starting, completed, failed, or skipped.* `starting` - Starting* `completed` - Completed* `failed` - Failed* `skipped` - Skipped&quot;</summary>
+        /// <summary>Overall run status: starting, completed, failed, or skipped.* `starting` - Starting* `completed` - Completed* `failed` - Failed* `skipped` - Skipped</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDeliveryStatus? Status { get; private set; }
@@ -106,7 +122,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Parent subscription id.</summary>
         public int? Subscription { get; private set; }
-        /// <summary>Channel snapshot at send time (email or slack).</summary>
+        /// <summary>Channel snapshot at send time: email, slack, or teams.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? TargetType { get; private set; }
@@ -114,7 +130,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string TargetType { get; private set; }
 #endif
-        /// <summary>Destination snapshot at send time (emails, channel id, URL).</summary>
+        /// <summary>Destination snapshot at send time: the email list, the Slack channel id, or the host of the Microsoft Teams webhook. The webhook URL itself is never returned.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? TargetValue { get; private set; }
@@ -163,7 +179,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "ai_query_plan_status", n => { AiQueryPlanStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDeliveryAiQueryPlanStatus>(global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionDeliveryAiQueryPlanStatus.CreateFromDiscriminatorValue); } },
                 { "ai_report", n => { AiReport = n.GetStringValue(); } },
+                { "ai_report_charts", n => { AiReportCharts = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AiReportChart>(global::Soenneker.PostHog.OpenApiClient.Models.AiReportChart.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "ai_report_diagnostics", n => { AiReportDiagnostics = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AiReportQueryDiagnostic>(global::Soenneker.PostHog.OpenApiClient.Models.AiReportQueryDiagnostic.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "ai_report_prompt", n => { AiReportPrompt = n.GetStringValue(); } },
                 { "change_summary", n => { ChangeSummary = n.GetStringValue(); } },

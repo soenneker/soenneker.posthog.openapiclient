@@ -21,13 +21,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The hideTooltipOnScroll property</summary>
         public bool? HideTooltipOnScroll { get; set; }
         /// <summary>The kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Kind { get; set; }
-#nullable restore
-#else
-        public string Kind { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNodeKind? Kind { get; set; }
         /// <summary>The showCorrelationTable property</summary>
         public bool? ShowCorrelationTable { get; set; }
         /// <summary>The showFilters property</summary>
@@ -84,7 +78,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "full", n => { Full = n.GetBoolValue(); } },
                 { "hidePersonsModal", n => { HidePersonsModal = n.GetBoolValue(); } },
                 { "hideTooltipOnScroll", n => { HideTooltipOnScroll = n.GetBoolValue(); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNodeKind>(); } },
                 { "showCorrelationTable", n => { ShowCorrelationTable = n.GetBoolValue(); } },
                 { "showFilters", n => { ShowFilters = n.GetBoolValue(); } },
                 { "showHeader", n => { ShowHeader = n.GetBoolValue(); } },
@@ -109,7 +103,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("full", Full);
             writer.WriteBoolValue("hidePersonsModal", HidePersonsModal);
             writer.WriteBoolValue("hideTooltipOnScroll", HideTooltipOnScroll);
-            writer.WriteStringValue("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNodeKind>("kind", Kind);
             writer.WriteBoolValue("showCorrelationTable", ShowCorrelationTable);
             writer.WriteBoolValue("showFilters", ShowFilters);
             writer.WriteBoolValue("showHeader", ShowHeader);

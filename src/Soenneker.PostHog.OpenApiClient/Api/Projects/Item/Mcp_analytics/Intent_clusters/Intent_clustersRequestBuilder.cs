@@ -92,7 +92,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_analytics.Intent
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Intent_clustersRequestBuilderGetQueryParameters 
         {
-            /// <summary>&quot;Narrow the response to one tool: its pivot entry, the clusters it serves or switches with, and the overlap pairs it belongs to. Coverage meta stays whole-snapshot. Use this for single-tool views so they don&apos;t download every cluster and pivot to render one row. An unknown tool returns empty sections, not a 404.&quot;</summary>
+            /// <summary>Narrow the response to one tool: its pivot entry, the clusters it serves or switches with, and the overlap pairs it belongs to. Coverage meta stays whole-snapshot. Use this for single-tool views so they don&apos;t download every cluster and pivot to render one row. An unknown tool returns empty sections, not a 404.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("tool")]

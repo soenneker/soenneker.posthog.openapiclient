@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;What the selector covers: &apos;test&apos; (contains &apos;::&apos;), &apos;file&apos;, &apos;directory&apos;, or &apos;product&apos;.* `product` - PRODUCT* `file` - FILE* `directory` - DIRECTORY* `test` - TEST&quot;
+    /// What the selector covers: &apos;test&apos; (contains &apos;::&apos;), &apos;file&apos;, &apos;directory&apos;, or &apos;product&apos;.* `product` - PRODUCT* `file` - FILE* `directory` - DIRECTORY* `test` - TEST
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class QuarantineEntrySelectorKind : IAdditionalDataHolder, IParsable

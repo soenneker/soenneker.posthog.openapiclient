@@ -7,19 +7,18 @@ using System.IO;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>
-    /// Request body for creating or updating a task.Field required/default semantics match the ``Task`` model. The view passes``validated_data`` (integration/report PK fields already resolved to instances) to thefacade ``create_task`` / ``update_task`` functions.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class TaskCreate : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>If true, the task is hidden from default list responses.</summary>
         public bool? Archived { get; set; }
-        /// <summary>&quot;When true, the cloud run agent pushes its work and opens a draft pull request on completion without waiting for an explicit ask. Write-only and not persisted on the task: persisted into the reused warm Run&apos;s state when creation activates one, so resumes of that Run honor it. Ignored when no warm Run is reused — cold creation takes it via the run start endpoint instead.&quot;</summary>
+        /// <summary>When true, the cloud run agent pushes its work and opens a draft pull request on completion without waiting for an explicit ask. Write-only and not persisted on the task: persisted into the reused warm Run&apos;s state when creation activates one, so resumes of that Run honor it. Ignored when no warm Run is reused — cold creation takes it via the run start endpoint instead.</summary>
         public bool? AutoPublish { get; set; }
-        /// <summary>&quot;Branch the user has selected for this cloud task. Write-only and not persisted on the task itself: used only to reuse a matching pre-warmed sandbox Run on creation (the branch is otherwise carried on the run). Omit to match a warm Run on the default branch.&quot;</summary>
+        /// <summary>Branch the user has selected for this cloud task. Write-only and not persisted on the task itself: used only to reuse a matching pre-warmed sandbox Run on creation (the branch is otherwise carried on the run). Omit to match a warm Run on the default branch.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Branch { get; set; }
@@ -51,8 +50,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? GithubIntegration { get; set; }
         /// <summary>User-scoped GitHub integration to use for user-authored cloud runs.</summary>
         public Guid? GithubUserIntegration { get; set; }
-        /// <summary>If true, this task is for internal use and should not be exposed to end users.</summary>
-        public bool? Internal { get; set; }
+        /// <summary>Selected agent permission mode. Write-only; used only to reuse a warm Run booted on the same mode. Omit to reuse a warm Run whatever mode it booted on.* `default` - default* `acceptEdits` - acceptEdits* `plan` - plan* `bypassPermissions` - bypassPermissions* `auto` - auto* `read-only` - read-only* `full-access` - full-access</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskCreateInitialPermissionMode? InitialPermissionMode { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskCreateInitialPermissionMode InitialPermissionMode { get; set; }
+#endif
         /// <summary>JSON schema used to validate the output of the task.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -69,7 +74,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Model { get; set; }
 #endif
-        /// <summary>PostHog product or surface that created this task (e.g. error_tracking, slack, user_created). Origins reserved for server-created agents cannot be set through this API.* `onboarding` - Onboarding* `error_tracking` - Error Tracking* `eval_clusters` - Eval Clusters* `user_created` - User Created* `automation` - Automation* `slack` - Slack* `support_queue` - Support Queue* `session_summaries` - Session Summaries* `posthog_ai` - PostHog AI* `experiments` - Experiments* `signal_report` - Signal Report* `signals_scout` - Signals Scout* `support_reply` - Support Reply* `hogdesk` - HogDesk* `review_hog` - ReviewHog* `image_builder` - Image Builder* `loop` - Loop* `mcp_analytics` - MCP Analytics* `signals_chat` - Signals Chat</summary>
+        /// <summary>Text the server generates the title from instead of `description`. Lets a client whose `description` is only an attachment summary (e.g. pasted text stored as a file) supply the real content for naming, so `description` (the prompt passed to the agent) stays unchanged. Not persisted.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? NamingSource { get; set; }
+#nullable restore
+#else
+        public string NamingSource { get; set; }
+#endif
+        /// <summary>PostHog product or surface that created this task (e.g. error_tracking, slack, user_created). Origins reserved for server-created agents cannot be set through this API.* `onboarding` - Onboarding* `error_tracking` - Error Tracking* `eval_clusters` - Eval Clusters* `user_created` - User Created* `slack` - Slack* `support_queue` - Support Queue* `session_summaries` - Session Summaries* `posthog_ai` - PostHog AI* `experiments` - Experiments* `signal_report` - Signal Report* `signals_scout` - Signals Scout* `scout_suggestions` - Signals Scout Suggestions* `support_reply` - Support Reply* `hogdesk` - HogDesk* `review_hog` - ReviewHog* `image_builder` - Image Builder* `loop` - Loop* `mcp_analytics` - MCP Analytics* `signals_chat` - Signals Chat* `task_analysis` - Task Analysis* `workflow` - Workflow</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskCreateOriginProduct? OriginProduct { get; set; }
@@ -85,7 +98,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> PendingUserArtifactIds { get; set; }
 #endif
-        /// <summary>&quot;First user message to forward when creation reuses a pre-warmed Run. Write-only and not persisted on the task: lets clients deliver a message that differs from `description` (e.g. a resolved skill invocation with channel context folded in). Ignored when no warm Run is reused — cold creation takes the first message via the run start endpoint instead.&quot;</summary>
+        /// <summary>First user message to forward when creation reuses a pre-warmed Run. Write-only and not persisted on the task: lets clients deliver a message that differs from `description` (e.g. a resolved skill invocation with channel context folded in). Ignored when no warm Run is reused — cold creation takes the first message via the run start endpoint instead.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? PendingUserMessage { get; set; }
@@ -125,7 +138,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskCreateRuntime Runtime { get; set; }
 #endif
-        /// <summary>&quot;Selected runtime adapter (&apos;claude&apos; or &apos;codex&apos;). Write-only and not persisted on the task: used only to reuse a pre-warmed Run started on the same runtime. A value differing from the warm Run&apos;s runtime skips reuse so the task isn&apos;t silently run on the wrong runtime.* `claude` - claude* `codex` - codex&quot;</summary>
+        /// <summary>Selected runtime adapter (&apos;claude&apos; or &apos;codex&apos;). Write-only and not persisted on the task: used only to reuse a pre-warmed Run started on the same runtime. A value differing from the warm Run&apos;s runtime skips reuse so the task isn&apos;t silently run on the wrong runtime.* `claude` - claude* `codex` - codex</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskCreateRuntimeAdapter? RuntimeAdapter { get; set; }
@@ -137,7 +150,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public Guid? SandboxEnvironmentId { get; set; }
         /// <summary>Signal report this task implements, when created from a report.</summary>
         public Guid? SignalReport { get; set; }
-        /// <summary>How the created task relates to the signal report (e.g. &apos;implementation&apos;, &apos;discussion&apos;, &apos;research&apos;). Recorded as a signals task_run work-log entry; &apos;implementation&apos; also opens the auto-start spend gate. Any routing-safe identifier (lowercase letters, numbers, &apos;_&apos;, &apos;-&apos;) is accepted.</summary>
+        /// <summary>Question to forward to the signal report&apos;s scout when creating a discussion task. Send an empty string when there is no question. Omit only for older clients that embed the question in the task description. Not persisted on the task.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SignalReportDiscussionQuestion { get; set; }
+#nullable restore
+#else
+        public string SignalReportDiscussionQuestion { get; set; }
+#endif
+        /// <summary>How the created task relates to the signal report (e.g. &apos;implementation&apos;, &apos;discussion&apos;). Recorded as a signals task_run work-log entry; &apos;implementation&apos; also opens the auto-start spend gate. Any routing-safe identifier (lowercase letters, numbers, &apos;_&apos;, &apos;-&apos;) is accepted except labels reserved for server-created tasks (&apos;research&apos;, &apos;repo_selection&apos;, &apos;scout&apos;). Non-implementation labels count toward the report&apos;s discussion task limit.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SignalReportTaskRelationship { get; set; }
@@ -189,9 +210,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "github_integration", n => { GithubIntegration = n.GetIntValue(); } },
                 { "github_user_integration", n => { GithubUserIntegration = n.GetGuidValue(); } },
-                { "internal", n => { Internal = n.GetBoolValue(); } },
+                { "initial_permission_mode", n => { InitialPermissionMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskCreateInitialPermissionMode>(global::Soenneker.PostHog.OpenApiClient.Models.TaskCreateInitialPermissionMode.CreateFromDiscriminatorValue); } },
                 { "json_schema", n => { JsonSchema = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskCreateJsonSchema>(global::Soenneker.PostHog.OpenApiClient.Models.TaskCreateJsonSchema.CreateFromDiscriminatorValue); } },
                 { "model", n => { Model = n.GetStringValue(); } },
+                { "naming_source", n => { NamingSource = n.GetStringValue(); } },
                 { "origin_product", n => { OriginProduct = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskCreateOriginProduct>(global::Soenneker.PostHog.OpenApiClient.Models.TaskCreateOriginProduct.CreateFromDiscriminatorValue); } },
                 { "pending_user_artifact_ids", n => { PendingUserArtifactIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "pending_user_message", n => { PendingUserMessage = n.GetStringValue(); } },
@@ -202,6 +224,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "runtime_adapter", n => { RuntimeAdapter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskCreateRuntimeAdapter>(global::Soenneker.PostHog.OpenApiClient.Models.TaskCreateRuntimeAdapter.CreateFromDiscriminatorValue); } },
                 { "sandbox_environment_id", n => { SandboxEnvironmentId = n.GetGuidValue(); } },
                 { "signal_report", n => { SignalReport = n.GetGuidValue(); } },
+                { "signal_report_discussion_question", n => { SignalReportDiscussionQuestion = n.GetStringValue(); } },
                 { "signal_report_task_relationship", n => { SignalReportTaskRelationship = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
                 { "title_manually_set", n => { TitleManuallySet = n.GetBoolValue(); } },
@@ -223,9 +246,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("description", Description);
             writer.WriteIntValue("github_integration", GithubIntegration);
             writer.WriteGuidValue("github_user_integration", GithubUserIntegration);
-            writer.WriteBoolValue("internal", Internal);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskCreateInitialPermissionMode>("initial_permission_mode", InitialPermissionMode);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskCreateJsonSchema>("json_schema", JsonSchema);
             writer.WriteStringValue("model", Model);
+            writer.WriteStringValue("naming_source", NamingSource);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskCreateOriginProduct>("origin_product", OriginProduct);
             writer.WriteCollectionOfPrimitiveValues<string>("pending_user_artifact_ids", PendingUserArtifactIds);
             writer.WriteStringValue("pending_user_message", PendingUserMessage);
@@ -236,6 +260,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskCreateRuntimeAdapter>("runtime_adapter", RuntimeAdapter);
             writer.WriteGuidValue("sandbox_environment_id", SandboxEnvironmentId);
             writer.WriteGuidValue("signal_report", SignalReport);
+            writer.WriteStringValue("signal_report_discussion_question", SignalReportDiscussionQuestion);
             writer.WriteStringValue("signal_report_task_relationship", SignalReportTaskRelationship);
             writer.WriteStringValue("title", Title);
             writer.WriteBoolValue("title_manually_set", TitleManuallySet);

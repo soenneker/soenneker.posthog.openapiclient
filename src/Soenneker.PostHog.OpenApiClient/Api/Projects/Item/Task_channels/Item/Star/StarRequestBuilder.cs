@@ -34,27 +34,26 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Item.S
         {
         }
         /// <summary>
-        /// API for task channels — the shared feeds tasks are kicked off in. Listing lazilyprovisions the requester&apos;s personal &quot;#me&quot; channel; creation is resolve-or-createby normalized name so clients can map channel-like surfaces onto backend channels.
+        /// Star or unstar a channel for the requesting user
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskChannelsStarCreate201Response"/></returns>
         /// <param name="body">Request body for starring/unstarring a channel for the requesting user.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.TaskChannelsStarCreate201Response?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.ChannelStarWrite body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.ChannelStarWrite body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.TaskChannelsStarCreate201Response> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.ChannelStarWrite body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.ChannelStarWrite body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.TaskChannelsStarCreate201Response>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.TaskChannelsStarCreate201Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// API for task channels — the shared feeds tasks are kicked off in. Listing lazilyprovisions the requester&apos;s personal &quot;#me&quot; channel; creation is resolve-or-createby normalized name so clients can map channel-like surfaces onto backend channels.
+        /// Star or unstar a channel for the requesting user
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">Request body for starring/unstarring a channel for the requesting user.</param>
@@ -71,7 +70,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Item.S
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }

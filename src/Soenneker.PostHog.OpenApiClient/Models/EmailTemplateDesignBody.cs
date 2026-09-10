@@ -46,7 +46,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplateDesignBodyRowsItemProperty> Rows { get; set; }
 #endif
-        /// <summary>&quot;Body-level settings: backgroundColor, contentWidth (&apos;600px&apos;), fontFamily, textColor.&quot;</summary>
+        /// <summary>Body-level settings: backgroundColor, contentWidth (&apos;600px&apos;), fontFamily, textColor.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplateDesignBodyValuesProperty? Values { get; set; }

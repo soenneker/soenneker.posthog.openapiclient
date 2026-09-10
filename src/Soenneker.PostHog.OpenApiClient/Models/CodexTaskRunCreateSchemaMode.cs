@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Execution mode: &apos;interactive&apos; for user-connected runs, &apos;background&apos; for autonomous runs* `interactive` - interactive* `background` - background&quot;
+    /// Execution mode: &apos;interactive&apos; for user-connected runs, &apos;background&apos; for autonomous runs* `interactive` - interactive* `background` - background
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CodexTaskRunCreateSchemaMode : IAdditionalDataHolder, IParsable

@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Health_issues.Summar
         {
         }
         /// <summary>
-        /// Returns aggregated counts of active, non-dismissed health issues for the project, broken down by severity and by kind. Use for a quick overview of overall project health before drilling in with the list endpoint.
+        /// Returns aggregated counts of active, non-dismissed health issues for the project, split into `unsnoozed` and `snoozed` groups and broken down by severity and by kind within each. Use for a quick overview of overall project health before drilling in with the list endpoint.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummary"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Health_issues.Summar
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummary>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummary.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Returns aggregated counts of active, non-dismissed health issues for the project, broken down by severity and by kind. Use for a quick overview of overall project health before drilling in with the list endpoint.
+        /// Returns aggregated counts of active, non-dismissed health issues for the project, split into `unsnoozed` and `snoozed` groups and broken down by severity and by kind within each. Use for a quick overview of overall project health before drilling in with the list endpoint.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

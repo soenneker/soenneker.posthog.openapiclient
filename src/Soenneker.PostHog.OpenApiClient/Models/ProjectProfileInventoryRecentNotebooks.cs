@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Notebook orientation: total + the 5 most recently modified notebooks — useful signal for what the team has been investigating.&quot;
+    /// Notebook orientation: total + the 5 most recently modified notebooks — useful signal for what the team has been investigating.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ProjectProfileInventoryRecentNotebooks : IAdditionalDataHolder, IParsable

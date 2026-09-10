@@ -24,7 +24,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.Element> Elements { get; set; }
 #endif
-        /// <summary>Stable identity of the raw element chain (hash computed before any attribute filtering), for deduplicating rows across pages</summary>
+        /// <summary>Hash of the chain as the server grouped it; combine with type to deduplicate rows across pages</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Hash { get; set; }
@@ -32,7 +32,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Hash { get; set; }
 #endif
-        /// <summary>&quot;Event type: $autocapture, $rageclick, or $dead_click&quot;</summary>
+        /// <summary>Event type: $autocapture, $rageclick, or $dead_click</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Type { get; set; }

@@ -78,7 +78,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Attributes
         public partial class AttributesRequestBuilderGetQueryParameters 
         #pragma warning restore CS1591
         {
-            /// <summary>&quot;Type of attributes: \&quot;log\&quot; for log attributes, \&quot;resource\&quot; for resource attributes. Defaults to \&quot;log\&quot;.* `log` - log* `resource` - resource&quot;</summary>
+            /// <summary>Type of attributes: &quot;log&quot; for log attributes, &quot;resource&quot; for resource attributes. Defaults to &quot;log&quot;.* `log` - log* `resource` - resource</summary>
             [QueryParameter("attribute_type")]
             public global::Soenneker.PostHog.OpenApiClient.Models.LogsAttributesRetrieveAttributeTypeParameter? AttributeType { get; set; }
             /// <summary>Date range to search within. Defaults to last hour.</summary>
@@ -101,10 +101,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Attributes
             [QueryParameter("filterGroup")]
             public string[] FilterGroup { get; set; }
 #endif
-            /// <summary>&quot;Max results (default: 100)&quot;</summary>
+            /// <summary>Max results (default: 100)</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
-            /// <summary>&quot;Pagination offset (default: 0)&quot;</summary>
+            /// <summary>Pagination offset (default: 0)</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
             /// <summary>Search filter for attribute names</summary>

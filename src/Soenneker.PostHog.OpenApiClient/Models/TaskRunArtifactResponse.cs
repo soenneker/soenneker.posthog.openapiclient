@@ -38,7 +38,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Id { get; set; }
 #endif
-        /// <summary>Optional structured metadata for special artifact types, such as skill bundles.</summary>
+        /// <summary>Structured metadata for a skill bundle or a PostHog object reference.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactResponseMetadata? Metadata { get; set; }
@@ -64,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Source { get; set; }
 #endif
-        /// <summary>S3 object key for the artifact</summary>
+        /// <summary>S3 object key for file artifacts. Reference artifacts do not have one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? StoragePath { get; set; }
@@ -80,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Type { get; set; }
 #endif
-        /// <summary>Timestamp when the artifact was uploaded</summary>
+        /// <summary>Timestamp when the artifact was uploaded or registered</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UploadedAt { get; set; }

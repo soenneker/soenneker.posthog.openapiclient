@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;Format the file will be read as: &apos;csv&apos;, &apos;json&apos;, or &apos;parquet&apos;.&quot;</summary>
+        /// <summary>Format the file will be read as: &apos;csv&apos;, &apos;json&apos;, or &apos;parquet&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? FileFormat { get; set; }

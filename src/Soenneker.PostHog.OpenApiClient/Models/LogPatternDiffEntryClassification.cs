@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;\&quot;new\&quot;: appears only in the current window and clears the novelty floor (at least ~1% volume share, or any error/fatal occurrences). \&quot;rate_shift\&quot;: present in both windows with the per-second rate changed by at least 2x either way, backed by enough samples on both sides to trust the estimates. \&quot;gone\&quot;: cleared the floor in the baseline but absent from the current window. \&quot;unchanged\&quot; means \&quot;no confident claim\&quot;, not \&quot;provably identical\&quot; — sampled mining cannot prove a below-floor template is genuinely new or gone.* `new` - new* `rate_shift` - rate_shift* `gone` - gone* `unchanged` - unchanged&quot;
+    /// &quot;new&quot;: appears only in the current window and clears the novelty floor (at least ~1% volume share, or any error/fatal occurrences). &quot;rate_shift&quot;: present in both windows with the per-second rate changed by at least 2x either way, backed by enough samples on both sides to trust the estimates. &quot;gone&quot;: cleared the floor in the baseline but absent from the current window. &quot;unchanged&quot; means &quot;no confident claim&quot;, not &quot;provably identical&quot; — sampled mining cannot prove a below-floor template is genuinely new or gone.* `new` - new* `rate_shift` - rate_shift* `gone` - gone* `unchanged` - unchanged
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class LogPatternDiffEntryClassification : IAdditionalDataHolder, IParsable

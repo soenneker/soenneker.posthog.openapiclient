@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.I
         {
         }
         /// <summary>
-        /// Mark snapshots reviewed (DB only).Records the per-snapshot &quot;Accept change&quot; decision. Does not commit the baselineor change the GitHub gate — call finalize to ship the run.
+        /// Mark snapshots reviewed (DB only).Records the per-snapshot &quot;Accept change&quot; decision. Does not commit the baselineor change the GitHub gate — call finalize to ship the run. Works on a quarantinedsnapshot too: a quarantined NEW snapshot approved here is committed by finalize,which gives a quarantined story a baseline entry without lifting the quarantine.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Run"/></returns>
         /// <param name="body">The request body</param>
@@ -54,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.I
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.Run>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.Run.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Mark snapshots reviewed (DB only).Records the per-snapshot &quot;Accept change&quot; decision. Does not commit the baselineor change the GitHub gate — call finalize to ship the run.
+        /// Mark snapshots reviewed (DB only).Records the per-snapshot &quot;Accept change&quot; decision. Does not commit the baselineor change the GitHub gate — call finalize to ship the run. Works on a quarantinedsnapshot too: a quarantined NEW snapshot approved here is committed by finalize,which gives a quarantined story a baseline entry without lifting the quarantine.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

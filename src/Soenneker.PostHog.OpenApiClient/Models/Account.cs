@@ -31,6 +31,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
+        /// <summary>When Track Rules ignored the account. Null means the account is tracked.</summary>
+        public DateTimeOffset? IgnoredAt { get; private set; }
         /// <summary>Human-readable name of the account.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -47,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> Notebooks { get; private set; }
 #endif
-        /// <summary>&quot;Typed account properties: external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link, metabase_link) plus touchpoint matching lists: email_domains (the company&apos;s email domains) and known_emails (individual addresses pinned to the account). Defaults to an empty object. Unknown keys are rejected. User assignments live on account relationships, not here.&quot;</summary>
+        /// <summary>Typed account properties: website_domain, external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link, metabase_link), and touchpoint matching lists: email_domains (the company&apos;s email domains) and known_emails (individual addresses pinned to the account). Defaults to an empty object. Unknown keys are rejected. User assignments live on account relationships, not here.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.AccountProperties? Properties { get; set; }
@@ -103,6 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_by", n => { CreatedBy = n.GetIntValue(); } },
                 { "external_id", n => { ExternalId = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
+                { "ignored_at", n => { IgnoredAt = n.GetDateTimeOffsetValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "notebooks", n => { Notebooks = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "properties", n => { Properties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountProperties>(global::Soenneker.PostHog.OpenApiClient.Models.AccountProperties.CreateFromDiscriminatorValue); } },

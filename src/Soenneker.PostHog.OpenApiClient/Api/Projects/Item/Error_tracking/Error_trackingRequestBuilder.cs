@@ -2,6 +2,7 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Alerts;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Assignment_rules;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Bypass_rules;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.External_references;
@@ -13,6 +14,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Query;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Recommendations;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Releases;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Settings;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Severity_rules;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Spike_detection_config;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Spike_events;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Stack_frames;
@@ -30,6 +32,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Error_trackingRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The alerts property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Alerts.AlertsRequestBuilder Alerts
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Alerts.AlertsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The assignment_rules property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Assignment_rules.Assignment_rulesRequestBuilder Assignment_rules
         {
@@ -84,6 +91,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Settings.SettingsRequestBuilder Settings
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Settings.SettingsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The severity_rules property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Severity_rules.Severity_rulesRequestBuilder Severity_rules
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Severity_rules.Severity_rulesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The spike_detection_config property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Spike_detection_config.Spike_detection_configRequestBuilder Spike_detection_config

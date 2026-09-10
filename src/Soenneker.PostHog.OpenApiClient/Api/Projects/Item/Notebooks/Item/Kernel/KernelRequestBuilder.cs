@@ -3,7 +3,6 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Kernel.Config;
-using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Kernel.Dataframe;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Kernel.Execute;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Kernel.Restart;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Kernel.Start;
@@ -25,11 +24,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Kerne
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Kernel.Config.ConfigRequestBuilder Config
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Kernel.Config.ConfigRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The dataframe property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Kernel.Dataframe.DataframeRequestBuilder Dataframe
-        {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Kernel.Dataframe.DataframeRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The execute property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Kernel.Execute.ExecuteRequestBuilder Execute

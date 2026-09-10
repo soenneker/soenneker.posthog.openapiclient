@@ -16,7 +16,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Latest version you are editing from. Used for optimistic concurrency checks.</summary>
         public int? BaseVersion { get; set; }
-        /// <summary>&quot;JSON object with model parameters or any agent configuration to store with this version. If omitted, the current version&apos;s config is carried forward; pass null to clear it. Can be combined with either prompt or edits. Don&apos;t store secrets here: config is returned to anyone who can read the prompt.&quot;</summary>
+        /// <summary>JSON object with model parameters or any agent configuration to store with this version. If omitted, the current version&apos;s config is carried forward; pass null to clear it. Can be combined with either prompt or edits. Don&apos;t store secrets here: config is returned to anyone who can read the prompt.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedLlmPromptPublishConfigProperty? Config { get; set; }

@@ -15,7 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;Must be empty or omitted: release-condition properties are not supported via the experiment input. Edit the feature flag directly for targeting.&quot;</summary>
+        /// <summary>Must be empty or omitted: release-condition properties are not supported via the experiment input. Edit the feature flag directly for targeting.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagRolloutGroupPropertiesItem>? Properties { get; set; }

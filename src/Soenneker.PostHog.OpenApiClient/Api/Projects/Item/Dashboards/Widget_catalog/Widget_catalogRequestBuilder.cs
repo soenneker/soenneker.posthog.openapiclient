@@ -85,8 +85,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Widget_ca
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Widget_catalogRequestBuilderGetQueryParameters 
         {
+            #pragma warning disable CS1591
             [QueryParameter("format")]
             public global::Soenneker.PostHog.OpenApiClient.Models.DashboardsWidgetCatalogRetrieveFormatParameter? Format { get; set; }
+            #pragma warning restore CS1591
         }
     }
 }

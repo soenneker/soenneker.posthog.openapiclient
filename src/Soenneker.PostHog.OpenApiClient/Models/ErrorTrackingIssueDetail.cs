@@ -17,18 +17,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Aggregate counts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailAggregations? Aggregations { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAggregations? Aggregations { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailAggregations Aggregations { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAggregations Aggregations { get; set; }
 #endif
         /// <summary>Issue assignee.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailAssignee? Assignee { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssigneeResponse? Assignee { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailAssignee Assignee { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssigneeResponse Assignee { get; set; }
 #endif
         /// <summary>Issue description.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -83,6 +83,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string Name { get; set; }
+#endif
+        /// <summary>Issue severity, or null when no severity is assigned.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueSeverityWrapper? Severity { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueSeverityWrapper Severity { get; set; }
 #endif
         /// <summary>Top source/file associated with the issue.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -141,8 +149,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "aggregations", n => { Aggregations = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailAggregations>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailAggregations.CreateFromDiscriminatorValue); } },
-                { "assignee", n => { Assignee = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailAssignee>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailAssignee.CreateFromDiscriminatorValue); } },
+                { "aggregations", n => { Aggregations = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAggregations>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAggregations.CreateFromDiscriminatorValue); } },
+                { "assignee", n => { Assignee = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssigneeResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssigneeResponse.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "first_seen", n => { FirstSeen = n.GetDateTimeOffsetValue(); } },
                 { "function", n => { Function = n.GetStringValue(); } },
@@ -152,6 +160,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "latest_release", n => { LatestRelease = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailLatestRelease>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailLatestRelease.CreateFromDiscriminatorValue); } },
                 { "library", n => { Library = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "severity", n => { Severity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueSeverityWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueSeverityWrapper.CreateFromDiscriminatorValue); } },
                 { "source", n => { Source = n.GetStringValue(); } },
                 { "sparkline", n => { Sparkline = n.GetCollectionOfPrimitiveValues<double?>()?.AsList(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
@@ -165,8 +174,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailAggregations>("aggregations", Aggregations);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailAssignee>("assignee", Assignee);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAggregations>("aggregations", Aggregations);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssigneeResponse>("assignee", Assignee);
             writer.WriteStringValue("description", Description);
             writer.WriteDateTimeOffsetValue("first_seen", FirstSeen);
             writer.WriteStringValue("function", Function);
@@ -176,6 +185,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailLatestRelease>("latest_release", LatestRelease);
             writer.WriteStringValue("library", Library);
             writer.WriteStringValue("name", Name);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueSeverityWrapper>("severity", Severity);
             writer.WriteStringValue("source", Source);
             writer.WriteCollectionOfPrimitiveValues<double?>("sparkline", Sparkline);
             writer.WriteStringValue("status", Status);

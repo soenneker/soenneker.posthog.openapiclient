@@ -30,10 +30,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>User who created the note, if known.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountNoteCreatedBy? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountNoteCreatedBy CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
 #endif
         /// <summary>When the note was last modified.</summary>
         public DateTimeOffset? LastModifiedAt { get; private set; }
@@ -81,7 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "account_id", n => { AccountId = n.GetGuidValue(); } },
                 { "account_name", n => { AccountName = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountNoteCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.AccountNoteCreatedBy.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
                 { "last_modified_at", n => { LastModifiedAt = n.GetDateTimeOffsetValue(); } },
                 { "short_id", n => { ShortId = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },

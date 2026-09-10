@@ -21,6 +21,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item.Linear
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item.Linkedin_ads_accounts;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item.Linkedin_ads_conversion_rules;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item.Twilio_phone_numbers;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item.Users;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -125,6 +126,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item.Twilio_phone_numbers.Twilio_phone_numbersRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The users property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item.Users.UsersRequestBuilder Users
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item.Users.UsersRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item.IntegrationsItemRequestBuilder"/> and sets the default values.
         /// </summary>
@@ -183,7 +189,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Item
 #endif
             var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <returns>A <see cref="RequestInformation"/></returns>

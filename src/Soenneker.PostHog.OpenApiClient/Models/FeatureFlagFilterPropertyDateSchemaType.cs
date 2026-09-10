@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Property filter type. Common values are &apos;person&apos; and &apos;cohort&apos;.* `cohort` - cohort* `person` - person* `group` - group
+    /// Property filter type. Set it on every property. Use `group` with `group_type_index` to filter on a group&apos;s properties.* `cohort` - cohort* `person` - person* `group` - group
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class FeatureFlagFilterPropertyDateSchemaType : IAdditionalDataHolder, IParsable

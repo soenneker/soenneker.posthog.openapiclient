@@ -15,10 +15,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The bytecode property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonFilterBytecode? Bytecode { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PersonFilterBytecodeItem>? Bytecode { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonFilterBytecode Bytecode { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PersonFilterBytecodeItem> Bytecode { get; set; }
 #endif
         /// <summary>The bytecode_error property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -55,13 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Operator { get; set; }
 #endif
         /// <summary>The type property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Type { get; set; }
-#nullable restore
-#else
-        public string Type { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonFilterType? Type { get; set; }
         /// <summary>The value property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -95,13 +89,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "bytecode", n => { Bytecode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonFilterBytecode>(global::Soenneker.PostHog.OpenApiClient.Models.PersonFilterBytecode.CreateFromDiscriminatorValue); } },
+                { "bytecode", n => { Bytecode = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PersonFilterBytecodeItem>(global::Soenneker.PostHog.OpenApiClient.Models.PersonFilterBytecodeItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "bytecode_error", n => { BytecodeError = n.GetStringValue(); } },
                 { "conditionHash", n => { ConditionHash = n.GetStringValue(); } },
                 { "key", n => { Key = n.GetStringValue(); } },
                 { "negation", n => { Negation = n.GetBoolValue(); } },
                 { "operator", n => { Operator = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonFilterType>(); } },
                 { "value", n => { Value = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonFilterValue>(global::Soenneker.PostHog.OpenApiClient.Models.PersonFilterValue.CreateFromDiscriminatorValue); } },
             };
         }
@@ -112,13 +106,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonFilterBytecode>("bytecode", Bytecode);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PersonFilterBytecodeItem>("bytecode", Bytecode);
             writer.WriteStringValue("bytecode_error", BytecodeError);
             writer.WriteStringValue("conditionHash", ConditionHash);
             writer.WriteStringValue("key", Key);
             writer.WriteBoolValue("negation", Negation);
             writer.WriteStringValue("operator", Operator);
-            writer.WriteStringValue("type", Type);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonFilterType>("type", Type);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonFilterValue>("value", Value);
         }
     }

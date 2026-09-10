@@ -23,7 +23,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Key { get; set; }
 #endif
-        /// <summary>&quot;user: private to the viewer who wrote it. shared: one value per canvas, visible to every viewer.* `user` - user* `shared` - shared&quot;</summary>
+        /// <summary>user: private to the viewer who wrote it. shared: one value per canvas, visible to every viewer.* `user` - user* `shared` - shared</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateEntryScope? Scope { get; set; }

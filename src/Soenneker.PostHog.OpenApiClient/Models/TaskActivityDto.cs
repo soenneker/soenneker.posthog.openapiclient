@@ -15,7 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>The activity_at property</summary>
         public DateTimeOffset? ActivityAt { get; set; }
-        /// <summary>&quot;What the latest activity on this task was: an agent run waiting on the requester (awaiting_input), a completed run (completed), someone @-mentioning them (mention), a comment-thread reply (thread_reply), a comment on their item (owned_item_comment), a task-thread reply (message), or their creating the task (created).* `awaiting_input` - awaiting_input* `completed` - completed* `mention` - mention* `thread_reply` - thread_reply* `owned_item_comment` - owned_item_comment* `message` - message* `created` - created&quot;</summary>
+        /// <summary>What the latest activity on this task was: an agent run waiting on the requester (awaiting_input), a completed run (completed), someone @-mentioning them (mention), a comment-thread reply (thread_reply), a comment on their item (owned_item_comment), a task-thread reply (message), or their creating the task (created).* `awaiting_input` - awaiting_input* `completed` - completed* `mention` - mention* `thread_reply` - thread_reply* `owned_item_comment` - owned_item_comment* `message` - message* `created` - created</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskActivityDtoActivityKind? ActivityKind { get; set; }
@@ -42,10 +42,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Author of the thread message tied to the latest activity, when one applies.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskActivityDtoLatestAuthor? LatestAuthor { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo? LatestAuthor { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskActivityDtoLatestAuthor LatestAuthor { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo LatestAuthor { get; set; }
 #endif
         /// <summary>The latest_comment_id property</summary>
         public Guid? LatestCommentId { get; set; }
@@ -116,7 +116,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "channel_name", n => { ChannelName = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "is_unread", n => { IsUnread = n.GetBoolValue(); } },
-                { "latest_author", n => { LatestAuthor = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskActivityDtoLatestAuthor>(global::Soenneker.PostHog.OpenApiClient.Models.TaskActivityDtoLatestAuthor.CreateFromDiscriminatorValue); } },
+                { "latest_author", n => { LatestAuthor = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo>(global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo.CreateFromDiscriminatorValue); } },
                 { "latest_comment_id", n => { LatestCommentId = n.GetGuidValue(); } },
                 { "latest_comment_item_id", n => { LatestCommentItemId = n.GetStringValue(); } },
                 { "latest_comment_scope", n => { LatestCommentScope = n.GetStringValue(); } },
@@ -139,7 +139,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("channel_name", ChannelName);
             writer.WriteGuidValue("id", Id);
             writer.WriteBoolValue("is_unread", IsUnread);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskActivityDtoLatestAuthor>("latest_author", LatestAuthor);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo>("latest_author", LatestAuthor);
             writer.WriteGuidValue("latest_comment_id", LatestCommentId);
             writer.WriteStringValue("latest_comment_item_id", LatestCommentItemId);
             writer.WriteStringValue("latest_comment_scope", LatestCommentScope);

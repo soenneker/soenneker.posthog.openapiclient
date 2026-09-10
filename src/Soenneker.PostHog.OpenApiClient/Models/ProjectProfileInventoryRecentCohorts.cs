@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Cohort orientation: total + the 5 most recently created cohorts on the team.&quot;
+    /// Cohort orientation: total + the 5 most recently created cohorts on the team.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ProjectProfileInventoryRecentCohorts : IAdditionalDataHolder, IParsable

@@ -14,10 +14,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Sender, timestamp, and direction of the first captured message, when available.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationMessageSummary? FirstMessage { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationMessageSummary FirstMessage { get; private set; }
+#endif
         /// <summary>Source timestamp of the first captured message.</summary>
         public DateTimeOffset? FirstMessageAt { get; private set; }
         /// <summary>UUID of the captured email thread.</summary>
         public Guid? Id { get; private set; }
+        /// <summary>Sender, timestamp, and direction of the latest captured message, when available.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationMessageSummary? LastMessage { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationMessageSummary LastMessage { get; private set; }
+#endif
         /// <summary>Source timestamp of the latest captured message.</summary>
         public DateTimeOffset? LastMessageAt { get; private set; }
         /// <summary>Number of captured messages in the thread.</summary>
@@ -71,8 +87,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "first_message", n => { FirstMessage = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationMessageSummary>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationMessageSummary.CreateFromDiscriminatorValue); } },
                 { "first_message_at", n => { FirstMessageAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
+                { "last_message", n => { LastMessage = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationMessageSummary>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationMessageSummary.CreateFromDiscriminatorValue); } },
                 { "last_message_at", n => { LastMessageAt = n.GetDateTimeOffsetValue(); } },
                 { "message_count", n => { MessageCount = n.GetIntValue(); } },
                 { "participants", n => { Participants = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AccountEmailThreadParticipant>(global::Soenneker.PostHog.OpenApiClient.Models.AccountEmailThreadParticipant.CreateFromDiscriminatorValue)?.AsList(); } },

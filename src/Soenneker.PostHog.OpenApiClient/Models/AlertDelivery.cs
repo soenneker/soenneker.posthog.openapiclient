@@ -16,7 +16,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When the delivery was recorded.</summary>
         public DateTimeOffset? At { get; set; }
-        /// <summary>&quot;Delivery channel: &apos;email&apos; or &apos;hog_function&apos; (destinations).&quot;</summary>
+        /// <summary>Delivery channel: &apos;email&apos; or &apos;hog_function&apos; (destinations).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Channel { get; set; }
@@ -24,7 +24,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Channel { get; set; }
 #endif
-        /// <summary>&quot;Ready-to-display description of the delivery, e.g. &apos;Email: a@example.com&apos; or &apos;Slack #eng-alerts&apos;.&quot;</summary>
+        /// <summary>Ready-to-display description of the delivery, e.g. &apos;Email: a@example.com&apos; or &apos;Slack #eng-alerts&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? DisplayLabel { get; set; }
@@ -56,7 +56,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string TargetId { get; set; }
 #endif
-        /// <summary>&quot;Destination template: &apos;slack&apos;, &apos;discord&apos;, &apos;webhook&apos;, or &apos;teams&apos;. Null for email.&quot;</summary>
+        /// <summary>Destination template: &apos;slack&apos;, &apos;discord&apos;, &apos;webhook&apos;, or &apos;teams&apos;. Null for email.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Template { get; set; }

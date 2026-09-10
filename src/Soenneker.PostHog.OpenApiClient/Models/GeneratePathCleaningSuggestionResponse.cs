@@ -25,10 +25,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The stored suggestion when status is generated, else null.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.GeneratePathCleaningSuggestionResponseSuggestion? Suggestion { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningSuggestionIssue? Suggestion { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.GeneratePathCleaningSuggestionResponseSuggestion Suggestion { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningSuggestionIssue Suggestion { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.GeneratePathCleaningSuggestionResponse"/> and sets the default values.
@@ -56,7 +56,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "status", n => { Status = n.GetStringValue(); } },
-                { "suggestion", n => { Suggestion = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GeneratePathCleaningSuggestionResponseSuggestion>(global::Soenneker.PostHog.OpenApiClient.Models.GeneratePathCleaningSuggestionResponseSuggestion.CreateFromDiscriminatorValue); } },
+                { "suggestion", n => { Suggestion = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningSuggestionIssue>(global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningSuggestionIssue.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -67,7 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("status", Status);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GeneratePathCleaningSuggestionResponseSuggestion>("suggestion", Suggestion);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningSuggestionIssue>("suggestion", Suggestion);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

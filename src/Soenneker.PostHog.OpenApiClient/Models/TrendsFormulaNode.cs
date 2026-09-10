@@ -9,18 +9,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class TrendsFormulaNode : IAdditionalDataHolder, IParsable
+    public partial class TrendsFormulaNode : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TrendsFormulaNode"/> and sets the default values.
-        /// </summary>
-        public TrendsFormulaNode()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
+        /// <summary>Optional user-defined name for the formula</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CustomName { get; set; }
+#nullable restore
+#else
+        public string CustomName { get; set; }
+#endif
+        /// <summary>The formula property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Formula { get; set; }
+#nullable restore
+#else
+        public string Formula { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -39,6 +46,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "custom_name", n => { CustomName = n.GetStringValue(); } },
+                { "formula", n => { Formula = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -48,7 +57,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteAdditionalData(AdditionalData);
+            writer.WriteStringValue("custom_name", CustomName);
+            writer.WriteStringValue("formula", Formula);
         }
     }
 }

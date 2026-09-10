@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReasoningEffortEnumWrapper8"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NullEnum"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReasoningEffortEnumWrapper9"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WarmTaskRequestReasoningEffort : IComposedTypeWrapper, IParsable
@@ -21,13 +21,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.NullEnum NullEnum { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReasoningEffortEnumWrapper8"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReasoningEffortEnumWrapper9"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReasoningEffortEnumWrapper8? ReasoningEffortEnumWrapper8 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReasoningEffortEnumWrapper9? ReasoningEffortEnumWrapper9 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReasoningEffortEnumWrapper8 ReasoningEffortEnumWrapper8 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReasoningEffortEnumWrapper9 ReasoningEffortEnumWrapper9 { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -39,9 +39,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestReasoningEffort();
-            if("ReasoningEffortEnumWrapper8".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("ReasoningEffortEnumWrapper9".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.ReasoningEffortEnumWrapper8 = new global::Soenneker.PostHog.OpenApiClient.Models.ReasoningEffortEnumWrapper8();
+                result.ReasoningEffortEnumWrapper9 = new global::Soenneker.PostHog.OpenApiClient.Models.ReasoningEffortEnumWrapper9();
             }
             return result;
         }
@@ -55,9 +55,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 return NullEnum.GetFieldDeserializers();
             }
-            else if(ReasoningEffortEnumWrapper8 != null)
+            else if(ReasoningEffortEnumWrapper9 != null)
             {
-                return ReasoningEffortEnumWrapper8.GetFieldDeserializers();
+                return ReasoningEffortEnumWrapper9.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -72,9 +72,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NullEnum>(null, NullEnum);
             }
-            else if(ReasoningEffortEnumWrapper8 != null)
+            else if(ReasoningEffortEnumWrapper9 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReasoningEffortEnumWrapper8>(null, ReasoningEffortEnumWrapper8);
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReasoningEffortEnumWrapper9>(null, ReasoningEffortEnumWrapper9);
             }
         }
     }

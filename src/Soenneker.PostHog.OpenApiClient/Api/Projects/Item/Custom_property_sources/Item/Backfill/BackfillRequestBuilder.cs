@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Custom_property_sour
         {
         }
         /// <summary>
-        /// &quot;Person and group sources only: start a backfill that reads the whole warehouse table andpopulates person or group properties for historical rows. Coalesces if one is already runningfor the table.&quot;
+        /// Person and group sources only: start a backfill that reads the whole warehouse table andpopulates person or group properties for historical rows. Coalesces if one is already runningfor the table.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySyncTriggerResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Custom_property_sour
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySyncTriggerResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySyncTriggerResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Person and group sources only: start a backfill that reads the whole warehouse table andpopulates person or group properties for historical rows. Coalesces if one is already runningfor the table.&quot;
+        /// Person and group sources only: start a backfill that reads the whole warehouse table andpopulates person or group properties for historical rows. Coalesces if one is already runningfor the table.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

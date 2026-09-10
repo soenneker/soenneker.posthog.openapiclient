@@ -13,8 +13,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning restore CS1591
     {
         /// <summary>Wait a fixed window after the first matching generation, then evaluate.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationTargetConfigFixedWindowSettleConfigStrategy? Strategy { get; set; }
-        /// <summary>&quot;Seconds to wait after the first matching generation before evaluating the whole unit. Captured when the run is scheduled — editing it does not change runs already in flight. The accepted range depends on `target`: 10–7200 for &apos;trace&apos;, 10–604800 for &apos;session&apos;. The default also depends on `target`; see the field-level help_text.&quot;</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.FixedWindowStrategy? Strategy { get; set; }
+        /// <summary>Seconds to wait after the first matching generation before evaluating the whole unit. Captured when the run is scheduled — editing it does not change runs already in flight. The accepted range depends on `target`: 10–7200 for &apos;trace&apos;, 10–604800 for &apos;session&apos;. The default also depends on `target`; see the field-level help_text.</summary>
         public int? WindowSeconds { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "strategy", n => { Strategy = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationTargetConfigFixedWindowSettleConfigStrategy>(); } },
+                { "strategy", n => { Strategy = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FixedWindowStrategy>(); } },
                 { "window_seconds", n => { WindowSeconds = n.GetIntValue(); } },
             };
         }
@@ -45,7 +45,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationTargetConfigFixedWindowSettleConfigStrategy>("strategy", Strategy);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FixedWindowStrategy>("strategy", Strategy);
             writer.WriteIntValue("window_seconds", WindowSeconds);
         }
     }

@@ -23,6 +23,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Goal { get; set; }
 #endif
+        /// <summary>Goal-based flow only: credits a month to spend (1 credit = $0.01). The draft picks the `model`, then solves `sampling_mode` and `sampling_rate` so the projected spend lands on this number, and sets `credit_limit` to it as a hard cap. Omitted on the legacy flow, and ignored while the goal-based flow&apos;s flag is off for the caller.</summary>
+        public int? MonthlyCreditBudget { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerRequest"/> and sets the default values.
         /// </summary>
@@ -49,6 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "goal", n => { Goal = n.GetStringValue(); } },
+                { "monthly_credit_budget", n => { MonthlyCreditBudget = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -59,6 +62,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("goal", Goal);
+            writer.WriteIntValue("monthly_credit_budget", MonthlyCreditBudget);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

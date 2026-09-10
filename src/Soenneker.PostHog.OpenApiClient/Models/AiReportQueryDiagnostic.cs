@@ -22,6 +22,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
+        /// <summary>Stable query API error code when available; null on success and for unclassified errors.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ErrorCode { get; set; }
+#nullable restore
+#else
+        public string ErrorCode { get; set; }
+#endif
         /// <summary>Exception class name when the query failed; null on success.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -74,6 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "description", n => { Description = n.GetStringValue(); } },
+                { "error_code", n => { ErrorCode = n.GetStringValue(); } },
                 { "error_type", n => { ErrorType = n.GetStringValue(); } },
                 { "hogql", n => { Hogql = n.GetStringValue(); } },
                 { "human_readable_error", n => { HumanReadableError = n.GetStringValue(); } },
@@ -88,6 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("description", Description);
+            writer.WriteStringValue("error_code", ErrorCode);
             writer.WriteStringValue("error_type", ErrorType);
             writer.WriteStringValue("hogql", Hogql);
             writer.WriteStringValue("human_readable_error", HumanReadableError);

@@ -12,7 +12,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class TrendsFilter : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>&quot;Y-axis value formatter. Picks a human-friendly unit per value at render time without changing the underlying series values.- `numeric` (default): raw numbers, e.g. `1,234`.- `duration`: values are in seconds; rendered as friendly units per value (`45s`, `2m 12s`, `1h 4m`). Use this whenever the series is in seconds (latency, session length, time-to-event) instead of dividing in `formula` to force minutes or hours.- `duration_ms`: values are in milliseconds; rendered as friendly units (`850ms`, `1.5s`, `1m 4s`).- `percentage`: values are already in the 0-100 range; appends `%`.- `percentage_scaled`: values are a 0-1 ratio; multiplied and rendered as `%`.- `currency`: values are in the project&apos;s base currency (set in project settings, defaults to USD); rendered with that currency symbol. For values pinned to a specific currency regardless of project base (e.g. `$ai_total_cost_usd` is always USD), use `aggregationAxisPrefix` instead.- `short`: compact notation for large counts (`1.2K`, `3.4M`).&quot;</summary>
+        /// <summary>Y-axis value formatter. Picks a human-friendly unit per value at render time without changing the underlying series values.- `numeric` (default): raw numbers, e.g. `1,234`.- `duration`: values are in seconds; rendered as friendly units per value (`45s`, `2m 12s`, `1h 4m`). Use this whenever the series is in seconds (latency, session length, time-to-event) instead of dividing in `formula` to force minutes or hours.- `duration_ms`: values are in milliseconds; rendered as friendly units (`850ms`, `1.5s`, `1m 4s`).- `percentage`: values are already in the 0-100 range; appends `%`.- `percentage_scaled`: values are a 0-1 ratio; multiplied and rendered as `%`.- `currency`: values are in the project&apos;s base currency (set in project settings, defaults to USD); rendered with that currency symbol. For values pinned to a specific currency regardless of project base (e.g. `$ai_total_cost_usd` is always USD), use `aggregationAxisPrefix` instead.- `short`: compact notation for large counts (`1.2K`, `3.4M`).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.AggregationAxisFormatWrapper? AggregationAxisFormat { get; set; }
@@ -87,10 +87,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The formulas property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TrendsFilterFormulas? Formulas { get; set; }
+        public List<string>? Formulas { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TrendsFilterFormulas Formulas { get; set; }
+        public List<string> Formulas { get; set; }
 #endif
         /// <summary>Goal Lines</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -103,22 +103,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The hiddenLegendIndexes property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TrendsFilterHiddenLegendIndexes? HiddenLegendIndexes { get; set; }
+        public List<int?>? HiddenLegendIndexes { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TrendsFilterHiddenLegendIndexes HiddenLegendIndexes { get; set; }
+        public List<int?> HiddenLegendIndexes { get; set; }
 #endif
         /// <summary>Ignored. Superseded by `dateRange.daysOfWeek`, which excludes the days from the query instead of only hiding their buckets. Still accepted so existing API clients keep working.</summary>
         public bool? HideWeekends { get; set; }
         /// <summary>Where the in-chart legend sits relative to the plot. Only applies to the in-chart legend.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper4? LegendPosition { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper5? LegendPosition { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper4 LegendPosition { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper5 LegendPosition { get; set; }
 #endif
-        /// <summary>&quot;Metric display: change pill color when the metric decreased. Defaults to red.&quot;</summary>
+        /// <summary>Metric display: change pill color when the metric decreased. Defaults to red.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? MetricChangeDecreaseColor { get; set; }
@@ -126,7 +126,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string MetricChangeDecreaseColor { get; set; }
 #endif
-        /// <summary>&quot;Metric display: change pill color when the metric increased. Defaults to green.&quot;</summary>
+        /// <summary>Metric display: change pill color when the metric increased. Defaults to green.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? MetricChangeIncreaseColor { get; set; }
@@ -134,9 +134,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string MetricChangeIncreaseColor { get; set; }
 #endif
-        /// <summary>&quot;Metric display: color the sparkline by whether the metric increased or decreased.&quot;</summary>
+        /// <summary>Metric display: color the sparkline by whether the metric increased or decreased.</summary>
         public bool? MetricColorByDirection { get; set; }
-        /// <summary>&quot;Metric display: line color when the metric decreased. Defaults to red.&quot;</summary>
+        /// <summary>Metric display: line color when the metric decreased. Defaults to red.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? MetricLineDecreaseColor { get; set; }
@@ -144,7 +144,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string MetricLineDecreaseColor { get; set; }
 #endif
-        /// <summary>&quot;Metric display: line color when the metric increased. Defaults to green.&quot;</summary>
+        /// <summary>Metric display: line color when the metric increased. Defaults to green.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? MetricLineIncreaseColor { get; set; }
@@ -154,7 +154,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Show the period-over-period change pill on the Metric display.</summary>
         public bool? MetricShowChange { get; set; }
-        /// <summary>&quot;Metric display: which summary the resting headline shows — the period total, the average, or the latest point. Hovering the sparkline always shows the hovered point&apos;s value. Also drives the change pill: total/average compare against the previous period when \&quot;compare to previous\&quot; is on; latest compares first→last of the series.&quot;</summary>
+        /// <summary>Metric display: which summary the resting headline shows — the period total, the average, or the latest point. Hovering the sparkline always shows the hovered point&apos;s value. Also drives the change pill: total/average compare against the previous period when &quot;compare to previous&quot; is on; latest compares first→last of the series.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.MetricSummaryWrapper? MetricSummary { get; set; }
@@ -285,11 +285,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "excludeBoxPlotOutliers", n => { ExcludeBoxPlotOutliers = n.GetBoolValue(); } },
                 { "formula", n => { Formula = n.GetStringValue(); } },
                 { "formulaNodes", n => { FormulaNodes = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TrendsFormulaNode>(global::Soenneker.PostHog.OpenApiClient.Models.TrendsFormulaNode.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "formulas", n => { Formulas = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TrendsFilterFormulas>(global::Soenneker.PostHog.OpenApiClient.Models.TrendsFilterFormulas.CreateFromDiscriminatorValue); } },
+                { "formulas", n => { Formulas = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "goalLines", n => { GoalLines = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine>(global::Soenneker.PostHog.OpenApiClient.Models.GoalLine.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "hiddenLegendIndexes", n => { HiddenLegendIndexes = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TrendsFilterHiddenLegendIndexes>(global::Soenneker.PostHog.OpenApiClient.Models.TrendsFilterHiddenLegendIndexes.CreateFromDiscriminatorValue); } },
+                { "hiddenLegendIndexes", n => { HiddenLegendIndexes = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
                 { "hideWeekends", n => { HideWeekends = n.GetBoolValue(); } },
-                { "legendPosition", n => { LegendPosition = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper4>(global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper4.CreateFromDiscriminatorValue); } },
+                { "legendPosition", n => { LegendPosition = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper5>(global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper5.CreateFromDiscriminatorValue); } },
                 { "metricChangeDecreaseColor", n => { MetricChangeDecreaseColor = n.GetStringValue(); } },
                 { "metricChangeIncreaseColor", n => { MetricChangeIncreaseColor = n.GetStringValue(); } },
                 { "metricColorByDirection", n => { MetricColorByDirection = n.GetBoolValue(); } },
@@ -340,11 +340,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("excludeBoxPlotOutliers", ExcludeBoxPlotOutliers);
             writer.WriteStringValue("formula", Formula);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TrendsFormulaNode>("formulaNodes", FormulaNodes);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TrendsFilterFormulas>("formulas", Formulas);
+            writer.WriteCollectionOfPrimitiveValues<string>("formulas", Formulas);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine>("goalLines", GoalLines);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TrendsFilterHiddenLegendIndexes>("hiddenLegendIndexes", HiddenLegendIndexes);
+            writer.WriteCollectionOfPrimitiveValues<int?>("hiddenLegendIndexes", HiddenLegendIndexes);
             writer.WriteBoolValue("hideWeekends", HideWeekends);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper4>("legendPosition", LegendPosition);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LegendPositionWrapper5>("legendPosition", LegendPosition);
             writer.WriteStringValue("metricChangeDecreaseColor", MetricChangeDecreaseColor);
             writer.WriteStringValue("metricChangeIncreaseColor", MetricChangeIncreaseColor);
             writer.WriteBoolValue("metricColorByDirection", MetricColorByDirection);

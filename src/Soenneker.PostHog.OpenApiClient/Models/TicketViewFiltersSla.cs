@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;SLA state: &apos;breached&apos; is past due, &apos;at-risk&apos; is due within the next hour, &apos;on-track&apos; has more than an hour remaining. &apos;all&apos; disables the filter.* `breached` - breached* `at-risk` - at-risk* `on-track` - on-track* `all` - all&quot;
+    /// SLA state: &apos;breached&apos; is past due, &apos;at-risk&apos; is due within the next hour, &apos;on-track&apos; has more than an hour remaining. &apos;all&apos; disables the filter.* `breached` - breached* `at-risk` - at-risk* `on-track` - on-track* `all` - all
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TicketViewFiltersSla : IAdditionalDataHolder, IParsable

@@ -34,27 +34,27 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_source
         {
         }
         /// <summary>
-        /// &quot;Enable CDC on an existing source.Provisions engine-side CDC resources via the source&apos;s adapter, writes the CDCconfig into ``source.job_inputs``, and ensures the CDC extraction scheduleexists. Re-runs prereq checks server-side so we never trust a staleclient-side check.Body params: ``cdc_management_mode`` (``\&quot;posthog\&quot;`` | ``\&quot;self_managed\&quot;``),plus engine-specific identifier hints (e.g. ``cdc_slot_name``,``cdc_publication_name`` for Postgres). Universal tuning fields:``cdc_auto_drop_slot`` (optional bool), ``cdc_lag_warning_threshold_mb``(optional int), ``cdc_lag_critical_threshold_mb`` (optional int).&quot;
+        /// Enable CDC on an existing source.Provisions engine-side CDC resources via the source&apos;s adapter, writes the CDCconfig into ``source.job_inputs``, and ensures the CDC extraction scheduleexists. Re-runs prereq checks server-side so we never trust a staleclient-side check.Body params: ``cdc_management_mode`` (``&quot;posthog&quot;`` | ``&quot;self_managed&quot;``),plus engine-specific identifier hints (e.g. ``cdc_slot_name``,``cdc_publication_name`` for Postgres). Universal tuning fields:``cdc_auto_drop_slot`` (optional bool), ``cdc_lag_warning_threshold_mb``(optional int), ``cdc_lag_critical_threshold_mb`` (optional int).
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourcesEnableCdcCreate201Response"/></returns>
+        /// <returns>A <see cref="Stream"/></returns>
         /// <param name="body">Mixin for serializers to add user access control fields</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourcesEnableCdcCreate201Response?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Stream?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourcesEnableCdcCreate201Response> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Stream> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourcesEnableCdcCreate201Response>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourcesEnableCdcCreate201Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Enable CDC on an existing source.Provisions engine-side CDC resources via the source&apos;s adapter, writes the CDCconfig into ``source.job_inputs``, and ensures the CDC extraction scheduleexists. Re-runs prereq checks server-side so we never trust a staleclient-side check.Body params: ``cdc_management_mode`` (``\&quot;posthog\&quot;`` | ``\&quot;self_managed\&quot;``),plus engine-specific identifier hints (e.g. ``cdc_slot_name``,``cdc_publication_name`` for Postgres). Universal tuning fields:``cdc_auto_drop_slot`` (optional bool), ``cdc_lag_warning_threshold_mb``(optional int), ``cdc_lag_critical_threshold_mb`` (optional int).&quot;
+        /// Enable CDC on an existing source.Provisions engine-side CDC resources via the source&apos;s adapter, writes the CDCconfig into ``source.job_inputs``, and ensures the CDC extraction scheduleexists. Re-runs prereq checks server-side so we never trust a staleclient-side check.Body params: ``cdc_management_mode`` (``&quot;posthog&quot;`` | ``&quot;self_managed&quot;``),plus engine-specific identifier hints (e.g. ``cdc_slot_name``,``cdc_publication_name`` for Postgres). Universal tuning fields:``cdc_auto_drop_slot`` (optional bool), ``cdc_lag_warning_threshold_mb``(optional int), ``cdc_lag_critical_threshold_mb`` (optional int).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">Mixin for serializers to add user access control fields</param>
@@ -71,7 +71,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_source
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }

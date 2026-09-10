@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Where the description came from: canonical (a curated, documentation-sourced description the source ships for its well-known tables/columns), ai_generated (drafted by an LLM), or user_edited (written or edited by a user).* `canonical` - Canonical* `ai_generated` - AI generated* `user_edited` - User edited&quot;
+    /// Where the description came from: canonical (a curated, documentation-sourced description the source ships for its well-known tables/columns), ai_generated (drafted by an LLM), or user_edited (written or edited by a user).* `canonical` - Canonical* `ai_generated` - AI generated* `user_edited` - User edited
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DataWarehouseSavedQueryColumnAnnotationDescriptionSource : IAdditionalDataHolder, IParsable
@@ -16,7 +16,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `canonical` - Canonical* `ai_generated` - AI generated* `user_edited` - User edited</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.DescriptionSourceEnum? Value { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseColumnAnnotationDescriptionSourceEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryColumnAnnotationDescriptionSource"/> and sets the default values.
         /// </summary>
@@ -42,7 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "value", n => { Value = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DescriptionSourceEnum>(); } },
+                { "value", n => { Value = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseColumnAnnotationDescriptionSourceEnum>(); } },
             };
         }
         /// <summary>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DescriptionSourceEnum>("value", Value);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseColumnAnnotationDescriptionSourceEnum>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

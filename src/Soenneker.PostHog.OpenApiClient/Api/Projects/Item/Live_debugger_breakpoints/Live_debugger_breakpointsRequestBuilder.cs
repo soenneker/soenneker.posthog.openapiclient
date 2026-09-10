@@ -154,12 +154,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Live_debugger_breakp
         {
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("filename")]
             public string? Filename { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("filename")]
             public string Filename { get; set; }
+            #pragma warning restore CS1591
 #endif
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
@@ -169,12 +173,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Live_debugger_breakp
             public int? Offset { get; set; }
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("repository")]
             public string? Repository { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("repository")]
             public string Repository { get; set; }
+            #pragma warning restore CS1591
 #endif
         }
     }

@@ -20,7 +20,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string BreakdownKey { get; set; }
 #endif
-        /// <summary>&quot;Where the key lives: an allowlisted top-level span column, span-level attributes, or resource-level attributes.&quot;</summary>
+        /// <summary>Where the key lives: an allowlisted top-level span column, span-level attributes, or resource-level attributes.</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TraceSpanBreakdownType? BreakdownType { get; set; }
         /// <summary>Optional comparison window — when `compare` is true, the runner returns an extra `compare` result set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -57,13 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter FilterGroup { get; set; }
 #endif
         /// <summary>The kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Kind { get; set; }
-#nullable restore
-#else
-        public string Kind { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansAttributeBreakdownQueryKind? Kind { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -91,10 +85,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The serviceNames property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansAttributeBreakdownQueryServiceNames? ServiceNames { get; set; }
+        public List<string>? ServiceNames { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansAttributeBreakdownQueryServiceNames ServiceNames { get; set; }
+        public List<string> ServiceNames { get; set; }
 #endif
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -131,11 +125,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "excludeBreakdownFilter", n => { ExcludeBreakdownFilter = n.GetBoolValue(); } },
                 { "facetSearch", n => { FacetSearch = n.GetStringValue(); } },
                 { "filterGroup", n => { FilterGroup = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter>(global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter.CreateFromDiscriminatorValue); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansAttributeBreakdownQueryKind>(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "orderBy", n => { OrderBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceSpanBreakdownOrderByWrapper>(global::Soenneker.PostHog.OpenApiClient.Models.TraceSpanBreakdownOrderByWrapper.CreateFromDiscriminatorValue); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansAttributeBreakdownQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansAttributeBreakdownQueryResponse.CreateFromDiscriminatorValue); } },
-                { "serviceNames", n => { ServiceNames = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansAttributeBreakdownQueryServiceNames>(global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansAttributeBreakdownQueryServiceNames.CreateFromDiscriminatorValue); } },
+                { "serviceNames", n => { ServiceNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
                 { "version", n => { Version = n.GetDoubleValue(); } },
             };
@@ -154,11 +148,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("excludeBreakdownFilter", ExcludeBreakdownFilter);
             writer.WriteStringValue("facetSearch", FacetSearch);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter>("filterGroup", FilterGroup);
-            writer.WriteStringValue("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansAttributeBreakdownQueryKind>("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceSpanBreakdownOrderByWrapper>("orderBy", OrderBy);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansAttributeBreakdownQueryResponse>("response", Response);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceSpansAttributeBreakdownQueryServiceNames>("serviceNames", ServiceNames);
+            writer.WriteCollectionOfPrimitiveValues<string>("serviceNames", ServiceNames);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
             writer.WriteDoubleValue("version", Version);
         }

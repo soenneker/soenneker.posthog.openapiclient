@@ -15,6 +15,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Email of the authoring PostHog user, when the message was written by one (support replies and internal notes). Null for customer and AI messages.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AuthorEmail { get; private set; }
+#nullable restore
+#else
+        public string AuthorEmail { get; private set; }
+#endif
         /// <summary>Display name of the author.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -23,7 +31,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string AuthorName { get; private set; }
 #endif
-        /// <summary>&quot;One of: customer, support, AI.&quot;</summary>
+        /// <summary>One of: customer, support, AI.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AuthorType { get; private set; }
@@ -41,6 +49,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
+        /// <summary>True when the complete inbound email body can be retrieved.</summary>
+        public bool? HasFullEmailContent { get; private set; }
         /// <summary>Message (comment) UUID.</summary>
         public Guid? Id { get; private set; }
         /// <summary>True for internal notes not visible to the customer.</summary>
@@ -80,10 +90,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "author_email", n => { AuthorEmail = n.GetStringValue(); } },
                 { "author_name", n => { AuthorName = n.GetStringValue(); } },
                 { "author_type", n => { AuthorType = n.GetStringValue(); } },
                 { "content", n => { Content = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
+                { "has_full_email_content", n => { HasFullEmailContent = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "is_private", n => { IsPrivate = n.GetBoolValue(); } },
                 { "rich_content", n => { RichContent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TicketMessageRichContent>(global::Soenneker.PostHog.OpenApiClient.Models.TicketMessageRichContent.CreateFromDiscriminatorValue); } },

@@ -45,7 +45,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? CurrentVersion { get; set; }
         /// <summary>UUID of the current EndpointVersion row.</summary>
         public Guid? CurrentVersionId { get; set; }
-        /// <summary>&quot;How fresh the data is, in seconds. One of: 900, 1800, 3600, 21600, 43200, 86400, 604800.&quot;</summary>
+        /// <summary>How fresh the data is, in seconds. One of: 900, 1800, 3600, 21600, 43200, 86400, 604800.</summary>
         public int? DataFreshnessSeconds { get; set; }
         /// <summary>Short ID of the source insight, if derived from one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

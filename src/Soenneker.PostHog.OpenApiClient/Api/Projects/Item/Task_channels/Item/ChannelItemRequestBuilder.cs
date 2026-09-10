@@ -6,6 +6,7 @@ using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Item.Context_generation;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Item.Feed;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Item.Instructions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Item.Members;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Item.Star;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -36,6 +37,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Item
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Item.Instructions.InstructionsRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The members property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Item.Members.MembersRequestBuilder Members
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Item.Members.MembersRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The star property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Item.Star.StarRequestBuilder Star
         {
@@ -58,19 +64,18 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Item
         {
         }
         /// <summary>
-        /// API for task channels — the shared feeds tasks are kicked off in. Listing lazilyprovisions the requester&apos;s personal &quot;#me&quot; channel; creation is resolve-or-createby normalized name so clients can map channel-like surfaces onto backend channels.
+        /// Delete a channel
         /// </summary>
-        /// <returns>A <see cref="Stream"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.ChannelDeleteConflict">When receiving a 409 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Stream?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Stream> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
@@ -78,10 +83,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Item
             {
                 { "409", global::Soenneker.PostHog.OpenApiClient.Models.ChannelDeleteConflict.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
+            await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// API for task channels — the shared feeds tasks are kicked off in. Listing lazilyprovisions the requester&apos;s personal &quot;#me&quot; channel; creation is resolve-or-createby normalized name so clients can map channel-like surfaces onto backend channels.
+        /// Get a channel
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ChannelDto"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -99,7 +104,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Item
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ChannelDto>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ChannelDto.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// API for task channels — the shared feeds tasks are kicked off in. Listing lazilyprovisions the requester&apos;s personal &quot;#me&quot; channel; creation is resolve-or-createby normalized name so clients can map channel-like surfaces onto backend channels.
+        /// Update a channel
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ChannelDto"/></returns>
         /// <param name="body">The request body</param>
@@ -119,7 +124,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Item
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ChannelDto>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ChannelDto.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// API for task channels — the shared feeds tasks are kicked off in. Listing lazilyprovisions the requester&apos;s personal &quot;#me&quot; channel; creation is resolve-or-createby normalized name so clients can map channel-like surfaces onto backend channels.
+        /// Delete a channel
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -138,7 +143,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Item
             return requestInfo;
         }
         /// <summary>
-        /// API for task channels — the shared feeds tasks are kicked off in. Listing lazilyprovisions the requester&apos;s personal &quot;#me&quot; channel; creation is resolve-or-createby normalized name so clients can map channel-like surfaces onto backend channels.
+        /// Get a channel
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -157,7 +162,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Item
             return requestInfo;
         }
         /// <summary>
-        /// API for task channels — the shared feeds tasks are kicked off in. Listing lazilyprovisions the requester&apos;s personal &quot;#me&quot; channel; creation is resolve-or-createby normalized name so clients can map channel-like surfaces onto backend channels.
+        /// Update a channel
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Drafted `RecordingsQuery` narrowing which sessions get scanned, holding one event filter picked from the team&apos;s real events; null when no event clearly matched the goal.
+    /// `RecordingsQuery` narrowing which sessions get scanned; null when the draft targets every session.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DraftScannerResponseQuery : IAdditionalDataHolder, IParsable

@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The branching property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveySingleChoiceQuestionSchemaBranching? Branching { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyBranchingSchema? Branching { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveySingleChoiceQuestionSchemaBranching Branching { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyBranchingSchema Branching { get; set; }
 #endif
         /// <summary>Custom button label.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -103,7 +103,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "branching", n => { Branching = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveySingleChoiceQuestionSchemaBranching>(global::Soenneker.PostHog.OpenApiClient.Models.SurveySingleChoiceQuestionSchemaBranching.CreateFromDiscriminatorValue); } },
+                { "branching", n => { Branching = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyBranchingSchema>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyBranchingSchema.CreateFromDiscriminatorValue); } },
                 { "buttonText", n => { ButtonText = n.GetStringValue(); } },
                 { "choices", n => { Choices = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
@@ -123,7 +123,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveySingleChoiceQuestionSchemaBranching>("branching", Branching);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyBranchingSchema>("branching", Branching);
             writer.WriteStringValue("buttonText", ButtonText);
             writer.WriteCollectionOfPrimitiveValues<string>("choices", Choices);
             writer.WriteStringValue("description", Description);

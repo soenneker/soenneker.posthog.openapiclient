@@ -24,9 +24,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
+        /// <summary>Whether to add this user as a GitHub assignee on implementation pull requests for reports that suggest them as reviewer. Off by default. Assignment is additive, so turning it off never removes an assignee from a pull request that already has one.</summary>
+        public bool? GithubAssignOnPullRequest { get; set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
-        /// <summary>Slack channel target in the same `channel_id|#channel-name` shape PostHog uses elsewhere (only the channel id is required). Null disables Slack notifications.</summary>
+        /// <summary>Where the reviewer ping goes, in the same `id|name` shape PostHog uses elsewhere (only the id is required): a channel (`C0123ABC456|#alerts`), or a workspace member (`U0123ABC456|@sam`) who is sent a direct message. Null disables Slack notifications.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SlackNotificationChannel { get; set; }
@@ -36,7 +38,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>ID of the Slack Integration to deliver inbox-item notifications through, or null when notifications are disabled.</summary>
         public int? SlackNotificationIntegrationId { get; private set; }
-        /// <summary>Minimum report priority that triggers a Slack notification. P0 is highest. Null means notify on every priority (and reports without a priority judgment).* `P0` - P0* `P1` - P1* `P2` - P2* `P3` - P3* `P4` - P4</summary>
+        /// <summary>Minimum report priority that triggers a Slack notification. P0 is highest. Null means notify on every priority. When set, reports without a priority judgment do not notify.* `P0` - P0* `P1` - P1* `P2` - P2* `P3` - P3* `P4` - P4</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfigSlackNotificationMinPriority? SlackNotificationMinPriority { get; set; }
@@ -81,6 +83,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "autostart_priority", n => { AutostartPriority = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfigAutostartPriority>(global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfigAutostartPriority.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
+                { "github_assign_on_pull_request", n => { GithubAssignOnPullRequest = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "slack_notification_channel", n => { SlackNotificationChannel = n.GetStringValue(); } },
                 { "slack_notification_integration_id", n => { SlackNotificationIntegrationId = n.GetIntValue(); } },
@@ -97,6 +100,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfigAutostartPriority>("autostart_priority", AutostartPriority);
+            writer.WriteBoolValue("github_assign_on_pull_request", GithubAssignOnPullRequest);
             writer.WriteStringValue("slack_notification_channel", SlackNotificationChannel);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfigSlackNotificationMinPriority>("slack_notification_min_priority", SlackNotificationMinPriority);
             writer.WriteAdditionalData(AdditionalData);

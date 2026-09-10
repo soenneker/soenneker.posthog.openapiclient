@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
         {
         }
         /// <summary>
-        /// &quot;One team&apos;s daily time-to-merge trend: the median and average open→merge seconds over the PRs the team&apos;s members merged each day (PR author login → GitHub org team membership). Team-level aggregates only, never per-member figures or cross-team rankings. Timing is the coarse open→merge (draft + review time combined); bots are excluded. Requires the GitHub source&apos;s team_members snapshot; has_membership_data is false without it.&quot;
+        /// One team&apos;s daily time-to-merge trend: the median and average open→merge seconds over the PRs the team&apos;s members merged each day (PR author login → GitHub org team membership). Team-level aggregates only, never per-member figures or cross-team rankings. Timing is the coarse open→merge (draft + review time combined); bots are excluded. Requires the GitHub source&apos;s team_members snapshot; has_membership_data is false without it.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TeamMergeTrend"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.TeamMergeTrend>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.TeamMergeTrend.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;One team&apos;s daily time-to-merge trend: the median and average open→merge seconds over the PRs the team&apos;s members merged each day (PR author login → GitHub org team membership). Team-level aggregates only, never per-member figures or cross-team rankings. Timing is the coarse open→merge (draft + review time combined); bots are excluded. Requires the GitHub source&apos;s team_members snapshot; has_membership_data is false without it.&quot;
+        /// One team&apos;s daily time-to-merge trend: the median and average open→merge seconds over the PRs the team&apos;s members merged each day (PR author login → GitHub org team membership). Team-level aggregates only, never per-member figures or cross-team rankings. Timing is the coarse open→merge (draft + review time combined); bots are excluded. Requires the GitHub source&apos;s team_members snapshot; has_membership_data is false without it.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -80,12 +80,12 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Team_merge_trend.Team_merge_trendRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// &quot;One team&apos;s daily time-to-merge trend: the median and average open→merge seconds over the PRs the team&apos;s members merged each day (PR author login → GitHub org team membership). Team-level aggregates only, never per-member figures or cross-team rankings. Timing is the coarse open→merge (draft + review time combined); bots are excluded. Requires the GitHub source&apos;s team_members snapshot; has_membership_data is false without it.&quot;
+        /// One team&apos;s daily time-to-merge trend: the median and average open→merge seconds over the PRs the team&apos;s members merged each day (PR author login → GitHub org team membership). Team-level aggregates only, never per-member figures or cross-team rankings. Timing is the coarse open→merge (draft + review time combined); bots are excluded. Requires the GitHub source&apos;s team_members snapshot; has_membership_data is false without it.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Team_merge_trendRequestBuilderGetQueryParameters 
         {
-            /// <summary>&quot;Window start: relative (&apos;-14d&apos;, &apos;-7d&apos;) or ISO8601. Defaults to -14d; the window may span at most 30 days.&quot;</summary>
+            /// <summary>Window start: relative (&apos;-14d&apos;, &apos;-7d&apos;) or ISO8601. Defaults to -14d; the window may span at most 30 days.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("date_from")]
@@ -95,7 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
             [QueryParameter("date_from")]
             public string DateFrom { get; set; }
 #endif
-            /// <summary>&quot;Window end: relative or ISO8601. Defaults to now.&quot;</summary>
+            /// <summary>Window end: relative or ISO8601. Defaults to now.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("date_to")]

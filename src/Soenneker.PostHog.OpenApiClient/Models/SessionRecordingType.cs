@@ -48,6 +48,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string EndTime { get; set; }
 #endif
+        /// <summary>Number of captured rrweb events in the recording. Only present once metadata is loaded.</summary>
+        public double? EventCount { get; set; }
         /// <summary>When the recording expires, in ISO format.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -138,6 +140,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Summary { get; set; }
 #endif
+        /// <summary>Total stored size of the recording&apos;s snapshot data in bytes. Only present once metadata is loaded.</summary>
+        public double? TotalSize { get; set; }
         /// <summary>Whether this recording has been viewed by you already.</summary>
         public bool? Viewed { get; set; }
         /// <summary>user ids of other users who have viewed this recording</summary>
@@ -175,6 +179,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "distinct_id", n => { DistinctId = n.GetStringValue(); } },
                 { "email", n => { Email = n.GetStringValue(); } },
                 { "end_time", n => { EndTime = n.GetStringValue(); } },
+                { "event_count", n => { EventCount = n.GetDoubleValue(); } },
                 { "expiry_time", n => { ExpiryTime = n.GetStringValue(); } },
                 { "external_references", n => { ExternalReferences = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingExternalReference>(global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingExternalReference.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
@@ -193,6 +198,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "start_time", n => { StartTime = n.GetStringValue(); } },
                 { "start_url", n => { StartUrl = n.GetStringValue(); } },
                 { "summary", n => { Summary = n.GetStringValue(); } },
+                { "total_size", n => { TotalSize = n.GetDoubleValue(); } },
                 { "viewed", n => { Viewed = n.GetBoolValue(); } },
                 { "viewers", n => { Viewers = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
@@ -213,6 +219,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("distinct_id", DistinctId);
             writer.WriteStringValue("email", Email);
             writer.WriteStringValue("end_time", EndTime);
+            writer.WriteDoubleValue("event_count", EventCount);
             writer.WriteStringValue("expiry_time", ExpiryTime);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingExternalReference>("external_references", ExternalReferences);
             writer.WriteStringValue("id", Id);
@@ -231,6 +238,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("start_time", StartTime);
             writer.WriteStringValue("start_url", StartUrl);
             writer.WriteStringValue("summary", Summary);
+            writer.WriteDoubleValue("total_size", TotalSize);
             writer.WriteBoolValue("viewed", Viewed);
             writer.WriteCollectionOfPrimitiveValues<string>("viewers", Viewers);
         }

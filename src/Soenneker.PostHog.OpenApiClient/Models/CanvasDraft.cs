@@ -36,10 +36,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Who staged the draft.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasDraftCreatedBy? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasDraftCreatedBy CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
 #endif
         /// <summary>Short description recorded when the draft was staged.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -85,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "build_id", n => { BuildId = n.GetStringValue(); } },
                 { "build_status", n => { BuildStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasDraftBuildStatus>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasDraftBuildStatus.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasDraftCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasDraftCreatedBy.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
                 { "prompt", n => { Prompt = n.GetStringValue(); } },
                 { "version_id", n => { VersionId = n.GetStringValue(); } },
             };

@@ -14,6 +14,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Days of inactivity before tasks in this channel are archived. Accepts 1 through 365. Null disables automatic archiving.</summary>
+        public int? AutoArchiveAfterDays { get; set; }
+        /// <summary>Switch a shared space between &apos;public&apos; and &apos;private&apos;. Making a space private keeps only the creator and the requester as members. Making it public removes its member list. Personal #me spaces cannot change.* `public` - public* `private` - private</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedChannelUpdateChannelType? ChannelType { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedChannelUpdateChannelType ChannelType { get; set; }
+#endif
         /// <summary>Team GitHub integration used for repositories linked to this channel.</summary>
         public int? GithubIntegration { get; set; }
         /// <summary>Channel name, rendered as #&lt;name&gt;. Normalized to lowercase-dashed.</summary>
@@ -57,6 +67,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "auto_archive_after_days", n => { AutoArchiveAfterDays = n.GetIntValue(); } },
+                { "channel_type", n => { ChannelType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedChannelUpdateChannelType>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedChannelUpdateChannelType.CreateFromDiscriminatorValue); } },
                 { "github_integration", n => { GithubIntegration = n.GetIntValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "repositories", n => { Repositories = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -69,6 +81,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteIntValue("auto_archive_after_days", AutoArchiveAfterDays);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedChannelUpdateChannelType>("channel_type", ChannelType);
             writer.WriteIntValue("github_integration", GithubIntegration);
             writer.WriteStringValue("name", Name);
             writer.WriteCollectionOfPrimitiveValues<string>("repositories", Repositories);

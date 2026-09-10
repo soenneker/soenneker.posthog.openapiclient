@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item.Messages.Item;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -17,6 +18,18 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Ticket
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class MessagesRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.conversations.tickets.item.messages.item collection</summary>
+        /// <param name="position">The UUID of the ticket message.</param>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item.Messages.Item.WithMessageItemRequestBuilder"/></returns>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item.Messages.Item.WithMessageItemRequestBuilder this[Guid position]
+        {
+            get
+            {
+                var urlTplParams = new Dictionary<string, object>(PathParameters);
+                urlTplParams.Add("messageId", position);
+                return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item.Messages.Item.WithMessageItemRequestBuilder(urlTplParams, RequestAdapter);
+            }
+        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item.Messages.MessagesRequestBuilder"/> and sets the default values.
         /// </summary>

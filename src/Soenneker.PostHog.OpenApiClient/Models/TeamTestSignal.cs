@@ -24,7 +24,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Nodeid { get; set; }
 #endif
-        /// <summary>&quot;Test runner that emitted this signal: &apos;pytest&apos; or &apos;jest&apos;.* `pytest` - PYTEST* `jest` - JEST&quot;</summary>
+        /// <summary>Test runner that emitted this signal: &apos;pytest&apos; or &apos;jest&apos;.* `pytest` - PYTEST* `jest` - JEST</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.TeamTestSignalRunner? Runner { get; set; }

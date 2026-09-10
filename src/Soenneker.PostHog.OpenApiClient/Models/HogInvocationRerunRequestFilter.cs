@@ -23,6 +23,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> ErrorKind { get; set; }
 #endif
+        /// <summary>Restrict to invocations whose error_message contains this substring (case-insensitive). Use to isolate one failure mode when error_kind is too coarse (most app-level errors share the &apos;hog_error&apos; kind).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ErrorMessageContains { get; set; }
+#nullable restore
+#else
+        public string ErrorMessageContains { get; set; }
+#endif
         /// <summary>Optional restriction to specific invocation IDs within the window. Capped at 10000 per request. Always combined with `window_start`/`window_end` so the ClickHouse query can be partition-pruned.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -73,6 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "error_kind", n => { ErrorKind = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "error_message_contains", n => { ErrorMessageContains = n.GetStringValue(); } },
                 { "invocation_ids", n => { InvocationIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "max_attempts", n => { MaxAttempts = n.GetIntValue(); } },
                 { "max_count", n => { MaxCount = n.GetIntValue(); } },
@@ -89,6 +98,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("error_kind", ErrorKind);
+            writer.WriteStringValue("error_message_contains", ErrorMessageContains);
             writer.WriteCollectionOfPrimitiveValues<string>("invocation_ids", InvocationIds);
             writer.WriteIntValue("max_attempts", MaxAttempts);
             writer.WriteIntValue("max_count", MaxCount);

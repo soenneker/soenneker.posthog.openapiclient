@@ -25,7 +25,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<int?> AnalyticsDashboards { get; set; }
 #endif
-        /// <summary>&quot;Whether the flag is archived. Archived flags are hidden from the flag list by default and must be disabled (`active: false`).&quot;</summary>
+        /// <summary>Whether the flag is archived. Archived flags are hidden from the flag list by default and must be disabled (`active: false`).</summary>
         public bool? Archived { get; set; }
         /// <summary>Identifier used for bucketing users into rollout and variants* `distinct_id` - User ID (default)* `device_id` - Device ID</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -55,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string CreateInFolder { get; set; }
 #endif
-        /// <summary>&quot;Indicates the origin product of the feature flag. Choices: &apos;feature_flags&apos;, &apos;experiments&apos;, &apos;surveys&apos;, &apos;early_access_features&apos;, &apos;web_experiments&apos;, &apos;product_tours&apos;.* `feature_flags` - feature_flags* `experiments` - experiments* `surveys` - surveys* `early_access_features` - early_access_features* `web_experiments` - web_experiments* `product_tours` - product_tours&quot;</summary>
+        /// <summary>Indicates the origin product of the feature flag. Choices: &apos;feature_flags&apos;, &apos;experiments&apos;, &apos;surveys&apos;, &apos;early_access_features&apos;, &apos;web_experiments&apos;, &apos;product_tours&apos;.* `feature_flags` - feature_flags* `experiments` - experiments* `surveys` - surveys* `early_access_features` - early_access_features* `web_experiments` - web_experiments* `product_tours` - product_tours</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagCreationContext? CreationContext { get; set; }
@@ -121,7 +121,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? HasEnrichedAnalytics { get; set; }
         /// <summary>The id property</summary>
         public int? Id { get; private set; }
-        /// <summary>&quot;Whether this flag can back an experiment: multivariate with 2 to 20 variants.&quot;</summary>
+        /// <summary>Whether this flag can back an experiment: multivariate with 2 to 20 variants.</summary>
         public bool? IsEligibleForExperiment { get; private set; }
         /// <summary>The is_remote_configuration property</summary>
         public bool? IsRemoteConfiguration { get; set; }
@@ -179,7 +179,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
-        /// <summary>Dashboard of saved usage insights for this flag, or null if it has none. Flags do not get one on creation; create it with POST /api/projects/{project_id}/feature_flags/{id}/dashboard/.</summary>
+        /// <summary>Legacy dashboard of saved usage insights for this flag, or null if it has none. New flags show usage charts inline instead. The dashboard creation endpoint is deprecated and will be removed after September 25, 2026.</summary>
         public int? UsageDashboard { get; private set; }
         /// <summary>The effective access level the user has for this object</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

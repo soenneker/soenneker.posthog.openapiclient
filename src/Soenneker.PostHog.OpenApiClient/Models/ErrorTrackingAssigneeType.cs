@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Assignee target type: user or role.* `user` - user* `role` - role&quot;
+    /// Assignee target type: user or role.* `user` - user* `role` - role
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ErrorTrackingAssigneeType : IAdditionalDataHolder, IParsable

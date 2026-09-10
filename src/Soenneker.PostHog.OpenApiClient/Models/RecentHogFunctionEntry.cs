@@ -41,7 +41,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>&quot;Function type: `destination`, `transformation`, `site_app`, etc. Null if unset.&quot;</summary>
+        /// <summary>Function type: `destination`, `transformation`, `site_app`, etc. Null if unset.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Type { get; set; }

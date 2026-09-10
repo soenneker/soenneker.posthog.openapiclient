@@ -39,13 +39,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.HogQlAutocompleteGlobalsProperty Globals { get; set; }
 #endif
         /// <summary>The kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Kind { get; set; }
-#nullable restore
-#else
-        public string Kind { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlAutocompleteKind? Kind { get; set; }
         /// <summary>Language to validate</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.HogLanguage? Language { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
@@ -75,10 +69,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Query in whose context to validate.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlAutocompleteSourceQueryAnyOf1? SourceQuery { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlAutocompleteSourceQuery? SourceQuery { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlAutocompleteSourceQueryAnyOf1 SourceQuery { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlAutocompleteSourceQuery SourceQuery { get; set; }
 #endif
         /// <summary>Start position of the editor word</summary>
         public int? StartPosition { get; set; }
@@ -114,12 +108,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "endPosition", n => { EndPosition = n.GetIntValue(); } },
                 { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlFilters>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlFilters.CreateFromDiscriminatorValue); } },
                 { "globals", n => { Globals = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlAutocompleteGlobalsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlAutocompleteGlobalsProperty.CreateFromDiscriminatorValue); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlAutocompleteKind>(); } },
                 { "language", n => { Language = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogLanguage>(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "query", n => { Query = n.GetStringValue(); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlAutocompleteResponse>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlAutocompleteResponse.CreateFromDiscriminatorValue); } },
-                { "sourceQuery", n => { SourceQuery = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlAutocompleteSourceQueryAnyOf1>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlAutocompleteSourceQueryAnyOf1.CreateFromDiscriminatorValue); } },
+                { "sourceQuery", n => { SourceQuery = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlAutocompleteSourceQuery>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlAutocompleteSourceQuery.CreateFromDiscriminatorValue); } },
                 { "startPosition", n => { StartPosition = n.GetIntValue(); } },
                 { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
                 { "version", n => { Version = n.GetDoubleValue(); } },
@@ -136,12 +130,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("endPosition", EndPosition);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlFilters>("filters", Filters);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlAutocompleteGlobalsProperty>("globals", Globals);
-            writer.WriteStringValue("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlAutocompleteKind>("kind", Kind);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogLanguage>("language", Language);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
             writer.WriteStringValue("query", Query);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlAutocompleteResponse>("response", Response);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlAutocompleteSourceQueryAnyOf1>("sourceQuery", SourceQuery);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlAutocompleteSourceQuery>("sourceQuery", SourceQuery);
             writer.WriteIntValue("startPosition", StartPosition);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
             writer.WriteDoubleValue("version", Version);

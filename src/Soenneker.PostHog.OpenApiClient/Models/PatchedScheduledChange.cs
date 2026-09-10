@@ -14,6 +14,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Summary of the approval change request gating this scheduled change. Null when no approval policy applies. The change only applies at its scheduled time if the request is approved by then.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestSummary? ChangeRequest { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestSummary ChangeRequest { get; private set; }
+#endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>The created_by property</summary>
@@ -58,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedScheduledChangeModelName ModelName { get; set; }
 #endif
-        /// <summary>&quot;The change to apply. Must include an &apos;operation&apos; key and a &apos;value&apos; key. Supported operations: &apos;update_status&apos; (value: true/false to enable/disable the flag), &apos;add_release_condition&apos; (value: object with &apos;groups&apos;, &apos;payloads&apos;, and &apos;multivariate&apos; keys), &apos;update_variants&apos; (value: object with &apos;variants&apos; and &apos;payloads&apos; keys).&quot;</summary>
+        /// <summary>The change to apply. Must include an &apos;operation&apos; key and a &apos;value&apos; key. Supported operations: &apos;update_status&apos; (value: true/false to enable/disable the flag), &apos;add_release_condition&apos; (value: object with &apos;groups&apos;, &apos;payloads&apos;, and &apos;multivariate&apos; keys), &apos;update_variants&apos; (value: object with &apos;variants&apos; and &apos;payloads&apos; keys).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedScheduledChangePayload? Payload { get; set; }
@@ -74,7 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string RecordId { get; set; }
 #endif
-        /// <summary>&quot;How often the schedule repeats. Required when is_recurring is true. One of: daily, weekly, monthly, yearly.* `daily` - daily* `weekly` - weekly* `monthly` - monthly* `yearly` - yearly&quot;</summary>
+        /// <summary>How often the schedule repeats. Required when is_recurring is true. One of: daily, weekly, monthly, yearly.* `daily` - daily* `weekly` - weekly* `monthly` - monthly* `yearly` - yearly</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedScheduledChangeRecurrenceInterval? RecurrenceInterval { get; set; }
@@ -122,6 +130,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "change_request", n => { ChangeRequest = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestSummary>(global::Soenneker.PostHog.OpenApiClient.Models.ChangeRequestSummary.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedScheduledChangeCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedScheduledChangeCreatedBy.CreateFromDiscriminatorValue); } },
                 { "cron_expression", n => { CronExpression = n.GetStringValue(); } },

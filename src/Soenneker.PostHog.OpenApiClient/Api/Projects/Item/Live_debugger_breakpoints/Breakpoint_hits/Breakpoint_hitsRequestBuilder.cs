@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Live_debugger_breakp
         {
         }
         /// <summary>
-        /// &quot;Retrieve breakpoint hit events from ClickHouse with optional filtering and pagination. Returns hit events containing stack traces, local variables, and execution context from your application&apos;s runtime. Security: Breakpoint IDs are filtered to only include those belonging to the current team.&quot;
+        /// Retrieve breakpoint hit events from ClickHouse with optional filtering and pagination. Returns hit events containing stack traces, local variables, and execution context from your application&apos;s runtime. Security: Breakpoint IDs are filtered to only include those belonging to the current team.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BreakpointHitsResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Live_debugger_breakp
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.BreakpointHitsResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.BreakpointHitsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Retrieve breakpoint hit events from ClickHouse with optional filtering and pagination. Returns hit events containing stack traces, local variables, and execution context from your application&apos;s runtime. Security: Breakpoint IDs are filtered to only include those belonging to the current team.&quot;
+        /// Retrieve breakpoint hit events from ClickHouse with optional filtering and pagination. Returns hit events containing stack traces, local variables, and execution context from your application&apos;s runtime. Security: Breakpoint IDs are filtered to only include those belonging to the current team.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -80,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Live_debugger_breakp
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Live_debugger_breakpoints.Breakpoint_hits.Breakpoint_hitsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// &quot;Retrieve breakpoint hit events from ClickHouse with optional filtering and pagination. Returns hit events containing stack traces, local variables, and execution context from your application&apos;s runtime. Security: Breakpoint IDs are filtered to only include those belonging to the current team.&quot;
+        /// Retrieve breakpoint hit events from ClickHouse with optional filtering and pagination. Returns hit events containing stack traces, local variables, and execution context from your application&apos;s runtime. Security: Breakpoint IDs are filtered to only include those belonging to the current team.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Breakpoint_hitsRequestBuilderGetQueryParameters 
@@ -95,10 +95,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Live_debugger_breakp
             [QueryParameter("breakpoint_ids")]
             public string BreakpointIds { get; set; }
 #endif
-            /// <summary>&quot;Number of hits to return (default: 100, max: 1000)&quot;</summary>
+            /// <summary>Number of hits to return (default: 100, max: 1000)</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
-            /// <summary>&quot;Pagination offset for retrieving additional results (default: 0)&quot;</summary>
+            /// <summary>Pagination offset for retrieving additional results (default: 0)</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
         }

@@ -29,6 +29,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The canvas&apos;s id.</summary>
         public Guid? Id { get; set; }
+        /// <summary>The canvas&apos;s kind (freeform, component, or grid).* `freeform` - freeform* `grid` - grid* `component` - component</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasSummaryKind? Kind { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasSummaryKind Kind { get; set; }
+#endif
         /// <summary>Display name of the canvas.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -82,6 +90,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "current_version_id", n => { CurrentVersionId = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
+                { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasSummaryKind>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasSummaryKind.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "published_build_id", n => { PublishedBuildId = n.GetStringValue(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
@@ -98,6 +107,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("current_version_id", CurrentVersionId);
             writer.WriteGuidValue("id", Id);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasSummaryKind>("kind", Kind);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("published_build_id", PublishedBuildId);
             writer.WriteAdditionalData(AdditionalData);

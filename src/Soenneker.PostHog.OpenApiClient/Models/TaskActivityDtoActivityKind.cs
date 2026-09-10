@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;What the latest activity on this task was: an agent run waiting on the requester (awaiting_input), a completed run (completed), someone @-mentioning them (mention), a comment-thread reply (thread_reply), a comment on their item (owned_item_comment), a task-thread reply (message), or their creating the task (created).* `awaiting_input` - awaiting_input* `completed` - completed* `mention` - mention* `thread_reply` - thread_reply* `owned_item_comment` - owned_item_comment* `message` - message* `created` - created&quot;
+    /// What the latest activity on this task was: an agent run waiting on the requester (awaiting_input), a completed run (completed), someone @-mentioning them (mention), a comment-thread reply (thread_reply), a comment on their item (owned_item_comment), a task-thread reply (message), or their creating the task (created).* `awaiting_input` - awaiting_input* `completed` - completed* `mention` - mention* `thread_reply` - thread_reply* `owned_item_comment` - owned_item_comment* `message` - message* `created` - created
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TaskActivityDtoActivityKind : IAdditionalDataHolder, IParsable

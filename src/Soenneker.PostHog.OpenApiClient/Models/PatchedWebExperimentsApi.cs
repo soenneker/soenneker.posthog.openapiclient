@@ -35,7 +35,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>&quot;Variants for the web experiment. Example:        {            \&quot;control\&quot;: {                \&quot;transforms\&quot;: [                    {                        \&quot;text\&quot;: \&quot;Here comes Superman!\&quot;,                        \&quot;html\&quot;: \&quot;\&quot;,                        \&quot;selector\&quot;: \&quot;#page &gt; #body &gt; .header h1\&quot;                    }                ],                \&quot;conditions\&quot;: \&quot;None\&quot;,                \&quot;rollout_percentage\&quot;: 50            },        }&quot;</summary>
+        /// <summary>Variants for the web experiment. Example:        {            &quot;control&quot;: {                &quot;transforms&quot;: [                    {                        &quot;text&quot;: &quot;Here comes Superman!&quot;,                        &quot;html&quot;: &quot;&quot;,                        &quot;selector&quot;: &quot;#page &gt; #body &gt; .header h1&quot;                    }                ],                &quot;conditions&quot;: &quot;None&quot;,                &quot;rollout_percentage&quot;: 50            },        }</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedWebExperimentsApiVariants? Variants { get; set; }

@@ -3,7 +3,12 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Advanced_activity_logs;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Batch_exports;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Cimd_verification_tokens;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Context_layer;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Desktop_beta_terms;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Domains;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Identity_provider_configs;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Integrations;
@@ -33,10 +38,35 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The advanced_activity_logs property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Advanced_activity_logs.Advanced_activity_logsRequestBuilder Advanced_activity_logs
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Advanced_activity_logs.Advanced_activity_logsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The batch_exports property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Batch_exports.Batch_exportsRequestBuilder Batch_exports
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Batch_exports.Batch_exportsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The billing property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.BillingRequestBuilder Billing
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Billing.BillingRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The cimd_verification_tokens property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Cimd_verification_tokens.Cimd_verification_tokensRequestBuilder Cimd_verification_tokens
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Cimd_verification_tokens.Cimd_verification_tokensRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The context_layer property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Context_layer.Context_layerRequestBuilder Context_layer
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Context_layer.Context_layerRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The desktop_beta_terms property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Desktop_beta_terms.Desktop_beta_termsRequestBuilder Desktop_beta_terms
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Desktop_beta_terms.Desktop_beta_termsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The domains property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Domains.DomainsRequestBuilder Domains
@@ -205,7 +235,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item
 #endif
             var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <returns>A <see cref="RequestInformation"/></returns>

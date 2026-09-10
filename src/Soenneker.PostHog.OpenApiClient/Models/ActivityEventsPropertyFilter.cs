@@ -9,18 +9,37 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class ActivityEventsPropertyFilter : IAdditionalDataHolder, IParsable
+    public partial class ActivityEventsPropertyFilter : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsPropertyFilter"/> and sets the default values.
-        /// </summary>
-        public ActivityEventsPropertyFilter()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
+        /// <summary>The key property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Key { get; set; }
+#nullable restore
+#else
+        public string Key { get; set; }
+#endif
+        /// <summary>The label property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Label { get; set; }
+#nullable restore
+#else
+        public string Label { get; set; }
+#endif
+        /// <summary>The operator property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperator? Operator { get; set; }
+        /// <summary>The type property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsPropertyFilterType? Type { get; set; }
+        /// <summary>The value property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsPropertyFilterValue? Value { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsPropertyFilterValue Value { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -39,6 +58,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "key", n => { Key = n.GetStringValue(); } },
+                { "label", n => { Label = n.GetStringValue(); } },
+                { "operator", n => { Operator = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperator>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsPropertyFilterType>(); } },
+                { "value", n => { Value = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsPropertyFilterValue>(global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsPropertyFilterValue.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -48,7 +72,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteAdditionalData(AdditionalData);
+            writer.WriteStringValue("key", Key);
+            writer.WriteStringValue("label", Label);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyOperator>("operator", Operator);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsPropertyFilterType>("type", Type);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsPropertyFilterValue>("value", Value);
         }
     }
 }

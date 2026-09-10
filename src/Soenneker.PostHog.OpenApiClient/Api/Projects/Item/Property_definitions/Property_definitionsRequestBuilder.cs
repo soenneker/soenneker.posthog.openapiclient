@@ -132,7 +132,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Property_definitions
             /// <summary>Whether to exclude properties that the current user does not have read access to via field-level access control</summary>
             [QueryParameter("exclude_restricted")]
             public bool? ExcludeRestricted { get; set; }
-            /// <summary>&quot;Whether to return only properties for events in `event_names`. Note: this event scoping does not apply to feature flag properties ($feature/*), which are global and not tracked per-event; to retrieve feature flags use is_feature_flag=true instead.&quot;</summary>
+            /// <summary>Whether to return only properties for events in `event_names`. Note: this event scoping does not apply to feature flag properties ($feature/*), which are global and not tracked per-event; to retrieve feature flags use is_feature_flag=true instead.</summary>
             [QueryParameter("filter_by_event_names")]
             public bool? FilterByEventNames { get; set; }
             /// <summary>What group type is the property for. Only should be set if `type=group`</summary>

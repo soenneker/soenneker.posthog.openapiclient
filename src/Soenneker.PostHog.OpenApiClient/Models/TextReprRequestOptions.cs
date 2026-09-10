@@ -15,25 +15,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;Show summary vs full tree hierarchy for traces (default: false)&quot;</summary>
+        /// <summary>Show summary vs full tree hierarchy for traces (default: false)</summary>
         public bool? Collapsed { get; set; }
         /// <summary>Include hierarchy information (for traces)</summary>
         public bool? IncludeHierarchy { get; set; }
-        /// <summary>&quot;Prefix each line with line number (default: false)&quot;</summary>
+        /// <summary>Prefix each line with line number (default: false)</summary>
         public bool? IncludeLineNumbers { get; set; }
-        /// <summary>&quot;Use interactive markers for frontend vs plain text for backend/LLM (default: true)&quot;</summary>
+        /// <summary>Use interactive markers for frontend vs plain text for backend/LLM (default: true)</summary>
         public bool? IncludeMarkers { get; set; }
         /// <summary>Include metadata in response</summary>
         public bool? IncludeMetadata { get; set; }
         /// <summary>Maximum depth for hierarchical rendering</summary>
         public int? MaxDepth { get; set; }
-        /// <summary>&quot;Maximum length of generated text (default: 2000000)&quot;</summary>
+        /// <summary>Maximum length of generated text (default: 2000000)</summary>
         public int? MaxLength { get; set; }
-        /// <summary>&quot;Number of tools before collapsing the list (default: 5)&quot;</summary>
+        /// <summary>Number of tools before collapsing the list (default: 5)</summary>
         public int? ToolsCollapseThreshold { get; set; }
-        /// <summary>&quot;Characters to show at start/end when truncating (default: 1000)&quot;</summary>
+        /// <summary>Characters to show at start/end when truncating (default: 1000)</summary>
         public int? TruncateBuffer { get; set; }
-        /// <summary>&quot;Use truncation for long content within events (default: true)&quot;</summary>
+        /// <summary>Use truncation for long content within events (default: true)</summary>
         public bool? Truncated { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TextReprRequestOptions"/> and sets the default values.

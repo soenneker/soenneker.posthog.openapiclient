@@ -16,7 +16,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>True when the report already had a refund and that existing refund is returned unchanged — refunds are one-per-report and repeat calls are idempotent.</summary>
         public bool? AlreadyRefunded { get; private set; }
-        /// <summary>&quot;How the refund was executed, frozen at refund time: &apos;excluded&apos; (same UTC day as the billable PR run — the report never reaches billing) or &apos;credited&apos; (billing issues a Stripe customer-balance credit).* `excluded` - Excluded* `credited` - Credited&quot;</summary>
+        /// <summary>How the refund was executed, frozen at refund time: &apos;excluded&apos; (same UTC day as the billable PR run — the report never reaches billing) or &apos;credited&apos; (billing issues a Stripe customer-balance credit).* `excluded` - Excluded* `credited` - Credited</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundResponseBillingPath? BillingPath { get; private set; }

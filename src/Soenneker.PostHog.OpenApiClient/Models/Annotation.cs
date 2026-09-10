@@ -40,9 +40,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.AnnotationCreationType CreationType { get; set; }
 #endif
-        /// <summary>The dashboard_id property</summary>
+        /// <summary>Optional dashboard ID to attach this annotation to. Must belong to the current project.</summary>
         public int? DashboardId { get; set; }
-        /// <summary>The dashboard_item property</summary>
+        /// <summary>Optional insight ID to attach this annotation to. Must belong to the current project.</summary>
         public int? DashboardItem { get; set; }
         /// <summary>The dashboard_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -92,7 +92,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string InsightShortId { get; private set; }
 #endif
-        /// <summary>&quot;Annotation visibility scope: `project`, `organization`, `dashboard`, or `dashboard_item`. `recording` is deprecated and rejected.* `dashboard_item` - insight* `dashboard` - dashboard* `project` - project* `organization` - organization* `recording` - recording&quot;</summary>
+        /// <summary>Annotation visibility scope: `project`, `organization`, `dashboard`, or `dashboard_item`. `recording` is deprecated and rejected.* `dashboard_item` - insight* `dashboard` - dashboard* `project` - project* `organization` - organization* `recording` - recording</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScope? Scope { get; set; }

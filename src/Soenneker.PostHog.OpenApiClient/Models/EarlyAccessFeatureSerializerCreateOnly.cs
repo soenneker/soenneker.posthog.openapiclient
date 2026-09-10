@@ -15,7 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;The person or role responsible for this feature, e.g. {\&quot;type\&quot;: \&quot;user\&quot;, \&quot;id\&quot;: 123} or {\&quot;type\&quot;: \&quot;role\&quot;, \&quot;id\&quot;: \&quot;&lt;role uuid&gt;\&quot;}. Defaults to the creator. Send null to unassign.&quot;</summary>
+        /// <summary>The person or role responsible for this feature, e.g. {&quot;type&quot;: &quot;user&quot;, &quot;id&quot;: 123} or {&quot;type&quot;: &quot;role&quot;, &quot;id&quot;: &quot;&lt;role uuid&gt;&quot;}. Defaults to the creator. Send null to unassign.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureSerializerCreateOnlyAssignee? Assignee { get; private set; }
@@ -28,10 +28,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The user who created this early access feature. Null for features created before creator tracking was added.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureSerializerCreateOnlyCreatedBy? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureSerializerCreateOnlyCreatedBy CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
 #endif
         /// <summary>The create_in_folder property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -52,10 +52,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>URL to external documentation for this feature. Shown to users in the opt-in UI.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DocumentationUrl { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureSerializerCreateOnlyDocumentationUrl? DocumentationUrl { get; set; }
 #nullable restore
 #else
-        public string DocumentationUrl { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureSerializerCreateOnlyDocumentationUrl DocumentationUrl { get; set; }
 #endif
         /// <summary>The feature_flag property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -65,7 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureSerializerCreateOnlyFeatureFlag FeatureFlag { get; private set; }
 #endif
-        /// <summary>Optional ID of an existing feature flag to link. If omitted, a new flag is auto-created from the feature name. The flag must not already be linked to another feature, must not be group-based, and must not be multivariate.</summary>
+        /// <summary>Optional ID of an existing feature flag to link. If omitted, a new flag is auto-created from the feature name. The flag must not already be linked to another feature, must not belong to another product such as a survey or experiment, must not be group-based, and must not be multivariate.</summary>
         public int? FeatureFlagId { get; set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
@@ -85,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureSerializerCreateOnlyPayload Payload { get; set; }
 #endif
-        /// <summary>&quot;Lifecycle stage. Valid values: draft, concept, alpha, beta, general-availability, archived. Moving to an active stage (alpha/beta/general-availability) enables the feature flag for opted-in users.* `draft` - draft* `concept` - concept* `alpha` - alpha* `beta` - beta* `general-availability` - general availability* `archived` - archived&quot;</summary>
+        /// <summary>Lifecycle stage. Valid values: draft, concept, alpha, beta, general-availability, archived. Moving to an active stage (alpha/beta/general-availability) enables the feature flag for opted-in users.* `draft` - draft* `concept` - concept* `alpha` - alpha* `beta` - beta* `general-availability` - general availability* `archived` - archived</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureSerializerCreateOnlyStage? Stage { get; set; }
@@ -129,9 +129,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "assignee", n => { Assignee = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureSerializerCreateOnlyAssignee>(global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureSerializerCreateOnlyAssignee.CreateFromDiscriminatorValue); } },
                 { "_create_in_folder", n => { CreateInFolder = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureSerializerCreateOnlyCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureSerializerCreateOnlyCreatedBy.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
-                { "documentation_url", n => { DocumentationUrl = n.GetStringValue(); } },
+                { "documentation_url", n => { DocumentationUrl = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureSerializerCreateOnlyDocumentationUrl>(global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureSerializerCreateOnlyDocumentationUrl.CreateFromDiscriminatorValue); } },
                 { "feature_flag", n => { FeatureFlag = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureSerializerCreateOnlyFeatureFlag>(global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureSerializerCreateOnlyFeatureFlag.CreateFromDiscriminatorValue); } },
                 { "feature_flag_id", n => { FeatureFlagId = n.GetIntValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
@@ -150,7 +150,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("_create_in_folder", CreateInFolder);
             writer.WriteStringValue("description", Description);
-            writer.WriteStringValue("documentation_url", DocumentationUrl);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureSerializerCreateOnlyDocumentationUrl>("documentation_url", DocumentationUrl);
             writer.WriteIntValue("feature_flag_id", FeatureFlagId);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureSerializerCreateOnlyPayload>("payload", Payload);

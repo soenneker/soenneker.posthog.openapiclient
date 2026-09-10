@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;What the user will do on the connect page: &apos;oauth&apos; = authorize an account in their browser; &apos;credentials&apos; = enter connection details (or pick OAuth where the source offers both). Either way secrets never pass through the agent, and the result is always a stored credential id.* `oauth` - oauth* `credentials` - credentials&quot;
+    /// What the user will do on the connect page: &apos;oauth&apos; = authorize an account in their browser; &apos;credentials&apos; = enter connection details (or pick OAuth where the source offers both). Either way secrets never pass through the agent, and the result is always a stored credential id.* `oauth` - oauth* `credentials` - credentials
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SourceConnectLinkAuthMethod : IAdditionalDataHolder, IParsable

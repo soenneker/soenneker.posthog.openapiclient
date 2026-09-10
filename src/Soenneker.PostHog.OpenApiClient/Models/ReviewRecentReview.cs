@@ -32,7 +32,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? DismissedCount { get; set; }
         /// <summary>Meaningful files the latest turn actually read, after skipping generated/lock/snapshot files; null if unknown.</summary>
         public int? FilesReviewed { get; set; }
-        /// <summary>&quot;Where to see the review on GitHub: the pull request when its URL is known, otherwise the head branch.&quot;</summary>
+        /// <summary>Where to see the review on GitHub: the pull request when its URL is known, otherwise the head branch.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? GithubUrl { get; set; }
@@ -50,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The review report&apos;s id, for fetching the review&apos;s detail.</summary>
         public Guid? Id { get; set; }
-        /// <summary>Whether a review turn is running on this report right now (activity within the last 30 minutes).</summary>
+        /// <summary>Whether a run is on this report right now: a review turn or a resolution run (activity within the last 30 minutes).</summary>
         public bool? InProgress { get; set; }
         /// <summary>When the latest review turn completed; null while the first is in flight.</summary>
         public DateTimeOffset? LastRunAt { get; set; }
@@ -70,13 +70,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The reviewed pull request&apos;s number; null for a branch target with no PR yet.</summary>
         public int? PrNumber { get; set; }
-        /// <summary>The in-flight turn&apos;s stage and counters; null unless `in_progress`.</summary>
+        /// <summary>The in-flight review turn&apos;s stage and counters; null unless a review turn is running (a resolving report carries `resolution` instead).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRecentReviewProgress? Progress { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewProgress? Progress { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRecentReviewProgress Progress { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewProgress Progress { get; set; }
 #endif
         /// <summary>The pull request&apos;s title, from the latest reviewed snapshot; null if unknown.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -95,6 +95,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string Repository { get; set; }
+#endif
+        /// <summary>The report&apos;s latest resolution run (settling the PR&apos;s review threads): live progress while it runs, or where it stopped when it died partway. Null when there is none, it completed, or a newer review turn superseded it.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewResolutionStatus? Resolution { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewResolutionStatus Resolution { get; set; }
 #endif
         /// <summary>How many review turns have completed on this report.</summary>
         public int? RunCount { get; set; }
@@ -145,9 +153,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "pr_author", n => { PrAuthor = n.GetStringValue(); } },
                 { "pr_number", n => { PrNumber = n.GetIntValue(); } },
                 { "pr_title", n => { PrTitle = n.GetStringValue(); } },
-                { "progress", n => { Progress = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRecentReviewProgress>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewRecentReviewProgress.CreateFromDiscriminatorValue); } },
+                { "progress", n => { Progress = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewProgress>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewProgress.CreateFromDiscriminatorValue); } },
                 { "published", n => { Published = n.GetBoolValue(); } },
                 { "repository", n => { Repository = n.GetStringValue(); } },
+                { "resolution", n => { Resolution = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewResolutionStatus>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewResolutionStatus.CreateFromDiscriminatorValue); } },
                 { "run_count", n => { RunCount = n.GetIntValue(); } },
                 { "should_fix_count", n => { ShouldFixCount = n.GetIntValue(); } },
             };
@@ -178,10 +187,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("perspective_issue_count", PerspectiveIssueCount);
             writer.WriteStringValue("pr_author", PrAuthor);
             writer.WriteIntValue("pr_number", PrNumber);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRecentReviewProgress>("progress", Progress);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewProgress>("progress", Progress);
             writer.WriteStringValue("pr_title", PrTitle);
             writer.WriteBoolValue("published", Published);
             writer.WriteStringValue("repository", Repository);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewResolutionStatus>("resolution", Resolution);
             writer.WriteIntValue("run_count", RunCount);
             writer.WriteIntValue("should_fix_count", ShouldFixCount);
             writer.WriteAdditionalData(AdditionalData);

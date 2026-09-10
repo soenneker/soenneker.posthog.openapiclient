@@ -12,9 +12,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class PathsV2ElementSelector : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>&quot;Match the source → target transition at any step of any whole journey instead of at one step pair: the position-free set behind an edge&apos;s anyStepCount. Requires a named source and target and open mode. Edge elements only.&quot;</summary>
+        /// <summary>Match the source → target transition at any step of any whole journey instead of at one step pair: the position-free set behind an edge&apos;s anyStepCount. Requires a named source and target and open mode. Edge elements only.</summary>
         public bool? AnyStep { get; set; }
-        /// <summary>&quot;The chain&apos;s path items in order from the anchor. Returns the actors whose anchored sequence begins with exactly these items, the set behind a hover preview&apos;s per-chain counts. Chain elements only, anchored mode only. Bounded by the step maximum: a longer chain can never match a displayed card.&quot;</summary>
+        /// <summary>The chain&apos;s path items in order from the anchor. Returns the actors whose anchored sequence begins with exactly these items, the set behind a hover preview&apos;s per-chain counts. Chain elements only, anchored mode only. Bounded by the step maximum: a longer chain can never match a displayed card.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item>? Chain { get; set; }

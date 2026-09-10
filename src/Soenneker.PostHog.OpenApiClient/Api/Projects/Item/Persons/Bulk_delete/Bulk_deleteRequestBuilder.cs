@@ -90,8 +90,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Bulk_delete
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Bulk_deleteRequestBuilderPostQueryParameters 
         {
+            #pragma warning disable CS1591
             [QueryParameter("format")]
             public global::Soenneker.PostHog.OpenApiClient.Models.PersonsBulkDeleteCreateFormatParameter? Format { get; set; }
+            #pragma warning restore CS1591
         }
     }
 }

@@ -24,7 +24,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ReminderCreatedBy CreatedBy { get; private set; }
 #endif
-        /// <summary>&quot;For a recurring reminder: a 5-field cron expression (e.g. &apos;0 9 * * 1&apos; = Mondays 9am). May fire at most 4 times per day. Mutually exclusive with recurrence_interval.&quot;</summary>
+        /// <summary>For a recurring reminder: a 5-field cron expression (e.g. &apos;0 9 * * 1&apos; = Mondays 9am). May fire at most 4 times per day. Mutually exclusive with recurrence_interval.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CronExpression { get; set; }
@@ -32,7 +32,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string CronExpression { get; set; }
 #endif
-        /// <summary>&quot;Optional: recurring reminders stop (status=completed) after this time.&quot;</summary>
+        /// <summary>Optional: recurring reminders stop (status=completed) after this time.</summary>
         public DateTimeOffset? EndDate { get; set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
@@ -50,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? NextFireAt { get; private set; }
         /// <summary>ID of the organization this reminder belongs to. You must be a member of it.</summary>
         public Guid? Organization { get; set; }
-        /// <summary>&quot;For a recurring reminder: daily, weekly, monthly, or yearly.* `daily` - Daily* `weekly` - Weekly* `monthly` - Monthly* `yearly` - Yearly&quot;</summary>
+        /// <summary>For a recurring reminder: daily, weekly, monthly, or yearly.* `daily` - Daily* `weekly` - Weekly* `monthly` - Monthly* `yearly` - Yearly</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ReminderRecurrenceInterval? RecurrenceInterval { get; set; }
@@ -66,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ResourceId { get; set; }
 #endif
-        /// <summary>&quot;Optional PostHog resource this reminder is about. One of: dashboard, insight, experiment, feature_flag, survey, notebook, replay, error_tracking. Resources are project-scoped, so a team must be set when this is provided.&quot;</summary>
+        /// <summary>Optional PostHog resource this reminder is about. One of: dashboard, insight, experiment, feature_flag, survey, notebook, replay, error_tracking. Resources are project-scoped, so a team must be set when this is provided.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ResourceType { get; set; }
@@ -74,7 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ResourceType { get; set; }
 #endif
-        /// <summary>&quot;For a one-off reminder: when it should fire (ISO 8601, future).&quot;</summary>
+        /// <summary>For a one-off reminder: when it should fire (ISO 8601, future).</summary>
         public DateTimeOffset? ScheduledAt { get; set; }
         /// <summary>The status property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

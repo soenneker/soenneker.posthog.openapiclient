@@ -21,7 +21,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string AbortAction { get; private set; }
 #endif
-        /// <summary>&quot;Skip-forward map for deleted steps: {deleted_action_id: next surviving action_id}. Maintained automatically when a live graph edit deletes actions, so in-flight runs parked on a deleted step continue at its surviving successor instead of exiting. Null when no live deletions have occurred.&quot;</summary>
+        /// <summary>Skip-forward map for deleted steps: {deleted_action_id: next surviving action_id}. Maintained automatically when a live graph edit deletes actions, so in-flight runs parked on a deleted step continue at its surviving successor instead of exiting. Null when no live deletions have occurred.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowInvocationConfigurationActionRedirects? ActionRedirects { get; set; }
@@ -39,13 +39,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;Conversion goal. filters: ARRAY of property conditions [{key, value, operator, type: event|person|group}]; events: event-based goals [{filters: {events: [...]}}]; window_minutes: minutes after entry. Required for exit_on_conversion / exit_on_trigger_not_matched_or_conversion. bytecode compiled server-side.&quot;</summary>
+        /// <summary>Conversion goal. filters: ARRAY of property conditions [{key, value, operator, type: event|person|group}]; events: event-based goals [{filters: {events: [...]}}]; window_minutes: minutes after entry. Required for exit_on_conversion / exit_on_trigger_not_matched_or_conversion. bytecode compiled server-side.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversionComposed? Conversion { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversion? Conversion { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversionComposed Conversion { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversion Conversion { get; set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
@@ -67,7 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>When the draft was last written; null when there&apos;s no staged draft. Pass this to publish (and as base_updated_at on further draft edits) so a concurrent editor&apos;s changes aren&apos;t clobbered — a mismatch returns 409.</summary>
         public DateTimeOffset? DraftUpdatedAt { get; private set; }
-        /// <summary>&quot;Graph edges: [{from, to, type: &apos;continue&apos;|&apos;branch&apos;, index?}]. &apos;continue&apos; = fall-through (sequential, or no-match path of conditional_branch). &apos;branch&apos; requires &apos;index&apos;: matches config.conditions[index] on conditional_branch / wait_until_condition. Every non-exit action needs a reachable next action (&apos;No next action found&apos; otherwise).&quot;</summary>
+        /// <summary>Graph edges: [{from, to, type: &apos;continue&apos;|&apos;branch&apos;, index?}]. &apos;continue&apos; = fall-through (sequential, or no-match path of conditional_branch). &apos;branch&apos; requires &apos;index&apos;: matches config.conditions[index] on conditional_branch / wait_until_condition. Every non-exit action needs a reachable next action (&apos;No next action found&apos; otherwise).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEdge>? Edges { get; set; }
@@ -75,7 +75,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEdge> Edges { get; set; }
 #endif
-        /// <summary>&quot;exit_only_at_end: only at exit node (default). exit_on_conversion: also on conversion (needs &apos;conversion&apos;; silent no-op otherwise). exit_on_trigger_not_matched: also when trigger filter stops matching. exit_on_trigger_not_matched_or_conversion: both (needs &apos;conversion&apos;).* `exit_on_conversion` - Conversion* `exit_on_trigger_not_matched` - Trigger Not Matched* `exit_on_trigger_not_matched_or_conversion` - Trigger Not Matched Or Conversion* `exit_only_at_end` - Only At End&quot;</summary>
+        /// <summary>Optional email pacing for deliverability: {count, period: &apos;minute&apos; | &apos;hour&apos;}. The email worker spreads this workflow&apos;s sends to stay under the limit; over-limit sends wait for capacity instead of failing. Null disables pacing.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEmailSendingRateLimit? EmailSendingRateLimit { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEmailSendingRateLimit EmailSendingRateLimit { get; set; }
+#endif
+        /// <summary>exit_only_at_end: only at exit node (default). exit_on_conversion: also on conversion (needs &apos;conversion&apos;; silent no-op otherwise). exit_on_trigger_not_matched: also when trigger filter stops matching. exit_on_trigger_not_matched_or_conversion: both (needs &apos;conversion&apos;).* `exit_on_conversion` - Conversion* `exit_on_trigger_not_matched` - Trigger Not Matched* `exit_on_trigger_not_matched_or_conversion` - Trigger Not Matched Or Conversion* `exit_only_at_end` - Only At End</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowExitCondition? ExitCondition { get; set; }
@@ -93,6 +101,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
+        /// <summary>Product surface that owns this workflow (e.g. `loops` for Desktop loops). Set only when creating a workflow. Filter the list with `?origin_product=`.* `loops` - Loops</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowOriginProduct? OriginProduct { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowOriginProduct OriginProduct { get; set; }
+#endif
         /// <summary>Recurring schedules attached to this workflow (read-only here; manage via the schedules sub-resource). A batch/schedule workflow only fires when it&apos;s active AND has an active schedule. Empty for non-scheduled workflows.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -109,13 +125,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowStatus Status { get; set; }
 #endif
-        /// <summary>&quot;Optional dedup/throttle on an already-matched trigger: {hash: &lt;HogQL template&gt;, ttl: &lt;seconds, 60-94608000&gt;, threshold?: &lt;int&gt;}. Without threshold: fire once per hash, then suppress repeats within ttl (hash &apos;{person.id}&apos; = once per person per ttl). With threshold N: fire once per N matches of the same hash — a sampler, the 1st then every Nth. Throttles an already-qualifying trigger; it doesn&apos;t decide who enters. Server compiles bytecode from hash; omit to disable.&quot;</summary>
+        /// <summary>Optional dedup/throttle on an already-matched trigger: {hash: &lt;HogQL template&gt;, ttl: &lt;seconds, 60-94608000&gt;, threshold?: &lt;int&gt;}. Without threshold: fire once per hash, then suppress repeats within ttl (hash &apos;{person.id}&apos; = once per person per ttl). With threshold N: fire once per N matches of the same hash — a sampler, the 1st then every Nth. Throttles an already-qualifying trigger; it doesn&apos;t decide who enters. Server compiles bytecode from hash; omit to disable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowTriggerMasking? TriggerMasking { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMasking? TriggerMasking { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowTriggerMasking TriggerMasking { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMasking TriggerMasking { get; set; }
 #endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
@@ -165,18 +181,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "abort_action", n => { AbortAction = n.GetStringValue(); } },
                 { "action_redirects", n => { ActionRedirects = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowInvocationConfigurationActionRedirects>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowInvocationConfigurationActionRedirects.CreateFromDiscriminatorValue); } },
                 { "actions", n => { Actions = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "conversion", n => { Conversion = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversionComposed>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversionComposed.CreateFromDiscriminatorValue); } },
+                { "conversion", n => { Conversion = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversion>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversion.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowCreatedBy.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "draft_updated_at", n => { DraftUpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "edges", n => { Edges = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEdge>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEdge.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "email_sending_rate_limit", n => { EmailSendingRateLimit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEmailSendingRateLimit>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEmailSendingRateLimit.CreateFromDiscriminatorValue); } },
                 { "exit_condition", n => { ExitCondition = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowExitCondition>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowExitCondition.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "origin_product", n => { OriginProduct = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowOriginProduct>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowOriginProduct.CreateFromDiscriminatorValue); } },
                 { "schedules", n => { Schedules = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowSchedule>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowSchedule.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowStatus>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowStatus.CreateFromDiscriminatorValue); } },
-                { "trigger_masking", n => { TriggerMasking = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowTriggerMasking>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowTriggerMasking.CreateFromDiscriminatorValue); } },
+                { "trigger_masking", n => { TriggerMasking = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMasking>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMasking.CreateFromDiscriminatorValue); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },
                 { "variables", n => { Variables = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowVariablesItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowVariablesItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -192,13 +210,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowInvocationConfigurationActionRedirects>("action_redirects", ActionRedirects);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction>("actions", Actions);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversionComposed>("conversion", Conversion);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversion>("conversion", Conversion);
             writer.WriteStringValue("description", Description);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEdge>("edges", Edges);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEmailSendingRateLimit>("email_sending_rate_limit", EmailSendingRateLimit);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowExitCondition>("exit_condition", ExitCondition);
             writer.WriteStringValue("name", Name);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowOriginProduct>("origin_product", OriginProduct);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowStatus>("status", Status);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowTriggerMasking>("trigger_masking", TriggerMasking);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMasking>("trigger_masking", TriggerMasking);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowVariablesItemProperty>("variables", Variables);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Customer_analytics.External.Accoun
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AccountsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/customer_analytics/external/accounts{?assigned_only*,cursor*,limit*}", pathParameters)
+        public AccountsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/customer_analytics/external/accounts{?assigned_only*,cursor*,include_ignored*,limit*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,11 +30,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Customer_analytics.External.Accoun
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AccountsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/customer_analytics/external/accounts{?assigned_only*,cursor*,limit*}", rawUrl)
+        public AccountsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/customer_analytics/external/accounts{?assigned_only*,cursor*,include_ignored*,limit*}", rawUrl)
         {
         }
         /// <summary>
-        /// List accounts with external IDs, churn timestamps, and active relationship assignments. Requires a project secret API key with the `account:read` scope.
+        /// List tracked accounts with external IDs, lifecycle timestamps, and active relationship assignments. Set `include_ignored=true` to include ignored accounts. Requires a project secret API key with the `account:read` scope.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountListPage"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -61,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Customer_analytics.External.Accoun
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountListPage>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ExternalAccountListPage.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// List accounts with external IDs, churn timestamps, and active relationship assignments. Requires a project secret API key with the `account:read` scope.
+        /// List tracked accounts with external IDs, lifecycle timestamps, and active relationship assignments. Set `include_ignored=true` to include ignored accounts. Requires a project secret API key with the `account:read` scope.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -89,7 +89,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Customer_analytics.External.Accoun
             return new global::Soenneker.PostHog.OpenApiClient.Api.Customer_analytics.External.Accounts.AccountsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// List accounts with external IDs, churn timestamps, and active relationship assignments. Requires a project secret API key with the `account:read` scope.
+        /// List tracked accounts with external IDs, lifecycle timestamps, and active relationship assignments. Set `include_ignored=true` to include ignored accounts. Requires a project secret API key with the `account:read` scope.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class AccountsRequestBuilderGetQueryParameters 
@@ -107,6 +107,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Customer_analytics.External.Accoun
             [QueryParameter("cursor")]
             public string Cursor { get; set; }
 #endif
+            /// <summary>Include ignored accounts. Ignored accounts are hidden by default.</summary>
+            [QueryParameter("include_ignored")]
+            public bool? IncludeIgnored { get; set; }
             /// <summary>Maximum number of accounts to return. Values below 1 are clamped to 1; values above 100 are clamped to 100.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }

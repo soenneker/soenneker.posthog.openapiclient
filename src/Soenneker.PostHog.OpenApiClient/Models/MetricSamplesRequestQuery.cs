@@ -19,15 +19,39 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? DateFrom { get; set; }
         /// <summary>Upper bound (exclusive) for the sample window. Defaults to now if omitted.</summary>
         public DateTimeOffset? DateTo { get; set; }
+        /// <summary>Label predicates ANDed together, matched against each emission&apos;s series. Pass the same filters used for the chart so the emissions listed are the ones behind it.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricFilter>? Filters { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricFilter> Filters { get; set; }
+#endif
         /// <summary>Max emissions to return, newest first. Defaults to 100, capped at 1000.</summary>
         public int? Limit { get; set; }
-        /// <summary>Exact metric name to list raw emissions for (e.g. &apos;http.server.duration&apos;).</summary>
+        /// <summary>Exact metric name to list raw emissions for (e.g. &apos;http.server.duration&apos;). Omit to list emissions across all metric names — allowed only with traceId (the trace-&gt;metrics pivot).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? MetricName { get; set; }
 #nullable restore
 #else
         public string MetricName { get; set; }
+#endif
+        /// <summary>Constrain the emissions to one metric type. A name can exist as several types (e.g. a counter and a gauge); without this, emissions of every type sharing the name are listed together. Pass the same value used for the chart so both describe the same series.* `gauge` - gauge* `sum` - sum* `histogram` - histogram* `exponential_histogram` - exponential_histogram* `summary` - summary</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricSamplesBodyMetricType? MetricType { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricSamplesBodyMetricType MetricType { get; set; }
+#endif
+        /// <summary>Restrict to emissions recorded on this span (hex span id). Requires traceId, since a span id is only unique within its trace.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SpanId { get; set; }
+#nullable restore
+#else
+        public string SpanId { get; set; }
 #endif
         /// <summary>Restrict to emissions on this trace (hex trace id, as the tracing product uses) — the reverse metric-&gt;trace pivot. Omit for all traces.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -65,8 +89,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "dateFrom", n => { DateFrom = n.GetDateTimeOffsetValue(); } },
                 { "dateTo", n => { DateTo = n.GetDateTimeOffsetValue(); } },
+                { "filters", n => { Filters = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MetricFilter>(global::Soenneker.PostHog.OpenApiClient.Models.MetricFilter.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
                 { "metricName", n => { MetricName = n.GetStringValue(); } },
+                { "metricType", n => { MetricType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricSamplesBodyMetricType>(global::Soenneker.PostHog.OpenApiClient.Models.MetricSamplesBodyMetricType.CreateFromDiscriminatorValue); } },
+                { "spanId", n => { SpanId = n.GetStringValue(); } },
                 { "traceId", n => { TraceId = n.GetStringValue(); } },
             };
         }
@@ -79,8 +106,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("dateFrom", DateFrom);
             writer.WriteDateTimeOffsetValue("dateTo", DateTo);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MetricFilter>("filters", Filters);
             writer.WriteIntValue("limit", Limit);
             writer.WriteStringValue("metricName", MetricName);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricSamplesBodyMetricType>("metricType", MetricType);
+            writer.WriteStringValue("spanId", SpanId);
             writer.WriteStringValue("traceId", TraceId);
             writer.WriteAdditionalData(AdditionalData);
         }

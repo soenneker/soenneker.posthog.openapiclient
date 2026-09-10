@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;How to handle an &apos;inconclusive&apos; verdict: whether gated notifications fire and whether the investigation surfaces in the Signals inbox. &apos;notify&apos; is the safe default — an agent that can&apos;t be sure is itself useful signal. False positives never reach the inbox regardless of this setting.* `notify` - Notify* `suppress` - Suppress&quot;
+    /// How to handle an &apos;inconclusive&apos; verdict: whether gated notifications fire and whether the investigation surfaces in the Signals inbox. &apos;notify&apos; is the safe default — an agent that can&apos;t be sure is itself useful signal. False positives never reach the inbox regardless of this setting.* `notify` - Notify* `suppress` - Suppress
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedAlertInvestigationInconclusiveAction : IAdditionalDataHolder, IParsable

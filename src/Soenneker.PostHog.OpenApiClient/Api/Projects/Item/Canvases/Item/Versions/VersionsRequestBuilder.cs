@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Versio
         {
         }
         /// <summary>
-        /// &quot;The canvas&apos;s published source-version history, newest first (metadata only).Drafts are excluded: they are staged versions that have never been thehead, so they are not part of the undo/revert timeline. Fetch a draft&apos;sfiles with `source?version_id=` to preview it before promoting.&quot;
+        /// The canvas&apos;s published source-version history, newest first (metadata only).Drafts are excluded: they are staged versions that have never been thehead, so they are not part of the undo/revert timeline. Fetch a draft&apos;sfiles with `source?version_id=` to preview it before promoting.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedCanvasVersionList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Versio
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedCanvasVersionList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedCanvasVersionList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;The canvas&apos;s published source-version history, newest first (metadata only).Drafts are excluded: they are staged versions that have never been thehead, so they are not part of the undo/revert timeline. Fetch a draft&apos;sfiles with `source?version_id=` to preview it before promoting.&quot;
+        /// The canvas&apos;s published source-version history, newest first (metadata only).Drafts are excluded: they are staged versions that have never been thehead, so they are not part of the undo/revert timeline. Fetch a draft&apos;sfiles with `source?version_id=` to preview it before promoting.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -80,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Versio
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Versions.VersionsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// &quot;The canvas&apos;s published source-version history, newest first (metadata only).Drafts are excluded: they are staged versions that have never been thehead, so they are not part of the undo/revert timeline. Fetch a draft&apos;sfiles with `source?version_id=` to preview it before promoting.&quot;
+        /// The canvas&apos;s published source-version history, newest first (metadata only).Drafts are excluded: they are staged versions that have never been thehead, so they are not part of the undo/revert timeline. Fetch a draft&apos;sfiles with `source?version_id=` to preview it before promoting.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class VersionsRequestBuilderGetQueryParameters 

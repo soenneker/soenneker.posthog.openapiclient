@@ -15,7 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;Reaction to add: one of &apos;+1&apos;, &apos;-1&apos;, &apos;laugh&apos;, &apos;hooray&apos;, &apos;confused&apos;, &apos;heart&apos;, &apos;rocket&apos;, &apos;eyes&apos;.* `+1` - +1* `-1` - -1* `laugh` - laugh* `hooray` - hooray* `confused` - confused* `heart` - heart* `rocket` - rocket* `eyes` - eyes&quot;</summary>
+        /// <summary>Reaction to add: one of &apos;+1&apos;, &apos;-1&apos;, &apos;laugh&apos;, &apos;hooray&apos;, &apos;confused&apos;, &apos;heart&apos;, &apos;rocket&apos;, &apos;eyes&apos;.* `+1` - +1* `-1` - -1* `laugh` - laugh* `hooray` - hooray* `confused` - confused* `heart` - heart* `rocket` - rocket* `eyes` - eyes</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestReviewCommentReactionCreateContent? Content { get; set; }

@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Property-group filters that define which exceptions should be grouped into the same issue. Omit to preserve the existing filters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRuleUpdateRequestFilters? Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilterValue? Filters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRuleUpdateRequestFilters Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilterValue Filters { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRuleUpdateRequest"/> and sets the default values.
@@ -47,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRuleUpdateRequestFilters>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRuleUpdateRequestFilters.CreateFromDiscriminatorValue); } },
+                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilterValue>(global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilterValue.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -57,7 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingGroupingRuleUpdateRequestFilters>("filters", Filters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilterValue>("filters", Filters);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

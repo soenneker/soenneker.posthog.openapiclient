@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Bulk_d
         {
         }
         /// <summary>
-        /// &quot;Bulk delete feature flags by filter criteria or explicit IDs.Accepts either:- {\&quot;filters\&quot;: {...}} - Same filter params as list endpoint (search, active, type, etc.)- {\&quot;ids\&quot;: [...]} - Explicit list of flag IDs (no limit)Returns same format as bulk_delete for UI compatibility.Uses bulk operations for efficiency: database updates are batched and cacheinvalidation happens once at the end rather than per-flag.&quot;
+        /// Bulk delete feature flags by filter criteria or explicit IDs.Accepts either:- {&quot;filters&quot;: {...}} - Same filter params as list endpoint (search, active, type, etc.)- {&quot;ids&quot;: [...]} - Explicit list of flag IDs (no limit)Returns same format as bulk_delete for UI compatibility.Uses bulk operations for efficiency: database updates are batched and cacheinvalidation happens once at the end rather than per-flag.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -59,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Bulk_d
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Bulk delete feature flags by filter criteria or explicit IDs.Accepts either:- {\&quot;filters\&quot;: {...}} - Same filter params as list endpoint (search, active, type, etc.)- {\&quot;ids\&quot;: [...]} - Explicit list of flag IDs (no limit)Returns same format as bulk_delete for UI compatibility.Uses bulk operations for efficiency: database updates are batched and cacheinvalidation happens once at the end rather than per-flag.&quot;
+        /// Bulk delete feature flags by filter criteria or explicit IDs.Accepts either:- {&quot;filters&quot;: {...}} - Same filter params as list endpoint (search, active, type, etc.)- {&quot;ids&quot;: [...]} - Explicit list of flag IDs (no limit)Returns same format as bulk_delete for UI compatibility.Uses bulk operations for efficiency: database updates are batched and cacheinvalidation happens once at the end rather than per-flag.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

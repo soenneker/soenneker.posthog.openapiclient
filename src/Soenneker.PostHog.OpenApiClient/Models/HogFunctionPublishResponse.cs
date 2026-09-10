@@ -35,10 +35,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The function after publishing (only set when published=true).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionPublishResponseFunction? Function { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunction? Function { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionPublishResponseFunction Function { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunction Function { get; set; }
 #endif
         /// <summary>Whether the draft was applied to the live function.</summary>
         public bool? Published { get; set; }
@@ -70,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "changed_fields", n => { ChangedFields = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "confirm_token", n => { ConfirmToken = n.GetStringValue(); } },
                 { "draft_updated_at", n => { DraftUpdatedAt = n.GetDateTimeOffsetValue(); } },
-                { "function", n => { Function = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionPublishResponseFunction>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionPublishResponseFunction.CreateFromDiscriminatorValue); } },
+                { "function", n => { Function = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunction>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunction.CreateFromDiscriminatorValue); } },
                 { "published", n => { Published = n.GetBoolValue(); } },
             };
         }
@@ -84,7 +84,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("changed_fields", ChangedFields);
             writer.WriteStringValue("confirm_token", ConfirmToken);
             writer.WriteDateTimeOffsetValue("draft_updated_at", DraftUpdatedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionPublishResponseFunction>("function", Function);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunction>("function", Function);
             writer.WriteBoolValue("published", Published);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Draft
         {
         }
         /// <summary>
-        /// &quot;Stage a complete source project as a draft version and build it, without publishing.The draft gets the same validation, versioning, and server-side build asa publish, but the canvas&apos;s head and live build never move, so nothingchanges for viewers. Promote the version with `promote` to make it live.The response reports how the draft&apos;s declared capabilities widen thecurrent head&apos;s, so growth in access can be reviewed before it ships.No version guard applies: a draft conflicts with nothing.&quot;
+        /// Stage a complete source project as a draft version and build it, without publishing.The draft gets the same validation, versioning, and server-side build asa publish, but the canvas&apos;s head and live build never move, so nothingchanges for viewers. Promote the version with `promote` to make it live.The response reports how the draft&apos;s declared capabilities widen thecurrent head&apos;s, so growth in access can be reviewed before it ships.No version guard applies: a draft conflicts with nothing.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceDraftResponse"/></returns>
         /// <param name="body">Payload for staging a complete source project as a draft build.</param>
@@ -59,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Draft
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceDraftResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceDraftResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Stage a complete source project as a draft version and build it, without publishing.The draft gets the same validation, versioning, and server-side build asa publish, but the canvas&apos;s head and live build never move, so nothingchanges for viewers. Promote the version with `promote` to make it live.The response reports how the draft&apos;s declared capabilities widen thecurrent head&apos;s, so growth in access can be reviewed before it ships.No version guard applies: a draft conflicts with nothing.&quot;
+        /// Stage a complete source project as a draft version and build it, without publishing.The draft gets the same validation, versioning, and server-side build asa publish, but the canvas&apos;s head and live build never move, so nothingchanges for viewers. Promote the version with `promote` to make it live.The response reports how the draft&apos;s declared capabilities widen thecurrent head&apos;s, so growth in access can be reviewed before it ships.No version guard applies: a draft conflicts with nothing.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">Payload for staging a complete source project as a draft build.</param>

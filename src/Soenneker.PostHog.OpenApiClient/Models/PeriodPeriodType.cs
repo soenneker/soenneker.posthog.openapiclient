@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;How the brief window is chosen: a fixed lookback (last_n_days) or since the last ready brief.* `last_n_days` - last_n_days* `since_last_run` - since_last_run&quot;
+    /// How the brief window is chosen: a fixed lookback (last_n_days) or since the last ready brief.* `last_n_days` - last_n_days* `since_last_run` - since_last_run
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PeriodPeriodType : IAdditionalDataHolder, IParsable

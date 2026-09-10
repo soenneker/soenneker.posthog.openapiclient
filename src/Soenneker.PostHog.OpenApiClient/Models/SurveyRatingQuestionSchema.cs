@@ -17,10 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The branching property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaBranching? Branching { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyBranchingSchema? Branching { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaBranching Branching { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyBranchingSchema Branching { get; set; }
 #endif
         /// <summary>Custom button label.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -46,7 +46,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaDescriptionContentType DescriptionContentType { get; set; }
 #endif
-        /// <summary>&quot;Display format: &apos;number&apos; shows numeric scale, &apos;emoji&apos; shows emoji scale.* `number` - number* `emoji` - emoji&quot;</summary>
+        /// <summary>Display format: &apos;number&apos; shows numeric scale, &apos;emoji&apos; shows emoji scale.* `number` - number* `emoji` - emoji</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaDisplay? Display { get; set; }
@@ -117,7 +117,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "branching", n => { Branching = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaBranching>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaBranching.CreateFromDiscriminatorValue); } },
+                { "branching", n => { Branching = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyBranchingSchema>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyBranchingSchema.CreateFromDiscriminatorValue); } },
                 { "buttonText", n => { ButtonText = n.GetStringValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "descriptionContentType", n => { DescriptionContentType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaDescriptionContentType>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaDescriptionContentType.CreateFromDiscriminatorValue); } },
@@ -138,7 +138,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaBranching>("branching", Branching);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyBranchingSchema>("branching", Branching);
             writer.WriteStringValue("buttonText", ButtonText);
             writer.WriteStringValue("description", Description);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaDescriptionContentType>("descriptionContentType", DescriptionContentType);

@@ -2,6 +2,7 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Billing;
 using Soenneker.PostHog.OpenApiClient.Api.Code;
 using Soenneker.PostHog.OpenApiClient.Api.Customer_analytics;
 using Soenneker.PostHog.OpenApiClient.Api.Llm_analytics;
@@ -10,6 +11,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects;
 using Soenneker.PostHog.OpenApiClient.Api.Public_hog_function_templates;
 using Soenneker.PostHog.OpenApiClient.Api.Reminders;
 using Soenneker.PostHog.OpenApiClient.Api.Revoke_leaked_key;
+using Soenneker.PostHog.OpenApiClient.Api.User_facet_settings;
 using Soenneker.PostHog.OpenApiClient.Api.User_home_settings;
 using Soenneker.PostHog.OpenApiClient.Api.Users;
 using System.Collections.Generic;
@@ -24,6 +26,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ApiRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The billing property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Billing.BillingRequestBuilder Billing
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Billing.BillingRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The code property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Code.CodeRequestBuilder Code
         {
@@ -63,6 +70,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api
         public global::Soenneker.PostHog.OpenApiClient.Api.Revoke_leaked_key.Revoke_leaked_keyRequestBuilder Revoke_leaked_key
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Revoke_leaked_key.Revoke_leaked_keyRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The user_facet_settings property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.User_facet_settings.User_facet_settingsRequestBuilder User_facet_settings
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.User_facet_settings.User_facet_settingsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The user_home_settings property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.User_home_settings.User_home_settingsRequestBuilder User_home_settings

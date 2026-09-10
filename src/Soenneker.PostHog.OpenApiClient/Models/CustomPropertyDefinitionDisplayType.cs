@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;How the property is interpreted and rendered: &apos;text&apos;, &apos;number&apos;, &apos;currency&apos;, &apos;percent&apos;, &apos;date&apos;, &apos;datetime&apos;, &apos;boolean&apos;, or &apos;select&apos;.* `text` - text* `number` - number* `currency` - currency* `percent` - percent* `date` - date* `datetime` - datetime* `boolean` - boolean* `select` - select&quot;
+    /// How the property is interpreted and rendered: &apos;text&apos;, &apos;link&apos;, &apos;number&apos;, &apos;currency&apos;, &apos;percent&apos;, &apos;date&apos;, &apos;datetime&apos;, &apos;boolean&apos;, or &apos;select&apos;. Links require an HTTP or HTTPS URL.* `text` - text* `link` - link* `number` - number* `currency` - currency* `percent` - percent* `date` - date* `datetime` - datetime* `boolean` - boolean* `select` - select
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CustomPropertyDefinitionDisplayType : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `text` - text* `number` - number* `currency` - currency* `percent` - percent* `date` - date* `datetime` - datetime* `boolean` - boolean* `select` - select</summary>
+        /// <summary>* `text` - text* `link` - link* `number` - number* `currency` - currency* `percent` - percent* `date` - date* `datetime` - datetime* `boolean` - boolean* `select` - select</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyDisplayTypeEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyDefinitionDisplayType"/> and sets the default values.

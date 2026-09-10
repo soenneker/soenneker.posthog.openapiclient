@@ -24,7 +24,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Earliest bucket with data inside the fetched lookback.</summary>
         public DateTimeOffset? HistoryStart { get; set; }
-        /// <summary>&quot;What limited this series&apos; baseline maturity, or null for a full baseline. series_history: data starts inside the lookback, because the series is young or a per-stream retention rule trimmed it (indistinguishable from the data). byte_budget and team_retention mirror the scan level constraints.* `series_history` - series_history* `team_retention` - team_retention* `byte_budget` - byte_budget&quot;</summary>
+        /// <summary>What limited this series&apos; baseline maturity, or null for a full baseline. series_history: data starts inside the lookback, because the series is young or a per-stream retention rule trimmed it (indistinguishable from the data). byte_budget and team_retention mirror the scan level constraints.* `series_history` - series_history* `team_retention` - team_retention* `byte_budget` - byte_budget</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanSeriesLimitedBy? LimitedBy { get; set; }

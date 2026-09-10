@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;Only meaningful for `type: custom`: a source-prefixed shorthand (`attributes.&lt;key&gt;`, `resource_attributes.&lt;key&gt;`, `body.&lt;json.path&gt;`) or a scalar HogQL expression, sent verbatim in the logs query&apos;s `customColumns`.&quot;</summary>
+        /// <summary>Only meaningful for `type: custom`: a source-prefixed shorthand (`attributes.&lt;key&gt;`, `resource_attributes.&lt;key&gt;`, `body.&lt;json.path&gt;`) or a scalar HogQL expression, sent verbatim in the logs query&apos;s `customColumns`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Expression { get; set; }
@@ -38,7 +38,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>Column type. Built-in types resolve client-side from log row fields; `custom` columns are computed server-side from `expression`.* `timestamp` - timestamp* `level` - level* `source` - source* `trace_id` - trace_id* `span_id` - span_id* `message` - message* `custom` - custom</summary>
+        /// <summary>Column type. Most built-in types resolve client-side from log row fields; `pattern` and `custom` columns are computed server-side, the latter from `expression`.* `timestamp` - timestamp* `level` - level* `source` - source* `trace_id` - trace_id* `span_id` - span_id* `person` - person* `session` - session* `pattern` - pattern* `message` - message* `custom` - custom</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.LogsViewColumnType? Type { get; set; }

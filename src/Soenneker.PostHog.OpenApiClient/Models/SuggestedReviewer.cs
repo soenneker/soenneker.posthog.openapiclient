@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;One suggested reviewer — identified by `github_login`, `user_uuid`, or both.The server canonicalizes each entry to a lowercased GitHub login: a `user_uuid` is resolved to theorg member&apos;s linked GitHub login (and wins over a supplied `github_login` when both are given). A`user_uuid` that isn&apos;t an org member of this team with a linked GitHub identity is rejected — so areviewer is never silently dropped.&quot;
+    /// One suggested reviewer — identified by `github_login`, `user_uuid`, or both.A reviewer is a PostHog user, so a `user_uuid` only has to name an org member of this team: amember with no linked GitHub account routes the report like anyone else. A `user_uuid` thatisn&apos;t an org member of this team is rejected — so a reviewer is never silently dropped.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SuggestedReviewer : IAdditionalDataHolder, IParsable
@@ -23,7 +23,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string GithubLogin { get; set; }
 #endif
-        /// <summary>&quot;One sentence of evidence for WHY this person: what ties them to the affected surface (e.g. &apos;authored 4 of the last 10 commits touching products/tracing/mcp/&apos;, &apos;human correction routed the prior tracing report to them&apos;). Persisted on the report so the routing is auditable — always set it when you can name the evidence; &apos;precedent&apos; alone is weak, prefer code-derived ownership.&quot;</summary>
+        /// <summary>One sentence of evidence for WHY this person: what ties them to the affected surface (e.g. &apos;authored 4 of the last 10 commits touching products/tracing/mcp/&apos;, &apos;human correction routed the prior tracing report to them&apos;). Persisted on the report so the routing is auditable — always set it when you can name the evidence; &apos;precedent&apos; alone is weak, prefer code-derived ownership.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Reason { get; set; }
@@ -31,7 +31,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Reason { get; set; }
 #endif
-        /// <summary>PostHog user UUID (e.g. from `scout-members-list`, or an entity&apos;s `created_by`). Resolved server-side to the member&apos;s linked GitHub login — use this when you know the PostHog user but not their GitHub handle. Must be a concrete UUID; the `@me` alias is not valid here.</summary>
+        /// <summary>PostHog user UUID (e.g. from `scout-members-list`, or an entity&apos;s `created_by`). Use this when you know the PostHog user, whether or not they have a GitHub handle — every member is routable this way. Must be a concrete UUID; the `@me` alias is not valid here.</summary>
         public Guid? UserUuid { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewer"/> and sets the default values.

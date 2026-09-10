@@ -83,8 +83,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Reor
         public partial class Reorder_tilesRequestBuilderPostQueryParameters 
         #pragma warning restore CS1591
         {
+            #pragma warning disable CS1591
             [QueryParameter("format")]
             public global::Soenneker.PostHog.OpenApiClient.Models.DashboardsReorderTilesCreateFormatParameter? Format { get; set; }
+            #pragma warning restore CS1591
         }
     }
 }

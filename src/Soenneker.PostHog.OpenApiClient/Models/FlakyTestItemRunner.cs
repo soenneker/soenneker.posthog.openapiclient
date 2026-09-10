@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Test runner that emitted this signal: &apos;pytest&apos; or &apos;jest&apos;.* `pytest` - PYTEST* `jest` - JEST&quot;
+    /// Test runner that emitted this signal: &apos;pytest&apos; or &apos;jest&apos;.* `pytest` - PYTEST* `jest` - JEST
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class FlakyTestItemRunner : IAdditionalDataHolder, IParsable

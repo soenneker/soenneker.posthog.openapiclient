@@ -99,7 +99,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ingestion_warnings_v
             /// <summary>Maximum number of warning types to return (default 100).</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
-            /// <summary>&quot;Sort order for warning types: &apos;count&apos; (most frequent first, the default) or &apos;last_seen&apos; (most recent first).* `count` - count* `last_seen` - last_seen&quot;</summary>
+            /// <summary>Sort order for warning types: &apos;count&apos; (most frequent first, the default) or &apos;last_seen&apos; (most recent first).* `count` - count* `last_seen` - last_seen</summary>
             [QueryParameter("order_by")]
             public global::Soenneker.PostHog.OpenApiClient.Models.IngestionWarningsV2ListOrderByParameter? OrderBy { get; set; }
             /// <summary>Only return warnings whose type or details contain this substring (case-sensitive). Useful for finding warnings about a specific distinct ID, event or property.</summary>

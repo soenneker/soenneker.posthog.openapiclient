@@ -64,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ShortId { get; private set; }
 #endif
-        /// <summary>&quot;Overall status: pending, sending, sent, partially_failed, or failed.* `pending` - Pending* `sending` - Sending* `sent` - Sent* `partially_failed` - Partially failed* `failed` - Failed&quot;</summary>
+        /// <summary>Overall status: pending, sending, sent, partially_failed, or failed.* `pending` - Pending* `sending` - Sending* `sent` - Sent* `partially_failed` - Partially failed* `failed` - Failed</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.AnnouncementStatus? Status { get; private set; }

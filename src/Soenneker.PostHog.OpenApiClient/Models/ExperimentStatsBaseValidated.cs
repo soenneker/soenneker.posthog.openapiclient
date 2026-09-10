@@ -37,18 +37,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The step_counts property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsBaseValidatedStepCounts? StepCounts { get; set; }
+        public List<int?>? StepCounts { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsBaseValidatedStepCounts StepCounts { get; set; }
+        public List<int?> StepCounts { get; set; }
 #endif
         /// <summary>The step_sessions property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SessionData>? StepSessions { get; set; }
+        public UntypedNode? StepSessions { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SessionData> StepSessions { get; set; }
+        public UntypedNode StepSessions { get; set; }
 #endif
         /// <summary>The sum property</summary>
         public double? Sum { get; set; }
@@ -57,10 +57,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The validation_failures property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsValidationFailure>? ValidationFailures { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsValidationFailure?>? ValidationFailures { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsValidationFailure> ValidationFailures { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsValidationFailure?> ValidationFailures { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -88,11 +88,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "key", n => { Key = n.GetStringValue(); } },
                 { "number_of_samples", n => { NumberOfSamples = n.GetIntValue(); } },
                 { "numerator_denominator_sum_product", n => { NumeratorDenominatorSumProduct = n.GetDoubleValue(); } },
-                { "step_counts", n => { StepCounts = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsBaseValidatedStepCounts>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsBaseValidatedStepCounts.CreateFromDiscriminatorValue); } },
-                { "step_sessions", n => { StepSessions = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SessionData>(global::Soenneker.PostHog.OpenApiClient.Models.SessionData.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "step_counts", n => { StepCounts = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
+                { "step_sessions", n => { StepSessions = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "sum", n => { Sum = n.GetDoubleValue(); } },
                 { "sum_squares", n => { SumSquares = n.GetDoubleValue(); } },
-                { "validation_failures", n => { ValidationFailures = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsValidationFailure>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsValidationFailure.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "validation_failures", n => { ValidationFailures = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsValidationFailure>()?.AsList(); } },
             };
         }
         /// <summary>
@@ -110,11 +110,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("key", Key);
             writer.WriteIntValue("number_of_samples", NumberOfSamples);
             writer.WriteDoubleValue("numerator_denominator_sum_product", NumeratorDenominatorSumProduct);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsBaseValidatedStepCounts>("step_counts", StepCounts);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SessionData>("step_sessions", StepSessions);
+            writer.WriteCollectionOfPrimitiveValues<int?>("step_counts", StepCounts);
+            writer.WriteObjectValue<UntypedNode>("step_sessions", StepSessions);
             writer.WriteDoubleValue("sum", Sum);
             writer.WriteDoubleValue("sum_squares", SumSquares);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsValidationFailure>("validation_failures", ValidationFailures);
+            writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsValidationFailure>("validation_failures", ValidationFailures);
         }
     }
 }

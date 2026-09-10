@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Support_tickets.Item;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -17,6 +18,18 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Suppor
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Support_ticketsRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.accounts.item.support_tickets.item collection</summary>
+        /// <param name="position">Unique identifier of the item</param>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Support_tickets.Item.WithTicketItemRequestBuilder"/></returns>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Support_tickets.Item.WithTicketItemRequestBuilder this[string position]
+        {
+            get
+            {
+                var urlTplParams = new Dictionary<string, object>(PathParameters);
+                urlTplParams.Add("ticketId", position);
+                return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Support_tickets.Item.WithTicketItemRequestBuilder(urlTplParams, RequestAdapter);
+            }
+        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Support_tickets.Support_ticketsRequestBuilder"/> and sets the default values.
         /// </summary>

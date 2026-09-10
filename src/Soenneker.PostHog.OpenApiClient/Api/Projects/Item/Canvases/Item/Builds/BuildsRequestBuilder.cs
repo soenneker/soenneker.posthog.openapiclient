@@ -40,7 +40,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Builds
         {
         }
         /// <summary>
-        /// &quot;Read the canvas&apos;s build lifecycle: live pointers plus recent builds.A publish queues a build; poll this until it is ready (the live pointeradvances) or failed (fix the error diagnostics and publish again — thelast good build stays live).&quot;
+        /// Read the canvas&apos;s build lifecycle: live pointers plus recent builds.A publish queues a build; poll this until it is ready (the live pointeradvances) or failed (fix the error diagnostics and publish again — thelast good build stays live).
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuildsResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -58,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Builds
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuildsResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuildsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Read the canvas&apos;s build lifecycle: live pointers plus recent builds.A publish queues a build; poll this until it is ready (the live pointeradvances) or failed (fix the error diagnostics and publish again — thelast good build stays live).&quot;
+        /// Read the canvas&apos;s build lifecycle: live pointers plus recent builds.A publish queues a build; poll this until it is ready (the live pointeradvances) or failed (fix the error diagnostics and publish again — thelast good build stays live).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -86,7 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Builds
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Builds.BuildsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// &quot;Read the canvas&apos;s build lifecycle: live pointers plus recent builds.A publish queues a build; poll this until it is ready (the live pointeradvances) or failed (fix the error diagnostics and publish again — thelast good build stays live).&quot;
+        /// Read the canvas&apos;s build lifecycle: live pointers plus recent builds.A publish queues a build; poll this until it is ready (the live pointeradvances) or failed (fix the error diagnostics and publish again — thelast good build stays live).
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class BuildsRequestBuilderGetQueryParameters 

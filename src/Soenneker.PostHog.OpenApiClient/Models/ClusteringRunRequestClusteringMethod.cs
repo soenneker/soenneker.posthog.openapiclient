@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Clustering algorithm: &apos;hdbscan&apos; (density-based, auto-determines k) or &apos;kmeans&apos; (centroid-based)* `hdbscan` - hdbscan* `kmeans` - kmeans&quot;
+    /// Clustering algorithm: &apos;hdbscan&apos; (density-based, auto-determines k) or &apos;kmeans&apos; (centroid-based)* `hdbscan` - hdbscan* `kmeans` - kmeans
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ClusteringRunRequestClusteringMethod : IAdditionalDataHolder, IParsable

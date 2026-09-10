@@ -15,6 +15,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The auto_archive_after_days property</summary>
+        public int? AutoArchiveAfterDays { get; set; }
         /// <summary>The channel_type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -28,10 +30,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChannelDtoCreatedBy? CreatedBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo? CreatedBy { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChannelDtoCreatedBy CreatedBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo CreatedBy { get; set; }
 #endif
         /// <summary>The github_integration property</summary>
         public int? GithubIntegration { get; set; }
@@ -55,6 +57,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The starred property</summary>
         public bool? Starred { get; set; }
+        /// <summary>Identifies this channel as one of the two system-provisioned spaces (&apos;personal&apos; for the user&apos;s own #me space, &apos;general&apos; for the team&apos;s shared #general space). Null for an ordinary channel.* `personal` - Personal* `general` - General</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChannelDtoSystemRole? SystemRole { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChannelDtoSystemRole SystemRole { get; private set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ChannelDto"/> and sets the default values.
         /// </summary>
@@ -80,14 +90,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "auto_archive_after_days", n => { AutoArchiveAfterDays = n.GetIntValue(); } },
                 { "channel_type", n => { ChannelType = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChannelDtoCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.ChannelDtoCreatedBy.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo>(global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo.CreateFromDiscriminatorValue); } },
                 { "github_integration", n => { GithubIntegration = n.GetIntValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "repositories", n => { Repositories = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "starred", n => { Starred = n.GetBoolValue(); } },
+                { "system_role", n => { SystemRole = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChannelDtoSystemRole>(global::Soenneker.PostHog.OpenApiClient.Models.ChannelDtoSystemRole.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -97,9 +109,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteIntValue("auto_archive_after_days", AutoArchiveAfterDays);
             writer.WriteStringValue("channel_type", ChannelType);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChannelDtoCreatedBy>("created_by", CreatedBy);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo>("created_by", CreatedBy);
             writer.WriteIntValue("github_integration", GithubIntegration);
             writer.WriteGuidValue("id", Id);
             writer.WriteStringValue("name", Name);

@@ -79,7 +79,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Elements.Values
         public partial class ValuesRequestBuilderGetQueryParameters 
         #pragma warning restore CS1591
         {
-            /// <summary>&quot;Element property to list values for: tag_name, text, href, or attr_id.&quot;</summary>
+            /// <summary>Element property to list values for: tag_name, text, href, or attr_id.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("key")]

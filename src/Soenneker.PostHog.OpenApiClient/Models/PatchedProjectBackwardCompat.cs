@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Mixin for serializers to add user access control fields
+    /// A project and its settings, including the settings that live on its passthrough Team.This shape is a superset of TeamSerializer&apos;s, so a request rewritten from /api/environments/onto /api/projects/ never loses a field.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedProjectBackwardCompat : IAdditionalDataHolder, IParsable
@@ -147,9 +147,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatEffectiveMembershipLevel EffectiveMembershipLevel { get; private set; }
 #endif
-        /// <summary>The team&apos;s events data retention window in months (plan-derived, synced from billing). When retention enforcement is active for the team, queries do not return events older than this many months.</summary>
+        /// <summary>The team&apos;s events data retention window in months (plan-derived, synced from billing). When retention enforcement is active for the team, queries do not return events older than this many months. Read-only: this value follows your plan&apos;s data retention entitlement, so neither you nor PostHog support can change it unless your organization is on the enterprise plan. Background and discussion: https://github.com/PostHog/posthog/issues/17031</summary>
         public int? EventRetentionMonths { get; private set; }
-        /// <summary>Whether events data retention is currently enforced for this team (cohort/flag gated).</summary>
+        /// <summary>Whether events data retention is currently enforced for this team (cohort/flag gated). Read-only: neither you nor PostHog support can turn enforcement off, and the retention window itself only changes with your plan. Background and discussion: https://github.com/PostHog/posthog/issues/17031</summary>
         public bool? EventsRetentionEnforced { get; private set; }
         /// <summary>The extra_settings property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -168,6 +168,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string FeatureFlagConfirmationMessage { get; set; }
+#endif
+        /// <summary>The feature_flag_policy_config property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamFeatureFlagPolicyConfig? FeatureFlagPolicyConfig { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamFeatureFlagPolicyConfig FeatureFlagPolicyConfig { get; set; }
 #endif
         /// <summary>Default value for the `persist` option on newly created feature flags.</summary>
         public bool? FlagsPersistenceDefault { get; set; }
@@ -447,6 +455,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Enables displaying surveys via posthog-js on allowed origins.</summary>
         public bool? SurveysOptIn { get; set; }
+        /// <summary>Labels applied to this project. Names are trimmed and lowercased, and sending this field replaces the project&apos;s existing tags.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Tags { get; set; }
+#nullable restore
+#else
+        public List<string> Tags { get; set; }
+#endif
         /// <summary>Filter groups that identify internal/test traffic to be excluded from insights.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -552,6 +568,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "extra_settings", n => { ExtraSettings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatExtraSettings>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatExtraSettings.CreateFromDiscriminatorValue); } },
                 { "feature_flag_confirmation_enabled", n => { FeatureFlagConfirmationEnabled = n.GetBoolValue(); } },
                 { "feature_flag_confirmation_message", n => { FeatureFlagConfirmationMessage = n.GetStringValue(); } },
+                { "feature_flag_policy_config", n => { FeatureFlagPolicyConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamFeatureFlagPolicyConfig>(global::Soenneker.PostHog.OpenApiClient.Models.TeamFeatureFlagPolicyConfig.CreateFromDiscriminatorValue); } },
                 { "flags_persistence_default", n => { FlagsPersistenceDefault = n.GetBoolValue(); } },
                 { "group_types", n => { GroupTypes = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatGroupTypesItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatGroupTypesItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "has_completed_onboarding_for", n => { HasCompletedOnboardingFor = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatHasCompletedOnboardingFor>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatHasCompletedOnboardingFor.CreateFromDiscriminatorValue); } },
@@ -601,6 +618,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "session_replay_config", n => { SessionReplayConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatSessionReplayConfig>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatSessionReplayConfig.CreateFromDiscriminatorValue); } },
                 { "survey_config", n => { SurveyConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatSurveyConfig>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatSurveyConfig.CreateFromDiscriminatorValue); } },
                 { "surveys_opt_in", n => { SurveysOptIn = n.GetBoolValue(); } },
+                { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "test_account_filters", n => { TestAccountFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatTestAccountFilters>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatTestAccountFilters.CreateFromDiscriminatorValue); } },
                 { "test_account_filters_default_checked", n => { TestAccountFiltersDefaultChecked = n.GetBoolValue(); } },
                 { "timezone", n => { Timezone = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatTimezone>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatTimezone.CreateFromDiscriminatorValue); } },
@@ -645,6 +663,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatExtraSettings>("extra_settings", ExtraSettings);
             writer.WriteBoolValue("feature_flag_confirmation_enabled", FeatureFlagConfirmationEnabled);
             writer.WriteStringValue("feature_flag_confirmation_message", FeatureFlagConfirmationMessage);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamFeatureFlagPolicyConfig>("feature_flag_policy_config", FeatureFlagPolicyConfig);
             writer.WriteBoolValue("flags_persistence_default", FlagsPersistenceDefault);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatHasCompletedOnboardingFor>("has_completed_onboarding_for", HasCompletedOnboardingFor);
             writer.WriteBoolValue("heatmaps_opt_in", HeatmapsOptIn);
@@ -682,6 +701,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatSessionReplayConfig>("session_replay_config", SessionReplayConfig);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatSurveyConfig>("survey_config", SurveyConfig);
             writer.WriteBoolValue("surveys_opt_in", SurveysOptIn);
+            writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatTestAccountFilters>("test_account_filters", TestAccountFilters);
             writer.WriteBoolValue("test_account_filters_default_checked", TestAccountFiltersDefaultChecked);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedProjectBackwardCompatTimezone>("timezone", Timezone);

@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Where the grouping key lives: \&quot;log\&quot; for log-level attributes, \&quot;resource\&quot; for resource-level attributes, \&quot;column\&quot; for top-level log fields. Ignored when groupBys is provided.* `log` - log* `resource` - resource* `column` - column&quot;
+    /// Where the grouping key lives: &quot;log&quot; for log-level attributes, &quot;resource&quot; for resource-level attributes, &quot;column&quot; for top-level log fields. Ignored when groupBys is provided.* `log` - log* `resource` - resource* `column` - column
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class LogsGroupByBodyGroupBySource : IAdditionalDataHolder, IParsable

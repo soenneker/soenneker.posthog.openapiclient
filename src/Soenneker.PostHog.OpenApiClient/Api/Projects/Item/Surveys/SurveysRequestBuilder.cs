@@ -59,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SurveysRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/surveys{?archived*,ids,limit*,offset*,search*,type*}", pathParameters)
+        public SurveysRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/surveys{?archived*,created_by*,ids,limit*,offset*,search*,status*,type*}", pathParameters)
         {
         }
         /// <summary>
@@ -67,7 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SurveysRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/surveys{?archived*,ids,limit*,offset*,search*,type*}", rawUrl)
+        public SurveysRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/surveys{?archived*,created_by*,ids,limit*,offset*,search*,status*,type*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedSurveyList"/></returns>
@@ -151,8 +151,13 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys
         public partial class SurveysRequestBuilderGetQueryParameters 
         #pragma warning restore CS1591
         {
+            #pragma warning disable CS1591
             [QueryParameter("archived")]
             public bool? Archived { get; set; }
+            #pragma warning restore CS1591
+            /// <summary>Filter surveys by the ID of the user who created them.</summary>
+            [QueryParameter("created_by")]
+            public double? CreatedBy { get; set; }
             /// <summary>Multiple values may be separated by commas.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -179,6 +184,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys
             [QueryParameter("search")]
             public string Search { get; set; }
 #endif
+            /// <summary>Filter surveys by their current status.* `draft` - Draft* `running` - Running* `complete` - Complete</summary>
+            [QueryParameter("status")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.SurveysListStatusParameter? Status { get; set; }
             /// <summary>* `popover` - popover* `widget` - widget* `external_survey` - external survey* `api` - api</summary>
             [QueryParameter("type")]
             public global::Soenneker.PostHog.OpenApiClient.Models.SurveysListTypeParameter? Type { get; set; }

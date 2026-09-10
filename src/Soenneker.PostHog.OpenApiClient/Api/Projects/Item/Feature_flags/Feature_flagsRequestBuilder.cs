@@ -188,8 +188,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Feature_flagsRequestBuilderGetQueryParameters 
         {
+            #pragma warning disable CS1591
             [QueryParameter("active")]
             public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagsListActiveParameter? Active { get; set; }
+            #pragma warning restore CS1591
             /// <summary>Filter by archived state. When omitted, archived flags are excluded.</summary>
             [QueryParameter("archived")]
             public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagsListArchivedParameter? Archived { get; set; }
@@ -203,9 +205,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags
             [QueryParameter("created_by_id")]
             public string CreatedById { get; set; }
 #endif
-            /// <summary>&quot;When &apos;true&apos;, only return flags that can back an experiment: multivariate with 2-20 variants. Any other value is ignored.&quot;</summary>
+            /// <summary>When &apos;true&apos;, only return flags that can back an experiment: multivariate with 2-20 variants. Any other value is ignored.</summary>
             [QueryParameter("eligible_for_experiment")]
-            public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagsListEligibleForExperimentParameter? EligibleForExperiment { get; set; }
+            public global::Soenneker.PostHog.OpenApiClient.Models.TrueValueEligibleForExperiment? EligibleForExperiment { get; set; }
             /// <summary>Filter feature flags by their evaluation runtime.</summary>
             [QueryParameter("evaluation_runtime")]
             public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagsListEvaluationRuntimeParameter? EvaluationRuntime { get; set; }
@@ -268,8 +270,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags
             [QueryParameter("tags")]
             public string Tags { get; set; }
 #endif
+            #pragma warning disable CS1591
             [QueryParameter("type")]
             public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagsListTypeParameter? Type { get; set; }
+            #pragma warning restore CS1591
         }
     }
 }

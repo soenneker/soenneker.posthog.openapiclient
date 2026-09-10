@@ -15,7 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `warehouse` - warehouse* `direct` - direct</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccessMethodEnum? Value { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceAccessMethodEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersAccessMethod"/> and sets the default values.
         /// </summary>
@@ -41,7 +41,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "value", n => { Value = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccessMethodEnum>(); } },
+                { "value", n => { Value = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceAccessMethodEnum>(); } },
             };
         }
         /// <summary>
@@ -51,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccessMethodEnum>("value", Value);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceAccessMethodEnum>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

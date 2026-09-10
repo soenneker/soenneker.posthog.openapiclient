@@ -59,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Sessions
         {
         }
         /// <summary>
-        /// &quot;List wizard sessions for the project, ordered by started_at desc. This should only be called by the PostHog Wizard. Optional filters: ?workflow_id=&lt;id&gt; and ?skill_id=&lt;id&gt;.&quot;
+        /// List wizard sessions for the project, ordered by started_at desc. This should only be called by the PostHog Wizard. Optional filters: ?workflow_id=&lt;id&gt; and ?skill_id=&lt;id&gt;.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedWizardSessionDtoList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -80,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Sessions
         /// Upsert a wizard session. The `session_id` key is the idempotency anchor — reposting the same `session_id` replaces the existing row. Returns 201 on create, 200 on update.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WizardSessionDto"/></returns>
-        /// <param name="body">&quot;Input: validates the JSON the wizard CLI posts. team_id is derived from URL.&quot;</param>
+        /// <param name="body">Input: validates the JSON the wizard CLI posts. team_id is derived from URL.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -97,7 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Sessions
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.WizardSessionDto>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.WizardSessionDto.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;List wizard sessions for the project, ordered by started_at desc. This should only be called by the PostHog Wizard. Optional filters: ?workflow_id=&lt;id&gt; and ?skill_id=&lt;id&gt;.&quot;
+        /// List wizard sessions for the project, ordered by started_at desc. This should only be called by the PostHog Wizard. Optional filters: ?workflow_id=&lt;id&gt; and ?skill_id=&lt;id&gt;.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -119,7 +119,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Sessions
         /// Upsert a wizard session. The `session_id` key is the idempotency anchor — reposting the same `session_id` replaces the existing row. Returns 201 on create, 200 on update.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">&quot;Input: validates the JSON the wizard CLI posts. team_id is derived from URL.&quot;</param>
+        /// <param name="body">Input: validates the JSON the wizard CLI posts. team_id is derived from URL.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -147,18 +147,18 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Sessions
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Sessions.SessionsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// &quot;List wizard sessions for the project, ordered by started_at desc. This should only be called by the PostHog Wizard. Optional filters: ?workflow_id=&lt;id&gt; and ?skill_id=&lt;id&gt;.&quot;
+        /// List wizard sessions for the project, ordered by started_at desc. This should only be called by the PostHog Wizard. Optional filters: ?workflow_id=&lt;id&gt; and ?skill_id=&lt;id&gt;.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class SessionsRequestBuilderGetQueryParameters 
         {
-            /// <summary>Number of results to return per page.</summary>
+            /// <summary>Maximum number of sessions to return.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
-            /// <summary>The initial index from which to return the results.</summary>
+            /// <summary>Number of sessions to skip.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
-            /// <summary>Filter to a single skill within the workflow (e.g. &apos;nextjs&apos;).</summary>
+            /// <summary>Return sessions for this skill only.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("skill_id")]
@@ -168,7 +168,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Sessions
             [QueryParameter("skill_id")]
             public string SkillId { get; set; }
 #endif
-            /// <summary>Filter to a single workflow (e.g. &apos;onboarding&apos;).</summary>
+            /// <summary>Return sessions for this workflow only.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("workflow_id")]

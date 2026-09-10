@@ -134,8 +134,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Session_recording_pl
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Session_recording_playlistsRequestBuilderGetQueryParameters 
         {
+            #pragma warning disable CS1591
             [QueryParameter("created_by")]
             public int? CreatedBy { get; set; }
+            #pragma warning restore CS1591
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
@@ -144,12 +146,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Session_recording_pl
             public int? Offset { get; set; }
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("short_id")]
             public string? ShortId { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("short_id")]
             public string ShortId { get; set; }
+            #pragma warning restore CS1591
 #endif
         }
     }

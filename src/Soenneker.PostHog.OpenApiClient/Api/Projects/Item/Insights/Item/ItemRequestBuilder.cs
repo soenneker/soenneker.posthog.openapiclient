@@ -66,19 +66,20 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item
         /// <summary>
         /// Hard delete of this model is not allowed. Use a patch API call to set &quot;deleted&quot; to true
         /// </summary>
+        /// <returns>A <see cref="Stream"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task DeleteAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item.ItemRequestBuilder.ItemRequestBuilderDeleteQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Stream?> DeleteAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item.ItemRequestBuilder.ItemRequestBuilderDeleteQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task DeleteAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item.ItemRequestBuilder.ItemRequestBuilderDeleteQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Stream> DeleteAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item.ItemRequestBuilder.ItemRequestBuilderDeleteQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// DRF ViewSet mixin that gates coalesced responses behind permission checks.The QueryCoalescingMiddleware attaches cached response data torequest.META[&quot;_coalesced_response&quot;] for followers. This mixin runs DRF&apos;sinitial() (auth + permissions + throttling) before returning thecached response, ensuring the request is authorized.
@@ -154,7 +155,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item
 #endif
             var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <summary>
@@ -235,8 +235,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class ItemRequestBuilderDeleteQueryParameters 
         {
+            #pragma warning disable CS1591
             [QueryParameter("format")]
             public global::Soenneker.PostHog.OpenApiClient.Models.InsightsDestroyFormatParameter? Format { get; set; }
+            #pragma warning restore CS1591
         }
         /// <summary>
         /// DRF ViewSet mixin that gates coalesced responses behind permission checks.The QueryCoalescingMiddleware attaches cached response data torequest.META[&quot;_coalesced_response&quot;] for followers. This mixin runs DRF&apos;sinitial() (auth + permissions + throttling) before returning thecached response, ensuring the request is authorized.
@@ -254,9 +256,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item
             [QueryParameter("filters_override")]
             public string FiltersOverride { get; set; }
 #endif
+            #pragma warning disable CS1591
             [QueryParameter("format")]
             public global::Soenneker.PostHog.OpenApiClient.Models.InsightsRetrieveFormatParameter? Format { get; set; }
-            /// <summary>&quot;Only if loading an insight in the context of a dashboard: The relevant dashboard&apos;s ID.When set, the specified dashboard&apos;s filters and date range override will be applied.&quot;</summary>
+            #pragma warning restore CS1591
+            /// <summary>Only if loading an insight in the context of a dashboard: The relevant dashboard&apos;s ID.When set, the specified dashboard&apos;s filters and date range override will be applied.</summary>
             [QueryParameter("from_dashboard")]
             public int? FromDashboard { get; set; }
             /// <summary>Opt in to receiving the deprecated `dashboards` field in insight payloads. Once opt-in enforcement is enabled, API-token callers stop receiving it by default; use `dashboard_tiles` instead.</summary>
@@ -265,7 +269,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item
             /// <summary>Whether to refresh the insight, how aggresively, and if sync or async:- `&apos;force_cache&apos;` - return cached data or a cache miss; always completes immediately as it never calculates- `&apos;blocking&apos;` - calculate synchronously (returning only when the query is done), UNLESS there are very fresh results in the cache- `&apos;async&apos;` - kick off background calculation (returning immediately with a query status), UNLESS there are very fresh results in the cache- `&apos;lazy_async&apos;` - kick off background calculation, UNLESS there are somewhat fresh results in the cache- `&apos;force_blocking&apos;` - calculate synchronously, even if fresh results are already cached- `&apos;force_async&apos;` - kick off background calculation, even if fresh results are already cachedBackground calculation can be tracked using the `query_status` response field.</summary>
             [QueryParameter("refresh")]
             public global::Soenneker.PostHog.OpenApiClient.Models.InsightsRetrieveRefreshParameter? Refresh { get; set; }
-            /// <summary>&quot;Object (or pre-encoded JSON string) to override the insight&apos;s HogQL variables for this request only (not persisted). Format: {\&quot;&lt;variable_id&gt;\&quot;: {\&quot;code_name\&quot;: \&quot;&lt;code_name&gt;\&quot;, \&quot;variableId\&quot;: \&quot;&lt;variable_id&gt;\&quot;, \&quot;value\&quot;: &lt;new_value&gt;}}. Each entry must include `code_name` — partial entries are silently dropped. The simplest workflow is to call `insight-get` first, copy the matching entry from the response, and mutate `value`. Top-level keys replace; nested values are not deep-merged. Ignored when accessed via a sharing token.&quot;</summary>
+            /// <summary>Object (or pre-encoded JSON string) to override the insight&apos;s HogQL variables for this request only (not persisted). Format: {&quot;&lt;variable_id&gt;&quot;: {&quot;code_name&quot;: &quot;&lt;code_name&gt;&quot;, &quot;variableId&quot;: &quot;&lt;variable_id&gt;&quot;, &quot;value&quot;: &lt;new_value&gt;}}. Each entry must include `code_name` — partial entries are silently dropped. The simplest workflow is to call `insight-get` first, copy the matching entry from the response, and mutate `value`. Top-level keys replace; nested values are not deep-merged. Ignored when accessed via a sharing token.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("variables_override")]
@@ -282,8 +286,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class ItemRequestBuilderPatchQueryParameters 
         {
+            #pragma warning disable CS1591
             [QueryParameter("format")]
             public global::Soenneker.PostHog.OpenApiClient.Models.InsightsPartialUpdateFormatParameter? Format { get; set; }
+            #pragma warning restore CS1591
             /// <summary>Opt in to receiving the deprecated `dashboards` field in insight payloads. Once opt-in enforcement is enabled, API-token callers stop receiving it by default; use `dashboard_tiles` instead.</summary>
             [QueryParameter("include_dashboards")]
             public bool? IncludeDashboards { get; set; }
@@ -294,8 +300,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class ItemRequestBuilderPutQueryParameters 
         {
+            #pragma warning disable CS1591
             [QueryParameter("format")]
             public global::Soenneker.PostHog.OpenApiClient.Models.InsightsUpdateFormatParameter? Format { get; set; }
+            #pragma warning restore CS1591
             /// <summary>Opt in to receiving the deprecated `dashboards` field in insight payloads. Once opt-in enforcement is enabled, API-token callers stop receiving it by default; use `dashboard_tiles` instead.</summary>
             [QueryParameter("include_dashboards")]
             public bool? IncludeDashboards { get; set; }

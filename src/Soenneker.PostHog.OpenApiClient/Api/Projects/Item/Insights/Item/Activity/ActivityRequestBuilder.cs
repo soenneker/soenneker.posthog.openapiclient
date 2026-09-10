@@ -85,8 +85,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item.Activi
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class ActivityRequestBuilderGetQueryParameters 
         {
+            #pragma warning disable CS1591
             [QueryParameter("format")]
             public global::Soenneker.PostHog.OpenApiClient.Models.InsightsActivityRetrieveFormatParameter? Format { get; set; }
+            #pragma warning restore CS1591
             /// <summary>Page size. Defaults to 10.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }

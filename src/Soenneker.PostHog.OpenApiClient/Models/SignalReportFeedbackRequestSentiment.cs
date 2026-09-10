@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;The rating left on the report: &apos;positive&apos; (thumbs up) or &apos;negative&apos; (thumbs down).* `positive` - positive* `negative` - negative&quot;
+    /// The rating left on the report: &apos;positive&apos; (thumbs up) or &apos;negative&apos; (thumbs down).* `positive` - positive* `negative` - negative
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SignalReportFeedbackRequestSentiment : IAdditionalDataHolder, IParsable

@@ -50,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item
         /// Post an inline review comment on the report&apos;s implementation pull request, attributed to the requesting user&apos;s own GitHub identity via their personal GitHub connection. Either replies to an existing thread (`in_reply_to`) or starts a new thread on a diff line (`path` + `line`).
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PullRequestReviewCommentCreateResponse"/></returns>
-        /// <param name="body">&quot;Request body for posting an inline PR review comment as the requesting user.Two shapes: a reply to an existing thread (only `body` + `in_reply_to`), or a newthread on a diff line (`body` + `path` + `line`, optionally `side`).&quot;</param>
+        /// <param name="body">Request body for posting an inline PR review comment as the requesting user.Two shapes: a reply to an existing thread (only `body` + `in_reply_to`), or a newthread on a diff line (`body` + `path` + `line`, optionally `side`).</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -70,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item
         /// Post an inline review comment on the report&apos;s implementation pull request, attributed to the requesting user&apos;s own GitHub identity via their personal GitHub connection. Either replies to an existing thread (`in_reply_to`) or starts a new thread on a diff line (`path` + `line`).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">&quot;Request body for posting an inline PR review comment as the requesting user.Two shapes: a reply to an existing thread (only `body` + `in_reply_to`), or a newthread on a diff line (`body` + `path` + `line`, optionally `side`).&quot;</param>
+        /// <param name="body">Request body for posting an inline PR review comment as the requesting user.Two shapes: a reply to an existing thread (only `body` + `in_reply_to`), or a newthread on a diff line (`body` + `path` + `line`, optionally `side`).</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

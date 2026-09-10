@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Domains.Item.Sc
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public LogsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/organizations/{%2Did}/domains/{id}/scim/logs", pathParameters)
+        public LogsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/organizations/{%2Did}/domains/{id}/scim/logs{?after*,before*,page*,page_size*,search*,status_max*,status_min*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,33 +30,33 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Domains.Item.Sc
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public LogsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/organizations/{%2Did}/domains/{id}/scim/logs", rawUrl)
+        public LogsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/organizations/{%2Did}/domains/{id}/scim/logs{?after*,before*,page*,page_size*,search*,status_max*,status_min*}", rawUrl)
         {
         }
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DomainsScimLogsRetrieve200Response"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedScimRequestLog"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.DomainsScimLogsRetrieve200Response?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedScimRequestLog?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Domains.Item.Scim.Logs.LogsRequestBuilder.LogsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.DomainsScimLogsRetrieve200Response> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedScimRequestLog> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Domains.Item.Scim.Logs.LogsRequestBuilder.LogsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.DomainsScimLogsRetrieve200Response>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.DomainsScimLogsRetrieve200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedScimRequestLog>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedScimRequestLog.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Domains.Item.Scim.Logs.LogsRequestBuilder.LogsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Domains.Item.Scim.Logs.LogsRequestBuilder.LogsRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -72,6 +72,40 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Domains.Item.Sc
         public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Domains.Item.Scim.Logs.LogsRequestBuilder WithUrl(string rawUrl)
         {
             return new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Domains.Item.Scim.Logs.LogsRequestBuilder(rawUrl, RequestAdapter);
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        #pragma warning disable CS1591
+        public partial class LogsRequestBuilderGetQueryParameters 
+        #pragma warning restore CS1591
+        {
+            /// <summary>Include requests at or after this time.</summary>
+            [QueryParameter("after")]
+            public DateTimeOffset? After { get; set; }
+            /// <summary>Include requests at or before this time.</summary>
+            [QueryParameter("before")]
+            public DateTimeOffset? Before { get; set; }
+            /// <summary>Page number to return.</summary>
+            [QueryParameter("page")]
+            public int? Page { get; set; }
+            /// <summary>Number of requests to return per page.</summary>
+            [QueryParameter("page_size")]
+            public int? PageSize { get; set; }
+            /// <summary>Search request paths and masked request bodies.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("search")]
+            public string? Search { get; set; }
+#nullable restore
+#else
+            [QueryParameter("search")]
+            public string Search { get; set; }
+#endif
+            /// <summary>Maximum HTTP response status to include, such as 499.</summary>
+            [QueryParameter("status_max")]
+            public int? StatusMax { get; set; }
+            /// <summary>Minimum HTTP response status to include, such as 400.</summary>
+            [QueryParameter("status_min")]
+            public int? StatusMin { get; set; }
         }
     }
 }

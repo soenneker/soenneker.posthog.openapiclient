@@ -74,7 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedConversationMinimalList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedConversationMinimalList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Unified endpoint that handles both conversation creation and streaming.- If message is provided: Start new conversation processing- If no message: Stream from existing conversation&quot;
+        /// Unified endpoint that handles both conversation creation and streaming.- If message is provided: Start new conversation processing- If no message: Stream from existing conversation
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Message"/></returns>
         /// <param name="body">Serializer for appending a message to an existing conversation without triggering AI processing.</param>
@@ -110,7 +110,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations
             return requestInfo;
         }
         /// <summary>
-        /// &quot;Unified endpoint that handles both conversation creation and streaming.- If message is provided: Start new conversation processing- If no message: Stream from existing conversation&quot;
+        /// Unified endpoint that handles both conversation creation and streaming.- If message is provided: Start new conversation processing- If no message: Stream from existing conversation
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">Serializer for appending a message to an existing conversation without triggering AI processing.</param>

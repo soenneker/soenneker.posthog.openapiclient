@@ -53,6 +53,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public Guid? Organization { get; private set; }
         /// <summary>ID of the project this environment belongs to.</summary>
         public int? ProjectId { get; private set; }
+        /// <summary>Labels applied to this project.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Tags { get; private set; }
+#nullable restore
+#else
+        public List<string> Tags { get; private set; }
+#endif
         /// <summary>The timezone property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -98,6 +106,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "organization", n => { Organization = n.GetGuidValue(); } },
                 { "project_id", n => { ProjectId = n.GetIntValue(); } },
+                { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "timezone", n => { Timezone = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProjectBackwardCompatBasicTimezone>(global::Soenneker.PostHog.OpenApiClient.Models.ProjectBackwardCompatBasicTimezone.CreateFromDiscriminatorValue); } },
                 { "uuid", n => { Uuid = n.GetGuidValue(); } },
             };

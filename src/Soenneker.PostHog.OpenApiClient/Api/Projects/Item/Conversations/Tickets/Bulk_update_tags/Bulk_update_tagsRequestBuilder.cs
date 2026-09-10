@@ -34,38 +34,38 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Ticket
         {
         }
         /// <summary>
-        /// &quot;Bulk update tags on multiple objects.PAT access: this action has no ``required_scopes=`` on the decorator —inheriting viewsets must add ``\&quot;bulk_update_tags\&quot;`` to their``scope_object_write_actions`` list to accept personal API keys.Without that opt-in, ``APIScopePermission`` rejects PAT requests with\&quot;This action does not support personal API key access\&quot;. Done per-viewsetso granting ``&lt;scope&gt;:write`` for one resource doesn&apos;t leak access tosibling resources that share this mixin.Accepts:- {\&quot;ids\&quot;: [...], \&quot;action\&quot;: \&quot;add\&quot;|\&quot;remove\&quot;|\&quot;set\&quot;, \&quot;tags\&quot;: [\&quot;tag1\&quot;, \&quot;tag2\&quot;]}Actions:- \&quot;add\&quot;: Add tags to existing tags on each object- \&quot;remove\&quot;: Remove specific tags from each object- \&quot;set\&quot;: Replace all tags on each object with the provided list&quot;
+        /// Bulk update tags on multiple objects.PAT access: this action has no ``required_scopes=`` on the decorator —inheriting viewsets must add ``&quot;bulk_update_tags&quot;`` to their``scope_object_write_actions`` list to accept personal API keys.Without that opt-in, ``APIScopePermission`` rejects PAT requests with&quot;This action does not support personal API key access&quot;. Done per-viewsetso granting ``&lt;scope&gt;:write`` for one resource doesn&apos;t leak access tosibling resources that share this mixin.Accepts:- {&quot;ids&quot;: [...], &quot;action&quot;: &quot;add&quot;|&quot;remove&quot;|&quot;set&quot;, &quot;tags&quot;: [&quot;tag1&quot;, &quot;tag2&quot;]}Actions:- &quot;add&quot;: Add tags to existing tags on each object- &quot;remove&quot;: Remove specific tags from each object- &quot;set&quot;: Replace all tags on each object with the provided list
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateTagsResponse"/></returns>
-        /// <param name="body">The request body</param>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateTagsUuidResponse"/></returns>
+        /// <param name="body">Variant of ``BulkUpdateTagsRequestSerializer`` for resources keyed by UUID (e.g. event definitions).</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateTagsResponse?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateTagsRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateTagsUuidResponse?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateTagsUuidRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateTagsResponse> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateTagsRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateTagsUuidResponse> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateTagsUuidRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateTagsResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateTagsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateTagsUuidResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateTagsUuidResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Bulk update tags on multiple objects.PAT access: this action has no ``required_scopes=`` on the decorator —inheriting viewsets must add ``\&quot;bulk_update_tags\&quot;`` to their``scope_object_write_actions`` list to accept personal API keys.Without that opt-in, ``APIScopePermission`` rejects PAT requests with\&quot;This action does not support personal API key access\&quot;. Done per-viewsetso granting ``&lt;scope&gt;:write`` for one resource doesn&apos;t leak access tosibling resources that share this mixin.Accepts:- {\&quot;ids\&quot;: [...], \&quot;action\&quot;: \&quot;add\&quot;|\&quot;remove\&quot;|\&quot;set\&quot;, \&quot;tags\&quot;: [\&quot;tag1\&quot;, \&quot;tag2\&quot;]}Actions:- \&quot;add\&quot;: Add tags to existing tags on each object- \&quot;remove\&quot;: Remove specific tags from each object- \&quot;set\&quot;: Replace all tags on each object with the provided list&quot;
+        /// Bulk update tags on multiple objects.PAT access: this action has no ``required_scopes=`` on the decorator —inheriting viewsets must add ``&quot;bulk_update_tags&quot;`` to their``scope_object_write_actions`` list to accept personal API keys.Without that opt-in, ``APIScopePermission`` rejects PAT requests with&quot;This action does not support personal API key access&quot;. Done per-viewsetso granting ``&lt;scope&gt;:write`` for one resource doesn&apos;t leak access tosibling resources that share this mixin.Accepts:- {&quot;ids&quot;: [...], &quot;action&quot;: &quot;add&quot;|&quot;remove&quot;|&quot;set&quot;, &quot;tags&quot;: [&quot;tag1&quot;, &quot;tag2&quot;]}Actions:- &quot;add&quot;: Add tags to existing tags on each object- &quot;remove&quot;: Remove specific tags from each object- &quot;set&quot;: Replace all tags on each object with the provided list
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Variant of ``BulkUpdateTagsRequestSerializer`` for resources keyed by UUID (e.g. event definitions).</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateTagsRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateTagsUuidRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateTagsRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateTagsUuidRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));

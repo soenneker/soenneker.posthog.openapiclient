@@ -143,8 +143,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Actions
             [QueryParameter("created_by")]
             public string CreatedBy { get; set; }
 #endif
+            #pragma warning disable CS1591
             [QueryParameter("format")]
             public global::Soenneker.PostHog.OpenApiClient.Models.ActionsListFormatParameter? Format { get; set; }
+            #pragma warning restore CS1591
             /// <summary>Maximum number of actions to return. Omit to return all.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
@@ -187,8 +189,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Actions
         public partial class ActionsRequestBuilderPostQueryParameters 
         #pragma warning restore CS1591
         {
+            #pragma warning disable CS1591
             [QueryParameter("format")]
             public global::Soenneker.PostHog.OpenApiClient.Models.ActionsCreateFormatParameter? Format { get; set; }
+            #pragma warning restore CS1591
         }
     }
 }

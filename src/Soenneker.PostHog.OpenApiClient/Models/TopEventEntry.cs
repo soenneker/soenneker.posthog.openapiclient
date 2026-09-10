@@ -27,7 +27,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Event { get; set; }
 #endif
-        /// <summary>&quot;ISO-8601 timestamp of the earliest occurrence within the `window_days` window. Compare to the window start to spot new event types: close to `now` ⇒ likely new or recently bursting; close to the window edge ⇒ has been around at least that long (the window can&apos;t tell you when the event *truly* first appeared).&quot;</summary>
+        /// <summary>ISO-8601 timestamp of the earliest occurrence within the `window_days` window. Compare to the window start to spot new event types: close to `now` ⇒ likely new or recently bursting; close to the window edge ⇒ has been around at least that long (the window can&apos;t tell you when the event *truly* first appeared).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? FirstSeenInWindow { get; set; }
@@ -43,11 +43,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string LastSeenInWindow { get; set; }
 #endif
-        /// <summary>&quot;Count in just the last 24 hours. Compare to `count / window_days` to spot bursts: a ratio well above `1 / window_days` means the event is concentrated in the last day.&quot;</summary>
+        /// <summary>Count in just the last 24 hours. Compare to `count / window_days` to spot bursts: a ratio well above `1 / window_days` means the event is concentrated in the last day.</summary>
         public int? Recent24hCount { get; set; }
         /// <summary>`uniq(person_id)` over just the last 24 hours. A burst across many users is qualitatively different from one user in a loop.</summary>
         public int? Recent24hUsers { get; set; }
-        /// <summary>&quot;Rolling lookback window (in days) that every count and timestamp on this row is measured over — these are windowed figures, NOT lifetime totals. A capture gap can collapse a real, high-volume project&apos;s in-window counts to near-zero, so a thin `count` here does not by itself mean the project is low-volume: rule out an ingestion gap (compare against a trailing baseline via a direct `execute-sql`) before closing out a surface as unused.&quot;</summary>
+        /// <summary>Rolling lookback window (in days) that every count and timestamp on this row is measured over — these are windowed figures, NOT lifetime totals. A capture gap can collapse a real, high-volume project&apos;s in-window counts to near-zero, so a thin `count` here does not by itself mean the project is low-volume: rule out an ingestion gap (compare against a trailing baseline via a direct `execute-sql`) before closing out a surface as unused.</summary>
         public int? WindowDays { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TopEventEntry"/> and sets the default values.

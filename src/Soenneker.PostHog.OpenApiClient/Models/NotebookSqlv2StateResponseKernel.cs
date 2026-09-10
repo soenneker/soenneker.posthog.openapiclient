@@ -21,7 +21,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? IdleTimeoutSeconds { get; set; }
         /// <summary>Memory in GB the notebook&apos;s sandbox is configured with.</summary>
         public double? MemoryGb { get; set; }
-        /// <summary>&quot;Kernel runtime state: &apos;starting&apos;, &apos;running&apos;, &apos;stopped&apos;, &apos;timed_out&apos;, &apos;discarded&apos;, or &apos;error&apos;.&quot;</summary>
+        /// <summary>Kernel runtime state: &apos;starting&apos;, &apos;running&apos;, &apos;stopped&apos;, &apos;timed_out&apos;, &apos;discarded&apos;, or &apos;error&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Status { get; set; }

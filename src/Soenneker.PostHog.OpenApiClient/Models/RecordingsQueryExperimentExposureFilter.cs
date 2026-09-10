@@ -14,6 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Experiment whose exposed persons&apos; sessions to show. Must belong to the environment the query runs in.</summary>
         public int? ExperimentId { get; set; }
+        /// <summary>Only sessions carrying in-session exposure evidence: an event matching the experiment&apos;s exposure criteria inside the session (with the stamped `$feature/&lt;flag_key&gt;` property standing in when the exposure event was never captured with a session id). Defaults to all exposed persons&apos; sessions from first exposure onward.</summary>
+        public bool? InSession { get; set; }
         /// <summary>Narrow to persons exposed to this variant. Defaults to all of the experiment&apos;s variants.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -41,6 +43,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "experiment_id", n => { ExperimentId = n.GetIntValue(); } },
+                { "in_session", n => { InSession = n.GetBoolValue(); } },
                 { "variant", n => { Variant = n.GetStringValue(); } },
             };
         }
@@ -52,6 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("experiment_id", ExperimentId);
+            writer.WriteBoolValue("in_session", InSession);
             writer.WriteStringValue("variant", Variant);
         }
     }

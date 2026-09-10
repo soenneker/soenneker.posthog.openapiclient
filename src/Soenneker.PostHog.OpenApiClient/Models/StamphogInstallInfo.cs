@@ -23,7 +23,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string AppSlug { get; private set; }
 #endif
-        /// <summary>&quot;GitHub authorize URL (github.com/login/oauth/authorize) the &apos;Connect&apos; button opens. Authorize-first: an already-installed user is redirected straight back with an OAuth code (no installation_id), and sync_installation then discovers their installations server-side. Blank if the App client id is unconfigured.&quot;</summary>
+        /// <summary>GitHub authorize URL (github.com/login/oauth/authorize) the &apos;Connect&apos; button opens. Authorize-first: an already-installed user is redirected straight back with an OAuth code (no installation_id), and sync_installation then discovers their installations server-side. Blank if the App client id is unconfigured.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AuthorizeUrl { get; private set; }

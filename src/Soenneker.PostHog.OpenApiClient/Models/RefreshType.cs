@@ -3,10 +3,9 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
+    /// <summary>Cache and execution behavior for the query.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public enum RefreshType
-    #pragma warning restore CS1591
     {
         [EnumMember(Value = "async")]
         #pragma warning disable CS1591

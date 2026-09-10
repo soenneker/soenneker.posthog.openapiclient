@@ -32,14 +32,14 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_saved_quer
         }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.warehouse_saved_queries.item collection</summary>
         /// <param name="position">A UUID string identifying this data warehouse saved query.</param>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_saved_queries.Item.Warehouse_saved_queriesItemRequestBuilder"/></returns>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_saved_queries.Item.Warehouse_saved_queriesItemRequestBuilder this[Guid position]
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_saved_queries.Item.ItemRequestBuilder"/></returns>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_saved_queries.Item.ItemRequestBuilder this[Guid position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("id", position);
-                return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_saved_queries.Item.Warehouse_saved_queriesItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("%2Did", position);
+                return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_saved_queries.Item.ItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>

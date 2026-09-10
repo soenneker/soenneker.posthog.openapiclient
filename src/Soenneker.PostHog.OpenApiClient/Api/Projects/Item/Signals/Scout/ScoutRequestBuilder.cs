@@ -11,6 +11,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Notes;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Project_profile;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Scratchpad;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Suggestions;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -65,6 +66,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Scratchpad.ScratchpadRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The suggestions property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Suggestions.SuggestionsRequestBuilder Suggestions
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Suggestions.SuggestionsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.ScoutRequestBuilder"/> and sets the default values.
         /// </summary>
@@ -82,7 +88,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout
         {
         }
         /// <summary>
-        /// Create a `signals-scout-*` skill and its runnable config atomically. The skill always receives the report-channel tools. The optional config controls schedule, enablement, dry-run posture, network access, and typed destinations such as Slack. Repeating the same definition is safe and applies any supplied config fields; reusing its name for a different definition returns 409.
+        /// Create a scout skill and its runnable config atomically. Any valid skill name works — the config row is what makes the skill a scout. The skill always receives the report-channel tools. The optional config controls schedule, enablement, dry-run posture, network access, and typed destinations such as Slack. Repeating the same definition is safe and applies any supplied config fields; reusing its name for a different definition returns 409.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutCreateResponse"/></returns>
         /// <param name="body">Create a runnable custom scout and its config in one atomic request.</param>
@@ -102,7 +108,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutCreateResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutCreateResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Create a `signals-scout-*` skill and its runnable config atomically. The skill always receives the report-channel tools. The optional config controls schedule, enablement, dry-run posture, network access, and typed destinations such as Slack. Repeating the same definition is safe and applies any supplied config fields; reusing its name for a different definition returns 409.
+        /// Create a scout skill and its runnable config atomically. Any valid skill name works — the config row is what makes the skill a scout. The skill always receives the report-channel tools. The optional config controls schedule, enablement, dry-run posture, network access, and typed destinations such as Slack. Repeating the same definition is safe and applies any supplied config fields; reusing its name for a different definition returns 409.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">Create a runnable custom scout and its config in one atomic request.</param>

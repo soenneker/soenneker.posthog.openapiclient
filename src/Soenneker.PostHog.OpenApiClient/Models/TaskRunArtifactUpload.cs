@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Artifact contents encoded according to content_encoding</summary>
+        /// <summary>Artifact contents encoded according to content_encoding. Artifacts above 14 MB must use prepare_upload instead.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Content { get; set; }
@@ -38,7 +38,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ContentType { get; set; }
 #endif
-        /// <summary>Optional structured metadata for special artifact types, such as skill bundles.</summary>
+        /// <summary>Skill bundle metadata, required when the artifact type is skill_bundle.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactUploadMetadata? Metadata { get; set; }

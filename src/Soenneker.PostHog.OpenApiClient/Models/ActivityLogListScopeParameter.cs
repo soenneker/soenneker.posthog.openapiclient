@@ -300,6 +300,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         SignalScoutConfig,
         #pragma warning restore CS1591
+        [EnumMember(Value = "SignalTeamConfig")]
+        #pragma warning disable CS1591
+        SignalTeamConfig,
+        #pragma warning restore CS1591
         [EnumMember(Value = "StreamlitApp")]
         #pragma warning disable CS1591
         StreamlitApp,
@@ -323,6 +327,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "Loop")]
         #pragma warning disable CS1591
         Loop,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "StamphogRepoConfig")]
+        #pragma warning disable CS1591
+        StamphogRepoConfig,
         #pragma warning restore CS1591
     }
 }

@@ -5,6 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_schemas.Item.Cancel;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_schemas.Item.Delete_data;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_schemas.Item.Destinations;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_schemas.Item.Incremental_fields;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_schemas.Item.Logs;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_schemas.Item.Reload;
@@ -32,6 +33,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_schema
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_schemas.Item.Delete_data.Delete_dataRequestBuilder Delete_data
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_schemas.Item.Delete_data.Delete_dataRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The destinations property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_schemas.Item.Destinations.DestinationsRequestBuilder Destinations
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_schemas.Item.Destinations.DestinationsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The incremental_fields property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_schemas.Item.Incremental_fields.Incremental_fieldsRequestBuilder Incremental_fields
@@ -99,7 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_schema
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSchema>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSchema.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSchema"/></returns>
-        /// <param name="body">&quot;A schema of an external data source: its sync configuration and the warehouse table it syncs into.&quot;</param>
+        /// <param name="body">A schema of an external data source: its sync configuration and the warehouse table it syncs into.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -116,7 +122,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_schema
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSchema>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSchema.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSchema"/></returns>
-        /// <param name="body">&quot;A schema of an external data source: its sync configuration and the warehouse table it syncs into.&quot;</param>
+        /// <param name="body">A schema of an external data source: its sync configuration and the warehouse table it syncs into.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -145,7 +151,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_schema
 #endif
             var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <returns>A <see cref="RequestInformation"/></returns>
@@ -165,7 +170,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_schema
             return requestInfo;
         }
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">&quot;A schema of an external data source: its sync configuration and the warehouse table it syncs into.&quot;</param>
+        /// <param name="body">A schema of an external data source: its sync configuration and the warehouse table it syncs into.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -184,7 +189,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_schema
             return requestInfo;
         }
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">&quot;A schema of an external data source: its sync configuration and the warehouse table it syncs into.&quot;</param>
+        /// <param name="body">A schema of an external data source: its sync configuration and the warehouse table it syncs into.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

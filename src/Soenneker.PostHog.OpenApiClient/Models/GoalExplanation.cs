@@ -60,7 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Events whose utm_source matched a known integration. Null for DataWarehouseNode.</summary>
         public int? IntegratedCount { get; set; }
-        /// <summary>&quot;Goal type: EventsNode (PostHog event), ActionsNode (PostHog action), or DataWarehouseNode (external table)* `EventsNode` - EventsNode* `ActionsNode` - ActionsNode* `DataWarehouseNode` - DataWarehouseNode&quot;</summary>
+        /// <summary>Goal type: EventsNode (PostHog event), ActionsNode (PostHog action), or DataWarehouseNode (external table)* `EventsNode` - EventsNode* `ActionsNode` - ActionsNode* `DataWarehouseNode` - DataWarehouseNode</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.GoalExplanationKind? Kind { get; set; }

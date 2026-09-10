@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffRequestBaselineDateRange BaselineDateRange { get; set; }
 #endif
-        /// <summary>&quot;The patterns query for the current (foreground) window: date range plus any severity/service/search/property filters. The same filters are applied to the baseline window.&quot;</summary>
+        /// <summary>The patterns query for the current (foreground) window: date range plus any severity/service/search/property filters. The same filters are applied to the baseline window.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffRequestQuery? Query { get; set; }

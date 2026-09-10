@@ -23,7 +23,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedBatchExportRequestDestination Destination { get; set; }
 #endif
-        /// <summary>&quot;Optional list of property filters to restrict which events are exported. Each filter is a serialized HogQL property filter object with a &apos;type&apos; of one of: &apos;event&apos;, &apos;hogql&apos;, &apos;person&apos; (e.g. {\&quot;key\&quot;: \&quot;$browser\&quot;, \&quot;operator\&quot;: \&quot;exact\&quot;, \&quot;type\&quot;: \&quot;event\&quot;, \&quot;value\&quot;: [\&quot;Firefox\&quot;]}).&quot;</summary>
+        /// <summary>Optional list of property filters to restrict which events are exported. Each filter is a serialized HogQL property filter object with a &apos;type&apos; of one of: &apos;event&apos;, &apos;hogql&apos;, &apos;person&apos; (e.g. {&quot;key&quot;: &quot;$browser&quot;, &quot;operator&quot;: &quot;exact&quot;, &quot;type&quot;: &quot;event&quot;, &quot;value&quot;: [&quot;Firefox&quot;]}).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedBatchExportRequestFilters? Filters { get; set; }

@@ -33,20 +33,20 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.Values
         public ValuesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/tracing/spans/values?key={key}{&attribute_type*,limit*,offset*,value*}", rawUrl)
         {
         }
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TracingSpansValuesRetrieve200Response"/></returns>
+        /// <returns>A <see cref="Stream"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.TracingSpansValuesRetrieve200Response?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.Values.ValuesRequestBuilder.ValuesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Stream?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.Values.ValuesRequestBuilder.ValuesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.TracingSpansValuesRetrieve200Response> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.Values.ValuesRequestBuilder.ValuesRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Stream> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.Values.ValuesRequestBuilder.ValuesRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.TracingSpansValuesRetrieve200Response>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.TracingSpansValuesRetrieve200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, default, cancellationToken).ConfigureAwait(false);
         }
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -61,7 +61,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.Values
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <summary>
@@ -78,7 +77,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.Values
         public partial class ValuesRequestBuilderGetQueryParameters 
         #pragma warning restore CS1591
         {
-            /// <summary>&quot;Type of attribute: \&quot;span\&quot; for built-in span fields (e.g. name), \&quot;span_attribute\&quot; for span-level attributes, \&quot;span_resource_attribute\&quot; for resource-level attributes.* `span` - span* `span_attribute` - span_attribute* `span_resource_attribute` - span_resource_attribute&quot;</summary>
+            /// <summary>Type of attribute: &quot;span&quot; for built-in span fields (e.g. name), &quot;span_attribute&quot; for span-level attributes, &quot;span_resource_attribute&quot; for resource-level attributes.* `span` - span* `span_attribute` - span_attribute* `span_resource_attribute` - span_resource_attribute</summary>
             [QueryParameter("attribute_type")]
             public global::Soenneker.PostHog.OpenApiClient.Models.TracingSpansValuesRetrieveAttributeTypeParameter? AttributeType { get; set; }
             /// <summary>The attribute key to get values for.</summary>
@@ -91,10 +90,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.Values
             [QueryParameter("key")]
             public string Key { get; set; }
 #endif
-            /// <summary>&quot;Max results (default: 100).&quot;</summary>
+            /// <summary>Max results (default: 100).</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
-            /// <summary>&quot;Pagination offset (default: 0).&quot;</summary>
+            /// <summary>Pagination offset (default: 0).</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
             /// <summary>Search filter for attribute values.</summary>

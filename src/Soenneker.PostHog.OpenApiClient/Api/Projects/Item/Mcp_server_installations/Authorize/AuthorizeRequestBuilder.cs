@@ -36,20 +36,20 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_server_installat
         /// <summary>
         /// Start (or re-start) an OAuth flow.Pass ``template_id`` to (re)connect a catalog template, or``installation_id`` to reconnect an existing custom install using itscached metadata and per-user DCR creds.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpServerInstallationsAuthorizeRetrieve200Response"/></returns>
+        /// <returns>A <see cref="Stream"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.McpServerInstallationsAuthorizeRetrieve200Response?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_server_installations.Authorize.AuthorizeRequestBuilder.AuthorizeRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Stream?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_server_installations.Authorize.AuthorizeRequestBuilder.AuthorizeRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.McpServerInstallationsAuthorizeRetrieve200Response> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_server_installations.Authorize.AuthorizeRequestBuilder.AuthorizeRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Stream> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_server_installations.Authorize.AuthorizeRequestBuilder.AuthorizeRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.McpServerInstallationsAuthorizeRetrieve200Response>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.McpServerInstallationsAuthorizeRetrieve200Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Start (or re-start) an OAuth flow.Pass ``template_id`` to (re)connect a catalog template, or``installation_id`` to reconnect an existing custom install using itscached metadata and per-user DCR creds.
@@ -67,7 +67,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_server_installat
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <summary>
@@ -85,19 +84,25 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_server_installat
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class AuthorizeRequestBuilderGetQueryParameters 
         {
+            #pragma warning disable CS1591
             [QueryParameter("installation_id")]
             public Guid? InstallationId { get; set; }
+            #pragma warning restore CS1591
             /// <summary>* `posthog` - posthog* `posthog-code` - posthog-code</summary>
             [QueryParameter("install_source")]
             public global::Soenneker.PostHog.OpenApiClient.Models.McpServerInstallationsAuthorizeRetrieveInstallSourceParameter? InstallSource { get; set; }
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            #pragma warning disable CS1591
             [QueryParameter("posthog_code_callback_url")]
             public string? PosthogCodeCallbackUrl { get; set; }
+            #pragma warning restore CS1591
 #nullable restore
 #else
+            #pragma warning disable CS1591
             [QueryParameter("posthog_code_callback_url")]
             public string PosthogCodeCallbackUrl { get; set; }
+            #pragma warning restore CS1591
 #endif
             /// <summary>In-app path to land back on after the OAuth round-trip. Must be a same-app relative path.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -109,8 +114,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_server_installat
             [QueryParameter("return_path")]
             public string ReturnPath { get; set; }
 #endif
+            #pragma warning disable CS1591
             [QueryParameter("template_id")]
             public Guid? TemplateId { get; set; }
+            #pragma warning restore CS1591
         }
     }
 }

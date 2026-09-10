@@ -17,7 +17,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Lookback length in days. Required and used only when period_type is last_n_days.</summary>
         public int? Days { get; set; }
-        /// <summary>&quot;How the brief window is chosen: a fixed lookback (last_n_days) or since the last ready brief.* `last_n_days` - last_n_days* `since_last_run` - since_last_run&quot;</summary>
+        /// <summary>How the brief window is chosen: a fixed lookback (last_n_days) or since the last ready brief.* `last_n_days` - last_n_days* `since_last_run` - since_last_run</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PeriodPeriodType? PeriodType { get; set; }

@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string CohortName { get; set; }
 #endif
-        /// <summary>Group type index when using group-based filters.</summary>
+        /// <summary>Group type index a `group` filter reads properties from. Defaults to the condition set&apos;s `aggregation_group_type_index`.</summary>
         public int? GroupTypeIndex { get; set; }
         /// <summary>Property key used in this feature flag condition.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

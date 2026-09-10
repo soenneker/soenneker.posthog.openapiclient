@@ -21,10 +21,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>User who created this app.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AppSummaryContractCreatedBy? CreatedBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.StreamlitAppUserInfo? CreatedBy { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AppSummaryContractCreatedBy CreatedBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.StreamlitAppUserInfo CreatedBy { get; set; }
 #endif
         /// <summary>The description property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -91,7 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "cpu_cores", n => { CpuCores = n.GetDoubleValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AppSummaryContractCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.AppSummaryContractCreatedBy.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StreamlitAppUserInfo>(global::Soenneker.PostHog.OpenApiClient.Models.StreamlitAppUserInfo.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "memory_gb", n => { MemoryGb = n.GetDoubleValue(); } },
@@ -110,7 +110,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("cpu_cores", CpuCores);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AppSummaryContractCreatedBy>("created_by", CreatedBy);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StreamlitAppUserInfo>("created_by", CreatedBy);
             writer.WriteStringValue("description", Description);
             writer.WriteGuidValue("id", Id);
             writer.WriteDoubleValue("memory_gb", MemoryGb);

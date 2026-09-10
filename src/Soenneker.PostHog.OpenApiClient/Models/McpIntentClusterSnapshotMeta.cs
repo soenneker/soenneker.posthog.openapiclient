@@ -54,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? NTools { get; private set; }
         /// <summary>Sessions sampled into the corpus. Null on pre-v2 snapshots.</summary>
         public int? SampledSessions { get; private set; }
-        /// <summary>&quot;sampled_sessions / window_sessions as a percentage: how much of the window the corpus represents.&quot;</summary>
+        /// <summary>sampled_sessions / window_sessions as a percentage: how much of the window the corpus represents.</summary>
         public double? SessionCoveragePct { get; private set; }
         /// <summary>Share of sampled calls with no attributable intent (before the session&apos;s first stated intent). These calls are excluded from clusters.</summary>
         public double? UnattributedCallPct { get; private set; }

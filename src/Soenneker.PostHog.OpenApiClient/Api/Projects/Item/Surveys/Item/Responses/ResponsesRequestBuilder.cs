@@ -117,10 +117,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Respons
             [QueryParameter("question_id")]
             public string QuestionId { get; set; }
 #endif
-            /// <summary>&quot;Filter to rows where the rating answer for `question_id` is &gt;= this value. Common use: NPS promoters with score_gte=9. Requires question_id.&quot;</summary>
+            /// <summary>Filter to rows where the rating answer for `question_id` is &gt;= this value. Common use: NPS promoters with score_gte=9. Requires question_id.</summary>
             [QueryParameter("score_gte")]
             public double? ScoreGte { get; set; }
-            /// <summary>&quot;Filter to rows where the rating answer for `question_id` is &lt;= this value. Common use: NPS detractors with score_lte=6. Requires question_id.&quot;</summary>
+            /// <summary>Filter to rows where the rating answer for `question_id` is &lt;= this value. Common use: NPS detractors with score_lte=6. Requires question_id.</summary>
             [QueryParameter("score_lte")]
             public double? ScoreLte { get; set; }
             /// <summary>Only return responses submitted on or after this ISO 8601 timestamp.</summary>

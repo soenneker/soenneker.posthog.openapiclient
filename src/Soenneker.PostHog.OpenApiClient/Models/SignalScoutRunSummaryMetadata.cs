@@ -8,13 +8,15 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Scout-owned per-run context, in two regions. Top-level keys are stamped by the runner at run start. Always present: `harness_prompt_version` (id of the harness prompt build the run was given), `report_channel` (which report tools the run held: `none`, `emit`, `edit`, or `both`), `skill_origin` (`canonical` or `custom`), and `github_guidance` (whether the run got the GitHub evidence section) — the provenance set that says which instructions the run actually got, so runs are only compared against runs of the same shape. Present only when the run departed from a default: `model`, `runtime_adapter`, and `reasoning_effort` (routing overrode the agent-server default), and `network_access` (`full` when the scout&apos;s config lifted the trusted-domain network restriction for this run). The nested `derived` object is the harness&apos;s own map of boolean run dimensions, computed server-side at finalize: `has_emit_report`, `has_edit_report`, `has_self_improvement`, `has_chart`, and `has_self_validation`. Use `derived` to answer &apos;what kind of run was this?&apos; instead of parsing the `summary` prose. Note the flags describe the reports the run authored as they stand now, so charts attached to someone else&apos;s report via an edit are not counted. A missing `derived` object is unknown, not all-false: the run predates the field, never finalized, or its stamp failed.&quot;
+    /// Scout-owned per-run context, in two regions. Top-level keys are stamped by the runner at run start. Always present: `harness_prompt_version` (id of the harness prompt build the run was given), `report_channel` (which report tools the run held: `none`, `emit`, `edit`, or `both`), `skill_origin` (`canonical` or `custom`), `github_guidance` (whether the run got the GitHub evidence section), and `business_knowledge_maintained` (whether the run got the business-knowledge section: the product flag is on and the team&apos;s knowledge base looks maintained) — the provenance set that says which instructions the run actually got, so runs are only compared against runs of the same shape. Present only when the run departed from a default: `model`, `runtime_adapter`, and `reasoning_effort` (routing overrode the agent-server default), `network_access` (`full` when the scout&apos;s config lifted the trusted-domain network restriction for this run), `write_scopes` (the extra write access the run&apos;s token carried, when the scout was granted any), and `triggered_by` (`manual` or `workflow` when the run was fired off-schedule; absent means the run came from the coordinator&apos;s schedule). The nested `derived` object is the harness&apos;s own map of boolean run dimensions, computed server-side at finalize: `has_emit_report`, `has_edit_report`, `has_self_improvement`, `has_chart`, and `has_self_validation`. Use `derived` to answer &apos;what kind of run was this?&apos; instead of parsing the `summary` prose. Note the flags describe the reports the run authored as they stand now, so charts attached to someone else&apos;s report via an edit are not counted. A missing `derived` object is unknown, not all-false: the run predates the field, never finalized, or its stamp failed.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SignalScoutRunSummaryMetadata : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The business_knowledge_maintained property</summary>
+        public bool? BusinessKnowledgeMaintained { get; set; }
         /// <summary>The derived property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -73,6 +75,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string RuntimeAdapter { get; set; }
 #endif
+        /// <summary>The service_tier property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ServiceTier { get; set; }
+#nullable restore
+#else
+        public string ServiceTier { get; set; }
+#endif
         /// <summary>The skill_origin property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -80,6 +90,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string SkillOrigin { get; set; }
+#endif
+        /// <summary>The triggered_by property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? TriggeredBy { get; set; }
+#nullable restore
+#else
+        public string TriggeredBy { get; set; }
+#endif
+        /// <summary>The write_scopes property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? WriteScopes { get; set; }
+#nullable restore
+#else
+        public List<string> WriteScopes { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutRunSummaryMetadata"/> and sets the default values.
@@ -106,6 +132,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "business_knowledge_maintained", n => { BusinessKnowledgeMaintained = n.GetBoolValue(); } },
                 { "derived", n => { Derived = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutRunSummaryMetadataDerived>(global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutRunSummaryMetadataDerived.CreateFromDiscriminatorValue); } },
                 { "github_guidance", n => { GithubGuidance = n.GetBoolValue(); } },
                 { "harness_prompt_version", n => { HarnessPromptVersion = n.GetStringValue(); } },
@@ -114,7 +141,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "reasoning_effort", n => { ReasoningEffort = n.GetStringValue(); } },
                 { "report_channel", n => { ReportChannel = n.GetStringValue(); } },
                 { "runtime_adapter", n => { RuntimeAdapter = n.GetStringValue(); } },
+                { "service_tier", n => { ServiceTier = n.GetStringValue(); } },
                 { "skill_origin", n => { SkillOrigin = n.GetStringValue(); } },
+                { "triggered_by", n => { TriggeredBy = n.GetStringValue(); } },
+                { "write_scopes", n => { WriteScopes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
         /// <summary>
@@ -124,6 +154,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteBoolValue("business_knowledge_maintained", BusinessKnowledgeMaintained);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutRunSummaryMetadataDerived>("derived", Derived);
             writer.WriteBoolValue("github_guidance", GithubGuidance);
             writer.WriteStringValue("harness_prompt_version", HarnessPromptVersion);
@@ -132,7 +163,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("reasoning_effort", ReasoningEffort);
             writer.WriteStringValue("report_channel", ReportChannel);
             writer.WriteStringValue("runtime_adapter", RuntimeAdapter);
+            writer.WriteStringValue("service_tier", ServiceTier);
             writer.WriteStringValue("skill_origin", SkillOrigin);
+            writer.WriteStringValue("triggered_by", TriggeredBy);
+            writer.WriteCollectionOfPrimitiveValues<string>("write_scopes", WriteScopes);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

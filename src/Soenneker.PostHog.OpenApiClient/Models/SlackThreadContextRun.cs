@@ -15,6 +15,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Absolute URL to the TaskRun row in Django admin (includes a log download action).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AdminUrl { get; set; }
+#nullable restore
+#else
+        public string AdminUrl { get; set; }
+#endif
         /// <summary>When the run reached a terminal state, or null while still running.</summary>
         public DateTimeOffset? CompletedAt { get; set; }
         /// <summary>When the run was created.</summary>
@@ -70,10 +78,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The discovery-agent sandbox that picked this run&apos;s repo, when the mention was ambiguous.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextRunRepoResearch? RepoResearch { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextRepoResearch? RepoResearch { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextRunRepoResearch RepoResearch { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextRepoResearch RepoResearch { get; set; }
 #endif
         /// <summary>Live sandbox tunnel URL, when one was attached.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -140,6 +148,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "admin_url", n => { AdminUrl = n.GetStringValue(); } },
                 { "completed_at", n => { CompletedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "error_message", n => { ErrorMessage = n.GetStringValue(); } },
@@ -148,7 +157,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "mention_workflow_id", n => { MentionWorkflowId = n.GetStringValue(); } },
                 { "mention_workflow_url", n => { MentionWorkflowUrl = n.GetStringValue(); } },
                 { "pr_url", n => { PrUrl = n.GetStringValue(); } },
-                { "repo_research", n => { RepoResearch = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextRunRepoResearch>(global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextRunRepoResearch.CreateFromDiscriminatorValue); } },
+                { "repo_research", n => { RepoResearch = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextRepoResearch>(global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextRepoResearch.CreateFromDiscriminatorValue); } },
                 { "sandbox_url", n => { SandboxUrl = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
                 { "task_processing_workflow_id", n => { TaskProcessingWorkflowId = n.GetStringValue(); } },
@@ -163,6 +172,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("admin_url", AdminUrl);
             writer.WriteDateTimeOffsetValue("completed_at", CompletedAt);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("error_message", ErrorMessage);
@@ -171,7 +181,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("mention_workflow_id", MentionWorkflowId);
             writer.WriteStringValue("mention_workflow_url", MentionWorkflowUrl);
             writer.WriteStringValue("pr_url", PrUrl);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextRunRepoResearch>("repo_research", RepoResearch);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextRepoResearch>("repo_research", RepoResearch);
             writer.WriteStringValue("sandbox_url", SandboxUrl);
             writer.WriteStringValue("status", Status);
             writer.WriteStringValue("task_processing_workflow_id", TaskProcessingWorkflowId);

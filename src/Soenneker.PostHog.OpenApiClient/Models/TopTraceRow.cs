@@ -20,7 +20,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? GenerationCount { get; set; }
         /// <summary>Timestamp of the earliest event in this trace.</summary>
         public DateTimeOffset? StartedAt { get; set; }
-        /// <summary>&quot;`$ai_trace_id` of the session — opaque string scoped to the originating product. Format is not stable: most are UUIDs but some SDK wrappers emit JSON-shaped strings like `{\&quot;device_id\&quot;:\&quot;...\&quot;,\&quot;session_id\&quot;:\&quot;...\&quot;}`. Callers should treat this as an opaque identifier (URL-encode before linking to a trace view).&quot;</summary>
+        /// <summary>`$ai_trace_id` of the session — opaque string scoped to the originating product. Format is not stable: most are UUIDs but some SDK wrappers emit JSON-shaped strings like `{&quot;device_id&quot;:&quot;...&quot;,&quot;session_id&quot;:&quot;...&quot;}`. Callers should treat this as an opaque identifier (URL-encode before linking to a trace view).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? TraceId { get; set; }

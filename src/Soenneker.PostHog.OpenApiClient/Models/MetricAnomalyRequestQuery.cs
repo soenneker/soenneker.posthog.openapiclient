@@ -15,7 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Aggregation to characterize. Omit to auto-pick from the metric&apos;s OTel type (counter -&gt; rate, gauge -&gt; avg, histogram -&gt; histogram_quantile 0.95).* `sum` - sum* `avg` - avg* `count` - count* `p95` - p95* `rate` - rate* `increase` - increase* `histogram_quantile` - histogram_quantile</summary>
+        /// <summary>Aggregation to characterize. Omit to auto-pick from the metric&apos;s OTel type (counter -&gt; rate, gauge -&gt; avg, histogram -&gt; histogram_quantile 0.95).* `sum` - sum* `avg` - avg* `count` - count* `min` - min* `max` - max* `p95` - p95* `rate` - rate* `increase` - increase* `histogram_quantile` - histogram_quantile</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.MetricAnomalyBodyAggregation? Aggregation { get; set; }

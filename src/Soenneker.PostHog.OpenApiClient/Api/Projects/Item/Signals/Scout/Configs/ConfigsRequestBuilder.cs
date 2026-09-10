@@ -72,10 +72,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Config
             return collectionResult?.AsList();
         }
         /// <summary>
-        /// &quot;Register the config for a `signals-scout-*` skill immediately, without waiting for the coordinator to auto-register it. The same call can optionally set `run_interval_minutes`, a cron `run_cron_schedule`, `enabled`, `emit`, `network_access`, and output destinations. The skill must already exist on this project. Upsert: if a config already exists for the skill, the provided fields are applied to it.&quot;
+        /// Register the config for a skill immediately, without waiting for the coordinator to auto-register it — and the way to make a skill without the `signals-scout-` prefix a scout at all. The same call can optionally set `run_interval_minutes`, a cron `run_cron_schedule`, `enabled`, `emit`, `network_access`, and output destinations. The skill must already exist on this project. Upsert: if a config already exists for the skill, the provided fields are applied to it. Registering puts the skill&apos;s body on the schedule as the scout&apos;s prompt, so this call needs `llm_skill:write` and editor access to skills on top of `signal_scout:write`, like creating a scout.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfig"/></returns>
-        /// <param name="body">&quot;Request body for registering a scout config without waiting for the coordinator tick.Upsert keyed on `skill_name`: if the coordinator (or a concurrent caller) alreadyregistered the row, the provided tunables are applied to it instead.&quot;</param>
+        /// <param name="body">Request body for registering a scout config without waiting for the coordinator tick.Upsert keyed on `skill_name`: if the coordinator (or a concurrent caller) alreadyregistered the row, the provided tunables are applied to it instead.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -111,10 +111,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Config
             return requestInfo;
         }
         /// <summary>
-        /// &quot;Register the config for a `signals-scout-*` skill immediately, without waiting for the coordinator to auto-register it. The same call can optionally set `run_interval_minutes`, a cron `run_cron_schedule`, `enabled`, `emit`, `network_access`, and output destinations. The skill must already exist on this project. Upsert: if a config already exists for the skill, the provided fields are applied to it.&quot;
+        /// Register the config for a skill immediately, without waiting for the coordinator to auto-register it — and the way to make a skill without the `signals-scout-` prefix a scout at all. The same call can optionally set `run_interval_minutes`, a cron `run_cron_schedule`, `enabled`, `emit`, `network_access`, and output destinations. The skill must already exist on this project. Upsert: if a config already exists for the skill, the provided fields are applied to it. Registering puts the skill&apos;s body on the schedule as the scout&apos;s prompt, so this call needs `llm_skill:write` and editor access to skills on top of `signal_scout:write`, like creating a scout.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">&quot;Request body for registering a scout config without waiting for the coordinator tick.Upsert keyed on `skill_name`: if the coordinator (or a concurrent caller) alreadyregistered the row, the provided tunables are applied to it instead.&quot;</param>
+        /// <param name="body">Request body for registering a scout config without waiting for the coordinator tick.Upsert keyed on `skill_name`: if the coordinator (or a concurrent caller) alreadyregistered the row, the provided tunables are applied to it instead.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

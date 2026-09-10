@@ -7,15 +7,30 @@ using System.IO;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>
-    /// Request body for creating (resolve-or-create) or renaming a public channel.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class ChannelWrite : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Channel name, rendered as #&lt;name&gt;. Normalized to lowercase-dashed.</summary>
+        /// <summary>Use &apos;public&apos; for access by all project members. Use &apos;private&apos; for access by channel members only. Defaults to &apos;public&apos;. This endpoint cannot create personal #me spaces.* `public` - public* `private` - private</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChannelWriteChannelType? ChannelType { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChannelWriteChannelType ChannelType { get; set; }
+#endif
+        /// <summary>User IDs to add to a private channel. The requester is always a member. The endpoint ignores this field for public channels and skips users without project access.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<int?>? MemberIds { get; set; }
+#nullable restore
+#else
+        public List<int?> MemberIds { get; set; }
+#endif
+        /// <summary>Channel name, shown as #&lt;name&gt;. Uses lowercase letters and hyphens.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
@@ -23,7 +38,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>Star the channel for the requester when this call creates it. Ignored when the channel already exists, which leaves existing stars untouched.</summary>
+        /// <summary>Star a new channel for the requester. This field does not change stars on an existing channel.</summary>
         public bool? Star { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ChannelWrite"/> and sets the default values.
@@ -51,6 +66,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "channel_type", n => { ChannelType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChannelWriteChannelType>(global::Soenneker.PostHog.OpenApiClient.Models.ChannelWriteChannelType.CreateFromDiscriminatorValue); } },
+                { "member_ids", n => { MemberIds = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "star", n => { Star = n.GetBoolValue(); } },
             };
@@ -62,6 +79,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChannelWriteChannelType>("channel_type", ChannelType);
+            writer.WriteCollectionOfPrimitiveValues<int?>("member_ids", MemberIds);
             writer.WriteStringValue("name", Name);
             writer.WriteBoolValue("star", Star);
             writer.WriteAdditionalData(AdditionalData);

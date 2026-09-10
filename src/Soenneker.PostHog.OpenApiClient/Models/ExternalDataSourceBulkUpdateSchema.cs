@@ -15,7 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;When true and the schema has no sync method configured yet (and this update does not set one), discover the table on the source and fill in default sync settings: incremental sync with an auto-selected tracking column where supported, otherwise append, otherwise full refresh. Ignored for schemas that already have a sync method.&quot;</summary>
+        /// <summary>When true and the schema has no sync method configured yet (and this update does not set one), discover the table on the source and fill in default sync settings: incremental sync with an auto-selected tracking column where supported, otherwise append, otherwise full refresh. Ignored for schemas that already have a sync method.</summary>
         public bool? ApplySyncDefaults { get; set; }
         /// <summary>How CDC-backed tables should be exposed.* `consolidated` - consolidated* `cdc_only` - cdc_only* `both` - both</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -50,6 +50,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public string IncrementalFieldType { get; set; }
+#endif
+        /// <summary>Column names for primary key deduplication.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? PrimaryKeyColumns { get; set; }
+#nullable restore
+#else
+        public List<string> PrimaryKeyColumns { get; set; }
 #endif
         /// <summary>Row-filter predicates ANDed onto the source query. Null/empty means sync all rows.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -110,6 +118,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "incremental_field", n => { IncrementalField = n.GetStringValue(); } },
                 { "incremental_field_type", n => { IncrementalFieldType = n.GetStringValue(); } },
+                { "primary_key_columns", n => { PrimaryKeyColumns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "row_filters", n => { RowFilters = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaRowFiltersItem>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaRowFiltersItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "should_sync", n => { ShouldSync = n.GetBoolValue(); } },
                 { "sync_frequency", n => { SyncFrequency = n.GetStringValue(); } },
@@ -130,6 +139,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteGuidValue("id", Id);
             writer.WriteStringValue("incremental_field", IncrementalField);
             writer.WriteStringValue("incremental_field_type", IncrementalFieldType);
+            writer.WriteCollectionOfPrimitiveValues<string>("primary_key_columns", PrimaryKeyColumns);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaRowFiltersItem>("row_filters", RowFilters);
             writer.WriteBoolValue("should_sync", ShouldSync);
             writer.WriteStringValue("sync_frequency", SyncFrequency);

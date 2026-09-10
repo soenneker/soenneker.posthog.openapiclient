@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string CohortName { get; set; }
 #endif
-        /// <summary>Group type index when using group-based filters.</summary>
+        /// <summary>Group type index a `group` filter reads properties from. Defaults to the condition set&apos;s `aggregation_group_type_index`.</summary>
         public int? GroupTypeIndex { get; set; }
         /// <summary>Property key used in this feature flag condition.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -40,7 +40,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyGenericSchemaOperator Operator { get; set; }
 #endif
-        /// <summary>Property filter type. Common values are &apos;person&apos; and &apos;cohort&apos;.* `cohort` - cohort* `person` - person* `group` - group</summary>
+        /// <summary>Property filter type. Set it on every property. Use `group` with `group_type_index` to filter on a group&apos;s properties.* `cohort` - cohort* `person` - person* `group` - group</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyGenericSchemaType? Type { get; set; }

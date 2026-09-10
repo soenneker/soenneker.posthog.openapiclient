@@ -89,7 +89,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.E
             /// <summary>ISO-8601 inclusive lower bound on `emitted_at`. Omit to skip the lower bound.</summary>
             [QueryParameter("date_from")]
             public DateTimeOffset? DateFrom { get; set; }
-            /// <summary>&quot;ISO-8601 exclusive upper bound on `emitted_at`. Pass to walk back past the result cap on subsequent calls (cursor-style: set to the `emitted_at` of the oldest emission from the prior page).&quot;</summary>
+            /// <summary>ISO-8601 exclusive upper bound on `emitted_at`. Pass to walk back past the result cap on subsequent calls (cursor-style: set to the `emitted_at` of the oldest emission from the prior page).</summary>
             [QueryParameter("date_to")]
             public DateTimeOffset? DateTo { get; set; }
             /// <summary>Max rows to return (default 50, hard cap 200).</summary>

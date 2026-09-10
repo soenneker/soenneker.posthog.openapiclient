@@ -56,6 +56,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ComposeTicketRichContent RichContent { get; set; }
 #endif
+        /// <summary>Tags to apply to the new ticket, e.g. to mark its source. Each is normalized (lowercased, trimmed). Up to 100.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Tags { get; set; }
+#nullable restore
+#else
+        public List<string> Tags { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ComposeTicket"/> and sets the default values.
         /// </summary>
@@ -87,6 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "recipient_distinct_id", n => { RecipientDistinctId = n.GetStringValue(); } },
                 { "recipient_email", n => { RecipientEmail = n.GetStringValue(); } },
                 { "rich_content", n => { RichContent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ComposeTicketRichContent>(global::Soenneker.PostHog.OpenApiClient.Models.ComposeTicketRichContent.CreateFromDiscriminatorValue); } },
+                { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
         /// <summary>
@@ -102,6 +111,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("recipient_distinct_id", RecipientDistinctId);
             writer.WriteStringValue("recipient_email", RecipientEmail);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ComposeTicketRichContent>("rich_content", RichContent);
+            writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

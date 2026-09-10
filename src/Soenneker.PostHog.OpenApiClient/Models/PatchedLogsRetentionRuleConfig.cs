@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Retention rule JSON. Required keys: `retention_days` (integer — how long matching logs are kept; must be a tier the organization is entitled to, same as the team-wide Logs retention setting) and `filter_group` (PropertyGroupFilter shape — an AND/OR tree of property predicates evaluated per record to decide which logs this rule matches). Example: `{\&quot;retention_days\&quot;:30,\&quot;filter_group\&quot;:{\&quot;type\&quot;:\&quot;AND\&quot;,\&quot;values\&quot;:[{\&quot;type\&quot;:\&quot;AND\&quot;,\&quot;values\&quot;:[{\&quot;key\&quot;:\&quot;service.name\&quot;,\&quot;operator\&quot;:\&quot;exact\&quot;,\&quot;value\&quot;:\&quot;api\&quot;}]}]}}`. Logs matching no enabled rule keep the environment&apos;s default retention.&quot;
+    /// Retention rule JSON. Required keys: `retention_days` (integer — how long matching logs are kept; must be a tier the organization is entitled to, same as the team-wide Logs retention setting) and `filter_group` (PropertyGroupFilter shape — an AND/OR tree of property predicates evaluated per record to decide which logs this rule matches). Example: `{&quot;retention_days&quot;:30,&quot;filter_group&quot;:{&quot;type&quot;:&quot;AND&quot;,&quot;values&quot;:[{&quot;type&quot;:&quot;AND&quot;,&quot;values&quot;:[{&quot;key&quot;:&quot;service.name&quot;,&quot;operator&quot;:&quot;exact&quot;,&quot;value&quot;:&quot;api&quot;}]}]}}`. Logs matching no enabled rule keep the environment&apos;s default retention.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedLogsRetentionRuleConfig : IAdditionalDataHolder, IParsable

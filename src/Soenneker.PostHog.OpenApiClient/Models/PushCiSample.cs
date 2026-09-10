@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>True when any latest-per-workflow run on this push concluded &apos;failure&apos; or &apos;timed_out&apos;.</summary>
+        /// <summary>True when any latest-per-workflow run on this push ended in a decisive failure.</summary>
         public bool? Failed { get; set; }
         /// <summary>Head commit SHA of this push (CI round).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -28,7 +28,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? Pending { get; set; }
         /// <summary>Earliest workflow-run start on this push.</summary>
         public DateTimeOffset? StartedAt { get; set; }
-        /// <summary>&quot;Wall-clock CI seconds for this push: earliest run start to latest completed run end. Null while nothing has completed.&quot;</summary>
+        /// <summary>Wall-clock CI seconds for this push: earliest run start to latest completed run end. Null while nothing has completed.</summary>
         public int? WallSeconds { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PushCiSample"/> and sets the default values.

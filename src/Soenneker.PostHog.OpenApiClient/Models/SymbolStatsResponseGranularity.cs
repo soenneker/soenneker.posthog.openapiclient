@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Bucketing applied: &apos;line&apos; when no symbols were supplied, &apos;symbol&apos; otherwise.* `line` - line* `symbol` - symbol&quot;
+    /// Bucketing applied: &apos;line&apos; when no symbols were supplied, &apos;symbol&apos; otherwise.* `line` - line* `symbol` - symbol
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SymbolStatsResponseGranularity : IAdditionalDataHolder, IParsable

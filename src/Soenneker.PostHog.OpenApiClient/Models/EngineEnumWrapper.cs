@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `duckdb` - duckdb* `postgres` - postgres* `mysql` - mysql* `snowflake` - snowflake* `redshift` - redshift* `clickhouse` - clickhouse* `motherduck` - motherduck</summary>
+        /// <summary>* `duckdb` - duckdb* `postgres` - postgres* `mysql` - mysql* `snowflake` - snowflake* `redshift` - redshift* `clickhouse` - clickhouse* `motherduck` - motherduck* `trino` - trino</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.EngineEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EngineEnumWrapper"/> and sets the default values.

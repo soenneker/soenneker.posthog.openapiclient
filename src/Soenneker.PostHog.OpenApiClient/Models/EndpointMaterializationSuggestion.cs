@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SuggestedQuery { get; set; }
 #endif
-        /// <summary>&quot;Outcome of the suggestion run: &apos;ok&apos; — the suggested query passes the live materialization checks; &apos;cannot_fix&apos; — no semantically equivalent rewrite exists; &apos;invalid&apos; — a suggestion was produced but never passed validation (suggested_query carries the last attempt); &apos;model_error&apos; — the model returned no usable response.* `ok` - ok* `cannot_fix` - cannot_fix* `invalid` - invalid* `model_error` - model_error&quot;</summary>
+        /// <summary>Outcome of the suggestion run: &apos;ok&apos; — the suggested query passes the live materialization checks; &apos;cannot_fix&apos; — no semantically equivalent rewrite exists; &apos;invalid&apos; — a suggestion was produced but never passed validation (suggested_query carries the last attempt); &apos;model_error&apos; — the model returned no usable response.* `ok` - ok* `cannot_fix` - cannot_fix* `invalid` - invalid* `model_error` - model_error</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.EndpointMaterializationSuggestionSuggestionStatus? SuggestionStatus { get; set; }

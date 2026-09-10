@@ -23,7 +23,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfigDetectorsItem> Detectors { get; set; }
 #endif
-        /// <summary>&quot;SVM kernel type (default: \&quot;rbf\&quot;)&quot;</summary>
+        /// <summary>SVM kernel type (default: &quot;rbf&quot;)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Kernel { get; set; }
@@ -33,7 +33,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Lower bound - values below this are anomalies</summary>
         public double? LowerBound { get; set; }
-        /// <summary>&quot;Distance method: &apos;largest&apos;, &apos;mean&apos;, &apos;median&apos; (default: &apos;largest&apos;)&quot;</summary>
+        /// <summary>Distance method: &apos;largest&apos;, &apos;mean&apos;, &apos;median&apos; (default: &apos;largest&apos;)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.MethodWrapper? Method { get; set; }
@@ -41,15 +41,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.MethodWrapper Method { get; set; }
 #endif
-        /// <summary>&quot;IQR multiplier for fence calculation (default: 1.5, use 3.0 for far outliers)&quot;</summary>
+        /// <summary>IQR multiplier for fence calculation (default: 1.5, use 3.0 for far outliers)</summary>
         public double? Multiplier { get; set; }
-        /// <summary>&quot;Number of histogram bins (default: 10)&quot;</summary>
+        /// <summary>Number of histogram bins (default: 10)</summary>
         public int? NBins { get; set; }
-        /// <summary>&quot;Number of trees in the forest (default: 100)&quot;</summary>
+        /// <summary>Number of trees in the forest (default: 100)</summary>
         public int? NEstimators { get; set; }
-        /// <summary>&quot;Number of neighbors to consider (default: 5)&quot;</summary>
+        /// <summary>Number of neighbors to consider (default: 5)</summary>
         public int? NNeighbors { get; set; }
-        /// <summary>&quot;Upper bound on training errors fraction (default: 0.1)&quot;</summary>
+        /// <summary>Upper bound on training errors fraction (default: 0.1)</summary>
         public double? Nu { get; set; }
         /// <summary>How to combine sub-detector results</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.EnsembleOperator? Operator { get; set; }
@@ -61,9 +61,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig Preprocessing { get; set; }
 #endif
-        /// <summary>&quot;Anomaly probability threshold [0-1]. Points above this probability are flagged (default: 0.9)&quot;</summary>
+        /// <summary>Anomaly probability threshold [0-1]. Points above this probability are flagged (default: 0.9)</summary>
         public double? Threshold { get; set; }
-        /// <summary>Union discriminator</summary>
+        /// <summary>The type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Type { get; set; }
@@ -73,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Upper bound - values above this are anomalies</summary>
         public double? UpperBound { get; set; }
-        /// <summary>&quot;Rolling window size for calculating mean/std (default: 30)&quot;</summary>
+        /// <summary>Rolling window size for calculating mean/std (default: 30)</summary>
         public int? Window { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig"/> and sets the default values.

@@ -15,53 +15,47 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The funnelCorrelationEventExcludePropertyNames property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationQueryFunnelCorrelationEventExcludePropertyNames? FunnelCorrelationEventExcludePropertyNames { get; set; }
+        public List<string>? FunnelCorrelationEventExcludePropertyNames { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationQueryFunnelCorrelationEventExcludePropertyNames FunnelCorrelationEventExcludePropertyNames { get; set; }
+        public List<string> FunnelCorrelationEventExcludePropertyNames { get; set; }
 #endif
         /// <summary>The funnelCorrelationEventNames property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationQueryFunnelCorrelationEventNames? FunnelCorrelationEventNames { get; set; }
+        public List<string>? FunnelCorrelationEventNames { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationQueryFunnelCorrelationEventNames FunnelCorrelationEventNames { get; set; }
+        public List<string> FunnelCorrelationEventNames { get; set; }
 #endif
         /// <summary>The funnelCorrelationExcludeEventNames property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationQueryFunnelCorrelationExcludeEventNames? FunnelCorrelationExcludeEventNames { get; set; }
+        public List<string>? FunnelCorrelationExcludeEventNames { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationQueryFunnelCorrelationExcludeEventNames FunnelCorrelationExcludeEventNames { get; set; }
+        public List<string> FunnelCorrelationExcludeEventNames { get; set; }
 #endif
         /// <summary>The funnelCorrelationExcludeNames property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationQueryFunnelCorrelationExcludeNames? FunnelCorrelationExcludeNames { get; set; }
+        public List<string>? FunnelCorrelationExcludeNames { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationQueryFunnelCorrelationExcludeNames FunnelCorrelationExcludeNames { get; set; }
+        public List<string> FunnelCorrelationExcludeNames { get; set; }
 #endif
         /// <summary>The funnelCorrelationNames property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationQueryFunnelCorrelationNames? FunnelCorrelationNames { get; set; }
+        public List<string>? FunnelCorrelationNames { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationQueryFunnelCorrelationNames FunnelCorrelationNames { get; set; }
+        public List<string> FunnelCorrelationNames { get; set; }
 #endif
         /// <summary>The funnelCorrelationType property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationResultsType? FunnelCorrelationType { get; set; }
         /// <summary>The kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Kind { get; set; }
-#nullable restore
-#else
-        public string Kind { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationQueryKind? Kind { get; set; }
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -98,13 +92,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "funnelCorrelationEventExcludePropertyNames", n => { FunnelCorrelationEventExcludePropertyNames = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationQueryFunnelCorrelationEventExcludePropertyNames>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationQueryFunnelCorrelationEventExcludePropertyNames.CreateFromDiscriminatorValue); } },
-                { "funnelCorrelationEventNames", n => { FunnelCorrelationEventNames = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationQueryFunnelCorrelationEventNames>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationQueryFunnelCorrelationEventNames.CreateFromDiscriminatorValue); } },
-                { "funnelCorrelationExcludeEventNames", n => { FunnelCorrelationExcludeEventNames = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationQueryFunnelCorrelationExcludeEventNames>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationQueryFunnelCorrelationExcludeEventNames.CreateFromDiscriminatorValue); } },
-                { "funnelCorrelationExcludeNames", n => { FunnelCorrelationExcludeNames = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationQueryFunnelCorrelationExcludeNames>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationQueryFunnelCorrelationExcludeNames.CreateFromDiscriminatorValue); } },
-                { "funnelCorrelationNames", n => { FunnelCorrelationNames = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationQueryFunnelCorrelationNames>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationQueryFunnelCorrelationNames.CreateFromDiscriminatorValue); } },
+                { "funnelCorrelationEventExcludePropertyNames", n => { FunnelCorrelationEventExcludePropertyNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "funnelCorrelationEventNames", n => { FunnelCorrelationEventNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "funnelCorrelationExcludeEventNames", n => { FunnelCorrelationExcludeEventNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "funnelCorrelationExcludeNames", n => { FunnelCorrelationExcludeNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "funnelCorrelationNames", n => { FunnelCorrelationNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "funnelCorrelationType", n => { FunnelCorrelationType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationResultsType>(); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationQueryKind>(); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationResponse>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationResponse.CreateFromDiscriminatorValue); } },
                 { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery.CreateFromDiscriminatorValue); } },
                 { "version", n => { Version = n.GetDoubleValue(); } },
@@ -117,13 +111,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationQueryFunnelCorrelationEventExcludePropertyNames>("funnelCorrelationEventExcludePropertyNames", FunnelCorrelationEventExcludePropertyNames);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationQueryFunnelCorrelationEventNames>("funnelCorrelationEventNames", FunnelCorrelationEventNames);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationQueryFunnelCorrelationExcludeEventNames>("funnelCorrelationExcludeEventNames", FunnelCorrelationExcludeEventNames);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationQueryFunnelCorrelationExcludeNames>("funnelCorrelationExcludeNames", FunnelCorrelationExcludeNames);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationQueryFunnelCorrelationNames>("funnelCorrelationNames", FunnelCorrelationNames);
+            writer.WriteCollectionOfPrimitiveValues<string>("funnelCorrelationEventExcludePropertyNames", FunnelCorrelationEventExcludePropertyNames);
+            writer.WriteCollectionOfPrimitiveValues<string>("funnelCorrelationEventNames", FunnelCorrelationEventNames);
+            writer.WriteCollectionOfPrimitiveValues<string>("funnelCorrelationExcludeEventNames", FunnelCorrelationExcludeEventNames);
+            writer.WriteCollectionOfPrimitiveValues<string>("funnelCorrelationExcludeNames", FunnelCorrelationExcludeNames);
+            writer.WriteCollectionOfPrimitiveValues<string>("funnelCorrelationNames", FunnelCorrelationNames);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationResultsType>("funnelCorrelationType", FunnelCorrelationType);
-            writer.WriteStringValue("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationQueryKind>("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelCorrelationResponse>("response", Response);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery>("source", Source);
             writer.WriteDoubleValue("version", Version);

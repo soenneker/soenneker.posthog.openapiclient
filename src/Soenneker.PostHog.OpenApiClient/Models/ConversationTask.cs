@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Conversation envelope variant: ``latest_run`` is just the latest run&apos;s id, not the nestedrun detail. The frontend only needs the id to reconnect to sandbox logs, and emitting the idavoids presigning a log URL per conversation. Task data follows the task&apos;s space visibility.&quot;
+    /// Conversation envelope variant: ``latest_run`` is just the latest run&apos;s id, not the nestedrun detail. The frontend only needs the id to reconnect to sandbox logs, and emitting the idavoids presigning a log URL per conversation. Task data follows the task&apos;s space visibility.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ConversationTask : IAdditionalDataHolder, IParsable
@@ -32,10 +32,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationTaskCreatedBy? CreatedBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo? CreatedBy { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationTaskCreatedBy CreatedBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo CreatedBy { get; set; }
 #endif
         /// <summary>The description property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -140,7 +140,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "archived_at", n => { ArchivedAt = n.GetDateTimeOffsetValue(); } },
                 { "ci_prompt", n => { CiPrompt = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationTaskCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationTaskCreatedBy.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo>(global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "github_integration", n => { GithubIntegration = n.GetIntValue(); } },
                 { "github_user_integration", n => { GithubUserIntegration = n.GetGuidValue(); } },
@@ -170,7 +170,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("archived_at", ArchivedAt);
             writer.WriteStringValue("ci_prompt", CiPrompt);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationTaskCreatedBy>("created_by", CreatedBy);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo>("created_by", CreatedBy);
             writer.WriteStringValue("description", Description);
             writer.WriteIntValue("github_integration", GithubIntegration);
             writer.WriteGuidValue("github_user_integration", GithubUserIntegration);

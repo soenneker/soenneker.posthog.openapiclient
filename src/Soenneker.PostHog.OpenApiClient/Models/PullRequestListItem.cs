@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? Number { get; set; }
         /// <summary>Coarse open-to-merge time in seconds (merged_at - created_at; fuses draft and ready-for-review time). Null until merged.</summary>
         public int? OpenToMergeSeconds { get; set; }
-        /// <summary>&quot;CI triggers attributed to this PR: distinct head SHAs across its workflow runs. Fork-PR runs are unattributed.&quot;</summary>
+        /// <summary>CI triggers attributed to this PR: distinct head SHAs across its workflow runs. Fork-PR runs are unattributed.</summary>
         public int? Pushes { get; set; }
         /// <summary>This PR&apos;s CI rounds oldest-first, capped to the most recent pushes - one sample per push for the push-history sparkline. `pushes` stays the uncapped count.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -62,7 +62,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.PushCiSample> PushHistory { get; set; }
 #endif
-        /// <summary>&quot;True ready-to-merge cycle time in seconds: merged_at minus the last observed ready_for_review transition (only the last draft/ready switch counts), or minus created_at for a merged PR verifiably never drafted. Null when unmerged or not observed (the PR&apos;s life isn&apos;t fully inside the synced issue-event window) - null never means zero.&quot;</summary>
+        /// <summary>True ready-to-merge cycle time in seconds: merged_at minus the last observed ready_for_review transition (only the last draft/ready switch counts), or minus created_at for a merged PR verifiably never drafted. Null when unmerged or not observed (the PR&apos;s life isn&apos;t fully inside the synced issue-event window) - null never means zero.</summary>
         public int? ReadyToMergeSeconds { get; set; }
         /// <summary>Repository the pull request belongs to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -74,7 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Workflow runs attributed to this PR that were a 2nd+ attempt (a re-run).</summary>
         public int? RerunCycles { get; set; }
-        /// <summary>&quot;Derived state: &apos;open&apos;, &apos;closed&apos;, or &apos;merged&apos;.* `open` - OPEN* `closed` - CLOSED* `merged` - MERGED&quot;</summary>
+        /// <summary>Derived state: &apos;open&apos;, &apos;closed&apos;, or &apos;merged&apos;.* `open` - OPEN* `closed` - CLOSED* `merged` - MERGED</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestListItemState? State { get; set; }

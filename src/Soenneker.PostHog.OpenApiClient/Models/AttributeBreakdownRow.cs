@@ -9,18 +9,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class AttributeBreakdownRow : IAdditionalDataHolder, IParsable
+    public partial class AttributeBreakdownRow : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AttributeBreakdownRow"/> and sets the default values.
-        /// </summary>
-        public AttributeBreakdownRow()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
+        /// <summary>The count property</summary>
+        public int? Count { get; set; }
+        /// <summary>The error_count property</summary>
+        public int? ErrorCount { get; set; }
+        /// <summary>The p50_duration_nano property</summary>
+        public double? P50DurationNano { get; set; }
+        /// <summary>The p95_duration_nano property</summary>
+        public double? P95DurationNano { get; set; }
+        /// <summary>The value property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Value { get; set; }
+#nullable restore
+#else
+        public string Value { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -39,6 +46,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "count", n => { Count = n.GetIntValue(); } },
+                { "error_count", n => { ErrorCount = n.GetIntValue(); } },
+                { "p50_duration_nano", n => { P50DurationNano = n.GetDoubleValue(); } },
+                { "p95_duration_nano", n => { P95DurationNano = n.GetDoubleValue(); } },
+                { "value", n => { Value = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -48,7 +60,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteAdditionalData(AdditionalData);
+            writer.WriteIntValue("count", Count);
+            writer.WriteIntValue("error_count", ErrorCount);
+            writer.WriteDoubleValue("p50_duration_nano", P50DurationNano);
+            writer.WriteDoubleValue("p95_duration_nano", P95DurationNano);
+            writer.WriteStringValue("value", Value);
         }
     }
 }

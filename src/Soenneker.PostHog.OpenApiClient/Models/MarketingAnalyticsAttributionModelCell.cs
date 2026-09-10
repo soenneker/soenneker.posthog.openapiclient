@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>conversions / visitors. Null when the row has no visitors.</summary>
         public double? ConversionRate { get; set; }
-        /// <summary>&quot;Fractional for multi-touch models: each conversion&apos;s credit is split across its touchpoints.&quot;</summary>
+        /// <summary>Fractional for multi-touch models: each conversion&apos;s credit is split across its touchpoints.</summary>
         public double? Conversions { get; set; }
         /// <summary>Null unless the goal is revenue-bearing.</summary>
         public double? ConversionValue { get; set; }

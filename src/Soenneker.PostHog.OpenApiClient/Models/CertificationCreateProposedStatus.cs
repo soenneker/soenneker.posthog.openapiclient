@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Intent of the proposal: &apos;certified&apos; to propose trusting this source, &apos;deprecated&apos; to propose avoiding it (e.g. a stale or wrong source).* `certified` - certified* `deprecated` - deprecated&quot;
+    /// Intent of the proposal: &apos;certified&apos; to propose trusting this source, &apos;deprecated&apos; to propose avoiding it (e.g. a stale or wrong source).* `certified` - certified* `deprecated` - deprecated
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CertificationCreateProposedStatus : IAdditionalDataHolder, IParsable

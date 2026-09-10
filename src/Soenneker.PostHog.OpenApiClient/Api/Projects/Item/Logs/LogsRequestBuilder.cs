@@ -12,6 +12,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Export;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Facet_values;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.GroupBy;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Has_logs;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Impact;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Metric_rules;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Patterns;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Patterns_diff;
@@ -83,6 +84,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Has_logs.Has_logsRequestBuilder Has_logs
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Has_logs.Has_logsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The impact property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Impact.ImpactRequestBuilder Impact
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Impact.ImpactRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The metric_rules property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Metric_rules.Metric_rulesRequestBuilder Metric_rules

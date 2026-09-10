@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Hash { get; set; }
 #endif
-        /// <summary>&quot;Fire once per N matches of the same hash within ttl — a sampler: N=3 fires on the 1st, 4th, 7th… match. Omit to fire on the first match, then suppress repeats within ttl.&quot;</summary>
+        /// <summary>Fire once per N matches of the same hash within ttl — a sampler: N=3 fires on the 1st, 4th, 7th… match. Omit to fire on the first match, then suppress repeats within ttl.</summary>
         public int? Threshold { get; set; }
         /// <summary>Seconds (60 to ~94M / 3y) to suppress repeat firings of the same hash.</summary>
         public int? Ttl { get; set; }

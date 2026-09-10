@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;A Replay Vision scanner: its type, targeting query, and AI configuration.&quot;
+    /// A Replay Vision scanner: its type, targeting query, and AI configuration.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedReplayScanner : IAdditionalDataHolder, IParsable
@@ -20,10 +20,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>User who created the scanner.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerCreatedBy? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerCreatedBy CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
+#endif
+        /// <summary>How the creator built this scanner: from an AI draft, from a template, or from scratch. Reported to product analytics at creation and not stored on the scanner. Independent of any experiment the creator is in, since a person offered the AI flow can still fill the form by hand. Only the app can answer this, so a request from anywhere else reports the calling surface instead of whatever it sends here. Ignored on update.* `ai` - AI draft* `template` - Template* `scratch` - From scratch</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerCreationMethod? CreationMethod { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerCreationMethod CreationMethod { get; set; }
 #endif
         /// <summary>Optional cap on this scanner&apos;s own credit spend per billing period. Null means no scanner-level cap. When reached, this scanner stops scanning until the period resets. It stays enabled and does not scan the sessions it skipped.</summary>
         public int? CreditLimit { get; set; }
@@ -31,7 +39,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? CreditsPerObservation { get; private set; }
         /// <summary>Credits this scanner&apos;s succeeded observations consumed in the current billing period (1 credit = $0.01). Matches the window of the org-wide quota meter.</summary>
         public int? CreditsThisMonth { get; private set; }
-        /// <summary>&quot;Credits counted against `credit_limit` for the current billing period: settled receipts plus in-flight observations and running prompt tests, priced from their frozen snapshot model. This is what the limit gate measures, so it includes work still in progress. It is not the same as `credits_this_month`, which counts only succeeded observations.&quot;</summary>
+        /// <summary>Credits counted against `credit_limit` for the current billing period: settled receipts plus in-flight observations and running prompt tests, priced from their frozen snapshot model. This is what the limit gate measures, so it includes work still in progress. It is not the same as `credits_this_month`, which counts only succeeded observations.</summary>
         public int? CreditsUsedAgainstLimit { get; private set; }
         /// <summary>Free-form description shown in the scanner management UI.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -45,7 +53,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? EmitsSignals { get; set; }
         /// <summary>When false, the reconciler removes the scanner&apos;s Temporal schedule. On-demand triggers still work.</summary>
         public bool? Enabled { get; set; }
-        /// <summary>`estimated_monthly_observations` priced at `credits_per_observation`. Null until the estimate is first computed.</summary>
+        /// <summary>When `estimated_monthly_observations` was last computed. Null means the estimate is being recomputed after a config change or has never run, so the stored number may be stale.</summary>
+        public DateTimeOffset? EstimatedAt { get; private set; }
+        /// <summary>`estimated_monthly_observations` priced at `credits_per_observation`, capped at `credit_limit` when one is set. Null until the estimate is first computed.</summary>
         public int? EstimatedMonthlyCredits { get; private set; }
         /// <summary>Latest projected observations/month for this scanner. Null until first computed.</summary>
         public int? EstimatedMonthlyObservations { get; private set; }
@@ -60,10 +70,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>AI summary of the team&apos;s written thumbs-down feedback into recurring failure modes. Refreshed with prompt recommendations; null until enough feedback accumulates.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerFeedbackThemes? FeedbackThemes { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeedbackThemes? FeedbackThemes { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerFeedbackThemes FeedbackThemes { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeedbackThemes FeedbackThemes { get; private set; }
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
@@ -71,7 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? LastSweptAt { get; private set; }
         /// <summary>Whether this scanner has stopped because of its own credit limit. True when `credit_limit` is set and the budget left cannot cover one more observation, which is the same test the scanner&apos;s enforcement gates apply. Always false when no limit is set.</summary>
         public bool? LimitReached { get; private set; }
-        /// <summary>Concrete model to use for this scanner.* `gemini-3.5-flash-lite` - Gemini 3.5 Flash Lite* `gemini-3-flash-preview` - Gemini 3 Flash* `gemini-3.7-flash` - Gemini 3.7 Flash</summary>
+        /// <summary>Concrete model to use for this scanner.* `gemini-3.5-flash-lite` - Gemini 3.5 Flash Lite* `gemini-3-flash-preview` - Gemini 3 Flash* `gemini-3.8-flash` - Gemini 3.8 Flash</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerModel? Model { get; set; }
@@ -123,7 +133,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerScannerConfig ScannerConfig { get; set; }
 #endif
-        /// <summary>&quot;What the scanner does: monitor, classifier, scorer, or summarizer.* `monitor` - Monitor* `classifier` - Classifier* `scorer` - Scorer* `summarizer` - Summarizer&quot;</summary>
+        /// <summary>What the scanner does: monitor, classifier, scorer, or summarizer.* `monitor` - Monitor* `classifier` - Classifier* `scorer` - Scorer* `summarizer` - Summarizer</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerScannerType? ScannerType { get; set; }
@@ -177,7 +187,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerCreatedBy.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "creation_method", n => { CreationMethod = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerCreationMethod>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerCreationMethod.CreateFromDiscriminatorValue); } },
                 { "credit_limit", n => { CreditLimit = n.GetIntValue(); } },
                 { "credits_per_observation", n => { CreditsPerObservation = n.GetIntValue(); } },
                 { "credits_this_month", n => { CreditsThisMonth = n.GetIntValue(); } },
@@ -185,10 +196,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "emits_signals", n => { EmitsSignals = n.GetBoolValue(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
+                { "estimated_at", n => { EstimatedAt = n.GetDateTimeOffsetValue(); } },
                 { "estimated_monthly_credits", n => { EstimatedMonthlyCredits = n.GetIntValue(); } },
                 { "estimated_monthly_observations", n => { EstimatedMonthlyObservations = n.GetIntValue(); } },
                 { "experiment_targeting", n => { ExperimentTargeting = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerExperimentTargeting>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerExperimentTargeting.CreateFromDiscriminatorValue); } },
-                { "feedback_themes", n => { FeedbackThemes = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerFeedbackThemes>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerFeedbackThemes.CreateFromDiscriminatorValue); } },
+                { "feedback_themes", n => { FeedbackThemes = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeedbackThemes>(global::Soenneker.PostHog.OpenApiClient.Models.FeedbackThemes.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "last_swept_at", n => { LastSweptAt = n.GetDateTimeOffsetValue(); } },
                 { "limit_reached", n => { LimitReached = n.GetBoolValue(); } },
@@ -214,6 +226,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerCreationMethod>("creation_method", CreationMethod);
             writer.WriteIntValue("credit_limit", CreditLimit);
             writer.WriteStringValue("description", Description);
             writer.WriteBoolValue("emits_signals", EmitsSignals);

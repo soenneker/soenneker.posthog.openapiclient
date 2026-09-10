@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Aggregation applied per time bucket. &apos;rate&apos; (per-second) and &apos;increase&apos; are counter-aware: per-series deltas with Prometheus counter-reset handling, temporality-aware (delta-temporality samples count as-is). &apos;histogram_quantile&apos; interpolates from OTel histogram buckets and requires &apos;quantile&apos;.* `sum` - sum* `avg` - avg* `count` - count* `p95` - p95* `rate` - rate* `increase` - increase* `histogram_quantile` - histogram_quantile&quot;
+    /// Aggregation applied per time bucket, always across series rather than across raw samples. &apos;sum&apos;, &apos;avg&apos;, &apos;min&apos;, &apos;max&apos; and &apos;p95&apos; reduce each series to its last sample in the bucket and then combine those, so the result does not scale with the scrape rate; &apos;count&apos; is the number of series that reported. &apos;rate&apos; (per-second) and &apos;increase&apos; are counter-aware: per-series deltas with Prometheus counter-reset handling, temporality-aware (delta-temporality samples count as-is). &apos;histogram_quantile&apos; interpolates from OTel histogram buckets and requires &apos;quantile&apos;.* `sum` - sum* `avg` - avg* `count` - count* `min` - min* `max` - max* `p95` - p95* `rate` - rate* `increase` - increase* `histogram_quantile` - histogram_quantile
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class MetricQueryBodyAggregation : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `sum` - sum* `avg` - avg* `count` - count* `p95` - p95* `rate` - rate* `increase` - increase* `histogram_quantile` - histogram_quantile</summary>
+        /// <summary>* `sum` - sum* `avg` - avg* `count` - count* `min` - min* `max` - max* `p95` - p95* `rate` - rate* `increase` - increase* `histogram_quantile` - histogram_quantile</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.AggregationEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyAggregation"/> and sets the default values.

@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnitWrapper7 ConversionWindowIntervalUnit { get; set; }
 #endif
-        /// <summary>&quot;Path items dropped from the item universe: events deriving to one of these items are ignored as if their event were not a step source, on both the paths side and the \&quot;view as funnel\&quot; side.&quot;</summary>
+        /// <summary>Path items dropped from the item universe: events deriving to one of these items are ignored as if their event were not a step source, on both the paths side and the &quot;view as funnel&quot; side.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item>? ExcludedItems { get; set; }
@@ -64,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? MaxRowsPerStep { get; set; }
         /// <summary>Number of journey steps (columns) shown.</summary>
         public int? MaxSteps { get; set; }
-        /// <summary>&quot;Step sources defining which events can become path items. Defaults to the pageviews preset: `$pageview` named by `$pathname`.&quot;</summary>
+        /// <summary>Step sources defining which events can become path items. Defaults to the pageviews preset: `$pageview` named by `$pathname`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2StepSource>? StepSources { get; set; }

@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Response shape of the custom property value-suggestions endpoint.Matches the contract of the shared property-values picker (``propertyDefinitionsModel``on the frontend), which expects ``{results: [{name}], refreshing}``.&quot;
+    /// Response shape of the custom property value-suggestions endpoint.Matches the contract of the shared property-values picker (``propertyDefinitionsModel``on the frontend), which expects ``{results: [{name}], refreshing}``.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CustomPropertyValueSuggestionsResponse : IAdditionalDataHolder, IParsable

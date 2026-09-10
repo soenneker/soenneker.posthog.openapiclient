@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
         {
         }
         /// <summary>
-        /// &quot;The timeline of a single pull request: header plus ordered events (opened, CI started/finished, merged or closed). Use this to answer &apos;where is this PR stuck and what happened to it&apos;. This is a partial view: review and comment events are not yet available.&quot;
+        /// The timeline of a single pull request: header plus ordered events (opened, CI started/finished, merged or closed). Use this to answer &apos;where is this PR stuck and what happened to it&apos;. This is a partial view: review and comment events are not yet available.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PrLifecycle"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PrLifecycle>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PrLifecycle.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;The timeline of a single pull request: header plus ordered events (opened, CI started/finished, merged or closed). Use this to answer &apos;where is this PR stuck and what happened to it&apos;. This is a partial view: review and comment events are not yet available.&quot;
+        /// The timeline of a single pull request: header plus ordered events (opened, CI started/finished, merged or closed). Use this to answer &apos;where is this PR stuck and what happened to it&apos;. This is a partial view: review and comment events are not yet available.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -80,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Pr_lifecycle.Pr_lifecycleRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// &quot;The timeline of a single pull request: header plus ordered events (opened, CI started/finished, merged or closed). Use this to answer &apos;where is this PR stuck and what happened to it&apos;. This is a partial view: review and comment events are not yet available.&quot;
+        /// The timeline of a single pull request: header plus ordered events (opened, CI started/finished, merged or closed). Use this to answer &apos;where is this PR stuck and what happened to it&apos;. This is a partial view: review and comment events are not yet available.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Pr_lifecycleRequestBuilderGetQueryParameters 

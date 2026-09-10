@@ -72,7 +72,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.D
         /// Manage default evaluation contexts for a project. Members can read; writing requiresproject admin, matching the admin-only settings UI.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ProjectBackwardCompat"/></returns>
-        /// <param name="body">Mixin for serializers to add user access control fields</param>
+        /// <param name="body">A project and its settings, including the settings that live on its passthrough Team.This shape is a superset of TeamSerializer&apos;s, so a request rewritten from /api/environments/onto /api/projects/ never loses a field.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -104,7 +104,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.D
 #endif
             var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <summary>
@@ -130,7 +129,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.D
         /// Manage default evaluation contexts for a project. Members can read; writing requiresproject admin, matching the admin-only settings UI.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">Mixin for serializers to add user access control fields</param>
+        /// <param name="body">A project and its settings, including the settings that live on its passthrough Team.This shape is a superset of TeamSerializer&apos;s, so a request rewritten from /api/environments/onto /api/projects/ never loses a field.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

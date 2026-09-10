@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Marketing_analytics.
         {
         }
         /// <summary>
-        /// &quot;Rank everything wrong with a team&apos;s marketing analytics setup into concrete suggestions, each carrying the evidence behind it and — where one exists — an `apply` operation to pass straight to apply_setup_ops, plus a `readiness` block saying which capabilities (cost, ROAS, cost per customer, retention by channel) are unlocked and which suggestion is blocking each. Prefer this over `diagnose` when the question is &apos;what should I fix next&apos;: diagnose explains what is wrong, setup_plan says what to do about it in a form you can act on. Read-only.&quot;
+        /// Rank everything wrong with a team&apos;s marketing analytics setup into concrete suggestions, each carrying the evidence behind it and — where one exists — an `apply` operation to pass straight to apply_setup_ops, plus a `readiness` block saying which capabilities (cost, ROAS, cost per customer, retention by channel) are unlocked and which suggestion is blocking each. Prefer this over `diagnose` when the question is &apos;what should I fix next&apos;: diagnose explains what is wrong, setup_plan says what to do about it in a form you can act on. Read-only.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SetupPlanResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Marketing_analytics.
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SetupPlanResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SetupPlanResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Rank everything wrong with a team&apos;s marketing analytics setup into concrete suggestions, each carrying the evidence behind it and — where one exists — an `apply` operation to pass straight to apply_setup_ops, plus a `readiness` block saying which capabilities (cost, ROAS, cost per customer, retention by channel) are unlocked and which suggestion is blocking each. Prefer this over `diagnose` when the question is &apos;what should I fix next&apos;: diagnose explains what is wrong, setup_plan says what to do about it in a form you can act on. Read-only.&quot;
+        /// Rank everything wrong with a team&apos;s marketing analytics setup into concrete suggestions, each carrying the evidence behind it and — where one exists — an `apply` operation to pass straight to apply_setup_ops, plus a `readiness` block saying which capabilities (cost, ROAS, cost per customer, retention by channel) are unlocked and which suggestion is blocking each. Prefer this over `diagnose` when the question is &apos;what should I fix next&apos;: diagnose explains what is wrong, setup_plan says what to do about it in a form you can act on. Read-only.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -80,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Marketing_analytics.
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Marketing_analytics.Setup_plan.Setup_planRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// &quot;Rank everything wrong with a team&apos;s marketing analytics setup into concrete suggestions, each carrying the evidence behind it and — where one exists — an `apply` operation to pass straight to apply_setup_ops, plus a `readiness` block saying which capabilities (cost, ROAS, cost per customer, retention by channel) are unlocked and which suggestion is blocking each. Prefer this over `diagnose` when the question is &apos;what should I fix next&apos;: diagnose explains what is wrong, setup_plan says what to do about it in a form you can act on. Read-only.&quot;
+        /// Rank everything wrong with a team&apos;s marketing analytics setup into concrete suggestions, each carrying the evidence behind it and — where one exists — an `apply` operation to pass straight to apply_setup_ops, plus a `readiness` block saying which capabilities (cost, ROAS, cost per customer, retention by channel) are unlocked and which suggestion is blocking each. Prefer this over `diagnose` when the question is &apos;what should I fix next&apos;: diagnose explains what is wrong, setup_plan says what to do about it in a form you can act on. Read-only.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Setup_planRequestBuilderGetQueryParameters 

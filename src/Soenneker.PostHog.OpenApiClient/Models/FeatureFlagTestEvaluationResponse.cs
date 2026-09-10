@@ -64,6 +64,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Reason { get; set; }
 #endif
+        /// <summary>Human-readable explanation of the evaluation result. Set when the reason code is coarse, for example a non-match decided by a behavioral or realtime cohort whose membership is not fully evaluated here, which can disagree with the cohort&apos;s member list.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ReasonDescription { get; set; }
+#nullable restore
+#else
+        public string ReasonDescription { get; set; }
+#endif
         /// <summary>The evaluated value of the feature flag (boolean or variant key string)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -104,6 +112,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "payload", n => { Payload = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTestEvaluationResponsePayload>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTestEvaluationResponsePayload.CreateFromDiscriminatorValue); } },
                 { "person_properties", n => { PersonProperties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTestEvaluationResponsePersonPropertiesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTestEvaluationResponsePersonPropertiesProperty.CreateFromDiscriminatorValue); } },
                 { "reason", n => { Reason = n.GetStringValue(); } },
+                { "reason_description", n => { ReasonDescription = n.GetStringValue(); } },
                 { "result", n => { Result = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTestEvaluationResponseResult>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTestEvaluationResponseResult.CreateFromDiscriminatorValue); } },
             };
         }
@@ -121,6 +130,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTestEvaluationResponsePayload>("payload", Payload);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTestEvaluationResponsePersonPropertiesProperty>("person_properties", PersonProperties);
             writer.WriteStringValue("reason", Reason);
+            writer.WriteStringValue("reason_description", ReasonDescription);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTestEvaluationResponseResult>("result", Result);
             writer.WriteAdditionalData(AdditionalData);
         }

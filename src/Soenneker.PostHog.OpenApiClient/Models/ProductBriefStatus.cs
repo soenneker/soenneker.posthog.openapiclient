@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Lifecycle status: generating, ready, quiet (nothing confident to say), or failed.* `generating` - Generating* `ready` - Ready* `quiet` - Quiet* `failed` - Failed&quot;
+    /// Lifecycle status: generating, ready, quiet (nothing confident to say), or failed.* `generating` - Generating* `ready` - Ready* `quiet` - Quiet* `failed` - Failed
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ProductBriefStatus : IAdditionalDataHolder, IParsable

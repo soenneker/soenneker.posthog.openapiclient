@@ -3,10 +3,12 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Bundle;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Import;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Marketplace;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Name;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Resolve;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Search;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -21,6 +23,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Llm_skillsRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The bundle property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Bundle.BundleRequestBuilder Bundle
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Bundle.BundleRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The import property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Import.ImportRequestBuilder Import
         {
@@ -41,12 +48,17 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Resolve.ResolveRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The search property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Search.SearchRequestBuilder Search
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Search.SearchRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Llm_skillsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Llm_skillsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/llm_skills{?category*,created_by_id*,limit*,offset*,search*}", pathParameters)
+        public Llm_skillsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/llm_skills{?category*,created_by_id*,limit*,offset*,owner_id*,search*}", pathParameters)
         {
         }
         /// <summary>
@@ -54,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Llm_skillsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/llm_skills{?category*,created_by_id*,limit*,offset*,search*}", rawUrl)
+        public Llm_skillsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/llm_skills{?category*,created_by_id*,limit*,offset*,owner_id*,search*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedLlmSkillListList"/></returns>
@@ -157,6 +169,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills
             /// <summary>The initial index from which to return the results.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
+            /// <summary>Filter skills by the ID of a user who owns them. Ownership is keyed on the logical skill, so this is stable across versions — unlike created_by_id, which tracks whoever published the latest version.</summary>
+            [QueryParameter("owner_id")]
+            public int? OwnerId { get; set; }
             /// <summary>Optional substring filter applied to skill names and descriptions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

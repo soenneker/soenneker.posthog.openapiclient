@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_analytics.Models
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ModelsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/llm_analytics/models?provider={provider}{&key_id*}", pathParameters)
+        public ModelsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/llm_analytics/models{?key_id*,provider*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,11 +30,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_analytics.Models
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ModelsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/llm_analytics/models?provider={provider}{&key_id*}", rawUrl)
+        public ModelsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/llm_analytics/models{?key_id*,provider*}", rawUrl)
         {
         }
         /// <summary>
-        /// List available models for a provider.
+        /// List available models, for one provider or for every supported provider.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LlmModelsListResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_analytics.Models
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.LlmModelsListResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.LlmModelsListResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// List available models for a provider.
+        /// List available models, for one provider or for every supported provider.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -80,15 +80,15 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_analytics.Models
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_analytics.ModelsRequests.ModelsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// List available models for a provider.
+        /// List available models, for one provider or for every supported provider.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class ModelsRequestBuilderGetQueryParameters 
         {
-            /// <summary>Optional provider key UUID. When supplied, models reachable with that specific key are returned (useful for Azure OpenAI, where the deployment list depends on the configured endpoint). Must belong to the same provider as the `provider` parameter.</summary>
+            /// <summary>Optional provider key UUID. When supplied, models reachable with that specific key are returned (useful for Azure OpenAI, where the deployment list depends on the configured endpoint). A key belongs to exactly one provider, so `provider` may be omitted alongside it; when both are given they must agree.</summary>
             [QueryParameter("key_id")]
             public Guid? KeyId { get; set; }
-            /// <summary>LLM provider to list models for. Must be one of the supported providers.</summary>
+            /// <summary>LLM provider to list models for. Omit it to list every supported provider and its models in one call.</summary>
             [QueryParameter("provider")]
             public global::Soenneker.PostHog.OpenApiClient.Models.LlmAnalyticsModelsRetrieveProviderParameter? Provider { get; set; }
         }

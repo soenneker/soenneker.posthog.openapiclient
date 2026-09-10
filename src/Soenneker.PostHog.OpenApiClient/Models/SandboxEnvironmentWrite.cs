@@ -43,7 +43,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>&quot;Network access policy: trusted (default allowlist), full (unrestricted), or custom.* `trusted` - Trusted* `full` - Full* `custom` - Custom&quot;</summary>
+        /// <summary>Network access policy: trusted (default allowlist), full (unrestricted), or custom.* `trusted` - Trusted* `full` - Full* `custom` - Custom</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.SandboxEnvironmentWriteNetworkAccessLevel? NetworkAccessLevel { get; set; }
@@ -53,7 +53,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>If true, only the creator can see this environment; otherwise the whole team can.</summary>
         public bool? Private { get; set; }
-        /// <summary>&quot;Repositories this environment applies to (format: org/repo).&quot;</summary>
+        /// <summary>Repositories this environment applies to (format: org/repo).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? Repositories { get; set; }

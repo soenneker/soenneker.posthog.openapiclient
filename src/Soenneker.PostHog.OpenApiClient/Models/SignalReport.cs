@@ -26,6 +26,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? AlreadyAddressed { get; private set; }
         /// <summary>The artefact_count property</summary>
         public int? ArtefactCount { get; private set; }
+        /// <summary>Current user, internal task, or external agent claim owner. Null when unclaimed.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportAssignee? Assignee { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportAssignee Assignee { get; private set; }
+#endif
         /// <summary>Non-null when this report is system-marked never-billable (PostHog-system origin, e.g. a health-check scout finding) — its implementation PRs are free and cannot be refunded because nothing was charged.* `posthog_health_check` - PostHog health check* `posthog_onboarding` - PostHog onboarding* `posthog_system` - PostHog system</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -34,6 +42,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportBillingExemptReason BillingExemptReason { get; private set; }
 #endif
+        /// <summary>The space (task channel) this report is assigned to, or null when unassigned. The general view lists every report regardless of this value.</summary>
+        public Guid? ChannelId { get; private set; }
         /// <summary>Charts the report shows, in the order they were written. The summary places one with a `[label](chart:&lt;chart_id&gt;)` link; the rest render below it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -62,9 +72,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
-        /// <summary>&quot;Whether that implementation PR is merged, per the GitHub webhook. False when there is no PR or it hasn&apos;t merged. Report status doesn&apos;t imply this: a resolved report may have been resolved directly, without a merged PR.&quot;</summary>
+        /// <summary>Whether that implementation PR is merged, per the GitHub webhook. False when there is no PR or it hasn&apos;t merged. Report status doesn&apos;t imply this: a resolved report may have been resolved directly, without a merged PR.</summary>
         public bool? ImplementationPrMerged { get; private set; }
-        /// <summary>PR URL from the latest implementation task run, if available.</summary>
+        /// <summary>Latest known pull request state: unknown, draft, open, closed, or merged.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportImplementationPrState? ImplementationPrState { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportImplementationPrState ImplementationPrState { get; private set; }
+#endif
+        /// <summary>Pull request attached to this report&apos;s claim, if available.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ImplementationPrUrl { get; private set; }
@@ -85,10 +103,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The report&apos;s PR refund, when one exists. One refund per report, ever.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundComposed? Refund { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefund? Refund { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundComposed Refund { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefund Refund { get; private set; }
 #endif
         /// <summary>Why refunding this report&apos;s PR would be rejected right now, or null when a refund would be accepted (see the field&apos;s schema for the reason values).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -97,6 +115,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundIneligibilityReason RefundIneligibilityReason { get; private set; }
+#endif
+        /// <summary>`organization/repository` the report&apos;s work targets, from the latest repo-selection artefact (when present). Lets list cards show repository context without a per-card fetch.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? RepoSlug { get; private set; }
+#nullable restore
+#else
+        public string RepoSlug { get; private set; }
 #endif
         /// <summary>skill_name slug of the scout that authored this report, when scout-authored (from ClickHouse); null otherwise.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -126,6 +152,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportStatus Status { get; private set; }
 #endif
+        /// <summary>Follow-up prompts the report&apos;s author suggests sending about it (questions to ask, or next-step actions to request), in the order they were written. The inbox offers them above the `Ask AI` box; clicking one fills the box with it.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? SuggestedPrompts { get; private set; }
+#nullable restore
+#else
+        public List<string> SuggestedPrompts { get; private set; }
+#endif
         /// <summary>The summary property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -144,8 +178,40 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The total_weight property</summary>
         public double? TotalWeight { get; private set; }
+        /// <summary>Why the tracker issue could not be opened, for a team that wants one. Null when the issue exists or the team tracks no issues.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? TrackerIssueError { get; private set; }
+#nullable restore
+#else
+        public string TrackerIssueError { get; private set; }
+#endif
+        /// <summary>How that tracker issue reads in its provider, for example &apos;#12&apos; or &apos;ENG-123&apos;. Null when there is no tracker issue.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? TrackerIssueReference { get; private set; }
+#nullable restore
+#else
+        public string TrackerIssueReference { get; private set; }
+#endif
+        /// <summary>Link to the issue self-driving opened in the team&apos;s tracker for this report&apos;s pull request. Null when the team tracks no issues, or the issue could not be opened.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? TrackerIssueUrl { get; private set; }
+#nullable restore
+#else
+        public string TrackerIssueUrl { get; private set; }
+#endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
+        /// <summary>Derived remediation state: unclaimed, working, in_review, or done.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportWorkState? WorkState { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportWorkState WorkState { get; private set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReport"/> and sets the default values.
         /// </summary>
@@ -175,27 +241,36 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "actionability", n => { Actionability = n.GetStringValue(); } },
                 { "already_addressed", n => { AlreadyAddressed = n.GetBoolValue(); } },
                 { "artefact_count", n => { ArtefactCount = n.GetIntValue(); } },
+                { "assignee", n => { Assignee = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportAssignee>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportAssignee.CreateFromDiscriminatorValue); } },
                 { "billing_exempt_reason", n => { BillingExemptReason = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportBillingExemptReason>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportBillingExemptReason.CreateFromDiscriminatorValue); } },
+                { "channel_id", n => { ChannelId = n.GetGuidValue(); } },
                 { "charts", n => { Charts = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReportChart>(global::Soenneker.PostHog.OpenApiClient.Models.ReportChart.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "dismissal_note", n => { DismissalNote = n.GetStringValue(); } },
                 { "dismissal_reason", n => { DismissalReason = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "implementation_pr_merged", n => { ImplementationPrMerged = n.GetBoolValue(); } },
+                { "implementation_pr_state", n => { ImplementationPrState = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportImplementationPrState>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportImplementationPrState.CreateFromDiscriminatorValue); } },
                 { "implementation_pr_url", n => { ImplementationPrUrl = n.GetStringValue(); } },
                 { "is_suggested_reviewer", n => { IsSuggestedReviewer = n.GetBoolValue(); } },
                 { "priority", n => { Priority = n.GetStringValue(); } },
-                { "refund", n => { Refund = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundComposed>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundComposed.CreateFromDiscriminatorValue); } },
+                { "refund", n => { Refund = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefund>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefund.CreateFromDiscriminatorValue); } },
                 { "refund_ineligibility_reason", n => { RefundIneligibilityReason = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundIneligibilityReason>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundIneligibilityReason.CreateFromDiscriminatorValue); } },
+                { "repo_slug", n => { RepoSlug = n.GetStringValue(); } },
                 { "scout_name", n => { ScoutName = n.GetStringValue(); } },
                 { "signal_count", n => { SignalCount = n.GetIntValue(); } },
                 { "signals_at_run", n => { SignalsAtRun = n.GetIntValue(); } },
                 { "source_products", n => { SourceProducts = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportStatus>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportStatus.CreateFromDiscriminatorValue); } },
+                { "suggested_prompts", n => { SuggestedPrompts = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "summary", n => { Summary = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
                 { "total_weight", n => { TotalWeight = n.GetDoubleValue(); } },
+                { "tracker_issue_error", n => { TrackerIssueError = n.GetStringValue(); } },
+                { "tracker_issue_reference", n => { TrackerIssueReference = n.GetStringValue(); } },
+                { "tracker_issue_url", n => { TrackerIssueUrl = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
+                { "work_state", n => { WorkState = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportWorkState>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportWorkState.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>

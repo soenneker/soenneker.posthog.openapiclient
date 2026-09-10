@@ -23,7 +23,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfig File { get; set; }
 #endif
-        /// <summary>HogQL SELECT query whose results are exported. Placeholders are not currently supported, and every column in the SELECT clause must be a field or have an alias. The query runs as of thetime the export starts; events ingested moments before may not be included yet.</summary>
+        /// <summary>HogQL SELECT query whose results are exported. This model is in closed beta and is enabled per team; when it is not enabled, the request fails with a permission error that names HogQL batch exports. Contact PostHog support to request access. Placeholders are not currently supported, and every column in the SELECT clause must be a field or have an alias. It is recommended to limit the query with a WHERE clause, for example bounding timestamp on the events table, both to avoid exporting more rows than expected and because user queries run under stricter resource limits than the other models.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? HogqlQuery { get; set; }
@@ -32,7 +32,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string HogqlQuery { get; set; }
 #endif
         /// <summary>* `hogql` - hogql</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadHogQlRequestModelEnum? Model { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadHogQlModelEnum? Model { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadHogQlRequest"/> and sets the default values.
         /// </summary>
@@ -60,7 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "file", n => { File = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfig>(global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfig.CreateFromDiscriminatorValue); } },
                 { "hogql_query", n => { HogqlQuery = n.GetStringValue(); } },
-                { "model", n => { Model = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadHogQlRequestModelEnum>(); } },
+                { "model", n => { Model = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadHogQlModelEnum>(); } },
             };
         }
         /// <summary>
@@ -72,7 +72,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfig>("file", File);
             writer.WriteStringValue("hogql_query", HogqlQuery);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadHogQlRequestModelEnum>("model", Model);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadHogQlModelEnum>("model", Model);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

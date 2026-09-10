@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Github.
         {
         }
         /// <summary>
-        /// &quot;List GitHub installations this project can link.A GitHub App installs once per organization, so a second project links an existinginstallation rather than reinstalling. This backs the picker: when more than one optionexists, the client passes the chosen installation_id to github/link_existing. The list alsoincludes installations the user&apos;s personal GitHub link can see but that aren&apos;t linked to anyproject yet (``source_team_id: null``) — orphan installations approved on GitHub outsidePostHog&apos;s callback, which ``github/link_existing`` can adopt.&quot;
+        /// List GitHub installations this project can link.A GitHub App installs once per organization, so a second project links an existinginstallation rather than reinstalling. This backs the picker: when more than one optionexists, the client passes the chosen installation_id to github/link_existing. The list alsoincludes installations the user&apos;s personal GitHub link can see but that aren&apos;t linked to anyproject yet (``source_team_id: null``) — orphan installations approved on GitHub outsidePostHog&apos;s callback, which ``github/link_existing`` can adopt.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.GitHubAvailableInstallationsResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Integrations.Github.
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.GitHubAvailableInstallationsResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.GitHubAvailableInstallationsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;List GitHub installations this project can link.A GitHub App installs once per organization, so a second project links an existinginstallation rather than reinstalling. This backs the picker: when more than one optionexists, the client passes the chosen installation_id to github/link_existing. The list alsoincludes installations the user&apos;s personal GitHub link can see but that aren&apos;t linked to anyproject yet (``source_team_id: null``) — orphan installations approved on GitHub outsidePostHog&apos;s callback, which ``github/link_existing`` can adopt.&quot;
+        /// List GitHub installations this project can link.A GitHub App installs once per organization, so a second project links an existinginstallation rather than reinstalling. This backs the picker: when more than one optionexists, the client passes the chosen installation_id to github/link_existing. The list alsoincludes installations the user&apos;s personal GitHub link can see but that aren&apos;t linked to anyproject yet (``source_team_id: null``) — orphan installations approved on GitHub outsidePostHog&apos;s callback, which ``github/link_existing`` can adopt.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

@@ -25,7 +25,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>ID of a databricks-kind Integration. Use the integrations-list MCP tool to find one.</summary>
         public int? IntegrationId { get; set; }
-        /// <summary>Union discriminator</summary>
+        /// <summary>The type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Type { get; set; }

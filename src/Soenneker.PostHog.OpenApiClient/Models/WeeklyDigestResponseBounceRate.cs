@@ -18,10 +18,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Period-over-period change, null when not meaningful.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.NumericMetricChange? Change { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WoWChange? Change { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.NumericMetricChange Change { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WoWChange Change { get; set; }
 #endif
         /// <summary>Value for the most recent period.</summary>
         public double? Current { get; set; }
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "change", n => { Change = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NumericMetricChange>(global::Soenneker.PostHog.OpenApiClient.Models.NumericMetricChange.CreateFromDiscriminatorValue); } },
+                { "change", n => { Change = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WoWChange>(global::Soenneker.PostHog.OpenApiClient.Models.WoWChange.CreateFromDiscriminatorValue); } },
                 { "current", n => { Current = n.GetDoubleValue(); } },
                 { "previous", n => { Previous = n.GetDoubleValue(); } },
             };
@@ -64,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NumericMetricChange>("change", Change);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WoWChange>("change", Change);
             writer.WriteDoubleValue("current", Current);
             writer.WriteDoubleValue("previous", Previous);
             writer.WriteAdditionalData(AdditionalData);

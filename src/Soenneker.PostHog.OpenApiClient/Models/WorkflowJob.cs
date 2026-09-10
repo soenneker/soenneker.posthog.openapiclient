@@ -48,7 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string RunnerLabel { get; set; }
 #endif
-        /// <summary>&quot;Where the job ran: &apos;github_hosted&apos; (free for open source), &apos;self_hosted&apos; (billable), or &apos;unknown&apos;.&quot;</summary>
+        /// <summary>Where the job ran: &apos;github_hosted&apos; (free for open source), &apos;self_hosted&apos; (billable), or &apos;unknown&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? RunnerProvider { get; set; }
@@ -58,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>When the job started, or null while still queued.</summary>
         public DateTimeOffset? StartedAt { get; set; }
-        /// <summary>&quot;Raw job status: &apos;queued&apos;, &apos;in_progress&apos;, &apos;completed&apos;, etc.&quot;</summary>
+        /// <summary>Raw job status: &apos;queued&apos;, &apos;in_progress&apos;, &apos;completed&apos;, etc.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Status { get; set; }

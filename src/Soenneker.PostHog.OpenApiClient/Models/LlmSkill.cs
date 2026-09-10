@@ -62,7 +62,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The deleted property</summary>
         public bool? Deleted { get; private set; }
-        /// <summary>What this skill does and when to use it. Max 4096 characters.</summary>
+        /// <summary>What this skill does and when to use it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Description { get; set; }
@@ -70,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
-        /// <summary>Bundled files manifest. Each entry is path + content_type only; fetch content via /llm_skills/name/{name}/files/{path}/.</summary>
+        /// <summary>Bundled files manifest. Each entry carries path, content_type, and line/char counts — no content; fetch content via /llm_skills/name/{name}/files/{path}/.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillFileManifest>? Files { get; private set; }

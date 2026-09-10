@@ -17,6 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When the meeting ends.</summary>
         public DateTimeOffset? EndTime { get; private set; }
+        /// <summary>Gong call URL matched through the calendar event id; null when no Gong call is available.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? GongUrl { get; private set; }
+#nullable restore
+#else
+        public string GongUrl { get; private set; }
+#endif
         /// <summary>UUID of the meeting.</summary>
         public Guid? Id { get; private set; }
         /// <summary>Email address of the meeting organizer; may be empty.</summary>
@@ -37,7 +45,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>When the meeting starts.</summary>
         public DateTimeOffset? StartTime { get; private set; }
-        /// <summary>&quot;Meeting status: &apos;confirmed&apos;, &apos;tentative&apos;, or &apos;cancelled&apos;.&quot;</summary>
+        /// <summary>Meeting status: &apos;confirmed&apos;, &apos;tentative&apos;, or &apos;cancelled&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Status { get; private set; }
@@ -79,6 +87,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "end_time", n => { EndTime = n.GetDateTimeOffsetValue(); } },
+                { "gong_url", n => { GongUrl = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "organizer_email", n => { OrganizerEmail = n.GetStringValue(); } },
                 { "participants", n => { Participants = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MeetingParticipant>(global::Soenneker.PostHog.OpenApiClient.Models.MeetingParticipant.CreateFromDiscriminatorValue)?.AsList(); } },

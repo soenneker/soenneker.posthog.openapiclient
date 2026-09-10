@@ -5,13 +5,16 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Actions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Builds;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Connectors;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Draft;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Drafts;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Edit;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Layout;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Promote;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Publish;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.PublishCurrentVersion;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Report_error;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Request_agent;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Request_fix;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Revert;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Source;
@@ -42,6 +45,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Builds.BuildsRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The connectors property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Connectors.ConnectorsRequestBuilder Connectors
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Connectors.ConnectorsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The draft property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Draft.DraftRequestBuilder Draft
         {
@@ -56,6 +64,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Edit.EditRequestBuilder Edit
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Edit.EditRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The layout property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Layout.LayoutRequestBuilder Layout
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Layout.LayoutRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The promote property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Promote.PromoteRequestBuilder Promote
@@ -76,6 +89,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Report_error.Report_errorRequestBuilder Report_error
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Report_error.Report_errorRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The request_agent property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Request_agent.Request_agentRequestBuilder Request_agent
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Request_agent.Request_agentRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The request_fix property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Request_fix.Request_fixRequestBuilder Request_fix
@@ -124,7 +142,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item
         {
         }
         /// <summary>
-        /// &quot;Canvases: agent-built sandboxed browser apps, filed into channels.Source is versioned per publish and built server-side; the canvas apprenders the published build&apos;s artifact from the isolated artifact origin.&quot;
+        /// Canvases: agent-built sandboxed browser apps, filed into channels.Source is versioned per publish and built server-side; the canvas apprenders the published build&apos;s artifact from the isolated artifact origin.
         /// </summary>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -141,7 +159,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item
             await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Canvases: agent-built sandboxed browser apps, filed into channels.Source is versioned per publish and built server-side; the canvas apprenders the published build&apos;s artifact from the isolated artifact origin.&quot;
+        /// Canvases: agent-built sandboxed browser apps, filed into channels.Source is versioned per publish and built server-side; the canvas apprenders the published build&apos;s artifact from the isolated artifact origin.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Canvas"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -159,10 +177,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.Canvas>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.Canvas.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Update canvas metadata (name, author context, pin, generation-task pointer).
+        /// Update canvas metadata, including the space it belongs to.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Canvas"/></returns>
-        /// <param name="body">&quot;Writable canvas fields: metadata only — source changes go through publish/edit.&quot;</param>
+        /// <param name="body">Writable canvas fields: metadata only — source changes go through publish/edit.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -179,7 +197,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.Canvas>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.Canvas.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Canvases: agent-built sandboxed browser apps, filed into channels.Source is versioned per publish and built server-side; the canvas apprenders the published build&apos;s artifact from the isolated artifact origin.&quot;
+        /// Canvases: agent-built sandboxed browser apps, filed into channels.Source is versioned per publish and built server-side; the canvas apprenders the published build&apos;s artifact from the isolated artifact origin.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -194,11 +212,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item
 #endif
             var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <summary>
-        /// &quot;Canvases: agent-built sandboxed browser apps, filed into channels.Source is versioned per publish and built server-side; the canvas apprenders the published build&apos;s artifact from the isolated artifact origin.&quot;
+        /// Canvases: agent-built sandboxed browser apps, filed into channels.Source is versioned per publish and built server-side; the canvas apprenders the published build&apos;s artifact from the isolated artifact origin.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -217,10 +234,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item
             return requestInfo;
         }
         /// <summary>
-        /// Update canvas metadata (name, author context, pin, generation-task pointer).
+        /// Update canvas metadata, including the space it belongs to.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">&quot;Writable canvas fields: metadata only — source changes go through publish/edit.&quot;</param>
+        /// <param name="body">Writable canvas fields: metadata only — source changes go through publish/edit.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

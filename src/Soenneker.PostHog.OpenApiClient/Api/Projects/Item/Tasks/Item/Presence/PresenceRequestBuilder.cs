@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Presence
         {
         }
         /// <summary>
-        /// &quot;Idempotent upsert: marks the calling user + `device_id` as actively watching this task for the next ~60 seconds. While at least one device for the user has a non-expired presence row for this task, the push fanout will skip ALL of that user&apos;s other registered devices for task notifications — the contract is &apos;if any device is demonstrably watching, suppress the others&apos;. Clients call this every ~30s while the task screen is foregrounded. `device_id` is the UUID of the caller&apos;s UserPushToken row.&quot;
+        /// Idempotent upsert: marks the calling user + `device_id` as actively watching this task for the next ~60 seconds. While at least one device for the user has a non-expired presence row for this task, the push fanout will skip ALL of that user&apos;s other registered devices for task notifications — the contract is &apos;if any device is demonstrably watching, suppress the others&apos;. Clients call this every ~30s while the task screen is foregrounded. `device_id` is the UUID of the caller&apos;s UserPushToken row.
         /// </summary>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -51,27 +51,26 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Presence
             await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Idempotent upsert: marks the calling user + `device_id` as actively watching this task for the next ~60 seconds. While at least one device for the user has a non-expired presence row for this task, the push fanout will skip ALL of that user&apos;s other registered devices for task notifications — the contract is &apos;if any device is demonstrably watching, suppress the others&apos;. Clients call this every ~30s while the task screen is foregrounded. `device_id` is the UUID of the caller&apos;s UserPushToken row.&quot;
+        /// Idempotent upsert: marks the calling user + `device_id` as actively watching this task for the next ~60 seconds. While at least one device for the user has a non-expired presence row for this task, the push fanout will skip ALL of that user&apos;s other registered devices for task notifications — the contract is &apos;if any device is demonstrably watching, suppress the others&apos;. Clients call this every ~30s while the task screen is foregrounded. `device_id` is the UUID of the caller&apos;s UserPushToken row.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TasksPresenceCreate201Response"/></returns>
         /// <param name="body">Request body for the presence beacon and beacon-leave endpoints.`device_id` is the UUID of the caller&apos;s `UserPushToken` row, which theclient received when it registered for push via `/api/users/@me/push_tokens/`.The client is expected to use the same identifier on the beacon and leavecalls; if the user has unregistered the underlying push token, the valuewon&apos;t resolve and the call returns 404 — at which point pushes werealready not going there anyway.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.TasksPresenceCreate201Response?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.TaskPresenceBeaconRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.TaskPresenceBeaconRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.TasksPresenceCreate201Response> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.TaskPresenceBeaconRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.TaskPresenceBeaconRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.TasksPresenceCreate201Response>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.TasksPresenceCreate201Response.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Idempotent upsert: marks the calling user + `device_id` as actively watching this task for the next ~60 seconds. While at least one device for the user has a non-expired presence row for this task, the push fanout will skip ALL of that user&apos;s other registered devices for task notifications — the contract is &apos;if any device is demonstrably watching, suppress the others&apos;. Clients call this every ~30s while the task screen is foregrounded. `device_id` is the UUID of the caller&apos;s UserPushToken row.&quot;
+        /// Idempotent upsert: marks the calling user + `device_id` as actively watching this task for the next ~60 seconds. While at least one device for the user has a non-expired presence row for this task, the push fanout will skip ALL of that user&apos;s other registered devices for task notifications — the contract is &apos;if any device is demonstrably watching, suppress the others&apos;. Clients call this every ~30s while the task screen is foregrounded. `device_id` is the UUID of the caller&apos;s UserPushToken row.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -86,11 +85,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Presence
 #endif
             var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <summary>
-        /// &quot;Idempotent upsert: marks the calling user + `device_id` as actively watching this task for the next ~60 seconds. While at least one device for the user has a non-expired presence row for this task, the push fanout will skip ALL of that user&apos;s other registered devices for task notifications — the contract is &apos;if any device is demonstrably watching, suppress the others&apos;. Clients call this every ~30s while the task screen is foregrounded. `device_id` is the UUID of the caller&apos;s UserPushToken row.&quot;
+        /// Idempotent upsert: marks the calling user + `device_id` as actively watching this task for the next ~60 seconds. While at least one device for the user has a non-expired presence row for this task, the push fanout will skip ALL of that user&apos;s other registered devices for task notifications — the contract is &apos;if any device is demonstrably watching, suppress the others&apos;. Clients call this every ~30s while the task screen is foregrounded. `device_id` is the UUID of the caller&apos;s UserPushToken row.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">Request body for the presence beacon and beacon-leave endpoints.`device_id` is the UUID of the caller&apos;s `UserPushToken` row, which theclient received when it registered for push via `/api/users/@me/push_tokens/`.The client is expected to use the same identifier on the beacon and leavecalls; if the user has unregistered the underlying push token, the valuewon&apos;t resolve and the call returns 404 — at which point pushes werealready not going there anyway.</param>
@@ -107,7 +105,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Presence
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }

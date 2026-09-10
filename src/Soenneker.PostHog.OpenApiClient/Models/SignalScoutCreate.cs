@@ -47,13 +47,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillFileInput> Files { get; set; }
 #endif
-        /// <summary>Unique scout name. Must start with `signals-scout-` and contain only lowercase letters, numbers, and hyphens.</summary>
+        /// <summary>Unique scout name, containing only lowercase letters, numbers, and hyphens. The `signals-scout-` prefix is optional.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
 #nullable restore
 #else
         public string Name { get; set; }
+#endif
+        /// <summary>Optional id of the suggestion this scout was created from. The suggestion then stops being offered on this project. An id this project&apos;s batch does not hold is ignored.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SuggestionId { get; set; }
+#nullable restore
+#else
+        public string SuggestionId { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutCreate"/> and sets the default values.
@@ -85,6 +93,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "files", n => { Files = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillFileInput>(global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillFileInput.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "suggestion_id", n => { SuggestionId = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -99,6 +108,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("description", Description);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillFileInput>("files", Files);
             writer.WriteStringValue("name", Name);
+            writer.WriteStringValue("suggestion_id", SuggestionId);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

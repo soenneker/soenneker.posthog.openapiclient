@@ -15,10 +15,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Provider key used to run llm_judge evals; null if none configured yet.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationConfigActiveProviderKey? ActiveProviderKey { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LlmProviderKey? ActiveProviderKey { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationConfigActiveProviderKey ActiveProviderKey { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LlmProviderKey ActiveProviderKey { get; private set; }
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -51,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "active_provider_key", n => { ActiveProviderKey = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationConfigActiveProviderKey>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationConfigActiveProviderKey.CreateFromDiscriminatorValue); } },
+                { "active_provider_key", n => { ActiveProviderKey = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmProviderKey>(global::Soenneker.PostHog.OpenApiClient.Models.LlmProviderKey.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };

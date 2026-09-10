@@ -63,7 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> ProductsInUse { get; set; }
 #endif
-        /// <summary>&quot;Free-form orientation: human-set product description + registered app URLs.&quot;</summary>
+        /// <summary>Free-form orientation: human-set product description + registered app URLs.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryProjectContext? ProjectContext { get; set; }
@@ -71,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryProjectContext ProjectContext { get; set; }
 #endif
-        /// <summary>&quot;Action orientation: total + the 5 most recently updated actions — useful to anchor agent reasoning about what the team treats as a meaningful interaction.&quot;</summary>
+        /// <summary>Action orientation: total + the 5 most recently updated actions — useful to anchor agent reasoning about what the team treats as a meaningful interaction.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentActions? RecentActions { get; set; }
@@ -87,7 +87,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentActivity RecentActivity { get; set; }
 #endif
-        /// <summary>&quot;Alert orientation: total + enabled count, plus the 5 most recently created alerts with their state and threshold metadata.&quot;</summary>
+        /// <summary>Alert orientation: total + enabled count, plus the 5 most recently created alerts with their state and threshold metadata.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentAlerts? RecentAlerts { get; set; }
@@ -95,7 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentAlerts RecentAlerts { get; set; }
 #endif
-        /// <summary>&quot;Cohort orientation: total + the 5 most recently created cohorts on the team.&quot;</summary>
+        /// <summary>Cohort orientation: total + the 5 most recently created cohorts on the team.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentCohorts? RecentCohorts { get; set; }
@@ -111,7 +111,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.RecentDashboardEntry> RecentDashboards { get; set; }
 #endif
-        /// <summary>&quot;Experiment orientation: total + running count, plus the 5 most recently updated experiments. The feature_flag_key on each row lets the scout correlate experiments with the `recent_feature_flags` section.&quot;</summary>
+        /// <summary>Experiment orientation: total + running count, plus the 5 most recently updated experiments. The feature_flag_key on each row lets the scout correlate experiments with the `recent_feature_flags` section.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentExperiments? RecentExperiments { get; set; }
@@ -119,7 +119,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentExperiments RecentExperiments { get; set; }
 #endif
-        /// <summary>&quot;Feature flag orientation: total + active count, plus the 5 most recently updated non-deleted flags with id, key, name, active, and updated_at.&quot;</summary>
+        /// <summary>Feature flag orientation: total + active count, plus the 5 most recently updated non-deleted flags with id, key, name, active, and updated_at.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentFeatureFlags? RecentFeatureFlags { get; set; }
@@ -127,7 +127,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentFeatureFlags RecentFeatureFlags { get; set; }
 #endif
-        /// <summary>&quot;Hog flow orientation: total + non-archived count, plus the 5 most recently updated automation flows.&quot;</summary>
+        /// <summary>Hog flow orientation: total + non-archived count, plus the 5 most recently updated automation flows.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentHogFlows? RecentHogFlows { get; set; }
@@ -135,7 +135,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentHogFlows RecentHogFlows { get; set; }
 #endif
-        /// <summary>&quot;Hog function orientation: total + enabled count, plus the 5 most recently updated destinations / transformations the team has wired up via the CDP pipelines.&quot;</summary>
+        /// <summary>Hog function orientation: total + enabled count, plus the 5 most recently updated destinations / transformations the team has wired up via the CDP pipelines.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentHogFunctions? RecentHogFunctions { get; set; }
@@ -143,7 +143,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentHogFunctions RecentHogFunctions { get; set; }
 #endif
-        /// <summary>&quot;Notebook orientation: total + the 5 most recently modified notebooks — useful signal for what the team has been investigating.&quot;</summary>
+        /// <summary>Notebook orientation: total + the 5 most recently modified notebooks — useful signal for what the team has been investigating.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentNotebooks? RecentNotebooks { get; set; }
@@ -159,7 +159,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentReviewerCorrections RecentReviewerCorrections { get; set; }
 #endif
-        /// <summary>&quot;Surveys orientation: total + active count, plus the 5 most recently updated surveys with id, name, type, status (draft / running / stopped / archived), and updated_at.&quot;</summary>
+        /// <summary>Surveys orientation: total + active count, plus the 5 most recently updated surveys with id, name, type, status (draft / running / stopped / archived), and updated_at.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentSurveys? RecentSurveys { get; set; }
@@ -183,7 +183,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventorySignalSourceConfigs SignalSourceConfigs { get; set; }
 #endif
-        /// <summary>&quot;Top ~50 events by count over a recent rolling window (each row carries `window_days`), with first/last seen timestamps within that window. These are WINDOWED counts, not lifetime totals: a capture gap can collapse a real, high-volume project&apos;s counts to near-zero here, so rule out an ingestion gap (compare against a trailing baseline via a direct `execute-sql`) before reading thinness as a genuinely low-volume project. `null` if the underlying ClickHouse query failed or timed out (distinct from `[]`, which means the team has no captures in the window). Use the gap between `first_seen_in_window` and `now` to spot new event types or recent bursts.&quot;</summary>
+        /// <summary>Top ~50 events by count over a recent rolling window (each row carries `window_days`), with first/last seen timestamps within that window. These are WINDOWED counts, not lifetime totals: a capture gap can collapse a real, high-volume project&apos;s counts to near-zero here, so rule out an ingestion gap (compare against a trailing baseline via a direct `execute-sql`) before reading thinness as a genuinely low-volume project. `null` if the underlying ClickHouse query failed or timed out (distinct from `[]`, which means the team has no captures in the window). Use the gap between `first_seen_in_window` and `now` to spot new event types or recent bursts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.TopEventEntry>? TopEvents { get; set; }

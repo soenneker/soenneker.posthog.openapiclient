@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Verb-specific result, e.g. {&apos;task_id&apos;: ...} for tasks.create.&quot;
+    /// Verb-specific result, e.g. {&apos;task_id&apos;: ...} for tasks.create.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CanvasActionResultResultProperty : IAdditionalDataHolder, IParsable

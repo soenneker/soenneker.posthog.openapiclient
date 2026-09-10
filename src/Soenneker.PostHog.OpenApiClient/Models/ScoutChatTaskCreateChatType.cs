@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Which scout chat to start: `author_scout` (guided scout authoring), `fleet_overview` (health of the scout fleet), or `recent_signals` (walk through recently emitted signals). The prompt template is owned server-side.* `author_scout` - author_scout* `fleet_overview` - fleet_overview* `recent_signals` - recent_signals&quot;
+    /// Which scout chat to start: `author_scout` (guided scout authoring), `fleet_overview` (health of the scout fleet), or `recent_signals` (walk through recently emitted signals). The prompt template is owned server-side.* `author_scout` - author_scout* `fleet_overview` - fleet_overview* `recent_signals` - recent_signals
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ScoutChatTaskCreateChatType : IAdditionalDataHolder, IParsable

@@ -16,6 +16,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>True when the report actually surfaced in the inbox (READY or PENDING_INPUT).</summary>
         public bool? Emitted { get; set; }
+        /// <summary>True when this call authored nothing because the emission had already landed — the fields above describe that first report. Expected on a retry; treat the report as filed and don&apos;t send it again.</summary>
+        public bool? IdempotentReplay { get; set; }
         /// <summary>One-line, actionable next step when `skipped_reason` is set and the block is fixable (e.g. an org admin must approve AI data processing). Null when the report was authored or the skip isn&apos;t something the scout can act on.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -32,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ReportId { get; set; }
 #endif
-        /// <summary>&quot;Birth status: `ready` | `pending_input` | `suppressed`, or null when gate-skipped.&quot;</summary>
+        /// <summary>Birth status: `ready` | `pending_input` | `suppressed`, or null when gate-skipped.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ReportStatus { get; set; }
@@ -82,6 +84,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "emitted", n => { Emitted = n.GetBoolValue(); } },
+                { "idempotent_replay", n => { IdempotentReplay = n.GetBoolValue(); } },
                 { "remediation", n => { Remediation = n.GetStringValue(); } },
                 { "report_id", n => { ReportId = n.GetStringValue(); } },
                 { "report_status", n => { ReportStatus = n.GetStringValue(); } },
@@ -97,6 +100,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("emitted", Emitted);
+            writer.WriteBoolValue("idempotent_replay", IdempotentReplay);
             writer.WriteStringValue("remediation", Remediation);
             writer.WriteStringValue("report_id", ReportId);
             writer.WriteStringValue("report_status", ReportStatus);

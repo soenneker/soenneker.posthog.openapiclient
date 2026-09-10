@@ -15,7 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;The metrics the bucket was actually computed over. Load-bearing for &apos;no_metric_activity&apos;: &apos;fired nothing&apos; only means something next to the list of metrics it was evaluated against.&quot;</summary>
+        /// <summary>The metrics the bucket was actually computed over. Load-bearing for &apos;no_metric_activity&apos;: &apos;fired nothing&apos; only means something next to the list of metrics it was evaluated against.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionBucketMetric>? ConsideredMetrics { get; set; }
@@ -23,9 +23,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionBucketMetric> ConsideredMetrics { get; set; }
 #endif
-        /// <summary>&quot;Start of the window scanned: the experiment&apos;s run window, clamped to its most recent 30 days. Matches outside it are not returned.&quot;</summary>
+        /// <summary>Start of the window scanned: the experiment&apos;s run window, clamped to its most recent 30 days. Matches outside it are not returned.</summary>
         public DateTimeOffset? DateFrom { get; set; }
-        /// <summary>&quot;End of the window scanned: the experiment&apos;s end date, or now while it runs.&quot;</summary>
+        /// <summary>End of the window scanned: the experiment&apos;s end date, or now while it runs.</summary>
         public DateTimeOffset? DateTo { get; set; }
         /// <summary>Requested metrics left out of the bucket because they can never match a recording, with the reason. They are reported rather than silently producing an empty result.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

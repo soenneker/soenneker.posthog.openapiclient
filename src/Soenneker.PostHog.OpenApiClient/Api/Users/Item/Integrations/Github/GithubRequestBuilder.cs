@@ -2,6 +2,7 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github.Install_requests;
 using Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github.Item;
 using Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github.Prepare_callback;
 using Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github.Start;
@@ -17,6 +18,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class GithubRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The install_requests property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github.Install_requests.Install_requestsRequestBuilder Install_requests
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github.Install_requests.Install_requestsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The prepare_callback property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github.Prepare_callback.Prepare_callbackRequestBuilder Prepare_callback
         {

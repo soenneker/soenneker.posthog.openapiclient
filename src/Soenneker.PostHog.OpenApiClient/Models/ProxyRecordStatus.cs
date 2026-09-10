@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Current provisioning status. Values: waiting (DNS verification pending), issuing (SSL certificate being issued), valid (proxy is live and working), warning (proxy has issues but is operational), erroring (proxy setup failed), deleting (removal in progress), timed_out (DNS verification timed out).* `waiting` - Waiting* `issuing` - Issuing* `valid` - Valid* `warning` - Warning* `erroring` - Erroring* `deleting` - Deleting* `timed_out` - Timed Out&quot;
+    /// Current provisioning status. Values: waiting (DNS verification pending), issuing (SSL certificate being issued), valid (proxy is live and working), warning (proxy has issues but is operational), erroring (proxy setup failed), deleting (removal in progress), timed_out (DNS verification timed out).* `waiting` - Waiting* `issuing` - Issuing* `valid` - Valid* `warning` - Warning* `erroring` - Erroring* `deleting` - Deleting* `timed_out` - Timed Out
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ProxyRecordStatus : IAdditionalDataHolder, IParsable

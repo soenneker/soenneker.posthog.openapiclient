@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Fla
         {
         }
         /// <summary>
-        /// &quot;Repository a flag-cleanup pull request for this experiment would be opened in.Resolution order: the experiment&apos;s saved repository, else the environment&apos;s defaultcleanup repository, else the team&apos;s only connected GitHub repository. When the teamhas several repositories and none is saved (source=ambiguous), pass one via`repository` on end/ship_variant.&quot;
+        /// Repository a flag-cleanup pull request for this experiment would be opened in.Resolution order: the experiment&apos;s saved repository, else the environment&apos;s defaultcleanup repository, else the team&apos;s only connected GitHub repository. When the teamhas several repositories and none is saved (source=ambiguous), pass one via`repository` on end/ship_variant.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagCleanupTarget"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Fla
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagCleanupTarget>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagCleanupTarget.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Repository a flag-cleanup pull request for this experiment would be opened in.Resolution order: the experiment&apos;s saved repository, else the environment&apos;s defaultcleanup repository, else the team&apos;s only connected GitHub repository. When the teamhas several repositories and none is saved (source=ambiguous), pass one via`repository` on end/ship_variant.&quot;
+        /// Repository a flag-cleanup pull request for this experiment would be opened in.Resolution order: the experiment&apos;s saved repository, else the environment&apos;s defaultcleanup repository, else the team&apos;s only connected GitHub repository. When the teamhas several repositories and none is saved (source=ambiguous), pass one via`repository` on end/ship_variant.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

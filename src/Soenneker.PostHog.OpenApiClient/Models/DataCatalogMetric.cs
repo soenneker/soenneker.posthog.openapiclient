@@ -27,10 +27,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>User who approved this metric as canonical, or null.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricApprovedBy? ApprovedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? ApprovedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricApprovedBy ApprovedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic ApprovedBy { get; private set; }
 #endif
         /// <summary>AI author&apos;s confidence in the proposal, 0-1.</summary>
         public double? Confidence { get; set; }
@@ -68,7 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string DefinitionKind { get; private set; }
 #endif
-        /// <summary>&quot;What the metric means and what it serves, in 1-3 short sentences: the business meaning plus any load-bearing inclusions/exclusions or grain. Never narrate or restate the query - the definition carries the mechanics; put rationale for query choices in &apos;reasoning&apos;.&quot;</summary>
+        /// <summary>What the metric means and what it serves, in 1-3 short sentences: the business meaning plus any load-bearing inclusions/exclusions or grain. Never narrate or restate the query - the definition carries the mechanics; put rationale for query choices in &apos;reasoning&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Description { get; set; }
@@ -130,7 +130,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SourceInsightShortId { get; set; }
 #endif
-        /// <summary>&quot;Persisted lifecycle state: &apos;proposed&apos; or &apos;approved&apos;. Drift is reported separately.&quot;</summary>
+        /// <summary>Persisted lifecycle state: &apos;proposed&apos; or &apos;approved&apos;. Drift is reported separately.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Status { get; private set; }
@@ -175,7 +175,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "ai_model", n => { AiModel = n.GetStringValue(); } },
                 { "approved_at", n => { ApprovedAt = n.GetDateTimeOffsetValue(); } },
-                { "approved_by", n => { ApprovedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricApprovedBy>(global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricApprovedBy.CreateFromDiscriminatorValue); } },
+                { "approved_by", n => { ApprovedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
                 { "confidence", n => { Confidence = n.GetDoubleValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricCreatedBy.CreateFromDiscriminatorValue); } },

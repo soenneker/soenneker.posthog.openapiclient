@@ -34,14 +34,15 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Warm
         {
         }
         /// <summary>
-        /// &quot;Warm a full idling Run for a Code-app cloud task while the user composes: boot a sandbox, clone the repo, check out the branch, and start the agent, then idle awaiting the first message. On submit the normal create+run path transparently reuses and activates this Run; abandoned warms are reaped by the Run&apos;s inactivity timeout. Best-effort: returns an empty body when the feature flag is off, the warm pool is full, or the GitHub integration doesn&apos;t belong to the team.&quot;
+        /// Warm a full idling Run for a cloud task while the user composes: boot a sandbox, clone the repo, check out the branch, and start the agent, then idle awaiting the first message. On submit the normal create+run path transparently reuses and activates this Run; abandoned warms are reaped by the Run&apos;s inactivity timeout. Best-effort: returns an empty body when the feature flag is off, the warm pool is full, or the GitHub integration doesn&apos;t belong to the team.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResponse"/></returns>
-        /// <param name="body">&quot;Request body for warming a full idling Run while composing a Code-app cloud task.Collection-level: no task exists yet at typing time. The warmer births a draft Task and aninteractive Run that boots and starts the agent, optionally cloning and checking out a repository,then idles awaiting the first message. `github_integration` is a plain integration PK (an integer);the view re-scopes it to the caller&apos;s team before use.&quot;</param>
+        /// <param name="body">Request body for warming a full idling Run while composing a Code-app cloud task.Collection-level: no task exists yet at typing time. The warmer births a draft Task and aninteractive Run that boots and starts the agent, optionally cloning and checking out a repository,then idles awaiting the first message. `github_integration` is a plain integration PK (an integer);the view re-scopes it to the caller&apos;s team before use.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponse">When receiving a 403 status code</exception>
         /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponse">When receiving a 429 status code</exception>
+        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponse">When receiving a 503 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResponse?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -57,14 +58,15 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Warm
             {
                 { "403", global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponse.CreateFromDiscriminatorValue },
                 { "429", global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponse.CreateFromDiscriminatorValue },
+                { "503", global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponse.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Warm a full idling Run for a Code-app cloud task while the user composes: boot a sandbox, clone the repo, check out the branch, and start the agent, then idle awaiting the first message. On submit the normal create+run path transparently reuses and activates this Run; abandoned warms are reaped by the Run&apos;s inactivity timeout. Best-effort: returns an empty body when the feature flag is off, the warm pool is full, or the GitHub integration doesn&apos;t belong to the team.&quot;
+        /// Warm a full idling Run for a cloud task while the user composes: boot a sandbox, clone the repo, check out the branch, and start the agent, then idle awaiting the first message. On submit the normal create+run path transparently reuses and activates this Run; abandoned warms are reaped by the Run&apos;s inactivity timeout. Best-effort: returns an empty body when the feature flag is off, the warm pool is full, or the GitHub integration doesn&apos;t belong to the team.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">&quot;Request body for warming a full idling Run while composing a Code-app cloud task.Collection-level: no task exists yet at typing time. The warmer births a draft Task and aninteractive Run that boots and starts the agent, optionally cloning and checking out a repository,then idles awaiting the first message. `github_integration` is a plain integration PK (an integer);the view re-scopes it to the caller&apos;s team before use.&quot;</param>
+        /// <param name="body">Request body for warming a full idling Run while composing a Code-app cloud task.Collection-level: no task exists yet at typing time. The warmer births a draft Task and aninteractive Run that boots and starts the agent, optionally cloning and checking out a repository,then idles awaiting the first message. `github_integration` is a plain integration PK (an integer);the view re-scopes it to the caller&apos;s team before use.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

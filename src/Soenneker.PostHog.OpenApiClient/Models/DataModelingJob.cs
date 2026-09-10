@@ -24,6 +24,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Error { get; private set; }
 #endif
+        /// <summary>Why this run rebuilt the whole table instead of updating only new rows, for example first run, definition changed, or table missing. Null when the run was incremental.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? FullRefreshReason { get; private set; }
+#nullable restore
+#else
+        public string FullRefreshReason { get; private set; }
+#endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>The last_run_at property</summary>
@@ -32,7 +40,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? RowsExpected { get; private set; }
         /// <summary>The rows_materialized property</summary>
         public int? RowsMaterialized { get; private set; }
-        /// <summary>&quot;What this run wrote: full_refresh rebuilt the whole table, so rows_materialized is the table&apos;s size; incremental wrote only its window, so rows_materialized counts just the rows synced. Null for runs from before modes were recorded, or that failed before the plan resolved.* `full_refresh` - Full refresh* `incremental` - Incremental&quot;</summary>
+        /// <summary>What this run wrote: full_refresh rebuilt the whole table, so rows_materialized is the table&apos;s size; incremental wrote only its window, so rows_materialized counts just the rows synced. Null for runs from before modes were recorded, or that failed before the plan resolved.* `full_refresh` - Full refresh* `incremental` - Incremental</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.DataModelingJobRunMode? RunMode { get; private set; }
@@ -95,6 +103,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "error", n => { Error = n.GetStringValue(); } },
+                { "full_refresh_reason", n => { FullRefreshReason = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "last_run_at", n => { LastRunAt = n.GetDateTimeOffsetValue(); } },
                 { "rows_expected", n => { RowsExpected = n.GetIntValue(); } },

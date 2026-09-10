@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversionBytecode Bytecode { get; set; }
 #endif
-        /// <summary>&quot;Event-based conversion goals: [{filters: {events: [{id, name, type: &apos;events&apos;}], ...}}].&quot;</summary>
+        /// <summary>Event-based conversion goals: [{filters: {events: [{id, name, type: &apos;events&apos;}], ...}}].</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversionEvent>? Events { get; set; }
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversionEvent> Events { get; set; }
 #endif
-        /// <summary>&quot;Property-based conversion conditions, as an ARRAY of property filters: [{key, value, operator, type: event|person|group}, ...]. Event-based goals do NOT go here — put them in &apos;events&apos;. Empty array = any event within the window converts.&quot;</summary>
+        /// <summary>Property-based conversion conditions, as an ARRAY of property filters: [{key, value, operator, type: event|person|group}, ...]. Event-based goals do NOT go here — put them in &apos;events&apos;. Empty array = any event within the window converts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversionFiltersItemProperty>? Filters { get; set; }

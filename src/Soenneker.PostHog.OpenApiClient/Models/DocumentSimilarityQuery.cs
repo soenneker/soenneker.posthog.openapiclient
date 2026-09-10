@@ -31,13 +31,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public List<string> DocumentTypes { get; set; }
 #endif
         /// <summary>The kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Kind { get; set; }
-#nullable restore
-#else
-        public string Kind { get; set; }
-#endif
+        public global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQueryKind? Kind { get; set; }
         /// <summary>The limit property</summary>
         public int? Limit { get; set; }
         /// <summary>The model property</summary>
@@ -127,7 +121,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>(global::Soenneker.PostHog.OpenApiClient.Models.DateRange.CreateFromDiscriminatorValue); } },
                 { "distance_func", n => { DistanceFunc = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DistanceFunc>(); } },
                 { "document_types", n => { DocumentTypes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
+                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQueryKind>(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
@@ -153,7 +147,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>("dateRange", DateRange);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DistanceFunc>("distance_func", DistanceFunc);
             writer.WriteCollectionOfPrimitiveValues<string>("document_types", DocumentTypes);
-            writer.WriteStringValue("kind", Kind);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DocumentSimilarityQueryKind>("kind", Kind);
             writer.WriteIntValue("limit", Limit);
             writer.WriteStringValue("model", Model);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);

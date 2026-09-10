@@ -104,7 +104,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.PullRequestCommentReaction> Reactions { get; private set; }
 #endif
-        /// <summary>&quot;Diff side the review comment is anchored to: &apos;LEFT&apos; = deletions, &apos;RIGHT&apos; = additions (review comments only).* `LEFT` - LEFT* `RIGHT` - RIGHT&quot;</summary>
+        /// <summary>Diff side the review comment is anchored to: &apos;LEFT&apos; = deletions, &apos;RIGHT&apos; = additions (review comments only).* `LEFT` - LEFT* `RIGHT` - RIGHT</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestCommentSide? Side { get; private set; }

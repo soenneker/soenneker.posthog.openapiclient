@@ -18,10 +18,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The author property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskThreadMessageDtoAuthor? Author { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo? Author { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskThreadMessageDtoAuthor Author { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo Author { get; set; }
 #endif
         /// <summary>The author_kind property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -52,10 +52,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The forwarded_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskThreadMessageDtoForwardedBy? ForwardedBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo? ForwardedBy { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskThreadMessageDtoForwardedBy ForwardedBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo ForwardedBy { get; set; }
 #endif
         /// <summary>The forwarded_to_agent_at property</summary>
         public DateTimeOffset? ForwardedToAgentAt { get; set; }
@@ -96,12 +96,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "author", n => { Author = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskThreadMessageDtoAuthor>(global::Soenneker.PostHog.OpenApiClient.Models.TaskThreadMessageDtoAuthor.CreateFromDiscriminatorValue); } },
+                { "author", n => { Author = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo>(global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo.CreateFromDiscriminatorValue); } },
                 { "author_kind", n => { AuthorKind = n.GetStringValue(); } },
                 { "content", n => { Content = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "event", n => { Event = n.GetStringValue(); } },
-                { "forwarded_by", n => { ForwardedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskThreadMessageDtoForwardedBy>(global::Soenneker.PostHog.OpenApiClient.Models.TaskThreadMessageDtoForwardedBy.CreateFromDiscriminatorValue); } },
+                { "forwarded_by", n => { ForwardedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo>(global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo.CreateFromDiscriminatorValue); } },
                 { "forwarded_to_agent_at", n => { ForwardedToAgentAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "payload", n => { Payload = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskThreadMessageDtoPayloadProperty>(global::Soenneker.PostHog.OpenApiClient.Models.TaskThreadMessageDtoPayloadProperty.CreateFromDiscriminatorValue); } },
@@ -115,12 +115,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskThreadMessageDtoAuthor>("author", Author);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo>("author", Author);
             writer.WriteStringValue("author_kind", AuthorKind);
             writer.WriteStringValue("content", Content);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("event", Event);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskThreadMessageDtoForwardedBy>("forwarded_by", ForwardedBy);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo>("forwarded_by", ForwardedBy);
             writer.WriteDateTimeOffsetValue("forwarded_to_agent_at", ForwardedToAgentAt);
             writer.WriteGuidValue("id", Id);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskThreadMessageDtoPayloadProperty>("payload", Payload);

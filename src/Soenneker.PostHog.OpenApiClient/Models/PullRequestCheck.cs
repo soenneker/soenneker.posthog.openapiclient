@@ -15,7 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;Outcome once completed: &apos;success&apos;, &apos;failure&apos;, &apos;neutral&apos;, &apos;cancelled&apos;, &apos;skipped&apos;, &apos;timed_out&apos;, or &apos;action_required&apos;. Null while still running.&quot;</summary>
+        /// <summary>Outcome once completed: &apos;success&apos;, &apos;failure&apos;, &apos;neutral&apos;, &apos;cancelled&apos;, &apos;skipped&apos;, &apos;timed_out&apos;, or &apos;action_required&apos;. Null while still running.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Conclusion { get; private set; }
@@ -31,7 +31,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; private set; }
 #endif
-        /// <summary>&quot;Lifecycle state: &apos;queued&apos;, &apos;in_progress&apos;, or &apos;completed&apos;.&quot;</summary>
+        /// <summary>Lifecycle state: &apos;queued&apos;, &apos;in_progress&apos;, or &apos;completed&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Status { get; private set; }

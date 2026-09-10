@@ -54,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string InvocationId { get; set; }
 #endif
-        /// <summary>&quot;Message channel this asset was sent on: &apos;email&apos; or &apos;push&apos;. The per-person endpoints return one channel each.&quot;</summary>
+        /// <summary>Message channel this asset was sent on: &apos;email&apos; or &apos;push&apos;. The per-person endpoints return one channel each.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Kind { get; set; }
@@ -78,7 +78,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string PersonId { get; set; }
 #endif
-        /// <summary>&quot;Who the message went to: the email address for &apos;email&apos;, or the recipient&apos;s distinct ID for &apos;push&apos;.&quot;</summary>
+        /// <summary>Who the message went to: the email address for &apos;email&apos;, or the recipient&apos;s distinct ID for &apos;push&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Recipient { get; set; }

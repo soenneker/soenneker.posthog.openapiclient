@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Input: validates the JSON the wizard CLI posts. team_id is derived from URL.&quot;
+    /// Input: validates the JSON the wizard CLI posts. team_id is derived from URL.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class UpsertWizardSessionRequest : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;Populated when run_phase=&apos;error&apos;. Shape: { type: string, message: string }.&quot;</summary>
+        /// <summary>Populated when run_phase=&apos;error&apos;. Shape: { type: string, message: string }.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestErrorProperty? Error { get; set; }
@@ -42,10 +42,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Populated while the wizard is blocked on a question in the terminal. Null/absent means no input is pending; a push without it clears the previous prompt.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestPendingInput? PendingInput { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PendingInput? PendingInput { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestPendingInput PendingInput { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PendingInput PendingInput { get; set; }
 #endif
         /// <summary>Lifecycle stage of the wizard run.* `idle` - IDLE* `running` - RUNNING* `completed` - COMPLETED* `error` - ERROR</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -55,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestRunPhase RunPhase { get; set; }
 #endif
-        /// <summary>&quot;Stable identifier the wizard mints for this run (format: &apos;{workflow_id}-{skill_id}-{started_at_iso}&apos;). Reposting with the same session_id upserts the existing row.&quot;</summary>
+        /// <summary>Stable identifier the wizard mints for this run (format: &apos;{workflow_id}-{skill_id}-{started_at_iso}&apos;). Reposting with the same session_id upserts the existing row.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SessionId { get; set; }
@@ -117,7 +117,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "error", n => { Error = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestErrorProperty>(global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestErrorProperty.CreateFromDiscriminatorValue); } },
                 { "event_plan", n => { EventPlan = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestEventPlanProperty>(global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestEventPlanProperty.CreateFromDiscriminatorValue); } },
                 { "handoff_text", n => { HandoffText = n.GetStringValue(); } },
-                { "pending_input", n => { PendingInput = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestPendingInput>(global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestPendingInput.CreateFromDiscriminatorValue); } },
+                { "pending_input", n => { PendingInput = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PendingInput>(global::Soenneker.PostHog.OpenApiClient.Models.PendingInput.CreateFromDiscriminatorValue); } },
                 { "run_phase", n => { RunPhase = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestRunPhase>(global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestRunPhase.CreateFromDiscriminatorValue); } },
                 { "session_id", n => { SessionId = n.GetStringValue(); } },
                 { "skill_id", n => { SkillId = n.GetStringValue(); } },
@@ -136,7 +136,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestErrorProperty>("error", Error);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestEventPlanProperty>("event_plan", EventPlan);
             writer.WriteStringValue("handoff_text", HandoffText);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestPendingInput>("pending_input", PendingInput);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PendingInput>("pending_input", PendingInput);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestRunPhase>("run_phase", RunPhase);
             writer.WriteStringValue("session_id", SessionId);
             writer.WriteStringValue("skill_id", SkillId);

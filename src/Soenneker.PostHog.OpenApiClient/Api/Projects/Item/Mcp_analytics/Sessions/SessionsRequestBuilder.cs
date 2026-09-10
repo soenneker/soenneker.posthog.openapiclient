@@ -136,7 +136,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_analytics.Sessio
             /// <summary>Number of sessions to skip before returning results. Combine with limit to page through sessions; the response&apos;s has_next flag indicates whether more remain.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
-            /// <summary>&quot;Sort column. Allowed: session_id, session_start, session_end, duration_seconds, tool_call_count, mcp_client_name, distinct_id. Prefix with &apos;-&apos; for descending. Defaults to &apos;-session_start&apos; (newest sessions first).&quot;</summary>
+            /// <summary>Sort column. Allowed: session_id, session_start, session_end, duration_seconds, tool_call_count, mcp_client_name, distinct_id. Prefix with &apos;-&apos; for descending. Defaults to &apos;-session_start&apos; (newest sessions first).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("order_by")]

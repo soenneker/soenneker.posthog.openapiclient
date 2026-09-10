@@ -85,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_definitions.Pr
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Primary_propertiesRequestBuilderGetQueryParameters 
         {
-            /// <summary>&quot;Optional: restrict the response to these event names. Repeat the parameter for multiple names (e.g. `?names=a&amp;names=b`). When omitted, returns every team-configured primary property.&quot;</summary>
+            /// <summary>Optional: restrict the response to these event names. Repeat the parameter for multiple names (e.g. `?names=a&amp;names=b`). When omitted, returns every team-configured primary property.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("names")]

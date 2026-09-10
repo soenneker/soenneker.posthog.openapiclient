@@ -37,7 +37,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_saved_quer
         /// Report whether a query can be materialized incrementally, without running it.Parses the SQL only, so it is cheap enough to call from the editor as the user types. Letsthe editor explain why the incremental option is unavailable before anything is saved.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.IncrementalEligibility"/></returns>
-        /// <param name="body">&quot;Body of the `check_incremental` action: a query and an optional config to check it against.&quot;</param>
+        /// <param name="body">Body of the `check_incremental` action: a query and an optional config to check it against.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -57,7 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_saved_quer
         /// Report whether a query can be materialized incrementally, without running it.Parses the SQL only, so it is cheap enough to call from the editor as the user types. Letsthe editor explain why the incremental option is unavailable before anything is saved.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">&quot;Body of the `check_incremental` action: a query and an optional config to check it against.&quot;</param>
+        /// <param name="body">Body of the `check_incremental` action: a query and an optional config to check it against.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

@@ -21,15 +21,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? CreditsPerObservation { get; set; }
         /// <summary>`estimated_observations_per_month` priced at `credits_per_observation`.</summary>
         public int? EstimatedCreditsPerMonth { get; set; }
-        /// <summary>&quot;Projected monthly observations: quality-filtered matched sessions scaled to 30 days, times sampling_rate.&quot;</summary>
+        /// <summary>Projected monthly observations: quality-filtered matched sessions scaled from `window_days` to 30 days, times sampling_rate.</summary>
         public int? EstimatedObservationsPerMonth { get; set; }
-        /// <summary>Distinct sessions matching the query within the 30-day lookback, after the sampling_mode quality filter but before random sampling.</summary>
+        /// <summary>Distinct sessions matching the query within the scanned window (`window_days`), after the sampling_mode quality filter but before random sampling.</summary>
         public int? MatchedSessionsInWindow { get; set; }
         /// <summary>Credit-weighted projected monthly spend of the org&apos;s other enabled scanners (excluding `scanner_id`), from their cached estimates. Read from the same snapshot as this estimate so the forecast can&apos;t double-count the edited scanner.</summary>
         public int? OtherEnabledScannersMonthlyCredits { get; set; }
         /// <summary>Sampling rate applied to the projection. Echoed from the request.</summary>
         public double? SamplingRate { get; set; }
-        /// <summary>Lookback window the estimate is based on. Normally 30; smaller when the team has fewer days of recordings.</summary>
+        /// <summary>Days of recordings the estimate scanned before scaling to 30. Up to a week (shorter when the query&apos;s operand rules out sampling); smaller when the team has fewer days of recordings.</summary>
         public int? WindowDays { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EstimateResponse"/> and sets the default values.

@@ -14,15 +14,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;When true, ask the headless browser to dismiss cookie/consent banners before capturing the screenshot. Off by default: the blocker can stall the render on some sites and time out. Only applies to &apos;screenshot&apos; heatmaps.&quot;</summary>
+        /// <summary>When true, ask the headless browser to dismiss cookie/consent banners before capturing the screenshot. Off by default: the blocker can stall the render on some sites and time out. Only applies to &apos;screenshot&apos; heatmaps.</summary>
         public bool? BlockConsentModals { get; set; }
         /// <summary>URL whose heatmap data is overlaid on the screenshot. Defaults to &apos;url&apos; when omitted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DataUrl { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SavedHeatmapRequestDataUrl? DataUrl { get; set; }
 #nullable restore
 #else
-        public string DataUrl { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SavedHeatmapRequestDataUrl DataUrl { get; set; }
 #endif
         /// <summary>Set true to soft-delete the saved heatmap.</summary>
         public bool? Deleted { get; set; }
@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>&quot;Render mode: &apos;screenshot&apos; (renders the page headlessly, default), &apos;iframe&apos;, or &apos;recording&apos;. Only &apos;screenshot&apos; generates image bytes.* `screenshot` - Screenshot* `iframe` - Iframe* `recording` - Recording&quot;</summary>
+        /// <summary>Render mode: &apos;screenshot&apos; (renders the page headlessly, default), &apos;iframe&apos;, or &apos;recording&apos;. Only &apos;screenshot&apos; generates image bytes.* `screenshot` - Screenshot* `iframe` - Iframe* `recording` - Recording</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.SavedHeatmapRequestType? Type { get; set; }
@@ -84,7 +84,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "block_consent_modals", n => { BlockConsentModals = n.GetBoolValue(); } },
-                { "data_url", n => { DataUrl = n.GetStringValue(); } },
+                { "data_url", n => { DataUrl = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SavedHeatmapRequestDataUrl>(global::Soenneker.PostHog.OpenApiClient.Models.SavedHeatmapRequestDataUrl.CreateFromDiscriminatorValue); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "type", n => { Type = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SavedHeatmapRequestType>(global::Soenneker.PostHog.OpenApiClient.Models.SavedHeatmapRequestType.CreateFromDiscriminatorValue); } },
@@ -100,7 +100,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("block_consent_modals", BlockConsentModals);
-            writer.WriteStringValue("data_url", DataUrl);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SavedHeatmapRequestDataUrl>("data_url", DataUrl);
             writer.WriteBoolValue("deleted", Deleted);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SavedHeatmapRequestType>("type", Type);

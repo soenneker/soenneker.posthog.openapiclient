@@ -211,8 +211,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Item
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class PersonsItemRequestBuilderGetQueryParameters 
         {
+            #pragma warning disable CS1591
             [QueryParameter("format")]
             public global::Soenneker.PostHog.OpenApiClient.Models.PersonsRetrieveFormatParameter? Format { get; set; }
+            #pragma warning restore CS1591
         }
         /// <summary>
         /// This endpoint is meant for reading and deleting persons. To create or update persons, we recommend using the [capture API](https://posthog.com/docs/api/capture), the `$set` and `$unset` [properties](https://posthog.com/docs/product-analytics/user-properties), or one of our SDKs.
@@ -220,8 +222,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Item
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class PersonsItemRequestBuilderPatchQueryParameters 
         {
+            #pragma warning disable CS1591
             [QueryParameter("format")]
             public global::Soenneker.PostHog.OpenApiClient.Models.PersonsPartialUpdateFormatParameter? Format { get; set; }
+            #pragma warning restore CS1591
         }
         /// <summary>
         /// Only for setting properties on the person. &quot;properties&quot; from the request data will be updated via a &quot;$set&quot; event.This means that only the properties listed will be updated, but other properties won&apos;t be removed nor updated.If you would like to remove a property use the `delete_property` endpoint.
@@ -229,8 +233,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Item
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class PersonsItemRequestBuilderPutQueryParameters 
         {
+            #pragma warning disable CS1591
             [QueryParameter("format")]
             public global::Soenneker.PostHog.OpenApiClient.Models.PersonsUpdateFormatParameter? Format { get; set; }
+            #pragma warning restore CS1591
         }
     }
 }

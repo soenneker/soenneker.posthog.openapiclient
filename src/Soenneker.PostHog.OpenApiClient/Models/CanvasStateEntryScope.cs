@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;user: private to the viewer who wrote it. shared: one value per canvas, visible to every viewer.* `user` - user* `shared` - shared&quot;
+    /// user: private to the viewer who wrote it. shared: one value per canvas, visible to every viewer.* `user` - user* `shared` - shared
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CanvasStateEntryScope : IAdditionalDataHolder, IParsable
