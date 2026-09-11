@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Symbol_sets.Bulk_check_upload;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Symbol_sets.Bulk_delete;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Symbol_sets.Bulk_finish_upload;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Symbol_sets.Bulk_start_upload;
@@ -21,6 +22,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Symbo
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Symbol_setsRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The bulk_check_upload property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Symbol_sets.Bulk_check_upload.Bulk_check_uploadRequestBuilder Bulk_check_upload
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Symbol_sets.Bulk_check_upload.Bulk_check_uploadRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The bulk_delete property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Symbol_sets.Bulk_delete.Bulk_deleteRequestBuilder Bulk_delete
         {

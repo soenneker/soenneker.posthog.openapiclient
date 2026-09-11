@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `ok` - Ok* `not_connected` - Not Connected* `needs_reauth` - Needs Reauth* `blocked` - Blocked* `tool_missing` - Tool Missing* `write_blocked` - Write Blocked* `upstream_error` - Upstream Error</summary>
+    /// <summary>* `ok` - Ok* `not_connected` - Not Connected* `needs_reauth` - Needs Reauth* `needs_approval` - Needs Approval* `blocked` - Blocked* `tool_missing` - Tool Missing* `write_blocked` - Write Blocked* `upstream_error` - Upstream Error</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ConnectorCallStatusEnum
     {
@@ -18,6 +18,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "needs_reauth")]
         #pragma warning disable CS1591
         NeedsReauth,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "needs_approval")]
+        #pragma warning disable CS1591
+        NeedsApproval,
         #pragma warning restore CS1591
         [EnumMember(Value = "blocked")]
         #pragma warning disable CS1591

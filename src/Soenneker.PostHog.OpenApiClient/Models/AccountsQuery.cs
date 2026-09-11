@@ -14,6 +14,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Match accounts with no active relationship of any definition.</summary>
         public bool? AllRolesUnassigned { get; set; }
+        /// <summary>Match accounts with at least one active relationship of any definition.</summary>
+        public bool? AssignedOnly { get; set; }
         /// <summary>Match accounts where any of these user ids actively holds any relationship (CSM, Account executive, or a custom definition). Drives the &quot;My accounts&quot; shortcut (the current user&apos;s id) and the shareable &quot;Assigned to&quot; filter — the ids are explicit so a shared URL resolves identically for every viewer.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -123,6 +125,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "allRolesUnassigned", n => { AllRolesUnassigned = n.GetBoolValue(); } },
+                { "assignedOnly", n => { AssignedOnly = n.GetBoolValue(); } },
                 { "assignedToUserIds", n => { AssignedToUserIds = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
                 { "filterExpression", n => { FilterExpression = n.GetStringValue(); } },
                 { "includeIgnored", n => { IncludeIgnored = n.GetBoolValue(); } },
@@ -148,6 +151,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("allRolesUnassigned", AllRolesUnassigned);
+            writer.WriteBoolValue("assignedOnly", AssignedOnly);
             writer.WriteCollectionOfPrimitiveValues<int?>("assignedToUserIds", AssignedToUserIds);
             writer.WriteStringValue("filterExpression", FilterExpression);
             writer.WriteBoolValue("includeIgnored", IncludeIgnored);

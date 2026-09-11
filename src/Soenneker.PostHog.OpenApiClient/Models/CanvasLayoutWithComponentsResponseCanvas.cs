@@ -11,7 +11,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// Identity and version pointers for the canvas.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class CanvasLayoutResponseCanvas : IAdditionalDataHolder, IParsable
+    public partial class CanvasLayoutWithComponentsResponseCanvas : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -62,21 +62,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Url { get; private set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutResponseCanvas"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutWithComponentsResponseCanvas"/> and sets the default values.
         /// </summary>
-        public CanvasLayoutResponseCanvas()
+        public CanvasLayoutWithComponentsResponseCanvas()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutResponseCanvas"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutWithComponentsResponseCanvas"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutResponseCanvas CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutWithComponentsResponseCanvas CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutResponseCanvas();
+            return new global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutWithComponentsResponseCanvas();
         }
         /// <summary>
         /// The deserialization information for the current model

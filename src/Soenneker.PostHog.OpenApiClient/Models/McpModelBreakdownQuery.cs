@@ -22,8 +22,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The filterTestAccounts property</summary>
         public bool? FilterTestAccounts { get; set; }
+        /// <summary>Return individual reported models, excluding Unknown, instead of the top-six grouping.</summary>
+        public bool? IncludeAllModels { get; set; }
         /// <summary>The kind property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.McpModelBreakdownQueryKind? Kind { get; set; }
+        /// <summary>Page size when includeAllModels is enabled.</summary>
+        public int? Limit { get; set; }
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -32,6 +36,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers Modifiers { get; set; }
 #endif
+        /// <summary>Number of individual models to skip when includeAllModels is enabled.</summary>
+        public int? Offset { get; set; }
         /// <summary>The properties property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -78,8 +84,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>(global::Soenneker.PostHog.OpenApiClient.Models.DateRange.CreateFromDiscriminatorValue); } },
                 { "filterTestAccounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
+                { "includeAllModels", n => { IncludeAllModels = n.GetBoolValue(); } },
                 { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpModelBreakdownQueryKind>(); } },
+                { "limit", n => { Limit = n.GetIntValue(); } },
                 { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
+                { "offset", n => { Offset = n.GetIntValue(); } },
                 { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.McpModelBreakdownQueryPropertiesItem>(global::Soenneker.PostHog.OpenApiClient.Models.McpModelBreakdownQueryPropertiesItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpModelBreakdownQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.McpModelBreakdownQueryResponse.CreateFromDiscriminatorValue); } },
                 { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
@@ -95,8 +104,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DateRange>("dateRange", DateRange);
             writer.WriteBoolValue("filterTestAccounts", FilterTestAccounts);
+            writer.WriteBoolValue("includeAllModels", IncludeAllModels);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpModelBreakdownQueryKind>("kind", Kind);
+            writer.WriteIntValue("limit", Limit);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
+            writer.WriteIntValue("offset", Offset);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.McpModelBreakdownQueryPropertiesItem>("properties", Properties);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpModelBreakdownQueryResponse>("response", Response);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);

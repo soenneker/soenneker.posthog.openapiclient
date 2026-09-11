@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Sampled occurrences keyed by lowercased severity (&quot;trace&quot; through &quot;fatal&quot;). Raw sample counts, not extrapolated — severity dominance is a proportion, so scaling would not change it.
+    /// Occurrences keyed by lowercased severity (&quot;trace&quot; through &quot;fatal&quot;). Never extrapolated, because severity dominance is a proportion that scaling would not change. Sample counts when `sampled` is true, counts over every matching row otherwise.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class LogPatternDiffEntryPatternSeverityCounts : IAdditionalDataHolder, IParsable

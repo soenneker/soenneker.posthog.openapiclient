@@ -26,6 +26,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>Whether to add this user as a GitHub assignee on implementation pull requests for reports that suggest them as reviewer. Off by default. Assignment is additive, so turning it off never removes an assignee from a pull request that already has one.</summary>
         public bool? GithubAssignOnPullRequest { get; set; }
+        /// <summary>Whether implementation pull requests for reports that suggest this user as reviewer open ready for review instead of draft, so the full CI matrix starts right away. Null follows the project&apos;s default_open_pull_request_ready. Applies only when the pull request is created; a pull request somebody converts back to draft stays draft.</summary>
+        public bool? GithubOpenPullRequestReady { get; set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>Where the reviewer ping goes, in the same `id|name` shape PostHog uses elsewhere (only the id is required): a channel (`C0123ABC456|#alerts`), or a workspace member (`U0123ABC456|@sam`) who is sent a direct message. Null disables Slack notifications.</summary>
@@ -84,6 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "autostart_priority", n => { AutostartPriority = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfigAutostartPriority>(global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfigAutostartPriority.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "github_assign_on_pull_request", n => { GithubAssignOnPullRequest = n.GetBoolValue(); } },
+                { "github_open_pull_request_ready", n => { GithubOpenPullRequestReady = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "slack_notification_channel", n => { SlackNotificationChannel = n.GetStringValue(); } },
                 { "slack_notification_integration_id", n => { SlackNotificationIntegrationId = n.GetIntValue(); } },
@@ -101,6 +104,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfigAutostartPriority>("autostart_priority", AutostartPriority);
             writer.WriteBoolValue("github_assign_on_pull_request", GithubAssignOnPullRequest);
+            writer.WriteBoolValue("github_open_pull_request_ready", GithubOpenPullRequestReady);
             writer.WriteStringValue("slack_notification_channel", SlackNotificationChannel);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfigSlackNotificationMinPriority>("slack_notification_min_priority", SlackNotificationMinPriority);
             writer.WriteAdditionalData(AdditionalData);

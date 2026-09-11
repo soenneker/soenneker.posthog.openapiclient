@@ -4,6 +4,8 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Item.Approve;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Item.Check_suite_runs;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Item.Checks;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Item.Refresh_from_insight;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Item.Run;
 using Soenneker.PostHog.OpenApiClient.Models;
@@ -15,15 +17,25 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\projects\{projectId}\data_catalog\metrics\{name}
+    /// Builds and executes requests for operations under \api\projects\{projectId}\data_catalog\metrics\{metric-id}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class WithNameItemRequestBuilder : BaseRequestBuilder
+    public partial class MetricItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The approve property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Item.Approve.ApproveRequestBuilder Approve
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Item.Approve.ApproveRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The check_suite_runs property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Item.Check_suite_runs.Check_suite_runsRequestBuilder Check_suite_runs
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Item.Check_suite_runs.Check_suite_runsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The checks property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Item.Checks.ChecksRequestBuilder Checks
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Item.Checks.ChecksRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The refresh_from_insight property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Item.Refresh_from_insight.Refresh_from_insightRequestBuilder Refresh_from_insight
@@ -36,19 +48,19 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Item.Run.RunRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Item.WithNameItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Item.MetricItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithNameItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_catalog/metrics/{name}", pathParameters)
+        public MetricItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_catalog/metrics/{metric%2Did}", pathParameters)
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Item.WithNameItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Item.MetricItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithNameItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_catalog/metrics/{name}", rawUrl)
+        public MetricItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_catalog/metrics/{metric%2Did}", rawUrl)
         {
         }
         /// <summary>
@@ -210,11 +222,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Item.WithNameItemRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Item.MetricItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Item.WithNameItemRequestBuilder WithUrl(string rawUrl)
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Item.MetricItemRequestBuilder WithUrl(string rawUrl)
         {
-            return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Item.WithNameItemRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Item.MetricItemRequestBuilder(rawUrl, RequestAdapter);
         }
     }
 }

@@ -67,6 +67,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ReportChannel { get; set; }
 #endif
+        /// <summary>The run_note property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? RunNote { get; set; }
+#nullable restore
+#else
+        public string RunNote { get; set; }
+#endif
         /// <summary>The runtime_adapter property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -140,6 +148,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "network_access", n => { NetworkAccess = n.GetStringValue(); } },
                 { "reasoning_effort", n => { ReasoningEffort = n.GetStringValue(); } },
                 { "report_channel", n => { ReportChannel = n.GetStringValue(); } },
+                { "run_note", n => { RunNote = n.GetStringValue(); } },
                 { "runtime_adapter", n => { RuntimeAdapter = n.GetStringValue(); } },
                 { "service_tier", n => { ServiceTier = n.GetStringValue(); } },
                 { "skill_origin", n => { SkillOrigin = n.GetStringValue(); } },
@@ -162,6 +171,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("network_access", NetworkAccess);
             writer.WriteStringValue("reasoning_effort", ReasoningEffort);
             writer.WriteStringValue("report_channel", ReportChannel);
+            writer.WriteStringValue("run_note", RunNote);
             writer.WriteStringValue("runtime_adapter", RuntimeAdapter);
             writer.WriteStringValue("service_tier", ServiceTier);
             writer.WriteStringValue("skill_origin", SkillOrigin);

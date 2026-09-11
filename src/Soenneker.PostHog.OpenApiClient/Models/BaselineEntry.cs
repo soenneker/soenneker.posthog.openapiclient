@@ -12,6 +12,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public partial class BaselineEntry : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>Accepted variants still recorded against this baseline&apos;s current hash. Unlike the 30-day and 90-day counts, this has no time window: an accepted variant keeps matching without a new record. A baseline change resets it to zero.</summary>
+        public int? ActiveVariantsCurrentBaseline { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The baseline_change_count property</summary>
@@ -95,6 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "active_variants_current_baseline", n => { ActiveVariantsCurrentBaseline = n.GetIntValue(); } },
                 { "baseline_change_count", n => { BaselineChangeCount = n.GetIntValue(); } },
                 { "browser", n => { Browser = n.GetStringValue(); } },
                 { "height", n => { Height = n.GetIntValue(); } },
@@ -117,6 +120,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteIntValue("active_variants_current_baseline", ActiveVariantsCurrentBaseline);
             writer.WriteIntValue("baseline_change_count", BaselineChangeCount);
             writer.WriteStringValue("browser", Browser);
             writer.WriteIntValue("height", Height);

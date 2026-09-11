@@ -47,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_modeling_jobs
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Data_modeling_jobsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_modeling_jobs{?limit*,offset*,saved_query_id*}", pathParameters)
+        public Data_modeling_jobsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_modeling_jobs{?limit*,offset*,saved_query_id*,status*}", pathParameters)
         {
         }
         /// <summary>
@@ -55,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_modeling_jobs
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Data_modeling_jobsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_modeling_jobs{?limit*,offset*,saved_query_id*}", rawUrl)
+        public Data_modeling_jobsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/data_modeling_jobs{?limit*,offset*,saved_query_id*,status*}", rawUrl)
         {
         }
         /// <summary>
@@ -120,6 +120,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_modeling_jobs
             [QueryParameter("saved_query_id")]
             public Guid? SavedQueryId { get; set; }
             #pragma warning restore CS1591
+            /// <summary>* `Cancelled` - Cancelled* `Completed` - Completed* `Failed` - Failed* `Running` - Running* `Skipped` - Skipped</summary>
+            [QueryParameter("status")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.DataModelingJobsListStatusParameter? Status { get; set; }
         }
     }
 }

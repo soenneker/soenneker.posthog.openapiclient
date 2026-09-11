@@ -15,6 +15,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Single-use token from a needs_approval response. Submit only after the viewer approves this exact call. Expires after 15 minutes.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ApprovalToken { get; set; }
+#nullable restore
+#else
+        public string ApprovalToken { get; set; }
+#endif
         /// <summary>Tool arguments, validated against the tool&apos;s input schema.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -64,6 +72,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "approval_token", n => { ApprovalToken = n.GetStringValue(); } },
                 { "arguments", n => { Arguments = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorCallArgumentsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorCallArgumentsProperty.CreateFromDiscriminatorValue); } },
                 { "provider", n => { Provider = n.GetStringValue(); } },
                 { "tool", n => { Tool = n.GetStringValue(); } },
@@ -76,6 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("approval_token", ApprovalToken);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorCallArgumentsProperty>("arguments", Arguments);
             writer.WriteStringValue("provider", Provider);
             writer.WriteStringValue("tool", Tool);

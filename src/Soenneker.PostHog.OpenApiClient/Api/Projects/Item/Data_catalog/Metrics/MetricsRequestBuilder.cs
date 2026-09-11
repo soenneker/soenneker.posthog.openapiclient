@@ -32,14 +32,14 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics
         }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.data_catalog.metrics.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Item.WithNameItemRequestBuilder"/></returns>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Item.WithNameItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Item.MetricItemRequestBuilder"/></returns>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Item.MetricItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("name", position);
-                return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Item.WithNameItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("metric%2Did", position);
+                return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics.Item.MetricItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>

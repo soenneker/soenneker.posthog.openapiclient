@@ -23,9 +23,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionBucketMetric> ConsideredMetrics { get; set; }
 #endif
-        /// <summary>Start of the window scanned: the experiment&apos;s run window, clamped to its most recent 30 days. Matches outside it are not returned.</summary>
+        /// <summary>Start of the window scanned, never before the experiment started. At most 30 days before date_to when the scan found an exposure to anchor on. When it found none, how far back the search for one reached, which the project&apos;s recording retention bounds. Matches outside the window are not returned.</summary>
         public DateTimeOffset? DateFrom { get; set; }
-        /// <summary>End of the window scanned: the experiment&apos;s end date, or now while it runs.</summary>
+        /// <summary>End of the window scanned: 24 hours after the latest exposure captured in a session, capped at the experiment&apos;s end date or now. The pad covers the metric events a session fires after its exposure. The scan ends at the experiment&apos;s end date, or now while it runs, when that exposure can&apos;t be located, so an experiment whose exposures stopped long ago is still scanned where its sessions are.</summary>
         public DateTimeOffset? DateTo { get; set; }
         /// <summary>Requested metrics left out of the bucket because they can never match a recording, with the reason. They are reported rather than silently producing an empty result.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

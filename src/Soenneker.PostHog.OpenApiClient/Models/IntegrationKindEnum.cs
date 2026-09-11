@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `anthropic` - Anthropic* `apns` - Apple Push* `aws-redshift` - Aws Redshift* `aws-s3` - Aws S3* `azure-blob` - Azure Blob* `bing-ads` - Bing Ads* `clickup` - Clickup* `customerio-app` - Customerio App* `customerio-track` - Customerio Track* `customerio-webhook` - Customerio Webhook* `databricks` - Databricks* `email` - Email* `firebase` - Firebase* `github` - Github* `gitlab` - Gitlab* `google-ads` - Google Ads* `google-analytics` - Google Analytics* `google-calendar` - Google Calendar* `google-cloud-service-account` - Google Cloud Service Account* `google-cloud-storage` - Google Cloud Storage* `google-pubsub` - Google Pubsub* `google-search-console` - Google Search Console* `google-sheets` - Google Sheets* `hubspot` - Hubspot* `instagram` - Instagram* `intercom` - Intercom* `jira` - Jira* `linear` - Linear* `linkedin-ads` - Linkedin Ads* `meta-ads` - Meta Ads* `pardot` - Pardot* `pinterest-ads` - Pinterest Ads* `postgresql` - Postgresql* `posthog` - Posthog* `reddit-ads` - Reddit Ads* `resend` - Resend* `s3-compatible` - S3 Compatible* `salesforce` - Salesforce* `slack` - Slack* `slack-posthog-code` - Slack Posthog Code* `snapchat` - Snapchat* `snowflake` - Snowflake* `stripe` - Stripe* `tiktok-ads` - Tiktok Ads* `twilio` - Twilio* `vercel` - Vercel* `youtube-analytics` - Youtube Analytics</summary>
+    /// <summary>* `anthropic` - Anthropic* `apns` - Apple Push* `aws-redshift` - Aws Redshift* `aws-s3` - Aws S3* `azure-blob` - Azure Blob* `bing-ads` - Bing Ads* `clickup` - Clickup* `customerio-app` - Customerio App* `customerio-track` - Customerio Track* `customerio-webhook` - Customerio Webhook* `databricks` - Databricks* `email` - Email* `firebase` - Firebase* `github` - Github* `gitlab` - Gitlab* `google-ads` - Google Ads* `google-analytics` - Google Analytics* `google-calendar` - Google Calendar* `google-cloud-service-account` - Google Cloud Service Account* `google-cloud-storage` - Google Cloud Storage* `google-pubsub` - Google Pubsub* `google-search-console` - Google Search Console* `google-sheets` - Google Sheets* `helpscout` - Helpscout* `hubspot` - Hubspot* `instagram` - Instagram* `intercom` - Intercom* `jira` - Jira* `linear` - Linear* `linkedin-ads` - Linkedin Ads* `meta-ads` - Meta Ads* `pardot` - Pardot* `pinterest-ads` - Pinterest Ads* `postgresql` - Postgresql* `posthog` - Posthog* `reddit-ads` - Reddit Ads* `resend` - Resend* `s3-compatible` - S3 Compatible* `salesforce` - Salesforce* `slack` - Slack* `slack-posthog-code` - Slack Posthog Code* `snapchat` - Snapchat* `snowflake` - Snowflake* `stripe` - Stripe* `tiktok-ads` - Tiktok Ads* `twilio` - Twilio* `vercel` - Vercel* `youtube-analytics` - Youtube Analytics</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum IntegrationKindEnum
     {
@@ -98,6 +98,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "google-sheets")]
         #pragma warning disable CS1591
         GoogleSheets,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "helpscout")]
+        #pragma warning disable CS1591
+        Helpscout,
         #pragma warning restore CS1591
         [EnumMember(Value = "hubspot")]
         #pragma warning disable CS1591

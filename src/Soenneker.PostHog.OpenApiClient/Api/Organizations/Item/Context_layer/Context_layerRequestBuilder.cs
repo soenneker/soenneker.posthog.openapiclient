@@ -8,6 +8,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Context_layer.Dream
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Context_layer.Enable;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Context_layer.Export;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Context_layer.Pages;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Context_layer.Proposals;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Context_layer.Status;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Context_layer.Tree;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Context_layer.Wiki;
@@ -52,6 +53,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Context_layer
         public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Context_layer.Pages.PagesRequestBuilder Pages
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Context_layer.Pages.PagesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The proposals property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Context_layer.Proposals.ProposalsRequestBuilder Proposals
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Context_layer.Proposals.ProposalsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The status property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Context_layer.Status.StatusRequestBuilder Status

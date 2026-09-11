@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Documents;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Gap_suggestions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Settings;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Sources;
 using System.Collections.Generic;
 using System.IO;
@@ -26,6 +27,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Gap_suggestions.Gap_suggestionsRequestBuilder Gap_suggestions
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Gap_suggestions.Gap_suggestionsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The settings property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Settings.SettingsRequestBuilder Settings
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Settings.SettingsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The sources property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Sources.SourcesRequestBuilder Sources

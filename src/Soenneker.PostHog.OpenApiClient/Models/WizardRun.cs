@@ -17,6 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>When the Wizard run was created.</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>User who created the Wizard run, or null if that user no longer exists.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.WizardRunCreator? CreatedBy { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.WizardRunCreator CreatedBy { get; private set; }
+#endif
+        /// <summary>User who created the Wizard run, or null if that user no longer exists.</summary>
         public int? CreatedById { get; private set; }
         /// <summary>Cloud execution deadline, or null for local runs.</summary>
         public DateTimeOffset? DeadlineAt { get; private set; }
@@ -112,6 +120,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WizardRunCreator>(global::Soenneker.PostHog.OpenApiClient.Models.WizardRunCreator.CreateFromDiscriminatorValue); } },
                 { "created_by_id", n => { CreatedById = n.GetIntValue(); } },
                 { "deadline_at", n => { DeadlineAt = n.GetDateTimeOffsetValue(); } },
                 { "environment", n => { Environment = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WizardRunEnvironment>(global::Soenneker.PostHog.OpenApiClient.Models.WizardRunEnvironment.CreateFromDiscriminatorValue); } },

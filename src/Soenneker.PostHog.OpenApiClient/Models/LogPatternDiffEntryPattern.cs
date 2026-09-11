@@ -17,7 +17,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Occurrences of this pattern within the sample. When `sampled` is true this is a sample count, not the full-window total — prefer `estimated_count` for display.</summary>
         public int? Count { get; set; }
-        /// <summary>Sampled occurrences at severity &quot;error&quot; or &quot;fatal&quot;. Prefer `estimated_error_count` for display.</summary>
+        /// <summary>Occurrences at severity &quot;error&quot; or &quot;fatal&quot;. A sample count when `sampled` is true, so prefer `estimated_error_count` for display.</summary>
         public int? ErrorCount { get; set; }
         /// <summary>Estimated occurrences across the full window, extrapolated from the sample (`count / scanned_count * total_count`). Equals `count` when the window was not sampled.</summary>
         public int? EstimatedCount { get; set; }
@@ -31,7 +31,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.LogPatternExample> Examples { get; set; }
 #endif
-        /// <summary>ISO 8601 timestamp of the earliest sampled occurrence.</summary>
+        /// <summary>ISO 8601 timestamp of the earliest occurrence. Taken from the sample when `sampled` is true, from every matching row otherwise.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? FirstSeen { get; set; }
@@ -39,7 +39,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string FirstSeen { get; set; }
 #endif
-        /// <summary>ISO 8601 timestamp of the latest sampled occurrence.</summary>
+        /// <summary>ISO 8601 timestamp of the latest occurrence. Taken from the sample when `sampled` is true, from every matching row otherwise.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? LastSeen { get; set; }
@@ -55,6 +55,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string MatchLiteral { get; set; }
 #endif
+        /// <summary>Exact canonical members of a stored-pattern group. Filter pattern IN these values AND pattern_version equals this group&apos;s version. Empty for body mining.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? MatchPatterns { get; set; }
+#nullable restore
+#else
+        public List<string> MatchPatterns { get; set; }
+#endif
         /// <summary>RE2-safe regex over raw log bodies that matches lines of this pattern, compiled from the template and validated against the raw bodies of the pattern&apos;s own sampled rows before being offered. Null when the template lacks literal content or validation failed. Never trust an unvalidated predicate. Use with the message/regex log property filter.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -63,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string MatchRegex { get; set; }
 #endif
-        /// <summary>Mined log template with variable tokens masked, e.g. &quot;Connected to &lt;ip&gt; in &lt;num&gt;ms&quot;. Tokens: &lt;timestamp&gt;, &lt;uuid&gt;, &lt;ip&gt;, &lt;hex&gt;, &lt;num&gt;, plus &lt;*&gt; for word positions Drain found to vary.</summary>
+        /// <summary>Log template with variable tokens masked, e.g. &quot;Connected to &lt;ip&gt; in &lt;num&gt;ms&quot;. Body mining masks &lt;timestamp&gt;, &lt;uuid&gt;, &lt;ip&gt;, &lt;hex&gt;, &lt;num&gt;, plus &lt;*&gt; for word positions Drain found to vary. Stored patterns use the ingestion vocabulary instead: &lt;N&gt;, &lt;TIMESTAMP&gt;, &lt;KLOGTIME&gt;, &lt;UUID&gt;, &lt;IP&gt;, &lt;HOST&gt;, &lt;HEX&gt;, &lt;ID&gt;, &lt;EMAIL&gt;, &lt;JSON_ARRAY&gt;, and &lt;JSON:keys&gt; for a JSON body reduced to its key set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Pattern { get; set; }
@@ -71,6 +79,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Pattern { get; set; }
 #endif
+        /// <summary>Version required by match_patterns. Null for body mining.</summary>
+        public int? PatternVersion { get; set; }
         /// <summary>Up to 4 distinct service names this pattern was observed in.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -79,7 +89,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<string> Services { get; set; }
 #endif
-        /// <summary>Sampled occurrences keyed by lowercased severity (&quot;trace&quot; through &quot;fatal&quot;). Raw sample counts, not extrapolated — severity dominance is a proportion, so scaling would not change it.</summary>
+        /// <summary>Occurrences keyed by lowercased severity (&quot;trace&quot; through &quot;fatal&quot;). Never extrapolated, because severity dominance is a proportion that scaling would not change. Sample counts when `sampled` is true, counts over every matching row otherwise.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.LogPatternDiffEntryPatternSeverityCounts? SeverityCounts { get; set; }
@@ -87,7 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.LogPatternDiffEntryPatternSeverityCounts SeverityCounts { get; set; }
 #endif
-        /// <summary>Estimated occurrences per time bucket, aligned index-for-index with the response&apos;s `sparkline_buckets`. Extrapolated from the sample like `estimated_count`, so it shows the volume shape over the window, not exact per-bucket tallies.</summary>
+        /// <summary>Occurrences per time bucket, aligned index-for-index with the response&apos;s `sparkline_buckets`. When `sampled` is true these are extrapolated like `estimated_count` and show the volume shape over the window rather than exact tallies. Otherwise they are exact per-bucket counts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<int?>? Sparkline { get; set; }
@@ -95,7 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<int?> Sparkline { get; set; }
 #endif
-        /// <summary>Share of the sampled log volume this pattern represents (0–100).</summary>
+        /// <summary>Share of the log volume this pattern represents (0–100). Measured over the sample when `sampled` is true, over every matching row otherwise.</summary>
         public double? VolumeSharePct { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogPatternDiffEntryPattern"/> and sets the default values.
@@ -130,8 +140,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "first_seen", n => { FirstSeen = n.GetStringValue(); } },
                 { "last_seen", n => { LastSeen = n.GetStringValue(); } },
                 { "match_literal", n => { MatchLiteral = n.GetStringValue(); } },
+                { "match_patterns", n => { MatchPatterns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "match_regex", n => { MatchRegex = n.GetStringValue(); } },
                 { "pattern", n => { Pattern = n.GetStringValue(); } },
+                { "pattern_version", n => { PatternVersion = n.GetIntValue(); } },
                 { "services", n => { Services = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "severity_counts", n => { SeverityCounts = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogPatternDiffEntryPatternSeverityCounts>(global::Soenneker.PostHog.OpenApiClient.Models.LogPatternDiffEntryPatternSeverityCounts.CreateFromDiscriminatorValue); } },
                 { "sparkline", n => { Sparkline = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
@@ -153,8 +165,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("first_seen", FirstSeen);
             writer.WriteStringValue("last_seen", LastSeen);
             writer.WriteStringValue("match_literal", MatchLiteral);
+            writer.WriteCollectionOfPrimitiveValues<string>("match_patterns", MatchPatterns);
             writer.WriteStringValue("match_regex", MatchRegex);
             writer.WriteStringValue("pattern", Pattern);
+            writer.WriteIntValue("pattern_version", PatternVersion);
             writer.WriteCollectionOfPrimitiveValues<string>("services", Services);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogPatternDiffEntryPatternSeverityCounts>("severity_counts", SeverityCounts);
             writer.WriteCollectionOfPrimitiveValues<int?>("sparkline", Sparkline);

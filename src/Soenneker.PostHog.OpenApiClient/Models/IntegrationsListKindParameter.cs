@@ -100,6 +100,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         GoogleSheets,
         #pragma warning restore CS1591
+        [EnumMember(Value = "helpscout")]
+        #pragma warning disable CS1591
+        Helpscout,
+        #pragma warning restore CS1591
         [EnumMember(Value = "hubspot")]
         #pragma warning disable CS1591
         Hubspot,

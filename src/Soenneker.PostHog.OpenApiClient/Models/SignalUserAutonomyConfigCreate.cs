@@ -24,6 +24,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Add this user as a GitHub assignee on implementation pull requests for reports that suggest them as reviewer. Off by default. Turning it off stops future assignment and never removes an existing assignee.</summary>
         public bool? GithubAssignOnPullRequest { get; set; }
+        /// <summary>Open implementation pull requests for reports that suggest this user as reviewer ready for review instead of draft, so the full CI matrix runs without anybody clicking Ready. Null follows the project default. A ready pull request runs the full matrix on every push.</summary>
+        public bool? GithubOpenPullRequestReady { get; set; }
         /// <summary>`channel_id|#channel-name` target, the same convention used by Insight Alerts, or a `member_id|@display-name` target (`U0123ABC456|@sam`) to send the ping as a direct message. A member target is checked against the workspace on save.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -71,6 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "autostart_priority", n => { AutostartPriority = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfigCreateAutostartPriority>(global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfigCreateAutostartPriority.CreateFromDiscriminatorValue); } },
                 { "github_assign_on_pull_request", n => { GithubAssignOnPullRequest = n.GetBoolValue(); } },
+                { "github_open_pull_request_ready", n => { GithubOpenPullRequestReady = n.GetBoolValue(); } },
                 { "slack_notification_channel", n => { SlackNotificationChannel = n.GetStringValue(); } },
                 { "slack_notification_direct_message", n => { SlackNotificationDirectMessage = n.GetBoolValue(); } },
                 { "slack_notification_integration_id", n => { SlackNotificationIntegrationId = n.GetIntValue(); } },
@@ -86,6 +89,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfigCreateAutostartPriority>("autostart_priority", AutostartPriority);
             writer.WriteBoolValue("github_assign_on_pull_request", GithubAssignOnPullRequest);
+            writer.WriteBoolValue("github_open_pull_request_ready", GithubOpenPullRequestReady);
             writer.WriteStringValue("slack_notification_channel", SlackNotificationChannel);
             writer.WriteBoolValue("slack_notification_direct_message", SlackNotificationDirectMessage);
             writer.WriteIntValue("slack_notification_integration_id", SlackNotificationIntegrationId);

@@ -21,6 +21,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Source;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.State;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Validate;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Versions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.View;
 using Soenneker.PostHog.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -124,6 +125,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Versions.VersionsRequestBuilder Versions
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Versions.VersionsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The view property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.View.ViewRequestBuilder View
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.View.ViewRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.CanvasesItemRequestBuilder"/> and sets the default values.

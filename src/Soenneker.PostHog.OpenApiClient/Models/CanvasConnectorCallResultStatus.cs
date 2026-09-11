@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// &apos;ok&apos; carries a result. &apos;not_connected&apos; and &apos;needs_reauth&apos; mean the viewer must connect the provider at connect_path. &apos;blocked&apos; is team policy. &apos;write_blocked&apos; is a tool that may write. &apos;upstream_error&apos; is a failure at the provider.* `ok` - Ok* `not_connected` - Not Connected* `needs_reauth` - Needs Reauth* `blocked` - Blocked* `tool_missing` - Tool Missing* `write_blocked` - Write Blocked* `upstream_error` - Upstream Error
+    /// &apos;ok&apos; carries a result. &apos;not_connected&apos; and &apos;needs_reauth&apos; mean the viewer must connect the provider at connect_path. &apos;blocked&apos; is team policy. &apos;write_blocked&apos; is a tool that may write. &apos;needs_approval&apos; requires the viewer to approve this call in the host. &apos;upstream_error&apos; is a failure at the provider.* `ok` - Ok* `not_connected` - Not Connected* `needs_reauth` - Needs Reauth* `needs_approval` - Needs Approval* `blocked` - Blocked* `tool_missing` - Tool Missing* `write_blocked` - Write Blocked* `upstream_error` - Upstream Error
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CanvasConnectorCallResultStatus : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `ok` - Ok* `not_connected` - Not Connected* `needs_reauth` - Needs Reauth* `blocked` - Blocked* `tool_missing` - Tool Missing* `write_blocked` - Write Blocked* `upstream_error` - Upstream Error</summary>
+        /// <summary>* `ok` - Ok* `not_connected` - Not Connected* `needs_reauth` - Needs Reauth* `needs_approval` - Needs Approval* `blocked` - Blocked* `tool_missing` - Tool Missing* `write_blocked` - Write Blocked* `upstream_error` - Upstream Error</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ConnectorCallStatusEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorCallResultStatus"/> and sets the default values.

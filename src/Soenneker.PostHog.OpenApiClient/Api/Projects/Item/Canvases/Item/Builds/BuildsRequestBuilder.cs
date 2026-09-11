@@ -28,7 +28,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Builds
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public BuildsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/canvases/{id}/builds{?version_id*}", pathParameters)
+        public BuildsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/canvases/{id}/builds{?scope*,version_id*}", pathParameters)
         {
         }
         /// <summary>
@@ -36,11 +36,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Builds
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public BuildsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/canvases/{id}/builds{?version_id*}", rawUrl)
+        public BuildsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/canvases/{id}/builds{?scope*,version_id*}", rawUrl)
         {
         }
         /// <summary>
-        /// Read the canvas&apos;s build lifecycle: live pointers plus recent builds.A publish queues a build; poll this until it is ready (the live pointeradvances) or failed (fix the error diagnostics and publish again — thelast good build stays live).
+        /// Read the canvas&apos;s build lifecycle: live pointers plus recent builds.A publish queues a build; poll this until it is ready (the live pointeradvances) or failed (fix the error diagnostics and publish again — thelast good build stays live). Send the response&apos;s ETag back asIf-None-Match to make the poll revalidate without a body.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuildsResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -58,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Builds
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuildsResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuildsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Read the canvas&apos;s build lifecycle: live pointers plus recent builds.A publish queues a build; poll this until it is ready (the live pointeradvances) or failed (fix the error diagnostics and publish again — thelast good build stays live).
+        /// Read the canvas&apos;s build lifecycle: live pointers plus recent builds.A publish queues a build; poll this until it is ready (the live pointeradvances) or failed (fix the error diagnostics and publish again — thelast good build stays live). Send the response&apos;s ETag back asIf-None-Match to make the poll revalidate without a body.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -86,11 +86,21 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Builds
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Builds.BuildsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Read the canvas&apos;s build lifecycle: live pointers plus recent builds.A publish queues a build; poll this until it is ready (the live pointeradvances) or failed (fix the error diagnostics and publish again — thelast good build stays live).
+        /// Read the canvas&apos;s build lifecycle: live pointers plus recent builds.A publish queues a build; poll this until it is ready (the live pointeradvances) or failed (fix the error diagnostics and publish again — thelast good build stays live). Send the response&apos;s ETag back asIf-None-Match to make the poll revalidate without a body.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class BuildsRequestBuilderGetQueryParameters 
         {
+            /// <summary>&quot;slim&quot; returns only what rendering needs — the live build, the head version&apos;s builds, and anything still in flight — instead of the full recent-build history. Any other value (or none) returns the full window.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("scope")]
+            public string? Scope { get; set; }
+#nullable restore
+#else
+            [QueryParameter("scope")]
+            public string Scope { get; set; }
+#endif
             /// <summary>Include the retained ready build for this historical source version.</summary>
             [QueryParameter("version_id")]
             public Guid? VersionId { get; set; }

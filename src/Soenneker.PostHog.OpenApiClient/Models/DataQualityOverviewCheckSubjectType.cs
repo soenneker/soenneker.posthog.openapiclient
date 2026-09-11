@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Kind of catalog object being checked: &apos;table&apos; (a synced warehouse table) or &apos;view&apos; (a saved query).* `table` - table* `view` - view
+    /// Kind of catalog object being checked: &apos;table&apos;, &apos;view&apos;, or &apos;metric&apos;.* `table` - table* `view` - view* `metric` - metric
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DataQualityOverviewCheckSubjectType : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `table` - table* `view` - view</summary>
+        /// <summary>* `table` - table* `view` - view* `metric` - metric</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SubjectTypeEnum? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataQualityOverviewCheckSubjectType"/> and sets the default values.

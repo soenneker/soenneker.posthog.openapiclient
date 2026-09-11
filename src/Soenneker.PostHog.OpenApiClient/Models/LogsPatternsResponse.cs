@@ -14,7 +14,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Mined patterns ordered by `count` descending.</summary>
+        /// <summary>Why body mining was used. Null for stored-pattern aggregation.* `flag_disabled` - flag_disabled* `insufficient_version_coverage` - insufficient_version_coverage* `empty_window` - empty_window* `comparison` - comparison</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsResponseFallbackReason? FallbackReason { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsResponseFallbackReason FallbackReason { get; set; }
+#endif
+        /// <summary>Percentage of all matching rows with a nonempty pattern at the selected version. Null for body mining.</summary>
+        public double? PatternCoveragePct { get; set; }
+        /// <summary>Pattern groups ordered by count. Stored-pattern counts are exact; body-mining counts describe the sample.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.LogPattern>? Patterns { get; set; }
@@ -22,12 +32,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public List<global::Soenneker.PostHog.OpenApiClient.Models.LogPattern> Patterns { get; set; }
 #endif
+        /// <summary>Stored pattern version used. Null for body mining.</summary>
+        public int? PatternVersion { get; set; }
+        /// <summary>Matching rows outside returned groups, including other versions, unstamped rows and the long tail. Null for body mining.</summary>
+        public int? RemainderCount { get; set; }
+        /// <summary>Exact rows represented by the returned stored-pattern groups. Null for body mining.</summary>
+        public int? RepresentedCount { get; set; }
         /// <summary>Share of the window&apos;s log rows that were eligible for sampling (0–100). Below 100, the scan was bounded to evenly-spaced time slices across the window to keep the query within its execution budget; rows outside the slices could not appear in the sample.</summary>
         public double? SampleCoveragePct { get; set; }
         /// <summary>True when the window held more rows than the sample cap, so patterns were mined from a deterministic, evenly-distributed sample rather than every matching row.</summary>
         public bool? Sampled { get; set; }
-        /// <summary>Number of log rows fed to the miner (the sample size, capped at the sample limit).</summary>
+        /// <summary>Rows scanned: the sample size for body mining, or the full matching count for stored-pattern aggregation.</summary>
         public int? ScannedCount { get; set; }
+        /// <summary>Whether counts come from stored-pattern aggregation or body masking and Drain3 mining.* `stored_patterns` - stored_patterns* `body_mining` - body_mining</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsResponseSource? Source { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsResponseSource Source { get; set; }
+#endif
         /// <summary>Time buckets that every pattern&apos;s `sparkline` aligns to. When the scan was bounded to time slices, the buckets are the slices themselves (evenly spaced, gaps between them were never eligible for sampling); otherwise they divide the window uniformly.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -63,10 +87,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "fallback_reason", n => { FallbackReason = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsResponseFallbackReason>(global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsResponseFallbackReason.CreateFromDiscriminatorValue); } },
+                { "pattern_coverage_pct", n => { PatternCoveragePct = n.GetDoubleValue(); } },
+                { "pattern_version", n => { PatternVersion = n.GetIntValue(); } },
                 { "patterns", n => { Patterns = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogPattern>(global::Soenneker.PostHog.OpenApiClient.Models.LogPattern.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "remainder_count", n => { RemainderCount = n.GetIntValue(); } },
+                { "represented_count", n => { RepresentedCount = n.GetIntValue(); } },
                 { "sample_coverage_pct", n => { SampleCoveragePct = n.GetDoubleValue(); } },
                 { "sampled", n => { Sampled = n.GetBoolValue(); } },
                 { "scanned_count", n => { ScannedCount = n.GetIntValue(); } },
+                { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsResponseSource>(global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsResponseSource.CreateFromDiscriminatorValue); } },
                 { "sparkline_buckets", n => { SparklineBuckets = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsSparklineBucket>(global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsSparklineBucket.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "total_count", n => { TotalCount = n.GetIntValue(); } },
             };
@@ -78,10 +108,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsResponseFallbackReason>("fallback_reason", FallbackReason);
+            writer.WriteDoubleValue("pattern_coverage_pct", PatternCoveragePct);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogPattern>("patterns", Patterns);
+            writer.WriteIntValue("pattern_version", PatternVersion);
+            writer.WriteIntValue("remainder_count", RemainderCount);
+            writer.WriteIntValue("represented_count", RepresentedCount);
             writer.WriteDoubleValue("sample_coverage_pct", SampleCoveragePct);
             writer.WriteBoolValue("sampled", Sampled);
             writer.WriteIntValue("scanned_count", ScannedCount);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsResponseSource>("source", Source);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsSparklineBucket>("sparkline_buckets", SparklineBuckets);
             writer.WriteIntValue("total_count", TotalCount);
             writer.WriteAdditionalData(AdditionalData);

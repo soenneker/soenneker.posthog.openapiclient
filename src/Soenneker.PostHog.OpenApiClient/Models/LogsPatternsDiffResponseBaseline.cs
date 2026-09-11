@@ -31,12 +31,36 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string DateTo { get; set; }
 #endif
+        /// <summary>Why body mining was used. Null for stored-pattern aggregation.* `flag_disabled` - flag_disabled* `insufficient_version_coverage` - insufficient_version_coverage* `empty_window` - empty_window* `comparison` - comparison</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffWindowFallbackReason? FallbackReason { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffWindowFallbackReason FallbackReason { get; set; }
+#endif
+        /// <summary>Percentage of all matching rows with a nonempty pattern at the selected version. Null for body mining.</summary>
+        public double? PatternCoveragePct { get; set; }
+        /// <summary>Stored pattern version used. Null for body mining.</summary>
+        public int? PatternVersion { get; set; }
+        /// <summary>Matching rows outside returned groups, including other versions, unstamped rows and the long tail. Null for body mining.</summary>
+        public int? RemainderCount { get; set; }
+        /// <summary>Exact rows represented by the returned stored-pattern groups. Null for body mining.</summary>
+        public int? RepresentedCount { get; set; }
         /// <summary>Share of this window&apos;s rows eligible for sampling (0-100); below 100 the scan was time-slice bounded.</summary>
         public double? SampleCoveragePct { get; set; }
         /// <summary>True when this window&apos;s counts are extrapolated from a sample rather than exact.</summary>
         public bool? Sampled { get; set; }
         /// <summary>Log rows fed to the miner for this window (sample size).</summary>
         public int? ScannedCount { get; set; }
+        /// <summary>Whether counts come from stored-pattern aggregation or body masking and Drain3 mining.* `stored_patterns` - stored_patterns* `body_mining` - body_mining</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffWindowSource? Source { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffWindowSource Source { get; set; }
+#endif
         /// <summary>Total log rows matching the filters in this window.</summary>
         public int? TotalCount { get; set; }
         /// <summary>
@@ -66,9 +90,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "date_from", n => { DateFrom = n.GetStringValue(); } },
                 { "date_to", n => { DateTo = n.GetStringValue(); } },
+                { "fallback_reason", n => { FallbackReason = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffWindowFallbackReason>(global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffWindowFallbackReason.CreateFromDiscriminatorValue); } },
+                { "pattern_coverage_pct", n => { PatternCoveragePct = n.GetDoubleValue(); } },
+                { "pattern_version", n => { PatternVersion = n.GetIntValue(); } },
+                { "remainder_count", n => { RemainderCount = n.GetIntValue(); } },
+                { "represented_count", n => { RepresentedCount = n.GetIntValue(); } },
                 { "sample_coverage_pct", n => { SampleCoveragePct = n.GetDoubleValue(); } },
                 { "sampled", n => { Sampled = n.GetBoolValue(); } },
                 { "scanned_count", n => { ScannedCount = n.GetIntValue(); } },
+                { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffWindowSource>(global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffWindowSource.CreateFromDiscriminatorValue); } },
                 { "total_count", n => { TotalCount = n.GetIntValue(); } },
             };
         }
@@ -81,9 +111,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("date_from", DateFrom);
             writer.WriteStringValue("date_to", DateTo);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffWindowFallbackReason>("fallback_reason", FallbackReason);
+            writer.WriteDoubleValue("pattern_coverage_pct", PatternCoveragePct);
+            writer.WriteIntValue("pattern_version", PatternVersion);
+            writer.WriteIntValue("remainder_count", RemainderCount);
+            writer.WriteIntValue("represented_count", RepresentedCount);
             writer.WriteDoubleValue("sample_coverage_pct", SampleCoveragePct);
             writer.WriteBoolValue("sampled", Sampled);
             writer.WriteIntValue("scanned_count", ScannedCount);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffWindowSource>("source", Source);
             writer.WriteIntValue("total_count", TotalCount);
             writer.WriteAdditionalData(AdditionalData);
         }

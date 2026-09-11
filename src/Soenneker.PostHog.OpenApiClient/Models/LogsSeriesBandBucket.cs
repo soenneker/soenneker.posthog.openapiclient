@@ -22,6 +22,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? Time { get; set; }
         /// <summary>Upper edge of the expected band. Null while the series has too little history to band.</summary>
         public double? Upper { get; set; }
+        /// <summary>Where the observed count sits against the band: above when it exceeds upper, below when it falls under lower. Null while it sits inside the band, or while the band is not ready.* `above` - Above the band* `below` - Below the band</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsSeriesBandBucketVerdict? Verdict { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsSeriesBandBucketVerdict Verdict { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsSeriesBandBucket"/> and sets the default values.
         /// </summary>
@@ -51,6 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "observed", n => { Observed = n.GetIntValue(); } },
                 { "time", n => { Time = n.GetDateTimeOffsetValue(); } },
                 { "upper", n => { Upper = n.GetDoubleValue(); } },
+                { "verdict", n => { Verdict = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsSeriesBandBucketVerdict>(global::Soenneker.PostHog.OpenApiClient.Models.LogsSeriesBandBucketVerdict.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -64,6 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("observed", Observed);
             writer.WriteDateTimeOffsetValue("time", Time);
             writer.WriteDoubleValue("upper", Upper);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsSeriesBandBucketVerdict>("verdict", Verdict);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

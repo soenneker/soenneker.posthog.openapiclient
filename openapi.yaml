@@ -2816,6 +2816,81 @@ paths:
           description: ''
       x-product:
       - context_layer
+  /api/organizations/{organization_id}/context_layer/proposals/:
+    get:
+      operationId: context_layer_proposals_list
+      description: 'The organization''s context wiki: a git repo of Markdown pages
+        hosted by PostHog.'
+      summary: List your pending wiki edits
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/OrganizationIdPath'
+      tags:
+      - context_layer
+      - context_layer
+      security:
+      - PersonalAPIKeyAuth:
+        - organization:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedWikiPageProposalList'
+          description: ''
+      x-product:
+      - context_layer
+  /api/organizations/{organization_id}/context_layer/proposals/{proposal_id}/apply/:
+    post:
+      operationId: context_layer_proposals_apply_create
+      description: 'The organization''s context wiki: a git repo of Markdown pages
+        hosted by PostHog.'
+      summary: Apply a reviewed wiki edit
+      parameters:
+      - $ref: '#/components/parameters/OrganizationIdPath'
+      - in: path
+        name: proposal_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - context_layer
+      - context_layer
+      security:
+      - PersonalAPIKeyAuth:
+        - organization:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContextLayerStatus'
+          description: ''
+        '409':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HeadConflict'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LintError'
+          description: ''
+      x-product:
+      - context_layer
   /api/organizations/{organization_id}/context_layer/status/:
     get:
       operationId: context_layer_status_retrieve
@@ -5365,10 +5440,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProjectBackwardCompat'
+                $ref: '#/components/schemas/TeamLogsConfig'
           description: ''
       x-product:
-      - core
+      - logs
     patch:
       operationId: organizations_projects_logs_config_partial_update
       description: |-
@@ -5394,22 +5469,22 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PatchedProjectBackwardCompat'
+              $ref: '#/components/schemas/PatchedTeamLogsConfig'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/PatchedProjectBackwardCompat'
+              $ref: '#/components/schemas/PatchedTeamLogsConfig'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/PatchedProjectBackwardCompat'
+              $ref: '#/components/schemas/PatchedTeamLogsConfig'
       responses:
         '200':
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProjectBackwardCompat'
+                $ref: '#/components/schemas/TeamLogsConfig'
           description: ''
       x-product:
-      - core
+      - logs
   /api/organizations/{organization_id}/projects/{id}/reset_token/:
     patch:
       operationId: organizations_projects_reset_token_partial_update
@@ -8006,6 +8081,7 @@ paths:
           - Metric
           - TableCertification
           - DataQualityCheck
+          - DataQualityCheckSchedule
           - Billing
           - Loop
           - StamphogRepoConfig
@@ -8092,6 +8168,7 @@ paths:
           * `Metric` - Metric
           * `TableCertification` - TableCertification
           * `DataQualityCheck` - DataQualityCheck
+          * `DataQualityCheckSchedule` - DataQualityCheckSchedule
           * `Billing` - Billing
           * `Loop` - Loop
           * `StamphogRepoConfig` - StamphogRepoConfig
@@ -8179,6 +8256,7 @@ paths:
             - Metric
             - TableCertification
             - DataQualityCheck
+            - DataQualityCheckSchedule
             - Billing
             - Loop
             - StamphogRepoConfig
@@ -8262,6 +8340,7 @@ paths:
               * `Metric` - Metric
               * `TableCertification` - TableCertification
               * `DataQualityCheck` - DataQualityCheck
+              * `DataQualityCheckSchedule` - DataQualityCheckSchedule
               * `Billing` - Billing
               * `Loop` - Loop
               * `StamphogRepoConfig` - StamphogRepoConfig
@@ -10593,6 +10672,62 @@ paths:
           description: ''
       x-product:
       - business_knowledge
+  /api/projects/{project_id}/business_knowledge/settings/:
+    get:
+      operationId: business_knowledge_settings_retrieve
+      description: Fetch whether this project learns from resolved support tickets,
+        and whether Support is on in this environment.
+      summary: Get business knowledge settings
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - business_knowledge
+      security:
+      - PersonalAPIKeyAuth:
+        - business_knowledge:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BusinessKnowledgeSettings'
+          description: The team's Business knowledge learning settings.
+      x-product:
+      - business_knowledge
+    patch:
+      operationId: business_knowledge_settings_partial_update
+      description: Partially update Business knowledge learning settings. Enabling
+        learn-from-support requires Support to be on in this environment.
+      summary: Update business knowledge settings
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - business_knowledge
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedBusinessKnowledgeSettingsUpdate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedBusinessKnowledgeSettingsUpdate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedBusinessKnowledgeSettingsUpdate'
+      security:
+      - PersonalAPIKeyAuth:
+        - business_knowledge:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BusinessKnowledgeSettings'
+          description: The updated Business knowledge learning settings.
+        '400':
+          description: Learn from support cannot be enabled while Support is off.
+      x-product:
+      - business_knowledge
   /api/projects/{project_id}/business_knowledge/sources/:
     get:
       operationId: business_knowledge_sources_list
@@ -11129,7 +11264,8 @@ paths:
 
         A publish queues a build; poll this until it is ready (the live pointer
         advances) or failed (fix the error diagnostics and publish again — the
-        last good build stays live).
+        last good build stays live). Send the response's ETag back as
+        If-None-Match to make the poll revalidate without a body.
       parameters:
       - in: path
         name: id
@@ -11139,6 +11275,13 @@ paths:
         description: A UUID string identifying this canvas.
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: scope
+        schema:
+          type: string
+        description: '"slim" returns only what rendering needs — the live build, the
+          head version''s builds, and anything still in flight — instead of the full
+          recent-build history. Any other value (or none) returns the full window.'
       - in: query
         name: version_id
         schema:
@@ -11157,6 +11300,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/CanvasBuildsResponse'
           description: ''
+        '304':
+          description: Not modified — the client's cached lifecycle is current.
       x-product:
       - canvas
   /api/projects/{project_id}/canvases/{id}/builds/action/:
@@ -11430,6 +11575,13 @@ paths:
           format: uuid
         description: A UUID string identifying this canvas.
         required: true
+      - in: query
+        name: include_components
+        schema:
+          type: boolean
+        description: Also return the renderable build (with signed artifact URL) of
+          every component the layout's live placements reference, so a grid renders
+          from this one call.
       - $ref: '#/components/parameters/ProjectIdPath'
       - in: query
         name: version_id
@@ -11447,8 +11599,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CanvasLayoutResponse'
+                $ref: '#/components/schemas/CanvasLayoutWithComponentsResponse'
           description: ''
+        '304':
+          description: Not modified — the client's cached layout is current.
         '400':
           description: The canvas is not a grid canvas.
       x-product:
@@ -12132,6 +12286,41 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaginatedCanvasVersionList'
           description: ''
+      x-product:
+      - canvas
+  /api/projects/{project_id}/canvases/{id}/view/:
+    get:
+      operationId: canvases_view_retrieve
+      description: |-
+        Everything needed to open the canvas, in one round trip.
+
+        Returns the record, the live build (with its signed artifact URL), and —
+        only when there is nothing built to render — the head source project
+        (freeform/component) or the layout document (grid). Send the response's
+        ETag back as If-None-Match to revalidate without a body.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this canvas.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - canvases
+      security:
+      - PersonalAPIKeyAuth:
+        - canvas:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CanvasViewResponse'
+          description: ''
+        '304':
+          description: Not modified — the client's cached view payload is current.
       x-product:
       - canvas
   /api/projects/{project_id}/canvases/actions/:
@@ -17452,6 +17641,604 @@ paths:
           description: ''
       x-product:
       - data_catalog
+  /api/projects/{project_id}/data_catalog/metrics/{metric_id}/check_suite_runs/:
+    get:
+      operationId: data_catalog_metrics_check_suite_runs_list
+      description: Read-only reports for this subject's check-suite executions.
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - in: path
+        name: metric_id
+        schema:
+          type: string
+          format: uuid
+        description: Id of the metric whose suite runs these are.
+        required: true
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - data_catalog
+      security:
+      - PersonalAPIKeyAuth:
+        - data_catalog:read
+        - query:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedDataQualitySuiteRunList'
+          description: ''
+      x-product:
+      - data_quality
+  /api/projects/{project_id}/data_catalog/metrics/{metric_id}/check_suite_runs/{id}/:
+    get:
+      operationId: data_catalog_metrics_check_suite_runs_retrieve
+      description: Read-only reports for this subject's check-suite executions.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this data quality suite run.
+        required: true
+      - in: path
+        name: metric_id
+        schema:
+          type: string
+          format: uuid
+        description: Id of the metric whose suite runs these are.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - data_catalog
+      security:
+      - PersonalAPIKeyAuth:
+        - data_catalog:read
+        - query:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataQualitySuiteRun'
+          description: ''
+      x-product:
+      - data_quality
+  /api/projects/{project_id}/data_catalog/metrics/{metric_id}/check_suite_runs/{id}/check_runs/:
+    get:
+      operationId: data_catalog_metrics_check_suite_runs_check_runs_list
+      description: Every check execution in this suite run.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this data quality suite run.
+        required: true
+      - in: path
+        name: metric_id
+        schema:
+          type: string
+          format: uuid
+        description: Id of the metric whose suite runs these are.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - data_catalog
+      security:
+      - PersonalAPIKeyAuth:
+        - data_catalog:read
+        - query:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DataQualityCheckRun'
+          description: ''
+      x-product:
+      - data_quality
+  /api/projects/{project_id}/data_catalog/metrics/{metric_id}/checks/:
+    get:
+      operationId: data_catalog_metrics_checks_list
+      description: CRUD for one subject's checks, plus the actions that run them and
+        report on them.
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - in: path
+        name: metric_id
+        schema:
+          type: string
+          format: uuid
+          description: The data catalog metric this check evaluates. Exclusive with
+            table and saved_query.
+        required: true
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - data_catalog
+      security:
+      - PersonalAPIKeyAuth:
+        - data_catalog:read
+        - query:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedDataQualityCheckList'
+          description: ''
+      x-product:
+      - data_quality
+    post:
+      operationId: data_catalog_metrics_checks_create
+      description: Create a check on this table or view, or refine the one already
+        carrying the same fingerprint. Re-creating a semantically identical check
+        returns 200 and the existing row, never a duplicate.
+      parameters:
+      - in: path
+        name: metric_id
+        schema:
+          type: string
+          format: uuid
+          description: The data catalog metric this check evaluates. Exclusive with
+            table and saved_query.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - data_catalog
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataQualityCheck'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DataQualityCheck'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DataQualityCheck'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - data_catalog:write
+        - query:read
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataQualityCheck'
+          description: ''
+      x-product:
+      - data_quality
+  /api/projects/{project_id}/data_catalog/metrics/{metric_id}/checks/{id}/:
+    get:
+      operationId: data_catalog_metrics_checks_retrieve
+      description: CRUD for one subject's checks, plus the actions that run them and
+        report on them.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this data quality check.
+        required: true
+      - in: path
+        name: metric_id
+        schema:
+          type: string
+          format: uuid
+          description: The data catalog metric this check evaluates. Exclusive with
+            table and saved_query.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - data_catalog
+      security:
+      - PersonalAPIKeyAuth:
+        - data_catalog:read
+        - query:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataQualityCheck'
+          description: ''
+      x-product:
+      - data_quality
+    put:
+      operationId: data_catalog_metrics_checks_update
+      description: Edit this check in place, including what it asserts (check_type,
+        column_name, config). The table or view it audits is fixed, and the check
+        keeps its id, run history, latest status, and latest run time. A definition
+        or name already held by another active check comes back as a field error,
+        with nothing written.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this data quality check.
+        required: true
+      - in: path
+        name: metric_id
+        schema:
+          type: string
+          format: uuid
+          description: The data catalog metric this check evaluates. Exclusive with
+            table and saved_query.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - data_catalog
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataQualityCheck'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DataQualityCheck'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DataQualityCheck'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - data_catalog:write
+        - query:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataQualityCheck'
+          description: ''
+      x-product:
+      - data_quality
+    patch:
+      operationId: data_catalog_metrics_checks_partial_update
+      description: Edit this check in place, including what it asserts (check_type,
+        column_name, config). The table or view it audits is fixed, and the check
+        keeps its id, run history, latest status, and latest run time. A definition
+        or name already held by another active check comes back as a field error,
+        with nothing written.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this data quality check.
+        required: true
+      - in: path
+        name: metric_id
+        schema:
+          type: string
+          format: uuid
+          description: The data catalog metric this check evaluates. Exclusive with
+            table and saved_query.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - data_catalog
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedDataQualityCheck'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedDataQualityCheck'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedDataQualityCheck'
+      security:
+      - PersonalAPIKeyAuth:
+        - data_catalog:write
+        - query:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataQualityCheck'
+          description: ''
+      x-product:
+      - data_quality
+    delete:
+      operationId: data_catalog_metrics_checks_destroy
+      description: CRUD for one subject's checks, plus the actions that run them and
+        report on them.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this data quality check.
+        required: true
+      - in: path
+        name: metric_id
+        schema:
+          type: string
+          format: uuid
+          description: The data catalog metric this check evaluates. Exclusive with
+            table and saved_query.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - data_catalog
+      security:
+      - PersonalAPIKeyAuth:
+        - data_catalog:write
+        - query:read
+      responses:
+        '204':
+          description: No response body
+      x-product:
+      - data_quality
+  /api/projects/{project_id}/data_catalog/metrics/{metric_id}/checks/{id}/run/:
+    post:
+      operationId: data_catalog_metrics_checks_run_create
+      description: Run this check now. Returns the suite run to poll for the report.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this data quality check.
+        required: true
+      - in: path
+        name: metric_id
+        schema:
+          type: string
+          format: uuid
+          description: The data catalog metric this check evaluates. Exclusive with
+            table and saved_query.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - data_catalog
+      security:
+      - PersonalAPIKeyAuth:
+        - data_catalog:write
+        - query:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataQualitySuiteRun'
+          description: ''
+      x-product:
+      - data_quality
+  /api/projects/{project_id}/data_catalog/metrics/{metric_id}/checks/{id}/runs/:
+    get:
+      operationId: data_catalog_metrics_checks_runs_list
+      description: Recent run history for this check, newest first.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this data quality check.
+        required: true
+      - in: path
+        name: metric_id
+        schema:
+          type: string
+          format: uuid
+          description: The data catalog metric this check evaluates. Exclusive with
+            table and saved_query.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - data_catalog
+      security:
+      - PersonalAPIKeyAuth:
+        - data_catalog:read
+        - query:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DataQualityCheckRun'
+          description: ''
+      x-product:
+      - data_quality
+  /api/projects/{project_id}/data_catalog/metrics/{metric_id}/checks/check_types/:
+    get:
+      operationId: data_catalog_metrics_checks_check_types_list
+      description: The check types this project can author, with the JSON schema of
+        each type's config.
+      parameters:
+      - in: path
+        name: metric_id
+        schema:
+          type: string
+          format: uuid
+          description: The data catalog metric this check evaluates. Exclusive with
+            table and saved_query.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - data_catalog
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DataQualityCheckType'
+          description: ''
+      x-product:
+      - data_quality
+  /api/projects/{project_id}/data_catalog/metrics/{metric_id}/checks/health/:
+    get:
+      operationId: data_catalog_metrics_checks_health_retrieve
+      description: Health rollup for this table or view, from the denormalized status
+        of its checks.
+      parameters:
+      - in: path
+        name: metric_id
+        schema:
+          type: string
+          format: uuid
+          description: The data catalog metric this check evaluates. Exclusive with
+            table and saved_query.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - data_catalog
+      security:
+      - PersonalAPIKeyAuth:
+        - data_catalog:read
+        - query:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataQualitySubjectHealth'
+          description: ''
+      x-product:
+      - data_quality
+  /api/projects/{project_id}/data_catalog/metrics/{metric_id}/checks/run_all/:
+    post:
+      operationId: data_catalog_metrics_checks_run_all_create
+      description: Run every enabled check on this table or view. Returns the suite
+        run to poll.
+      parameters:
+      - in: path
+        name: metric_id
+        schema:
+          type: string
+          format: uuid
+          description: The data catalog metric this check evaluates. Exclusive with
+            table and saved_query.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - data_catalog
+      security:
+      - PersonalAPIKeyAuth:
+        - data_catalog:write
+        - query:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataQualitySuiteRun'
+          description: ''
+      x-product:
+      - data_quality
+  /api/projects/{project_id}/data_catalog/metrics/{metric_id}/checks/schedule/:
+    get:
+      operationId: data_catalog_metrics_checks_schedule_retrieve
+      description: CRUD for one subject's checks, plus the actions that run them and
+        report on them.
+      parameters:
+      - in: path
+        name: metric_id
+        schema:
+          type: string
+          format: uuid
+          description: The data catalog metric this check evaluates. Exclusive with
+            table and saved_query.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - data_catalog
+      security:
+      - PersonalAPIKeyAuth:
+        - data_catalog:read
+        - query:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataQualityCheckSchedule'
+          description: ''
+      x-product:
+      - data_quality
+    patch:
+      operationId: data_catalog_metrics_checks_schedule_partial_update
+      description: CRUD for one subject's checks, plus the actions that run them and
+        report on them.
+      parameters:
+      - in: path
+        name: metric_id
+        schema:
+          type: string
+          format: uuid
+          description: The data catalog metric this check evaluates. Exclusive with
+            table and saved_query.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - data_catalog
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedDataQualityCheckScheduleUpdate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedDataQualityCheckScheduleUpdate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedDataQualityCheckScheduleUpdate'
+      security:
+      - PersonalAPIKeyAuth:
+        - data_catalog:write
+        - query:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataQualityCheckSchedule'
+          description: ''
+      x-product:
+      - data_quality
   /api/projects/{project_id}/data_catalog/metrics/{name}/:
     get:
       operationId: data_catalog_metrics_retrieve
@@ -18143,6 +18930,22 @@ paths:
         schema:
           type: string
           format: uuid
+      - in: query
+        name: status
+        schema:
+          type: string
+          enum:
+          - Cancelled
+          - Completed
+          - Failed
+          - Running
+          - Skipped
+        description: |-
+          * `Cancelled` - Cancelled
+          * `Completed` - Completed
+          * `Failed` - Failed
+          * `Running` - Running
+          * `Skipped` - Skipped
       tags:
       - data_modeling_jobs
       security:
@@ -18246,7 +19049,6 @@ paths:
       - data_quality_checks
       security:
       - PersonalAPIKeyAuth:
-        - warehouse_objects:read
         - query:read
       responses:
         '200':
@@ -18268,7 +19070,6 @@ paths:
       - data_quality_checks
       security:
       - PersonalAPIKeyAuth:
-        - warehouse_objects:read
         - query:read
       responses:
         '200':
@@ -18308,7 +19109,6 @@ paths:
       - data_quality_runs
       security:
       - PersonalAPIKeyAuth:
-        - warehouse_objects:read
         - query:read
       responses:
         '200':
@@ -18340,7 +19140,6 @@ paths:
               $ref: '#/components/schemas/DataQualityRunRequest'
       security:
       - PersonalAPIKeyAuth:
-        - warehouse_objects:write
         - query:read
       responses:
         '200':
@@ -18373,7 +19172,6 @@ paths:
       - data_quality_runs
       security:
       - PersonalAPIKeyAuth:
-        - warehouse_objects:read
         - query:read
       responses:
         '200':
@@ -25269,6 +26067,34 @@ paths:
       responses:
         '200':
           description: No response body
+      x-product:
+      - error_tracking
+  /api/projects/{project_id}/error_tracking/symbol_sets/bulk_check_upload/:
+    post:
+      operationId: error_tracking_symbol_sets_bulk_check_upload_create
+      description: Report which of the given symbol sets still need `bulk_start_upload`.
+        Symbol sets already uploaded with identical content are omitted and marked
+        as still in use.
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - error_tracking
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ErrorTrackingSymbolSetBulkCheckUpload'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - error_tracking:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorTrackingSymbolSetBulkCheckUploadResponse'
+          description: ''
       x-product:
       - error_tracking
   /api/projects/{project_id}/error_tracking/symbol_sets/bulk_delete/:
@@ -38918,6 +39744,7 @@ paths:
           - google-pubsub
           - google-search-console
           - google-sheets
+          - helpscout
           - hubspot
           - instagram
           - intercom
@@ -38966,6 +39793,7 @@ paths:
           * `google-pubsub` - Google Pubsub
           * `google-search-console` - Google Search Console
           * `google-sheets` - Google Sheets
+          * `helpscout` - Helpscout
           * `hubspot` - Hubspot
           * `instagram` - Instagram
           * `intercom` - Intercom
@@ -45895,8 +46723,7 @@ paths:
         '400':
           description: An operation was malformed, unsupported, or not applicable
         '404':
-          description: The marketing-analytics-setup feature flag is off for this
-            team
+          description: Marketing Setup and new dashboard feature flags are both off
       x-product:
       - marketing_analytics
   /api/projects/{project_id}/marketing_analytics/conversion_goals/:
@@ -46200,8 +47027,7 @@ paths:
           description: Ranked, machine-applicable setup suggestions plus per-capability
             readiness
         '404':
-          description: The marketing-analytics-setup feature flag is off for this
-            team
+          description: Marketing Setup and new dashboard feature flags are both off
       x-product:
       - marketing_analytics
   /api/projects/{project_id}/marketing_analytics/suggest_conversion_goals/:
@@ -48625,13 +49451,23 @@ paths:
         required: true
       tags:
       - mcp_tools
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MCPToolRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MCPToolRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/MCPToolRequest'
       responses:
         '200':
           content:
             application/json:
               schema:
-                type: object
-                additionalProperties: true
+                $ref: '#/components/schemas/MCPToolResponse'
           description: ''
       x-product:
       - posthog_ai
@@ -57857,8 +58693,10 @@ paths:
         (409). A manual run counts against the same daily run budget as scheduled
         runs, so repeated manual runs of the same scout can exhaust the project''s
         daily allowance. A manual run does not change the scout''s schedule or `last_run_at`.
-        A disabled scout can still be run this way (to test before enabling). Returns
-        immediately with the workflow id — poll the scout''s runs for the result.'
+        A disabled scout can still be run this way (to test before enabling). Pass
+        an optional `note` to steer this one run without leaving a scout note that
+        would steer every later run too. Returns immediately with the workflow id:
+        poll the scout''s runs for the result.'
       summary: Run a scout now
       parameters:
       - in: path
@@ -57871,6 +58709,17 @@ paths:
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
       - signals
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignalScoutManualRunRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SignalScoutManualRunRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SignalScoutManualRunRequest'
       security:
       - PersonalAPIKeyAuth:
         - signal_scout:write
@@ -57884,8 +58733,11 @@ paths:
                 $ref: '#/components/schemas/SignalScoutManualRun'
           description: A run was dispatched. It executes asynchronously; poll the
             scout's runs for the result.
+        '400':
+          description: The note is longer than the limit.
         '403':
-          description: Signals scouts are not enabled for this project.
+          description: Signals scouts are not enabled for this project, or the caller
+            may not steer a run with a note.
         '404':
           description: Config not found for this project (or the scout is withheld).
         '409':
@@ -64082,6 +64934,12 @@ paths:
           description: Invalid log entries
         '404':
           description: Run not found
+        '503':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskRunErrorResponse'
+          description: Log is locked by another append; retry
       x-product:
       - task-runs
       - tasks
@@ -64628,6 +65486,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/TaskRunErrorResponse'
           description: Run is still active; send /clear to its agent
+        '503':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskRunErrorResponse'
+          description: Log is locked by another append; retry
       x-product:
       - task-runs
       - tasks
@@ -80182,6 +81046,14 @@ components:
           default: null
           description: Match accounts with no active relationship of any definition.
           title: Allrolesunassigned
+        assignedOnly:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          description: Match accounts with at least one active relationship of any
+            definition.
+          title: Assignedonly
         assignedToUserIds:
           anyOf:
           - items:
@@ -85701,6 +86573,12 @@ components:
           - type: 'null'
           description: Active quarantine details when `is_quarantined` is true. Null
             otherwise.
+        active_variants_current_baseline:
+          type: integer
+          description: 'Accepted variants still recorded against this baseline''s
+            current hash. Unlike the 30-day and 90-day counts, this has no time window:
+            an accepted variant keeps matching without a new record. A baseline change
+            resets it to zero.'
         identifier:
           type: string
         run_type:
@@ -85738,6 +86616,7 @@ components:
           - 'null'
           format: double
       required:
+      - active_variants_current_baseline
       - baseline_change_count
       - browser
       - height
@@ -85808,6 +86687,10 @@ components:
           type: object
           additionalProperties:
             type: integer
+        variant_pileups:
+          type: integer
+          description: Baselines carrying three or more accepted variants of their
+            current hash.
         all_snapshots:
           type: integer
         recently_tolerated:
@@ -85822,6 +86705,7 @@ components:
       - currently_quarantined
       - frequently_tolerated
       - recently_tolerated
+      - variant_pileups
     BatchCheckRequest:
       type: object
       properties:
@@ -89518,6 +90402,22 @@ components:
       - zip
       type: string
       description: '* `zip` - zip'
+    BusinessKnowledgeSettings:
+      type: object
+      properties:
+        learn_from_support_enabled:
+          type: boolean
+          description: When true, PostHog learns reusable knowledge from public human
+            replies on resolved support tickets. Requires Support to be enabled for
+            this environment.
+        support_enabled:
+          type: boolean
+          readOnly: true
+          description: Whether Support is enabled for this environment. Learning cannot
+            be turned on while this is false.
+      required:
+      - learn_from_support_enabled
+      - support_enabled
     BusinessModelEnum:
       enum:
       - b2b
@@ -90993,6 +91893,43 @@ components:
       - network_origins_added
       - state_scopes_added
       - widens
+    CanvasComponentLifecycle:
+      type: object
+      description: |-
+        The renderable build of one component referenced by a grid layout, shaped
+        like the builds endpoint's response so clients reuse one lifecycle reader.
+      properties:
+        canvas_id:
+          type: string
+          description: Id of the component canvas.
+        requested_version_id:
+          type:
+          - string
+          - 'null'
+          description: The source version the placement pins, or null when it follows
+            the latest.
+        published_build_id:
+          type:
+          - string
+          - 'null'
+          description: Id of the component's live build. Null until a build completes.
+        current_version_id:
+          type:
+          - string
+          - 'null'
+          description: Id of the source version the component's head points at.
+        builds:
+          type: array
+          items:
+            $ref: '#/components/schemas/CanvasBuild'
+          description: The build the placement renders (live, or the pinned version's
+            retained build). Empty when none is renderable.
+      required:
+      - builds
+      - canvas_id
+      - current_version_id
+      - published_build_id
+      - requested_version_id
     CanvasComponentMeta:
       type: object
       description: 'A component''s placement contract: how grid canvases may place
@@ -91093,6 +92030,11 @@ components:
       type: object
       description: Payload for calling one connector tool as the viewer.
       properties:
+        approval_token:
+          type: string
+          description: Single-use token from a needs_approval response. Submit only
+            after the viewer approves this exact call. Expires after 15 minutes.
+          maxLength: 200
         provider:
           type: string
           description: Declared provider id, e.g. 'github'.
@@ -91113,15 +92055,23 @@ components:
       description: Result of one connector call. `status` is 'ok' when `result` holds
         the tool's output.
       properties:
+        approval_token:
+          type:
+          - string
+          - 'null'
+          description: Host-only, single-use approval token bound to this viewer,
+            connection, canvas version, tool, and arguments. Never forward it to the
+            canvas iframe.
         status:
           allOf:
           - $ref: '#/components/schemas/ConnectorCallStatusEnum'
           description: |-
-            'ok' carries a result. 'not_connected' and 'needs_reauth' mean the viewer must connect the provider at connect_path. 'blocked' is team policy. 'write_blocked' is a tool that may write. 'upstream_error' is a failure at the provider.
+            'ok' carries a result. 'not_connected' and 'needs_reauth' mean the viewer must connect the provider at connect_path. 'blocked' is team policy. 'write_blocked' is a tool that may write. 'needs_approval' requires the viewer to approve this call in the host. 'upstream_error' is a failure at the provider.
 
             * `ok` - Ok
             * `not_connected` - Not Connected
             * `needs_reauth` - Needs Reauth
+            * `needs_approval` - Needs Approval
             * `blocked` - Blocked
             * `tool_missing` - Tool Missing
             * `write_blocked` - Write Blocked
@@ -91147,6 +92097,7 @@ components:
           description: In-app path where the viewer can connect the provider, when
             that would help.
       required:
+      - approval_token
       - connect_path
       - detail
       - result
@@ -91555,10 +92506,17 @@ components:
       - canvas
       - current_version_id
       - layout
-    CanvasLayoutResponse:
+    CanvasLayoutSchemaVersionEnum:
+      enum:
+      - 1
+      type: integer
+      description: '* `1` - 1'
+    CanvasLayoutWithComponentsResponse:
       type: object
-      description: A grid canvas's layout plus the version pointer edits must be based
-        on.
+      description: |-
+        The layout response, plus (when requested) the renderable build of every
+        component the layout places — so a grid opens on one round trip instead of
+        one builds fetch per placement.
       properties:
         canvas:
           allOf:
@@ -91575,15 +92533,17 @@ components:
           - 'null'
           description: The live layout version this document reflects — pass as expected_current_version_id
             when publishing or patching. Null before the first layout publish.
+        component_lifecycles:
+          type: array
+          items:
+            $ref: '#/components/schemas/CanvasComponentLifecycle'
+          description: One entry per distinct (component, pinned version) the layout's
+            live placements reference, present only when the request passes include_components.
+            Components the caller may not see are omitted.
       required:
       - canvas
       - current_version_id
       - layout
-    CanvasLayoutSchemaVersionEnum:
-      enum:
-      - 1
-      type: integer
-      description: '* `1` - 1'
     CanvasNetworkCapabilities:
       type: object
       properties:
@@ -92327,6 +93287,61 @@ components:
       - parent_version_id
       - prompt
       - task_id
+    CanvasViewResponse:
+      type: object
+      description: |-
+        Everything a client needs to open a canvas, in one round trip.
+
+        Replaces the record → builds → source waterfall: the record, the live
+        build (with its signed artifact URL), and — only when there is nothing
+        built to render — the head source project (freeform/component) or the
+        layout document (grid).
+      properties:
+        canvas:
+          allOf:
+          - $ref: '#/components/schemas/Canvas'
+          description: The canvas record.
+        published_build:
+          oneOf:
+          - $ref: '#/components/schemas/CanvasBuild'
+          - type: 'null'
+          description: The live build with its signed artifact URL. Null until a build
+            completes.
+        current_version_id:
+          type:
+          - string
+          - 'null'
+          description: Id of the source version the canvas's head points at. Null
+            before the first publish.
+        has_active_build:
+          type: boolean
+          description: True while a build is queued or running — poll the builds endpoint
+            until it settles.
+        source:
+          oneOf:
+          - $ref: '#/components/schemas/CanvasSourceProject'
+          - type: 'null'
+          description: The head source project, present only when the canvas has no
+            live build to render (the client-side fallback tier). Null otherwise,
+            and always null for grid canvases.
+        layout:
+          oneOf:
+          - $ref: '#/components/schemas/CanvasLayout'
+          - type: 'null'
+          description: 'For grid canvases: the head layout document. Null for other
+            kinds.'
+        component_lifecycles:
+          type: array
+          items:
+            $ref: '#/components/schemas/CanvasComponentLifecycle'
+          description: 'For grid canvases: the renderable build of every component
+            the layout''s live placements reference, so the grid renders from this
+            one call. Absent for other kinds.'
+      required:
+      - canvas
+      - current_version_id
+      - has_active_build
+      - published_build
     CapabilityReadiness:
       type: object
       properties:
@@ -93355,7 +94370,7 @@ components:
         query:
           type: string
           description: The HogQL query to check.
-          maxLength: 65536
+          maxLength: 262144
         incremental_key:
           type:
           - string
@@ -95115,6 +96130,7 @@ components:
       - ok
       - not_connected
       - needs_reauth
+      - needs_approval
       - blocked
       - tool_missing
       - write_blocked
@@ -95124,6 +96140,7 @@ components:
         * `ok` - Ok
         * `not_connected` - Not Connected
         * `needs_reauth` - Needs Reauth
+        * `needs_approval` - Needs Approval
         * `blocked` - Blocked
         * `tool_missing` - Tool Missing
         * `write_blocked` - Write Blocked
@@ -100835,18 +101852,19 @@ components:
           - $ref: '#/components/schemas/SubjectTypeEnum'
           readOnly: true
           description: |-
-            Kind of catalog object being checked: 'table' (a synced warehouse table) or 'view' (a saved query).
+            Kind of catalog object being checked: 'table', 'view', or 'metric'.
 
             * `table` - table
             * `view` - view
+            * `metric` - metric
         subject_uuid:
           type:
           - string
           - 'null'
           format: uuid
           readOnly: true
-          description: Id of the table or view being checked -- the parent resource
-            in the URL.
+          description: Id of the table, view, or metric being checked, from the parent
+            resource in the URL.
         subject_name:
           type: string
           readOnly: true
@@ -101132,6 +102150,58 @@ components:
       - subject_type
       - subject_uuid
       - suite_run
+    DataQualityCheckSchedule:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Schedule identifier.
+        interval:
+          allOf:
+          - $ref: '#/components/schemas/DataQualityScheduleIntervalEnum'
+          readOnly: true
+          description: |-
+            How often the checks run.
+
+            * `1hour` - 1hour
+            * `6hour` - 6hour
+            * `12hour` - 12hour
+            * `24hour` - 24hour
+            * `7day` - 7day
+        enabled:
+          type: boolean
+          readOnly: true
+          description: Whether the schedule runs automatically.
+        next_run_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+          description: Next scheduled execution time, if enabled.
+        last_run_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+          description: Most recent visible scheduled suite execution time.
+        last_suite_run:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          readOnly: true
+          description: Most recent visible scheduled suite.
+      required:
+      - enabled
+      - id
+      - interval
+      - last_run_at
+      - last_suite_run
+      - next_run_at
     DataQualityCheckSeverityEnum:
       enum:
       - error
@@ -101205,18 +102275,19 @@ components:
           - $ref: '#/components/schemas/SubjectTypeEnum'
           readOnly: true
           description: |-
-            Kind of catalog object being checked: 'table' (a synced warehouse table) or 'view' (a saved query).
+            Kind of catalog object being checked: 'table', 'view', or 'metric'.
 
             * `table` - table
             * `view` - view
+            * `metric` - metric
         subject_uuid:
           type:
           - string
           - 'null'
           format: uuid
           readOnly: true
-          description: Id of the table or view being checked -- the parent resource
-            in the URL.
+          description: Id of the table, view, or metric being checked, from the parent
+            resource in the URL.
         subject_name:
           type: string
           readOnly: true
@@ -101368,6 +102439,13 @@ components:
           readOnly: true
           description: Warehouse source schema of the table this check audits, or
             null when the subject is a view.
+        subject_metric_name:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          description: Current metric name for opening its Tests tab, or null for
+            other subjects.
       required:
       - check_type
       - created_at
@@ -101379,6 +102457,7 @@ components:
       - last_status
       - last_succeeded_at
       - owner
+      - subject_metric_name
       - subject_name
       - subject_node_id
       - subject_schema_id
@@ -101398,6 +102477,20 @@ components:
             format: uuid
           description: Ids of the checks to run. Omit to run every enabled check in
             the project.
+    DataQualityScheduleIntervalEnum:
+      enum:
+      - 1hour
+      - 6hour
+      - 12hour
+      - 24hour
+      - 7day
+      type: string
+      description: |-
+        * `1hour` - 1hour
+        * `6hour` - 6hour
+        * `12hour` - 12hour
+        * `24hour` - 24hour
+        * `7day` - 7day
     DataQualitySubjectHealth:
       type: object
       description: Per-subject rollup, the same rule the information_schema.data_quality_health
@@ -101405,10 +102498,10 @@ components:
       properties:
         subject_type:
           type: string
-          description: '''table'' or ''view''.'
+          description: '''table'', ''view'', or ''metric''.'
         subject_uuid:
           type: string
-          description: Id of the table or view.
+          description: Id of the table, view, or metric.
         health:
           type: string
           description: failing (an error-severity check failed), erroring (a check
@@ -101436,7 +102529,7 @@ components:
         trigger:
           type: string
           readOnly: true
-          description: manual, materialization, or source_sync.
+          description: manual, materialization, source_sync, or scheduled.
         status:
           type: string
           readOnly: true
@@ -101446,9 +102539,9 @@ components:
           - string
           - 'null'
           readOnly: true
-          description: '''table'' or ''view'' when the run targets exactly one subject,
-            including a run of a single check on that subject; null for a run spanning
-            several subjects.'
+          description: '''table'', ''view'', or ''metric'' when the run targets exactly
+            one subject, including a run of a single check on that subject; null for
+            a run spanning several subjects.'
         subject_uuid:
           type:
           - string
@@ -104829,6 +105922,8 @@ components:
             * `GoogleAdSense` - GoogleAdSense
             * `Sequenzy` - Sequenzy
             * `Skio` - Skio
+            * `Smartlead` - Smartlead
+            * `Substack` - Substack
       required:
       - source_type
     DatabaseSchemaSchema:
@@ -107685,6 +108780,8 @@ components:
             * `GoogleAdSense` - GoogleAdSense
             * `Sequenzy` - Sequenzy
             * `Skio` - Skio
+            * `Smartlead` - Smartlead
+            * `Substack` - Substack
         label:
           type: string
           readOnly: true
@@ -115169,6 +116266,40 @@ components:
       - ref
       - release
       - team_id
+    ErrorTrackingSymbolSetBulkCheckUpload:
+      type: object
+      properties:
+        symbol_sets:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorTrackingSymbolSetUpload'
+          description: Symbol sets the client intends to upload, with per-symbol release
+            IDs and content hashes. Send at most 1000 per request.
+        force:
+          type: boolean
+          default: false
+          description: Whether to overwrite uploaded symbol sets whose content hash
+            changed.
+        skip_on_conflict:
+          type: boolean
+          default: false
+          description: Whether to skip uploaded symbol sets whose content hash changed
+            instead of failing.
+      required:
+      - symbol_sets
+    ErrorTrackingSymbolSetBulkCheckUploadResponse:
+      type: object
+      properties:
+        chunk_ids_to_upload:
+          type: array
+          items:
+            type: string
+          description: 'Chunk IDs to send to `bulk_start_upload`: the symbol set is
+            missing, its upload never completed, its content differs, or it still
+            needs the release bound. The other chunks are already uploaded with identical
+            content and were marked as still in use.'
+      required:
+      - chunk_ids_to_upload
     ErrorTrackingSymbolSetBulkDelete:
       type: object
       properties:
@@ -115193,17 +116324,6 @@ components:
     ErrorTrackingSymbolSetBulkStartUpload:
       type: object
       properties:
-        chunk_ids:
-          type: array
-          items:
-            type: string
-          description: Legacy list of symbol set references to upload, all associated
-            with `release_id`.
-        release_id:
-          type:
-          - string
-          - 'null'
-          description: Optional error tracking release ID used with `chunk_ids`.
         symbol_sets:
           type: array
           items:
@@ -115220,6 +116340,17 @@ components:
           default: false
           description: Whether to skip uploaded symbol sets whose content hash changed
             instead of failing.
+        chunk_ids:
+          type: array
+          items:
+            type: string
+          description: Legacy list of symbol set references to upload, all associated
+            with `release_id`.
+        release_id:
+          type:
+          - string
+          - 'null'
+          description: Optional error tracking release ID used with `chunk_ids`.
     ErrorTrackingSymbolSetBulkStartUploadEntry:
       type: object
       properties:
@@ -121074,13 +122205,20 @@ components:
         date_from:
           type: string
           format: date-time
-          description: 'Start of the window scanned: the experiment''s run window,
-            clamped to its most recent 30 days. Matches outside it are not returned.'
+          description: Start of the window scanned, never before the experiment started.
+            At most 30 days before date_to when the scan found an exposure to anchor
+            on. When it found none, how far back the search for one reached, which
+            the project's recording retention bounds. Matches outside the window are
+            not returned.
         date_to:
           type: string
           format: date-time
-          description: 'End of the window scanned: the experiment''s end date, or
-            now while it runs.'
+          description: 'End of the window scanned: 24 hours after the latest exposure
+            captured in a session, capped at the experiment''s end date or now. The
+            pad covers the metric events a session fires after its exposure. The scan
+            ends at the experiment''s end date, or now while it runs, when that exposure
+            can''t be located, so an experiment whose exposures stopped long ago is
+            still scanned where its sessions are.'
         filter_test_accounts:
           type: boolean
           description: Whether the project's test-account filters were applied, following
@@ -124810,6 +125948,8 @@ components:
             * `GoogleAdSense` - GoogleAdSense
             * `Sequenzy` - Sequenzy
             * `Skio` - Skio
+            * `Smartlead` - Smartlead
+            * `Substack` - Substack
         access_method:
           allOf:
           - $ref: '#/components/schemas/ExternalDataSourceAccessMethodEnum'
@@ -126190,6 +127330,8 @@ components:
             * `GoogleAdSense` - GoogleAdSense
             * `Sequenzy` - Sequenzy
             * `Skio` - Skio
+            * `Smartlead` - Smartlead
+            * `Substack` - Substack
         payload:
           type: object
           additionalProperties: true
@@ -127825,6 +128967,8 @@ components:
       - GoogleAdSense
       - Sequenzy
       - Skio
+      - Smartlead
+      - Substack
       type: string
       description: |-
         * `Ashby` - Ashby
@@ -129163,6 +130307,8 @@ components:
         * `GoogleAdSense` - GoogleAdSense
         * `Sequenzy` - Sequenzy
         * `Skio` - Skio
+        * `Smartlead` - Smartlead
+        * `Substack` - Substack
     ExternalQueryError:
       additionalProperties: false
       properties:
@@ -129216,6 +130362,18 @@ components:
         * `reviewing_source` - reviewing_source
         * `publishing_source` - publishing_source
         * `unknown` - unknown
+    FallbackReasonEnum:
+      enum:
+      - flag_disabled
+      - insufficient_version_coverage
+      - empty_window
+      - comparison
+      type: string
+      description: |-
+        * `flag_disabled` - flag_disabled
+        * `insufficient_version_coverage` - insufficient_version_coverage
+        * `empty_window` - empty_window
+        * `comparison` - comparison
     FeatureFlag:
       type: object
       description: Serializer mixin that handles tags for objects.
@@ -137130,14 +138288,16 @@ components:
             (default) or ''accounts''. An accounts audience fans out one run per customer
             analytics account and takes account filters instead: properties entries
             of type ''account_custom_property'' (key = definition id), plus tag_names:
-            [<str>], assigned_to_user_ids: [<int>], all_roles_unassigned: <bool>.
-            function*: {template_id, inputs: {<key>: {value: <str>}}}. Wrap values
-            in {value:...} to enable hog templating ({person.x}, {event.x}); flat
-            strings won''t interpolate. function_email also accepts tracking_enabled?:
-            <bool> (default true) - when false, no open pixel is injected, links are
-            not rewritten, and the send skips ESP-level open/click tracking, so opens
-            and clicks are not recorded for that step (delivery/bounce/unsubscribe
-            still are). Dictionary input values are template strings too — write booleans/numbers
+            [<str>], assignment_status: ''all''|''assigned''|''unassigned'', and assigned_to_user_ids:
+            [<int>] when assignment_status is ''assigned''. all_roles_unassigned remains
+            accepted for workflows saved before assignment_status was added. function*:
+            {template_id, inputs: {<key>: {value: <str>}}}. Wrap values in {value:...}
+            to enable hog templating ({person.x}, {event.x}); flat strings won''t
+            interpolate. function_email also accepts tracking_enabled?: <bool> (default
+            true) - when false, no open pixel is injected, links are not rewritten,
+            and the send skips ESP-level open/click tracking, so opens and clicks
+            are not recorded for that step (delivery/bounce/unsubscribe still are).
+            Dictionary input values are template strings too — write booleans/numbers
             as single-expression templates (''{true}'', ''{42}''), which evaluate
             to the typed value. delay: waits a fixed span or until a per-person/-event
             date — set EXACTLY ONE of delay_duration or delay_until. {delay_duration:
@@ -142353,6 +143513,7 @@ components:
             * `google-pubsub` - Google Pubsub
             * `google-search-console` - Google Search Console
             * `google-sheets` - Google Sheets
+            * `helpscout` - Helpscout
             * `hubspot` - Hubspot
             * `instagram` - Instagram
             * `intercom` - Intercom
@@ -142604,6 +143765,7 @@ components:
       - linear
       - github
       - gitlab
+      - helpscout
       - meta-ads
       - instagram
       - clickup
@@ -142654,6 +143816,7 @@ components:
       - google-pubsub
       - google-search-console
       - google-sheets
+      - helpscout
       - hubspot
       - instagram
       - intercom
@@ -142703,6 +143866,7 @@ components:
         * `google-pubsub` - Google Pubsub
         * `google-search-console` - Google Search Console
         * `google-sheets` - Google Sheets
+        * `helpscout` - Helpscout
         * `hubspot` - Hubspot
         * `instagram` - Instagram
         * `intercom` - Intercom
@@ -143158,6 +144322,7 @@ components:
           description: Jira projects available to this integration.
       required:
       - projects
+    JsonValue: {}
     JsonrpcEnum:
       enum:
       - '2.0'
@@ -148236,6 +149401,14 @@ components:
       - earliest
       title: LogsOrderBy
       type: string
+    LogsPatternsSourceEnum:
+      enum:
+      - stored_patterns
+      - body_mining
+      type: string
+      description: |-
+        * `stored_patterns` - stored_patterns
+        * `body_mining` - body_mining
     LogsQuery:
       additionalProperties: false
       properties:
@@ -148732,11 +149905,21 @@ components:
           format: double
           description: Upper edge of the expected band. Null while the series has
             too little history to band.
+        verdict:
+          description: |-
+            Where the observed count sits against the band: above when it exceeds upper, below when it falls under lower. Null while it sits inside the band, or while the band is not ready.
+
+            * `above` - Above the band
+            * `below` - Below the band
+          oneOf:
+          - $ref: '#/components/schemas/LogsSeriesBandVerdictEnum'
+          - $ref: '#/components/schemas/NullEnum'
       required:
       - lower
       - observed
       - time
       - upper
+      - verdict
     LogsSeriesBandSeries:
       type: object
       properties:
@@ -148805,6 +149988,14 @@ components:
       - namespace
       - severity
       - total_count
+    LogsSeriesBandVerdictEnum:
+      enum:
+      - above
+      - below
+      type: string
+      description: |-
+        * `above` - Above the band
+        * `below` - Below the band
     LogsSeriesBandsError:
       type: object
       properties:
@@ -151500,17 +152691,40 @@ components:
           - type: 'null'
           default: null
           title: Filtertestaccounts
+        includeAllModels:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          description: Return individual reported models, excluding Unknown, instead
+            of the top-six grouping.
+          title: Includeallmodels
         kind:
           const: MCPModelBreakdownQuery
           default: MCPModelBreakdownQuery
           title: Kind
           type: string
+        limit:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          default: null
+          description: Page size when includeAllModels is enabled.
+          title: Limit
         modifiers:
           anyOf:
           - $ref: '#/components/schemas/HogQLQueryModifiers'
           - type: 'null'
           default: null
           description: Modifiers used when performing the query
+        offset:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          default: null
+          description: Number of individual models to skip when includeAllModels is
+            enabled.
+          title: Offset
         properties:
           anyOf:
           - items:
@@ -151573,6 +152787,13 @@ components:
           description: Query error. Returned only if 'explain' or `modifiers.debug`
             is true. Throws an error otherwise.
           title: Error
+        hasMore:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          description: Whether another page of individual model identifiers is available.
+          title: Hasmore
         hogql:
           anyOf:
           - type: string
@@ -154718,6 +155939,40 @@ components:
       - DESC
       title: MCPToolQualitySortDirection
       type: string
+    MCPToolRequest:
+      properties:
+        args:
+          additionalProperties:
+            $ref: '#/components/schemas/JsonValue'
+          description: Arguments validated against the selected tool's schema.
+          title: Args
+          type: object
+      title: MCPToolRequest
+      type: object
+    MCPToolResponse:
+      properties:
+        content:
+          description: Formatted tool output for the model.
+          title: Content
+          type: string
+        structured_content:
+          anyOf:
+          - additionalProperties:
+              $ref: '#/components/schemas/JsonValue'
+            type: object
+          - type: 'null'
+          default: null
+          description: Structured tool output for native widgets.
+          title: Structured Content
+        success:
+          description: Whether the tool completed successfully.
+          title: Success
+          type: boolean
+      required:
+      - content
+      - success
+      title: MCPToolResponse
+      type: object
     MCPToolSampleIntentItem:
       additionalProperties: false
       properties:
@@ -167811,6 +169066,31 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/WebExperimentsAPI'
+    PaginatedWikiPageProposalList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/WikiPageProposal'
     PaginatedWizardProgramList:
       type: object
       required:
@@ -169513,6 +170793,14 @@ components:
           - 'null'
           format: date-time
           readOnly: true
+    PatchedBusinessKnowledgeSettingsUpdate:
+      type: object
+      properties:
+        learn_from_support_enabled:
+          type: boolean
+          description: When true, PostHog learns reusable knowledge from public human
+            replies on resolved support tickets. Rejected when Support is off for
+            this environment.
     PatchedCIMDVerificationTokenUpdate:
       type: object
       description: |-
@@ -170489,18 +171777,19 @@ components:
           - $ref: '#/components/schemas/SubjectTypeEnum'
           readOnly: true
           description: |-
-            Kind of catalog object being checked: 'table' (a synced warehouse table) or 'view' (a saved query).
+            Kind of catalog object being checked: 'table', 'view', or 'metric'.
 
             * `table` - table
             * `view` - view
+            * `metric` - metric
         subject_uuid:
           type:
           - string
           - 'null'
           format: uuid
           readOnly: true
-          description: Id of the table or view being checked -- the parent resource
-            in the URL.
+          description: Id of the table, view, or metric being checked, from the parent
+            resource in the URL.
         subject_name:
           type: string
           readOnly: true
@@ -170628,6 +171917,23 @@ components:
           - 'null'
           format: date-time
           readOnly: true
+    PatchedDataQualityCheckScheduleUpdate:
+      type: object
+      properties:
+        interval:
+          allOf:
+          - $ref: '#/components/schemas/DataQualityScheduleIntervalEnum'
+          description: |-
+            How often all enabled checks on the metric run.
+
+            * `1hour` - 1hour
+            * `6hour` - 6hour
+            * `12hour` - 12hour
+            * `24hour` - 24hour
+            * `7day` - 7day
+        enabled:
+          type: boolean
+          description: Whether checks run automatically on this schedule.
     PatchedDataQualityGateConfig:
       type: object
       description: The team-level materialization gate. Checks always run and warn;
@@ -178078,7 +179384,7 @@ components:
           maxLength: 100
         output_destinations:
           allOf:
-          - $ref: '#/components/schemas/SignalScoutOutputDestinations'
+          - $ref: '#/components/schemas/SignalScoutOutputDestinationsUpdate'
           description: Destinations that receive each finding or report this scout
             emits. Pass an empty object to disable delivery.
         structured_output_schema:
@@ -179120,6 +180426,53 @@ components:
           format: uuid
           description: Channel this task is owned by (the channel it was kicked off
             in).
+    PatchedTeamLogsConfig:
+      type: object
+      properties:
+        logs_distinct_id_attribute_key:
+          type: string
+          readOnly: true
+          description: Legacy single-key alias — always the first entry of `logs_distinct_id_attribute_keys`.
+            Read-only; write the plural field instead.
+        logs_distinct_id_attribute_keys:
+          type: array
+          items:
+            type: string
+            maxLength: 200
+          description: Log attribute keys whose values should match a person's distinct_id
+            — a log links to a person when any of these attributes equals one of their
+            distinct IDs. Used by the person profile Logs tab and the `query-logs`
+            MCP tool. Defaults to ['posthogDistinctId'] — the convention documented
+            at https://posthog.com/docs/logs/link-session-replay and the key the posthog-js
+            / posthog-react-native SDKs auto-attach. Add keys only if your pipeline
+            emits the person identifier under different attributes.
+          maxItems: 10
+        logs_session_id_attribute_keys:
+          type: array
+          items:
+            type: string
+            maxLength: 200
+          description: Ordered list of log attribute keys whose values hold the PostHog
+            session ID. Detection checks keys in order, then falls back to common
+            session ID attribute conventions; the first key with a value wins. Defaults
+            to ['sessionId'] — the convention documented at https://posthog.com/docs/logs/link-session-replay
+            and the key the posthog-js / posthog-react-native SDKs auto-attach. Add
+            keys only if your pipeline emits the session ID under different attributes.
+          maxItems: 10
+        logs_pattern_message_keys:
+          type: array
+          items:
+            type: string
+            maxLength: 200
+          description: Ordered list of top-level JSON keys whose value is the message
+            text that log patterns are derived from. Keys are matched literally at
+            the top level of the log body; a dot in a key is part of the key name,
+            not a path into nested objects. Selection checks keys in order; the first
+            key whose value is a non-empty string wins. Defaults to ['message', 'msg',
+            'event']. An empty list turns message extraction off, so JSON log bodies
+            group by their key set instead. The stored log body is never changed by
+            this setting.
+          maxItems: 10
     PatchedTeamTracingConfig:
       type: object
       properties:
@@ -197352,6 +198705,13 @@ components:
           description: Query error. Returned only if 'explain' or `modifiers.debug`
             is true. Throws an error otherwise.
           title: Error
+        hasMore:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          description: Whether another page of individual model identifiers is available.
+          title: Hasmore
         hogql:
           anyOf:
           - type: string
@@ -213710,12 +215070,48 @@ components:
       - skill_name
       - started
       - workflow_id
+    SignalScoutManualRunRequest:
+      type: object
+      description: |-
+        Request body for an on-demand (`run now`) scout dispatch.
+
+        Every field is optional: a plain trigger sends no body at all.
+      properties:
+        note:
+          type: string
+          description: 'Optional steering for this run only, such as ''focus on the
+            checkout regression'' or ''skip the staging traffic today''. The agent
+            reads it alongside the scout''s durable notes and weighs it the same way:
+            it directs attention, it never forces a finding. Use it instead of leaving
+            a scout note that would also steer every later scheduled run. The note
+            is kept on the run for history and is never read by another run. Because
+            the agent reads it verbatim while holding privileged tools, a run that
+            carries one needs `llm_skill:write` on top of `signal_scout:write`, plus
+            editor access to skills, the same bar as leaving a note.'
+          maxLength: 1000
     SignalScoutOutputDestinations:
       type: object
       properties:
         slack:
           oneOf:
           - $ref: '#/components/schemas/SignalScoutSlackDestination'
+          - type: 'null'
+          description: Slack destination for each emitted scout finding or report.
+            Null or omitted disables Slack delivery.
+        webhook:
+          oneOf:
+          - $ref: '#/components/schemas/SignalScoutWebhookDestination'
+          - type: 'null'
+          description: 'The CDP destination another product provisioned for this scout''s
+            reports. Null or omitted means no webhook. Unlike Slack, Signals does
+            not deliver this itself: the reference lives here so the owning product
+            can manage the destination''s lifecycle.'
+    SignalScoutOutputDestinationsUpdate:
+      type: object
+      properties:
+        slack:
+          oneOf:
+          - $ref: '#/components/schemas/SignalScoutSlackDestinationUpdate'
           - type: 'null'
           description: Slack destination for each emitted scout finding or report.
             Null or omitted disables Slack delivery.
@@ -213862,6 +215258,8 @@ components:
               items:
                 type: string
             triggered_by:
+              type: string
+            run_note:
               type: string
             derived:
               type: object
@@ -214060,6 +215458,8 @@ components:
                 type: string
             triggered_by:
               type: string
+            run_note:
+              type: string
             derived:
               type: object
               properties:
@@ -214182,11 +215582,53 @@ components:
           minItems: 1
         thread_reports:
           type: boolean
-          default: false
+          default: true
           description: 'When true, post a report as a thread: a short lead in the
             channel and the rest split into replies at the summary''s section labels,
             which can be Markdown headings or bold labels. Keeps a long summary from
-            being clipped at Slack''s section limit. Off by default, and it does not
+            being clipped at Slack''s section limit. On by default; set it false to
+            post a single message, which can truncate a long summary. It does not
+            change how findings post.'
+      required:
+      - integration_id
+    SignalScoutSlackDestinationUpdate:
+      type: object
+      properties:
+        integration_id:
+          type: integer
+          minimum: 1
+          description: ID of the Slack integration whose bot posts this scout's findings
+            and reports.
+        channel:
+          type:
+          - string
+          - 'null'
+          description: Slack channel target in the channel picker's `channel_id|#channel-name`
+            format. Null while choosing a channel; no messages are sent until a channel
+            or user is set.
+          maxLength: 255
+        users:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+            maxLength: 255
+            pattern: ^[UW][A-Z0-9]{4,}\s*(\|.*)?$
+          description: Slack members to send output to as direct messages, each in
+            `member_id|@display-name` format (a bare member ID like `U0123ABC456`
+            also works). Each member gets their own DM from the PostHog app; at most
+            5. Set either this or `channel`, not both. Useful for personal scouts
+            where a DM beats a channel.
+          maxItems: 5
+          minItems: 1
+        thread_reports:
+          type: boolean
+          description: 'When true, post a report as a thread: a short lead in the
+            channel and the rest split into replies at the summary''s section labels,
+            which can be Markdown headings or bold labels. Keeps a long summary from
+            being clipped at Slack''s section limit. On by default; set it false to
+            post a single message, which can truncate a long summary. It does not
             change how findings post.'
       required:
       - integration_id
@@ -214644,6 +216086,15 @@ components:
             pull requests for reports that suggest them as reviewer. Off by default.
             Assignment is additive, so turning it off never removes an assignee from
             a pull request that already has one.
+        github_open_pull_request_ready:
+          type:
+          - boolean
+          - 'null'
+          description: Whether implementation pull requests for reports that suggest
+            this user as reviewer open ready for review instead of draft, so the full
+            CI matrix starts right away. Null follows the project's default_open_pull_request_ready.
+            Applies only when the pull request is created; a pull request somebody
+            converts back to draft stays draft.
         created_at:
           type: string
           format: date-time
@@ -214705,6 +216156,14 @@ components:
           description: Add this user as a GitHub assignee on implementation pull requests
             for reports that suggest them as reviewer. Off by default. Turning it
             off stops future assignment and never removes an existing assignee.
+        github_open_pull_request_ready:
+          type:
+          - boolean
+          - 'null'
+          description: Open implementation pull requests for reports that suggest
+            this user as reviewer ready for review instead of draft, so the full CI
+            matrix runs without anybody clicking Ready. Null follows the project default.
+            A ready pull request runs the full matrix on every push.
     SignalsScoutEvidenceEntry:
       additionalProperties: false
       properties:
@@ -216981,6 +218440,8 @@ components:
             * `GoogleAdSense` - GoogleAdSense
             * `Sequenzy` - Sequenzy
             * `Skio` - Skio
+            * `Smartlead` - Smartlead
+            * `Substack` - Substack
         payload:
           type: object
           additionalProperties: true
@@ -218484,6 +219945,8 @@ components:
             * `GoogleAdSense` - GoogleAdSense
             * `Sequenzy` - Sequenzy
             * `Skio` - Skio
+            * `Smartlead` - Smartlead
+            * `Substack` - Substack
         payload:
           type: object
           additionalProperties: true
@@ -219897,6 +221360,8 @@ components:
             * `GoogleAdSense` - GoogleAdSense
             * `Sequenzy` - Sequenzy
             * `Skio` - Skio
+            * `Smartlead` - Smartlead
+            * `Substack` - Substack
         payload:
           type: object
           additionalProperties: true
@@ -221258,10 +222723,12 @@ components:
       enum:
       - table
       - view
+      - metric
       type: string
       description: |-
         * `table` - table
         * `view` - view
+        * `metric` - metric
     Subscription:
       type: object
       description: Standard Subscription serializer.
@@ -228464,6 +229931,58 @@ components:
             from a survey, experiment, early access feature, product tour, or web
             experiment is exempt, because those forms have no tag input. The caller
             sets that declaration, so a flag can still be created without a tag.
+    TeamLogsConfig:
+      type: object
+      properties:
+        logs_distinct_id_attribute_key:
+          type: string
+          readOnly: true
+          description: Legacy single-key alias — always the first entry of `logs_distinct_id_attribute_keys`.
+            Read-only; write the plural field instead.
+        logs_distinct_id_attribute_keys:
+          type: array
+          items:
+            type: string
+            maxLength: 200
+          description: Log attribute keys whose values should match a person's distinct_id
+            — a log links to a person when any of these attributes equals one of their
+            distinct IDs. Used by the person profile Logs tab and the `query-logs`
+            MCP tool. Defaults to ['posthogDistinctId'] — the convention documented
+            at https://posthog.com/docs/logs/link-session-replay and the key the posthog-js
+            / posthog-react-native SDKs auto-attach. Add keys only if your pipeline
+            emits the person identifier under different attributes.
+          maxItems: 10
+        logs_session_id_attribute_keys:
+          type: array
+          items:
+            type: string
+            maxLength: 200
+          description: Ordered list of log attribute keys whose values hold the PostHog
+            session ID. Detection checks keys in order, then falls back to common
+            session ID attribute conventions; the first key with a value wins. Defaults
+            to ['sessionId'] — the convention documented at https://posthog.com/docs/logs/link-session-replay
+            and the key the posthog-js / posthog-react-native SDKs auto-attach. Add
+            keys only if your pipeline emits the session ID under different attributes.
+          maxItems: 10
+        logs_pattern_message_keys:
+          type: array
+          items:
+            type: string
+            maxLength: 200
+          description: Ordered list of top-level JSON keys whose value is the message
+            text that log patterns are derived from. Keys are matched literally at
+            the top level of the log body; a dot in a key is part of the key name,
+            not a path into nested objects. Selection checks keys in order; the first
+            key whose value is a non-empty string wins. Defaults to ['message', 'msg',
+            'event']. An empty list turns message extraction off, so JSON log bodies
+            group by their key set instead. The stored log body is never changed by
+            this setting.
+          maxItems: 10
+      required:
+      - logs_distinct_id_attribute_key
+      - logs_distinct_id_attribute_keys
+      - logs_pattern_message_keys
+      - logs_session_id_attribute_keys
     TeamMCPGatewayConfig:
       type: object
       properties:
@@ -241171,6 +242690,42 @@ components:
       - head_sha
       - path
       - updated_at
+    WikiPageProposal:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Immutable suggested edit ID. Only its author can apply it through
+            the user API.
+        task_id:
+          type: string
+          format: uuid
+          description: Task that proposed the edit.
+        path:
+          type: string
+          description: Shared wiki page to review.
+        original_content:
+          type: string
+          description: Page content at the revision the proposal is based on.
+        content:
+          type: string
+          description: Proposed page content. This is not published wiki content.
+        base_head:
+          type: string
+          description: Wiki revision the proposal is based on.
+        created_at:
+          type: string
+          format: date-time
+          description: When the edit was proposed.
+      required:
+      - base_head
+      - content
+      - created_at
+      - id
+      - original_content
+      - path
+      - task_id
     WikiPageWrite:
       type: object
       description: Request body for creating or replacing one wiki page.
@@ -241316,6 +242871,13 @@ components:
           readOnly: true
           description: User who created the Wizard run, or null if that user no longer
             exists.
+        created_by:
+          oneOf:
+          - $ref: '#/components/schemas/WizardRunCreator'
+          - type: 'null'
+          readOnly: true
+          description: User who created the Wizard run, or null if that user no longer
+            exists.
         environment:
           allOf:
           - $ref: '#/components/schemas/RunEnvironmentEnum'
@@ -241408,6 +242970,7 @@ components:
           description: Cloud execution deadline, or null for local runs.
       required:
       - created_at
+      - created_by
       - created_by_id
       - deadline_at
       - environment
@@ -241462,6 +243025,31 @@ components:
       - environment
       - program_id
       - workspace
+    WizardRunCreator:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+          description: Unique ID of the user who created the Wizard run.
+        first_name:
+          type: string
+          readOnly: true
+          description: First name of the user who created the Wizard run.
+        last_name:
+          type: string
+          readOnly: true
+          description: Last name of the user who created the Wizard run.
+        email:
+          type: string
+          format: email
+          readOnly: true
+          description: Email address of the user who created the Wizard run.
+      required:
+      - email
+      - first_name
+      - id
+      - last_name
     WizardRunError:
       type: object
       properties:
@@ -243021,9 +244609,12 @@ components:
       properties:
         pattern:
           type: string
-          description: 'Mined log template with variable tokens masked, e.g. "Connected
-            to <ip> in <num>ms". Tokens: <timestamp>, <uuid>, <ip>, <hex>, <num>,
-            plus <*> for word positions Drain found to vary.'
+          description: 'Log template with variable tokens masked, e.g. "Connected
+            to <ip> in <num>ms". Body mining masks <timestamp>, <uuid>, <ip>, <hex>,
+            <num>, plus <*> for word positions Drain found to vary. Stored patterns
+            use the ingestion vocabulary instead: <N>, <TIMESTAMP>, <KLOGTIME>, <UUID>,
+            <IP>, <HOST>, <HEX>, <ID>, <EMAIL>, <JSON_ARRAY>, and <JSON:keys> for
+            a JSON body reduced to its key set.'
         count:
           type: integer
           description: Occurrences of this pattern within the sample. When `sampled`
@@ -243037,21 +244628,24 @@ components:
         volume_share_pct:
           type: number
           format: double
-          description: Share of the sampled log volume this pattern represents (0–100).
+          description: Share of the log volume this pattern represents (0–100). Measured
+            over the sample when `sampled` is true, over every matching row otherwise.
         error_count:
           type: integer
-          description: Sampled occurrences at severity "error" or "fatal". Prefer
-            `estimated_error_count` for display.
+          description: Occurrences at severity "error" or "fatal". A sample count
+            when `sampled` is true, so prefer `estimated_error_count` for display.
         estimated_error_count:
           type: integer
           description: Estimated error/fatal occurrences across the full window, extrapolated
             from the sample. Equals `error_count` when the window was not sampled.
         first_seen:
           type: string
-          description: ISO 8601 timestamp of the earliest sampled occurrence.
+          description: ISO 8601 timestamp of the earliest occurrence. Taken from the
+            sample when `sampled` is true, from every matching row otherwise.
         last_seen:
           type: string
-          description: ISO 8601 timestamp of the latest sampled occurrence.
+          description: ISO 8601 timestamp of the latest occurrence. Taken from the
+            sample when `sampled` is true, from every matching row otherwise.
         examples:
           type: array
           items:
@@ -243067,17 +244661,18 @@ components:
           type: array
           items:
             type: integer
-          description: Estimated occurrences per time bucket, aligned index-for-index
-            with the response's `sparkline_buckets`. Extrapolated from the sample
-            like `estimated_count`, so it shows the volume shape over the window,
-            not exact per-bucket tallies.
+          description: Occurrences per time bucket, aligned index-for-index with the
+            response's `sparkline_buckets`. When `sampled` is true these are extrapolated
+            like `estimated_count` and show the volume shape over the window rather
+            than exact tallies. Otherwise they are exact per-bucket counts.
         severity_counts:
           type: object
           additionalProperties:
             type: integer
-          description: Sampled occurrences keyed by lowercased severity ("trace" through
-            "fatal"). Raw sample counts, not extrapolated — severity dominance is
-            a proportion, so scaling would not change it.
+          description: Occurrences keyed by lowercased severity ("trace" through "fatal").
+            Never extrapolated, because severity dominance is a proportion that scaling
+            would not change. Sample counts when `sampled` is true, counts over every
+            matching row otherwise.
         match_regex:
           type:
           - string
@@ -243094,6 +244689,18 @@ components:
           description: Longest literal run in the template, for plain-text (icontains)
             filtering when `match_regex` is null. Null when the template has no usable
             literal content.
+        match_patterns:
+          type: array
+          items:
+            type: string
+          description: Exact canonical members of a stored-pattern group. Filter pattern
+            IN these values AND pattern_version equals this group's version. Empty
+            for body mining.
+        pattern_version:
+          type:
+          - integer
+          - 'null'
+          description: Version required by match_patterns. Null for body mining.
       required:
       - count
       - error_count
@@ -243176,9 +244783,9 @@ components:
       properties:
         body:
           type: string
-          description: 'Log body as the miner saw it: whitespace-collapsed and truncated
-            to the mining length cap, with the message field extracted from JSON bodies.
-            This is not the raw stored line.'
+          description: Original-message example. Body mining normalizes whitespace,
+            extracts JSON message fields and truncates to the mining cap. Stored-pattern
+            aggregation returns the raw body prefix, limited to 4096 Unicode characters.
         severity_text:
           type: string
           description: Severity of the sampled line, e.g. "info", "error".
@@ -243198,8 +244805,10 @@ components:
       properties:
         key:
           type: string
-          description: Attribute key. For type "log", use "message". For "log_attribute"/"log_resource_attribute",
-            use the attribute key (e.g. "k8s.container.name").
+          description: 'Attribute key. For type "log", use "message" for the body
+            text, or a log column: "pattern" and "pattern_version" (the patterns pivot),
+            "severity_level", "service_name", "trace_id", "span_id". For "log_attribute"/"log_resource_attribute",
+            use the attribute key (e.g. "k8s.container.name").'
         type:
           allOf:
           - $ref: '#/components/schemas/_LogPropertyFilterTypeEnum'
@@ -243850,6 +245459,49 @@ components:
     _LogsPatternsDiffWindow:
       type: object
       properties:
+        source:
+          allOf:
+          - $ref: '#/components/schemas/LogsPatternsSourceEnum'
+          description: |-
+            Whether counts come from stored-pattern aggregation or body masking and Drain3 mining.
+
+            * `stored_patterns` - stored_patterns
+            * `body_mining` - body_mining
+        pattern_version:
+          type:
+          - integer
+          - 'null'
+          description: Stored pattern version used. Null for body mining.
+        fallback_reason:
+          description: |-
+            Why body mining was used. Null for stored-pattern aggregation.
+
+            * `flag_disabled` - flag_disabled
+            * `insufficient_version_coverage` - insufficient_version_coverage
+            * `empty_window` - empty_window
+            * `comparison` - comparison
+          oneOf:
+          - $ref: '#/components/schemas/FallbackReasonEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        pattern_coverage_pct:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: Percentage of all matching rows with a nonempty pattern at
+            the selected version. Null for body mining.
+        represented_count:
+          type:
+          - integer
+          - 'null'
+          description: Exact rows represented by the returned stored-pattern groups.
+            Null for body mining.
+        remainder_count:
+          type:
+          - integer
+          - 'null'
+          description: Matching rows outside returned groups, including other versions,
+            unstamped rows and the long tail. Null for body mining.
         scanned_count:
           type: integer
           description: Log rows fed to the miner for this window (sample size).
@@ -243890,15 +245542,59 @@ components:
     _LogsPatternsResponse:
       type: object
       properties:
+        source:
+          allOf:
+          - $ref: '#/components/schemas/LogsPatternsSourceEnum'
+          description: |-
+            Whether counts come from stored-pattern aggregation or body masking and Drain3 mining.
+
+            * `stored_patterns` - stored_patterns
+            * `body_mining` - body_mining
+        pattern_version:
+          type:
+          - integer
+          - 'null'
+          description: Stored pattern version used. Null for body mining.
+        fallback_reason:
+          description: |-
+            Why body mining was used. Null for stored-pattern aggregation.
+
+            * `flag_disabled` - flag_disabled
+            * `insufficient_version_coverage` - insufficient_version_coverage
+            * `empty_window` - empty_window
+            * `comparison` - comparison
+          oneOf:
+          - $ref: '#/components/schemas/FallbackReasonEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        pattern_coverage_pct:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: Percentage of all matching rows with a nonempty pattern at
+            the selected version. Null for body mining.
+        represented_count:
+          type:
+          - integer
+          - 'null'
+          description: Exact rows represented by the returned stored-pattern groups.
+            Null for body mining.
+        remainder_count:
+          type:
+          - integer
+          - 'null'
+          description: Matching rows outside returned groups, including other versions,
+            unstamped rows and the long tail. Null for body mining.
         patterns:
           type: array
           items:
             $ref: '#/components/schemas/_LogPattern'
-          description: Mined patterns ordered by `count` descending.
+          description: Pattern groups ordered by count. Stored-pattern counts are
+            exact; body-mining counts describe the sample.
         scanned_count:
           type: integer
-          description: Number of log rows fed to the miner (the sample size, capped
-            at the sample limit).
+          description: 'Rows scanned: the sample size for body mining, or the full
+            matching count for stored-pattern aggregation.'
         total_count:
           type: integer
           description: Total log rows matching the filters in the window, before sampling.

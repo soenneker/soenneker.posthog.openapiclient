@@ -88,6 +88,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         Gitlab,
         #pragma warning restore CS1591
+        [EnumMember(Value = "helpscout")]
+        #pragma warning disable CS1591
+        Helpscout,
+        #pragma warning restore CS1591
         [EnumMember(Value = "meta-ads")]
         #pragma warning disable CS1591
         MetaAds,

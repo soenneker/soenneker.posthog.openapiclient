@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Layout
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public LayoutRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/canvases/{id}/layout{?version_id*}", pathParameters)
+        public LayoutRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/canvases/{id}/layout{?include_components*,version_id*}", pathParameters)
         {
         }
         /// <summary>
@@ -42,26 +42,26 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Layout
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public LayoutRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/canvases/{id}/layout{?version_id*}", rawUrl)
+        public LayoutRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/canvases/{id}/layout{?include_components*,version_id*}", rawUrl)
         {
         }
         /// <summary>
         /// Read a grid canvas&apos;s layout document and its `current_version_id`.Always call this before editing: pass the returned version id as`expected_current_version_id` on publish/patch so concurrent edits arenot overwritten. A grid canvas with no versions yet returns thedefault empty layout with a null version id.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutWithComponentsResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Layout.LayoutRequestBuilder.LayoutRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutWithComponentsResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Layout.LayoutRequestBuilder.LayoutRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutResponse> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Layout.LayoutRequestBuilder.LayoutRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutWithComponentsResponse> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Layout.LayoutRequestBuilder.LayoutRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutWithComponentsResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutWithComponentsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Read a grid canvas&apos;s layout document and its `current_version_id`.Always call this before editing: pass the returned version id as`expected_current_version_id` on publish/patch so concurrent edits arenot overwritten. A grid canvas with no versions yet returns thedefault empty layout with a null version id.
@@ -97,6 +97,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Layout
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class LayoutRequestBuilderGetQueryParameters 
         {
+            /// <summary>Also return the renderable build (with signed artifact URL) of every component the layout&apos;s live placements reference, so a grid renders from this one call.</summary>
+            [QueryParameter("include_components")]
+            public bool? IncludeComponents { get; set; }
             /// <summary>Read this historical layout version instead of the head (for version browsing).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

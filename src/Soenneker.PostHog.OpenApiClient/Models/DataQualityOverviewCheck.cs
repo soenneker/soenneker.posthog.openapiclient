@@ -133,6 +133,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityOverviewCheckSeverity Severity { get; set; }
 #endif
+        /// <summary>Current metric name for opening its Tests tab, or null for other subjects.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SubjectMetricName { get; private set; }
+#nullable restore
+#else
+        public string SubjectMetricName { get; private set; }
+#endif
         /// <summary>Queryable name of the subject, refreshed on every run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -155,7 +163,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string SubjectStatus { get; private set; }
 #endif
-        /// <summary>Kind of catalog object being checked: &apos;table&apos; (a synced warehouse table) or &apos;view&apos; (a saved query).* `table` - table* `view` - view</summary>
+        /// <summary>Kind of catalog object being checked: &apos;table&apos;, &apos;view&apos;, or &apos;metric&apos;.* `table` - table* `view` - view* `metric` - metric</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityOverviewCheckSubjectType? SubjectType { get; private set; }
@@ -163,7 +171,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityOverviewCheckSubjectType SubjectType { get; private set; }
 #endif
-        /// <summary>Id of the table or view being checked -- the parent resource in the URL.</summary>
+        /// <summary>Id of the table, view, or metric being checked, from the parent resource in the URL.</summary>
         public Guid? SubjectUuid { get; private set; }
         /// <summary>Free-form string labels for grouping and filtering.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -220,6 +228,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "owner", n => { Owner = n.GetStringValue(); } },
                 { "reasoning", n => { Reasoning = n.GetStringValue(); } },
                 { "severity", n => { Severity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataQualityOverviewCheckSeverity>(global::Soenneker.PostHog.OpenApiClient.Models.DataQualityOverviewCheckSeverity.CreateFromDiscriminatorValue); } },
+                { "subject_metric_name", n => { SubjectMetricName = n.GetStringValue(); } },
                 { "subject_name", n => { SubjectName = n.GetStringValue(); } },
                 { "subject_node_id", n => { SubjectNodeId = n.GetGuidValue(); } },
                 { "subject_schema_id", n => { SubjectSchemaId = n.GetGuidValue(); } },

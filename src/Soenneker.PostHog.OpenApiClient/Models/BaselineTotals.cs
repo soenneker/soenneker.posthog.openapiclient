@@ -30,6 +30,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? FrequentlyTolerated { get; set; }
         /// <summary>The recently_tolerated property</summary>
         public int? RecentlyTolerated { get; set; }
+        /// <summary>Baselines carrying three or more accepted variants of their current hash.</summary>
+        public int? VariantPileups { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BaselineTotals"/> and sets the default values.
         /// </summary>
@@ -60,6 +62,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "currently_quarantined", n => { CurrentlyQuarantined = n.GetIntValue(); } },
                 { "frequently_tolerated", n => { FrequentlyTolerated = n.GetIntValue(); } },
                 { "recently_tolerated", n => { RecentlyTolerated = n.GetIntValue(); } },
+                { "variant_pileups", n => { VariantPileups = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -74,6 +77,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("currently_quarantined", CurrentlyQuarantined);
             writer.WriteIntValue("frequently_tolerated", FrequentlyTolerated);
             writer.WriteIntValue("recently_tolerated", RecentlyTolerated);
+            writer.WriteIntValue("variant_pileups", VariantPileups);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

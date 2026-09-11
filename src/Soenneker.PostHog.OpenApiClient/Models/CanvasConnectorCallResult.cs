@@ -15,6 +15,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Host-only, single-use approval token bound to this viewer, connection, canvas version, tool, and arguments. Never forward it to the canvas iframe.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ApprovalToken { get; set; }
+#nullable restore
+#else
+        public string ApprovalToken { get; set; }
+#endif
         /// <summary>In-app path where the viewer can connect the provider, when that would help.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -39,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorCallResultResultProperty Result { get; set; }
 #endif
-        /// <summary>&apos;ok&apos; carries a result. &apos;not_connected&apos; and &apos;needs_reauth&apos; mean the viewer must connect the provider at connect_path. &apos;blocked&apos; is team policy. &apos;write_blocked&apos; is a tool that may write. &apos;upstream_error&apos; is a failure at the provider.* `ok` - Ok* `not_connected` - Not Connected* `needs_reauth` - Needs Reauth* `blocked` - Blocked* `tool_missing` - Tool Missing* `write_blocked` - Write Blocked* `upstream_error` - Upstream Error</summary>
+        /// <summary>&apos;ok&apos; carries a result. &apos;not_connected&apos; and &apos;needs_reauth&apos; mean the viewer must connect the provider at connect_path. &apos;blocked&apos; is team policy. &apos;write_blocked&apos; is a tool that may write. &apos;needs_approval&apos; requires the viewer to approve this call in the host. &apos;upstream_error&apos; is a failure at the provider.* `ok` - Ok* `not_connected` - Not Connected* `needs_reauth` - Needs Reauth* `needs_approval` - Needs Approval* `blocked` - Blocked* `tool_missing` - Tool Missing* `write_blocked` - Write Blocked* `upstream_error` - Upstream Error</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorCallResultStatus? Status { get; set; }
@@ -74,6 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "approval_token", n => { ApprovalToken = n.GetStringValue(); } },
                 { "connect_path", n => { ConnectPath = n.GetStringValue(); } },
                 { "detail", n => { Detail = n.GetStringValue(); } },
                 { "result", n => { Result = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorCallResultResultProperty>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorCallResultResultProperty.CreateFromDiscriminatorValue); } },
@@ -88,6 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("approval_token", ApprovalToken);
             writer.WriteStringValue("connect_path", ConnectPath);
             writer.WriteStringValue("detail", Detail);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorCallResultResultProperty>("result", Result);

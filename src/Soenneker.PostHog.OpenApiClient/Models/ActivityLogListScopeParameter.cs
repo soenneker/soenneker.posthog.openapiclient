@@ -320,6 +320,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         DataQualityCheck,
         #pragma warning restore CS1591
+        [EnumMember(Value = "DataQualityCheckSchedule")]
+        #pragma warning disable CS1591
+        DataQualityCheckSchedule,
+        #pragma warning restore CS1591
         [EnumMember(Value = "Billing")]
         #pragma warning disable CS1591
         Billing,

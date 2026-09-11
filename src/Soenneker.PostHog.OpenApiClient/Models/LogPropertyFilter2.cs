@@ -14,7 +14,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Attribute key. For type &quot;log&quot;, use &quot;message&quot;. For &quot;log_attribute&quot;/&quot;log_resource_attribute&quot;, use the attribute key (e.g. &quot;k8s.container.name&quot;).</summary>
+        /// <summary>Attribute key. For type &quot;log&quot;, use &quot;message&quot; for the body text, or a log column: &quot;pattern&quot; and &quot;pattern_version&quot; (the patterns pivot), &quot;severity_level&quot;, &quot;service_name&quot;, &quot;trace_id&quot;, &quot;span_id&quot;. For &quot;log_attribute&quot;/&quot;log_resource_attribute&quot;, use the attribute key (e.g. &quot;k8s.container.name&quot;).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Key { get; set; }
