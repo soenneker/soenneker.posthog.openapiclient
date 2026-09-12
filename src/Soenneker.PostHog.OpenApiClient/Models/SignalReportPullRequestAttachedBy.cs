@@ -9,12 +9,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class SignalReportAssignee : IAdditionalDataHolder, IParsable
+    public partial class SignalReportPullRequestAttachedBy : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The agent property</summary>
+        /// <summary>External agent client name, when recorded.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Agent { get; set; }
@@ -22,15 +22,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Agent { get; set; }
 #endif
-        /// <summary>The claimed_at property</summary>
-        public DateTimeOffset? ClaimedAt { get; set; }
-        /// <summary>Identifier for the active work attempt.</summary>
-        public Guid? ClaimId { get; set; }
-        /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalActorKindEnum? Kind { get; set; }
-        /// <summary>The task_id property</summary>
+        /// <summary>Kind of actor who attached the PR. Null when legacy attribution is unknown.* `user` - User* `task` - Task* `agent` - Agent* `system` - System</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequestAttachedByKind? Kind { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequestAttachedByKind Kind { get; set; }
+#endif
+        /// <summary>Internal task that attached the PR, when recorded.</summary>
         public Guid? TaskId { get; set; }
-        /// <summary>The user property</summary>
+        /// <summary>Authenticated principal who attached the PR, when recorded.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.User2? User { get; set; }
@@ -39,21 +41,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.User2 User { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportAssignee"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequestAttachedBy"/> and sets the default values.
         /// </summary>
-        public SignalReportAssignee()
+        public SignalReportPullRequestAttachedBy()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportAssignee"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequestAttachedBy"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.PostHog.OpenApiClient.Models.SignalReportAssignee CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequestAttachedBy CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.SignalReportAssignee();
+            return new global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequestAttachedBy();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -64,9 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "agent", n => { Agent = n.GetStringValue(); } },
-                { "claim_id", n => { ClaimId = n.GetGuidValue(); } },
-                { "claimed_at", n => { ClaimedAt = n.GetDateTimeOffsetValue(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalActorKindEnum>(); } },
+                { "kind", n => { Kind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequestAttachedByKind>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequestAttachedByKind.CreateFromDiscriminatorValue); } },
                 { "task_id", n => { TaskId = n.GetGuidValue(); } },
                 { "user", n => { User = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.User2>(global::Soenneker.PostHog.OpenApiClient.Models.User2.CreateFromDiscriminatorValue); } },
             };
@@ -79,9 +79,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("agent", Agent);
-            writer.WriteDateTimeOffsetValue("claimed_at", ClaimedAt);
-            writer.WriteGuidValue("claim_id", ClaimId);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalActorKindEnum>("kind", Kind);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequestAttachedByKind>("kind", Kind);
             writer.WriteGuidValue("task_id", TaskId);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.User2>("user", User);
             writer.WriteAdditionalData(AdditionalData);

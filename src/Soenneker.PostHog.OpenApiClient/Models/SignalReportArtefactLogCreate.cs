@@ -15,7 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The artefact type. One of: actionability_judgment, channel_assignment, code_reference, commit, dismissal, note, priority_judgment, related_to, repo_selection, safety_judgment, signal_finding, suggested_reviewers, task_run. Log types accumulate; status types (safety_judgment, actionability_judgment, priority_judgment, repo_selection, suggested_reviewers, channel_assignment) are latest-wins — appending a new version supersedes the previous one as the report&apos;s canonical status.</summary>
+        /// <summary>The artefact type. One of: actionability_judgment, channel_assignment, code_reference, commit, dismissal, note, priority_judgment, related_to, repo_selection, safety_judgment, signal_finding, suggested_reviewers. Log types accumulate; status types (safety_judgment, actionability_judgment, priority_judgment, repo_selection, suggested_reviewers, channel_assignment) are latest-wins — appending a new version supersedes the previous one as the report&apos;s canonical status.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ArtefactType { get; set; }
@@ -23,6 +23,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ArtefactType { get; set; }
 #endif
+        /// <summary>Active claim to attribute this work to. Must belong to the caller and report.</summary>
+        public Guid? ClaimId { get; set; }
         /// <summary>The artefact payload as a JSON object or array; shape depends on artefact_type and is validated against its schema.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -57,6 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "artefact_type", n => { ArtefactType = n.GetStringValue(); } },
+                { "claim_id", n => { ClaimId = n.GetGuidValue(); } },
                 { "content", n => { Content = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactLogCreateContent>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactLogCreateContent.CreateFromDiscriminatorValue); } },
             };
         }
@@ -68,6 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("artefact_type", ArtefactType);
+            writer.WriteGuidValue("claim_id", ClaimId);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactLogCreateContent>("content", Content);
             writer.WriteAdditionalData(AdditionalData);
         }

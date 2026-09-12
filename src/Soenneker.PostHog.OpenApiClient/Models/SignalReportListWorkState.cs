@@ -7,31 +7,32 @@ using System.IO;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
+    /// <summary>
+    /// Derived remediation state: unclaimed, working, in_review, or done.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public partial class SignalReportArtefactType : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
+    public partial class SignalReportListWorkState : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>* `video_segment` - Video Segment* `safety_judgment` - Safety Judgment* `actionability_judgment` - Actionability Judgment* `priority_judgment` - Priority Judgment* `signal_finding` - Signal Finding* `repo_selection` - Repo Selection* `suggested_reviewers` - Suggested Reviewers* `channel_assignment` - Channel Assignment* `dismissal` - Dismissal* `code_reference` - Code Reference* `commit` - Commit* `task_run` - Task Run* `note` - Note* `title_change` - Title Change* `summary_change` - Summary Change* `code_review` - Code Review* `related_to` - Related To* `work_claim` - Work Claim* `work_release` - Work Release* `pull_request` - Pull Request</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactArtefactTypeEnum? Value { get; set; }
+        /// <summary>The value property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportWorkStateEnum? Value { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactType"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListWorkState"/> and sets the default values.
         /// </summary>
-        public SignalReportArtefactType()
+        public SignalReportListWorkState()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactType"/></returns>
+        /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListWorkState"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactType CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListWorkState CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactType();
+            return new global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListWorkState();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -41,7 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "value", n => { Value = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactArtefactTypeEnum>(); } },
+                { "value", n => { Value = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportWorkStateEnum>(); } },
             };
         }
         /// <summary>
@@ -51,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactArtefactTypeEnum>("value", Value);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportWorkStateEnum>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

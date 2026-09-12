@@ -14,7 +14,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Optional GitHub pull request to attach to the claim. The report may be claimed without one.</summary>
+        /// <summary>Active claim ID returned by an earlier call. Stale claims are rejected.</summary>
+        public Guid? ClaimId { get; set; }
+        /// <summary>Compatibility alias for adding one PR. Prefer pull_requests for new callers.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? PrUrl { get; set; }
@@ -22,8 +24,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string PrUrl { get; set; }
 #endif
+        /// <summary>GitHub PR URLs to add to this report&apos;s work. Additive and deduplicated; may span repositories.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? PullRequests { get; set; }
+#nullable restore
+#else
+        public List<string> PullRequests { get; set; }
+#endif
         /// <summary>Release ownership while preserving any attached pull request.</summary>
         public bool? Release { get; set; }
+        /// <summary>Explicitly end another actor&apos;s claim and take ownership.</summary>
+        public bool? Takeover { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportClaim"/> and sets the default values.
         /// </summary>
@@ -31,6 +43,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             AdditionalData = new Dictionary<string, object>();
             Release = false;
+            Takeover = false;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -50,8 +63,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "claim_id", n => { ClaimId = n.GetGuidValue(); } },
                 { "pr_url", n => { PrUrl = n.GetStringValue(); } },
+                { "pull_requests", n => { PullRequests = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "release", n => { Release = n.GetBoolValue(); } },
+                { "takeover", n => { Takeover = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -61,8 +77,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteGuidValue("claim_id", ClaimId);
             writer.WriteStringValue("pr_url", PrUrl);
+            writer.WriteCollectionOfPrimitiveValues<string>("pull_requests", PullRequests);
             writer.WriteBoolValue("release", Release);
+            writer.WriteBoolValue("takeover", Takeover);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

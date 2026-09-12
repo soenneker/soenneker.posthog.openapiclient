@@ -18,6 +18,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? ChartsSet { get; set; }
         /// <summary>How many observations this edit added to the report&apos;s evidence rail; 0 if none.</summary>
         public int? EvidenceAppended { get; set; }
+        /// <summary>How many impact metrics the report now shows, or null when untouched/unchanged. 0 means the edit removed every metric.</summary>
+        public int? MetricsSet { get; set; }
         /// <summary>Whether a note artefact was appended.</summary>
         public bool? NoteAppended { get; set; }
         /// <summary>Id of the edited report.</summary>
@@ -67,6 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "charts_set", n => { ChartsSet = n.GetIntValue(); } },
                 { "evidence_appended", n => { EvidenceAppended = n.GetIntValue(); } },
+                { "metrics_set", n => { MetricsSet = n.GetIntValue(); } },
                 { "note_appended", n => { NoteAppended = n.GetBoolValue(); } },
                 { "report_id", n => { ReportId = n.GetStringValue(); } },
                 { "reviewers_set", n => { ReviewersSet = n.GetBoolValue(); } },
@@ -83,6 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("charts_set", ChartsSet);
             writer.WriteIntValue("evidence_appended", EvidenceAppended);
+            writer.WriteIntValue("metrics_set", MetricsSet);
             writer.WriteBoolValue("note_appended", NoteAppended);
             writer.WriteStringValue("report_id", ReportId);
             writer.WriteBoolValue("reviewers_set", ReviewersSet);

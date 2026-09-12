@@ -84958,7 +84958,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PaginatedSignalReportList"
+                  "$ref": "#/components/schemas/PaginatedSignalReportListList"
                 }
               }
             }
@@ -85105,7 +85105,7 @@
           "signals"
         ],
         "summary": "Claim or release a signal report",
-        "description": "Claim a report for the current user, internal task, or external MCP agent. A later claim silently takes over ownership. Supply pr_url to attach or replace the report\u0027s pull request, or release=true to clear only ownership while preserving the pull request.",
+        "description": "Start or update work for the current user, internal task, or external agent. Supply claim_id to resume, pull_requests to add PRs, takeover=true to explicitly take ownership, or release=true to end ownership while preserving work history and PR links.",
         "operationId": "SignalsReportsClaim",
         "parameters": [
           {
@@ -85266,6 +85266,15 @@
           {
             "description": "Project ID of the project you\u0027re trying to access. To find the ID of the project, make a call to /api/projects/.",
             "$ref": "#/components/parameters/ProjectIdPath"
+          },
+          {
+            "name": "pull_request_id",
+            "in": "query",
+            "description": "Select a PR from the report\u0027s pull_requests collection. Omit for the compatibility primary PR (unfinished first).",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
           }
         ],
         "responses": {
@@ -85325,6 +85334,15 @@
           {
             "description": "Project ID of the project you\u0027re trying to access. To find the ID of the project, make a call to /api/projects/.",
             "$ref": "#/components/parameters/ProjectIdPath"
+          },
+          {
+            "name": "pull_request_id",
+            "in": "query",
+            "description": "Select a PR from the report\u0027s pull_requests collection. Omit for the compatibility primary PR (unfinished first).",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
           }
         ],
         "responses": {
@@ -85384,6 +85402,15 @@
           {
             "description": "Project ID of the project you\u0027re trying to access. To find the ID of the project, make a call to /api/projects/.",
             "$ref": "#/components/parameters/ProjectIdPath"
+          },
+          {
+            "name": "pull_request_id",
+            "in": "query",
+            "description": "Select a PR from the report\u0027s pull_requests collection. Omit for the compatibility primary PR (unfinished first).",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
           }
         ],
         "requestBody": {
@@ -85476,6 +85503,15 @@
           {
             "description": "Project ID of the project you\u0027re trying to access. To find the ID of the project, make a call to /api/projects/.",
             "$ref": "#/components/parameters/ProjectIdPath"
+          },
+          {
+            "name": "pull_request_id",
+            "in": "query",
+            "description": "Select a PR from the report\u0027s pull_requests collection. Omit for the compatibility primary PR (unfinished first).",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
           }
         ],
         "requestBody": {
@@ -85562,6 +85598,15 @@
           {
             "description": "Project ID of the project you\u0027re trying to access. To find the ID of the project, make a call to /api/projects/.",
             "$ref": "#/components/parameters/ProjectIdPath"
+          },
+          {
+            "name": "pull_request_id",
+            "in": "query",
+            "description": "Select a PR from the report\u0027s pull_requests collection. Omit for the compatibility primary PR (unfinished first).",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
           }
         ],
         "responses": {
@@ -85624,6 +85669,15 @@
           {
             "description": "Project ID of the project you\u0027re trying to access. To find the ID of the project, make a call to /api/projects/.",
             "$ref": "#/components/parameters/ProjectIdPath"
+          },
+          {
+            "name": "pull_request_id",
+            "in": "query",
+            "description": "Select a PR from the report\u0027s pull_requests collection. Omit for the compatibility primary PR (unfinished first).",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
           }
         ],
         "requestBody": {
@@ -85713,6 +85767,15 @@
           {
             "description": "Project ID of the project you\u0027re trying to access. To find the ID of the project, make a call to /api/projects/.",
             "$ref": "#/components/parameters/ProjectIdPath"
+          },
+          {
+            "name": "pull_request_id",
+            "in": "query",
+            "description": "Select a PR from the report\u0027s pull_requests collection. Omit for the compatibility primary PR (unfinished first).",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
           },
           {
             "name": "reactionId",
@@ -86505,6 +86568,66 @@
           },
           "400": {
             "description": "\u0060report_ids\u0060 is missing, not a list of UUIDs, or over the cap."
+          }
+        },
+        "security": [
+          {
+            "PersonalAPIKeyAuth": [
+              "task:read"
+            ]
+          },
+          {
+            "PersonalAPIKeyAuth": [
+              "task:read"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/projects/{projectId}/signals/reports/refresh_metrics": {
+      "post": {
+        "tags": [
+          "signals"
+        ],
+        "summary": "Refresh the saved metric snapshots of the reports on screen",
+        "description": "Re-run the stored metric queries of the given reports through the query cache and save the newest values as their snapshots. Call it when a person opens the inbox list or a report, with the ids on screen. Report titles and summaries are point-in-time text and never change here; only value, value_at, and series do, and legacy comparisons are cleared. A snapshot measured in the last 15 minutes is served as is. Each call runs at most 40 source series inside a 20-second budget, row metrics first; the rest keep their previous snapshot until the next open. Returns snapshot-only metrics for every requested report the caller can read whose status is ready or pending_input. A report in any other status is left out of the response, and its saved snapshots stay as they are.",
+        "operationId": "SignalsReportsRefreshMetricsCreate",
+        "parameters": [
+          {
+            "description": "Project ID of the project you\u0027re trying to access. To find the ID of the project, make a call to /api/projects/.",
+            "$ref": "#/components/parameters/ProjectIdPath"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignalReportMetricRefreshRequest"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/SignalReportMetricRefreshRequest"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/SignalReportMetricRefreshRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SignalReportMetricRefreshResponse"
+                }
+              }
+            }
           }
         },
         "security": [
@@ -153371,6 +153494,17 @@
             },
             "description": "The full set of charts the report should show. Replaces the report\u0027s charts rather than adding to them, the way \u0060summary\u0060 replaces the summary \u2014 so send every chart you want kept. Omit the field (or send null) to leave the report\u0027s existing charts untouched, and send an empty list to take them all down."
           },
+          "metrics": {
+            "maxItems": 6,
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/ReportMetricWrite"
+            },
+            "description": "The report\u0027s full impact-metric set. Omit or send null to preserve it; send an empty list to clear it. Every metric requires a bounded live InsightVizNode/TrendsQuery built only from EventsNode or ActionsNode sources and capped at 1,000 estimated longitudinal points. Consumers derive BoldNumber and ActionsBar shapes; a snapshot is only an optional cached fallback. Snapshot-only/queryless payloads are invalid, and legacy rows of that shape are always redacted."
+          },
           "suggested_prompts": {
             "maxItems": 3,
             "type": [
@@ -153390,6 +153524,7 @@
         "required": [
           "charts_set",
           "evidence_appended",
+          "metrics_set",
           "note_appended",
           "report_id",
           "reviewers_set",
@@ -153427,6 +153562,13 @@
               "integer"
             ],
             "description": "How many charts the report now shows, or null if the edit left its charts as they were (the field omitted, or a re-send of what was already stored). 0 means the edit took the report\u0027s charts down."
+          },
+          "metrics_set": {
+            "type": [
+              "null",
+              "integer"
+            ],
+            "description": "How many impact metrics the report now shows, or null when untouched/unchanged. 0 means the edit removed every metric."
           },
           "suggested_prompts_set": {
             "type": [
@@ -154355,6 +154497,14 @@
               "$ref": "#/components/schemas/ReportChart"
             },
             "description": "Optional charts to attach to the report \u2014 the inbox renders them inline, so a metric move is something the reader sees rather than a number they take on trust. Attach one whenever the finding rests on a trend, a spike, or a comparison you already queried."
+          },
+          "metrics": {
+            "maxItems": 6,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReportMetricWrite"
+            },
+            "description": "Optional typed impact measurements. Use one primary metric for the key observation and supporting metrics for users, sessions, occurrences, conversion, latency, or revenue. Every metric requires a bounded live InsightVizNode/TrendsQuery built only from EventsNode or ActionsNode sources and capped at 1,000 estimated longitudinal points. Consumers derive BoldNumber and ActionsBar shapes. A value/value_at snapshot is an optional cached fallback. Affected users must use one series with \u0060math: dau\u0060. Snapshot-only/queryless payloads are invalid; legacy rows of that shape are always redacted."
           },
           "suggested_prompts": {
             "maxItems": 3,
@@ -217146,7 +217296,7 @@
           }
         }
       },
-      "PaginatedSignalReportList": {
+      "PaginatedSignalReportListList": {
         "required": [
           "count",
           "results"
@@ -217176,7 +217326,7 @@
           "results": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/SignalReport"
+              "$ref": "#/components/schemas/SignalReportList"
             }
           }
         }
@@ -252280,6 +252430,310 @@
         },
         "description": "One observation backing an authored report \u2014 becomes a bound signal row on the report."
       },
+      "ReportMetric": {
+        "required": [
+          "kind",
+          "metric_id",
+          "title"
+        ],
+        "type": "object",
+        "properties": {
+          "metric_id": {
+            "maxLength": 100,
+            "type": "string",
+            "description": "Stable slug for this metric within the report: lowercase letters, numbers, underscores, and hyphens, starting with a letter or number."
+          },
+          "title": {
+            "maxLength": 200,
+            "type": "string",
+            "description": "Short human-readable label for the measurement."
+          },
+          "kind": {
+            "$ref": "#/components/schemas/ReportMetricKind"
+          },
+          "role": {
+            "$ref": "#/components/schemas/ReportMetricRole"
+          },
+          "value": {
+            "type": [
+              "null",
+              "number"
+            ],
+            "description": "Latest saved snapshot, initially observed during authoring and replaced when a person opens the inbox or the report. Null means no snapshot is available to this viewer; it never means zero. The required live query remains the source of truth.",
+            "format": "double"
+          },
+          "value_at": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "When the visible snapshot value was measured; null when value is null.",
+            "format": "date-time"
+          },
+          "series": {
+            "maxItems": 14,
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "description": "Trailing per-bucket values of the live query, oldest first, saved with the value snapshot so a list row can draw the trend without running the query; at most 14 points. Null when no snapshot series is available to this viewer."
+          },
+          "value_format": {
+            "$ref": "#/components/schemas/ReportMetricValueFormat"
+          },
+          "unit": {
+            "maxLength": 40,
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Optional short suffix or currency code, such as \u0060users\u0060, \u0060ms\u0060, or \u0060USD\u0060."
+          },
+          "query": {
+            "$ref": "#/components/schemas/ReportMetricQuery"
+          },
+          "caption": {
+            "maxLength": 500,
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Optional context the tile cannot show, such as a filter that narrows the count or a caveat on the data. Omit it rather than restate the title, unit, or window."
+          }
+        },
+        "description": "One impact measurement shown on a report."
+      },
+      "ReportMetricComparison": {
+        "required": [
+          "label",
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "number",
+            "description": "Baseline or previous value, formatted like the current value.",
+            "format": "double"
+          },
+          "label": {
+            "maxLength": 40,
+            "type": "string",
+            "description": "Short context for the comparison, such as \u0060Previous period\u0060."
+          }
+        }
+      },
+      "ReportMetricKindEnum": {
+        "enum": [
+          "affected_users",
+          "affected_sessions",
+          "occurrences",
+          "conversion_rate",
+          "error_rate",
+          "duration",
+          "revenue",
+          "custom"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "* \u0060affected_users\u0060 - affected_users\n* \u0060affected_sessions\u0060 - affected_sessions\n* \u0060occurrences\u0060 - occurrences\n* \u0060conversion_rate\u0060 - conversion_rate\n* \u0060error_rate\u0060 - error_rate\n* \u0060duration\u0060 - duration\n* \u0060revenue\u0060 - revenue\n* \u0060custom\u0060 - custom",
+        "x-ms-enum": {
+          "name": "ReportMetricKindEnum",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "affected_users",
+              "name": "AffectedUsers"
+            },
+            {
+              "value": "affected_sessions",
+              "name": "AffectedSessions"
+            },
+            {
+              "value": "occurrences",
+              "name": "Occurrences"
+            },
+            {
+              "value": "conversion_rate",
+              "name": "ConversionRate"
+            },
+            {
+              "value": "error_rate",
+              "name": "ErrorRate"
+            },
+            {
+              "value": "duration",
+              "name": "Duration"
+            },
+            {
+              "value": "revenue",
+              "name": "Revenue"
+            },
+            {
+              "value": "custom",
+              "name": "Custom"
+            }
+          ]
+        }
+      },
+      "ReportMetricList": {
+        "required": [
+          "kind",
+          "metric_id",
+          "title"
+        ],
+        "type": "object",
+        "properties": {
+          "metric_id": {
+            "maxLength": 100,
+            "type": "string",
+            "description": "Stable slug for this metric within the report: lowercase letters, numbers, underscores, and hyphens, starting with a letter or number."
+          },
+          "title": {
+            "maxLength": 200,
+            "type": "string",
+            "description": "Short human-readable label for the measurement."
+          },
+          "kind": {
+            "$ref": "#/components/schemas/ReportMetricListKind"
+          },
+          "role": {
+            "$ref": "#/components/schemas/ReportMetricListRole"
+          },
+          "value": {
+            "type": [
+              "null",
+              "number"
+            ],
+            "description": "Latest saved snapshot, initially observed during authoring and replaced when a person opens the inbox or the report. Null means no snapshot is available to this viewer; it never means zero. The required live query remains the source of truth.",
+            "format": "double"
+          },
+          "value_at": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "When the visible snapshot value was measured; null when value is null.",
+            "format": "date-time"
+          },
+          "series": {
+            "maxItems": 14,
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "description": "Trailing per-bucket values of the live query, oldest first, saved with the value snapshot so a list row can draw the trend without running the query; at most 14 points. Null when no snapshot series is available to this viewer."
+          },
+          "value_format": {
+            "$ref": "#/components/schemas/ReportMetricListValueFormat"
+          },
+          "unit": {
+            "maxLength": 40,
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Optional short suffix or currency code, such as \u0060users\u0060, \u0060ms\u0060, or \u0060USD\u0060."
+          },
+          "caption": {
+            "maxLength": 500,
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Optional context the tile cannot show, such as a filter that narrows the count or a caveat on the data. Omit it rather than restate the title, unit, or window."
+          }
+        },
+        "description": "Snapshot-only metric shape for report lists.\n\nOmitting query definitions keeps the paginated inbox payload bounded."
+      },
+      "ReportMetricWrite": {
+        "required": [
+          "kind",
+          "metric_id",
+          "query",
+          "title"
+        ],
+        "type": "object",
+        "properties": {
+          "metric_id": {
+            "maxLength": 100,
+            "type": "string",
+            "description": "Stable slug for this metric within the report: lowercase letters, numbers, underscores, and hyphens, starting with a letter or number."
+          },
+          "title": {
+            "maxLength": 200,
+            "type": "string",
+            "description": "Short human-readable label for the measurement."
+          },
+          "kind": {
+            "$ref": "#/components/schemas/ReportMetricWriteKind"
+          },
+          "role": {
+            "$ref": "#/components/schemas/ReportMetricWriteRole"
+          },
+          "value": {
+            "type": [
+              "null",
+              "number"
+            ],
+            "description": "Latest saved snapshot, initially observed during authoring and replaced when a person opens the inbox or the report. Null means no snapshot is available to this viewer; it never means zero. The required live query remains the source of truth.",
+            "format": "double"
+          },
+          "value_at": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "When the visible snapshot value was measured; null when value is null.",
+            "format": "date-time"
+          },
+          "series": {
+            "maxItems": 14,
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "description": "Trailing per-bucket values of the live query, oldest first, saved with the value snapshot so a list row can draw the trend without running the query; at most 14 points. Null when no snapshot series is available to this viewer."
+          },
+          "value_format": {
+            "$ref": "#/components/schemas/ReportMetricWriteValueFormat"
+          },
+          "unit": {
+            "maxLength": 40,
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Optional short suffix or currency code, such as \u0060users\u0060, \u0060ms\u0060, or \u0060USD\u0060."
+          },
+          "query": {
+            "$ref": "#/components/schemas/ReportMetricWriteQuery"
+          },
+          "caption": {
+            "maxLength": 500,
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Optional context the tile cannot show, such as a filter that narrows the count or a caveat on the data. Omit it rather than restate the title, unit, or window."
+          },
+          "comparison": {
+            "$ref": "#/components/schemas/ReportMetricWriteComparison"
+          }
+        },
+        "description": "Authoring shape: unlike a read response, the live query cannot be absent or redacted."
+      },
       "ReportOutcomeEnum": {
         "enum": [
           "filed",
@@ -257929,6 +258383,29 @@
             {
               "value": "other",
               "name": "Other"
+            }
+          ]
+        }
+      },
+      "RoleEnum": {
+        "enum": [
+          "primary",
+          "supporting"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "* \u0060primary\u0060 - primary\n* \u0060supporting\u0060 - supporting",
+        "x-ms-enum": {
+          "name": "RoleEnum",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "primary",
+              "name": "Primary"
+            },
+            {
+              "value": "supporting",
+              "name": "Supporting"
             }
           ]
         }
@@ -266422,7 +266899,9 @@
           "implementation_pr_state",
           "implementation_pr_url",
           "is_suggested_reviewer",
+          "metrics",
           "priority",
+          "pull_requests",
           "refund",
           "refund_ineligibility_reason",
           "repo_slug",
@@ -266498,6 +266977,14 @@
               "$ref": "#/components/schemas/ReportChart"
             },
             "description": "Charts the report shows, in the order they were written. The summary places one with a \u0060[label](chart:\u003Cchart_id\u003E)\u0060 link; the rest render below it.",
+            "readOnly": true
+          },
+          "metrics": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReportMetric"
+            },
+            "description": "Typed impact measurements in display order. At most one is primary. Live metric values and history come from their query; value/value_at are the latest saved fallback snapshots.",
             "readOnly": true
           },
           "suggested_prompts": {
@@ -266585,6 +267072,14 @@
             "description": "Pull request attached to this report\u0027s claim, if available.",
             "readOnly": true
           },
+          "pull_requests": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SignalReportPullRequest"
+            },
+            "description": "All distinct PRs linked to this report across work attempts.",
+            "readOnly": true
+          },
           "implementation_pr_state": {
             "$ref": "#/components/schemas/SignalReportImplementationPrState"
           },
@@ -266647,16 +267142,36 @@
         "required": [
           "actor_agent",
           "actor_kind",
+          "claim_id",
           "content",
           "created_at",
           "created_by",
           "id",
+          "pull_request_id",
           "task_id",
           "type",
           "updated_at"
         ],
         "type": "object",
         "properties": {
+          "claim_id": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Work claim that produced this artefact.",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "pull_request_id": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Shared PR record linked by this artefact.",
+            "format": "uuid",
+            "readOnly": true
+          },
           "id": {
             "type": "string",
             "format": "uuid",
@@ -266724,11 +267239,14 @@
           "title_change",
           "summary_change",
           "code_review",
-          "related_to"
+          "related_to",
+          "work_claim",
+          "work_release",
+          "pull_request"
         ],
         "type": "string",
         "additionalProperties": false,
-        "description": "* \u0060video_segment\u0060 - Video Segment\n* \u0060safety_judgment\u0060 - Safety Judgment\n* \u0060actionability_judgment\u0060 - Actionability Judgment\n* \u0060priority_judgment\u0060 - Priority Judgment\n* \u0060signal_finding\u0060 - Signal Finding\n* \u0060repo_selection\u0060 - Repo Selection\n* \u0060suggested_reviewers\u0060 - Suggested Reviewers\n* \u0060channel_assignment\u0060 - Channel Assignment\n* \u0060dismissal\u0060 - Dismissal\n* \u0060code_reference\u0060 - Code Reference\n* \u0060commit\u0060 - Commit\n* \u0060task_run\u0060 - Task Run\n* \u0060note\u0060 - Note\n* \u0060title_change\u0060 - Title Change\n* \u0060summary_change\u0060 - Summary Change\n* \u0060code_review\u0060 - Code Review\n* \u0060related_to\u0060 - Related To",
+        "description": "* \u0060video_segment\u0060 - Video Segment\n* \u0060safety_judgment\u0060 - Safety Judgment\n* \u0060actionability_judgment\u0060 - Actionability Judgment\n* \u0060priority_judgment\u0060 - Priority Judgment\n* \u0060signal_finding\u0060 - Signal Finding\n* \u0060repo_selection\u0060 - Repo Selection\n* \u0060suggested_reviewers\u0060 - Suggested Reviewers\n* \u0060channel_assignment\u0060 - Channel Assignment\n* \u0060dismissal\u0060 - Dismissal\n* \u0060code_reference\u0060 - Code Reference\n* \u0060commit\u0060 - Commit\n* \u0060task_run\u0060 - Task Run\n* \u0060note\u0060 - Note\n* \u0060title_change\u0060 - Title Change\n* \u0060summary_change\u0060 - Summary Change\n* \u0060code_review\u0060 - Code Review\n* \u0060related_to\u0060 - Related To\n* \u0060work_claim\u0060 - Work Claim\n* \u0060work_release\u0060 - Work Release\n* \u0060pull_request\u0060 - Pull Request",
         "x-ms-enum": {
           "name": "SignalReportArtefactArtefactTypeEnum",
           "modelAsString": false,
@@ -266800,6 +267318,18 @@
             {
               "value": "related_to",
               "name": "RelatedTo"
+            },
+            {
+              "value": "work_claim",
+              "name": "WorkClaim"
+            },
+            {
+              "value": "work_release",
+              "name": "WorkRelease"
+            },
+            {
+              "value": "pull_request",
+              "name": "PullRequest"
             }
           ]
         }
@@ -266811,9 +267341,14 @@
         ],
         "type": "object",
         "properties": {
+          "claim_id": {
+            "type": "string",
+            "description": "Active claim to attribute this work to. Must belong to the caller and report.",
+            "format": "uuid"
+          },
           "artefact_type": {
             "type": "string",
-            "description": "The artefact type. One of: actionability_judgment, channel_assignment, code_reference, commit, dismissal, note, priority_judgment, related_to, repo_selection, safety_judgment, signal_finding, suggested_reviewers, task_run. Log types accumulate; status types (safety_judgment, actionability_judgment, priority_judgment, repo_selection, suggested_reviewers, channel_assignment) are latest-wins \u2014 appending a new version supersedes the previous one as the report\u0027s canonical status."
+            "description": "The artefact type. One of: actionability_judgment, channel_assignment, code_reference, commit, dismissal, note, priority_judgment, related_to, repo_selection, safety_judgment, signal_finding, suggested_reviewers. Log types accumulate; status types (safety_judgment, actionability_judgment, priority_judgment, repo_selection, suggested_reviewers, channel_assignment) are latest-wins \u2014 appending a new version supersedes the previous one as the report\u0027s canonical status."
           },
           "content": {
             "$ref": "#/components/schemas/SignalReportArtefactLogCreateContent"
@@ -266823,6 +267358,7 @@
       },
       "SignalReportArtefactWriteResponse": {
         "required": [
+          "claim_id",
           "content",
           "created_at",
           "id",
@@ -266836,6 +267372,15 @@
           "id": {
             "type": "string",
             "description": "The artefact\u0027s unique id.",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "claim_id": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Claim that produced this artefact.",
             "format": "uuid",
             "readOnly": true
           },
@@ -266883,6 +267428,7 @@
       "SignalReportAssignee": {
         "required": [
           "agent",
+          "claim_id",
           "claimed_at",
           "kind",
           "task_id",
@@ -266890,6 +267436,14 @@
         ],
         "type": "object",
         "properties": {
+          "claim_id": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Identifier for the active work attempt.",
+            "format": "uuid"
+          },
           "kind": {
             "$ref": "#/components/schemas/SignalActorKindEnum"
           },
@@ -267094,9 +267648,29 @@
       "SignalReportClaim": {
         "type": "object",
         "properties": {
+          "claim_id": {
+            "type": "string",
+            "description": "Active claim ID returned by an earlier call. Stale claims are rejected.",
+            "format": "uuid"
+          },
+          "pull_requests": {
+            "maxItems": 50,
+            "type": "array",
+            "items": {
+              "maxLength": 2048,
+              "type": "string",
+              "format": "uri"
+            },
+            "description": "GitHub PR URLs to add to this report\u0027s work. Additive and deduplicated; may span repositories."
+          },
+          "takeover": {
+            "type": "boolean",
+            "description": "Explicitly end another actor\u0027s claim and take ownership.",
+            "default": false
+          },
           "pr_url": {
             "type": "string",
-            "description": "Optional GitHub pull request to attach to the claim. The report may be claimed without one.",
+            "description": "Compatibility alias for adding one PR. Prefer pull_requests for new callers.",
             "format": "uri"
           },
           "release": {
@@ -267131,6 +267705,404 @@
           "forwarded": {
             "type": "boolean",
             "description": "Whether the note was forwarded to the report\u0027s authoring scout as a steering note. False when the report has no resolvable authoring scout, or the caller lacks scout-steering access."
+          }
+        }
+      },
+      "SignalReportList": {
+        "required": [
+          "actionability",
+          "already_addressed",
+          "artefact_count",
+          "assignee",
+          "billing_exempt_reason",
+          "channel_id",
+          "charts",
+          "created_at",
+          "dismissal_note",
+          "dismissal_reason",
+          "id",
+          "implementation_pr_merged",
+          "implementation_pr_state",
+          "implementation_pr_url",
+          "is_suggested_reviewer",
+          "metrics",
+          "priority",
+          "pull_requests",
+          "refund",
+          "refund_ineligibility_reason",
+          "repo_slug",
+          "scout_name",
+          "signal_count",
+          "signals_at_run",
+          "source_products",
+          "status",
+          "suggested_prompts",
+          "summary",
+          "title",
+          "total_weight",
+          "tracker_issue_error",
+          "tracker_issue_reference",
+          "tracker_issue_url",
+          "updated_at",
+          "work_state"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "title": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "readOnly": true
+          },
+          "summary": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "readOnly": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/SignalReportListStatus"
+          },
+          "total_weight": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "signal_count": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "signals_at_run": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "artefact_count": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "charts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReportChart"
+            },
+            "description": "Charts the report shows, in the order they were written. The summary places one with a \u0060[label](chart:\u003Cchart_id\u003E)\u0060 link; the rest render below it.",
+            "readOnly": true
+          },
+          "metrics": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReportMetricList"
+            },
+            "description": "Snapshot-only impact measurements for inbox rows. Live query definitions and authored comparisons are available from the report detail endpoint.",
+            "readOnly": true
+          },
+          "suggested_prompts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Follow-up prompts the report\u0027s author suggests sending about it (questions to ask, or next-step actions to request), in the order they were written. The inbox offers them above the \u0060Ask AI\u0060 box; clicking one fills the box with it.",
+            "readOnly": true
+          },
+          "priority": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "P0\u2013P4 from the latest priority judgment artefact (when present).",
+            "readOnly": true
+          },
+          "actionability": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Actionability choice from the latest actionability judgment artefact (when present).",
+            "readOnly": true
+          },
+          "already_addressed": {
+            "type": [
+              "null",
+              "boolean"
+            ],
+            "description": "Whether the issue is already being handled \u2014 fixed in recent changes, or with a fix in flight (an open PR, a recently active branch, an assigned / in-progress issue or agent task) \u2014 from the actionability judgment artefact.",
+            "readOnly": true
+          },
+          "dismissal_reason": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Reason code from the latest dismissal artefact, set when the report was suppressed (when present).",
+            "readOnly": true
+          },
+          "dismissal_note": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Free-form note captured alongside the dismissal reason (when present).",
+            "readOnly": true
+          },
+          "repo_slug": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "\u0060organization/repository\u0060 the report\u0027s work targets, from the latest repo-selection artefact (when present). Lets list cards show repository context without a per-card fetch.",
+            "readOnly": true
+          },
+          "is_suggested_reviewer": {
+            "type": "boolean",
+            "default": false,
+            "readOnly": true
+          },
+          "source_products": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Distinct source products contributing signals to this report (from ClickHouse).",
+            "readOnly": true
+          },
+          "scout_name": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "skill_name slug of the scout that authored this report, when scout-authored (from ClickHouse); null otherwise.",
+            "readOnly": true
+          },
+          "implementation_pr_url": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Pull request attached to this report\u0027s claim, if available.",
+            "readOnly": true
+          },
+          "pull_requests": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SignalReportPullRequest"
+            },
+            "description": "All distinct PRs linked to this report across work attempts.",
+            "readOnly": true
+          },
+          "implementation_pr_state": {
+            "$ref": "#/components/schemas/SignalReportListImplementationPrState"
+          },
+          "implementation_pr_merged": {
+            "type": "boolean",
+            "description": "Whether that implementation PR is merged, per the GitHub webhook. False when there is no PR or it hasn\u0027t merged. Report status doesn\u0027t imply this: a resolved report may have been resolved directly, without a merged PR.",
+            "readOnly": true
+          },
+          "tracker_issue_url": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Link to the issue self-driving opened in the team\u0027s tracker for this report\u0027s pull request. Null when the team tracks no issues, or the issue could not be opened.",
+            "readOnly": true
+          },
+          "tracker_issue_reference": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "How that tracker issue reads in its provider, for example \u0027#12\u0027 or \u0027ENG-123\u0027. Null when there is no tracker issue.",
+            "readOnly": true
+          },
+          "tracker_issue_error": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Why the tracker issue could not be opened, for a team that wants one. Null when the issue exists or the team tracks no issues.",
+            "readOnly": true
+          },
+          "work_state": {
+            "$ref": "#/components/schemas/SignalReportListWorkState"
+          },
+          "assignee": {
+            "$ref": "#/components/schemas/SignalReportListAssignee"
+          },
+          "refund": {
+            "$ref": "#/components/schemas/SignalReportListRefund"
+          },
+          "refund_ineligibility_reason": {
+            "$ref": "#/components/schemas/SignalReportListRefundIneligibilityReason"
+          },
+          "billing_exempt_reason": {
+            "$ref": "#/components/schemas/SignalReportListBillingExemptReason"
+          },
+          "channel_id": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The space (task channel) this report is assigned to, or null when unassigned. The general view lists every report regardless of this value.",
+            "format": "uuid",
+            "readOnly": true
+          }
+        }
+      },
+      "SignalReportMetricRefreshRequest": {
+        "required": [
+          "report_ids"
+        ],
+        "type": "object",
+        "properties": {
+          "report_ids": {
+            "maxItems": 20,
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "Reports on screen, in display order. Each report\u0027s row metric is refreshed before any report\u0027s supporting metrics. At most 20 ids per call."
+          }
+        }
+      },
+      "SignalReportMetricRefreshResponse": {
+        "required": [
+          "reports"
+        ],
+        "type": "object",
+        "properties": {
+          "reports": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SignalReportMetricSnapshots"
+            },
+            "description": "One entry per requested report the caller can read whose status is ready or pending_input, in request order. A report in any other status has no entry. A metric whose snapshot was fresh, whose query failed, or whose budget ran out keeps its previous snapshot; merge by metric_id.",
+            "readOnly": true
+          }
+        }
+      },
+      "SignalReportMetricSnapshots": {
+        "required": [
+          "id",
+          "metrics"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Report id.",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "metrics": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReportMetricList"
+            },
+            "description": "The report\u0027s metrics with their current snapshots, in display order.",
+            "readOnly": true
+          }
+        }
+      },
+      "SignalReportPullRequest": {
+        "required": [
+          "attached_at",
+          "attached_by",
+          "claim_id",
+          "id",
+          "merged",
+          "state",
+          "url"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "PR selection ID. Task-output links use a deterministic ID until attached as an artefact.",
+            "format": "uuid"
+          },
+          "url": {
+            "type": "string",
+            "description": "GitHub pull request URL.",
+            "format": "uri"
+          },
+          "state": {
+            "$ref": "#/components/schemas/SignalReportPullRequestState"
+          },
+          "merged": {
+            "type": "boolean",
+            "description": "Whether this PR merged."
+          },
+          "attached_by": {
+            "$ref": "#/components/schemas/SignalReportPullRequestAttachedByComposed"
+          },
+          "claim_id": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Originating work claim. Null for legacy links without a recorded claim.",
+            "format": "uuid"
+          },
+          "attached_at": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "When the first PR link was recorded. For backfilled links this is the import time; null for an unmigrated link.",
+            "format": "date-time"
+          }
+        }
+      },
+      "SignalReportPullRequestAttachedBy": {
+        "required": [
+          "agent",
+          "kind",
+          "task_id",
+          "user"
+        ],
+        "type": "object",
+        "properties": {
+          "kind": {
+            "$ref": "#/components/schemas/SignalReportPullRequestAttachedByKind"
+          },
+          "user": {
+            "$ref": "#/components/schemas/SignalReportPullRequestAttachedByUser"
+          },
+          "agent": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "External agent client name, when recorded."
+          },
+          "task_id": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Internal task that attached the PR, when recorded.",
+            "format": "uuid"
           }
         }
       },
@@ -291934,6 +292906,49 @@
             {
               "value": "percentage",
               "name": "Percentage"
+            }
+          ]
+        }
+      },
+      "ValueFormatEnum": {
+        "enum": [
+          "number",
+          "count",
+          "percentage",
+          "percentage_scaled",
+          "duration",
+          "currency"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "* \u0060number\u0060 - number\n* \u0060count\u0060 - count\n* \u0060percentage\u0060 - percentage\n* \u0060percentage_scaled\u0060 - percentage_scaled\n* \u0060duration\u0060 - duration\n* \u0060currency\u0060 - currency",
+        "x-ms-enum": {
+          "name": "ValueFormatEnum",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "number",
+              "name": "Number"
+            },
+            {
+              "value": "count",
+              "name": "Count"
+            },
+            {
+              "value": "percentage",
+              "name": "Percentage"
+            },
+            {
+              "value": "percentage_scaled",
+              "name": "PercentageScaled"
+            },
+            {
+              "value": "duration",
+              "name": "Duration"
+            },
+            {
+              "value": "currency",
+              "name": "Currency"
             }
           ]
         }
@@ -482878,6 +483893,138 @@
         },
         "description": "How much height the chart gets: \u0060small\u0060 for a single number or a short series, \u0060medium\u0060 for an ordinary graph, \u0060large\u0060 when there are rows or a grid to read (retention, paths, a wide breakdown). Leave it out unless the default looks wrong \u2014 the inbox sizes a chart from its query, and two charts referenced from the same paragraph sit side by side.\n\n* \u0060small\u0060 - small\n* \u0060medium\u0060 - medium\n* \u0060large\u0060 - large"
       },
+      "ReportMetricKind": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/ReportMetricKindEnum"
+          }
+        },
+        "description": "What the value measures, independent of how it is formatted or drawn.\n\n* \u0060affected_users\u0060 - affected_users\n* \u0060affected_sessions\u0060 - affected_sessions\n* \u0060occurrences\u0060 - occurrences\n* \u0060conversion_rate\u0060 - conversion_rate\n* \u0060error_rate\u0060 - error_rate\n* \u0060duration\u0060 - duration\n* \u0060revenue\u0060 - revenue\n* \u0060custom\u0060 - custom"
+      },
+      "ReportMetricRole": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/RoleEnum"
+          }
+        },
+        "description": "\u0060primary\u0060 for the report\u0027s key observation, otherwise \u0060supporting\u0060.\n\n* \u0060primary\u0060 - primary\n* \u0060supporting\u0060 - supporting"
+      },
+      "ReportMetricValueFormat": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/ValueFormatEnum"
+          }
+        },
+        "description": "How to format the numeric value; semantic meaning remains in kind. \u0060percentage\u0060 uses percentage points, so 34 renders as 34%; \u0060percentage_scaled\u0060 uses a 0\u20131 ratio, so 0.34 renders as 34%. Sessions and occurrences use count; duration uses duration with an ms/s unit; revenue uses currency with an ISO currency unit.\n\n* \u0060number\u0060 - number\n* \u0060count\u0060 - count\n* \u0060percentage\u0060 - percentage\n* \u0060percentage_scaled\u0060 - percentage_scaled\n* \u0060duration\u0060 - duration\n* \u0060currency\u0060 - currency"
+      },
+      "ReportMetricListKind": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/ReportMetricKindEnum"
+          }
+        },
+        "description": "What the value measures, independent of how it is formatted or drawn.\n\n* \u0060affected_users\u0060 - affected_users\n* \u0060affected_sessions\u0060 - affected_sessions\n* \u0060occurrences\u0060 - occurrences\n* \u0060conversion_rate\u0060 - conversion_rate\n* \u0060error_rate\u0060 - error_rate\n* \u0060duration\u0060 - duration\n* \u0060revenue\u0060 - revenue\n* \u0060custom\u0060 - custom"
+      },
+      "ReportMetricListRole": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/RoleEnum"
+          }
+        },
+        "description": "\u0060primary\u0060 for the report\u0027s key observation, otherwise \u0060supporting\u0060.\n\n* \u0060primary\u0060 - primary\n* \u0060supporting\u0060 - supporting"
+      },
+      "ReportMetricListValueFormat": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/ValueFormatEnum"
+          }
+        },
+        "description": "How to format the numeric value; semantic meaning remains in kind. \u0060percentage\u0060 uses percentage points, so 34 renders as 34%; \u0060percentage_scaled\u0060 uses a 0\u20131 ratio, so 0.34 renders as 34%. Sessions and occurrences use count; duration uses duration with an ms/s unit; revenue uses currency with an ISO currency unit.\n\n* \u0060number\u0060 - number\n* \u0060count\u0060 - count\n* \u0060percentage\u0060 - percentage\n* \u0060percentage_scaled\u0060 - percentage_scaled\n* \u0060duration\u0060 - duration\n* \u0060currency\u0060 - currency"
+      },
+      "ReportMetricWriteKind": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/ReportMetricKindEnum"
+          }
+        },
+        "description": "What the value measures, independent of how it is formatted or drawn.\n\n* \u0060affected_users\u0060 - affected_users\n* \u0060affected_sessions\u0060 - affected_sessions\n* \u0060occurrences\u0060 - occurrences\n* \u0060conversion_rate\u0060 - conversion_rate\n* \u0060error_rate\u0060 - error_rate\n* \u0060duration\u0060 - duration\n* \u0060revenue\u0060 - revenue\n* \u0060custom\u0060 - custom"
+      },
+      "ReportMetricWriteRole": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/RoleEnum"
+          }
+        },
+        "description": "\u0060primary\u0060 for the report\u0027s key observation, otherwise \u0060supporting\u0060.\n\n* \u0060primary\u0060 - primary\n* \u0060supporting\u0060 - supporting"
+      },
+      "ReportMetricWriteValueFormat": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/ValueFormatEnum"
+          }
+        },
+        "description": "How to format the numeric value; semantic meaning remains in kind. \u0060percentage\u0060 uses percentage points, so 34 renders as 34%; \u0060percentage_scaled\u0060 uses a 0\u20131 ratio, so 0.34 renders as 34%. Sessions and occurrences use count; duration uses duration with an ms/s unit; revenue uses currency with an ISO currency unit.\n\n* \u0060number\u0060 - number\n* \u0060count\u0060 - count\n* \u0060percentage\u0060 - percentage\n* \u0060percentage_scaled\u0060 - percentage_scaled\n* \u0060duration\u0060 - duration\n* \u0060currency\u0060 - currency"
+      },
+      "ReportMetricWriteComparison": {
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ReportMetricComparison"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "properties": {
+          "value": {
+            "type": "number",
+            "description": "Baseline or previous value, formatted like the current value.",
+            "format": "double"
+          },
+          "label": {
+            "maxLength": 40,
+            "type": "string",
+            "description": "Short context for the comparison, such as \u0060Previous period\u0060."
+          }
+        },
+        "description": "Legacy optional comparison. New report metrics must omit it."
+      },
       "ReportSignalsResponseReport": {
         "required": [
           "actionability",
@@ -482895,7 +484042,9 @@
           "implementation_pr_state",
           "implementation_pr_url",
           "is_suggested_reviewer",
+          "metrics",
           "priority",
+          "pull_requests",
           "refund",
           "refund_ineligibility_reason",
           "repo_slug",
@@ -482971,6 +484120,14 @@
               "$ref": "#/components/schemas/ReportChart"
             },
             "description": "Charts the report shows, in the order they were written. The summary places one with a \u0060[label](chart:\u003Cchart_id\u003E)\u0060 link; the rest render below it.",
+            "readOnly": true
+          },
+          "metrics": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReportMetric"
+            },
+            "description": "Typed impact measurements in display order. At most one is primary. Live metric values and history come from their query; value/value_at are the latest saved fallback snapshots.",
             "readOnly": true
           },
           "suggested_prompts": {
@@ -483056,6 +484213,14 @@
               "string"
             ],
             "description": "Pull request attached to this report\u0027s claim, if available.",
+            "readOnly": true
+          },
+          "pull_requests": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SignalReportPullRequest"
+            },
+            "description": "All distinct PRs linked to this report across work attempts.",
             "readOnly": true
           },
           "implementation_pr_state": {
@@ -502700,6 +503865,14 @@
           }
         ],
         "properties": {
+          "claim_id": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Identifier for the active work attempt.",
+            "format": "uuid"
+          },
           "kind": {
             "$ref": "#/components/schemas/SignalActorKindEnum"
           },
@@ -502988,6 +504161,304 @@
           }
         },
         "description": "The rating left on the report: \u0027positive\u0027 (thumbs up) or \u0027negative\u0027 (thumbs down).\n\n* \u0060positive\u0060 - positive\n* \u0060negative\u0060 - negative"
+      },
+      "SignalReportListStatus": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/SignalReportStatusEnum"
+          }
+        },
+        "readOnly": true
+      },
+      "SignalReportListImplementationPrState": {
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/SignalReportAssignmentPrStateEnumWrapper2"
+          },
+          {
+            "$ref": "#/components/schemas/NullEnum"
+          }
+        ],
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/SignalReportAssignmentPrStateEnum"
+          }
+        },
+        "description": "Latest known pull request state: unknown, draft, open, closed, or merged.",
+        "readOnly": true
+      },
+      "SignalReportListWorkState": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/SignalReportWorkStateEnum"
+          }
+        },
+        "description": "Derived remediation state: unclaimed, working, in_review, or done.",
+        "readOnly": true
+      },
+      "SignalReportListAssignee": {
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/SignalReportAssignee"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "properties": {
+          "claim_id": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Identifier for the active work attempt.",
+            "format": "uuid"
+          },
+          "kind": {
+            "$ref": "#/components/schemas/SignalActorKindEnum"
+          },
+          "user": {
+            "$ref": "#/components/schemas/SignalReportAssigneeUser"
+          },
+          "task_id": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          },
+          "agent": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "claimed_at": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          }
+        },
+        "description": "Current user, internal task, or external agent claim owner. Null when unclaimed.",
+        "readOnly": true
+      },
+      "SignalReportListRefund": {
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/SignalReportRefund"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "reason": {
+            "$ref": "#/components/schemas/SignalReportRefundReason"
+          },
+          "note": {
+            "type": "string",
+            "description": "Optional free-form note captured with the refund.",
+            "readOnly": true
+          },
+          "billing_path": {
+            "$ref": "#/components/schemas/SignalReportRefundBillingPath"
+          },
+          "credits": {
+            "type": "integer",
+            "description": "Signals credits refunded (flat per-PR charge snapshot; 1 credit = $0.01).",
+            "readOnly": true
+          },
+          "pr_url": {
+            "type": "string",
+            "description": "The refunded implementation PR\u0027s GitHub URL, snapshotted at refund time.",
+            "readOnly": true
+          },
+          "pr_run_created_at": {
+            "type": "string",
+            "description": "When the first billable PR run was created \u2014 the charge this reverses.",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "credit_amount_usd": {
+            "pattern": "^-?\\d{0,8}(?:\\.\\d{0,2})?$",
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "USD amount the billing service credited (credited path only). Null until the sync completes; \u00270.00\u0027 is a legitimate outcome (e.g. the PR was inside the free tier).",
+            "format": "decimal",
+            "readOnly": true
+          },
+          "billing_synced": {
+            "type": "boolean",
+            "description": "Whether the billing service has acknowledged this refund. Always relevant for the credited path (the Stripe credit is issued asynchronously); excluded-path refunds need no billing sync and report false.",
+            "readOnly": true
+          },
+          "created_at": {
+            "type": "string",
+            "description": "When the refund was created.",
+            "format": "date-time",
+            "readOnly": true
+          }
+        },
+        "description": "The report\u0027s PR refund, when one exists. One refund per report, ever.",
+        "readOnly": true
+      },
+      "SignalReportListRefundIneligibilityReason": {
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/RefundIneligibilityReasonEnumWrapper2"
+          },
+          {
+            "$ref": "#/components/schemas/NullEnum"
+          }
+        ],
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/RefundIneligibilityReasonEnum"
+          }
+        },
+        "description": "Why refunding this report\u0027s PR would be rejected right now, or null when a refund would be accepted (see the field\u0027s schema for the reason values).",
+        "readOnly": true
+      },
+      "SignalReportListBillingExemptReason": {
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/SignalReportBillingExemptReasonEnumWrapper2"
+          },
+          {
+            "$ref": "#/components/schemas/NullEnum"
+          }
+        ],
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/SignalReportBillingExemptReasonEnum"
+          }
+        },
+        "description": "Non-null when this report is system-marked never-billable (PostHog-system origin, e.g. a health-check scout finding) \u2014 its implementation PRs are free and cannot be refunded because nothing was charged.\n\n* \u0060posthog_health_check\u0060 - PostHog health check\n* \u0060posthog_onboarding\u0060 - PostHog onboarding\n* \u0060posthog_system\u0060 - PostHog system",
+        "readOnly": true
+      },
+      "SignalReportPullRequestState": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/SignalReportAssignmentPrStateEnum"
+          }
+        },
+        "description": "Latest known GitHub state.\n\n* \u0060unknown\u0060 - Unknown\n* \u0060draft\u0060 - Draft\n* \u0060open\u0060 - Open\n* \u0060closed\u0060 - Closed\n* \u0060merged\u0060 - Merged"
+      },
+      "SignalReportPullRequestAttachedByComposed": {
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/SignalReportPullRequestAttachedBy"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "properties": {
+          "kind": {
+            "$ref": "#/components/schemas/SignalReportPullRequestAttachedByKind"
+          },
+          "user": {
+            "$ref": "#/components/schemas/SignalReportPullRequestAttachedByUser"
+          },
+          "agent": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "External agent client name, when recorded."
+          },
+          "task_id": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Internal task that attached the PR, when recorded.",
+            "format": "uuid"
+          }
+        },
+        "description": "Who first attached this PR to the report, not necessarily its GitHub author. Task-output links identify the originating task.",
+        "readOnly": true
+      },
+      "SignalReportPullRequestAttachedByKind": {
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/SignalActorKindEnumWrapper2"
+          },
+          {
+            "$ref": "#/components/schemas/NullEnum"
+          }
+        ],
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/SignalActorKindEnum"
+          }
+        },
+        "description": "Kind of actor who attached the PR. Null when legacy attribution is unknown.\n\n* \u0060user\u0060 - User\n* \u0060task\u0060 - Task\n* \u0060agent\u0060 - Agent\n* \u0060system\u0060 - System"
+      },
+      "SignalReportPullRequestAttachedByUser": {
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/User2"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "uuid": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "first_name": {
+            "type": "string",
+            "readOnly": true
+          },
+          "last_name": {
+            "type": "string",
+            "readOnly": true
+          },
+          "email": {
+            "title": "Email address",
+            "type": "string",
+            "format": "email",
+            "readOnly": true
+          }
+        },
+        "description": "Authenticated principal who attached the PR, when recorded."
       },
       "SignalReportRefundReason": {
         "required": [
@@ -557712,6 +559183,105 @@
           }
         }
       },
+      "ReportMetricKindEnumWrapper": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/ReportMetricKindEnum"
+          }
+        }
+      },
+      "RoleEnumWrapper": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/RoleEnum"
+          }
+        }
+      },
+      "ValueFormatEnumWrapper": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/ValueFormatEnum"
+          }
+        }
+      },
+      "ReportMetricKindEnumWrapper2": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/ReportMetricKindEnum"
+          }
+        }
+      },
+      "RoleEnumWrapper2": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/RoleEnum"
+          }
+        }
+      },
+      "ValueFormatEnumWrapper2": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/ValueFormatEnum"
+          }
+        }
+      },
+      "ReportMetricKindEnumWrapper3": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/ReportMetricKindEnum"
+          }
+        }
+      },
+      "RoleEnumWrapper3": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/RoleEnum"
+          }
+        }
+      },
+      "ValueFormatEnumWrapper3": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/ValueFormatEnum"
+          }
+        }
+      },
       "ResolvedAccessSourceEnumWrapper": {
         "required": [
           "value"
@@ -558512,6 +560082,83 @@
         "properties": {
           "value": {
             "$ref": "#/components/schemas/SentimentEnum"
+          }
+        }
+      },
+      "SignalReportStatusEnumWrapper2": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/SignalReportStatusEnum"
+          }
+        }
+      },
+      "SignalReportAssignmentPrStateEnumWrapper2": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/SignalReportAssignmentPrStateEnum"
+          }
+        }
+      },
+      "SignalReportWorkStateEnumWrapper2": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/SignalReportWorkStateEnum"
+          }
+        }
+      },
+      "RefundIneligibilityReasonEnumWrapper2": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/RefundIneligibilityReasonEnum"
+          }
+        }
+      },
+      "SignalReportBillingExemptReasonEnumWrapper2": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/SignalReportBillingExemptReasonEnum"
+          }
+        }
+      },
+      "SignalReportAssignmentPrStateEnumWrapper3": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/SignalReportAssignmentPrStateEnum"
+          }
+        }
+      },
+      "SignalActorKindEnumWrapper2": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/SignalActorKindEnum"
           }
         }
       },
@@ -566456,6 +568103,14 @@
       "ReportChartQuery": {
         "type": "object",
         "description": "The query node to render. \u0060kind\u0060 must be \u0060InsightVizNode\u0060 (an ad-hoc product analytics chart), \u0060DataVisualizationNode\u0060 (a SQL series \u2014 a \u0060HogQLQuery\u0060 source plus a \u0060display\u0060), or \u0060SavedInsightNode\u0060 (an existing insight by \u0060shortId\u0060). Pin the window to absolute dates where the node supports it, so the reader sees the data you wrote about rather than whatever a relative range resolves to when they open the report."
+      },
+      "ReportMetricQuery": {
+        "type": "object",
+        "description": "Required when authoring: a live InsightVizNode wrapping one bounded TrendsQuery. Consumers derive a BoldNumber execution for the whole-window aggregate and an ActionsBar execution for longitudinal buckets. The query must produce exactly one output series and no more than 1000 estimated longitudinal points; one formula may combine up to ten event or action source series. An affected_users metric uses exactly one source with \u0060math: dau\u0060; never sum its per-bucket unique-user values. A response omits this on list or redacts it to null on detail when the viewer lacks access to the definition."
+      },
+      "ReportMetricWriteQuery": {
+        "type": "object",
+        "description": "Required when authoring: a live InsightVizNode wrapping one bounded TrendsQuery. Consumers derive a BoldNumber execution for the whole-window aggregate and an ActionsBar execution for longitudinal buckets. The query must produce exactly one output series and no more than 1000 estimated longitudinal points; one formula may combine up to ten event or action source series. An affected_users metric uses exactly one source with \u0060math: dau\u0060; never sum its per-bucket unique-user values. A response omits this on list or redacts it to null on detail when the viewer lacks access to the definition."
       },
       "ResolvedToolPolicyInputSchemaProperty": {
         "type": "object",

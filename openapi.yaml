@@ -57311,7 +57311,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PaginatedSignalReportList'
+                $ref: '#/components/schemas/PaginatedSignalReportListList'
           description: ''
       x-product:
       - signals
@@ -57394,10 +57394,10 @@ paths:
   /api/projects/{project_id}/signals/reports/{id}/claim/:
     post:
       operationId: signals_reports_claim
-      description: Claim a report for the current user, internal task, or external
-        MCP agent. A later claim silently takes over ownership. Supply pr_url to attach
-        or replace the report's pull request, or release=true to clear only ownership
-        while preserving the pull request.
+      description: Start or update work for the current user, internal task, or external
+        agent. Supply claim_id to resume, pull_requests to add PRs, takeover=true
+        to explicitly take ownership, or release=true to end ownership while preserving
+        work history and PR links.
       summary: Claim or release a signal report
       parameters:
       - in: path
@@ -57504,6 +57504,13 @@ paths:
         description: A UUID string identifying this signal report.
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: pull_request_id
+        schema:
+          type: string
+          format: uuid
+        description: Select a PR from the report's pull_requests collection. Omit
+          for the compatibility primary PR (unfinished first).
       tags:
       - signals
       security:
@@ -57542,6 +57549,13 @@ paths:
         description: A UUID string identifying this signal report.
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: pull_request_id
+        schema:
+          type: string
+          format: uuid
+        description: Select a PR from the report's pull_requests collection. Omit
+          for the compatibility primary PR (unfinished first).
       tags:
       - signals
       security:
@@ -57583,6 +57597,13 @@ paths:
         description: A UUID string identifying this signal report.
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: pull_request_id
+        schema:
+          type: string
+          format: uuid
+        description: Select a PR from the report's pull_requests collection. Omit
+          for the compatibility primary PR (unfinished first).
       tags:
       - signals
       requestBody:
@@ -57641,6 +57662,13 @@ paths:
         description: A UUID string identifying this signal report.
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: pull_request_id
+        schema:
+          type: string
+          format: uuid
+        description: Select a PR from the report's pull_requests collection. Omit
+          for the compatibility primary PR (unfinished first).
       tags:
       - signals
       requestBody:
@@ -57694,6 +57722,13 @@ paths:
         description: A UUID string identifying this signal report.
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: pull_request_id
+        schema:
+          type: string
+          format: uuid
+        description: Select a PR from the report's pull_requests collection. Omit
+          for the compatibility primary PR (unfinished first).
       tags:
       - signals
       security:
@@ -57733,6 +57768,13 @@ paths:
         description: A UUID string identifying this signal report.
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: pull_request_id
+        schema:
+          type: string
+          format: uuid
+        description: Select a PR from the report's pull_requests collection. Omit
+          for the compatibility primary PR (unfinished first).
       tags:
       - signals
       requestBody:
@@ -57787,6 +57829,13 @@ paths:
         description: A UUID string identifying this signal report.
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: pull_request_id
+        schema:
+          type: string
+          format: uuid
+        description: Select a PR from the report's pull_requests collection. Omit
+          for the compatibility primary PR (unfinished first).
       - in: path
         name: reaction_id
         schema:
@@ -58370,6 +58419,51 @@ paths:
         '400':
           description: '`report_ids` is missing, not a list of UUIDs, or over the
             cap.'
+      x-product:
+      - signals
+  /api/projects/{project_id}/signals/reports/refresh_metrics/:
+    post:
+      operationId: signals_reports_refresh_metrics_create
+      description: Re-run the stored metric queries of the given reports through the
+        query cache and save the newest values as their snapshots. Call it when a
+        person opens the inbox list or a report, with the ids on screen. Report titles
+        and summaries are point-in-time text and never change here; only value, value_at,
+        and series do, and legacy comparisons are cleared. A snapshot measured in
+        the last 15 minutes is served as is. Each call runs at most 40 source series
+        inside a 20-second budget, row metrics first; the rest keep their previous
+        snapshot until the next open. Returns snapshot-only metrics for every requested
+        report the caller can read whose status is ready or pending_input. A report
+        in any other status is left out of the response, and its saved snapshots stay
+        as they are.
+      summary: Refresh the saved metric snapshots of the reports on screen
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - signals
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignalReportMetricRefreshRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SignalReportMetricRefreshRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SignalReportMetricRefreshRequest'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - task:read
+      - PersonalAPIKeyAuth:
+        - task:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignalReportMetricRefreshResponse'
+          description: ''
       x-product:
       - signals
   /api/projects/{project_id}/signals/reports/refund-summary/:
@@ -109962,6 +110056,20 @@ components:
             null) to leave the report's existing charts untouched, and send an empty
             list to take them all down.
           maxItems: 20
+        metrics:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ReportMetricWrite'
+          description: The report's full impact-metric set. Omit or send null to preserve
+            it; send an empty list to clear it. Every metric requires a bounded live
+            InsightVizNode/TrendsQuery built only from EventsNode or ActionsNode sources
+            and capped at 1,000 estimated longitudinal points. Consumers derive BoldNumber
+            and ActionsBar shapes; a snapshot is only an optional cached fallback.
+            Snapshot-only/queryless payloads are invalid, and legacy rows of that
+            shape are always redacted.
+          maxItems: 6
         suggested_prompts:
           type:
           - array
@@ -110007,6 +110115,12 @@ components:
           description: How many charts the report now shows, or null if the edit left
             its charts as they were (the field omitted, or a re-send of what was already
             stored). 0 means the edit took the report's charts down.
+        metrics_set:
+          type:
+          - integer
+          - 'null'
+          description: How many impact metrics the report now shows, or null when
+            untouched/unchanged. 0 means the edit removed every metric.
         suggested_prompts_set:
           type:
           - integer
@@ -110017,6 +110131,7 @@ components:
       required:
       - charts_set
       - evidence_appended
+      - metrics_set
       - note_appended
       - report_id
       - reviewers_set
@@ -110763,6 +110878,19 @@ components:
             a number they take on trust. Attach one whenever the finding rests on
             a trend, a spike, or a comparison you already queried.
           maxItems: 20
+        metrics:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReportMetricWrite'
+          description: 'Optional typed impact measurements. Use one primary metric
+            for the key observation and supporting metrics for users, sessions, occurrences,
+            conversion, latency, or revenue. Every metric requires a bounded live
+            InsightVizNode/TrendsQuery built only from EventsNode or ActionsNode sources
+            and capped at 1,000 estimated longitudinal points. Consumers derive BoldNumber
+            and ActionsBar shapes. A value/value_at snapshot is an optional cached
+            fallback. Affected users must use one series with `math: dau`. Snapshot-only/queryless
+            payloads are invalid; legacy rows of that shape are always redacted.'
+          maxItems: 6
         suggested_prompts:
           type: array
           items:
@@ -168190,7 +168318,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SignalReportArtefact'
-    PaginatedSignalReportList:
+    PaginatedSignalReportListList:
       type: object
       required:
       - count
@@ -168214,7 +168342,7 @@ components:
         results:
           type: array
           items:
-            $ref: '#/components/schemas/SignalReport'
+            $ref: '#/components/schemas/SignalReportList'
     PaginatedSignalSourceConfigList:
       type: object
       required:
@@ -202533,6 +202661,358 @@ components:
       required:
       - description
       - source_id
+    ReportMetric:
+      type: object
+      description: One impact measurement shown on a report.
+      properties:
+        metric_id:
+          type: string
+          description: 'Stable slug for this metric within the report: lowercase letters,
+            numbers, underscores, and hyphens, starting with a letter or number.'
+          maxLength: 100
+        title:
+          type: string
+          description: Short human-readable label for the measurement.
+          maxLength: 200
+        kind:
+          allOf:
+          - $ref: '#/components/schemas/ReportMetricKindEnum'
+          description: |-
+            What the value measures, independent of how it is formatted or drawn.
+
+            * `affected_users` - affected_users
+            * `affected_sessions` - affected_sessions
+            * `occurrences` - occurrences
+            * `conversion_rate` - conversion_rate
+            * `error_rate` - error_rate
+            * `duration` - duration
+            * `revenue` - revenue
+            * `custom` - custom
+        role:
+          allOf:
+          - $ref: '#/components/schemas/RoleEnum'
+          default: supporting
+          description: |-
+            `primary` for the report's key observation, otherwise `supporting`.
+
+            * `primary` - primary
+            * `supporting` - supporting
+        value:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: Latest saved snapshot, initially observed during authoring
+            and replaced when a person opens the inbox or the report. Null means no
+            snapshot is available to this viewer; it never means zero. The required
+            live query remains the source of truth.
+        value_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: When the visible snapshot value was measured; null when value
+            is null.
+        series:
+          type:
+          - array
+          - 'null'
+          items:
+            type: number
+            format: double
+          description: Trailing per-bucket values of the live query, oldest first,
+            saved with the value snapshot so a list row can draw the trend without
+            running the query; at most 14 points. Null when no snapshot series is
+            available to this viewer.
+          maxItems: 14
+        value_format:
+          allOf:
+          - $ref: '#/components/schemas/ValueFormatEnum'
+          default: number
+          description: |-
+            How to format the numeric value; semantic meaning remains in kind. `percentage` uses percentage points, so 34 renders as 34%; `percentage_scaled` uses a 0–1 ratio, so 0.34 renders as 34%. Sessions and occurrences use count; duration uses duration with an ms/s unit; revenue uses currency with an ISO currency unit.
+
+            * `number` - number
+            * `count` - count
+            * `percentage` - percentage
+            * `percentage_scaled` - percentage_scaled
+            * `duration` - duration
+            * `currency` - currency
+        unit:
+          type:
+          - string
+          - 'null'
+          description: Optional short suffix or currency code, such as `users`, `ms`,
+            or `USD`.
+          maxLength: 40
+        query:
+          description: 'Required when authoring: a live InsightVizNode wrapping one
+            bounded TrendsQuery. Consumers derive a BoldNumber execution for the whole-window
+            aggregate and an ActionsBar execution for longitudinal buckets. The query
+            must produce exactly one output series and no more than 1000 estimated
+            longitudinal points; one formula may combine up to ten event or action
+            source series. An affected_users metric uses exactly one source with `math:
+            dau`; never sum its per-bucket unique-user values. A response omits this
+            on list or redacts it to null on detail when the viewer lacks access to
+            the definition.'
+        caption:
+          type:
+          - string
+          - 'null'
+          description: Optional context the tile cannot show, such as a filter that
+            narrows the count or a caveat on the data. Omit it rather than restate
+            the title, unit, or window.
+          maxLength: 500
+      required:
+      - kind
+      - metric_id
+      - title
+    ReportMetricComparison:
+      type: object
+      properties:
+        value:
+          type: number
+          format: double
+          description: Baseline or previous value, formatted like the current value.
+        label:
+          type: string
+          description: Short context for the comparison, such as `Previous period`.
+          maxLength: 40
+      required:
+      - label
+      - value
+    ReportMetricKindEnum:
+      enum:
+      - affected_users
+      - affected_sessions
+      - occurrences
+      - conversion_rate
+      - error_rate
+      - duration
+      - revenue
+      - custom
+      type: string
+      description: |-
+        * `affected_users` - affected_users
+        * `affected_sessions` - affected_sessions
+        * `occurrences` - occurrences
+        * `conversion_rate` - conversion_rate
+        * `error_rate` - error_rate
+        * `duration` - duration
+        * `revenue` - revenue
+        * `custom` - custom
+    ReportMetricList:
+      type: object
+      description: |-
+        Snapshot-only metric shape for report lists.
+
+        Omitting query definitions keeps the paginated inbox payload bounded.
+      properties:
+        metric_id:
+          type: string
+          description: 'Stable slug for this metric within the report: lowercase letters,
+            numbers, underscores, and hyphens, starting with a letter or number.'
+          maxLength: 100
+        title:
+          type: string
+          description: Short human-readable label for the measurement.
+          maxLength: 200
+        kind:
+          allOf:
+          - $ref: '#/components/schemas/ReportMetricKindEnum'
+          description: |-
+            What the value measures, independent of how it is formatted or drawn.
+
+            * `affected_users` - affected_users
+            * `affected_sessions` - affected_sessions
+            * `occurrences` - occurrences
+            * `conversion_rate` - conversion_rate
+            * `error_rate` - error_rate
+            * `duration` - duration
+            * `revenue` - revenue
+            * `custom` - custom
+        role:
+          allOf:
+          - $ref: '#/components/schemas/RoleEnum'
+          default: supporting
+          description: |-
+            `primary` for the report's key observation, otherwise `supporting`.
+
+            * `primary` - primary
+            * `supporting` - supporting
+        value:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: Latest saved snapshot, initially observed during authoring
+            and replaced when a person opens the inbox or the report. Null means no
+            snapshot is available to this viewer; it never means zero. The required
+            live query remains the source of truth.
+        value_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: When the visible snapshot value was measured; null when value
+            is null.
+        series:
+          type:
+          - array
+          - 'null'
+          items:
+            type: number
+            format: double
+          description: Trailing per-bucket values of the live query, oldest first,
+            saved with the value snapshot so a list row can draw the trend without
+            running the query; at most 14 points. Null when no snapshot series is
+            available to this viewer.
+          maxItems: 14
+        value_format:
+          allOf:
+          - $ref: '#/components/schemas/ValueFormatEnum'
+          default: number
+          description: |-
+            How to format the numeric value; semantic meaning remains in kind. `percentage` uses percentage points, so 34 renders as 34%; `percentage_scaled` uses a 0–1 ratio, so 0.34 renders as 34%. Sessions and occurrences use count; duration uses duration with an ms/s unit; revenue uses currency with an ISO currency unit.
+
+            * `number` - number
+            * `count` - count
+            * `percentage` - percentage
+            * `percentage_scaled` - percentage_scaled
+            * `duration` - duration
+            * `currency` - currency
+        unit:
+          type:
+          - string
+          - 'null'
+          description: Optional short suffix or currency code, such as `users`, `ms`,
+            or `USD`.
+          maxLength: 40
+        caption:
+          type:
+          - string
+          - 'null'
+          description: Optional context the tile cannot show, such as a filter that
+            narrows the count or a caveat on the data. Omit it rather than restate
+            the title, unit, or window.
+          maxLength: 500
+      required:
+      - kind
+      - metric_id
+      - title
+    ReportMetricWrite:
+      type: object
+      description: 'Authoring shape: unlike a read response, the live query cannot
+        be absent or redacted.'
+      properties:
+        metric_id:
+          type: string
+          description: 'Stable slug for this metric within the report: lowercase letters,
+            numbers, underscores, and hyphens, starting with a letter or number.'
+          maxLength: 100
+        title:
+          type: string
+          description: Short human-readable label for the measurement.
+          maxLength: 200
+        kind:
+          allOf:
+          - $ref: '#/components/schemas/ReportMetricKindEnum'
+          description: |-
+            What the value measures, independent of how it is formatted or drawn.
+
+            * `affected_users` - affected_users
+            * `affected_sessions` - affected_sessions
+            * `occurrences` - occurrences
+            * `conversion_rate` - conversion_rate
+            * `error_rate` - error_rate
+            * `duration` - duration
+            * `revenue` - revenue
+            * `custom` - custom
+        role:
+          allOf:
+          - $ref: '#/components/schemas/RoleEnum'
+          default: supporting
+          description: |-
+            `primary` for the report's key observation, otherwise `supporting`.
+
+            * `primary` - primary
+            * `supporting` - supporting
+        value:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: Latest saved snapshot, initially observed during authoring
+            and replaced when a person opens the inbox or the report. Null means no
+            snapshot is available to this viewer; it never means zero. The required
+            live query remains the source of truth.
+        value_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: When the visible snapshot value was measured; null when value
+            is null.
+        series:
+          type:
+          - array
+          - 'null'
+          items:
+            type: number
+            format: double
+          description: Trailing per-bucket values of the live query, oldest first,
+            saved with the value snapshot so a list row can draw the trend without
+            running the query; at most 14 points. Null when no snapshot series is
+            available to this viewer.
+          maxItems: 14
+        value_format:
+          allOf:
+          - $ref: '#/components/schemas/ValueFormatEnum'
+          default: number
+          description: |-
+            How to format the numeric value; semantic meaning remains in kind. `percentage` uses percentage points, so 34 renders as 34%; `percentage_scaled` uses a 0–1 ratio, so 0.34 renders as 34%. Sessions and occurrences use count; duration uses duration with an ms/s unit; revenue uses currency with an ISO currency unit.
+
+            * `number` - number
+            * `count` - count
+            * `percentage` - percentage
+            * `percentage_scaled` - percentage_scaled
+            * `duration` - duration
+            * `currency` - currency
+        unit:
+          type:
+          - string
+          - 'null'
+          description: Optional short suffix or currency code, such as `users`, `ms`,
+            or `USD`.
+          maxLength: 40
+        query:
+          description: 'Required when authoring: a live InsightVizNode wrapping one
+            bounded TrendsQuery. Consumers derive a BoldNumber execution for the whole-window
+            aggregate and an ActionsBar execution for longitudinal buckets. The query
+            must produce exactly one output series and no more than 1000 estimated
+            longitudinal points; one formula may combine up to ten event or action
+            source series. An affected_users metric uses exactly one source with `math:
+            dau`; never sum its per-bucket unique-user values. A response omits this
+            on list or redacts it to null on detail when the viewer lacks access to
+            the definition.'
+        caption:
+          type:
+          - string
+          - 'null'
+          description: Optional context the tile cannot show, such as a filter that
+            narrows the count or a caveat on the data. Omit it rather than restate
+            the title, unit, or window.
+          maxLength: 500
+        comparison:
+          oneOf:
+          - $ref: '#/components/schemas/ReportMetricComparison'
+          - type: 'null'
+          description: Legacy optional comparison. New report metrics must omit it.
+      required:
+      - kind
+      - metric_id
+      - query
+      - title
     ReportOutcomeEnum:
       enum:
       - filed
@@ -207515,6 +207995,14 @@ components:
         * `sales` - Sales / Success
         * `student` - Student
         * `other` - Other
+    RoleEnum:
+      enum:
+      - primary
+      - supporting
+      type: string
+      description: |-
+        * `primary` - primary
+        * `supporting` - supporting
     RoleExternalReference:
       type: object
       properties:
@@ -213475,6 +213963,14 @@ components:
           description: Charts the report shows, in the order they were written. The
             summary places one with a `[label](chart:<chart_id>)` link; the rest render
             below it.
+        metrics:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReportMetric'
+          readOnly: true
+          description: Typed impact measurements in display order. At most one is
+            primary. Live metric values and history come from their query; value/value_at
+            are the latest saved fallback snapshots.
         suggested_prompts:
           type: array
           items:
@@ -213552,6 +214048,12 @@ components:
           - 'null'
           readOnly: true
           description: Pull request attached to this report's claim, if available.
+        pull_requests:
+          type: array
+          items:
+            $ref: '#/components/schemas/SignalReportPullRequest'
+          readOnly: true
+          description: All distinct PRs linked to this report across work attempts.
         implementation_pr_state:
           description: 'Latest known pull request state: unknown, draft, open, closed,
             or merged.'
@@ -213652,7 +214154,9 @@ components:
       - implementation_pr_state
       - implementation_pr_url
       - is_suggested_reviewer
+      - metrics
       - priority
+      - pull_requests
       - refund
       - refund_ineligibility_reason
       - repo_slug
@@ -213673,6 +214177,20 @@ components:
     SignalReportArtefact:
       type: object
       properties:
+        claim_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          readOnly: true
+          description: Work claim that produced this artefact.
+        pull_request_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          readOnly: true
+          description: Shared PR record linked by this artefact.
         id:
           type: string
           format: uuid
@@ -213728,10 +214246,12 @@ components:
       required:
       - actor_agent
       - actor_kind
+      - claim_id
       - content
       - created_at
       - created_by
       - id
+      - pull_request_id
       - task_id
       - type
       - updated_at
@@ -213754,6 +214274,9 @@ components:
       - summary_change
       - code_review
       - related_to
+      - work_claim
+      - work_release
+      - pull_request
       type: string
       description: |-
         * `video_segment` - Video Segment
@@ -213773,6 +214296,9 @@ components:
         * `summary_change` - Summary Change
         * `code_review` - Code Review
         * `related_to` - Related To
+        * `work_claim` - Work Claim
+        * `work_release` - Work Release
+        * `pull_request` - Pull Request
     SignalReportArtefactLogCreate:
       type: object
       description: |-
@@ -213782,12 +214308,17 @@ components:
         version (latest-wins). The `content` shape depends on `artefact_type` and is validated
         against the type's schema (see `products/signals/backend/artefact_schemas.py`).
       properties:
+        claim_id:
+          type: string
+          format: uuid
+          description: Active claim to attribute this work to. Must belong to the
+            caller and report.
         artefact_type:
           type: string
           description: 'The artefact type. One of: actionability_judgment, channel_assignment,
             code_reference, commit, dismissal, note, priority_judgment, related_to,
-            repo_selection, safety_judgment, signal_finding, suggested_reviewers,
-            task_run. Log types accumulate; status types (safety_judgment, actionability_judgment,
+            repo_selection, safety_judgment, signal_finding, suggested_reviewers.
+            Log types accumulate; status types (safety_judgment, actionability_judgment,
             priority_judgment, repo_selection, suggested_reviewers, channel_assignment)
             are latest-wins — appending a new version supersedes the previous one
             as the report''s canonical status.'
@@ -213807,6 +214338,13 @@ components:
           format: uuid
           readOnly: true
           description: The artefact's unique id.
+        claim_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          readOnly: true
+          description: Claim that produced this artefact.
         report_id:
           type: string
           format: uuid
@@ -213841,6 +214379,7 @@ components:
           description: Task the artefact is attributed to, when an agent produced
             it. Null for user writes.
       required:
+      - claim_id
       - content
       - created_at
       - id
@@ -213851,6 +214390,12 @@ components:
     SignalReportAssignee:
       type: object
       properties:
+        claim_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          description: Identifier for the active work attempt.
         kind:
           $ref: '#/components/schemas/SignalActorKindEnum'
         user:
@@ -213873,6 +214418,7 @@ components:
           format: date-time
       required:
       - agent
+      - claim_id
       - claimed_at
       - kind
       - task_id
@@ -214018,11 +214564,29 @@ components:
     SignalReportClaim:
       type: object
       properties:
+        claim_id:
+          type: string
+          format: uuid
+          description: Active claim ID returned by an earlier call. Stale claims are
+            rejected.
+        pull_requests:
+          type: array
+          items:
+            type: string
+            format: uri
+            maxLength: 2048
+          description: GitHub PR URLs to add to this report's work. Additive and deduplicated;
+            may span repositories.
+          maxItems: 50
+        takeover:
+          type: boolean
+          default: false
+          description: Explicitly end another actor's claim and take ownership.
         pr_url:
           type: string
           format: uri
-          description: Optional GitHub pull request to attach to the claim. The report
-            may be claimed without one.
+          description: Compatibility alias for adding one PR. Prefer pull_requests
+            for new callers.
         release:
           type: boolean
           default: false
@@ -214058,6 +214622,406 @@ components:
             scout, or the caller lacks scout-steering access.
       required:
       - forwarded
+    SignalReportList:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        title:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        summary:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        status:
+          allOf:
+          - $ref: '#/components/schemas/SignalReportStatusEnum'
+          readOnly: true
+        total_weight:
+          type: number
+          format: double
+          readOnly: true
+        signal_count:
+          type: integer
+          readOnly: true
+        signals_at_run:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        artefact_count:
+          type: integer
+          readOnly: true
+        charts:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReportChart'
+          readOnly: true
+          description: Charts the report shows, in the order they were written. The
+            summary places one with a `[label](chart:<chart_id>)` link; the rest render
+            below it.
+        metrics:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReportMetricList'
+          readOnly: true
+          description: Snapshot-only impact measurements for inbox rows. Live query
+            definitions and authored comparisons are available from the report detail
+            endpoint.
+        suggested_prompts:
+          type: array
+          items:
+            type: string
+          readOnly: true
+          description: Follow-up prompts the report's author suggests sending about
+            it (questions to ask, or next-step actions to request), in the order they
+            were written. The inbox offers them above the `Ask AI` box; clicking one
+            fills the box with it.
+        priority:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          description: P0–P4 from the latest priority judgment artefact (when present).
+        actionability:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          description: Actionability choice from the latest actionability judgment
+            artefact (when present).
+        already_addressed:
+          type:
+          - boolean
+          - 'null'
+          readOnly: true
+          description: Whether the issue is already being handled — fixed in recent
+            changes, or with a fix in flight (an open PR, a recently active branch,
+            an assigned / in-progress issue or agent task) — from the actionability
+            judgment artefact.
+        dismissal_reason:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          description: Reason code from the latest dismissal artefact, set when the
+            report was suppressed (when present).
+        dismissal_note:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          description: Free-form note captured alongside the dismissal reason (when
+            present).
+        repo_slug:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          description: '`organization/repository` the report''s work targets, from
+            the latest repo-selection artefact (when present). Lets list cards show
+            repository context without a per-card fetch.'
+        is_suggested_reviewer:
+          type: boolean
+          readOnly: true
+          default: false
+        source_products:
+          type: array
+          items:
+            type: string
+          readOnly: true
+          description: Distinct source products contributing signals to this report
+            (from ClickHouse).
+        scout_name:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          description: skill_name slug of the scout that authored this report, when
+            scout-authored (from ClickHouse); null otherwise.
+        implementation_pr_url:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          description: Pull request attached to this report's claim, if available.
+        pull_requests:
+          type: array
+          items:
+            $ref: '#/components/schemas/SignalReportPullRequest'
+          readOnly: true
+          description: All distinct PRs linked to this report across work attempts.
+        implementation_pr_state:
+          description: 'Latest known pull request state: unknown, draft, open, closed,
+            or merged.'
+          readOnly: true
+          oneOf:
+          - $ref: '#/components/schemas/SignalReportAssignmentPrStateEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        implementation_pr_merged:
+          type: boolean
+          readOnly: true
+          description: 'Whether that implementation PR is merged, per the GitHub webhook.
+            False when there is no PR or it hasn''t merged. Report status doesn''t
+            imply this: a resolved report may have been resolved directly, without
+            a merged PR.'
+        tracker_issue_url:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          description: Link to the issue self-driving opened in the team's tracker
+            for this report's pull request. Null when the team tracks no issues, or
+            the issue could not be opened.
+        tracker_issue_reference:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          description: How that tracker issue reads in its provider, for example '#12'
+            or 'ENG-123'. Null when there is no tracker issue.
+        tracker_issue_error:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          description: Why the tracker issue could not be opened, for a team that
+            wants one. Null when the issue exists or the team tracks no issues.
+        work_state:
+          allOf:
+          - $ref: '#/components/schemas/SignalReportWorkStateEnum'
+          description: 'Derived remediation state: unclaimed, working, in_review,
+            or done.'
+          readOnly: true
+        assignee:
+          oneOf:
+          - $ref: '#/components/schemas/SignalReportAssignee'
+          - type: 'null'
+          readOnly: true
+          description: Current user, internal task, or external agent claim owner.
+            Null when unclaimed.
+        refund:
+          oneOf:
+          - $ref: '#/components/schemas/SignalReportRefund'
+          - type: 'null'
+          readOnly: true
+          description: The report's PR refund, when one exists. One refund per report,
+            ever.
+        refund_ineligibility_reason:
+          description: Why refunding this report's PR would be rejected right now,
+            or null when a refund would be accepted (see the field's schema for the
+            reason values).
+          readOnly: true
+          oneOf:
+          - $ref: '#/components/schemas/RefundIneligibilityReasonEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        billing_exempt_reason:
+          readOnly: true
+          description: |-
+            Non-null when this report is system-marked never-billable (PostHog-system origin, e.g. a health-check scout finding) — its implementation PRs are free and cannot be refunded because nothing was charged.
+
+            * `posthog_health_check` - PostHog health check
+            * `posthog_onboarding` - PostHog onboarding
+            * `posthog_system` - PostHog system
+          oneOf:
+          - $ref: '#/components/schemas/SignalReportBillingExemptReasonEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        channel_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          readOnly: true
+          description: The space (task channel) this report is assigned to, or null
+            when unassigned. The general view lists every report regardless of this
+            value.
+      required:
+      - actionability
+      - already_addressed
+      - artefact_count
+      - assignee
+      - billing_exempt_reason
+      - channel_id
+      - charts
+      - created_at
+      - dismissal_note
+      - dismissal_reason
+      - id
+      - implementation_pr_merged
+      - implementation_pr_state
+      - implementation_pr_url
+      - is_suggested_reviewer
+      - metrics
+      - priority
+      - pull_requests
+      - refund
+      - refund_ineligibility_reason
+      - repo_slug
+      - scout_name
+      - signal_count
+      - signals_at_run
+      - source_products
+      - status
+      - suggested_prompts
+      - summary
+      - title
+      - total_weight
+      - tracker_issue_error
+      - tracker_issue_reference
+      - tracker_issue_url
+      - updated_at
+      - work_state
+    SignalReportMetricRefreshRequest:
+      type: object
+      properties:
+        report_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          description: Reports on screen, in display order. Each report's row metric
+            is refreshed before any report's supporting metrics. At most 20 ids per
+            call.
+          maxItems: 20
+          minItems: 1
+      required:
+      - report_ids
+    SignalReportMetricRefreshResponse:
+      type: object
+      properties:
+        reports:
+          type: array
+          items:
+            $ref: '#/components/schemas/SignalReportMetricSnapshots'
+          readOnly: true
+          description: One entry per requested report the caller can read whose status
+            is ready or pending_input, in request order. A report in any other status
+            has no entry. A metric whose snapshot was fresh, whose query failed, or
+            whose budget ran out keeps its previous snapshot; merge by metric_id.
+      required:
+      - reports
+    SignalReportMetricSnapshots:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Report id.
+        metrics:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReportMetricList'
+          readOnly: true
+          description: The report's metrics with their current snapshots, in display
+            order.
+      required:
+      - id
+      - metrics
+    SignalReportPullRequest:
+      type: object
+      properties:
+        id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          description: PR selection ID. Task-output links use a deterministic ID until
+            attached as an artefact.
+        url:
+          type: string
+          format: uri
+          description: GitHub pull request URL.
+        state:
+          allOf:
+          - $ref: '#/components/schemas/SignalReportAssignmentPrStateEnum'
+          description: |-
+            Latest known GitHub state.
+
+            * `unknown` - Unknown
+            * `draft` - Draft
+            * `open` - Open
+            * `closed` - Closed
+            * `merged` - Merged
+        merged:
+          type: boolean
+          description: Whether this PR merged.
+        attached_by:
+          oneOf:
+          - $ref: '#/components/schemas/SignalReportPullRequestAttachedBy'
+          - type: 'null'
+          readOnly: true
+          description: Who first attached this PR to the report, not necessarily its
+            GitHub author. Task-output links identify the originating task.
+        claim_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          description: Originating work claim. Null for legacy links without a recorded
+            claim.
+        attached_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: When the first PR link was recorded. For backfilled links this
+            is the import time; null for an unmigrated link.
+      required:
+      - attached_at
+      - attached_by
+      - claim_id
+      - id
+      - merged
+      - state
+      - url
+    SignalReportPullRequestAttachedBy:
+      type: object
+      properties:
+        kind:
+          description: |-
+            Kind of actor who attached the PR. Null when legacy attribution is unknown.
+
+            * `user` - User
+            * `task` - Task
+            * `agent` - Agent
+            * `system` - System
+          oneOf:
+          - $ref: '#/components/schemas/SignalActorKindEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        user:
+          oneOf:
+          - $ref: '#/components/schemas/_User'
+          - type: 'null'
+          description: Authenticated principal who attached the PR, when recorded.
+        agent:
+          type:
+          - string
+          - 'null'
+          description: External agent client name, when recorded.
+        task_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          description: Internal task that attached the PR, when recorded.
+      required:
+      - agent
+      - kind
+      - task_id
+      - user
     SignalReportRefund:
       type: object
       properties:
@@ -237559,6 +238523,22 @@ components:
       - percentage
       title: ValueDisplay
       type: string
+    ValueFormatEnum:
+      enum:
+      - number
+      - count
+      - percentage
+      - percentage_scaled
+      - duration
+      - currency
+      type: string
+      description: |-
+        * `number` - number
+        * `count` - count
+        * `percentage` - percentage
+        * `percentage_scaled` - percentage_scaled
+        * `duration` - duration
+        * `currency` - currency
     VectorSearchQuery:
       additionalProperties: false
       properties:

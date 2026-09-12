@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `video_segment` - Video Segment* `safety_judgment` - Safety Judgment* `actionability_judgment` - Actionability Judgment* `priority_judgment` - Priority Judgment* `signal_finding` - Signal Finding* `repo_selection` - Repo Selection* `suggested_reviewers` - Suggested Reviewers* `channel_assignment` - Channel Assignment* `dismissal` - Dismissal* `code_reference` - Code Reference* `commit` - Commit* `task_run` - Task Run* `note` - Note* `title_change` - Title Change* `summary_change` - Summary Change* `code_review` - Code Review* `related_to` - Related To</summary>
+    /// <summary>* `video_segment` - Video Segment* `safety_judgment` - Safety Judgment* `actionability_judgment` - Actionability Judgment* `priority_judgment` - Priority Judgment* `signal_finding` - Signal Finding* `repo_selection` - Repo Selection* `suggested_reviewers` - Suggested Reviewers* `channel_assignment` - Channel Assignment* `dismissal` - Dismissal* `code_reference` - Code Reference* `commit` - Commit* `task_run` - Task Run* `note` - Note* `title_change` - Title Change* `summary_change` - Summary Change* `code_review` - Code Review* `related_to` - Related To* `work_claim` - Work Claim* `work_release` - Work Release* `pull_request` - Pull Request</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum SignalReportArtefactArtefactTypeEnum
     {
@@ -74,6 +74,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "related_to")]
         #pragma warning disable CS1591
         RelatedTo,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "work_claim")]
+        #pragma warning disable CS1591
+        WorkClaim,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "work_release")]
+        #pragma warning disable CS1591
+        WorkRelease,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "pull_request")]
+        #pragma warning disable CS1591
+        PullRequest,
         #pragma warning restore CS1591
     }
 }

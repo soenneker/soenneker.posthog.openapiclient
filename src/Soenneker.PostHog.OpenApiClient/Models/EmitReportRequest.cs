@@ -57,6 +57,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string IdempotencyKey { get; set; }
 #endif
+        /// <summary>Optional typed impact measurements. Use one primary metric for the key observation and supporting metrics for users, sessions, occurrences, conversion, latency, or revenue. Every metric requires a bounded live InsightVizNode/TrendsQuery built only from EventsNode or ActionsNode sources and capped at 1,000 estimated longitudinal points. Consumers derive BoldNumber and ActionsBar shapes. A value/value_at snapshot is an optional cached fallback. Affected users must use one series with `math: dau`. Snapshot-only/queryless payloads are invalid; legacy rows of that shape are always redacted.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWrite>? Metrics { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWrite> Metrics { get; set; }
+#endif
         /// <summary>Optional priority (`P0`-`P4`). Required for autostart; pair with `priority_explanation`.* `P0` - P0* `P1` - P1* `P2` - P2* `P3` - P3* `P4` - P4</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -145,6 +153,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "charts", n => { Charts = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReportChart>(global::Soenneker.PostHog.OpenApiClient.Models.ReportChart.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "evidence", n => { Evidence = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReportEvidence>(global::Soenneker.PostHog.OpenApiClient.Models.ReportEvidence.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "idempotency_key", n => { IdempotencyKey = n.GetStringValue(); } },
+                { "metrics", n => { Metrics = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWrite>(global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWrite.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "priority", n => { Priority = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmitReportRequestPriority>(global::Soenneker.PostHog.OpenApiClient.Models.EmitReportRequestPriority.CreateFromDiscriminatorValue); } },
                 { "priority_explanation", n => { PriorityExplanation = n.GetStringValue(); } },
                 { "repository", n => { Repository = n.GetStringValue(); } },
@@ -167,6 +176,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReportChart>("charts", Charts);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReportEvidence>("evidence", Evidence);
             writer.WriteStringValue("idempotency_key", IdempotencyKey);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWrite>("metrics", Metrics);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmitReportRequestPriority>("priority", Priority);
             writer.WriteStringValue("priority_explanation", PriorityExplanation);
             writer.WriteStringValue("repository", Repository);
