@@ -30,6 +30,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ReportId { get; set; }
 #endif
+        /// <summary>The repository the report points at now, read back from the report rather than echoed from the request; null when the report has no target. Compare it with the `repository` you sent to confirm the correction landed.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Repository { get; set; }
+#nullable restore
+#else
+        public string Repository { get; set; }
+#endif
+        /// <summary>Whether the report&apos;s repository was replaced (true for a cleared target too).</summary>
+        public bool? RepositorySet { get; set; }
         /// <summary>Whether the report&apos;s suggested reviewers were replaced.</summary>
         public bool? ReviewersSet { get; set; }
         /// <summary>How many prompts the report now suggests, or null if the edit left them as they were (the field omitted, or a re-send of what was already stored). 0 means the edit took the report&apos;s suggested prompts down.</summary>
@@ -72,6 +82,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "metrics_set", n => { MetricsSet = n.GetIntValue(); } },
                 { "note_appended", n => { NoteAppended = n.GetBoolValue(); } },
                 { "report_id", n => { ReportId = n.GetStringValue(); } },
+                { "repository", n => { Repository = n.GetStringValue(); } },
+                { "repository_set", n => { RepositorySet = n.GetBoolValue(); } },
                 { "reviewers_set", n => { ReviewersSet = n.GetBoolValue(); } },
                 { "suggested_prompts_set", n => { SuggestedPromptsSet = n.GetIntValue(); } },
                 { "updated_fields", n => { UpdatedFields = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -89,6 +101,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("metrics_set", MetricsSet);
             writer.WriteBoolValue("note_appended", NoteAppended);
             writer.WriteStringValue("report_id", ReportId);
+            writer.WriteStringValue("repository", Repository);
+            writer.WriteBoolValue("repository_set", RepositorySet);
             writer.WriteBoolValue("reviewers_set", ReviewersSet);
             writer.WriteIntValue("suggested_prompts_set", SuggestedPromptsSet);
             writer.WriteCollectionOfPrimitiveValues<string>("updated_fields", UpdatedFields);

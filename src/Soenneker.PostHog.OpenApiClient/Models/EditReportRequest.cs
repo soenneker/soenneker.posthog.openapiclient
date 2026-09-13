@@ -55,6 +55,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ReportId { get; set; }
 #endif
+        /// <summary>Optional repository to point the report at, as `owner/repo` — the fix for a report that surfaced against the wrong codebase, so you correct it in place instead of filing a duplicate. It replaces the report&apos;s current target and re-runs autostart, so a report that had no repository to open a PR against can now open a draft PR. Omit the field to leave the target as it is, and pass the `NO_REPO` sentinel for a report where nothing under version control could change.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Repository { get; set; }
+#nullable restore
+#else
+        public string Repository { get; set; }
+#endif
         /// <summary>The full set of follow-up prompts (questions or next-step actions) the report should offer above its `Ask AI` box. Replaces the report&apos;s prompts rather than adding to them, so send every one you want kept. Omit the field (or send null) to leave them untouched, and send an empty list to take them down, which is what you want once a rewrite has left them pointing at the old report.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -117,6 +125,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "charts", n => { Charts = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReportChart>(global::Soenneker.PostHog.OpenApiClient.Models.ReportChart.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "metrics", n => { Metrics = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWrite>(global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWrite.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "report_id", n => { ReportId = n.GetStringValue(); } },
+                { "repository", n => { Repository = n.GetStringValue(); } },
                 { "suggested_prompts", n => { SuggestedPrompts = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "suggested_reviewers", n => { SuggestedReviewers = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewer>(global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewer.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "summary", n => { Summary = n.GetStringValue(); } },
@@ -135,6 +144,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReportChart>("charts", Charts);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWrite>("metrics", Metrics);
             writer.WriteStringValue("report_id", ReportId);
+            writer.WriteStringValue("repository", Repository);
             writer.WriteCollectionOfPrimitiveValues<string>("suggested_prompts", SuggestedPrompts);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewer>("suggested_reviewers", SuggestedReviewers);
             writer.WriteStringValue("summary", Summary);

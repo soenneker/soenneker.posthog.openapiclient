@@ -87726,7 +87726,7 @@
           "signals"
         ],
         "summary": "Edit an existing report for a run",
-        "description": "Rewrite a report\u0027s title/summary, append a note or fresh evidence, and/or set its suggested reviewers. Can target ANY of the project\u0027s inbox reports, not just scout-authored ones \u2014 so the edit is attributed to this scout. Setting reviewers is how you rescue a report that surfaced routed to no one: it replaces the reviewer list and re-runs autostart, so a report missing a qualifying reviewer can open a draft PR. Title/summary edits are best-effort: the pipeline may later re-research them.",
+        "description": "Rewrite a report\u0027s title/summary, append a note or fresh evidence, set its suggested reviewers, and/or point it at another repository. Can target ANY of the project\u0027s inbox reports, not just scout-authored ones \u2014 so the edit is attributed to this scout. Reviewers and repository are how you rescue a report that surfaced routed to no one or against the wrong codebase: each replaces what the report holds and re-runs autostart, so a report that was missing a qualifying reviewer or a repository can open a draft PR. The response carries the repository the report holds after the edit, and the call fails when a repository it named did not land. Title/summary edits are best-effort: the pipeline may later re-research them.",
         "operationId": "SignalsScoutEditReport",
         "parameters": [
           {
@@ -153483,6 +153483,13 @@
             },
             "description": "Optional reviewers to set on the report (each a \u0060github_login\u0060 and/or \u0060user_uuid\u0060), replacing any existing list. Use this to route a report that surfaced with no reviewer \u2014 it re-runs autostart, so a report that was missing a qualifying reviewer can now open a draft PR. An empty list is a no-op (existing reviewers are left untouched, never cleared)."
           },
+          "repository": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Optional repository to point the report at, as \u0060owner/repo\u0060 \u2014 the fix for a report that surfaced against the wrong codebase, so you correct it in place instead of filing a duplicate. It replaces the report\u0027s current target and re-runs autostart, so a report that had no repository to open a PR against can now open a draft PR. Omit the field to leave the target as it is, and pass the \u0060NO_REPO\u0060 sentinel for a report where nothing under version control could change."
+          },
           "charts": {
             "maxItems": 20,
             "type": [
@@ -153527,6 +153534,8 @@
           "metrics_set",
           "note_appended",
           "report_id",
+          "repository",
+          "repository_set",
           "reviewers_set",
           "suggested_prompts_set",
           "updated_fields"
@@ -153555,6 +153564,17 @@
           "reviewers_set": {
             "type": "boolean",
             "description": "Whether the report\u0027s suggested reviewers were replaced."
+          },
+          "repository_set": {
+            "type": "boolean",
+            "description": "Whether the report\u0027s repository was replaced (true for a cleared target too)."
+          },
+          "repository": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The repository the report points at now, read back from the report rather than echoed from the request; null when the report has no target. Compare it with the \u0060repository\u0060 you sent to confirm the correction landed."
           },
           "charts_set": {
             "type": [
@@ -229283,7 +229303,15 @@
             "type": [
               "null",
               "boolean"
-            ]
+            ],
+            "description": "Post a pull request comment when a run finds visual changes to review."
+          },
+          "debt_digest_enabled": {
+            "type": [
+              "null",
+              "boolean"
+            ],
+            "description": "Post the visual review debt digest to the Slack channels of the teams that own the snapshots. Off by default. The digest goes out every Monday morning."
           }
         }
       },
@@ -251840,6 +251868,7 @@
         "required": [
           "baseline_file_paths",
           "created_at",
+          "debt_digest_enabled",
           "enable_pr_comments",
           "id",
           "repo_external_id",
@@ -251865,6 +251894,9 @@
             "$ref": "#/components/schemas/RepoBaselineFilePathsProperty"
           },
           "enable_pr_comments": {
+            "type": "boolean"
+          },
+          "debt_digest_enabled": {
             "type": "boolean"
           },
           "created_at": {

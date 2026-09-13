@@ -22,7 +22,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUpdateRepoRequestInputBaselineFilePathsProperty BaselineFilePaths { get; set; }
 #endif
-        /// <summary>The enable_pr_comments property</summary>
+        /// <summary>Post the visual review debt digest to the Slack channels of the teams that own the snapshots. Off by default. The digest goes out every Monday morning.</summary>
+        public bool? DebtDigestEnabled { get; set; }
+        /// <summary>Post a pull request comment when a run finds visual changes to review.</summary>
         public bool? EnablePrComments { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedUpdateRepoRequestInput"/> and sets the default values.
@@ -50,6 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "baseline_file_paths", n => { BaselineFilePaths = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUpdateRepoRequestInputBaselineFilePathsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedUpdateRepoRequestInputBaselineFilePathsProperty.CreateFromDiscriminatorValue); } },
+                { "debt_digest_enabled", n => { DebtDigestEnabled = n.GetBoolValue(); } },
                 { "enable_pr_comments", n => { EnablePrComments = n.GetBoolValue(); } },
             };
         }
@@ -61,6 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUpdateRepoRequestInputBaselineFilePathsProperty>("baseline_file_paths", BaselineFilePaths);
+            writer.WriteBoolValue("debt_digest_enabled", DebtDigestEnabled);
             writer.WriteBoolValue("enable_pr_comments", EnablePrComments);
             writer.WriteAdditionalData(AdditionalData);
         }

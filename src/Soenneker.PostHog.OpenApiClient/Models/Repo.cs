@@ -24,6 +24,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; set; }
+        /// <summary>The debt_digest_enabled property</summary>
+        public bool? DebtDigestEnabled { get; set; }
         /// <summary>The enable_pr_comments property</summary>
         public bool? EnablePrComments { get; set; }
         /// <summary>The id property</summary>
@@ -67,6 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "baseline_file_paths", n => { BaselineFilePaths = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RepoBaselineFilePathsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.RepoBaselineFilePathsProperty.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
+                { "debt_digest_enabled", n => { DebtDigestEnabled = n.GetBoolValue(); } },
                 { "enable_pr_comments", n => { EnablePrComments = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "repo_external_id", n => { RepoExternalId = n.GetIntValue(); } },
@@ -83,6 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RepoBaselineFilePathsProperty>("baseline_file_paths", BaselineFilePaths);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
+            writer.WriteBoolValue("debt_digest_enabled", DebtDigestEnabled);
             writer.WriteBoolValue("enable_pr_comments", EnablePrComments);
             writer.WriteGuidValue("id", Id);
             writer.WriteIntValue("repo_external_id", RepoExternalId);
